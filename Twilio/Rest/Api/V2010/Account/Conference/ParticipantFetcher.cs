@@ -36,7 +36,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -76,7 +77,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json",
+                client.Region
             );
             
             var response = client.Request(request);

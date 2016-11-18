@@ -40,7 +40,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Members/" + Sid + ""
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Members/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -81,7 +82,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Members/" + Sid + ""
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Members/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             

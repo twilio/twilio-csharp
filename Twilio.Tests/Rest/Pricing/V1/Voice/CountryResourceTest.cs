@@ -27,7 +27,8 @@ namespace Twilio.Tests.Rest.Pricing.V1.Voice
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Pricing,
-                                      "/v1/Voice/Countries");
+                                      "/v1/Voice/Countries",
+                                      null);
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
@@ -88,7 +89,8 @@ namespace Twilio.Tests.Rest.Pricing.V1.Voice
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Pricing,
-                                      "/v1/Voice/Countries/US");
+                                      "/v1/Voice/Countries/US",
+                                      null);
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,

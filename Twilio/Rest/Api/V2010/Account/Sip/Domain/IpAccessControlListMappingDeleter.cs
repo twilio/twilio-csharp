@@ -36,7 +36,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/IpAccessControlListMappings/" + Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/IpAccessControlListMappings/" + Sid + ".json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -75,7 +76,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/IpAccessControlListMappings/" + Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/IpAccessControlListMappings/" + Sid + ".json",
+                client.Region
             );
             
             var response = client.Request(request);

@@ -33,7 +33,8 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues/" + Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues/" + Sid + ".json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -72,7 +73,8 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues/" + Sid + ".json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues/" + Sid + ".json",
+                client.Region
             );
             
             var response = client.Request(request);

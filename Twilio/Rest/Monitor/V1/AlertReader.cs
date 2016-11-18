@@ -26,7 +26,8 @@ namespace Twilio.Rest.Monitor.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
-                "/v1/Alerts"
+                "/v1/Alerts",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -47,7 +48,8 @@ namespace Twilio.Rest.Monitor.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
-                "/v1/Alerts"
+                "/v1/Alerts",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -68,7 +70,8 @@ namespace Twilio.Rest.Monitor.V1
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.Monitor
+                    Rest.Domain.Monitor,
+                    client.Region
                 )
             );
             

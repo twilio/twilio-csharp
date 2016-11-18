@@ -41,7 +41,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + TrunkSid + "/OriginationUrls/" + Sid + ""
+                "/v1/Trunks/" + TrunkSid + "/OriginationUrls/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -82,7 +83,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + TrunkSid + "/OriginationUrls/" + Sid + ""
+                "/v1/Trunks/" + TrunkSid + "/OriginationUrls/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             

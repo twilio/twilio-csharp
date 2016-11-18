@@ -32,7 +32,8 @@ namespace Twilio.Rest.Preview.Wireless
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/wireless/Commands/" + Sid + ""
+                "/wireless/Commands/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -72,7 +73,8 @@ namespace Twilio.Rest.Preview.Wireless
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/wireless/Commands/" + Sid + ""
+                "/wireless/Commands/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

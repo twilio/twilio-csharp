@@ -48,7 +48,8 @@ namespace Twilio.Rest.Notify.V1.Service
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Notify,
-                "/v1/Services/" + ServiceSid + "/Bindings"
+                "/v1/Services/" + ServiceSid + "/Bindings",
+                client.Region
             );
             
             AddPostParams(request);
@@ -89,7 +90,8 @@ namespace Twilio.Rest.Notify.V1.Service
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Notify,
-                "/v1/Services/" + ServiceSid + "/Bindings"
+                "/v1/Services/" + ServiceSid + "/Bindings",
+                client.Region
             );
             
             AddPostParams(request);

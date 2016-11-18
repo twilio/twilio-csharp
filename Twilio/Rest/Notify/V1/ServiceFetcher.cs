@@ -32,7 +32,8 @@ namespace Twilio.Rest.Notify.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Notify,
-                "/v1/Services/" + Sid + ""
+                "/v1/Services/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -72,7 +73,8 @@ namespace Twilio.Rest.Notify.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Notify,
-                "/v1/Services/" + Sid + ""
+                "/v1/Services/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

@@ -35,7 +35,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Channels"
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Channels",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -56,7 +57,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Channels"
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Channels",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -77,7 +79,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.Taskrouter
+                    Rest.Domain.Taskrouter,
+                    client.Region
                 )
             );
             

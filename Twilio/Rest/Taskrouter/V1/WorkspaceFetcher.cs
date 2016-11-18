@@ -32,7 +32,8 @@ namespace Twilio.Rest.Taskrouter.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + Sid + ""
+                "/v1/Workspaces/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -72,7 +73,8 @@ namespace Twilio.Rest.Taskrouter.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + Sid + ""
+                "/v1/Workspaces/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

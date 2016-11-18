@@ -29,7 +29,8 @@ namespace Twilio.Rest.Monitor.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
-                "/v1/Events"
+                "/v1/Events",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -50,7 +51,8 @@ namespace Twilio.Rest.Monitor.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
-                "/v1/Events"
+                "/v1/Events",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -71,7 +73,8 @@ namespace Twilio.Rest.Monitor.V1
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.Monitor
+                    Rest.Domain.Monitor,
+                    client.Region
                 )
             );
             

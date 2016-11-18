@@ -32,7 +32,8 @@ namespace Twilio.Rest.Chat.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Chat,
-                "/v1/Credentials/" + Sid + ""
+                "/v1/Credentials/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -72,7 +73,8 @@ namespace Twilio.Rest.Chat.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Chat,
-                "/v1/Credentials/" + Sid + ""
+                "/v1/Credentials/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

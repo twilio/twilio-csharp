@@ -42,7 +42,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + ServiceSid + "/Roles"
+                "/v1/Services/" + ServiceSid + "/Roles",
+                client.Region
             );
             
             AddPostParams(request);
@@ -83,7 +84,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + ServiceSid + "/Roles"
+                "/v1/Services/" + ServiceSid + "/Roles",
+                client.Region
             );
             
             AddPostParams(request);

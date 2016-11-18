@@ -38,7 +38,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Invites/" + Sid + ""
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Invites/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -78,7 +79,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Invites/" + Sid + ""
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Invites/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

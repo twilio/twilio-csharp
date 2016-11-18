@@ -32,7 +32,8 @@ namespace Twilio.Rest.Trunking.V1
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + Sid + ""
+                "/v1/Trunks/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -71,7 +72,8 @@ namespace Twilio.Rest.Trunking.V1
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + Sid + ""
+                "/v1/Trunks/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

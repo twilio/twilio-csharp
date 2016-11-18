@@ -44,7 +44,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Usage/Triggers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Usage/Triggers.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -85,7 +86,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Usage/Triggers.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Usage/Triggers.json",
+                client.Region
             );
             
             AddPostParams(request);

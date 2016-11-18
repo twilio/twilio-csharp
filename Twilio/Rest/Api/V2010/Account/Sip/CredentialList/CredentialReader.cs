@@ -33,7 +33,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -54,7 +55,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -75,7 +77,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.Api
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             

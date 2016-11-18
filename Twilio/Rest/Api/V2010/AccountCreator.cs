@@ -22,7 +22,8 @@ namespace Twilio.Rest.Api.V2010
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts.json"
+                "/2010-04-01/Accounts.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -63,7 +64,8 @@ namespace Twilio.Rest.Api.V2010
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts.json"
+                "/2010-04-01/Accounts.json",
+                client.Region
             );
             
             AddPostParams(request);

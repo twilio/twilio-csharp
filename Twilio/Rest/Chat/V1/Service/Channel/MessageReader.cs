@@ -35,7 +35,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Chat,
-                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages"
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -56,7 +57,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Chat,
-                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages"
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -77,7 +79,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.Chat
+                    Rest.Domain.Chat,
+                    client.Region
                 )
             );
             

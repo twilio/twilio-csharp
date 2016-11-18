@@ -32,7 +32,8 @@ namespace Twilio.Rest.Monitor.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
-                "/v1/Alerts/" + Sid + ""
+                "/v1/Alerts/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -72,7 +73,8 @@ namespace Twilio.Rest.Monitor.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
-                "/v1/Alerts/" + Sid + ""
+                "/v1/Alerts/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

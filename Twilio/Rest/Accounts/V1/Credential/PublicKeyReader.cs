@@ -20,7 +20,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Accounts,
-                "/v1/Credentials/PublicKeys"
+                "/v1/Credentials/PublicKeys",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -41,7 +42,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Accounts,
-                "/v1/Credentials/PublicKeys"
+                "/v1/Credentials/PublicKeys",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -62,7 +64,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.Accounts
+                    Rest.Domain.Accounts,
+                    client.Region
                 )
             );
             

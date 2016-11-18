@@ -35,7 +35,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + ServiceSid + "/Channels/" + Sid + ""
+                "/v1/Services/" + ServiceSid + "/Channels/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -74,7 +75,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + ServiceSid + "/Channels/" + Sid + ""
+                "/v1/Services/" + ServiceSid + "/Channels/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

@@ -35,7 +35,8 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
-                "/Sync/Services/" + ServiceSid + "/Maps/" + Sid + ""
+                "/Sync/Services/" + ServiceSid + "/Maps/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -74,7 +75,8 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
-                "/Sync/Services/" + ServiceSid + "/Maps/" + Sid + ""
+                "/Sync/Services/" + ServiceSid + "/Maps/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

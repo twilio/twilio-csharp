@@ -37,7 +37,8 @@ namespace Twilio.Rest.Notify.V1
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Notify,
-                "/v1/Credentials"
+                "/v1/Credentials",
+                client.Region
             );
             
             AddPostParams(request);
@@ -78,7 +79,8 @@ namespace Twilio.Rest.Notify.V1
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Notify,
-                "/v1/Credentials"
+                "/v1/Credentials",
+                client.Region
             );
             
             AddPostParams(request);

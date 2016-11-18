@@ -13,6 +13,11 @@ namespace Twilio.Clients
 	    string AccountSid { get; }
 
 	    /// <summary>
+	    /// Get the region requests are made against
+	    /// </summary>
+	    string Region { get; }
+
+	    /// <summary>
 	    /// Get the http client that makes requests
 	    /// </summary>
 	    HttpClient HttpClient { get; }

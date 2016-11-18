@@ -34,7 +34,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Accounts,
-                "/v1/Credentials/PublicKeys"
+                "/v1/Credentials/PublicKeys",
+                client.Region
             );
             
             AddPostParams(request);
@@ -75,7 +76,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Accounts,
-                "/v1/Credentials/PublicKeys"
+                "/v1/Credentials/PublicKeys",
+                client.Region
             );
             
             AddPostParams(request);

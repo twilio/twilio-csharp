@@ -32,7 +32,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Accounts,
-                "/v1/Credentials/PublicKeys/" + Sid + ""
+                "/v1/Credentials/PublicKeys/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -72,7 +73,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Accounts,
-                "/v1/Credentials/PublicKeys/" + Sid + ""
+                "/v1/Credentials/PublicKeys/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

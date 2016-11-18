@@ -20,7 +20,8 @@ namespace Twilio.Rest.Notify.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Notify,
-                "/v1/Credentials"
+                "/v1/Credentials",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -41,7 +42,8 @@ namespace Twilio.Rest.Notify.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Notify,
-                "/v1/Credentials"
+                "/v1/Credentials",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -62,7 +64,8 @@ namespace Twilio.Rest.Notify.V1
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.Notify
+                    Rest.Domain.Notify,
+                    client.Region
                 )
             );
             

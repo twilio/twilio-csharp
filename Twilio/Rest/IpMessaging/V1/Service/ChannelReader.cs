@@ -32,7 +32,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + ServiceSid + "/Channels"
+                "/v1/Services/" + ServiceSid + "/Channels",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -53,7 +54,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + ServiceSid + "/Channels"
+                "/v1/Services/" + ServiceSid + "/Channels",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -74,7 +76,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.IpMessaging
+                    Rest.Domain.IpMessaging,
+                    client.Region
                 )
             );
             

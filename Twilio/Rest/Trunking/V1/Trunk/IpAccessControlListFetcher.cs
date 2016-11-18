@@ -35,7 +35,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + TrunkSid + "/IpAccessControlLists/" + Sid + ""
+                "/v1/Trunks/" + TrunkSid + "/IpAccessControlLists/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -75,7 +76,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + TrunkSid + "/IpAccessControlLists/" + Sid + ""
+                "/v1/Trunks/" + TrunkSid + "/IpAccessControlLists/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

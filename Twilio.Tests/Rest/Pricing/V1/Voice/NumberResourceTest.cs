@@ -27,7 +27,8 @@ namespace Twilio.Tests.Rest.Pricing.V1.Voice
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(HttpMethod.Get,
                                       Twilio.Rest.Domain.Pricing,
-                                      "/v1/Voice/Numbers/+987654321");
+                                      "/v1/Voice/Numbers/+987654321",
+                                      null);
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request)
                             .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,

@@ -22,7 +22,8 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -43,7 +44,8 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -64,7 +66,8 @@ namespace Twilio.Rest.Api.V2010.Account
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.Api
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             

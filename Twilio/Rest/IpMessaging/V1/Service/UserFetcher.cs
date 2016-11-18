@@ -35,7 +35,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + ServiceSid + "/Users/" + Sid + ""
+                "/v1/Services/" + ServiceSid + "/Users/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -75,7 +76,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + ServiceSid + "/Users/" + Sid + ""
+                "/v1/Services/" + ServiceSid + "/Users/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

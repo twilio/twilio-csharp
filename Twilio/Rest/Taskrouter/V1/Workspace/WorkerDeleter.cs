@@ -35,7 +35,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + Sid + ""
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -74,7 +75,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var request = new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + Sid + ""
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

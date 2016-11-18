@@ -33,7 +33,8 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/Sync/Services/" + ServiceSid + "/Lists"
+                "/Sync/Services/" + ServiceSid + "/Lists",
+                client.Region
             );
             
             AddPostParams(request);
@@ -74,7 +75,8 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/Sync/Services/" + ServiceSid + "/Lists"
+                "/Sync/Services/" + ServiceSid + "/Lists",
+                client.Region
             );
             
             AddPostParams(request);

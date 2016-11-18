@@ -36,7 +36,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/CredentialListMappings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/CredentialListMappings.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -77,7 +78,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/CredentialListMappings.json"
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/CredentialListMappings.json",
+                client.Region
             );
             
             AddPostParams(request);

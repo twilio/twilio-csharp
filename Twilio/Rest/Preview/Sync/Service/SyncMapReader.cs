@@ -32,7 +32,8 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/Sync/Services/" + ServiceSid + "/Maps"
+                "/Sync/Services/" + ServiceSid + "/Maps",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -53,7 +54,8 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/Sync/Services/" + ServiceSid + "/Maps"
+                "/Sync/Services/" + ServiceSid + "/Maps",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -74,7 +76,8 @@ namespace Twilio.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.Preview
+                    Rest.Domain.Preview,
+                    client.Region
                 )
             );
             

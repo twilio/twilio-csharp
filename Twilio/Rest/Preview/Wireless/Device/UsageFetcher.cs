@@ -34,7 +34,8 @@ namespace Twilio.Rest.Preview.Wireless.Device
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/wireless/Devices/" + DeviceSid + "/Usage"
+                "/wireless/Devices/" + DeviceSid + "/Usage",
+                client.Region
             );
             
                 AddQueryParams(request);
@@ -77,7 +78,8 @@ namespace Twilio.Rest.Preview.Wireless.Device
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/wireless/Devices/" + DeviceSid + "/Usage"
+                "/wireless/Devices/" + DeviceSid + "/Usage",
+                client.Region
             );
             
                 AddQueryParams(request);

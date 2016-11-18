@@ -40,7 +40,8 @@ namespace Twilio.Rest.Preview.Wireless
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/wireless/Commands"
+                "/wireless/Commands",
+                client.Region
             );
             
             AddPostParams(request);
@@ -81,7 +82,8 @@ namespace Twilio.Rest.Preview.Wireless
             var request = new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/wireless/Commands"
+                "/wireless/Commands",
+                client.Region
             );
             
             AddPostParams(request);

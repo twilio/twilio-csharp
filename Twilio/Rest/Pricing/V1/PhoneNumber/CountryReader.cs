@@ -20,7 +20,8 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
-                "/v1/PhoneNumbers/Countries"
+                "/v1/PhoneNumbers/Countries",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -41,7 +42,8 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
-                "/v1/PhoneNumbers/Countries"
+                "/v1/PhoneNumbers/Countries",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -62,7 +64,8 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.Pricing
+                    Rest.Domain.Pricing,
+                    client.Region
                 )
             );
             

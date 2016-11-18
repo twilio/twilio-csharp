@@ -38,7 +38,8 @@ namespace Twilio.Rest.Lookups.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Lookups,
-                "/v1/PhoneNumbers/" + PhoneNumber + ""
+                "/v1/PhoneNumbers/" + PhoneNumber + "",
+                client.Region
             );
             
                 AddQueryParams(request);
@@ -81,7 +82,8 @@ namespace Twilio.Rest.Lookups.V1
             var request = new Request(
                 HttpMethod.Get,
                 Rest.Domain.Lookups,
-                "/v1/PhoneNumbers/" + PhoneNumber + ""
+                "/v1/PhoneNumbers/" + PhoneNumber + "",
+                client.Region
             );
             
                 AddQueryParams(request);
