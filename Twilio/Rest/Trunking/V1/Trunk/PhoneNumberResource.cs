@@ -2,51 +2,24 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
     public class PhoneNumberResource : Resource 
     {
-        public sealed class AddressRequirement : IStringEnum 
+        public sealed class AddressRequirementEnum : StringEnum 
         {
-            public const string None = "none";
-            public const string Any = "any";
-            public const string Local = "local";
-            public const string Foreign = "foreign";
+            private AddressRequirementEnum(string value) : base(value) {}
+            public AddressRequirementEnum() {}
         
-            private string _value;
-            
-            public AddressRequirement() {}
-            
-            public AddressRequirement(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator AddressRequirement(string value)
-            {
-                return new AddressRequirement(value);
-            }
-            
-            public static implicit operator string(AddressRequirement value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly AddressRequirementEnum None = new AddressRequirementEnum("none");
+            public static readonly AddressRequirementEnum Any = new AddressRequirementEnum("any");
+            public static readonly AddressRequirementEnum Local = new AddressRequirementEnum("local");
+            public static readonly AddressRequirementEnum Foreign = new AddressRequirementEnum("foreign");
         }
     
         /// <summary>
@@ -116,64 +89,64 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("address_requirements")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public PhoneNumberResource.AddressRequirement addressRequirements { get; set; }
+        public PhoneNumberResource.AddressRequirementEnum AddressRequirements { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("beta")]
-        public bool? beta { get; set; }
+        public bool? Beta { get; set; }
         [JsonProperty("capabilities")]
-        public Dictionary<string, string> capabilities { get; set; }
+        public Dictionary<string, string> Capabilities { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("sms_application_sid")]
-        public string smsApplicationSid { get; set; }
+        public string SmsApplicationSid { get; set; }
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsFallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
         [JsonProperty("sms_fallback_url")]
-        public Uri smsFallbackUrl { get; set; }
+        public Uri SmsFallbackUrl { get; set; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsMethod { get; set; }
+        public Twilio.Http.HttpMethod SmsMethod { get; set; }
         [JsonProperty("sms_url")]
-        public Uri smsUrl { get; set; }
+        public Uri SmsUrl { get; set; }
         [JsonProperty("status_callback")]
-        public Uri statusCallback { get; set; }
+        public Uri StatusCallback { get; set; }
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         [JsonProperty("trunk_sid")]
-        public string trunkSid { get; set; }
+        public string TrunkSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("voice_application_sid")]
-        public string voiceApplicationSid { get; set; }
+        public string VoiceApplicationSid { get; set; }
         [JsonProperty("voice_caller_id_lookup")]
-        public bool? voiceCallerIdLookup { get; set; }
+        public bool? VoiceCallerIdLookup { get; set; }
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceFallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
         [JsonProperty("voice_fallback_url")]
-        public Uri voiceFallbackUrl { get; set; }
+        public Uri VoiceFallbackUrl { get; set; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceMethod { get; set; }
+        public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         [JsonProperty("voice_url")]
-        public Uri voiceUrl { get; set; }
+        public Uri VoiceUrl { get; set; }
     
         public PhoneNumberResource()
         {
@@ -183,7 +156,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         private PhoneNumberResource([JsonProperty("account_sid")]
                                     string accountSid, 
                                     [JsonProperty("address_requirements")]
-                                    PhoneNumberResource.AddressRequirement addressRequirements, 
+                                    PhoneNumberResource.AddressRequirementEnum addressRequirements, 
                                     [JsonProperty("api_version")]
                                     string apiVersion, 
                                     [JsonProperty("beta")]
@@ -199,7 +172,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                                     [JsonProperty("links")]
                                     Dictionary<string, string> links, 
                                     [JsonProperty("phone_number")]
-                                    Twilio.Types.PhoneNumber phoneNumber, 
+                                    Types.PhoneNumber phoneNumber, 
                                     [JsonProperty("sid")]
                                     string sid, 
                                     [JsonProperty("sms_application_sid")]
@@ -233,32 +206,32 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                                     [JsonProperty("voice_url")]
                                     Uri voiceUrl)
                                     {
-            this.accountSid = accountSid;
-            this.addressRequirements = addressRequirements;
-            this.apiVersion = apiVersion;
-            this.beta = beta;
-            this.capabilities = capabilities;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.links = links;
-            this.phoneNumber = phoneNumber;
-            this.sid = sid;
-            this.smsApplicationSid = smsApplicationSid;
-            this.smsFallbackMethod = smsFallbackMethod;
-            this.smsFallbackUrl = smsFallbackUrl;
-            this.smsMethod = smsMethod;
-            this.smsUrl = smsUrl;
-            this.statusCallback = statusCallback;
-            this.statusCallbackMethod = statusCallbackMethod;
-            this.trunkSid = trunkSid;
-            this.url = url;
-            this.voiceApplicationSid = voiceApplicationSid;
-            this.voiceCallerIdLookup = voiceCallerIdLookup;
-            this.voiceFallbackMethod = voiceFallbackMethod;
-            this.voiceFallbackUrl = voiceFallbackUrl;
-            this.voiceMethod = voiceMethod;
-            this.voiceUrl = voiceUrl;
+            AccountSid = accountSid;
+            AddressRequirements = addressRequirements;
+            ApiVersion = apiVersion;
+            Beta = beta;
+            Capabilities = capabilities;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            Links = links;
+            PhoneNumber = phoneNumber;
+            Sid = sid;
+            SmsApplicationSid = smsApplicationSid;
+            SmsFallbackMethod = smsFallbackMethod;
+            SmsFallbackUrl = smsFallbackUrl;
+            SmsMethod = smsMethod;
+            SmsUrl = smsUrl;
+            StatusCallback = statusCallback;
+            StatusCallbackMethod = statusCallbackMethod;
+            TrunkSid = trunkSid;
+            Url = url;
+            VoiceApplicationSid = voiceApplicationSid;
+            VoiceCallerIdLookup = voiceCallerIdLookup;
+            VoiceFallbackMethod = voiceFallbackMethod;
+            VoiceFallbackUrl = voiceFallbackUrl;
+            VoiceMethod = voiceMethod;
+            VoiceUrl = voiceUrl;
         }
     }
 }

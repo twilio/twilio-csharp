@@ -3,18 +3,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
     public class WorkerChannelFetcher : Fetcher<WorkerChannelResource> 
     {
-        public string workspaceSid { get; }
-        public string workerSid { get; }
-        public string sid { get; }
+        public string WorkspaceSid { get; }
+        public string WorkerSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new WorkerChannelFetcher
@@ -25,9 +21,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="sid"> The sid </param>
         public WorkerChannelFetcher(string workspaceSid, string workerSid, string sid)
         {
-            this.workspaceSid = workspaceSid;
-            this.workerSid = workerSid;
-            this.sid = sid;
+            WorkspaceSid = workspaceSid;
+            WorkerSid = workerSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -37,12 +33,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched WorkerChannelResource </returns> 
-        public override async Task<WorkerChannelResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<WorkerChannelResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Channels/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Channels/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -80,9 +77,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public override WorkerChannelResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Channels/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Channels/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

@@ -2,85 +2,32 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010 
 {
 
     public class AccountResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Active = "active";
-            public const string Suspended = "suspended";
-            public const string Closed = "closed";
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
         
-            private string _value;
-            
-            public Status() {}
-            
-            public Status(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Status(string value)
-            {
-                return new Status(value);
-            }
-            
-            public static implicit operator string(Status value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly StatusEnum Active = new StatusEnum("active");
+            public static readonly StatusEnum Suspended = new StatusEnum("suspended");
+            public static readonly StatusEnum Closed = new StatusEnum("closed");
         }
     
-        public sealed class Type : IStringEnum 
+        public sealed class TypeEnum : StringEnum 
         {
-            public const string Trial = "Trial";
-            public const string Full = "Full";
+            private TypeEnum(string value) : base(value) {}
+            public TypeEnum() {}
         
-            private string _value;
-            
-            public Type() {}
-            
-            public Type(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Type(string value)
-            {
-                return new Type(value);
-            }
-            
-            public static implicit operator string(Type value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly TypeEnum Trial = new TypeEnum("Trial");
+            public static readonly TypeEnum Full = new TypeEnum("Full");
         }
     
         /// <summary>
@@ -143,27 +90,27 @@ namespace Twilio.Rest.Api.V2010
         }
     
         [JsonProperty("auth_token")]
-        public string authToken { get; set; }
+        public string AuthToken { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("owner_account_sid")]
-        public string ownerAccountSid { get; set; }
+        public string OwnerAccountSid { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public AccountResource.Status status { get; set; }
+        public AccountResource.StatusEnum Status { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public AccountResource.Type type { get; set; }
+        public AccountResource.TypeEnum Type { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public AccountResource()
         {
@@ -183,24 +130,24 @@ namespace Twilio.Rest.Api.V2010
                                 [JsonProperty("sid")]
                                 string sid, 
                                 [JsonProperty("status")]
-                                AccountResource.Status status, 
+                                AccountResource.StatusEnum status, 
                                 [JsonProperty("subresource_uris")]
                                 Dictionary<string, string> subresourceUris, 
                                 [JsonProperty("type")]
-                                AccountResource.Type type, 
+                                AccountResource.TypeEnum type, 
                                 [JsonProperty("uri")]
                                 string uri)
                                 {
-            this.authToken = authToken;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.ownerAccountSid = ownerAccountSid;
-            this.sid = sid;
-            this.status = status;
-            this.subresourceUris = subresourceUris;
-            this.type = type;
-            this.uri = uri;
+            AuthToken = authToken;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            OwnerAccountSid = ownerAccountSid;
+            Sid = sid;
+            Status = status;
+            SubresourceUris = subresourceUris;
+            Type = type;
+            Uri = uri;
         }
     }
 }

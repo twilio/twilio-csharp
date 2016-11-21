@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class ApplicationReader : Reader<ApplicationResource> 
     {
-        public string accountSid { get; set; }
-        public string friendlyName { get; set; }
+        public string AccountSid { get; set; }
+        public string FriendlyName { get; set; }
     
         #if NET40
         /// <summary>
@@ -22,12 +18,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ApplicationResource ResourceSet </returns> 
-        public override Task<ResourceSet<ApplicationResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<ApplicationResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Applications.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Applications.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -46,9 +43,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override ResourceSet<ApplicationResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Applications.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Applications.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -67,9 +65,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override Page<ApplicationResource> NextPage(Page<ApplicationResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             
@@ -117,9 +116,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
             if (PageSize != null)

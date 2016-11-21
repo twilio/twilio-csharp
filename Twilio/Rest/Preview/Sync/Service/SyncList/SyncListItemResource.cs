@@ -1,84 +1,31 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Preview.Sync.Service.SyncList 
 {
 
     public class SyncListItemResource : Resource 
     {
-        public sealed class QueryResultOrder : IStringEnum 
+        public sealed class QueryResultOrderEnum : StringEnum 
         {
-            public const string Asc = "asc";
-            public const string Desc = "desc";
+            private QueryResultOrderEnum(string value) : base(value) {}
+            public QueryResultOrderEnum() {}
         
-            private string _value;
-            
-            public QueryResultOrder() {}
-            
-            public QueryResultOrder(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator QueryResultOrder(string value)
-            {
-                return new QueryResultOrder(value);
-            }
-            
-            public static implicit operator string(QueryResultOrder value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly QueryResultOrderEnum Asc = new QueryResultOrderEnum("asc");
+            public static readonly QueryResultOrderEnum Desc = new QueryResultOrderEnum("desc");
         }
     
-        public sealed class QueryFromBoundType : IStringEnum 
+        public sealed class QueryFromBoundTypeEnum : StringEnum 
         {
-            public const string Inclusive = "inclusive";
-            public const string Exclusive = "exclusive";
+            private QueryFromBoundTypeEnum(string value) : base(value) {}
+            public QueryFromBoundTypeEnum() {}
         
-            private string _value;
-            
-            public QueryFromBoundType() {}
-            
-            public QueryFromBoundType(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator QueryFromBoundType(string value)
-            {
-                return new QueryFromBoundType(value);
-            }
-            
-            public static implicit operator string(QueryFromBoundType value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly QueryFromBoundTypeEnum Inclusive = new QueryFromBoundTypeEnum("inclusive");
+            public static readonly QueryFromBoundTypeEnum Exclusive = new QueryFromBoundTypeEnum("exclusive");
         }
     
         /// <summary>
@@ -166,25 +113,25 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         [JsonProperty("index")]
-        public int? index { get; set; }
+        public int? Index { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; set; }
+        public string ServiceSid { get; set; }
         [JsonProperty("list_sid")]
-        public string listSid { get; set; }
+        public string ListSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("revision")]
-        public string revision { get; set; }
+        public string Revision { get; set; }
         [JsonProperty("data")]
-        public Object data { get; set; }
+        public Object Data { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("created_by")]
-        public string createdBy { get; set; }
+        public string CreatedBy { get; set; }
     
         public SyncListItemResource()
         {
@@ -212,16 +159,16 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                                      [JsonProperty("created_by")]
                                      string createdBy)
                                      {
-            this.index = index;
-            this.accountSid = accountSid;
-            this.serviceSid = serviceSid;
-            this.listSid = listSid;
-            this.url = url;
-            this.revision = revision;
-            this.data = data;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.createdBy = createdBy;
+            Index = index;
+            AccountSid = accountSid;
+            ServiceSid = serviceSid;
+            ListSid = listSid;
+            Url = url;
+            Revision = revision;
+            Data = data;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            CreatedBy = createdBy;
         }
     }
 }

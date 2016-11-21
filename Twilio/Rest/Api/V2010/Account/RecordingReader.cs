@@ -4,20 +4,16 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class RecordingReader : Reader<RecordingResource> 
     {
-        public string accountSid { get; set; }
-        public DateTime? dateCreated { get; set; }
-        public DateTime? dateCreatedAfter { get; set; }
-        public DateTime? dateCreatedBefore { get; set; }
-        public string callSid { get; set; }
+        public string AccountSid { get; set; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreatedAfter { get; set; }
+        public DateTime? DateCreatedBefore { get; set; }
+        public string CallSid { get; set; }
     
         #if NET40
         /// <summary>
@@ -26,12 +22,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> RecordingResource ResourceSet </returns> 
-        public override Task<ResourceSet<RecordingResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Recordings.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Recordings.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -50,9 +47,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override ResourceSet<RecordingResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Recordings.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Recordings.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -71,9 +69,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override Page<RecordingResource> NextPage(Page<RecordingResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             
@@ -121,25 +120,25 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (dateCreated != null)
+            if (DateCreated != null)
             {
-                request.AddQueryParam("DateCreated", dateCreated.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                request.AddQueryParam("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
             }
             else
             {
-                if (dateCreatedBefore != null)
+                if (DateCreatedBefore != null)
                 {
-                    request.AddQueryParam("DateCreated<", dateCreatedBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                    request.AddQueryParam("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
                 }
-                if (dateCreatedAfter != null)
+                if (DateCreatedAfter != null)
                 {
-                    request.AddQueryParam("DateCreated>", dateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
+                    request.AddQueryParam("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ssZ"));
                 }
             }
             
-            if (callSid != null)
+            if (CallSid != null)
             {
-                request.AddQueryParam("CallSid", callSid);
+                request.AddQueryParam("CallSid", CallSid);
             }
             
             if (PageSize != null)

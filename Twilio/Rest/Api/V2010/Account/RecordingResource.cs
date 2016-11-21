@@ -1,87 +1,34 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class RecordingResource : Resource 
     {
-        public sealed class Source : IStringEnum 
+        public sealed class SourceEnum : StringEnum 
         {
-            public const string Dialverb = "DialVerb";
-            public const string Conference = "Conference";
-            public const string Outboundapi = "OutboundAPI";
-            public const string Trunking = "Trunking";
-            public const string Recordverb = "RecordVerb";
+            private SourceEnum(string value) : base(value) {}
+            public SourceEnum() {}
         
-            private string _value;
-            
-            public Source() {}
-            
-            public Source(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Source(string value)
-            {
-                return new Source(value);
-            }
-            
-            public static implicit operator string(Source value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly SourceEnum Dialverb = new SourceEnum("DialVerb");
+            public static readonly SourceEnum Conference = new SourceEnum("Conference");
+            public static readonly SourceEnum Outboundapi = new SourceEnum("OutboundAPI");
+            public static readonly SourceEnum Trunking = new SourceEnum("Trunking");
+            public static readonly SourceEnum Recordverb = new SourceEnum("RecordVerb");
         }
     
-        public sealed class Status : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Processing = "processing";
-            public const string Completed = "completed";
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
         
-            private string _value;
-            
-            public Status() {}
-            
-            public Status(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Status(string value)
-            {
-                return new Status(value);
-            }
-            
-            public static implicit operator string(Status value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly StatusEnum Processing = new StatusEnum("processing");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
         }
     
         /// <summary>
@@ -136,33 +83,33 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("call_sid")]
-        public string callSid { get; set; }
+        public string CallSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("duration")]
-        public string duration { get; set; }
+        public string Duration { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("price")]
-        public string price { get; set; }
+        public string Price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; set; }
+        public string PriceUnit { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public RecordingResource.Status status { get; set; }
+        public RecordingResource.StatusEnum Status { get; set; }
         [JsonProperty("channels")]
-        public int? channels { get; set; }
+        public int? Channels { get; set; }
         [JsonProperty("source")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public RecordingResource.Source source { get; set; }
+        public RecordingResource.SourceEnum Source { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public RecordingResource()
         {
@@ -188,27 +135,27 @@ namespace Twilio.Rest.Api.V2010.Account
                                   [JsonProperty("price_unit")]
                                   string priceUnit, 
                                   [JsonProperty("status")]
-                                  RecordingResource.Status status, 
+                                  RecordingResource.StatusEnum status, 
                                   [JsonProperty("channels")]
                                   int? channels, 
                                   [JsonProperty("source")]
-                                  RecordingResource.Source source, 
+                                  RecordingResource.SourceEnum source, 
                                   [JsonProperty("uri")]
                                   string uri)
                                   {
-            this.accountSid = accountSid;
-            this.apiVersion = apiVersion;
-            this.callSid = callSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.duration = duration;
-            this.sid = sid;
-            this.price = price;
-            this.priceUnit = priceUnit;
-            this.status = status;
-            this.channels = channels;
-            this.source = source;
-            this.uri = uri;
+            AccountSid = accountSid;
+            ApiVersion = apiVersion;
+            CallSid = callSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Duration = duration;
+            Sid = sid;
+            Price = price;
+            PriceUnit = priceUnit;
+            Status = status;
+            Channels = channels;
+            Source = source;
+            Uri = uri;
         }
     }
 }

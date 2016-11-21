@@ -4,18 +4,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service.SyncList 
 {
 
     public class SyncListItemCreator : Creator<SyncListItemResource> 
     {
-        public string serviceSid { get; }
-        public string listSid { get; }
-        public Object data { get; }
+        public string ServiceSid { get; }
+        public string ListSid { get; }
+        public Object Data { get; }
     
         /// <summary>
         /// Construct a new SyncListItemCreator
@@ -26,9 +22,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="data"> The data </param>
         public SyncListItemCreator(string serviceSid, string listSid, Object data)
         {
-            this.serviceSid = serviceSid;
-            this.listSid = listSid;
-            this.data = data;
+            ServiceSid = serviceSid;
+            ListSid = listSid;
+            Data = data;
         }
     
         #if NET40
@@ -38,12 +34,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created SyncListItemResource </returns> 
-        public override async Task<SyncListItemResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Lists/" + this.listSid + "/Items"
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items",
+                client.Region
             );
             
             AddPostParams(request);
@@ -82,9 +79,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override SyncListItemResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Lists/" + this.listSid + "/Items"
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items",
+                client.Region
             );
             
             AddPostParams(request);
@@ -120,9 +118,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (data != null)
+            if (Data != null)
             {
-                request.AddPostParam("Data", data.ToString());
+                request.AddPostParam("Data", Data.ToString());
             }
         }
     }

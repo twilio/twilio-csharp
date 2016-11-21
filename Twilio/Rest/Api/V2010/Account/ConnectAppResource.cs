@@ -2,49 +2,22 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class ConnectAppResource : Resource 
     {
-        public sealed class Permission : IStringEnum 
+        public sealed class PermissionEnum : StringEnum 
         {
-            public const string GetAll = "get-all";
-            public const string PostAll = "post-all";
+            private PermissionEnum(string value) : base(value) {}
+            public PermissionEnum() {}
         
-            private string _value;
-            
-            public Permission() {}
-            
-            public Permission(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Permission(string value)
-            {
-                return new Permission(value);
-            }
-            
-            public static implicit operator string(Permission value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly PermissionEnum GetAll = new PermissionEnum("get-all");
+            public static readonly PermissionEnum PostAll = new PermissionEnum("post-all");
         }
     
         /// <summary>
@@ -99,29 +72,29 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("authorize_redirect_url")]
-        public Uri authorizeRedirectUrl { get; set; }
+        public Uri AuthorizeRedirectUrl { get; set; }
         [JsonProperty("company_name")]
-        public string companyName { get; set; }
+        public string CompanyName { get; set; }
         [JsonProperty("deauthorize_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod deauthorizeCallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod DeauthorizeCallbackMethod { get; set; }
         [JsonProperty("deauthorize_callback_url")]
-        public Uri deauthorizeCallbackUrl { get; set; }
+        public Uri DeauthorizeCallbackUrl { get; set; }
         [JsonProperty("description")]
-        public string description { get; set; }
+        public string Description { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("homepage_url")]
-        public Uri homepageUrl { get; set; }
+        public Uri HomepageUrl { get; set; }
         [JsonProperty("permissions")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public List<ConnectAppResource.Permission> permissions { get; set; }
+        public List<ConnectAppResource.PermissionEnum> Permissions { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public ConnectAppResource()
         {
@@ -145,23 +118,23 @@ namespace Twilio.Rest.Api.V2010.Account
                                    [JsonProperty("homepage_url")]
                                    Uri homepageUrl, 
                                    [JsonProperty("permissions")]
-                                   List<ConnectAppResource.Permission> permissions, 
+                                   List<ConnectAppResource.PermissionEnum> permissions, 
                                    [JsonProperty("sid")]
                                    string sid, 
                                    [JsonProperty("uri")]
                                    string uri)
                                    {
-            this.accountSid = accountSid;
-            this.authorizeRedirectUrl = authorizeRedirectUrl;
-            this.companyName = companyName;
-            this.deauthorizeCallbackMethod = deauthorizeCallbackMethod;
-            this.deauthorizeCallbackUrl = deauthorizeCallbackUrl;
-            this.description = description;
-            this.friendlyName = friendlyName;
-            this.homepageUrl = homepageUrl;
-            this.permissions = permissions;
-            this.sid = sid;
-            this.uri = uri;
+            AccountSid = accountSid;
+            AuthorizeRedirectUrl = authorizeRedirectUrl;
+            CompanyName = companyName;
+            DeauthorizeCallbackMethod = deauthorizeCallbackMethod;
+            DeauthorizeCallbackUrl = deauthorizeCallbackUrl;
+            Description = description;
+            FriendlyName = friendlyName;
+            HomepageUrl = homepageUrl;
+            Permissions = permissions;
+            Sid = sid;
+            Uri = uri;
         }
     }
 }

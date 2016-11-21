@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1 
 {
 
@@ -19,12 +15,13 @@ namespace Twilio.Rest.Trunking.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TrunkResource ResourceSet </returns> 
-        public override Task<ResourceSet<TrunkResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<TrunkResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TRUNKING,
-                "/v1/Trunks"
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -43,9 +40,10 @@ namespace Twilio.Rest.Trunking.V1
         public override ResourceSet<TrunkResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TRUNKING,
-                "/v1/Trunks"
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -64,9 +62,10 @@ namespace Twilio.Rest.Trunking.V1
         public override Page<TrunkResource> NextPage(Page<TrunkResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.TRUNKING
+                    Rest.Domain.Trunking,
+                    client.Region
                 )
             );
             

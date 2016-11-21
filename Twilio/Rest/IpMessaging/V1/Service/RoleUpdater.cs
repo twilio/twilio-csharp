@@ -4,18 +4,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.IpMessaging.V1.Service 
 {
 
     public class RoleUpdater : Updater<RoleResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
-        public List<string> permission { get; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
+        public List<string> Permission { get; }
     
         /// <summary>
         /// Construct a new RoleUpdater
@@ -26,9 +22,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="permission"> The permission </param>
         public RoleUpdater(string serviceSid, string sid, List<string> permission)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
-            this.permission = permission;
+            ServiceSid = serviceSid;
+            Sid = sid;
+            Permission = permission;
         }
     
         #if NET40
@@ -38,12 +34,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated RoleResource </returns> 
-        public override async Task<RoleResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<RoleResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Roles/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Roles/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -82,9 +79,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override RoleResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Roles/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Roles/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -120,9 +118,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (permission != null)
+            if (Permission != null)
             {
-                request.AddPostParam("Permission", permission.ToString());
+                request.AddPostParam("Permission", Permission.ToString());
             }
         }
     }

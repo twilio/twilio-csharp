@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Call 
@@ -13,41 +11,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FeedbackSummaryResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Queued = "queued";
-            public const string InProgress = "in-progress";
-            public const string Completed = "completed";
-            public const string Failed = "failed";
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
         
-            private string _value;
-            
-            public Status() {}
-            
-            public Status(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Status(string value)
-            {
-                return new Status(value);
-            }
-            
-            public static implicit operator string(Status value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly StatusEnum Queued = new StatusEnum("queued");
+            public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
+            public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
     
         /// <summary>
@@ -104,34 +76,34 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("call_count")]
-        public int? callCount { get; set; }
+        public int? CallCount { get; set; }
         [JsonProperty("call_feedback_count")]
-        public int? callFeedbackCount { get; set; }
+        public int? CallFeedbackCount { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("end_date")]
-        public DateTime? endDate { get; set; }
+        public DateTime? EndDate { get; set; }
         [JsonProperty("include_subaccounts")]
-        public bool? includeSubaccounts { get; set; }
+        public bool? IncludeSubaccounts { get; set; }
         [JsonProperty("issues")]
-        public List<FeedbackIssue> issues { get; set; }
+        public List<FeedbackIssue> Issues { get; set; }
         [JsonProperty("quality_score_average")]
-        public decimal? qualityScoreAverage { get; set; }
+        public decimal? QualityScoreAverage { get; set; }
         [JsonProperty("quality_score_median")]
-        public decimal? qualityScoreMedian { get; set; }
+        public decimal? QualityScoreMedian { get; set; }
         [JsonProperty("quality_score_standard_deviation")]
-        public decimal? qualityScoreStandardDeviation { get; set; }
+        public decimal? QualityScoreStandardDeviation { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("start_date")]
-        public DateTime? startDate { get; set; }
+        public DateTime? StartDate { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public FeedbackSummaryResource.Status status { get; set; }
+        public FeedbackSummaryResource.StatusEnum Status { get; set; }
     
         public FeedbackSummaryResource()
         {
@@ -165,22 +137,22 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                         [JsonProperty("start_date")]
                                         string startDate, 
                                         [JsonProperty("status")]
-                                        FeedbackSummaryResource.Status status)
+                                        FeedbackSummaryResource.StatusEnum status)
                                         {
-            this.accountSid = accountSid;
-            this.callCount = callCount;
-            this.callFeedbackCount = callFeedbackCount;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.endDate = MarshalConverter.DateTimeFromString(endDate);
-            this.includeSubaccounts = includeSubaccounts;
-            this.issues = issues;
-            this.qualityScoreAverage = qualityScoreAverage;
-            this.qualityScoreMedian = qualityScoreMedian;
-            this.qualityScoreStandardDeviation = qualityScoreStandardDeviation;
-            this.sid = sid;
-            this.startDate = MarshalConverter.DateTimeFromString(startDate);
-            this.status = status;
+            AccountSid = accountSid;
+            CallCount = callCount;
+            CallFeedbackCount = callFeedbackCount;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            EndDate = MarshalConverter.DateTimeFromString(endDate);
+            IncludeSubaccounts = includeSubaccounts;
+            Issues = issues;
+            QualityScoreAverage = qualityScoreAverage;
+            QualityScoreMedian = qualityScoreMedian;
+            QualityScoreStandardDeviation = qualityScoreStandardDeviation;
+            Sid = sid;
+            StartDate = MarshalConverter.DateTimeFromString(startDate);
+            Status = status;
         }
     }
 }

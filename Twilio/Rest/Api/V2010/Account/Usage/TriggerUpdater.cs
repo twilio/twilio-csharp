@@ -4,20 +4,16 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Usage 
 {
 
     public class TriggerUpdater : Updater<TriggerResource> 
     {
-        public string accountSid { get; set; }
-        public string sid { get; }
-        public Twilio.Http.HttpMethod callbackMethod { get; set; }
-        public Uri callbackUrl { get; set; }
-        public string friendlyName { get; set; }
+        public string AccountSid { get; set; }
+        public string Sid { get; }
+        public Twilio.Http.HttpMethod CallbackMethod { get; set; }
+        public Uri CallbackUrl { get; set; }
+        public string FriendlyName { get; set; }
     
         /// <summary>
         /// Construct a new TriggerUpdater
@@ -26,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="sid"> The sid </param>
         public TriggerUpdater(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -36,12 +32,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated TriggerResource </returns> 
-        public override async Task<TriggerResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<TriggerResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Triggers/" + this.sid + ".json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Usage/Triggers/" + Sid + ".json",
+                client.Region
             );
             AddPostParams(request);
             
@@ -80,9 +77,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public override TriggerResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Triggers/" + this.sid + ".json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Usage/Triggers/" + Sid + ".json",
+                client.Region
             );
             AddPostParams(request);
             
@@ -118,19 +116,19 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (callbackMethod != null)
+            if (CallbackMethod != null)
             {
-                request.AddPostParam("CallbackMethod", callbackMethod.ToString());
+                request.AddPostParam("CallbackMethod", CallbackMethod.ToString());
             }
             
-            if (callbackUrl != null)
+            if (CallbackUrl != null)
             {
-                request.AddPostParam("CallbackUrl", callbackUrl.ToString());
+                request.AddPostParam("CallbackUrl", CallbackUrl.ToString());
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }

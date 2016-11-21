@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
     public class FeedbackFetcher : Fetcher<FeedbackResource> 
     {
-        public string accountSid { get; set; }
-        public string callSid { get; }
+        public string AccountSid { get; set; }
+        public string CallSid { get; }
     
         /// <summary>
         /// Construct a new FeedbackFetcher
@@ -22,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="callSid"> The call sid that uniquely identifies the call </param>
         public FeedbackFetcher(string callSid)
         {
-            this.callSid = callSid;
+            CallSid = callSid;
         }
     
         #if NET40
@@ -32,12 +28,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched FeedbackResource </returns> 
-        public override async Task<FeedbackResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<FeedbackResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Calls/" + CallSid + "/Feedback.json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -75,9 +72,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override FeedbackResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Calls/" + CallSid + "/Feedback.json",
+                client.Region
             );
             
             var response = client.Request(request);

@@ -1,52 +1,25 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class TaskResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Pending = "pending";
-            public const string Reserved = "reserved";
-            public const string Assigned = "assigned";
-            public const string Canceled = "canceled";
-            public const string Completed = "completed";
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
         
-            private string _value;
-            
-            public Status() {}
-            
-            public Status(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Status(string value)
-            {
-                return new Status(value);
-            }
-            
-            public static implicit operator string(Status value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly StatusEnum Pending = new StatusEnum("pending");
+            public static readonly StatusEnum Reserved = new StatusEnum("reserved");
+            public static readonly StatusEnum Assigned = new StatusEnum("assigned");
+            public static readonly StatusEnum Canceled = new StatusEnum("canceled");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
         }
     
         /// <summary>
@@ -129,38 +102,38 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("age")]
-        public int? age { get; set; }
+        public int? Age { get; set; }
         [JsonProperty("assignment_status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TaskResource.Status assignmentStatus { get; set; }
+        public TaskResource.StatusEnum AssignmentStatus { get; set; }
         [JsonProperty("attributes")]
-        public string attributes { get; set; }
+        public string Attributes { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("priority")]
-        public int? priority { get; set; }
+        public int? Priority { get; set; }
         [JsonProperty("reason")]
-        public string reason { get; set; }
+        public string Reason { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("task_queue_sid")]
-        public string taskQueueSid { get; set; }
+        public string TaskQueueSid { get; set; }
         [JsonProperty("task_channel_sid")]
-        public string taskChannelSid { get; set; }
+        public string TaskChannelSid { get; set; }
         [JsonProperty("task_channel_unique_name")]
-        public string taskChannelUniqueName { get; set; }
+        public string TaskChannelUniqueName { get; set; }
         [JsonProperty("timeout")]
-        public int? timeout { get; set; }
+        public int? Timeout { get; set; }
         [JsonProperty("workflow_sid")]
-        public string workflowSid { get; set; }
+        public string WorkflowSid { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; set; }
+        public string WorkspaceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public TaskResource()
         {
@@ -172,7 +145,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                              [JsonProperty("age")]
                              int? age, 
                              [JsonProperty("assignment_status")]
-                             TaskResource.Status assignmentStatus, 
+                             TaskResource.StatusEnum assignmentStatus, 
                              [JsonProperty("attributes")]
                              string attributes, 
                              [JsonProperty("date_created")]
@@ -200,22 +173,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                              [JsonProperty("url")]
                              Uri url)
                              {
-            this.accountSid = accountSid;
-            this.age = age;
-            this.assignmentStatus = assignmentStatus;
-            this.attributes = attributes;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.priority = priority;
-            this.reason = reason;
-            this.sid = sid;
-            this.taskQueueSid = taskQueueSid;
-            this.taskChannelSid = taskChannelSid;
-            this.taskChannelUniqueName = taskChannelUniqueName;
-            this.timeout = timeout;
-            this.workflowSid = workflowSid;
-            this.workspaceSid = workspaceSid;
-            this.url = url;
+            AccountSid = accountSid;
+            Age = age;
+            AssignmentStatus = assignmentStatus;
+            Attributes = attributes;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Priority = priority;
+            Reason = reason;
+            Sid = sid;
+            TaskQueueSid = taskQueueSid;
+            TaskChannelSid = taskChannelSid;
+            TaskChannelUniqueName = taskChannelUniqueName;
+            Timeout = timeout;
+            WorkflowSid = workflowSid;
+            WorkspaceSid = workspaceSid;
+            Url = url;
         }
     }
 }

@@ -4,18 +4,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service 
 {
 
     public class DocumentCreator : Creator<DocumentResource> 
     {
-        public string serviceSid { get; }
-        public string uniqueName { get; set; }
-        public Object data { get; set; }
+        public string ServiceSid { get; }
+        public string UniqueName { get; set; }
+        public Object Data { get; set; }
     
         /// <summary>
         /// Construct a new DocumentCreator
@@ -24,7 +20,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="serviceSid"> The service_sid </param>
         public DocumentCreator(string serviceSid)
         {
-            this.serviceSid = serviceSid;
+            ServiceSid = serviceSid;
         }
     
         #if NET40
@@ -34,12 +30,13 @@ namespace Twilio.Rest.Preview.Sync.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created DocumentResource </returns> 
-        public override async Task<DocumentResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<DocumentResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Documents"
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Documents",
+                client.Region
             );
             
             AddPostParams(request);
@@ -78,9 +75,10 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override DocumentResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Documents"
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Documents",
+                client.Region
             );
             
             AddPostParams(request);
@@ -116,14 +114,14 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (uniqueName != null)
+            if (UniqueName != null)
             {
-                request.AddPostParam("UniqueName", uniqueName);
+                request.AddPostParam("UniqueName", UniqueName);
             }
             
-            if (data != null)
+            if (Data != null)
             {
-                request.AddPostParam("Data", data.ToString());
+                request.AddPostParam("Data", Data.ToString());
             }
         }
     }

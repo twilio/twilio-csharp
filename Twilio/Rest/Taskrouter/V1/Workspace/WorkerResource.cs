@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
@@ -91,31 +89,31 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("activity_name")]
-        public string activityName { get; set; }
+        public string ActivityName { get; set; }
         [JsonProperty("activity_sid")]
-        public string activitySid { get; set; }
+        public string ActivitySid { get; set; }
         [JsonProperty("attributes")]
-        public string attributes { get; set; }
+        public string Attributes { get; set; }
         [JsonProperty("available")]
-        public bool? available { get; set; }
+        public bool? Available { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_status_changed")]
-        public DateTime? dateStatusChanged { get; set; }
+        public DateTime? DateStatusChanged { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; set; }
+        public string WorkspaceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
     
         public WorkerResource()
         {
@@ -149,19 +147,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                [JsonProperty("links")]
                                Dictionary<string, string> links)
                                {
-            this.accountSid = accountSid;
-            this.activityName = activityName;
-            this.activitySid = activitySid;
-            this.attributes = attributes;
-            this.available = available;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateStatusChanged = MarshalConverter.DateTimeFromString(dateStatusChanged);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.sid = sid;
-            this.workspaceSid = workspaceSid;
-            this.url = url;
-            this.links = links;
+            AccountSid = accountSid;
+            ActivityName = activityName;
+            ActivitySid = activitySid;
+            Attributes = attributes;
+            Available = available;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateStatusChanged = MarshalConverter.DateTimeFromString(dateStatusChanged);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            Sid = sid;
+            WorkspaceSid = workspaceSid;
+            Url = url;
+            Links = links;
         }
     }
 }

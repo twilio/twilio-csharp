@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
     public class PhoneNumberCreator : Creator<PhoneNumberResource> 
     {
-        public string trunkSid { get; }
-        public string phoneNumberSid { get; }
+        public string TrunkSid { get; }
+        public string PhoneNumberSid { get; }
     
         /// <summary>
         /// Construct a new PhoneNumberCreator
@@ -23,8 +19,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="phoneNumberSid"> The phone_number_sid </param>
         public PhoneNumberCreator(string trunkSid, string phoneNumberSid)
         {
-            this.trunkSid = trunkSid;
-            this.phoneNumberSid = phoneNumberSid;
+            TrunkSid = trunkSid;
+            PhoneNumberSid = phoneNumberSid;
         }
     
         #if NET40
@@ -34,12 +30,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created PhoneNumberResource </returns> 
-        public override async Task<PhoneNumberResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
+                HttpMethod.Post,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/PhoneNumbers",
+                client.Region
             );
             
             AddPostParams(request);
@@ -78,9 +75,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override PhoneNumberResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
+                HttpMethod.Post,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/PhoneNumbers",
+                client.Region
             );
             
             AddPostParams(request);
@@ -116,9 +114,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (phoneNumberSid != null)
+            if (PhoneNumberSid != null)
             {
-                request.AddPostParam("PhoneNumberSid", phoneNumberSid);
+                request.AddPostParam("PhoneNumberSid", PhoneNumberSid);
             }
         }
     }

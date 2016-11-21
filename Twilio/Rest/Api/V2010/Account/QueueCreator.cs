@@ -3,18 +3,24 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class QueueCreator : Creator<QueueResource> 
     {
-        public string accountSid { get; set; }
-        public string friendlyName { get; set; }
-        public int? maxSize { get; set; }
+        public string AccountSid { get; set; }
+        public string FriendlyName { get; }
+        public int? MaxSize { get; set; }
+    
+        /// <summary>
+        /// Construct a new QueueCreator
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
+        public QueueCreator(string friendlyName)
+        {
+            FriendlyName = friendlyName;
+        }
     
         #if NET40
         /// <summary>
@@ -23,12 +29,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created QueueResource </returns> 
-        public override async Task<QueueResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<QueueResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -67,9 +74,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override QueueResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -105,14 +113,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (maxSize != null)
+            if (MaxSize != null)
             {
-                request.AddPostParam("MaxSize", maxSize.ToString());
+                request.AddPostParam("MaxSize", MaxSize.ToString());
             }
         }
     }

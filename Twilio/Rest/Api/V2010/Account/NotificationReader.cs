@@ -4,20 +4,16 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class NotificationReader : Reader<NotificationResource> 
     {
-        public string accountSid { get; set; }
-        public int? log { get; set; }
-        public DateTime? messageDate { get; set; }
-        public DateTime? messageDateAfter { get; set; }
-        public DateTime? messageDateBefore { get; set; }
+        public string AccountSid { get; set; }
+        public int? Log { get; set; }
+        public DateTime? MessageDate { get; set; }
+        public DateTime? MessageDateAfter { get; set; }
+        public DateTime? MessageDateBefore { get; set; }
     
         #if NET40
         /// <summary>
@@ -26,12 +22,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> NotificationResource ResourceSet </returns> 
-        public override Task<ResourceSet<NotificationResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<NotificationResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Notifications.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Notifications.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -50,9 +47,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override ResourceSet<NotificationResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Notifications.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Notifications.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -71,9 +69,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override Page<NotificationResource> NextPage(Page<NotificationResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             
@@ -121,24 +120,24 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (log != null)
+            if (Log != null)
             {
-                request.AddQueryParam("Log", log.ToString());
+                request.AddQueryParam("Log", Log.ToString());
             }
             
-            if (messageDate != null)
+            if (MessageDate != null)
             {
-                request.AddQueryParam("MessageDate", messageDate.Value.ToString("yyyy-MM-dd"));
+                request.AddQueryParam("MessageDate", MessageDate.Value.ToString("yyyy-MM-dd"));
             }
             else
             {
-                if (messageDateBefore != null)
+                if (MessageDateBefore != null)
                 {
-                    request.AddQueryParam("MessageDate<", messageDateBefore.Value.ToString("yyyy-MM-dd"));
+                    request.AddQueryParam("MessageDate<", MessageDateBefore.Value.ToString("yyyy-MM-dd"));
                 }
-                if (messageDateAfter != null)
+                if (MessageDateAfter != null)
                 {
-                    request.AddQueryParam("MessageDate>", messageDateAfter.Value.ToString("yyyy-MM-dd"));
+                    request.AddQueryParam("MessageDate>", MessageDateAfter.Value.ToString("yyyy-MM-dd"));
                 }
             }
             

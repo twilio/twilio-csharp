@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.IpMessaging.V1 
 {
 
     public class CredentialFetcher : Fetcher<CredentialResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new CredentialFetcher
@@ -21,7 +17,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="sid"> The sid </param>
         public CredentialFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.IpMessaging.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched CredentialResource </returns> 
-        public override async Task<CredentialResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<CredentialResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.IP_MESSAGING,
-                "/v1/Credentials/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.IpMessaging,
+                "/v1/Credentials/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +71,10 @@ namespace Twilio.Rest.IpMessaging.V1
         public override CredentialResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.IP_MESSAGING,
-                "/v1/Credentials/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.IpMessaging,
+                "/v1/Credentials/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

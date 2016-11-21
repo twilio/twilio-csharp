@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
     public class OriginationUrlReader : Reader<OriginationUrlResource> 
     {
-        public string trunkSid { get; }
+        public string TrunkSid { get; }
     
         /// <summary>
         /// Construct a new OriginationUrlReader
@@ -21,7 +17,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="trunkSid"> The trunk_sid </param>
         public OriginationUrlReader(string trunkSid)
         {
-            this.trunkSid = trunkSid;
+            TrunkSid = trunkSid;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> OriginationUrlResource ResourceSet </returns> 
-        public override Task<ResourceSet<OriginationUrlResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<OriginationUrlResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/OriginationUrls"
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/OriginationUrls",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -55,9 +52,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override ResourceSet<OriginationUrlResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/OriginationUrls"
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/OriginationUrls",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -76,9 +74,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override Page<OriginationUrlResource> NextPage(Page<OriginationUrlResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.TRUNKING
+                    Rest.Domain.Trunking,
+                    client.Region
                 )
             );
             

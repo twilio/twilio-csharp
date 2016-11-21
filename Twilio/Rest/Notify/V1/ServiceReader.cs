@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Notify.V1 
 {
 
     public class ServiceReader : Reader<ServiceResource> 
     {
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
     
         #if NET40
         /// <summary>
@@ -21,12 +17,13 @@ namespace Twilio.Rest.Notify.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ServiceResource ResourceSet </returns> 
-        public override Task<ResourceSet<ServiceResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.NOTIFY,
-                "/v1/Services"
+                HttpMethod.Get,
+                Rest.Domain.Notify,
+                "/v1/Services",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -45,9 +42,10 @@ namespace Twilio.Rest.Notify.V1
         public override ResourceSet<ServiceResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.NOTIFY,
-                "/v1/Services"
+                HttpMethod.Get,
+                Rest.Domain.Notify,
+                "/v1/Services",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -66,9 +64,10 @@ namespace Twilio.Rest.Notify.V1
         public override Page<ServiceResource> NextPage(Page<ServiceResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.NOTIFY
+                    Rest.Domain.Notify,
+                    client.Region
                 )
             );
             
@@ -116,9 +115,9 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
             if (PageSize != null)

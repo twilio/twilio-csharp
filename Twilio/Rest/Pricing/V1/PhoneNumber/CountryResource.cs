@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Pricing.V1.PhoneNumber 
@@ -54,15 +52,15 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         }
     
         [JsonProperty("country")]
-        public string country { get; set; }
+        public string Country { get; set; }
         [JsonProperty("iso_country")]
-        public string isoCountry { get; set; }
+        public string IsoCountry { get; set; }
         [JsonProperty("phone_number_prices")]
-        public List<PhoneNumberPrice> phoneNumberPrices { get; set; }
+        public List<PhoneNumberPrice> PhoneNumberPrices { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; set; }
+        public string PriceUnit { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public CountryResource()
         {
@@ -80,11 +78,11 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
                                 [JsonProperty("url")]
                                 Uri url)
                                 {
-            this.country = country;
-            this.isoCountry = isoCountry;
-            this.phoneNumberPrices = phoneNumberPrices;
-            this.priceUnit = priceUnit;
-            this.url = url;
+            Country = country;
+            IsoCountry = isoCountry;
+            PhoneNumberPrices = phoneNumberPrices;
+            PriceUnit = priceUnit;
+            Url = url;
         }
     }
 }

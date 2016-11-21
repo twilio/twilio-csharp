@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.IpMessaging.V1.Service 
 {
@@ -90,25 +88,29 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; set; }
-        [JsonProperty("role_sid")]
-        public string roleSid { get; set; }
+        public string ServiceSid { get; set; }
         [JsonProperty("attributes")]
-        public string attributes { get; set; }
+        public string Attributes { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
+        [JsonProperty("role_sid")]
+        public string RoleSid { get; set; }
         [JsonProperty("identity")]
-        public string identity { get; set; }
+        public string Identity { get; set; }
+        [JsonProperty("is_online")]
+        public bool? IsOnline { get; set; }
+        [JsonProperty("is_notifiable")]
+        public bool? IsNotifiable { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public UserResource()
         {
@@ -121,14 +123,18 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                              string accountSid, 
                              [JsonProperty("service_sid")]
                              string serviceSid, 
-                             [JsonProperty("role_sid")]
-                             string roleSid, 
                              [JsonProperty("attributes")]
                              string attributes, 
                              [JsonProperty("friendly_name")]
                              string friendlyName, 
+                             [JsonProperty("role_sid")]
+                             string roleSid, 
                              [JsonProperty("identity")]
                              string identity, 
+                             [JsonProperty("is_online")]
+                             bool? isOnline, 
+                             [JsonProperty("is_notifiable")]
+                             bool? isNotifiable, 
                              [JsonProperty("date_created")]
                              string dateCreated, 
                              [JsonProperty("date_updated")]
@@ -136,16 +142,18 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                              [JsonProperty("url")]
                              Uri url)
                              {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.serviceSid = serviceSid;
-            this.roleSid = roleSid;
-            this.attributes = attributes;
-            this.friendlyName = friendlyName;
-            this.identity = identity;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.url = url;
+            Sid = sid;
+            AccountSid = accountSid;
+            ServiceSid = serviceSid;
+            Attributes = attributes;
+            FriendlyName = friendlyName;
+            RoleSid = roleSid;
+            Identity = identity;
+            IsOnline = isOnline;
+            IsNotifiable = isNotifiable;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Url = url;
         }
     }
 }

@@ -3,19 +3,15 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Usage 
 {
 
     public class TriggerReader : Reader<TriggerResource> 
     {
-        public string accountSid { get; set; }
-        public TriggerResource.Recurring recurring { get; set; }
-        public TriggerResource.TriggerField triggerBy { get; set; }
-        public TriggerResource.UsageCategory usageCategory { get; set; }
+        public string AccountSid { get; set; }
+        public TriggerResource.RecurringEnum Recurring { get; set; }
+        public TriggerResource.TriggerFieldEnum TriggerBy { get; set; }
+        public TriggerResource.UsageCategoryEnum UsageCategory { get; set; }
     
         #if NET40
         /// <summary>
@@ -24,12 +20,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TriggerResource ResourceSet </returns> 
-        public override Task<ResourceSet<TriggerResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<TriggerResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Usage/Triggers.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -48,9 +45,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public override ResourceSet<TriggerResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Usage/Triggers.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Usage/Triggers.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -69,9 +67,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public override Page<TriggerResource> NextPage(Page<TriggerResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             
@@ -119,19 +118,19 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (recurring != null)
+            if (Recurring != null)
             {
-                request.AddQueryParam("Recurring", recurring.ToString());
+                request.AddQueryParam("Recurring", Recurring.ToString());
             }
             
-            if (triggerBy != null)
+            if (TriggerBy != null)
             {
-                request.AddQueryParam("TriggerBy", triggerBy.ToString());
+                request.AddQueryParam("TriggerBy", TriggerBy.ToString());
             }
             
-            if (usageCategory != null)
+            if (UsageCategory != null)
             {
-                request.AddQueryParam("UsageCategory", usageCategory.ToString());
+                request.AddQueryParam("UsageCategory", UsageCategory.ToString());
             }
             
             if (PageSize != null)

@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
     public class CredentialListFetcher : Fetcher<CredentialListResource> 
     {
-        public string trunkSid { get; }
-        public string sid { get; }
+        public string TrunkSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new CredentialListFetcher
@@ -23,8 +19,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="sid"> The sid </param>
         public CredentialListFetcher(string trunkSid, string sid)
         {
-            this.trunkSid = trunkSid;
-            this.sid = sid;
+            TrunkSid = trunkSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -34,12 +30,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched CredentialListResource </returns> 
-        public override async Task<CredentialListResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<CredentialListResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/CredentialLists/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/CredentialLists/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -77,9 +74,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override CredentialListResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/CredentialLists/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/CredentialLists/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
 {
@@ -63,6 +61,19 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     
         /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <returns> MemberUpdater capable of executing the update </returns> 
+        public static MemberUpdater Updater(string serviceSid, string channelSid, string sid)
+        {
+            return new MemberUpdater(serviceSid, channelSid, sid);
+        }
+    
+        /// <summary>
         /// Converts a JSON string into a MemberResource object
         /// </summary>
         ///
@@ -82,27 +93,27 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("channel_sid")]
-        public string channelSid { get; set; }
+        public string ChannelSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; set; }
+        public string ServiceSid { get; set; }
         [JsonProperty("identity")]
-        public string identity { get; set; }
+        public string Identity { get; set; }
         [JsonProperty("last_consumed_message_index")]
-        public int? lastConsumedMessageIndex { get; set; }
+        public int? LastConsumedMessageIndex { get; set; }
         [JsonProperty("last_consumption_timestamp")]
-        public DateTime? lastConsumptionTimestamp { get; set; }
+        public DateTime? LastConsumptionTimestamp { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("role_sid")]
-        public string roleSid { get; set; }
+        public string RoleSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public MemberResource()
         {
@@ -132,17 +143,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
                                [JsonProperty("url")]
                                Uri url)
                                {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.channelSid = channelSid;
-            this.serviceSid = serviceSid;
-            this.identity = identity;
-            this.lastConsumedMessageIndex = lastConsumedMessageIndex;
-            this.lastConsumptionTimestamp = MarshalConverter.DateTimeFromString(lastConsumptionTimestamp);
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.roleSid = roleSid;
-            this.url = url;
+            Sid = sid;
+            AccountSid = accountSid;
+            ChannelSid = channelSid;
+            ServiceSid = serviceSid;
+            Identity = identity;
+            LastConsumedMessageIndex = lastConsumedMessageIndex;
+            LastConsumptionTimestamp = MarshalConverter.DateTimeFromString(lastConsumptionTimestamp);
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            RoleSid = roleSid;
+            Url = url;
         }
     }
 }

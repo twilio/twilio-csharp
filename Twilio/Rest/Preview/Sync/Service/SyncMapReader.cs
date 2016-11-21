@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service 
 {
 
     public class SyncMapReader : Reader<SyncMapResource> 
     {
-        public string serviceSid { get; }
+        public string ServiceSid { get; }
     
         /// <summary>
         /// Construct a new SyncMapReader
@@ -21,7 +17,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="serviceSid"> The service_sid </param>
         public SyncMapReader(string serviceSid)
         {
-            this.serviceSid = serviceSid;
+            ServiceSid = serviceSid;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.Preview.Sync.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> SyncMapResource ResourceSet </returns> 
-        public override Task<ResourceSet<SyncMapResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<SyncMapResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps"
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Maps",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -55,9 +52,10 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override ResourceSet<SyncMapResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps"
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Maps",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -76,9 +74,10 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override Page<SyncMapResource> NextPage(Page<SyncMapResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.PREVIEW
+                    Rest.Domain.Preview,
+                    client.Region
                 )
             );
             

@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class AuthorizedConnectAppFetcher : Fetcher<AuthorizedConnectAppResource> 
     {
-        public string accountSid { get; set; }
-        public string connectAppSid { get; }
+        public string AccountSid { get; set; }
+        public string ConnectAppSid { get; }
     
         /// <summary>
         /// Construct a new AuthorizedConnectAppFetcher
@@ -22,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="connectAppSid"> The connect_app_sid </param>
         public AuthorizedConnectAppFetcher(string connectAppSid)
         {
-            this.connectAppSid = connectAppSid;
+            ConnectAppSid = connectAppSid;
         }
     
         #if NET40
@@ -32,12 +28,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched AuthorizedConnectAppResource </returns> 
-        public override async Task<AuthorizedConnectAppResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/AuthorizedConnectApps/" + this.connectAppSid + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/AuthorizedConnectApps/" + ConnectAppSid + ".json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -75,9 +72,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override AuthorizedConnectAppResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/AuthorizedConnectApps/" + this.connectAppSid + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/AuthorizedConnectApps/" + ConnectAppSid + ".json",
+                client.Region
             );
             
             var response = client.Request(request);

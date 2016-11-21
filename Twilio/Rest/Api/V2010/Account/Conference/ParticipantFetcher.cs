@@ -3,18 +3,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Conference 
 {
 
     public class ParticipantFetcher : Fetcher<ParticipantResource> 
     {
-        public string accountSid { get; set; }
-        public string conferenceSid { get; }
-        public string callSid { get; }
+        public string AccountSid { get; set; }
+        public string ConferenceSid { get; }
+        public string CallSid { get; }
     
         /// <summary>
         /// Construct a new ParticipantFetcher
@@ -24,8 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="callSid"> The call_sid </param>
         public ParticipantFetcher(string conferenceSid, string callSid)
         {
-            this.conferenceSid = conferenceSid;
-            this.callSid = callSid;
+            ConferenceSid = conferenceSid;
+            CallSid = callSid;
         }
     
         #if NET40
@@ -35,12 +31,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched ParticipantResource </returns> 
-        public override async Task<ParticipantResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -78,9 +75,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public override ParticipantResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants/" + this.callSid + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Conferences/" + ConferenceSid + "/Participants/" + CallSid + ".json",
+                client.Region
             );
             
             var response = client.Request(request);

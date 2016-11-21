@@ -3,27 +3,25 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class MessageUpdater : Updater<MessageResource> 
     {
-        public string accountSid { get; set; }
-        public string sid { get; }
-        public string body { get; set; }
+        public string AccountSid { get; set; }
+        public string Sid { get; }
+        public string Body { get; }
     
         /// <summary>
         /// Construct a new MessageUpdater
         /// </summary>
         ///
         /// <param name="sid"> The message to redact </param>
-        public MessageUpdater(string sid)
+        /// <param name="body"> The body </param>
+        public MessageUpdater(string sid, string body)
         {
-            this.sid = sid;
+            Sid = sid;
+            Body = body;
         }
     
         #if NET40
@@ -33,12 +31,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated MessageResource </returns> 
-        public override async Task<MessageResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<MessageResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages/" + this.sid + ".json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Messages/" + Sid + ".json",
+                client.Region
             );
             AddPostParams(request);
             
@@ -77,9 +76,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override MessageResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages/" + this.sid + ".json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Messages/" + Sid + ".json",
+                client.Region
             );
             AddPostParams(request);
             
@@ -115,9 +115,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (body != null)
+            if (Body != null)
             {
-                request.AddPostParam("Body", body);
+                request.AddPostParam("Body", Body);
             }
         }
     }

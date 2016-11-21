@@ -1,10 +1,9 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Preview.Wireless 
 {
@@ -33,6 +32,27 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <returns> RatePlanCreator capable of executing the create </returns> 
+        public static RatePlanCreator Creator()
+        {
+            return new RatePlanCreator();
+        }
+    
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <returns> RatePlanUpdater capable of executing the update </returns> 
+        public static RatePlanUpdater Updater(string sid)
+        {
+            return new RatePlanUpdater(sid);
+        }
+    
+        /// <summary>
         /// Converts a JSON string into a RatePlanResource object
         /// </summary>
         ///
@@ -52,35 +72,27 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("alias")]
-        public string alias { get; set; }
+        public string Alias { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
-        [JsonProperty("data_metering")]
-        public string dataMetering { get; set; }
-        [JsonProperty("capabilities")]
-        public Object capabilities { get; set; }
-        [JsonProperty("voice_cap")]
-        public int? voiceCap { get; set; }
-        [JsonProperty("messaging_cap")]
-        public int? messagingCap { get; set; }
-        [JsonProperty("commands_cap")]
-        public int? commandsCap { get; set; }
-        [JsonProperty("data_cap")]
-        public int? dataCap { get; set; }
-        [JsonProperty("cap_period")]
-        public int? capPeriod { get; set; }
-        [JsonProperty("cap_unit")]
-        public string capUnit { get; set; }
+        public string FriendlyName { get; set; }
+        [JsonProperty("roaming")]
+        public List<string> Roaming { get; set; }
+        [JsonProperty("data")]
+        public Object Data { get; set; }
+        [JsonProperty("commands")]
+        public Object Commands { get; set; }
+        [JsonProperty("renewal")]
+        public Object Renewal { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public RatePlanResource()
         {
@@ -95,22 +107,14 @@ namespace Twilio.Rest.Preview.Wireless
                                  string accountSid, 
                                  [JsonProperty("friendly_name")]
                                  string friendlyName, 
-                                 [JsonProperty("data_metering")]
-                                 string dataMetering, 
-                                 [JsonProperty("capabilities")]
-                                 Object capabilities, 
-                                 [JsonProperty("voice_cap")]
-                                 int? voiceCap, 
-                                 [JsonProperty("messaging_cap")]
-                                 int? messagingCap, 
-                                 [JsonProperty("commands_cap")]
-                                 int? commandsCap, 
-                                 [JsonProperty("data_cap")]
-                                 int? dataCap, 
-                                 [JsonProperty("cap_period")]
-                                 int? capPeriod, 
-                                 [JsonProperty("cap_unit")]
-                                 string capUnit, 
+                                 [JsonProperty("roaming")]
+                                 List<string> roaming, 
+                                 [JsonProperty("data")]
+                                 Object data, 
+                                 [JsonProperty("commands")]
+                                 Object commands, 
+                                 [JsonProperty("renewal")]
+                                 Object renewal, 
                                  [JsonProperty("date_created")]
                                  string dateCreated, 
                                  [JsonProperty("date_updated")]
@@ -118,21 +122,17 @@ namespace Twilio.Rest.Preview.Wireless
                                  [JsonProperty("url")]
                                  Uri url)
                                  {
-            this.sid = sid;
-            this.alias = alias;
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-            this.dataMetering = dataMetering;
-            this.capabilities = capabilities;
-            this.voiceCap = voiceCap;
-            this.messagingCap = messagingCap;
-            this.commandsCap = commandsCap;
-            this.dataCap = dataCap;
-            this.capPeriod = capPeriod;
-            this.capUnit = capUnit;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.url = url;
+            Sid = sid;
+            Alias = alias;
+            AccountSid = accountSid;
+            FriendlyName = friendlyName;
+            Roaming = roaming;
+            Data = data;
+            Commands = commands;
+            Renewal = renewal;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Url = url;
         }
     }
 }

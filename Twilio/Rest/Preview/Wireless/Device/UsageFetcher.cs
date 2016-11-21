@@ -3,18 +3,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Wireless.Device 
 {
 
     public class UsageFetcher : Fetcher<UsageResource> 
     {
-        public string deviceSid { get; }
-        public string end { get; set; }
-        public string start { get; set; }
+        public string DeviceSid { get; }
+        public string End { get; set; }
+        public string Start { get; set; }
     
         /// <summary>
         /// Construct a new UsageFetcher
@@ -23,7 +19,7 @@ namespace Twilio.Rest.Preview.Wireless.Device
         /// <param name="deviceSid"> The device_sid </param>
         public UsageFetcher(string deviceSid)
         {
-            this.deviceSid = deviceSid;
+            DeviceSid = deviceSid;
         }
     
         #if NET40
@@ -33,12 +29,13 @@ namespace Twilio.Rest.Preview.Wireless.Device
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched UsageResource </returns> 
-        public override async Task<UsageResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<UsageResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.PREVIEW,
-                "/wireless/Devices/" + this.deviceSid + "/Usage"
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/wireless/Devices/" + DeviceSid + "/Usage",
+                client.Region
             );
             
                 AddQueryParams(request);
@@ -79,9 +76,10 @@ namespace Twilio.Rest.Preview.Wireless.Device
         public override UsageResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.PREVIEW,
-                "/wireless/Devices/" + this.deviceSid + "/Usage"
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/wireless/Devices/" + DeviceSid + "/Usage",
+                client.Region
             );
             
                 AddQueryParams(request);
@@ -119,14 +117,14 @@ namespace Twilio.Rest.Preview.Wireless.Device
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (end != null)
+            if (End != null)
             {
-                request.AddQueryParam("End", end);
+                request.AddQueryParam("End", End);
             }
             
-            if (start != null)
+            if (Start != null)
             {
-                request.AddQueryParam("Start", start);
+                request.AddQueryParam("Start", Start);
             }
         }
     }

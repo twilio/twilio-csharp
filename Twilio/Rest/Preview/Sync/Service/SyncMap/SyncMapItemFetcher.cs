@@ -3,18 +3,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service.SyncMap 
 {
 
     public class SyncMapItemFetcher : Fetcher<SyncMapItemResource> 
     {
-        public string serviceSid { get; }
-        public string mapSid { get; }
-        public string key { get; }
+        public string ServiceSid { get; }
+        public string MapSid { get; }
+        public string Key { get; }
     
         /// <summary>
         /// Construct a new SyncMapItemFetcher
@@ -25,9 +21,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="key"> The key </param>
         public SyncMapItemFetcher(string serviceSid, string mapSid, string key)
         {
-            this.serviceSid = serviceSid;
-            this.mapSid = mapSid;
-            this.key = key;
+            ServiceSid = serviceSid;
+            MapSid = mapSid;
+            Key = key;
         }
     
         #if NET40
@@ -37,12 +33,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched SyncMapItemResource </returns> 
-        public override async Task<SyncMapItemResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<SyncMapItemResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items/" + this.key + ""
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Maps/" + MapSid + "/Items/" + Key + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -80,9 +77,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         public override SyncMapItemResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items/" + this.key + ""
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Maps/" + MapSid + "/Items/" + Key + "",
+                client.Region
             );
             
             var response = client.Request(request);

@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.IpMessaging.V1 
 {
 
     public class ServiceCreator : Creator<ServiceResource> 
     {
-        public string friendlyName { get; }
+        public string FriendlyName { get; }
     
         /// <summary>
         /// Construct a new ServiceCreator
@@ -21,7 +17,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="friendlyName"> The friendly_name </param>
         public ServiceCreator(string friendlyName)
         {
-            this.friendlyName = friendlyName;
+            FriendlyName = friendlyName;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.IpMessaging.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ServiceResource </returns> 
-        public override async Task<ServiceResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<ServiceResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.IP_MESSAGING,
-                "/v1/Services"
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services",
+                client.Region
             );
             
             AddPostParams(request);
@@ -75,9 +72,10 @@ namespace Twilio.Rest.IpMessaging.V1
         public override ServiceResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.IP_MESSAGING,
-                "/v1/Services"
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services",
+                client.Region
             );
             
             AddPostParams(request);
@@ -113,9 +111,9 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }

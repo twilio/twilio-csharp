@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
     public class WorkerChannelReader : Reader<WorkerChannelResource> 
     {
-        public string workspaceSid { get; }
-        public string workerSid { get; }
+        public string WorkspaceSid { get; }
+        public string WorkerSid { get; }
     
         /// <summary>
         /// Construct a new WorkerChannelReader
@@ -23,8 +19,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="workerSid"> The worker_sid </param>
         public WorkerChannelReader(string workspaceSid, string workerSid)
         {
-            this.workspaceSid = workspaceSid;
-            this.workerSid = workerSid;
+            WorkspaceSid = workspaceSid;
+            WorkerSid = workerSid;
         }
     
         #if NET40
@@ -34,12 +30,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> WorkerChannelResource ResourceSet </returns> 
-        public override Task<ResourceSet<WorkerChannelResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Channels"
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Channels",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -58,9 +55,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public override ResourceSet<WorkerChannelResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Channels"
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Channels",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -79,9 +77,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public override Page<WorkerChannelResource> NextPage(Page<WorkerChannelResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.TASKROUTER
+                    Rest.Domain.Taskrouter,
+                    client.Region
                 )
             );
             

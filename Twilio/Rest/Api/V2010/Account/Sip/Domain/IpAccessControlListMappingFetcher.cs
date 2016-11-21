@@ -3,18 +3,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
 {
 
     public class IpAccessControlListMappingFetcher : Fetcher<IpAccessControlListMappingResource> 
     {
-        public string accountSid { get; set; }
-        public string domainSid { get; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string DomainSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new IpAccessControlListMappingFetcher
@@ -24,8 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="sid"> The sid </param>
         public IpAccessControlListMappingFetcher(string domainSid, string sid)
         {
-            this.domainSid = domainSid;
-            this.sid = sid;
+            DomainSid = domainSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -35,12 +31,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched IpAccessControlListMappingResource </returns> 
-        public override async Task<IpAccessControlListMappingResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<IpAccessControlListMappingResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings/" + this.sid + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/IpAccessControlListMappings/" + Sid + ".json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -78,9 +75,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         public override IpAccessControlListMappingResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings/" + this.sid + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/IpAccessControlListMappings/" + Sid + ".json",
+                client.Region
             );
             
             var response = client.Request(request);

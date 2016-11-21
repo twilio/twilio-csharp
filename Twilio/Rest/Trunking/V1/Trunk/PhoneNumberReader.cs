@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
     public class PhoneNumberReader : Reader<PhoneNumberResource> 
     {
-        public string trunkSid { get; }
+        public string TrunkSid { get; }
     
         /// <summary>
         /// Construct a new PhoneNumberReader
@@ -21,7 +17,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="trunkSid"> The trunk_sid </param>
         public PhoneNumberReader(string trunkSid)
         {
-            this.trunkSid = trunkSid;
+            TrunkSid = trunkSid;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> PhoneNumberResource ResourceSet </returns> 
-        public override Task<ResourceSet<PhoneNumberResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/PhoneNumbers",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -55,9 +52,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override ResourceSet<PhoneNumberResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/PhoneNumbers"
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/PhoneNumbers",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -76,9 +74,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override Page<PhoneNumberResource> NextPage(Page<PhoneNumberResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.TRUNKING
+                    Rest.Domain.Trunking,
+                    client.Region
                 )
             );
             

@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Pricing.V1.PhoneNumber 
 {
 
     public class CountryFetcher : Fetcher<CountryResource> 
     {
-        public string isoCountry { get; }
+        public string IsoCountry { get; }
     
         /// <summary>
         /// Construct a new CountryFetcher
@@ -21,7 +17,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         /// <param name="isoCountry"> The iso_country </param>
         public CountryFetcher(string isoCountry)
         {
-            this.isoCountry = isoCountry;
+            IsoCountry = isoCountry;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched CountryResource </returns> 
-        public override async Task<CountryResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<CountryResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.PRICING,
-                "/v1/PhoneNumbers/Countries/" + this.isoCountry + ""
+                HttpMethod.Get,
+                Rest.Domain.Pricing,
+                "/v1/PhoneNumbers/Countries/" + IsoCountry + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +71,10 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         public override CountryResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.PRICING,
-                "/v1/PhoneNumbers/Countries/" + this.isoCountry + ""
+                HttpMethod.Get,
+                Rest.Domain.Pricing,
+                "/v1/PhoneNumbers/Countries/" + IsoCountry + "",
+                client.Region
             );
             
             var response = client.Request(request);

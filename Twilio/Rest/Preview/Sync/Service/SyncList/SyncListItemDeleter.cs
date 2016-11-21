@@ -4,18 +4,14 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.Sync.Service.SyncList;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service.SyncList 
 {
 
     public class SyncListItemDeleter : Deleter<SyncListItemResource> 
     {
-        public string serviceSid { get; }
-        public string listSid { get; }
-        public int? index { get; }
+        public string ServiceSid { get; }
+        public string ListSid { get; }
+        public int? Index { get; }
     
         /// <summary>
         /// Construct a new SyncListItemDeleter
@@ -26,9 +22,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="index"> The index </param>
         public SyncListItemDeleter(string serviceSid, string listSid, int? index)
         {
-            this.serviceSid = serviceSid;
-            this.listSid = listSid;
-            this.index = index;
+            ServiceSid = serviceSid;
+            ListSid = listSid;
+            Index = index;
         }
     
         #if NET40
@@ -40,9 +36,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Lists/" + this.listSid + "/Items/" + this.index + ""
+                HttpMethod.Delete,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items/" + Index + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -79,9 +76,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Lists/" + this.listSid + "/Items/" + this.index + ""
+                HttpMethod.Delete,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items/" + Index + "",
+                client.Region
             );
             
             var response = client.Request(request);

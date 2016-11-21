@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
@@ -66,23 +64,23 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("call_sid")]
-        public string callSid { get; set; }
+        public string CallSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("duration")]
-        public string duration { get; set; }
+        public string Duration { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; set; }
+        public decimal? Price { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public RecordingResource()
         {
@@ -108,15 +106,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                   [JsonProperty("uri")]
                                   string uri)
                                   {
-            this.accountSid = accountSid;
-            this.apiVersion = apiVersion;
-            this.callSid = callSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.duration = duration;
-            this.sid = sid;
-            this.price = price;
-            this.uri = uri;
+            AccountSid = accountSid;
+            ApiVersion = apiVersion;
+            CallSid = callSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Duration = duration;
+            Sid = sid;
+            Price = price;
+            Uri = uri;
         }
     }
 }

@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Notify.V1.Service 
 {
 
     public class BindingFetcher : Fetcher<BindingResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new BindingFetcher
@@ -23,8 +19,8 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="sid"> The sid </param>
         public BindingFetcher(string serviceSid, string sid)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
+            ServiceSid = serviceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -34,12 +30,13 @@ namespace Twilio.Rest.Notify.V1.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched BindingResource </returns> 
-        public override async Task<BindingResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<BindingResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.NOTIFY,
-                "/v1/Services/" + this.serviceSid + "/Bindings/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Notify,
+                "/v1/Services/" + ServiceSid + "/Bindings/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -77,9 +74,10 @@ namespace Twilio.Rest.Notify.V1.Service
         public override BindingResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.NOTIFY,
-                "/v1/Services/" + this.serviceSid + "/Bindings/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Notify,
+                "/v1/Services/" + ServiceSid + "/Bindings/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Wireless 
 {
 
@@ -19,12 +15,13 @@ namespace Twilio.Rest.Preview.Wireless
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> RatePlanResource ResourceSet </returns> 
-        public override Task<ResourceSet<RatePlanResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<RatePlanResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.PREVIEW,
-                "/wireless/RatePlans"
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/wireless/RatePlans",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -43,9 +40,10 @@ namespace Twilio.Rest.Preview.Wireless
         public override ResourceSet<RatePlanResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.PREVIEW,
-                "/wireless/RatePlans"
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/wireless/RatePlans",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -64,9 +62,10 @@ namespace Twilio.Rest.Preview.Wireless
         public override Page<RatePlanResource> NextPage(Page<RatePlanResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.PREVIEW
+                    Rest.Domain.Preview,
+                    client.Region
                 )
             );
             

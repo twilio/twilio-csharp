@@ -4,18 +4,14 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Sip.Domain;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
 {
 
     public class IpAccessControlListMappingDeleter : Deleter<IpAccessControlListMappingResource> 
     {
-        public string accountSid { get; set; }
-        public string domainSid { get; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string DomainSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new IpAccessControlListMappingDeleter
@@ -25,8 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="sid"> The sid </param>
         public IpAccessControlListMappingDeleter(string domainSid, string sid)
         {
-            this.domainSid = domainSid;
-            this.sid = sid;
+            DomainSid = domainSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -38,9 +34,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings/" + this.sid + ".json"
+                HttpMethod.Delete,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/IpAccessControlListMappings/" + Sid + ".json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -77,9 +74,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/IpAccessControlListMappings/" + this.sid + ".json"
+                HttpMethod.Delete,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/IpAccessControlListMappings/" + Sid + ".json",
+                client.Region
             );
             
             var response = client.Request(request);

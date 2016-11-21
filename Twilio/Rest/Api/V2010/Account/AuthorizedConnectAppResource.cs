@@ -2,49 +2,22 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class AuthorizedConnectAppResource : Resource 
     {
-        public sealed class Permission : IStringEnum 
+        public sealed class PermissionEnum : StringEnum 
         {
-            public const string GetAll = "get-all";
-            public const string PostAll = "post-all";
+            private PermissionEnum(string value) : base(value) {}
+            public PermissionEnum() {}
         
-            private string _value;
-            
-            public Permission() {}
-            
-            public Permission(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Permission(string value)
-            {
-                return new Permission(value);
-            }
-            
-            public static implicit operator string(Permission value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly PermissionEnum GetAll = new PermissionEnum("get-all");
+            public static readonly PermissionEnum PostAll = new PermissionEnum("post-all");
         }
     
         /// <summary>
@@ -88,26 +61,26 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("connect_app_company_name")]
-        public string connectAppCompanyName { get; set; }
+        public string ConnectAppCompanyName { get; set; }
         [JsonProperty("connect_app_description")]
-        public string connectAppDescription { get; set; }
+        public string ConnectAppDescription { get; set; }
         [JsonProperty("connect_app_friendly_name")]
-        public string connectAppFriendlyName { get; set; }
+        public string ConnectAppFriendlyName { get; set; }
         [JsonProperty("connect_app_homepage_url")]
-        public Uri connectAppHomepageUrl { get; set; }
+        public Uri ConnectAppHomepageUrl { get; set; }
         [JsonProperty("connect_app_sid")]
-        public string connectAppSid { get; set; }
+        public string ConnectAppSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("permissions")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public List<AuthorizedConnectAppResource.Permission> permissions { get; set; }
+        public List<AuthorizedConnectAppResource.PermissionEnum> Permissions { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public AuthorizedConnectAppResource()
         {
@@ -131,20 +104,20 @@ namespace Twilio.Rest.Api.V2010.Account
                                              [JsonProperty("date_updated")]
                                              string dateUpdated, 
                                              [JsonProperty("permissions")]
-                                             List<AuthorizedConnectAppResource.Permission> permissions, 
+                                             List<AuthorizedConnectAppResource.PermissionEnum> permissions, 
                                              [JsonProperty("uri")]
                                              string uri)
                                              {
-            this.accountSid = accountSid;
-            this.connectAppCompanyName = connectAppCompanyName;
-            this.connectAppDescription = connectAppDescription;
-            this.connectAppFriendlyName = connectAppFriendlyName;
-            this.connectAppHomepageUrl = connectAppHomepageUrl;
-            this.connectAppSid = connectAppSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.permissions = permissions;
-            this.uri = uri;
+            AccountSid = accountSid;
+            ConnectAppCompanyName = connectAppCompanyName;
+            ConnectAppDescription = connectAppDescription;
+            ConnectAppFriendlyName = connectAppFriendlyName;
+            ConnectAppHomepageUrl = connectAppHomepageUrl;
+            ConnectAppSid = connectAppSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Permissions = permissions;
+            Uri = uri;
         }
     }
 }

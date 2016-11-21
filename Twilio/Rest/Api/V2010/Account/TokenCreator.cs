@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class TokenCreator : Creator<TokenResource> 
     {
-        public string accountSid { get; set; }
-        public int? ttl { get; set; }
+        public string AccountSid { get; set; }
+        public int? Ttl { get; set; }
     
         #if NET40
         /// <summary>
@@ -22,12 +18,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created TokenResource </returns> 
-        public override async Task<TokenResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<TokenResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Tokens.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Tokens.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -66,9 +63,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override TokenResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Tokens.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Tokens.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -104,9 +102,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (ttl != null)
+            if (Ttl != null)
             {
-                request.AddPostParam("Ttl", ttl.ToString());
+                request.AddPostParam("Ttl", Ttl.ToString());
             }
         }
     }

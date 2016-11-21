@@ -3,18 +3,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Queue 
 {
 
     public class MemberFetcher : Fetcher<MemberResource> 
     {
-        public string accountSid { get; set; }
-        public string queueSid { get; }
-        public string callSid { get; }
+        public string AccountSid { get; set; }
+        public string QueueSid { get; }
+        public string CallSid { get; }
     
         /// <summary>
         /// Construct a new MemberFetcher
@@ -24,8 +20,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="callSid"> The call_sid </param>
         public MemberFetcher(string queueSid, string callSid)
         {
-            this.queueSid = queueSid;
-            this.callSid = callSid;
+            QueueSid = queueSid;
+            CallSid = callSid;
         }
     
         #if NET40
@@ -35,12 +31,13 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched MemberResource </returns> 
-        public override async Task<MemberResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<MemberResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues/" + QueueSid + "/Members/" + CallSid + ".json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -78,9 +75,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         public override MemberResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Queues/" + this.queueSid + "/Members/" + this.callSid + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Queues/" + QueueSid + "/Members/" + CallSid + ".json",
+                client.Region
             );
             
             var response = client.Request(request);

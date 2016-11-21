@@ -4,18 +4,14 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.Sync.Service.SyncMap;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service.SyncMap 
 {
 
     public class SyncMapItemDeleter : Deleter<SyncMapItemResource> 
     {
-        public string serviceSid { get; }
-        public string mapSid { get; }
-        public string key { get; }
+        public string ServiceSid { get; }
+        public string MapSid { get; }
+        public string Key { get; }
     
         /// <summary>
         /// Construct a new SyncMapItemDeleter
@@ -26,9 +22,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="key"> The key </param>
         public SyncMapItemDeleter(string serviceSid, string mapSid, string key)
         {
-            this.serviceSid = serviceSid;
-            this.mapSid = mapSid;
-            this.key = key;
+            ServiceSid = serviceSid;
+            MapSid = mapSid;
+            Key = key;
         }
     
         #if NET40
@@ -40,9 +36,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items/" + this.key + ""
+                HttpMethod.Delete,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Maps/" + MapSid + "/Items/" + Key + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -79,9 +76,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items/" + this.key + ""
+                HttpMethod.Delete,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Maps/" + MapSid + "/Items/" + Key + "",
+                client.Region
             );
             
             var response = client.Request(request);

@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip 
 {
 
     public class DomainFetcher : Fetcher<DomainResource> 
     {
-        public string accountSid { get; set; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new DomainFetcher
@@ -22,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="sid"> Fetch by unique Domain Sid </param>
         public DomainFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -32,12 +28,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched DomainResource </returns> 
-        public override async Task<DomainResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<DomainResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.sid + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + Sid + ".json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -75,9 +72,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public override DomainResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.sid + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + Sid + ".json",
+                client.Region
             );
             
             var response = client.Request(request);

@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
     public class CredentialListReader : Reader<CredentialListResource> 
     {
-        public string trunkSid { get; }
+        public string TrunkSid { get; }
     
         /// <summary>
         /// Construct a new CredentialListReader
@@ -21,7 +17,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="trunkSid"> The trunk_sid </param>
         public CredentialListReader(string trunkSid)
         {
-            this.trunkSid = trunkSid;
+            TrunkSid = trunkSid;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CredentialListResource ResourceSet </returns> 
-        public override Task<ResourceSet<CredentialListResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<CredentialListResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/CredentialLists"
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/CredentialLists",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -55,9 +52,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override ResourceSet<CredentialListResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/CredentialLists"
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/CredentialLists",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -76,9 +74,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override Page<CredentialListResource> NextPage(Page<CredentialListResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.TRUNKING
+                    Rest.Domain.Trunking,
+                    client.Region
                 )
             );
             

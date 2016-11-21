@@ -4,17 +4,13 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Chat.V1.Service;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Chat.V1.Service 
 {
 
     public class ChannelDeleter : Deleter<ChannelResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new ChannelDeleter
@@ -24,8 +20,8 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="sid"> The sid </param>
         public ChannelDeleter(string serviceSid, string sid)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
+            ServiceSid = serviceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -37,9 +33,10 @@ namespace Twilio.Rest.Chat.V1.Service
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.sid + ""
+                HttpMethod.Delete,
+                Rest.Domain.Chat,
+                "/v1/Services/" + ServiceSid + "/Channels/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -76,9 +73,10 @@ namespace Twilio.Rest.Chat.V1.Service
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.sid + ""
+                HttpMethod.Delete,
+                Rest.Domain.Chat,
+                "/v1/Services/" + ServiceSid + "/Channels/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

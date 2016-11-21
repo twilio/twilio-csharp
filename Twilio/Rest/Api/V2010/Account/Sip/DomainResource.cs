@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Sip 
 {
@@ -86,40 +84,40 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("auth_type")]
-        public string authType { get; set; }
+        public string AuthType { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("domain_name")]
-        public string domainName { get; set; }
+        public string DomainName { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceFallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
         [JsonProperty("voice_fallback_url")]
-        public Uri voiceFallbackUrl { get; set; }
+        public Uri VoiceFallbackUrl { get; set; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceMethod { get; set; }
+        public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         [JsonProperty("voice_status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceStatusCallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
         [JsonProperty("voice_status_callback_url")]
-        public Uri voiceStatusCallbackUrl { get; set; }
+        public Uri VoiceStatusCallbackUrl { get; set; }
         [JsonProperty("voice_url")]
-        public Uri voiceUrl { get; set; }
+        public Uri VoiceUrl { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; set; }
     
         public DomainResource()
         {
@@ -159,22 +157,22 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                                [JsonProperty("subresource_uris")]
                                Dictionary<string, string> subresourceUris)
                                {
-            this.accountSid = accountSid;
-            this.apiVersion = apiVersion;
-            this.authType = authType;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.domainName = domainName;
-            this.friendlyName = friendlyName;
-            this.sid = sid;
-            this.uri = uri;
-            this.voiceFallbackMethod = voiceFallbackMethod;
-            this.voiceFallbackUrl = voiceFallbackUrl;
-            this.voiceMethod = voiceMethod;
-            this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
-            this.voiceStatusCallbackUrl = voiceStatusCallbackUrl;
-            this.voiceUrl = voiceUrl;
-            this.subresourceUris = subresourceUris;
+            AccountSid = accountSid;
+            ApiVersion = apiVersion;
+            AuthType = authType;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            DomainName = domainName;
+            FriendlyName = friendlyName;
+            Sid = sid;
+            Uri = uri;
+            VoiceFallbackMethod = voiceFallbackMethod;
+            VoiceFallbackUrl = voiceFallbackUrl;
+            VoiceMethod = voiceMethod;
+            VoiceStatusCallbackMethod = voiceStatusCallbackMethod;
+            VoiceStatusCallbackUrl = voiceStatusCallbackUrl;
+            VoiceUrl = voiceUrl;
+            SubresourceUris = subresourceUris;
         }
     }
 }

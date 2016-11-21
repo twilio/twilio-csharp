@@ -3,20 +3,16 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
     public class WorkerChannelUpdater : Updater<WorkerChannelResource> 
     {
-        public string workspaceSid { get; }
-        public string workerSid { get; }
-        public string sid { get; }
-        public int? capacity { get; set; }
-        public bool? available { get; set; }
+        public string WorkspaceSid { get; }
+        public string WorkerSid { get; }
+        public string Sid { get; }
+        public int? Capacity { get; set; }
+        public bool? Available { get; set; }
     
         /// <summary>
         /// Construct a new WorkerChannelUpdater
@@ -27,9 +23,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="sid"> The sid </param>
         public WorkerChannelUpdater(string workspaceSid, string workerSid, string sid)
         {
-            this.workspaceSid = workspaceSid;
-            this.workerSid = workerSid;
-            this.sid = sid;
+            WorkspaceSid = workspaceSid;
+            WorkerSid = workerSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -39,12 +35,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated WorkerChannelResource </returns> 
-        public override async Task<WorkerChannelResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<WorkerChannelResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Channels/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Channels/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -83,9 +80,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public override WorkerChannelResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.workerSid + "/Channels/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + WorkerSid + "/Channels/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -121,14 +119,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (capacity != null)
+            if (Capacity != null)
             {
-                request.AddPostParam("Capacity", capacity.ToString());
+                request.AddPostParam("Capacity", Capacity.ToString());
             }
             
-            if (available != null)
+            if (Available != null)
             {
-                request.AddPostParam("Available", available.ToString());
+                request.AddPostParam("Available", Available.ToString());
             }
         }
     }

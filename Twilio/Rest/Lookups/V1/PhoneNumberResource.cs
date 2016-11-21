@@ -2,50 +2,23 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Lookups.V1 
 {
 
     public class PhoneNumberResource : Resource 
     {
-        public sealed class Type : IStringEnum 
+        public sealed class TypeEnum : StringEnum 
         {
-            public const string Landline = "landline";
-            public const string Mobile = "mobile";
-            public const string Voip = "voip";
+            private TypeEnum(string value) : base(value) {}
+            public TypeEnum() {}
         
-            private string _value;
-            
-            public Type() {}
-            
-            public Type(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Type(string value)
-            {
-                return new Type(value);
-            }
-            
-            public static implicit operator string(Type value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly TypeEnum Landline = new TypeEnum("landline");
+            public static readonly TypeEnum Mobile = new TypeEnum("mobile");
+            public static readonly TypeEnum Voip = new TypeEnum("voip");
         }
     
         /// <summary>
@@ -54,7 +27,7 @@ namespace Twilio.Rest.Lookups.V1
         ///
         /// <param name="phoneNumber"> The phone_number </param>
         /// <returns> PhoneNumberFetcher capable of executing the fetch </returns> 
-        public static PhoneNumberFetcher Fetcher(Twilio.Types.PhoneNumber phoneNumber)
+        public static PhoneNumberFetcher Fetcher(Types.PhoneNumber phoneNumber)
         {
             return new PhoneNumberFetcher(phoneNumber);
         }
@@ -79,20 +52,20 @@ namespace Twilio.Rest.Lookups.V1
         }
     
         [JsonProperty("caller_name")]
-        public Dictionary<string, string> callerName { get; set; }
+        public Dictionary<string, string> CallerName { get; set; }
         [JsonProperty("country_code")]
-        public string countryCode { get; set; }
+        public string CountryCode { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("national_format")]
-        public string nationalFormat { get; set; }
+        public string NationalFormat { get; set; }
         [JsonProperty("carrier")]
-        public Dictionary<string, string> carrier { get; set; }
+        public Dictionary<string, string> Carrier { get; set; }
         [JsonProperty("add_ons")]
-        public Object addOns { get; set; }
+        public Object AddOns { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public PhoneNumberResource()
         {
@@ -104,7 +77,7 @@ namespace Twilio.Rest.Lookups.V1
                                     [JsonProperty("country_code")]
                                     string countryCode, 
                                     [JsonProperty("phone_number")]
-                                    Twilio.Types.PhoneNumber phoneNumber, 
+                                    Types.PhoneNumber phoneNumber, 
                                     [JsonProperty("national_format")]
                                     string nationalFormat, 
                                     [JsonProperty("carrier")]
@@ -114,13 +87,13 @@ namespace Twilio.Rest.Lookups.V1
                                     [JsonProperty("url")]
                                     Uri url)
                                     {
-            this.callerName = callerName;
-            this.countryCode = countryCode;
-            this.phoneNumber = phoneNumber;
-            this.nationalFormat = nationalFormat;
-            this.carrier = carrier;
-            this.addOns = addOns;
-            this.url = url;
+            CallerName = callerName;
+            CountryCode = countryCode;
+            PhoneNumber = phoneNumber;
+            NationalFormat = nationalFormat;
+            Carrier = carrier;
+            AddOns = addOns;
+            Url = url;
         }
     }
 }

@@ -3,19 +3,15 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList 
 {
 
     public class IpAddressCreator : Creator<IpAddressResource> 
     {
-        public string accountSid { get; set; }
-        public string ipAccessControlListSid { get; }
-        public string friendlyName { get; }
-        public string ipAddress { get; }
+        public string AccountSid { get; set; }
+        public string IpAccessControlListSid { get; }
+        public string FriendlyName { get; }
+        public string IpAddress { get; }
     
         /// <summary>
         /// Construct a new IpAddressCreator
@@ -26,9 +22,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="ipAddress"> The ip_address </param>
         public IpAddressCreator(string ipAccessControlListSid, string friendlyName, string ipAddress)
         {
-            this.ipAccessControlListSid = ipAccessControlListSid;
-            this.friendlyName = friendlyName;
-            this.ipAddress = ipAddress;
+            IpAccessControlListSid = ipAccessControlListSid;
+            FriendlyName = friendlyName;
+            IpAddress = ipAddress;
         }
     
         #if NET40
@@ -38,12 +34,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created IpAddressResource </returns> 
-        public override async Task<IpAddressResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<IpAddressResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + IpAccessControlListSid + "/IpAddresses.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -82,9 +79,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         public override IpAddressResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + IpAccessControlListSid + "/IpAddresses.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -120,14 +118,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (ipAddress != null)
+            if (IpAddress != null)
             {
-                request.AddPostParam("IpAddress", ipAddress);
+                request.AddPostParam("IpAddress", IpAddress);
             }
         }
     }

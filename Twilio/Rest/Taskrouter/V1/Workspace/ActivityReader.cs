@@ -3,18 +3,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class ActivityReader : Reader<ActivityResource> 
     {
-        public string workspaceSid { get; }
-        public string friendlyName { get; set; }
-        public string available { get; set; }
+        public string WorkspaceSid { get; }
+        public string FriendlyName { get; set; }
+        public string Available { get; set; }
     
         /// <summary>
         /// Construct a new ActivityReader
@@ -23,7 +19,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workspaceSid"> The workspace_sid </param>
         public ActivityReader(string workspaceSid)
         {
-            this.workspaceSid = workspaceSid;
+            WorkspaceSid = workspaceSid;
         }
     
         #if NET40
@@ -33,12 +29,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ActivityResource ResourceSet </returns> 
-        public override Task<ResourceSet<ActivityResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<ActivityResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Activities"
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Activities",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -57,9 +54,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override ResourceSet<ActivityResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Activities"
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Activities",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -78,9 +76,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override Page<ActivityResource> NextPage(Page<ActivityResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.TASKROUTER
+                    Rest.Domain.Taskrouter,
+                    client.Region
                 )
             );
             
@@ -128,14 +127,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
-            if (available != null)
+            if (Available != null)
             {
-                request.AddQueryParam("Available", available);
+                request.AddQueryParam("Available", Available);
             }
             
             if (PageSize != null)

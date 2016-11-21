@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Monitor.V1 
 {
 
     public class EventFetcher : Fetcher<EventResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new EventFetcher
@@ -21,7 +17,7 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="sid"> The sid </param>
         public EventFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.Monitor.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched EventResource </returns> 
-        public override async Task<EventResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<EventResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.MONITOR,
-                "/v1/Events/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Monitor,
+                "/v1/Events/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +71,10 @@ namespace Twilio.Rest.Monitor.V1
         public override EventResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.MONITOR,
-                "/v1/Events/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Monitor,
+                "/v1/Events/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

@@ -4,19 +4,15 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
     public class FeedbackUpdater : Updater<FeedbackResource> 
     {
-        public string accountSid { get; set; }
-        public string callSid { get; }
-        public int? qualityScore { get; }
-        public List<FeedbackResource.Issues> issue { get; set; }
+        public string AccountSid { get; set; }
+        public string CallSid { get; }
+        public int? QualityScore { get; }
+        public List<FeedbackResource.IssuesEnum> Issue { get; set; }
     
         /// <summary>
         /// Construct a new FeedbackUpdater
@@ -26,8 +22,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="qualityScore"> An integer from 1 to 5 </param>
         public FeedbackUpdater(string callSid, int? qualityScore)
         {
-            this.callSid = callSid;
-            this.qualityScore = qualityScore;
+            CallSid = callSid;
+            QualityScore = qualityScore;
         }
     
         #if NET40
@@ -37,12 +33,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated FeedbackResource </returns> 
-        public override async Task<FeedbackResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<FeedbackResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Calls/" + CallSid + "/Feedback.json",
+                client.Region
             );
             AddPostParams(request);
             
@@ -81,9 +78,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override FeedbackResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Feedback.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Calls/" + CallSid + "/Feedback.json",
+                client.Region
             );
             AddPostParams(request);
             
@@ -119,14 +117,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (qualityScore != null)
+            if (QualityScore != null)
             {
-                request.AddPostParam("QualityScore", qualityScore.ToString());
+                request.AddPostParam("QualityScore", QualityScore.ToString());
             }
             
-            if (issue != null)
+            if (Issue != null)
             {
-                request.AddPostParam("Issue", issue.ToString());
+                request.AddPostParam("Issue", Issue.ToString());
             }
         }
     }

@@ -1,49 +1,22 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {
 
     public class FeedbackResource : Resource 
     {
-        public sealed class Outcome : IStringEnum 
+        public sealed class OutcomeEnum : StringEnum 
         {
-            public const string Confirmed = "confirmed";
-            public const string Umconfirmed = "umconfirmed";
+            private OutcomeEnum(string value) : base(value) {}
+            public OutcomeEnum() {}
         
-            private string _value;
-            
-            public Outcome() {}
-            
-            public Outcome(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Outcome(string value)
-            {
-                return new Outcome(value);
-            }
-            
-            public static implicit operator string(Outcome value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly OutcomeEnum Confirmed = new OutcomeEnum("confirmed");
+            public static readonly OutcomeEnum Umconfirmed = new OutcomeEnum("umconfirmed");
         }
     
         /// <summary>
@@ -77,18 +50,18 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("message_sid")]
-        public string messageSid { get; set; }
+        public string MessageSid { get; set; }
         [JsonProperty("outcome")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public FeedbackResource.Outcome outcome { get; set; }
+        public FeedbackResource.OutcomeEnum Outcome { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public FeedbackResource()
         {
@@ -100,7 +73,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                                  [JsonProperty("message_sid")]
                                  string messageSid, 
                                  [JsonProperty("outcome")]
-                                 FeedbackResource.Outcome outcome, 
+                                 FeedbackResource.OutcomeEnum outcome, 
                                  [JsonProperty("date_created")]
                                  string dateCreated, 
                                  [JsonProperty("date_updated")]
@@ -108,12 +81,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                                  [JsonProperty("uri")]
                                  string uri)
                                  {
-            this.accountSid = accountSid;
-            this.messageSid = messageSid;
-            this.outcome = outcome;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.uri = uri;
+            AccountSid = accountSid;
+            MessageSid = messageSid;
+            Outcome = outcome;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Uri = uri;
         }
     }
 }

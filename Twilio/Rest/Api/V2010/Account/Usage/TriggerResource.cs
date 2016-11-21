@@ -1,210 +1,131 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Usage 
 {
 
     public class TriggerResource : Resource 
     {
-        public sealed class UsageCategory : IStringEnum 
+        public sealed class UsageCategoryEnum : StringEnum 
         {
-            public const string AuthyAuthentications = "authy-authentications";
-            public const string AuthyCallsOutbound = "authy-calls-outbound";
-            public const string AuthyMonthlyFees = "authy-monthly-fees";
-            public const string AuthyPhoneIntelligence = "authy-phone-intelligence";
-            public const string AuthyPhoneVerifications = "authy-phone-verifications";
-            public const string AuthySmsOutbound = "authy-sms-outbound";
-            public const string CallProgessEvents = "call-progess-events";
-            public const string Calleridlookups = "calleridlookups";
-            public const string Calls = "calls";
-            public const string CallsClient = "calls-client";
-            public const string CallsGlobalconference = "calls-globalconference";
-            public const string CallsInbound = "calls-inbound";
-            public const string CallsInboundLocal = "calls-inbound-local";
-            public const string CallsInboundMobile = "calls-inbound-mobile";
-            public const string CallsInboundTollfree = "calls-inbound-tollfree";
-            public const string CallsOutbound = "calls-outbound";
-            public const string CallsRecordings = "calls-recordings";
-            public const string CallsSip = "calls-sip";
-            public const string CallsSipInbound = "calls-sip-inbound";
-            public const string CallsSipOutbound = "calls-sip-outbound";
-            public const string CarrierLookups = "carrier-lookups";
-            public const string Conversations = "conversations";
-            public const string ConversationsApiRequests = "conversations-api-requests";
-            public const string ConversationsConversationEvents = "conversations-conversation-events";
-            public const string ConversationsEndpointConnectivity = "conversations-endpoint-connectivity";
-            public const string ConversationsEvents = "conversations-events";
-            public const string ConversationsParticipantEvents = "conversations-participant-events";
-            public const string ConversationsParticipants = "conversations-participants";
-            public const string IpMessaging = "ip-messaging";
-            public const string IpMessagingCommands = "ip-messaging-commands";
-            public const string IpMessagingDataStorage = "ip-messaging-data-storage";
-            public const string IpMessagingDataTransfer = "ip-messaging-data-transfer";
-            public const string IpMessagingEndpointConnectivity = "ip-messaging-endpoint-connectivity";
-            public const string Lookups = "lookups";
-            public const string Mediastorage = "mediastorage";
-            public const string Mms = "mms";
-            public const string MmsInbound = "mms-inbound";
-            public const string MmsInboundLongcode = "mms-inbound-longcode";
-            public const string MmsInboundShortcode = "mms-inbound-shortcode";
-            public const string MmsOutbound = "mms-outbound";
-            public const string MmsOutboundLongcode = "mms-outbound-longcode";
-            public const string MmsOutboundShortcode = "mms-outbound-shortcode";
-            public const string MonitorReads = "monitor-reads";
-            public const string MonitorStorage = "monitor-storage";
-            public const string MonitorWrites = "monitor-writes";
-            public const string NumberFormatLookups = "number-format-lookups";
-            public const string Phonenumbers = "phonenumbers";
-            public const string PhonenumbersCps = "phonenumbers-cps";
-            public const string PhonenumbersEmergency = "phonenumbers-emergency";
-            public const string PhonenumbersLocal = "phonenumbers-local";
-            public const string PhonenumbersMobile = "phonenumbers-mobile";
-            public const string PhonenumbersSetups = "phonenumbers-setups";
-            public const string PhonenumbersTollfree = "phonenumbers-tollfree";
-            public const string Premiumsupport = "premiumsupport";
-            public const string Recordings = "recordings";
-            public const string Recordingstorage = "recordingstorage";
-            public const string Shortcodes = "shortcodes";
-            public const string ShortcodesCustomerowned = "shortcodes-customerowned";
-            public const string ShortcodesMmsEnablement = "shortcodes-mms-enablement";
-            public const string ShortcodesMps = "shortcodes-mps";
-            public const string ShortcodesRandom = "shortcodes-random";
-            public const string ShortcodesUk = "shortcodes-uk";
-            public const string ShortcodesVanity = "shortcodes-vanity";
-            public const string Sms = "sms";
-            public const string SmsInbound = "sms-inbound";
-            public const string SmsInboundLongcode = "sms-inbound-longcode";
-            public const string SmsInboundShortcode = "sms-inbound-shortcode";
-            public const string SmsOutbound = "sms-outbound";
-            public const string SmsOutboundLongcode = "sms-outbound-longcode";
-            public const string SmsOutboundShortcode = "sms-outbound-shortcode";
-            public const string TaskrouterTasks = "taskrouter-tasks";
-            public const string Totalprice = "totalprice";
-            public const string Transcriptions = "transcriptions";
-            public const string TrunkingCps = "trunking-cps";
-            public const string TrunkingEmergencyCalls = "trunking-emergency-calls";
-            public const string TrunkingOrigination = "trunking-origination";
-            public const string TrunkingOriginationLocal = "trunking-origination-local";
-            public const string TrunkingOriginationMobile = "trunking-origination-mobile";
-            public const string TrunkingOriginationTollfree = "trunking-origination-tollfree";
-            public const string TrunkingRecordings = "trunking-recordings";
-            public const string TrunkingSecure = "trunking-secure";
-            public const string TrunkingTermination = "trunking-termination";
-            public const string Turnmegabytes = "turnmegabytes";
-            public const string TurnmegabytesAustralia = "turnmegabytes-australia";
-            public const string TurnmegabytesBrasil = "turnmegabytes-brasil";
-            public const string TurnmegabytesIreland = "turnmegabytes-ireland";
-            public const string TurnmegabytesJapan = "turnmegabytes-japan";
-            public const string TurnmegabytesSingapore = "turnmegabytes-singapore";
-            public const string TurnmegabytesUseast = "turnmegabytes-useast";
-            public const string TurnmegabytesUswest = "turnmegabytes-uswest";
+            private UsageCategoryEnum(string value) : base(value) {}
+            public UsageCategoryEnum() {}
         
-            private string _value;
-            
-            public UsageCategory() {}
-            
-            public UsageCategory(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator UsageCategory(string value)
-            {
-                return new UsageCategory(value);
-            }
-            
-            public static implicit operator string(UsageCategory value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly UsageCategoryEnum AuthyAuthentications = new UsageCategoryEnum("authy-authentications");
+            public static readonly UsageCategoryEnum AuthyCallsOutbound = new UsageCategoryEnum("authy-calls-outbound");
+            public static readonly UsageCategoryEnum AuthyMonthlyFees = new UsageCategoryEnum("authy-monthly-fees");
+            public static readonly UsageCategoryEnum AuthyPhoneIntelligence = new UsageCategoryEnum("authy-phone-intelligence");
+            public static readonly UsageCategoryEnum AuthyPhoneVerifications = new UsageCategoryEnum("authy-phone-verifications");
+            public static readonly UsageCategoryEnum AuthySmsOutbound = new UsageCategoryEnum("authy-sms-outbound");
+            public static readonly UsageCategoryEnum CallProgessEvents = new UsageCategoryEnum("call-progess-events");
+            public static readonly UsageCategoryEnum Calleridlookups = new UsageCategoryEnum("calleridlookups");
+            public static readonly UsageCategoryEnum Calls = new UsageCategoryEnum("calls");
+            public static readonly UsageCategoryEnum CallsClient = new UsageCategoryEnum("calls-client");
+            public static readonly UsageCategoryEnum CallsGlobalconference = new UsageCategoryEnum("calls-globalconference");
+            public static readonly UsageCategoryEnum CallsInbound = new UsageCategoryEnum("calls-inbound");
+            public static readonly UsageCategoryEnum CallsInboundLocal = new UsageCategoryEnum("calls-inbound-local");
+            public static readonly UsageCategoryEnum CallsInboundMobile = new UsageCategoryEnum("calls-inbound-mobile");
+            public static readonly UsageCategoryEnum CallsInboundTollfree = new UsageCategoryEnum("calls-inbound-tollfree");
+            public static readonly UsageCategoryEnum CallsOutbound = new UsageCategoryEnum("calls-outbound");
+            public static readonly UsageCategoryEnum CallsRecordings = new UsageCategoryEnum("calls-recordings");
+            public static readonly UsageCategoryEnum CallsSip = new UsageCategoryEnum("calls-sip");
+            public static readonly UsageCategoryEnum CallsSipInbound = new UsageCategoryEnum("calls-sip-inbound");
+            public static readonly UsageCategoryEnum CallsSipOutbound = new UsageCategoryEnum("calls-sip-outbound");
+            public static readonly UsageCategoryEnum CarrierLookups = new UsageCategoryEnum("carrier-lookups");
+            public static readonly UsageCategoryEnum Conversations = new UsageCategoryEnum("conversations");
+            public static readonly UsageCategoryEnum ConversationsApiRequests = new UsageCategoryEnum("conversations-api-requests");
+            public static readonly UsageCategoryEnum ConversationsConversationEvents = new UsageCategoryEnum("conversations-conversation-events");
+            public static readonly UsageCategoryEnum ConversationsEndpointConnectivity = new UsageCategoryEnum("conversations-endpoint-connectivity");
+            public static readonly UsageCategoryEnum ConversationsEvents = new UsageCategoryEnum("conversations-events");
+            public static readonly UsageCategoryEnum ConversationsParticipantEvents = new UsageCategoryEnum("conversations-participant-events");
+            public static readonly UsageCategoryEnum ConversationsParticipants = new UsageCategoryEnum("conversations-participants");
+            public static readonly UsageCategoryEnum IpMessaging = new UsageCategoryEnum("ip-messaging");
+            public static readonly UsageCategoryEnum IpMessagingCommands = new UsageCategoryEnum("ip-messaging-commands");
+            public static readonly UsageCategoryEnum IpMessagingDataStorage = new UsageCategoryEnum("ip-messaging-data-storage");
+            public static readonly UsageCategoryEnum IpMessagingDataTransfer = new UsageCategoryEnum("ip-messaging-data-transfer");
+            public static readonly UsageCategoryEnum IpMessagingEndpointConnectivity = new UsageCategoryEnum("ip-messaging-endpoint-connectivity");
+            public static readonly UsageCategoryEnum Lookups = new UsageCategoryEnum("lookups");
+            public static readonly UsageCategoryEnum Mediastorage = new UsageCategoryEnum("mediastorage");
+            public static readonly UsageCategoryEnum Mms = new UsageCategoryEnum("mms");
+            public static readonly UsageCategoryEnum MmsInbound = new UsageCategoryEnum("mms-inbound");
+            public static readonly UsageCategoryEnum MmsInboundLongcode = new UsageCategoryEnum("mms-inbound-longcode");
+            public static readonly UsageCategoryEnum MmsInboundShortcode = new UsageCategoryEnum("mms-inbound-shortcode");
+            public static readonly UsageCategoryEnum MmsOutbound = new UsageCategoryEnum("mms-outbound");
+            public static readonly UsageCategoryEnum MmsOutboundLongcode = new UsageCategoryEnum("mms-outbound-longcode");
+            public static readonly UsageCategoryEnum MmsOutboundShortcode = new UsageCategoryEnum("mms-outbound-shortcode");
+            public static readonly UsageCategoryEnum MonitorReads = new UsageCategoryEnum("monitor-reads");
+            public static readonly UsageCategoryEnum MonitorStorage = new UsageCategoryEnum("monitor-storage");
+            public static readonly UsageCategoryEnum MonitorWrites = new UsageCategoryEnum("monitor-writes");
+            public static readonly UsageCategoryEnum NumberFormatLookups = new UsageCategoryEnum("number-format-lookups");
+            public static readonly UsageCategoryEnum Phonenumbers = new UsageCategoryEnum("phonenumbers");
+            public static readonly UsageCategoryEnum PhonenumbersCps = new UsageCategoryEnum("phonenumbers-cps");
+            public static readonly UsageCategoryEnum PhonenumbersEmergency = new UsageCategoryEnum("phonenumbers-emergency");
+            public static readonly UsageCategoryEnum PhonenumbersLocal = new UsageCategoryEnum("phonenumbers-local");
+            public static readonly UsageCategoryEnum PhonenumbersMobile = new UsageCategoryEnum("phonenumbers-mobile");
+            public static readonly UsageCategoryEnum PhonenumbersSetups = new UsageCategoryEnum("phonenumbers-setups");
+            public static readonly UsageCategoryEnum PhonenumbersTollfree = new UsageCategoryEnum("phonenumbers-tollfree");
+            public static readonly UsageCategoryEnum Premiumsupport = new UsageCategoryEnum("premiumsupport");
+            public static readonly UsageCategoryEnum Recordings = new UsageCategoryEnum("recordings");
+            public static readonly UsageCategoryEnum Recordingstorage = new UsageCategoryEnum("recordingstorage");
+            public static readonly UsageCategoryEnum Shortcodes = new UsageCategoryEnum("shortcodes");
+            public static readonly UsageCategoryEnum ShortcodesCustomerowned = new UsageCategoryEnum("shortcodes-customerowned");
+            public static readonly UsageCategoryEnum ShortcodesMmsEnablement = new UsageCategoryEnum("shortcodes-mms-enablement");
+            public static readonly UsageCategoryEnum ShortcodesMps = new UsageCategoryEnum("shortcodes-mps");
+            public static readonly UsageCategoryEnum ShortcodesRandom = new UsageCategoryEnum("shortcodes-random");
+            public static readonly UsageCategoryEnum ShortcodesUk = new UsageCategoryEnum("shortcodes-uk");
+            public static readonly UsageCategoryEnum ShortcodesVanity = new UsageCategoryEnum("shortcodes-vanity");
+            public static readonly UsageCategoryEnum Sms = new UsageCategoryEnum("sms");
+            public static readonly UsageCategoryEnum SmsInbound = new UsageCategoryEnum("sms-inbound");
+            public static readonly UsageCategoryEnum SmsInboundLongcode = new UsageCategoryEnum("sms-inbound-longcode");
+            public static readonly UsageCategoryEnum SmsInboundShortcode = new UsageCategoryEnum("sms-inbound-shortcode");
+            public static readonly UsageCategoryEnum SmsOutbound = new UsageCategoryEnum("sms-outbound");
+            public static readonly UsageCategoryEnum SmsOutboundLongcode = new UsageCategoryEnum("sms-outbound-longcode");
+            public static readonly UsageCategoryEnum SmsOutboundShortcode = new UsageCategoryEnum("sms-outbound-shortcode");
+            public static readonly UsageCategoryEnum TaskrouterTasks = new UsageCategoryEnum("taskrouter-tasks");
+            public static readonly UsageCategoryEnum Totalprice = new UsageCategoryEnum("totalprice");
+            public static readonly UsageCategoryEnum Transcriptions = new UsageCategoryEnum("transcriptions");
+            public static readonly UsageCategoryEnum TrunkingCps = new UsageCategoryEnum("trunking-cps");
+            public static readonly UsageCategoryEnum TrunkingEmergencyCalls = new UsageCategoryEnum("trunking-emergency-calls");
+            public static readonly UsageCategoryEnum TrunkingOrigination = new UsageCategoryEnum("trunking-origination");
+            public static readonly UsageCategoryEnum TrunkingOriginationLocal = new UsageCategoryEnum("trunking-origination-local");
+            public static readonly UsageCategoryEnum TrunkingOriginationMobile = new UsageCategoryEnum("trunking-origination-mobile");
+            public static readonly UsageCategoryEnum TrunkingOriginationTollfree = new UsageCategoryEnum("trunking-origination-tollfree");
+            public static readonly UsageCategoryEnum TrunkingRecordings = new UsageCategoryEnum("trunking-recordings");
+            public static readonly UsageCategoryEnum TrunkingSecure = new UsageCategoryEnum("trunking-secure");
+            public static readonly UsageCategoryEnum TrunkingTermination = new UsageCategoryEnum("trunking-termination");
+            public static readonly UsageCategoryEnum Turnmegabytes = new UsageCategoryEnum("turnmegabytes");
+            public static readonly UsageCategoryEnum TurnmegabytesAustralia = new UsageCategoryEnum("turnmegabytes-australia");
+            public static readonly UsageCategoryEnum TurnmegabytesBrasil = new UsageCategoryEnum("turnmegabytes-brasil");
+            public static readonly UsageCategoryEnum TurnmegabytesIreland = new UsageCategoryEnum("turnmegabytes-ireland");
+            public static readonly UsageCategoryEnum TurnmegabytesJapan = new UsageCategoryEnum("turnmegabytes-japan");
+            public static readonly UsageCategoryEnum TurnmegabytesSingapore = new UsageCategoryEnum("turnmegabytes-singapore");
+            public static readonly UsageCategoryEnum TurnmegabytesUseast = new UsageCategoryEnum("turnmegabytes-useast");
+            public static readonly UsageCategoryEnum TurnmegabytesUswest = new UsageCategoryEnum("turnmegabytes-uswest");
         }
     
-        public sealed class Recurring : IStringEnum 
+        public sealed class RecurringEnum : StringEnum 
         {
-            public const string Daily = "daily";
-            public const string Monthly = "monthly";
-            public const string Yearly = "yearly";
-            public const string Alltime = "alltime";
+            private RecurringEnum(string value) : base(value) {}
+            public RecurringEnum() {}
         
-            private string _value;
-            
-            public Recurring() {}
-            
-            public Recurring(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Recurring(string value)
-            {
-                return new Recurring(value);
-            }
-            
-            public static implicit operator string(Recurring value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly RecurringEnum Daily = new RecurringEnum("daily");
+            public static readonly RecurringEnum Monthly = new RecurringEnum("monthly");
+            public static readonly RecurringEnum Yearly = new RecurringEnum("yearly");
+            public static readonly RecurringEnum Alltime = new RecurringEnum("alltime");
         }
     
-        public sealed class TriggerField : IStringEnum 
+        public sealed class TriggerFieldEnum : StringEnum 
         {
-            public const string Count = "count";
-            public const string Usage = "usage";
-            public const string Price = "price";
+            private TriggerFieldEnum(string value) : base(value) {}
+            public TriggerFieldEnum() {}
         
-            private string _value;
-            
-            public TriggerField() {}
-            
-            public TriggerField(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator TriggerField(string value)
-            {
-                return new TriggerField(value);
-            }
-            
-            public static implicit operator string(TriggerField value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly TriggerFieldEnum Count = new TriggerFieldEnum("count");
+            public static readonly TriggerFieldEnum Usage = new TriggerFieldEnum("usage");
+            public static readonly TriggerFieldEnum Price = new TriggerFieldEnum("price");
         }
     
         /// <summary>
@@ -248,7 +169,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="triggerValue"> the value at which the trigger will fire </param>
         /// <param name="usageCategory"> The usage category the trigger watches </param>
         /// <returns> TriggerCreator capable of executing the create </returns> 
-        public static TriggerCreator Creator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategory usageCategory)
+        public static TriggerCreator Creator(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategoryEnum usageCategory)
         {
             return new TriggerCreator(callbackUrl, triggerValue, usageCategory);
         }
@@ -283,41 +204,41 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod callbackMethod { get; set; }
+        public Twilio.Http.HttpMethod CallbackMethod { get; set; }
         [JsonProperty("callback_url")]
-        public Uri callbackUrl { get; set; }
+        public Uri CallbackUrl { get; set; }
         [JsonProperty("current_value")]
-        public string currentValue { get; set; }
+        public string CurrentValue { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_fired")]
-        public DateTime? dateFired { get; set; }
+        public DateTime? DateFired { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("recurring")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TriggerResource.Recurring recurring { get; set; }
+        public TriggerResource.RecurringEnum Recurring { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("trigger_by")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TriggerResource.TriggerField triggerBy { get; set; }
+        public TriggerResource.TriggerFieldEnum TriggerBy { get; set; }
         [JsonProperty("trigger_value")]
-        public string triggerValue { get; set; }
+        public string TriggerValue { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
         [JsonProperty("usage_category")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TriggerResource.UsageCategory usageCategory { get; set; }
+        public TriggerResource.UsageCategoryEnum UsageCategory { get; set; }
         [JsonProperty("usage_record_uri")]
-        public string usageRecordUri { get; set; }
+        public string UsageRecordUri { get; set; }
     
         public TriggerResource()
         {
@@ -343,36 +264,36 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                 [JsonProperty("friendly_name")]
                                 string friendlyName, 
                                 [JsonProperty("recurring")]
-                                TriggerResource.Recurring recurring, 
+                                TriggerResource.RecurringEnum recurring, 
                                 [JsonProperty("sid")]
                                 string sid, 
                                 [JsonProperty("trigger_by")]
-                                TriggerResource.TriggerField triggerBy, 
+                                TriggerResource.TriggerFieldEnum triggerBy, 
                                 [JsonProperty("trigger_value")]
                                 string triggerValue, 
                                 [JsonProperty("uri")]
                                 string uri, 
                                 [JsonProperty("usage_category")]
-                                TriggerResource.UsageCategory usageCategory, 
+                                TriggerResource.UsageCategoryEnum usageCategory, 
                                 [JsonProperty("usage_record_uri")]
                                 string usageRecordUri)
                                 {
-            this.accountSid = accountSid;
-            this.apiVersion = apiVersion;
-            this.callbackMethod = callbackMethod;
-            this.callbackUrl = callbackUrl;
-            this.currentValue = currentValue;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateFired = MarshalConverter.DateTimeFromString(dateFired);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.recurring = recurring;
-            this.sid = sid;
-            this.triggerBy = triggerBy;
-            this.triggerValue = triggerValue;
-            this.uri = uri;
-            this.usageCategory = usageCategory;
-            this.usageRecordUri = usageRecordUri;
+            AccountSid = accountSid;
+            ApiVersion = apiVersion;
+            CallbackMethod = callbackMethod;
+            CallbackUrl = callbackUrl;
+            CurrentValue = currentValue;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateFired = MarshalConverter.DateTimeFromString(dateFired);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            Recurring = recurring;
+            Sid = sid;
+            TriggerBy = triggerBy;
+            TriggerValue = triggerValue;
+            Uri = uri;
+            UsageCategory = usageCategory;
+            UsageRecordUri = usageRecordUri;
         }
     }
 }

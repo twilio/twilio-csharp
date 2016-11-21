@@ -3,20 +3,16 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service.SyncMap 
 {
 
     public class SyncMapItemReader : Reader<SyncMapItemResource> 
     {
-        public string serviceSid { get; }
-        public string mapSid { get; }
-        public SyncMapItemResource.QueryResultOrder order { get; set; }
-        public string from { get; set; }
-        public SyncMapItemResource.QueryFromBoundType bounds { get; set; }
+        public string ServiceSid { get; }
+        public string MapSid { get; }
+        public SyncMapItemResource.QueryResultOrderEnum Order { get; set; }
+        public string From { get; set; }
+        public SyncMapItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
     
         /// <summary>
         /// Construct a new SyncMapItemReader
@@ -26,8 +22,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="mapSid"> The map_sid </param>
         public SyncMapItemReader(string serviceSid, string mapSid)
         {
-            this.serviceSid = serviceSid;
-            this.mapSid = mapSid;
+            ServiceSid = serviceSid;
+            MapSid = mapSid;
         }
     
         #if NET40
@@ -37,12 +33,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> SyncMapItemResource ResourceSet </returns> 
-        public override Task<ResourceSet<SyncMapItemResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<SyncMapItemResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items"
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Maps/" + MapSid + "/Items",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -61,9 +58,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         public override ResourceSet<SyncMapItemResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.mapSid + "/Items"
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Maps/" + MapSid + "/Items",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -82,9 +80,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         public override Page<SyncMapItemResource> NextPage(Page<SyncMapItemResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.PREVIEW
+                    Rest.Domain.Preview,
+                    client.Region
                 )
             );
             
@@ -132,19 +131,19 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (order != null)
+            if (Order != null)
             {
-                request.AddQueryParam("Order", order.ToString());
+                request.AddQueryParam("Order", Order.ToString());
             }
             
-            if (from != null)
+            if (From != null)
             {
-                request.AddQueryParam("From", from);
+                request.AddQueryParam("From", From);
             }
             
-            if (bounds != null)
+            if (Bounds != null)
             {
-                request.AddQueryParam("Bounds", bounds.ToString());
+                request.AddQueryParam("Bounds", Bounds.ToString());
             }
             
             if (PageSize != null)

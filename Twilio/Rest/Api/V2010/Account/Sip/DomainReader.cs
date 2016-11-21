@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip 
 {
 
     public class DomainReader : Reader<DomainResource> 
     {
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
     
         #if NET40
         /// <summary>
@@ -21,12 +17,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> DomainResource ResourceSet </returns> 
-        public override Task<ResourceSet<DomainResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<DomainResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -45,9 +42,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public override ResourceSet<DomainResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -66,9 +64,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public override Page<DomainResource> NextPage(Page<DomainResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             

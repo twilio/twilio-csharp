@@ -3,18 +3,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Wireless 
 {
 
     public class CommandReader : Reader<CommandResource> 
     {
-        public string device { get; set; }
-        public string status { get; set; }
-        public string direction { get; set; }
+        public string Device { get; set; }
+        public string Status { get; set; }
+        public string Direction { get; set; }
     
         #if NET40
         /// <summary>
@@ -23,12 +19,13 @@ namespace Twilio.Rest.Preview.Wireless
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CommandResource ResourceSet </returns> 
-        public override Task<ResourceSet<CommandResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.PREVIEW,
-                "/wireless/Commands"
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/wireless/Commands",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -47,9 +44,10 @@ namespace Twilio.Rest.Preview.Wireless
         public override ResourceSet<CommandResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.PREVIEW,
-                "/wireless/Commands"
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/wireless/Commands",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -68,9 +66,10 @@ namespace Twilio.Rest.Preview.Wireless
         public override Page<CommandResource> NextPage(Page<CommandResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.PREVIEW
+                    Rest.Domain.Preview,
+                    client.Region
                 )
             );
             
@@ -118,19 +117,19 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (device != null)
+            if (Device != null)
             {
-                request.AddQueryParam("Device", device);
+                request.AddQueryParam("Device", Device);
             }
             
-            if (status != null)
+            if (Status != null)
             {
-                request.AddQueryParam("Status", status);
+                request.AddQueryParam("Status", Status);
             }
             
-            if (direction != null)
+            if (Direction != null)
             {
-                request.AddQueryParam("Direction", direction);
+                request.AddQueryParam("Direction", Direction);
             }
             
             if (PageSize != null)

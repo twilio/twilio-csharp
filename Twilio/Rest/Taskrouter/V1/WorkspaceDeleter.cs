@@ -4,16 +4,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Taskrouter.V1;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1 
 {
 
     public class WorkspaceDeleter : Deleter<WorkspaceResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new WorkspaceDeleter
@@ -22,7 +18,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="sid"> The sid </param>
         public WorkspaceDeleter(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -34,9 +30,10 @@ namespace Twilio.Rest.Taskrouter.V1
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.sid + ""
+                HttpMethod.Delete,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -73,9 +70,10 @@ namespace Twilio.Rest.Taskrouter.V1
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.sid + ""
+                HttpMethod.Delete,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

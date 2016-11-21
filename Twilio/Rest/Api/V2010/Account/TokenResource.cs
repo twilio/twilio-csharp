@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
@@ -43,19 +41,19 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("ice_servers")]
-        public List<IceServer> iceServers { get; set; }
+        public List<IceServer> IceServers { get; set; }
         [JsonProperty("password")]
-        public string password { get; set; }
+        public string Password { get; set; }
         [JsonProperty("ttl")]
-        public string ttl { get; set; }
+        public string Ttl { get; set; }
         [JsonProperty("username")]
-        public string username { get; set; }
+        public string Username { get; set; }
     
         public TokenResource()
         {
@@ -77,13 +75,13 @@ namespace Twilio.Rest.Api.V2010.Account
                               [JsonProperty("username")]
                               string username)
                               {
-            this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.iceServers = iceServers;
-            this.password = password;
-            this.ttl = ttl;
-            this.username = username;
+            AccountSid = accountSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            IceServers = iceServers;
+            Password = password;
+            Ttl = ttl;
+            Username = username;
         }
     }
 }

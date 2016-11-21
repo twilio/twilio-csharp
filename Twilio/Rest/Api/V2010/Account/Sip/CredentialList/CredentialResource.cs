@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList 
 {
@@ -91,19 +89,19 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("credential_list_sid")]
-        public string credentialListSid { get; set; }
+        public string CredentialListSid { get; set; }
         [JsonProperty("username")]
-        public string username { get; set; }
+        public string Username { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public CredentialResource()
         {
@@ -125,13 +123,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
                                    [JsonProperty("uri")]
                                    string uri)
                                    {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.credentialListSid = credentialListSid;
-            this.username = username;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.uri = uri;
+            Sid = sid;
+            AccountSid = accountSid;
+            CredentialListSid = credentialListSid;
+            Username = username;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Uri = uri;
         }
     }
 }

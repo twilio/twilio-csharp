@@ -3,23 +3,19 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class AddressCreator : Creator<AddressResource> 
     {
-        public string accountSid { get; set; }
-        public string customerName { get; }
-        public string street { get; }
-        public string city { get; }
-        public string region { get; }
-        public string postalCode { get; }
-        public string isoCountry { get; }
-        public string friendlyName { get; set; }
+        public string AccountSid { get; set; }
+        public string CustomerName { get; }
+        public string Street { get; }
+        public string City { get; }
+        public string Region { get; }
+        public string PostalCode { get; }
+        public string IsoCountry { get; }
+        public string FriendlyName { get; set; }
     
         /// <summary>
         /// Construct a new AddressCreator
@@ -33,12 +29,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="isoCountry"> The iso_country </param>
         public AddressCreator(string customerName, string street, string city, string region, string postalCode, string isoCountry)
         {
-            this.customerName = customerName;
-            this.street = street;
-            this.city = city;
-            this.region = region;
-            this.postalCode = postalCode;
-            this.isoCountry = isoCountry;
+            CustomerName = customerName;
+            Street = street;
+            City = city;
+            Region = region;
+            PostalCode = postalCode;
+            IsoCountry = isoCountry;
         }
     
         #if NET40
@@ -48,12 +44,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created AddressResource </returns> 
-        public override async Task<AddressResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<AddressResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Addresses.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Addresses.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -92,9 +89,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override AddressResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Addresses.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Addresses.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -130,39 +128,39 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (customerName != null)
+            if (CustomerName != null)
             {
-                request.AddPostParam("CustomerName", customerName);
+                request.AddPostParam("CustomerName", CustomerName);
             }
             
-            if (street != null)
+            if (Street != null)
             {
-                request.AddPostParam("Street", street);
+                request.AddPostParam("Street", Street);
             }
             
-            if (city != null)
+            if (City != null)
             {
-                request.AddPostParam("City", city);
+                request.AddPostParam("City", City);
             }
             
-            if (region != null)
+            if (Region != null)
             {
-                request.AddPostParam("Region", region);
+                request.AddPostParam("Region", Region);
             }
             
-            if (postalCode != null)
+            if (PostalCode != null)
             {
-                request.AddPostParam("PostalCode", postalCode);
+                request.AddPostParam("PostalCode", PostalCode);
             }
             
-            if (isoCountry != null)
+            if (IsoCountry != null)
             {
-                request.AddPostParam("IsoCountry", isoCountry);
+                request.AddPostParam("IsoCountry", IsoCountry);
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }

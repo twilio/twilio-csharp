@@ -3,19 +3,15 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class AddressReader : Reader<AddressResource> 
     {
-        public string accountSid { get; set; }
-        public string customerName { get; set; }
-        public string friendlyName { get; set; }
-        public string isoCountry { get; set; }
+        public string AccountSid { get; set; }
+        public string CustomerName { get; set; }
+        public string FriendlyName { get; set; }
+        public string IsoCountry { get; set; }
     
         #if NET40
         /// <summary>
@@ -24,12 +20,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> AddressResource ResourceSet </returns> 
-        public override Task<ResourceSet<AddressResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<AddressResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Addresses.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Addresses.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -48,9 +45,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override ResourceSet<AddressResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Addresses.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Addresses.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -69,9 +67,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override Page<AddressResource> NextPage(Page<AddressResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             
@@ -119,19 +118,19 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (customerName != null)
+            if (CustomerName != null)
             {
-                request.AddQueryParam("CustomerName", customerName);
+                request.AddQueryParam("CustomerName", CustomerName);
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
-            if (isoCountry != null)
+            if (IsoCountry != null)
             {
-                request.AddQueryParam("IsoCountry", isoCountry);
+                request.AddQueryParam("IsoCountry", IsoCountry);
             }
             
             if (PageSize != null)

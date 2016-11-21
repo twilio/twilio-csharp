@@ -3,20 +3,16 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class WorkerUpdater : Updater<WorkerResource> 
     {
-        public string workspaceSid { get; }
-        public string sid { get; }
-        public string activitySid { get; set; }
-        public string attributes { get; set; }
-        public string friendlyName { get; set; }
+        public string WorkspaceSid { get; }
+        public string Sid { get; }
+        public string ActivitySid { get; set; }
+        public string Attributes { get; set; }
+        public string FriendlyName { get; set; }
     
         /// <summary>
         /// Construct a new WorkerUpdater
@@ -26,8 +22,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="sid"> The sid </param>
         public WorkerUpdater(string workspaceSid, string sid)
         {
-            this.workspaceSid = workspaceSid;
-            this.sid = sid;
+            WorkspaceSid = workspaceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -37,12 +33,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated WorkerResource </returns> 
-        public override async Task<WorkerResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<WorkerResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -81,9 +78,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override WorkerResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -119,19 +117,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (activitySid != null)
+            if (ActivitySid != null)
             {
-                request.AddPostParam("ActivitySid", activitySid);
+                request.AddPostParam("ActivitySid", ActivitySid);
             }
             
-            if (attributes != null)
+            if (Attributes != null)
             {
-                request.AddPostParam("Attributes", attributes);
+                request.AddPostParam("Attributes", Attributes);
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }

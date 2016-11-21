@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
@@ -58,10 +56,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Create a queue
         /// </summary>
         ///
+        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
         /// <returns> QueueCreator capable of executing the create </returns> 
-        public static QueueCreator Creator()
+        public static QueueCreator Creator(string friendlyName)
         {
-            return new QueueCreator();
+            return new QueueCreator(friendlyName);
         }
     
         /// <summary>
@@ -84,23 +83,23 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("average_wait_time")]
-        public int? averageWaitTime { get; set; }
+        public int? AverageWaitTime { get; set; }
         [JsonProperty("current_size")]
-        public int? currentSize { get; set; }
+        public int? CurrentSize { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("max_size")]
-        public int? maxSize { get; set; }
+        public int? MaxSize { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public QueueResource()
         {
@@ -126,15 +125,15 @@ namespace Twilio.Rest.Api.V2010.Account
                               [JsonProperty("uri")]
                               string uri)
                               {
-            this.accountSid = accountSid;
-            this.averageWaitTime = averageWaitTime;
-            this.currentSize = currentSize;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.maxSize = maxSize;
-            this.sid = sid;
-            this.uri = uri;
+            AccountSid = accountSid;
+            AverageWaitTime = averageWaitTime;
+            CurrentSize = currentSize;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            MaxSize = maxSize;
+            Sid = sid;
+            Uri = uri;
         }
     }
 }

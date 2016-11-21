@@ -1,125 +1,46 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Conference 
 {
 
     public class ParticipantResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Queued = "queued";
-            public const string Connecting = "connecting";
-            public const string Ringing = "ringing";
-            public const string Connected = "connected";
-            public const string Complete = "complete";
-            public const string Failed = "failed";
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
         
-            private string _value;
-            
-            public Status() {}
-            
-            public Status(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Status(string value)
-            {
-                return new Status(value);
-            }
-            
-            public static implicit operator string(Status value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly StatusEnum Queued = new StatusEnum("queued");
+            public static readonly StatusEnum Connecting = new StatusEnum("connecting");
+            public static readonly StatusEnum Ringing = new StatusEnum("ringing");
+            public static readonly StatusEnum Connected = new StatusEnum("connected");
+            public static readonly StatusEnum Complete = new StatusEnum("complete");
+            public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
     
-        public sealed class Beep : IStringEnum 
+        public sealed class BeepEnum : StringEnum 
         {
-            public const string True = "true";
-            public const string False = "false";
-            public const string Onenter = "onEnter";
-            public const string Onexit = "onExit";
+            private BeepEnum(string value) : base(value) {}
+            public BeepEnum() {}
         
-            private string _value;
-            
-            public Beep() {}
-            
-            public Beep(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Beep(string value)
-            {
-                return new Beep(value);
-            }
-            
-            public static implicit operator string(Beep value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly BeepEnum True = new BeepEnum("true");
+            public static readonly BeepEnum False = new BeepEnum("false");
+            public static readonly BeepEnum Onenter = new BeepEnum("onEnter");
+            public static readonly BeepEnum Onexit = new BeepEnum("onExit");
         }
     
-        public sealed class ConferenceRecord : IStringEnum 
+        public sealed class ConferenceRecordEnum : StringEnum 
         {
-            public const string DoNotRecord = "do-not-record";
-            public const string RecordFromStart = "record-from-start";
+            private ConferenceRecordEnum(string value) : base(value) {}
+            public ConferenceRecordEnum() {}
         
-            private string _value;
-            
-            public ConferenceRecord() {}
-            
-            public ConferenceRecord(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator ConferenceRecord(string value)
-            {
-                return new ConferenceRecord(value);
-            }
-            
-            public static implicit operator string(ConferenceRecord value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly ConferenceRecordEnum DoNotRecord = new ConferenceRecordEnum("do-not-record");
+            public static readonly ConferenceRecordEnum RecordFromStart = new ConferenceRecordEnum("record-from-start");
         }
     
         /// <summary>
@@ -154,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="from"> The from </param>
         /// <param name="to"> The to </param>
         /// <returns> ParticipantCreator capable of executing the create </returns> 
-        public static ParticipantCreator Creator(string conferenceSid, Twilio.Types.PhoneNumber from, Twilio.Types.PhoneNumber to)
+        public static ParticipantCreator Creator(string conferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
         {
             return new ParticipantCreator(conferenceSid, from, to);
         }
@@ -202,28 +123,28 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("call_sid")]
-        public string callSid { get; set; }
+        public string CallSid { get; set; }
         [JsonProperty("conference_sid")]
-        public string conferenceSid { get; set; }
+        public string ConferenceSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("end_conference_on_exit")]
-        public bool? endConferenceOnExit { get; set; }
+        public bool? EndConferenceOnExit { get; set; }
         [JsonProperty("muted")]
-        public bool? muted { get; set; }
+        public bool? Muted { get; set; }
         [JsonProperty("hold")]
-        public bool? hold { get; set; }
+        public bool? Hold { get; set; }
         [JsonProperty("start_conference_on_enter")]
-        public bool? startConferenceOnEnter { get; set; }
+        public bool? StartConferenceOnEnter { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ParticipantResource.Status status { get; set; }
+        public ParticipantResource.StatusEnum Status { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public ParticipantResource()
         {
@@ -249,21 +170,21 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                     [JsonProperty("start_conference_on_enter")]
                                     bool? startConferenceOnEnter, 
                                     [JsonProperty("status")]
-                                    ParticipantResource.Status status, 
+                                    ParticipantResource.StatusEnum status, 
                                     [JsonProperty("uri")]
                                     string uri)
                                     {
-            this.accountSid = accountSid;
-            this.callSid = callSid;
-            this.conferenceSid = conferenceSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.endConferenceOnExit = endConferenceOnExit;
-            this.muted = muted;
-            this.hold = hold;
-            this.startConferenceOnEnter = startConferenceOnEnter;
-            this.status = status;
-            this.uri = uri;
+            AccountSid = accountSid;
+            CallSid = callSid;
+            ConferenceSid = conferenceSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            EndConferenceOnExit = endConferenceOnExit;
+            Muted = muted;
+            Hold = hold;
+            StartConferenceOnEnter = startConferenceOnEnter;
+            Status = status;
+            Uri = uri;
         }
     }
 }

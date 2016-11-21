@@ -3,19 +3,15 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class WorkspaceStatisticsFetcher : Fetcher<WorkspaceStatisticsResource> 
     {
-        public string workspaceSid { get; }
-        public int? minutes { get; set; }
-        public string startDate { get; set; }
-        public string endDate { get; set; }
+        public string WorkspaceSid { get; }
+        public int? Minutes { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
     
         /// <summary>
         /// Construct a new WorkspaceStatisticsFetcher
@@ -24,7 +20,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workspaceSid"> The workspace_sid </param>
         public WorkspaceStatisticsFetcher(string workspaceSid)
         {
-            this.workspaceSid = workspaceSid;
+            WorkspaceSid = workspaceSid;
         }
     
         #if NET40
@@ -34,12 +30,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched WorkspaceStatisticsResource </returns> 
-        public override async Task<WorkspaceStatisticsResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<WorkspaceStatisticsResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Statistics"
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Statistics",
+                client.Region
             );
             
                 AddQueryParams(request);
@@ -80,9 +77,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override WorkspaceStatisticsResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Statistics"
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Statistics",
+                client.Region
             );
             
                 AddQueryParams(request);
@@ -120,19 +118,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (minutes != null)
+            if (Minutes != null)
             {
-                request.AddQueryParam("Minutes", minutes.ToString());
+                request.AddQueryParam("Minutes", Minutes.ToString());
             }
             
-            if (startDate != null)
+            if (StartDate != null)
             {
-                request.AddQueryParam("StartDate", startDate);
+                request.AddQueryParam("StartDate", StartDate);
             }
             
-            if (endDate != null)
+            if (EndDate != null)
             {
-                request.AddQueryParam("EndDate", endDate);
+                request.AddQueryParam("EndDate", EndDate);
             }
         }
     }

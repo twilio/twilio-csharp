@@ -4,17 +4,13 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.Sync.Service;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service 
 {
 
     public class SyncMapDeleter : Deleter<SyncMapResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new SyncMapDeleter
@@ -24,8 +20,8 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="sid"> The sid </param>
         public SyncMapDeleter(string serviceSid, string sid)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
+            ServiceSid = serviceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -37,9 +33,10 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.sid + ""
+                HttpMethod.Delete,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Maps/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -76,9 +73,10 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.sid + ""
+                HttpMethod.Delete,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Maps/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

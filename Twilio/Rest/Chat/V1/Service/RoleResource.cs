@@ -2,49 +2,22 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Chat.V1.Service 
 {
 
     public class RoleResource : Resource 
     {
-        public sealed class RoleType : IStringEnum 
+        public sealed class RoleTypeEnum : StringEnum 
         {
-            public const string Channel = "channel";
-            public const string Deployment = "deployment";
+            private RoleTypeEnum(string value) : base(value) {}
+            public RoleTypeEnum() {}
         
-            private string _value;
-            
-            public RoleType() {}
-            
-            public RoleType(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator RoleType(string value)
-            {
-                return new RoleType(value);
-            }
-            
-            public static implicit operator string(RoleType value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly RoleTypeEnum Channel = new RoleTypeEnum("channel");
+            public static readonly RoleTypeEnum Deployment = new RoleTypeEnum("deployment");
         }
     
         /// <summary>
@@ -80,7 +53,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="type"> The type </param>
         /// <param name="permission"> The permission </param>
         /// <returns> RoleCreator capable of executing the create </returns> 
-        public static RoleCreator Creator(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission)
+        public static RoleCreator Creator(string serviceSid, string friendlyName, RoleResource.RoleTypeEnum type, List<string> permission)
         {
             return new RoleCreator(serviceSid, friendlyName, type, permission);
         }
@@ -129,24 +102,24 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; set; }
+        public string ServiceSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public RoleResource.RoleType type { get; set; }
+        public RoleResource.RoleTypeEnum Type { get; set; }
         [JsonProperty("permissions")]
-        public List<string> permissions { get; set; }
+        public List<string> Permissions { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public RoleResource()
         {
@@ -162,7 +135,7 @@ namespace Twilio.Rest.Chat.V1.Service
                              [JsonProperty("friendly_name")]
                              string friendlyName, 
                              [JsonProperty("type")]
-                             RoleResource.RoleType type, 
+                             RoleResource.RoleTypeEnum type, 
                              [JsonProperty("permissions")]
                              List<string> permissions, 
                              [JsonProperty("date_created")]
@@ -172,15 +145,15 @@ namespace Twilio.Rest.Chat.V1.Service
                              [JsonProperty("url")]
                              Uri url)
                              {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.serviceSid = serviceSid;
-            this.friendlyName = friendlyName;
-            this.type = type;
-            this.permissions = permissions;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.url = url;
+            Sid = sid;
+            AccountSid = accountSid;
+            ServiceSid = serviceSid;
+            FriendlyName = friendlyName;
+            Type = type;
+            Permissions = permissions;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Url = url;
         }
     }
 }

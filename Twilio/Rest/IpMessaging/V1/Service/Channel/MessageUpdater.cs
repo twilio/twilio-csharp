@@ -1,23 +1,18 @@
-using System;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-
-#if NET40
-using System.Threading.Tasks;
-#endif
 
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
 {
 
     public class MessageUpdater : Updater<MessageResource> 
     {
-        public string serviceSid { get; }
-        public string channelSid { get; }
-        public string sid { get; }
-        public string body { get; }
-        public Object attributes { get; set; }
+        public string ServiceSid { get; }
+        public string ChannelSid { get; }
+        public string Sid { get; }
+        public string Body { get; }
+        public string Attributes { get; set; }
     
         /// <summary>
         /// Construct a new MessageUpdater
@@ -29,10 +24,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="body"> The body </param>
         public MessageUpdater(string serviceSid, string channelSid, string sid, string body)
         {
-            this.serviceSid = serviceSid;
-            this.channelSid = channelSid;
-            this.sid = sid;
-            this.body = body;
+            ServiceSid = serviceSid;
+            ChannelSid = channelSid;
+            Sid = sid;
+            Body = body;
         }
     
         #if NET40
@@ -42,12 +37,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated MessageResource </returns> 
-        public override async Task<MessageResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<MessageResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -86,9 +82,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         public override MessageResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Messages/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Messages/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -124,14 +121,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (body != null)
+            if (Body != null)
             {
-                request.AddPostParam("Body", body);
+                request.AddPostParam("Body", Body);
             }
             
-            if (attributes != null)
+            if (Attributes != null)
             {
-                request.AddPostParam("Attributes", attributes.ToString());
+                request.AddPostParam("Attributes", Attributes);
             }
         }
     }

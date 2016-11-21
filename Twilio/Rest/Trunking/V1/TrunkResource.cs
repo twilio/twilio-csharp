@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Trunking.V1 
 {
@@ -85,34 +83,34 @@ namespace Twilio.Rest.Trunking.V1
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("domain_name")]
-        public string domainName { get; set; }
+        public string DomainName { get; set; }
         [JsonProperty("disaster_recovery_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod disasterRecoveryMethod { get; set; }
+        public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; set; }
         [JsonProperty("disaster_recovery_url")]
-        public Uri disasterRecoveryUrl { get; set; }
+        public Uri DisasterRecoveryUrl { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("secure")]
-        public bool? secure { get; set; }
+        public bool? Secure { get; set; }
         [JsonProperty("recording")]
-        public Object recording { get; set; }
+        public Object Recording { get; set; }
         [JsonProperty("auth_type")]
-        public string authType { get; set; }
+        public string AuthType { get; set; }
         [JsonProperty("auth_type_set")]
-        public List<string> authTypeSet { get; set; }
+        public List<string> AuthTypeSet { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
     
         public TrunkResource()
         {
@@ -148,20 +146,20 @@ namespace Twilio.Rest.Trunking.V1
                               [JsonProperty("links")]
                               Dictionary<string, string> links)
                               {
-            this.accountSid = accountSid;
-            this.domainName = domainName;
-            this.disasterRecoveryMethod = disasterRecoveryMethod;
-            this.disasterRecoveryUrl = disasterRecoveryUrl;
-            this.friendlyName = friendlyName;
-            this.secure = secure;
-            this.recording = recording;
-            this.authType = authType;
-            this.authTypeSet = authTypeSet;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.sid = sid;
-            this.url = url;
-            this.links = links;
+            AccountSid = accountSid;
+            DomainName = domainName;
+            DisasterRecoveryMethod = disasterRecoveryMethod;
+            DisasterRecoveryUrl = disasterRecoveryUrl;
+            FriendlyName = friendlyName;
+            Secure = secure;
+            Recording = recording;
+            AuthType = authType;
+            AuthTypeSet = authTypeSet;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Sid = sid;
+            Url = url;
+            Links = links;
         }
     }
 }

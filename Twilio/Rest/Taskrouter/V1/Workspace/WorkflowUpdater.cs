@@ -4,22 +4,18 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class WorkflowUpdater : Updater<WorkflowResource> 
     {
-        public string workspaceSid { get; }
-        public string sid { get; }
-        public string friendlyName { get; set; }
-        public Uri assignmentCallbackUrl { get; set; }
-        public Uri fallbackAssignmentCallbackUrl { get; set; }
-        public string configuration { get; set; }
-        public int? taskReservationTimeout { get; set; }
+        public string WorkspaceSid { get; }
+        public string Sid { get; }
+        public string FriendlyName { get; set; }
+        public Uri AssignmentCallbackUrl { get; set; }
+        public Uri FallbackAssignmentCallbackUrl { get; set; }
+        public string Configuration { get; set; }
+        public int? TaskReservationTimeout { get; set; }
     
         /// <summary>
         /// Construct a new WorkflowUpdater
@@ -29,8 +25,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="sid"> The sid </param>
         public WorkflowUpdater(string workspaceSid, string sid)
         {
-            this.workspaceSid = workspaceSid;
-            this.sid = sid;
+            WorkspaceSid = workspaceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -40,12 +36,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated WorkflowResource </returns> 
-        public override async Task<WorkflowResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<WorkflowResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workflows/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Workflows/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -84,9 +81,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override WorkflowResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workflows/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Workflows/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -122,29 +120,29 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (assignmentCallbackUrl != null)
+            if (AssignmentCallbackUrl != null)
             {
-                request.AddPostParam("AssignmentCallbackUrl", assignmentCallbackUrl.ToString());
+                request.AddPostParam("AssignmentCallbackUrl", AssignmentCallbackUrl.ToString());
             }
             
-            if (fallbackAssignmentCallbackUrl != null)
+            if (FallbackAssignmentCallbackUrl != null)
             {
-                request.AddPostParam("FallbackAssignmentCallbackUrl", fallbackAssignmentCallbackUrl.ToString());
+                request.AddPostParam("FallbackAssignmentCallbackUrl", FallbackAssignmentCallbackUrl.ToString());
             }
             
-            if (configuration != null)
+            if (Configuration != null)
             {
-                request.AddPostParam("Configuration", configuration);
+                request.AddPostParam("Configuration", Configuration);
             }
             
-            if (taskReservationTimeout != null)
+            if (TaskReservationTimeout != null)
             {
-                request.AddPostParam("TaskReservationTimeout", taskReservationTimeout.ToString());
+                request.AddPostParam("TaskReservationTimeout", TaskReservationTimeout.ToString());
             }
         }
     }

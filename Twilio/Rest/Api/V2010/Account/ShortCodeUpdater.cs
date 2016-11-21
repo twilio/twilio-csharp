@@ -4,23 +4,19 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class ShortCodeUpdater : Updater<ShortCodeResource> 
     {
-        public string accountSid { get; set; }
-        public string sid { get; }
-        public string friendlyName { get; set; }
-        public string apiVersion { get; set; }
-        public Uri smsUrl { get; set; }
-        public Twilio.Http.HttpMethod smsMethod { get; set; }
-        public Uri smsFallbackUrl { get; set; }
-        public Twilio.Http.HttpMethod smsFallbackMethod { get; set; }
+        public string AccountSid { get; set; }
+        public string Sid { get; }
+        public string FriendlyName { get; set; }
+        public string ApiVersion { get; set; }
+        public Uri SmsUrl { get; set; }
+        public Twilio.Http.HttpMethod SmsMethod { get; set; }
+        public Uri SmsFallbackUrl { get; set; }
+        public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
     
         /// <summary>
         /// Construct a new ShortCodeUpdater
@@ -29,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> The sid </param>
         public ShortCodeUpdater(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -39,12 +35,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated ShortCodeResource </returns> 
-        public override async Task<ShortCodeResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes/" + this.sid + ".json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SMS/ShortCodes/" + Sid + ".json",
+                client.Region
             );
             AddPostParams(request);
             
@@ -83,9 +80,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override ShortCodeResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes/" + this.sid + ".json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SMS/ShortCodes/" + Sid + ".json",
+                client.Region
             );
             AddPostParams(request);
             
@@ -121,34 +119,34 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (apiVersion != null)
+            if (ApiVersion != null)
             {
-                request.AddPostParam("ApiVersion", apiVersion);
+                request.AddPostParam("ApiVersion", ApiVersion);
             }
             
-            if (smsUrl != null)
+            if (SmsUrl != null)
             {
-                request.AddPostParam("SmsUrl", smsUrl.ToString());
+                request.AddPostParam("SmsUrl", SmsUrl.ToString());
             }
             
-            if (smsMethod != null)
+            if (SmsMethod != null)
             {
-                request.AddPostParam("SmsMethod", smsMethod.ToString());
+                request.AddPostParam("SmsMethod", SmsMethod.ToString());
             }
             
-            if (smsFallbackUrl != null)
+            if (SmsFallbackUrl != null)
             {
-                request.AddPostParam("SmsFallbackUrl", smsFallbackUrl.ToString());
+                request.AddPostParam("SmsFallbackUrl", SmsFallbackUrl.ToString());
             }
             
-            if (smsFallbackMethod != null)
+            if (SmsFallbackMethod != null)
             {
-                request.AddPostParam("SmsFallbackMethod", smsFallbackMethod.ToString());
+                request.AddPostParam("SmsFallbackMethod", SmsFallbackMethod.ToString());
             }
         }
     }

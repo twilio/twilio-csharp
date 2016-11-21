@@ -3,19 +3,15 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
 {
 
     public class MemberCreator : Creator<MemberResource> 
     {
-        public string serviceSid { get; }
-        public string channelSid { get; }
-        public string identity { get; }
-        public string roleSid { get; set; }
+        public string ServiceSid { get; }
+        public string ChannelSid { get; }
+        public string Identity { get; }
+        public string RoleSid { get; set; }
     
         /// <summary>
         /// Construct a new MemberCreator
@@ -26,9 +22,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="identity"> The identity </param>
         public MemberCreator(string serviceSid, string channelSid, string identity)
         {
-            this.serviceSid = serviceSid;
-            this.channelSid = channelSid;
-            this.identity = identity;
+            ServiceSid = serviceSid;
+            ChannelSid = channelSid;
+            Identity = identity;
         }
     
         #if NET40
@@ -38,12 +34,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created MemberResource </returns> 
-        public override async Task<MemberResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<MemberResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members"
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Members",
+                client.Region
             );
             
             AddPostParams(request);
@@ -82,9 +79,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         public override MemberResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members"
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Members",
+                client.Region
             );
             
             AddPostParams(request);
@@ -120,14 +118,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (identity != null)
+            if (Identity != null)
             {
-                request.AddPostParam("Identity", identity);
+                request.AddPostParam("Identity", Identity);
             }
             
-            if (roleSid != null)
+            if (RoleSid != null)
             {
-                request.AddPostParam("RoleSid", roleSid);
+                request.AddPostParam("RoleSid", RoleSid);
             }
         }
     }

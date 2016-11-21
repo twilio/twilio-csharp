@@ -3,23 +3,19 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class WorkerReader : Reader<WorkerResource> 
     {
-        public string workspaceSid { get; }
-        public string activityName { get; set; }
-        public string activitySid { get; set; }
-        public string available { get; set; }
-        public string friendlyName { get; set; }
-        public string targetWorkersExpression { get; set; }
-        public string taskQueueName { get; set; }
-        public string taskQueueSid { get; set; }
+        public string WorkspaceSid { get; }
+        public string ActivityName { get; set; }
+        public string ActivitySid { get; set; }
+        public string Available { get; set; }
+        public string FriendlyName { get; set; }
+        public string TargetWorkersExpression { get; set; }
+        public string TaskQueueName { get; set; }
+        public string TaskQueueSid { get; set; }
     
         /// <summary>
         /// Construct a new WorkerReader
@@ -28,7 +24,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workspaceSid"> The workspace_sid </param>
         public WorkerReader(string workspaceSid)
         {
-            this.workspaceSid = workspaceSid;
+            WorkspaceSid = workspaceSid;
         }
     
         #if NET40
@@ -38,12 +34,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> WorkerResource ResourceSet </returns> 
-        public override Task<ResourceSet<WorkerResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<WorkerResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers"
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -62,9 +59,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override ResourceSet<WorkerResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Workers"
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Workers",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -83,9 +81,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override Page<WorkerResource> NextPage(Page<WorkerResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.TASKROUTER
+                    Rest.Domain.Taskrouter,
+                    client.Region
                 )
             );
             
@@ -133,39 +132,39 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (activityName != null)
+            if (ActivityName != null)
             {
-                request.AddQueryParam("ActivityName", activityName);
+                request.AddQueryParam("ActivityName", ActivityName);
             }
             
-            if (activitySid != null)
+            if (ActivitySid != null)
             {
-                request.AddQueryParam("ActivitySid", activitySid);
+                request.AddQueryParam("ActivitySid", ActivitySid);
             }
             
-            if (available != null)
+            if (Available != null)
             {
-                request.AddQueryParam("Available", available);
+                request.AddQueryParam("Available", Available);
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
-            if (targetWorkersExpression != null)
+            if (TargetWorkersExpression != null)
             {
-                request.AddQueryParam("TargetWorkersExpression", targetWorkersExpression);
+                request.AddQueryParam("TargetWorkersExpression", TargetWorkersExpression);
             }
             
-            if (taskQueueName != null)
+            if (TaskQueueName != null)
             {
-                request.AddQueryParam("TaskQueueName", taskQueueName);
+                request.AddQueryParam("TaskQueueName", TaskQueueName);
             }
             
-            if (taskQueueSid != null)
+            if (TaskQueueSid != null)
             {
-                request.AddQueryParam("TaskQueueSid", taskQueueSid);
+                request.AddQueryParam("TaskQueueSid", TaskQueueSid);
             }
             
             if (PageSize != null)

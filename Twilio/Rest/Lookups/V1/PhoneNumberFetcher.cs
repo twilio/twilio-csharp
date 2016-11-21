@@ -5,29 +5,25 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Lookups.V1 
 {
 
     public class PhoneNumberFetcher : Fetcher<PhoneNumberResource> 
     {
-        public Twilio.Types.PhoneNumber phoneNumber { get; }
-        public string countryCode { get; set; }
-        public List<string> type { get; set; }
-        public List<string> addOns { get; set; }
-        public Dictionary<string, object> addOnsData { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; }
+        public string CountryCode { get; set; }
+        public List<string> Type { get; set; }
+        public List<string> AddOns { get; set; }
+        public Dictionary<string, object> AddOnsData { get; set; }
     
         /// <summary>
         /// Construct a new PhoneNumberFetcher
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
-        public PhoneNumberFetcher(Twilio.Types.PhoneNumber phoneNumber)
+        public PhoneNumberFetcher(Types.PhoneNumber phoneNumber)
         {
-            this.phoneNumber = phoneNumber;
+            PhoneNumber = phoneNumber;
         }
     
         #if NET40
@@ -37,12 +33,13 @@ namespace Twilio.Rest.Lookups.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched PhoneNumberResource </returns> 
-        public override async Task<PhoneNumberResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.LOOKUPS,
-                "/v1/PhoneNumbers/" + this.phoneNumber + ""
+                HttpMethod.Get,
+                Rest.Domain.Lookups,
+                "/v1/PhoneNumbers/" + PhoneNumber + "",
+                client.Region
             );
             
                 AddQueryParams(request);
@@ -83,9 +80,10 @@ namespace Twilio.Rest.Lookups.V1
         public override PhoneNumberResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.LOOKUPS,
-                "/v1/PhoneNumbers/" + this.phoneNumber + ""
+                HttpMethod.Get,
+                Rest.Domain.Lookups,
+                "/v1/PhoneNumbers/" + PhoneNumber + "",
+                client.Region
             );
             
                 AddQueryParams(request);
@@ -123,30 +121,30 @@ namespace Twilio.Rest.Lookups.V1
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (countryCode != null)
+            if (CountryCode != null)
             {
-                request.AddQueryParam("CountryCode", countryCode);
+                request.AddQueryParam("CountryCode", CountryCode);
             }
             
-            if (type != null)
+            if (Type != null)
             {
-                foreach (object prop in type)
+                foreach (object prop in Type)
                 {
                     request.AddQueryParam("Type", prop.ToString());
                 }
             }
             
-            if (addOns != null)
+            if (AddOns != null)
             {
-                foreach (object prop in addOns)
+                foreach (object prop in AddOns)
                 {
                     request.AddQueryParam("AddOns", prop.ToString());
                 }
             }
             
-            if (addOnsData != null)
+            if (AddOnsData != null)
             {
-                Dictionary<string, string> dictParams = PrefixedCollapsibleMap.Serialize(addOnsData, "AddOns");
+                Dictionary<string, string> dictParams = PrefixedCollapsibleMap.Serialize(AddOnsData, "AddOns");
                 foreach (KeyValuePair<string, string> entry in dictParams) {
                     request.AddQueryParam(entry.Key, entry.Value);
                 }

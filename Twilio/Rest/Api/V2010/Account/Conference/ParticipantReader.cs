@@ -3,19 +3,15 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Conference 
 {
 
     public class ParticipantReader : Reader<ParticipantResource> 
     {
-        public string accountSid { get; set; }
-        public string conferenceSid { get; }
-        public bool? muted { get; set; }
-        public bool? hold { get; set; }
+        public string AccountSid { get; set; }
+        public string ConferenceSid { get; }
+        public bool? Muted { get; set; }
+        public bool? Hold { get; set; }
     
         /// <summary>
         /// Construct a new ParticipantReader
@@ -24,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
         public ParticipantReader(string conferenceSid)
         {
-            this.conferenceSid = conferenceSid;
+            ConferenceSid = conferenceSid;
         }
     
         #if NET40
@@ -34,12 +30,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ParticipantResource ResourceSet </returns> 
-        public override Task<ResourceSet<ParticipantResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Conferences/" + ConferenceSid + "/Participants.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -58,9 +55,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public override ResourceSet<ParticipantResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences/" + this.conferenceSid + "/Participants.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Conferences/" + ConferenceSid + "/Participants.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -79,9 +77,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         public override Page<ParticipantResource> NextPage(Page<ParticipantResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             
@@ -129,14 +128,14 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (muted != null)
+            if (Muted != null)
             {
-                request.AddQueryParam("Muted", muted.ToString());
+                request.AddQueryParam("Muted", Muted.ToString());
             }
             
-            if (hold != null)
+            if (Hold != null)
             {
-                request.AddQueryParam("Hold", hold.ToString());
+                request.AddQueryParam("Hold", Hold.ToString());
             }
             
             if (PageSize != null)

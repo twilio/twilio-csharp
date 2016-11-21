@@ -4,16 +4,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Trunking.V1;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1 
 {
 
     public class TrunkDeleter : Deleter<TrunkResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new TrunkDeleter
@@ -22,7 +18,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="sid"> The sid </param>
         public TrunkDeleter(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -34,9 +30,10 @@ namespace Twilio.Rest.Trunking.V1
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.sid + ""
+                HttpMethod.Delete,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -73,9 +70,10 @@ namespace Twilio.Rest.Trunking.V1
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.sid + ""
+                HttpMethod.Delete,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

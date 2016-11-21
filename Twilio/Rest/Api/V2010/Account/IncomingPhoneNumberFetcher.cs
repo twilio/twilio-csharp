@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class IncomingPhoneNumberFetcher : Fetcher<IncomingPhoneNumberResource> 
     {
-        public string ownerAccountSid { get; set; }
-        public string sid { get; }
+        public string OwnerAccountSid { get; set; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new IncomingPhoneNumberFetcher
@@ -22,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> Fetch by unique incoming-phone-number Sid </param>
         public IncomingPhoneNumberFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -32,12 +28,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched IncomingPhoneNumberResource </returns> 
-        public override async Task<IncomingPhoneNumberResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<IncomingPhoneNumberResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (ownerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.sid + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.AccountSid) + "/IncomingPhoneNumbers/" + Sid + ".json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -75,9 +72,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override IncomingPhoneNumberResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (ownerAccountSid ?? client.GetAccountSid()) + "/IncomingPhoneNumbers/" + this.sid + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (OwnerAccountSid ?? client.AccountSid) + "/IncomingPhoneNumbers/" + Sid + ".json",
+                client.Region
             );
             
             var response = client.Request(request);

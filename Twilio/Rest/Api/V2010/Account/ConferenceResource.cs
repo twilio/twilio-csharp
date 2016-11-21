@@ -2,50 +2,23 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class ConferenceResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Init = "init";
-            public const string InProgress = "in-progress";
-            public const string Completed = "completed";
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
         
-            private string _value;
-            
-            public Status() {}
-            
-            public Status(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Status(string value)
-            {
-                return new Status(value);
-            }
-            
-            public static implicit operator string(Status value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly StatusEnum Init = new StatusEnum("init");
+            public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
         }
     
         /// <summary>
@@ -89,24 +62,24 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ConferenceResource.Status status { get; set; }
+        public ConferenceResource.StatusEnum Status { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; set; }
     
         public ConferenceResource()
         {
@@ -126,21 +99,21 @@ namespace Twilio.Rest.Api.V2010.Account
                                    [JsonProperty("sid")]
                                    string sid, 
                                    [JsonProperty("status")]
-                                   ConferenceResource.Status status, 
+                                   ConferenceResource.StatusEnum status, 
                                    [JsonProperty("uri")]
                                    string uri, 
                                    [JsonProperty("subresource_uris")]
                                    Dictionary<string, string> subresourceUris)
                                    {
-            this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.apiVersion = apiVersion;
-            this.friendlyName = friendlyName;
-            this.sid = sid;
-            this.status = status;
-            this.uri = uri;
-            this.subresourceUris = subresourceUris;
+            AccountSid = accountSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            ApiVersion = apiVersion;
+            FriendlyName = friendlyName;
+            Sid = sid;
+            Status = status;
+            Uri = uri;
+            SubresourceUris = subresourceUris;
         }
     }
 }

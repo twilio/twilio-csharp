@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
 {
@@ -44,29 +42,29 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     
         [JsonProperty("address_of_record")]
-        public string addressOfRecord { get; set; }
+        public string AddressOfRecord { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("date_expires")]
-        public DateTime? dateExpires { get; set; }
+        public DateTime? DateExpires { get; set; }
         [JsonProperty("sip_call_id")]
-        public string sipCallId { get; set; }
+        public string SipCallId { get; set; }
         [JsonProperty("sip_contact")]
-        public string sipContact { get; set; }
+        public string SipContact { get; set; }
         [JsonProperty("sip_cseq")]
-        public int? sipCseq { get; set; }
+        public int? SipCseq { get; set; }
         [JsonProperty("sip_path")]
-        public string sipPath { get; set; }
+        public string SipPath { get; set; }
         [JsonProperty("sip_via")]
-        public string sipVia { get; set; }
+        public string SipVia { get; set; }
         [JsonProperty("user_agent")]
-        public string userAgent { get; set; }
+        public string UserAgent { get; set; }
         [JsonProperty("channel_type")]
-        public string channelType { get; set; }
+        public string ChannelType { get; set; }
         [JsonProperty("display_name")]
-        public string displayName { get; set; }
+        public string DisplayName { get; set; }
     
         public RegistrationEndpointResource()
         {
@@ -98,18 +96,18 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
                                              [JsonProperty("display_name")]
                                              string displayName)
                                              {
-            this.addressOfRecord = addressOfRecord;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.dateExpires = MarshalConverter.DateTimeFromString(dateExpires);
-            this.sipCallId = sipCallId;
-            this.sipContact = sipContact;
-            this.sipCseq = sipCseq;
-            this.sipPath = sipPath;
-            this.sipVia = sipVia;
-            this.userAgent = userAgent;
-            this.channelType = channelType;
-            this.displayName = displayName;
+            AddressOfRecord = addressOfRecord;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            DateExpires = MarshalConverter.DateTimeFromString(dateExpires);
+            SipCallId = sipCallId;
+            SipContact = sipContact;
+            SipCseq = sipCseq;
+            SipPath = sipPath;
+            SipVia = sipVia;
+            UserAgent = userAgent;
+            ChannelType = channelType;
+            DisplayName = displayName;
         }
     }
 }

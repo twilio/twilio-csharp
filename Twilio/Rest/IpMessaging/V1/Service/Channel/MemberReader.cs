@@ -1,19 +1,17 @@
+using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-
-#if NET40
-using System.Threading.Tasks;
-#endif
 
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
 {
 
     public class MemberReader : Reader<MemberResource> 
     {
-        public string serviceSid { get; }
-        public string channelSid { get; }
+        public string ServiceSid { get; }
+        public string ChannelSid { get; }
+        public List<string> Identity { get; set; }
     
         /// <summary>
         /// Construct a new MemberReader
@@ -23,8 +21,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="channelSid"> The channel_sid </param>
         public MemberReader(string serviceSid, string channelSid)
         {
-            this.serviceSid = serviceSid;
-            this.channelSid = channelSid;
+            ServiceSid = serviceSid;
+            ChannelSid = channelSid;
         }
     
         #if NET40
@@ -34,12 +32,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> MemberResource ResourceSet </returns> 
-        public override Task<ResourceSet<MemberResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members"
+                HttpMethod.Get,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Members",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -58,9 +57,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         public override ResourceSet<MemberResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Channels/" + this.channelSid + "/Members"
+                HttpMethod.Get,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Channels/" + ChannelSid + "/Members",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -79,9 +79,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         public override Page<MemberResource> NextPage(Page<MemberResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.IP_MESSAGING
+                    Rest.Domain.IpMessaging,
+                    client.Region
                 )
             );
             
@@ -129,6 +130,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
+            if (Identity != null)
+            {
+                request.AddQueryParam("Identity", Identity.ToString());
+            }
+            
             if (PageSize != null)
             {
                 request.AddQueryParam("PageSize", PageSize.ToString());

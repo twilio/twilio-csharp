@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Recording 
 {
 
     public class TranscriptionReader : Reader<TranscriptionResource> 
     {
-        public string accountSid { get; set; }
-        public string recordingSid { get; }
+        public string AccountSid { get; set; }
+        public string RecordingSid { get; }
     
         /// <summary>
         /// Construct a new TranscriptionReader
@@ -22,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="recordingSid"> The recording_sid </param>
         public TranscriptionReader(string recordingSid)
         {
-            this.recordingSid = recordingSid;
+            RecordingSid = recordingSid;
         }
     
         #if NET40
@@ -32,12 +28,13 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> TranscriptionResource ResourceSet </returns> 
-        public override Task<ResourceSet<TranscriptionResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Recordings/" + this.recordingSid + "/Transcriptions.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Recordings/" + RecordingSid + "/Transcriptions.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -56,9 +53,10 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         public override ResourceSet<TranscriptionResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Recordings/" + this.recordingSid + "/Transcriptions.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Recordings/" + RecordingSid + "/Transcriptions.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -77,9 +75,10 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         public override Page<TranscriptionResource> NextPage(Page<TranscriptionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             

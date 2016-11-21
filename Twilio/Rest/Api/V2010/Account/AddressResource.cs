@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
@@ -90,29 +88,29 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("city")]
-        public string city { get; set; }
+        public string City { get; set; }
         [JsonProperty("customer_name")]
-        public string customerName { get; set; }
+        public string CustomerName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("iso_country")]
-        public string isoCountry { get; set; }
+        public string IsoCountry { get; set; }
         [JsonProperty("postal_code")]
-        public string postalCode { get; set; }
+        public string PostalCode { get; set; }
         [JsonProperty("region")]
-        public string region { get; set; }
+        public string Region { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("street")]
-        public string street { get; set; }
+        public string Street { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public AddressResource()
         {
@@ -144,18 +142,18 @@ namespace Twilio.Rest.Api.V2010.Account
                                 [JsonProperty("uri")]
                                 string uri)
                                 {
-            this.accountSid = accountSid;
-            this.city = city;
-            this.customerName = customerName;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.isoCountry = isoCountry;
-            this.postalCode = postalCode;
-            this.region = region;
-            this.sid = sid;
-            this.street = street;
-            this.uri = uri;
+            AccountSid = accountSid;
+            City = city;
+            CustomerName = customerName;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            IsoCountry = isoCountry;
+            PostalCode = postalCode;
+            Region = region;
+            Sid = sid;
+            Street = street;
+            Uri = uri;
         }
     }
 }

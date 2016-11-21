@@ -4,19 +4,15 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.IpMessaging.V1.Service 
 {
 
     public class RoleCreator : Creator<RoleResource> 
     {
-        public string serviceSid { get; }
-        public string friendlyName { get; }
-        public RoleResource.RoleType type { get; }
-        public List<string> permission { get; }
+        public string ServiceSid { get; }
+        public string FriendlyName { get; }
+        public RoleResource.RoleTypeEnum Type { get; }
+        public List<string> Permission { get; }
     
         /// <summary>
         /// Construct a new RoleCreator
@@ -26,12 +22,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="type"> The type </param>
         /// <param name="permission"> The permission </param>
-        public RoleCreator(string serviceSid, string friendlyName, RoleResource.RoleType type, List<string> permission)
+        public RoleCreator(string serviceSid, string friendlyName, RoleResource.RoleTypeEnum type, List<string> permission)
         {
-            this.serviceSid = serviceSid;
-            this.friendlyName = friendlyName;
-            this.type = type;
-            this.permission = permission;
+            ServiceSid = serviceSid;
+            FriendlyName = friendlyName;
+            Type = type;
+            Permission = permission;
         }
     
         #if NET40
@@ -41,12 +37,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created RoleResource </returns> 
-        public override async Task<RoleResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<RoleResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Roles"
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Roles",
+                client.Region
             );
             
             AddPostParams(request);
@@ -85,9 +82,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override RoleResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Roles"
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Roles",
+                client.Region
             );
             
             AddPostParams(request);
@@ -123,19 +121,19 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (type != null)
+            if (Type != null)
             {
-                request.AddPostParam("Type", type.ToString());
+                request.AddPostParam("Type", Type.ToString());
             }
             
-            if (permission != null)
+            if (Permission != null)
             {
-                request.AddPostParam("Permission", permission.ToString());
+                request.AddPostParam("Permission", Permission.ToString());
             }
         }
     }

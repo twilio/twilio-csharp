@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList 
 {
 
     public class IpAddressReader : Reader<IpAddressResource> 
     {
-        public string accountSid { get; set; }
-        public string ipAccessControlListSid { get; }
+        public string AccountSid { get; set; }
+        public string IpAccessControlListSid { get; }
     
         /// <summary>
         /// Construct a new IpAddressReader
@@ -22,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         public IpAddressReader(string ipAccessControlListSid)
         {
-            this.ipAccessControlListSid = ipAccessControlListSid;
+            IpAccessControlListSid = ipAccessControlListSid;
         }
     
         #if NET40
@@ -32,12 +28,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> IpAddressResource ResourceSet </returns> 
-        public override Task<ResourceSet<IpAddressResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<IpAddressResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + IpAccessControlListSid + "/IpAddresses.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -56,9 +53,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         public override ResourceSet<IpAddressResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/IpAccessControlLists/" + this.ipAccessControlListSid + "/IpAddresses.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + IpAccessControlListSid + "/IpAddresses.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -77,9 +75,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         public override Page<IpAddressResource> NextPage(Page<IpAddressResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             

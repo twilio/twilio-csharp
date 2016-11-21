@@ -4,25 +4,21 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Wireless 
 {
 
     public class DeviceUpdater : Updater<DeviceResource> 
     {
-        public string sid { get; }
-        public string alias { get; set; }
-        public string callbackMethod { get; set; }
-        public Uri callbackUrl { get; set; }
-        public string friendlyName { get; set; }
-        public string ratePlan { get; set; }
-        public string simIdentifier { get; set; }
-        public string status { get; set; }
-        public string commandsCallbackMethod { get; set; }
-        public Uri commandsCallbackUrl { get; set; }
+        public string Sid { get; }
+        public string Alias { get; set; }
+        public string CallbackMethod { get; set; }
+        public Uri CallbackUrl { get; set; }
+        public string FriendlyName { get; set; }
+        public string RatePlan { get; set; }
+        public string SimIdentifier { get; set; }
+        public string Status { get; set; }
+        public string CommandsCallbackMethod { get; set; }
+        public Uri CommandsCallbackUrl { get; set; }
     
         /// <summary>
         /// Construct a new DeviceUpdater
@@ -31,7 +27,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="sid"> The sid </param>
         public DeviceUpdater(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -41,12 +37,13 @@ namespace Twilio.Rest.Preview.Wireless
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated DeviceResource </returns> 
-        public override async Task<DeviceResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<DeviceResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.PREVIEW,
-                "/wireless/Devices/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/wireless/Devices/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -85,9 +82,10 @@ namespace Twilio.Rest.Preview.Wireless
         public override DeviceResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.PREVIEW,
-                "/wireless/Devices/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/wireless/Devices/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -123,49 +121,49 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (alias != null)
+            if (Alias != null)
             {
-                request.AddPostParam("Alias", alias);
+                request.AddPostParam("Alias", Alias);
             }
             
-            if (callbackMethod != null)
+            if (CallbackMethod != null)
             {
-                request.AddPostParam("CallbackMethod", callbackMethod);
+                request.AddPostParam("CallbackMethod", CallbackMethod);
             }
             
-            if (callbackUrl != null)
+            if (CallbackUrl != null)
             {
-                request.AddPostParam("CallbackUrl", callbackUrl.ToString());
+                request.AddPostParam("CallbackUrl", CallbackUrl.ToString());
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (ratePlan != null)
+            if (RatePlan != null)
             {
-                request.AddPostParam("RatePlan", ratePlan);
+                request.AddPostParam("RatePlan", RatePlan);
             }
             
-            if (simIdentifier != null)
+            if (SimIdentifier != null)
             {
-                request.AddPostParam("SimIdentifier", simIdentifier);
+                request.AddPostParam("SimIdentifier", SimIdentifier);
             }
             
-            if (status != null)
+            if (Status != null)
             {
-                request.AddPostParam("Status", status);
+                request.AddPostParam("Status", Status);
             }
             
-            if (commandsCallbackMethod != null)
+            if (CommandsCallbackMethod != null)
             {
-                request.AddPostParam("CommandsCallbackMethod", commandsCallbackMethod);
+                request.AddPostParam("CommandsCallbackMethod", CommandsCallbackMethod);
             }
             
-            if (commandsCallbackUrl != null)
+            if (CommandsCallbackUrl != null)
             {
-                request.AddPostParam("CommandsCallbackUrl", commandsCallbackUrl.ToString());
+                request.AddPostParam("CommandsCallbackUrl", CommandsCallbackUrl.ToString());
             }
         }
     }

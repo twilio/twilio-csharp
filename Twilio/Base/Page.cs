@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Twilio.Rest;
 using static System.String;
 
 namespace Twilio.Base
@@ -44,29 +46,38 @@ namespace Twilio.Base
 	        _previousPageUrl = previousPageUrl;
 	    }
 
-	    private static string UrlFromUri(string domain, string uri)
+	    private static string UrlFromUri(Domain domain, string region, string uri)
 	    {
-	        return "https://" + domain + ".twilio.com" + uri;
+	        var b = new StringBuilder();
+	        b.Append("https://").Append(domain);
+	        
+	        if (!string.IsNullOrEmpty(region))
+	        {
+	            b.Append(".").Append(region);
+	        }
+
+	        b.Append(".twilio.com").Append(uri);
+	        return b.ToString();
 	    }
 
-	    public string GetFirstPageUrl(string domain)
+	    public string GetFirstPageUrl(Domain domain, string region)
 	    {
-	        return _firstPageUrl ?? UrlFromUri(domain, _firstPageUri);
+	        return _firstPageUrl ?? UrlFromUri(domain, region, _firstPageUri);
 	    }
 
-	    public string GetNextPageUrl(string domain)
+	    public string GetNextPageUrl(Domain domain, string region)
 	    {
-	        return _nextPageUrl ?? UrlFromUri(domain, _nextPageUri);
+	        return _nextPageUrl ?? UrlFromUri(domain, region, _nextPageUri);
 	    }
 
-	    public string GetPreviousPageUrl(string domain)
+	    public string GetPreviousPageUrl(Domain domain, string region)
 	    {
-	        return _previousPageUrl ?? UrlFromUri(domain, _previousPageUri);
+	        return _previousPageUrl ?? UrlFromUri(domain, region, _previousPageUri);
 	    }
 
-	    public string GetUrl(string domain)
+	    public string GetUrl(Domain domain, string region)
 	    {
-	        return _url ?? UrlFromUri(domain, _uri);
+	        return _url ?? UrlFromUri(domain, region, _uri);
 	    }
 
 	    public bool HasNextPage()

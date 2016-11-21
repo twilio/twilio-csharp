@@ -12,7 +12,7 @@ namespace Twilio.Tests.TwiML
             var vr = new VoiceResponse();
             Assert.AreEqual(
                 vr.ToString(), 
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response />"
             );
         }
@@ -25,7 +25,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Dial timeout=\"5\" method=\"GET\">+11234567890</Dial>\n" + 
                 "</Response>"
@@ -43,7 +43,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Dial hangupOnStar=\"false\" timeLimit=\"100\">\n" +
                 "    <Client method=\"GET\" url=\"www.twilio.com\">client</Client>\n" +
@@ -60,7 +60,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" + 
                 "  <Enqueue action=\"www.twilio.com\">queue</Enqueue>\n" +
                 "</Response>"
@@ -75,7 +75,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Gather timeout=\"5\" />\n" +
                 "</Response>"
@@ -93,7 +93,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Gather>\n" +
                 "    <Say>Hello world</Say>\n" +
@@ -110,7 +110,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Hangup />\n" +
                 "</Response>"
@@ -125,7 +125,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Leave />\n" +
                 "</Response>"
@@ -140,7 +140,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Pause length=\"5\" />\n" +
                 "</Response>"
@@ -155,7 +155,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Play loop=\"2\">www.twilio.com</Play>\n" + 
                 "</Response>"
@@ -170,7 +170,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Record transcribe=\"true\" action=\"www.twilio.com\" method=\"GET\" />\n" +
                 "</Response>"
@@ -185,7 +185,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Redirect method=\"POST\">www.twilio.com</Redirect>\n" +
                 "</Response>"
@@ -200,7 +200,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Reject reason=\"busy\" />\n" +
                 "</Response>"
@@ -215,7 +215,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Say loop=\"3\">hello world</Say>\n" +
                 "</Response>"
@@ -230,7 +230,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Sms to=\"+11234567890\" from=\"+10987654321\">twilio sms</Sms>\n" +
                 "</Response>"
@@ -247,7 +247,7 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 vr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<Response>\n" +
                 "  <Hangup />\n" +
                 "  <Leave />\n" +

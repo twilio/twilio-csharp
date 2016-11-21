@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Chat.V1.Service.Channel 
 {
@@ -96,27 +94,29 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
+        [JsonProperty("attributes")]
+        public string Attributes { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; set; }
+        public string ServiceSid { get; set; }
         [JsonProperty("to")]
-        public string to { get; set; }
+        public string To { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("was_edited")]
-        public bool? wasEdited { get; set; }
+        public bool? WasEdited { get; set; }
         [JsonProperty("from")]
-        public string from { get; set; }
+        public string From { get; set; }
         [JsonProperty("body")]
-        public string body { get; set; }
+        public string Body { get; set; }
         [JsonProperty("index")]
-        public int? index { get; set; }
+        public int? Index { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public MessageResource()
         {
@@ -127,6 +127,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                                 string sid, 
                                 [JsonProperty("account_sid")]
                                 string accountSid, 
+                                [JsonProperty("attributes")]
+                                string attributes, 
                                 [JsonProperty("service_sid")]
                                 string serviceSid, 
                                 [JsonProperty("to")]
@@ -146,17 +148,18 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                                 [JsonProperty("url")]
                                 Uri url)
                                 {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.serviceSid = serviceSid;
-            this.to = to;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.wasEdited = wasEdited;
-            this.from = from;
-            this.body = body;
-            this.index = index;
-            this.url = url;
+            Sid = sid;
+            AccountSid = accountSid;
+            Attributes = attributes;
+            ServiceSid = serviceSid;
+            To = to;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            WasEdited = wasEdited;
+            From = from;
+            Body = body;
+            Index = index;
+            Url = url;
         }
     }
 }

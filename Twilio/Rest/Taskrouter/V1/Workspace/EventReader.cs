@@ -5,25 +5,21 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class EventReader : Reader<EventResource> 
     {
-        public string workspaceSid { get; }
-        public DateTime? endDate { get; set; }
-        public string eventType { get; set; }
-        public int? minutes { get; set; }
-        public string reservationSid { get; set; }
-        public DateTime? startDate { get; set; }
-        public string taskQueueSid { get; set; }
-        public string taskSid { get; set; }
-        public string workerSid { get; set; }
-        public string workflowSid { get; set; }
+        public string WorkspaceSid { get; }
+        public DateTime? EndDate { get; set; }
+        public string EventType { get; set; }
+        public int? Minutes { get; set; }
+        public string ReservationSid { get; set; }
+        public DateTime? StartDate { get; set; }
+        public string TaskQueueSid { get; set; }
+        public string TaskSid { get; set; }
+        public string WorkerSid { get; set; }
+        public string WorkflowSid { get; set; }
     
         /// <summary>
         /// Construct a new EventReader
@@ -32,7 +28,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workspaceSid"> The workspace_sid </param>
         public EventReader(string workspaceSid)
         {
-            this.workspaceSid = workspaceSid;
+            WorkspaceSid = workspaceSid;
         }
     
         #if NET40
@@ -42,12 +38,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> EventResource ResourceSet </returns> 
-        public override Task<ResourceSet<EventResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Events"
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Events",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -66,9 +63,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override ResourceSet<EventResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Events"
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Events",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -87,9 +85,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override Page<EventResource> NextPage(Page<EventResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.TASKROUTER
+                    Rest.Domain.Taskrouter,
+                    client.Region
                 )
             );
             
@@ -137,49 +136,49 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (endDate != null)
+            if (EndDate != null)
             {
-                request.AddQueryParam("EndDate", endDate.ToString());
+                request.AddQueryParam("EndDate", EndDate.ToString());
             }
             
-            if (eventType != null)
+            if (EventType != null)
             {
-                request.AddQueryParam("EventType", eventType);
+                request.AddQueryParam("EventType", EventType);
             }
             
-            if (minutes != null)
+            if (Minutes != null)
             {
-                request.AddQueryParam("Minutes", minutes.ToString());
+                request.AddQueryParam("Minutes", Minutes.ToString());
             }
             
-            if (reservationSid != null)
+            if (ReservationSid != null)
             {
-                request.AddQueryParam("ReservationSid", reservationSid);
+                request.AddQueryParam("ReservationSid", ReservationSid);
             }
             
-            if (startDate != null)
+            if (StartDate != null)
             {
-                request.AddQueryParam("StartDate", startDate.ToString());
+                request.AddQueryParam("StartDate", StartDate.ToString());
             }
             
-            if (taskQueueSid != null)
+            if (TaskQueueSid != null)
             {
-                request.AddQueryParam("TaskQueueSid", taskQueueSid);
+                request.AddQueryParam("TaskQueueSid", TaskQueueSid);
             }
             
-            if (taskSid != null)
+            if (TaskSid != null)
             {
-                request.AddQueryParam("TaskSid", taskSid);
+                request.AddQueryParam("TaskSid", TaskSid);
             }
             
-            if (workerSid != null)
+            if (WorkerSid != null)
             {
-                request.AddQueryParam("WorkerSid", workerSid);
+                request.AddQueryParam("WorkerSid", WorkerSid);
             }
             
-            if (workflowSid != null)
+            if (WorkflowSid != null)
             {
-                request.AddQueryParam("WorkflowSid", workflowSid);
+                request.AddQueryParam("WorkflowSid", WorkflowSid);
             }
             
             if (PageSize != null)

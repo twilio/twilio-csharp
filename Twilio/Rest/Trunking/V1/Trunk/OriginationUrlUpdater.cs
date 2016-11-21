@@ -4,22 +4,18 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
     public class OriginationUrlUpdater : Updater<OriginationUrlResource> 
     {
-        public string trunkSid { get; }
-        public string sid { get; }
-        public int? weight { get; set; }
-        public int? priority { get; set; }
-        public bool? enabled { get; set; }
-        public string friendlyName { get; set; }
-        public Uri sipUrl { get; set; }
+        public string TrunkSid { get; }
+        public string Sid { get; }
+        public int? Weight { get; set; }
+        public int? Priority { get; set; }
+        public bool? Enabled { get; set; }
+        public string FriendlyName { get; set; }
+        public Uri SipUrl { get; set; }
     
         /// <summary>
         /// Construct a new OriginationUrlUpdater
@@ -29,8 +25,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="sid"> The sid </param>
         public OriginationUrlUpdater(string trunkSid, string sid)
         {
-            this.trunkSid = trunkSid;
-            this.sid = sid;
+            TrunkSid = trunkSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -40,12 +36,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Updated OriginationUrlResource </returns> 
-        public override async Task<OriginationUrlResource> UpdateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<OriginationUrlResource> UpdateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/OriginationUrls/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/OriginationUrls/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -84,9 +81,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override OriginationUrlResource Update(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.POST,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/OriginationUrls/" + this.sid + ""
+                HttpMethod.Post,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/OriginationUrls/" + Sid + "",
+                client.Region
             );
             AddPostParams(request);
             
@@ -122,29 +120,29 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (weight != null)
+            if (Weight != null)
             {
-                request.AddPostParam("Weight", weight.ToString());
+                request.AddPostParam("Weight", Weight.ToString());
             }
             
-            if (priority != null)
+            if (Priority != null)
             {
-                request.AddPostParam("Priority", priority.ToString());
+                request.AddPostParam("Priority", Priority.ToString());
             }
             
-            if (enabled != null)
+            if (Enabled != null)
             {
-                request.AddPostParam("Enabled", enabled.ToString());
+                request.AddPostParam("Enabled", Enabled.ToString());
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (sipUrl != null)
+            if (SipUrl != null)
             {
-                request.AddPostParam("SipUrl", sipUrl.ToString());
+                request.AddPostParam("SipUrl", SipUrl.ToString());
             }
         }
     }

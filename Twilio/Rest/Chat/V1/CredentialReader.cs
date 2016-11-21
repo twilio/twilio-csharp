@@ -3,10 +3,6 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Chat.V1 
 {
 
@@ -19,12 +15,13 @@ namespace Twilio.Rest.Chat.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CredentialResource ResourceSet </returns> 
-        public override Task<ResourceSet<CredentialResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.CHAT,
-                "/v1/Credentials"
+                HttpMethod.Get,
+                Rest.Domain.Chat,
+                "/v1/Credentials",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -43,9 +40,10 @@ namespace Twilio.Rest.Chat.V1
         public override ResourceSet<CredentialResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.CHAT,
-                "/v1/Credentials"
+                HttpMethod.Get,
+                Rest.Domain.Chat,
+                "/v1/Credentials",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -64,9 +62,10 @@ namespace Twilio.Rest.Chat.V1
         public override Page<CredentialResource> NextPage(Page<CredentialResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.CHAT
+                    Rest.Domain.Chat,
+                    client.Region
                 )
             );
             

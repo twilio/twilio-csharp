@@ -3,18 +3,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service.SyncList 
 {
 
     public class SyncListItemFetcher : Fetcher<SyncListItemResource> 
     {
-        public string serviceSid { get; }
-        public string listSid { get; }
-        public int? index { get; }
+        public string ServiceSid { get; }
+        public string ListSid { get; }
+        public int? Index { get; }
     
         /// <summary>
         /// Construct a new SyncListItemFetcher
@@ -25,9 +21,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="index"> The index </param>
         public SyncListItemFetcher(string serviceSid, string listSid, int? index)
         {
-            this.serviceSid = serviceSid;
-            this.listSid = listSid;
-            this.index = index;
+            ServiceSid = serviceSid;
+            ListSid = listSid;
+            Index = index;
         }
     
         #if NET40
@@ -37,12 +33,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched SyncListItemResource </returns> 
-        public override async Task<SyncListItemResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Lists/" + this.listSid + "/Items/" + this.index + ""
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items/" + Index + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -80,9 +77,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public override SyncListItemResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Lists/" + this.listSid + "/Items/" + this.index + ""
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Lists/" + ListSid + "/Items/" + Index + "",
+                client.Region
             );
             
             var response = client.Request(request);

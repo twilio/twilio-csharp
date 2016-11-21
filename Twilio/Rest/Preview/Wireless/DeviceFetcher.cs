@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Wireless 
 {
 
     public class DeviceFetcher : Fetcher<DeviceResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new DeviceFetcher
@@ -21,7 +17,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="sid"> The sid </param>
         public DeviceFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.Preview.Wireless
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched DeviceResource </returns> 
-        public override async Task<DeviceResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<DeviceResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.PREVIEW,
-                "/wireless/Devices/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/wireless/Devices/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +71,10 @@ namespace Twilio.Rest.Preview.Wireless
         public override DeviceResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.PREVIEW,
-                "/wireless/Devices/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/wireless/Devices/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

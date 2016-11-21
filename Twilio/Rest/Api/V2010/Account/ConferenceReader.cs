@@ -4,24 +4,20 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class ConferenceReader : Reader<ConferenceResource> 
     {
-        public string accountSid { get; set; }
-        public DateTime? dateCreated { get; set; }
-        public DateTime? dateCreatedAfter { get; set; }
-        public DateTime? dateCreatedBefore { get; set; }
-        public DateTime? dateUpdated { get; set; }
-        public DateTime? dateUpdatedAfter { get; set; }
-        public DateTime? dateUpdatedBefore { get; set; }
-        public string friendlyName { get; set; }
-        public ConferenceResource.Status status { get; set; }
+        public string AccountSid { get; set; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreatedAfter { get; set; }
+        public DateTime? DateCreatedBefore { get; set; }
+        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdatedAfter { get; set; }
+        public DateTime? DateUpdatedBefore { get; set; }
+        public string FriendlyName { get; set; }
+        public ConferenceResource.StatusEnum Status { get; set; }
     
         #if NET40
         /// <summary>
@@ -30,12 +26,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ConferenceResource ResourceSet </returns> 
-        public override Task<ResourceSet<ConferenceResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<ConferenceResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Conferences.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -54,9 +51,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override ResourceSet<ConferenceResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Conferences.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Conferences.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -75,9 +73,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override Page<ConferenceResource> NextPage(Page<ConferenceResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             
@@ -125,46 +124,46 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (dateCreated != null)
+            if (DateCreated != null)
             {
-                request.AddQueryParam("DateCreated", dateCreated.Value.ToString("yyyy-MM-dd"));
+                request.AddQueryParam("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd"));
             }
             else
             {
-                if (dateCreatedBefore != null)
+                if (DateCreatedBefore != null)
                 {
-                    request.AddQueryParam("DateCreated<", dateCreatedBefore.Value.ToString("yyyy-MM-dd"));
+                    request.AddQueryParam("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd"));
                 }
-                if (dateCreatedAfter != null)
+                if (DateCreatedAfter != null)
                 {
-                    request.AddQueryParam("DateCreated>", dateCreatedAfter.Value.ToString("yyyy-MM-dd"));
+                    request.AddQueryParam("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd"));
                 }
             }
             
-            if (dateUpdated != null)
+            if (DateUpdated != null)
             {
-                request.AddQueryParam("DateUpdated", dateUpdated.Value.ToString("yyyy-MM-dd"));
+                request.AddQueryParam("DateUpdated", DateUpdated.Value.ToString("yyyy-MM-dd"));
             }
             else
             {
-                if (dateUpdatedBefore != null)
+                if (DateUpdatedBefore != null)
                 {
-                    request.AddQueryParam("DateUpdated<", dateUpdatedBefore.Value.ToString("yyyy-MM-dd"));
+                    request.AddQueryParam("DateUpdated<", DateUpdatedBefore.Value.ToString("yyyy-MM-dd"));
                 }
-                if (dateUpdatedAfter != null)
+                if (DateUpdatedAfter != null)
                 {
-                    request.AddQueryParam("DateUpdated>", dateUpdatedAfter.Value.ToString("yyyy-MM-dd"));
+                    request.AddQueryParam("DateUpdated>", DateUpdatedAfter.Value.ToString("yyyy-MM-dd"));
                 }
             }
             
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
-            if (status != null)
+            if (Status != null)
             {
-                request.AddQueryParam("Status", status.ToString());
+                request.AddQueryParam("Status", Status.ToString());
             }
             
             if (PageSize != null)

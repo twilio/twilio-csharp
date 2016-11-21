@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class EventFetcher : Fetcher<EventResource> 
     {
-        public string workspaceSid { get; }
-        public string sid { get; }
+        public string WorkspaceSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new EventFetcher
@@ -23,8 +19,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="sid"> The sid </param>
         public EventFetcher(string workspaceSid, string sid)
         {
-            this.workspaceSid = workspaceSid;
-            this.sid = sid;
+            WorkspaceSid = workspaceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -34,12 +30,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched EventResource </returns> 
-        public override async Task<EventResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<EventResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Events/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Events/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -77,9 +74,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override EventResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Events/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Events/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

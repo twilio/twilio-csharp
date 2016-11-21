@@ -6,7 +6,6 @@ namespace Twilio.Converters
 {
 	public class HttpMethodConverter : JsonConverter
 	{
-
 		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
 		{
 			var t = JToken.FromObject(value.ToString());
@@ -24,16 +23,16 @@ namespace Twilio.Converters
 		    switch (token.ToLower())
 		    {
 		        case "get":
-		            return Http.HttpMethod.GET;
+		            return Http.HttpMethod.Get;
 
 		        case "post":
-		            return Http.HttpMethod.POST;
+		            return Http.HttpMethod.Post;
 
 		        case "put":
-		            return Http.HttpMethod.PUT;
+		            return Http.HttpMethod.Put;
 
 		        case "delete":
-		            return Http.HttpMethod.DELETE;
+		            return Http.HttpMethod.Delete;
 
                 default:
 		            return null;
@@ -44,7 +43,6 @@ namespace Twilio.Converters
 		{
 			return objectType == typeof(Http.HttpMethod);
 		}
-
 	}
 }
 

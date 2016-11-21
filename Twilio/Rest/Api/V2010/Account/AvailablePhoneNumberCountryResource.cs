@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
@@ -53,15 +51,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("country_code")]
-        public string countryCode { get; set; }
+        public string CountryCode { get; set; }
         [JsonProperty("country")]
-        public string country { get; set; }
+        public string Country { get; set; }
         [JsonProperty("uri")]
-        public Uri uri { get; set; }
+        public Uri Uri { get; set; }
         [JsonProperty("beta")]
-        public bool? beta { get; set; }
+        public bool? Beta { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; set; }
     
         public AvailablePhoneNumberCountryResource()
         {
@@ -79,11 +77,11 @@ namespace Twilio.Rest.Api.V2010.Account
                                                     [JsonProperty("subresource_uris")]
                                                     Dictionary<string, string> subresourceUris)
                                                     {
-            this.countryCode = countryCode;
-            this.country = country;
-            this.uri = uri;
-            this.beta = beta;
-            this.subresourceUris = subresourceUris;
+            CountryCode = countryCode;
+            Country = country;
+            Uri = uri;
+            Beta = beta;
+            SubresourceUris = subresourceUris;
         }
     }
 }

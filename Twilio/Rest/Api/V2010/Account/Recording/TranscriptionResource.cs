@@ -1,50 +1,23 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Recording 
 {
 
     public class TranscriptionResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string InProgress = "in-progress";
-            public const string Completed = "completed";
-            public const string Failed = "failed";
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
         
-            private string _value;
-            
-            public Status() {}
-            
-            public Status(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Status(string value)
-            {
-                return new Status(value);
-            }
-            
-            public static implicit operator string(Status value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
+            public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
     
         /// <summary>
@@ -102,32 +75,32 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("duration")]
-        public string duration { get; set; }
+        public string Duration { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; set; }
+        public decimal? Price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; set; }
+        public string PriceUnit { get; set; }
         [JsonProperty("recording_sid")]
-        public string recordingSid { get; set; }
+        public string RecordingSid { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TranscriptionResource.Status status { get; set; }
+        public TranscriptionResource.StatusEnum Status { get; set; }
         [JsonProperty("transcription_text")]
-        public string transcriptionText { get; set; }
+        public string TranscriptionText { get; set; }
         [JsonProperty("type")]
-        public string type { get; set; }
+        public string Type { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public TranscriptionResource()
         {
@@ -153,7 +126,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                                       [JsonProperty("sid")]
                                       string sid, 
                                       [JsonProperty("status")]
-                                      TranscriptionResource.Status status, 
+                                      TranscriptionResource.StatusEnum status, 
                                       [JsonProperty("transcription_text")]
                                       string transcriptionText, 
                                       [JsonProperty("type")]
@@ -161,19 +134,19 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                                       [JsonProperty("uri")]
                                       string uri)
                                       {
-            this.accountSid = accountSid;
-            this.apiVersion = apiVersion;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.duration = duration;
-            this.price = price;
-            this.priceUnit = priceUnit;
-            this.recordingSid = recordingSid;
-            this.sid = sid;
-            this.status = status;
-            this.transcriptionText = transcriptionText;
-            this.type = type;
-            this.uri = uri;
+            AccountSid = accountSid;
+            ApiVersion = apiVersion;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Duration = duration;
+            Price = price;
+            PriceUnit = priceUnit;
+            RecordingSid = recordingSid;
+            Sid = sid;
+            Status = status;
+            TranscriptionText = transcriptionText;
+            Type = type;
+            Uri = uri;
         }
     }
 }

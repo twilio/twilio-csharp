@@ -3,20 +3,16 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.IpMessaging.V1.Service 
 {
 
     public class ChannelCreator : Creator<ChannelResource> 
     {
-        public string serviceSid { get; }
-        public string friendlyName { get; set; }
-        public string uniqueName { get; set; }
-        public string attributes { get; set; }
-        public ChannelResource.ChannelType type { get; set; }
+        public string ServiceSid { get; }
+        public string FriendlyName { get; set; }
+        public string UniqueName { get; set; }
+        public string Attributes { get; set; }
+        public ChannelResource.ChannelTypeEnum Type { get; set; }
     
         /// <summary>
         /// Construct a new ChannelCreator
@@ -25,7 +21,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="serviceSid"> The service_sid </param>
         public ChannelCreator(string serviceSid)
         {
-            this.serviceSid = serviceSid;
+            ServiceSid = serviceSid;
         }
     
         #if NET40
@@ -35,12 +31,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ChannelResource </returns> 
-        public override async Task<ChannelResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<ChannelResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Channels"
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Channels",
+                client.Region
             );
             
             AddPostParams(request);
@@ -79,9 +76,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override ChannelResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Channels"
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Channels",
+                client.Region
             );
             
             AddPostParams(request);
@@ -117,24 +115,24 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (uniqueName != null)
+            if (UniqueName != null)
             {
-                request.AddPostParam("UniqueName", uniqueName);
+                request.AddPostParam("UniqueName", UniqueName);
             }
             
-            if (attributes != null)
+            if (Attributes != null)
             {
-                request.AddPostParam("Attributes", attributes);
+                request.AddPostParam("Attributes", Attributes);
             }
             
-            if (type != null)
+            if (Type != null)
             {
-                request.AddPostParam("Type", type.ToString());
+                request.AddPostParam("Type", Type.ToString());
             }
         }
     }

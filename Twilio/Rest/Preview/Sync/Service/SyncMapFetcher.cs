@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync.Service 
 {
 
     public class SyncMapFetcher : Fetcher<SyncMapResource> 
     {
-        public string serviceSid { get; }
-        public string sid { get; }
+        public string ServiceSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new SyncMapFetcher
@@ -23,8 +19,8 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="sid"> The sid </param>
         public SyncMapFetcher(string serviceSid, string sid)
         {
-            this.serviceSid = serviceSid;
-            this.sid = sid;
+            ServiceSid = serviceSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -34,12 +30,13 @@ namespace Twilio.Rest.Preview.Sync.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched SyncMapResource </returns> 
-        public override async Task<SyncMapResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<SyncMapResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Maps/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -77,9 +74,10 @@ namespace Twilio.Rest.Preview.Sync.Service
         public override SyncMapResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.serviceSid + "/Maps/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + ServiceSid + "/Maps/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

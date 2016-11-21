@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
@@ -70,33 +68,33 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("assigned_tasks")]
-        public int? assignedTasks { get; set; }
+        public int? AssignedTasks { get; set; }
         [JsonProperty("available")]
-        public bool? available { get; set; }
+        public bool? Available { get; set; }
         [JsonProperty("available_capacity_percentage")]
-        public int? availableCapacityPercentage { get; set; }
+        public int? AvailableCapacityPercentage { get; set; }
         [JsonProperty("configured_capacity")]
-        public int? configuredCapacity { get; set; }
+        public int? ConfiguredCapacity { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("task_channel_sid")]
-        public string taskChannelSid { get; set; }
+        public string TaskChannelSid { get; set; }
         [JsonProperty("task_channel_unique_name")]
-        public string taskChannelUniqueName { get; set; }
+        public string TaskChannelUniqueName { get; set; }
         [JsonProperty("worker_sid")]
-        public string workerSid { get; set; }
+        public string WorkerSid { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; set; }
+        public string WorkspaceSid { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public WorkerChannelResource()
         {
@@ -132,20 +130,20 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                       [JsonProperty("url")]
                                       Uri url)
                                       {
-            this.accountSid = accountSid;
-            this.assignedTasks = assignedTasks;
-            this.available = available;
-            this.availableCapacityPercentage = availableCapacityPercentage;
-            this.configuredCapacity = configuredCapacity;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.sid = sid;
-            this.taskChannelSid = taskChannelSid;
-            this.taskChannelUniqueName = taskChannelUniqueName;
-            this.workerSid = workerSid;
-            this.workspaceSid = workspaceSid;
-            this.links = links;
-            this.url = url;
+            AccountSid = accountSid;
+            AssignedTasks = assignedTasks;
+            Available = available;
+            AvailableCapacityPercentage = availableCapacityPercentage;
+            ConfiguredCapacity = configuredCapacity;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Sid = sid;
+            TaskChannelSid = taskChannelSid;
+            TaskChannelUniqueName = taskChannelUniqueName;
+            WorkerSid = workerSid;
+            WorkspaceSid = workspaceSid;
+            Links = links;
+            Url = url;
         }
     }
 }

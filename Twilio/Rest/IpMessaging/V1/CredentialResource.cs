@@ -1,49 +1,22 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.IpMessaging.V1 
 {
 
     public class CredentialResource : Resource 
     {
-        public sealed class PushService : IStringEnum 
+        public sealed class PushServiceEnum : StringEnum 
         {
-            public const string Gcm = "gcm";
-            public const string Apn = "apn";
+            private PushServiceEnum(string value) : base(value) {}
+            public PushServiceEnum() {}
         
-            private string _value;
-            
-            public PushService() {}
-            
-            public PushService(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator PushService(string value)
-            {
-                return new PushService(value);
-            }
-            
-            public static implicit operator string(PushService value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly PushServiceEnum Gcm = new PushServiceEnum("gcm");
+            public static readonly PushServiceEnum Apn = new PushServiceEnum("apn");
         }
     
         /// <summary>
@@ -62,7 +35,7 @@ namespace Twilio.Rest.IpMessaging.V1
         ///
         /// <param name="type"> The type </param>
         /// <returns> CredentialCreator capable of executing the create </returns> 
-        public static CredentialCreator Creator(CredentialResource.PushService type)
+        public static CredentialCreator Creator(CredentialResource.PushServiceEnum type)
         {
             return new CredentialCreator(type);
         }
@@ -120,22 +93,22 @@ namespace Twilio.Rest.IpMessaging.V1
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public CredentialResource.PushService type { get; set; }
+        public CredentialResource.PushServiceEnum Type { get; set; }
         [JsonProperty("sandbox")]
-        public string sandbox { get; set; }
+        public string Sandbox { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public CredentialResource()
         {
@@ -149,7 +122,7 @@ namespace Twilio.Rest.IpMessaging.V1
                                    [JsonProperty("friendly_name")]
                                    string friendlyName, 
                                    [JsonProperty("type")]
-                                   CredentialResource.PushService type, 
+                                   CredentialResource.PushServiceEnum type, 
                                    [JsonProperty("sandbox")]
                                    string sandbox, 
                                    [JsonProperty("date_created")]
@@ -159,14 +132,14 @@ namespace Twilio.Rest.IpMessaging.V1
                                    [JsonProperty("url")]
                                    Uri url)
                                    {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-            this.type = type;
-            this.sandbox = sandbox;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.url = url;
+            Sid = sid;
+            AccountSid = accountSid;
+            FriendlyName = friendlyName;
+            Type = type;
+            Sandbox = sandbox;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Url = url;
         }
     }
 }

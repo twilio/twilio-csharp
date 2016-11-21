@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
@@ -13,82 +11,39 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CallResource : Resource 
     {
-        public sealed class Event : IStringEnum 
+        public sealed class EventEnum : StringEnum 
         {
-            public const string Initiated = "initiated";
-            public const string Ringing = "ringing";
-            public const string Answered = "answered";
-            public const string Completed = "completed";
+            private EventEnum(string value) : base(value) {}
+            public EventEnum() {}
         
-            private string _value;
-            
-            public Event() {}
-            
-            public Event(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Event(string value)
-            {
-                return new Event(value);
-            }
-            
-            public static implicit operator string(Event value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly EventEnum Initiated = new EventEnum("initiated");
+            public static readonly EventEnum Ringing = new EventEnum("ringing");
+            public static readonly EventEnum Answered = new EventEnum("answered");
+            public static readonly EventEnum Completed = new EventEnum("completed");
         }
     
-        public sealed class Status : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Queued = "queued";
-            public const string Ringing = "ringing";
-            public const string InProgress = "in-progress";
-            public const string Completed = "completed";
-            public const string Busy = "busy";
-            public const string Failed = "failed";
-            public const string NoAnswer = "no-answer";
-            public const string Canceled = "canceled";
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
         
-            private string _value;
-            
-            public Status() {}
-            
-            public Status(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Status(string value)
-            {
-                return new Status(value);
-            }
-            
-            public static implicit operator string(Status value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly StatusEnum Queued = new StatusEnum("queued");
+            public static readonly StatusEnum Ringing = new StatusEnum("ringing");
+            public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
+            public static readonly StatusEnum Busy = new StatusEnum("busy");
+            public static readonly StatusEnum Failed = new StatusEnum("failed");
+            public static readonly StatusEnum NoAnswer = new StatusEnum("no-answer");
+            public static readonly StatusEnum Canceled = new StatusEnum("canceled");
+        }
+    
+        public sealed class UpdateStatusEnum : StringEnum 
+        {
+            private UpdateStatusEnum(string value) : base(value) {}
+            public UpdateStatusEnum() {}
+        
+            public static readonly UpdateStatusEnum Canceled = new UpdateStatusEnum("canceled");
+            public static readonly UpdateStatusEnum Completed = new UpdateStatusEnum("completed");
         }
     
         /// <summary>
@@ -99,7 +54,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="url"> Url from which to fetch TwiML </param>
         /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, Uri url)
+        public static CallCreator Creator(IEndpoint to, Types.PhoneNumber from, Uri url)
         {
             return new CallCreator(to, from, url);
         }
@@ -112,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
         /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(IEndpoint to, Twilio.Types.PhoneNumber from, string applicationSid)
+        public static CallCreator Creator(IEndpoint to, Types.PhoneNumber from, string applicationSid)
         {
             return new CallCreator(to, from, applicationSid);
         }
@@ -180,56 +135,56 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("annotation")]
-        public string annotation { get; set; }
+        public string Annotation { get; set; }
         [JsonProperty("answered_by")]
-        public string answeredBy { get; set; }
+        public string AnsweredBy { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("caller_name")]
-        public string callerName { get; set; }
+        public string CallerName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("direction")]
-        public string direction { get; set; }
+        public string Direction { get; set; }
         [JsonProperty("duration")]
-        public string duration { get; set; }
+        public string Duration { get; set; }
         [JsonProperty("end_time")]
-        public DateTime? endTime { get; set; }
+        public DateTime? EndTime { get; set; }
         [JsonProperty("forwarded_from")]
-        public string forwardedFrom { get; set; }
+        public string ForwardedFrom { get; set; }
         [JsonProperty("from")]
-        public string from { get; set; }
+        public string From { get; set; }
         [JsonProperty("from_formatted")]
-        public string fromFormatted { get; set; }
+        public string FromFormatted { get; set; }
         [JsonProperty("group_sid")]
-        public string groupSid { get; set; }
+        public string GroupSid { get; set; }
         [JsonProperty("parent_call_sid")]
-        public string parentCallSid { get; set; }
+        public string ParentCallSid { get; set; }
         [JsonProperty("phone_number_sid")]
-        public string phoneNumberSid { get; set; }
+        public string PhoneNumberSid { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; set; }
+        public decimal? Price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; set; }
+        public string PriceUnit { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("start_time")]
-        public DateTime? startTime { get; set; }
+        public DateTime? StartTime { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public CallResource.Status status { get; set; }
+        public CallResource.StatusEnum Status { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; set; }
         [JsonProperty("to")]
-        public string to { get; set; }
+        public string To { get; set; }
         [JsonProperty("to_formatted")]
-        public string toFormatted { get; set; }
+        public string ToFormatted { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public CallResource()
         {
@@ -277,7 +232,7 @@ namespace Twilio.Rest.Api.V2010.Account
                              [JsonProperty("start_time")]
                              string startTime, 
                              [JsonProperty("status")]
-                             CallResource.Status status, 
+                             CallResource.StatusEnum status, 
                              [JsonProperty("subresource_uris")]
                              Dictionary<string, string> subresourceUris, 
                              [JsonProperty("to")]
@@ -287,31 +242,31 @@ namespace Twilio.Rest.Api.V2010.Account
                              [JsonProperty("uri")]
                              string uri)
                              {
-            this.accountSid = accountSid;
-            this.annotation = annotation;
-            this.answeredBy = answeredBy;
-            this.apiVersion = apiVersion;
-            this.callerName = callerName;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.direction = direction;
-            this.duration = duration;
-            this.endTime = MarshalConverter.DateTimeFromString(endTime);
-            this.forwardedFrom = forwardedFrom;
-            this.from = from;
-            this.fromFormatted = fromFormatted;
-            this.groupSid = groupSid;
-            this.parentCallSid = parentCallSid;
-            this.phoneNumberSid = phoneNumberSid;
-            this.price = price;
-            this.priceUnit = priceUnit;
-            this.sid = sid;
-            this.startTime = MarshalConverter.DateTimeFromString(startTime);
-            this.status = status;
-            this.subresourceUris = subresourceUris;
-            this.to = to;
-            this.toFormatted = toFormatted;
-            this.uri = uri;
+            AccountSid = accountSid;
+            Annotation = annotation;
+            AnsweredBy = answeredBy;
+            ApiVersion = apiVersion;
+            CallerName = callerName;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Direction = direction;
+            Duration = duration;
+            EndTime = MarshalConverter.DateTimeFromString(endTime);
+            ForwardedFrom = forwardedFrom;
+            From = from;
+            FromFormatted = fromFormatted;
+            GroupSid = groupSid;
+            ParentCallSid = parentCallSid;
+            PhoneNumberSid = phoneNumberSid;
+            Price = price;
+            PriceUnit = priceUnit;
+            Sid = sid;
+            StartTime = MarshalConverter.DateTimeFromString(startTime);
+            Status = status;
+            SubresourceUris = subresourceUris;
+            To = to;
+            ToFormatted = toFormatted;
+            Uri = uri;
         }
     }
 }

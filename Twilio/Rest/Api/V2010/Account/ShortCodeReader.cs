@@ -3,18 +3,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class ShortCodeReader : Reader<ShortCodeResource> 
     {
-        public string accountSid { get; set; }
-        public string friendlyName { get; set; }
-        public string shortCode { get; set; }
+        public string AccountSid { get; set; }
+        public string FriendlyName { get; set; }
+        public string ShortCode { get; set; }
     
         #if NET40
         /// <summary>
@@ -23,12 +19,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ShortCodeResource ResourceSet </returns> 
-        public override Task<ResourceSet<ShortCodeResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SMS/ShortCodes.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -47,9 +44,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override ResourceSet<ShortCodeResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SMS/ShortCodes.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SMS/ShortCodes.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -68,9 +66,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override Page<ShortCodeResource> NextPage(Page<ShortCodeResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             
@@ -118,14 +117,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
-            if (shortCode != null)
+            if (ShortCode != null)
             {
-                request.AddQueryParam("ShortCode", shortCode);
+                request.AddQueryParam("ShortCode", ShortCode);
             }
             
             if (PageSize != null)

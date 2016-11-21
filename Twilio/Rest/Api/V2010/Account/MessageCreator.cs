@@ -5,25 +5,21 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class MessageCreator : Creator<MessageResource> 
     {
-        public string accountSid { get; set; }
-        public Twilio.Types.PhoneNumber to { get; }
-        public Twilio.Types.PhoneNumber from { get; }
-        public string messagingServiceSid { get; }
-        public string body { get; }
-        public List<Uri> mediaUrl { get; }
-        public Uri statusCallback { get; set; }
-        public string applicationSid { get; set; }
-        public decimal? maxPrice { get; set; }
-        public bool? provideFeedback { get; set; }
+        public string AccountSid { get; set; }
+        public Types.PhoneNumber To { get; }
+        public Types.PhoneNumber From { get; set; }
+        public string MessagingServiceSid { get; set; }
+        public string Body { get; set; }
+        public List<Uri> MediaUrl { get; set; }
+        public Uri StatusCallback { get; set; }
+        public string ApplicationSid { get; set; }
+        public decimal? MaxPrice { get; set; }
+        public bool? ProvideFeedback { get; set; }
     
         /// <summary>
         /// Construct a new MessageCreator
@@ -32,11 +28,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="body"> The body </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body)
+        public MessageCreator(Types.PhoneNumber to, Types.PhoneNumber from, string body)
         {
-            this.to = to;
-            this.from = from;
-            this.body = body;
+            To = to;
+            From = from;
+            Body = body;
         }
     
         /// <summary>
@@ -46,11 +42,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="mediaUrl"> The media_url </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl)
+        public MessageCreator(Types.PhoneNumber to, Types.PhoneNumber from, List<Uri> mediaUrl)
         {
-            this.to = to;
-            this.from = from;
-            this.mediaUrl = mediaUrl;
+            To = to;
+            From = from;
+            MediaUrl = mediaUrl;
         }
     
         /// <summary>
@@ -60,11 +56,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="messagingServiceSid"> The messaging_service_sid </param>
         /// <param name="body"> The body </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body)
+        public MessageCreator(Types.PhoneNumber to, string messagingServiceSid, string body)
         {
-            this.to = to;
-            this.messagingServiceSid = messagingServiceSid;
-            this.body = body;
+            To = to;
+            MessagingServiceSid = messagingServiceSid;
+            Body = body;
         }
     
         /// <summary>
@@ -74,11 +70,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="messagingServiceSid"> The messaging_service_sid </param>
         /// <param name="mediaUrl"> The media_url </param>
-        public MessageCreator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl)
+        public MessageCreator(Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl)
         {
-            this.to = to;
-            this.messagingServiceSid = messagingServiceSid;
-            this.mediaUrl = mediaUrl;
+            To = to;
+            MessagingServiceSid = messagingServiceSid;
+            MediaUrl = mediaUrl;
         }
     
         #if NET40
@@ -88,12 +84,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created MessageResource </returns> 
-        public override async Task<MessageResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<MessageResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Messages.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -132,9 +129,10 @@ namespace Twilio.Rest.Api.V2010.Account
         public override MessageResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Messages.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Messages.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -170,49 +168,49 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (to != null)
+            if (To != null)
             {
-                request.AddPostParam("To", to.ToString());
+                request.AddPostParam("To", To.ToString());
             }
             
-            if (from != null)
+            if (From != null)
             {
-                request.AddPostParam("From", from.ToString());
+                request.AddPostParam("From", From.ToString());
             }
             
-            if (messagingServiceSid != null)
+            if (MessagingServiceSid != null)
             {
-                request.AddPostParam("MessagingServiceSid", messagingServiceSid);
+                request.AddPostParam("MessagingServiceSid", MessagingServiceSid);
             }
             
-            if (body != null)
+            if (Body != null)
             {
-                request.AddPostParam("Body", body);
+                request.AddPostParam("Body", Body);
             }
             
-            if (mediaUrl != null)
+            if (MediaUrl != null)
             {
-                request.AddPostParam("MediaUrl", mediaUrl.ToString());
+                request.AddPostParam("MediaUrl", MediaUrl.ToString());
             }
             
-            if (statusCallback != null)
+            if (StatusCallback != null)
             {
-                request.AddPostParam("StatusCallback", statusCallback.ToString());
+                request.AddPostParam("StatusCallback", StatusCallback.ToString());
             }
             
-            if (applicationSid != null)
+            if (ApplicationSid != null)
             {
-                request.AddPostParam("ApplicationSid", applicationSid);
+                request.AddPostParam("ApplicationSid", ApplicationSid);
             }
             
-            if (maxPrice != null)
+            if (MaxPrice != null)
             {
-                request.AddPostParam("MaxPrice", maxPrice.ToString());
+                request.AddPostParam("MaxPrice", MaxPrice.ToString());
             }
             
-            if (provideFeedback != null)
+            if (ProvideFeedback != null)
             {
-                request.AddPostParam("ProvideFeedback", provideFeedback.ToString());
+                request.AddPostParam("ProvideFeedback", ProvideFeedback.ToString());
             }
         }
     }

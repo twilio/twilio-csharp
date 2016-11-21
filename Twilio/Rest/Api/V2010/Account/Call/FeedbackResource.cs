@@ -2,55 +2,28 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
     public class FeedbackResource : Resource 
     {
-        public sealed class Issues : IStringEnum 
+        public sealed class IssuesEnum : StringEnum 
         {
-            public const string AudioLatency = "audio-latency";
-            public const string DigitsNotCaptured = "digits-not-captured";
-            public const string DroppedCall = "dropped-call";
-            public const string ImperfectAudio = "imperfect-audio";
-            public const string IncorrectCallerId = "incorrect-caller-id";
-            public const string OneWayAudio = "one-way-audio";
-            public const string PostDialDelay = "post-dial-delay";
-            public const string UnsolicitedCall = "unsolicited-call";
+            private IssuesEnum(string value) : base(value) {}
+            public IssuesEnum() {}
         
-            private string _value;
-            
-            public Issues() {}
-            
-            public Issues(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Issues(string value)
-            {
-                return new Issues(value);
-            }
-            
-            public static implicit operator string(Issues value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly IssuesEnum AudioLatency = new IssuesEnum("audio-latency");
+            public static readonly IssuesEnum DigitsNotCaptured = new IssuesEnum("digits-not-captured");
+            public static readonly IssuesEnum DroppedCall = new IssuesEnum("dropped-call");
+            public static readonly IssuesEnum ImperfectAudio = new IssuesEnum("imperfect-audio");
+            public static readonly IssuesEnum IncorrectCallerId = new IssuesEnum("incorrect-caller-id");
+            public static readonly IssuesEnum OneWayAudio = new IssuesEnum("one-way-audio");
+            public static readonly IssuesEnum PostDialDelay = new IssuesEnum("post-dial-delay");
+            public static readonly IssuesEnum UnsolicitedCall = new IssuesEnum("unsolicited-call");
         }
     
         /// <summary>
@@ -108,18 +81,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("issues")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public List<FeedbackResource.Issues> issues { get; set; }
+        public List<FeedbackResource.IssuesEnum> Issues { get; set; }
         [JsonProperty("quality_score")]
-        public int? qualityScore { get; set; }
+        public int? QualityScore { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
     
         public FeedbackResource()
         {
@@ -133,18 +106,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                  [JsonProperty("date_updated")]
                                  string dateUpdated, 
                                  [JsonProperty("issues")]
-                                 List<FeedbackResource.Issues> issues, 
+                                 List<FeedbackResource.IssuesEnum> issues, 
                                  [JsonProperty("quality_score")]
                                  int? qualityScore, 
                                  [JsonProperty("sid")]
                                  string sid)
                                  {
-            this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.issues = issues;
-            this.qualityScore = qualityScore;
-            this.sid = sid;
+            AccountSid = accountSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Issues = issues;
+            QualityScore = qualityScore;
+            Sid = sid;
         }
     }
 }

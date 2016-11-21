@@ -3,19 +3,15 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
 {
 
     public class RegistrationEndpointReader : Reader<RegistrationEndpointResource> 
     {
-        public string accountSid { get; set; }
-        public string domainSid { get; }
-        public string region { get; }
-        public string registrant { get; }
+        public string AccountSid { get; set; }
+        public string DomainSid { get; }
+        public string Region { get; }
+        public string Registrant { get; }
     
         /// <summary>
         /// Construct a new RegistrationEndpointReader
@@ -26,9 +22,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="registrant"> The registrant </param>
         public RegistrationEndpointReader(string domainSid, string region, string registrant)
         {
-            this.domainSid = domainSid;
-            this.region = region;
-            this.registrant = registrant;
+            DomainSid = domainSid;
+            Region = region;
+            Registrant = registrant;
         }
     
         #if NET40
@@ -38,12 +34,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> RegistrationEndpointResource ResourceSet </returns> 
-        public override Task<ResourceSet<RegistrationEndpointResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<RegistrationEndpointResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/Registrations/" + this.region + "/" + this.registrant + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/Registrations/" + Region + "/" + Registrant + ".json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -62,9 +59,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         public override ResourceSet<RegistrationEndpointResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/Domains/" + this.domainSid + "/Registrations/" + this.region + "/" + this.registrant + ".json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/Domains/" + DomainSid + "/Registrations/" + Region + "/" + Registrant + ".json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -83,9 +81,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         public override Page<RegistrationEndpointResource> NextPage(Page<RegistrationEndpointResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             

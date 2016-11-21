@@ -5,21 +5,17 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
     public class FeedbackSummaryCreator : Creator<FeedbackSummaryResource> 
     {
-        public string accountSid { get; set; }
-        public DateTime? startDate { get; }
-        public DateTime? endDate { get; }
-        public bool? includeSubaccounts { get; set; }
-        public Uri statusCallback { get; set; }
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
+        public string AccountSid { get; set; }
+        public DateTime? StartDate { get; }
+        public DateTime? EndDate { get; }
+        public bool? IncludeSubaccounts { get; set; }
+        public Uri StatusCallback { get; set; }
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
     
         /// <summary>
         /// Construct a new FeedbackSummaryCreator
@@ -29,8 +25,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="endDate"> The end_date </param>
         public FeedbackSummaryCreator(DateTime? startDate, DateTime? endDate)
         {
-            this.startDate = startDate;
-            this.endDate = endDate;
+            StartDate = startDate;
+            EndDate = endDate;
         }
     
         #if NET40
@@ -40,12 +36,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created FeedbackSummaryResource </returns> 
-        public override async Task<FeedbackSummaryResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<FeedbackSummaryResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/FeedbackSummary.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -84,9 +81,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override FeedbackSummaryResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/FeedbackSummary.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -122,29 +120,29 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (startDate != null)
+            if (StartDate != null)
             {
-                request.AddPostParam("StartDate", startDate.ToString());
+                request.AddPostParam("StartDate", StartDate.ToString());
             }
             
-            if (endDate != null)
+            if (EndDate != null)
             {
-                request.AddPostParam("EndDate", endDate.ToString());
+                request.AddPostParam("EndDate", EndDate.ToString());
             }
             
-            if (includeSubaccounts != null)
+            if (IncludeSubaccounts != null)
             {
-                request.AddPostParam("IncludeSubaccounts", includeSubaccounts.ToString());
+                request.AddPostParam("IncludeSubaccounts", IncludeSubaccounts.ToString());
             }
             
-            if (statusCallback != null)
+            if (StatusCallback != null)
             {
-                request.AddPostParam("StatusCallback", statusCallback.ToString());
+                request.AddPostParam("StatusCallback", StatusCallback.ToString());
             }
             
-            if (statusCallbackMethod != null)
+            if (StatusCallbackMethod != null)
             {
-                request.AddPostParam("StatusCallbackMethod", statusCallbackMethod.ToString());
+                request.AddPostParam("StatusCallbackMethod", StatusCallbackMethod.ToString());
             }
         }
     }

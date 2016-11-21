@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1 
 {
 
     public class WorkspaceReader : Reader<WorkspaceResource> 
     {
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
     
         #if NET40
         /// <summary>
@@ -21,12 +17,13 @@ namespace Twilio.Rest.Taskrouter.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> WorkspaceResource ResourceSet </returns> 
-        public override Task<ResourceSet<WorkspaceResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<WorkspaceResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces"
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -45,9 +42,10 @@ namespace Twilio.Rest.Taskrouter.V1
         public override ResourceSet<WorkspaceResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.TASKROUTER,
-                "/v1/Workspaces"
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -66,9 +64,10 @@ namespace Twilio.Rest.Taskrouter.V1
         public override Page<WorkspaceResource> NextPage(Page<WorkspaceResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.TASKROUTER
+                    Rest.Domain.Taskrouter,
+                    client.Region
                 )
             );
             
@@ -116,9 +115,9 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="request"> Request to add query string arguments to </param>
         private void AddQueryParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddQueryParam("FriendlyName", friendlyName);
+                request.AddQueryParam("FriendlyName", FriendlyName);
             }
             
             if (PageSize != null)

@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
@@ -42,13 +40,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("cumulative")]
-        public Object cumulative { get; set; }
+        public Object Cumulative { get; set; }
         [JsonProperty("realtime")]
-        public Object realtime { get; set; }
+        public Object Realtime { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; set; }
+        public string WorkspaceSid { get; set; }
     
         public WorkersStatisticsResource()
         {
@@ -64,10 +62,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                                           [JsonProperty("workspace_sid")]
                                           string workspaceSid)
                                           {
-            this.accountSid = accountSid;
-            this.cumulative = cumulative;
-            this.realtime = realtime;
-            this.workspaceSid = workspaceSid;
+            AccountSid = accountSid;
+            Cumulative = cumulative;
+            Realtime = realtime;
+            WorkspaceSid = workspaceSid;
         }
     }
 }

@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1 
 {
 
     public class TrunkFetcher : Fetcher<TrunkResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new TrunkFetcher
@@ -21,7 +17,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="sid"> The sid </param>
         public TrunkFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.Trunking.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched TrunkResource </returns> 
-        public override async Task<TrunkResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<TrunkResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +71,10 @@ namespace Twilio.Rest.Trunking.V1
         public override TrunkResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

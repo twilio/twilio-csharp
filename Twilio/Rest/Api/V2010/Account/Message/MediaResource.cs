@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {
@@ -66,19 +64,19 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("content_type")]
-        public string contentType { get; set; }
+        public string ContentType { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("parent_sid")]
-        public string parentSid { get; set; }
+        public string ParentSid { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public MediaResource()
         {
@@ -100,13 +98,13 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                               [JsonProperty("uri")]
                               string uri)
                               {
-            this.accountSid = accountSid;
-            this.contentType = contentType;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.parentSid = parentSid;
-            this.sid = sid;
-            this.uri = uri;
+            AccountSid = accountSid;
+            ContentType = contentType;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            ParentSid = parentSid;
+            Sid = sid;
+            Uri = uri;
         }
     }
 }

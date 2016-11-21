@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Chat.V1 
 {
 
     public class ServiceFetcher : Fetcher<ServiceResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new ServiceFetcher
@@ -21,7 +17,7 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="sid"> The sid </param>
         public ServiceFetcher(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.Chat.V1
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Fetched ServiceResource </returns> 
-        public override async Task<ServiceResource> FetchAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<ServiceResource> FetchAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.CHAT,
-                "/v1/Services/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Chat,
+                "/v1/Services/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +71,10 @@ namespace Twilio.Rest.Chat.V1
         public override ServiceResource Fetch(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.GET,
-                Domains.CHAT,
-                "/v1/Services/" + this.sid + ""
+                HttpMethod.Get,
+                Rest.Domain.Chat,
+                "/v1/Services/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

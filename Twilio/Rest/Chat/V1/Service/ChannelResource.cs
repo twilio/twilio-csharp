@@ -2,49 +2,22 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Chat.V1.Service 
 {
 
     public class ChannelResource : Resource 
     {
-        public sealed class ChannelType : IStringEnum 
+        public sealed class ChannelTypeEnum : StringEnum 
         {
-            public const string Public = "public";
-            public const string Private = "private";
+            private ChannelTypeEnum(string value) : base(value) {}
+            public ChannelTypeEnum() {}
         
-            private string _value;
-            
-            public ChannelType() {}
-            
-            public ChannelType(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator ChannelType(string value)
-            {
-                return new ChannelType(value);
-            }
-            
-            public static implicit operator string(ChannelType value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly ChannelTypeEnum Public = new ChannelTypeEnum("public");
+            public static readonly ChannelTypeEnum Private = new ChannelTypeEnum("private");
         }
     
         /// <summary>
@@ -125,30 +98,30 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("service_sid")]
-        public string serviceSid { get; set; }
+        public string ServiceSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("unique_name")]
-        public string uniqueName { get; set; }
+        public string UniqueName { get; set; }
         [JsonProperty("attributes")]
-        public string attributes { get; set; }
+        public string Attributes { get; set; }
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ChannelResource.ChannelType type { get; set; }
+        public ChannelResource.ChannelTypeEnum Type { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("created_by")]
-        public string createdBy { get; set; }
+        public string CreatedBy { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
     
         public ChannelResource()
         {
@@ -168,7 +141,7 @@ namespace Twilio.Rest.Chat.V1.Service
                                 [JsonProperty("attributes")]
                                 string attributes, 
                                 [JsonProperty("type")]
-                                ChannelResource.ChannelType type, 
+                                ChannelResource.ChannelTypeEnum type, 
                                 [JsonProperty("date_created")]
                                 string dateCreated, 
                                 [JsonProperty("date_updated")]
@@ -180,18 +153,18 @@ namespace Twilio.Rest.Chat.V1.Service
                                 [JsonProperty("links")]
                                 Dictionary<string, string> links)
                                 {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.serviceSid = serviceSid;
-            this.friendlyName = friendlyName;
-            this.uniqueName = uniqueName;
-            this.attributes = attributes;
-            this.type = type;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.createdBy = createdBy;
-            this.url = url;
-            this.links = links;
+            Sid = sid;
+            AccountSid = accountSid;
+            ServiceSid = serviceSid;
+            FriendlyName = friendlyName;
+            UniqueName = uniqueName;
+            Attributes = attributes;
+            Type = type;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            CreatedBy = createdBy;
+            Url = url;
+            Links = links;
         }
     }
 }

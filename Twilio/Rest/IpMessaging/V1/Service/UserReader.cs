@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.IpMessaging.V1.Service 
 {
 
     public class UserReader : Reader<UserResource> 
     {
-        public string serviceSid { get; }
+        public string ServiceSid { get; }
     
         /// <summary>
         /// Construct a new UserReader
@@ -21,7 +17,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// <param name="serviceSid"> The service_sid </param>
         public UserReader(string serviceSid)
         {
-            this.serviceSid = serviceSid;
+            ServiceSid = serviceSid;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> UserResource ResourceSet </returns> 
-        public override Task<ResourceSet<UserResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Users"
+                HttpMethod.Get,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Users",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -55,9 +52,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override ResourceSet<UserResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.IP_MESSAGING,
-                "/v1/Services/" + this.serviceSid + "/Users"
+                HttpMethod.Get,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + ServiceSid + "/Users",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -76,9 +74,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override Page<UserResource> NextPage(Page<UserResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.IP_MESSAGING
+                    Rest.Domain.IpMessaging,
+                    client.Region
                 )
             );
             

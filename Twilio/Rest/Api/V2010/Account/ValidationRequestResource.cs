@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
@@ -17,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="phoneNumber"> The phone_number </param>
         /// <returns> ValidationRequestCreator capable of executing the create </returns> 
-        public static ValidationRequestCreator Creator(Twilio.Types.PhoneNumber phoneNumber)
+        public static ValidationRequestCreator Creator(Types.PhoneNumber phoneNumber)
         {
             return new ValidationRequestCreator(phoneNumber);
         }
@@ -42,16 +40,16 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber phoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("validation_code")]
-        public int? validationCode { get; set; }
+        public int? ValidationCode { get; set; }
         [JsonProperty("call_sid")]
-        public string callSid { get; set; }
+        public string CallSid { get; set; }
     
         public ValidationRequestResource()
         {
@@ -61,7 +59,7 @@ namespace Twilio.Rest.Api.V2010.Account
         private ValidationRequestResource([JsonProperty("account_sid")]
                                           string accountSid, 
                                           [JsonProperty("phone_number")]
-                                          Twilio.Types.PhoneNumber phoneNumber, 
+                                          Types.PhoneNumber phoneNumber, 
                                           [JsonProperty("friendly_name")]
                                           string friendlyName, 
                                           [JsonProperty("validation_code")]
@@ -69,11 +67,11 @@ namespace Twilio.Rest.Api.V2010.Account
                                           [JsonProperty("call_sid")]
                                           string callSid)
                                           {
-            this.accountSid = accountSid;
-            this.phoneNumber = phoneNumber;
-            this.friendlyName = friendlyName;
-            this.validationCode = validationCode;
-            this.callSid = callSid;
+            AccountSid = accountSid;
+            PhoneNumber = phoneNumber;
+            FriendlyName = friendlyName;
+            ValidationCode = validationCode;
+            CallSid = callSid;
         }
     }
 }

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Collections;
+using Twilio.Types;
 
 namespace Twilio.Converters
 {
@@ -38,7 +39,7 @@ namespace Twilio.Converters
 				return results;
 			}
 
-			var instance = (IStringEnum) Activator.CreateInstance(objectType);
+			var instance = (StringEnum) Activator.CreateInstance(objectType);
 			instance.FromString(reader.Value as string);
 
 			return instance;
@@ -60,12 +61,12 @@ namespace Twilio.Converters
             #endif
 	    }
 
-	    private static IStringEnum CreateEnum(Type objectType)
+	    private static StringEnum CreateEnum(Type objectType)
 	    {
             #if NET40
-	        return (IStringEnum) Activator.CreateInstance(objectType.GenericTypeArguments[0]);
+	        return (StringEnum) Activator.CreateInstance(objectType.GenericTypeArguments[0]);
             #else
-            return (IStringEnum) Activator.CreateInstance(objectType.GetGenericArguments()[0]);
+            return (StringEnum) Activator.CreateInstance(objectType.GetGenericArguments()[0]);
             #endif
 	    }
 	}

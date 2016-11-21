@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList 
 {
 
     public class CredentialReader : Reader<CredentialResource> 
     {
-        public string accountSid { get; set; }
-        public string credentialListSid { get; }
+        public string AccountSid { get; set; }
+        public string CredentialListSid { get; }
     
         /// <summary>
         /// Construct a new CredentialReader
@@ -22,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <param name="credentialListSid"> The credential_list_sid </param>
         public CredentialReader(string credentialListSid)
         {
-            this.credentialListSid = credentialListSid;
+            CredentialListSid = credentialListSid;
         }
     
         #if NET40
@@ -32,12 +28,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> CredentialResource ResourceSet </returns> 
-        public override Task<ResourceSet<CredentialResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials.json",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -56,9 +53,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         public override ResourceSet<CredentialResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.credentialListSid + "/Credentials.json"
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + CredentialListSid + "/Credentials.json",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -77,9 +75,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         public override Page<CredentialResource> NextPage(Page<CredentialResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.API
+                    Rest.Domain.Api,
+                    client.Region
                 )
             );
             

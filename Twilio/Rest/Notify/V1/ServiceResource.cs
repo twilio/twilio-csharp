@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Notify.V1 
 {
@@ -85,31 +83,31 @@ namespace Twilio.Rest.Notify.V1
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("apn_credential_sid")]
-        public string apnCredentialSid { get; set; }
+        public string ApnCredentialSid { get; set; }
         [JsonProperty("gcm_credential_sid")]
-        public string gcmCredentialSid { get; set; }
+        public string GcmCredentialSid { get; set; }
         [JsonProperty("messaging_service_sid")]
-        public string messagingServiceSid { get; set; }
+        public string MessagingServiceSid { get; set; }
         [JsonProperty("facebook_messenger_page_id")]
-        public string facebookMessengerPageId { get; set; }
+        public string FacebookMessengerPageId { get; set; }
         [JsonProperty("default_apn_notification_protocol_version")]
-        public string defaultApnNotificationProtocolVersion { get; set; }
+        public string DefaultApnNotificationProtocolVersion { get; set; }
         [JsonProperty("default_gcm_notification_protocol_version")]
-        public string defaultGcmNotificationProtocolVersion { get; set; }
+        public string DefaultGcmNotificationProtocolVersion { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
     
         public ServiceResource()
         {
@@ -143,19 +141,19 @@ namespace Twilio.Rest.Notify.V1
                                 [JsonProperty("links")]
                                 Dictionary<string, string> links)
                                 {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.friendlyName = friendlyName;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.apnCredentialSid = apnCredentialSid;
-            this.gcmCredentialSid = gcmCredentialSid;
-            this.messagingServiceSid = messagingServiceSid;
-            this.facebookMessengerPageId = facebookMessengerPageId;
-            this.defaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion;
-            this.defaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion;
-            this.url = url;
-            this.links = links;
+            Sid = sid;
+            AccountSid = accountSid;
+            FriendlyName = friendlyName;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            ApnCredentialSid = apnCredentialSid;
+            GcmCredentialSid = gcmCredentialSid;
+            MessagingServiceSid = messagingServiceSid;
+            FacebookMessengerPageId = facebookMessengerPageId;
+            DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion;
+            DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion;
+            Url = url;
+            Links = links;
         }
     }
 }

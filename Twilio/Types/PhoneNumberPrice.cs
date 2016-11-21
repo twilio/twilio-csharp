@@ -1,56 +1,43 @@
 ﻿using Newtonsoft.Json;
+using Twilio.Converters;
 
 namespace Twilio.Types
 {
 	public class PhoneNumberPrice
 	{
-		public sealed class Type {
-			public const string LOCAL = "local";
-			public const string MOBILE = "mobile";
-			public const string NATIONAL = "national";
-			public const string TOLL_FREE = "toll free";
+	    public sealed class TypeEnum : StringEnum {
+	        private TypeEnum(string value) : base(value) {}
+	        public TypeEnum() {}
 
-			private readonly string value;
+	        public static readonly TypeEnum Local = new TypeEnum("local");
+	        public static readonly TypeEnum Mobile = new TypeEnum("mobile");
+	        public static readonly TypeEnum National = new TypeEnum("national");
+	        public static readonly TypeEnum TollFree = new TypeEnum("toll free");
+	    }
 
-			public Type(string value) {
-				this.value = value;
-			}
+	    [JsonProperty("base_price")]
+	    public double? BasePrice { get; }
+	    [JsonProperty("current_price")]
+	    public double? CurrentPrice { get; }
+	    [JsonProperty("type")]
+	    [JsonConverter(typeof(StringEnumConverter))]
+	    public TypeEnum Type { get; }
 
-			public override string ToString() {
-				return value;
-			}
+	    public PhoneNumberPrice() {}
 
-			public static implicit operator Type(string value) {
-				return new Type(value);
-			}
-
-			public static implicit operator string(Type value) {
-				return value.ToString();
-			}
-		}
-
-		[JsonProperty("base_price")]
-		private readonly double? basePrice;
-		[JsonProperty("current_price")]
-		private readonly double? currentPrice;
-		[JsonProperty("type")]
-		private readonly Type type;
-
-		public PhoneNumberPrice ()
-		{
-		}
-
-		public double? GetBasePrice() {
-			return basePrice;
-		}
-
-		public double? GetCurrentPrice() {
-			return currentPrice;
-		}
-
-		public new Type GetType() {
-			return type;
-		}
+	    private PhoneNumberPrice(
+	        [JsonProperty("base_price")]
+	        double? basePrice,
+	        [JsonProperty("current_priece")]
+	        double? currentPrice,
+	        [JsonProperty("type")]
+	        TypeEnum type
+	    )
+	    {
+	        BasePrice = basePrice;
+	        CurrentPrice = currentPrice;
+	        Type = type;
+	    }
 	}
 }
 

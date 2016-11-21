@@ -3,17 +3,13 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
     public class IpAccessControlListCreator : Creator<IpAccessControlListResource> 
     {
-        public string trunkSid { get; }
-        public string ipAccessControlListSid { get; }
+        public string TrunkSid { get; }
+        public string IpAccessControlListSid { get; }
     
         /// <summary>
         /// Construct a new IpAccessControlListCreator
@@ -23,8 +19,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         public IpAccessControlListCreator(string trunkSid, string ipAccessControlListSid)
         {
-            this.trunkSid = trunkSid;
-            this.ipAccessControlListSid = ipAccessControlListSid;
+            TrunkSid = trunkSid;
+            IpAccessControlListSid = ipAccessControlListSid;
         }
     
         #if NET40
@@ -34,12 +30,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created IpAccessControlListResource </returns> 
-        public override async Task<IpAccessControlListResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/IpAccessControlLists"
+                HttpMethod.Post,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/IpAccessControlLists",
+                client.Region
             );
             
             AddPostParams(request);
@@ -78,9 +75,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public override IpAccessControlListResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.TRUNKING,
-                "/v1/Trunks/" + this.trunkSid + "/IpAccessControlLists"
+                HttpMethod.Post,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + TrunkSid + "/IpAccessControlLists",
+                client.Region
             );
             
             AddPostParams(request);
@@ -116,9 +114,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (ipAccessControlListSid != null)
+            if (IpAccessControlListSid != null)
             {
-                request.AddPostParam("IpAccessControlListSid", ipAccessControlListSid);
+                request.AddPostParam("IpAccessControlListSid", IpAccessControlListSid);
             }
         }
     }

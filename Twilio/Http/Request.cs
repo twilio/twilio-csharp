@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Twilio.Rest;
 
 namespace Twilio.Http
@@ -23,12 +24,20 @@ namespace Twilio.Http
 	        _postParams = new List<KeyValuePair<string, string>>();
 	    }
 
-		public Request(HttpMethod method, Domains domain, string uri)
+		public Request(HttpMethod method, Domain domain, string uri, string region)
 		{
 			Method = method;
 
-			_uri = new Uri("https://" + domain + ".twilio.com" + uri);
-			_queryParams = new List<KeyValuePair<string, string>>();
+		    var b = new StringBuilder();
+		    b.Append("https://").Append(domain);
+		    if (!string.IsNullOrEmpty(region))
+		    {
+		        b.Append(".").Append(region);
+		    }
+		    b.Append(".twilio.com").Append(uri);
+
+		    _uri = new Uri(b.ToString());
+		    _queryParams = new List<KeyValuePair<string, string>>();
 			_postParams = new List<KeyValuePair<string, string>>();
 		}
 
@@ -49,10 +58,14 @@ namespace Twilio.Http
         {
 			var result = "";
 			var first = true;
-			foreach (var pair in data) {
-				if (first) {
+			foreach (var pair in data)
+			{
+				if (first)
+				{
 					first = false;
-				} else {
+				}
+				else
+				{
 					result += "&";
 				}
 

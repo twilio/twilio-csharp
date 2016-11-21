@@ -2,53 +2,26 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Task 
 {
 
     public class ReservationResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Pending = "pending";
-            public const string Accepted = "accepted";
-            public const string Rejected = "rejected";
-            public const string Timeout = "timeout";
-            public const string Canceled = "canceled";
-            public const string Rescinded = "rescinded";
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
         
-            private string _value;
-            
-            public Status() {}
-            
-            public Status(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Status(string value)
-            {
-                return new Status(value);
-            }
-            
-            public static implicit operator string(Status value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly StatusEnum Pending = new StatusEnum("pending");
+            public static readonly StatusEnum Accepted = new StatusEnum("accepted");
+            public static readonly StatusEnum Rejected = new StatusEnum("rejected");
+            public static readonly StatusEnum Timeout = new StatusEnum("timeout");
+            public static readonly StatusEnum Canceled = new StatusEnum("canceled");
+            public static readonly StatusEnum Rescinded = new StatusEnum("rescinded");
         }
     
         /// <summary>
@@ -109,28 +82,28 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("reservation_status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ReservationResource.Status reservationStatus { get; set; }
+        public ReservationResource.StatusEnum ReservationStatus { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("task_sid")]
-        public string taskSid { get; set; }
+        public string TaskSid { get; set; }
         [JsonProperty("worker_name")]
-        public string workerName { get; set; }
+        public string WorkerName { get; set; }
         [JsonProperty("worker_sid")]
-        public string workerSid { get; set; }
+        public string WorkerSid { get; set; }
         [JsonProperty("workspace_sid")]
-        public string workspaceSid { get; set; }
+        public string WorkspaceSid { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> links { get; set; }
+        public Dictionary<string, string> Links { get; set; }
     
         public ReservationResource()
         {
@@ -144,7 +117,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                     [JsonProperty("date_updated")]
                                     string dateUpdated, 
                                     [JsonProperty("reservation_status")]
-                                    ReservationResource.Status reservationStatus, 
+                                    ReservationResource.StatusEnum reservationStatus, 
                                     [JsonProperty("sid")]
                                     string sid, 
                                     [JsonProperty("task_sid")]
@@ -160,17 +133,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                     [JsonProperty("links")]
                                     Dictionary<string, string> links)
                                     {
-            this.accountSid = accountSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.reservationStatus = reservationStatus;
-            this.sid = sid;
-            this.taskSid = taskSid;
-            this.workerName = workerName;
-            this.workerSid = workerSid;
-            this.workspaceSid = workspaceSid;
-            this.url = url;
-            this.links = links;
+            AccountSid = accountSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            ReservationStatus = reservationStatus;
+            Sid = sid;
+            TaskSid = taskSid;
+            WorkerName = workerName;
+            WorkerSid = workerSid;
+            WorkspaceSid = workspaceSid;
+            Url = url;
+            Links = links;
         }
     }
 }

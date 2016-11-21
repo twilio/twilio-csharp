@@ -4,16 +4,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.Sync;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync 
 {
 
     public class ServiceDeleter : Deleter<ServiceResource> 
     {
-        public string sid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new ServiceDeleter
@@ -22,7 +18,7 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="sid"> The sid </param>
         public ServiceDeleter(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -34,9 +30,10 @@ namespace Twilio.Rest.Preview.Sync
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.sid + ""
+                HttpMethod.Delete,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + Sid + "",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -73,9 +70,10 @@ namespace Twilio.Rest.Preview.Sync
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.PREVIEW,
-                "/Sync/Services/" + this.sid + ""
+                HttpMethod.Delete,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + Sid + "",
+                client.Region
             );
             
             var response = client.Request(request);

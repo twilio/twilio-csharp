@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
@@ -63,31 +61,31 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("short_code")]
-        public string shortCode { get; set; }
+        public string ShortCode { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsFallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
         [JsonProperty("sms_fallback_url")]
-        public Uri smsFallbackUrl { get; set; }
+        public Uri SmsFallbackUrl { get; set; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsMethod { get; set; }
+        public Twilio.Http.HttpMethod SmsMethod { get; set; }
         [JsonProperty("sms_url")]
-        public Uri smsUrl { get; set; }
+        public Uri SmsUrl { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public ShortCodeResource()
         {
@@ -119,18 +117,18 @@ namespace Twilio.Rest.Api.V2010.Account
                                   [JsonProperty("uri")]
                                   string uri)
                                   {
-            this.accountSid = accountSid;
-            this.apiVersion = apiVersion;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.shortCode = shortCode;
-            this.sid = sid;
-            this.smsFallbackMethod = smsFallbackMethod;
-            this.smsFallbackUrl = smsFallbackUrl;
-            this.smsMethod = smsMethod;
-            this.smsUrl = smsUrl;
-            this.uri = uri;
+            AccountSid = accountSid;
+            ApiVersion = apiVersion;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            ShortCode = shortCode;
+            Sid = sid;
+            SmsFallbackMethod = smsFallbackMethod;
+            SmsFallbackUrl = smsFallbackUrl;
+            SmsMethod = smsMethod;
+            SmsUrl = smsUrl;
+            Uri = uri;
         }
     }
 }

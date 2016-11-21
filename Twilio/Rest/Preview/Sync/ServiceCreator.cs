@@ -4,18 +4,14 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Preview.Sync 
 {
 
     public class ServiceCreator : Creator<ServiceResource> 
     {
-        public string friendlyName { get; set; }
-        public Uri webhookUrl { get; set; }
-        public bool? reachabilityWebhooksEnabled { get; set; }
+        public string FriendlyName { get; set; }
+        public Uri WebhookUrl { get; set; }
+        public bool? ReachabilityWebhooksEnabled { get; set; }
     
         #if NET40
         /// <summary>
@@ -24,12 +20,13 @@ namespace Twilio.Rest.Preview.Sync
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created ServiceResource </returns> 
-        public override async Task<ServiceResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<ServiceResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.PREVIEW,
-                "/Sync/Services"
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/Sync/Services",
+                client.Region
             );
             
             AddPostParams(request);
@@ -68,9 +65,10 @@ namespace Twilio.Rest.Preview.Sync
         public override ServiceResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.PREVIEW,
-                "/Sync/Services"
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/Sync/Services",
+                client.Region
             );
             
             AddPostParams(request);
@@ -106,19 +104,19 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
             
-            if (webhookUrl != null)
+            if (WebhookUrl != null)
             {
-                request.AddPostParam("WebhookUrl", webhookUrl.ToString());
+                request.AddPostParam("WebhookUrl", WebhookUrl.ToString());
             }
             
-            if (reachabilityWebhooksEnabled != null)
+            if (ReachabilityWebhooksEnabled != null)
             {
-                request.AddPostParam("ReachabilityWebhooksEnabled", reachabilityWebhooksEnabled.ToString());
+                request.AddPostParam("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.ToString());
             }
         }
     }

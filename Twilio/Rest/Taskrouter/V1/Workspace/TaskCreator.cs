@@ -3,21 +3,17 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class TaskCreator : Creator<TaskResource> 
     {
-        public string workspaceSid { get; }
-        public string attributes { get; }
-        public string workflowSid { get; }
-        public int? timeout { get; set; }
-        public int? priority { get; set; }
-        public string taskChannel { get; set; }
+        public string WorkspaceSid { get; }
+        public string Attributes { get; }
+        public string WorkflowSid { get; }
+        public int? Timeout { get; set; }
+        public int? Priority { get; set; }
+        public string TaskChannel { get; set; }
     
         /// <summary>
         /// Construct a new TaskCreator
@@ -28,9 +24,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workflowSid"> The workflow_sid </param>
         public TaskCreator(string workspaceSid, string attributes, string workflowSid)
         {
-            this.workspaceSid = workspaceSid;
-            this.attributes = attributes;
-            this.workflowSid = workflowSid;
+            WorkspaceSid = workspaceSid;
+            Attributes = attributes;
+            WorkflowSid = workflowSid;
         }
     
         #if NET40
@@ -40,12 +36,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created TaskResource </returns> 
-        public override async Task<TaskResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<TaskResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks"
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Tasks",
+                client.Region
             );
             
             AddPostParams(request);
@@ -84,9 +81,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public override TaskResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.TASKROUTER,
-                "/v1/Workspaces/" + this.workspaceSid + "/Tasks"
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + WorkspaceSid + "/Tasks",
+                client.Region
             );
             
             AddPostParams(request);
@@ -122,29 +120,29 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (attributes != null)
+            if (Attributes != null)
             {
-                request.AddPostParam("Attributes", attributes);
+                request.AddPostParam("Attributes", Attributes);
             }
             
-            if (workflowSid != null)
+            if (WorkflowSid != null)
             {
-                request.AddPostParam("WorkflowSid", workflowSid);
+                request.AddPostParam("WorkflowSid", WorkflowSid);
             }
             
-            if (timeout != null)
+            if (Timeout != null)
             {
-                request.AddPostParam("Timeout", timeout.ToString());
+                request.AddPostParam("Timeout", Timeout.ToString());
             }
             
-            if (priority != null)
+            if (Priority != null)
             {
-                request.AddPostParam("Priority", priority.ToString());
+                request.AddPostParam("Priority", Priority.ToString());
             }
             
-            if (taskChannel != null)
+            if (TaskChannel != null)
             {
-                request.AddPostParam("TaskChannel", taskChannel);
+                request.AddPostParam("TaskChannel", TaskChannel);
             }
         }
     }

@@ -2,92 +2,39 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class MessageResource : Resource 
     {
-        public sealed class Status : IStringEnum 
+        public sealed class StatusEnum : StringEnum 
         {
-            public const string Queued = "queued";
-            public const string Sending = "sending";
-            public const string Sent = "sent";
-            public const string Failed = "failed";
-            public const string Delivered = "delivered";
-            public const string Undelivered = "undelivered";
-            public const string Receiving = "receiving";
-            public const string Received = "received";
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
         
-            private string _value;
-            
-            public Status() {}
-            
-            public Status(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Status(string value)
-            {
-                return new Status(value);
-            }
-            
-            public static implicit operator string(Status value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly StatusEnum Queued = new StatusEnum("queued");
+            public static readonly StatusEnum Sending = new StatusEnum("sending");
+            public static readonly StatusEnum Sent = new StatusEnum("sent");
+            public static readonly StatusEnum Failed = new StatusEnum("failed");
+            public static readonly StatusEnum Delivered = new StatusEnum("delivered");
+            public static readonly StatusEnum Undelivered = new StatusEnum("undelivered");
+            public static readonly StatusEnum Receiving = new StatusEnum("receiving");
+            public static readonly StatusEnum Received = new StatusEnum("received");
         }
     
-        public sealed class Direction : IStringEnum 
+        public sealed class DirectionEnum : StringEnum 
         {
-            public const string Inbound = "inbound";
-            public const string OutboundApi = "outbound-api";
-            public const string OutboundCall = "outbound-call";
-            public const string OutboundReply = "outbound-reply";
+            private DirectionEnum(string value) : base(value) {}
+            public DirectionEnum() {}
         
-            private string _value;
-            
-            public Direction() {}
-            
-            public Direction(string value)
-            {
-                _value = value;
-            }
-            
-            public override string ToString()
-            {
-                return _value;
-            }
-            
-            public static implicit operator Direction(string value)
-            {
-                return new Direction(value);
-            }
-            
-            public static implicit operator string(Direction value)
-            {
-                return value.ToString();
-            }
-            
-            public void FromString(string value)
-            {
-                _value = value;
-            }
+            public static readonly DirectionEnum Inbound = new DirectionEnum("inbound");
+            public static readonly DirectionEnum OutboundApi = new DirectionEnum("outbound-api");
+            public static readonly DirectionEnum OutboundCall = new DirectionEnum("outbound-call");
+            public static readonly DirectionEnum OutboundReply = new DirectionEnum("outbound-reply");
         }
     
         /// <summary>
@@ -98,7 +45,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="body"> The body </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, string body)
+        public static MessageCreator Creator(Types.PhoneNumber to, Types.PhoneNumber from, string body)
         {
             return new MessageCreator(to, from, body);
         }
@@ -111,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="from"> The phone number that initiated the message </param>
         /// <param name="mediaUrl"> The media_url </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, Twilio.Types.PhoneNumber from, List<Uri> mediaUrl)
+        public static MessageCreator Creator(Types.PhoneNumber to, Types.PhoneNumber from, List<Uri> mediaUrl)
         {
             return new MessageCreator(to, from, mediaUrl);
         }
@@ -124,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="messagingServiceSid"> The messaging_service_sid </param>
         /// <param name="body"> The body </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, string messagingServiceSid, string body)
+        public static MessageCreator Creator(Types.PhoneNumber to, string messagingServiceSid, string body)
         {
             return new MessageCreator(to, messagingServiceSid, body);
         }
@@ -137,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="messagingServiceSid"> The messaging_service_sid </param>
         /// <param name="mediaUrl"> The media_url </param>
         /// <returns> MessageCreator capable of executing the create </returns> 
-        public static MessageCreator Creator(Twilio.Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl)
+        public static MessageCreator Creator(Types.PhoneNumber to, string messagingServiceSid, List<Uri> mediaUrl)
         {
             return new MessageCreator(to, messagingServiceSid, mediaUrl);
         }
@@ -179,10 +126,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="sid"> The message to redact </param>
+        /// <param name="body"> The body </param>
         /// <returns> MessageUpdater capable of executing the update </returns> 
-        public static MessageUpdater Updater(string sid)
+        public static MessageUpdater Updater(string sid, string body)
         {
-            return new MessageUpdater(sid);
+            return new MessageUpdater(sid, body);
         }
     
         /// <summary>
@@ -205,46 +153,48 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("body")]
-        public string body { get; set; }
+        public string Body { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("date_sent")]
-        public DateTime? dateSent { get; set; }
+        public DateTime? DateSent { get; set; }
         [JsonProperty("direction")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public MessageResource.Direction direction { get; set; }
+        public MessageResource.DirectionEnum Direction { get; set; }
         [JsonProperty("error_code")]
-        public int? errorCode { get; set; }
+        public int? ErrorCode { get; set; }
         [JsonProperty("error_message")]
-        public string errorMessage { get; set; }
+        public string ErrorMessage { get; set; }
         [JsonProperty("from")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Twilio.Types.PhoneNumber from { get; set; }
+        public Types.PhoneNumber From { get; set; }
+        [JsonProperty("messaging_service_sid")]
+        public string MessagingServiceSid { get; set; }
         [JsonProperty("num_media")]
-        public string numMedia { get; set; }
+        public string NumMedia { get; set; }
         [JsonProperty("num_segments")]
-        public string numSegments { get; set; }
+        public string NumSegments { get; set; }
         [JsonProperty("price")]
-        public decimal? price { get; set; }
+        public decimal? Price { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; set; }
+        public string PriceUnit { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public MessageResource.Status status { get; set; }
+        public MessageResource.StatusEnum Status { get; set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> subresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; set; }
         [JsonProperty("to")]
-        public string to { get; set; }
+        public string To { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public MessageResource()
         {
@@ -264,13 +214,15 @@ namespace Twilio.Rest.Api.V2010.Account
                                 [JsonProperty("date_sent")]
                                 string dateSent, 
                                 [JsonProperty("direction")]
-                                MessageResource.Direction direction, 
+                                MessageResource.DirectionEnum direction, 
                                 [JsonProperty("error_code")]
                                 int? errorCode, 
                                 [JsonProperty("error_message")]
                                 string errorMessage, 
                                 [JsonProperty("from")]
-                                Twilio.Types.PhoneNumber from, 
+                                Types.PhoneNumber from, 
+                                [JsonProperty("messaging_service_sid")]
+                                string messagingServiceSid, 
                                 [JsonProperty("num_media")]
                                 string numMedia, 
                                 [JsonProperty("num_segments")]
@@ -282,7 +234,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                 [JsonProperty("sid")]
                                 string sid, 
                                 [JsonProperty("status")]
-                                MessageResource.Status status, 
+                                MessageResource.StatusEnum status, 
                                 [JsonProperty("subresource_uris")]
                                 Dictionary<string, string> subresourceUris, 
                                 [JsonProperty("to")]
@@ -290,25 +242,26 @@ namespace Twilio.Rest.Api.V2010.Account
                                 [JsonProperty("uri")]
                                 string uri)
                                 {
-            this.accountSid = accountSid;
-            this.apiVersion = apiVersion;
-            this.body = body;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.dateSent = MarshalConverter.DateTimeFromString(dateSent);
-            this.direction = direction;
-            this.errorCode = errorCode;
-            this.errorMessage = errorMessage;
-            this.from = from;
-            this.numMedia = numMedia;
-            this.numSegments = numSegments;
-            this.price = price;
-            this.priceUnit = priceUnit;
-            this.sid = sid;
-            this.status = status;
-            this.subresourceUris = subresourceUris;
-            this.to = to;
-            this.uri = uri;
+            AccountSid = accountSid;
+            ApiVersion = apiVersion;
+            Body = body;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            DateSent = MarshalConverter.DateTimeFromString(dateSent);
+            Direction = direction;
+            ErrorCode = errorCode;
+            ErrorMessage = errorMessage;
+            From = from;
+            MessagingServiceSid = messagingServiceSid;
+            NumMedia = numMedia;
+            NumSegments = numSegments;
+            Price = price;
+            PriceUnit = priceUnit;
+            Sid = sid;
+            Status = status;
+            SubresourceUris = subresourceUris;
+            To = to;
+            Uri = uri;
         }
     }
 }

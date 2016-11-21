@@ -4,18 +4,14 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Call;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
     public class NotificationDeleter : Deleter<NotificationResource> 
     {
-        public string accountSid { get; set; }
-        public string callSid { get; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string CallSid { get; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new NotificationDeleter
@@ -25,8 +21,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="sid"> The sid </param>
         public NotificationDeleter(string callSid, string sid)
         {
-            this.callSid = callSid;
-            this.sid = sid;
+            CallSid = callSid;
+            Sid = sid;
         }
     
         #if NET40
@@ -38,9 +34,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Notifications/" + this.sid + ".json"
+                HttpMethod.Delete,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Calls/" + CallSid + "/Notifications/" + Sid + ".json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -77,9 +74,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/Calls/" + this.callSid + "/Notifications/" + this.sid + ".json"
+                HttpMethod.Delete,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/Calls/" + CallSid + "/Notifications/" + Sid + ".json",
+                client.Region
             );
             
             var response = client.Request(request);

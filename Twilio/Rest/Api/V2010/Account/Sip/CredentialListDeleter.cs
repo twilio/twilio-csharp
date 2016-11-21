@@ -4,17 +4,13 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Sip;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010.Account.Sip 
 {
 
     public class CredentialListDeleter : Deleter<CredentialListResource> 
     {
-        public string accountSid { get; set; }
-        public string sid { get; }
+        public string AccountSid { get; set; }
+        public string Sid { get; }
     
         /// <summary>
         /// Construct a new CredentialListDeleter
@@ -23,7 +19,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="sid"> Delete by unique credential Sid </param>
         public CredentialListDeleter(string sid)
         {
-            this.sid = sid;
+            Sid = sid;
         }
     
         #if NET40
@@ -35,9 +31,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public override async System.Threading.Tasks.Task DeleteAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.sid + ".json"
+                HttpMethod.Delete,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + Sid + ".json",
+                client.Region
             );
             
             var response = await client.RequestAsync(request);
@@ -74,9 +71,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public override void Delete(ITwilioRestClient client)
         {
             var request = new Request(
-                Twilio.Http.HttpMethod.DELETE,
-                Domains.API,
-                "/2010-04-01/Accounts/" + (accountSid ?? client.GetAccountSid()) + "/SIP/CredentialLists/" + this.sid + ".json"
+                HttpMethod.Delete,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (AccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + Sid + ".json",
+                client.Region
             );
             
             var response = client.Request(request);

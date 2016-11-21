@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Chat.V1.Service 
 {
 
     public class ChannelReader : Reader<ChannelResource> 
     {
-        public string serviceSid { get; }
+        public string ServiceSid { get; }
     
         /// <summary>
         /// Construct a new ChannelReader
@@ -21,7 +17,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="serviceSid"> The service_sid </param>
         public ChannelReader(string serviceSid)
         {
-            this.serviceSid = serviceSid;
+            ServiceSid = serviceSid;
         }
     
         #if NET40
@@ -31,12 +27,13 @@ namespace Twilio.Rest.Chat.V1.Service
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> ChannelResource ResourceSet </returns> 
-        public override Task<ResourceSet<ChannelResource>> ReadAsync(ITwilioRestClient client)
+        public override System.Threading.Tasks.Task<ResourceSet<ChannelResource>> ReadAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels"
+                HttpMethod.Get,
+                Rest.Domain.Chat,
+                "/v1/Services/" + ServiceSid + "/Channels",
+                client.Region
             );
             AddQueryParams(request);
             
@@ -55,9 +52,10 @@ namespace Twilio.Rest.Chat.V1.Service
         public override ResourceSet<ChannelResource> Read(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
-                Domains.CHAT,
-                "/v1/Services/" + this.serviceSid + "/Channels"
+                HttpMethod.Get,
+                Rest.Domain.Chat,
+                "/v1/Services/" + ServiceSid + "/Channels",
+                client.Region
             );
             
             AddQueryParams(request);
@@ -76,9 +74,10 @@ namespace Twilio.Rest.Chat.V1.Service
         public override Page<ChannelResource> NextPage(Page<ChannelResource> page, ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.GET,
+                HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Domains.CHAT
+                    Rest.Domain.Chat,
+                    client.Region
                 )
             );
             

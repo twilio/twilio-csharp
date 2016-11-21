@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
@@ -66,40 +64,40 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("call_sid")]
-        public string callSid { get; set; }
+        public string CallSid { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("error_code")]
-        public string errorCode { get; set; }
+        public string ErrorCode { get; set; }
         [JsonProperty("log")]
-        public string log { get; set; }
+        public string Log { get; set; }
         [JsonProperty("message_date")]
-        public DateTime? messageDate { get; set; }
+        public DateTime? MessageDate { get; set; }
         [JsonProperty("message_text")]
-        public string messageText { get; set; }
+        public string MessageText { get; set; }
         [JsonProperty("more_info")]
-        public Uri moreInfo { get; set; }
+        public Uri MoreInfo { get; set; }
         [JsonProperty("request_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod requestMethod { get; set; }
+        public Twilio.Http.HttpMethod RequestMethod { get; set; }
         [JsonProperty("request_url")]
-        public Uri requestUrl { get; set; }
+        public Uri RequestUrl { get; set; }
         [JsonProperty("request_variables")]
-        public string requestVariables { get; set; }
+        public string RequestVariables { get; set; }
         [JsonProperty("response_body")]
-        public string responseBody { get; set; }
+        public string ResponseBody { get; set; }
         [JsonProperty("response_headers")]
-        public string responseHeaders { get; set; }
+        public string ResponseHeaders { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
     
         public NotificationResource()
         {
@@ -141,23 +139,23 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                      [JsonProperty("uri")]
                                      string uri)
                                      {
-            this.accountSid = accountSid;
-            this.apiVersion = apiVersion;
-            this.callSid = callSid;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.errorCode = errorCode;
-            this.log = log;
-            this.messageDate = MarshalConverter.DateTimeFromString(messageDate);
-            this.messageText = messageText;
-            this.moreInfo = moreInfo;
-            this.requestMethod = requestMethod;
-            this.requestUrl = requestUrl;
-            this.requestVariables = requestVariables;
-            this.responseBody = responseBody;
-            this.responseHeaders = responseHeaders;
-            this.sid = sid;
-            this.uri = uri;
+            AccountSid = accountSid;
+            ApiVersion = apiVersion;
+            CallSid = callSid;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            ErrorCode = errorCode;
+            Log = log;
+            MessageDate = MarshalConverter.DateTimeFromString(messageDate);
+            MessageText = messageText;
+            MoreInfo = moreInfo;
+            RequestMethod = requestMethod;
+            RequestUrl = requestUrl;
+            RequestVariables = requestVariables;
+            ResponseBody = responseBody;
+            ResponseHeaders = responseHeaders;
+            Sid = sid;
+            Uri = uri;
         }
     }
 }

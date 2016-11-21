@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
@@ -85,50 +83,50 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("api_version")]
-        public string apiVersion { get; set; }
+        public string ApiVersion { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("friendly_name")]
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
         [JsonProperty("message_status_callback")]
-        public Uri messageStatusCallback { get; set; }
+        public Uri MessageStatusCallback { get; set; }
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsFallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
         [JsonProperty("sms_fallback_url")]
-        public Uri smsFallbackUrl { get; set; }
+        public Uri SmsFallbackUrl { get; set; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod smsMethod { get; set; }
+        public Twilio.Http.HttpMethod SmsMethod { get; set; }
         [JsonProperty("sms_status_callback")]
-        public Uri smsStatusCallback { get; set; }
+        public Uri SmsStatusCallback { get; set; }
         [JsonProperty("sms_url")]
-        public Uri smsUrl { get; set; }
+        public Uri SmsUrl { get; set; }
         [JsonProperty("status_callback")]
-        public Uri statusCallback { get; set; }
+        public Uri StatusCallback { get; set; }
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod statusCallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         [JsonProperty("uri")]
-        public string uri { get; set; }
+        public string Uri { get; set; }
         [JsonProperty("voice_caller_id_lookup")]
-        public bool? voiceCallerIdLookup { get; set; }
+        public bool? VoiceCallerIdLookup { get; set; }
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceFallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
         [JsonProperty("voice_fallback_url")]
-        public Uri voiceFallbackUrl { get; set; }
+        public Uri VoiceFallbackUrl { get; set; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod voiceMethod { get; set; }
+        public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         [JsonProperty("voice_url")]
-        public Uri voiceUrl { get; set; }
+        public Uri VoiceUrl { get; set; }
     
         public ApplicationResource()
         {
@@ -176,26 +174,26 @@ namespace Twilio.Rest.Api.V2010.Account
                                     [JsonProperty("voice_url")]
                                     Uri voiceUrl)
                                     {
-            this.accountSid = accountSid;
-            this.apiVersion = apiVersion;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.friendlyName = friendlyName;
-            this.messageStatusCallback = messageStatusCallback;
-            this.sid = sid;
-            this.smsFallbackMethod = smsFallbackMethod;
-            this.smsFallbackUrl = smsFallbackUrl;
-            this.smsMethod = smsMethod;
-            this.smsStatusCallback = smsStatusCallback;
-            this.smsUrl = smsUrl;
-            this.statusCallback = statusCallback;
-            this.statusCallbackMethod = statusCallbackMethod;
-            this.uri = uri;
-            this.voiceCallerIdLookup = voiceCallerIdLookup;
-            this.voiceFallbackMethod = voiceFallbackMethod;
-            this.voiceFallbackUrl = voiceFallbackUrl;
-            this.voiceMethod = voiceMethod;
-            this.voiceUrl = voiceUrl;
+            AccountSid = accountSid;
+            ApiVersion = apiVersion;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            FriendlyName = friendlyName;
+            MessageStatusCallback = messageStatusCallback;
+            Sid = sid;
+            SmsFallbackMethod = smsFallbackMethod;
+            SmsFallbackUrl = smsFallbackUrl;
+            SmsMethod = smsMethod;
+            SmsStatusCallback = smsStatusCallback;
+            SmsUrl = smsUrl;
+            StatusCallback = statusCallback;
+            StatusCallbackMethod = statusCallbackMethod;
+            Uri = uri;
+            VoiceCallerIdLookup = voiceCallerIdLookup;
+            VoiceFallbackMethod = voiceFallbackMethod;
+            VoiceFallbackUrl = voiceFallbackUrl;
+            VoiceMethod = voiceMethod;
+            VoiceUrl = voiceUrl;
         }
     }
 }

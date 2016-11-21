@@ -2,10 +2,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Pricing.V1.Messaging 
@@ -54,17 +52,17 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         }
     
         [JsonProperty("country")]
-        public string country { get; set; }
+        public string Country { get; set; }
         [JsonProperty("iso_country")]
-        public string isoCountry { get; set; }
+        public string IsoCountry { get; set; }
         [JsonProperty("outbound_sms_prices")]
-        public List<OutboundSmsPrice> outboundSmsPrices { get; set; }
+        public List<OutboundSmsPrice> OutboundSmsPrices { get; set; }
         [JsonProperty("inbound_sms_prices")]
-        public List<InboundSmsPrice> inboundSmsPrices { get; set; }
+        public List<InboundSmsPrice> InboundSmsPrices { get; set; }
         [JsonProperty("price_unit")]
-        public string priceUnit { get; set; }
+        public string PriceUnit { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public CountryResource()
         {
@@ -84,12 +82,12 @@ namespace Twilio.Rest.Pricing.V1.Messaging
                                 [JsonProperty("url")]
                                 Uri url)
                                 {
-            this.country = country;
-            this.isoCountry = isoCountry;
-            this.outboundSmsPrices = outboundSmsPrices;
-            this.inboundSmsPrices = inboundSmsPrices;
-            this.priceUnit = priceUnit;
-            this.url = url;
+            Country = country;
+            IsoCountry = isoCountry;
+            OutboundSmsPrices = outboundSmsPrices;
+            InboundSmsPrices = inboundSmsPrices;
+            PriceUnit = priceUnit;
+            Url = url;
         }
     }
 }

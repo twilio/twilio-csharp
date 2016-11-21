@@ -1,10 +1,8 @@
 using Newtonsoft.Json;
 using System;
 using Twilio.Base;
-using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
-using Twilio.Http;
 
 namespace Twilio.Rest.Preview.Wireless 
 {
@@ -64,25 +62,25 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         [JsonProperty("sid")]
-        public string sid { get; set; }
+        public string Sid { get; set; }
         [JsonProperty("account_sid")]
-        public string accountSid { get; set; }
+        public string AccountSid { get; set; }
         [JsonProperty("device_sid")]
-        public string deviceSid { get; set; }
+        public string DeviceSid { get; set; }
         [JsonProperty("command")]
-        public string command { get; set; }
+        public string Command { get; set; }
         [JsonProperty("command_mode")]
-        public string commandMode { get; set; }
+        public string CommandMode { get; set; }
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string Status { get; set; }
         [JsonProperty("direction")]
-        public string direction { get; set; }
+        public string Direction { get; set; }
         [JsonProperty("date_created")]
-        public DateTime? dateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         [JsonProperty("date_updated")]
-        public DateTime? dateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }
         [JsonProperty("url")]
-        public Uri url { get; set; }
+        public Uri Url { get; set; }
     
         public CommandResource()
         {
@@ -110,16 +108,16 @@ namespace Twilio.Rest.Preview.Wireless
                                 [JsonProperty("url")]
                                 Uri url)
                                 {
-            this.sid = sid;
-            this.accountSid = accountSid;
-            this.deviceSid = deviceSid;
-            this.command = command;
-            this.commandMode = commandMode;
-            this.status = status;
-            this.direction = direction;
-            this.dateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            this.dateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            this.url = url;
+            Sid = sid;
+            AccountSid = accountSid;
+            DeviceSid = deviceSid;
+            Command = command;
+            CommandMode = commandMode;
+            Status = status;
+            Direction = direction;
+            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
+            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
+            Url = url;
         }
     }
 }

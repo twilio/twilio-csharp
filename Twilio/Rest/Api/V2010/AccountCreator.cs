@@ -3,16 +3,12 @@ using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-#if NET40
-using System.Threading.Tasks;
-#endif
-
 namespace Twilio.Rest.Api.V2010 
 {
 
     public class AccountCreator : Creator<AccountResource> 
     {
-        public string friendlyName { get; set; }
+        public string FriendlyName { get; set; }
     
         #if NET40
         /// <summary>
@@ -21,12 +17,13 @@ namespace Twilio.Rest.Api.V2010
         ///
         /// <param name="client"> ITwilioRestClient with which to make the request </param>
         /// <returns> Created AccountResource </returns> 
-        public override async Task<AccountResource> CreateAsync(ITwilioRestClient client)
+        public override async System.Threading.Tasks.Task<AccountResource> CreateAsync(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -65,9 +62,10 @@ namespace Twilio.Rest.Api.V2010
         public override AccountResource Create(ITwilioRestClient client)
         {
             var request = new Request(
-                HttpMethod.POST,
-                Domains.API,
-                "/2010-04-01/Accounts.json"
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts.json",
+                client.Region
             );
             
             AddPostParams(request);
@@ -103,9 +101,9 @@ namespace Twilio.Rest.Api.V2010
         /// <param name="request"> Request to add post params to </param>
         private void AddPostParams(Request request)
         {
-            if (friendlyName != null)
+            if (FriendlyName != null)
             {
-                request.AddPostParam("FriendlyName", friendlyName);
+                request.AddPostParam("FriendlyName", FriendlyName);
             }
         }
     }
