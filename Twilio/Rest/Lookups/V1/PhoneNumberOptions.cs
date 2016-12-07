@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
@@ -37,12 +38,12 @@ namespace Twilio.Rest.Lookups.V1
             
             if (Type != null)
             {
-                p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
+                p.AddRange(Type.Select(prop => new KeyValuePair<string, string>("Type", prop.ToString())));
             }
             
             if (AddOns != null)
             {
-                p.Add(new KeyValuePair<string, string>("AddOns", AddOns.ToString()));
+                p.AddRange(AddOns.Select(prop => new KeyValuePair<string, string>("AddOns", prop.ToString())));
             }
             
             if (AddOnsData != null)

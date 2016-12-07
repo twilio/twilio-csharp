@@ -214,16 +214,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of messages belonging to the account used to make the request
         /// </summary>
-        public static ResourceSet<MessageResource> Read(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, string dateSent = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<MessageResource> Read(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, DateTime? dateSentBefore = null, DateTime? dateSent = null, DateTime? dateSentAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMessageOptions{AccountSid = accountSid, To = to, From = from, DateSent = dateSent, PageSize = pageSize, Limit = limit};
+            var options = new ReadMessageOptions{AccountSid = accountSid, To = to, From = from, DateSentBefore = dateSentBefore, DateSent = dateSent, DateSentAfter = dateSentAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, string dateSent = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, DateTime? dateSentBefore = null, DateTime? dateSent = null, DateTime? dateSentAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMessageOptions{AccountSid = accountSid, To = to, From = from, DateSent = dateSent, PageSize = pageSize, Limit = limit};
+            var options = new ReadMessageOptions{AccountSid = accountSid, To = to, From = from, DateSentBefore = dateSentBefore, DateSent = dateSent, DateSentAfter = dateSentAfter, PageSize = pageSize, Limit = limit};
             var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
             return response;
         }

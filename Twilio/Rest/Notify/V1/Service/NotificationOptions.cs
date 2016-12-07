@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 
 namespace Twilio.Rest.Notify.V1.Service 
@@ -40,12 +41,12 @@ namespace Twilio.Rest.Notify.V1.Service
             var p = new List<KeyValuePair<string, string>>();
             if (Identity != null)
             {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity.ToString()));
+                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop.ToString())));
             }
             
             if (Tag != null)
             {
-                p.Add(new KeyValuePair<string, string>("Tag", Tag.ToString()));
+                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop.ToString())));
             }
             
             if (Body != null)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 
 namespace Twilio.Rest.Api.V2010.Account.Call 
@@ -37,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             
             if (Issue != null)
             {
-                p.Add(new KeyValuePair<string, string>("Issue", Issue.ToString()));
+                p.AddRange(Issue.Select(prop => new KeyValuePair<string, string>("Issue", prop.ToString())));
             }
             
             return p;
@@ -101,7 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             
             if (Issue != null)
             {
-                p.Add(new KeyValuePair<string, string>("Issue", Issue.ToString()));
+                p.AddRange(Issue.Select(prop => new KeyValuePair<string, string>("Issue", prop.ToString())));
             }
             
             return p;

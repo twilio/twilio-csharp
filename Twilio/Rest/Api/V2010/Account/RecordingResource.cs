@@ -162,16 +162,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of recordings belonging to the account used to make the request
         /// </summary>
-        public static ResourceSet<RecordingResource> Read(string accountSid = null, string dateCreated = null, string callSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<RecordingResource> Read(string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, string callSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions{AccountSid = accountSid, DateCreated = dateCreated, CallSid = callSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions{AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(string accountSid = null, string dateCreated = null, string callSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, string callSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions{AccountSid = accountSid, DateCreated = dateCreated, CallSid = callSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions{AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, PageSize = pageSize, Limit = limit};
             var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
             return response;
         }

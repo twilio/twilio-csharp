@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 
 namespace Twilio.Rest.Api.V2010.Account 
@@ -56,7 +57,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (MediaUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("MediaUrl", MediaUrl.ToString()));
+                p.AddRange(MediaUrl.Select(prop => new KeyValuePair<string, string>("MediaUrl", prop.ToString())));
             }
             
             if (StatusCallback != null)
@@ -138,7 +139,9 @@ namespace Twilio.Rest.Api.V2010.Account
         public string AccountSid { get; set; }
         public Types.PhoneNumber To { get; set; }
         public Types.PhoneNumber From { get; set; }
-        public string DateSent { get; set; }
+        public DateTime? DateSentBefore { get; set; }
+        public DateTime? DateSent { get; set; }
+        public DateTime? DateSentAfter { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -158,7 +161,19 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (DateSent != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateSent", DateSent));
+                p.Add(new KeyValuePair<string, string>("DateSent", DateSent.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+            }
+            else
+            {
+                if (DateSentBefore != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateSent<", DateSentBefore.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                }
+            
+                if (DateSentAfter != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateSent>", DateSentAfter.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                }
             }
             
             if (PageSize != null)

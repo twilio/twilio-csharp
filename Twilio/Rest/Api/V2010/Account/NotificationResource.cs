@@ -140,16 +140,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of notifications belonging to the account used to make the request
         /// </summary>
-        public static ResourceSet<NotificationResource> Read(string accountSid = null, int? log = null, string messageDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<NotificationResource> Read(string accountSid = null, int? log = null, DateTime? messageDateBefore = null, DateTime? messageDate = null, DateTime? messageDateAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadNotificationOptions{AccountSid = accountSid, Log = log, MessageDate = messageDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadNotificationOptions{AccountSid = accountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<NotificationResource>> ReadAsync(string accountSid = null, int? log = null, string messageDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<NotificationResource>> ReadAsync(string accountSid = null, int? log = null, DateTime? messageDateBefore = null, DateTime? messageDate = null, DateTime? messageDateAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadNotificationOptions{AccountSid = accountSid, Log = log, MessageDate = messageDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadNotificationOptions{AccountSid = accountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
             var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
             return response;
         }

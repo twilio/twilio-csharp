@@ -223,16 +223,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieves a collection of Calls made to and from your account
         /// </summary>
-        public static ResourceSet<CallResource> Read(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, string parentCallSid = null, CallResource.StatusEnum status = null, string startTime = null, string endTime = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<CallResource> Read(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, string parentCallSid = null, CallResource.StatusEnum status = null, DateTime? startTimeBefore = null, DateTime? startTime = null, DateTime? startTimeAfter = null, DateTime? endTimeBefore = null, DateTime? endTime = null, DateTime? endTimeAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadCallOptions{AccountSid = accountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTime = startTime, EndTime = endTime, PageSize = pageSize, Limit = limit};
+            var options = new ReadCallOptions{AccountSid = accountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTimeBefore = startTimeBefore, StartTime = startTime, StartTimeAfter = startTimeAfter, EndTimeBefore = endTimeBefore, EndTime = endTime, EndTimeAfter = endTimeAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<CallResource>> ReadAsync(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, string parentCallSid = null, CallResource.StatusEnum status = null, string startTime = null, string endTime = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CallResource>> ReadAsync(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, string parentCallSid = null, CallResource.StatusEnum status = null, DateTime? startTimeBefore = null, DateTime? startTime = null, DateTime? startTimeAfter = null, DateTime? endTimeBefore = null, DateTime? endTime = null, DateTime? endTimeAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadCallOptions{AccountSid = accountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTime = startTime, EndTime = endTime, PageSize = pageSize, Limit = limit};
+            var options = new ReadCallOptions{AccountSid = accountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTimeBefore = startTimeBefore, StartTime = startTime, StartTimeAfter = startTimeAfter, EndTimeBefore = endTimeBefore, EndTime = endTime, EndTimeAfter = endTimeAfter, PageSize = pageSize, Limit = limit};
             var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
             return response;
         }

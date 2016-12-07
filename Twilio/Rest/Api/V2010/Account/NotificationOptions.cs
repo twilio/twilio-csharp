@@ -59,7 +59,9 @@ namespace Twilio.Rest.Api.V2010.Account
     {
         public string AccountSid { get; set; }
         public int? Log { get; set; }
-        public string MessageDate { get; set; }
+        public DateTime? MessageDateBefore { get; set; }
+        public DateTime? MessageDate { get; set; }
+        public DateTime? MessageDateAfter { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -74,7 +76,19 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (MessageDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessageDate", MessageDate));
+                p.Add(new KeyValuePair<string, string>("MessageDate", MessageDate.Value.ToString("yyyy-MM-dd")));
+            }
+            else
+            {
+                if (MessageDateBefore != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("MessageDate<", MessageDateBefore.Value.ToString("yyyy-MM-dd")));
+                }
+            
+                if (MessageDateAfter != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("MessageDate>", MessageDateAfter.Value.ToString("yyyy-MM-dd")));
+                }
             }
             
             if (PageSize != null)

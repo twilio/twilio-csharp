@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 
 namespace Twilio.Rest.Chat.V1.Service.Channel 
@@ -102,7 +103,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var p = new List<KeyValuePair<string, string>>();
             if (Identity != null)
             {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity.ToString()));
+                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop.ToString())));
             }
             
             if (PageSize != null)

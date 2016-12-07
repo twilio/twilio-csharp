@@ -33,8 +33,12 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadConferenceOptions : ReadOptions<ConferenceResource> 
     {
         public string AccountSid { get; set; }
-        public string DateCreated { get; set; }
-        public string DateUpdated { get; set; }
+        public DateTime? DateCreatedBefore { get; set; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreatedAfter { get; set; }
+        public DateTime? DateUpdatedBefore { get; set; }
+        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdatedAfter { get; set; }
         public string FriendlyName { get; set; }
         public ConferenceResource.StatusEnum Status { get; set; }
     
@@ -46,12 +50,36 @@ namespace Twilio.Rest.Api.V2010.Account
             var p = new List<KeyValuePair<string, string>>();
             if (DateCreated != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated));
+                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd")));
+            }
+            else
+            {
+                if (DateCreatedBefore != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd")));
+                }
+            
+                if (DateCreatedAfter != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
+                }
             }
             
             if (DateUpdated != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateUpdated", DateUpdated));
+                p.Add(new KeyValuePair<string, string>("DateUpdated", DateUpdated.Value.ToString("yyyy-MM-dd")));
+            }
+            else
+            {
+                if (DateUpdatedBefore != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateUpdated<", DateUpdatedBefore.Value.ToString("yyyy-MM-dd")));
+                }
+            
+                if (DateUpdatedAfter != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateUpdated>", DateUpdatedAfter.Value.ToString("yyyy-MM-dd")));
+                }
             }
             
             if (FriendlyName != null)

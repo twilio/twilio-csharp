@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 
 namespace Twilio.Rest.Preview.Wireless 
@@ -75,7 +76,7 @@ namespace Twilio.Rest.Preview.Wireless
             
             if (Roaming != null)
             {
-                p.Add(new KeyValuePair<string, string>("Roaming", Roaming.ToString()));
+                p.AddRange(Roaming.Select(prop => new KeyValuePair<string, string>("Roaming", prop.ToString())));
             }
             
             if (DataLimit != null)

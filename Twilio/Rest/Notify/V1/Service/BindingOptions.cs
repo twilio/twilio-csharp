@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
@@ -117,7 +118,7 @@ namespace Twilio.Rest.Notify.V1.Service
             
             if (Tag != null)
             {
-                p.Add(new KeyValuePair<string, string>("Tag", Tag.ToString()));
+                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop.ToString())));
             }
             
             if (NotificationProtocolVersion != null)
@@ -170,12 +171,12 @@ namespace Twilio.Rest.Notify.V1.Service
             
             if (Identity != null)
             {
-                p.Add(new KeyValuePair<string, string>("Identity", Identity.ToString()));
+                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop.ToString())));
             }
             
             if (Tag != null)
             {
-                p.Add(new KeyValuePair<string, string>("Tag", Tag.ToString()));
+                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop.ToString())));
             }
             
             if (PageSize != null)

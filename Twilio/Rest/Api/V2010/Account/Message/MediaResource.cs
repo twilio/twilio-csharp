@@ -140,16 +140,16 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <summary>
         /// Retrieve a list of medias belonging to the account used to make the request
         /// </summary>
-        public static ResourceSet<MediaResource> Read(string messageSid, string accountSid = null, string dateCreated = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<MediaResource> Read(string messageSid, string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMediaOptions(messageSid){AccountSid = accountSid, DateCreated = dateCreated, PageSize = pageSize, Limit = limit};
+            var options = new ReadMediaOptions(messageSid){AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<MediaResource>> ReadAsync(string messageSid, string accountSid = null, string dateCreated = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MediaResource>> ReadAsync(string messageSid, string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMediaOptions(messageSid){AccountSid = accountSid, DateCreated = dateCreated, PageSize = pageSize, Limit = limit};
+            var options = new ReadMediaOptions(messageSid){AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
             var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
             return response;
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 
 namespace Twilio.Rest.Api.V2010.Account.Conference 
@@ -152,7 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             
             if (StatusCallbackEvent != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackEvent", StatusCallbackEvent.ToString()));
+                p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", prop.ToString())));
             }
             
             if (Timeout != null)
@@ -227,7 +228,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             
             if (ConferenceStatusCallbackEvent != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConferenceStatusCallbackEvent", ConferenceStatusCallbackEvent.ToString()));
+                p.AddRange(ConferenceStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceStatusCallbackEvent", prop.ToString())));
             }
             
             return p;

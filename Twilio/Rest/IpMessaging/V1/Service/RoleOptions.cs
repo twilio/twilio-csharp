@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 
 namespace Twilio.Rest.IpMessaging.V1.Service 
@@ -100,7 +101,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             
             if (Permission != null)
             {
-                p.Add(new KeyValuePair<string, string>("Permission", Permission.ToString()));
+                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop.ToString())));
             }
             
             return p;
@@ -164,7 +165,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var p = new List<KeyValuePair<string, string>>();
             if (Permission != null)
             {
-                p.Add(new KeyValuePair<string, string>("Permission", Permission.ToString()));
+                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop.ToString())));
             }
             
             return p;

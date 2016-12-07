@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 
 namespace Twilio.Rest.Api.V2010.Account 
@@ -96,7 +97,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (Permissions != null)
             {
-                p.Add(new KeyValuePair<string, string>("Permissions", Permissions.ToString()));
+                p.AddRange(Permissions.Select(prop => new KeyValuePair<string, string>("Permissions", prop.ToString())));
             }
             
             return p;

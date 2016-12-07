@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 using Twilio.Types;
 
@@ -91,7 +92,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (StatusCallbackEvent != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackEvent", StatusCallbackEvent.ToString()));
+                p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", prop.ToString())));
             }
             
             if (StatusCallbackMethod != null)
@@ -215,8 +216,12 @@ namespace Twilio.Rest.Api.V2010.Account
         public Types.PhoneNumber From { get; set; }
         public string ParentCallSid { get; set; }
         public CallResource.StatusEnum Status { get; set; }
-        public string StartTime { get; set; }
-        public string EndTime { get; set; }
+        public DateTime? StartTimeBefore { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? StartTimeAfter { get; set; }
+        public DateTime? EndTimeBefore { get; set; }
+        public DateTime? EndTime { get; set; }
+        public DateTime? EndTimeAfter { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -246,12 +251,36 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (StartTime != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartTime", StartTime));
+                p.Add(new KeyValuePair<string, string>("StartTime", StartTime.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+            }
+            else
+            {
+                if (StartTimeBefore != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("StartTime<", StartTimeBefore.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                }
+            
+                if (StartTimeAfter != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("StartTime>", StartTimeAfter.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                }
             }
             
             if (EndTime != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndTime", EndTime));
+                p.Add(new KeyValuePair<string, string>("EndTime", EndTime.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+            }
+            else
+            {
+                if (EndTimeBefore != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("EndTime<", EndTimeBefore.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                }
+            
+                if (EndTimeAfter != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("EndTime>", EndTimeAfter.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                }
             }
             
             if (PageSize != null)

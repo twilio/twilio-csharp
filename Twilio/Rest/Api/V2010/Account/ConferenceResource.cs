@@ -112,16 +112,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of conferences belonging to the account used to make the request
         /// </summary>
-        public static ResourceSet<ConferenceResource> Read(string accountSid = null, string dateCreated = null, string dateUpdated = null, string friendlyName = null, ConferenceResource.StatusEnum status = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<ConferenceResource> Read(string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, DateTime? dateUpdatedBefore = null, DateTime? dateUpdated = null, DateTime? dateUpdatedAfter = null, string friendlyName = null, ConferenceResource.StatusEnum status = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadConferenceOptions{AccountSid = accountSid, DateCreated = dateCreated, DateUpdated = dateUpdated, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadConferenceOptions{AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, DateUpdatedBefore = dateUpdatedBefore, DateUpdated = dateUpdated, DateUpdatedAfter = dateUpdatedAfter, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<ConferenceResource>> ReadAsync(string accountSid = null, string dateCreated = null, string dateUpdated = null, string friendlyName = null, ConferenceResource.StatusEnum status = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ConferenceResource>> ReadAsync(string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, DateTime? dateUpdatedBefore = null, DateTime? dateUpdated = null, DateTime? dateUpdatedAfter = null, string friendlyName = null, ConferenceResource.StatusEnum status = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadConferenceOptions{AccountSid = accountSid, DateCreated = dateCreated, DateUpdated = dateUpdated, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadConferenceOptions{AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, DateUpdatedBefore = dateUpdatedBefore, DateUpdated = dateUpdated, DateUpdatedAfter = dateUpdatedAfter, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
             var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
             return response;
         }

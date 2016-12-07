@@ -65,7 +65,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
     {
         public string AccountSid { get; set; }
         public string MessageSid { get; }
-        public string DateCreated { get; set; }
+        public DateTime? DateCreatedBefore { get; set; }
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreatedAfter { get; set; }
     
         /// <summary>
         /// Construct a new ReadMediaOptions
@@ -85,7 +87,19 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var p = new List<KeyValuePair<string, string>>();
             if (DateCreated != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated));
+                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+            }
+            else
+            {
+                if (DateCreatedBefore != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                }
+            
+                if (DateCreatedAfter != null)
+                {
+                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                }
             }
             
             if (PageSize != null)
