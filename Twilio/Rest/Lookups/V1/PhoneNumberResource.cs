@@ -45,10 +45,11 @@ namespace Twilio.Rest.Lookups.V1
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -65,8 +66,7 @@ namespace Twilio.Rest.Lookups.V1
         public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(Types.PhoneNumber phoneNumber, string countryCode = null, List<string> type = null, List<string> addOns = null, Dictionary<string, object> addOnsData = null, ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(phoneNumber){CountryCode = countryCode, Type = type, AddOns = addOns, AddOnsData = addOnsData};
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     

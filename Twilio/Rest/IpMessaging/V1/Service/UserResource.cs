@@ -34,10 +34,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(FetchUserOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(FetchUserOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -54,8 +55,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string serviceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new FetchUserOptions(serviceSid, sid);
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -81,10 +81,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
     
@@ -101,8 +102,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string serviceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new DeleteUserOptions(serviceSid, sid);
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            return await DeleteAsync(options, client);
         }
         #endif
     
@@ -128,10 +128,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(CreateUserOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(CreateUserOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -148,8 +149,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string serviceSid, string identity, string roleSid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
         {
             var options = new CreateUserOptions(serviceSid, identity){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            return await CreateAsync(options, client);
         }
         #endif
     
@@ -177,10 +177,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(ReadUserOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(ReadUserOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<UserResource>.FromJson("users", response.Content);
+            return new ResourceSet<UserResource>(page, options, client);
         }
         #endif
     
@@ -197,8 +200,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(string serviceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadUserOptions(serviceSid){PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     
@@ -238,10 +240,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(UpdateUserOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(UpdateUserOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -258,8 +261,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(string serviceSid, string sid, string roleSid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
         {
             var options = new UpdateUserOptions(serviceSid, sid){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            return await UpdateAsync(options, client);
         }
         #endif
     

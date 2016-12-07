@@ -36,10 +36,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<DomainResource>> ReadAsync(ReadDomainOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<DomainResource>> ReadAsync(ReadDomainOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<DomainResource>.FromJson("domains", response.Content);
+            return new ResourceSet<DomainResource>(page, options, client);
         }
         #endif
     
@@ -56,8 +59,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public static async System.Threading.Tasks.Task<ResourceSet<DomainResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadDomainOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     
@@ -97,10 +99,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<DomainResource> CreateAsync(CreateDomainOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<DomainResource> CreateAsync(CreateDomainOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -117,8 +120,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public static async System.Threading.Tasks.Task<DomainResource> CreateAsync(string domainName, string accountSid = null, string friendlyName = null, string authType = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceStatusCallbackUrl = null, Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, ITwilioRestClient client = null)
         {
             var options = new CreateDomainOptions(domainName){AccountSid = accountSid, FriendlyName = friendlyName, AuthType = authType, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceStatusCallbackMethod = voiceStatusCallbackMethod};
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            return await CreateAsync(options, client);
         }
         #endif
     
@@ -144,10 +146,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<DomainResource> FetchAsync(FetchDomainOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<DomainResource> FetchAsync(FetchDomainOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -164,8 +167,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public static async System.Threading.Tasks.Task<DomainResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchDomainOptions(sid){AccountSid = accountSid};
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -191,10 +193,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<DomainResource> UpdateAsync(UpdateDomainOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<DomainResource> UpdateAsync(UpdateDomainOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -211,8 +214,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public static async System.Threading.Tasks.Task<DomainResource> UpdateAsync(string sid, string accountSid = null, string authType = null, string friendlyName = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, Uri voiceStatusCallbackUrl = null, Uri voiceUrl = null, ITwilioRestClient client = null)
         {
             var options = new UpdateDomainOptions(sid){AccountSid = accountSid, AuthType = authType, FriendlyName = friendlyName, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceUrl = voiceUrl};
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            return await UpdateAsync(options, client);
         }
         #endif
     
@@ -238,10 +240,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDomainOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDomainOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
     
@@ -258,8 +261,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteDomainOptions(sid){AccountSid = accountSid};
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            return await DeleteAsync(options, client);
         }
         #endif
     

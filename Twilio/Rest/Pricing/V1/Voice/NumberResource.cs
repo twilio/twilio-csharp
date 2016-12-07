@@ -35,10 +35,11 @@ namespace Twilio.Rest.Pricing.V1.Voice
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(FetchNumberOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(FetchNumberOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -55,8 +56,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(Types.PhoneNumber number, ITwilioRestClient client = null)
         {
             var options = new FetchNumberOptions(number);
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     

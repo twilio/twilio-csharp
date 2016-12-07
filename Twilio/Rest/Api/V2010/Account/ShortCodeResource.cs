@@ -34,10 +34,11 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(FetchShortCodeOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(FetchShortCodeOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -54,8 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchShortCodeOptions(sid){AccountSid = accountSid};
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -81,10 +81,11 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(UpdateShortCodeOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(UpdateShortCodeOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -101,8 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(string sid, string accountSid = null, string friendlyName = null, string apiVersion = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, ITwilioRestClient client = null)
         {
             var options = new UpdateShortCodeOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod};
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            return await UpdateAsync(options, client);
         }
         #endif
     
@@ -130,10 +130,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(ReadShortCodeOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(ReadShortCodeOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<ShortCodeResource>.FromJson("short_codes", response.Content);
+            return new ResourceSet<ShortCodeResource>(page, options, client);
         }
         #endif
     
@@ -150,8 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(string accountSid = null, string friendlyName = null, string shortCode = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadShortCodeOptions{AccountSid = accountSid, FriendlyName = friendlyName, ShortCode = shortCode, PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     

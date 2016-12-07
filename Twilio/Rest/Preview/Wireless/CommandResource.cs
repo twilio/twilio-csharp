@@ -34,10 +34,11 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(FetchCommandOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(FetchCommandOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -54,8 +55,7 @@ namespace Twilio.Rest.Preview.Wireless
         public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(string sid, ITwilioRestClient client = null)
         {
             var options = new FetchCommandOptions(sid);
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -83,10 +83,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(ReadCommandOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(ReadCommandOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<CommandResource>.FromJson("commands", response.Content);
+            return new ResourceSet<CommandResource>(page, options, client);
         }
         #endif
     
@@ -103,8 +106,7 @@ namespace Twilio.Rest.Preview.Wireless
         public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(string device = null, string status = null, string direction = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadCommandOptions{Device = device, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     
@@ -144,10 +146,11 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(CreateCommandOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(CreateCommandOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -164,8 +167,7 @@ namespace Twilio.Rest.Preview.Wireless
         public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(string device, string command, string callbackMethod = null, Uri callbackUrl = null, string commandMode = null, string includeSid = null, ITwilioRestClient client = null)
         {
             var options = new CreateCommandOptions(device, command){CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid};
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            return await CreateAsync(options, client);
         }
         #endif
     

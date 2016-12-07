@@ -34,10 +34,11 @@ namespace Twilio.Rest.Preview.Wireless.Device
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<UsageResource> FetchAsync(FetchUsageOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<UsageResource> FetchAsync(FetchUsageOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -54,8 +55,7 @@ namespace Twilio.Rest.Preview.Wireless.Device
         public static async System.Threading.Tasks.Task<UsageResource> FetchAsync(string deviceSid, string end = null, string start = null, ITwilioRestClient client = null)
         {
             var options = new FetchUsageOptions(deviceSid){End = end, Start = start};
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     

@@ -34,10 +34,11 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<SandboxResource> FetchAsync(FetchSandboxOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<SandboxResource> FetchAsync(FetchSandboxOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -54,8 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static async System.Threading.Tasks.Task<SandboxResource> FetchAsync(string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchSandboxOptions{AccountSid = accountSid};
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -81,10 +81,11 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<SandboxResource> UpdateAsync(UpdateSandboxOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<SandboxResource> UpdateAsync(UpdateSandboxOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -101,8 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public static async System.Threading.Tasks.Task<SandboxResource> UpdateAsync(string accountSid = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
             var options = new UpdateSandboxOptions{AccountSid = accountSid, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, SmsUrl = smsUrl, SmsMethod = smsMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            return await UpdateAsync(options, client);
         }
         #endif
     

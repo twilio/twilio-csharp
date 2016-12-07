@@ -34,10 +34,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(FetchInviteOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(FetchInviteOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -54,8 +55,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(string serviceSid, string channelSid, string sid, ITwilioRestClient client = null)
         {
             var options = new FetchInviteOptions(serviceSid, channelSid, sid);
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -81,10 +81,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(CreateInviteOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(CreateInviteOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -101,8 +102,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(string serviceSid, string channelSid, string identity, string roleSid = null, ITwilioRestClient client = null)
         {
             var options = new CreateInviteOptions(serviceSid, channelSid, identity){RoleSid = roleSid};
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            return await CreateAsync(options, client);
         }
         #endif
     
@@ -130,10 +130,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<InviteResource>> ReadAsync(ReadInviteOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<InviteResource>> ReadAsync(ReadInviteOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<InviteResource>.FromJson("invites", response.Content);
+            return new ResourceSet<InviteResource>(page, options, client);
         }
         #endif
     
@@ -150,8 +153,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         public static async System.Threading.Tasks.Task<ResourceSet<InviteResource>> ReadAsync(string serviceSid, string channelSid, List<string> identity = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadInviteOptions(serviceSid, channelSid){Identity = identity, PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     
@@ -191,10 +193,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInviteOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInviteOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
     
@@ -211,8 +214,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string serviceSid, string channelSid, string sid, ITwilioRestClient client = null)
         {
             var options = new DeleteInviteOptions(serviceSid, channelSid, sid);
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            return await DeleteAsync(options, client);
         }
         #endif
     

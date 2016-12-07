@@ -34,10 +34,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(FetchMemberOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(FetchMemberOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -54,8 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(string queueSid, string callSid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchMemberOptions(queueSid, callSid){AccountSid = accountSid};
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -81,10 +81,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(UpdateMemberOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(UpdateMemberOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -101,8 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new UpdateMemberOptions(queueSid, callSid, url, method){AccountSid = accountSid};
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            return await UpdateAsync(options, client);
         }
         #endif
     
@@ -130,10 +130,13 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(ReadMemberOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(ReadMemberOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<MemberResource>.FromJson("queue_members", response.Content);
+            return new ResourceSet<MemberResource>(page, options, client);
         }
         #endif
     
@@ -150,8 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(string queueSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadMemberOptions(queueSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     

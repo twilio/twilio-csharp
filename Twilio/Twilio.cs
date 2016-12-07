@@ -8,7 +8,7 @@ namespace Twilio
 		private static string _username;
 		private static string _password;
 		private static string _accountSid;
-		private static TwilioRestClient _restClient;
+		private static ITwilioRestClient _restClient;
 
 		private TwilioClient() {}
 
@@ -69,7 +69,7 @@ namespace Twilio
 			_accountSid = accountSid;
 		}
 
-		public static TwilioRestClient GetRestClient()
+		public static ITwilioRestClient GetRestClient()
 		{
 		    if (_restClient != null)
 		    {
@@ -87,7 +87,7 @@ namespace Twilio
 		    return _restClient;
 		}
 
-		public static void SetRestClient(TwilioRestClient restClient)
+		public static void SetRestClient(ITwilioRestClient restClient)
 		{
 			_restClient = restClient;
 		}

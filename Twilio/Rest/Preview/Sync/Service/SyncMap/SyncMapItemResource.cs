@@ -53,10 +53,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<SyncMapItemResource> FetchAsync(FetchSyncMapItemOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<SyncMapItemResource> FetchAsync(FetchSyncMapItemOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -73,8 +74,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         public static async System.Threading.Tasks.Task<SyncMapItemResource> FetchAsync(string serviceSid, string mapSid, string key, ITwilioRestClient client = null)
         {
             var options = new FetchSyncMapItemOptions(serviceSid, mapSid, key);
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -100,10 +100,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncMapItemOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncMapItemOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
     
@@ -120,8 +121,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string serviceSid, string mapSid, string key, ITwilioRestClient client = null)
         {
             var options = new DeleteSyncMapItemOptions(serviceSid, mapSid, key);
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            return await DeleteAsync(options, client);
         }
         #endif
     
@@ -147,10 +147,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<SyncMapItemResource> CreateAsync(CreateSyncMapItemOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<SyncMapItemResource> CreateAsync(CreateSyncMapItemOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -167,8 +168,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         public static async System.Threading.Tasks.Task<SyncMapItemResource> CreateAsync(string serviceSid, string mapSid, string key, Object data, ITwilioRestClient client = null)
         {
             var options = new CreateSyncMapItemOptions(serviceSid, mapSid, key, data);
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            return await CreateAsync(options, client);
         }
         #endif
     
@@ -196,10 +196,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapItemResource>> ReadAsync(ReadSyncMapItemOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapItemResource>> ReadAsync(ReadSyncMapItemOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<SyncMapItemResource>.FromJson("items", response.Content);
+            return new ResourceSet<SyncMapItemResource>(page, options, client);
         }
         #endif
     
@@ -216,8 +219,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         public static async System.Threading.Tasks.Task<ResourceSet<SyncMapItemResource>> ReadAsync(string serviceSid, string mapSid, SyncMapItemResource.QueryResultOrderEnum order = null, string from = null, SyncMapItemResource.QueryFromBoundTypeEnum bounds = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadSyncMapItemOptions(serviceSid, mapSid){Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     
@@ -257,10 +259,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(UpdateSyncMapItemOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(UpdateSyncMapItemOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -277,8 +280,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(string serviceSid, string mapSid, string key, Object data, ITwilioRestClient client = null)
         {
             var options = new UpdateSyncMapItemOptions(serviceSid, mapSid, key, data);
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            return await UpdateAsync(options, client);
         }
         #endif
     

@@ -36,10 +36,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<RegistrationEndpointResource>> ReadAsync(ReadRegistrationEndpointOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<RegistrationEndpointResource>> ReadAsync(ReadRegistrationEndpointOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<RegistrationEndpointResource>.FromJson("registrations", response.Content);
+            return new ResourceSet<RegistrationEndpointResource>(page, options, client);
         }
         #endif
     
@@ -56,8 +59,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         public static async System.Threading.Tasks.Task<ResourceSet<RegistrationEndpointResource>> ReadAsync(string domainSid, string region, string registrant, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadRegistrationEndpointOptions(domainSid, region, registrant){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     

@@ -36,10 +36,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(ReadWorkerChannelOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(ReadWorkerChannelOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<WorkerChannelResource>.FromJson("channels", response.Content);
+            return new ResourceSet<WorkerChannelResource>(page, options, client);
         }
         #endif
     
@@ -56,8 +59,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(string workspaceSid, string workerSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadWorkerChannelOptions(workspaceSid, workerSid){PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     
@@ -97,10 +99,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<WorkerChannelResource> FetchAsync(FetchWorkerChannelOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<WorkerChannelResource> FetchAsync(FetchWorkerChannelOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -117,8 +120,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public static async System.Threading.Tasks.Task<WorkerChannelResource> FetchAsync(string workspaceSid, string workerSid, string sid, ITwilioRestClient client = null)
         {
             var options = new FetchWorkerChannelOptions(workspaceSid, workerSid, sid);
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -144,10 +146,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<WorkerChannelResource> UpdateAsync(UpdateWorkerChannelOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<WorkerChannelResource> UpdateAsync(UpdateWorkerChannelOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -164,8 +167,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public static async System.Threading.Tasks.Task<WorkerChannelResource> UpdateAsync(string workspaceSid, string workerSid, string sid, int? capacity = null, bool? available = null, ITwilioRestClient client = null)
         {
             var options = new UpdateWorkerChannelOptions(workspaceSid, workerSid, sid){Capacity = capacity, Available = available};
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            return await UpdateAsync(options, client);
         }
         #endif
     

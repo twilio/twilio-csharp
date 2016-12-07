@@ -34,10 +34,11 @@ namespace Twilio.Rest.IpMessaging.V1
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -54,8 +55,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string sid, ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(sid);
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -81,10 +81,11 @@ namespace Twilio.Rest.IpMessaging.V1
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
     
@@ -101,8 +102,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, ITwilioRestClient client = null)
         {
             var options = new DeleteServiceOptions(sid);
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            return await DeleteAsync(options, client);
         }
         #endif
     
@@ -128,10 +128,11 @@ namespace Twilio.Rest.IpMessaging.V1
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -148,8 +149,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName, ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions(friendlyName);
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            return await CreateAsync(options, client);
         }
         #endif
     
@@ -177,10 +177,13 @@ namespace Twilio.Rest.IpMessaging.V1
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<ServiceResource>.FromJson("services", response.Content);
+            return new ResourceSet<ServiceResource>(page, options, client);
         }
         #endif
     
@@ -197,8 +200,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     
@@ -238,10 +240,11 @@ namespace Twilio.Rest.IpMessaging.V1
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -258,8 +261,7 @@ namespace Twilio.Rest.IpMessaging.V1
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string sid, string friendlyName = null, string defaultServiceRoleSid = null, string defaultChannelRoleSid = null, string defaultChannelCreatorRoleSid = null, bool? readStatusEnabled = null, bool? reachabilityEnabled = null, int? typingIndicatorTimeout = null, int? consumptionReportInterval = null, bool? notificationsNewMessageEnabled = null, string notificationsNewMessageTemplate = null, bool? notificationsAddedToChannelEnabled = null, string notificationsAddedToChannelTemplate = null, bool? notificationsRemovedFromChannelEnabled = null, string notificationsRemovedFromChannelTemplate = null, bool? notificationsInvitedToChannelEnabled = null, string notificationsInvitedToChannelTemplate = null, Uri preWebhookUrl = null, Uri postWebhookUrl = null, Twilio.Http.HttpMethod webhookMethod = null, List<string> webhookFilters = null, Uri webhooksOnMessageSendUrl = null, Twilio.Http.HttpMethod webhooksOnMessageSendMethod = null, string webhooksOnMessageSendFormat = null, Uri webhooksOnMessageUpdateUrl = null, Twilio.Http.HttpMethod webhooksOnMessageUpdateMethod = null, string webhooksOnMessageUpdateFormat = null, Uri webhooksOnMessageRemoveUrl = null, Twilio.Http.HttpMethod webhooksOnMessageRemoveMethod = null, string webhooksOnMessageRemoveFormat = null, Uri webhooksOnChannelAddUrl = null, Twilio.Http.HttpMethod webhooksOnChannelAddMethod = null, string webhooksOnChannelAddFormat = null, Uri webhooksOnChannelDestroyUrl = null, Twilio.Http.HttpMethod webhooksOnChannelDestroyMethod = null, string webhooksOnChannelDestroyFormat = null, Uri webhooksOnChannelUpdateUrl = null, Twilio.Http.HttpMethod webhooksOnChannelUpdateMethod = null, string webhooksOnChannelUpdateFormat = null, Uri webhooksOnMemberAddUrl = null, Twilio.Http.HttpMethod webhooksOnMemberAddMethod = null, string webhooksOnMemberAddFormat = null, Uri webhooksOnMemberRemoveUrl = null, Twilio.Http.HttpMethod webhooksOnMemberRemoveMethod = null, string webhooksOnMemberRemoveFormat = null, Uri webhooksOnMessageSentUrl = null, Twilio.Http.HttpMethod webhooksOnMessageSentMethod = null, string webhooksOnMessageSentFormat = null, Uri webhooksOnMessageUpdatedUrl = null, Twilio.Http.HttpMethod webhooksOnMessageUpdatedMethod = null, string webhooksOnMessageUpdatedFormat = null, Uri webhooksOnMessageRemovedUrl = null, Twilio.Http.HttpMethod webhooksOnMessageRemovedMethod = null, string webhooksOnMessageRemovedFormat = null, Uri webhooksOnChannelAddedUrl = null, Twilio.Http.HttpMethod webhooksOnChannelAddedMethod = null, string webhooksOnChannelAddedFormat = null, Uri webhooksOnChannelDestroyedUrl = null, Twilio.Http.HttpMethod webhooksOnChannelDestroyedMethod = null, string webhooksOnChannelDestroyedFormat = null, Uri webhooksOnChannelUpdatedUrl = null, Twilio.Http.HttpMethod webhooksOnChannelUpdatedMethod = null, string webhooksOnChannelUpdatedFormat = null, Uri webhooksOnMemberAddedUrl = null, Twilio.Http.HttpMethod webhooksOnMemberAddedMethod = null, string webhooksOnMemberAddedFormat = null, Uri webhooksOnMemberRemovedUrl = null, Twilio.Http.HttpMethod webhooksOnMemberRemovedMethod = null, string webhooksOnMemberRemovedFormat = null, ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(sid){FriendlyName = friendlyName, DefaultServiceRoleSid = defaultServiceRoleSid, DefaultChannelRoleSid = defaultChannelRoleSid, DefaultChannelCreatorRoleSid = defaultChannelCreatorRoleSid, ReadStatusEnabled = readStatusEnabled, ReachabilityEnabled = reachabilityEnabled, TypingIndicatorTimeout = typingIndicatorTimeout, ConsumptionReportInterval = consumptionReportInterval, NotificationsNewMessageEnabled = notificationsNewMessageEnabled, NotificationsNewMessageTemplate = notificationsNewMessageTemplate, NotificationsAddedToChannelEnabled = notificationsAddedToChannelEnabled, NotificationsAddedToChannelTemplate = notificationsAddedToChannelTemplate, NotificationsRemovedFromChannelEnabled = notificationsRemovedFromChannelEnabled, NotificationsRemovedFromChannelTemplate = notificationsRemovedFromChannelTemplate, NotificationsInvitedToChannelEnabled = notificationsInvitedToChannelEnabled, NotificationsInvitedToChannelTemplate = notificationsInvitedToChannelTemplate, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, WebhookMethod = webhookMethod, WebhookFilters = webhookFilters, WebhooksOnMessageSendUrl = webhooksOnMessageSendUrl, WebhooksOnMessageSendMethod = webhooksOnMessageSendMethod, WebhooksOnMessageSendFormat = webhooksOnMessageSendFormat, WebhooksOnMessageUpdateUrl = webhooksOnMessageUpdateUrl, WebhooksOnMessageUpdateMethod = webhooksOnMessageUpdateMethod, WebhooksOnMessageUpdateFormat = webhooksOnMessageUpdateFormat, WebhooksOnMessageRemoveUrl = webhooksOnMessageRemoveUrl, WebhooksOnMessageRemoveMethod = webhooksOnMessageRemoveMethod, WebhooksOnMessageRemoveFormat = webhooksOnMessageRemoveFormat, WebhooksOnChannelAddUrl = webhooksOnChannelAddUrl, WebhooksOnChannelAddMethod = webhooksOnChannelAddMethod, WebhooksOnChannelAddFormat = webhooksOnChannelAddFormat, WebhooksOnChannelDestroyUrl = webhooksOnChannelDestroyUrl, WebhooksOnChannelDestroyMethod = webhooksOnChannelDestroyMethod, WebhooksOnChannelDestroyFormat = webhooksOnChannelDestroyFormat, WebhooksOnChannelUpdateUrl = webhooksOnChannelUpdateUrl, WebhooksOnChannelUpdateMethod = webhooksOnChannelUpdateMethod, WebhooksOnChannelUpdateFormat = webhooksOnChannelUpdateFormat, WebhooksOnMemberAddUrl = webhooksOnMemberAddUrl, WebhooksOnMemberAddMethod = webhooksOnMemberAddMethod, WebhooksOnMemberAddFormat = webhooksOnMemberAddFormat, WebhooksOnMemberRemoveUrl = webhooksOnMemberRemoveUrl, WebhooksOnMemberRemoveMethod = webhooksOnMemberRemoveMethod, WebhooksOnMemberRemoveFormat = webhooksOnMemberRemoveFormat, WebhooksOnMessageSentUrl = webhooksOnMessageSentUrl, WebhooksOnMessageSentMethod = webhooksOnMessageSentMethod, WebhooksOnMessageSentFormat = webhooksOnMessageSentFormat, WebhooksOnMessageUpdatedUrl = webhooksOnMessageUpdatedUrl, WebhooksOnMessageUpdatedMethod = webhooksOnMessageUpdatedMethod, WebhooksOnMessageUpdatedFormat = webhooksOnMessageUpdatedFormat, WebhooksOnMessageRemovedUrl = webhooksOnMessageRemovedUrl, WebhooksOnMessageRemovedMethod = webhooksOnMessageRemovedMethod, WebhooksOnMessageRemovedFormat = webhooksOnMessageRemovedFormat, WebhooksOnChannelAddedUrl = webhooksOnChannelAddedUrl, WebhooksOnChannelAddedMethod = webhooksOnChannelAddedMethod, WebhooksOnChannelAddedFormat = webhooksOnChannelAddedFormat, WebhooksOnChannelDestroyedUrl = webhooksOnChannelDestroyedUrl, WebhooksOnChannelDestroyedMethod = webhooksOnChannelDestroyedMethod, WebhooksOnChannelDestroyedFormat = webhooksOnChannelDestroyedFormat, WebhooksOnChannelUpdatedUrl = webhooksOnChannelUpdatedUrl, WebhooksOnChannelUpdatedMethod = webhooksOnChannelUpdatedMethod, WebhooksOnChannelUpdatedFormat = webhooksOnChannelUpdatedFormat, WebhooksOnMemberAddedUrl = webhooksOnMemberAddedUrl, WebhooksOnMemberAddedMethod = webhooksOnMemberAddedMethod, WebhooksOnMemberAddedFormat = webhooksOnMemberAddedFormat, WebhooksOnMemberRemovedUrl = webhooksOnMemberRemovedUrl, WebhooksOnMemberRemovedMethod = webhooksOnMemberRemovedMethod, WebhooksOnMemberRemovedFormat = webhooksOnMemberRemovedFormat};
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            return await UpdateAsync(options, client);
         }
         #endif
     

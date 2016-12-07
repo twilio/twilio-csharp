@@ -134,10 +134,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordResource>> ReadAsync(ReadRecordOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordResource>> ReadAsync(ReadRecordOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<RecordResource>.FromJson("usage_records", response.Content);
+            return new ResourceSet<RecordResource>(page, options, client);
         }
         #endif
     
@@ -154,8 +157,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         public static async System.Threading.Tasks.Task<ResourceSet<RecordResource>> ReadAsync(string accountSid = null, RecordResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadRecordOptions{AccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     

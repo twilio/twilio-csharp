@@ -45,10 +45,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(FetchTranscriptionOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(FetchTranscriptionOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -65,8 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(string recordingSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchTranscriptionOptions(recordingSid, sid){AccountSid = accountSid};
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -92,10 +92,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTranscriptionOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTranscriptionOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
     
@@ -112,8 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string recordingSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteTranscriptionOptions(recordingSid, sid){AccountSid = accountSid};
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            return await DeleteAsync(options, client);
         }
         #endif
     
@@ -141,10 +141,13 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(ReadTranscriptionOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(ReadTranscriptionOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
+            return new ResourceSet<TranscriptionResource>(page, options, client);
         }
         #endif
     
@@ -161,8 +164,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(string recordingSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadTranscriptionOptions(recordingSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     

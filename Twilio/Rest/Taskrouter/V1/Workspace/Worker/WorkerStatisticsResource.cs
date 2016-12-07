@@ -34,10 +34,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(FetchWorkerStatisticsOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(FetchWorkerStatisticsOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -54,8 +55,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(string workspaceSid, string workerSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
         {
             var options = new FetchWorkerStatisticsOptions(workspaceSid, workerSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     

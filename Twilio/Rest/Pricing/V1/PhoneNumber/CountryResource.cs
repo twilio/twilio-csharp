@@ -37,10 +37,13 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(ReadCountryOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(ReadCountryOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<CountryResource>.FromJson("countries", response.Content);
+            return new ResourceSet<CountryResource>(page, options, client);
         }
         #endif
     
@@ -57,8 +60,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadCountryOptions{PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     
@@ -98,10 +100,11 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(FetchCountryOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(FetchCountryOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -118,8 +121,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(string isoCountry, ITwilioRestClient client = null)
         {
             var options = new FetchCountryOptions(isoCountry);
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     

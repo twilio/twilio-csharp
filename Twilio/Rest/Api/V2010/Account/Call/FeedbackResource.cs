@@ -50,10 +50,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -70,8 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string callSid, int? qualityScore, string accountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
         {
             var options = new CreateFeedbackOptions(callSid, qualityScore){AccountSid = accountSid, Issue = issue};
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            return await CreateAsync(options, client);
         }
         #endif
     
@@ -97,10 +97,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<FeedbackResource> FetchAsync(FetchFeedbackOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<FeedbackResource> FetchAsync(FetchFeedbackOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -117,8 +118,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public static async System.Threading.Tasks.Task<FeedbackResource> FetchAsync(string callSid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchFeedbackOptions(callSid){AccountSid = accountSid};
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -144,10 +144,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<FeedbackResource> UpdateAsync(UpdateFeedbackOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<FeedbackResource> UpdateAsync(UpdateFeedbackOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -164,8 +165,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         public static async System.Threading.Tasks.Task<FeedbackResource> UpdateAsync(string callSid, int? qualityScore, string accountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
         {
             var options = new UpdateFeedbackOptions(callSid, qualityScore){AccountSid = accountSid, Issue = issue};
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            return await UpdateAsync(options, client);
         }
         #endif
     

@@ -34,10 +34,11 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<DocumentResource> FetchAsync(FetchDocumentOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<DocumentResource> FetchAsync(FetchDocumentOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -54,8 +55,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public static async System.Threading.Tasks.Task<DocumentResource> FetchAsync(string serviceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new FetchDocumentOptions(serviceSid, sid);
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -81,10 +81,11 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDocumentOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDocumentOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
     
@@ -101,8 +102,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string serviceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new DeleteDocumentOptions(serviceSid, sid);
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            return await DeleteAsync(options, client);
         }
         #endif
     
@@ -128,10 +128,11 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<DocumentResource> CreateAsync(CreateDocumentOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<DocumentResource> CreateAsync(CreateDocumentOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -148,8 +149,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public static async System.Threading.Tasks.Task<DocumentResource> CreateAsync(string serviceSid, string uniqueName = null, Object data = null, ITwilioRestClient client = null)
         {
             var options = new CreateDocumentOptions(serviceSid){UniqueName = uniqueName, Data = data};
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            return await CreateAsync(options, client);
         }
         #endif
     
@@ -177,10 +177,13 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<DocumentResource>> ReadAsync(ReadDocumentOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<DocumentResource>> ReadAsync(ReadDocumentOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<DocumentResource>.FromJson("documents", response.Content);
+            return new ResourceSet<DocumentResource>(page, options, client);
         }
         #endif
     
@@ -197,8 +200,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public static async System.Threading.Tasks.Task<ResourceSet<DocumentResource>> ReadAsync(string serviceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadDocumentOptions(serviceSid){PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     
@@ -238,10 +240,11 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(UpdateDocumentOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(UpdateDocumentOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -258,8 +261,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(string serviceSid, string sid, Object data, ITwilioRestClient client = null)
         {
             var options = new UpdateDocumentOptions(serviceSid, sid, data);
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            return await UpdateAsync(options, client);
         }
         #endif
     

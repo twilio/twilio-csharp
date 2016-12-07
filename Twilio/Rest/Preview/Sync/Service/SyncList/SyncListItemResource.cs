@@ -53,10 +53,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(FetchSyncListItemOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(FetchSyncListItemOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -73,8 +74,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public static async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(string serviceSid, string listSid, int? index, ITwilioRestClient client = null)
         {
             var options = new FetchSyncListItemOptions(serviceSid, listSid, index);
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -100,10 +100,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncListItemOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncListItemOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
     
@@ -120,8 +121,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string serviceSid, string listSid, int? index, ITwilioRestClient client = null)
         {
             var options = new DeleteSyncListItemOptions(serviceSid, listSid, index);
-            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
-            return response;
+            return await DeleteAsync(options, client);
         }
         #endif
     
@@ -147,10 +147,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(CreateSyncListItemOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(CreateSyncListItemOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -167,8 +168,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(string serviceSid, string listSid, Object data, ITwilioRestClient client = null)
         {
             var options = new CreateSyncListItemOptions(serviceSid, listSid, data);
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            return await CreateAsync(options, client);
         }
         #endif
     
@@ -196,10 +196,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncListItemResource>> ReadAsync(ReadSyncListItemOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncListItemResource>> ReadAsync(ReadSyncListItemOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<SyncListItemResource>.FromJson("items", response.Content);
+            return new ResourceSet<SyncListItemResource>(page, options, client);
         }
         #endif
     
@@ -216,8 +219,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public static async System.Threading.Tasks.Task<ResourceSet<SyncListItemResource>> ReadAsync(string serviceSid, string listSid, SyncListItemResource.QueryResultOrderEnum order = null, string from = null, SyncListItemResource.QueryFromBoundTypeEnum bounds = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadSyncListItemOptions(serviceSid, listSid){Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     
@@ -257,10 +259,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(UpdateSyncListItemOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(UpdateSyncListItemOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -277,8 +280,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(string serviceSid, string listSid, int? index, Object data, ITwilioRestClient client = null)
         {
             var options = new UpdateSyncListItemOptions(serviceSid, listSid, index, data);
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            return await UpdateAsync(options, client);
         }
         #endif
     

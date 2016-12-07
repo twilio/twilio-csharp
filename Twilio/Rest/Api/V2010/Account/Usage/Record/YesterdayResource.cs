@@ -134,10 +134,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<YesterdayResource>> ReadAsync(ReadYesterdayOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<YesterdayResource>> ReadAsync(ReadYesterdayOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<YesterdayResource>.FromJson("usage_records", response.Content);
+            return new ResourceSet<YesterdayResource>(page, options, client);
         }
         #endif
     
@@ -154,8 +157,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         public static async System.Threading.Tasks.Task<ResourceSet<YesterdayResource>> ReadAsync(string accountSid = null, YesterdayResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadYesterdayOptions{AccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     

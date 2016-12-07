@@ -34,10 +34,11 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<DeviceResource> FetchAsync(FetchDeviceOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<DeviceResource> FetchAsync(FetchDeviceOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -54,8 +55,7 @@ namespace Twilio.Rest.Preview.Wireless
         public static async System.Threading.Tasks.Task<DeviceResource> FetchAsync(string sid, ITwilioRestClient client = null)
         {
             var options = new FetchDeviceOptions(sid);
-            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
-            return response;
+            return await FetchAsync(options, client);
         }
         #endif
     
@@ -83,10 +83,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<ResourceSet<DeviceResource>> ReadAsync(ReadDeviceOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<ResourceSet<DeviceResource>> ReadAsync(ReadDeviceOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+            
+            var page = Page<DeviceResource>.FromJson("devices", response.Content);
+            return new ResourceSet<DeviceResource>(page, options, client);
         }
         #endif
     
@@ -103,8 +106,7 @@ namespace Twilio.Rest.Preview.Wireless
         public static async System.Threading.Tasks.Task<ResourceSet<DeviceResource>> ReadAsync(string status = null, string simIdentifier = null, string ratePlan = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadDeviceOptions{Status = status, SimIdentifier = simIdentifier, RatePlan = ratePlan, PageSize = pageSize, Limit = limit};
-            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
-            return response;
+            return await ReadAsync(options, client);
         }
         #endif
     
@@ -144,10 +146,11 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<DeviceResource> CreateAsync(CreateDeviceOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<DeviceResource> CreateAsync(CreateDeviceOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -164,8 +167,7 @@ namespace Twilio.Rest.Preview.Wireless
         public static async System.Threading.Tasks.Task<DeviceResource> CreateAsync(string ratePlan, string alias = null, string callbackMethod = null, Uri callbackUrl = null, string friendlyName = null, string simIdentifier = null, string status = null, string commandsCallbackMethod = null, Uri commandsCallbackUrl = null, ITwilioRestClient client = null)
         {
             var options = new CreateDeviceOptions(ratePlan){Alias = alias, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, SimIdentifier = simIdentifier, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl};
-            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
-            return response;
+            return await CreateAsync(options, client);
         }
         #endif
     
@@ -191,10 +193,11 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<DeviceResource> UpdateAsync(UpdateDeviceOptions options, ITwilioRestClient client)
+        public static async System.Threading.Tasks.Task<DeviceResource> UpdateAsync(UpdateDeviceOptions options, ITwilioRestClient client = null)
         {
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
         #endif
     
@@ -211,8 +214,7 @@ namespace Twilio.Rest.Preview.Wireless
         public static async System.Threading.Tasks.Task<DeviceResource> UpdateAsync(string sid, string alias = null, string callbackMethod = null, Uri callbackUrl = null, string friendlyName = null, string ratePlan = null, string simIdentifier = null, string status = null, string commandsCallbackMethod = null, Uri commandsCallbackUrl = null, ITwilioRestClient client = null)
         {
             var options = new UpdateDeviceOptions(sid){Alias = alias, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, SimIdentifier = simIdentifier, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl};
-            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
-            return response;
+            return await UpdateAsync(options, client);
         }
         #endif
     
