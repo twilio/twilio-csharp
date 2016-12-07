@@ -59,6 +59,14 @@ namespace Twilio.Rest.Preview.Wireless
         public string RenewalUnits { get; set; }
     
         /// <summary>
+        /// Construct a new CreateRatePlanOptions
+        /// </summary>
+        public CreateRatePlanOptions()
+        {
+            Roaming = new List<string>();
+        }
+    
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public List<KeyValuePair<string, string>> GetParams()

@@ -42,6 +42,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             To = to;
             From = from;
+            StatusCallbackEvent = new List<string>();
         }
     
         /// <summary>

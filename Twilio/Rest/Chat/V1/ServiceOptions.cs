@@ -180,6 +180,7 @@ namespace Twilio.Rest.Chat.V1
         public UpdateServiceOptions(string sid)
         {
             Sid = sid;
+            WebhookFilters = new List<string>();
         }
     
         /// <summary>

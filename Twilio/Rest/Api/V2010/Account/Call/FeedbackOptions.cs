@@ -23,6 +23,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             CallSid = callSid;
             QualityScore = qualityScore;
+            Issue = new List<FeedbackResource.IssuesEnum>();
         }
     
         /// <summary>
@@ -87,6 +88,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             CallSid = callSid;
             QualityScore = qualityScore;
+            Issue = new List<FeedbackResource.IssuesEnum>();
         }
     
         /// <summary>

@@ -27,6 +27,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public CreateMessageOptions(Types.PhoneNumber to)
         {
             To = to;
+            MediaUrl = new List<Uri>();
         }
     
         /// <summary>

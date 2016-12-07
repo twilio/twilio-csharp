@@ -88,6 +88,7 @@ namespace Twilio.Rest.Notify.V1.Service
             Identity = identity;
             BindingType = bindingType;
             Address = address;
+            Tag = new List<string>();
         }
     
         /// <summary>
@@ -151,6 +152,8 @@ namespace Twilio.Rest.Notify.V1.Service
         public ReadBindingOptions(string serviceSid)
         {
             ServiceSid = serviceSid;
+            Identity = new List<string>();
+            Tag = new List<string>();
         }
     
         /// <summary>

@@ -93,6 +93,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         {
             ServiceSid = serviceSid;
             ChannelSid = channelSid;
+            Identity = new List<string>();
         }
     
         /// <summary>

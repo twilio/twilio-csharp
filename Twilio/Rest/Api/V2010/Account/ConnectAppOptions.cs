@@ -52,6 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account
         public UpdateConnectAppOptions(string sid)
         {
             Sid = sid;
+            Permissions = new List<ConnectAppResource.PermissionEnum>();
         }
     
         /// <summary>

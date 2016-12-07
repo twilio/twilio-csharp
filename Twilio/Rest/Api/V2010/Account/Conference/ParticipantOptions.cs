@@ -123,6 +123,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             ConferenceSid = conferenceSid;
             From = from;
             To = to;
+            StatusCallbackEvent = new List<string>();
+            ConferenceStatusCallbackEvent = new List<string>();
         }
     
         /// <summary>

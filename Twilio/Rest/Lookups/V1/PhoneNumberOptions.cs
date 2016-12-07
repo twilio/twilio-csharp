@@ -23,6 +23,8 @@ namespace Twilio.Rest.Lookups.V1
         public FetchPhoneNumberOptions(Types.PhoneNumber phoneNumber)
         {
             PhoneNumber = phoneNumber;
+            Type = new List<string>();
+            AddOns = new List<string>();
         }
     
         /// <summary>

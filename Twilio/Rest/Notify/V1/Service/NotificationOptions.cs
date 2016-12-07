@@ -31,6 +31,8 @@ namespace Twilio.Rest.Notify.V1.Service
         public CreateNotificationOptions(string serviceSid)
         {
             ServiceSid = serviceSid;
+            Identity = new List<string>();
+            Tag = new List<string>();
         }
     
         /// <summary>
