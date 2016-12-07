@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Reflection;
+using System.Diagnostics;
 using Twilio.Exceptions;
 using Newtonsoft.Json;
 
@@ -37,17 +39,29 @@ namespace Twilio.Http
 
 	    public override Response MakeRequest(Request request)
 	    {
-			var httpRequest = (HttpWebRequest) WebRequest.Create(request.ConstructUrl());
+			HttpWebRequest httpRequest = (HttpWebRequest) WebRequest.Create(request.ConstructUrl());
+
+#if !__MonoCS__
+			PropertyInfo property = typeof(HttpWebRequest).GetRuntimeProperty("UserAgent");
+			var version = AssemblyInfomation.AssemblyInformationalVersion;
+			string platVersion = null;
+#if NET40
+			platVersion = " (.NET 4+)";
+#elif NET35
+			platVersion = " (.NET 3.5)";
+#endif
+			string libraryVersion = "twilio-csharp/" + version + platVersion;
+			property.SetValue(httpRequest, libraryVersion, null);
+#endif
+
 			httpRequest.Method = request.Method.ToString();
 			httpRequest.Accept = "application/json";
 			httpRequest.Headers["Accept-Encoding"] = "utf-8";
 
+
 			var authBytes = Authentication(request.Username, request.Password);
 			httpRequest.Headers["Authorization"] = "Basic " + authBytes;
 			httpRequest.ContentType = "application/x-www-form-urlencoded";
-
-//		    var version = Assembly.GetExecutingAssembly().GetName().Version;
-//		    httpRequest.UserAgent = "twilio-csharp/" + version + " (.NET " + Environment.Version.ToString() + ")";
 
 			if (!Equals(request.Method, HttpMethod.Get))
 			{
