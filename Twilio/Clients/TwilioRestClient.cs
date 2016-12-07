@@ -52,10 +52,24 @@ namespace Twilio.Clients
 	    ///
 	    /// <param name="request">request to make</param>
 	    /// <returns>response of the request</returns>
-		public Response Request(Request request) {
+		public Response Request(Request request)
+	    {
 			request.SetAuth(_username, _password);
-
 	        var response = HttpClient.MakeRequest(request);
+	        return ProcessResponse(response);
+	    }
+
+	    #if NET40
+	    public async Task<Response> RequestAsync(Request request)
+	    {
+	        request.SetAuth(_username, _password);
+	        var response = await HttpClient.MakeRequestAysnc(request);
+	        return ProcessResponse(response);
+	    }
+        #endif
+
+	    private static Response ProcessResponse(Response response)
+	    {
 	        if (response == null)
 	        {
 	            throw new ApiConnectionException("MessageResource creation failed: Unable to connect to server");

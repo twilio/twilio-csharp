@@ -15,6 +15,16 @@ namespace Twilio.Http
         /// <returns>response of the request</returns>
         public abstract Response MakeRequest(Request request);
 
+        #if NET40
+        /// <summary>
+        /// Make an async request to Twilio
+        /// </summary>
+        ///
+        /// <param name="request">request to make</param>
+        /// <returns>response of the request</returns>
+        public abstract System.Threading.Tasks.Task<Response> MakeRequestAysnc(Request request);
+        #endif
+
         /// <summary>
         /// Set the authentication string for the request
         /// </summary>
