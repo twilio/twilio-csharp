@@ -2,8 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Task 
@@ -24,43 +26,162 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             public static readonly StatusEnum Rescinded = new StatusEnum("rescinded");
         }
     
+        private static Request BuildReadRequest(ReadReservationOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Tasks/" + options.TaskSid + "/Reservations",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        /// <returns> ReservationReader capable of executing the read </returns> 
-        public static ReservationReader Reader(string workspaceSid, string taskSid)
+        public static ResourceSet<ReservationResource> Read(ReadReservationOptions options, ITwilioRestClient client = null)
         {
-            return new ReservationReader(workspaceSid, taskSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<ReservationResource>.FromJson("reservations", response.Content);
+            return new ResourceSet<ReservationResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(ReadReservationOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<ReservationResource> Read(string workspaceSid, string taskSid, ReservationResource.StatusEnum reservationStatus = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadReservationOptions(workspaceSid, taskSid){ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(string workspaceSid, string taskSid, ReservationResource.StatusEnum reservationStatus = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadReservationOptions(workspaceSid, taskSid){ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<ReservationResource> NextPage(Page<ReservationResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Taskrouter,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<ReservationResource>.FromJson("reservations", response.Content);
+        }
+    
+        private static Request BuildFetchRequest(FetchReservationOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Tasks/" + options.TaskSid + "/Reservations/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> ReservationFetcher capable of executing the fetch </returns> 
-        public static ReservationFetcher Fetcher(string workspaceSid, string taskSid, string sid)
+        public static ReservationResource Fetch(FetchReservationOptions options, ITwilioRestClient client = null)
         {
-            return new ReservationFetcher(workspaceSid, taskSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(FetchReservationOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static ReservationResource Fetch(string workspaceSid, string taskSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchReservationOptions(workspaceSid, taskSid, sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(string workspaceSid, string taskSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchReservationOptions(workspaceSid, taskSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildUpdateRequest(UpdateReservationOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Tasks/" + options.TaskSid + "/Reservations/" + options.Sid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// update
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> ReservationUpdater capable of executing the update </returns> 
-        public static ReservationUpdater Updater(string workspaceSid, string taskSid, string sid)
+        public static ReservationResource Update(UpdateReservationOptions options, ITwilioRestClient client = null)
         {
-            return new ReservationUpdater(workspaceSid, taskSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(UpdateReservationOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// update
+        /// </summary>
+        public static ReservationResource Update(string workspaceSid, string taskSid, string sid, ReservationResource.StatusEnum reservationStatus = null, string workerActivitySid = null, string instruction = null, string dequeuePostWorkActivitySid = null, string dequeueFrom = null, string dequeueRecord = null, int? dequeueTimeout = null, string dequeueTo = null, Uri dequeueStatusCallbackUrl = null, string callFrom = null, string callRecord = null, int? callTimeout = null, string callTo = null, Uri callUrl = null, Uri callStatusCallbackUrl = null, bool? callAccept = null, string redirectCallSid = null, bool? redirectAccept = null, Uri redirectUrl = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateReservationOptions(workspaceSid, taskSid, sid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl};
+            return Update(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(string workspaceSid, string taskSid, string sid, ReservationResource.StatusEnum reservationStatus = null, string workerActivitySid = null, string instruction = null, string dequeuePostWorkActivitySid = null, string dequeueFrom = null, string dequeueRecord = null, int? dequeueTimeout = null, string dequeueTo = null, Uri dequeueStatusCallbackUrl = null, string callFrom = null, string callRecord = null, int? callTimeout = null, string callTo = null, Uri callUrl = null, Uri callStatusCallbackUrl = null, bool? callAccept = null, string redirectCallSid = null, bool? redirectAccept = null, Uri redirectUrl = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateReservationOptions(workspaceSid, taskSid, sid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl};
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ReservationResource object
@@ -82,68 +203,33 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("reservation_status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ReservationResource.StatusEnum ReservationStatus { get; set; }
+        public ReservationResource.StatusEnum ReservationStatus { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("task_sid")]
-        public string TaskSid { get; set; }
+        public string TaskSid { get; private set; }
         [JsonProperty("worker_name")]
-        public string WorkerName { get; set; }
+        public string WorkerName { get; private set; }
         [JsonProperty("worker_sid")]
-        public string WorkerSid { get; set; }
+        public string WorkerSid { get; private set; }
         [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; set; }
+        public string WorkspaceSid { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; set; }
+        public Dictionary<string, string> Links { get; private set; }
     
-        public ReservationResource()
+        private ReservationResource()
         {
         
         }
-    
-        private ReservationResource([JsonProperty("account_sid")]
-                                    string accountSid, 
-                                    [JsonProperty("date_created")]
-                                    string dateCreated, 
-                                    [JsonProperty("date_updated")]
-                                    string dateUpdated, 
-                                    [JsonProperty("reservation_status")]
-                                    ReservationResource.StatusEnum reservationStatus, 
-                                    [JsonProperty("sid")]
-                                    string sid, 
-                                    [JsonProperty("task_sid")]
-                                    string taskSid, 
-                                    [JsonProperty("worker_name")]
-                                    string workerName, 
-                                    [JsonProperty("worker_sid")]
-                                    string workerSid, 
-                                    [JsonProperty("workspace_sid")]
-                                    string workspaceSid, 
-                                    [JsonProperty("url")]
-                                    Uri url, 
-                                    [JsonProperty("links")]
-                                    Dictionary<string, string> links)
-                                    {
-            AccountSid = accountSid;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            ReservationStatus = reservationStatus;
-            Sid = sid;
-            TaskSid = taskSid;
-            WorkerName = workerName;
-            WorkerSid = workerSid;
-            WorkspaceSid = workspaceSid;
-            Url = url;
-            Links = links;
-        }
     }
+
 }

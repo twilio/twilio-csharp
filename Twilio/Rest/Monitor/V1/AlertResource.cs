@@ -1,44 +1,172 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Monitor.V1 
 {
 
     public class AlertResource : Resource 
     {
+        private static Request BuildFetchRequest(FetchAlertOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Monitor,
+                "/v1/Alerts/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> AlertFetcher capable of executing the fetch </returns> 
-        public static AlertFetcher Fetcher(string sid)
+        public static AlertResource Fetch(FetchAlertOptions options, ITwilioRestClient client = null)
         {
-            return new AlertFetcher(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(FetchAlertOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static AlertResource Fetch(string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchAlertOptions(sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchAlertOptions(sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteAlertOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Monitor,
+                "/v1/Alerts/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> AlertDeleter capable of executing the delete </returns> 
-        public static AlertDeleter Deleter(string sid)
+        public static bool Delete(DeleteAlertOptions options, ITwilioRestClient client = null)
         {
-            return new AlertDeleter(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAlertOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAlertOptions(sid);
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteAlertOptions(sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadAlertOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Monitor,
+                "/v1/Alerts",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <returns> AlertReader capable of executing the read </returns> 
-        public static AlertReader Reader()
+        public static ResourceSet<AlertResource> Read(ReadAlertOptions options, ITwilioRestClient client = null)
         {
-            return new AlertReader();
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<AlertResource>.FromJson("alerts", response.Content);
+            return new ResourceSet<AlertResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<AlertResource>> ReadAsync(ReadAlertOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<AlertResource> Read(string logLevel = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadAlertOptions{LogLevel = logLevel, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<AlertResource>> ReadAsync(string logLevel = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadAlertOptions{LogLevel = logLevel, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<AlertResource> NextPage(Page<AlertResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Monitor,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<AlertResource>.FromJson("alerts", response.Content);
         }
     
         /// <summary>
@@ -61,98 +189,45 @@ namespace Twilio.Rest.Monitor.V1
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("alert_text")]
-        public string AlertText { get; set; }
+        public string AlertText { get; private set; }
         [JsonProperty("api_version")]
-        public string ApiVersion { get; set; }
+        public string ApiVersion { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_generated")]
-        public DateTime? DateGenerated { get; set; }
+        public DateTime? DateGenerated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("error_code")]
-        public string ErrorCode { get; set; }
+        public string ErrorCode { get; private set; }
         [JsonProperty("log_level")]
-        public string LogLevel { get; set; }
+        public string LogLevel { get; private set; }
         [JsonProperty("more_info")]
-        public string MoreInfo { get; set; }
+        public string MoreInfo { get; private set; }
         [JsonProperty("request_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod RequestMethod { get; set; }
+        public Twilio.Http.HttpMethod RequestMethod { get; private set; }
         [JsonProperty("request_url")]
-        public string RequestUrl { get; set; }
+        public string RequestUrl { get; private set; }
         [JsonProperty("request_variables")]
-        public string RequestVariables { get; set; }
+        public string RequestVariables { get; private set; }
         [JsonProperty("resource_sid")]
-        public string ResourceSid { get; set; }
+        public string ResourceSid { get; private set; }
         [JsonProperty("response_body")]
-        public string ResponseBody { get; set; }
+        public string ResponseBody { get; private set; }
         [JsonProperty("response_headers")]
-        public string ResponseHeaders { get; set; }
+        public string ResponseHeaders { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
     
-        public AlertResource()
+        private AlertResource()
         {
         
         }
-    
-        private AlertResource([JsonProperty("account_sid")]
-                              string accountSid, 
-                              [JsonProperty("alert_text")]
-                              string alertText, 
-                              [JsonProperty("api_version")]
-                              string apiVersion, 
-                              [JsonProperty("date_created")]
-                              string dateCreated, 
-                              [JsonProperty("date_generated")]
-                              string dateGenerated, 
-                              [JsonProperty("date_updated")]
-                              string dateUpdated, 
-                              [JsonProperty("error_code")]
-                              string errorCode, 
-                              [JsonProperty("log_level")]
-                              string logLevel, 
-                              [JsonProperty("more_info")]
-                              string moreInfo, 
-                              [JsonProperty("request_method")]
-                              Twilio.Http.HttpMethod requestMethod, 
-                              [JsonProperty("request_url")]
-                              string requestUrl, 
-                              [JsonProperty("request_variables")]
-                              string requestVariables, 
-                              [JsonProperty("resource_sid")]
-                              string resourceSid, 
-                              [JsonProperty("response_body")]
-                              string responseBody, 
-                              [JsonProperty("response_headers")]
-                              string responseHeaders, 
-                              [JsonProperty("sid")]
-                              string sid, 
-                              [JsonProperty("url")]
-                              Uri url)
-                              {
-            AccountSid = accountSid;
-            AlertText = alertText;
-            ApiVersion = apiVersion;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateGenerated = MarshalConverter.DateTimeFromString(dateGenerated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            ErrorCode = errorCode;
-            LogLevel = logLevel;
-            MoreInfo = moreInfo;
-            RequestMethod = requestMethod;
-            RequestUrl = requestUrl;
-            RequestVariables = requestVariables;
-            ResourceSid = resourceSid;
-            ResponseBody = responseBody;
-            ResponseHeaders = responseHeaders;
-            Sid = sid;
-            Url = url;
-        }
     }
+
 }

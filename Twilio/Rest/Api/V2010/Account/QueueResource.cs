@@ -1,67 +1,267 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class QueueResource : Resource 
     {
+        private static Request BuildFetchRequest(FetchQueueOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Queues/" + options.Sid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// Fetch an instance of a queue identified by the QueueSid
         /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique queue Sid </param>
-        /// <returns> QueueFetcher capable of executing the fetch </returns> 
-        public static QueueFetcher Fetcher(string sid)
+        public static QueueResource Fetch(FetchQueueOptions options, ITwilioRestClient client = null)
         {
-            return new QueueFetcher(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<QueueResource> FetchAsync(FetchQueueOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Fetch an instance of a queue identified by the QueueSid
+        /// </summary>
+        public static QueueResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchQueueOptions(sid){AccountSid = accountSid};
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<QueueResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchQueueOptions(sid){AccountSid = accountSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildUpdateRequest(UpdateQueueOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Queues/" + options.Sid + ".json",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Update the queue with the new parameters
         /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> QueueUpdater capable of executing the update </returns> 
-        public static QueueUpdater Updater(string sid)
+        public static QueueResource Update(UpdateQueueOptions options, ITwilioRestClient client = null)
         {
-            return new QueueUpdater(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<QueueResource> UpdateAsync(UpdateQueueOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Update the queue with the new parameters
+        /// </summary>
+        public static QueueResource Update(string sid, string accountSid = null, string friendlyName = null, int? maxSize = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateQueueOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName, MaxSize = maxSize};
+            return Update(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<QueueResource> UpdateAsync(string sid, string accountSid = null, string friendlyName = null, int? maxSize = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateQueueOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName, MaxSize = maxSize};
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteQueueOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Queues/" + options.Sid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Remove an empty queue
         /// </summary>
-        ///
-        /// <param name="sid"> Delete by unique queue Sid </param>
-        /// <returns> QueueDeleter capable of executing the delete </returns> 
-        public static QueueDeleter Deleter(string sid)
+        public static bool Delete(DeleteQueueOptions options, ITwilioRestClient client = null)
         {
-            return new QueueDeleter(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteQueueOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Remove an empty queue
+        /// </summary>
+        public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteQueueOptions(sid){AccountSid = accountSid};
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteQueueOptions(sid){AccountSid = accountSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadQueueOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Queues.json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Retrieve a list of queues belonging to the account used to make the request
         /// </summary>
-        ///
-        /// <returns> QueueReader capable of executing the read </returns> 
-        public static QueueReader Reader()
+        public static ResourceSet<QueueResource> Read(ReadQueueOptions options, ITwilioRestClient client = null)
         {
-            return new QueueReader();
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<QueueResource>.FromJson("queues", response.Content);
+            return new ResourceSet<QueueResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<QueueResource>> ReadAsync(ReadQueueOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Retrieve a list of queues belonging to the account used to make the request
+        /// </summary>
+        public static ResourceSet<QueueResource> Read(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadQueueOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<QueueResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadQueueOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<QueueResource> NextPage(Page<QueueResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<QueueResource>.FromJson("queues", response.Content);
+        }
+    
+        private static Request BuildCreateRequest(CreateQueueOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Queues.json",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Create a queue
         /// </summary>
-        ///
-        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
-        /// <returns> QueueCreator capable of executing the create </returns> 
-        public static QueueCreator Creator(string friendlyName)
+        public static QueueResource Create(CreateQueueOptions options, ITwilioRestClient client = null)
         {
-            return new QueueCreator(friendlyName);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<QueueResource> CreateAsync(CreateQueueOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Create a queue
+        /// </summary>
+        public static QueueResource Create(string friendlyName, string accountSid = null, int? maxSize = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateQueueOptions(friendlyName){AccountSid = accountSid, MaxSize = maxSize};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<QueueResource> CreateAsync(string friendlyName, string accountSid = null, int? maxSize = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateQueueOptions(friendlyName){AccountSid = accountSid, MaxSize = maxSize};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a QueueResource object
@@ -83,57 +283,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("average_wait_time")]
-        public int? AverageWaitTime { get; set; }
+        public int? AverageWaitTime { get; private set; }
         [JsonProperty("current_size")]
-        public int? CurrentSize { get; set; }
+        public int? CurrentSize { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("friendly_name")]
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; private set; }
         [JsonProperty("max_size")]
-        public int? MaxSize { get; set; }
+        public int? MaxSize { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public string Uri { get; private set; }
     
-        public QueueResource()
+        private QueueResource()
         {
         
         }
-    
-        private QueueResource([JsonProperty("account_sid")]
-                              string accountSid, 
-                              [JsonProperty("average_wait_time")]
-                              int? averageWaitTime, 
-                              [JsonProperty("current_size")]
-                              int? currentSize, 
-                              [JsonProperty("date_created")]
-                              string dateCreated, 
-                              [JsonProperty("date_updated")]
-                              string dateUpdated, 
-                              [JsonProperty("friendly_name")]
-                              string friendlyName, 
-                              [JsonProperty("max_size")]
-                              int? maxSize, 
-                              [JsonProperty("sid")]
-                              string sid, 
-                              [JsonProperty("uri")]
-                              string uri)
-                              {
-            AccountSid = accountSid;
-            AverageWaitTime = averageWaitTime;
-            CurrentSize = currentSize;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            FriendlyName = friendlyName;
-            MaxSize = maxSize;
-            Sid = sid;
-            Uri = uri;
-        }
     }
+
 }

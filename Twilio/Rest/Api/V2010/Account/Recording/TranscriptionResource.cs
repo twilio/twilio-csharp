@@ -1,8 +1,11 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Recording 
@@ -20,39 +23,161 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
     
+        private static Request BuildFetchRequest(FetchTranscriptionOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Recordings/" + options.RecordingSid + "/Transcriptions/" + options.Sid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> TranscriptionFetcher capable of executing the fetch </returns> 
-        public static TranscriptionFetcher Fetcher(string recordingSid, string sid)
+        public static TranscriptionResource Fetch(FetchTranscriptionOptions options, ITwilioRestClient client = null)
         {
-            return new TranscriptionFetcher(recordingSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(FetchTranscriptionOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static TranscriptionResource Fetch(string recordingSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchTranscriptionOptions(recordingSid, sid){AccountSid = accountSid};
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(string recordingSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchTranscriptionOptions(recordingSid, sid){AccountSid = accountSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteTranscriptionOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Recordings/" + options.RecordingSid + "/Transcriptions/" + options.Sid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> TranscriptionDeleter capable of executing the delete </returns> 
-        public static TranscriptionDeleter Deleter(string recordingSid, string sid)
+        public static bool Delete(DeleteTranscriptionOptions options, ITwilioRestClient client = null)
         {
-            return new TranscriptionDeleter(recordingSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTranscriptionOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string recordingSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTranscriptionOptions(recordingSid, sid){AccountSid = accountSid};
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string recordingSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTranscriptionOptions(recordingSid, sid){AccountSid = accountSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadTranscriptionOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Recordings/" + options.RecordingSid + "/Transcriptions.json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <returns> TranscriptionReader capable of executing the read </returns> 
-        public static TranscriptionReader Reader(string recordingSid)
+        public static ResourceSet<TranscriptionResource> Read(ReadTranscriptionOptions options, ITwilioRestClient client = null)
         {
-            return new TranscriptionReader(recordingSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
+            return new ResourceSet<TranscriptionResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(ReadTranscriptionOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<TranscriptionResource> Read(string recordingSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadTranscriptionOptions(recordingSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(string recordingSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadTranscriptionOptions(recordingSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<TranscriptionResource> NextPage(Page<TranscriptionResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
         }
     
         /// <summary>
@@ -75,78 +200,37 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("api_version")]
-        public string ApiVersion { get; set; }
+        public string ApiVersion { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("duration")]
-        public string Duration { get; set; }
+        public string Duration { get; private set; }
         [JsonProperty("price")]
-        public decimal? Price { get; set; }
+        public decimal? Price { get; private set; }
         [JsonProperty("price_unit")]
-        public string PriceUnit { get; set; }
+        public string PriceUnit { get; private set; }
         [JsonProperty("recording_sid")]
-        public string RecordingSid { get; set; }
+        public string RecordingSid { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TranscriptionResource.StatusEnum Status { get; set; }
+        public TranscriptionResource.StatusEnum Status { get; private set; }
         [JsonProperty("transcription_text")]
-        public string TranscriptionText { get; set; }
+        public string TranscriptionText { get; private set; }
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public string Type { get; private set; }
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public string Uri { get; private set; }
     
-        public TranscriptionResource()
+        private TranscriptionResource()
         {
         
         }
-    
-        private TranscriptionResource([JsonProperty("account_sid")]
-                                      string accountSid, 
-                                      [JsonProperty("api_version")]
-                                      string apiVersion, 
-                                      [JsonProperty("date_created")]
-                                      string dateCreated, 
-                                      [JsonProperty("date_updated")]
-                                      string dateUpdated, 
-                                      [JsonProperty("duration")]
-                                      string duration, 
-                                      [JsonProperty("price")]
-                                      decimal? price, 
-                                      [JsonProperty("price_unit")]
-                                      string priceUnit, 
-                                      [JsonProperty("recording_sid")]
-                                      string recordingSid, 
-                                      [JsonProperty("sid")]
-                                      string sid, 
-                                      [JsonProperty("status")]
-                                      TranscriptionResource.StatusEnum status, 
-                                      [JsonProperty("transcription_text")]
-                                      string transcriptionText, 
-                                      [JsonProperty("type")]
-                                      string type, 
-                                      [JsonProperty("uri")]
-                                      string uri)
-                                      {
-            AccountSid = accountSid;
-            ApiVersion = apiVersion;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            Duration = duration;
-            Price = price;
-            PriceUnit = priceUnit;
-            RecordingSid = recordingSid;
-            Sid = sid;
-            Status = status;
-            TranscriptionText = transcriptionText;
-            Type = type;
-            Uri = uri;
-        }
     }
+
 }

@@ -1,13 +1,12 @@
 using NSubstitute;
+using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest;
 using Twilio.Rest.Api.V2010.Account.Queue;
 
 namespace Twilio.Tests.Rest.Api.V2010.Account.Queue 
@@ -16,44 +15,25 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Queue
     [TestFixture]
     public class MemberTest : TwilioTest 
     {
-        [SetUp]
-        public void SetUp()
-        {
-        }
-    
         [Test]
         public void TestFetchRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.Get,
-                                      Twilio.Rest.Domain.Api,
-                                      "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
-                                      null);
+            var request = new Request(
+                HttpMethod.Get,
+                Twilio.Rest.Domain.Api,
+                "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
+                ""
+            );
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.Request(request)
-                            .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
-                                                  "null"));
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
             
             try
             {
-                MemberResource.Fetcher("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
+                MemberResource.Fetch("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
-            catch (AggregateException ae)
-            {
-                ae.Handle((e) =>
-                {
-                    if (e.GetType() != typeof(ApiException))
-                    {
-                        throw e;
-                    }
-            
-                    return true;
-                });
-            }
-            catch (ApiException)
-            {
-            }
+            catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
     
@@ -63,10 +43,12 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Queue
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(System.Net.HttpStatusCode.OK,
-                                                  "{\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_enqueued\": \"Tue, 07 Aug 2012 22:57:41 +0000\",\"position\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\",\"wait_time\": 143}"));
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_enqueued\": \"Tue, 07 Aug 2012 22:57:41 +0000\",\"position\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\",\"wait_time\": 143}"
+                                     ));
             
-            var response = MemberResource.Fetcher("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Fetch(twilioRestClient);
+            var response = MemberResource.Fetch("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -74,37 +56,23 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Queue
         public void TestUpdateRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.Post,
-                                      Twilio.Rest.Domain.Api,
-                                      "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
-                                      null);
+            var request = new Request(
+                HttpMethod.Post,
+                Twilio.Rest.Domain.Api,
+                "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json",
+                ""
+            );
             request.AddPostParam("Url", Serialize(new Uri("https://example.com")));
             request.AddPostParam("Method", Serialize(Twilio.Http.HttpMethod.Get));
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.Request(request)
-                            .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
-                                                  "null"));
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
             
             try
             {
-                MemberResource.Updater("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Uri("https://example.com"), Twilio.Http.HttpMethod.Get).Update(twilioRestClient);
+                MemberResource.Update("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Uri("https://example.com"), Twilio.Http.HttpMethod.Get, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
-            catch (AggregateException ae)
-            {
-                ae.Handle((e) =>
-                {
-                    if (e.GetType() != typeof(ApiException))
-                    {
-                        throw e;
-                    }
-            
-                    return true;
-                });
-            }
-            catch (ApiException)
-            {
-            }
+            catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
     
@@ -114,10 +82,12 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Queue
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(System.Net.HttpStatusCode.OK,
-                                                  "{\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_enqueued\": \"Tue, 07 Aug 2012 22:57:41 +0000\",\"position\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\",\"wait_time\": 143}"));
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_enqueued\": \"Tue, 07 Aug 2012 22:57:41 +0000\",\"position\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\",\"wait_time\": 143}"
+                                     ));
             
-            var response = MemberResource.Updater("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Uri("https://example.com"), Twilio.Http.HttpMethod.Get).Update(twilioRestClient);
+            var response = MemberResource.Update("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Uri("https://example.com"), Twilio.Http.HttpMethod.Get, client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -125,35 +95,21 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Queue
         public void TestReadRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.Get,
-                                      Twilio.Rest.Domain.Api,
-                                      "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json",
-                                      null);
+            var request = new Request(
+                HttpMethod.Get,
+                Twilio.Rest.Domain.Api,
+                "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json",
+                ""
+            );
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.Request(request)
-                            .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
-                                                  "null"));
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
             
             try
             {
-                MemberResource.Reader("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
+                MemberResource.Read("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
-            catch (AggregateException ae)
-            {
-                ae.Handle((e) =>
-                {
-                    if (e.GetType() != typeof(ApiException))
-                    {
-                        throw e;
-                    }
-            
-                    return true;
-                });
-            }
-            catch (ApiException)
-            {
-            }
+            catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
     
@@ -163,10 +119,12 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Queue
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(System.Net.HttpStatusCode.OK,
-                                                  "{\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?Page=0&PageSize=50\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?Page=0&PageSize=50\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"queue_members\": [{\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_enqueued\": \"Tue, 07 Aug 2012 22:57:41 +0000\",\"position\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\",\"wait_time\": 124}],\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json\"}"));
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?Page=0&PageSize=50\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?Page=0&PageSize=50\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"queue_members\": [{\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_enqueued\": \"Tue, 07 Aug 2012 22:57:41 +0000\",\"position\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\",\"wait_time\": 124}],\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json\"}"
+                                     ));
             
-            var response = MemberResource.Reader("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
+            var response = MemberResource.Read("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -176,11 +134,14 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Queue
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(System.Net.HttpStatusCode.OK,
-                                                  "{\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?Page=0&PageSize=50\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?Page=0&PageSize=50\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"queue_members\": [],\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json\"}"));
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?Page=0&PageSize=50\",\"last_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json?Page=0&PageSize=50\",\"next_page_uri\": null,\"num_pages\": 1,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"queue_members\": [],\"start\": 0,\"total\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members.json\"}"
+                                     ));
             
-            var response = MemberResource.Reader("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa").Read(twilioRestClient);
+            var response = MemberResource.Read("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }
+
 }

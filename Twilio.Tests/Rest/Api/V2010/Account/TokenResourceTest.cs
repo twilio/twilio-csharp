@@ -1,13 +1,12 @@
 using NSubstitute;
+using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest;
 using Twilio.Rest.Api.V2010.Account;
 
 namespace Twilio.Tests.Rest.Api.V2010.Account 
@@ -16,44 +15,25 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
     [TestFixture]
     public class TokenTest : TwilioTest 
     {
-        [SetUp]
-        public void SetUp()
-        {
-        }
-    
         [Test]
         public void TestCreateRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(HttpMethod.Post,
-                                      Twilio.Rest.Domain.Api,
-                                      "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tokens.json",
-                                      null);
+            var request = new Request(
+                HttpMethod.Post,
+                Twilio.Rest.Domain.Api,
+                "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tokens.json",
+                ""
+            );
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.Request(request)
-                            .Returns(new Response(System.Net.HttpStatusCode.InternalServerError,
-                                                  "null"));
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
             
             try
             {
-                TokenResource.Creator().Create(twilioRestClient);
+                TokenResource.Create(client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
-            catch (AggregateException ae)
-            {
-                ae.Handle((e) =>
-                {
-                    if (e.GetType() != typeof(ApiException))
-                    {
-                        throw e;
-                    }
-            
-                    return true;
-                });
-            }
-            catch (ApiException)
-            {
-            }
+            catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
     
@@ -63,11 +43,14 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(System.Net.HttpStatusCode.Created,
-                                                  "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 24 Jul 2015 18:43:58 +0000\",\"date_updated\": \"Fri, 24 Jul 2015 18:43:58 +0000\",\"ice_servers\": [{\"url\": \"stun:global.stun:3478?transport=udp\"},{\"credential\": \"5SR2x8mZK1lTFJW3NVgLGw6UM9C0dja4jI/Hdw3xr+w=\",\"url\": \"turn:global.turn:3478?transport=udp\",\"username\": \"cda92e5006c7810494639fc466ecc80182cef8183fdf400f84c4126f3b59d0bb\"}],\"password\": \"5SR2x8mZK1lTFJW3NVgLGw6UM9C0dja4jI/Hdw3xr+w=\",\"ttl\": \"86400\",\"username\": \"cda92e5006c7810494639fc466ecc80182cef8183fdf400f84c4126f3b59d0bb\"}"));
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 24 Jul 2015 18:43:58 +0000\",\"date_updated\": \"Fri, 24 Jul 2015 18:43:58 +0000\",\"ice_servers\": [{\"url\": \"stun:global.stun:3478?transport=udp\"},{\"credential\": \"5SR2x8mZK1lTFJW3NVgLGw6UM9C0dja4jI/Hdw3xr+w=\",\"url\": \"turn:global.turn:3478?transport=udp\",\"username\": \"cda92e5006c7810494639fc466ecc80182cef8183fdf400f84c4126f3b59d0bb\"}],\"password\": \"5SR2x8mZK1lTFJW3NVgLGw6UM9C0dja4jI/Hdw3xr+w=\",\"ttl\": \"86400\",\"username\": \"cda92e5006c7810494639fc466ecc80182cef8183fdf400f84c4126f3b59d0bb\"}"
+                                     ));
             
-            var response = TokenResource.Creator().Create(twilioRestClient);
+            var response = TokenResource.Create(client: twilioRestClient);
             Assert.NotNull(response);
         }
     }
+
 }

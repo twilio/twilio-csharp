@@ -2,23 +2,77 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Address 
 {
 
     public class DependentPhoneNumberResource : Resource 
     {
+        private static Request BuildReadRequest(ReadDependentPhoneNumberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Addresses/" + options.AddressSid + "/DependentPhoneNumbers.json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="addressSid"> The address_sid </param>
-        /// <returns> DependentPhoneNumberReader capable of executing the read </returns> 
-        public static DependentPhoneNumberReader Reader(string addressSid)
+        public static ResourceSet<DependentPhoneNumberResource> Read(ReadDependentPhoneNumberOptions options, ITwilioRestClient client = null)
         {
-            return new DependentPhoneNumberReader(addressSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<DependentPhoneNumberResource>.FromJson("dependent_phone_numbers", response.Content);
+            return new ResourceSet<DependentPhoneNumberResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(ReadDependentPhoneNumberOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<DependentPhoneNumberResource> Read(string addressSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadDependentPhoneNumberOptions(addressSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(string addressSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadDependentPhoneNumberOptions(addressSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<DependentPhoneNumberResource> NextPage(Page<DependentPhoneNumberResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<DependentPhoneNumberResource>.FromJson("dependent_phone_numbers", response.Content);
         }
     
         /// <summary>
@@ -42,68 +96,33 @@ namespace Twilio.Rest.Api.V2010.Account.Address
     
         [JsonProperty("friendly_name")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Types.PhoneNumber FriendlyName { get; set; }
+        public Types.PhoneNumber FriendlyName { get; private set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Types.PhoneNumber PhoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; private set; }
         [JsonProperty("lata")]
-        public string Lata { get; set; }
+        public string Lata { get; private set; }
         [JsonProperty("rate_center")]
-        public string RateCenter { get; set; }
+        public string RateCenter { get; private set; }
         [JsonProperty("latitude")]
-        public decimal? Latitude { get; set; }
+        public decimal? Latitude { get; private set; }
         [JsonProperty("longitude")]
-        public decimal? Longitude { get; set; }
+        public decimal? Longitude { get; private set; }
         [JsonProperty("region")]
-        public string Region { get; set; }
+        public string Region { get; private set; }
         [JsonProperty("postal_code")]
-        public string PostalCode { get; set; }
+        public string PostalCode { get; private set; }
         [JsonProperty("iso_country")]
-        public string IsoCountry { get; set; }
+        public string IsoCountry { get; private set; }
         [JsonProperty("address_requirements")]
-        public string AddressRequirements { get; set; }
+        public string AddressRequirements { get; private set; }
         [JsonProperty("capabilities")]
-        public Dictionary<string, string> Capabilities { get; set; }
+        public Dictionary<string, string> Capabilities { get; private set; }
     
-        public DependentPhoneNumberResource()
+        private DependentPhoneNumberResource()
         {
         
         }
-    
-        private DependentPhoneNumberResource([JsonProperty("friendly_name")]
-                                             Types.PhoneNumber friendlyName, 
-                                             [JsonProperty("phone_number")]
-                                             Types.PhoneNumber phoneNumber, 
-                                             [JsonProperty("lata")]
-                                             string lata, 
-                                             [JsonProperty("rate_center")]
-                                             string rateCenter, 
-                                             [JsonProperty("latitude")]
-                                             decimal? latitude, 
-                                             [JsonProperty("longitude")]
-                                             decimal? longitude, 
-                                             [JsonProperty("region")]
-                                             string region, 
-                                             [JsonProperty("postal_code")]
-                                             string postalCode, 
-                                             [JsonProperty("iso_country")]
-                                             string isoCountry, 
-                                             [JsonProperty("address_requirements")]
-                                             string addressRequirements, 
-                                             [JsonProperty("capabilities")]
-                                             Dictionary<string, string> capabilities)
-                                             {
-            FriendlyName = friendlyName;
-            PhoneNumber = phoneNumber;
-            Lata = lata;
-            RateCenter = rateCenter;
-            Latitude = latitude;
-            Longitude = longitude;
-            Region = region;
-            PostalCode = postalCode;
-            IsoCountry = isoCountry;
-            AddressRequirements = addressRequirements;
-            Capabilities = capabilities;
-        }
     }
+
 }

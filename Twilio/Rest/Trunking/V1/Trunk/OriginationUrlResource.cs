@@ -1,76 +1,267 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
     public class OriginationUrlResource : Resource 
     {
+        private static Request BuildFetchRequest(FetchOriginationUrlOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/OriginationUrls/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> OriginationUrlFetcher capable of executing the fetch </returns> 
-        public static OriginationUrlFetcher Fetcher(string trunkSid, string sid)
+        public static OriginationUrlResource Fetch(FetchOriginationUrlOptions options, ITwilioRestClient client = null)
         {
-            return new OriginationUrlFetcher(trunkSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<OriginationUrlResource> FetchAsync(FetchOriginationUrlOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static OriginationUrlResource Fetch(string trunkSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchOriginationUrlOptions(trunkSid, sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<OriginationUrlResource> FetchAsync(string trunkSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchOriginationUrlOptions(trunkSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteOriginationUrlOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/OriginationUrls/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> OriginationUrlDeleter capable of executing the delete </returns> 
-        public static OriginationUrlDeleter Deleter(string trunkSid, string sid)
+        public static bool Delete(DeleteOriginationUrlOptions options, ITwilioRestClient client = null)
         {
-            return new OriginationUrlDeleter(trunkSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteOriginationUrlOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string trunkSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteOriginationUrlOptions(trunkSid, sid);
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string trunkSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteOriginationUrlOptions(trunkSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildCreateRequest(CreateOriginationUrlOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/OriginationUrls",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="weight"> The weight </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="enabled"> The enabled </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="sipUrl"> The sip_url </param>
-        /// <returns> OriginationUrlCreator capable of executing the create </returns> 
-        public static OriginationUrlCreator Creator(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl)
+        public static OriginationUrlResource Create(CreateOriginationUrlOptions options, ITwilioRestClient client = null)
         {
-            return new OriginationUrlCreator(trunkSid, weight, priority, enabled, friendlyName, sipUrl);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<OriginationUrlResource> CreateAsync(CreateOriginationUrlOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static OriginationUrlResource Create(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl, ITwilioRestClient client = null)
+        {
+            var options = new CreateOriginationUrlOptions(trunkSid, weight, priority, enabled, friendlyName, sipUrl);
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<OriginationUrlResource> CreateAsync(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl, ITwilioRestClient client = null)
+        {
+            var options = new CreateOriginationUrlOptions(trunkSid, weight, priority, enabled, friendlyName, sipUrl);
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadOriginationUrlOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/OriginationUrls",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <returns> OriginationUrlReader capable of executing the read </returns> 
-        public static OriginationUrlReader Reader(string trunkSid)
+        public static ResourceSet<OriginationUrlResource> Read(ReadOriginationUrlOptions options, ITwilioRestClient client = null)
         {
-            return new OriginationUrlReader(trunkSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<OriginationUrlResource>.FromJson("origination_urls", response.Content);
+            return new ResourceSet<OriginationUrlResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<OriginationUrlResource>> ReadAsync(ReadOriginationUrlOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<OriginationUrlResource> Read(string trunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadOriginationUrlOptions(trunkSid){PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<OriginationUrlResource>> ReadAsync(string trunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadOriginationUrlOptions(trunkSid){PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<OriginationUrlResource> NextPage(Page<OriginationUrlResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Trunking,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<OriginationUrlResource>.FromJson("origination_urls", response.Content);
+        }
+    
+        private static Request BuildUpdateRequest(UpdateOriginationUrlOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/OriginationUrls/" + options.Sid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// update
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> OriginationUrlUpdater capable of executing the update </returns> 
-        public static OriginationUrlUpdater Updater(string trunkSid, string sid)
+        public static OriginationUrlResource Update(UpdateOriginationUrlOptions options, ITwilioRestClient client = null)
         {
-            return new OriginationUrlUpdater(trunkSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<OriginationUrlResource> UpdateAsync(UpdateOriginationUrlOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// update
+        /// </summary>
+        public static OriginationUrlResource Update(string trunkSid, string sid, int? weight = null, int? priority = null, bool? enabled = null, string friendlyName = null, Uri sipUrl = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateOriginationUrlOptions(trunkSid, sid){Weight = weight, Priority = priority, Enabled = enabled, FriendlyName = friendlyName, SipUrl = sipUrl};
+            return Update(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<OriginationUrlResource> UpdateAsync(string trunkSid, string sid, int? weight = null, int? priority = null, bool? enabled = null, string friendlyName = null, Uri sipUrl = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateOriginationUrlOptions(trunkSid, sid){Weight = weight, Priority = priority, Enabled = enabled, FriendlyName = friendlyName, SipUrl = sipUrl};
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a OriginationUrlResource object
@@ -92,67 +283,32 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("trunk_sid")]
-        public string TrunkSid { get; set; }
+        public string TrunkSid { get; private set; }
         [JsonProperty("weight")]
-        public int? Weight { get; set; }
+        public int? Weight { get; private set; }
         [JsonProperty("enabled")]
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get; private set; }
         [JsonProperty("sip_url")]
-        public Uri SipUrl { get; set; }
+        public Uri SipUrl { get; private set; }
         [JsonProperty("friendly_name")]
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; private set; }
         [JsonProperty("priority")]
-        public int? Priority { get; set; }
+        public int? Priority { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
     
-        public OriginationUrlResource()
+        private OriginationUrlResource()
         {
         
         }
-    
-        private OriginationUrlResource([JsonProperty("account_sid")]
-                                       string accountSid, 
-                                       [JsonProperty("sid")]
-                                       string sid, 
-                                       [JsonProperty("trunk_sid")]
-                                       string trunkSid, 
-                                       [JsonProperty("weight")]
-                                       int? weight, 
-                                       [JsonProperty("enabled")]
-                                       bool? enabled, 
-                                       [JsonProperty("sip_url")]
-                                       Uri sipUrl, 
-                                       [JsonProperty("friendly_name")]
-                                       string friendlyName, 
-                                       [JsonProperty("priority")]
-                                       int? priority, 
-                                       [JsonProperty("date_created")]
-                                       string dateCreated, 
-                                       [JsonProperty("date_updated")]
-                                       string dateUpdated, 
-                                       [JsonProperty("url")]
-                                       Uri url)
-                                       {
-            AccountSid = accountSid;
-            Sid = sid;
-            TrunkSid = trunkSid;
-            Weight = weight;
-            Enabled = enabled;
-            SipUrl = sipUrl;
-            FriendlyName = friendlyName;
-            Priority = priority;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            Url = url;
-        }
     }
+
 }

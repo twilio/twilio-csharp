@@ -2,66 +2,266 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Preview.Sync 
 {
 
     public class ServiceResource : Resource 
     {
+        private static Request BuildFetchRequest(FetchServiceOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> ServiceFetcher capable of executing the fetch </returns> 
-        public static ServiceFetcher Fetcher(string sid)
+        public static ServiceResource Fetch(FetchServiceOptions options, ITwilioRestClient client = null)
         {
-            return new ServiceFetcher(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static ServiceResource Fetch(string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchServiceOptions(sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchServiceOptions(sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteServiceOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> ServiceDeleter capable of executing the delete </returns> 
-        public static ServiceDeleter Deleter(string sid)
+        public static bool Delete(DeleteServiceOptions options, ITwilioRestClient client = null)
         {
-            return new ServiceDeleter(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteServiceOptions(sid);
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteServiceOptions(sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildCreateRequest(CreateServiceOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/Sync/Services",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <returns> ServiceCreator capable of executing the create </returns> 
-        public static ServiceCreator Creator()
+        public static ServiceResource Create(CreateServiceOptions options, ITwilioRestClient client = null)
         {
-            return new ServiceCreator();
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static ServiceResource Create(string friendlyName = null, Uri webhookUrl = null, bool? reachabilityWebhooksEnabled = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateServiceOptions{FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null, Uri webhookUrl = null, bool? reachabilityWebhooksEnabled = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateServiceOptions{FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadServiceOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <returns> ServiceReader capable of executing the read </returns> 
-        public static ServiceReader Reader()
+        public static ResourceSet<ServiceResource> Read(ReadServiceOptions options, ITwilioRestClient client = null)
         {
-            return new ServiceReader();
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<ServiceResource>.FromJson("services", response.Content);
+            return new ResourceSet<ServiceResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<ServiceResource> Read(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<ServiceResource> NextPage(Page<ServiceResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Preview,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<ServiceResource>.FromJson("services", response.Content);
+        }
+    
+        private static Request BuildUpdateRequest(UpdateServiceOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + options.Sid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// update
         /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> ServiceUpdater capable of executing the update </returns> 
-        public static ServiceUpdater Updater(string sid)
+        public static ServiceResource Update(UpdateServiceOptions options, ITwilioRestClient client = null)
         {
-            return new ServiceUpdater(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// update
+        /// </summary>
+        public static ServiceResource Update(string sid, Uri webhookUrl = null, string friendlyName = null, bool? reachabilityWebhooksEnabled = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateServiceOptions(sid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled};
+            return Update(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string sid, Uri webhookUrl = null, string friendlyName = null, bool? reachabilityWebhooksEnabled = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateServiceOptions(sid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled};
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ServiceResource object
@@ -83,57 +283,28 @@ namespace Twilio.Rest.Preview.Sync
         }
     
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("friendly_name")]
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
         [JsonProperty("webhook_url")]
-        public Uri WebhookUrl { get; set; }
+        public Uri WebhookUrl { get; private set; }
         [JsonProperty("reachability_webhooks_enabled")]
-        public bool? ReachabilityWebhooksEnabled { get; set; }
+        public bool? ReachabilityWebhooksEnabled { get; private set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; set; }
+        public Dictionary<string, string> Links { get; private set; }
     
-        public ServiceResource()
+        private ServiceResource()
         {
         
         }
-    
-        private ServiceResource([JsonProperty("sid")]
-                                string sid, 
-                                [JsonProperty("account_sid")]
-                                string accountSid, 
-                                [JsonProperty("friendly_name")]
-                                string friendlyName, 
-                                [JsonProperty("date_created")]
-                                string dateCreated, 
-                                [JsonProperty("date_updated")]
-                                string dateUpdated, 
-                                [JsonProperty("url")]
-                                Uri url, 
-                                [JsonProperty("webhook_url")]
-                                Uri webhookUrl, 
-                                [JsonProperty("reachability_webhooks_enabled")]
-                                bool? reachabilityWebhooksEnabled, 
-                                [JsonProperty("links")]
-                                Dictionary<string, string> links)
-                                {
-            Sid = sid;
-            AccountSid = accountSid;
-            FriendlyName = friendlyName;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            Url = url;
-            WebhookUrl = webhookUrl;
-            ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled;
-            Links = links;
-        }
     }
+
 }

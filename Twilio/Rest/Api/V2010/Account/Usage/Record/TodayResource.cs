@@ -2,8 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Usage.Record 
@@ -108,14 +110,67 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum TurnmegabytesUswest = new CategoryEnum("turnmegabytes-uswest");
         }
     
+        private static Request BuildReadRequest(ReadTodayOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Usage/Records/Today.json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <returns> TodayReader capable of executing the read </returns> 
-        public static TodayReader Reader()
+        public static ResourceSet<TodayResource> Read(ReadTodayOptions options, ITwilioRestClient client = null)
         {
-            return new TodayReader();
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<TodayResource>.FromJson("usage_records", response.Content);
+            return new ResourceSet<TodayResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<TodayResource>> ReadAsync(ReadTodayOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<TodayResource> Read(string accountSid = null, TodayResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadTodayOptions{AccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<TodayResource>> ReadAsync(string accountSid = null, TodayResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadTodayOptions{AccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<TodayResource> NextPage(Page<TodayResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<TodayResource>.FromJson("usage_records", response.Content);
         }
     
         /// <summary>
@@ -138,83 +193,39 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("api_version")]
-        public string ApiVersion { get; set; }
+        public string ApiVersion { get; private set; }
         [JsonProperty("category")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TodayResource.CategoryEnum Category { get; set; }
+        public TodayResource.CategoryEnum Category { get; private set; }
         [JsonProperty("count")]
-        public string Count { get; set; }
+        public string Count { get; private set; }
         [JsonProperty("count_unit")]
-        public string CountUnit { get; set; }
+        public string CountUnit { get; private set; }
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string Description { get; private set; }
         [JsonProperty("end_date")]
-        public DateTime? EndDate { get; set; }
+        public DateTime? EndDate { get; private set; }
         [JsonProperty("price")]
-        public decimal? Price { get; set; }
+        public decimal? Price { get; private set; }
         [JsonProperty("price_unit")]
-        public string PriceUnit { get; set; }
+        public string PriceUnit { get; private set; }
         [JsonProperty("start_date")]
-        public DateTime? StartDate { get; set; }
+        public DateTime? StartDate { get; private set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> SubresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; private set; }
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public string Uri { get; private set; }
         [JsonProperty("usage")]
-        public string Usage { get; set; }
+        public string Usage { get; private set; }
         [JsonProperty("usage_unit")]
-        public string UsageUnit { get; set; }
+        public string UsageUnit { get; private set; }
     
-        public TodayResource()
+        private TodayResource()
         {
         
         }
-    
-        private TodayResource([JsonProperty("account_sid")]
-                              string accountSid, 
-                              [JsonProperty("api_version")]
-                              string apiVersion, 
-                              [JsonProperty("category")]
-                              TodayResource.CategoryEnum category, 
-                              [JsonProperty("count")]
-                              string count, 
-                              [JsonProperty("count_unit")]
-                              string countUnit, 
-                              [JsonProperty("description")]
-                              string description, 
-                              [JsonProperty("end_date")]
-                              string endDate, 
-                              [JsonProperty("price")]
-                              decimal? price, 
-                              [JsonProperty("price_unit")]
-                              string priceUnit, 
-                              [JsonProperty("start_date")]
-                              string startDate, 
-                              [JsonProperty("subresource_uris")]
-                              Dictionary<string, string> subresourceUris, 
-                              [JsonProperty("uri")]
-                              string uri, 
-                              [JsonProperty("usage")]
-                              string usage, 
-                              [JsonProperty("usage_unit")]
-                              string usageUnit)
-                              {
-            AccountSid = accountSid;
-            ApiVersion = apiVersion;
-            Category = category;
-            Count = count;
-            CountUnit = countUnit;
-            Description = description;
-            EndDate = MarshalConverter.DateTimeFromString(endDate);
-            Price = price;
-            PriceUnit = priceUnit;
-            StartDate = MarshalConverter.DateTimeFromString(startDate);
-            SubresourceUris = subresourceUris;
-            Uri = uri;
-            Usage = usage;
-            UsageUnit = usageUnit;
-        }
     }
+
 }

@@ -1,46 +1,173 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Preview.Wireless 
 {
 
     public class CommandResource : Resource 
     {
+        private static Request BuildFetchRequest(FetchCommandOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/wireless/Commands/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> CommandFetcher capable of executing the fetch </returns> 
-        public static CommandFetcher Fetcher(string sid)
+        public static CommandResource Fetch(FetchCommandOptions options, ITwilioRestClient client = null)
         {
-            return new CommandFetcher(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(FetchCommandOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static CommandResource Fetch(string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchCommandOptions(sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchCommandOptions(sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadCommandOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/wireless/Commands",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <returns> CommandReader capable of executing the read </returns> 
-        public static CommandReader Reader()
+        public static ResourceSet<CommandResource> Read(ReadCommandOptions options, ITwilioRestClient client = null)
         {
-            return new CommandReader();
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<CommandResource>.FromJson("commands", response.Content);
+            return new ResourceSet<CommandResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(ReadCommandOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<CommandResource> Read(string device = null, string status = null, string direction = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadCommandOptions{Device = device, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(string device = null, string status = null, string direction = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadCommandOptions{Device = device, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<CommandResource> NextPage(Page<CommandResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Preview,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<CommandResource>.FromJson("commands", response.Content);
+        }
+    
+        private static Request BuildCreateRequest(CreateCommandOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/wireless/Commands",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="device"> The device </param>
-        /// <param name="command"> The command </param>
-        /// <returns> CommandCreator capable of executing the create </returns> 
-        public static CommandCreator Creator(string device, string command)
+        public static CommandResource Create(CreateCommandOptions options, ITwilioRestClient client = null)
         {
-            return new CommandCreator(device, command);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(CreateCommandOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static CommandResource Create(string device, string command, string callbackMethod = null, Uri callbackUrl = null, string commandMode = null, string includeSid = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateCommandOptions(device, command){CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(string device, string command, string callbackMethod = null, Uri callbackUrl = null, string commandMode = null, string includeSid = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateCommandOptions(device, command){CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a CommandResource object
@@ -62,62 +189,30 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("device_sid")]
-        public string DeviceSid { get; set; }
+        public string DeviceSid { get; private set; }
         [JsonProperty("command")]
-        public string Command { get; set; }
+        public string Command { get; private set; }
         [JsonProperty("command_mode")]
-        public string CommandMode { get; set; }
+        public string CommandMode { get; private set; }
         [JsonProperty("status")]
-        public string Status { get; set; }
+        public string Status { get; private set; }
         [JsonProperty("direction")]
-        public string Direction { get; set; }
+        public string Direction { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
     
-        public CommandResource()
+        private CommandResource()
         {
         
         }
-    
-        private CommandResource([JsonProperty("sid")]
-                                string sid, 
-                                [JsonProperty("account_sid")]
-                                string accountSid, 
-                                [JsonProperty("device_sid")]
-                                string deviceSid, 
-                                [JsonProperty("command")]
-                                string command, 
-                                [JsonProperty("command_mode")]
-                                string commandMode, 
-                                [JsonProperty("status")]
-                                string status, 
-                                [JsonProperty("direction")]
-                                string direction, 
-                                [JsonProperty("date_created")]
-                                string dateCreated, 
-                                [JsonProperty("date_updated")]
-                                string dateUpdated, 
-                                [JsonProperty("url")]
-                                Uri url)
-                                {
-            Sid = sid;
-            AccountSid = accountSid;
-            DeviceSid = deviceSid;
-            Command = command;
-            CommandMode = commandMode;
-            Status = status;
-            Direction = direction;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            Url = url;
-        }
     }
+
 }

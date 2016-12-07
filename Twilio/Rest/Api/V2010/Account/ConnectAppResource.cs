@@ -2,8 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
@@ -20,36 +22,161 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly PermissionEnum PostAll = new PermissionEnum("post-all");
         }
     
+        private static Request BuildFetchRequest(FetchConnectAppOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/ConnectApps/" + options.Sid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// Fetch an instance of a connect-app
         /// </summary>
-        ///
-        /// <param name="sid"> Fetch by unique connect-app Sid </param>
-        /// <returns> ConnectAppFetcher capable of executing the fetch </returns> 
-        public static ConnectAppFetcher Fetcher(string sid)
+        public static ConnectAppResource Fetch(FetchConnectAppOptions options, ITwilioRestClient client = null)
         {
-            return new ConnectAppFetcher(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ConnectAppResource> FetchAsync(FetchConnectAppOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Fetch an instance of a connect-app
+        /// </summary>
+        public static ConnectAppResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchConnectAppOptions(sid){AccountSid = accountSid};
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ConnectAppResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchConnectAppOptions(sid){AccountSid = accountSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildUpdateRequest(UpdateConnectAppOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/ConnectApps/" + options.Sid + ".json",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Update a connect-app with the specified parameters
         /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> ConnectAppUpdater capable of executing the update </returns> 
-        public static ConnectAppUpdater Updater(string sid)
+        public static ConnectAppResource Update(UpdateConnectAppOptions options, ITwilioRestClient client = null)
         {
-            return new ConnectAppUpdater(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ConnectAppResource> UpdateAsync(UpdateConnectAppOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Update a connect-app with the specified parameters
+        /// </summary>
+        public static ConnectAppResource Update(string sid, string accountSid = null, Uri authorizeRedirectUrl = null, string companyName = null, Twilio.Http.HttpMethod deauthorizeCallbackMethod = null, Uri deauthorizeCallbackUrl = null, string description = null, string friendlyName = null, Uri homepageUrl = null, List<ConnectAppResource.PermissionEnum> permissions = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateConnectAppOptions(sid){AccountSid = accountSid, AuthorizeRedirectUrl = authorizeRedirectUrl, CompanyName = companyName, DeauthorizeCallbackMethod = deauthorizeCallbackMethod, DeauthorizeCallbackUrl = deauthorizeCallbackUrl, Description = description, FriendlyName = friendlyName, HomepageUrl = homepageUrl, Permissions = permissions};
+            return Update(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ConnectAppResource> UpdateAsync(string sid, string accountSid = null, Uri authorizeRedirectUrl = null, string companyName = null, Twilio.Http.HttpMethod deauthorizeCallbackMethod = null, Uri deauthorizeCallbackUrl = null, string description = null, string friendlyName = null, Uri homepageUrl = null, List<ConnectAppResource.PermissionEnum> permissions = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateConnectAppOptions(sid){AccountSid = accountSid, AuthorizeRedirectUrl = authorizeRedirectUrl, CompanyName = companyName, DeauthorizeCallbackMethod = deauthorizeCallbackMethod, DeauthorizeCallbackUrl = deauthorizeCallbackUrl, Description = description, FriendlyName = friendlyName, HomepageUrl = homepageUrl, Permissions = permissions};
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadConnectAppOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/ConnectApps.json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Retrieve a list of connect-apps belonging to the account used to make the request
         /// </summary>
-        ///
-        /// <returns> ConnectAppReader capable of executing the read </returns> 
-        public static ConnectAppReader Reader()
+        public static ResourceSet<ConnectAppResource> Read(ReadConnectAppOptions options, ITwilioRestClient client = null)
         {
-            return new ConnectAppReader();
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<ConnectAppResource>.FromJson("connect_apps", response.Content);
+            return new ResourceSet<ConnectAppResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<ConnectAppResource>> ReadAsync(ReadConnectAppOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Retrieve a list of connect-apps belonging to the account used to make the request
+        /// </summary>
+        public static ResourceSet<ConnectAppResource> Read(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadConnectAppOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<ConnectAppResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadConnectAppOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<ConnectAppResource> NextPage(Page<ConnectAppResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<ConnectAppResource>.FromJson("connect_apps", response.Content);
         }
     
         /// <summary>
@@ -72,69 +199,34 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("authorize_redirect_url")]
-        public Uri AuthorizeRedirectUrl { get; set; }
+        public Uri AuthorizeRedirectUrl { get; private set; }
         [JsonProperty("company_name")]
-        public string CompanyName { get; set; }
+        public string CompanyName { get; private set; }
         [JsonProperty("deauthorize_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod DeauthorizeCallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod DeauthorizeCallbackMethod { get; private set; }
         [JsonProperty("deauthorize_callback_url")]
-        public Uri DeauthorizeCallbackUrl { get; set; }
+        public Uri DeauthorizeCallbackUrl { get; private set; }
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string Description { get; private set; }
         [JsonProperty("friendly_name")]
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; private set; }
         [JsonProperty("homepage_url")]
-        public Uri HomepageUrl { get; set; }
+        public Uri HomepageUrl { get; private set; }
         [JsonProperty("permissions")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public List<ConnectAppResource.PermissionEnum> Permissions { get; set; }
+        public List<ConnectAppResource.PermissionEnum> Permissions { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public string Uri { get; private set; }
     
-        public ConnectAppResource()
+        private ConnectAppResource()
         {
         
         }
-    
-        private ConnectAppResource([JsonProperty("account_sid")]
-                                   string accountSid, 
-                                   [JsonProperty("authorize_redirect_url")]
-                                   Uri authorizeRedirectUrl, 
-                                   [JsonProperty("company_name")]
-                                   string companyName, 
-                                   [JsonProperty("deauthorize_callback_method")]
-                                   Twilio.Http.HttpMethod deauthorizeCallbackMethod, 
-                                   [JsonProperty("deauthorize_callback_url")]
-                                   Uri deauthorizeCallbackUrl, 
-                                   [JsonProperty("description")]
-                                   string description, 
-                                   [JsonProperty("friendly_name")]
-                                   string friendlyName, 
-                                   [JsonProperty("homepage_url")]
-                                   Uri homepageUrl, 
-                                   [JsonProperty("permissions")]
-                                   List<ConnectAppResource.PermissionEnum> permissions, 
-                                   [JsonProperty("sid")]
-                                   string sid, 
-                                   [JsonProperty("uri")]
-                                   string uri)
-                                   {
-            AccountSid = accountSid;
-            AuthorizeRedirectUrl = authorizeRedirectUrl;
-            CompanyName = companyName;
-            DeauthorizeCallbackMethod = deauthorizeCallbackMethod;
-            DeauthorizeCallbackUrl = deauthorizeCallbackUrl;
-            Description = description;
-            FriendlyName = friendlyName;
-            HomepageUrl = homepageUrl;
-            Permissions = permissions;
-            Sid = sid;
-            Uri = uri;
-        }
     }
+
 }

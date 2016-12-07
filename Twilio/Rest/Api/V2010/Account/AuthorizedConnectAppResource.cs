@@ -2,8 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
@@ -20,25 +22,114 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly PermissionEnum PostAll = new PermissionEnum("post-all");
         }
     
+        private static Request BuildFetchRequest(FetchAuthorizedConnectAppOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/AuthorizedConnectApps/" + options.ConnectAppSid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// Fetch an instance of an authorized-connect-app
         /// </summary>
-        ///
-        /// <param name="connectAppSid"> The connect_app_sid </param>
-        /// <returns> AuthorizedConnectAppFetcher capable of executing the fetch </returns> 
-        public static AuthorizedConnectAppFetcher Fetcher(string connectAppSid)
+        public static AuthorizedConnectAppResource Fetch(FetchAuthorizedConnectAppOptions options, ITwilioRestClient client = null)
         {
-            return new AuthorizedConnectAppFetcher(connectAppSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(FetchAuthorizedConnectAppOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Fetch an instance of an authorized-connect-app
+        /// </summary>
+        public static AuthorizedConnectAppResource Fetch(string connectAppSid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchAuthorizedConnectAppOptions(connectAppSid){AccountSid = accountSid};
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(string connectAppSid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchAuthorizedConnectAppOptions(connectAppSid){AccountSid = accountSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadAuthorizedConnectAppOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/AuthorizedConnectApps.json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
         /// </summary>
-        ///
-        /// <returns> AuthorizedConnectAppReader capable of executing the read </returns> 
-        public static AuthorizedConnectAppReader Reader()
+        public static ResourceSet<AuthorizedConnectAppResource> Read(ReadAuthorizedConnectAppOptions options, ITwilioRestClient client = null)
         {
-            return new AuthorizedConnectAppReader();
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<AuthorizedConnectAppResource>.FromJson("authorized_connect_apps", response.Content);
+            return new ResourceSet<AuthorizedConnectAppResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizedConnectAppResource>> ReadAsync(ReadAuthorizedConnectAppOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
+        /// </summary>
+        public static ResourceSet<AuthorizedConnectAppResource> Read(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadAuthorizedConnectAppOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizedConnectAppResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadAuthorizedConnectAppOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<AuthorizedConnectAppResource> NextPage(Page<AuthorizedConnectAppResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<AuthorizedConnectAppResource>.FromJson("authorized_connect_apps", response.Content);
         }
     
         /// <summary>
@@ -61,63 +152,31 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("connect_app_company_name")]
-        public string ConnectAppCompanyName { get; set; }
+        public string ConnectAppCompanyName { get; private set; }
         [JsonProperty("connect_app_description")]
-        public string ConnectAppDescription { get; set; }
+        public string ConnectAppDescription { get; private set; }
         [JsonProperty("connect_app_friendly_name")]
-        public string ConnectAppFriendlyName { get; set; }
+        public string ConnectAppFriendlyName { get; private set; }
         [JsonProperty("connect_app_homepage_url")]
-        public Uri ConnectAppHomepageUrl { get; set; }
+        public Uri ConnectAppHomepageUrl { get; private set; }
         [JsonProperty("connect_app_sid")]
-        public string ConnectAppSid { get; set; }
+        public string ConnectAppSid { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("permissions")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public List<AuthorizedConnectAppResource.PermissionEnum> Permissions { get; set; }
+        public List<AuthorizedConnectAppResource.PermissionEnum> Permissions { get; private set; }
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public string Uri { get; private set; }
     
-        public AuthorizedConnectAppResource()
+        private AuthorizedConnectAppResource()
         {
         
         }
-    
-        private AuthorizedConnectAppResource([JsonProperty("account_sid")]
-                                             string accountSid, 
-                                             [JsonProperty("connect_app_company_name")]
-                                             string connectAppCompanyName, 
-                                             [JsonProperty("connect_app_description")]
-                                             string connectAppDescription, 
-                                             [JsonProperty("connect_app_friendly_name")]
-                                             string connectAppFriendlyName, 
-                                             [JsonProperty("connect_app_homepage_url")]
-                                             Uri connectAppHomepageUrl, 
-                                             [JsonProperty("connect_app_sid")]
-                                             string connectAppSid, 
-                                             [JsonProperty("date_created")]
-                                             string dateCreated, 
-                                             [JsonProperty("date_updated")]
-                                             string dateUpdated, 
-                                             [JsonProperty("permissions")]
-                                             List<AuthorizedConnectAppResource.PermissionEnum> permissions, 
-                                             [JsonProperty("uri")]
-                                             string uri)
-                                             {
-            AccountSid = accountSid;
-            ConnectAppCompanyName = connectAppCompanyName;
-            ConnectAppDescription = connectAppDescription;
-            ConnectAppFriendlyName = connectAppFriendlyName;
-            ConnectAppHomepageUrl = connectAppHomepageUrl;
-            ConnectAppSid = connectAppSid;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            Permissions = permissions;
-            Uri = uri;
-        }
     }
+
 }

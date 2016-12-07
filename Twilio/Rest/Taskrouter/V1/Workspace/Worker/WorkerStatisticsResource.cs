@@ -1,25 +1,63 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
     public class WorkerStatisticsResource : Resource 
     {
+        private static Request BuildFetchRequest(FetchWorkerStatisticsOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Workers/" + options.WorkerSid + "/Statistics",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        /// <returns> WorkerStatisticsFetcher capable of executing the fetch </returns> 
-        public static WorkerStatisticsFetcher Fetcher(string workspaceSid, string workerSid)
+        public static WorkerStatisticsResource Fetch(FetchWorkerStatisticsOptions options, ITwilioRestClient client = null)
         {
-            return new WorkerStatisticsFetcher(workspaceSid, workerSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(FetchWorkerStatisticsOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static WorkerStatisticsResource Fetch(string workspaceSid, string workerSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkerStatisticsOptions(workspaceSid, workerSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(string workspaceSid, string workerSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkerStatisticsOptions(workspaceSid, workerSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a WorkerStatisticsResource object
@@ -41,32 +79,18 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("cumulative")]
-        public Object Cumulative { get; set; }
+        public Object Cumulative { get; private set; }
         [JsonProperty("worker_sid")]
-        public string WorkerSid { get; set; }
+        public string WorkerSid { get; private set; }
         [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; set; }
+        public string WorkspaceSid { get; private set; }
     
-        public WorkerStatisticsResource()
+        private WorkerStatisticsResource()
         {
         
         }
-    
-        private WorkerStatisticsResource([JsonProperty("account_sid")]
-                                         string accountSid, 
-                                         [JsonProperty("cumulative")]
-                                         Object cumulative, 
-                                         [JsonProperty("worker_sid")]
-                                         string workerSid, 
-                                         [JsonProperty("workspace_sid")]
-                                         string workspaceSid)
-                                         {
-            AccountSid = accountSid;
-            Cumulative = cumulative;
-            WorkerSid = workerSid;
-            WorkspaceSid = workspaceSid;
-        }
     }
+
 }

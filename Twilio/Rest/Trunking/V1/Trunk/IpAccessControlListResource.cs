@@ -1,59 +1,219 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
     public class IpAccessControlListResource : Resource 
     {
+        private static Request BuildFetchRequest(FetchIpAccessControlListOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/IpAccessControlLists/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> IpAccessControlListFetcher capable of executing the fetch </returns> 
-        public static IpAccessControlListFetcher Fetcher(string trunkSid, string sid)
+        public static IpAccessControlListResource Fetch(FetchIpAccessControlListOptions options, ITwilioRestClient client = null)
         {
-            return new IpAccessControlListFetcher(trunkSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<IpAccessControlListResource> FetchAsync(FetchIpAccessControlListOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static IpAccessControlListResource Fetch(string trunkSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchIpAccessControlListOptions(trunkSid, sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<IpAccessControlListResource> FetchAsync(string trunkSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchIpAccessControlListOptions(trunkSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteIpAccessControlListOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/IpAccessControlLists/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> IpAccessControlListDeleter capable of executing the delete </returns> 
-        public static IpAccessControlListDeleter Deleter(string trunkSid, string sid)
+        public static bool Delete(DeleteIpAccessControlListOptions options, ITwilioRestClient client = null)
         {
-            return new IpAccessControlListDeleter(trunkSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteIpAccessControlListOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string trunkSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteIpAccessControlListOptions(trunkSid, sid);
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string trunkSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteIpAccessControlListOptions(trunkSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildCreateRequest(CreateIpAccessControlListOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/IpAccessControlLists",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <returns> IpAccessControlListCreator capable of executing the create </returns> 
-        public static IpAccessControlListCreator Creator(string trunkSid, string ipAccessControlListSid)
+        public static IpAccessControlListResource Create(CreateIpAccessControlListOptions options, ITwilioRestClient client = null)
         {
-            return new IpAccessControlListCreator(trunkSid, ipAccessControlListSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(CreateIpAccessControlListOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static IpAccessControlListResource Create(string trunkSid, string ipAccessControlListSid, ITwilioRestClient client = null)
+        {
+            var options = new CreateIpAccessControlListOptions(trunkSid, ipAccessControlListSid);
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(string trunkSid, string ipAccessControlListSid, ITwilioRestClient client = null)
+        {
+            var options = new CreateIpAccessControlListOptions(trunkSid, ipAccessControlListSid);
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadIpAccessControlListOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/IpAccessControlLists",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <returns> IpAccessControlListReader capable of executing the read </returns> 
-        public static IpAccessControlListReader Reader(string trunkSid)
+        public static ResourceSet<IpAccessControlListResource> Read(ReadIpAccessControlListOptions options, ITwilioRestClient client = null)
         {
-            return new IpAccessControlListReader(trunkSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<IpAccessControlListResource>.FromJson("ip_access_control_lists", response.Content);
+            return new ResourceSet<IpAccessControlListResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListResource>> ReadAsync(ReadIpAccessControlListOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<IpAccessControlListResource> Read(string trunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadIpAccessControlListOptions(trunkSid){PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListResource>> ReadAsync(string trunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadIpAccessControlListOptions(trunkSid){PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<IpAccessControlListResource> NextPage(Page<IpAccessControlListResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Trunking,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<IpAccessControlListResource>.FromJson("ip_access_control_lists", response.Content);
         }
     
         /// <summary>
@@ -76,47 +236,24 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("trunk_sid")]
-        public string TrunkSid { get; set; }
+        public string TrunkSid { get; private set; }
         [JsonProperty("friendly_name")]
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
     
-        public IpAccessControlListResource()
+        private IpAccessControlListResource()
         {
         
         }
-    
-        private IpAccessControlListResource([JsonProperty("account_sid")]
-                                            string accountSid, 
-                                            [JsonProperty("sid")]
-                                            string sid, 
-                                            [JsonProperty("trunk_sid")]
-                                            string trunkSid, 
-                                            [JsonProperty("friendly_name")]
-                                            string friendlyName, 
-                                            [JsonProperty("date_created")]
-                                            string dateCreated, 
-                                            [JsonProperty("date_updated")]
-                                            string dateUpdated, 
-                                            [JsonProperty("url")]
-                                            Uri url)
-                                            {
-            AccountSid = accountSid;
-            Sid = sid;
-            TrunkSid = trunkSid;
-            FriendlyName = friendlyName;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            Url = url;
-        }
     }
+
 }

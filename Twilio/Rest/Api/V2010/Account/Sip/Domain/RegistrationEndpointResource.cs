@@ -1,25 +1,78 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
 {
 
     public class RegistrationEndpointResource : Resource 
     {
+        private static Request BuildReadRequest(ReadRegistrationEndpointOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.DomainSid + "/Registrations/" + options.Region + "/" + options.Registrant + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="region"> The region </param>
-        /// <param name="registrant"> The registrant </param>
-        /// <returns> RegistrationEndpointReader capable of executing the read </returns> 
-        public static RegistrationEndpointReader Reader(string domainSid, string region, string registrant)
+        public static ResourceSet<RegistrationEndpointResource> Read(ReadRegistrationEndpointOptions options, ITwilioRestClient client = null)
         {
-            return new RegistrationEndpointReader(domainSid, region, registrant);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<RegistrationEndpointResource>.FromJson("registrations", response.Content);
+            return new ResourceSet<RegistrationEndpointResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<RegistrationEndpointResource>> ReadAsync(ReadRegistrationEndpointOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<RegistrationEndpointResource> Read(string domainSid, string region, string registrant, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadRegistrationEndpointOptions(domainSid, region, registrant){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<RegistrationEndpointResource>> ReadAsync(string domainSid, string region, string registrant, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadRegistrationEndpointOptions(domainSid, region, registrant){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<RegistrationEndpointResource> NextPage(Page<RegistrationEndpointResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<RegistrationEndpointResource>.FromJson("registrations", response.Content);
         }
     
         /// <summary>
@@ -42,72 +95,34 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     
         [JsonProperty("address_of_record")]
-        public string AddressOfRecord { get; set; }
+        public string AddressOfRecord { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("date_expires")]
-        public DateTime? DateExpires { get; set; }
+        public DateTime? DateExpires { get; private set; }
         [JsonProperty("sip_call_id")]
-        public string SipCallId { get; set; }
+        public string SipCallId { get; private set; }
         [JsonProperty("sip_contact")]
-        public string SipContact { get; set; }
+        public string SipContact { get; private set; }
         [JsonProperty("sip_cseq")]
-        public int? SipCseq { get; set; }
+        public int? SipCseq { get; private set; }
         [JsonProperty("sip_path")]
-        public string SipPath { get; set; }
+        public string SipPath { get; private set; }
         [JsonProperty("sip_via")]
-        public string SipVia { get; set; }
+        public string SipVia { get; private set; }
         [JsonProperty("user_agent")]
-        public string UserAgent { get; set; }
+        public string UserAgent { get; private set; }
         [JsonProperty("channel_type")]
-        public string ChannelType { get; set; }
+        public string ChannelType { get; private set; }
         [JsonProperty("display_name")]
-        public string DisplayName { get; set; }
+        public string DisplayName { get; private set; }
     
-        public RegistrationEndpointResource()
+        private RegistrationEndpointResource()
         {
         
         }
-    
-        private RegistrationEndpointResource([JsonProperty("address_of_record")]
-                                             string addressOfRecord, 
-                                             [JsonProperty("date_created")]
-                                             string dateCreated, 
-                                             [JsonProperty("date_updated")]
-                                             string dateUpdated, 
-                                             [JsonProperty("date_expires")]
-                                             string dateExpires, 
-                                             [JsonProperty("sip_call_id")]
-                                             string sipCallId, 
-                                             [JsonProperty("sip_contact")]
-                                             string sipContact, 
-                                             [JsonProperty("sip_cseq")]
-                                             int? sipCseq, 
-                                             [JsonProperty("sip_path")]
-                                             string sipPath, 
-                                             [JsonProperty("sip_via")]
-                                             string sipVia, 
-                                             [JsonProperty("user_agent")]
-                                             string userAgent, 
-                                             [JsonProperty("channel_type")]
-                                             string channelType, 
-                                             [JsonProperty("display_name")]
-                                             string displayName)
-                                             {
-            AddressOfRecord = addressOfRecord;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            DateExpires = MarshalConverter.DateTimeFromString(dateExpires);
-            SipCallId = sipCallId;
-            SipContact = sipContact;
-            SipCseq = sipCseq;
-            SipPath = sipPath;
-            SipVia = sipVia;
-            UserAgent = userAgent;
-            ChannelType = channelType;
-            DisplayName = displayName;
-        }
     }
+
 }

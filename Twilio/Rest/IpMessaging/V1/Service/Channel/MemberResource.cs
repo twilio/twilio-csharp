@@ -1,77 +1,267 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
 {
 
     public class MemberResource : Resource 
     {
+        private static Request BuildFetchRequest(FetchMemberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> MemberFetcher capable of executing the fetch </returns> 
-        public static MemberFetcher Fetcher(string serviceSid, string channelSid, string sid)
+        public static MemberResource Fetch(FetchMemberOptions options, ITwilioRestClient client = null)
         {
-            return new MemberFetcher(serviceSid, channelSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(FetchMemberOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static MemberResource Fetch(string serviceSid, string channelSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchMemberOptions(serviceSid, channelSid, sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(string serviceSid, string channelSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchMemberOptions(serviceSid, channelSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildCreateRequest(CreateMemberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <returns> MemberCreator capable of executing the create </returns> 
-        public static MemberCreator Creator(string serviceSid, string channelSid, string identity)
+        public static MemberResource Create(CreateMemberOptions options, ITwilioRestClient client = null)
         {
-            return new MemberCreator(serviceSid, channelSid, identity);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(CreateMemberOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static MemberResource Create(string serviceSid, string channelSid, string identity, string roleSid = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateMemberOptions(serviceSid, channelSid, identity){RoleSid = roleSid};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(string serviceSid, string channelSid, string identity, string roleSid = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateMemberOptions(serviceSid, channelSid, identity){RoleSid = roleSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadMemberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <returns> MemberReader capable of executing the read </returns> 
-        public static MemberReader Reader(string serviceSid, string channelSid)
+        public static ResourceSet<MemberResource> Read(ReadMemberOptions options, ITwilioRestClient client = null)
         {
-            return new MemberReader(serviceSid, channelSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<MemberResource>.FromJson("members", response.Content);
+            return new ResourceSet<MemberResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(ReadMemberOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<MemberResource> Read(string serviceSid, string channelSid, List<string> identity = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadMemberOptions(serviceSid, channelSid){Identity = identity, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(string serviceSid, string channelSid, List<string> identity = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadMemberOptions(serviceSid, channelSid){Identity = identity, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<MemberResource> NextPage(Page<MemberResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.IpMessaging,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<MemberResource>.FromJson("members", response.Content);
+        }
+    
+        private static Request BuildDeleteRequest(DeleteMemberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> MemberDeleter capable of executing the delete </returns> 
-        public static MemberDeleter Deleter(string serviceSid, string channelSid, string sid)
+        public static bool Delete(DeleteMemberOptions options, ITwilioRestClient client = null)
         {
-            return new MemberDeleter(serviceSid, channelSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMemberOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string serviceSid, string channelSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteMemberOptions(serviceSid, channelSid, sid);
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string serviceSid, string channelSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteMemberOptions(serviceSid, channelSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildUpdateRequest(UpdateMemberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.IpMessaging,
+                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members/" + options.Sid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// update
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> MemberUpdater capable of executing the update </returns> 
-        public static MemberUpdater Updater(string serviceSid, string channelSid, string sid)
+        public static MemberResource Update(UpdateMemberOptions options, ITwilioRestClient client = null)
         {
-            return new MemberUpdater(serviceSid, channelSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(UpdateMemberOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// update
+        /// </summary>
+        public static MemberResource Update(string serviceSid, string channelSid, string sid, string roleSid = null, int? lastConsumedMessageIndex = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateMemberOptions(serviceSid, channelSid, sid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex};
+            return Update(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string serviceSid, string channelSid, string sid, string roleSid = null, int? lastConsumedMessageIndex = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateMemberOptions(serviceSid, channelSid, sid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex};
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a MemberResource object
@@ -93,67 +283,32 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("channel_sid")]
-        public string ChannelSid { get; set; }
+        public string ChannelSid { get; private set; }
         [JsonProperty("service_sid")]
-        public string ServiceSid { get; set; }
+        public string ServiceSid { get; private set; }
         [JsonProperty("identity")]
-        public string Identity { get; set; }
+        public string Identity { get; private set; }
         [JsonProperty("last_consumed_message_index")]
-        public int? LastConsumedMessageIndex { get; set; }
+        public int? LastConsumedMessageIndex { get; private set; }
         [JsonProperty("last_consumption_timestamp")]
-        public DateTime? LastConsumptionTimestamp { get; set; }
+        public DateTime? LastConsumptionTimestamp { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("role_sid")]
-        public string RoleSid { get; set; }
+        public string RoleSid { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
     
-        public MemberResource()
+        private MemberResource()
         {
         
         }
-    
-        private MemberResource([JsonProperty("sid")]
-                               string sid, 
-                               [JsonProperty("account_sid")]
-                               string accountSid, 
-                               [JsonProperty("channel_sid")]
-                               string channelSid, 
-                               [JsonProperty("service_sid")]
-                               string serviceSid, 
-                               [JsonProperty("identity")]
-                               string identity, 
-                               [JsonProperty("last_consumed_message_index")]
-                               int? lastConsumedMessageIndex, 
-                               [JsonProperty("last_consumption_timestamp")]
-                               string lastConsumptionTimestamp, 
-                               [JsonProperty("date_created")]
-                               string dateCreated, 
-                               [JsonProperty("date_updated")]
-                               string dateUpdated, 
-                               [JsonProperty("role_sid")]
-                               string roleSid, 
-                               [JsonProperty("url")]
-                               Uri url)
-                               {
-            Sid = sid;
-            AccountSid = accountSid;
-            ChannelSid = channelSid;
-            ServiceSid = serviceSid;
-            Identity = identity;
-            LastConsumedMessageIndex = lastConsumedMessageIndex;
-            LastConsumptionTimestamp = MarshalConverter.DateTimeFromString(lastConsumptionTimestamp);
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            RoleSid = roleSid;
-            Url = url;
-        }
     }
+
 }

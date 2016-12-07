@@ -2,8 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Call 
@@ -22,39 +24,146 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
     
+        private static Request BuildCreateRequest(CreateFeedbackSummaryOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary.json",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <returns> FeedbackSummaryCreator capable of executing the create </returns> 
-        public static FeedbackSummaryCreator Creator(DateTime? startDate, DateTime? endDate)
+        public static FeedbackSummaryResource Create(CreateFeedbackSummaryOptions options, ITwilioRestClient client = null)
         {
-            return new FeedbackSummaryCreator(startDate, endDate);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<FeedbackSummaryResource> CreateAsync(CreateFeedbackSummaryOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static FeedbackSummaryResource Create(DateTime? startDate, DateTime? endDate, string accountSid = null, bool? includeSubaccounts = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateFeedbackSummaryOptions(startDate, endDate){AccountSid = accountSid, IncludeSubaccounts = includeSubaccounts, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<FeedbackSummaryResource> CreateAsync(DateTime? startDate, DateTime? endDate, string accountSid = null, bool? includeSubaccounts = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateFeedbackSummaryOptions(startDate, endDate){AccountSid = accountSid, IncludeSubaccounts = includeSubaccounts, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildFetchRequest(FetchFeedbackSummaryOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary/" + options.Sid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> FeedbackSummaryFetcher capable of executing the fetch </returns> 
-        public static FeedbackSummaryFetcher Fetcher(string sid)
+        public static FeedbackSummaryResource Fetch(FetchFeedbackSummaryOptions options, ITwilioRestClient client = null)
         {
-            return new FeedbackSummaryFetcher(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<FeedbackSummaryResource> FetchAsync(FetchFeedbackSummaryOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static FeedbackSummaryResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchFeedbackSummaryOptions(sid){AccountSid = accountSid};
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<FeedbackSummaryResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchFeedbackSummaryOptions(sid){AccountSid = accountSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteFeedbackSummaryOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary/" + options.Sid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="sid"> The sid </param>
-        /// <returns> FeedbackSummaryDeleter capable of executing the delete </returns> 
-        public static FeedbackSummaryDeleter Deleter(string sid)
+        public static bool Delete(DeleteFeedbackSummaryOptions options, ITwilioRestClient client = null)
         {
-            return new FeedbackSummaryDeleter(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFeedbackSummaryOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteFeedbackSummaryOptions(sid){AccountSid = accountSid};
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteFeedbackSummaryOptions(sid){AccountSid = accountSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a FeedbackSummaryResource object
@@ -76,83 +185,39 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("call_count")]
-        public int? CallCount { get; set; }
+        public int? CallCount { get; private set; }
         [JsonProperty("call_feedback_count")]
-        public int? CallFeedbackCount { get; set; }
+        public int? CallFeedbackCount { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("end_date")]
-        public DateTime? EndDate { get; set; }
+        public DateTime? EndDate { get; private set; }
         [JsonProperty("include_subaccounts")]
-        public bool? IncludeSubaccounts { get; set; }
+        public bool? IncludeSubaccounts { get; private set; }
         [JsonProperty("issues")]
-        public List<FeedbackIssue> Issues { get; set; }
+        public List<FeedbackIssue> Issues { get; private set; }
         [JsonProperty("quality_score_average")]
-        public decimal? QualityScoreAverage { get; set; }
+        public decimal? QualityScoreAverage { get; private set; }
         [JsonProperty("quality_score_median")]
-        public decimal? QualityScoreMedian { get; set; }
+        public decimal? QualityScoreMedian { get; private set; }
         [JsonProperty("quality_score_standard_deviation")]
-        public decimal? QualityScoreStandardDeviation { get; set; }
+        public decimal? QualityScoreStandardDeviation { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("start_date")]
-        public DateTime? StartDate { get; set; }
+        public DateTime? StartDate { get; private set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public FeedbackSummaryResource.StatusEnum Status { get; set; }
+        public FeedbackSummaryResource.StatusEnum Status { get; private set; }
     
-        public FeedbackSummaryResource()
+        private FeedbackSummaryResource()
         {
         
         }
-    
-        private FeedbackSummaryResource([JsonProperty("account_sid")]
-                                        string accountSid, 
-                                        [JsonProperty("call_count")]
-                                        int? callCount, 
-                                        [JsonProperty("call_feedback_count")]
-                                        int? callFeedbackCount, 
-                                        [JsonProperty("date_created")]
-                                        string dateCreated, 
-                                        [JsonProperty("date_updated")]
-                                        string dateUpdated, 
-                                        [JsonProperty("end_date")]
-                                        string endDate, 
-                                        [JsonProperty("include_subaccounts")]
-                                        bool? includeSubaccounts, 
-                                        [JsonProperty("issues")]
-                                        List<FeedbackIssue> issues, 
-                                        [JsonProperty("quality_score_average")]
-                                        decimal? qualityScoreAverage, 
-                                        [JsonProperty("quality_score_median")]
-                                        decimal? qualityScoreMedian, 
-                                        [JsonProperty("quality_score_standard_deviation")]
-                                        decimal? qualityScoreStandardDeviation, 
-                                        [JsonProperty("sid")]
-                                        string sid, 
-                                        [JsonProperty("start_date")]
-                                        string startDate, 
-                                        [JsonProperty("status")]
-                                        FeedbackSummaryResource.StatusEnum status)
-                                        {
-            AccountSid = accountSid;
-            CallCount = callCount;
-            CallFeedbackCount = callFeedbackCount;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            EndDate = MarshalConverter.DateTimeFromString(endDate);
-            IncludeSubaccounts = includeSubaccounts;
-            Issues = issues;
-            QualityScoreAverage = qualityScoreAverage;
-            QualityScoreMedian = qualityScoreMedian;
-            QualityScoreStandardDeviation = qualityScoreStandardDeviation;
-            Sid = sid;
-            StartDate = MarshalConverter.DateTimeFromString(startDate);
-            Status = status;
-        }
     }
+
 }

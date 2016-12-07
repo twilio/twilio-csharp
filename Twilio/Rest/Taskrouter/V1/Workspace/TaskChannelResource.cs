@@ -1,35 +1,125 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class TaskChannelResource : Resource 
     {
+        private static Request BuildFetchRequest(FetchTaskChannelOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/TaskChannels/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> TaskChannelFetcher capable of executing the fetch </returns> 
-        public static TaskChannelFetcher Fetcher(string workspaceSid, string sid)
+        public static TaskChannelResource Fetch(FetchTaskChannelOptions options, ITwilioRestClient client = null)
         {
-            return new TaskChannelFetcher(workspaceSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(FetchTaskChannelOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static TaskChannelResource Fetch(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchTaskChannelOptions(workspaceSid, sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchTaskChannelOptions(workspaceSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadTaskChannelOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/TaskChannels",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <returns> TaskChannelReader capable of executing the read </returns> 
-        public static TaskChannelReader Reader(string workspaceSid)
+        public static ResourceSet<TaskChannelResource> Read(ReadTaskChannelOptions options, ITwilioRestClient client = null)
         {
-            return new TaskChannelReader(workspaceSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<TaskChannelResource>.FromJson("channels", response.Content);
+            return new ResourceSet<TaskChannelResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(ReadTaskChannelOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<TaskChannelResource> Read(string workspaceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadTaskChannelOptions(workspaceSid){PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(string workspaceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadTaskChannelOptions(workspaceSid){PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<TaskChannelResource> NextPage(Page<TaskChannelResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Taskrouter,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<TaskChannelResource>.FromJson("channels", response.Content);
         }
     
         /// <summary>
@@ -52,52 +142,26 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("friendly_name")]
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("unique_name")]
-        public string UniqueName { get; set; }
+        public string UniqueName { get; private set; }
         [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; set; }
+        public string WorkspaceSid { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
     
-        public TaskChannelResource()
+        private TaskChannelResource()
         {
         
         }
-    
-        private TaskChannelResource([JsonProperty("account_sid")]
-                                    string accountSid, 
-                                    [JsonProperty("date_created")]
-                                    string dateCreated, 
-                                    [JsonProperty("date_updated")]
-                                    string dateUpdated, 
-                                    [JsonProperty("friendly_name")]
-                                    string friendlyName, 
-                                    [JsonProperty("sid")]
-                                    string sid, 
-                                    [JsonProperty("unique_name")]
-                                    string uniqueName, 
-                                    [JsonProperty("workspace_sid")]
-                                    string workspaceSid, 
-                                    [JsonProperty("url")]
-                                    Uri url)
-                                    {
-            AccountSid = accountSid;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            FriendlyName = friendlyName;
-            Sid = sid;
-            UniqueName = uniqueName;
-            WorkspaceSid = workspaceSid;
-            Url = url;
-        }
     }
+
 }

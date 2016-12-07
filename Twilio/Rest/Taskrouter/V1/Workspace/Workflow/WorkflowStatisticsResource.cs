@@ -1,25 +1,63 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow 
 {
 
     public class WorkflowStatisticsResource : Resource 
     {
+        private static Request BuildFetchRequest(FetchWorkflowStatisticsOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Workflows/" + options.WorkflowSid + "/Statistics",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workflowSid"> The workflow_sid </param>
-        /// <returns> WorkflowStatisticsFetcher capable of executing the fetch </returns> 
-        public static WorkflowStatisticsFetcher Fetcher(string workspaceSid, string workflowSid)
+        public static WorkflowStatisticsResource Fetch(FetchWorkflowStatisticsOptions options, ITwilioRestClient client = null)
         {
-            return new WorkflowStatisticsFetcher(workspaceSid, workflowSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<WorkflowStatisticsResource> FetchAsync(FetchWorkflowStatisticsOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static WorkflowStatisticsResource Fetch(string workspaceSid, string workflowSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkflowStatisticsOptions(workspaceSid, workflowSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<WorkflowStatisticsResource> FetchAsync(string workspaceSid, string workflowSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkflowStatisticsOptions(workspaceSid, workflowSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a WorkflowStatisticsResource object
@@ -41,37 +79,20 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("cumulative")]
-        public Object Cumulative { get; set; }
+        public Object Cumulative { get; private set; }
         [JsonProperty("realtime")]
-        public Object Realtime { get; set; }
+        public Object Realtime { get; private set; }
         [JsonProperty("workflow_sid")]
-        public string WorkflowSid { get; set; }
+        public string WorkflowSid { get; private set; }
         [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; set; }
+        public string WorkspaceSid { get; private set; }
     
-        public WorkflowStatisticsResource()
+        private WorkflowStatisticsResource()
         {
         
         }
-    
-        private WorkflowStatisticsResource([JsonProperty("account_sid")]
-                                           string accountSid, 
-                                           [JsonProperty("cumulative")]
-                                           Object cumulative, 
-                                           [JsonProperty("realtime")]
-                                           Object realtime, 
-                                           [JsonProperty("workflow_sid")]
-                                           string workflowSid, 
-                                           [JsonProperty("workspace_sid")]
-                                           string workspaceSid)
-                                           {
-            AccountSid = accountSid;
-            Cumulative = cumulative;
-            Realtime = realtime;
-            WorkflowSid = workflowSid;
-            WorkspaceSid = workspaceSid;
-        }
     }
+
 }

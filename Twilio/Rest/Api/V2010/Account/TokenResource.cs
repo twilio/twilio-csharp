@@ -2,8 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
@@ -11,15 +13,52 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class TokenResource : Resource 
     {
+        private static Request BuildCreateRequest(CreateTokenOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Tokens.json",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// Create a new token
         /// </summary>
-        ///
-        /// <returns> TokenCreator capable of executing the create </returns> 
-        public static TokenCreator Creator()
+        public static TokenResource Create(CreateTokenOptions options, ITwilioRestClient client = null)
         {
-            return new TokenCreator();
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(CreateTokenOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Create a new token
+        /// </summary>
+        public static TokenResource Create(string accountSid = null, int? ttl = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateTokenOptions{AccountSid = accountSid, Ttl = ttl};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(string accountSid = null, int? ttl = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateTokenOptions{AccountSid = accountSid, Ttl = ttl};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a TokenResource object
@@ -41,47 +80,24 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("ice_servers")]
-        public List<IceServer> IceServers { get; set; }
+        public List<IceServer> IceServers { get; private set; }
         [JsonProperty("password")]
-        public string Password { get; set; }
+        public string Password { get; private set; }
         [JsonProperty("ttl")]
-        public string Ttl { get; set; }
+        public string Ttl { get; private set; }
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string Username { get; private set; }
     
-        public TokenResource()
+        private TokenResource()
         {
         
         }
-    
-        private TokenResource([JsonProperty("account_sid")]
-                              string accountSid, 
-                              [JsonProperty("date_created")]
-                              string dateCreated, 
-                              [JsonProperty("date_updated")]
-                              string dateUpdated, 
-                              [JsonProperty("ice_servers")]
-                              List<IceServer> iceServers, 
-                              [JsonProperty("password")]
-                              string password, 
-                              [JsonProperty("ttl")]
-                              string ttl, 
-                              [JsonProperty("username")]
-                              string username)
-                              {
-            AccountSid = accountSid;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            IceServers = iceServers;
-            Password = password;
-            Ttl = ttl;
-            Username = username;
-        }
     }
+
 }

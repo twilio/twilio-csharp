@@ -1,8 +1,11 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Conference 
@@ -43,64 +46,255 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             public static readonly ConferenceRecordEnum RecordFromStart = new ConferenceRecordEnum("record-from-start");
         }
     
+        private static Request BuildFetchRequest(FetchParticipantOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences/" + options.ConferenceSid + "/Participants/" + options.CallSid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// Fetch an instance of a participant
         /// </summary>
-        ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <returns> ParticipantFetcher capable of executing the fetch </returns> 
-        public static ParticipantFetcher Fetcher(string conferenceSid, string callSid)
+        public static ParticipantResource Fetch(FetchParticipantOptions options, ITwilioRestClient client = null)
         {
-            return new ParticipantFetcher(conferenceSid, callSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Fetch an instance of a participant
+        /// </summary>
+        public static ParticipantResource Fetch(string conferenceSid, string callSid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchParticipantOptions(conferenceSid, callSid){AccountSid = accountSid};
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string conferenceSid, string callSid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchParticipantOptions(conferenceSid, callSid){AccountSid = accountSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildUpdateRequest(UpdateParticipantOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences/" + options.ConferenceSid + "/Participants/" + options.CallSid + ".json",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Update the properties of this participant
         /// </summary>
-        ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <returns> ParticipantUpdater capable of executing the update </returns> 
-        public static ParticipantUpdater Updater(string conferenceSid, string callSid)
+        public static ParticipantResource Update(UpdateParticipantOptions options, ITwilioRestClient client = null)
         {
-            return new ParticipantUpdater(conferenceSid, callSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(UpdateParticipantOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Update the properties of this participant
+        /// </summary>
+        public static ParticipantResource Update(string conferenceSid, string callSid, string accountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateParticipantOptions(conferenceSid, callSid){AccountSid = accountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod};
+            return Update(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string conferenceSid, string callSid, string accountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateParticipantOptions(conferenceSid, callSid){AccountSid = accountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod};
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildCreateRequest(CreateParticipantOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences/" + options.ConferenceSid + "/Participants.json",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="conferenceSid"> The conference_sid </param>
-        /// <param name="from"> The from </param>
-        /// <param name="to"> The to </param>
-        /// <returns> ParticipantCreator capable of executing the create </returns> 
-        public static ParticipantCreator Creator(string conferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
+        public static ParticipantResource Create(CreateParticipantOptions options, ITwilioRestClient client = null)
         {
-            return new ParticipantCreator(conferenceSid, from, to);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(CreateParticipantOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static ParticipantResource Create(string conferenceSid, Types.PhoneNumber from, Types.PhoneNumber to, string accountSid = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, List<string> statusCallbackEvent = null, int? timeout = null, bool? record = null, bool? muted = null, ParticipantResource.BeepEnum beep = null, bool? startConferenceOnEnter = null, bool? endConferenceOnExit = null, Uri waitUrl = null, Twilio.Http.HttpMethod waitMethod = null, bool? earlyMedia = null, int? maxParticipants = null, ParticipantResource.ConferenceRecordEnum conferenceRecord = null, string conferenceTrim = null, Uri conferenceStatusCallback = null, Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null, List<string> conferenceStatusCallbackEvent = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateParticipantOptions(conferenceSid, from, to){AccountSid = accountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string conferenceSid, Types.PhoneNumber from, Types.PhoneNumber to, string accountSid = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, List<string> statusCallbackEvent = null, int? timeout = null, bool? record = null, bool? muted = null, ParticipantResource.BeepEnum beep = null, bool? startConferenceOnEnter = null, bool? endConferenceOnExit = null, Uri waitUrl = null, Twilio.Http.HttpMethod waitMethod = null, bool? earlyMedia = null, int? maxParticipants = null, ParticipantResource.ConferenceRecordEnum conferenceRecord = null, string conferenceTrim = null, Uri conferenceStatusCallback = null, Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null, List<string> conferenceStatusCallbackEvent = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateParticipantOptions(conferenceSid, from, to){AccountSid = accountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteParticipantOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences/" + options.ConferenceSid + "/Participants/" + options.CallSid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Kick a participant from a given conference
         /// </summary>
-        ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="callSid"> The call_sid </param>
-        /// <returns> ParticipantDeleter capable of executing the delete </returns> 
-        public static ParticipantDeleter Deleter(string conferenceSid, string callSid)
+        public static bool Delete(DeleteParticipantOptions options, ITwilioRestClient client = null)
         {
-            return new ParticipantDeleter(conferenceSid, callSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteParticipantOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Kick a participant from a given conference
+        /// </summary>
+        public static bool Delete(string conferenceSid, string callSid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteParticipantOptions(conferenceSid, callSid){AccountSid = accountSid};
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string conferenceSid, string callSid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteParticipantOptions(conferenceSid, callSid){AccountSid = accountSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadParticipantOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences/" + options.ConferenceSid + "/Participants.json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Retrieve a list of participants belonging to the account used to make the request
         /// </summary>
-        ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <returns> ParticipantReader capable of executing the read </returns> 
-        public static ParticipantReader Reader(string conferenceSid)
+        public static ResourceSet<ParticipantResource> Read(ReadParticipantOptions options, ITwilioRestClient client = null)
         {
-            return new ParticipantReader(conferenceSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<ParticipantResource>.FromJson("participants", response.Content);
+            return new ResourceSet<ParticipantResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Retrieve a list of participants belonging to the account used to make the request
+        /// </summary>
+        public static ResourceSet<ParticipantResource> Read(string conferenceSid, string accountSid = null, bool? muted = null, bool? hold = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadParticipantOptions(conferenceSid){AccountSid = accountSid, Muted = muted, Hold = hold, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(string conferenceSid, string accountSid = null, bool? muted = null, bool? hold = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadParticipantOptions(conferenceSid){AccountSid = accountSid, Muted = muted, Hold = hold, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<ParticipantResource> NextPage(Page<ParticipantResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<ParticipantResource>.FromJson("participants", response.Content);
         }
     
         /// <summary>
@@ -123,68 +317,33 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("call_sid")]
-        public string CallSid { get; set; }
+        public string CallSid { get; private set; }
         [JsonProperty("conference_sid")]
-        public string ConferenceSid { get; set; }
+        public string ConferenceSid { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("end_conference_on_exit")]
-        public bool? EndConferenceOnExit { get; set; }
+        public bool? EndConferenceOnExit { get; private set; }
         [JsonProperty("muted")]
-        public bool? Muted { get; set; }
+        public bool? Muted { get; private set; }
         [JsonProperty("hold")]
-        public bool? Hold { get; set; }
+        public bool? Hold { get; private set; }
         [JsonProperty("start_conference_on_enter")]
-        public bool? StartConferenceOnEnter { get; set; }
+        public bool? StartConferenceOnEnter { get; private set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ParticipantResource.StatusEnum Status { get; set; }
+        public ParticipantResource.StatusEnum Status { get; private set; }
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public string Uri { get; private set; }
     
-        public ParticipantResource()
+        private ParticipantResource()
         {
         
         }
-    
-        private ParticipantResource([JsonProperty("account_sid")]
-                                    string accountSid, 
-                                    [JsonProperty("call_sid")]
-                                    string callSid, 
-                                    [JsonProperty("conference_sid")]
-                                    string conferenceSid, 
-                                    [JsonProperty("date_created")]
-                                    string dateCreated, 
-                                    [JsonProperty("date_updated")]
-                                    string dateUpdated, 
-                                    [JsonProperty("end_conference_on_exit")]
-                                    bool? endConferenceOnExit, 
-                                    [JsonProperty("muted")]
-                                    bool? muted, 
-                                    [JsonProperty("hold")]
-                                    bool? hold, 
-                                    [JsonProperty("start_conference_on_enter")]
-                                    bool? startConferenceOnEnter, 
-                                    [JsonProperty("status")]
-                                    ParticipantResource.StatusEnum status, 
-                                    [JsonProperty("uri")]
-                                    string uri)
-                                    {
-            AccountSid = accountSid;
-            CallSid = callSid;
-            ConferenceSid = conferenceSid;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            EndConferenceOnExit = endConferenceOnExit;
-            Muted = muted;
-            Hold = hold;
-            StartConferenceOnEnter = startConferenceOnEnter;
-            Status = status;
-            Uri = uri;
-        }
     }
+
 }

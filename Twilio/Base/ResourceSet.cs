@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using System.Collections.Generic;
 using Twilio.Clients;
 
@@ -12,14 +13,9 @@ namespace Twilio.Base
 	public class ResourceSet<T> : IEnumerable<T> where T : Resource
 	{
 	    public bool AutoPaging { get; set; }
-	    public int? PageSize
-	    {
-	        get { return _reader.PageSize; }
-	        set { _reader.PageSize = value; }
-	    }
 
-	    private readonly Reader<T> _reader;
 	    private readonly ITwilioRestClient _client;
+	    private readonly ReadOptions<T> _options;
 	    private readonly long _pageLimit;
 
 	    private long _pages;
@@ -31,26 +27,26 @@ namespace Twilio.Base
 	    /// Create a new resource set
 	    /// </summary>
 	    ///
-	    /// <param name="reader">Reader of resources</param>
-	    /// <param name="client">Client to make requests</param>
 	    /// <param name="page">Page of resources</param>
-	    public ResourceSet(Reader<T> reader, ITwilioRestClient client, Page<T> page)
+	    /// <param name="options">Read options</param>
+	    /// <param name="client">Client to make requests</param>
+	    public ResourceSet(Page<T> page, ReadOptions<T> options, ITwilioRestClient client)
 	    {
-	        _reader = reader;
-	        _client = client;
 	        _page = page;
+	        _options = options;
+	        _client = client;
 
 	        _iterator = page.Records.GetEnumerator();
 	        _processed = 0;
 	        _pages = 1;
 	        _pageLimit = long.MaxValue;
 
-	        if (reader.Limit != null)
-	        {
-	            _pageLimit = (long) (Math.Ceiling((double) reader.Limit.Value / page.PageSize));
-	        }
-
 	        AutoPaging = true;
+
+	        if (_options.Limit != null)
+	        {
+	            _pageLimit = (long) (Math.Ceiling((double) _options.Limit.Value / page.PageSize));
+	        }
 	    }
 
 	    private void FetchNextPage()
@@ -63,8 +59,17 @@ namespace Twilio.Base
 	        }
 
             _pages++;
-	        _page = _reader.NextPage(_page, _client);
+	        _page = (Page<T>)GetNextPage().Invoke(null, new object[]{ _page, _client });
 	        _iterator = _page.Records.GetEnumerator();
+	    }
+
+	    private static MethodInfo GetNextPage()
+	    {
+            #if NET40
+	        return typeof(T).GetRuntimeMethod("NextPage", new[]{ typeof(Page<T>), typeof(ITwilioRestClient) });
+            #else
+	        return typeof(T).GetMethod("NextPage", new[]{ typeof(Page<T>), typeof(ITwilioRestClient) });
+            #endif
 	    }
 
 	    /// <summary>
@@ -80,7 +85,7 @@ namespace Twilio.Base
 				while (_iterator.MoveNext())
 				{
 				    // Exit if we've reached item limit
-				    if (_reader.Limit != null && _processed > _reader.Limit.Value)
+				    if (_options.Limit != null && _processed > _options.Limit.Value)
 				    {
 				        yield break;
 				    }

@@ -1,8 +1,11 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Preview.Sync.Service.SyncList 
@@ -28,70 +31,256 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             public static readonly QueryFromBoundTypeEnum Exclusive = new QueryFromBoundTypeEnum("exclusive");
         }
     
+        private static Request BuildFetchRequest(FetchSyncListItemOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + options.ServiceSid + "/Lists/" + options.ListSid + "/Items/" + options.Index + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="listSid"> The list_sid </param>
-        /// <param name="index"> The index </param>
-        /// <returns> SyncListItemFetcher capable of executing the fetch </returns> 
-        public static SyncListItemFetcher Fetcher(string serviceSid, string listSid, int? index)
+        public static SyncListItemResource Fetch(FetchSyncListItemOptions options, ITwilioRestClient client = null)
         {
-            return new SyncListItemFetcher(serviceSid, listSid, index);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(FetchSyncListItemOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static SyncListItemResource Fetch(string serviceSid, string listSid, int? index, ITwilioRestClient client = null)
+        {
+            var options = new FetchSyncListItemOptions(serviceSid, listSid, index);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(string serviceSid, string listSid, int? index, ITwilioRestClient client = null)
+        {
+            var options = new FetchSyncListItemOptions(serviceSid, listSid, index);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteSyncListItemOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + options.ServiceSid + "/Lists/" + options.ListSid + "/Items/" + options.Index + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="listSid"> The list_sid </param>
-        /// <param name="index"> The index </param>
-        /// <returns> SyncListItemDeleter capable of executing the delete </returns> 
-        public static SyncListItemDeleter Deleter(string serviceSid, string listSid, int? index)
+        public static bool Delete(DeleteSyncListItemOptions options, ITwilioRestClient client = null)
         {
-            return new SyncListItemDeleter(serviceSid, listSid, index);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncListItemOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string serviceSid, string listSid, int? index, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSyncListItemOptions(serviceSid, listSid, index);
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string serviceSid, string listSid, int? index, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSyncListItemOptions(serviceSid, listSid, index);
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildCreateRequest(CreateSyncListItemOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + options.ServiceSid + "/Lists/" + options.ListSid + "/Items",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="listSid"> The list_sid </param>
-        /// <param name="data"> The data </param>
-        /// <returns> SyncListItemCreator capable of executing the create </returns> 
-        public static SyncListItemCreator Creator(string serviceSid, string listSid, Object data)
+        public static SyncListItemResource Create(CreateSyncListItemOptions options, ITwilioRestClient client = null)
         {
-            return new SyncListItemCreator(serviceSid, listSid, data);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(CreateSyncListItemOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static SyncListItemResource Create(string serviceSid, string listSid, Object data, ITwilioRestClient client = null)
+        {
+            var options = new CreateSyncListItemOptions(serviceSid, listSid, data);
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(string serviceSid, string listSid, Object data, ITwilioRestClient client = null)
+        {
+            var options = new CreateSyncListItemOptions(serviceSid, listSid, data);
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadSyncListItemOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + options.ServiceSid + "/Lists/" + options.ListSid + "/Items",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="listSid"> The list_sid </param>
-        /// <returns> SyncListItemReader capable of executing the read </returns> 
-        public static SyncListItemReader Reader(string serviceSid, string listSid)
+        public static ResourceSet<SyncListItemResource> Read(ReadSyncListItemOptions options, ITwilioRestClient client = null)
         {
-            return new SyncListItemReader(serviceSid, listSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<SyncListItemResource>.FromJson("items", response.Content);
+            return new ResourceSet<SyncListItemResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncListItemResource>> ReadAsync(ReadSyncListItemOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<SyncListItemResource> Read(string serviceSid, string listSid, SyncListItemResource.QueryResultOrderEnum order = null, string from = null, SyncListItemResource.QueryFromBoundTypeEnum bounds = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadSyncListItemOptions(serviceSid, listSid){Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncListItemResource>> ReadAsync(string serviceSid, string listSid, SyncListItemResource.QueryResultOrderEnum order = null, string from = null, SyncListItemResource.QueryFromBoundTypeEnum bounds = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadSyncListItemOptions(serviceSid, listSid){Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<SyncListItemResource> NextPage(Page<SyncListItemResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Preview,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<SyncListItemResource>.FromJson("items", response.Content);
+        }
+    
+        private static Request BuildUpdateRequest(UpdateSyncListItemOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Preview,
+                "/Sync/Services/" + options.ServiceSid + "/Lists/" + options.ListSid + "/Items/" + options.Index + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// update
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="listSid"> The list_sid </param>
-        /// <param name="index"> The index </param>
-        /// <param name="data"> The data </param>
-        /// <returns> SyncListItemUpdater capable of executing the update </returns> 
-        public static SyncListItemUpdater Updater(string serviceSid, string listSid, int? index, Object data)
+        public static SyncListItemResource Update(UpdateSyncListItemOptions options, ITwilioRestClient client = null)
         {
-            return new SyncListItemUpdater(serviceSid, listSid, index, data);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(UpdateSyncListItemOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// update
+        /// </summary>
+        public static SyncListItemResource Update(string serviceSid, string listSid, int? index, Object data, ITwilioRestClient client = null)
+        {
+            var options = new UpdateSyncListItemOptions(serviceSid, listSid, index, data);
+            return Update(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(string serviceSid, string listSid, int? index, Object data, ITwilioRestClient client = null)
+        {
+            var options = new UpdateSyncListItemOptions(serviceSid, listSid, index, data);
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a SyncListItemResource object
@@ -113,62 +302,30 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         [JsonProperty("index")]
-        public int? Index { get; set; }
+        public int? Index { get; private set; }
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("service_sid")]
-        public string ServiceSid { get; set; }
+        public string ServiceSid { get; private set; }
         [JsonProperty("list_sid")]
-        public string ListSid { get; set; }
+        public string ListSid { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
         [JsonProperty("revision")]
-        public string Revision { get; set; }
+        public string Revision { get; private set; }
         [JsonProperty("data")]
-        public Object Data { get; set; }
+        public Object Data { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("created_by")]
-        public string CreatedBy { get; set; }
+        public string CreatedBy { get; private set; }
     
-        public SyncListItemResource()
+        private SyncListItemResource()
         {
         
         }
-    
-        private SyncListItemResource([JsonProperty("index")]
-                                     int? index, 
-                                     [JsonProperty("account_sid")]
-                                     string accountSid, 
-                                     [JsonProperty("service_sid")]
-                                     string serviceSid, 
-                                     [JsonProperty("list_sid")]
-                                     string listSid, 
-                                     [JsonProperty("url")]
-                                     Uri url, 
-                                     [JsonProperty("revision")]
-                                     string revision, 
-                                     [JsonProperty("data")]
-                                     Object data, 
-                                     [JsonProperty("date_created")]
-                                     string dateCreated, 
-                                     [JsonProperty("date_updated")]
-                                     string dateUpdated, 
-                                     [JsonProperty("created_by")]
-                                     string createdBy)
-                                     {
-            Index = index;
-            AccountSid = accountSid;
-            ServiceSid = serviceSid;
-            ListSid = listSid;
-            Url = url;
-            Revision = revision;
-            Data = data;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            CreatedBy = createdBy;
-        }
     }
+
 }

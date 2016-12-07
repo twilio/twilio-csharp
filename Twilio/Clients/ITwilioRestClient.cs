@@ -29,16 +29,6 @@ namespace Twilio.Clients
 	    /// <param name="request">Request to make</param>
 	    /// <returns>response of the request</returns>
 		Response Request(Request request);
-
-        #if NET40
-	    /// <summary>
-	    /// Make an async request to Twilio
-	    /// </summary>
-	    ///
-	    /// <param name="request">Request to make</param>
-	    /// <returns>Task that resolves to response</returns>
-	    System.Threading.Tasks.Task<Response> RequestAsync(Request request);
-        #endif
 	}
 }
 

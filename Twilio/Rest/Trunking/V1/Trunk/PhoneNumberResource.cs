@@ -2,8 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Trunking.V1.Trunk 
@@ -22,51 +24,208 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             public static readonly AddressRequirementEnum Foreign = new AddressRequirementEnum("foreign");
         }
     
+        private static Request BuildFetchRequest(FetchPhoneNumberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/PhoneNumbers/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> PhoneNumberFetcher capable of executing the fetch </returns> 
-        public static PhoneNumberFetcher Fetcher(string trunkSid, string sid)
+        public static PhoneNumberResource Fetch(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
         {
-            return new PhoneNumberFetcher(trunkSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static PhoneNumberResource Fetch(string trunkSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchPhoneNumberOptions(trunkSid, sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(string trunkSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchPhoneNumberOptions(trunkSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeletePhoneNumberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/PhoneNumbers/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> PhoneNumberDeleter capable of executing the delete </returns> 
-        public static PhoneNumberDeleter Deleter(string trunkSid, string sid)
+        public static bool Delete(DeletePhoneNumberOptions options, ITwilioRestClient client = null)
         {
-            return new PhoneNumberDeleter(trunkSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePhoneNumberOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string trunkSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeletePhoneNumberOptions(trunkSid, sid);
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string trunkSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeletePhoneNumberOptions(trunkSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildCreateRequest(CreatePhoneNumberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/PhoneNumbers",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="phoneNumberSid"> The phone_number_sid </param>
-        /// <returns> PhoneNumberCreator capable of executing the create </returns> 
-        public static PhoneNumberCreator Creator(string trunkSid, string phoneNumberSid)
+        public static PhoneNumberResource Create(CreatePhoneNumberOptions options, ITwilioRestClient client = null)
         {
-            return new PhoneNumberCreator(trunkSid, phoneNumberSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(CreatePhoneNumberOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static PhoneNumberResource Create(string trunkSid, string phoneNumberSid, ITwilioRestClient client = null)
+        {
+            var options = new CreatePhoneNumberOptions(trunkSid, phoneNumberSid);
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(string trunkSid, string phoneNumberSid, ITwilioRestClient client = null)
+        {
+            var options = new CreatePhoneNumberOptions(trunkSid, phoneNumberSid);
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadPhoneNumberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Trunking,
+                "/v1/Trunks/" + options.TrunkSid + "/PhoneNumbers",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <returns> PhoneNumberReader capable of executing the read </returns> 
-        public static PhoneNumberReader Reader(string trunkSid)
+        public static ResourceSet<PhoneNumberResource> Read(ReadPhoneNumberOptions options, ITwilioRestClient client = null)
         {
-            return new PhoneNumberReader(trunkSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<PhoneNumberResource>.FromJson("phone_numbers", response.Content);
+            return new ResourceSet<PhoneNumberResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(ReadPhoneNumberOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<PhoneNumberResource> Read(string trunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadPhoneNumberOptions(trunkSid){PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(string trunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadPhoneNumberOptions(trunkSid){PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<PhoneNumberResource> NextPage(Page<PhoneNumberResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Trunking,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<PhoneNumberResource>.FromJson("phone_numbers", response.Content);
         }
     
         /// <summary>
@@ -89,149 +248,69 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("address_requirements")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public PhoneNumberResource.AddressRequirementEnum AddressRequirements { get; set; }
+        public PhoneNumberResource.AddressRequirementEnum AddressRequirements { get; private set; }
         [JsonProperty("api_version")]
-        public string ApiVersion { get; set; }
+        public string ApiVersion { get; private set; }
         [JsonProperty("beta")]
-        public bool? Beta { get; set; }
+        public bool? Beta { get; private set; }
         [JsonProperty("capabilities")]
-        public Dictionary<string, string> Capabilities { get; set; }
+        public Dictionary<string, string> Capabilities { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("friendly_name")]
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; private set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; set; }
+        public Dictionary<string, string> Links { get; private set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Types.PhoneNumber PhoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("sms_application_sid")]
-        public string SmsApplicationSid { get; set; }
+        public string SmsApplicationSid { get; private set; }
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
         [JsonProperty("sms_fallback_url")]
-        public Uri SmsFallbackUrl { get; set; }
+        public Uri SmsFallbackUrl { get; private set; }
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod SmsMethod { get; set; }
+        public Twilio.Http.HttpMethod SmsMethod { get; private set; }
         [JsonProperty("sms_url")]
-        public Uri SmsUrl { get; set; }
+        public Uri SmsUrl { get; private set; }
         [JsonProperty("status_callback")]
-        public Uri StatusCallback { get; set; }
+        public Uri StatusCallback { get; private set; }
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
         [JsonProperty("trunk_sid")]
-        public string TrunkSid { get; set; }
+        public string TrunkSid { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
         [JsonProperty("voice_application_sid")]
-        public string VoiceApplicationSid { get; set; }
+        public string VoiceApplicationSid { get; private set; }
         [JsonProperty("voice_caller_id_lookup")]
-        public bool? VoiceCallerIdLookup { get; set; }
+        public bool? VoiceCallerIdLookup { get; private set; }
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
+        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
         [JsonProperty("voice_fallback_url")]
-        public Uri VoiceFallbackUrl { get; set; }
+        public Uri VoiceFallbackUrl { get; private set; }
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
-        public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+        public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
         [JsonProperty("voice_url")]
-        public Uri VoiceUrl { get; set; }
+        public Uri VoiceUrl { get; private set; }
     
-        public PhoneNumberResource()
+        private PhoneNumberResource()
         {
         
         }
-    
-        private PhoneNumberResource([JsonProperty("account_sid")]
-                                    string accountSid, 
-                                    [JsonProperty("address_requirements")]
-                                    PhoneNumberResource.AddressRequirementEnum addressRequirements, 
-                                    [JsonProperty("api_version")]
-                                    string apiVersion, 
-                                    [JsonProperty("beta")]
-                                    bool? beta, 
-                                    [JsonProperty("capabilities")]
-                                    Dictionary<string, string> capabilities, 
-                                    [JsonProperty("date_created")]
-                                    string dateCreated, 
-                                    [JsonProperty("date_updated")]
-                                    string dateUpdated, 
-                                    [JsonProperty("friendly_name")]
-                                    string friendlyName, 
-                                    [JsonProperty("links")]
-                                    Dictionary<string, string> links, 
-                                    [JsonProperty("phone_number")]
-                                    Types.PhoneNumber phoneNumber, 
-                                    [JsonProperty("sid")]
-                                    string sid, 
-                                    [JsonProperty("sms_application_sid")]
-                                    string smsApplicationSid, 
-                                    [JsonProperty("sms_fallback_method")]
-                                    Twilio.Http.HttpMethod smsFallbackMethod, 
-                                    [JsonProperty("sms_fallback_url")]
-                                    Uri smsFallbackUrl, 
-                                    [JsonProperty("sms_method")]
-                                    Twilio.Http.HttpMethod smsMethod, 
-                                    [JsonProperty("sms_url")]
-                                    Uri smsUrl, 
-                                    [JsonProperty("status_callback")]
-                                    Uri statusCallback, 
-                                    [JsonProperty("status_callback_method")]
-                                    Twilio.Http.HttpMethod statusCallbackMethod, 
-                                    [JsonProperty("trunk_sid")]
-                                    string trunkSid, 
-                                    [JsonProperty("url")]
-                                    Uri url, 
-                                    [JsonProperty("voice_application_sid")]
-                                    string voiceApplicationSid, 
-                                    [JsonProperty("voice_caller_id_lookup")]
-                                    bool? voiceCallerIdLookup, 
-                                    [JsonProperty("voice_fallback_method")]
-                                    Twilio.Http.HttpMethod voiceFallbackMethod, 
-                                    [JsonProperty("voice_fallback_url")]
-                                    Uri voiceFallbackUrl, 
-                                    [JsonProperty("voice_method")]
-                                    Twilio.Http.HttpMethod voiceMethod, 
-                                    [JsonProperty("voice_url")]
-                                    Uri voiceUrl)
-                                    {
-            AccountSid = accountSid;
-            AddressRequirements = addressRequirements;
-            ApiVersion = apiVersion;
-            Beta = beta;
-            Capabilities = capabilities;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            FriendlyName = friendlyName;
-            Links = links;
-            PhoneNumber = phoneNumber;
-            Sid = sid;
-            SmsApplicationSid = smsApplicationSid;
-            SmsFallbackMethod = smsFallbackMethod;
-            SmsFallbackUrl = smsFallbackUrl;
-            SmsMethod = smsMethod;
-            SmsUrl = smsUrl;
-            StatusCallback = statusCallback;
-            StatusCallbackMethod = statusCallbackMethod;
-            TrunkSid = trunkSid;
-            Url = url;
-            VoiceApplicationSid = voiceApplicationSid;
-            VoiceCallerIdLookup = voiceCallerIdLookup;
-            VoiceFallbackMethod = voiceFallbackMethod;
-            VoiceFallbackUrl = voiceFallbackUrl;
-            VoiceMethod = voiceMethod;
-            VoiceUrl = voiceUrl;
-        }
     }
+
 }

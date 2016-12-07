@@ -1,24 +1,63 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class ValidationRequestResource : Resource 
     {
+        private static Request BuildCreateRequest(CreateValidationRequestOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/OutgoingCallerIds.json",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="phoneNumber"> The phone_number </param>
-        /// <returns> ValidationRequestCreator capable of executing the create </returns> 
-        public static ValidationRequestCreator Creator(Types.PhoneNumber phoneNumber)
+        public static ValidationRequestResource Create(CreateValidationRequestOptions options, ITwilioRestClient client = null)
         {
-            return new ValidationRequestCreator(phoneNumber);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ValidationRequestResource> CreateAsync(CreateValidationRequestOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static ValidationRequestResource Create(Types.PhoneNumber phoneNumber, string accountSid = null, string friendlyName = null, int? callDelay = null, string extension = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateValidationRequestOptions(phoneNumber){AccountSid = accountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ValidationRequestResource> CreateAsync(Types.PhoneNumber phoneNumber, string accountSid = null, string friendlyName = null, int? callDelay = null, string extension = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateValidationRequestOptions(phoneNumber){AccountSid = accountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ValidationRequestResource object
@@ -40,38 +79,21 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Types.PhoneNumber PhoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; private set; }
         [JsonProperty("friendly_name")]
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; private set; }
         [JsonProperty("validation_code")]
-        public int? ValidationCode { get; set; }
+        public int? ValidationCode { get; private set; }
         [JsonProperty("call_sid")]
-        public string CallSid { get; set; }
+        public string CallSid { get; private set; }
     
-        public ValidationRequestResource()
+        private ValidationRequestResource()
         {
         
         }
-    
-        private ValidationRequestResource([JsonProperty("account_sid")]
-                                          string accountSid, 
-                                          [JsonProperty("phone_number")]
-                                          Types.PhoneNumber phoneNumber, 
-                                          [JsonProperty("friendly_name")]
-                                          string friendlyName, 
-                                          [JsonProperty("validation_code")]
-                                          int? validationCode, 
-                                          [JsonProperty("call_sid")]
-                                          string callSid)
-                                          {
-            AccountSid = accountSid;
-            PhoneNumber = phoneNumber;
-            FriendlyName = friendlyName;
-            ValidationCode = validationCode;
-            CallSid = callSid;
-        }
     }
+
 }

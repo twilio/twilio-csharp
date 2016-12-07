@@ -1,8 +1,11 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Pricing.V1.Voice 
@@ -10,16 +13,52 @@ namespace Twilio.Rest.Pricing.V1.Voice
 
     public class NumberResource : Resource 
     {
+        private static Request BuildFetchRequest(FetchNumberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Pricing,
+                "/v1/Voice/Numbers/" + options.Number + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="number"> The number </param>
-        /// <returns> NumberFetcher capable of executing the fetch </returns> 
-        public static NumberFetcher Fetcher(Types.PhoneNumber number)
+        public static NumberResource Fetch(FetchNumberOptions options, ITwilioRestClient client = null)
         {
-            return new NumberFetcher(number);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(FetchNumberOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static NumberResource Fetch(Types.PhoneNumber number, ITwilioRestClient client = null)
+        {
+            var options = new FetchNumberOptions(number);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(Types.PhoneNumber number, ITwilioRestClient client = null)
+        {
+            var options = new FetchNumberOptions(number);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a NumberResource object
@@ -42,47 +81,24 @@ namespace Twilio.Rest.Pricing.V1.Voice
     
         [JsonProperty("number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Types.PhoneNumber Number { get; set; }
+        public Types.PhoneNumber Number { get; private set; }
         [JsonProperty("country")]
-        public string Country { get; set; }
+        public string Country { get; private set; }
         [JsonProperty("iso_country")]
-        public string IsoCountry { get; set; }
+        public string IsoCountry { get; private set; }
         [JsonProperty("outbound_call_price")]
-        public OutboundCallPrice OutboundCallPrice { get; set; }
+        public OutboundCallPrice OutboundCallPrice { get; private set; }
         [JsonProperty("inbound_call_price")]
-        public InboundCallPrice InboundCallPrice { get; set; }
+        public InboundCallPrice InboundCallPrice { get; private set; }
         [JsonProperty("price_unit")]
-        public string PriceUnit { get; set; }
+        public string PriceUnit { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
     
-        public NumberResource()
+        private NumberResource()
         {
         
         }
-    
-        private NumberResource([JsonProperty("number")]
-                               Types.PhoneNumber number, 
-                               [JsonProperty("country")]
-                               string country, 
-                               [JsonProperty("iso_country")]
-                               string isoCountry, 
-                               [JsonProperty("outbound_call_price")]
-                               OutboundCallPrice outboundCallPrice, 
-                               [JsonProperty("inbound_call_price")]
-                               InboundCallPrice inboundCallPrice, 
-                               [JsonProperty("price_unit")]
-                               string priceUnit, 
-                               [JsonProperty("url")]
-                               Uri url)
-                               {
-            Number = number;
-            Country = country;
-            IsoCountry = isoCountry;
-            OutboundCallPrice = outboundCallPrice;
-            InboundCallPrice = inboundCallPrice;
-            PriceUnit = priceUnit;
-            Url = url;
-        }
     }
+
 }

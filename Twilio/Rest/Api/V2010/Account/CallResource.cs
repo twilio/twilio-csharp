@@ -2,8 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
@@ -46,74 +48,256 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly UpdateStatusEnum Completed = new UpdateStatusEnum("completed");
         }
     
-        /// <summary>
-        /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
-        /// </summary>
-        ///
-        /// <param name="to"> Phone number, SIP address or client identifier to call </param>
-        /// <param name="from"> Twilio number from which to originate the call </param>
-        /// <param name="url"> Url from which to fetch TwiML </param>
-        /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(IEndpoint to, Types.PhoneNumber from, Uri url)
+        private static Request BuildCreateRequest(CreateCallOptions options, ITwilioRestClient client)
         {
-            return new CallCreator(to, from, url);
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls.json",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
         /// </summary>
-        ///
-        /// <param name="to"> Phone number, SIP address or client identifier to call </param>
-        /// <param name="from"> Twilio number from which to originate the call </param>
-        /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
-        /// <returns> CallCreator capable of executing the create </returns> 
-        public static CallCreator Creator(IEndpoint to, Types.PhoneNumber from, string applicationSid)
+        public static CallResource Create(CreateCallOptions options, ITwilioRestClient client = null)
         {
-            return new CallCreator(to, from, applicationSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<CallResource> CreateAsync(CreateCallOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
+        /// </summary>
+        public static CallResource Create(IEndpoint to, Types.PhoneNumber from, string accountSid = null, Uri url = null, string applicationSid = null, Twilio.Http.HttpMethod method = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, List<string> statusCallbackEvent = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string sendDigits = null, string ifMachine = null, string machineDetection = null, int? machineDetectionTimeout = null, int? timeout = null, bool? record = null, string recordingChannels = null, string recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateCallOptions(to, from){AccountSid = accountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<CallResource> CreateAsync(IEndpoint to, Types.PhoneNumber from, string accountSid = null, Uri url = null, string applicationSid = null, Twilio.Http.HttpMethod method = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, List<string> statusCallbackEvent = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string sendDigits = null, string ifMachine = null, string machineDetection = null, int? machineDetectionTimeout = null, int? timeout = null, bool? record = null, string recordingChannels = null, string recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateCallOptions(to, from){AccountSid = accountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteCallOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls/" + options.Sid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
         /// </summary>
-        ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to delete </param>
-        /// <returns> CallDeleter capable of executing the delete </returns> 
-        public static CallDeleter Deleter(string sid)
+        public static bool Delete(DeleteCallOptions options, ITwilioRestClient client = null)
         {
-            return new CallDeleter(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCallOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
+        /// </summary>
+        public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCallOptions(sid){AccountSid = accountSid};
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCallOptions(sid){AccountSid = accountSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildFetchRequest(FetchCallOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls/" + options.Sid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Fetch the Call specified by the provided Call Sid
         /// </summary>
-        ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to fetch </param>
-        /// <returns> CallFetcher capable of executing the fetch </returns> 
-        public static CallFetcher Fetcher(string sid)
+        public static CallResource Fetch(FetchCallOptions options, ITwilioRestClient client = null)
         {
-            return new CallFetcher(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<CallResource> FetchAsync(FetchCallOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Fetch the Call specified by the provided Call Sid
+        /// </summary>
+        public static CallResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchCallOptions(sid){AccountSid = accountSid};
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<CallResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchCallOptions(sid){AccountSid = accountSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadCallOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls.json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Retrieves a collection of Calls made to and from your account
         /// </summary>
-        ///
-        /// <returns> CallReader capable of executing the read </returns> 
-        public static CallReader Reader()
+        public static ResourceSet<CallResource> Read(ReadCallOptions options, ITwilioRestClient client = null)
         {
-            return new CallReader();
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<CallResource>.FromJson("calls", response.Content);
+            return new ResourceSet<CallResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<CallResource>> ReadAsync(ReadCallOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Retrieves a collection of Calls made to and from your account
+        /// </summary>
+        public static ResourceSet<CallResource> Read(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, string parentCallSid = null, CallResource.StatusEnum status = null, string startTime = null, string endTime = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadCallOptions{AccountSid = accountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTime = startTime, EndTime = endTime, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<CallResource>> ReadAsync(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, string parentCallSid = null, CallResource.StatusEnum status = null, string startTime = null, string endTime = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadCallOptions{AccountSid = accountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTime = startTime, EndTime = endTime, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<CallResource> NextPage(Page<CallResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<CallResource>.FromJson("calls", response.Content);
+        }
+    
+        private static Request BuildUpdateRequest(UpdateCallOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls/" + options.Sid + ".json",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// Initiates a call redirect or terminates a call
         /// </summary>
-        ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
-        /// <returns> CallUpdater capable of executing the update </returns> 
-        public static CallUpdater Updater(string sid)
+        public static CallResource Update(UpdateCallOptions options, ITwilioRestClient client = null)
         {
-            return new CallUpdater(sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<CallResource> UpdateAsync(UpdateCallOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// Initiates a call redirect or terminates a call
+        /// </summary>
+        public static CallResource Update(string sid, string accountSid = null, Uri url = null, Twilio.Http.HttpMethod method = null, CallResource.UpdateStatusEnum status = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateCallOptions(sid){AccountSid = accountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            return Update(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<CallResource> UpdateAsync(string sid, string accountSid = null, Uri url = null, Twilio.Http.HttpMethod method = null, CallResource.UpdateStatusEnum status = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateCallOptions(sid){AccountSid = accountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a CallResource object
@@ -135,138 +319,61 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("annotation")]
-        public string Annotation { get; set; }
+        public string Annotation { get; private set; }
         [JsonProperty("answered_by")]
-        public string AnsweredBy { get; set; }
+        public string AnsweredBy { get; private set; }
         [JsonProperty("api_version")]
-        public string ApiVersion { get; set; }
+        public string ApiVersion { get; private set; }
         [JsonProperty("caller_name")]
-        public string CallerName { get; set; }
+        public string CallerName { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("direction")]
-        public string Direction { get; set; }
+        public string Direction { get; private set; }
         [JsonProperty("duration")]
-        public string Duration { get; set; }
+        public string Duration { get; private set; }
         [JsonProperty("end_time")]
-        public DateTime? EndTime { get; set; }
+        public DateTime? EndTime { get; private set; }
         [JsonProperty("forwarded_from")]
-        public string ForwardedFrom { get; set; }
+        public string ForwardedFrom { get; private set; }
         [JsonProperty("from")]
-        public string From { get; set; }
+        public string From { get; private set; }
         [JsonProperty("from_formatted")]
-        public string FromFormatted { get; set; }
+        public string FromFormatted { get; private set; }
         [JsonProperty("group_sid")]
-        public string GroupSid { get; set; }
+        public string GroupSid { get; private set; }
         [JsonProperty("parent_call_sid")]
-        public string ParentCallSid { get; set; }
+        public string ParentCallSid { get; private set; }
         [JsonProperty("phone_number_sid")]
-        public string PhoneNumberSid { get; set; }
+        public string PhoneNumberSid { get; private set; }
         [JsonProperty("price")]
-        public decimal? Price { get; set; }
+        public decimal? Price { get; private set; }
         [JsonProperty("price_unit")]
-        public string PriceUnit { get; set; }
+        public string PriceUnit { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("start_time")]
-        public DateTime? StartTime { get; set; }
+        public DateTime? StartTime { get; private set; }
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public CallResource.StatusEnum Status { get; set; }
+        public CallResource.StatusEnum Status { get; private set; }
         [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> SubresourceUris { get; set; }
+        public Dictionary<string, string> SubresourceUris { get; private set; }
         [JsonProperty("to")]
-        public string To { get; set; }
+        public string To { get; private set; }
         [JsonProperty("to_formatted")]
-        public string ToFormatted { get; set; }
+        public string ToFormatted { get; private set; }
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public string Uri { get; private set; }
     
-        public CallResource()
+        private CallResource()
         {
         
         }
-    
-        private CallResource([JsonProperty("account_sid")]
-                             string accountSid, 
-                             [JsonProperty("annotation")]
-                             string annotation, 
-                             [JsonProperty("answered_by")]
-                             string answeredBy, 
-                             [JsonProperty("api_version")]
-                             string apiVersion, 
-                             [JsonProperty("caller_name")]
-                             string callerName, 
-                             [JsonProperty("date_created")]
-                             string dateCreated, 
-                             [JsonProperty("date_updated")]
-                             string dateUpdated, 
-                             [JsonProperty("direction")]
-                             string direction, 
-                             [JsonProperty("duration")]
-                             string duration, 
-                             [JsonProperty("end_time")]
-                             string endTime, 
-                             [JsonProperty("forwarded_from")]
-                             string forwardedFrom, 
-                             [JsonProperty("from")]
-                             string from, 
-                             [JsonProperty("from_formatted")]
-                             string fromFormatted, 
-                             [JsonProperty("group_sid")]
-                             string groupSid, 
-                             [JsonProperty("parent_call_sid")]
-                             string parentCallSid, 
-                             [JsonProperty("phone_number_sid")]
-                             string phoneNumberSid, 
-                             [JsonProperty("price")]
-                             decimal? price, 
-                             [JsonProperty("price_unit")]
-                             string priceUnit, 
-                             [JsonProperty("sid")]
-                             string sid, 
-                             [JsonProperty("start_time")]
-                             string startTime, 
-                             [JsonProperty("status")]
-                             CallResource.StatusEnum status, 
-                             [JsonProperty("subresource_uris")]
-                             Dictionary<string, string> subresourceUris, 
-                             [JsonProperty("to")]
-                             string to, 
-                             [JsonProperty("to_formatted")]
-                             string toFormatted, 
-                             [JsonProperty("uri")]
-                             string uri)
-                             {
-            AccountSid = accountSid;
-            Annotation = annotation;
-            AnsweredBy = answeredBy;
-            ApiVersion = apiVersion;
-            CallerName = callerName;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            Direction = direction;
-            Duration = duration;
-            EndTime = MarshalConverter.DateTimeFromString(endTime);
-            ForwardedFrom = forwardedFrom;
-            From = from;
-            FromFormatted = fromFormatted;
-            GroupSid = groupSid;
-            ParentCallSid = parentCallSid;
-            PhoneNumberSid = phoneNumberSid;
-            Price = price;
-            PriceUnit = priceUnit;
-            Sid = sid;
-            StartTime = MarshalConverter.DateTimeFromString(startTime);
-            Status = status;
-            SubresourceUris = subresourceUris;
-            To = to;
-            ToFormatted = toFormatted;
-            Uri = uri;
-        }
     }
+
 }

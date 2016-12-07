@@ -2,8 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Pricing.V1.PhoneNumber 
@@ -11,26 +13,115 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
 
     public class CountryResource : Resource 
     {
+        private static Request BuildReadRequest(ReadCountryOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Pricing,
+                "/v1/PhoneNumbers/Countries",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <returns> CountryReader capable of executing the read </returns> 
-        public static CountryReader Reader()
+        public static ResourceSet<CountryResource> Read(ReadCountryOptions options, ITwilioRestClient client = null)
         {
-            return new CountryReader();
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<CountryResource>.FromJson("countries", response.Content);
+            return new ResourceSet<CountryResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(ReadCountryOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<CountryResource> Read(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadCountryOptions{PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadCountryOptions{PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<CountryResource> NextPage(Page<CountryResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Pricing,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<CountryResource>.FromJson("countries", response.Content);
+        }
+    
+        private static Request BuildFetchRequest(FetchCountryOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Pricing,
+                "/v1/PhoneNumbers/Countries/" + options.IsoCountry + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="isoCountry"> The iso_country </param>
-        /// <returns> CountryFetcher capable of executing the fetch </returns> 
-        public static CountryFetcher Fetcher(string isoCountry)
+        public static CountryResource Fetch(FetchCountryOptions options, ITwilioRestClient client = null)
         {
-            return new CountryFetcher(isoCountry);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(FetchCountryOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static CountryResource Fetch(string isoCountry, ITwilioRestClient client = null)
+        {
+            var options = new FetchCountryOptions(isoCountry);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(string isoCountry, ITwilioRestClient client = null)
+        {
+            var options = new FetchCountryOptions(isoCountry);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a CountryResource object
@@ -52,37 +143,20 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         }
     
         [JsonProperty("country")]
-        public string Country { get; set; }
+        public string Country { get; private set; }
         [JsonProperty("iso_country")]
-        public string IsoCountry { get; set; }
+        public string IsoCountry { get; private set; }
         [JsonProperty("phone_number_prices")]
-        public List<PhoneNumberPrice> PhoneNumberPrices { get; set; }
+        public List<PhoneNumberPrice> PhoneNumberPrices { get; private set; }
         [JsonProperty("price_unit")]
-        public string PriceUnit { get; set; }
+        public string PriceUnit { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
     
-        public CountryResource()
+        private CountryResource()
         {
         
         }
-    
-        private CountryResource([JsonProperty("country")]
-                                string country, 
-                                [JsonProperty("iso_country")]
-                                string isoCountry, 
-                                [JsonProperty("phone_number_prices")]
-                                List<PhoneNumberPrice> phoneNumberPrices, 
-                                [JsonProperty("price_unit")]
-                                string priceUnit, 
-                                [JsonProperty("url")]
-                                Uri url)
-                                {
-            Country = country;
-            IsoCountry = isoCountry;
-            PhoneNumberPrices = phoneNumberPrices;
-            PriceUnit = priceUnit;
-            Url = url;
-        }
     }
+
 }

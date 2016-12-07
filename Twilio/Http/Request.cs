@@ -24,7 +24,14 @@ namespace Twilio.Http
 	        _postParams = new List<KeyValuePair<string, string>>();
 	    }
 
-		public Request(HttpMethod method, Domain domain, string uri, string region)
+		public Request(
+		    HttpMethod method,
+		    Domain domain,
+		    string uri,
+		    string region,
+		    List<KeyValuePair<string, string>> queryParams=null,
+		    List<KeyValuePair<string, string>> postParams=null
+		)
 		{
 			Method = method;
 
@@ -37,8 +44,8 @@ namespace Twilio.Http
 		    b.Append(".twilio.com").Append(uri);
 
 		    _uri = new Uri(b.ToString());
-		    _queryParams = new List<KeyValuePair<string, string>>();
-			_postParams = new List<KeyValuePair<string, string>>();
+		    _queryParams = queryParams ?? new List<KeyValuePair<string, string>>();
+			_postParams = postParams ?? new List<KeyValuePair<string, string>>();
 		}
 
 		public Uri ConstructUrl()
@@ -77,7 +84,7 @@ namespace Twilio.Http
         
 		public byte[] EncodePostParams()
 		{
-			return System.Text.Encoding.UTF8.GetBytes(EncodeParameters(_postParams));
+			return Encoding.UTF8.GetBytes(EncodeParameters(_postParams));
         }
 
 		public void AddQueryParam(string name, string value)

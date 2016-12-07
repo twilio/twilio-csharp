@@ -1,8 +1,11 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Message 
@@ -19,16 +22,52 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             public static readonly OutcomeEnum Umconfirmed = new OutcomeEnum("umconfirmed");
         }
     
+        private static Request BuildCreateRequest(CreateFeedbackOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Messages/" + options.MessageSid + "/Feedback.json",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <returns> FeedbackCreator capable of executing the create </returns> 
-        public static FeedbackCreator Creator(string messageSid)
+        public static FeedbackResource Create(CreateFeedbackOptions options, ITwilioRestClient client = null)
         {
-            return new FeedbackCreator(messageSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static FeedbackResource Create(string messageSid, string accountSid = null, FeedbackResource.OutcomeEnum outcome = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateFeedbackOptions(messageSid){AccountSid = accountSid, Outcome = outcome};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string messageSid, string accountSid = null, FeedbackResource.OutcomeEnum outcome = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateFeedbackOptions(messageSid){AccountSid = accountSid, Outcome = outcome};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a FeedbackResource object
@@ -50,43 +89,23 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("message_sid")]
-        public string MessageSid { get; set; }
+        public string MessageSid { get; private set; }
         [JsonProperty("outcome")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public FeedbackResource.OutcomeEnum Outcome { get; set; }
+        public FeedbackResource.OutcomeEnum Outcome { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("uri")]
-        public string Uri { get; set; }
+        public string Uri { get; private set; }
     
-        public FeedbackResource()
+        private FeedbackResource()
         {
         
         }
-    
-        private FeedbackResource([JsonProperty("account_sid")]
-                                 string accountSid, 
-                                 [JsonProperty("message_sid")]
-                                 string messageSid, 
-                                 [JsonProperty("outcome")]
-                                 FeedbackResource.OutcomeEnum outcome, 
-                                 [JsonProperty("date_created")]
-                                 string dateCreated, 
-                                 [JsonProperty("date_updated")]
-                                 string dateUpdated, 
-                                 [JsonProperty("uri")]
-                                 string uri)
-                                 {
-            AccountSid = accountSid;
-            MessageSid = messageSid;
-            Outcome = outcome;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            Uri = uri;
-        }
     }
+
 }

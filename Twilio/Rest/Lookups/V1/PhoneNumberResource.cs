@@ -2,8 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Lookups.V1 
@@ -21,16 +23,52 @@ namespace Twilio.Rest.Lookups.V1
             public static readonly TypeEnum Voip = new TypeEnum("voip");
         }
     
+        private static Request BuildFetchRequest(FetchPhoneNumberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Lookups,
+                "/v1/PhoneNumbers/" + options.PhoneNumber + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="phoneNumber"> The phone_number </param>
-        /// <returns> PhoneNumberFetcher capable of executing the fetch </returns> 
-        public static PhoneNumberFetcher Fetcher(Types.PhoneNumber phoneNumber)
+        public static PhoneNumberResource Fetch(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
         {
-            return new PhoneNumberFetcher(phoneNumber);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static PhoneNumberResource Fetch(Types.PhoneNumber phoneNumber, string countryCode = null, List<string> type = null, List<string> addOns = null, Dictionary<string, object> addOnsData = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchPhoneNumberOptions(phoneNumber){CountryCode = countryCode, Type = type, AddOns = addOns, AddOnsData = addOnsData};
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(Types.PhoneNumber phoneNumber, string countryCode = null, List<string> type = null, List<string> addOns = null, Dictionary<string, object> addOnsData = null, ITwilioRestClient client = null)
+        {
+            var options = new FetchPhoneNumberOptions(phoneNumber){CountryCode = countryCode, Type = type, AddOns = addOns, AddOnsData = addOnsData};
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a PhoneNumberResource object
@@ -52,48 +90,25 @@ namespace Twilio.Rest.Lookups.V1
         }
     
         [JsonProperty("caller_name")]
-        public Dictionary<string, string> CallerName { get; set; }
+        public Dictionary<string, string> CallerName { get; private set; }
         [JsonProperty("country_code")]
-        public string CountryCode { get; set; }
+        public string CountryCode { get; private set; }
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
-        public Types.PhoneNumber PhoneNumber { get; set; }
+        public Types.PhoneNumber PhoneNumber { get; private set; }
         [JsonProperty("national_format")]
-        public string NationalFormat { get; set; }
+        public string NationalFormat { get; private set; }
         [JsonProperty("carrier")]
-        public Dictionary<string, string> Carrier { get; set; }
+        public Dictionary<string, string> Carrier { get; private set; }
         [JsonProperty("add_ons")]
-        public Object AddOns { get; set; }
+        public Object AddOns { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
     
-        public PhoneNumberResource()
+        private PhoneNumberResource()
         {
         
         }
-    
-        private PhoneNumberResource([JsonProperty("caller_name")]
-                                    Dictionary<string, string> callerName, 
-                                    [JsonProperty("country_code")]
-                                    string countryCode, 
-                                    [JsonProperty("phone_number")]
-                                    Types.PhoneNumber phoneNumber, 
-                                    [JsonProperty("national_format")]
-                                    string nationalFormat, 
-                                    [JsonProperty("carrier")]
-                                    Dictionary<string, string> carrier, 
-                                    [JsonProperty("add_ons")]
-                                    Object addOns, 
-                                    [JsonProperty("url")]
-                                    Uri url)
-                                    {
-            CallerName = callerName;
-            CountryCode = countryCode;
-            PhoneNumber = phoneNumber;
-            NationalFormat = nationalFormat;
-            Carrier = carrier;
-            AddOns = addOns;
-            Url = url;
-        }
     }
+
 }

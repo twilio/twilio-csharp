@@ -2,8 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Notify.V1.Service 
@@ -20,16 +22,52 @@ namespace Twilio.Rest.Notify.V1.Service
             public static readonly PriorityEnum Low = new PriorityEnum("low");
         }
     
+        private static Request BuildCreateRequest(CreateNotificationOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Notify,
+                "/v1/Services/" + options.ServiceSid + "/Notifications",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <returns> NotificationCreator capable of executing the create </returns> 
-        public static NotificationCreator Creator(string serviceSid)
+        public static NotificationResource Create(CreateNotificationOptions options, ITwilioRestClient client = null)
         {
-            return new NotificationCreator(serviceSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static NotificationResource Create(string serviceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, Object facebookMessenger = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateNotificationOptions(serviceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string serviceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, Object facebookMessenger = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateNotificationOptions(serviceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a NotificationResource object
@@ -51,98 +89,45 @@ namespace Twilio.Rest.Notify.V1.Service
         }
     
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("service_sid")]
-        public string ServiceSid { get; set; }
+        public string ServiceSid { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("identities")]
-        public List<string> Identities { get; set; }
+        public List<string> Identities { get; private set; }
         [JsonProperty("tags")]
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get; private set; }
         [JsonProperty("priority")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public NotificationResource.PriorityEnum Priority { get; set; }
+        public NotificationResource.PriorityEnum Priority { get; private set; }
         [JsonProperty("ttl")]
-        public int? Ttl { get; set; }
+        public int? Ttl { get; private set; }
         [JsonProperty("title")]
-        public string Title { get; set; }
+        public string Title { get; private set; }
         [JsonProperty("body")]
-        public string Body { get; set; }
+        public string Body { get; private set; }
         [JsonProperty("sound")]
-        public string Sound { get; set; }
+        public string Sound { get; private set; }
         [JsonProperty("action")]
-        public string Action { get; set; }
+        public string Action { get; private set; }
         [JsonProperty("data")]
-        public Object Data { get; set; }
+        public Object Data { get; private set; }
         [JsonProperty("apn")]
-        public Object Apn { get; set; }
+        public Object Apn { get; private set; }
         [JsonProperty("gcm")]
-        public Object Gcm { get; set; }
+        public Object Gcm { get; private set; }
         [JsonProperty("sms")]
-        public Object Sms { get; set; }
+        public Object Sms { get; private set; }
         [JsonProperty("facebook_messenger")]
-        public Object FacebookMessenger { get; set; }
+        public Object FacebookMessenger { get; private set; }
     
-        public NotificationResource()
+        private NotificationResource()
         {
         
         }
-    
-        private NotificationResource([JsonProperty("sid")]
-                                     string sid, 
-                                     [JsonProperty("account_sid")]
-                                     string accountSid, 
-                                     [JsonProperty("service_sid")]
-                                     string serviceSid, 
-                                     [JsonProperty("date_created")]
-                                     string dateCreated, 
-                                     [JsonProperty("identities")]
-                                     List<string> identities, 
-                                     [JsonProperty("tags")]
-                                     List<string> tags, 
-                                     [JsonProperty("priority")]
-                                     NotificationResource.PriorityEnum priority, 
-                                     [JsonProperty("ttl")]
-                                     int? ttl, 
-                                     [JsonProperty("title")]
-                                     string title, 
-                                     [JsonProperty("body")]
-                                     string body, 
-                                     [JsonProperty("sound")]
-                                     string sound, 
-                                     [JsonProperty("action")]
-                                     string action, 
-                                     [JsonProperty("data")]
-                                     Object data, 
-                                     [JsonProperty("apn")]
-                                     Object apn, 
-                                     [JsonProperty("gcm")]
-                                     Object gcm, 
-                                     [JsonProperty("sms")]
-                                     Object sms, 
-                                     [JsonProperty("facebook_messenger")]
-                                     Object facebookMessenger)
-                                     {
-            Sid = sid;
-            AccountSid = accountSid;
-            ServiceSid = serviceSid;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            Identities = identities;
-            Tags = tags;
-            Priority = priority;
-            Ttl = ttl;
-            Title = title;
-            Body = body;
-            Sound = sound;
-            Action = action;
-            Data = data;
-            Apn = apn;
-            Gcm = gcm;
-            Sms = sms;
-            FacebookMessenger = facebookMessenger;
-        }
     }
+
 }

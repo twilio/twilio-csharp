@@ -2,72 +2,266 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class WorkerResource : Resource 
     {
+        private static Request BuildReadRequest(ReadWorkerOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Workers",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <returns> WorkerReader capable of executing the read </returns> 
-        public static WorkerReader Reader(string workspaceSid)
+        public static ResourceSet<WorkerResource> Read(ReadWorkerOptions options, ITwilioRestClient client = null)
         {
-            return new WorkerReader(workspaceSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<WorkerResource>.FromJson("workers", response.Content);
+            return new ResourceSet<WorkerResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<WorkerResource>> ReadAsync(ReadWorkerOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<WorkerResource> Read(string workspaceSid, string activityName = null, string activitySid = null, string available = null, string friendlyName = null, string targetWorkersExpression = null, string taskQueueName = null, string taskQueueSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadWorkerOptions(workspaceSid){ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<WorkerResource>> ReadAsync(string workspaceSid, string activityName = null, string activitySid = null, string available = null, string friendlyName = null, string targetWorkersExpression = null, string taskQueueName = null, string taskQueueSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadWorkerOptions(workspaceSid){ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<WorkerResource> NextPage(Page<WorkerResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Taskrouter,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<WorkerResource>.FromJson("workers", response.Content);
+        }
+    
+        private static Request BuildCreateRequest(CreateWorkerOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Workers",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> WorkerCreator capable of executing the create </returns> 
-        public static WorkerCreator Creator(string workspaceSid, string friendlyName)
+        public static WorkerResource Create(CreateWorkerOptions options, ITwilioRestClient client = null)
         {
-            return new WorkerCreator(workspaceSid, friendlyName);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<WorkerResource> CreateAsync(CreateWorkerOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static WorkerResource Create(string workspaceSid, string friendlyName, string activitySid = null, string attributes = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateWorkerOptions(workspaceSid, friendlyName){ActivitySid = activitySid, Attributes = attributes};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<WorkerResource> CreateAsync(string workspaceSid, string friendlyName, string activitySid = null, string attributes = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateWorkerOptions(workspaceSid, friendlyName){ActivitySid = activitySid, Attributes = attributes};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildFetchRequest(FetchWorkerOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Workers/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> WorkerFetcher capable of executing the fetch </returns> 
-        public static WorkerFetcher Fetcher(string workspaceSid, string sid)
+        public static WorkerResource Fetch(FetchWorkerOptions options, ITwilioRestClient client = null)
         {
-            return new WorkerFetcher(workspaceSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<WorkerResource> FetchAsync(FetchWorkerOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static WorkerResource Fetch(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkerOptions(workspaceSid, sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<WorkerResource> FetchAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchWorkerOptions(workspaceSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildUpdateRequest(UpdateWorkerOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Workers/" + options.Sid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// update
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> WorkerUpdater capable of executing the update </returns> 
-        public static WorkerUpdater Updater(string workspaceSid, string sid)
+        public static WorkerResource Update(UpdateWorkerOptions options, ITwilioRestClient client = null)
         {
-            return new WorkerUpdater(workspaceSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<WorkerResource> UpdateAsync(UpdateWorkerOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// update
+        /// </summary>
+        public static WorkerResource Update(string workspaceSid, string sid, string activitySid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateWorkerOptions(workspaceSid, sid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName};
+            return Update(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<WorkerResource> UpdateAsync(string workspaceSid, string sid, string activitySid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateWorkerOptions(workspaceSid, sid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName};
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteWorkerOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Workers/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> WorkerDeleter capable of executing the delete </returns> 
-        public static WorkerDeleter Deleter(string workspaceSid, string sid)
+        public static bool Delete(DeleteWorkerOptions options, ITwilioRestClient client = null)
         {
-            return new WorkerDeleter(workspaceSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteWorkerOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteWorkerOptions(workspaceSid, sid);
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteWorkerOptions(workspaceSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a WorkerResource object
@@ -89,77 +283,36 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("activity_name")]
-        public string ActivityName { get; set; }
+        public string ActivityName { get; private set; }
         [JsonProperty("activity_sid")]
-        public string ActivitySid { get; set; }
+        public string ActivitySid { get; private set; }
         [JsonProperty("attributes")]
-        public string Attributes { get; set; }
+        public string Attributes { get; private set; }
         [JsonProperty("available")]
-        public bool? Available { get; set; }
+        public bool? Available { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_status_changed")]
-        public DateTime? DateStatusChanged { get; set; }
+        public DateTime? DateStatusChanged { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("friendly_name")]
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; set; }
+        public string WorkspaceSid { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; set; }
+        public Dictionary<string, string> Links { get; private set; }
     
-        public WorkerResource()
+        private WorkerResource()
         {
         
         }
-    
-        private WorkerResource([JsonProperty("account_sid")]
-                               string accountSid, 
-                               [JsonProperty("activity_name")]
-                               string activityName, 
-                               [JsonProperty("activity_sid")]
-                               string activitySid, 
-                               [JsonProperty("attributes")]
-                               string attributes, 
-                               [JsonProperty("available")]
-                               bool? available, 
-                               [JsonProperty("date_created")]
-                               string dateCreated, 
-                               [JsonProperty("date_status_changed")]
-                               string dateStatusChanged, 
-                               [JsonProperty("date_updated")]
-                               string dateUpdated, 
-                               [JsonProperty("friendly_name")]
-                               string friendlyName, 
-                               [JsonProperty("sid")]
-                               string sid, 
-                               [JsonProperty("workspace_sid")]
-                               string workspaceSid, 
-                               [JsonProperty("url")]
-                               Uri url, 
-                               [JsonProperty("links")]
-                               Dictionary<string, string> links)
-                               {
-            AccountSid = accountSid;
-            ActivityName = activityName;
-            ActivitySid = activitySid;
-            Attributes = attributes;
-            Available = available;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateStatusChanged = MarshalConverter.DateTimeFromString(dateStatusChanged);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            FriendlyName = friendlyName;
-            Sid = sid;
-            WorkspaceSid = workspaceSid;
-            Url = url;
-            Links = links;
-        }
     }
+
 }

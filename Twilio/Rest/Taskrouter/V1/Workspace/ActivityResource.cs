@@ -1,73 +1,267 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class ActivityResource : Resource 
     {
+        private static Request BuildFetchRequest(FetchActivityOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Activities/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> ActivityFetcher capable of executing the fetch </returns> 
-        public static ActivityFetcher Fetcher(string workspaceSid, string sid)
+        public static ActivityResource Fetch(FetchActivityOptions options, ITwilioRestClient client = null)
         {
-            return new ActivityFetcher(workspaceSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ActivityResource> FetchAsync(FetchActivityOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static ActivityResource Fetch(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchActivityOptions(workspaceSid, sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ActivityResource> FetchAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchActivityOptions(workspaceSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildUpdateRequest(UpdateActivityOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Activities/" + options.Sid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// update
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> ActivityUpdater capable of executing the update </returns> 
-        public static ActivityUpdater Updater(string workspaceSid, string sid, string friendlyName)
+        public static ActivityResource Update(UpdateActivityOptions options, ITwilioRestClient client = null)
         {
-            return new ActivityUpdater(workspaceSid, sid, friendlyName);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ActivityResource> UpdateAsync(UpdateActivityOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// update
+        /// </summary>
+        public static ActivityResource Update(string workspaceSid, string sid, string friendlyName, ITwilioRestClient client = null)
+        {
+            var options = new UpdateActivityOptions(workspaceSid, sid, friendlyName);
+            return Update(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ActivityResource> UpdateAsync(string workspaceSid, string sid, string friendlyName, ITwilioRestClient client = null)
+        {
+            var options = new UpdateActivityOptions(workspaceSid, sid, friendlyName);
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteActivityOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Activities/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> ActivityDeleter capable of executing the delete </returns> 
-        public static ActivityDeleter Deleter(string workspaceSid, string sid)
+        public static bool Delete(DeleteActivityOptions options, ITwilioRestClient client = null)
         {
-            return new ActivityDeleter(workspaceSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteActivityOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteActivityOptions(workspaceSid, sid);
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteActivityOptions(workspaceSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadActivityOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Activities",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <returns> ActivityReader capable of executing the read </returns> 
-        public static ActivityReader Reader(string workspaceSid)
+        public static ResourceSet<ActivityResource> Read(ReadActivityOptions options, ITwilioRestClient client = null)
         {
-            return new ActivityReader(workspaceSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<ActivityResource>.FromJson("activities", response.Content);
+            return new ResourceSet<ActivityResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<ActivityResource>> ReadAsync(ReadActivityOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<ActivityResource> Read(string workspaceSid, string friendlyName = null, string available = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadActivityOptions(workspaceSid){FriendlyName = friendlyName, Available = available, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<ActivityResource>> ReadAsync(string workspaceSid, string friendlyName = null, string available = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadActivityOptions(workspaceSid){FriendlyName = friendlyName, Available = available, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<ActivityResource> NextPage(Page<ActivityResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Taskrouter,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<ActivityResource>.FromJson("activities", response.Content);
+        }
+    
+        private static Request BuildCreateRequest(CreateActivityOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/Activities",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <returns> ActivityCreator capable of executing the create </returns> 
-        public static ActivityCreator Creator(string workspaceSid, string friendlyName)
+        public static ActivityResource Create(CreateActivityOptions options, ITwilioRestClient client = null)
         {
-            return new ActivityCreator(workspaceSid, friendlyName);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ActivityResource> CreateAsync(CreateActivityOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static ActivityResource Create(string workspaceSid, string friendlyName, bool? available = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateActivityOptions(workspaceSid, friendlyName){Available = available};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ActivityResource> CreateAsync(string workspaceSid, string friendlyName, bool? available = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateActivityOptions(workspaceSid, friendlyName){Available = available};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a ActivityResource object
@@ -89,52 +283,26 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("available")]
-        public bool? Available { get; set; }
+        public bool? Available { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("friendly_name")]
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; set; }
+        public string WorkspaceSid { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
     
-        public ActivityResource()
+        private ActivityResource()
         {
         
         }
-    
-        private ActivityResource([JsonProperty("account_sid")]
-                                 string accountSid, 
-                                 [JsonProperty("available")]
-                                 bool? available, 
-                                 [JsonProperty("date_created")]
-                                 string dateCreated, 
-                                 [JsonProperty("date_updated")]
-                                 string dateUpdated, 
-                                 [JsonProperty("friendly_name")]
-                                 string friendlyName, 
-                                 [JsonProperty("sid")]
-                                 string sid, 
-                                 [JsonProperty("workspace_sid")]
-                                 string workspaceSid, 
-                                 [JsonProperty("url")]
-                                 Uri url)
-                                 {
-            AccountSid = accountSid;
-            Available = available;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            FriendlyName = friendlyName;
-            Sid = sid;
-            WorkspaceSid = workspaceSid;
-            Url = url;
-        }
     }
+
 }

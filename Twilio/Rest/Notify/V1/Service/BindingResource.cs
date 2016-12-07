@@ -2,8 +2,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 using Twilio.Types;
 
 namespace Twilio.Rest.Notify.V1.Service 
@@ -22,54 +24,208 @@ namespace Twilio.Rest.Notify.V1.Service
             public static readonly BindingTypeEnum FacebookMessenger = new BindingTypeEnum("facebook-messenger");
         }
     
+        private static Request BuildFetchRequest(FetchBindingOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Notify,
+                "/v1/Services/" + options.ServiceSid + "/Bindings/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> BindingFetcher capable of executing the fetch </returns> 
-        public static BindingFetcher Fetcher(string serviceSid, string sid)
+        public static BindingResource Fetch(FetchBindingOptions options, ITwilioRestClient client = null)
         {
-            return new BindingFetcher(serviceSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(FetchBindingOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static BindingResource Fetch(string serviceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchBindingOptions(serviceSid, sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(string serviceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchBindingOptions(serviceSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteBindingOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Notify,
+                "/v1/Services/" + options.ServiceSid + "/Bindings/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> BindingDeleter capable of executing the delete </returns> 
-        public static BindingDeleter Deleter(string serviceSid, string sid)
+        public static bool Delete(DeleteBindingOptions options, ITwilioRestClient client = null)
         {
-            return new BindingDeleter(serviceSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBindingOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string serviceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBindingOptions(serviceSid, sid);
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string serviceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBindingOptions(serviceSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildCreateRequest(CreateBindingOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Notify,
+                "/v1/Services/" + options.ServiceSid + "/Bindings",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="endpoint"> The endpoint </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="bindingType"> The binding_type </param>
-        /// <param name="address"> The address </param>
-        /// <returns> BindingCreator capable of executing the create </returns> 
-        public static BindingCreator Creator(string serviceSid, string endpoint, string identity, BindingResource.BindingTypeEnum bindingType, string address)
+        public static BindingResource Create(CreateBindingOptions options, ITwilioRestClient client = null)
         {
-            return new BindingCreator(serviceSid, endpoint, identity, bindingType, address);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<BindingResource> CreateAsync(CreateBindingOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static BindingResource Create(string serviceSid, string endpoint, string identity, BindingResource.BindingTypeEnum bindingType, string address, List<string> tag = null, string notificationProtocolVersion = null, string credentialSid = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateBindingOptions(serviceSid, endpoint, identity, bindingType, address){Tag = tag, NotificationProtocolVersion = notificationProtocolVersion, CredentialSid = credentialSid};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<BindingResource> CreateAsync(string serviceSid, string endpoint, string identity, BindingResource.BindingTypeEnum bindingType, string address, List<string> tag = null, string notificationProtocolVersion = null, string credentialSid = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateBindingOptions(serviceSid, endpoint, identity, bindingType, address){Tag = tag, NotificationProtocolVersion = notificationProtocolVersion, CredentialSid = credentialSid};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadBindingOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Notify,
+                "/v1/Services/" + options.ServiceSid + "/Bindings",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <returns> BindingReader capable of executing the read </returns> 
-        public static BindingReader Reader(string serviceSid)
+        public static ResourceSet<BindingResource> Read(ReadBindingOptions options, ITwilioRestClient client = null)
         {
-            return new BindingReader(serviceSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<BindingResource>.FromJson("bindings", response.Content);
+            return new ResourceSet<BindingResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(ReadBindingOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<BindingResource> Read(string serviceSid, DateTime? startDate = null, DateTime? endDate = null, List<string> identity = null, List<string> tag = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadBindingOptions(serviceSid){StartDate = startDate, EndDate = endDate, Identity = identity, Tag = tag, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(string serviceSid, DateTime? startDate = null, DateTime? endDate = null, List<string> identity = null, List<string> tag = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadBindingOptions(serviceSid){StartDate = startDate, EndDate = endDate, Identity = identity, Tag = tag, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<BindingResource> NextPage(Page<BindingResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Notify,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<BindingResource>.FromJson("bindings", response.Content);
         }
     
         /// <summary>
@@ -92,77 +248,36 @@ namespace Twilio.Rest.Notify.V1.Service
         }
     
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("service_sid")]
-        public string ServiceSid { get; set; }
+        public string ServiceSid { get; private set; }
         [JsonProperty("credential_sid")]
-        public string CredentialSid { get; set; }
+        public string CredentialSid { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("notification_protocol_version")]
-        public string NotificationProtocolVersion { get; set; }
+        public string NotificationProtocolVersion { get; private set; }
         [JsonProperty("endpoint")]
-        public string Endpoint { get; set; }
+        public string Endpoint { get; private set; }
         [JsonProperty("identity")]
-        public string Identity { get; set; }
+        public string Identity { get; private set; }
         [JsonProperty("binding_type")]
-        public string BindingType { get; set; }
+        public string BindingType { get; private set; }
         [JsonProperty("address")]
-        public string Address { get; set; }
+        public string Address { get; private set; }
         [JsonProperty("tags")]
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
     
-        public BindingResource()
+        private BindingResource()
         {
         
         }
-    
-        private BindingResource([JsonProperty("sid")]
-                                string sid, 
-                                [JsonProperty("account_sid")]
-                                string accountSid, 
-                                [JsonProperty("service_sid")]
-                                string serviceSid, 
-                                [JsonProperty("credential_sid")]
-                                string credentialSid, 
-                                [JsonProperty("date_created")]
-                                string dateCreated, 
-                                [JsonProperty("date_updated")]
-                                string dateUpdated, 
-                                [JsonProperty("notification_protocol_version")]
-                                string notificationProtocolVersion, 
-                                [JsonProperty("endpoint")]
-                                string endpoint, 
-                                [JsonProperty("identity")]
-                                string identity, 
-                                [JsonProperty("binding_type")]
-                                string bindingType, 
-                                [JsonProperty("address")]
-                                string address, 
-                                [JsonProperty("tags")]
-                                List<string> tags, 
-                                [JsonProperty("url")]
-                                Uri url)
-                                {
-            Sid = sid;
-            AccountSid = accountSid;
-            ServiceSid = serviceSid;
-            CredentialSid = credentialSid;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            NotificationProtocolVersion = notificationProtocolVersion;
-            Endpoint = endpoint;
-            Identity = identity;
-            BindingType = bindingType;
-            Address = address;
-            Tags = tags;
-            Url = url;
-        }
     }
+
 }

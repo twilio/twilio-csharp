@@ -1,23 +1,63 @@
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
 
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
     public class NewKeyResource : Resource 
     {
+        private static Request BuildCreateRequest(CreateNewKeyOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Keys.json",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <returns> NewKeyCreator capable of executing the create </returns> 
-        public static NewKeyCreator Creator()
+        public static NewKeyResource Create(CreateNewKeyOptions options, ITwilioRestClient client = null)
         {
-            return new NewKeyCreator();
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<NewKeyResource> CreateAsync(CreateNewKeyOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static NewKeyResource Create(string accountSid = null, string friendlyName = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateNewKeyOptions{AccountSid = accountSid, FriendlyName = friendlyName};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<NewKeyResource> CreateAsync(string accountSid = null, string friendlyName = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateNewKeyOptions{AccountSid = accountSid, FriendlyName = friendlyName};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a NewKeyResource object
@@ -39,37 +79,20 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("friendly_name")]
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("secret")]
-        public string Secret { get; set; }
+        public string Secret { get; private set; }
     
-        public NewKeyResource()
+        private NewKeyResource()
         {
         
         }
-    
-        private NewKeyResource([JsonProperty("sid")]
-                               string sid, 
-                               [JsonProperty("friendly_name")]
-                               string friendlyName, 
-                               [JsonProperty("date_created")]
-                               string dateCreated, 
-                               [JsonProperty("date_updated")]
-                               string dateUpdated, 
-                               [JsonProperty("secret")]
-                               string secret)
-                               {
-            Sid = sid;
-            FriendlyName = friendlyName;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            Secret = secret;
-        }
     }
+
 }

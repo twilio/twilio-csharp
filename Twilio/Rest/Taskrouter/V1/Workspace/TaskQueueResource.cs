@@ -2,74 +2,276 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
+using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
     public class TaskQueueResource : Resource 
     {
+        public sealed class TaskOrderEnum : StringEnum 
+        {
+            private TaskOrderEnum(string value) : base(value) {}
+            public TaskOrderEnum() {}
+        
+            public static readonly TaskOrderEnum Fifo = new TaskOrderEnum("FIFO");
+            public static readonly TaskOrderEnum Lifo = new TaskOrderEnum("LIFO");
+        }
+    
+        private static Request BuildFetchRequest(FetchTaskQueueOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/TaskQueues/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+    
         /// <summary>
         /// fetch
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> TaskQueueFetcher capable of executing the fetch </returns> 
-        public static TaskQueueFetcher Fetcher(string workspaceSid, string sid)
+        public static TaskQueueResource Fetch(FetchTaskQueueOptions options, ITwilioRestClient client = null)
         {
-            return new TaskQueueFetcher(workspaceSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<TaskQueueResource> FetchAsync(FetchTaskQueueOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// fetch
+        /// </summary>
+        public static TaskQueueResource Fetch(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchTaskQueueOptions(workspaceSid, sid);
+            return Fetch(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<TaskQueueResource> FetchAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new FetchTaskQueueOptions(workspaceSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Fetch(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildUpdateRequest(UpdateTaskQueueOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/TaskQueues/" + options.Sid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// update
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> TaskQueueUpdater capable of executing the update </returns> 
-        public static TaskQueueUpdater Updater(string workspaceSid, string sid)
+        public static TaskQueueResource Update(UpdateTaskQueueOptions options, ITwilioRestClient client = null)
         {
-            return new TaskQueueUpdater(workspaceSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<TaskQueueResource> UpdateAsync(UpdateTaskQueueOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// update
+        /// </summary>
+        public static TaskQueueResource Update(string workspaceSid, string sid, string friendlyName = null, string targetWorkers = null, string reservationActivitySid = null, string assignmentActivitySid = null, int? maxReservedWorkers = null, TaskQueueResource.TaskOrderEnum taskOrder = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateTaskQueueOptions(workspaceSid, sid){FriendlyName = friendlyName, TargetWorkers = targetWorkers, ReservationActivitySid = reservationActivitySid, AssignmentActivitySid = assignmentActivitySid, MaxReservedWorkers = maxReservedWorkers, TaskOrder = taskOrder};
+            return Update(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<TaskQueueResource> UpdateAsync(string workspaceSid, string sid, string friendlyName = null, string targetWorkers = null, string reservationActivitySid = null, string assignmentActivitySid = null, int? maxReservedWorkers = null, TaskQueueResource.TaskOrderEnum taskOrder = null, ITwilioRestClient client = null)
+        {
+            var options = new UpdateTaskQueueOptions(workspaceSid, sid){FriendlyName = friendlyName, TargetWorkers = targetWorkers, ReservationActivitySid = reservationActivitySid, AssignmentActivitySid = assignmentActivitySid, MaxReservedWorkers = maxReservedWorkers, TaskOrder = taskOrder};
+            var response = await System.Threading.Tasks.Task.FromResult(Update(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildReadRequest(ReadTaskQueueOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/TaskQueues",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// read
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <returns> TaskQueueReader capable of executing the read </returns> 
-        public static TaskQueueReader Reader(string workspaceSid)
+        public static ResourceSet<TaskQueueResource> Read(ReadTaskQueueOptions options, ITwilioRestClient client = null)
         {
-            return new TaskQueueReader(workspaceSid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+            
+            var page = Page<TaskQueueResource>.FromJson("task_queues", response.Content);
+            return new ResourceSet<TaskQueueResource>(page, options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueueResource>> ReadAsync(ReadTaskQueueOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// read
+        /// </summary>
+        public static ResourceSet<TaskQueueResource> Read(string workspaceSid, string friendlyName = null, string evaluateWorkerAttributes = null, string workerSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadTaskQueueOptions(workspaceSid){FriendlyName = friendlyName, EvaluateWorkerAttributes = evaluateWorkerAttributes, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueueResource>> ReadAsync(string workspaceSid, string friendlyName = null, string evaluateWorkerAttributes = null, string workerSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        {
+            var options = new ReadTaskQueueOptions(workspaceSid){FriendlyName = friendlyName, EvaluateWorkerAttributes = evaluateWorkerAttributes, WorkerSid = workerSid, PageSize = pageSize, Limit = limit};
+            var response = await System.Threading.Tasks.Task.FromResult(Read(options, client));
+            return response;
+        }
+        #endif
+    
+        public static Page<TaskQueueResource> NextPage(Page<TaskQueueResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Taskrouter,
+                    client.Region
+                )
+            );
+            
+            var response = client.Request(request);
+            return Page<TaskQueueResource>.FromJson("task_queues", response.Content);
+        }
+    
+        private static Request BuildCreateRequest(CreateTaskQueueOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/TaskQueues",
+                client.Region,
+                postParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// create
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
-        /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
-        /// <returns> TaskQueueCreator capable of executing the create </returns> 
-        public static TaskQueueCreator Creator(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid)
+        public static TaskQueueResource Create(CreateTaskQueueOptions options, ITwilioRestClient client = null)
         {
-            return new TaskQueueCreator(workspaceSid, friendlyName, reservationActivitySid, assignmentActivitySid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<TaskQueueResource> CreateAsync(CreateTaskQueueOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// create
+        /// </summary>
+        public static TaskQueueResource Create(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid, string targetWorkers = null, int? maxReservedWorkers = null, TaskQueueResource.TaskOrderEnum taskOrder = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateTaskQueueOptions(workspaceSid, friendlyName, reservationActivitySid, assignmentActivitySid){TargetWorkers = targetWorkers, MaxReservedWorkers = maxReservedWorkers, TaskOrder = taskOrder};
+            return Create(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<TaskQueueResource> CreateAsync(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid, string targetWorkers = null, int? maxReservedWorkers = null, TaskQueueResource.TaskOrderEnum taskOrder = null, ITwilioRestClient client = null)
+        {
+            var options = new CreateTaskQueueOptions(workspaceSid, friendlyName, reservationActivitySid, assignmentActivitySid){TargetWorkers = targetWorkers, MaxReservedWorkers = maxReservedWorkers, TaskOrder = taskOrder};
+            var response = await System.Threading.Tasks.Task.FromResult(Create(options, client));
+            return response;
+        }
+        #endif
+    
+        private static Request BuildDeleteRequest(DeleteTaskQueueOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.WorkspaceSid + "/TaskQueues/" + options.Sid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
         }
     
         /// <summary>
         /// delete
         /// </summary>
-        ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <returns> TaskQueueDeleter capable of executing the delete </returns> 
-        public static TaskQueueDeleter Deleter(string workspaceSid, string sid)
+        public static bool Delete(DeleteTaskQueueOptions options, ITwilioRestClient client = null)
         {
-            return new TaskQueueDeleter(workspaceSid, sid);
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTaskQueueOptions options, ITwilioRestClient client)
+        {
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
+    
+        /// <summary>
+        /// delete
+        /// </summary>
+        public static bool Delete(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTaskQueueOptions(workspaceSid, sid);
+            return Delete(options, client);
+        }
+    
+        #if NET40
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTaskQueueOptions(workspaceSid, sid);
+            var response = await System.Threading.Tasks.Task.FromResult(Delete(options, client));
+            return response;
+        }
+        #endif
     
         /// <summary>
         /// Converts a JSON string into a TaskQueueResource object
@@ -91,82 +293,41 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         [JsonProperty("account_sid")]
-        public string AccountSid { get; set; }
+        public string AccountSid { get; private set; }
         [JsonProperty("assignment_activity_sid")]
-        public string AssignmentActivitySid { get; set; }
+        public string AssignmentActivitySid { get; private set; }
         [JsonProperty("assignment_activity_name")]
-        public string AssignmentActivityName { get; set; }
+        public string AssignmentActivityName { get; private set; }
         [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; private set; }
         [JsonProperty("friendly_name")]
-        public string FriendlyName { get; set; }
+        public string FriendlyName { get; private set; }
         [JsonProperty("max_reserved_workers")]
-        public int? MaxReservedWorkers { get; set; }
+        public int? MaxReservedWorkers { get; private set; }
         [JsonProperty("reservation_activity_sid")]
-        public string ReservationActivitySid { get; set; }
+        public string ReservationActivitySid { get; private set; }
         [JsonProperty("reservation_activity_name")]
-        public string ReservationActivityName { get; set; }
+        public string ReservationActivityName { get; private set; }
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string Sid { get; private set; }
         [JsonProperty("target_workers")]
-        public string TargetWorkers { get; set; }
+        public string TargetWorkers { get; private set; }
+        [JsonProperty("task_order")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public TaskQueueResource.TaskOrderEnum TaskOrder { get; private set; }
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        public Uri Url { get; private set; }
         [JsonProperty("workspace_sid")]
-        public string WorkspaceSid { get; set; }
+        public string WorkspaceSid { get; private set; }
         [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; set; }
+        public Dictionary<string, string> Links { get; private set; }
     
-        public TaskQueueResource()
+        private TaskQueueResource()
         {
         
         }
-    
-        private TaskQueueResource([JsonProperty("account_sid")]
-                                  string accountSid, 
-                                  [JsonProperty("assignment_activity_sid")]
-                                  string assignmentActivitySid, 
-                                  [JsonProperty("assignment_activity_name")]
-                                  string assignmentActivityName, 
-                                  [JsonProperty("date_created")]
-                                  string dateCreated, 
-                                  [JsonProperty("date_updated")]
-                                  string dateUpdated, 
-                                  [JsonProperty("friendly_name")]
-                                  string friendlyName, 
-                                  [JsonProperty("max_reserved_workers")]
-                                  int? maxReservedWorkers, 
-                                  [JsonProperty("reservation_activity_sid")]
-                                  string reservationActivitySid, 
-                                  [JsonProperty("reservation_activity_name")]
-                                  string reservationActivityName, 
-                                  [JsonProperty("sid")]
-                                  string sid, 
-                                  [JsonProperty("target_workers")]
-                                  string targetWorkers, 
-                                  [JsonProperty("url")]
-                                  Uri url, 
-                                  [JsonProperty("workspace_sid")]
-                                  string workspaceSid, 
-                                  [JsonProperty("links")]
-                                  Dictionary<string, string> links)
-                                  {
-            AccountSid = accountSid;
-            AssignmentActivitySid = assignmentActivitySid;
-            AssignmentActivityName = assignmentActivityName;
-            DateCreated = MarshalConverter.DateTimeFromString(dateCreated);
-            DateUpdated = MarshalConverter.DateTimeFromString(dateUpdated);
-            FriendlyName = friendlyName;
-            MaxReservedWorkers = maxReservedWorkers;
-            ReservationActivitySid = reservationActivitySid;
-            ReservationActivityName = reservationActivityName;
-            Sid = sid;
-            TargetWorkers = targetWorkers;
-            Url = url;
-            WorkspaceSid = workspaceSid;
-            Links = links;
-        }
     }
+
 }

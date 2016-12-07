@@ -1,4 +1,7 @@
-﻿#if NET40
+﻿
+using System.Net;
+using Twilio.Exceptions;
+#if NET40
 using System.Threading.Tasks;
 #endif
 
@@ -43,19 +46,6 @@ namespace Twilio.Clients
 	        Region = region;
 	    }
 
-		#if NET40
-	    /// <summary>
-	    /// Make an async request
-	    /// </summary>
-	    ///
-	    /// <param name="request">request to make</param>
-	    /// <returns>Task that resolves to the request response</returns>
-		public Task<Response> RequestAsync(Request request) {
-			request.SetAuth(_username, _password);
-			return Task.FromResult(HttpClient.MakeRequest(request));
-		}
-		#endif
-
 	    /// <summary>
 	    /// Make a request to the Twilio API
 	    /// </summary>
@@ -64,8 +54,32 @@ namespace Twilio.Clients
 	    /// <returns>response of the request</returns>
 		public Response Request(Request request) {
 			request.SetAuth(_username, _password);
-			return HttpClient.MakeRequest(request);
-		}
+
+	        var response = HttpClient.MakeRequest(request);
+	        if (response == null)
+	        {
+	            throw new ApiConnectionException("MessageResource creation failed: Unable to connect to server");
+	        }
+
+	        if (response.StatusCode >= HttpStatusCode.OK && response.StatusCode < HttpStatusCode.Ambiguous)
+	        {
+	            return response;
+	        }
+
+	        // Throw exception
+	        var restException = RestException.FromJson(response.Content);
+	        if (restException == null)
+	        {
+	            throw new ApiException("Server Error, no content");
+	        }
+
+	        throw new ApiException(
+	            restException.Code,
+	            (int)response.StatusCode,
+	            restException.Message ?? "Unable to make request, " + response.StatusCode,
+	            restException.MoreInfo
+	        );
+	    }
 	}
 }
 
