@@ -252,35 +252,35 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (StartTime != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartTime", StartTime.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                p.Add(new KeyValuePair<string, string>("StartTime", StartTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             else
             {
                 if (StartTimeBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("StartTime<", StartTimeBefore.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                    p.Add(new KeyValuePair<string, string>("StartTime<", StartTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             
                 if (StartTimeAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("StartTime>", StartTimeAfter.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                    p.Add(new KeyValuePair<string, string>("StartTime>", StartTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             }
             
             if (EndTime != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndTime", EndTime.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                p.Add(new KeyValuePair<string, string>("EndTime", EndTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             else
             {
                 if (EndTimeBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("EndTime<", EndTimeBefore.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                    p.Add(new KeyValuePair<string, string>("EndTime<", EndTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             
                 if (EndTimeAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("EndTime>", EndTimeAfter.Value.ToString("yyyy-MM-ddThh:mm:ssZ")));
+                    p.Add(new KeyValuePair<string, string>("EndTime>", EndTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             }
             
