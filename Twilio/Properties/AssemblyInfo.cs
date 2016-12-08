@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("cdpadron")]
+[assembly: AssemblyCopyright("Twilio")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -27,5 +27,5 @@ using System.Runtime.CompilerServices;
 
 internal class AssemblyInfomation
 {
-	public const string AssemblyInformationalVersion = "5.0.0-rca1";
+	public const string AssemblyInformationalVersion = "5.0.0-rca2";
 }

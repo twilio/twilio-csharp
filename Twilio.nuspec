@@ -24,6 +24,7 @@
       </group>
     </dependencies>
     <releaseNotes>
+      * 5.0.0-rca2 - Introduce new convention
       * 5.0.0-rca1 - Use new versioning to avoid lexicographical sort 
       * 5.0.0-rc10 - Fix exception handling
       * 5.0.0-rc9 - Update library to use C# conventions
