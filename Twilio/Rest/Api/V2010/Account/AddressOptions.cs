@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (IsoCountry != null)
             {
-                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
+                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry.ToString()));
             }
             
             if (FriendlyName != null)
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (EmergencyEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString()));
             }
             
             return p;
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (EmergencyEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString()));
             }
             
             return p;
@@ -229,7 +229,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (IsoCountry != null)
             {
-                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
+                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry.ToString()));
             }
             
             if (PageSize != null)

@@ -298,7 +298,7 @@ namespace Twilio.Rest.Trunking.V1
         [JsonProperty("secure")]
         public bool? Secure { get; private set; }
         [JsonProperty("recording")]
-        public Object Recording { get; private set; }
+        public object Recording { get; private set; }
         [JsonProperty("auth_type")]
         public string AuthType { get; private set; }
         [JsonProperty("auth_type_set")]

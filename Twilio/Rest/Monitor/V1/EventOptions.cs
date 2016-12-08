@@ -47,7 +47,7 @@ namespace Twilio.Rest.Monitor.V1
             var p = new List<KeyValuePair<string, string>>();
             if (ActorSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ActorSid", ActorSid));
+                p.Add(new KeyValuePair<string, string>("ActorSid", ActorSid.ToString()));
             }
             
             if (EventType != null)
@@ -57,7 +57,7 @@ namespace Twilio.Rest.Monitor.V1
             
             if (ResourceSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ResourceSid", ResourceSid));
+                p.Add(new KeyValuePair<string, string>("ResourceSid", ResourceSid.ToString()));
             }
             
             if (SourceIpAddress != null)
@@ -67,12 +67,12 @@ namespace Twilio.Rest.Monitor.V1
             
             if (StartDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             
             if (EndDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             
             if (PageSize != null)

@@ -101,7 +101,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             
             if (Permission != null)
             {
-                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop.ToString())));
+                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop)));
             }
             
             return p;
@@ -165,7 +165,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             var p = new List<KeyValuePair<string, string>>();
             if (Permission != null)
             {
-                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop.ToString())));
+                p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop)));
             }
             
             return p;

@@ -101,7 +101,7 @@ namespace Twilio.Rest.Lookups.V1
         [JsonProperty("carrier")]
         public Dictionary<string, string> Carrier { get; private set; }
         [JsonProperty("add_ons")]
-        public Object AddOns { get; private set; }
+        public object AddOns { get; private set; }
         [JsonProperty("url")]
         public Uri Url { get; private set; }
     

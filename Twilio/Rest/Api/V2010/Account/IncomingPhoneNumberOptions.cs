@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var p = new List<KeyValuePair<string, string>>();
             if (AccountSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid));
+                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
             }
             
             if (ApiVersion != null)
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (SmsApplicationSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsApplicationSid", SmsApplicationSid));
+                p.Add(new KeyValuePair<string, string>("SmsApplicationSid", SmsApplicationSid.ToString()));
             }
             
             if (SmsFallbackMethod != null)
@@ -97,17 +97,17 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (TrunkSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("TrunkSid", TrunkSid));
+                p.Add(new KeyValuePair<string, string>("TrunkSid", TrunkSid.ToString()));
             }
             
             if (VoiceApplicationSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceApplicationSid", VoiceApplicationSid));
+                p.Add(new KeyValuePair<string, string>("VoiceApplicationSid", VoiceApplicationSid.ToString()));
             }
             
             if (VoiceCallerIdLookup != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.ToString()));
+                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString()));
             }
             
             if (VoiceFallbackMethod != null)
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (EmergencyAddressSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("EmergencyAddressSid", EmergencyAddressSid));
+                p.Add(new KeyValuePair<string, string>("EmergencyAddressSid", EmergencyAddressSid.ToString()));
             }
             
             return p;
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var p = new List<KeyValuePair<string, string>>();
             if (Beta != null)
             {
-                p.Add(new KeyValuePair<string, string>("Beta", Beta.ToString()));
+                p.Add(new KeyValuePair<string, string>("Beta", Beta.Value.ToString()));
             }
             
             if (FriendlyName != null)
@@ -283,7 +283,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (SmsApplicationSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsApplicationSid", SmsApplicationSid));
+                p.Add(new KeyValuePair<string, string>("SmsApplicationSid", SmsApplicationSid.ToString()));
             }
             
             if (SmsFallbackMethod != null)
@@ -318,17 +318,17 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (TrunkSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("TrunkSid", TrunkSid));
+                p.Add(new KeyValuePair<string, string>("TrunkSid", TrunkSid.ToString()));
             }
             
             if (VoiceApplicationSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceApplicationSid", VoiceApplicationSid));
+                p.Add(new KeyValuePair<string, string>("VoiceApplicationSid", VoiceApplicationSid.ToString()));
             }
             
             if (VoiceCallerIdLookup != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.ToString()));
+                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString()));
             }
             
             if (VoiceFallbackMethod != null)
@@ -358,7 +358,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (EmergencyAddressSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("EmergencyAddressSid", EmergencyAddressSid));
+                p.Add(new KeyValuePair<string, string>("EmergencyAddressSid", EmergencyAddressSid.ToString()));
             }
             
             return p;

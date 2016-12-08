@@ -59,7 +59,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var p = new List<KeyValuePair<string, string>>();
             if (IpAccessControlListSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("IpAccessControlListSid", IpAccessControlListSid));
+                p.Add(new KeyValuePair<string, string>("IpAccessControlListSid", IpAccessControlListSid.ToString()));
             }
             
             return p;

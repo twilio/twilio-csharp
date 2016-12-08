@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var p = new List<KeyValuePair<string, string>>();
             if (Beta != null)
             {
-                p.Add(new KeyValuePair<string, string>("Beta", Beta.ToString()));
+                p.Add(new KeyValuePair<string, string>("Beta", Beta.Value.ToString()));
             }
             
             if (FriendlyName != null)
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             
             if (SmsApplicationSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsApplicationSid", SmsApplicationSid));
+                p.Add(new KeyValuePair<string, string>("SmsApplicationSid", SmsApplicationSid.ToString()));
             }
             
             if (SmsFallbackMethod != null)
@@ -130,12 +130,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             
             if (VoiceApplicationSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceApplicationSid", VoiceApplicationSid));
+                p.Add(new KeyValuePair<string, string>("VoiceApplicationSid", VoiceApplicationSid.ToString()));
             }
             
             if (VoiceCallerIdLookup != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.ToString()));
+                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString()));
             }
             
             if (VoiceFallbackMethod != null)

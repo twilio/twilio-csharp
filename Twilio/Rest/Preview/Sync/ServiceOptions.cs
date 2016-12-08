@@ -77,7 +77,7 @@ namespace Twilio.Rest.Preview.Sync
             
             if (ReachabilityWebhooksEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString()));
             }
             
             return p;
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Preview.Sync
             
             if (ReachabilityWebhooksEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString()));
             }
             
             return p;

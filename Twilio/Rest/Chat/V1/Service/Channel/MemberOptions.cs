@@ -70,7 +70,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             
             if (RoleSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid));
+                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
             }
             
             return p;
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var p = new List<KeyValuePair<string, string>>();
             if (Identity != null)
             {
-                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop.ToString())));
+                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
             }
             
             if (PageSize != null)
@@ -176,12 +176,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var p = new List<KeyValuePair<string, string>>();
             if (RoleSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid));
+                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
             }
             
             if (LastConsumedMessageIndex != null)
             {
-                p.Add(new KeyValuePair<string, string>("LastConsumedMessageIndex", LastConsumedMessageIndex.ToString()));
+                p.Add(new KeyValuePair<string, string>("LastConsumedMessageIndex", LastConsumedMessageIndex.Value.ToString()));
             }
             
             return p;

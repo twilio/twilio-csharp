@@ -70,7 +70,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         public string ServiceSid { get; }
         public string MapSid { get; }
         public string Key { get; }
-        public Object Data { get; }
+        public object Data { get; }
     
         /// <summary>
         /// Construct a new CreateSyncMapItemOptions
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="mapSid"> The map_sid </param>
         /// <param name="key"> The key </param>
         /// <param name="data"> The data </param>
-        public CreateSyncMapItemOptions(string serviceSid, string mapSid, string key, Object data)
+        public CreateSyncMapItemOptions(string serviceSid, string mapSid, string key, object data)
         {
             ServiceSid = serviceSid;
             MapSid = mapSid;
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         public string ServiceSid { get; }
         public string MapSid { get; }
         public string Key { get; }
-        public Object Data { get; }
+        public object Data { get; }
     
         /// <summary>
         /// Construct a new UpdateSyncMapItemOptions
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="mapSid"> The map_sid </param>
         /// <param name="key"> The key </param>
         /// <param name="data"> The data </param>
-        public UpdateSyncMapItemOptions(string serviceSid, string mapSid, string key, Object data)
+        public UpdateSyncMapItemOptions(string serviceSid, string mapSid, string key, object data)
         {
             ServiceSid = serviceSid;
             MapSid = mapSid;

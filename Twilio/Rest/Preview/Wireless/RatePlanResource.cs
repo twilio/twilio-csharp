@@ -248,11 +248,11 @@ namespace Twilio.Rest.Preview.Wireless
         [JsonProperty("roaming")]
         public List<string> Roaming { get; private set; }
         [JsonProperty("data")]
-        public Object Data { get; private set; }
+        public object Data { get; private set; }
         [JsonProperty("commands")]
-        public Object Commands { get; private set; }
+        public object Commands { get; private set; }
         [JsonProperty("renewal")]
-        public Object Renewal { get; private set; }
+        public object Renewal { get; private set; }
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]

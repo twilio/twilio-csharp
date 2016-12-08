@@ -79,7 +79,7 @@ namespace Twilio
 		    if (_username == null || _password == null)
 		    {
 		        throw new AuthenticationException (
-		            "TwilioRestClient was used before AccountSid and AuthToken were set, please call Twilio.init()"
+		            "TwilioRestClient was used before AccountSid and AuthToken were set, please call TwilioClient.init()"
 		        );
 		    }
 

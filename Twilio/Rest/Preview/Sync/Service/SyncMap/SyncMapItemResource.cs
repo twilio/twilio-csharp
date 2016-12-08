@@ -158,14 +158,14 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <summary>
         /// create
         /// </summary>
-        public static SyncMapItemResource Create(string serviceSid, string mapSid, string key, Object data, ITwilioRestClient client = null)
+        public static SyncMapItemResource Create(string serviceSid, string mapSid, string key, object data, ITwilioRestClient client = null)
         {
             var options = new CreateSyncMapItemOptions(serviceSid, mapSid, key, data);
             return Create(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<SyncMapItemResource> CreateAsync(string serviceSid, string mapSid, string key, Object data, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncMapItemResource> CreateAsync(string serviceSid, string mapSid, string key, object data, ITwilioRestClient client = null)
         {
             var options = new CreateSyncMapItemOptions(serviceSid, mapSid, key, data);
             return await CreateAsync(options, client);
@@ -270,14 +270,14 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <summary>
         /// update
         /// </summary>
-        public static SyncMapItemResource Update(string serviceSid, string mapSid, string key, Object data, ITwilioRestClient client = null)
+        public static SyncMapItemResource Update(string serviceSid, string mapSid, string key, object data, ITwilioRestClient client = null)
         {
             var options = new UpdateSyncMapItemOptions(serviceSid, mapSid, key, data);
             return Update(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(string serviceSid, string mapSid, string key, Object data, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(string serviceSid, string mapSid, string key, object data, ITwilioRestClient client = null)
         {
             var options = new UpdateSyncMapItemOptions(serviceSid, mapSid, key, data);
             return await UpdateAsync(options, client);
@@ -316,7 +316,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         [JsonProperty("revision")]
         public string Revision { get; private set; }
         [JsonProperty("data")]
-        public Object Data { get; private set; }
+        public object Data { get; private set; }
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]

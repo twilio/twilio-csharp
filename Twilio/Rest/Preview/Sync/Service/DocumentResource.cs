@@ -139,14 +139,14 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// create
         /// </summary>
-        public static DocumentResource Create(string serviceSid, string uniqueName = null, Object data = null, ITwilioRestClient client = null)
+        public static DocumentResource Create(string serviceSid, string uniqueName = null, object data = null, ITwilioRestClient client = null)
         {
             var options = new CreateDocumentOptions(serviceSid){UniqueName = uniqueName, Data = data};
             return Create(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<DocumentResource> CreateAsync(string serviceSid, string uniqueName = null, Object data = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DocumentResource> CreateAsync(string serviceSid, string uniqueName = null, object data = null, ITwilioRestClient client = null)
         {
             var options = new CreateDocumentOptions(serviceSid){UniqueName = uniqueName, Data = data};
             return await CreateAsync(options, client);
@@ -251,14 +251,14 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// update
         /// </summary>
-        public static DocumentResource Update(string serviceSid, string sid, Object data, ITwilioRestClient client = null)
+        public static DocumentResource Update(string serviceSid, string sid, object data, ITwilioRestClient client = null)
         {
             var options = new UpdateDocumentOptions(serviceSid, sid, data);
             return Update(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(string serviceSid, string sid, Object data, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(string serviceSid, string sid, object data, ITwilioRestClient client = null)
         {
             var options = new UpdateDocumentOptions(serviceSid, sid, data);
             return await UpdateAsync(options, client);
@@ -297,7 +297,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         [JsonProperty("revision")]
         public string Revision { get; private set; }
         [JsonProperty("data")]
-        public Object Data { get; private set; }
+        public object Data { get; private set; }
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]

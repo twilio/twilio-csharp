@@ -55,14 +55,14 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        public static NotificationResource Create(string serviceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, Object facebookMessenger = null, ITwilioRestClient client = null)
+        public static NotificationResource Create(string serviceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, object facebookMessenger = null, ITwilioRestClient client = null)
         {
             var options = new CreateNotificationOptions(serviceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger};
             return Create(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string serviceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, Object facebookMessenger = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string serviceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, object facebookMessenger = null, ITwilioRestClient client = null)
         {
             var options = new CreateNotificationOptions(serviceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger};
             return await CreateAsync(options, client);
@@ -114,15 +114,15 @@ namespace Twilio.Rest.Notify.V1.Service
         [JsonProperty("action")]
         public string Action { get; private set; }
         [JsonProperty("data")]
-        public Object Data { get; private set; }
+        public object Data { get; private set; }
         [JsonProperty("apn")]
-        public Object Apn { get; private set; }
+        public object Apn { get; private set; }
         [JsonProperty("gcm")]
-        public Object Gcm { get; private set; }
+        public object Gcm { get; private set; }
         [JsonProperty("sms")]
-        public Object Sms { get; private set; }
+        public object Sms { get; private set; }
         [JsonProperty("facebook_messenger")]
-        public Object FacebookMessenger { get; private set; }
+        public object FacebookMessenger { get; private set; }
     
         private NotificationResource()
         {

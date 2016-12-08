@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (ApplicationSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ApplicationSid", ApplicationSid));
+                p.Add(new KeyValuePair<string, string>("ApplicationSid", ApplicationSid.ToString()));
             }
             
             if (Method != null)
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (StatusCallbackEvent != null)
             {
-                p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", prop.ToString())));
+                p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", prop)));
             }
             
             if (StatusCallbackMethod != null)
@@ -118,17 +118,17 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (MachineDetectionTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("MachineDetectionTimeout", MachineDetectionTimeout.ToString()));
+                p.Add(new KeyValuePair<string, string>("MachineDetectionTimeout", MachineDetectionTimeout.Value.ToString()));
             }
             
             if (Timeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.ToString()));
+                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.Value.ToString()));
             }
             
             if (Record != null)
             {
-                p.Add(new KeyValuePair<string, string>("Record", Record.ToString()));
+                p.Add(new KeyValuePair<string, string>("Record", Record.Value.ToString()));
             }
             
             if (RecordingChannels != null)
@@ -242,7 +242,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (ParentCallSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ParentCallSid", ParentCallSid));
+                p.Add(new KeyValuePair<string, string>("ParentCallSid", ParentCallSid.ToString()));
             }
             
             if (Status != null)
@@ -252,35 +252,35 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (StartTime != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartTime", StartTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("StartTime", StartTime.ToString()));
             }
             else
             {
                 if (StartTimeBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("StartTime<", StartTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("StartTime<", StartTimeBefore.ToString()));
                 }
             
                 if (StartTimeAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("StartTime>", StartTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("StartTime>", StartTimeAfter.ToString()));
                 }
             }
             
             if (EndTime != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndTime", EndTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("EndTime", EndTime.ToString()));
             }
             else
             {
                 if (EndTimeBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("EndTime<", EndTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("EndTime<", EndTimeBefore.ToString()));
                 }
             
                 if (EndTimeAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("EndTime>", EndTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("EndTime>", EndTimeAfter.ToString()));
                 }
             }
             

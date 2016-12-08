@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var p = new List<KeyValuePair<string, string>>();
             if (QualityScore != null)
             {
-                p.Add(new KeyValuePair<string, string>("QualityScore", QualityScore.ToString()));
+                p.Add(new KeyValuePair<string, string>("QualityScore", QualityScore.Value.ToString()));
             }
             
             if (Issue != null)
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var p = new List<KeyValuePair<string, string>>();
             if (QualityScore != null)
             {
-                p.Add(new KeyValuePair<string, string>("QualityScore", QualityScore.ToString()));
+                p.Add(new KeyValuePair<string, string>("QualityScore", QualityScore.Value.ToString()));
             }
             
             if (Issue != null)

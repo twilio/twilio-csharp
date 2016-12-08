@@ -64,12 +64,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var p = new List<KeyValuePair<string, string>>();
             if (Muted != null)
             {
-                p.Add(new KeyValuePair<string, string>("Muted", Muted.ToString()));
+                p.Add(new KeyValuePair<string, string>("Muted", Muted.Value.ToString()));
             }
             
             if (Hold != null)
             {
-                p.Add(new KeyValuePair<string, string>("Hold", Hold.ToString()));
+                p.Add(new KeyValuePair<string, string>("Hold", Hold.Value.ToString()));
             }
             
             if (HoldUrl != null)
@@ -155,22 +155,22 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             
             if (StatusCallbackEvent != null)
             {
-                p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", prop.ToString())));
+                p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", prop)));
             }
             
             if (Timeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.ToString()));
+                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.Value.ToString()));
             }
             
             if (Record != null)
             {
-                p.Add(new KeyValuePair<string, string>("Record", Record.ToString()));
+                p.Add(new KeyValuePair<string, string>("Record", Record.Value.ToString()));
             }
             
             if (Muted != null)
             {
-                p.Add(new KeyValuePair<string, string>("Muted", Muted.ToString()));
+                p.Add(new KeyValuePair<string, string>("Muted", Muted.Value.ToString()));
             }
             
             if (Beep != null)
@@ -180,12 +180,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             
             if (StartConferenceOnEnter != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartConferenceOnEnter", StartConferenceOnEnter.ToString()));
+                p.Add(new KeyValuePair<string, string>("StartConferenceOnEnter", StartConferenceOnEnter.Value.ToString()));
             }
             
             if (EndConferenceOnExit != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndConferenceOnExit", EndConferenceOnExit.ToString()));
+                p.Add(new KeyValuePair<string, string>("EndConferenceOnExit", EndConferenceOnExit.Value.ToString()));
             }
             
             if (WaitUrl != null)
@@ -200,12 +200,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             
             if (EarlyMedia != null)
             {
-                p.Add(new KeyValuePair<string, string>("EarlyMedia", EarlyMedia.ToString()));
+                p.Add(new KeyValuePair<string, string>("EarlyMedia", EarlyMedia.Value.ToString()));
             }
             
             if (MaxParticipants != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxParticipants", MaxParticipants.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxParticipants", MaxParticipants.Value.ToString()));
             }
             
             if (ConferenceRecord != null)
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             
             if (ConferenceStatusCallbackEvent != null)
             {
-                p.AddRange(ConferenceStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceStatusCallbackEvent", prop.ToString())));
+                p.AddRange(ConferenceStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceStatusCallbackEvent", prop)));
             }
             
             return p;
@@ -290,12 +290,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var p = new List<KeyValuePair<string, string>>();
             if (Muted != null)
             {
-                p.Add(new KeyValuePair<string, string>("Muted", Muted.ToString()));
+                p.Add(new KeyValuePair<string, string>("Muted", Muted.Value.ToString()));
             }
             
             if (Hold != null)
             {
-                p.Add(new KeyValuePair<string, string>("Hold", Hold.ToString()));
+                p.Add(new KeyValuePair<string, string>("Hold", Hold.Value.ToString()));
             }
             
             if (PageSize != null)

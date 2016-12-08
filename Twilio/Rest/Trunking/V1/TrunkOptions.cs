@@ -95,7 +95,7 @@ namespace Twilio.Rest.Trunking.V1
             
             if (Secure != null)
             {
-                p.Add(new KeyValuePair<string, string>("Secure", Secure.ToString()));
+                p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString()));
             }
             
             return p;
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Trunking.V1
             
             if (Secure != null)
             {
-                p.Add(new KeyValuePair<string, string>("Secure", Secure.ToString()));
+                p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString()));
             }
             
             return p;

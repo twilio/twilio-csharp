@@ -69,7 +69,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
     {
         public string ServiceSid { get; }
         public string ListSid { get; }
-        public Object Data { get; }
+        public object Data { get; }
     
         /// <summary>
         /// Construct a new CreateSyncListItemOptions
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="listSid"> The list_sid </param>
         /// <param name="data"> The data </param>
-        public CreateSyncListItemOptions(string serviceSid, string listSid, Object data)
+        public CreateSyncListItemOptions(string serviceSid, string listSid, object data)
         {
             ServiceSid = serviceSid;
             ListSid = listSid;
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public string ServiceSid { get; }
         public string ListSid { get; }
         public int? Index { get; }
-        public Object Data { get; }
+        public object Data { get; }
     
         /// <summary>
         /// Construct a new UpdateSyncListItemOptions
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="listSid"> The list_sid </param>
         /// <param name="index"> The index </param>
         /// <param name="data"> The data </param>
-        public UpdateSyncListItemOptions(string serviceSid, string listSid, int? index, Object data)
+        public UpdateSyncListItemOptions(string serviceSid, string listSid, int? index, object data)
         {
             ServiceSid = serviceSid;
             ListSid = listSid;

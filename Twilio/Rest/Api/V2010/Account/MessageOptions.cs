@@ -48,7 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (MessagingServiceSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid));
+                p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
             }
             
             if (Body != null)
@@ -68,17 +68,17 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (ApplicationSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ApplicationSid", ApplicationSid));
+                p.Add(new KeyValuePair<string, string>("ApplicationSid", ApplicationSid.ToString()));
             }
             
             if (MaxPrice != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxPrice", MaxPrice.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxPrice", MaxPrice.Value.ToString()));
             }
             
             if (ProvideFeedback != null)
             {
-                p.Add(new KeyValuePair<string, string>("ProvideFeedback", ProvideFeedback.ToString()));
+                p.Add(new KeyValuePair<string, string>("ProvideFeedback", ProvideFeedback.Value.ToString()));
             }
             
             return p;
@@ -162,18 +162,18 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (DateSent != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateSent", DateSent.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("DateSent", DateSent.ToString()));
             }
             else
             {
                 if (DateSentBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateSent<", DateSentBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("DateSent<", DateSentBefore.ToString()));
                 }
             
                 if (DateSentAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateSent>", DateSentAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("DateSent>", DateSentAfter.ToString()));
                 }
             }
             

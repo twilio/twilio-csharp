@@ -97,12 +97,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var p = new List<KeyValuePair<string, string>>();
             if (Capacity != null)
             {
-                p.Add(new KeyValuePair<string, string>("Capacity", Capacity.ToString()));
+                p.Add(new KeyValuePair<string, string>("Capacity", Capacity.Value.ToString()));
             }
             
             if (Available != null)
             {
-                p.Add(new KeyValuePair<string, string>("Available", Available.ToString()));
+                p.Add(new KeyValuePair<string, string>("Available", Available.Value.ToString()));
             }
             
             return p;

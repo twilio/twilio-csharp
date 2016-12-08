@@ -69,7 +69,7 @@ namespace Twilio.Rest.Notify.V1
             
             if (Sandbox != null)
             {
-                p.Add(new KeyValuePair<string, string>("Sandbox", Sandbox.ToString()));
+                p.Add(new KeyValuePair<string, string>("Sandbox", Sandbox.Value.ToString()));
             }
             
             if (ApiKey != null)
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Notify.V1
             
             if (Sandbox != null)
             {
-                p.Add(new KeyValuePair<string, string>("Sandbox", Sandbox.ToString()));
+                p.Add(new KeyValuePair<string, string>("Sandbox", Sandbox.Value.ToString()));
             }
             
             if (ApiKey != null)

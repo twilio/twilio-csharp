@@ -46,7 +46,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var p = new List<KeyValuePair<string, string>>();
             if (PublicKey != null)
             {
-                p.Add(new KeyValuePair<string, string>("PublicKey", PublicKey));
+                p.Add(new KeyValuePair<string, string>("PublicKey", PublicKey.ToString()));
             }
             
             if (FriendlyName != null)
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             
             if (AccountSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid));
+                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
             }
             
             return p;

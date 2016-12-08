@@ -58,7 +58,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var p = new List<KeyValuePair<string, string>>();
             if (DefaultActivitySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("DefaultActivitySid", DefaultActivitySid));
+                p.Add(new KeyValuePair<string, string>("DefaultActivitySid", DefaultActivitySid.ToString()));
             }
             
             if (EventCallbackUrl != null)
@@ -78,12 +78,12 @@ namespace Twilio.Rest.Taskrouter.V1
             
             if (MultiTaskEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("MultiTaskEnabled", MultiTaskEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("MultiTaskEnabled", MultiTaskEnabled.Value.ToString()));
             }
             
             if (TimeoutActivitySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("TimeoutActivitySid", TimeoutActivitySid));
+                p.Add(new KeyValuePair<string, string>("TimeoutActivitySid", TimeoutActivitySid.ToString()));
             }
             
             if (PrioritizeQueueOrder != null)
@@ -161,7 +161,7 @@ namespace Twilio.Rest.Taskrouter.V1
             
             if (MultiTaskEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("MultiTaskEnabled", MultiTaskEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("MultiTaskEnabled", MultiTaskEnabled.Value.ToString()));
             }
             
             if (Template != null)

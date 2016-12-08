@@ -309,7 +309,7 @@ namespace Twilio.Rest.Chat.V1
         [JsonProperty("consumption_report_interval")]
         public int? ConsumptionReportInterval { get; private set; }
         [JsonProperty("webhooks")]
-        public Object Webhooks { get; private set; }
+        public object Webhooks { get; private set; }
         [JsonProperty("pre_webhook_url")]
         public string PreWebhookUrl { get; private set; }
         [JsonProperty("post_webhook_url")]
@@ -319,7 +319,7 @@ namespace Twilio.Rest.Chat.V1
         [JsonProperty("webhook_filters")]
         public List<string> WebhookFilters { get; private set; }
         [JsonProperty("notifications")]
-        public Object Notifications { get; private set; }
+        public object Notifications { get; private set; }
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         [JsonProperty("links")]

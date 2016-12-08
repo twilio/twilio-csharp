@@ -28,17 +28,17 @@ namespace Twilio.Rest.Notify.V1
             
             if (ApnCredentialSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ApnCredentialSid", ApnCredentialSid));
+                p.Add(new KeyValuePair<string, string>("ApnCredentialSid", ApnCredentialSid.ToString()));
             }
             
             if (GcmCredentialSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("GcmCredentialSid", GcmCredentialSid));
+                p.Add(new KeyValuePair<string, string>("GcmCredentialSid", GcmCredentialSid.ToString()));
             }
             
             if (MessagingServiceSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid));
+                p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
             }
             
             if (FacebookMessengerPageId != null)
@@ -166,17 +166,17 @@ namespace Twilio.Rest.Notify.V1
             
             if (ApnCredentialSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ApnCredentialSid", ApnCredentialSid));
+                p.Add(new KeyValuePair<string, string>("ApnCredentialSid", ApnCredentialSid.ToString()));
             }
             
             if (GcmCredentialSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("GcmCredentialSid", GcmCredentialSid));
+                p.Add(new KeyValuePair<string, string>("GcmCredentialSid", GcmCredentialSid.ToString()));
             }
             
             if (MessagingServiceSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid));
+                p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
             }
             
             if (FacebookMessengerPageId != null)

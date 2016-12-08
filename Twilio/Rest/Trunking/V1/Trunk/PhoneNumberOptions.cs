@@ -84,7 +84,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var p = new List<KeyValuePair<string, string>>();
             if (PhoneNumberSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("PhoneNumberSid", PhoneNumberSid));
+                p.Add(new KeyValuePair<string, string>("PhoneNumberSid", PhoneNumberSid.ToString()));
             }
             
             return p;

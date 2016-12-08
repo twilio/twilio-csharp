@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (VoiceCallerIdLookup != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.ToString()));
+                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString()));
             }
             
             if (SmsUrl != null)
@@ -272,7 +272,7 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (VoiceCallerIdLookup != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.ToString()));
+                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString()));
             }
             
             if (SmsUrl != null)

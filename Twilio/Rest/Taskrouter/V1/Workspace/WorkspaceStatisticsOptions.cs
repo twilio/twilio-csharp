@@ -31,17 +31,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var p = new List<KeyValuePair<string, string>>();
             if (Minutes != null)
             {
-                p.Add(new KeyValuePair<string, string>("Minutes", Minutes.ToString()));
+                p.Add(new KeyValuePair<string, string>("Minutes", Minutes.Value.ToString()));
             }
             
             if (StartDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
             }
             
             if (EndDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
             }
             
             return p;

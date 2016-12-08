@@ -96,17 +96,17 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var p = new List<KeyValuePair<string, string>>();
             if (Weight != null)
             {
-                p.Add(new KeyValuePair<string, string>("Weight", Weight.ToString()));
+                p.Add(new KeyValuePair<string, string>("Weight", Weight.Value.ToString()));
             }
             
             if (Priority != null)
             {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
+                p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
             }
             
             if (Enabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString()));
             }
             
             if (FriendlyName != null)
@@ -182,17 +182,17 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var p = new List<KeyValuePair<string, string>>();
             if (Weight != null)
             {
-                p.Add(new KeyValuePair<string, string>("Weight", Weight.ToString()));
+                p.Add(new KeyValuePair<string, string>("Weight", Weight.Value.ToString()));
             }
             
             if (Priority != null)
             {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
+                p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
             }
             
             if (Enabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString()));
             }
             
             if (FriendlyName != null)

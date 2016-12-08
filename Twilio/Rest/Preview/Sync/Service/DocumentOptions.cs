@@ -63,7 +63,7 @@ namespace Twilio.Rest.Preview.Sync.Service
     {
         public string ServiceSid { get; }
         public string UniqueName { get; set; }
-        public Object Data { get; set; }
+        public object Data { get; set; }
     
         /// <summary>
         /// Construct a new CreateDocumentOptions
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Preview.Sync.Service
     {
         public string ServiceSid { get; }
         public string Sid { get; }
-        public Object Data { get; }
+        public object Data { get; }
     
         /// <summary>
         /// Construct a new UpdateDocumentOptions
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="sid"> The sid </param>
         /// <param name="data"> The data </param>
-        public UpdateDocumentOptions(string serviceSid, string sid, Object data)
+        public UpdateDocumentOptions(string serviceSid, string sid, object data)
         {
             ServiceSid = serviceSid;
             Sid = sid;

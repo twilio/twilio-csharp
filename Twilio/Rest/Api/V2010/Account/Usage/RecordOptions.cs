@@ -26,12 +26,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             
             if (StartDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             
             if (EndDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             
             if (PageSize != null)

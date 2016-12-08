@@ -85,15 +85,15 @@ namespace Twilio.Rest.Preview.Wireless.Device
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         [JsonProperty("period")]
-        public Object Period { get; private set; }
+        public object Period { get; private set; }
         [JsonProperty("commands_usage")]
-        public Object CommandsUsage { get; private set; }
+        public object CommandsUsage { get; private set; }
         [JsonProperty("commands_costs")]
-        public Object CommandsCosts { get; private set; }
+        public object CommandsCosts { get; private set; }
         [JsonProperty("data_usage")]
-        public Object DataUsage { get; private set; }
+        public object DataUsage { get; private set; }
         [JsonProperty("data_costs")]
-        public Object DataCosts { get; private set; }
+        public object DataCosts { get; private set; }
         [JsonProperty("url")]
         public Uri Url { get; private set; }
     

@@ -77,7 +77,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (Priority != null)
             {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
+                p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
             }
             
             if (TaskChannel != null)
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var p = new List<KeyValuePair<string, string>>();
             if (Priority != null)
             {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
+                p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
             }
             
             if (AssignmentStatus != null)
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (WorkflowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("WorkflowSid", WorkflowSid));
+                p.Add(new KeyValuePair<string, string>("WorkflowSid", WorkflowSid.ToString()));
             }
             
             if (WorkflowName != null)
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (TaskQueueSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("TaskQueueSid", TaskQueueSid));
+                p.Add(new KeyValuePair<string, string>("TaskQueueSid", TaskQueueSid.ToString()));
             }
             
             if (TaskQueueName != null)
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (HasAddons != null)
             {
-                p.Add(new KeyValuePair<string, string>("HasAddons", HasAddons.ToString()));
+                p.Add(new KeyValuePair<string, string>("HasAddons", HasAddons.Value.ToString()));
             }
             
             if (PageSize != null)
@@ -237,17 +237,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (WorkflowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("WorkflowSid", WorkflowSid));
+                p.Add(new KeyValuePair<string, string>("WorkflowSid", WorkflowSid.ToString()));
             }
             
             if (Timeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.ToString()));
+                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.Value.ToString()));
             }
             
             if (Priority != null)
             {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
+                p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
             }
             
             if (TaskChannel != null)

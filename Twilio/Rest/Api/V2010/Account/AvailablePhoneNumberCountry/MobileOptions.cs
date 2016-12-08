@@ -44,7 +44,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             var p = new List<KeyValuePair<string, string>>();
             if (AreaCode != null)
             {
-                p.Add(new KeyValuePair<string, string>("AreaCode", AreaCode.ToString()));
+                p.Add(new KeyValuePair<string, string>("AreaCode", AreaCode.Value.ToString()));
             }
             
             if (Contains != null)
@@ -54,37 +54,37 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             
             if (SmsEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsEnabled", SmsEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("SmsEnabled", SmsEnabled.Value.ToString()));
             }
             
             if (MmsEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("MmsEnabled", MmsEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("MmsEnabled", MmsEnabled.Value.ToString()));
             }
             
             if (VoiceEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceEnabled", VoiceEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("VoiceEnabled", VoiceEnabled.Value.ToString()));
             }
             
             if (ExcludeAllAddressRequired != null)
             {
-                p.Add(new KeyValuePair<string, string>("ExcludeAllAddressRequired", ExcludeAllAddressRequired.ToString()));
+                p.Add(new KeyValuePair<string, string>("ExcludeAllAddressRequired", ExcludeAllAddressRequired.Value.ToString()));
             }
             
             if (ExcludeLocalAddressRequired != null)
             {
-                p.Add(new KeyValuePair<string, string>("ExcludeLocalAddressRequired", ExcludeLocalAddressRequired.ToString()));
+                p.Add(new KeyValuePair<string, string>("ExcludeLocalAddressRequired", ExcludeLocalAddressRequired.Value.ToString()));
             }
             
             if (ExcludeForeignAddressRequired != null)
             {
-                p.Add(new KeyValuePair<string, string>("ExcludeForeignAddressRequired", ExcludeForeignAddressRequired.ToString()));
+                p.Add(new KeyValuePair<string, string>("ExcludeForeignAddressRequired", ExcludeForeignAddressRequired.Value.ToString()));
             }
             
             if (Beta != null)
             {
-                p.Add(new KeyValuePair<string, string>("Beta", Beta.ToString()));
+                p.Add(new KeyValuePair<string, string>("Beta", Beta.Value.ToString()));
             }
             
             if (NearNumber != null)
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             
             if (Distance != null)
             {
-                p.Add(new KeyValuePair<string, string>("Distance", Distance.ToString()));
+                p.Add(new KeyValuePair<string, string>("Distance", Distance.Value.ToString()));
             }
             
             if (InPostalCode != null)

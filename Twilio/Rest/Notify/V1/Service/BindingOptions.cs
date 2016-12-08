@@ -119,7 +119,7 @@ namespace Twilio.Rest.Notify.V1.Service
             
             if (Tag != null)
             {
-                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop.ToString())));
+                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop)));
             }
             
             if (NotificationProtocolVersion != null)
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Notify.V1.Service
             
             if (CredentialSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("CredentialSid", CredentialSid));
+                p.Add(new KeyValuePair<string, string>("CredentialSid", CredentialSid.ToString()));
             }
             
             return p;
@@ -164,22 +164,22 @@ namespace Twilio.Rest.Notify.V1.Service
             var p = new List<KeyValuePair<string, string>>();
             if (StartDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             
             if (EndDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             
             if (Identity != null)
             {
-                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop.ToString())));
+                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
             }
             
             if (Tag != null)
             {
-                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop.ToString())));
+                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop)));
             }
             
             if (PageSize != null)

@@ -84,7 +84,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var p = new List<KeyValuePair<string, string>>();
             if (IpAccessControlListSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("IpAccessControlListSid", IpAccessControlListSid));
+                p.Add(new KeyValuePair<string, string>("IpAccessControlListSid", IpAccessControlListSid.ToString()));
             }
             
             return p;

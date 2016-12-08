@@ -193,7 +193,7 @@ namespace Twilio.Rest.Preview.Wireless
             
             if (RatePlan != null)
             {
-                p.Add(new KeyValuePair<string, string>("RatePlan", RatePlan));
+                p.Add(new KeyValuePair<string, string>("RatePlan", RatePlan.ToString()));
             }
             
             if (SimIdentifier != null)

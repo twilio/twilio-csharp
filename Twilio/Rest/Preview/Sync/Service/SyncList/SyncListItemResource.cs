@@ -158,14 +158,14 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// create
         /// </summary>
-        public static SyncListItemResource Create(string serviceSid, string listSid, Object data, ITwilioRestClient client = null)
+        public static SyncListItemResource Create(string serviceSid, string listSid, object data, ITwilioRestClient client = null)
         {
             var options = new CreateSyncListItemOptions(serviceSid, listSid, data);
             return Create(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(string serviceSid, string listSid, Object data, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(string serviceSid, string listSid, object data, ITwilioRestClient client = null)
         {
             var options = new CreateSyncListItemOptions(serviceSid, listSid, data);
             return await CreateAsync(options, client);
@@ -270,14 +270,14 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// update
         /// </summary>
-        public static SyncListItemResource Update(string serviceSid, string listSid, int? index, Object data, ITwilioRestClient client = null)
+        public static SyncListItemResource Update(string serviceSid, string listSid, int? index, object data, ITwilioRestClient client = null)
         {
             var options = new UpdateSyncListItemOptions(serviceSid, listSid, index, data);
             return Update(options, client);
         }
     
         #if NET40
-        public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(string serviceSid, string listSid, int? index, Object data, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(string serviceSid, string listSid, int? index, object data, ITwilioRestClient client = null)
         {
             var options = new UpdateSyncListItemOptions(serviceSid, listSid, index, data);
             return await UpdateAsync(options, client);
@@ -316,7 +316,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         [JsonProperty("revision")]
         public string Revision { get; private set; }
         [JsonProperty("data")]
-        public Object Data { get; private set; }
+        public object Data { get; private set; }
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         [JsonProperty("date_updated")]

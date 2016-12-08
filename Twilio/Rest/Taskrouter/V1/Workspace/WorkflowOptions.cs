@@ -82,7 +82,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (TaskReservationTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("TaskReservationTimeout", TaskReservationTimeout.ToString()));
+                p.Add(new KeyValuePair<string, string>("TaskReservationTimeout", TaskReservationTimeout.Value.ToString()));
             }
             
             return p;
@@ -202,7 +202,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (TaskReservationTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("TaskReservationTimeout", TaskReservationTimeout.ToString()));
+                p.Add(new KeyValuePair<string, string>("TaskReservationTimeout", TaskReservationTimeout.Value.ToString()));
             }
             
             return p;

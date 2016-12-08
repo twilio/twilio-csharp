@@ -39,7 +39,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (ActivitySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid));
+                p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid.ToString()));
             }
             
             if (Available != null)
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (TaskQueueSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("TaskQueueSid", TaskQueueSid));
+                p.Add(new KeyValuePair<string, string>("TaskQueueSid", TaskQueueSid.ToString()));
             }
             
             if (PageSize != null)
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (ActivitySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid));
+                p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid.ToString()));
             }
             
             if (Attributes != null)
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var p = new List<KeyValuePair<string, string>>();
             if (ActivitySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid));
+                p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid.ToString()));
             }
             
             if (Attributes != null)

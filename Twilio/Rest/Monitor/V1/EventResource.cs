@@ -152,7 +152,7 @@ namespace Twilio.Rest.Monitor.V1
         [JsonProperty("description")]
         public string Description { get; private set; }
         [JsonProperty("event_data")]
-        public Object EventData { get; private set; }
+        public object EventData { get; private set; }
         [JsonProperty("event_date")]
         public DateTime? EventDate { get; private set; }
         [JsonProperty("event_type")]

@@ -125,7 +125,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             
             if (WorkerActivitySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("WorkerActivitySid", WorkerActivitySid));
+                p.Add(new KeyValuePair<string, string>("WorkerActivitySid", WorkerActivitySid.ToString()));
             }
             
             if (Instruction != null)
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             
             if (DequeuePostWorkActivitySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("DequeuePostWorkActivitySid", DequeuePostWorkActivitySid));
+                p.Add(new KeyValuePair<string, string>("DequeuePostWorkActivitySid", DequeuePostWorkActivitySid.ToString()));
             }
             
             if (DequeueFrom != null)
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             
             if (DequeueTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("DequeueTimeout", DequeueTimeout.ToString()));
+                p.Add(new KeyValuePair<string, string>("DequeueTimeout", DequeueTimeout.Value.ToString()));
             }
             
             if (DequeueTo != null)
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             
             if (CallTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallTimeout", CallTimeout.ToString()));
+                p.Add(new KeyValuePair<string, string>("CallTimeout", CallTimeout.Value.ToString()));
             }
             
             if (CallTo != null)
@@ -195,17 +195,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             
             if (CallAccept != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallAccept", CallAccept.ToString()));
+                p.Add(new KeyValuePair<string, string>("CallAccept", CallAccept.Value.ToString()));
             }
             
             if (RedirectCallSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("RedirectCallSid", RedirectCallSid));
+                p.Add(new KeyValuePair<string, string>("RedirectCallSid", RedirectCallSid.ToString()));
             }
             
             if (RedirectAccept != null)
             {
-                p.Add(new KeyValuePair<string, string>("RedirectAccept", RedirectAccept.ToString()));
+                p.Add(new KeyValuePair<string, string>("RedirectAccept", RedirectAccept.Value.ToString()));
             }
             
             if (RedirectUrl != null)

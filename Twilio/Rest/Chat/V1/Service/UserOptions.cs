@@ -92,7 +92,7 @@ namespace Twilio.Rest.Chat.V1.Service
             
             if (RoleSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid));
+                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
             }
             
             if (Attributes != null)
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var p = new List<KeyValuePair<string, string>>();
             if (RoleSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid));
+                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
             }
             
             if (Attributes != null)

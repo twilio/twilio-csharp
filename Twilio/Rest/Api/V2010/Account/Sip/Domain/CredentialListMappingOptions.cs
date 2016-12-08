@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var p = new List<KeyValuePair<string, string>>();
             if (CredentialListSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("CredentialListSid", CredentialListSid));
+                p.Add(new KeyValuePair<string, string>("CredentialListSid", CredentialListSid.ToString()));
             }
             
             return p;

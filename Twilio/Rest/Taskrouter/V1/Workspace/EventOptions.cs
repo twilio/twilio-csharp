@@ -64,7 +64,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var p = new List<KeyValuePair<string, string>>();
             if (EndDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
             }
             
             if (EventType != null)
@@ -74,37 +74,37 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (Minutes != null)
             {
-                p.Add(new KeyValuePair<string, string>("Minutes", Minutes.ToString()));
+                p.Add(new KeyValuePair<string, string>("Minutes", Minutes.Value.ToString()));
             }
             
             if (ReservationSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ReservationSid", ReservationSid));
+                p.Add(new KeyValuePair<string, string>("ReservationSid", ReservationSid.ToString()));
             }
             
             if (StartDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
             }
             
             if (TaskQueueSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("TaskQueueSid", TaskQueueSid));
+                p.Add(new KeyValuePair<string, string>("TaskQueueSid", TaskQueueSid.ToString()));
             }
             
             if (TaskSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("TaskSid", TaskSid));
+                p.Add(new KeyValuePair<string, string>("TaskSid", TaskSid.ToString()));
             }
             
             if (WorkerSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("WorkerSid", WorkerSid));
+                p.Add(new KeyValuePair<string, string>("WorkerSid", WorkerSid.ToString()));
             }
             
             if (WorkflowSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("WorkflowSid", WorkflowSid));
+                p.Add(new KeyValuePair<string, string>("WorkflowSid", WorkflowSid.ToString()));
             }
             
             if (PageSize != null)

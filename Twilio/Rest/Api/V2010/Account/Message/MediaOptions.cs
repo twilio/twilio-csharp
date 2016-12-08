@@ -87,18 +87,18 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var p = new List<KeyValuePair<string, string>>();
             if (DateCreated != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.ToString()));
             }
             else
             {
                 if (DateCreatedBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.ToString()));
                 }
             
                 if (DateCreatedAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.ToString()));
                 }
             }
             

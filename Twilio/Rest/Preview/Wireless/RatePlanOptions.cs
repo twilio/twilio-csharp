@@ -84,12 +84,12 @@ namespace Twilio.Rest.Preview.Wireless
             
             if (Roaming != null)
             {
-                p.AddRange(Roaming.Select(prop => new KeyValuePair<string, string>("Roaming", prop.ToString())));
+                p.AddRange(Roaming.Select(prop => new KeyValuePair<string, string>("Roaming", prop)));
             }
             
             if (DataLimit != null)
             {
-                p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.ToString()));
+                p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.Value.ToString()));
             }
             
             if (DataMetering != null)
@@ -99,12 +99,12 @@ namespace Twilio.Rest.Preview.Wireless
             
             if (CommandsEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("CommandsEnabled", CommandsEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("CommandsEnabled", CommandsEnabled.Value.ToString()));
             }
             
             if (RenewalPeriod != null)
             {
-                p.Add(new KeyValuePair<string, string>("RenewalPeriod", RenewalPeriod.ToString()));
+                p.Add(new KeyValuePair<string, string>("RenewalPeriod", RenewalPeriod.Value.ToString()));
             }
             
             if (RenewalUnits != null)

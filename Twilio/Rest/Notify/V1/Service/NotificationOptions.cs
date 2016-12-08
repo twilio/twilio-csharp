@@ -21,7 +21,7 @@ namespace Twilio.Rest.Notify.V1.Service
         public string Apn { get; set; }
         public string Gcm { get; set; }
         public string Sms { get; set; }
-        public Object FacebookMessenger { get; set; }
+        public object FacebookMessenger { get; set; }
     
         /// <summary>
         /// Construct a new CreateNotificationOptions
@@ -43,12 +43,12 @@ namespace Twilio.Rest.Notify.V1.Service
             var p = new List<KeyValuePair<string, string>>();
             if (Identity != null)
             {
-                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop.ToString())));
+                p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
             }
             
             if (Tag != null)
             {
-                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop.ToString())));
+                p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop)));
             }
             
             if (Body != null)
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Notify.V1.Service
             
             if (Ttl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
             
             if (Title != null)

@@ -73,17 +73,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (ReservationActivitySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ReservationActivitySid", ReservationActivitySid));
+                p.Add(new KeyValuePair<string, string>("ReservationActivitySid", ReservationActivitySid.ToString()));
             }
             
             if (AssignmentActivitySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("AssignmentActivitySid", AssignmentActivitySid));
+                p.Add(new KeyValuePair<string, string>("AssignmentActivitySid", AssignmentActivitySid.ToString()));
             }
             
             if (MaxReservedWorkers != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxReservedWorkers", MaxReservedWorkers.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxReservedWorkers", MaxReservedWorkers.Value.ToString()));
             }
             
             if (TaskOrder != null)
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (WorkerSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("WorkerSid", WorkerSid));
+                p.Add(new KeyValuePair<string, string>("WorkerSid", WorkerSid.ToString()));
             }
             
             if (PageSize != null)
@@ -181,12 +181,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (ReservationActivitySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("ReservationActivitySid", ReservationActivitySid));
+                p.Add(new KeyValuePair<string, string>("ReservationActivitySid", ReservationActivitySid.ToString()));
             }
             
             if (AssignmentActivitySid != null)
             {
-                p.Add(new KeyValuePair<string, string>("AssignmentActivitySid", AssignmentActivitySid));
+                p.Add(new KeyValuePair<string, string>("AssignmentActivitySid", AssignmentActivitySid.ToString()));
             }
             
             if (TargetWorkers != null)
@@ -196,7 +196,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (MaxReservedWorkers != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxReservedWorkers", MaxReservedWorkers.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxReservedWorkers", MaxReservedWorkers.Value.ToString()));
             }
             
             if (TaskOrder != null)

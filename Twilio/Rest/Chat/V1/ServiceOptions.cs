@@ -196,42 +196,42 @@ namespace Twilio.Rest.Chat.V1
             
             if (DefaultServiceRoleSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("DefaultServiceRoleSid", DefaultServiceRoleSid));
+                p.Add(new KeyValuePair<string, string>("DefaultServiceRoleSid", DefaultServiceRoleSid.ToString()));
             }
             
             if (DefaultChannelRoleSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("DefaultChannelRoleSid", DefaultChannelRoleSid));
+                p.Add(new KeyValuePair<string, string>("DefaultChannelRoleSid", DefaultChannelRoleSid.ToString()));
             }
             
             if (DefaultChannelCreatorRoleSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("DefaultChannelCreatorRoleSid", DefaultChannelCreatorRoleSid));
+                p.Add(new KeyValuePair<string, string>("DefaultChannelCreatorRoleSid", DefaultChannelCreatorRoleSid.ToString()));
             }
             
             if (ReadStatusEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("ReadStatusEnabled", ReadStatusEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("ReadStatusEnabled", ReadStatusEnabled.Value.ToString()));
             }
             
             if (ReachabilityEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("ReachabilityEnabled", ReachabilityEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("ReachabilityEnabled", ReachabilityEnabled.Value.ToString()));
             }
             
             if (TypingIndicatorTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("TypingIndicatorTimeout", TypingIndicatorTimeout.ToString()));
+                p.Add(new KeyValuePair<string, string>("TypingIndicatorTimeout", TypingIndicatorTimeout.Value.ToString()));
             }
             
             if (ConsumptionReportInterval != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConsumptionReportInterval", ConsumptionReportInterval.ToString()));
+                p.Add(new KeyValuePair<string, string>("ConsumptionReportInterval", ConsumptionReportInterval.Value.ToString()));
             }
             
             if (NotificationsNewMessageEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Enabled", NotificationsNewMessageEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Enabled", NotificationsNewMessageEnabled.Value.ToString()));
             }
             
             if (NotificationsNewMessageTemplate != null)
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Chat.V1
             
             if (NotificationsAddedToChannelEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Enabled", NotificationsAddedToChannelEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Enabled", NotificationsAddedToChannelEnabled.Value.ToString()));
             }
             
             if (NotificationsAddedToChannelTemplate != null)
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Chat.V1
             
             if (NotificationsRemovedFromChannelEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Enabled", NotificationsRemovedFromChannelEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Enabled", NotificationsRemovedFromChannelEnabled.Value.ToString()));
             }
             
             if (NotificationsRemovedFromChannelTemplate != null)
@@ -261,7 +261,7 @@ namespace Twilio.Rest.Chat.V1
             
             if (NotificationsInvitedToChannelEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Enabled", NotificationsInvitedToChannelEnabled.ToString()));
+                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Enabled", NotificationsInvitedToChannelEnabled.Value.ToString()));
             }
             
             if (NotificationsInvitedToChannelTemplate != null)
@@ -286,7 +286,7 @@ namespace Twilio.Rest.Chat.V1
             
             if (WebhookFilters != null)
             {
-                p.AddRange(WebhookFilters.Select(prop => new KeyValuePair<string, string>("WebhookFilters", prop.ToString())));
+                p.AddRange(WebhookFilters.Select(prop => new KeyValuePair<string, string>("WebhookFilters", prop)));
             }
             
             if (WebhooksOnMessageSendUrl != null)

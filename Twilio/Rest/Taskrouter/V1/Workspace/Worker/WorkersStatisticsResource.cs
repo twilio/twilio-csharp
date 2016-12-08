@@ -81,9 +81,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         [JsonProperty("cumulative")]
-        public Object Cumulative { get; private set; }
+        public object Cumulative { get; private set; }
         [JsonProperty("realtime")]
-        public Object Realtime { get; private set; }
+        public object Realtime { get; private set; }
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
     
