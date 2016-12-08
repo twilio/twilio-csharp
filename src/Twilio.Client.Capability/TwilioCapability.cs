@@ -38,20 +38,29 @@ namespace Twilio
 		/// <param name="clientName">The client name to register</param>
 		public void AllowClientIncoming(string clientName)
 		{
-			// clientName must be a non-zero length alphanumeric string
-			if (Regex.IsMatch(clientName, @"\W"))
-			{
-				throw new ArgumentException("Only alphanumeric characters allowed in client name.");
-			}
-
-			if (string.IsNullOrEmpty(clientName))
-			{
-				throw new ArgumentException("Client name must not be a zero length string or NULL.");
-			}
-
-			_clientName = clientName;
+			ClientName = clientName;
 			Allow("client", "incoming", null);
 		}
+
+	       public string ClientName
+	       {
+	                get { return _clientName;}
+	                set 
+	                {
+				// clientName must be a non-zero length alphanumeric string
+				if (Regex.IsMatch(clientName, @"\W"))
+				{
+					throw new ArgumentException("Only alphanumeric characters allowed in client name.");
+				}
+	
+				if (string.IsNullOrEmpty(clientName))
+				{
+					throw new ArgumentException("Client name must not be a zero length string or NULL.");
+				}
+	
+				_clientName = value;
+	                }
+	       }
 
 		/// <summary>
 		/// Allow the Twilio Client device to place outgoing calls to the specified Application.
