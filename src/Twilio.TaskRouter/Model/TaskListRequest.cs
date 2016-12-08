@@ -43,6 +43,10 @@ namespace Twilio.TaskRouter
         /// Gets or sets the count.
         /// </summary>
         public int? Count { get; set; }
+        /// <summary>
+        /// Gets or sets the task attributes.
+        /// </summary>
+        public string EvaluateTaskAttributes { get; set; }
     }
 }
 
