@@ -59,7 +59,7 @@ namespace Twilio.Lookups.Tests
                 .Returns(new Number());
             var client = mockClient.Object;
 
-            client.GetPhoneNumber(NUMBER, true);
+            client.GetPhoneNumber(NUMBER, true, false);
 
             mockClient.Verify(trc => trc.Execute<Number>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
@@ -81,7 +81,7 @@ namespace Twilio.Lookups.Tests
                 .Returns(new Number());
             var client = mockClient.Object;
 
-            client.GetPhoneNumber(NUMBER_LOCALIZED, "US", true);
+            client.GetPhoneNumber(NUMBER_LOCALIZED, "US", true, false);
 
             mockClient.Verify(trc => trc.Execute<Number>(It.IsAny<IRestRequest>()), Times.Once);
             Assert.IsNotNull(savedRequest);
