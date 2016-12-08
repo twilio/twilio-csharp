@@ -30,6 +30,8 @@ namespace Twilio.TaskRouter
             request.AddParameter("FriendlyName", friendlyName);
             request.AddParameter("AssignmentActivitySid", assignmentActivitySid);
             request.AddParameter("ReservationActivitySid", reservationActivitySid);
+            if (targetWorkers.HasValue())
+                request.AddParameter("TargetWorkers", targetWorkers);
             if (maxReservedWorkers.HasValue)
                 request.AddParameter("MaxReservedWorkers", maxReservedWorkers);
 

@@ -14,8 +14,10 @@ namespace Twilio.TaskRouter
         /// <param name="friendlyName">Friendly name.</param>
         /// <param name="assignmentActivitySid">Assignment activity sid.</param>
         /// <param name="reservationActivitySid">Reservation activity sid.</param>
+        /// <param name="targetWorkers">Target workers expression.</param>
+        /// <param name="maxReservedWorkers">Optional max reserved workers</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void AddTaskQueue(string workspaceSid, string friendlyName, string assignmentActivitySid, string reservationActivitySid, Action<TaskQueue> callback)
+        public virtual void AddTaskQueue(string workspaceSid, string friendlyName, string assignmentActivitySid, string reservationActivitySid, string targetWorkers, int? maxReservedWorkers, Action<TaskQueue> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("FriendlyName", friendlyName);
@@ -29,6 +31,10 @@ namespace Twilio.TaskRouter
             request.AddParameter("FriendlyName", friendlyName);
             request.AddParameter("AssignmentActivitySid", assignmentActivitySid);
             request.AddParameter("ReservationActivitySid", reservationActivitySid);
+            if (targetWorkers.HasValue())
+                request.AddParameter("TargetWorkers", targetWorkers);
+            if (maxReservedWorkers.HasValue)
+                request.AddParameter("MaxReservedWorkers", maxReservedWorkers);
 
             ExecuteAsync<TaskQueue>(request, (response) => { callback(response); });
         }
@@ -125,8 +131,9 @@ namespace Twilio.TaskRouter
         /// <param name="assignmentActivitySid">Optional assignment activity sid.</param>
         /// <param name="reservationActivitySid">Optional reservation activity sid.</param>
         /// <param name="targetWorkers">Optional target workers.</param>
+        /// <param name="maxReservedWorkers">Optional max reserved workers</param>
         /// <param name="callback">Method to call upon successful completion</param>
-        public virtual void UpdateTaskQueue(string workspaceSid, string taskQueueSid, string friendlyName, string assignmentActivitySid, string reservationActivitySid, string targetWorkers, Action<TaskQueue> callback)
+        public virtual void UpdateTaskQueue(string workspaceSid, string taskQueueSid, string friendlyName, string assignmentActivitySid, string reservationActivitySid, string targetWorkers, int? maxReservedWorkers, Action<TaskQueue> callback)
         {
             Require.Argument("WorkspaceSid", workspaceSid);
             Require.Argument("TaskQueueSid", taskQueueSid);
@@ -144,6 +151,8 @@ namespace Twilio.TaskRouter
                 request.AddParameter("ReservationActivitySid", reservationActivitySid);
             if (targetWorkers.HasValue())
                 request.AddParameter("TargetWorkers", targetWorkers);
+            if (maxReservedWorkers.HasValue)
+                request.AddParameter("MaxReservedWorkers", maxReservedWorkers);
 
             ExecuteAsync<TaskQueue>(request, (response) => { callback(response); });
         }
