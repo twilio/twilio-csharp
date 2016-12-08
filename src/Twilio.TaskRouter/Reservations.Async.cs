@@ -151,6 +151,12 @@ namespace Twilio.TaskRouter
         /// <param name="redirectAccept">Optional Redirect Accept.</param>
         /// <param name="redirectUrl">Optional Redirect Url.</param>
         /// <param name="callback">Method to call upon successful completion</param>
+        /// <param name="conferenceRoomName">Optional Conference Room Name.</param>
+        /// <param name="conferenceTo">Optional Conference To.</param>
+        /// <param name="conferenceFrom">Optional Conference From.</param>
+        /// <param name="conferencePostWorkActivitySid">Optional Conference Post Work Activity Sid.<param>
+        /// <param name="conferenceTimeout>Optional Conference Timeout.</param>
+        /// <param name="conferenceStatusCallbackUrl">Optional Conference Status Callback Url.</param>
         public virtual void UpdateReservation(
             string workspaceSid,
             string resource,
@@ -175,7 +181,13 @@ namespace Twilio.TaskRouter
             string callAccept = null,
             string redirectCallSid = null,
             string redirectAccept = null,
-            string redirectUrl = null
+            string redirectUrl = null,
+            string conferenceRoomName = null,
+            string conferenceTo = null,
+            string conferenceFrom = null,
+            string conferencePostWorkActivitySid = null,
+            string conferenceTimeout = null,
+            string conferenceStatusCallbackUrl = null
         )
         {
             Require.Argument("WorkspaceSid", workspaceSid);
@@ -248,6 +260,24 @@ namespace Twilio.TaskRouter
 
             if (!String.IsNullOrEmpty(redirectUrl))
                 request.AddParameter("RedirectUrl", redirectUrl);
+
+            if (!String.IsNullOrEmpty(conferenceRoomName))
+                request.AddParameter("ConferenceRoomName", conferenceRoomName);
+
+            if (!String.IsNullOrEmpty(conferenceTo))
+                request.AddParameter("ConferenceTo", conferenceTo);
+
+            if (!String.IsNullOrEmpty(conferenceFrom))
+                request.AddParameter("ConferenceFrom", conferenceFrom);
+
+            if (!String.IsNullOrEmpty(conferencePostWorkActivitySid))
+                request.AddParameter("ConferencePostWorkActivitySid", conferencePostWorkActivitySid);
+
+            if (!String.IsNullOrEmpty(conferenceTimeout))
+                request.AddParameter("ConferenceTimeout", conferenceTimeout);
+
+            if (!String.IsNullOrEmpty(conferenceStatusCallbackUrl))
+                request.AddParameter("ConferenceStatusCallbackUrl", conferenceStatusCallbackUrl);
 
             ExecuteAsync<Reservation>(request, (response) => { callback(response); });
         }

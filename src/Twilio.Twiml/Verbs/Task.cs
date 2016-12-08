@@ -16,6 +16,7 @@ namespace Twilio.TwiML
         {
             Element = new XElement("Task", taskattributes);
 
+            AllowedAttributes.Add("workflowSid");
             AllowedAttributes.Add("priority");
             AllowedAttributes.Add("timeout");
         }
