@@ -34,7 +34,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             var p = new List<KeyValuePair<string, string>>();
             if (EndDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
+                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             
             if (Minutes != null)
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             
             if (StartDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
+                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             
             return p;
