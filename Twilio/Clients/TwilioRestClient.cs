@@ -60,6 +60,12 @@ namespace Twilio.Clients
 	    }
 
 	    #if NET40
+	    /// <summary>
+	    /// Make a request to the Twilio API
+	    /// </summary>
+	    ///
+	    /// <param name="request">request to make</param>
+	    /// <returns>Task that resolves to the response of the request</returns>
 	    public async Task<Response> RequestAsync(Request request)
 	    {
 	        request.SetAuth(_username, _password);

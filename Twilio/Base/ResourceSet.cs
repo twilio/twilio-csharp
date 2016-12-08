@@ -12,6 +12,9 @@ namespace Twilio.Base
     /// <typeparam name="T">Resource Type</typeparam>
 	public class ResourceSet<T> : IEnumerable<T> where T : Resource
 	{
+	    /// <summary>
+	    /// Automatically iterate through pages of results
+	    /// </summary>
 	    public bool AutoPaging { get; set; }
 
 	    private readonly ITwilioRestClient _client;
@@ -49,6 +52,49 @@ namespace Twilio.Base
 	        }
 	    }
 
+	    /// <summary>
+	    /// Get iterator for resources
+	    /// </summary>
+	    ///
+	    /// <returns>IEnumerator of resources</returns>
+	    public IEnumerator<T> GetEnumerator()
+	    {
+	        while (_page != null)
+	        {
+	            _iterator.Reset();
+	            while (_iterator.MoveNext())
+	            {
+	                // Exit if we've reached item limit
+	                if (_options.Limit != null && _processed > _options.Limit.Value)
+	                {
+	                    yield break;
+	                }
+
+	                _processed++;
+	                yield return _iterator.Current;
+	            }
+
+	            if (AutoPaging && _page.HasNextPage())
+	            {
+	                FetchNextPage();
+	            }
+	            else
+	            {
+	                break;
+	            }
+	        }
+	    }
+
+	    /// <summary>
+	    /// Get iterator for resources
+	    /// </summary>
+	    ///
+	    /// <returns>IEnumerator of resources</returns>
+	    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+	    {
+	        return GetEnumerator();
+	    }
+
 	    private void FetchNextPage()
 	    {
 	        if (!_page.HasNextPage() || _pages >= _pageLimit)
@@ -71,48 +117,5 @@ namespace Twilio.Base
 	        return typeof(T).GetMethod("NextPage", new[]{ typeof(Page<T>), typeof(ITwilioRestClient) });
             #endif
 	    }
-
-	    /// <summary>
-	    /// Get iterator for resources
-	    /// </summary>
-	    ///
-	    /// <returns>IEnumerator of resources</returns>
-	    public IEnumerator<T> GetEnumerator()
-	    {
-			while (_page != null)
-			{
-				_iterator.Reset();
-				while (_iterator.MoveNext())
-				{
-				    // Exit if we've reached item limit
-				    if (_options.Limit != null && _processed > _options.Limit.Value)
-				    {
-				        yield break;
-				    }
-
-				    _processed++;
-					yield return _iterator.Current;
-				}
-
-				if (AutoPaging && _page.HasNextPage())
-				{
-					FetchNextPage();
-				}
-				else
-				{
-				    break;
-				}
-			}
-		}
-
-	    /// <summary>
-	    /// Get iterator for resources
-	    /// </summary>
-	    ///
-	    /// <returns>IEnumerator of resources</returns>
-	    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-		{
-			return GetEnumerator();
-		}
     }
 }
