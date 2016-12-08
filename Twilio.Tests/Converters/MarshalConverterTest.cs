@@ -7,14 +7,16 @@ namespace Twilio.Tests.Converters
     public class MarshalConverterTest : TwilioTest {
         
         [Test]
-        public void TestDifferentDateTimeParsing() {
+        public void TestDifferentDateTimeParsing()
+        {
             var dtIso = MarshalConverter.DateTimeFromString("2016-06-07T16:31:31Z");
             var dtRfc = MarshalConverter.DateTimeFromString("Tue, 07 Jun 2016 16:31:31 +0000");
             Assert.AreEqual(dtIso,dtRfc);
         }
 
         [Test]
-        public void TestIsoCorrectness() {
+        public void TestIsoCorrectness()
+        {
             var dtIso = MarshalConverter.DateTimeFromString("2016-06-07T16:31:31Z");
             Assert.AreEqual(dtIso.Day, 7);
             Assert.AreEqual(dtIso.Month, 6);
@@ -25,7 +27,8 @@ namespace Twilio.Tests.Converters
         }
 
         [Test]
-        public void TestRfcCorrectness() {
+        public void TestRfcCorrectness()
+        {
             var dtRfc = MarshalConverter.DateTimeFromString("Tue, 07 Jun 2016 16:31:31 +0000");
             Assert.AreEqual(dtRfc.Day, 7);
             Assert.AreEqual(dtRfc.Month, 6);

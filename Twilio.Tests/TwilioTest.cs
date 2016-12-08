@@ -4,14 +4,8 @@ namespace Twilio.Tests
 {
 	public class TwilioTest
 	{
-		public TwilioTest()
-		{
-	
-		}
-
-		public string Serialize(Object obj) {
-			return obj.ToString();
-		}
+	    public string Serialize(object obj) => obj.ToString();
+	    public string Serialize(DateTime date) => date.ToString("yyyy-MM-dd");
 	}
 }
 
