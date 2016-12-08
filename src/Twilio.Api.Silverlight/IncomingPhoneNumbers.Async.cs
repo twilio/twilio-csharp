@@ -281,6 +281,7 @@ namespace Twilio
 			// some check for null. in those cases an empty string is a valid value (to remove a URL assignment)
 			if (options.VoiceApplicationSid != null) request.AddParameter("VoiceApplicationSid", options.VoiceApplicationSid);
 
+			if (options.ApiVersion != null) request.AddParameter("ApiVersion", options.ApiVersion);
 			if (options.VoiceUrl != null) request.AddParameter("VoiceUrl", options.VoiceUrl);
 			if (options.VoiceMethod.HasValue()) request.AddParameter("VoiceMethod", options.VoiceMethod.ToString());
 			if (options.VoiceFallbackUrl != null) request.AddParameter("VoiceFallbackUrl", options.VoiceFallbackUrl);
