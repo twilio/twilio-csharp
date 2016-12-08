@@ -11,11 +11,15 @@
     "task_queues_statistics":[
         {
             "cumulative":{
+                "reservations_created":0,
                 "reservations_accepted":0,
                 "reservations_rejected":0,
                 "reservations_timed_out":0,
+                "reservations_canceled":0,
+                "reservations_rescinded":0,
                 "tasks_entered":0,
                 "tasks_canceled":0,
+                "tasks_deleted":0,
                 "tasks_moved":0,
                 "avg_task_acceptance_time":0.0,
                 "start_time":"2014-09-19T19:07:00Z",
@@ -32,6 +36,7 @@
                     "assigned":0,
                     "reserved":0
                 },
+                "tasks_by_priority":{},
                 "activity_statistics":[
                     {
                         "sid":"WA79bcc984ca4fe04a31f2f91807a53ca0",
@@ -61,11 +66,15 @@
         },
         {
             "cumulative":{
+                "reservations_created":0,
                 "reservations_accepted":0,
                 "reservations_rejected":0,
                 "reservations_timed_out":0,
+                "reservations_canceled":0,
+                "reservations_rescinded":0,
                 "tasks_entered":0,
                 "tasks_canceled":0,
+                "tasks_deleted":0,
                 "tasks_moved":0,
                 "avg_task_acceptance_time":0.0,
                 "start_time":"Fri, 19 Sep 2014 19:07:00 +0000",

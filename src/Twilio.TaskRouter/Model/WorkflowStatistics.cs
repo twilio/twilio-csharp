@@ -43,6 +43,10 @@ namespace Twilio.TaskRouter
             /// </summary>
             public DateTimeOffset? EndTime { get; set; }
             /// <summary>
+            /// Gets or sets the reservations created.
+            /// </summary>
+            public int? ReservationsCreated { get; set; }
+            /// <summary>
             /// Gets or sets the reservations accepted.
             /// </summary>
             public int? ReservationsAccepted { get; set; }
@@ -55,6 +59,14 @@ namespace Twilio.TaskRouter
             /// </summary>
             public int? ReservationsTimedOut { get; set; }
             /// <summary>
+            /// Gets or sets the reservations canceled.
+            /// </summary>
+            public int? ReservationsCanceled { get; set; }
+            /// <summary>
+            /// Gets or sets the reservations rescinded.
+            /// </summary>
+            public int? ReservationsRescinded { get; set; }
+            /// <summary>
             /// Gets or sets the tasks entered.
             /// </summary>
             public int? TasksEntered { get; set; }
@@ -62,6 +74,10 @@ namespace Twilio.TaskRouter
             /// Gets or sets the tasks canceled.
             /// </summary>
             public int? TasksCanceled { get; set; }
+            /// <summary>
+            /// Gets or sets the tasks deleted.
+            /// </summary>
+            public int? TasksDeleted { get; set; }
             /// <summary>
             /// Gets or sets the tasks moved.
             /// </summary>
@@ -98,6 +114,10 @@ namespace Twilio.TaskRouter
             /// Gets or sets the tasks by status.
             /// </summary>
             public TasksByStatus TasksByStatus { get; set; }
+            /// <summary>
+            /// Gets or sets the tasks by priority.
+            /// </summary>
+            public Dictionary<string, int> TasksByPriority { get; set; }
         }
 
         /// <summary>

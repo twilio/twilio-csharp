@@ -7,6 +7,9 @@
          "pending":0,
          "assigned":1,
          "reserved":0
+      },
+      "tasks_by_priority":{
+         "5":1
       }
    },
    "account_sid":"ACe0228445f532b79547997ce0a552cc7a",
@@ -15,11 +18,15 @@
    "cumulative":{
       "start_time":"2014-08-06T22:24:00Z",
       "end_time":"2014-08-06T22:39:00Z",
+      "reservations_created":0,
       "reservations_accepted":0,
       "reservations_rejected":0,
       "reservations_timed_out":0,
+      "reservations_canceled":0,
+      "reservations_rescinded":0,
       "tasks_entered":0,
       "tasks_canceled":0,
+      "tasks_deleted":0,
       "tasks_moved":0,
       "avg_task_acceptance_time":0.0,
       "tasks_timed_out_in_workflow":0
