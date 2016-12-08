@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Twilio.Mvc</id>
-		<version>3.2.1</version>
+		<version>3.2.2</version>
 		<authors>Twilio</authors>
 		<description>Twilio helpers for ASP.NET MVC</description>
 		<language>en-US</language>
@@ -11,10 +11,11 @@
 		<licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
 		<tags>REST SMS voice telephony phone twilio twiml</tags>
 		<dependencies>
-			<dependency id="Twilio" />
-			<dependency id="Twilio.TwiML" />
+			<dependency id="Twilio.TwiML" version="[3.5,4)" />
 		</dependencies>
     <releaseNotes>
+      * 3.2.2 - Remove unneeded dependency on Twilio package
+              - Update version of Twilio.TwiML dependency 
       * 3.2.1 - Address XXE vulnerability in TwiMLResult
       * 3.2.0 - Add GetNextPage and GetPreviousPage
               - Deprecate absolute paging
