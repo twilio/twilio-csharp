@@ -144,6 +144,7 @@ namespace Twilio.TaskRouter
         /// <param name="dequeueTimeout">Optional Dequeue Timeout.</param>
         /// <param name="dequeueTo">Optional Dequeue To.</param>
         /// <param name="dequeueStatusCallbackUrl">Optional Dequeue Status Callback Url.</param>
+        /// <param name="dequeueStatusCallbackEvents">Optional Dequeue Status Callback Events.</param>
         /// <param name="callFrom">Optional Call From.</param>
         /// <param name="callRecord">Optional Call Record.</param>
         /// <param name="callTimeout">Optional Call Timeout.</param>
@@ -168,6 +169,7 @@ namespace Twilio.TaskRouter
             string dequeueTimeout = null,
             string dequeueTo = null,
             string dequeueStatusCallbackUrl = null,
+            string dequeueStatusCallbackEvents = null,
             string callFrom = null,
             string callRecord = null,
             string callTimeout = null,
@@ -218,6 +220,13 @@ namespace Twilio.TaskRouter
 
             if (!String.IsNullOrEmpty(dequeueStatusCallbackUrl))
                 request.AddParameter("DequeueStatusCallbackUrl", dequeueStatusCallbackUrl);
+
+            if (!String.IsNullOrEmpty(dequeueStatusCallbackEvents)) {
+                string[] callEvents = dequeueStatusCallbackEvents.Split(',');
+                foreach (string callEvent in callEvents) {
+                    request.AddParameter("DequeueStatusCallbackEvents", callEvent);
+                }
+            }
 
             if (!String.IsNullOrEmpty(callFrom))
                 request.AddParameter("CallFrom", callFrom);
