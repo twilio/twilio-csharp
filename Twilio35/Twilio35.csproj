@@ -62,6 +62,7 @@
     <Compile Include="..\Twilio\JWT\TwilioCapability.cs"><Link>JWT\TwilioCapability.cs</Link></Compile>
     <Compile Include="..\Twilio\Properties\AssemblyInfo.cs"><Link>Properties\AssemblyInfo.cs</Link></Compile>
     <Compile Include="..\Twilio\Rest\Domain.cs"><Link>Rest\Domain.cs</Link></Compile>
+    <Compile Include="..\Twilio\Security\RequestValidator.cs"><Link>Security\RequestValidator.cs</Link></Compile>
     <Compile Include="..\Twilio\Types\IEndpoint.cs"><Link>Types\IEndpoint.cs</Link></Compile>
     <Compile Include="..\Twilio\Types\Client.cs"><Link>Types\Client.cs</Link></Compile>
     <Compile Include="..\Twilio\Types\PhoneNumber.cs"><Link>Types\PhoneNumber.cs</Link></Compile>

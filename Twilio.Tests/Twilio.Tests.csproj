@@ -178,6 +178,7 @@
     <Compile Include="Converters/*.cs" />
     <Compile Include="JWT/*.cs" />
     <Compile Include="TwiML/*.cs" />
+    <Compile Include="Security/*.cs" />
     <Compile Include="TwilioTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
