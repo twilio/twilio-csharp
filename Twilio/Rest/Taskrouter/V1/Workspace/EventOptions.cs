@@ -8,7 +8,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class FetchEventOptions : IOptions<EventResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -35,15 +41,45 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class ReadEventOptions : ReadOptions<EventResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The end_date
+        /// </summary>
         public DateTime? EndDate { get; set; }
+        /// <summary>
+        /// The event_type
+        /// </summary>
         public string EventType { get; set; }
+        /// <summary>
+        /// The minutes
+        /// </summary>
         public int? Minutes { get; set; }
+        /// <summary>
+        /// The reservation_sid
+        /// </summary>
         public string ReservationSid { get; set; }
+        /// <summary>
+        /// The start_date
+        /// </summary>
         public DateTime? StartDate { get; set; }
+        /// <summary>
+        /// The task_queue_sid
+        /// </summary>
         public string TaskQueueSid { get; set; }
+        /// <summary>
+        /// The task_sid
+        /// </summary>
         public string TaskSid { get; set; }
+        /// <summary>
+        /// The worker_sid
+        /// </summary>
         public string WorkerSid { get; set; }
+        /// <summary>
+        /// The workflow_sid
+        /// </summary>
         public string WorkflowSid { get; set; }
     
         /// <summary>

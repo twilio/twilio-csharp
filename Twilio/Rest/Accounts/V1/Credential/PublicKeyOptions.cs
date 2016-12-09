@@ -24,8 +24,17 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
     public class CreatePublicKeyOptions : IOptions<PublicKeyResource> 
     {
+        /// <summary>
+        /// The public_key
+        /// </summary>
         public string PublicKey { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
     
         /// <summary>
@@ -65,6 +74,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
     public class FetchPublicKeyOptions : IOptions<PublicKeyResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -89,7 +101,13 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
     public class UpdatePublicKeyOptions : IOptions<PublicKeyResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>
@@ -119,6 +137,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
     public class DeletePublicKeyOptions : IOptions<PublicKeyResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

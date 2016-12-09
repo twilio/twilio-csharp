@@ -7,23 +7,77 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
 
     public class ReadTollFreeOptions : ReadOptions<TollFreeResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The country_code
+        /// </summary>
         public string CountryCode { get; }
+        /// <summary>
+        /// The area_code
+        /// </summary>
         public int? AreaCode { get; set; }
+        /// <summary>
+        /// The contains
+        /// </summary>
         public string Contains { get; set; }
+        /// <summary>
+        /// The sms_enabled
+        /// </summary>
         public bool? SmsEnabled { get; set; }
+        /// <summary>
+        /// The mms_enabled
+        /// </summary>
         public bool? MmsEnabled { get; set; }
+        /// <summary>
+        /// The voice_enabled
+        /// </summary>
         public bool? VoiceEnabled { get; set; }
+        /// <summary>
+        /// The exclude_all_address_required
+        /// </summary>
         public bool? ExcludeAllAddressRequired { get; set; }
+        /// <summary>
+        /// The exclude_local_address_required
+        /// </summary>
         public bool? ExcludeLocalAddressRequired { get; set; }
+        /// <summary>
+        /// The exclude_foreign_address_required
+        /// </summary>
         public bool? ExcludeForeignAddressRequired { get; set; }
+        /// <summary>
+        /// The beta
+        /// </summary>
         public bool? Beta { get; set; }
+        /// <summary>
+        /// The near_number
+        /// </summary>
         public Types.PhoneNumber NearNumber { get; set; }
+        /// <summary>
+        /// The near_lat_long
+        /// </summary>
         public string NearLatLong { get; set; }
+        /// <summary>
+        /// The distance
+        /// </summary>
         public int? Distance { get; set; }
+        /// <summary>
+        /// The in_postal_code
+        /// </summary>
         public string InPostalCode { get; set; }
+        /// <summary>
+        /// The in_region
+        /// </summary>
         public string InRegion { get; set; }
+        /// <summary>
+        /// The in_rate_center
+        /// </summary>
         public string InRateCenter { get; set; }
+        /// <summary>
+        /// The in_lata
+        /// </summary>
         public string InLata { get; set; }
     
         /// <summary>

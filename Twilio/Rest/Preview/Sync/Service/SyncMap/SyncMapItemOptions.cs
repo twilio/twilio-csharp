@@ -7,8 +7,17 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
     public class FetchSyncMapItemOptions : IOptions<SyncMapItemResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The map_sid
+        /// </summary>
         public string MapSid { get; }
+        /// <summary>
+        /// The key
+        /// </summary>
         public string Key { get; }
     
         /// <summary>
@@ -37,8 +46,17 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
     public class DeleteSyncMapItemOptions : IOptions<SyncMapItemResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The map_sid
+        /// </summary>
         public string MapSid { get; }
+        /// <summary>
+        /// The key
+        /// </summary>
         public string Key { get; }
     
         /// <summary>
@@ -67,9 +85,21 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
     public class CreateSyncMapItemOptions : IOptions<SyncMapItemResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The map_sid
+        /// </summary>
         public string MapSid { get; }
+        /// <summary>
+        /// The key
+        /// </summary>
         public string Key { get; }
+        /// <summary>
+        /// The data
+        /// </summary>
         public object Data { get; }
     
         /// <summary>
@@ -110,10 +140,25 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
     public class ReadSyncMapItemOptions : ReadOptions<SyncMapItemResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The map_sid
+        /// </summary>
         public string MapSid { get; }
+        /// <summary>
+        /// The order
+        /// </summary>
         public SyncMapItemResource.QueryResultOrderEnum Order { get; set; }
+        /// <summary>
+        /// The from
+        /// </summary>
         public string From { get; set; }
+        /// <summary>
+        /// The bounds
+        /// </summary>
         public SyncMapItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
     
         /// <summary>
@@ -160,9 +205,21 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 
     public class UpdateSyncMapItemOptions : IOptions<SyncMapItemResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The map_sid
+        /// </summary>
         public string MapSid { get; }
+        /// <summary>
+        /// The key
+        /// </summary>
         public string Key { get; }
+        /// <summary>
+        /// The data
+        /// </summary>
         public object Data { get; }
     
         /// <summary>

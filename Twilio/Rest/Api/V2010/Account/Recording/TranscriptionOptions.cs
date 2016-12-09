@@ -7,8 +7,17 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
     public class FetchTranscriptionOptions : IOptions<TranscriptionResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The recording_sid
+        /// </summary>
         public string RecordingSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -35,8 +44,17 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
     public class DeleteTranscriptionOptions : IOptions<TranscriptionResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The recording_sid
+        /// </summary>
         public string RecordingSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -63,7 +81,13 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 
     public class ReadTranscriptionOptions : ReadOptions<TranscriptionResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The recording_sid
+        /// </summary>
         public string RecordingSid { get; }
     
         /// <summary>

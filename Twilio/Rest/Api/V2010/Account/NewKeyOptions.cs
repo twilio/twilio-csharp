@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CreateNewKeyOptions : IOptions<NewKeyResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>

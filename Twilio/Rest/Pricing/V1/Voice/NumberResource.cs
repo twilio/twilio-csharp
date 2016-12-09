@@ -27,6 +27,10 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Number parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Number </returns> 
         public static NumberResource Fetch(FetchNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -35,6 +39,13 @@ namespace Twilio.Rest.Pricing.V1.Voice
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Number parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Number </returns> 
         public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(FetchNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -46,6 +57,10 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="number"> The number </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Number </returns> 
         public static NumberResource Fetch(Types.PhoneNumber number, ITwilioRestClient client = null)
         {
             var options = new FetchNumberOptions(number);
@@ -53,6 +68,13 @@ namespace Twilio.Rest.Pricing.V1.Voice
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="number"> The number </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Number </returns> 
         public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(Types.PhoneNumber number, ITwilioRestClient client = null)
         {
             var options = new FetchNumberOptions(number);
@@ -79,19 +101,40 @@ namespace Twilio.Rest.Pricing.V1.Voice
             }
         }
     
+        /// <summary>
+        /// The number
+        /// </summary>
         [JsonProperty("number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber Number { get; private set; }
+        /// <summary>
+        /// The country
+        /// </summary>
         [JsonProperty("country")]
         public string Country { get; private set; }
+        /// <summary>
+        /// The iso_country
+        /// </summary>
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
+        /// <summary>
+        /// The outbound_call_price
+        /// </summary>
         [JsonProperty("outbound_call_price")]
         public OutboundCallPrice OutboundCallPrice { get; private set; }
+        /// <summary>
+        /// The inbound_call_price
+        /// </summary>
         [JsonProperty("inbound_call_price")]
         public InboundCallPrice InboundCallPrice { get; private set; }
+        /// <summary>
+        /// The price_unit
+        /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
     

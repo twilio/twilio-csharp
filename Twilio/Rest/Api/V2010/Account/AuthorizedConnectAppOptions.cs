@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchAuthorizedConnectAppOptions : IOptions<AuthorizedConnectAppResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The connect_app_sid
+        /// </summary>
         public string ConnectAppSid { get; }
     
         /// <summary>
@@ -32,6 +38,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadAuthorizedConnectAppOptions : ReadOptions<AuthorizedConnectAppResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
     
         /// <summary>

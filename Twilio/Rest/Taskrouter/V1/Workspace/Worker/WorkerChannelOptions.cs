@@ -7,7 +7,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
     public class ReadWorkerChannelOptions : ReadOptions<WorkerChannelResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The worker_sid
+        /// </summary>
         public string WorkerSid { get; }
     
         /// <summary>
@@ -39,8 +45,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
     public class FetchWorkerChannelOptions : IOptions<WorkerChannelResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The worker_sid
+        /// </summary>
         public string WorkerSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -69,10 +84,25 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
     public class UpdateWorkerChannelOptions : IOptions<WorkerChannelResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The worker_sid
+        /// </summary>
         public string WorkerSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The capacity
+        /// </summary>
         public int? Capacity { get; set; }
+        /// <summary>
+        /// The available
+        /// </summary>
         public bool? Available { get; set; }
     
         /// <summary>

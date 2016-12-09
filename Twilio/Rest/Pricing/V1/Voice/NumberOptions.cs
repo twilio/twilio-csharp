@@ -7,6 +7,9 @@ namespace Twilio.Rest.Pricing.V1.Voice
 
     public class FetchNumberOptions : IOptions<NumberResource> 
     {
+        /// <summary>
+        /// The number
+        /// </summary>
         public Types.PhoneNumber Number { get; }
     
         /// <summary>

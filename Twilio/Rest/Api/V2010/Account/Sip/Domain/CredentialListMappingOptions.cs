@@ -7,8 +7,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class CreateCredentialListMappingOptions : IOptions<CredentialListMappingResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The domain_sid
+        /// </summary>
         public string DomainSid { get; }
+        /// <summary>
+        /// The credential_list_sid
+        /// </summary>
         public string CredentialListSid { get; }
     
         /// <summary>
@@ -40,7 +49,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class ReadCredentialListMappingOptions : ReadOptions<CredentialListMappingResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The domain_sid
+        /// </summary>
         public string DomainSid { get; }
     
         /// <summary>
@@ -70,8 +85,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class FetchCredentialListMappingOptions : IOptions<CredentialListMappingResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The domain_sid
+        /// </summary>
         public string DomainSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -98,8 +122,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class DeleteCredentialListMappingOptions : IOptions<CredentialListMappingResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The domain_sid
+        /// </summary>
         public string DomainSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

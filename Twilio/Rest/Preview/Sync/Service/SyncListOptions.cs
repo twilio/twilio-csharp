@@ -7,7 +7,13 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class FetchSyncListOptions : IOptions<SyncListResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,7 +40,13 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class DeleteSyncListOptions : IOptions<SyncListResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -61,7 +73,13 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class CreateSyncListOptions : IOptions<SyncListResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The unique_name
+        /// </summary>
         public string UniqueName { get; set; }
     
         /// <summary>
@@ -91,6 +109,9 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class ReadSyncListOptions : ReadOptions<SyncListResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
     
         /// <summary>

@@ -26,6 +26,10 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Event parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Event </returns> 
         public static EventResource Fetch(FetchEventOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -34,6 +38,13 @@ namespace Twilio.Rest.Monitor.V1
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Event parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Event </returns> 
         public static async System.Threading.Tasks.Task<EventResource> FetchAsync(FetchEventOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -45,6 +56,10 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Event </returns> 
         public static EventResource Fetch(string sid, ITwilioRestClient client = null)
         {
             var options = new FetchEventOptions(sid);
@@ -52,6 +67,13 @@ namespace Twilio.Rest.Monitor.V1
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Event </returns> 
         public static async System.Threading.Tasks.Task<EventResource> FetchAsync(string sid, ITwilioRestClient client = null)
         {
             var options = new FetchEventOptions(sid);
@@ -73,6 +95,10 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read Event parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Event </returns> 
         public static ResourceSet<EventResource> Read(ReadEventOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -83,6 +109,13 @@ namespace Twilio.Rest.Monitor.V1
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read Event parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Event </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(ReadEventOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -96,6 +129,17 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="actorSid"> The actor_sid </param>
+        /// <param name="eventType"> The event_type </param>
+        /// <param name="resourceSid"> The resource_sid </param>
+        /// <param name="sourceIpAddress"> The source_ip_address </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Event </returns> 
         public static ResourceSet<EventResource> Read(string actorSid = null, string eventType = null, string resourceSid = null, string sourceIpAddress = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadEventOptions{ActorSid = actorSid, EventType = eventType, ResourceSid = resourceSid, SourceIpAddress = sourceIpAddress, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
@@ -103,6 +147,20 @@ namespace Twilio.Rest.Monitor.V1
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="actorSid"> The actor_sid </param>
+        /// <param name="eventType"> The event_type </param>
+        /// <param name="resourceSid"> The resource_sid </param>
+        /// <param name="sourceIpAddress"> The source_ip_address </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Event </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(string actorSid = null, string eventType = null, string resourceSid = null, string sourceIpAddress = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadEventOptions{ActorSid = actorSid, EventType = eventType, ResourceSid = resourceSid, SourceIpAddress = sourceIpAddress, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
@@ -110,6 +168,13 @@ namespace Twilio.Rest.Monitor.V1
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<EventResource> NextPage(Page<EventResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -143,32 +208,74 @@ namespace Twilio.Rest.Monitor.V1
             }
         }
     
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The actor_sid
+        /// </summary>
         [JsonProperty("actor_sid")]
         public string ActorSid { get; private set; }
+        /// <summary>
+        /// The actor_type
+        /// </summary>
         [JsonProperty("actor_type")]
         public string ActorType { get; private set; }
+        /// <summary>
+        /// The description
+        /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
+        /// <summary>
+        /// The event_data
+        /// </summary>
         [JsonProperty("event_data")]
         public object EventData { get; private set; }
+        /// <summary>
+        /// The event_date
+        /// </summary>
         [JsonProperty("event_date")]
         public DateTime? EventDate { get; private set; }
+        /// <summary>
+        /// The event_type
+        /// </summary>
         [JsonProperty("event_type")]
         public string EventType { get; private set; }
+        /// <summary>
+        /// The resource_sid
+        /// </summary>
         [JsonProperty("resource_sid")]
         public string ResourceSid { get; private set; }
+        /// <summary>
+        /// The resource_type
+        /// </summary>
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
+        /// <summary>
+        /// The source
+        /// </summary>
         [JsonProperty("source")]
         public string Source { get; private set; }
+        /// <summary>
+        /// The source_ip_address
+        /// </summary>
         [JsonProperty("source_ip_address")]
         public string SourceIpAddress { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
     

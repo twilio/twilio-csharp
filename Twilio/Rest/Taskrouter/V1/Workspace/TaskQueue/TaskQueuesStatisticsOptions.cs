@@ -8,10 +8,25 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
 
     public class ReadTaskQueuesStatisticsOptions : ReadOptions<TaskQueuesStatisticsResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The end_date
+        /// </summary>
         public DateTime? EndDate { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The minutes
+        /// </summary>
         public int? Minutes { get; set; }
+        /// <summary>
+        /// The start_date
+        /// </summary>
         public DateTime? StartDate { get; set; }
     
         /// <summary>

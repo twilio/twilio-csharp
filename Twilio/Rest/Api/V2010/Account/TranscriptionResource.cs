@@ -37,6 +37,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch and instance of a Transcription
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Transcription parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Transcription </returns> 
         public static TranscriptionResource Fetch(FetchTranscriptionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -45,6 +49,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Fetch and instance of a Transcription
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Transcription parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Transcription </returns> 
         public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(FetchTranscriptionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -56,6 +67,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch and instance of a Transcription
         /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique transcription Sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Transcription </returns> 
         public static TranscriptionResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchTranscriptionOptions(sid){AccountSid = accountSid};
@@ -63,6 +79,14 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Fetch and instance of a Transcription
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique transcription Sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Transcription </returns> 
         public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchTranscriptionOptions(sid){AccountSid = accountSid};
@@ -84,6 +108,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete a transcription from the account used to make the request
         /// </summary>
+        ///
+        /// <param name="options"> Delete Transcription parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Transcription </returns> 
         public static bool Delete(DeleteTranscriptionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -92,6 +120,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Delete a transcription from the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="options"> Delete Transcription parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Transcription </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTranscriptionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -103,6 +138,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete a transcription from the account used to make the request
         /// </summary>
+        ///
+        /// <param name="sid"> Delete by unique transcription Sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Transcription </returns> 
         public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteTranscriptionOptions(sid){AccountSid = accountSid};
@@ -110,6 +150,14 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Delete a transcription from the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="sid"> Delete by unique transcription Sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Transcription </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteTranscriptionOptions(sid){AccountSid = accountSid};
@@ -131,6 +179,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of transcriptions belonging to the account used to make the request
         /// </summary>
+        ///
+        /// <param name="options"> Read Transcription parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Transcription </returns> 
         public static ResourceSet<TranscriptionResource> Read(ReadTranscriptionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -141,6 +193,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Retrieve a list of transcriptions belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="options"> Read Transcription parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Transcription </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(ReadTranscriptionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -154,6 +213,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of transcriptions belonging to the account used to make the request
         /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Transcription </returns> 
         public static ResourceSet<TranscriptionResource> Read(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadTranscriptionOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
@@ -161,6 +226,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Retrieve a list of transcriptions belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Transcription </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadTranscriptionOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
@@ -168,6 +242,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<TranscriptionResource> NextPage(Page<TranscriptionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -201,31 +282,70 @@ namespace Twilio.Rest.Api.V2010.Account
             }
         }
     
+        /// <summary>
+        /// The unique sid that identifies this account
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The api_version
+        /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
+        /// <summary>
+        /// The date this resource was created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date this resource was last updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The duration of the transcribed audio, in seconds.
+        /// </summary>
         [JsonProperty("duration")]
         public string Duration { get; private set; }
+        /// <summary>
+        /// The charge for this transcription
+        /// </summary>
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
+        /// <summary>
+        /// The currency in which Price is measured
+        /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
+        /// <summary>
+        /// The string that uniquely identifies the recording
+        /// </summary>
         [JsonProperty("recording_sid")]
         public string RecordingSid { get; private set; }
+        /// <summary>
+        /// A string that uniquely identifies this transcription
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
+        /// <summary>
+        /// The status of the transcription
+        /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public TranscriptionResource.StatusEnum Status { get; private set; }
+        /// <summary>
+        /// The text content of the transcription.
+        /// </summary>
         [JsonProperty("transcription_text")]
         public string TranscriptionText { get; private set; }
+        /// <summary>
+        /// The type
+        /// </summary>
         [JsonProperty("type")]
         public string Type { get; private set; }
+        /// <summary>
+        /// The URI for this resource
+        /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
     

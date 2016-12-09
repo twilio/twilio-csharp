@@ -8,6 +8,9 @@ namespace Twilio.Rest.Monitor.V1
 
     public class FetchEventOptions : IOptions<EventResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -32,11 +35,29 @@ namespace Twilio.Rest.Monitor.V1
 
     public class ReadEventOptions : ReadOptions<EventResource> 
     {
+        /// <summary>
+        /// The actor_sid
+        /// </summary>
         public string ActorSid { get; set; }
+        /// <summary>
+        /// The event_type
+        /// </summary>
         public string EventType { get; set; }
+        /// <summary>
+        /// The resource_sid
+        /// </summary>
         public string ResourceSid { get; set; }
+        /// <summary>
+        /// The source_ip_address
+        /// </summary>
         public string SourceIpAddress { get; set; }
+        /// <summary>
+        /// The start_date
+        /// </summary>
         public DateTime? StartDate { get; set; }
+        /// <summary>
+        /// The end_date
+        /// </summary>
         public DateTime? EndDate { get; set; }
     
         /// <summary>

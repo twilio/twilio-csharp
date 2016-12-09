@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
     public class ReadIpAddressOptions : ReadOptions<IpAddressResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The ip_access_control_list_sid
+        /// </summary>
         public string IpAccessControlListSid { get; }
     
         /// <summary>
@@ -37,9 +43,21 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
     public class CreateIpAddressOptions : IOptions<IpAddressResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The ip_access_control_list_sid
+        /// </summary>
         public string IpAccessControlListSid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; }
+        /// <summary>
+        /// The ip_address
+        /// </summary>
         public string IpAddress { get; }
     
         /// <summary>
@@ -78,8 +96,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
     public class FetchIpAddressOptions : IOptions<IpAddressResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The ip_access_control_list_sid
+        /// </summary>
         public string IpAccessControlListSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -106,10 +133,25 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
     public class UpdateIpAddressOptions : IOptions<IpAddressResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The ip_access_control_list_sid
+        /// </summary>
         public string IpAccessControlListSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The ip_address
+        /// </summary>
         public string IpAddress { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>
@@ -146,8 +188,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
     public class DeleteIpAddressOptions : IOptions<IpAddressResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The ip_access_control_list_sid
+        /// </summary>
         public string IpAccessControlListSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

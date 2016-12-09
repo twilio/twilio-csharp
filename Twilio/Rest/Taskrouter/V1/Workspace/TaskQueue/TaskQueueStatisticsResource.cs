@@ -26,6 +26,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch TaskQueueStatistics parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TaskQueueStatistics </returns> 
         public static TaskQueueStatisticsResource Fetch(FetchTaskQueueStatisticsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -34,6 +38,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch TaskQueueStatistics parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TaskQueueStatistics </returns> 
         public static async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(FetchTaskQueueStatisticsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -45,6 +56,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="taskQueueSid"> The task_queue_sid </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="minutes"> The minutes </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TaskQueueStatistics </returns> 
         public static TaskQueueStatisticsResource Fetch(string workspaceSid, string taskQueueSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, ITwilioRestClient client = null)
         {
             var options = new FetchTaskQueueStatisticsOptions(workspaceSid, taskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate};
@@ -52,6 +71,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="taskQueueSid"> The task_queue_sid </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="minutes"> The minutes </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TaskQueueStatistics </returns> 
         public static async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(string workspaceSid, string taskQueueSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, ITwilioRestClient client = null)
         {
             var options = new FetchTaskQueueStatisticsOptions(workspaceSid, taskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate};
@@ -78,14 +108,29 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             }
         }
     
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The cumulative
+        /// </summary>
         [JsonProperty("cumulative")]
         public object Cumulative { get; private set; }
+        /// <summary>
+        /// The realtime
+        /// </summary>
         [JsonProperty("realtime")]
         public object Realtime { get; private set; }
+        /// <summary>
+        /// The task_queue_sid
+        /// </summary>
         [JsonProperty("task_queue_sid")]
         public string TaskQueueSid { get; private set; }
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
     

@@ -7,7 +7,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class FetchTaskOptions : IOptions<TaskResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,12 +40,33 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class UpdateTaskOptions : IOptions<TaskResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The attributes
+        /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The assignment_status
+        /// </summary>
         public TaskResource.StatusEnum AssignmentStatus { get; set; }
+        /// <summary>
+        /// The reason
+        /// </summary>
         public string Reason { get; set; }
+        /// <summary>
+        /// The priority
+        /// </summary>
         public int? Priority { get; set; }
+        /// <summary>
+        /// The task_channel
+        /// </summary>
         public string TaskChannel { get; set; }
     
         /// <summary>
@@ -91,7 +118,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class DeleteTaskOptions : IOptions<TaskResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -118,16 +151,49 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class ReadTaskOptions : ReadOptions<TaskResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The priority
+        /// </summary>
         public int? Priority { get; set; }
+        /// <summary>
+        /// The assignment_status
+        /// </summary>
         public TaskResource.StatusEnum AssignmentStatus { get; set; }
+        /// <summary>
+        /// The workflow_sid
+        /// </summary>
         public string WorkflowSid { get; set; }
+        /// <summary>
+        /// The workflow_name
+        /// </summary>
         public string WorkflowName { get; set; }
+        /// <summary>
+        /// The task_queue_sid
+        /// </summary>
         public string TaskQueueSid { get; set; }
+        /// <summary>
+        /// The task_queue_name
+        /// </summary>
         public string TaskQueueName { get; set; }
+        /// <summary>
+        /// The task_channel
+        /// </summary>
         public string TaskChannel { get; set; }
+        /// <summary>
+        /// The evaluate_task_attributes
+        /// </summary>
         public string EvaluateTaskAttributes { get; set; }
+        /// <summary>
+        /// The ordering
+        /// </summary>
         public string Ordering { get; set; }
+        /// <summary>
+        /// The has_addons
+        /// </summary>
         public bool? HasAddons { get; set; }
     
         /// <summary>
@@ -207,11 +273,29 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class CreateTaskOptions : IOptions<TaskResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The attributes
+        /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The workflow_sid
+        /// </summary>
         public string WorkflowSid { get; set; }
+        /// <summary>
+        /// The timeout
+        /// </summary>
         public int? Timeout { get; set; }
+        /// <summary>
+        /// The priority
+        /// </summary>
         public int? Priority { get; set; }
+        /// <summary>
+        /// The task_channel
+        /// </summary>
         public string TaskChannel { get; set; }
     
         /// <summary>

@@ -26,6 +26,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read AvailablePhoneNumberCountry parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AvailablePhoneNumberCountry </returns> 
         public static ResourceSet<AvailablePhoneNumberCountryResource> Read(ReadAvailablePhoneNumberCountryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -36,6 +40,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read AvailablePhoneNumberCountry parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AvailablePhoneNumberCountry </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<AvailablePhoneNumberCountryResource>> ReadAsync(ReadAvailablePhoneNumberCountryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -49,6 +60,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AvailablePhoneNumberCountry </returns> 
         public static ResourceSet<AvailablePhoneNumberCountryResource> Read(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadAvailablePhoneNumberCountryOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
@@ -56,6 +73,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AvailablePhoneNumberCountry </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<AvailablePhoneNumberCountryResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadAvailablePhoneNumberCountryOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
@@ -63,6 +89,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<AvailablePhoneNumberCountryResource> NextPage(Page<AvailablePhoneNumberCountryResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -91,6 +124,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch AvailablePhoneNumberCountry parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AvailablePhoneNumberCountry </returns> 
         public static AvailablePhoneNumberCountryResource Fetch(FetchAvailablePhoneNumberCountryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -99,6 +136,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch AvailablePhoneNumberCountry parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AvailablePhoneNumberCountry </returns> 
         public static async System.Threading.Tasks.Task<AvailablePhoneNumberCountryResource> FetchAsync(FetchAvailablePhoneNumberCountryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -110,6 +154,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="countryCode"> The country_code </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AvailablePhoneNumberCountry </returns> 
         public static AvailablePhoneNumberCountryResource Fetch(string countryCode, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchAvailablePhoneNumberCountryOptions(countryCode){AccountSid = accountSid};
@@ -117,6 +166,14 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="countryCode"> The country_code </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AvailablePhoneNumberCountry </returns> 
         public static async System.Threading.Tasks.Task<AvailablePhoneNumberCountryResource> FetchAsync(string countryCode, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchAvailablePhoneNumberCountryOptions(countryCode){AccountSid = accountSid};
@@ -143,14 +200,29 @@ namespace Twilio.Rest.Api.V2010.Account
             }
         }
     
+        /// <summary>
+        /// The country_code
+        /// </summary>
         [JsonProperty("country_code")]
         public string CountryCode { get; private set; }
+        /// <summary>
+        /// The country
+        /// </summary>
         [JsonProperty("country")]
         public string Country { get; private set; }
+        /// <summary>
+        /// The uri
+        /// </summary>
         [JsonProperty("uri")]
         public Uri Uri { get; private set; }
+        /// <summary>
+        /// The beta
+        /// </summary>
         [JsonProperty("beta")]
         public bool? Beta { get; private set; }
+        /// <summary>
+        /// The subresource_uris
+        /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
     

@@ -7,14 +7,41 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CreateAddressOptions : IOptions<AddressResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The customer_name
+        /// </summary>
         public string CustomerName { get; }
+        /// <summary>
+        /// The street
+        /// </summary>
         public string Street { get; }
+        /// <summary>
+        /// The city
+        /// </summary>
         public string City { get; }
+        /// <summary>
+        /// The region
+        /// </summary>
         public string Region { get; }
+        /// <summary>
+        /// The postal_code
+        /// </summary>
         public string PostalCode { get; }
+        /// <summary>
+        /// The iso_country
+        /// </summary>
         public string IsoCountry { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The emergency_enabled
+        /// </summary>
         public bool? EmergencyEnabled { get; set; }
     
         /// <summary>
@@ -89,7 +116,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class DeleteAddressOptions : IOptions<AddressResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -114,7 +147,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchAddressOptions : IOptions<AddressResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -139,14 +178,41 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class UpdateAddressOptions : IOptions<AddressResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The customer_name
+        /// </summary>
         public string CustomerName { get; set; }
+        /// <summary>
+        /// The street
+        /// </summary>
         public string Street { get; set; }
+        /// <summary>
+        /// The city
+        /// </summary>
         public string City { get; set; }
+        /// <summary>
+        /// The region
+        /// </summary>
         public string Region { get; set; }
+        /// <summary>
+        /// The postal_code
+        /// </summary>
         public string PostalCode { get; set; }
+        /// <summary>
+        /// The emergency_enabled
+        /// </summary>
         public bool? EmergencyEnabled { get; set; }
     
         /// <summary>
@@ -206,9 +272,21 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadAddressOptions : ReadOptions<AddressResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The customer_name
+        /// </summary>
         public string CustomerName { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The iso_country
+        /// </summary>
         public string IsoCountry { get; set; }
     
         /// <summary>

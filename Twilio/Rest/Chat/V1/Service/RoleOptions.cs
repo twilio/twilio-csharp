@@ -8,7 +8,13 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class FetchRoleOptions : IOptions<RoleResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -35,7 +41,13 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class DeleteRoleOptions : IOptions<RoleResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -62,9 +74,21 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class CreateRoleOptions : IOptions<RoleResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; }
+        /// <summary>
+        /// The type
+        /// </summary>
         public RoleResource.RoleTypeEnum Type { get; }
+        /// <summary>
+        /// The permission
+        /// </summary>
         public List<string> Permission { get; }
     
         /// <summary>
@@ -110,6 +134,9 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class ReadRoleOptions : ReadOptions<RoleResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
     
         /// <summary>
@@ -139,8 +166,17 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class UpdateRoleOptions : IOptions<RoleResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The permission
+        /// </summary>
         public List<string> Permission { get; }
     
         /// <summary>

@@ -26,6 +26,10 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="options"> Create Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns> 
         public static ServiceResource Create(CreateServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -34,6 +38,13 @@ namespace Twilio.Rest.Notify.V1
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="options"> Create Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -45,6 +56,16 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
+        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
+        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
+        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns> 
         public static ServiceResource Create(string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions{FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion};
@@ -52,6 +73,19 @@ namespace Twilio.Rest.Notify.V1
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
+        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
+        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
+        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions{FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion};
@@ -73,6 +107,10 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="options"> Delete Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns> 
         public static bool Delete(DeleteServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -81,6 +119,13 @@ namespace Twilio.Rest.Notify.V1
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="options"> Delete Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -92,6 +137,10 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns> 
         public static bool Delete(string sid, ITwilioRestClient client = null)
         {
             var options = new DeleteServiceOptions(sid);
@@ -99,6 +148,13 @@ namespace Twilio.Rest.Notify.V1
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, ITwilioRestClient client = null)
         {
             var options = new DeleteServiceOptions(sid);
@@ -120,6 +176,10 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns> 
         public static ServiceResource Fetch(FetchServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -128,6 +188,13 @@ namespace Twilio.Rest.Notify.V1
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -139,6 +206,10 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns> 
         public static ServiceResource Fetch(string sid, ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(sid);
@@ -146,6 +217,13 @@ namespace Twilio.Rest.Notify.V1
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string sid, ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(sid);
@@ -167,6 +245,10 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns> 
         public static ResourceSet<ServiceResource> Read(ReadServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -177,6 +259,13 @@ namespace Twilio.Rest.Notify.V1
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -190,6 +279,12 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns> 
         public static ResourceSet<ServiceResource> Read(string friendlyName = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions{FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
@@ -197,6 +292,15 @@ namespace Twilio.Rest.Notify.V1
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(string friendlyName = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions{FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
@@ -204,6 +308,13 @@ namespace Twilio.Rest.Notify.V1
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<ServiceResource> NextPage(Page<ServiceResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -232,6 +343,10 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// update
         /// </summary>
+        ///
+        /// <param name="options"> Update Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns> 
         public static ServiceResource Update(UpdateServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -240,6 +355,13 @@ namespace Twilio.Rest.Notify.V1
         }
     
         #if NET40
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="options"> Update Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -251,6 +373,17 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// update
         /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
+        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
+        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
+        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns> 
         public static ServiceResource Update(string sid, string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(sid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion};
@@ -258,6 +391,20 @@ namespace Twilio.Rest.Notify.V1
         }
     
         #if NET40
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
+        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
+        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
+        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
+        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
+        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string sid, string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(sid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion};
@@ -284,30 +431,69 @@ namespace Twilio.Rest.Notify.V1
             }
         }
     
+        /// <summary>
+        /// The sid
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The apn_credential_sid
+        /// </summary>
         [JsonProperty("apn_credential_sid")]
         public string ApnCredentialSid { get; private set; }
+        /// <summary>
+        /// The gcm_credential_sid
+        /// </summary>
         [JsonProperty("gcm_credential_sid")]
         public string GcmCredentialSid { get; private set; }
+        /// <summary>
+        /// The messaging_service_sid
+        /// </summary>
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
+        /// <summary>
+        /// The facebook_messenger_page_id
+        /// </summary>
         [JsonProperty("facebook_messenger_page_id")]
         public string FacebookMessengerPageId { get; private set; }
+        /// <summary>
+        /// The default_apn_notification_protocol_version
+        /// </summary>
         [JsonProperty("default_apn_notification_protocol_version")]
         public string DefaultApnNotificationProtocolVersion { get; private set; }
+        /// <summary>
+        /// The default_gcm_notification_protocol_version
+        /// </summary>
         [JsonProperty("default_gcm_notification_protocol_version")]
         public string DefaultGcmNotificationProtocolVersion { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
     

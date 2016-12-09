@@ -7,7 +7,13 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class FetchDocumentOptions : IOptions<DocumentResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,7 +40,13 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class DeleteDocumentOptions : IOptions<DocumentResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -61,8 +73,17 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class CreateDocumentOptions : IOptions<DocumentResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The unique_name
+        /// </summary>
         public string UniqueName { get; set; }
+        /// <summary>
+        /// The data
+        /// </summary>
         public object Data { get; set; }
     
         /// <summary>
@@ -97,6 +118,9 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class ReadDocumentOptions : ReadOptions<DocumentResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
     
         /// <summary>
@@ -126,8 +150,17 @@ namespace Twilio.Rest.Preview.Sync.Service
 
     public class UpdateDocumentOptions : IOptions<DocumentResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The data
+        /// </summary>
         public object Data { get; }
     
         /// <summary>

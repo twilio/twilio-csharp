@@ -7,13 +7,37 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class ReadWorkerOptions : ReadOptions<WorkerResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The activity_name
+        /// </summary>
         public string ActivityName { get; set; }
+        /// <summary>
+        /// The activity_sid
+        /// </summary>
         public string ActivitySid { get; set; }
+        /// <summary>
+        /// The available
+        /// </summary>
         public string Available { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The target_workers_expression
+        /// </summary>
         public string TargetWorkersExpression { get; set; }
+        /// <summary>
+        /// The task_queue_name
+        /// </summary>
         public string TaskQueueName { get; set; }
+        /// <summary>
+        /// The task_queue_sid
+        /// </summary>
         public string TaskQueueSid { get; set; }
     
         /// <summary>
@@ -78,9 +102,21 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class CreateWorkerOptions : IOptions<WorkerResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; }
+        /// <summary>
+        /// The activity_sid
+        /// </summary>
         public string ActivitySid { get; set; }
+        /// <summary>
+        /// The attributes
+        /// </summary>
         public string Attributes { get; set; }
     
         /// <summary>
@@ -122,7 +158,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class FetchWorkerOptions : IOptions<WorkerResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -149,10 +191,25 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class UpdateWorkerOptions : IOptions<WorkerResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The activity_sid
+        /// </summary>
         public string ActivitySid { get; set; }
+        /// <summary>
+        /// The attributes
+        /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>
@@ -194,7 +251,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class DeleteWorkerOptions : IOptions<WorkerResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

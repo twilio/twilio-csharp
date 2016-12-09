@@ -26,6 +26,10 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read DependentPhoneNumber parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of DependentPhoneNumber </returns> 
         public static ResourceSet<DependentPhoneNumberResource> Read(ReadDependentPhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -36,6 +40,13 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read DependentPhoneNumber parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of DependentPhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(ReadDependentPhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -49,6 +60,13 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="addressSid"> The address_sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of DependentPhoneNumber </returns> 
         public static ResourceSet<DependentPhoneNumberResource> Read(string addressSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadDependentPhoneNumberOptions(addressSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
@@ -56,6 +74,16 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="addressSid"> The address_sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of DependentPhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(string addressSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadDependentPhoneNumberOptions(addressSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
@@ -63,6 +91,13 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<DependentPhoneNumberResource> NextPage(Page<DependentPhoneNumberResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -96,28 +131,61 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             }
         }
     
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         [JsonProperty("friendly_name")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber FriendlyName { get; private set; }
+        /// <summary>
+        /// The phone_number
+        /// </summary>
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
+        /// <summary>
+        /// The lata
+        /// </summary>
         [JsonProperty("lata")]
         public string Lata { get; private set; }
+        /// <summary>
+        /// The rate_center
+        /// </summary>
         [JsonProperty("rate_center")]
         public string RateCenter { get; private set; }
+        /// <summary>
+        /// The latitude
+        /// </summary>
         [JsonProperty("latitude")]
         public decimal? Latitude { get; private set; }
+        /// <summary>
+        /// The longitude
+        /// </summary>
         [JsonProperty("longitude")]
         public decimal? Longitude { get; private set; }
+        /// <summary>
+        /// The region
+        /// </summary>
         [JsonProperty("region")]
         public string Region { get; private set; }
+        /// <summary>
+        /// The postal_code
+        /// </summary>
         [JsonProperty("postal_code")]
         public string PostalCode { get; private set; }
+        /// <summary>
+        /// The iso_country
+        /// </summary>
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
+        /// <summary>
+        /// The address_requirements
+        /// </summary>
         [JsonProperty("address_requirements")]
         public string AddressRequirements { get; private set; }
+        /// <summary>
+        /// The capabilities
+        /// </summary>
         [JsonProperty("capabilities")]
         public Dictionary<string, string> Capabilities { get; private set; }
     

@@ -124,6 +124,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>
+        ///
+        /// <param name="options"> Read Record parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Record </returns> 
         public static ResourceSet<RecordResource> Read(ReadRecordOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -134,6 +138,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
+        /// <summary>
+        /// Retrieve a list of usage-records belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="options"> Read Record parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Record </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<RecordResource>> ReadAsync(ReadRecordOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -147,6 +158,15 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="category"> Only include usage of a given category </param>
+        /// <param name="startDate"> Filter by start date </param>
+        /// <param name="endDate"> Filter by end date </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Record </returns> 
         public static ResourceSet<RecordResource> Read(string accountSid = null, RecordResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadRecordOptions{AccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
@@ -154,6 +174,18 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
+        /// <summary>
+        /// Retrieve a list of usage-records belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="category"> Only include usage of a given category </param>
+        /// <param name="startDate"> Filter by start date </param>
+        /// <param name="endDate"> Filter by end date </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Record </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<RecordResource>> ReadAsync(string accountSid = null, RecordResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadRecordOptions{AccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
@@ -161,6 +193,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<RecordResource> NextPage(Page<RecordResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -194,33 +233,75 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             }
         }
     
+        /// <summary>
+        /// The Account that accrued the usage
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The api_version
+        /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
+        /// <summary>
+        /// The category of usage
+        /// </summary>
         [JsonProperty("category")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordResource.CategoryEnum Category { get; private set; }
+        /// <summary>
+        /// The number of usage events (e.g. the number of calls).
+        /// </summary>
         [JsonProperty("count")]
         public string Count { get; private set; }
+        /// <summary>
+        /// The unit in which `Count` is measured
+        /// </summary>
         [JsonProperty("count_unit")]
         public string CountUnit { get; private set; }
+        /// <summary>
+        /// A human-readable description of the usage category.
+        /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
+        /// <summary>
+        /// The last date usage is included in this record
+        /// </summary>
         [JsonProperty("end_date")]
         public DateTime? EndDate { get; private set; }
+        /// <summary>
+        /// The total price of the usage
+        /// </summary>
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
+        /// <summary>
+        /// The currency in which `Price` is measured
+        /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
+        /// <summary>
+        /// The first date usage is included in this record
+        /// </summary>
         [JsonProperty("start_date")]
         public DateTime? StartDate { get; private set; }
+        /// <summary>
+        /// Subresources Uris for this UsageRecord
+        /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
+        /// <summary>
+        /// The URI for this resource
+        /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
+        /// <summary>
+        /// The amount of usage
+        /// </summary>
         [JsonProperty("usage")]
         public string Usage { get; private set; }
+        /// <summary>
+        /// The units in which `Usage` is measured
+        /// </summary>
         [JsonProperty("usage_unit")]
         public string UsageUnit { get; private set; }
     

@@ -25,6 +25,9 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class FetchRatePlanOptions : IOptions<RatePlanResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -49,13 +52,37 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class CreateRatePlanOptions : IOptions<RatePlanResource> 
     {
+        /// <summary>
+        /// The alias
+        /// </summary>
         public string Alias { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The roaming
+        /// </summary>
         public List<string> Roaming { get; set; }
+        /// <summary>
+        /// The data_limit
+        /// </summary>
         public int? DataLimit { get; set; }
+        /// <summary>
+        /// The data_metering
+        /// </summary>
         public string DataMetering { get; set; }
+        /// <summary>
+        /// The commands_enabled
+        /// </summary>
         public bool? CommandsEnabled { get; set; }
+        /// <summary>
+        /// The renewal_period
+        /// </summary>
         public int? RenewalPeriod { get; set; }
+        /// <summary>
+        /// The renewal_units
+        /// </summary>
         public string RenewalUnits { get; set; }
     
         /// <summary>
@@ -118,8 +145,17 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class UpdateRatePlanOptions : IOptions<RatePlanResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The alias
+        /// </summary>
         public string Alias { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>

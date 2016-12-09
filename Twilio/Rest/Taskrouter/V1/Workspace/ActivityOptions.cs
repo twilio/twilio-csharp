@@ -7,7 +7,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class FetchActivityOptions : IOptions<ActivityResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,8 +40,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class UpdateActivityOptions : IOptions<ActivityResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; }
     
         /// <summary>
@@ -69,7 +84,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class DeleteActivityOptions : IOptions<ActivityResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -96,8 +117,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class ReadActivityOptions : ReadOptions<ActivityResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The available
+        /// </summary>
         public string Available { get; set; }
     
         /// <summary>
@@ -137,8 +167,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class CreateActivityOptions : IOptions<ActivityResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; }
+        /// <summary>
+        /// The available
+        /// </summary>
         public bool? Available { get; set; }
     
         /// <summary>

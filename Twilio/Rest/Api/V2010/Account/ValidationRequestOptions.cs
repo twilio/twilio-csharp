@@ -7,12 +7,33 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CreateValidationRequestOptions : IOptions<ValidationRequestResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The phone_number
+        /// </summary>
         public Types.PhoneNumber PhoneNumber { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The call_delay
+        /// </summary>
         public int? CallDelay { get; set; }
+        /// <summary>
+        /// The extension
+        /// </summary>
         public string Extension { get; set; }
+        /// <summary>
+        /// The status_callback
+        /// </summary>
         public Uri StatusCallback { get; set; }
+        /// <summary>
+        /// The status_callback_method
+        /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
     
         /// <summary>

@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
     public class ReadCredentialOptions : ReadOptions<CredentialResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The credential_list_sid
+        /// </summary>
         public string CredentialListSid { get; }
     
         /// <summary>
@@ -37,9 +43,21 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
     public class CreateCredentialOptions : IOptions<CredentialResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The credential_list_sid
+        /// </summary>
         public string CredentialListSid { get; }
+        /// <summary>
+        /// The username
+        /// </summary>
         public string Username { get; }
+        /// <summary>
+        /// The password
+        /// </summary>
         public string Password { get; }
     
         /// <summary>
@@ -78,8 +96,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
     public class FetchCredentialOptions : IOptions<CredentialResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The credential_list_sid
+        /// </summary>
         public string CredentialListSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -106,9 +133,21 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
     public class UpdateCredentialOptions : IOptions<CredentialResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The credential_list_sid
+        /// </summary>
         public string CredentialListSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The password
+        /// </summary>
         public string Password { get; set; }
     
         /// <summary>
@@ -140,8 +179,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 
     public class DeleteCredentialOptions : IOptions<CredentialResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The credential_list_sid
+        /// </summary>
         public string CredentialListSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

@@ -7,8 +7,17 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
     public class FetchMemberOptions : IOptions<MemberResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The Queue in which to find the members
+        /// </summary>
         public string QueueSid { get; }
+        /// <summary>
+        /// The call_sid
+        /// </summary>
         public string CallSid { get; }
     
         /// <summary>
@@ -35,10 +44,25 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
     public class UpdateMemberOptions : IOptions<MemberResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The Queue in which to find the members
+        /// </summary>
         public string QueueSid { get; }
+        /// <summary>
+        /// The call_sid
+        /// </summary>
         public string CallSid { get; }
+        /// <summary>
+        /// The url
+        /// </summary>
         public Uri Url { get; }
+        /// <summary>
+        /// The method
+        /// </summary>
         public Twilio.Http.HttpMethod Method { get; }
     
         /// <summary>
@@ -79,7 +103,13 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 
     public class ReadMemberOptions : ReadOptions<MemberResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The Queue in which to find members
+        /// </summary>
         public string QueueSid { get; }
     
         /// <summary>

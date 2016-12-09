@@ -26,6 +26,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Sandbox parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Sandbox </returns> 
         public static SandboxResource Fetch(FetchSandboxOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -34,6 +38,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Sandbox parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Sandbox </returns> 
         public static async System.Threading.Tasks.Task<SandboxResource> FetchAsync(FetchSandboxOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -45,6 +56,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Sandbox </returns> 
         public static SandboxResource Fetch(string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchSandboxOptions{AccountSid = accountSid};
@@ -52,6 +67,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Sandbox </returns> 
         public static async System.Threading.Tasks.Task<SandboxResource> FetchAsync(string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchSandboxOptions{AccountSid = accountSid};
@@ -73,6 +95,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// update
         /// </summary>
+        ///
+        /// <param name="options"> Update Sandbox parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Sandbox </returns> 
         public static SandboxResource Update(UpdateSandboxOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -81,6 +107,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="options"> Update Sandbox parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Sandbox </returns> 
         public static async System.Threading.Tasks.Task<SandboxResource> UpdateAsync(UpdateSandboxOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -92,6 +125,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// update
         /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="voiceUrl"> The voice_url </param>
+        /// <param name="voiceMethod"> The voice_method </param>
+        /// <param name="smsUrl"> The sms_url </param>
+        /// <param name="smsMethod"> The sms_method </param>
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Sandbox </returns> 
         public static SandboxResource Update(string accountSid = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
             var options = new UpdateSandboxOptions{AccountSid = accountSid, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, SmsUrl = smsUrl, SmsMethod = smsMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
@@ -99,6 +142,19 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="voiceUrl"> The voice_url </param>
+        /// <param name="voiceMethod"> The voice_method </param>
+        /// <param name="smsUrl"> The sms_url </param>
+        /// <param name="smsMethod"> The sms_method </param>
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Sandbox </returns> 
         public static async System.Threading.Tasks.Task<SandboxResource> UpdateAsync(string accountSid = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
             var options = new UpdateSandboxOptions{AccountSid = accountSid, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, SmsUrl = smsUrl, SmsMethod = smsMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
@@ -125,36 +181,78 @@ namespace Twilio.Rest.Api.V2010.Account
             }
         }
     
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The pin
+        /// </summary>
         [JsonProperty("pin")]
         public int? Pin { get; private set; }
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The phone_number
+        /// </summary>
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
+        /// <summary>
+        /// The application_sid
+        /// </summary>
         [JsonProperty("application_sid")]
         public string ApplicationSid { get; private set; }
+        /// <summary>
+        /// The api_version
+        /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
+        /// <summary>
+        /// The voice_url
+        /// </summary>
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
+        /// <summary>
+        /// The voice_method
+        /// </summary>
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
+        /// <summary>
+        /// The sms_url
+        /// </summary>
         [JsonProperty("sms_url")]
         public Uri SmsUrl { get; private set; }
+        /// <summary>
+        /// The sms_method
+        /// </summary>
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsMethod { get; private set; }
+        /// <summary>
+        /// The status_callback
+        /// </summary>
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
+        /// <summary>
+        /// The status_callback_method
+        /// </summary>
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
+        /// <summary>
+        /// The uri
+        /// </summary>
         [JsonProperty("uri")]
         public Uri Uri { get; private set; }
     

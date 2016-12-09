@@ -9,10 +9,25 @@ namespace Twilio.Rest.Lookups.V1
 
     public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
+        /// <summary>
+        /// The phone_number
+        /// </summary>
         public Types.PhoneNumber PhoneNumber { get; }
+        /// <summary>
+        /// The country_code
+        /// </summary>
         public string CountryCode { get; set; }
+        /// <summary>
+        /// The type
+        /// </summary>
         public List<string> Type { get; set; }
+        /// <summary>
+        /// The add_ons
+        /// </summary>
         public List<string> AddOns { get; set; }
+        /// <summary>
+        /// The add_ons_data
+        /// </summary>
         public Dictionary<string, object> AddOnsData { get; set; }
     
         /// <summary>

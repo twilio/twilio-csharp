@@ -27,6 +27,10 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read Country parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Country </returns> 
         public static ResourceSet<CountryResource> Read(ReadCountryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -37,6 +41,13 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read Country parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Country </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(ReadCountryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,6 +61,11 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Country </returns> 
         public static ResourceSet<CountryResource> Read(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadCountryOptions{PageSize = pageSize, Limit = limit};
@@ -57,6 +73,14 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Country </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadCountryOptions{PageSize = pageSize, Limit = limit};
@@ -64,6 +88,13 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<CountryResource> NextPage(Page<CountryResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -92,6 +123,10 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Country parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Country </returns> 
         public static CountryResource Fetch(FetchCountryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -100,6 +135,13 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Country parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Country </returns> 
         public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(FetchCountryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -111,6 +153,10 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="isoCountry"> The iso_country </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Country </returns> 
         public static CountryResource Fetch(string isoCountry, ITwilioRestClient client = null)
         {
             var options = new FetchCountryOptions(isoCountry);
@@ -118,6 +164,13 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="isoCountry"> The iso_country </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Country </returns> 
         public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(string isoCountry, ITwilioRestClient client = null)
         {
             var options = new FetchCountryOptions(isoCountry);
@@ -144,16 +197,34 @@ namespace Twilio.Rest.Pricing.V1.Messaging
             }
         }
     
+        /// <summary>
+        /// The country
+        /// </summary>
         [JsonProperty("country")]
         public string Country { get; private set; }
+        /// <summary>
+        /// The iso_country
+        /// </summary>
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
+        /// <summary>
+        /// The outbound_sms_prices
+        /// </summary>
         [JsonProperty("outbound_sms_prices")]
         public List<OutboundSmsPrice> OutboundSmsPrices { get; private set; }
+        /// <summary>
+        /// The inbound_sms_prices
+        /// </summary>
         [JsonProperty("inbound_sms_prices")]
         public List<InboundSmsPrice> InboundSmsPrices { get; private set; }
+        /// <summary>
+        /// The price_unit
+        /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
     

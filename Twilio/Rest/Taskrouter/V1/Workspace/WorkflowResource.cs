@@ -26,6 +26,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Workflow parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Workflow </returns> 
         public static WorkflowResource Fetch(FetchWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -34,6 +38,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Workflow parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Workflow </returns> 
         public static async System.Threading.Tasks.Task<WorkflowResource> FetchAsync(FetchWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -45,6 +56,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Workflow </returns> 
         public static WorkflowResource Fetch(string workspaceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new FetchWorkflowOptions(workspaceSid, sid);
@@ -52,6 +68,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Workflow </returns> 
         public static async System.Threading.Tasks.Task<WorkflowResource> FetchAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new FetchWorkflowOptions(workspaceSid, sid);
@@ -73,6 +97,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// update
         /// </summary>
+        ///
+        /// <param name="options"> Update Workflow parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Workflow </returns> 
         public static WorkflowResource Update(UpdateWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -81,6 +109,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="options"> Update Workflow parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Workflow </returns> 
         public static async System.Threading.Tasks.Task<WorkflowResource> UpdateAsync(UpdateWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -92,6 +127,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// update
         /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
+        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
+        /// <param name="configuration"> The configuration </param>
+        /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Workflow </returns> 
         public static WorkflowResource Update(string workspaceSid, string sid, string friendlyName = null, Uri assignmentCallbackUrl = null, Uri fallbackAssignmentCallbackUrl = null, string configuration = null, int? taskReservationTimeout = null, ITwilioRestClient client = null)
         {
             var options = new UpdateWorkflowOptions(workspaceSid, sid){FriendlyName = friendlyName, AssignmentCallbackUrl = assignmentCallbackUrl, FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl, Configuration = configuration, TaskReservationTimeout = taskReservationTimeout};
@@ -99,6 +144,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
+        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
+        /// <param name="configuration"> The configuration </param>
+        /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Workflow </returns> 
         public static async System.Threading.Tasks.Task<WorkflowResource> UpdateAsync(string workspaceSid, string sid, string friendlyName = null, Uri assignmentCallbackUrl = null, Uri fallbackAssignmentCallbackUrl = null, string configuration = null, int? taskReservationTimeout = null, ITwilioRestClient client = null)
         {
             var options = new UpdateWorkflowOptions(workspaceSid, sid){FriendlyName = friendlyName, AssignmentCallbackUrl = assignmentCallbackUrl, FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl, Configuration = configuration, TaskReservationTimeout = taskReservationTimeout};
@@ -120,6 +178,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="options"> Delete Workflow parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Workflow </returns> 
         public static bool Delete(DeleteWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -128,6 +190,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="options"> Delete Workflow parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Workflow </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -139,6 +208,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Workflow </returns> 
         public static bool Delete(string workspaceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new DeleteWorkflowOptions(workspaceSid, sid);
@@ -146,6 +220,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Workflow </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new DeleteWorkflowOptions(workspaceSid, sid);
@@ -167,6 +249,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read Workflow parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Workflow </returns> 
         public static ResourceSet<WorkflowResource> Read(ReadWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -177,6 +263,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read Workflow parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Workflow </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<WorkflowResource>> ReadAsync(ReadWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -190,6 +283,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Workflow </returns> 
         public static ResourceSet<WorkflowResource> Read(string workspaceSid, string friendlyName = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadWorkflowOptions(workspaceSid){FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
@@ -197,6 +297,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Workflow </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<WorkflowResource>> ReadAsync(string workspaceSid, string friendlyName = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadWorkflowOptions(workspaceSid){FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
@@ -204,6 +314,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<WorkflowResource> NextPage(Page<WorkflowResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -232,6 +349,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="options"> Create Workflow parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Workflow </returns> 
         public static WorkflowResource Create(CreateWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -240,6 +361,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="options"> Create Workflow parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Workflow </returns> 
         public static async System.Threading.Tasks.Task<WorkflowResource> CreateAsync(CreateWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -251,6 +379,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="configuration"> The configuration </param>
+        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
+        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
+        /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Workflow </returns> 
         public static WorkflowResource Create(string workspaceSid, string friendlyName, string configuration, Uri assignmentCallbackUrl = null, Uri fallbackAssignmentCallbackUrl = null, int? taskReservationTimeout = null, ITwilioRestClient client = null)
         {
             var options = new CreateWorkflowOptions(workspaceSid, friendlyName, configuration){AssignmentCallbackUrl = assignmentCallbackUrl, FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl, TaskReservationTimeout = taskReservationTimeout};
@@ -258,6 +395,18 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="configuration"> The configuration </param>
+        /// <param name="assignmentCallbackUrl"> The assignment_callback_url </param>
+        /// <param name="fallbackAssignmentCallbackUrl"> The fallback_assignment_callback_url </param>
+        /// <param name="taskReservationTimeout"> The task_reservation_timeout </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Workflow </returns> 
         public static async System.Threading.Tasks.Task<WorkflowResource> CreateAsync(string workspaceSid, string friendlyName, string configuration, Uri assignmentCallbackUrl = null, Uri fallbackAssignmentCallbackUrl = null, int? taskReservationTimeout = null, ITwilioRestClient client = null)
         {
             var options = new CreateWorkflowOptions(workspaceSid, friendlyName, configuration){AssignmentCallbackUrl = assignmentCallbackUrl, FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl, TaskReservationTimeout = taskReservationTimeout};
@@ -284,28 +433,64 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             }
         }
     
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The assignment_callback_url
+        /// </summary>
         [JsonProperty("assignment_callback_url")]
         public Uri AssignmentCallbackUrl { get; private set; }
+        /// <summary>
+        /// The configuration
+        /// </summary>
         [JsonProperty("configuration")]
         public string Configuration { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The document_content_type
+        /// </summary>
         [JsonProperty("document_content_type")]
         public string DocumentContentType { get; private set; }
+        /// <summary>
+        /// The fallback_assignment_callback_url
+        /// </summary>
         [JsonProperty("fallback_assignment_callback_url")]
         public Uri FallbackAssignmentCallbackUrl { get; private set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
+        /// <summary>
+        /// The task_reservation_timeout
+        /// </summary>
         [JsonProperty("task_reservation_timeout")]
         public int? TaskReservationTimeout { get; private set; }
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
     

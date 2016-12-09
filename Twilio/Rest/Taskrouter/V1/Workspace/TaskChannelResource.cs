@@ -26,6 +26,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch TaskChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TaskChannel </returns> 
         public static TaskChannelResource Fetch(FetchTaskChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -34,6 +38,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch TaskChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
         public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(FetchTaskChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -45,6 +56,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TaskChannel </returns> 
         public static TaskChannelResource Fetch(string workspaceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new FetchTaskChannelOptions(workspaceSid, sid);
@@ -52,6 +68,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
         public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new FetchTaskChannelOptions(workspaceSid, sid);
@@ -73,6 +97,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read TaskChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TaskChannel </returns> 
         public static ResourceSet<TaskChannelResource> Read(ReadTaskChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -83,6 +111,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read TaskChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(ReadTaskChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -96,6 +131,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TaskChannel </returns> 
         public static ResourceSet<TaskChannelResource> Read(string workspaceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadTaskChannelOptions(workspaceSid){PageSize = pageSize, Limit = limit};
@@ -103,6 +144,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(string workspaceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadTaskChannelOptions(workspaceSid){PageSize = pageSize, Limit = limit};
@@ -110,6 +160,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<TaskChannelResource> NextPage(Page<TaskChannelResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -143,20 +200,44 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             }
         }
     
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
+        /// <summary>
+        /// The unique_name
+        /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
     

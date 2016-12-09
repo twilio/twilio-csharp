@@ -8,19 +8,61 @@ namespace Twilio.Rest.Notify.V1.Service
 
     public class CreateNotificationOptions : IOptions<NotificationResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The identity
+        /// </summary>
         public List<string> Identity { get; set; }
+        /// <summary>
+        /// The tag
+        /// </summary>
         public List<string> Tag { get; set; }
+        /// <summary>
+        /// The body
+        /// </summary>
         public string Body { get; set; }
+        /// <summary>
+        /// The priority
+        /// </summary>
         public NotificationResource.PriorityEnum Priority { get; set; }
+        /// <summary>
+        /// The ttl
+        /// </summary>
         public int? Ttl { get; set; }
+        /// <summary>
+        /// The title
+        /// </summary>
         public string Title { get; set; }
+        /// <summary>
+        /// The sound
+        /// </summary>
         public string Sound { get; set; }
+        /// <summary>
+        /// The action
+        /// </summary>
         public string Action { get; set; }
+        /// <summary>
+        /// The data
+        /// </summary>
         public string Data { get; set; }
+        /// <summary>
+        /// The apn
+        /// </summary>
         public string Apn { get; set; }
+        /// <summary>
+        /// The gcm
+        /// </summary>
         public string Gcm { get; set; }
+        /// <summary>
+        /// The sms
+        /// </summary>
         public string Sms { get; set; }
+        /// <summary>
+        /// The facebook_messenger
+        /// </summary>
         public object FacebookMessenger { get; set; }
     
         /// <summary>

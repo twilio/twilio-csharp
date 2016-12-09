@@ -7,7 +7,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class FetchCredentialListOptions : IOptions<CredentialListResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,7 +40,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class DeleteCredentialListOptions : IOptions<CredentialListResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -61,7 +73,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class CreateCredentialListOptions : IOptions<CredentialListResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The credential_list_sid
+        /// </summary>
         public string CredentialListSid { get; }
     
         /// <summary>
@@ -93,6 +111,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class ReadCredentialListOptions : ReadOptions<CredentialListResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
     
         /// <summary>

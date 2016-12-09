@@ -7,6 +7,9 @@ namespace Twilio.Rest.Taskrouter.V1
 
     public class FetchWorkspaceOptions : IOptions<WorkspaceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -31,13 +34,37 @@ namespace Twilio.Rest.Taskrouter.V1
 
     public class UpdateWorkspaceOptions : IOptions<WorkspaceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The default_activity_sid
+        /// </summary>
         public string DefaultActivitySid { get; set; }
+        /// <summary>
+        /// The event_callback_url
+        /// </summary>
         public Uri EventCallbackUrl { get; set; }
+        /// <summary>
+        /// The events_filter
+        /// </summary>
         public string EventsFilter { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The multi_task_enabled
+        /// </summary>
         public bool? MultiTaskEnabled { get; set; }
+        /// <summary>
+        /// The timeout_activity_sid
+        /// </summary>
         public string TimeoutActivitySid { get; set; }
+        /// <summary>
+        /// The prioritize_queue_order
+        /// </summary>
         public WorkspaceResource.QueueOrderEnum PrioritizeQueueOrder { get; set; }
     
         /// <summary>
@@ -97,6 +124,9 @@ namespace Twilio.Rest.Taskrouter.V1
 
     public class ReadWorkspaceOptions : ReadOptions<WorkspaceResource> 
     {
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>
@@ -121,11 +151,29 @@ namespace Twilio.Rest.Taskrouter.V1
 
     public class CreateWorkspaceOptions : IOptions<WorkspaceResource> 
     {
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; }
+        /// <summary>
+        /// The event_callback_url
+        /// </summary>
         public Uri EventCallbackUrl { get; set; }
+        /// <summary>
+        /// The events_filter
+        /// </summary>
         public string EventsFilter { get; set; }
+        /// <summary>
+        /// The multi_task_enabled
+        /// </summary>
         public bool? MultiTaskEnabled { get; set; }
+        /// <summary>
+        /// The template
+        /// </summary>
         public string Template { get; set; }
+        /// <summary>
+        /// The prioritize_queue_order
+        /// </summary>
         public WorkspaceResource.QueueOrderEnum PrioritizeQueueOrder { get; set; }
     
         /// <summary>
@@ -180,6 +228,9 @@ namespace Twilio.Rest.Taskrouter.V1
 
     public class DeleteWorkspaceOptions : IOptions<WorkspaceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

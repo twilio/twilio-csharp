@@ -8,6 +8,9 @@ namespace Twilio.Rest.Monitor.V1
 
     public class FetchAlertOptions : IOptions<AlertResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -32,6 +35,9 @@ namespace Twilio.Rest.Monitor.V1
 
     public class DeleteAlertOptions : IOptions<AlertResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -56,8 +62,17 @@ namespace Twilio.Rest.Monitor.V1
 
     public class ReadAlertOptions : ReadOptions<AlertResource> 
     {
+        /// <summary>
+        /// The log_level
+        /// </summary>
         public string LogLevel { get; set; }
+        /// <summary>
+        /// The start_date
+        /// </summary>
         public DateTime? StartDate { get; set; }
+        /// <summary>
+        /// The end_date
+        /// </summary>
         public DateTime? EndDate { get; set; }
     
         /// <summary>

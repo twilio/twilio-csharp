@@ -7,6 +7,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class ReadDomainOptions : ReadOptions<DomainResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
     
         /// <summary>
@@ -26,15 +29,45 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class CreateDomainOptions : IOptions<DomainResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The unique address on Twilio to route SIP traffic
+        /// </summary>
         public string DomainName { get; }
+        /// <summary>
+        /// A user-specified, human-readable name for the trigger.
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The types of authentication mapped to the domain
+        /// </summary>
         public string AuthType { get; set; }
+        /// <summary>
+        /// URL Twilio will request when receiving a call
+        /// </summary>
         public Uri VoiceUrl { get; set; }
+        /// <summary>
+        /// HTTP method to use with voice_url
+        /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+        /// <summary>
+        /// URL Twilio will request if an error occurs in executing TwiML
+        /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
+        /// <summary>
+        /// HTTP method used with voice_fallback_url
+        /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
+        /// <summary>
+        /// URL that Twilio will request with status updates
+        /// </summary>
         public Uri VoiceStatusCallbackUrl { get; set; }
+        /// <summary>
+        /// The voice_status_callback_method
+        /// </summary>
         public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
     
         /// <summary>
@@ -104,7 +137,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class FetchDomainOptions : IOptions<DomainResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Fetch by unique Domain Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -129,15 +168,45 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class UpdateDomainOptions : IOptions<DomainResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The auth_type
+        /// </summary>
         public string AuthType { get; set; }
+        /// <summary>
+        /// A user-specified, human-readable name for the trigger.
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The voice_fallback_method
+        /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
+        /// <summary>
+        /// The voice_fallback_url
+        /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
+        /// <summary>
+        /// HTTP method to use with voice_url
+        /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+        /// <summary>
+        /// The voice_status_callback_method
+        /// </summary>
         public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
+        /// <summary>
+        /// The voice_status_callback_url
+        /// </summary>
         public Uri VoiceStatusCallbackUrl { get; set; }
+        /// <summary>
+        /// The voice_url
+        /// </summary>
         public Uri VoiceUrl { get; set; }
     
         /// <summary>
@@ -202,7 +271,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class DeleteDomainOptions : IOptions<DomainResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

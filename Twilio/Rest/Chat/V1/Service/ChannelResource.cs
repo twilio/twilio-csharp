@@ -36,6 +36,10 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Channel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Channel </returns> 
         public static ChannelResource Fetch(FetchChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -44,6 +48,13 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Channel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<ChannelResource> FetchAsync(FetchChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -55,6 +66,11 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Channel </returns> 
         public static ChannelResource Fetch(string serviceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new FetchChannelOptions(serviceSid, sid);
@@ -62,6 +78,14 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<ChannelResource> FetchAsync(string serviceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new FetchChannelOptions(serviceSid, sid);
@@ -83,6 +107,10 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="options"> Delete Channel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Channel </returns> 
         public static bool Delete(DeleteChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -91,6 +119,13 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="options"> Delete Channel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -102,6 +137,11 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Channel </returns> 
         public static bool Delete(string serviceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new DeleteChannelOptions(serviceSid, sid);
@@ -109,6 +149,14 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string serviceSid, string sid, ITwilioRestClient client = null)
         {
             var options = new DeleteChannelOptions(serviceSid, sid);
@@ -130,6 +178,10 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="options"> Create Channel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Channel </returns> 
         public static ChannelResource Create(CreateChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -138,6 +190,13 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="options"> Create Channel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<ChannelResource> CreateAsync(CreateChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -149,6 +208,14 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="type"> The type </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Channel </returns> 
         public static ChannelResource Create(string serviceSid, string friendlyName = null, string uniqueName = null, string attributes = null, ChannelResource.ChannelTypeEnum type = null, ITwilioRestClient client = null)
         {
             var options = new CreateChannelOptions(serviceSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, Type = type};
@@ -156,6 +223,17 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="type"> The type </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<ChannelResource> CreateAsync(string serviceSid, string friendlyName = null, string uniqueName = null, string attributes = null, ChannelResource.ChannelTypeEnum type = null, ITwilioRestClient client = null)
         {
             var options = new CreateChannelOptions(serviceSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, Type = type};
@@ -177,6 +255,10 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read Channel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Channel </returns> 
         public static ResourceSet<ChannelResource> Read(ReadChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -187,6 +269,13 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read Channel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<ChannelResource>> ReadAsync(ReadChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -200,6 +289,12 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Channel </returns> 
         public static ResourceSet<ChannelResource> Read(string serviceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadChannelOptions(serviceSid){PageSize = pageSize, Limit = limit};
@@ -207,6 +302,15 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<ChannelResource>> ReadAsync(string serviceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadChannelOptions(serviceSid){PageSize = pageSize, Limit = limit};
@@ -214,6 +318,13 @@ namespace Twilio.Rest.Chat.V1.Service
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<ChannelResource> NextPage(Page<ChannelResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -242,6 +353,10 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// update
         /// </summary>
+        ///
+        /// <param name="options"> Update Channel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Channel </returns> 
         public static ChannelResource Update(UpdateChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -250,6 +365,13 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         #if NET40
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="options"> Update Channel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<ChannelResource> UpdateAsync(UpdateChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -261,6 +383,14 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// update
         /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Channel </returns> 
         public static ChannelResource Update(string serviceSid, string sid, string friendlyName = null, string uniqueName = null, string attributes = null, ITwilioRestClient client = null)
         {
             var options = new UpdateChannelOptions(serviceSid, sid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes};
@@ -268,6 +398,17 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     
         #if NET40
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<ChannelResource> UpdateAsync(string serviceSid, string sid, string friendlyName = null, string uniqueName = null, string attributes = null, ITwilioRestClient client = null)
         {
             var options = new UpdateChannelOptions(serviceSid, sid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes};
@@ -294,29 +435,65 @@ namespace Twilio.Rest.Chat.V1.Service
             }
         }
     
+        /// <summary>
+        /// The sid
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
+        /// <summary>
+        /// The unique_name
+        /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
+        /// <summary>
+        /// The attributes
+        /// </summary>
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
+        /// <summary>
+        /// The type
+        /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ChannelResource.ChannelTypeEnum Type { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The created_by
+        /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
     

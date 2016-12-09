@@ -27,6 +27,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a new token
         /// </summary>
+        ///
+        /// <param name="options"> Create Token parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Token </returns> 
         public static TokenResource Create(CreateTokenOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -35,6 +39,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Create a new token
+        /// </summary>
+        ///
+        /// <param name="options"> Create Token parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Token </returns> 
         public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(CreateTokenOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -46,6 +57,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a new token
         /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="ttl"> The duration in seconds the credentials are valid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Token </returns> 
         public static TokenResource Create(string accountSid = null, int? ttl = null, ITwilioRestClient client = null)
         {
             var options = new CreateTokenOptions{AccountSid = accountSid, Ttl = ttl};
@@ -53,6 +69,14 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Create a new token
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="ttl"> The duration in seconds the credentials are valid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Token </returns> 
         public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(string accountSid = null, int? ttl = null, ITwilioRestClient client = null)
         {
             var options = new CreateTokenOptions{AccountSid = accountSid, Ttl = ttl};
@@ -79,18 +103,39 @@ namespace Twilio.Rest.Api.V2010.Account
             }
         }
     
+        /// <summary>
+        /// The unique sid that identifies this account
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The date this resource was created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date this resource was last updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// An array representing the ephemeral credentials
+        /// </summary>
         [JsonProperty("ice_servers")]
         public List<IceServer> IceServers { get; private set; }
+        /// <summary>
+        /// The temporary password used for authenticating
+        /// </summary>
         [JsonProperty("password")]
         public string Password { get; private set; }
+        /// <summary>
+        /// The duration in seconds the credentials are valid
+        /// </summary>
         [JsonProperty("ttl")]
         public string Ttl { get; private set; }
+        /// <summary>
+        /// The temporary username that uniquely identifies a Token.
+        /// </summary>
         [JsonProperty("username")]
         public string Username { get; private set; }
     

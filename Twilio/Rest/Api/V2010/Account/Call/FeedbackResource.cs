@@ -42,6 +42,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="options"> Create Feedback parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Feedback </returns> 
         public static FeedbackResource Create(CreateFeedbackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,6 +54,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="options"> Create Feedback parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Feedback </returns> 
         public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -61,6 +72,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="qualityScore"> The quality_score </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="issue"> The issue </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Feedback </returns> 
         public static FeedbackResource Create(string callSid, int? qualityScore, string accountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
         {
             var options = new CreateFeedbackOptions(callSid, qualityScore){AccountSid = accountSid, Issue = issue};
@@ -68,6 +86,16 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="qualityScore"> The quality_score </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="issue"> The issue </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Feedback </returns> 
         public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string callSid, int? qualityScore, string accountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
         {
             var options = new CreateFeedbackOptions(callSid, qualityScore){AccountSid = accountSid, Issue = issue};
@@ -89,6 +117,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Fetch an instance of a feedback entry for a call
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Feedback parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Feedback </returns> 
         public static FeedbackResource Fetch(FetchFeedbackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -97,6 +129,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// Fetch an instance of a feedback entry for a call
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Feedback parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Feedback </returns> 
         public static async System.Threading.Tasks.Task<FeedbackResource> FetchAsync(FetchFeedbackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -108,6 +147,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Fetch an instance of a feedback entry for a call
         /// </summary>
+        ///
+        /// <param name="callSid"> The call sid that uniquely identifies the call </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Feedback </returns> 
         public static FeedbackResource Fetch(string callSid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchFeedbackOptions(callSid){AccountSid = accountSid};
@@ -115,6 +159,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// Fetch an instance of a feedback entry for a call
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call sid that uniquely identifies the call </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Feedback </returns> 
         public static async System.Threading.Tasks.Task<FeedbackResource> FetchAsync(string callSid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchFeedbackOptions(callSid){AccountSid = accountSid};
@@ -136,6 +188,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Create or update a feedback entry for a call
         /// </summary>
+        ///
+        /// <param name="options"> Update Feedback parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Feedback </returns> 
         public static FeedbackResource Update(UpdateFeedbackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -144,6 +200,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// Create or update a feedback entry for a call
+        /// </summary>
+        ///
+        /// <param name="options"> Update Feedback parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Feedback </returns> 
         public static async System.Threading.Tasks.Task<FeedbackResource> UpdateAsync(UpdateFeedbackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -155,6 +218,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Create or update a feedback entry for a call
         /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="qualityScore"> An integer from 1 to 5 </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="issue"> Issues experienced during the call </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Feedback </returns> 
         public static FeedbackResource Update(string callSid, int? qualityScore, string accountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
         {
             var options = new UpdateFeedbackOptions(callSid, qualityScore){AccountSid = accountSid, Issue = issue};
@@ -162,6 +232,16 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// Create or update a feedback entry for a call
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="qualityScore"> An integer from 1 to 5 </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="issue"> Issues experienced during the call </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Feedback </returns> 
         public static async System.Threading.Tasks.Task<FeedbackResource> UpdateAsync(string callSid, int? qualityScore, string accountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
         {
             var options = new UpdateFeedbackOptions(callSid, qualityScore){AccountSid = accountSid, Issue = issue};
@@ -188,17 +268,35 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             }
         }
     
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The issues
+        /// </summary>
         [JsonProperty("issues")]
         [JsonConverter(typeof(StringEnumConverter))]
         public List<FeedbackResource.IssuesEnum> Issues { get; private set; }
+        /// <summary>
+        /// 1 to 5 quality score
+        /// </summary>
         [JsonProperty("quality_score")]
         public int? QualityScore { get; private set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
     

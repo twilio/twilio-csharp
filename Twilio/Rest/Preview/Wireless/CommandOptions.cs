@@ -7,6 +7,9 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class FetchCommandOptions : IOptions<CommandResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -31,8 +34,17 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class ReadCommandOptions : ReadOptions<CommandResource> 
     {
+        /// <summary>
+        /// The device
+        /// </summary>
         public string Device { get; set; }
+        /// <summary>
+        /// The status
+        /// </summary>
         public string Status { get; set; }
+        /// <summary>
+        /// The direction
+        /// </summary>
         public string Direction { get; set; }
     
         /// <summary>
@@ -67,11 +79,29 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class CreateCommandOptions : IOptions<CommandResource> 
     {
+        /// <summary>
+        /// The device
+        /// </summary>
         public string Device { get; }
+        /// <summary>
+        /// The command
+        /// </summary>
         public string Command { get; }
+        /// <summary>
+        /// The callback_method
+        /// </summary>
         public string CallbackMethod { get; set; }
+        /// <summary>
+        /// The callback_url
+        /// </summary>
         public Uri CallbackUrl { get; set; }
+        /// <summary>
+        /// The command_mode
+        /// </summary>
         public string CommandMode { get; set; }
+        /// <summary>
+        /// The include_sid
+        /// </summary>
         public string IncludeSid { get; set; }
     
         /// <summary>

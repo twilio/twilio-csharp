@@ -36,6 +36,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of an authorized-connect-app
         /// </summary>
+        ///
+        /// <param name="options"> Fetch AuthorizedConnectApp parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AuthorizedConnectApp </returns> 
         public static AuthorizedConnectAppResource Fetch(FetchAuthorizedConnectAppOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -44,6 +48,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Fetch an instance of an authorized-connect-app
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch AuthorizedConnectApp parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns> 
         public static async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(FetchAuthorizedConnectAppOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -55,6 +66,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of an authorized-connect-app
         /// </summary>
+        ///
+        /// <param name="connectAppSid"> The connect_app_sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AuthorizedConnectApp </returns> 
         public static AuthorizedConnectAppResource Fetch(string connectAppSid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchAuthorizedConnectAppOptions(connectAppSid){AccountSid = accountSid};
@@ -62,6 +78,14 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Fetch an instance of an authorized-connect-app
+        /// </summary>
+        ///
+        /// <param name="connectAppSid"> The connect_app_sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns> 
         public static async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(string connectAppSid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchAuthorizedConnectAppOptions(connectAppSid){AccountSid = accountSid};
@@ -83,6 +107,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
         /// </summary>
+        ///
+        /// <param name="options"> Read AuthorizedConnectApp parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AuthorizedConnectApp </returns> 
         public static ResourceSet<AuthorizedConnectAppResource> Read(ReadAuthorizedConnectAppOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -93,6 +121,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="options"> Read AuthorizedConnectApp parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<AuthorizedConnectAppResource>> ReadAsync(ReadAuthorizedConnectAppOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -106,6 +141,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
         /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of AuthorizedConnectApp </returns> 
         public static ResourceSet<AuthorizedConnectAppResource> Read(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadAuthorizedConnectAppOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
@@ -113,6 +154,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<AuthorizedConnectAppResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadAuthorizedConnectAppOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
@@ -120,6 +170,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<AuthorizedConnectAppResource> NextPage(Page<AuthorizedConnectAppResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -153,25 +210,55 @@ namespace Twilio.Rest.Api.V2010.Account
             }
         }
     
+        /// <summary>
+        /// The unique sid that identifies this account
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The company name set for this Connect App.
+        /// </summary>
         [JsonProperty("connect_app_company_name")]
         public string ConnectAppCompanyName { get; private set; }
+        /// <summary>
+        /// Human readable description of the app
+        /// </summary>
         [JsonProperty("connect_app_description")]
         public string ConnectAppDescription { get; private set; }
+        /// <summary>
+        /// A human readable name for the Connect App.
+        /// </summary>
         [JsonProperty("connect_app_friendly_name")]
         public string ConnectAppFriendlyName { get; private set; }
+        /// <summary>
+        /// The public URL for this Connect App.
+        /// </summary>
         [JsonProperty("connect_app_homepage_url")]
         public Uri ConnectAppHomepageUrl { get; private set; }
+        /// <summary>
+        /// A string that uniquely identifies this app
+        /// </summary>
         [JsonProperty("connect_app_sid")]
         public string ConnectAppSid { get; private set; }
+        /// <summary>
+        /// The date this resource was created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date this resource was last updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// Permissions authorized to this app
+        /// </summary>
         [JsonProperty("permissions")]
         [JsonConverter(typeof(StringEnumConverter))]
         public List<AuthorizedConnectAppResource.PermissionEnum> Permissions { get; private set; }
+        /// <summary>
+        /// The URI for this resource
+        /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
     

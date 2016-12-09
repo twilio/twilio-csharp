@@ -24,11 +24,29 @@ namespace Twilio.Rest.Chat.V1
 
     public class CreateCredentialOptions : IOptions<CredentialResource> 
     {
+        /// <summary>
+        /// The type
+        /// </summary>
         public CredentialResource.PushServiceEnum Type { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The certificate
+        /// </summary>
         public string Certificate { get; set; }
+        /// <summary>
+        /// The private_key
+        /// </summary>
         public string PrivateKey { get; set; }
+        /// <summary>
+        /// The sandbox
+        /// </summary>
         public bool? Sandbox { get; set; }
+        /// <summary>
+        /// The api_key
+        /// </summary>
         public string ApiKey { get; set; }
     
         /// <summary>
@@ -83,6 +101,9 @@ namespace Twilio.Rest.Chat.V1
 
     public class FetchCredentialOptions : IOptions<CredentialResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -107,11 +128,29 @@ namespace Twilio.Rest.Chat.V1
 
     public class UpdateCredentialOptions : IOptions<CredentialResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The certificate
+        /// </summary>
         public string Certificate { get; set; }
+        /// <summary>
+        /// The private_key
+        /// </summary>
         public string PrivateKey { get; set; }
+        /// <summary>
+        /// The sandbox
+        /// </summary>
         public bool? Sandbox { get; set; }
+        /// <summary>
+        /// The api_key
+        /// </summary>
         public string ApiKey { get; set; }
     
         /// <summary>
@@ -161,6 +200,9 @@ namespace Twilio.Rest.Chat.V1
 
     public class DeleteCredentialOptions : IOptions<CredentialResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

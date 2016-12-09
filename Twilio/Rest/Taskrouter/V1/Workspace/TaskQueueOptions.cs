@@ -7,7 +7,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class FetchTaskQueueOptions : IOptions<TaskQueueResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,13 +40,37 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class UpdateTaskQueueOptions : IOptions<TaskQueueResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The target_workers
+        /// </summary>
         public string TargetWorkers { get; set; }
+        /// <summary>
+        /// The reservation_activity_sid
+        /// </summary>
         public string ReservationActivitySid { get; set; }
+        /// <summary>
+        /// The assignment_activity_sid
+        /// </summary>
         public string AssignmentActivitySid { get; set; }
+        /// <summary>
+        /// The max_reserved_workers
+        /// </summary>
         public int? MaxReservedWorkers { get; set; }
+        /// <summary>
+        /// The task_order
+        /// </summary>
         public TaskQueueResource.TaskOrderEnum TaskOrder { get; set; }
     
         /// <summary>
@@ -97,9 +127,21 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class ReadTaskQueueOptions : ReadOptions<TaskQueueResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The evaluate_worker_attributes
+        /// </summary>
         public string EvaluateWorkerAttributes { get; set; }
+        /// <summary>
+        /// The worker_sid
+        /// </summary>
         public string WorkerSid { get; set; }
     
         /// <summary>
@@ -144,12 +186,33 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class CreateTaskQueueOptions : IOptions<TaskQueueResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; }
+        /// <summary>
+        /// The reservation_activity_sid
+        /// </summary>
         public string ReservationActivitySid { get; }
+        /// <summary>
+        /// The assignment_activity_sid
+        /// </summary>
         public string AssignmentActivitySid { get; }
+        /// <summary>
+        /// The target_workers
+        /// </summary>
         public string TargetWorkers { get; set; }
+        /// <summary>
+        /// The max_reserved_workers
+        /// </summary>
         public int? MaxReservedWorkers { get; set; }
+        /// <summary>
+        /// The task_order
+        /// </summary>
         public TaskQueueResource.TaskOrderEnum TaskOrder { get; set; }
     
         /// <summary>
@@ -210,7 +273,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class DeleteTaskQueueOptions : IOptions<TaskQueueResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

@@ -145,6 +145,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Fetch and instance of a usage-trigger
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Trigger parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Trigger </returns> 
         public static TriggerResource Fetch(FetchTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -153,6 +157,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
+        /// <summary>
+        /// Fetch and instance of a usage-trigger
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Trigger parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<TriggerResource> FetchAsync(FetchTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -164,6 +175,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Fetch and instance of a usage-trigger
         /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Trigger </returns> 
         public static TriggerResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchTriggerOptions(sid){AccountSid = accountSid};
@@ -171,6 +187,14 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
+        /// <summary>
+        /// Fetch and instance of a usage-trigger
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<TriggerResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchTriggerOptions(sid){AccountSid = accountSid};
@@ -192,6 +216,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Update an instance of a usage trigger
         /// </summary>
+        ///
+        /// <param name="options"> Update Trigger parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Trigger </returns> 
         public static TriggerResource Update(UpdateTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -200,6 +228,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
+        /// <summary>
+        /// Update an instance of a usage trigger
+        /// </summary>
+        ///
+        /// <param name="options"> Update Trigger parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<TriggerResource> UpdateAsync(UpdateTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -211,6 +246,14 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Update an instance of a usage trigger
         /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callbackMethod"> HTTP method to use with callback_url </param>
+        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
+        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Trigger </returns> 
         public static TriggerResource Update(string sid, string accountSid = null, Twilio.Http.HttpMethod callbackMethod = null, Uri callbackUrl = null, string friendlyName = null, ITwilioRestClient client = null)
         {
             var options = new UpdateTriggerOptions(sid){AccountSid = accountSid, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName};
@@ -218,6 +261,17 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
+        /// <summary>
+        /// Update an instance of a usage trigger
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callbackMethod"> HTTP method to use with callback_url </param>
+        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
+        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<TriggerResource> UpdateAsync(string sid, string accountSid = null, Twilio.Http.HttpMethod callbackMethod = null, Uri callbackUrl = null, string friendlyName = null, ITwilioRestClient client = null)
         {
             var options = new UpdateTriggerOptions(sid){AccountSid = accountSid, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName};
@@ -239,6 +293,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="options"> Delete Trigger parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Trigger </returns> 
         public static bool Delete(DeleteTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -247,6 +305,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="options"> Delete Trigger parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -258,6 +323,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Trigger </returns> 
         public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteTriggerOptions(sid){AccountSid = accountSid};
@@ -265,6 +335,14 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteTriggerOptions(sid){AccountSid = accountSid};
@@ -286,6 +364,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Create a new UsageTrigger
         /// </summary>
+        ///
+        /// <param name="options"> Create Trigger parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Trigger </returns> 
         public static TriggerResource Create(CreateTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -294,6 +376,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
+        /// <summary>
+        /// Create a new UsageTrigger
+        /// </summary>
+        ///
+        /// <param name="options"> Create Trigger parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<TriggerResource> CreateAsync(CreateTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -305,6 +394,17 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Create a new UsageTrigger
         /// </summary>
+        ///
+        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
+        /// <param name="triggerValue"> the value at which the trigger will fire </param>
+        /// <param name="usageCategory"> The usage category the trigger watches </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callbackMethod"> HTTP method to use with callback_url </param>
+        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
+        /// <param name="recurring"> How this trigger recurs </param>
+        /// <param name="triggerBy"> The field in the UsageRecord that fires the trigger </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Trigger </returns> 
         public static TriggerResource Create(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategoryEnum usageCategory, string accountSid = null, Twilio.Http.HttpMethod callbackMethod = null, string friendlyName = null, TriggerResource.RecurringEnum recurring = null, TriggerResource.TriggerFieldEnum triggerBy = null, ITwilioRestClient client = null)
         {
             var options = new CreateTriggerOptions(callbackUrl, triggerValue, usageCategory){AccountSid = accountSid, CallbackMethod = callbackMethod, FriendlyName = friendlyName, Recurring = recurring, TriggerBy = triggerBy};
@@ -312,6 +412,20 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
+        /// <summary>
+        /// Create a new UsageTrigger
+        /// </summary>
+        ///
+        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
+        /// <param name="triggerValue"> the value at which the trigger will fire </param>
+        /// <param name="usageCategory"> The usage category the trigger watches </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="callbackMethod"> HTTP method to use with callback_url </param>
+        /// <param name="friendlyName"> A user-specified, human-readable name for the trigger. </param>
+        /// <param name="recurring"> How this trigger recurs </param>
+        /// <param name="triggerBy"> The field in the UsageRecord that fires the trigger </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<TriggerResource> CreateAsync(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategoryEnum usageCategory, string accountSid = null, Twilio.Http.HttpMethod callbackMethod = null, string friendlyName = null, TriggerResource.RecurringEnum recurring = null, TriggerResource.TriggerFieldEnum triggerBy = null, ITwilioRestClient client = null)
         {
             var options = new CreateTriggerOptions(callbackUrl, triggerValue, usageCategory){AccountSid = accountSid, CallbackMethod = callbackMethod, FriendlyName = friendlyName, Recurring = recurring, TriggerBy = triggerBy};
@@ -333,6 +447,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Retrieve a list of usage-triggers belonging to the account used to make the request
         /// </summary>
+        ///
+        /// <param name="options"> Read Trigger parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Trigger </returns> 
         public static ResourceSet<TriggerResource> Read(ReadTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -343,6 +461,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
+        /// <summary>
+        /// Retrieve a list of usage-triggers belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="options"> Read Trigger parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<TriggerResource>> ReadAsync(ReadTriggerOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -356,6 +481,15 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Retrieve a list of usage-triggers belonging to the account used to make the request
         /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="recurring"> Filter by recurring </param>
+        /// <param name="triggerBy"> Filter by trigger by </param>
+        /// <param name="usageCategory"> Filter by Usage Category </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Trigger </returns> 
         public static ResourceSet<TriggerResource> Read(string accountSid = null, TriggerResource.RecurringEnum recurring = null, TriggerResource.TriggerFieldEnum triggerBy = null, TriggerResource.UsageCategoryEnum usageCategory = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadTriggerOptions{AccountSid = accountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
@@ -363,6 +497,18 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     
         #if NET40
+        /// <summary>
+        /// Retrieve a list of usage-triggers belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="recurring"> Filter by recurring </param>
+        /// <param name="triggerBy"> Filter by trigger by </param>
+        /// <param name="usageCategory"> Filter by Usage Category </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<TriggerResource>> ReadAsync(string accountSid = null, TriggerResource.RecurringEnum recurring = null, TriggerResource.TriggerFieldEnum triggerBy = null, TriggerResource.UsageCategoryEnum usageCategory = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadTriggerOptions{AccountSid = accountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
@@ -370,6 +516,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<TriggerResource> NextPage(Page<TriggerResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -403,40 +556,88 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             }
         }
     
+        /// <summary>
+        /// The account this trigger monitors.
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The api_version
+        /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
+        /// <summary>
+        /// HTTP method to use with callback_url
+        /// </summary>
         [JsonProperty("callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod CallbackMethod { get; private set; }
+        /// <summary>
+        /// URL Twilio will request when the trigger fires
+        /// </summary>
         [JsonProperty("callback_url")]
         public Uri CallbackUrl { get; private set; }
+        /// <summary>
+        /// The current value of the field the trigger is watching.
+        /// </summary>
         [JsonProperty("current_value")]
         public string CurrentValue { get; private set; }
+        /// <summary>
+        /// The date this resource was created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date the trigger was last fired
+        /// </summary>
         [JsonProperty("date_fired")]
         public DateTime? DateFired { get; private set; }
+        /// <summary>
+        /// The date this resource was last updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// A user-specified, human-readable name for the trigger.
+        /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
+        /// <summary>
+        /// How this trigger recurs
+        /// </summary>
         [JsonProperty("recurring")]
         [JsonConverter(typeof(StringEnumConverter))]
         public TriggerResource.RecurringEnum Recurring { get; private set; }
+        /// <summary>
+        /// The trigger's unique Sid
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
+        /// <summary>
+        /// The field in the UsageRecord that fires the trigger
+        /// </summary>
         [JsonProperty("trigger_by")]
         [JsonConverter(typeof(StringEnumConverter))]
         public TriggerResource.TriggerFieldEnum TriggerBy { get; private set; }
+        /// <summary>
+        /// the value at which the trigger will fire
+        /// </summary>
         [JsonProperty("trigger_value")]
         public string TriggerValue { get; private set; }
+        /// <summary>
+        /// The URI for this resource
+        /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
+        /// <summary>
+        /// The usage category the trigger watches
+        /// </summary>
         [JsonProperty("usage_category")]
         [JsonConverter(typeof(StringEnumConverter))]
         public TriggerResource.UsageCategoryEnum UsageCategory { get; private set; }
+        /// <summary>
+        /// The URI of the UsageRecord this trigger is watching
+        /// </summary>
         [JsonProperty("usage_record_uri")]
         public string UsageRecordUri { get; private set; }
     

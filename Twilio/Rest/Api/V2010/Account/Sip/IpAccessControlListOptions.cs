@@ -7,6 +7,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class ReadIpAccessControlListOptions : ReadOptions<IpAccessControlListResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
     
         /// <summary>
@@ -26,7 +29,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class CreateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// A human readable description of this resource
+        /// </summary>
         public string FriendlyName { get; }
     
         /// <summary>
@@ -56,7 +65,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class FetchIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Fetch by unique ip-access-control-list Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -81,8 +96,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class UpdateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// A human readable description of this resource
+        /// </summary>
         public string FriendlyName { get; }
     
         /// <summary>
@@ -114,7 +138,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class DeleteIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Delete by unique ip-access-control-list Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

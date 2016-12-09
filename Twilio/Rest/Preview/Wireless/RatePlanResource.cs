@@ -26,6 +26,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read RatePlan parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RatePlan </returns> 
         public static ResourceSet<RatePlanResource> Read(ReadRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -36,6 +40,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read RatePlan parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<RatePlanResource>> ReadAsync(ReadRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -49,6 +60,11 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RatePlan </returns> 
         public static ResourceSet<RatePlanResource> Read(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadRatePlanOptions{PageSize = pageSize, Limit = limit};
@@ -56,6 +72,14 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<RatePlanResource>> ReadAsync(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadRatePlanOptions{PageSize = pageSize, Limit = limit};
@@ -63,6 +87,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<RatePlanResource> NextPage(Page<RatePlanResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -91,6 +122,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch RatePlan parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RatePlan </returns> 
         public static RatePlanResource Fetch(FetchRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -99,6 +134,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch RatePlan parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
         public static async System.Threading.Tasks.Task<RatePlanResource> FetchAsync(FetchRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -110,6 +152,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RatePlan </returns> 
         public static RatePlanResource Fetch(string sid, ITwilioRestClient client = null)
         {
             var options = new FetchRatePlanOptions(sid);
@@ -117,6 +163,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
         public static async System.Threading.Tasks.Task<RatePlanResource> FetchAsync(string sid, ITwilioRestClient client = null)
         {
             var options = new FetchRatePlanOptions(sid);
@@ -138,6 +191,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="options"> Create RatePlan parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RatePlan </returns> 
         public static RatePlanResource Create(CreateRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -146,6 +203,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="options"> Create RatePlan parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
         public static async System.Threading.Tasks.Task<RatePlanResource> CreateAsync(CreateRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -157,6 +221,17 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="alias"> The alias </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="roaming"> The roaming </param>
+        /// <param name="dataLimit"> The data_limit </param>
+        /// <param name="dataMetering"> The data_metering </param>
+        /// <param name="commandsEnabled"> The commands_enabled </param>
+        /// <param name="renewalPeriod"> The renewal_period </param>
+        /// <param name="renewalUnits"> The renewal_units </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RatePlan </returns> 
         public static RatePlanResource Create(string alias = null, string friendlyName = null, List<string> roaming = null, int? dataLimit = null, string dataMetering = null, bool? commandsEnabled = null, int? renewalPeriod = null, string renewalUnits = null, ITwilioRestClient client = null)
         {
             var options = new CreateRatePlanOptions{Alias = alias, FriendlyName = friendlyName, Roaming = roaming, DataLimit = dataLimit, DataMetering = dataMetering, CommandsEnabled = commandsEnabled, RenewalPeriod = renewalPeriod, RenewalUnits = renewalUnits};
@@ -164,6 +239,20 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="alias"> The alias </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="roaming"> The roaming </param>
+        /// <param name="dataLimit"> The data_limit </param>
+        /// <param name="dataMetering"> The data_metering </param>
+        /// <param name="commandsEnabled"> The commands_enabled </param>
+        /// <param name="renewalPeriod"> The renewal_period </param>
+        /// <param name="renewalUnits"> The renewal_units </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
         public static async System.Threading.Tasks.Task<RatePlanResource> CreateAsync(string alias = null, string friendlyName = null, List<string> roaming = null, int? dataLimit = null, string dataMetering = null, bool? commandsEnabled = null, int? renewalPeriod = null, string renewalUnits = null, ITwilioRestClient client = null)
         {
             var options = new CreateRatePlanOptions{Alias = alias, FriendlyName = friendlyName, Roaming = roaming, DataLimit = dataLimit, DataMetering = dataMetering, CommandsEnabled = commandsEnabled, RenewalPeriod = renewalPeriod, RenewalUnits = renewalUnits};
@@ -185,6 +274,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// update
         /// </summary>
+        ///
+        /// <param name="options"> Update RatePlan parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RatePlan </returns> 
         public static RatePlanResource Update(UpdateRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -193,6 +286,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="options"> Update RatePlan parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
         public static async System.Threading.Tasks.Task<RatePlanResource> UpdateAsync(UpdateRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -204,6 +304,12 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// update
         /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="alias"> The alias </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RatePlan </returns> 
         public static RatePlanResource Update(string sid, string alias = null, string friendlyName = null, ITwilioRestClient client = null)
         {
             var options = new UpdateRatePlanOptions(sid){Alias = alias, FriendlyName = friendlyName};
@@ -211,6 +317,15 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="alias"> The alias </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
         public static async System.Threading.Tasks.Task<RatePlanResource> UpdateAsync(string sid, string alias = null, string friendlyName = null, ITwilioRestClient client = null)
         {
             var options = new UpdateRatePlanOptions(sid){Alias = alias, FriendlyName = friendlyName};
@@ -237,26 +352,59 @@ namespace Twilio.Rest.Preview.Wireless
             }
         }
     
+        /// <summary>
+        /// The sid
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
+        /// <summary>
+        /// The alias
+        /// </summary>
         [JsonProperty("alias")]
         public string Alias { get; private set; }
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
+        /// <summary>
+        /// The roaming
+        /// </summary>
         [JsonProperty("roaming")]
         public List<string> Roaming { get; private set; }
+        /// <summary>
+        /// The data
+        /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }
+        /// <summary>
+        /// The commands
+        /// </summary>
         [JsonProperty("commands")]
         public object Commands { get; private set; }
+        /// <summary>
+        /// The renewal
+        /// </summary>
         [JsonProperty("renewal")]
         public object Renewal { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
     

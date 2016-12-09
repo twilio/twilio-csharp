@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CreateTokenOptions : IOptions<TokenResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The duration in seconds the credentials are valid
+        /// </summary>
         public int? Ttl { get; set; }
     
         /// <summary>

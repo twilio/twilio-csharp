@@ -36,6 +36,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="options"> Create Feedback parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Feedback </returns> 
         public static FeedbackResource Create(CreateFeedbackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -44,6 +48,13 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="options"> Create Feedback parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Feedback </returns> 
         public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -55,6 +66,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="messageSid"> The message_sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="outcome"> The outcome </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Feedback </returns> 
         public static FeedbackResource Create(string messageSid, string accountSid = null, FeedbackResource.OutcomeEnum outcome = null, ITwilioRestClient client = null)
         {
             var options = new CreateFeedbackOptions(messageSid){AccountSid = accountSid, Outcome = outcome};
@@ -62,6 +79,15 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="messageSid"> The message_sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="outcome"> The outcome </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Feedback </returns> 
         public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string messageSid, string accountSid = null, FeedbackResource.OutcomeEnum outcome = null, ITwilioRestClient client = null)
         {
             var options = new CreateFeedbackOptions(messageSid){AccountSid = accountSid, Outcome = outcome};
@@ -88,17 +114,35 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             }
         }
     
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The message_sid
+        /// </summary>
         [JsonProperty("message_sid")]
         public string MessageSid { get; private set; }
+        /// <summary>
+        /// The outcome
+        /// </summary>
         [JsonProperty("outcome")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FeedbackResource.OutcomeEnum Outcome { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The uri
+        /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
     

@@ -8,10 +8,25 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
 
     public class FetchWorkflowStatisticsOptions : IOptions<WorkflowStatisticsResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The workflow_sid
+        /// </summary>
         public string WorkflowSid { get; }
+        /// <summary>
+        /// The minutes
+        /// </summary>
         public int? Minutes { get; set; }
+        /// <summary>
+        /// The start_date
+        /// </summary>
         public DateTime? StartDate { get; set; }
+        /// <summary>
+        /// The end_date
+        /// </summary>
         public DateTime? EndDate { get; set; }
     
         /// <summary>

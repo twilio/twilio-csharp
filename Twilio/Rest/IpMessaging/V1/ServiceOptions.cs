@@ -8,6 +8,9 @@ namespace Twilio.Rest.IpMessaging.V1
 
     public class FetchServiceOptions : IOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -32,6 +35,9 @@ namespace Twilio.Rest.IpMessaging.V1
 
     public class DeleteServiceOptions : IOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -56,6 +62,9 @@ namespace Twilio.Rest.IpMessaging.V1
 
     public class CreateServiceOptions : IOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; }
     
         /// <summary>
@@ -102,74 +111,281 @@ namespace Twilio.Rest.IpMessaging.V1
 
     public class UpdateServiceOptions : IOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The default_service_role_sid
+        /// </summary>
         public string DefaultServiceRoleSid { get; set; }
+        /// <summary>
+        /// The default_channel_role_sid
+        /// </summary>
         public string DefaultChannelRoleSid { get; set; }
+        /// <summary>
+        /// The default_channel_creator_role_sid
+        /// </summary>
         public string DefaultChannelCreatorRoleSid { get; set; }
+        /// <summary>
+        /// The read_status_enabled
+        /// </summary>
         public bool? ReadStatusEnabled { get; set; }
+        /// <summary>
+        /// The reachability_enabled
+        /// </summary>
         public bool? ReachabilityEnabled { get; set; }
+        /// <summary>
+        /// The typing_indicator_timeout
+        /// </summary>
         public int? TypingIndicatorTimeout { get; set; }
+        /// <summary>
+        /// The consumption_report_interval
+        /// </summary>
         public int? ConsumptionReportInterval { get; set; }
+        /// <summary>
+        /// The notifications.new_message.enabled
+        /// </summary>
         public bool? NotificationsNewMessageEnabled { get; set; }
+        /// <summary>
+        /// The notifications.new_message.template
+        /// </summary>
         public string NotificationsNewMessageTemplate { get; set; }
+        /// <summary>
+        /// The notifications.added_to_channel.enabled
+        /// </summary>
         public bool? NotificationsAddedToChannelEnabled { get; set; }
+        /// <summary>
+        /// The notifications.added_to_channel.template
+        /// </summary>
         public string NotificationsAddedToChannelTemplate { get; set; }
+        /// <summary>
+        /// The notifications.removed_from_channel.enabled
+        /// </summary>
         public bool? NotificationsRemovedFromChannelEnabled { get; set; }
+        /// <summary>
+        /// The notifications.removed_from_channel.template
+        /// </summary>
         public string NotificationsRemovedFromChannelTemplate { get; set; }
+        /// <summary>
+        /// The notifications.invited_to_channel.enabled
+        /// </summary>
         public bool? NotificationsInvitedToChannelEnabled { get; set; }
+        /// <summary>
+        /// The notifications.invited_to_channel.template
+        /// </summary>
         public string NotificationsInvitedToChannelTemplate { get; set; }
+        /// <summary>
+        /// The pre_webhook_url
+        /// </summary>
         public Uri PreWebhookUrl { get; set; }
+        /// <summary>
+        /// The post_webhook_url
+        /// </summary>
         public Uri PostWebhookUrl { get; set; }
+        /// <summary>
+        /// The webhook_method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhookMethod { get; set; }
+        /// <summary>
+        /// The webhook_filters
+        /// </summary>
         public List<string> WebhookFilters { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_send.url
+        /// </summary>
         public Uri WebhooksOnMessageSendUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_send.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMessageSendMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_send.format
+        /// </summary>
         public string WebhooksOnMessageSendFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_update.url
+        /// </summary>
         public Uri WebhooksOnMessageUpdateUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_update.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMessageUpdateMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_update.format
+        /// </summary>
         public string WebhooksOnMessageUpdateFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_remove.url
+        /// </summary>
         public Uri WebhooksOnMessageRemoveUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_remove.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMessageRemoveMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_remove.format
+        /// </summary>
         public string WebhooksOnMessageRemoveFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_add.url
+        /// </summary>
         public Uri WebhooksOnChannelAddUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_add.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnChannelAddMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_add.format
+        /// </summary>
         public string WebhooksOnChannelAddFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_destroy.url
+        /// </summary>
         public Uri WebhooksOnChannelDestroyUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_destroy.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnChannelDestroyMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_destroy.format
+        /// </summary>
         public string WebhooksOnChannelDestroyFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_update.url
+        /// </summary>
         public Uri WebhooksOnChannelUpdateUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_update.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnChannelUpdateMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_update.format
+        /// </summary>
         public string WebhooksOnChannelUpdateFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_member_add.url
+        /// </summary>
         public Uri WebhooksOnMemberAddUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_member_add.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMemberAddMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_member_add.format
+        /// </summary>
         public string WebhooksOnMemberAddFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_member_remove.url
+        /// </summary>
         public Uri WebhooksOnMemberRemoveUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_member_remove.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMemberRemoveMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_member_remove.format
+        /// </summary>
         public string WebhooksOnMemberRemoveFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_sent.url
+        /// </summary>
         public Uri WebhooksOnMessageSentUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_sent.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMessageSentMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_sent.format
+        /// </summary>
         public string WebhooksOnMessageSentFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_updated.url
+        /// </summary>
         public Uri WebhooksOnMessageUpdatedUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_updated.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMessageUpdatedMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_updated.format
+        /// </summary>
         public string WebhooksOnMessageUpdatedFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_removed.url
+        /// </summary>
         public Uri WebhooksOnMessageRemovedUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_removed.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMessageRemovedMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_message_removed.format
+        /// </summary>
         public string WebhooksOnMessageRemovedFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_added.url
+        /// </summary>
         public Uri WebhooksOnChannelAddedUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_added.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnChannelAddedMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_added.format
+        /// </summary>
         public string WebhooksOnChannelAddedFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_destroyed.url
+        /// </summary>
         public Uri WebhooksOnChannelDestroyedUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_destroyed.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnChannelDestroyedMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_destroyed.format
+        /// </summary>
         public string WebhooksOnChannelDestroyedFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_updated.url
+        /// </summary>
         public Uri WebhooksOnChannelUpdatedUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_updated.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnChannelUpdatedMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_channel_updated.format
+        /// </summary>
         public string WebhooksOnChannelUpdatedFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_member_added.url
+        /// </summary>
         public Uri WebhooksOnMemberAddedUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_member_added.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMemberAddedMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_member_added.format
+        /// </summary>
         public string WebhooksOnMemberAddedFormat { get; set; }
+        /// <summary>
+        /// The webhooks.on_member_removed.url
+        /// </summary>
         public Uri WebhooksOnMemberRemovedUrl { get; set; }
+        /// <summary>
+        /// The webhooks.on_member_removed.method
+        /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMemberRemovedMethod { get; set; }
+        /// <summary>
+        /// The webhooks.on_member_removed.format
+        /// </summary>
         public string WebhooksOnMemberRemovedFormat { get; set; }
     
         /// <summary>

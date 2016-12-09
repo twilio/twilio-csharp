@@ -7,7 +7,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class FetchIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,7 +40,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class DeleteIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -61,7 +73,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class CreateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The ip_access_control_list_sid
+        /// </summary>
         public string IpAccessControlListSid { get; }
     
         /// <summary>
@@ -93,6 +111,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class ReadIpAccessControlListOptions : ReadOptions<IpAccessControlListResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
     
         /// <summary>

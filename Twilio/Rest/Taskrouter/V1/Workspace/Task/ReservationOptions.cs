@@ -7,8 +7,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
     public class ReadReservationOptions : ReadOptions<ReservationResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The task_sid
+        /// </summary>
         public string TaskSid { get; }
+        /// <summary>
+        /// The reservation_status
+        /// </summary>
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
     
         /// <summary>
@@ -45,8 +54,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
     public class FetchReservationOptions : IOptions<ReservationResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The task_sid
+        /// </summary>
         public string TaskSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -75,27 +93,93 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
 
     public class UpdateReservationOptions : IOptions<ReservationResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The task_sid
+        /// </summary>
         public string TaskSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The reservation_status
+        /// </summary>
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
+        /// <summary>
+        /// The worker_activity_sid
+        /// </summary>
         public string WorkerActivitySid { get; set; }
+        /// <summary>
+        /// The instruction
+        /// </summary>
         public string Instruction { get; set; }
+        /// <summary>
+        /// The dequeue_post_work_activity_sid
+        /// </summary>
         public string DequeuePostWorkActivitySid { get; set; }
+        /// <summary>
+        /// The dequeue_from
+        /// </summary>
         public string DequeueFrom { get; set; }
+        /// <summary>
+        /// The dequeue_record
+        /// </summary>
         public string DequeueRecord { get; set; }
+        /// <summary>
+        /// The dequeue_timeout
+        /// </summary>
         public int? DequeueTimeout { get; set; }
+        /// <summary>
+        /// The dequeue_to
+        /// </summary>
         public string DequeueTo { get; set; }
+        /// <summary>
+        /// The dequeue_status_callback_url
+        /// </summary>
         public Uri DequeueStatusCallbackUrl { get; set; }
+        /// <summary>
+        /// The call_from
+        /// </summary>
         public string CallFrom { get; set; }
+        /// <summary>
+        /// The call_record
+        /// </summary>
         public string CallRecord { get; set; }
+        /// <summary>
+        /// The call_timeout
+        /// </summary>
         public int? CallTimeout { get; set; }
+        /// <summary>
+        /// The call_to
+        /// </summary>
         public string CallTo { get; set; }
+        /// <summary>
+        /// The call_url
+        /// </summary>
         public Uri CallUrl { get; set; }
+        /// <summary>
+        /// The call_status_callback_url
+        /// </summary>
         public Uri CallStatusCallbackUrl { get; set; }
+        /// <summary>
+        /// The call_accept
+        /// </summary>
         public bool? CallAccept { get; set; }
+        /// <summary>
+        /// The redirect_call_sid
+        /// </summary>
         public string RedirectCallSid { get; set; }
+        /// <summary>
+        /// The redirect_accept
+        /// </summary>
         public bool? RedirectAccept { get; set; }
+        /// <summary>
+        /// The redirect_url
+        /// </summary>
         public Uri RedirectUrl { get; set; }
     
         /// <summary>

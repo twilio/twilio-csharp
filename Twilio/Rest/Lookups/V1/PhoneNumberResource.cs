@@ -37,6 +37,10 @@ namespace Twilio.Rest.Lookups.V1
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch PhoneNumber parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of PhoneNumber </returns> 
         public static PhoneNumberResource Fetch(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -45,6 +49,13 @@ namespace Twilio.Rest.Lookups.V1
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch PhoneNumber parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -56,6 +67,14 @@ namespace Twilio.Rest.Lookups.V1
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="countryCode"> The country_code </param>
+        /// <param name="type"> The type </param>
+        /// <param name="addOns"> The add_ons </param>
+        /// <param name="addOnsData"> The add_ons_data </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of PhoneNumber </returns> 
         public static PhoneNumberResource Fetch(Types.PhoneNumber phoneNumber, string countryCode = null, List<string> type = null, List<string> addOns = null, Dictionary<string, object> addOnsData = null, ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(phoneNumber){CountryCode = countryCode, Type = type, AddOns = addOns, AddOnsData = addOnsData};
@@ -63,6 +82,17 @@ namespace Twilio.Rest.Lookups.V1
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="countryCode"> The country_code </param>
+        /// <param name="type"> The type </param>
+        /// <param name="addOns"> The add_ons </param>
+        /// <param name="addOnsData"> The add_ons_data </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(Types.PhoneNumber phoneNumber, string countryCode = null, List<string> type = null, List<string> addOns = null, Dictionary<string, object> addOnsData = null, ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(phoneNumber){CountryCode = countryCode, Type = type, AddOns = addOns, AddOnsData = addOnsData};
@@ -89,19 +119,40 @@ namespace Twilio.Rest.Lookups.V1
             }
         }
     
+        /// <summary>
+        /// The caller_name
+        /// </summary>
         [JsonProperty("caller_name")]
         public Dictionary<string, string> CallerName { get; private set; }
+        /// <summary>
+        /// The country_code
+        /// </summary>
         [JsonProperty("country_code")]
         public string CountryCode { get; private set; }
+        /// <summary>
+        /// The phone_number
+        /// </summary>
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
+        /// <summary>
+        /// The national_format
+        /// </summary>
         [JsonProperty("national_format")]
         public string NationalFormat { get; private set; }
+        /// <summary>
+        /// The carrier
+        /// </summary>
         [JsonProperty("carrier")]
         public Dictionary<string, string> Carrier { get; private set; }
+        /// <summary>
+        /// The add_ons
+        /// </summary>
         [JsonProperty("add_ons")]
         public object AddOns { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
     

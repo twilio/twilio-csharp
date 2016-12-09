@@ -26,6 +26,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read RegistrationEndpoint parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RegistrationEndpoint </returns> 
         public static ResourceSet<RegistrationEndpointResource> Read(ReadRegistrationEndpointOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -36,6 +40,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read RegistrationEndpoint parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RegistrationEndpoint </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<RegistrationEndpointResource>> ReadAsync(ReadRegistrationEndpointOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -49,6 +60,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="region"> The region </param>
+        /// <param name="registrant"> The registrant </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RegistrationEndpoint </returns> 
         public static ResourceSet<RegistrationEndpointResource> Read(string domainSid, string region, string registrant, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadRegistrationEndpointOptions(domainSid, region, registrant){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
@@ -56,6 +76,18 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="region"> The region </param>
+        /// <param name="registrant"> The registrant </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RegistrationEndpoint </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<RegistrationEndpointResource>> ReadAsync(string domainSid, string region, string registrant, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadRegistrationEndpointOptions(domainSid, region, registrant){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
@@ -63,6 +95,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<RegistrationEndpointResource> NextPage(Page<RegistrationEndpointResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -96,28 +135,64 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             }
         }
     
+        /// <summary>
+        /// The address_of_record
+        /// </summary>
         [JsonProperty("address_of_record")]
         public string AddressOfRecord { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The date_expires
+        /// </summary>
         [JsonProperty("date_expires")]
         public DateTime? DateExpires { get; private set; }
+        /// <summary>
+        /// The sip_call_id
+        /// </summary>
         [JsonProperty("sip_call_id")]
         public string SipCallId { get; private set; }
+        /// <summary>
+        /// The sip_contact
+        /// </summary>
         [JsonProperty("sip_contact")]
         public string SipContact { get; private set; }
+        /// <summary>
+        /// The sip_cseq
+        /// </summary>
         [JsonProperty("sip_cseq")]
         public int? SipCseq { get; private set; }
+        /// <summary>
+        /// The sip_path
+        /// </summary>
         [JsonProperty("sip_path")]
         public string SipPath { get; private set; }
+        /// <summary>
+        /// The sip_via
+        /// </summary>
         [JsonProperty("sip_via")]
         public string SipVia { get; private set; }
+        /// <summary>
+        /// The user_agent
+        /// </summary>
         [JsonProperty("user_agent")]
         public string UserAgent { get; private set; }
+        /// <summary>
+        /// The channel_type
+        /// </summary>
         [JsonProperty("channel_type")]
         public string ChannelType { get; private set; }
+        /// <summary>
+        /// The display_name
+        /// </summary>
         [JsonProperty("display_name")]
         public string DisplayName { get; private set; }
     

@@ -9,7 +9,13 @@ namespace Twilio.Rest.Notify.V1.Service
 
     public class FetchBindingOptions : IOptions<BindingResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -36,7 +42,13 @@ namespace Twilio.Rest.Notify.V1.Service
 
     public class DeleteBindingOptions : IOptions<BindingResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -63,13 +75,37 @@ namespace Twilio.Rest.Notify.V1.Service
 
     public class CreateBindingOptions : IOptions<BindingResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The endpoint
+        /// </summary>
         public string Endpoint { get; }
+        /// <summary>
+        /// The identity
+        /// </summary>
         public string Identity { get; }
+        /// <summary>
+        /// The binding_type
+        /// </summary>
         public BindingResource.BindingTypeEnum BindingType { get; }
+        /// <summary>
+        /// The address
+        /// </summary>
         public string Address { get; }
+        /// <summary>
+        /// The tag
+        /// </summary>
         public List<string> Tag { get; set; }
+        /// <summary>
+        /// The notification_protocol_version
+        /// </summary>
         public string NotificationProtocolVersion { get; set; }
+        /// <summary>
+        /// The credential_sid
+        /// </summary>
         public string CredentialSid { get; set; }
     
         /// <summary>
@@ -138,10 +174,25 @@ namespace Twilio.Rest.Notify.V1.Service
 
     public class ReadBindingOptions : ReadOptions<BindingResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The start_date
+        /// </summary>
         public DateTime? StartDate { get; set; }
+        /// <summary>
+        /// The end_date
+        /// </summary>
         public DateTime? EndDate { get; set; }
+        /// <summary>
+        /// The identity
+        /// </summary>
         public List<string> Identity { get; set; }
+        /// <summary>
+        /// The tag
+        /// </summary>
         public List<string> Tag { get; set; }
     
         /// <summary>

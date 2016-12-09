@@ -8,9 +8,21 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class ReadRecordOptions : ReadOptions<RecordResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Only include usage of a given category
+        /// </summary>
         public RecordResource.CategoryEnum Category { get; set; }
+        /// <summary>
+        /// Filter by start date
+        /// </summary>
         public DateTime? StartDate { get; set; }
+        /// <summary>
+        /// Filter by end date
+        /// </summary>
         public DateTime? EndDate { get; set; }
     
         /// <summary>

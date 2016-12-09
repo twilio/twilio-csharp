@@ -7,7 +7,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,7 +40,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -61,7 +73,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The phone_number_sid
+        /// </summary>
         public string PhoneNumberSid { get; }
     
         /// <summary>
@@ -93,6 +111,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
     
         /// <summary>

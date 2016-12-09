@@ -8,9 +8,21 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class CreateFeedbackOptions : IOptions<FeedbackResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The call_sid
+        /// </summary>
         public string CallSid { get; }
+        /// <summary>
+        /// The quality_score
+        /// </summary>
         public int? QualityScore { get; }
+        /// <summary>
+        /// The issue
+        /// </summary>
         public List<FeedbackResource.IssuesEnum> Issue { get; set; }
     
         /// <summary>
@@ -48,7 +60,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FetchFeedbackOptions : IOptions<FeedbackResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The call sid that uniquely identifies the call
+        /// </summary>
         public string CallSid { get; }
     
         /// <summary>
@@ -73,9 +91,21 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class UpdateFeedbackOptions : IOptions<FeedbackResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The call_sid
+        /// </summary>
         public string CallSid { get; }
+        /// <summary>
+        /// An integer from 1 to 5
+        /// </summary>
         public int? QualityScore { get; }
+        /// <summary>
+        /// Issues experienced during the call
+        /// </summary>
         public List<FeedbackResource.IssuesEnum> Issue { get; set; }
     
         /// <summary>

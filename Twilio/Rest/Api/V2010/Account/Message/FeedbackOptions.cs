@@ -7,8 +7,17 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
     public class CreateFeedbackOptions : IOptions<FeedbackResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The message_sid
+        /// </summary>
         public string MessageSid { get; }
+        /// <summary>
+        /// The outcome
+        /// </summary>
         public FeedbackResource.OutcomeEnum Outcome { get; set; }
     
         /// <summary>

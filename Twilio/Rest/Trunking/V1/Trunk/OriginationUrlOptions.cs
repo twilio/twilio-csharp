@@ -7,7 +7,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class FetchOriginationUrlOptions : IOptions<OriginationUrlResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,7 +40,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class DeleteOriginationUrlOptions : IOptions<OriginationUrlResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -61,11 +73,29 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class CreateOriginationUrlOptions : IOptions<OriginationUrlResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The weight
+        /// </summary>
         public int? Weight { get; }
+        /// <summary>
+        /// The priority
+        /// </summary>
         public int? Priority { get; }
+        /// <summary>
+        /// The enabled
+        /// </summary>
         public bool? Enabled { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; }
+        /// <summary>
+        /// The sip_url
+        /// </summary>
         public Uri SipUrl { get; }
     
         /// <summary>
@@ -125,6 +155,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class ReadOriginationUrlOptions : ReadOptions<OriginationUrlResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
     
         /// <summary>
@@ -154,12 +187,33 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
     public class UpdateOriginationUrlOptions : IOptions<OriginationUrlResource> 
     {
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
         public string TrunkSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The weight
+        /// </summary>
         public int? Weight { get; set; }
+        /// <summary>
+        /// The priority
+        /// </summary>
         public int? Priority { get; set; }
+        /// <summary>
+        /// The enabled
+        /// </summary>
         public bool? Enabled { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The sip_url
+        /// </summary>
         public Uri SipUrl { get; set; }
     
         /// <summary>

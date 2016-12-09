@@ -7,7 +7,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class FetchWorkflowOptions : IOptions<WorkflowResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,12 +40,33 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class UpdateWorkflowOptions : IOptions<WorkflowResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The assignment_callback_url
+        /// </summary>
         public Uri AssignmentCallbackUrl { get; set; }
+        /// <summary>
+        /// The fallback_assignment_callback_url
+        /// </summary>
         public Uri FallbackAssignmentCallbackUrl { get; set; }
+        /// <summary>
+        /// The configuration
+        /// </summary>
         public string Configuration { get; set; }
+        /// <summary>
+        /// The task_reservation_timeout
+        /// </summary>
         public int? TaskReservationTimeout { get; set; }
     
         /// <summary>
@@ -91,7 +118,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class DeleteWorkflowOptions : IOptions<WorkflowResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -118,7 +151,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class ReadWorkflowOptions : ReadOptions<WorkflowResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>
@@ -153,11 +192,29 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class CreateWorkflowOptions : IOptions<WorkflowResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; }
+        /// <summary>
+        /// The configuration
+        /// </summary>
         public string Configuration { get; }
+        /// <summary>
+        /// The assignment_callback_url
+        /// </summary>
         public Uri AssignmentCallbackUrl { get; set; }
+        /// <summary>
+        /// The fallback_assignment_callback_url
+        /// </summary>
         public Uri FallbackAssignmentCallbackUrl { get; set; }
+        /// <summary>
+        /// The task_reservation_timeout
+        /// </summary>
         public int? TaskReservationTimeout { get; set; }
     
         /// <summary>

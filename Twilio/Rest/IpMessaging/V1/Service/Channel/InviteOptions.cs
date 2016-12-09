@@ -8,8 +8,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class FetchInviteOptions : IOptions<InviteResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -38,9 +47,21 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class CreateInviteOptions : IOptions<InviteResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The identity
+        /// </summary>
         public string Identity { get; }
+        /// <summary>
+        /// The role_sid
+        /// </summary>
         public string RoleSid { get; set; }
     
         /// <summary>
@@ -79,8 +100,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class ReadInviteOptions : ReadOptions<InviteResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The identity
+        /// </summary>
         public List<string> Identity { get; set; }
     
         /// <summary>
@@ -118,8 +148,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class DeleteInviteOptions : IOptions<InviteResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

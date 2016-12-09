@@ -7,6 +7,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadAvailablePhoneNumberCountryOptions : ReadOptions<AvailablePhoneNumberCountryResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
     
         /// <summary>
@@ -26,7 +29,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchAvailablePhoneNumberCountryOptions : IOptions<AvailablePhoneNumberCountryResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The country_code
+        /// </summary>
         public string CountryCode { get; }
     
         /// <summary>

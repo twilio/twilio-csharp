@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Fetch by unique outgoing-caller-id Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -32,8 +38,17 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class UpdateOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Update by unique outgoing-caller-id Sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// A human readable description of the caller ID
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>
@@ -63,7 +78,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class DeleteOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Delete by unique outgoing-caller-id Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -88,8 +109,17 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadOutgoingCallerIdOptions : ReadOptions<OutgoingCallerIdResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Filter by phone number
+        /// </summary>
         public Types.PhoneNumber PhoneNumber { get; set; }
+        /// <summary>
+        /// Filter by friendly name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>

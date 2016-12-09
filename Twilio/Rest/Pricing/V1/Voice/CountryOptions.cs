@@ -24,6 +24,9 @@ namespace Twilio.Rest.Pricing.V1.Voice
 
     public class FetchCountryOptions : IOptions<CountryResource> 
     {
+        /// <summary>
+        /// The iso_country
+        /// </summary>
         public string IsoCountry { get; }
     
         /// <summary>

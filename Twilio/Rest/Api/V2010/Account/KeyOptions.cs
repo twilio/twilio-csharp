@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchKeyOptions : IOptions<KeyResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -32,8 +38,17 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class UpdateKeyOptions : IOptions<KeyResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>
@@ -63,7 +78,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class DeleteKeyOptions : IOptions<KeyResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -88,6 +109,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadKeyOptions : ReadOptions<KeyResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
     
         /// <summary>

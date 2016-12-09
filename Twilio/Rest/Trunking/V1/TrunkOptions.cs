@@ -7,6 +7,9 @@ namespace Twilio.Rest.Trunking.V1
 
     public class FetchTrunkOptions : IOptions<TrunkResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -31,6 +34,9 @@ namespace Twilio.Rest.Trunking.V1
 
     public class DeleteTrunkOptions : IOptions<TrunkResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -55,11 +61,29 @@ namespace Twilio.Rest.Trunking.V1
 
     public class CreateTrunkOptions : IOptions<TrunkResource> 
     {
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The domain_name
+        /// </summary>
         public string DomainName { get; set; }
+        /// <summary>
+        /// The disaster_recovery_url
+        /// </summary>
         public Uri DisasterRecoveryUrl { get; set; }
+        /// <summary>
+        /// The disaster_recovery_method
+        /// </summary>
         public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; set; }
+        /// <summary>
+        /// The recording
+        /// </summary>
         public string Recording { get; set; }
+        /// <summary>
+        /// The secure
+        /// </summary>
         public bool? Secure { get; set; }
     
         /// <summary>
@@ -121,12 +145,33 @@ namespace Twilio.Rest.Trunking.V1
 
     public class UpdateTrunkOptions : IOptions<TrunkResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The domain_name
+        /// </summary>
         public string DomainName { get; set; }
+        /// <summary>
+        /// The disaster_recovery_url
+        /// </summary>
         public Uri DisasterRecoveryUrl { get; set; }
+        /// <summary>
+        /// The disaster_recovery_method
+        /// </summary>
         public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; set; }
+        /// <summary>
+        /// The recording
+        /// </summary>
         public string Recording { get; set; }
+        /// <summary>
+        /// The secure
+        /// </summary>
         public bool? Secure { get; set; }
     
         /// <summary>

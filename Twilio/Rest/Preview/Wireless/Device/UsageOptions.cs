@@ -7,8 +7,17 @@ namespace Twilio.Rest.Preview.Wireless.Device
 
     public class FetchUsageOptions : IOptions<UsageResource> 
     {
+        /// <summary>
+        /// The device_sid
+        /// </summary>
         public string DeviceSid { get; }
+        /// <summary>
+        /// The end
+        /// </summary>
         public string End { get; set; }
+        /// <summary>
+        /// The start
+        /// </summary>
         public string Start { get; set; }
     
         /// <summary>

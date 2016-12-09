@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchSigningKeyOptions : IOptions<SigningKeyResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -32,8 +38,17 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class UpdateSigningKeyOptions : IOptions<SigningKeyResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>
@@ -63,7 +78,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class DeleteSigningKeyOptions : IOptions<SigningKeyResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -88,6 +109,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadSigningKeyOptions : ReadOptions<SigningKeyResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
     
         /// <summary>

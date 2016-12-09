@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account.Address
 
     public class ReadDependentPhoneNumberOptions : ReadOptions<DependentPhoneNumberResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The address_sid
+        /// </summary>
         public string AddressSid { get; }
     
         /// <summary>

@@ -8,7 +8,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchConnectAppOptions : IOptions<ConnectAppResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Fetch by unique connect-app Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -33,15 +39,45 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class UpdateConnectAppOptions : IOptions<ConnectAppResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// URIL Twilio sends requests when users authorize
+        /// </summary>
         public Uri AuthorizeRedirectUrl { get; set; }
+        /// <summary>
+        /// The company name set for this Connect App.
+        /// </summary>
         public string CompanyName { get; set; }
+        /// <summary>
+        /// HTTP method Twilio WIll use making requests to the url
+        /// </summary>
         public Twilio.Http.HttpMethod DeauthorizeCallbackMethod { get; set; }
+        /// <summary>
+        /// URL Twilio will send a request when a user de-authorizes this app
+        /// </summary>
         public Uri DeauthorizeCallbackUrl { get; set; }
+        /// <summary>
+        /// A more detailed human readable description
+        /// </summary>
         public string Description { get; set; }
+        /// <summary>
+        /// A human readable name for the Connect App.
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The URL users can obtain more information
+        /// </summary>
         public Uri HomepageUrl { get; set; }
+        /// <summary>
+        /// The set of permissions that your ConnectApp requests.
+        /// </summary>
         public List<ConnectAppResource.PermissionEnum> Permissions { get; set; }
     
         /// <summary>
@@ -107,6 +143,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadConnectAppOptions : ReadOptions<ConnectAppResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
     
         /// <summary>

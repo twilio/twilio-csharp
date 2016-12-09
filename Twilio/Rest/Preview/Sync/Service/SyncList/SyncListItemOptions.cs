@@ -7,8 +7,17 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
     public class FetchSyncListItemOptions : IOptions<SyncListItemResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The list_sid
+        /// </summary>
         public string ListSid { get; }
+        /// <summary>
+        /// The index
+        /// </summary>
         public int? Index { get; }
     
         /// <summary>
@@ -37,8 +46,17 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
     public class DeleteSyncListItemOptions : IOptions<SyncListItemResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The list_sid
+        /// </summary>
         public string ListSid { get; }
+        /// <summary>
+        /// The index
+        /// </summary>
         public int? Index { get; }
     
         /// <summary>
@@ -67,8 +85,17 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
     public class CreateSyncListItemOptions : IOptions<SyncListItemResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The list_sid
+        /// </summary>
         public string ListSid { get; }
+        /// <summary>
+        /// The data
+        /// </summary>
         public object Data { get; }
     
         /// <summary>
@@ -102,10 +129,25 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
     public class ReadSyncListItemOptions : ReadOptions<SyncListItemResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The list_sid
+        /// </summary>
         public string ListSid { get; }
+        /// <summary>
+        /// The order
+        /// </summary>
         public SyncListItemResource.QueryResultOrderEnum Order { get; set; }
+        /// <summary>
+        /// The from
+        /// </summary>
         public string From { get; set; }
+        /// <summary>
+        /// The bounds
+        /// </summary>
         public SyncListItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
     
         /// <summary>
@@ -152,9 +194,21 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
 
     public class UpdateSyncListItemOptions : IOptions<SyncListItemResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The list_sid
+        /// </summary>
         public string ListSid { get; }
+        /// <summary>
+        /// The index
+        /// </summary>
         public int? Index { get; }
+        /// <summary>
+        /// The data
+        /// </summary>
         public object Data { get; }
     
         /// <summary>

@@ -7,26 +7,89 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class UpdateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
+        /// <summary>
+        /// The owner_account_sid
+        /// </summary>
         public string OwnerAccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The new owner of the phone number
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The Twilio REST API version to use
+        /// </summary>
         public string ApiVersion { get; set; }
+        /// <summary>
+        /// A human readable description of this resource
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// Unique string that identifies the application
+        /// </summary>
         public string SmsApplicationSid { get; set; }
+        /// <summary>
+        /// HTTP method used with sms fallback url
+        /// </summary>
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
+        /// <summary>
+        /// URL Twilio will request if an error occurs in executing TwiML
+        /// </summary>
         public Uri SmsFallbackUrl { get; set; }
+        /// <summary>
+        /// HTTP method to use with sms url
+        /// </summary>
         public Twilio.Http.HttpMethod SmsMethod { get; set; }
+        /// <summary>
+        /// URL Twilio will request when receiving an SMS
+        /// </summary>
         public Uri SmsUrl { get; set; }
+        /// <summary>
+        /// URL Twilio will use to pass status parameters
+        /// </summary>
         public Uri StatusCallback { get; set; }
+        /// <summary>
+        /// HTTP method twilio will use with status callback
+        /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+        /// <summary>
+        /// Unique string to identify the trunk
+        /// </summary>
         public string TrunkSid { get; set; }
+        /// <summary>
+        /// The unique sid of the application to handle this number
+        /// </summary>
         public string VoiceApplicationSid { get; set; }
+        /// <summary>
+        /// Look up the caller's caller-ID
+        /// </summary>
         public bool? VoiceCallerIdLookup { get; set; }
+        /// <summary>
+        /// HTTP method used with fallback_url
+        /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
+        /// <summary>
+        /// URL Twilio will request when an error occurs in TwiML
+        /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
+        /// <summary>
+        /// HTTP method used with the voice url
+        /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+        /// <summary>
+        /// URL Twilio will request when receiving a call
+        /// </summary>
         public Uri VoiceUrl { get; set; }
+        /// <summary>
+        /// The emergency_status
+        /// </summary>
         public IncomingPhoneNumberResource.EmergencyStatusEnum EmergencyStatus { get; set; }
+        /// <summary>
+        /// The emergency_address_sid
+        /// </summary>
         public string EmergencyAddressSid { get; set; }
     
         /// <summary>
@@ -146,7 +209,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
+        /// <summary>
+        /// The owner_account_sid
+        /// </summary>
         public string OwnerAccountSid { get; set; }
+        /// <summary>
+        /// Fetch by unique incoming-phone-number Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -171,7 +240,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class DeleteIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
+        /// <summary>
+        /// The owner_account_sid
+        /// </summary>
         public string OwnerAccountSid { get; set; }
+        /// <summary>
+        /// Delete by unique phone-number Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -196,9 +271,21 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadIncomingPhoneNumberOptions : ReadOptions<IncomingPhoneNumberResource> 
     {
+        /// <summary>
+        /// The owner_account_sid
+        /// </summary>
         public string OwnerAccountSid { get; set; }
+        /// <summary>
+        /// Include new phone numbers
+        /// </summary>
         public bool? Beta { get; set; }
+        /// <summary>
+        /// Filter by friendly name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// Filter by incoming phone number
+        /// </summary>
         public Types.PhoneNumber PhoneNumber { get; set; }
     
         /// <summary>
@@ -233,26 +320,89 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CreateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
+        /// <summary>
+        /// The owner_account_sid
+        /// </summary>
         public string OwnerAccountSid { get; set; }
+        /// <summary>
+        /// The phone number
+        /// </summary>
         public Types.PhoneNumber PhoneNumber { get; set; }
+        /// <summary>
+        /// The desired area code for the new number
+        /// </summary>
         public string AreaCode { get; set; }
+        /// <summary>
+        /// The Twilio Rest API version to use
+        /// </summary>
         public string ApiVersion { get; set; }
+        /// <summary>
+        /// A human readable description of this resource
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// Unique string that identifies the application
+        /// </summary>
         public string SmsApplicationSid { get; set; }
+        /// <summary>
+        /// HTTP method used with sms fallback url
+        /// </summary>
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
+        /// <summary>
+        /// URL Twilio will request if an error occurs in executing TwiML
+        /// </summary>
         public Uri SmsFallbackUrl { get; set; }
+        /// <summary>
+        /// HTTP method to use with sms url
+        /// </summary>
         public Twilio.Http.HttpMethod SmsMethod { get; set; }
+        /// <summary>
+        /// URL Twilio will request when receiving an SMS
+        /// </summary>
         public Uri SmsUrl { get; set; }
+        /// <summary>
+        /// URL Twilio will use to pass status parameters
+        /// </summary>
         public Uri StatusCallback { get; set; }
+        /// <summary>
+        /// HTTP method twilio will use with status callback
+        /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+        /// <summary>
+        /// Unique string to identify the trunk
+        /// </summary>
         public string TrunkSid { get; set; }
+        /// <summary>
+        /// The unique sid of the application to handle this number
+        /// </summary>
         public string VoiceApplicationSid { get; set; }
+        /// <summary>
+        /// Look up the caller's caller-ID
+        /// </summary>
         public bool? VoiceCallerIdLookup { get; set; }
+        /// <summary>
+        /// HTTP method used with fallback_url
+        /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
+        /// <summary>
+        /// URL Twilio will request when an error occurs in TwiML
+        /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
+        /// <summary>
+        /// HTTP method used with the voice url
+        /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+        /// <summary>
+        /// URL Twilio will request when receiving a call
+        /// </summary>
         public Uri VoiceUrl { get; set; }
+        /// <summary>
+        /// The emergency_status
+        /// </summary>
         public IncomingPhoneNumberResource.EmergencyStatusEnum EmergencyStatus { get; set; }
+        /// <summary>
+        /// The emergency_address_sid
+        /// </summary>
         public string EmergencyAddressSid { get; set; }
     
         /// <summary>

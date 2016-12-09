@@ -7,9 +7,21 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class ReadRegistrationEndpointOptions : ReadOptions<RegistrationEndpointResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The domain_sid
+        /// </summary>
         public string DomainSid { get; }
+        /// <summary>
+        /// The region
+        /// </summary>
         public string Region { get; }
+        /// <summary>
+        /// The registrant
+        /// </summary>
         public string Registrant { get; }
     
         /// <summary>

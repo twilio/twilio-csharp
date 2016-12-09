@@ -7,7 +7,13 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class FetchUserOptions : IOptions<UserResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,7 +40,13 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class DeleteUserOptions : IOptions<UserResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -61,10 +73,25 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class CreateUserOptions : IOptions<UserResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The identity
+        /// </summary>
         public string Identity { get; }
+        /// <summary>
+        /// The role_sid
+        /// </summary>
         public string RoleSid { get; set; }
+        /// <summary>
+        /// The attributes
+        /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>
@@ -111,6 +138,9 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class ReadUserOptions : ReadOptions<UserResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
     
         /// <summary>
@@ -140,10 +170,25 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class UpdateUserOptions : IOptions<UserResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The role_sid
+        /// </summary>
         public string RoleSid { get; set; }
+        /// <summary>
+        /// The attributes
+        /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>

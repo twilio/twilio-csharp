@@ -7,6 +7,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchSandboxOptions : IOptions<SandboxResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
     
         /// <summary>
@@ -21,12 +24,33 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class UpdateSandboxOptions : IOptions<SandboxResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The voice_url
+        /// </summary>
         public Uri VoiceUrl { get; set; }
+        /// <summary>
+        /// The voice_method
+        /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+        /// <summary>
+        /// The sms_url
+        /// </summary>
         public Uri SmsUrl { get; set; }
+        /// <summary>
+        /// The sms_method
+        /// </summary>
         public Twilio.Http.HttpMethod SmsMethod { get; set; }
+        /// <summary>
+        /// The status_callback
+        /// </summary>
         public Uri StatusCallback { get; set; }
+        /// <summary>
+        /// The status_callback_method
+        /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
     
         /// <summary>

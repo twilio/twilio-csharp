@@ -7,8 +7,17 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FetchNotificationOptions : IOptions<NotificationResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The call_sid
+        /// </summary>
         public string CallSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -35,8 +44,17 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class DeleteNotificationOptions : IOptions<NotificationResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The call_sid
+        /// </summary>
         public string CallSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -63,11 +81,29 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class ReadNotificationOptions : ReadOptions<NotificationResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The call_sid
+        /// </summary>
         public string CallSid { get; }
+        /// <summary>
+        /// The log
+        /// </summary>
         public int? Log { get; set; }
+        /// <summary>
+        /// The message_date
+        /// </summary>
         public DateTime? MessageDateBefore { get; set; }
+        /// <summary>
+        /// The message_date
+        /// </summary>
         public DateTime? MessageDate { get; set; }
+        /// <summary>
+        /// The message_date
+        /// </summary>
         public DateTime? MessageDateAfter { get; set; }
     
         /// <summary>

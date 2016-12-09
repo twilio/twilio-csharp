@@ -7,8 +7,17 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
     public class DeleteMediaOptions : IOptions<MediaResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The message_sid
+        /// </summary>
         public string MessageSid { get; }
+        /// <summary>
+        /// Delete by unique media Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -35,8 +44,17 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
     public class FetchMediaOptions : IOptions<MediaResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The message_sid
+        /// </summary>
         public string MessageSid { get; }
+        /// <summary>
+        /// Fetch by unique media Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -63,10 +81,25 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
     public class ReadMediaOptions : ReadOptions<MediaResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The message_sid
+        /// </summary>
         public string MessageSid { get; }
+        /// <summary>
+        /// Filter by date created
+        /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
+        /// <summary>
+        /// Filter by date created
+        /// </summary>
         public DateTime? DateCreated { get; set; }
+        /// <summary>
+        /// Filter by date created
+        /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
     
         /// <summary>

@@ -7,8 +7,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class FetchMessageOptions : IOptions<MessageResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -37,10 +46,25 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class CreateMessageOptions : IOptions<MessageResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The body
+        /// </summary>
         public string Body { get; }
+        /// <summary>
+        /// The from
+        /// </summary>
         public string From { get; set; }
+        /// <summary>
+        /// The attributes
+        /// </summary>
         public string Attributes { get; set; }
     
         /// <summary>
@@ -84,7 +108,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class ReadMessageOptions : ReadOptions<MessageResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
     
         /// <summary>
@@ -116,8 +146,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class DeleteMessageOptions : IOptions<MessageResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -146,10 +185,25 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class UpdateMessageOptions : IOptions<MessageResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The body
+        /// </summary>
         public string Body { get; }
+        /// <summary>
+        /// The attributes
+        /// </summary>
         public string Attributes { get; set; }
     
         /// <summary>

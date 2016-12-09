@@ -26,6 +26,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch WorkspaceStatistics parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of WorkspaceStatistics </returns> 
         public static WorkspaceStatisticsResource Fetch(FetchWorkspaceStatisticsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -34,6 +38,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch WorkspaceStatistics parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of WorkspaceStatistics </returns> 
         public static async System.Threading.Tasks.Task<WorkspaceStatisticsResource> FetchAsync(FetchWorkspaceStatisticsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -45,6 +56,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="minutes"> The minutes </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of WorkspaceStatistics </returns> 
         public static WorkspaceStatisticsResource Fetch(string workspaceSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
         {
             var options = new FetchWorkspaceStatisticsOptions(workspaceSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
@@ -52,6 +70,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="minutes"> The minutes </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of WorkspaceStatistics </returns> 
         public static async System.Threading.Tasks.Task<WorkspaceStatisticsResource> FetchAsync(string workspaceSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
         {
             var options = new FetchWorkspaceStatisticsOptions(workspaceSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
@@ -78,12 +106,24 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             }
         }
     
+        /// <summary>
+        /// The realtime
+        /// </summary>
         [JsonProperty("realtime")]
         public object Realtime { get; private set; }
+        /// <summary>
+        /// The cumulative
+        /// </summary>
         [JsonProperty("cumulative")]
         public object Cumulative { get; private set; }
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
     

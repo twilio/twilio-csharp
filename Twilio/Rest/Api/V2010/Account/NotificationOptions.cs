@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchNotificationOptions : IOptions<NotificationResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Fetch by unique notification Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -32,7 +38,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class DeleteNotificationOptions : IOptions<NotificationResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Delete by unique notification Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -57,10 +69,25 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadNotificationOptions : ReadOptions<NotificationResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Filter by log level
+        /// </summary>
         public int? Log { get; set; }
+        /// <summary>
+        /// Filter by date
+        /// </summary>
         public DateTime? MessageDateBefore { get; set; }
+        /// <summary>
+        /// Filter by date
+        /// </summary>
         public DateTime? MessageDate { get; set; }
+        /// <summary>
+        /// Filter by date
+        /// </summary>
         public DateTime? MessageDateAfter { get; set; }
     
         /// <summary>

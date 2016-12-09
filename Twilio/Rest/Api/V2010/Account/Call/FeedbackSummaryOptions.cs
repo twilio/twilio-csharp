@@ -8,11 +8,29 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class CreateFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The start_date
+        /// </summary>
         public DateTime? StartDate { get; }
+        /// <summary>
+        /// The end_date
+        /// </summary>
         public DateTime? EndDate { get; }
+        /// <summary>
+        /// The include_subaccounts
+        /// </summary>
         public bool? IncludeSubaccounts { get; set; }
+        /// <summary>
+        /// The status_callback
+        /// </summary>
         public Uri StatusCallback { get; set; }
+        /// <summary>
+        /// The status_callback_method
+        /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
     
         /// <summary>
@@ -64,7 +82,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class FetchFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -89,7 +113,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class DeleteFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

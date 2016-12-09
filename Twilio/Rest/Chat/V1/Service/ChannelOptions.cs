@@ -7,7 +7,13 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class FetchChannelOptions : IOptions<ChannelResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,7 +40,13 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class DeleteChannelOptions : IOptions<ChannelResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -61,10 +73,25 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class CreateChannelOptions : IOptions<ChannelResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The unique_name
+        /// </summary>
         public string UniqueName { get; set; }
+        /// <summary>
+        /// The attributes
+        /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The type
+        /// </summary>
         public ChannelResource.ChannelTypeEnum Type { get; set; }
     
         /// <summary>
@@ -109,6 +136,9 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class ReadChannelOptions : ReadOptions<ChannelResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
     
         /// <summary>
@@ -138,10 +168,25 @@ namespace Twilio.Rest.Chat.V1.Service
 
     public class UpdateChannelOptions : IOptions<ChannelResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The unique_name
+        /// </summary>
         public string UniqueName { get; set; }
+        /// <summary>
+        /// The attributes
+        /// </summary>
         public string Attributes { get; set; }
     
         /// <summary>

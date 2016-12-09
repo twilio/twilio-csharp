@@ -7,12 +7,33 @@ namespace Twilio.Rest.Notify.V1
 
     public class CreateServiceOptions : IOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The apn_credential_sid
+        /// </summary>
         public string ApnCredentialSid { get; set; }
+        /// <summary>
+        /// The gcm_credential_sid
+        /// </summary>
         public string GcmCredentialSid { get; set; }
+        /// <summary>
+        /// The messaging_service_sid
+        /// </summary>
         public string MessagingServiceSid { get; set; }
+        /// <summary>
+        /// The facebook_messenger_page_id
+        /// </summary>
         public string FacebookMessengerPageId { get; set; }
+        /// <summary>
+        /// The default_apn_notification_protocol_version
+        /// </summary>
         public string DefaultApnNotificationProtocolVersion { get; set; }
+        /// <summary>
+        /// The default_gcm_notification_protocol_version
+        /// </summary>
         public string DefaultGcmNotificationProtocolVersion { get; set; }
     
         /// <summary>
@@ -62,6 +83,9 @@ namespace Twilio.Rest.Notify.V1
 
     public class DeleteServiceOptions : IOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -86,6 +110,9 @@ namespace Twilio.Rest.Notify.V1
 
     public class FetchServiceOptions : IOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -110,6 +137,9 @@ namespace Twilio.Rest.Notify.V1
 
     public class ReadServiceOptions : ReadOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>
@@ -134,13 +164,37 @@ namespace Twilio.Rest.Notify.V1
 
     public class UpdateServiceOptions : IOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The apn_credential_sid
+        /// </summary>
         public string ApnCredentialSid { get; set; }
+        /// <summary>
+        /// The gcm_credential_sid
+        /// </summary>
         public string GcmCredentialSid { get; set; }
+        /// <summary>
+        /// The messaging_service_sid
+        /// </summary>
         public string MessagingServiceSid { get; set; }
+        /// <summary>
+        /// The facebook_messenger_page_id
+        /// </summary>
         public string FacebookMessengerPageId { get; set; }
+        /// <summary>
+        /// The default_apn_notification_protocol_version
+        /// </summary>
         public string DefaultApnNotificationProtocolVersion { get; set; }
+        /// <summary>
+        /// The default_gcm_notification_protocol_version
+        /// </summary>
         public string DefaultGcmNotificationProtocolVersion { get; set; }
     
         /// <summary>

@@ -8,15 +8,45 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class CreateMessageOptions : IOptions<MessageResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The phone number to receive the message
+        /// </summary>
         public Types.PhoneNumber To { get; }
+        /// <summary>
+        /// The phone number that initiated the message
+        /// </summary>
         public Types.PhoneNumber From { get; set; }
+        /// <summary>
+        /// The messaging_service_sid
+        /// </summary>
         public string MessagingServiceSid { get; set; }
+        /// <summary>
+        /// The body
+        /// </summary>
         public string Body { get; set; }
+        /// <summary>
+        /// The media_url
+        /// </summary>
         public List<Uri> MediaUrl { get; set; }
+        /// <summary>
+        /// URL Twilio will request when the status changes
+        /// </summary>
         public Uri StatusCallback { get; set; }
+        /// <summary>
+        /// The application to use for callbacks
+        /// </summary>
         public string ApplicationSid { get; set; }
+        /// <summary>
+        /// The max_price
+        /// </summary>
         public decimal? MaxPrice { get; set; }
+        /// <summary>
+        /// The provide_feedback
+        /// </summary>
         public bool? ProvideFeedback { get; set; }
     
         /// <summary>
@@ -87,7 +117,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class DeleteMessageOptions : IOptions<MessageResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The message to delete
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -112,7 +148,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchMessageOptions : IOptions<MessageResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Fetch by unique message Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -137,11 +179,29 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadMessageOptions : ReadOptions<MessageResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Filter by messages to this number
+        /// </summary>
         public Types.PhoneNumber To { get; set; }
+        /// <summary>
+        /// Filter by from number
+        /// </summary>
         public Types.PhoneNumber From { get; set; }
+        /// <summary>
+        /// Filter by date sent
+        /// </summary>
         public DateTime? DateSentBefore { get; set; }
+        /// <summary>
+        /// Filter by date sent
+        /// </summary>
         public DateTime? DateSent { get; set; }
+        /// <summary>
+        /// Filter by date sent
+        /// </summary>
         public DateTime? DateSentAfter { get; set; }
     
         /// <summary>
@@ -188,8 +248,17 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class UpdateMessageOptions : IOptions<MessageResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The message to redact
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The body
+        /// </summary>
         public string Body { get; }
     
         /// <summary>

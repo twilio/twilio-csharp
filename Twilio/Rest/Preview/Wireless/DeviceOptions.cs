@@ -7,6 +7,9 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class FetchDeviceOptions : IOptions<DeviceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -31,8 +34,17 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class ReadDeviceOptions : ReadOptions<DeviceResource> 
     {
+        /// <summary>
+        /// The status
+        /// </summary>
         public string Status { get; set; }
+        /// <summary>
+        /// The sim_identifier
+        /// </summary>
         public string SimIdentifier { get; set; }
+        /// <summary>
+        /// The rate_plan
+        /// </summary>
         public string RatePlan { get; set; }
     
         /// <summary>
@@ -67,14 +79,41 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class CreateDeviceOptions : IOptions<DeviceResource> 
     {
+        /// <summary>
+        /// The rate_plan
+        /// </summary>
         public string RatePlan { get; }
+        /// <summary>
+        /// The alias
+        /// </summary>
         public string Alias { get; set; }
+        /// <summary>
+        /// The callback_method
+        /// </summary>
         public string CallbackMethod { get; set; }
+        /// <summary>
+        /// The callback_url
+        /// </summary>
         public Uri CallbackUrl { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The sim_identifier
+        /// </summary>
         public string SimIdentifier { get; set; }
+        /// <summary>
+        /// The status
+        /// </summary>
         public string Status { get; set; }
+        /// <summary>
+        /// The commands_callback_method
+        /// </summary>
         public string CommandsCallbackMethod { get; set; }
+        /// <summary>
+        /// The commands_callback_url
+        /// </summary>
         public Uri CommandsCallbackUrl { get; set; }
     
         /// <summary>
@@ -144,15 +183,45 @@ namespace Twilio.Rest.Preview.Wireless
 
     public class UpdateDeviceOptions : IOptions<DeviceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The alias
+        /// </summary>
         public string Alias { get; set; }
+        /// <summary>
+        /// The callback_method
+        /// </summary>
         public string CallbackMethod { get; set; }
+        /// <summary>
+        /// The callback_url
+        /// </summary>
         public Uri CallbackUrl { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The rate_plan
+        /// </summary>
         public string RatePlan { get; set; }
+        /// <summary>
+        /// The sim_identifier
+        /// </summary>
         public string SimIdentifier { get; set; }
+        /// <summary>
+        /// The status
+        /// </summary>
         public string Status { get; set; }
+        /// <summary>
+        /// The commands_callback_method
+        /// </summary>
         public string CommandsCallbackMethod { get; set; }
+        /// <summary>
+        /// The commands_callback_url
+        /// </summary>
         public Uri CommandsCallbackUrl { get; set; }
     
         /// <summary>

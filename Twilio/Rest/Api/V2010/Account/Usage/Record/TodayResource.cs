@@ -124,6 +124,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read Today parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Today </returns> 
         public static ResourceSet<TodayResource> Read(ReadTodayOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -134,6 +138,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read Today parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Today </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<TodayResource>> ReadAsync(ReadTodayOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -147,6 +158,15 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="category"> The category </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Today </returns> 
         public static ResourceSet<TodayResource> Read(string accountSid = null, TodayResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadTodayOptions{AccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
@@ -154,6 +174,18 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="category"> The category </param>
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Today </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<TodayResource>> ReadAsync(string accountSid = null, TodayResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadTodayOptions{AccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
@@ -161,6 +193,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<TodayResource> NextPage(Page<TodayResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -194,33 +233,75 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             }
         }
     
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The api_version
+        /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
+        /// <summary>
+        /// The category
+        /// </summary>
         [JsonProperty("category")]
         [JsonConverter(typeof(StringEnumConverter))]
         public TodayResource.CategoryEnum Category { get; private set; }
+        /// <summary>
+        /// The count
+        /// </summary>
         [JsonProperty("count")]
         public string Count { get; private set; }
+        /// <summary>
+        /// The count_unit
+        /// </summary>
         [JsonProperty("count_unit")]
         public string CountUnit { get; private set; }
+        /// <summary>
+        /// The description
+        /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
+        /// <summary>
+        /// The end_date
+        /// </summary>
         [JsonProperty("end_date")]
         public DateTime? EndDate { get; private set; }
+        /// <summary>
+        /// The price
+        /// </summary>
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
+        /// <summary>
+        /// The price_unit
+        /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
+        /// <summary>
+        /// The start_date
+        /// </summary>
         [JsonProperty("start_date")]
         public DateTime? StartDate { get; private set; }
+        /// <summary>
+        /// The subresource_uris
+        /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
+        /// <summary>
+        /// The uri
+        /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
+        /// <summary>
+        /// The usage
+        /// </summary>
         [JsonProperty("usage")]
         public string Usage { get; private set; }
+        /// <summary>
+        /// The usage_unit
+        /// </summary>
         [JsonProperty("usage_unit")]
         public string UsageUnit { get; private set; }
     

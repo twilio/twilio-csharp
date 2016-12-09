@@ -7,6 +7,9 @@ namespace Twilio.Rest.Preview.Sync
 
     public class FetchServiceOptions : IOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -31,6 +34,9 @@ namespace Twilio.Rest.Preview.Sync
 
     public class DeleteServiceOptions : IOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -55,8 +61,17 @@ namespace Twilio.Rest.Preview.Sync
 
     public class CreateServiceOptions : IOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The webhook_url
+        /// </summary>
         public Uri WebhookUrl { get; set; }
+        /// <summary>
+        /// The reachability_webhooks_enabled
+        /// </summary>
         public bool? ReachabilityWebhooksEnabled { get; set; }
     
         /// <summary>
@@ -103,9 +118,21 @@ namespace Twilio.Rest.Preview.Sync
 
     public class UpdateServiceOptions : IOptions<ServiceResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The webhook_url
+        /// </summary>
         public Uri WebhookUrl { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The reachability_webhooks_enabled
+        /// </summary>
         public bool? ReachabilityWebhooksEnabled { get; set; }
     
         /// <summary>

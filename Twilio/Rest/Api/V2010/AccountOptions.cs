@@ -7,6 +7,9 @@ namespace Twilio.Rest.Api.V2010
 
     public class CreateAccountOptions : IOptions<AccountResource> 
     {
+        /// <summary>
+        /// A human readable description of the account
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>
@@ -26,6 +29,9 @@ namespace Twilio.Rest.Api.V2010
 
     public class FetchAccountOptions : IOptions<AccountResource> 
     {
+        /// <summary>
+        /// Fetch by unique Account Sid
+        /// </summary>
         public string Sid { get; set; }
     
         /// <summary>
@@ -40,7 +46,13 @@ namespace Twilio.Rest.Api.V2010
 
     public class ReadAccountOptions : ReadOptions<AccountResource> 
     {
+        /// <summary>
+        /// FriendlyName to filter on
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// Status to filter on
+        /// </summary>
         public AccountResource.StatusEnum Status { get; set; }
     
         /// <summary>
@@ -70,8 +82,17 @@ namespace Twilio.Rest.Api.V2010
 
     public class UpdateAccountOptions : IOptions<AccountResource> 
     {
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; set; }
+        /// <summary>
+        /// FriendlyName to update
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// Status to update the Account with
+        /// </summary>
         public AccountResource.StatusEnum Status { get; set; }
     
         /// <summary>

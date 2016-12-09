@@ -7,8 +7,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class FetchIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The domain_sid
+        /// </summary>
         public string DomainSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -35,8 +44,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class CreateIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The domain_sid
+        /// </summary>
         public string DomainSid { get; }
+        /// <summary>
+        /// The ip_access_control_list_sid
+        /// </summary>
         public string IpAccessControlListSid { get; }
     
         /// <summary>
@@ -68,7 +86,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class ReadIpAccessControlListMappingOptions : ReadOptions<IpAccessControlListMappingResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The domain_sid
+        /// </summary>
         public string DomainSid { get; }
     
         /// <summary>
@@ -98,8 +122,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
     public class DeleteIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The domain_sid
+        /// </summary>
         public string DomainSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

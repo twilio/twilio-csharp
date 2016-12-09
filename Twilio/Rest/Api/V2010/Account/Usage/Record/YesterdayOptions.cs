@@ -8,9 +8,21 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
 
     public class ReadYesterdayOptions : ReadOptions<YesterdayResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The category
+        /// </summary>
         public YesterdayResource.CategoryEnum Category { get; set; }
+        /// <summary>
+        /// The start_date
+        /// </summary>
         public DateTime? StartDate { get; set; }
+        /// <summary>
+        /// The end_date
+        /// </summary>
         public DateTime? EndDate { get; set; }
     
         /// <summary>

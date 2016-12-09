@@ -38,6 +38,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="options"> Create FeedbackSummary parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of FeedbackSummary </returns> 
         public static FeedbackSummaryResource Create(CreateFeedbackSummaryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -46,6 +50,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="options"> Create FeedbackSummary parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<FeedbackSummaryResource> CreateAsync(CreateFeedbackSummaryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -57,6 +68,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="includeSubaccounts"> The include_subaccounts </param>
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of FeedbackSummary </returns> 
         public static FeedbackSummaryResource Create(DateTime? startDate, DateTime? endDate, string accountSid = null, bool? includeSubaccounts = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
             var options = new CreateFeedbackSummaryOptions(startDate, endDate){AccountSid = accountSid, IncludeSubaccounts = includeSubaccounts, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
@@ -64,6 +84,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="startDate"> The start_date </param>
+        /// <param name="endDate"> The end_date </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="includeSubaccounts"> The include_subaccounts </param>
+        /// <param name="statusCallback"> The status_callback </param>
+        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<FeedbackSummaryResource> CreateAsync(DateTime? startDate, DateTime? endDate, string accountSid = null, bool? includeSubaccounts = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
             var options = new CreateFeedbackSummaryOptions(startDate, endDate){AccountSid = accountSid, IncludeSubaccounts = includeSubaccounts, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
@@ -85,6 +117,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch FeedbackSummary parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of FeedbackSummary </returns> 
         public static FeedbackSummaryResource Fetch(FetchFeedbackSummaryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -93,6 +129,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch FeedbackSummary parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<FeedbackSummaryResource> FetchAsync(FetchFeedbackSummaryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -104,6 +147,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of FeedbackSummary </returns> 
         public static FeedbackSummaryResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchFeedbackSummaryOptions(sid){AccountSid = accountSid};
@@ -111,6 +159,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<FeedbackSummaryResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchFeedbackSummaryOptions(sid){AccountSid = accountSid};
@@ -132,6 +188,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="options"> Delete FeedbackSummary parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of FeedbackSummary </returns> 
         public static bool Delete(DeleteFeedbackSummaryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -140,6 +200,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="options"> Delete FeedbackSummary parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFeedbackSummaryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -151,6 +218,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of FeedbackSummary </returns> 
         public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteFeedbackSummaryOptions(sid){AccountSid = accountSid};
@@ -158,6 +230,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteFeedbackSummaryOptions(sid){AccountSid = accountSid};
@@ -184,32 +264,74 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             }
         }
     
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The call_count
+        /// </summary>
         [JsonProperty("call_count")]
         public int? CallCount { get; private set; }
+        /// <summary>
+        /// The call_feedback_count
+        /// </summary>
         [JsonProperty("call_feedback_count")]
         public int? CallFeedbackCount { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The end_date
+        /// </summary>
         [JsonProperty("end_date")]
         public DateTime? EndDate { get; private set; }
+        /// <summary>
+        /// The include_subaccounts
+        /// </summary>
         [JsonProperty("include_subaccounts")]
         public bool? IncludeSubaccounts { get; private set; }
+        /// <summary>
+        /// The issues
+        /// </summary>
         [JsonProperty("issues")]
         public List<FeedbackIssue> Issues { get; private set; }
+        /// <summary>
+        /// The quality_score_average
+        /// </summary>
         [JsonProperty("quality_score_average")]
         public decimal? QualityScoreAverage { get; private set; }
+        /// <summary>
+        /// The quality_score_median
+        /// </summary>
         [JsonProperty("quality_score_median")]
         public decimal? QualityScoreMedian { get; private set; }
+        /// <summary>
+        /// The quality_score_standard_deviation
+        /// </summary>
         [JsonProperty("quality_score_standard_deviation")]
         public decimal? QualityScoreStandardDeviation { get; private set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
+        /// <summary>
+        /// The start_date
+        /// </summary>
         [JsonProperty("start_date")]
         public DateTime? StartDate { get; private set; }
+        /// <summary>
+        /// The status
+        /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FeedbackSummaryResource.StatusEnum Status { get; private set; }

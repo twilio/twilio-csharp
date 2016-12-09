@@ -26,6 +26,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of a queue identified by the QueueSid
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Queue parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Queue </returns> 
         public static QueueResource Fetch(FetchQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -34,6 +38,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Fetch an instance of a queue identified by the QueueSid
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Queue parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<QueueResource> FetchAsync(FetchQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -45,6 +56,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of a queue identified by the QueueSid
         /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique queue Sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Queue </returns> 
         public static QueueResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchQueueOptions(sid){AccountSid = accountSid};
@@ -52,6 +68,14 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Fetch an instance of a queue identified by the QueueSid
+        /// </summary>
+        ///
+        /// <param name="sid"> Fetch by unique queue Sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<QueueResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchQueueOptions(sid){AccountSid = accountSid};
@@ -73,6 +97,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Update the queue with the new parameters
         /// </summary>
+        ///
+        /// <param name="options"> Update Queue parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Queue </returns> 
         public static QueueResource Update(UpdateQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -81,6 +109,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Update the queue with the new parameters
+        /// </summary>
+        ///
+        /// <param name="options"> Update Queue parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<QueueResource> UpdateAsync(UpdateQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -92,6 +127,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Update the queue with the new parameters
         /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="friendlyName"> A human readable description of the queue </param>
+        /// <param name="maxSize"> The max number of members allowed in the queue </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Queue </returns> 
         public static QueueResource Update(string sid, string accountSid = null, string friendlyName = null, int? maxSize = null, ITwilioRestClient client = null)
         {
             var options = new UpdateQueueOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName, MaxSize = maxSize};
@@ -99,6 +141,16 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Update the queue with the new parameters
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="friendlyName"> A human readable description of the queue </param>
+        /// <param name="maxSize"> The max number of members allowed in the queue </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<QueueResource> UpdateAsync(string sid, string accountSid = null, string friendlyName = null, int? maxSize = null, ITwilioRestClient client = null)
         {
             var options = new UpdateQueueOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName, MaxSize = maxSize};
@@ -120,6 +172,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Remove an empty queue
         /// </summary>
+        ///
+        /// <param name="options"> Delete Queue parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Queue </returns> 
         public static bool Delete(DeleteQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -128,6 +184,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Remove an empty queue
+        /// </summary>
+        ///
+        /// <param name="options"> Delete Queue parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -139,6 +202,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Remove an empty queue
         /// </summary>
+        ///
+        /// <param name="sid"> Delete by unique queue Sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Queue </returns> 
         public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteQueueOptions(sid){AccountSid = accountSid};
@@ -146,6 +214,14 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Remove an empty queue
+        /// </summary>
+        ///
+        /// <param name="sid"> Delete by unique queue Sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteQueueOptions(sid){AccountSid = accountSid};
@@ -167,6 +243,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of queues belonging to the account used to make the request
         /// </summary>
+        ///
+        /// <param name="options"> Read Queue parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Queue </returns> 
         public static ResourceSet<QueueResource> Read(ReadQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -177,6 +257,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Retrieve a list of queues belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="options"> Read Queue parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<QueueResource>> ReadAsync(ReadQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -190,6 +277,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of queues belonging to the account used to make the request
         /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Queue </returns> 
         public static ResourceSet<QueueResource> Read(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadQueueOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
@@ -197,6 +290,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Retrieve a list of queues belonging to the account used to make the request
+        /// </summary>
+        ///
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<QueueResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadQueueOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
@@ -204,6 +306,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<QueueResource> NextPage(Page<QueueResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -232,6 +341,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a queue
         /// </summary>
+        ///
+        /// <param name="options"> Create Queue parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Queue </returns> 
         public static QueueResource Create(CreateQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -240,6 +353,13 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Create a queue
+        /// </summary>
+        ///
+        /// <param name="options"> Create Queue parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<QueueResource> CreateAsync(CreateQueueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -251,6 +371,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a queue
         /// </summary>
+        ///
+        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="maxSize"> The max number of calls allowed in the queue </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Queue </returns> 
         public static QueueResource Create(string friendlyName, string accountSid = null, int? maxSize = null, ITwilioRestClient client = null)
         {
             var options = new CreateQueueOptions(friendlyName){AccountSid = accountSid, MaxSize = maxSize};
@@ -258,6 +384,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         #if NET40
+        /// <summary>
+        /// Create a queue
+        /// </summary>
+        ///
+        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="maxSize"> The max number of calls allowed in the queue </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<QueueResource> CreateAsync(string friendlyName, string accountSid = null, int? maxSize = null, ITwilioRestClient client = null)
         {
             var options = new CreateQueueOptions(friendlyName){AccountSid = accountSid, MaxSize = maxSize};
@@ -284,22 +419,49 @@ namespace Twilio.Rest.Api.V2010.Account
             }
         }
     
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// Average wait time of members in the queue
+        /// </summary>
         [JsonProperty("average_wait_time")]
         public int? AverageWaitTime { get; private set; }
+        /// <summary>
+        /// The count of calls currently in the queue.
+        /// </summary>
         [JsonProperty("current_size")]
         public int? CurrentSize { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// A user-provided string that identifies this queue.
+        /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
+        /// <summary>
+        /// The max number of calls allowed in the queue
+        /// </summary>
         [JsonProperty("max_size")]
         public int? MaxSize { get; private set; }
+        /// <summary>
+        /// A string that uniquely identifies this queue
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
+        /// <summary>
+        /// The uri
+        /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
     

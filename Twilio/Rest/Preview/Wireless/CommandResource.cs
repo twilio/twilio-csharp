@@ -26,6 +26,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Command parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Command </returns> 
         public static CommandResource Fetch(FetchCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -34,6 +38,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Command parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Command </returns> 
         public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(FetchCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -45,6 +56,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Command </returns> 
         public static CommandResource Fetch(string sid, ITwilioRestClient client = null)
         {
             var options = new FetchCommandOptions(sid);
@@ -52,6 +67,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="sid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Command </returns> 
         public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(string sid, ITwilioRestClient client = null)
         {
             var options = new FetchCommandOptions(sid);
@@ -73,6 +95,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read Command parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Command </returns> 
         public static ResourceSet<CommandResource> Read(ReadCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -83,6 +109,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read Command parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Command </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(ReadCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -96,6 +129,14 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="device"> The device </param>
+        /// <param name="status"> The status </param>
+        /// <param name="direction"> The direction </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Command </returns> 
         public static ResourceSet<CommandResource> Read(string device = null, string status = null, string direction = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadCommandOptions{Device = device, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
@@ -103,6 +144,17 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="device"> The device </param>
+        /// <param name="status"> The status </param>
+        /// <param name="direction"> The direction </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Command </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(string device = null, string status = null, string direction = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadCommandOptions{Device = device, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
@@ -110,6 +162,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<CommandResource> NextPage(Page<CommandResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -138,6 +197,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="options"> Create Command parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Command </returns> 
         public static CommandResource Create(CreateCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -146,6 +209,13 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="options"> Create Command parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Command </returns> 
         public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(CreateCommandOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -157,6 +227,15 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="device"> The device </param>
+        /// <param name="command"> The command </param>
+        /// <param name="callbackMethod"> The callback_method </param>
+        /// <param name="callbackUrl"> The callback_url </param>
+        /// <param name="commandMode"> The command_mode </param>
+        /// <param name="includeSid"> The include_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Command </returns> 
         public static CommandResource Create(string device, string command, string callbackMethod = null, Uri callbackUrl = null, string commandMode = null, string includeSid = null, ITwilioRestClient client = null)
         {
             var options = new CreateCommandOptions(device, command){CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid};
@@ -164,6 +243,18 @@ namespace Twilio.Rest.Preview.Wireless
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="device"> The device </param>
+        /// <param name="command"> The command </param>
+        /// <param name="callbackMethod"> The callback_method </param>
+        /// <param name="callbackUrl"> The callback_url </param>
+        /// <param name="commandMode"> The command_mode </param>
+        /// <param name="includeSid"> The include_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Command </returns> 
         public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(string device, string command, string callbackMethod = null, Uri callbackUrl = null, string commandMode = null, string includeSid = null, ITwilioRestClient client = null)
         {
             var options = new CreateCommandOptions(device, command){CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid};
@@ -190,24 +281,54 @@ namespace Twilio.Rest.Preview.Wireless
             }
         }
     
+        /// <summary>
+        /// The sid
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The device_sid
+        /// </summary>
         [JsonProperty("device_sid")]
         public string DeviceSid { get; private set; }
+        /// <summary>
+        /// The command
+        /// </summary>
         [JsonProperty("command")]
         public string Command { get; private set; }
+        /// <summary>
+        /// The command_mode
+        /// </summary>
         [JsonProperty("command_mode")]
         public string CommandMode { get; private set; }
+        /// <summary>
+        /// The status
+        /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }
+        /// <summary>
+        /// The direction
+        /// </summary>
         [JsonProperty("direction")]
         public string Direction { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
     

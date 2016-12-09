@@ -7,6 +7,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class ReadCredentialListOptions : ReadOptions<CredentialListResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
     
         /// <summary>
@@ -26,7 +29,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class CreateCredentialListOptions : IOptions<CredentialListResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; }
     
         /// <summary>
@@ -56,7 +65,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class FetchCredentialListOptions : IOptions<CredentialListResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Fetch by unique credential Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -81,8 +96,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class UpdateCredentialListOptions : IOptions<CredentialListResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
         public string FriendlyName { get; }
     
         /// <summary>
@@ -114,7 +138,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
     public class DeleteCredentialListOptions : IOptions<CredentialListResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Delete by unique credential Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>

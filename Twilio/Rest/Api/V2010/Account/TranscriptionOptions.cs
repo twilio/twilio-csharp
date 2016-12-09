@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchTranscriptionOptions : IOptions<TranscriptionResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Fetch by unique transcription Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -32,7 +38,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class DeleteTranscriptionOptions : IOptions<TranscriptionResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Delete by unique transcription Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -57,6 +69,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadTranscriptionOptions : ReadOptions<TranscriptionResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
     
         /// <summary>

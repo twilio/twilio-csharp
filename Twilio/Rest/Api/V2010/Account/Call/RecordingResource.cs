@@ -26,6 +26,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch Recording parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Recording </returns> 
         public static RecordingResource Fetch(FetchRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -34,6 +38,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch Recording parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -45,6 +56,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Recording </returns> 
         public static RecordingResource Fetch(string callSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchRecordingOptions(callSid, sid){AccountSid = accountSid};
@@ -52,6 +69,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string callSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchRecordingOptions(callSid, sid){AccountSid = accountSid};
@@ -73,6 +99,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="options"> Delete Recording parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Recording </returns> 
         public static bool Delete(DeleteRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -81,6 +111,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="options"> Delete Recording parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -92,6 +129,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Recording </returns> 
         public static bool Delete(string callSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteRecordingOptions(callSid, sid){AccountSid = accountSid};
@@ -99,6 +142,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="sid"> The sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string callSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteRecordingOptions(callSid, sid){AccountSid = accountSid};
@@ -120,6 +172,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read Recording parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Recording </returns> 
         public static ResourceSet<RecordingResource> Read(ReadRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -130,6 +186,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read Recording parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -143,6 +206,16 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="dateCreatedBefore"> The date_created </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateCreatedAfter"> The date_created </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Recording </returns> 
         public static ResourceSet<RecordingResource> Read(string callSid, string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadRecordingOptions(callSid){AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
@@ -150,6 +223,19 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="callSid"> The call_sid </param>
+        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="dateCreatedBefore"> The date_created </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateCreatedAfter"> The date_created </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(string callSid, string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadRecordingOptions(callSid){AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
@@ -157,6 +243,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<RecordingResource> NextPage(Page<RecordingResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -190,22 +283,49 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             }
         }
     
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The api_version
+        /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
+        /// <summary>
+        /// The call_sid
+        /// </summary>
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The duration
+        /// </summary>
         [JsonProperty("duration")]
         public string Duration { get; private set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
+        /// <summary>
+        /// The price
+        /// </summary>
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
+        /// <summary>
+        /// The uri
+        /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
     

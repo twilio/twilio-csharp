@@ -8,8 +8,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class FetchMemberOptions : IOptions<MemberResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -38,9 +47,21 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class CreateMemberOptions : IOptions<MemberResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The identity
+        /// </summary>
         public string Identity { get; }
+        /// <summary>
+        /// The role_sid
+        /// </summary>
         public string RoleSid { get; set; }
     
         /// <summary>
@@ -79,8 +100,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class ReadMemberOptions : ReadOptions<MemberResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The identity
+        /// </summary>
         public List<string> Identity { get; set; }
     
         /// <summary>
@@ -118,8 +148,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class DeleteMemberOptions : IOptions<MemberResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -148,10 +187,25 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 
     public class UpdateMemberOptions : IOptions<MemberResource> 
     {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// The role_sid
+        /// </summary>
         public string RoleSid { get; set; }
+        /// <summary>
+        /// The last_consumed_message_index
+        /// </summary>
         public int? LastConsumedMessageIndex { get; set; }
     
         /// <summary>

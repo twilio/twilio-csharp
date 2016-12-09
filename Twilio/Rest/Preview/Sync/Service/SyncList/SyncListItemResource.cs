@@ -45,6 +45,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="options"> Fetch SyncListItem parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SyncListItem </returns> 
         public static SyncListItemResource Fetch(FetchSyncListItemOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,6 +57,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="options"> Fetch SyncListItem parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(FetchSyncListItemOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -64,6 +75,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// fetch
         /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
+        /// <param name="index"> The index </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SyncListItem </returns> 
         public static SyncListItemResource Fetch(string serviceSid, string listSid, int? index, ITwilioRestClient client = null)
         {
             var options = new FetchSyncListItemOptions(serviceSid, listSid, index);
@@ -71,6 +88,15 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
+        /// <summary>
+        /// fetch
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
+        /// <param name="index"> The index </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(string serviceSid, string listSid, int? index, ITwilioRestClient client = null)
         {
             var options = new FetchSyncListItemOptions(serviceSid, listSid, index);
@@ -92,6 +118,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="options"> Delete SyncListItem parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SyncListItem </returns> 
         public static bool Delete(DeleteSyncListItemOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -100,6 +130,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="options"> Delete SyncListItem parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncListItemOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -111,6 +148,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// delete
         /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
+        /// <param name="index"> The index </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SyncListItem </returns> 
         public static bool Delete(string serviceSid, string listSid, int? index, ITwilioRestClient client = null)
         {
             var options = new DeleteSyncListItemOptions(serviceSid, listSid, index);
@@ -118,6 +161,15 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
+        /// <param name="index"> The index </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string serviceSid, string listSid, int? index, ITwilioRestClient client = null)
         {
             var options = new DeleteSyncListItemOptions(serviceSid, listSid, index);
@@ -139,6 +191,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="options"> Create SyncListItem parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SyncListItem </returns> 
         public static SyncListItemResource Create(CreateSyncListItemOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -147,6 +203,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="options"> Create SyncListItem parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(CreateSyncListItemOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -158,6 +221,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// create
         /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
+        /// <param name="data"> The data </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SyncListItem </returns> 
         public static SyncListItemResource Create(string serviceSid, string listSid, object data, ITwilioRestClient client = null)
         {
             var options = new CreateSyncListItemOptions(serviceSid, listSid, data);
@@ -165,6 +234,15 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
+        /// <summary>
+        /// create
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
+        /// <param name="data"> The data </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(string serviceSid, string listSid, object data, ITwilioRestClient client = null)
         {
             var options = new CreateSyncListItemOptions(serviceSid, listSid, data);
@@ -186,6 +264,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="options"> Read SyncListItem parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SyncListItem </returns> 
         public static ResourceSet<SyncListItemResource> Read(ReadSyncListItemOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -196,6 +278,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="options"> Read SyncListItem parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<SyncListItemResource>> ReadAsync(ReadSyncListItemOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -209,6 +298,16 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// read
         /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
+        /// <param name="order"> The order </param>
+        /// <param name="from"> The from </param>
+        /// <param name="bounds"> The bounds </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SyncListItem </returns> 
         public static ResourceSet<SyncListItemResource> Read(string serviceSid, string listSid, SyncListItemResource.QueryResultOrderEnum order = null, string from = null, SyncListItemResource.QueryFromBoundTypeEnum bounds = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadSyncListItemOptions(serviceSid, listSid){Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
@@ -216,6 +315,19 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
+        /// <summary>
+        /// read
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
+        /// <param name="order"> The order </param>
+        /// <param name="from"> The from </param>
+        /// <param name="bounds"> The bounds </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<SyncListItemResource>> ReadAsync(string serviceSid, string listSid, SyncListItemResource.QueryResultOrderEnum order = null, string from = null, SyncListItemResource.QueryFromBoundTypeEnum bounds = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadSyncListItemOptions(serviceSid, listSid){Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
@@ -223,6 +335,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
         #endif
     
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns> 
         public static Page<SyncListItemResource> NextPage(Page<SyncListItemResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -251,6 +370,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// update
         /// </summary>
+        ///
+        /// <param name="options"> Update SyncListItem parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SyncListItem </returns> 
         public static SyncListItemResource Update(UpdateSyncListItemOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -259,6 +382,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="options"> Update SyncListItem parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(UpdateSyncListItemOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -270,6 +400,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// update
         /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
+        /// <param name="index"> The index </param>
+        /// <param name="data"> The data </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SyncListItem </returns> 
         public static SyncListItemResource Update(string serviceSid, string listSid, int? index, object data, ITwilioRestClient client = null)
         {
             var options = new UpdateSyncListItemOptions(serviceSid, listSid, index, data);
@@ -277,6 +414,16 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     
         #if NET40
+        /// <summary>
+        /// update
+        /// </summary>
+        ///
+        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="listSid"> The list_sid </param>
+        /// <param name="index"> The index </param>
+        /// <param name="data"> The data </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(string serviceSid, string listSid, int? index, object data, ITwilioRestClient client = null)
         {
             var options = new UpdateSyncListItemOptions(serviceSid, listSid, index, data);
@@ -303,24 +450,54 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             }
         }
     
+        /// <summary>
+        /// The index
+        /// </summary>
         [JsonProperty("index")]
         public int? Index { get; private set; }
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The service_sid
+        /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
+        /// <summary>
+        /// The list_sid
+        /// </summary>
         [JsonProperty("list_sid")]
         public string ListSid { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The revision
+        /// </summary>
         [JsonProperty("revision")]
         public string Revision { get; private set; }
+        /// <summary>
+        /// The data
+        /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The created_by
+        /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }
     

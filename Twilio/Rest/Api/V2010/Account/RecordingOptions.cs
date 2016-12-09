@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchRecordingOptions : IOptions<RecordingResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Fetch by unique recording Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -32,7 +38,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class DeleteRecordingOptions : IOptions<RecordingResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Delete by unique recording Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -57,10 +69,25 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadRecordingOptions : ReadOptions<RecordingResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Filter by date created
+        /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
+        /// <summary>
+        /// Filter by date created
+        /// </summary>
         public DateTime? DateCreated { get; set; }
+        /// <summary>
+        /// Filter by date created
+        /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
+        /// <summary>
+        /// Filter by call_sid
+        /// </summary>
         public string CallSid { get; set; }
     
         /// <summary>

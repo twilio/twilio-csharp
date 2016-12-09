@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class FetchShortCodeOptions : IOptions<ShortCodeResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Fetch by unique short-code Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -32,13 +38,37 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class UpdateShortCodeOptions : IOptions<ShortCodeResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// A human readable description of this resource
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The API version to use
+        /// </summary>
         public string ApiVersion { get; set; }
+        /// <summary>
+        /// URL Twilio will request when receiving an SMS
+        /// </summary>
         public Uri SmsUrl { get; set; }
+        /// <summary>
+        /// HTTP method to use when requesting the sms url
+        /// </summary>
         public Twilio.Http.HttpMethod SmsMethod { get; set; }
+        /// <summary>
+        /// URL Twilio will request if an error occurs in executing TwiML
+        /// </summary>
         public Uri SmsFallbackUrl { get; set; }
+        /// <summary>
+        /// HTTP method Twilio will use with sms fallback url
+        /// </summary>
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
     
         /// <summary>
@@ -93,8 +123,17 @@ namespace Twilio.Rest.Api.V2010.Account
 
     public class ReadShortCodeOptions : ReadOptions<ShortCodeResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Filter by friendly name
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// Filter by ShortCode
+        /// </summary>
         public string ShortCode { get; set; }
     
         /// <summary>

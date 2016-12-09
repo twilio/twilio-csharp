@@ -7,7 +7,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class FetchTaskChannelOptions : IOptions<TaskChannelResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -34,6 +40,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
     public class ReadTaskChannelOptions : ReadOptions<TaskChannelResource> 
     {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
         public string WorkspaceSid { get; }
     
         /// <summary>

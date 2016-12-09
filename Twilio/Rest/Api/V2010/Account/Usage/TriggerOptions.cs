@@ -7,7 +7,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class FetchTriggerOptions : IOptions<TriggerResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Fetch by unique usage-trigger Sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -32,10 +38,25 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class UpdateTriggerOptions : IOptions<TriggerResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
+        /// <summary>
+        /// HTTP method to use with callback_url
+        /// </summary>
         public Twilio.Http.HttpMethod CallbackMethod { get; set; }
+        /// <summary>
+        /// URL Twilio will request when the trigger fires
+        /// </summary>
         public Uri CallbackUrl { get; set; }
+        /// <summary>
+        /// A user-specified, human-readable name for the trigger.
+        /// </summary>
         public string FriendlyName { get; set; }
     
         /// <summary>
@@ -75,7 +96,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class DeleteTriggerOptions : IOptions<TriggerResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// The sid
+        /// </summary>
         public string Sid { get; }
     
         /// <summary>
@@ -100,13 +127,37 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class CreateTriggerOptions : IOptions<TriggerResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// URL Twilio will request when the trigger fires
+        /// </summary>
         public Uri CallbackUrl { get; }
+        /// <summary>
+        /// the value at which the trigger will fire
+        /// </summary>
         public string TriggerValue { get; }
+        /// <summary>
+        /// The usage category the trigger watches
+        /// </summary>
         public TriggerResource.UsageCategoryEnum UsageCategory { get; }
+        /// <summary>
+        /// HTTP method to use with callback_url
+        /// </summary>
         public Twilio.Http.HttpMethod CallbackMethod { get; set; }
+        /// <summary>
+        /// A user-specified, human-readable name for the trigger.
+        /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// How this trigger recurs
+        /// </summary>
         public TriggerResource.RecurringEnum Recurring { get; set; }
+        /// <summary>
+        /// The field in the UsageRecord that fires the trigger
+        /// </summary>
         public TriggerResource.TriggerFieldEnum TriggerBy { get; set; }
     
         /// <summary>
@@ -170,9 +221,21 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
     public class ReadTriggerOptions : ReadOptions<TriggerResource> 
     {
+        /// <summary>
+        /// The account_sid
+        /// </summary>
         public string AccountSid { get; set; }
+        /// <summary>
+        /// Filter by recurring
+        /// </summary>
         public TriggerResource.RecurringEnum Recurring { get; set; }
+        /// <summary>
+        /// Filter by trigger by
+        /// </summary>
         public TriggerResource.TriggerFieldEnum TriggerBy { get; set; }
+        /// <summary>
+        /// Filter by Usage Category
+        /// </summary>
         public TriggerResource.UsageCategoryEnum UsageCategory { get; set; }
     
         /// <summary>
