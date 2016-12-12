@@ -31,7 +31,8 @@ namespace Twilio.JWT
         /// tokens and will not be included in token contents.</param>
         /// <param name="workspaceSid">The workspace to create a capability token for.</param>
         /// <param name="channelId">The websocket channel to listen on.</param>
-        public TaskRouterCapability(string accountSid, string authToken, string workspaceSid, string channelId) {
+        public TaskRouterCapability(string accountSid, string authToken, string workspaceSid, string channelId) 
+		{
             _accountSid = accountSid;
             _authToken = authToken;
             _workspaceSid = workspaceSid;

@@ -30,21 +30,24 @@ namespace Twilio.JWT
         public object GetPayload()
         {
             var payload = new Dictionary<string, object>();
-            if (OutgoingApplicationSid != null) {
+            if (OutgoingApplicationSid != null) 
+			{
                 var outgoing = new Dictionary<string, object> {{"application_sid", OutgoingApplicationSid}};
-
-                if (OutgoingApplicationParams != null) {
+                if (OutgoingApplicationParams != null) 
+				{
                     outgoing.Add("params", OutgoingApplicationParams) ;
                 }
 
                 payload.Add("outgoing", outgoing);
             }
 
-            if (PushCredentialSid != null) {
+            if (PushCredentialSid != null) 
+			{
                 payload.Add("push_credential_sid", PushCredentialSid);
             }
 
-            if (EndpointId != null) {
+            if (EndpointId != null) 
+			{
                 payload.Add("endpoint_id", EndpointId);
             }
 

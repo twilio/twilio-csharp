@@ -51,7 +51,7 @@ namespace Twilio.Base
 	        var b = new StringBuilder();
 	        b.Append("https://").Append(domain);
 	        
-	        if (!string.IsNullOrEmpty(region))
+	        if (!IsNullOrEmpty(region))
 	        {
 	            b.Append(".").Append(region);
 	        }
