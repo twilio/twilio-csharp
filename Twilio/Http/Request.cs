@@ -87,6 +87,11 @@ namespace Twilio.Http
 			return Encoding.UTF8.GetBytes(EncodeParameters(_postParams));
         }
 
+	    public List<KeyValuePair<string, string>> GetPostParams()
+	    {
+	        return _postParams;
+	    }
+
 		public void AddQueryParam(string name, string value)
 		{
 			AddParam(_queryParams, name, value);

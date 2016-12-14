@@ -24,16 +24,6 @@ namespace Twilio.Http
 
         public SystemNetHttpClient() : this(new System.Net.Http.HttpClient())
         {
-            const string libraryVersion = "twilio-csharp/" + 
-                AssemblyInfomation.AssemblyInformationalVersion + 
-                PlatVersion;
-
-            _httpClient.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            _httpClient.DefaultRequestHeaders.AcceptEncoding.Add(
-                new StringWithQualityHeaderValue("utf-8"));
-            _httpClient.DefaultRequestHeaders.UserAgent.Add(
-                new ProductInfoHeaderValue(libraryVersion));
         }
 
         public override Response MakeRequest(Request request)
@@ -48,14 +38,13 @@ namespace Twilio.Http
             var httpRequest = BuildHttpRequest(request);
             if (!Equals(request.Method, HttpMethod.Get))
             {
-                var stream = await GetStreamAsync(httpRequest);
-                await stream.WriteAsync(request.EncodePostParams(), 0, request.EncodePostParams().Length);
+                httpRequest.Content = new FormUrlEncodedContent(request.GetPostParams());
             }
 
             HttpResponseMessage response = null;
             try
             {
-                response = await GetResponseAsync(httpRequest);
+                response = await _httpClient.SendAsync(httpRequest); 
                 var reader = new StreamReader(await response.Content.ReadAsStreamAsync());
                 return new Response(response.StatusCode, await reader.ReadToEndAsync());
             }
@@ -93,16 +82,6 @@ namespace Twilio.Http
             }
         }
 
-        private async Task<Stream> GetStreamAsync(HttpRequestMessage request)
-        {
-            return await request.Content.ReadAsStreamAsync();
-        }
-
-        private async Task<HttpResponseMessage> GetResponseAsync(HttpRequestMessage request)
-        {
-            return await _httpClient.SendAsync(request);
-        }
-
         private HttpRequestMessage BuildHttpRequest(Request request)
         {
             var httpRequest = new HttpRequestMessage(
@@ -111,8 +90,17 @@ namespace Twilio.Http
             var authBytes = Authentication(request.Username, request.Password);
             httpRequest.Headers.Authorization = 
                 new AuthenticationHeaderValue("Basic", authBytes);
-            httpRequest.Content.Headers.ContentType = 
-                new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+
+            httpRequest.Headers.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            httpRequest.Headers.AcceptEncoding.Add(
+                new StringWithQualityHeaderValue("utf-8"));
+
+            const string libraryVersion = "twilio-csharp/" +
+                AssemblyInfomation.AssemblyInformationalVersion +
+                PlatVersion;
+            httpRequest.Headers.TryAddWithoutValidation(
+                "User-Agent", libraryVersion);
 
             return httpRequest;
         }
