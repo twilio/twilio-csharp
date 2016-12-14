@@ -42,8 +42,12 @@ namespace Twilio.Clients
 			_password = password;
 
 	        AccountSid = accountSid ?? username;
-	        HttpClient = httpClient ?? new WebRequestClient();
-	        Region = region;
+#if NET40
+            HttpClient = httpClient ?? new SystemNetHttpClient();
+#else
+            HttpClient = httpClient ?? new WebRequestClient();
+#endif
+            Region = region;
 	    }
 
 	    /// <summary>
@@ -59,7 +63,7 @@ namespace Twilio.Clients
 	        return ProcessResponse(response);
 	    }
 
-	    #if NET40
+#if NET40
 	    /// <summary>
 	    /// Make a request to the Twilio API
 	    /// </summary>
@@ -72,7 +76,7 @@ namespace Twilio.Clients
 	        var response = await HttpClient.MakeRequestAysnc(request);
 	        return ProcessResponse(response);
 	    }
-        #endif
+#endif
 
 	    private static Response ProcessResponse(Response response)
 	    {

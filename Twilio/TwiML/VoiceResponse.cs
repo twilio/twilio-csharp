@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Text;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
@@ -315,7 +313,7 @@ namespace Twilio.TwiML
 
             var wr = new Utf8StringWriter();
             document.Save(wr);
-            return wr.GetStringBuilder().ToString();
+            return wr.GetStringBuilder().ToString().Replace("\r", "");
         }
     }
 }
