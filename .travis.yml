@@ -1,7 +1,7 @@
 language: csharp
 solution: Twilio.sln
 install:
-  - nuget install Microsoft.CSharp -Version 4.0.1 -OutputDirectory /home/travis/.nuget/packages
+  - nuget install Microsoft.CSharp -Version 4.0.1 -OutputDirectory packages
   - nuget restore Twilio.sln
   - nuget install NUnit.Runners -Version 3.2.0 -OutputDirectory testrunner
 script:
