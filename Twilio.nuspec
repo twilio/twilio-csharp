@@ -39,8 +39,8 @@
     </releaseNotes>
   </metadata>
   <files>
-    <file src="Twilio/bin/Release/netstandard1.1/Twilio.dll" target="lib/netstandard1.1" />
-    <file src="JWT/bin/Release/netstandard1.1/JWT.dll" target="lib/netstandard1.1" />
-    <file src="Twilio35/bin/Release/Twilio35.dll" target="lib/net35" />
+    <file src="Twilio\bin\Release\netstandard1.1\Twilio.dll" target="lib\netstandard1.1" />
+    <file src="JWT\bin\Release\netstandard1.1\JWT.dll" target="lib\netstandard1.1" />
+    <file src="Twilio35\bin\Release\Twilio35.dll" target="lib\net35" />
   </files>
 </package>

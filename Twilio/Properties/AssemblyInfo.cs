@@ -31,5 +31,5 @@ using System.Runtime.CompilerServices;
 
 internal class AssemblyInfomation
 {
-	public const string AssemblyInformationalVersion = "5.0.0-rca2";
+	public const string AssemblyInformationalVersion = "5.0.0-rca3";
 }
