@@ -1,5 +1,4 @@
-using System;
-using System.Collections.Generic;
+using RestSharp.Deserializers;
 
 namespace Twilio.Pricing
 {
@@ -13,7 +12,8 @@ namespace Twilio.Pricing
         /// The full name of the country.
         /// </summary>
         /// <value>Country name.</value>
-        public string Country { get; set; }
+        [DeserializeAs(Name = "country")]
+        public string Name { get; set; }
 
         /// <summary>
         /// The abbreviated country identifier according to ISO 3166-1 alpha-2,
@@ -28,5 +28,4 @@ namespace Twilio.Pricing
         /// <value>Absolute country Url.</value>
         public string Url { get; set; }
     }
-
 }

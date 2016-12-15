@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MessagingCountryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\PhoneNumberCountryTests.cs" />
     <Compile Include="Model\VoiceCountryTests.cs" />
