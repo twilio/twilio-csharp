@@ -4,7 +4,7 @@
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DCEAFED7-EBB8-4135-B887-94862A9BF730}</ProjectGuid>
+    <ProjectGuid>{7C1410D8-A354-445E-AF1A-C1F27F52A749}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JWT</RootNamespace>

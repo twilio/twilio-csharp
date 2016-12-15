@@ -4,7 +4,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{74E88969-551A-4FF6-90CA-E24398FDE033}") = "JWT", "JWT\JWT.csproj", "{7C1410D8-A354-445E-AF1A-C1F27F52A749}"
 EndProject
-Project("{821DB3C0-2451-41D4-9158-F52E534E948B}") = "Twilio", "Twilio\Twilio.csproj", "{C0F9BB35-A31F-4892-A964-C46911774364}"
+Project("{74E88969-551A-4FF6-90CA-E24398FDE033}") = "Twilio", "Twilio\Twilio.csproj", "{C0F9BB35-A31F-4892-A964-C46911774364}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

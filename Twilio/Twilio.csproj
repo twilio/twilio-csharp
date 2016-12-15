@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{12BED4CC-0E34-4B83-ACF0-F834EAFBE416}</ProjectGuid>
+    <ProjectGuid>{C0F9BB35-A31F-4892-A964-C46911774364}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Twilio</RootNamespace>
     <TargetFramework>netstandard1.1</TargetFramework>
