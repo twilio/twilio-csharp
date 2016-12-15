@@ -4,11 +4,15 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("Twilio")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
+// Don't need this one, it already knows because this is Twilio.csproj
+//[assembly: AssemblyTitle("Twilio")]
+
+// Don't need to specify these empty ones (only if we're providing a value)
+//[assembly: AssemblyDescription("")]
+//[assembly: AssemblyConfiguration("")]
+//[assembly: AssemblyCompany("")]
+//[assembly: AssemblyProduct("")]
+
 [assembly: AssemblyCopyright("Twilio")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -17,7 +21,7 @@ using System.Runtime.CompilerServices;
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
 
-[assembly: AssemblyInformationalVersion(AssemblyInfomation.AssemblyInformationalVersion)]
+//[assembly: AssemblyInformationalVersion(AssemblyInfomation.AssemblyInformationalVersion)]
 
 // The following attributes are used to specify the signing key for the assembly,
 // if desired. See the Mono documentation for more information about signing.
