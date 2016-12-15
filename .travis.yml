@@ -15,6 +15,7 @@ install:
   - sudo dpkg -i dotnet-sharedframework-ubuntu-x64.latest.deb
   - wget https://dotnetcli.blob.core.windows.net/dotnet/Sdk/rel-1.0.0/dotnet-sdk-ubuntu-x64.latest.deb
   - sudo dpkg -i dotnet-sdk-ubuntu-x64.latest.deb
+  - dotnet --info
   - dotnet restore Twilio.sln
   - nuget restore Twilio35.sln
   - nuget install NUnit.Runners -Version 3.2.0 -OutputDirectory testrunner
