@@ -4,6 +4,9 @@ dist: trusty
 sudo: required
 
 install:
+  - sudo apt-get liblldb-3.6
+  - sudo apt-get liblttng-ust0
+  - sudo apt-get libunwind8
   - wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Installers/Latest/dotnet-host-ubuntu-x64.latest.deb
   - sudo dpkg -i dotnet-host-ubuntu-x64.latest.deb
   - wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Installers/Latest/dotnet-hostfxr-ubuntu-x64.latest.deb
