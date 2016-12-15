@@ -33,7 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JWT\JWT.csproj">
-      <Project>{dceafed7-ebb8-4135-b887-94862a9bf730}</Project>
       <Name>JWT</Name>
     </ProjectReference>
   </ItemGroup>

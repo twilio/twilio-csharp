@@ -1,9 +1,18 @@
 language: csharp
-solution: Twilio.sln
+solution: Twilio35.sln
+
+matrix:
+  include:
+    - dotnet: 1.0.0-preview5-004232
+      mono: none
+      env: DOTNETCORE=1
+    - mono: latest
+
 install:
-  - nuget install Microsoft.CSharp -Version 4.0.1 -OutputDirectory packages
-  - nuget restore Twilio.sln
+  - dotnet restore Twilio.sln
+  - nuget restore Twilio35.sln
   - nuget install NUnit.Runners -Version 3.2.0 -OutputDirectory testrunner
 script:
-  - xbuild Twilio.sln
+  - dotnet /p:Configuration=Release Twilio.sln
+  - xbuild /p:Configuration=Release Twilio35.sln
   - mono ./testrunner/NUnit.ConsoleRunner.3.2.0/tools/nunit3-console.exe ./Twilio.Tests/bin/Debug/Twilio.Tests.dll
