@@ -3,9 +3,17 @@
   "dependencies": {
     "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
     "NETStandard.Library": "1.6.0",
-    "Newtonsoft.Json": "9.0.1"
+    "Newtonsoft.Json": "9.0.1",
+    "JWT": {
+      "version": "1.0.*",
+      "target":  "project" 
+    } 
   },
   "frameworks": {
-    "netstandard1.1": {}
+    "netstandard1.1": {
+      "buildOptions": {
+        "define": [ "NET40" ]
+      } 
+    }
   }
 }

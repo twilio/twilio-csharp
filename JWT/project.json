@@ -7,6 +7,10 @@
     "Portable.BouncyCastle": "1.8.1.2"
   },
   "frameworks": {
-    "netstandard1.1": {}
+    "netstandard1.1": {
+      "buildOptions": {
+        "define": [ "NET40" ]
+      }
+    }
   }
 }
