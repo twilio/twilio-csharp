@@ -1,5 +1,7 @@
 language: csharp
 solution: Twilio35.sln
+dist: trusty
+sudo: required
 
 install:
   - wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Installers/Latest/dotnet-host-ubuntu-x64.latest.deb
