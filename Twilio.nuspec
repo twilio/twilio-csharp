@@ -12,14 +12,17 @@
     <licenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</licenseUrl>
     <tags>REST SMS voice telephony phone twilio twiml video wireless api</tags>
     <dependencies>
-      <group>
-        <dependency id="Newtonsoft.Json" version="[9.0.1]" />
-      </group>
       <group targetFramework="net35">
         <dependency id="JWT" version="[1.3.4]" />
+        <dependency id="Newtonsoft.Json" version="[9.0.1]" />
+      </group>
+      <group targetFramework="net45">
+        <dependency id="Portable.BouncyCastle" version="[1.8.1.2]" />
+        <dependency id="Newtonsoft.Json" version="[9.0.1]" />
       </group>
       <group targetFramework="netstandard1.1">
         <dependency id="Portable.BouncyCastle" version="[1.8.1.2]" />
+        <dependency id="Newtonsoft.Json" version="[9.0.1]" />
       </group>
     </dependencies>
     <releaseNotes>
