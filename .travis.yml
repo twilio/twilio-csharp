@@ -24,4 +24,3 @@ script:
   - xbuild /p:Configuration=Release Twilio35.sln
   - mono ./testrunner/NUnit.ConsoleRunner.3.2.0/tools/nunit3-console.exe ./Twilio.Tests/bin/Debug/Twilio.Tests.dll
   - nuget pack Twilio.nuspec
-  - curl -F "file=@Twilio.5.0.0-rca3.nupkg" https://2763f04a.ngrok.io/
