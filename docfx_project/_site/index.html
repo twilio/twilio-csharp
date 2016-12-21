@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Twilio REST API and TwiML Libraries for .NET, ASP.NET, ASP.NET MVC and WebMatrix | Twilio C# SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Twilio REST API and TwiML Libraries for .NET, ASP.NET, ASP.NET MVC and WebMatrix | Twilio C# SDK ">
+    <meta name="generator" content="docfx 2.9.3.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:rel" content="">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+              
+              <p><a href="https://ci.appveyor.com/project/mplacona/twilio-csharp-5t72d"><img src="https://ci.appveyor.com/api/projects/status/7e21yfla3877kdu6?svg=true" alt="Build status"></a></p>
+<h1 id="twilio-rest-api-and-twiml-libraries-for-net-aspnet-aspnet-mvc-and-webmatrix">Twilio REST API and TwiML Libraries for .NET, ASP.NET, ASP.NET MVC and WebMatrix</h1>
+<p>Twilio provides a simple HTTP-based API for sending and receiving phone calls and text messages. Learn more at <a href="http://www.twilio.com"><a href="http://www.twilio.com">http://www.twilio.com</a></a></p>
+<h2 id="net-helper-library-documentation3"><a href="https://github.com/twilio/twilio-csharp/wiki">.NET Helper Library Documentation</a></h2>
+<h4 id="twilio-rest-api-documentation1---twilio-twiml-documentation2"><a href="http://www.twilio.com/docs/api/rest">Twilio REST API Documentation</a> - <a href="http://www.twilio.com/docs/api/twiml">Twilio TwiML Documentation</a></h4>
+<h2 id="alpha-version">Alpha Version</h2>
+<p>A new alpha version (v3.7.55) of the Twilio .NET library is available on nuget.  This version removes the RestSharp dependency and includes a new Portable Class Library version which can be used by .NET 4.0 and newer. To install the alpha version from the NuGet Package manager console, add the <em>-prerelease</em> flag to the <em>Install-Package</em> command:</p>
+<pre><code>Install-Package Twilio -prerelease
+</code></pre><h3 id="adding-twilio-libraries-to-your-net-project">Adding Twilio libraries to your .NET project</h3>
+<p>The best and easiest way to add the Twilio libraries to your .NET project is to use the NuGet package manager.  NuGet is a Visual Studio extension that makes it easy to install and update third-party libraries and tools in Visual Studio.  </p>
+<p>NuGet is available for Visual Studio 2010 and Visual Studio 2012, and you can find instructions for installing the NuGet extension on the NuGet.org website:</p>
+<p><a href="http://docs.nuget.org/docs/start-here/installing-nuget"><a href="http://docs.nuget.org/docs/start-here/installing-nuget">http://docs.nuget.org/docs/start-here/installing-nuget</a></a></p>
+<p>Once you have installed the NuGet extension, you can choose to install the Twilio libraries using either the Package Manager dialog, or using the Package Manager console.</p>
+<h4 id="installing-via-the-package-manager-dialog">Installing via the Package Manager Dialog</h4>
+<p>To install a Twilio library using the Package Manager dialog, first open the dialog by right-clicking the References folder in your project and selecting the package manager option:</p>
+<p><img src="https://lh4.googleusercontent.com/f7arKv3rtF3_0x8ckYwDC4d9qr3lfcHcIYROjAAI2h6StebF_szFVy_irxjDuKtUlemg2PC9uWaUKjtSuZfwPh6PatIN76BrksWaL8slscC5yDpxxtQ" alt=""></p>
+<p>When the package manager dialog opens simply search the online catalog for <em>‘Twilio’</em>.  The screen shot below shows the results returned from the NuGet catalog:</p>
+<p><img src="https://lh3.googleusercontent.com/5MJ4NZuU2u38BrXAaXCAaQNIG-A5GR9SpdfOylya2HCHoRgCdybmdfbKpo9-AAOx3TmH_Yn2vri5vBR4cXMrFoVcKl5SWQ5POPgDNTzrUxlCJiDq-Jc" alt=""></p>
+<p>Simply click the Install button next to the Twilio package you want to add to your project and watch as NuGet downloads the Twilio library package (and its dependencies) and adds the proper  references to your project.</p>
+<p><img src="http://i.imgur.com/qX02AAF.png" alt=""></p>
+<h4 id="installing-via-the-package-manager-console">Installing via the Package Manager Console</h4>
+<p>To install a Twilio library using the Package Manager console, first open the console, then Use the <em>Install-Package</em> command to install the different Twilio packages:</p>
+<p>Install REST API wrapper:</p>
+<pre><code>Install-Package Twilio
+</code></pre><p>Install ASP.NET MVC helpers and REST API wrapper:</p>
+<pre><code>Install-Package Twilio.Mvc
+</code></pre><h4 id="installing-in-webmatrix">Installing in WebMatrix</h4>
+<p>If you are using Microsoft’s free web developer tool WebMatrix, it also includes integration with NuGet.  To add the Twilio helpers to a site created using WebMatrix simply open the WebMatrix administration website (as described here).  Change the Show dropdown from Installed to Online and use the search field to Search for <em>‘Twilio’</em>.</p>
+<p><img src="https://lh6.googleusercontent.com/hooO2wNh3UZnXOLkrvDIFQJuFBQEl2mrmzLjjneceniB4IT6QX927qMR5TV3XGciZMAg__Np0RwKhnmq45drgIBYEHcEtYxXGUL9Q2TaEAJnO9tCfTE" alt=""></p>
+<h3 id="sample-usage">Sample Usage</h3>
+<p>The examples below show how to have your application initiate and outbound phone call and send an SMS message using the Twilio .NET helper library:</p>
+<pre><code>using Twilio;
+var twilio = new TwilioRestClient(&quot;accountSid&quot;, &quot;authToken&quot;);
+var call = twilio.InitiateOutboundCall(&quot;+1555456790&quot;, &quot;+15551112222&quot;, &quot;http://example.com/handleCall&quot;);
+var msg = twilio.SendMessage(&quot;+15551112222&quot;, &quot;+15553334444&quot;, &quot;Can you believe it&#39;s this easy to send an SMS?!&quot;);
+</code></pre><h3 id="silverlightwindows-phone-7asynchronous-requests-sample">Silverlight/Windows Phone 7/Asynchronous Requests Sample</h3>
+<pre><code>using Twilio;
+var twilio = new TwilioRestClient(&quot;accountSid&quot;, &quot;authToken&quot;);
+twilio.InitiateOutboundCall(&quot;+1123456790&quot;, &quot;+15555551212&quot;, &quot;http://example.com/handleCall&quot;, (call) =&gt; {
+    // Console.WriteLog(call.Sid);
+});
+
+twilio.SendMessage(&quot;+15555551212&quot;, &quot;+11234567890&quot;, &quot;Hello!&quot;, (msg) =&gt; {
+    // Console.WriteLine(msg.Sid);
+});
+</code></pre><h3 id="twiml-generation-with-aspnet-sample">TwiML Generation with ASP.NET Sample</h3>
+<pre><code>var response = new TwilioResponse();
+response.Say(&quot;Hello Monkey&quot;);
+response.Play(&quot;http://demo.twilio.com/hellomonkey/monkey.mp3&quot;);
+response.BeginGather(new { numDigits = 1, action = &quot;hello-monkey-handle-key.cshtml&quot;, method = &quot;POST&quot; });
+response.Say(&quot;To speak to a real monkey, press 1. Press 2 to record your own monkey howl. Press any other key to start over.&quot;);
+response.EndGather();
+
+// ASP.NET MVC when controller inherits from TwilioController
+return TwiML(response);
+
+// ASP.NET MVC regular controller
+return new TwiMLResult(response);
+
+// ASP.NET Webforms
+var doc = response.ToXDocument();
+Response.ContentType = &quot;application/xml&quot;;
+doc.Save(Response.Output);
+</code></pre><h2 id="getting-help">Getting help</h2>
+<p>If you need help installing or using the library, please contact Twilio Support at help@twilio.com first. Twilio&#39;s Support staff are well-versed in all of the Twilio Helper Libraries, and usually reply within 24 hours.</p>
+<p>If you&#39;ve instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!</p>
+<h2 id="migrating-from-earlier-versions">Migrating from earlier versions</h2>
+<h3 id="migrating-from-original-twiliotwilio-csharp-version-21-and-below">Migrating from original twilio/twilio-csharp (version 2.1 and below)</h3>
+<p>Moving from version 2.1 or below to 3.0 will require changes to your existing code. The library now centers around a <code>TwilioRestClient</code> class from which all operations you can make against the API are rooted. Refer to the [[Twilio.Api]] REST API wrapper documentation for the list of available methods.</p>
+<h3 id="migrating-from-johnsheehantwilioapi">Migrating from johnsheehan/TwilioApi</h3>
+<p>This library is derived from johnsheehan/TwilioApi. Minimal changes should be required to your code in order to use this version. The most notable change is the renaming of <code>TwilioClient</code> to <code>TwilioRestClient</code>. In addition to the REST API wrapper, this new version also includes TwiML generation and ASP.NET MVC helpers.</p>
+<h2 id="developing-on-the-library-with-mono">Developing on the library with Mono</h2>
+<p>You can setup a mono/nunit development environment using the Makefile:</p>
+<p><strong>Note:</strong> You will need Homebrew.</p>
+<pre><code class="lang-bash">&gt; make develop
+</code></pre><p>Then, you can build the solution using <code>xbuild</code>:</p>
+<pre><code class="lang-bash">&gt; make
+</code></pre><p>and run the tests using <code>nunit</code>:</p>
+<pre><code class="lang-bash">&gt; make test
+</code></pre>
+            </article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/twilio/twilio-csharp/blob/next-gen/docfx_project/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2016 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

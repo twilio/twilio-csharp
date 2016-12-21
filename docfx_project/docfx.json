@@ -1,0 +1,37 @@
+﻿{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [ "Twilio/Twilio.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**" ],
+          "src": "../"
+        }
+      ],
+      "dest": "obj/api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [ "**/*.yml" ],
+        "cwd": "obj/api",
+        "dest": "api"
+      },
+      {
+        "files": [ "*.md", "toc.yml" ]
+      }
+    ],
+    "resource": [
+      {
+        "files": []
+      }
+    ],
+    "overwrite": "specs/*.md",
+    "globalMetadata": {
+      "_appTitle": "Twilio C# SDK",
+      "_enableSearch": true
+    },
+    "dest": "_site"
+  }
+}
