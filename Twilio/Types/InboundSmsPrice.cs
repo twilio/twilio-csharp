@@ -16,12 +16,12 @@ namespace Twilio.Types
 	    }
 
 	    [JsonProperty("base_price")]
-	    public double? BasePrice { get; }
+	    public double? BasePrice { get; private set; }
 	    [JsonProperty("current_price")]
-	    public double? CurrentPrice { get; }
-	    [JsonProperty("type")]
+	    public double? CurrentPrice { get; private set; }
+	    [JsonProperty("number_type")]
 	    [JsonConverter(typeof(StringEnumConverter))]
-	    public TypeEnum Type { get; }
+	    public TypeEnum Type { get; private set; }
 
 	    public InboundSmsPrice() {}
 
@@ -30,7 +30,7 @@ namespace Twilio.Types
 	        double? basePrice,
 	        [JsonProperty("current_priece")]
 	        double? currentPrice,
-	        [JsonProperty("type")]
+	        [JsonProperty("number_type")]
 	        TypeEnum type
 	    )
 	    {
