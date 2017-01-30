@@ -17,9 +17,11 @@
         <dependency id="Microsoft.Net.Http" version="2.2.29" />
       </group>
       <group targetFramework="net35">
+        <dependency id="Newtonsoft.Json" version="[9.0.1]" />
         <dependency id="JWT" version="[1.3.4]" />
       </group>
       <group targetFramework="net45">
+        <dependency id="Newtonsoft.Json" version="[9.0.1]" />
         <dependency id="Portable.JWT" version="[1.0.5]" />
       </group>
     </dependencies>
