@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,7 +14,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
+    <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -28,295 +28,871 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Twilio\Base\IOptions.cs"><Link>Base\IOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Base\Page.cs"><Link>Base\Page.cs</Link></Compile>
-    <Compile Include="..\Twilio\Base\Resource.cs"><Link>Base\Resource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Base\ResourceSet.cs"><Link>Base\ResourceSet.cs</Link></Compile>
-    <Compile Include="..\Twilio\Clients\TwilioRestClient.cs"><Link>Clients\TwilioRestClient.cs</Link></Compile>
-    <Compile Include="..\Twilio\Clients\ITwilioRestClient.cs"><Link>Clients\ITwilioRestClient.cs</Link></Compile>
-    <Compile Include="..\Twilio\Converters\MarshalConverter.cs"><Link>Converters\MarshalConverter.cs</Link></Compile>
-    <Compile Include="..\Twilio\Converters\Promoter.cs"><Link>Converters\Promoter.cs</Link></Compile>
-    <Compile Include="..\Twilio\Converters\StringEnumConverter.cs"><Link>Converters\StringEnumConverter.cs</Link></Compile>
-    <Compile Include="..\Twilio\Converters\HttpMethodConverter.cs"><Link>Converters\HttpMethodConverter.cs</Link></Compile>
-    <Compile Include="..\Twilio\Converters\PhoneNumberConverter.cs"><Link>Converters\PhoneNumberConverter.cs</Link></Compile>
-    <Compile Include="..\Twilio\Converters\PrefixedCollapsibleMap.cs"><Link>Converters\PrefixedCollapsibleMap.cs</Link></Compile>
-    <Compile Include="..\Twilio\Exceptions\TwilioException.cs"><Link>Exceptions\TwilioException.cs</Link></Compile>
-    <Compile Include="..\Twilio\Exceptions\ApiException.cs"><Link>Exceptions\ApiException.cs</Link></Compile>
-    <Compile Include="..\Twilio\Exceptions\RestException.cs"><Link>Exceptions\RestException.cs</Link></Compile>
-    <Compile Include="..\Twilio\Http\HttpClient.cs"><Link>Http\HttpClient.cs</Link></Compile>
-    <Compile Include="..\Twilio\Http\HttpMethod.cs"><Link>Http\HttpMethod.cs</Link></Compile>
-    <Compile Include="..\Twilio\Http\Request.cs"><Link>Http\Request.cs</Link></Compile>
-    <Compile Include="..\Twilio\Http\Response.cs"><Link>Http\Response.cs</Link></Compile>
-    <Compile Include="..\Twilio\Http\WebRequestClient.cs"><Link>Http\WebRequestClient.cs</Link></Compile>
-    <Compile Include="..\Twilio\JWT\AccessToken.cs"><Link>JWT\AccessToken.cs</Link></Compile>
-    <Compile Include="..\Twilio\JWT\ConversationsGrant.cs"><Link>JWT\ConversationsGrant.cs</Link></Compile>
-    <Compile Include="..\Twilio\JWT\HttpUtility.cs"><Link>JWT\HttpUtility.cs</Link></Compile>
-    <Compile Include="..\Twilio\JWT\IGrant.cs"><Link>JWT\IGrant.cs</Link></Compile>
-    <Compile Include="..\Twilio\JWT\IpMessagingGrant.cs"><Link>JWT\IpMessagingGrant.cs</Link></Compile>
-    <Compile Include="..\Twilio\JWT\Policy.cs"><Link>JWT\Policy.cs</Link></Compile>
-    <Compile Include="..\Twilio\JWT\VideoGrant.cs"><Link>JWT\VideoGrant.cs</Link></Compile>
-    <Compile Include="..\Twilio\JWT\VoiceGrant.cs"><Link>JWT\VoiceGrant.cs</Link></Compile>
-    <Compile Include="..\Twilio\JWT\SyncGrant.cs"><Link>JWT\SyncGrant.cs</Link></Compile>
-    <Compile Include="..\Twilio\JWT\ScopeURI.cs"><Link>JWT\ScopeURI.cs</Link></Compile>
-    <Compile Include="..\Twilio\JWT\TaskRouterCapability.cs"><Link>JWT\TaskRouterCapability.cs</Link></Compile>
-    <Compile Include="..\Twilio\JWT\TwilioCapability.cs"><Link>JWT\TwilioCapability.cs</Link></Compile>
-    <Compile Include="..\Twilio\Properties\AssemblyInfo.cs"><Link>Properties\AssemblyInfo.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Domain.cs"><Link>Rest\Domain.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\IEndpoint.cs"><Link>Types\IEndpoint.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\Client.cs"><Link>Types\Client.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\PhoneNumber.cs"><Link>Types\PhoneNumber.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\FeedbackIssue.cs"><Link>Types\FeedbackIssue.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\IceServer.cs"><Link>Types\IceServer.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\InboundCallPrice.cs"><Link>Types\InboundCallPrice.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\InboundSmsPrice.cs"><Link>Types\InboundSmsPrice.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\OutboundCallPrice.cs"><Link>Types\OutboundCallPrice.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\OutboundPrefixPrice.cs"><Link>Types\OutboundPrefixPrice.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\OutboundSmsPrice.cs"><Link>Types\OutboundSmsPrice.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\PhoneNumberCapabilities.cs"><Link>Types\PhoneNumberCapabilities.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\PhoneNumberPrice.cs"><Link>Types\PhoneNumberPrice.cs</Link></Compile>
-    <Compile Include="..\Twilio\Types\StringEnum.cs"><Link>Types\StringEnum.cs</Link></Compile>
-    <Compile Include="..\Twilio\TwiML\VoiceResponse.cs"><Link>TwiML\VoiceResponse.cs</Link></Compile>
-    <Compile Include="..\Twilio\TwiML\MessagingResponse.cs"><Link>TwiML\MessagingResponse.cs</Link></Compile>
-    <Compile Include="..\Twilio\TwiML\Utf8StringWriter.cs"><Link>TwiML\Utf8StringWriter.cs</Link></Compile>
-    <Compile Include="..\Twilio\TwiML\Message.cs"><Link>TwiML\Message.cs</Link></Compile>
-    <Compile Include="..\Twilio\TwiML\Dial.cs"><Link>TwiML\Dial.cs</Link></Compile>
-    <Compile Include="..\Twilio\TwiML\Gather.cs"><Link>TwiML\Gather.cs</Link></Compile>
-    <Compile Include="..\Twilio\Twilio.cs"><Link>Twilio.cs</Link></Compile>
-<!-- Yoyodyne Generated Artifacts -->
-    <Compile Include="..\Twilio\Rest\Accounts\V1\Credential\PublicKeyOptions.cs"><Link>Rest\Accounts\V1\Credential\PublicKeyOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Accounts\V1\Credential\PublicKeyResource.cs"><Link>Rest\Accounts\V1\Credential\PublicKeyResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\AccountOptions.cs"><Link>Rest\Api\V2010\AccountOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\AccountResource.cs"><Link>Rest\Api\V2010\AccountResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AddressOptions.cs"><Link>Rest\Api\V2010\Account\AddressOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AddressResource.cs"><Link>Rest\Api\V2010\Account\AddressResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberOptions.cs"><Link>Rest\Api\V2010\Account\Address\DependentPhoneNumberOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberResource.cs"><Link>Rest\Api\V2010\Account\Address\DependentPhoneNumberResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ApplicationOptions.cs"><Link>Rest\Api\V2010\Account\ApplicationOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ApplicationResource.cs"><Link>Rest\Api\V2010\Account\ApplicationResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppOptions.cs"><Link>Rest\Api\V2010\Account\AuthorizedConnectAppOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppResource.cs"><Link>Rest\Api\V2010\Account\AuthorizedConnectAppResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryOptions.cs"><Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountryOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryResource.cs"><Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountryResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalOptions.cs"><Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalResource.cs"><Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileOptions.cs"><Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileResource.cs"><Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeOptions.cs"><Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeResource.cs"><Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\CallOptions.cs"><Link>Rest\Api\V2010\Account\CallOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\CallResource.cs"><Link>Rest\Api\V2010\Account\CallResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\FeedbackOptions.cs"><Link>Rest\Api\V2010\Account\Call\FeedbackOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\FeedbackResource.cs"><Link>Rest\Api\V2010\Account\Call\FeedbackResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryOptions.cs"><Link>Rest\Api\V2010\Account\Call\FeedbackSummaryOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryResource.cs"><Link>Rest\Api\V2010\Account\Call\FeedbackSummaryResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\NotificationOptions.cs"><Link>Rest\Api\V2010\Account\Call\NotificationOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\NotificationResource.cs"><Link>Rest\Api\V2010\Account\Call\NotificationResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\RecordingOptions.cs"><Link>Rest\Api\V2010\Account\Call\RecordingOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\RecordingResource.cs"><Link>Rest\Api\V2010\Account\Call\RecordingResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ConferenceOptions.cs"><Link>Rest\Api\V2010\Account\ConferenceOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ConferenceResource.cs"><Link>Rest\Api\V2010\Account\ConferenceResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Conference\ParticipantOptions.cs"><Link>Rest\Api\V2010\Account\Conference\ParticipantOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Conference\ParticipantResource.cs"><Link>Rest\Api\V2010\Account\Conference\ParticipantResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ConnectAppOptions.cs"><Link>Rest\Api\V2010\Account\ConnectAppOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ConnectAppResource.cs"><Link>Rest\Api\V2010\Account\ConnectAppResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberOptions.cs"><Link>Rest\Api\V2010\Account\IncomingPhoneNumberOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberResource.cs"><Link>Rest\Api\V2010\Account\IncomingPhoneNumberResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\LocalOptions.cs"><Link>Rest\Api\V2010\Account\IncomingPhoneNumber\LocalOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\LocalResource.cs"><Link>Rest\Api\V2010\Account\IncomingPhoneNumber\LocalResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileOptions.cs"><Link>Rest\Api\V2010\Account\IncomingPhoneNumber\MobileOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileResource.cs"><Link>Rest\Api\V2010\Account\IncomingPhoneNumber\MobileResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeOptions.cs"><Link>Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeResource.cs"><Link>Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\KeyOptions.cs"><Link>Rest\Api\V2010\Account\KeyOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\KeyResource.cs"><Link>Rest\Api\V2010\Account\KeyResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\MessageOptions.cs"><Link>Rest\Api\V2010\Account\MessageOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\MessageResource.cs"><Link>Rest\Api\V2010\Account\MessageResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Message\FeedbackOptions.cs"><Link>Rest\Api\V2010\Account\Message\FeedbackOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Message\FeedbackResource.cs"><Link>Rest\Api\V2010\Account\Message\FeedbackResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Message\MediaOptions.cs"><Link>Rest\Api\V2010\Account\Message\MediaOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Message\MediaResource.cs"><Link>Rest\Api\V2010\Account\Message\MediaResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\NewKeyOptions.cs"><Link>Rest\Api\V2010\Account\NewKeyOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\NewKeyResource.cs"><Link>Rest\Api\V2010\Account\NewKeyResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\NewSigningKeyOptions.cs"><Link>Rest\Api\V2010\Account\NewSigningKeyOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\NewSigningKeyResource.cs"><Link>Rest\Api\V2010\Account\NewSigningKeyResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\NotificationOptions.cs"><Link>Rest\Api\V2010\Account\NotificationOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\NotificationResource.cs"><Link>Rest\Api\V2010\Account\NotificationResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\OutgoingCallerIdOptions.cs"><Link>Rest\Api\V2010\Account\OutgoingCallerIdOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\OutgoingCallerIdResource.cs"><Link>Rest\Api\V2010\Account\OutgoingCallerIdResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\QueueOptions.cs"><Link>Rest\Api\V2010\Account\QueueOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\QueueResource.cs"><Link>Rest\Api\V2010\Account\QueueResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Queue\MemberOptions.cs"><Link>Rest\Api\V2010\Account\Queue\MemberOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Queue\MemberResource.cs"><Link>Rest\Api\V2010\Account\Queue\MemberResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\RecordingOptions.cs"><Link>Rest\Api\V2010\Account\RecordingOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\RecordingResource.cs"><Link>Rest\Api\V2010\Account\RecordingResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Recording\TranscriptionOptions.cs"><Link>Rest\Api\V2010\Account\Recording\TranscriptionOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Recording\TranscriptionResource.cs"><Link>Rest\Api\V2010\Account\Recording\TranscriptionResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\SandboxOptions.cs"><Link>Rest\Api\V2010\Account\SandboxOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\SandboxResource.cs"><Link>Rest\Api\V2010\Account\SandboxResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ShortCodeOptions.cs"><Link>Rest\Api\V2010\Account\ShortCodeOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ShortCodeResource.cs"><Link>Rest\Api\V2010\Account\ShortCodeResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\SigningKeyOptions.cs"><Link>Rest\Api\V2010\Account\SigningKeyOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\SigningKeyResource.cs"><Link>Rest\Api\V2010\Account\SigningKeyResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\CredentialListOptions.cs"><Link>Rest\Api\V2010\Account\Sip\CredentialListOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\CredentialListResource.cs"><Link>Rest\Api\V2010\Account\Sip\CredentialListResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialOptions.cs"><Link>Rest\Api\V2010\Account\Sip\CredentialList\CredentialOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialResource.cs"><Link>Rest\Api\V2010\Account\Sip\CredentialList\CredentialResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\DomainOptions.cs"><Link>Rest\Api\V2010\Account\Sip\DomainOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\DomainResource.cs"><Link>Rest\Api\V2010\Account\Sip\DomainResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingOptions.cs"><Link>Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingResource.cs"><Link>Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingOptions.cs"><Link>Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingResource.cs"><Link>Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointOptions.cs"><Link>Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointResource.cs"><Link>Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListOptions.cs"><Link>Rest\Api\V2010\Account\Sip\IpAccessControlListOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListResource.cs"><Link>Rest\Api\V2010\Account\Sip\IpAccessControlListResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressOptions.cs"><Link>Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressResource.cs"><Link>Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\TokenOptions.cs"><Link>Rest\Api\V2010\Account\TokenOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\TokenResource.cs"><Link>Rest\Api\V2010\Account\TokenResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\TranscriptionOptions.cs"><Link>Rest\Api\V2010\Account\TranscriptionOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\TranscriptionResource.cs"><Link>Rest\Api\V2010\Account\TranscriptionResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\RecordOptions.cs"><Link>Rest\Api\V2010\Account\Usage\RecordOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\RecordResource.cs"><Link>Rest\Api\V2010\Account\Usage\RecordResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\AllTimeOptions.cs"><Link>Rest\Api\V2010\Account\Usage\Record\AllTimeOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\AllTimeResource.cs"><Link>Rest\Api\V2010\Account\Usage\Record\AllTimeResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\DailyOptions.cs"><Link>Rest\Api\V2010\Account\Usage\Record\DailyOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\DailyResource.cs"><Link>Rest\Api\V2010\Account\Usage\Record\DailyResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\LastMonthOptions.cs"><Link>Rest\Api\V2010\Account\Usage\Record\LastMonthOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\LastMonthResource.cs"><Link>Rest\Api\V2010\Account\Usage\Record\LastMonthResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\MonthlyOptions.cs"><Link>Rest\Api\V2010\Account\Usage\Record\MonthlyOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\MonthlyResource.cs"><Link>Rest\Api\V2010\Account\Usage\Record\MonthlyResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\ThisMonthOptions.cs"><Link>Rest\Api\V2010\Account\Usage\Record\ThisMonthOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\ThisMonthResource.cs"><Link>Rest\Api\V2010\Account\Usage\Record\ThisMonthResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\TodayOptions.cs"><Link>Rest\Api\V2010\Account\Usage\Record\TodayOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\TodayResource.cs"><Link>Rest\Api\V2010\Account\Usage\Record\TodayResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\YearlyOptions.cs"><Link>Rest\Api\V2010\Account\Usage\Record\YearlyOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\YearlyResource.cs"><Link>Rest\Api\V2010\Account\Usage\Record\YearlyResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\YesterdayOptions.cs"><Link>Rest\Api\V2010\Account\Usage\Record\YesterdayOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\YesterdayResource.cs"><Link>Rest\Api\V2010\Account\Usage\Record\YesterdayResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\TriggerOptions.cs"><Link>Rest\Api\V2010\Account\Usage\TriggerOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\TriggerResource.cs"><Link>Rest\Api\V2010\Account\Usage\TriggerResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ValidationRequestOptions.cs"><Link>Rest\Api\V2010\Account\ValidationRequestOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ValidationRequestResource.cs"><Link>Rest\Api\V2010\Account\ValidationRequestResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\CredentialOptions.cs"><Link>Rest\Chat\V1\CredentialOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\CredentialResource.cs"><Link>Rest\Chat\V1\CredentialResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\ServiceOptions.cs"><Link>Rest\Chat\V1\ServiceOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\ServiceResource.cs"><Link>Rest\Chat\V1\ServiceResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\Service\ChannelOptions.cs"><Link>Rest\Chat\V1\Service\ChannelOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\Service\ChannelResource.cs"><Link>Rest\Chat\V1\Service\ChannelResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\Service\Channel\InviteOptions.cs"><Link>Rest\Chat\V1\Service\Channel\InviteOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\Service\Channel\InviteResource.cs"><Link>Rest\Chat\V1\Service\Channel\InviteResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\Service\Channel\MemberOptions.cs"><Link>Rest\Chat\V1\Service\Channel\MemberOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\Service\Channel\MemberResource.cs"><Link>Rest\Chat\V1\Service\Channel\MemberResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\Service\Channel\MessageOptions.cs"><Link>Rest\Chat\V1\Service\Channel\MessageOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\Service\Channel\MessageResource.cs"><Link>Rest\Chat\V1\Service\Channel\MessageResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\Service\RoleOptions.cs"><Link>Rest\Chat\V1\Service\RoleOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\Service\RoleResource.cs"><Link>Rest\Chat\V1\Service\RoleResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\Service\UserOptions.cs"><Link>Rest\Chat\V1\Service\UserOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Chat\V1\Service\UserResource.cs"><Link>Rest\Chat\V1\Service\UserResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\CredentialOptions.cs"><Link>Rest\IpMessaging\V1\CredentialOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\CredentialResource.cs"><Link>Rest\IpMessaging\V1\CredentialResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\ServiceOptions.cs"><Link>Rest\IpMessaging\V1\ServiceOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\ServiceResource.cs"><Link>Rest\IpMessaging\V1\ServiceResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\ChannelOptions.cs"><Link>Rest\IpMessaging\V1\Service\ChannelOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\ChannelResource.cs"><Link>Rest\IpMessaging\V1\Service\ChannelResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\Channel\InviteOptions.cs"><Link>Rest\IpMessaging\V1\Service\Channel\InviteOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\Channel\InviteResource.cs"><Link>Rest\IpMessaging\V1\Service\Channel\InviteResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\Channel\MemberOptions.cs"><Link>Rest\IpMessaging\V1\Service\Channel\MemberOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\Channel\MemberResource.cs"><Link>Rest\IpMessaging\V1\Service\Channel\MemberResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\Channel\MessageOptions.cs"><Link>Rest\IpMessaging\V1\Service\Channel\MessageOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\Channel\MessageResource.cs"><Link>Rest\IpMessaging\V1\Service\Channel\MessageResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\RoleOptions.cs"><Link>Rest\IpMessaging\V1\Service\RoleOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\RoleResource.cs"><Link>Rest\IpMessaging\V1\Service\RoleResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\UserOptions.cs"><Link>Rest\IpMessaging\V1\Service\UserOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\UserResource.cs"><Link>Rest\IpMessaging\V1\Service\UserResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Lookups\V1\PhoneNumberOptions.cs"><Link>Rest\Lookups\V1\PhoneNumberOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Lookups\V1\PhoneNumberResource.cs"><Link>Rest\Lookups\V1\PhoneNumberResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Monitor\V1\AlertOptions.cs"><Link>Rest\Monitor\V1\AlertOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Monitor\V1\AlertResource.cs"><Link>Rest\Monitor\V1\AlertResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Monitor\V1\EventOptions.cs"><Link>Rest\Monitor\V1\EventOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Monitor\V1\EventResource.cs"><Link>Rest\Monitor\V1\EventResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Notify\V1\CredentialOptions.cs"><Link>Rest\Notify\V1\CredentialOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Notify\V1\CredentialResource.cs"><Link>Rest\Notify\V1\CredentialResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Notify\V1\ServiceOptions.cs"><Link>Rest\Notify\V1\ServiceOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Notify\V1\ServiceResource.cs"><Link>Rest\Notify\V1\ServiceResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Notify\V1\Service\BindingOptions.cs"><Link>Rest\Notify\V1\Service\BindingOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Notify\V1\Service\BindingResource.cs"><Link>Rest\Notify\V1\Service\BindingResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Notify\V1\Service\NotificationOptions.cs"><Link>Rest\Notify\V1\Service\NotificationOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Notify\V1\Service\NotificationResource.cs"><Link>Rest\Notify\V1\Service\NotificationResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Sync\ServiceOptions.cs"><Link>Rest\Preview\Sync\ServiceOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Sync\ServiceResource.cs"><Link>Rest\Preview\Sync\ServiceResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\DocumentOptions.cs"><Link>Rest\Preview\Sync\Service\DocumentOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\DocumentResource.cs"><Link>Rest\Preview\Sync\Service\DocumentResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncListOptions.cs"><Link>Rest\Preview\Sync\Service\SyncListOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncListResource.cs"><Link>Rest\Preview\Sync\Service\SyncListResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemOptions.cs"><Link>Rest\Preview\Sync\Service\SyncList\SyncListItemOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemResource.cs"><Link>Rest\Preview\Sync\Service\SyncList\SyncListItemResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncMapOptions.cs"><Link>Rest\Preview\Sync\Service\SyncMapOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncMapResource.cs"><Link>Rest\Preview\Sync\Service\SyncMapResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemOptions.cs"><Link>Rest\Preview\Sync\Service\SyncMap\SyncMapItemOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemResource.cs"><Link>Rest\Preview\Sync\Service\SyncMap\SyncMapItemResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Wireless\CommandOptions.cs"><Link>Rest\Preview\Wireless\CommandOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Wireless\CommandResource.cs"><Link>Rest\Preview\Wireless\CommandResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Wireless\DeviceOptions.cs"><Link>Rest\Preview\Wireless\DeviceOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Wireless\DeviceResource.cs"><Link>Rest\Preview\Wireless\DeviceResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Wireless\Device\UsageOptions.cs"><Link>Rest\Preview\Wireless\Device\UsageOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Wireless\Device\UsageResource.cs"><Link>Rest\Preview\Wireless\Device\UsageResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Wireless\RatePlanOptions.cs"><Link>Rest\Preview\Wireless\RatePlanOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Preview\Wireless\RatePlanResource.cs"><Link>Rest\Preview\Wireless\RatePlanResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Pricing\V1\Messaging\CountryOptions.cs"><Link>Rest\Pricing\V1\Messaging\CountryOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Pricing\V1\Messaging\CountryResource.cs"><Link>Rest\Pricing\V1\Messaging\CountryResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Pricing\V1\PhoneNumber\CountryOptions.cs"><Link>Rest\Pricing\V1\PhoneNumber\CountryOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Pricing\V1\PhoneNumber\CountryResource.cs"><Link>Rest\Pricing\V1\PhoneNumber\CountryResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Pricing\V1\Voice\CountryOptions.cs"><Link>Rest\Pricing\V1\Voice\CountryOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Pricing\V1\Voice\CountryResource.cs"><Link>Rest\Pricing\V1\Voice\CountryResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Pricing\V1\Voice\NumberOptions.cs"><Link>Rest\Pricing\V1\Voice\NumberOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Pricing\V1\Voice\NumberResource.cs"><Link>Rest\Pricing\V1\Voice\NumberResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\WorkspaceOptions.cs"><Link>Rest\Taskrouter\V1\WorkspaceOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\WorkspaceResource.cs"><Link>Rest\Taskrouter\V1\WorkspaceResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\ActivityOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\ActivityOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\ActivityResource.cs"><Link>Rest\Taskrouter\V1\Workspace\ActivityResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\EventOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\EventOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\EventResource.cs"><Link>Rest\Taskrouter\V1\Workspace\EventResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\TaskChannelOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelResource.cs"><Link>Rest\Taskrouter\V1\Workspace\TaskChannelResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\TaskOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\TaskQueueOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueResource.cs"><Link>Rest\Taskrouter\V1\Workspace\TaskQueueResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsResource.cs"><Link>Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsResource.cs"><Link>Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskResource.cs"><Link>Rest\Taskrouter\V1\Workspace\TaskResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\Task\ReservationOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationResource.cs"><Link>Rest\Taskrouter\V1\Workspace\Task\ReservationResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\WorkerOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\WorkerOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\WorkerResource.cs"><Link>Rest\Taskrouter\V1\Workspace\WorkerResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\Worker\ReservationOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationResource.cs"><Link>Rest\Taskrouter\V1\Workspace\Worker\ReservationResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelResource.cs"><Link>Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsResource.cs"><Link>Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsResource.cs"><Link>Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\WorkflowOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\WorkflowOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\WorkflowResource.cs"><Link>Rest\Taskrouter\V1\Workspace\WorkflowResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsResource.cs"><Link>Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsOptions.cs"><Link>Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsResource.cs"><Link>Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Trunking\V1\TrunkOptions.cs"><Link>Rest\Trunking\V1\TrunkOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Trunking\V1\TrunkResource.cs"><Link>Rest\Trunking\V1\TrunkResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\CredentialListOptions.cs"><Link>Rest\Trunking\V1\Trunk\CredentialListOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\CredentialListResource.cs"><Link>Rest\Trunking\V1\Trunk\CredentialListResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListOptions.cs"><Link>Rest\Trunking\V1\Trunk\IpAccessControlListOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListResource.cs"><Link>Rest\Trunking\V1\Trunk\IpAccessControlListResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\OriginationUrlOptions.cs"><Link>Rest\Trunking\V1\Trunk\OriginationUrlOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\OriginationUrlResource.cs"><Link>Rest\Trunking\V1\Trunk\OriginationUrlResource.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\PhoneNumberOptions.cs"><Link>Rest\Trunking\V1\Trunk\PhoneNumberOptions.cs</Link></Compile>
-    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\PhoneNumberResource.cs"><Link>Rest\Trunking\V1\Trunk\PhoneNumberResource.cs</Link></Compile>
+    <Compile Include="..\Twilio\Base\IOptions.cs">
+      <Link>Base\IOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Base\Page.cs">
+      <Link>Base\Page.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Base\Resource.cs">
+      <Link>Base\Resource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Base\ResourceSet.cs">
+      <Link>Base\ResourceSet.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Clients\TwilioRestClient.cs">
+      <Link>Clients\TwilioRestClient.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Clients\ITwilioRestClient.cs">
+      <Link>Clients\ITwilioRestClient.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Converters\MarshalConverter.cs">
+      <Link>Converters\MarshalConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Converters\Promoter.cs">
+      <Link>Converters\Promoter.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Converters\StringEnumConverter.cs">
+      <Link>Converters\StringEnumConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Converters\HttpMethodConverter.cs">
+      <Link>Converters\HttpMethodConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Converters\PhoneNumberConverter.cs">
+      <Link>Converters\PhoneNumberConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Converters\PrefixedCollapsibleMap.cs">
+      <Link>Converters\PrefixedCollapsibleMap.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Exceptions\TwilioException.cs">
+      <Link>Exceptions\TwilioException.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Exceptions\ApiException.cs">
+      <Link>Exceptions\ApiException.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Exceptions\RestException.cs">
+      <Link>Exceptions\RestException.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Http\HttpClient.cs">
+      <Link>Http\HttpClient.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Http\HttpMethod.cs">
+      <Link>Http\HttpMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Http\Request.cs">
+      <Link>Http\Request.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Http\Response.cs">
+      <Link>Http\Response.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Http\WebRequestClient.cs">
+      <Link>Http\WebRequestClient.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\JWT\AccessToken.cs">
+      <Link>JWT\AccessToken.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\JWT\ConversationsGrant.cs">
+      <Link>JWT\ConversationsGrant.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\JWT\HttpUtility.cs">
+      <Link>JWT\HttpUtility.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\JWT\IGrant.cs">
+      <Link>JWT\IGrant.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\JWT\IpMessagingGrant.cs">
+      <Link>JWT\IpMessagingGrant.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\JWT\Policy.cs">
+      <Link>JWT\Policy.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\JWT\VideoGrant.cs">
+      <Link>JWT\VideoGrant.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\JWT\VoiceGrant.cs">
+      <Link>JWT\VoiceGrant.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\JWT\SyncGrant.cs">
+      <Link>JWT\SyncGrant.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\JWT\ScopeURI.cs">
+      <Link>JWT\ScopeURI.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\JWT\TaskRouterCapability.cs">
+      <Link>JWT\TaskRouterCapability.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\JWT\TwilioCapability.cs">
+      <Link>JWT\TwilioCapability.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Domain.cs">
+      <Link>Rest\Domain.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\IEndpoint.cs">
+      <Link>Types\IEndpoint.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\Client.cs">
+      <Link>Types\Client.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\PhoneNumber.cs">
+      <Link>Types\PhoneNumber.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\FeedbackIssue.cs">
+      <Link>Types\FeedbackIssue.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\IceServer.cs">
+      <Link>Types\IceServer.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\InboundCallPrice.cs">
+      <Link>Types\InboundCallPrice.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\InboundSmsPrice.cs">
+      <Link>Types\InboundSmsPrice.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\OutboundCallPrice.cs">
+      <Link>Types\OutboundCallPrice.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\OutboundPrefixPrice.cs">
+      <Link>Types\OutboundPrefixPrice.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\OutboundSmsPrice.cs">
+      <Link>Types\OutboundSmsPrice.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\PhoneNumberCapabilities.cs">
+      <Link>Types\PhoneNumberCapabilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\PhoneNumberPrice.cs">
+      <Link>Types\PhoneNumberPrice.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Types\StringEnum.cs">
+      <Link>Types\StringEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\TwiML\VoiceResponse.cs">
+      <Link>TwiML\VoiceResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\TwiML\MessagingResponse.cs">
+      <Link>TwiML\MessagingResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\TwiML\Utf8StringWriter.cs">
+      <Link>TwiML\Utf8StringWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\TwiML\Message.cs">
+      <Link>TwiML\Message.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\TwiML\Dial.cs">
+      <Link>TwiML\Dial.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\TwiML\Gather.cs">
+      <Link>TwiML\Gather.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Twilio.cs">
+      <Link>Twilio.cs</Link>
+    </Compile>
+    <!-- Yoyodyne Generated Artifacts -->
+    <Compile Include="..\Twilio\Rest\Accounts\V1\Credential\PublicKeyOptions.cs">
+      <Link>Rest\Accounts\V1\Credential\PublicKeyOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Accounts\V1\Credential\PublicKeyResource.cs">
+      <Link>Rest\Accounts\V1\Credential\PublicKeyResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\AccountOptions.cs">
+      <Link>Rest\Api\V2010\AccountOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\AccountResource.cs">
+      <Link>Rest\Api\V2010\AccountResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AddressOptions.cs">
+      <Link>Rest\Api\V2010\Account\AddressOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AddressResource.cs">
+      <Link>Rest\Api\V2010\Account\AddressResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberOptions.cs">
+      <Link>Rest\Api\V2010\Account\Address\DependentPhoneNumberOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Address\DependentPhoneNumberResource.cs">
+      <Link>Rest\Api\V2010\Account\Address\DependentPhoneNumberResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ApplicationOptions.cs">
+      <Link>Rest\Api\V2010\Account\ApplicationOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ApplicationResource.cs">
+      <Link>Rest\Api\V2010\Account\ApplicationResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppOptions.cs">
+      <Link>Rest\Api\V2010\Account\AuthorizedConnectAppOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AuthorizedConnectAppResource.cs">
+      <Link>Rest\Api\V2010\Account\AuthorizedConnectAppResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryOptions.cs">
+      <Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountryOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountryResource.cs">
+      <Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountryResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalOptions.cs">
+      <Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalResource.cs">
+      <Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileOptions.cs">
+      <Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileResource.cs">
+      <Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeOptions.cs">
+      <Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeResource.cs">
+      <Link>Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\CallOptions.cs">
+      <Link>Rest\Api\V2010\Account\CallOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\CallResource.cs">
+      <Link>Rest\Api\V2010\Account\CallResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\FeedbackOptions.cs">
+      <Link>Rest\Api\V2010\Account\Call\FeedbackOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\FeedbackResource.cs">
+      <Link>Rest\Api\V2010\Account\Call\FeedbackResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryOptions.cs">
+      <Link>Rest\Api\V2010\Account\Call\FeedbackSummaryOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\FeedbackSummaryResource.cs">
+      <Link>Rest\Api\V2010\Account\Call\FeedbackSummaryResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\NotificationOptions.cs">
+      <Link>Rest\Api\V2010\Account\Call\NotificationOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\NotificationResource.cs">
+      <Link>Rest\Api\V2010\Account\Call\NotificationResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\RecordingOptions.cs">
+      <Link>Rest\Api\V2010\Account\Call\RecordingOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Call\RecordingResource.cs">
+      <Link>Rest\Api\V2010\Account\Call\RecordingResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ConferenceOptions.cs">
+      <Link>Rest\Api\V2010\Account\ConferenceOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ConferenceResource.cs">
+      <Link>Rest\Api\V2010\Account\ConferenceResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Conference\ParticipantOptions.cs">
+      <Link>Rest\Api\V2010\Account\Conference\ParticipantOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Conference\ParticipantResource.cs">
+      <Link>Rest\Api\V2010\Account\Conference\ParticipantResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ConnectAppOptions.cs">
+      <Link>Rest\Api\V2010\Account\ConnectAppOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ConnectAppResource.cs">
+      <Link>Rest\Api\V2010\Account\ConnectAppResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberOptions.cs">
+      <Link>Rest\Api\V2010\Account\IncomingPhoneNumberOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberResource.cs">
+      <Link>Rest\Api\V2010\Account\IncomingPhoneNumberResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\LocalOptions.cs">
+      <Link>Rest\Api\V2010\Account\IncomingPhoneNumber\LocalOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\LocalResource.cs">
+      <Link>Rest\Api\V2010\Account\IncomingPhoneNumber\LocalResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileOptions.cs">
+      <Link>Rest\Api\V2010\Account\IncomingPhoneNumber\MobileOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\MobileResource.cs">
+      <Link>Rest\Api\V2010\Account\IncomingPhoneNumber\MobileResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeOptions.cs">
+      <Link>Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeResource.cs">
+      <Link>Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\KeyOptions.cs">
+      <Link>Rest\Api\V2010\Account\KeyOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\KeyResource.cs">
+      <Link>Rest\Api\V2010\Account\KeyResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\MessageOptions.cs">
+      <Link>Rest\Api\V2010\Account\MessageOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\MessageResource.cs">
+      <Link>Rest\Api\V2010\Account\MessageResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Message\FeedbackOptions.cs">
+      <Link>Rest\Api\V2010\Account\Message\FeedbackOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Message\FeedbackResource.cs">
+      <Link>Rest\Api\V2010\Account\Message\FeedbackResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Message\MediaOptions.cs">
+      <Link>Rest\Api\V2010\Account\Message\MediaOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Message\MediaResource.cs">
+      <Link>Rest\Api\V2010\Account\Message\MediaResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\NewKeyOptions.cs">
+      <Link>Rest\Api\V2010\Account\NewKeyOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\NewKeyResource.cs">
+      <Link>Rest\Api\V2010\Account\NewKeyResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\NewSigningKeyOptions.cs">
+      <Link>Rest\Api\V2010\Account\NewSigningKeyOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\NewSigningKeyResource.cs">
+      <Link>Rest\Api\V2010\Account\NewSigningKeyResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\NotificationOptions.cs">
+      <Link>Rest\Api\V2010\Account\NotificationOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\NotificationResource.cs">
+      <Link>Rest\Api\V2010\Account\NotificationResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\OutgoingCallerIdOptions.cs">
+      <Link>Rest\Api\V2010\Account\OutgoingCallerIdOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\OutgoingCallerIdResource.cs">
+      <Link>Rest\Api\V2010\Account\OutgoingCallerIdResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\QueueOptions.cs">
+      <Link>Rest\Api\V2010\Account\QueueOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\QueueResource.cs">
+      <Link>Rest\Api\V2010\Account\QueueResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Queue\MemberOptions.cs">
+      <Link>Rest\Api\V2010\Account\Queue\MemberOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Queue\MemberResource.cs">
+      <Link>Rest\Api\V2010\Account\Queue\MemberResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\RecordingOptions.cs">
+      <Link>Rest\Api\V2010\Account\RecordingOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\RecordingResource.cs">
+      <Link>Rest\Api\V2010\Account\RecordingResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Recording\TranscriptionOptions.cs">
+      <Link>Rest\Api\V2010\Account\Recording\TranscriptionOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Recording\TranscriptionResource.cs">
+      <Link>Rest\Api\V2010\Account\Recording\TranscriptionResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\SandboxOptions.cs">
+      <Link>Rest\Api\V2010\Account\SandboxOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\SandboxResource.cs">
+      <Link>Rest\Api\V2010\Account\SandboxResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ShortCodeOptions.cs">
+      <Link>Rest\Api\V2010\Account\ShortCodeOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ShortCodeResource.cs">
+      <Link>Rest\Api\V2010\Account\ShortCodeResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\SigningKeyOptions.cs">
+      <Link>Rest\Api\V2010\Account\SigningKeyOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\SigningKeyResource.cs">
+      <Link>Rest\Api\V2010\Account\SigningKeyResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\CredentialListOptions.cs">
+      <Link>Rest\Api\V2010\Account\Sip\CredentialListOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\CredentialListResource.cs">
+      <Link>Rest\Api\V2010\Account\Sip\CredentialListResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialOptions.cs">
+      <Link>Rest\Api\V2010\Account\Sip\CredentialList\CredentialOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\CredentialList\CredentialResource.cs">
+      <Link>Rest\Api\V2010\Account\Sip\CredentialList\CredentialResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\DomainOptions.cs">
+      <Link>Rest\Api\V2010\Account\Sip\DomainOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\DomainResource.cs">
+      <Link>Rest\Api\V2010\Account\Sip\DomainResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingOptions.cs">
+      <Link>Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingResource.cs">
+      <Link>Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingOptions.cs">
+      <Link>Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingResource.cs">
+      <Link>Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointOptions.cs">
+      <Link>Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointResource.cs">
+      <Link>Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListOptions.cs">
+      <Link>Rest\Api\V2010\Account\Sip\IpAccessControlListOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlListResource.cs">
+      <Link>Rest\Api\V2010\Account\Sip\IpAccessControlListResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressOptions.cs">
+      <Link>Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressResource.cs">
+      <Link>Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\TokenOptions.cs">
+      <Link>Rest\Api\V2010\Account\TokenOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\TokenResource.cs">
+      <Link>Rest\Api\V2010\Account\TokenResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\TranscriptionOptions.cs">
+      <Link>Rest\Api\V2010\Account\TranscriptionOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\TranscriptionResource.cs">
+      <Link>Rest\Api\V2010\Account\TranscriptionResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\RecordOptions.cs">
+      <Link>Rest\Api\V2010\Account\Usage\RecordOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\RecordResource.cs">
+      <Link>Rest\Api\V2010\Account\Usage\RecordResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\AllTimeOptions.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\AllTimeOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\AllTimeResource.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\AllTimeResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\DailyOptions.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\DailyOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\DailyResource.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\DailyResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\LastMonthOptions.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\LastMonthOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\LastMonthResource.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\LastMonthResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\MonthlyOptions.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\MonthlyOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\MonthlyResource.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\MonthlyResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\ThisMonthOptions.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\ThisMonthOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\ThisMonthResource.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\ThisMonthResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\TodayOptions.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\TodayOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\TodayResource.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\TodayResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\YearlyOptions.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\YearlyOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\YearlyResource.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\YearlyResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\YesterdayOptions.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\YesterdayOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\Record\YesterdayResource.cs">
+      <Link>Rest\Api\V2010\Account\Usage\Record\YesterdayResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\TriggerOptions.cs">
+      <Link>Rest\Api\V2010\Account\Usage\TriggerOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\Usage\TriggerResource.cs">
+      <Link>Rest\Api\V2010\Account\Usage\TriggerResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ValidationRequestOptions.cs">
+      <Link>Rest\Api\V2010\Account\ValidationRequestOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Api\V2010\Account\ValidationRequestResource.cs">
+      <Link>Rest\Api\V2010\Account\ValidationRequestResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\CredentialOptions.cs">
+      <Link>Rest\Chat\V1\CredentialOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\CredentialResource.cs">
+      <Link>Rest\Chat\V1\CredentialResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\ServiceOptions.cs">
+      <Link>Rest\Chat\V1\ServiceOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\ServiceResource.cs">
+      <Link>Rest\Chat\V1\ServiceResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\Service\ChannelOptions.cs">
+      <Link>Rest\Chat\V1\Service\ChannelOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\Service\ChannelResource.cs">
+      <Link>Rest\Chat\V1\Service\ChannelResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\Service\Channel\InviteOptions.cs">
+      <Link>Rest\Chat\V1\Service\Channel\InviteOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\Service\Channel\InviteResource.cs">
+      <Link>Rest\Chat\V1\Service\Channel\InviteResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\Service\Channel\MemberOptions.cs">
+      <Link>Rest\Chat\V1\Service\Channel\MemberOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\Service\Channel\MemberResource.cs">
+      <Link>Rest\Chat\V1\Service\Channel\MemberResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\Service\Channel\MessageOptions.cs">
+      <Link>Rest\Chat\V1\Service\Channel\MessageOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\Service\Channel\MessageResource.cs">
+      <Link>Rest\Chat\V1\Service\Channel\MessageResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\Service\RoleOptions.cs">
+      <Link>Rest\Chat\V1\Service\RoleOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\Service\RoleResource.cs">
+      <Link>Rest\Chat\V1\Service\RoleResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\Service\UserOptions.cs">
+      <Link>Rest\Chat\V1\Service\UserOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Chat\V1\Service\UserResource.cs">
+      <Link>Rest\Chat\V1\Service\UserResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\CredentialOptions.cs">
+      <Link>Rest\IpMessaging\V1\CredentialOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\CredentialResource.cs">
+      <Link>Rest\IpMessaging\V1\CredentialResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\ServiceOptions.cs">
+      <Link>Rest\IpMessaging\V1\ServiceOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\ServiceResource.cs">
+      <Link>Rest\IpMessaging\V1\ServiceResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\ChannelOptions.cs">
+      <Link>Rest\IpMessaging\V1\Service\ChannelOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\ChannelResource.cs">
+      <Link>Rest\IpMessaging\V1\Service\ChannelResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\Channel\InviteOptions.cs">
+      <Link>Rest\IpMessaging\V1\Service\Channel\InviteOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\Channel\InviteResource.cs">
+      <Link>Rest\IpMessaging\V1\Service\Channel\InviteResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\Channel\MemberOptions.cs">
+      <Link>Rest\IpMessaging\V1\Service\Channel\MemberOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\Channel\MemberResource.cs">
+      <Link>Rest\IpMessaging\V1\Service\Channel\MemberResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\Channel\MessageOptions.cs">
+      <Link>Rest\IpMessaging\V1\Service\Channel\MessageOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\Channel\MessageResource.cs">
+      <Link>Rest\IpMessaging\V1\Service\Channel\MessageResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\RoleOptions.cs">
+      <Link>Rest\IpMessaging\V1\Service\RoleOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\RoleResource.cs">
+      <Link>Rest\IpMessaging\V1\Service\RoleResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\UserOptions.cs">
+      <Link>Rest\IpMessaging\V1\Service\UserOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\IpMessaging\V1\Service\UserResource.cs">
+      <Link>Rest\IpMessaging\V1\Service\UserResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Lookups\V1\PhoneNumberOptions.cs">
+      <Link>Rest\Lookups\V1\PhoneNumberOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Lookups\V1\PhoneNumberResource.cs">
+      <Link>Rest\Lookups\V1\PhoneNumberResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Monitor\V1\AlertOptions.cs">
+      <Link>Rest\Monitor\V1\AlertOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Monitor\V1\AlertResource.cs">
+      <Link>Rest\Monitor\V1\AlertResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Monitor\V1\EventOptions.cs">
+      <Link>Rest\Monitor\V1\EventOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Monitor\V1\EventResource.cs">
+      <Link>Rest\Monitor\V1\EventResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Notify\V1\CredentialOptions.cs">
+      <Link>Rest\Notify\V1\CredentialOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Notify\V1\CredentialResource.cs">
+      <Link>Rest\Notify\V1\CredentialResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Notify\V1\ServiceOptions.cs">
+      <Link>Rest\Notify\V1\ServiceOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Notify\V1\ServiceResource.cs">
+      <Link>Rest\Notify\V1\ServiceResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Notify\V1\Service\BindingOptions.cs">
+      <Link>Rest\Notify\V1\Service\BindingOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Notify\V1\Service\BindingResource.cs">
+      <Link>Rest\Notify\V1\Service\BindingResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Notify\V1\Service\NotificationOptions.cs">
+      <Link>Rest\Notify\V1\Service\NotificationOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Notify\V1\Service\NotificationResource.cs">
+      <Link>Rest\Notify\V1\Service\NotificationResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Sync\ServiceOptions.cs">
+      <Link>Rest\Preview\Sync\ServiceOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Sync\ServiceResource.cs">
+      <Link>Rest\Preview\Sync\ServiceResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\DocumentOptions.cs">
+      <Link>Rest\Preview\Sync\Service\DocumentOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\DocumentResource.cs">
+      <Link>Rest\Preview\Sync\Service\DocumentResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncListOptions.cs">
+      <Link>Rest\Preview\Sync\Service\SyncListOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncListResource.cs">
+      <Link>Rest\Preview\Sync\Service\SyncListResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemOptions.cs">
+      <Link>Rest\Preview\Sync\Service\SyncList\SyncListItemOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemResource.cs">
+      <Link>Rest\Preview\Sync\Service\SyncList\SyncListItemResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncMapOptions.cs">
+      <Link>Rest\Preview\Sync\Service\SyncMapOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncMapResource.cs">
+      <Link>Rest\Preview\Sync\Service\SyncMapResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemOptions.cs">
+      <Link>Rest\Preview\Sync\Service\SyncMap\SyncMapItemOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemResource.cs">
+      <Link>Rest\Preview\Sync\Service\SyncMap\SyncMapItemResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Wireless\CommandOptions.cs">
+      <Link>Rest\Preview\Wireless\CommandOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Wireless\CommandResource.cs">
+      <Link>Rest\Preview\Wireless\CommandResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Wireless\DeviceOptions.cs">
+      <Link>Rest\Preview\Wireless\DeviceOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Wireless\DeviceResource.cs">
+      <Link>Rest\Preview\Wireless\DeviceResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Wireless\Device\UsageOptions.cs">
+      <Link>Rest\Preview\Wireless\Device\UsageOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Wireless\Device\UsageResource.cs">
+      <Link>Rest\Preview\Wireless\Device\UsageResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Wireless\RatePlanOptions.cs">
+      <Link>Rest\Preview\Wireless\RatePlanOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Preview\Wireless\RatePlanResource.cs">
+      <Link>Rest\Preview\Wireless\RatePlanResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Pricing\V1\Messaging\CountryOptions.cs">
+      <Link>Rest\Pricing\V1\Messaging\CountryOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Pricing\V1\Messaging\CountryResource.cs">
+      <Link>Rest\Pricing\V1\Messaging\CountryResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Pricing\V1\PhoneNumber\CountryOptions.cs">
+      <Link>Rest\Pricing\V1\PhoneNumber\CountryOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Pricing\V1\PhoneNumber\CountryResource.cs">
+      <Link>Rest\Pricing\V1\PhoneNumber\CountryResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Pricing\V1\Voice\CountryOptions.cs">
+      <Link>Rest\Pricing\V1\Voice\CountryOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Pricing\V1\Voice\CountryResource.cs">
+      <Link>Rest\Pricing\V1\Voice\CountryResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Pricing\V1\Voice\NumberOptions.cs">
+      <Link>Rest\Pricing\V1\Voice\NumberOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Pricing\V1\Voice\NumberResource.cs">
+      <Link>Rest\Pricing\V1\Voice\NumberResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\WorkspaceOptions.cs">
+      <Link>Rest\Taskrouter\V1\WorkspaceOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\WorkspaceResource.cs">
+      <Link>Rest\Taskrouter\V1\WorkspaceResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\ActivityOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\ActivityOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\ActivityResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\ActivityResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\EventOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\EventOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\EventResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\EventResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\TaskChannelOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskChannelResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\TaskChannelResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\TaskOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\TaskQueueOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskQueueResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\TaskQueueResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\TaskResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\TaskResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\Task\ReservationOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Task\ReservationResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\Task\ReservationResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\WorkerOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\WorkerOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\WorkerResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\WorkerResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\Worker\ReservationOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\ReservationResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\Worker\ReservationResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\WorkflowOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\WorkflowOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\WorkflowResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\WorkflowResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsOptions.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsResource.cs">
+      <Link>Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Trunking\V1\TrunkOptions.cs">
+      <Link>Rest\Trunking\V1\TrunkOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Trunking\V1\TrunkResource.cs">
+      <Link>Rest\Trunking\V1\TrunkResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\CredentialListOptions.cs">
+      <Link>Rest\Trunking\V1\Trunk\CredentialListOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\CredentialListResource.cs">
+      <Link>Rest\Trunking\V1\Trunk\CredentialListResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListOptions.cs">
+      <Link>Rest\Trunking\V1\Trunk\IpAccessControlListOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\IpAccessControlListResource.cs">
+      <Link>Rest\Trunking\V1\Trunk\IpAccessControlListResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\OriginationUrlOptions.cs">
+      <Link>Rest\Trunking\V1\Trunk\OriginationUrlOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\OriginationUrlResource.cs">
+      <Link>Rest\Trunking\V1\Trunk\OriginationUrlResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\PhoneNumberOptions.cs">
+      <Link>Rest\Trunking\V1\Trunk\PhoneNumberOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Twilio\Rest\Trunking\V1\Trunk\PhoneNumberResource.cs">
+      <Link>Rest\Trunking\V1\Trunk\PhoneNumberResource.cs</Link>
+    </Compile>
     <!-- End Yoyodyne Generated Artifacts -->
   </ItemGroup>
   <ItemGroup>
@@ -335,7 +911,5 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TwiML\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

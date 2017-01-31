@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -15,14 +15,6 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -45,18 +37,12 @@
     <Reference Include="NSubstitute">
       <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="JWT">
       <HintPath>..\packages\JWT.1.3.4\lib\3.5\JWT.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<!-- Yoyodyne Generated Artifacts -->
+    <!-- Yoyodyne Generated Artifacts -->
     <Compile Include="Rest\Accounts\V1\Credential\PublicKeyResourceTest.cs" />
     <Compile Include="Rest\Api\V2010\AccountResourceTest.cs" />
     <Compile Include="Rest\Api\V2010\Account\AddressResourceTest.cs" />
@@ -185,9 +171,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Twilio\Twilio.csproj">
-      <Project>{12BED4CC-0E34-4B83-ACF0-F834EAFBE416}</Project>
-      <Name>Twilio</Name>
+    <ProjectReference Include="..\Twilio35\Twilio35.csproj">
+      <Project>{6014f9d7-52ac-44a7-8c60-466735525f63}</Project>
+      <Name>Twilio35</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

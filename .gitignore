@@ -216,3 +216,5 @@ Thumbs.db
 
 .vscode/
 *.nupkg
+.vs/
+testrunner/

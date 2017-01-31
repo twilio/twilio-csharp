@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !NET40
+using System;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,3 +33,4 @@ namespace Twilio.Http
 		}
 	}
 }
+#endif
