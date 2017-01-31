@@ -24,7 +24,23 @@ namespace Twilio.Converters
 		{
 			if (reader.Value == null)
 			{
-			    return reader.Value;
+			    if (objectType.GenericTypeArguments.Length == 0)
+			    {
+			        return null;
+			    }
+			    var constructedListType = MakeGenericType(objectType);
+				var results = (IList) Activator.CreateInstance(constructedListType);
+				reader.Read();
+
+				while (reader.Value != null)
+				{
+				    var e = CreateEnum(objectType);
+					e.FromString(reader.Value as string);
+					results.Add(e);
+					reader.Read();
+				}
+
+				return results;
 			}
 
 			var instance = (StringEnum) Activator.CreateInstance(objectType);
