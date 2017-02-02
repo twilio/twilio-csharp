@@ -38,7 +38,7 @@ namespace Twilio.Jwt
 						scopes.Add(scope.Payload);
 					}
 
-					claims.Add("scope", String.Join(" ", scopes));
+					claims.Add("scope", String.Join(" ", scopes.ToArray()));
 				}
 
 				return claims;

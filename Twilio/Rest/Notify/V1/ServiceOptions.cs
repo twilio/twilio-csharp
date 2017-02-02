@@ -35,6 +35,14 @@ namespace Twilio.Rest.Notify.V1
         /// The default_gcm_notification_protocol_version
         /// </summary>
         public string DefaultGcmNotificationProtocolVersion { get; set; }
+        /// <summary>
+        /// The fcm_credential_sid
+        /// </summary>
+        public string FcmCredentialSid { get; set; }
+        /// <summary>
+        /// The default_fcm_notification_protocol_version
+        /// </summary>
+        public string DefaultFcmNotificationProtocolVersion { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -75,6 +83,16 @@ namespace Twilio.Rest.Notify.V1
             if (DefaultGcmNotificationProtocolVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultGcmNotificationProtocolVersion", DefaultGcmNotificationProtocolVersion));
+            }
+            
+            if (FcmCredentialSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FcmCredentialSid", FcmCredentialSid.ToString()));
+            }
+            
+            if (DefaultFcmNotificationProtocolVersion != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DefaultFcmNotificationProtocolVersion", DefaultFcmNotificationProtocolVersion));
             }
             
             return p;
@@ -196,6 +214,14 @@ namespace Twilio.Rest.Notify.V1
         /// The default_gcm_notification_protocol_version
         /// </summary>
         public string DefaultGcmNotificationProtocolVersion { get; set; }
+        /// <summary>
+        /// The fcm_credential_sid
+        /// </summary>
+        public string FcmCredentialSid { get; set; }
+        /// <summary>
+        /// The default_fcm_notification_protocol_version
+        /// </summary>
+        public string DefaultFcmNotificationProtocolVersion { get; set; }
     
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -246,6 +272,16 @@ namespace Twilio.Rest.Notify.V1
             if (DefaultGcmNotificationProtocolVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultGcmNotificationProtocolVersion", DefaultGcmNotificationProtocolVersion));
+            }
+            
+            if (FcmCredentialSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FcmCredentialSid", FcmCredentialSid.ToString()));
+            }
+            
+            if (DefaultFcmNotificationProtocolVersion != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DefaultFcmNotificationProtocolVersion", DefaultFcmNotificationProtocolVersion));
             }
             
             return p;

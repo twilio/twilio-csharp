@@ -62,14 +62,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string IfMachine { get; set; }
         /// <summary>
-        /// Enable machine detection or end of greeting detection
-        /// </summary>
-        public string MachineDetection { get; set; }
-        /// <summary>
-        /// Number of miliseconds to wait for machine detection
-        /// </summary>
-        public int? MachineDetectionTimeout { get; set; }
-        /// <summary>
         /// Number of seconds to wait for an answer
         /// </summary>
         public int? Timeout { get; set; }
@@ -175,16 +167,6 @@ namespace Twilio.Rest.Api.V2010.Account
             if (IfMachine != null)
             {
                 p.Add(new KeyValuePair<string, string>("IfMachine", IfMachine));
-            }
-            
-            if (MachineDetection != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MachineDetection", MachineDetection));
-            }
-            
-            if (MachineDetectionTimeout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MachineDetectionTimeout", MachineDetectionTimeout.Value.ToString()));
             }
             
             if (Timeout != null)

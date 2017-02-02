@@ -50,6 +50,22 @@
     <Compile Include="Http\Request.cs" />
     <Compile Include="Http\Response.cs" />
     <Compile Include="Http\WebRequestClient.cs" />
+    <Compile Include="Jwt\BaseJwt.cs" />
+    <Compile Include="Jwt\AccessToken\Token.cs" />
+    <Compile Include="Jwt\AccessToken\IGrant.cs" />
+    <Compile Include="Jwt\AccessToken\ConversationsGrant.cs" />
+    <Compile Include="Jwt\AccessToken\IpMessagingGrant.cs" />
+    <Compile Include="Jwt\AccessToken\SyncGrant.cs" />
+    <Compile Include="Jwt\AccessToken\VideoGrant.cs" />
+    <Compile Include="Jwt\AccessToken\VoiceGrant.cs" />
+    <Compile Include="Jwt\Client\ClientCapability.cs" />
+    <Compile Include="Jwt\Client\IScope.cs" />
+    <Compile Include="Jwt\Client\EventStreamScope.cs" />
+    <Compile Include="Jwt\Client\IncomingClientScope.cs" />
+    <Compile Include="Jwt\Client\OutgoingClientScope.cs" />
+    <Compile Include="Jwt\Taskrouter\TaskRouterCapability.cs" />
+    <Compile Include="Jwt\Taskrouter\Policy.cs" />
+    <Compile Include="Jwt\Taskrouter\PolicyUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rest\Domain.cs" />
     <Compile Include="Types\IEndpoint.cs" />
@@ -139,6 +155,10 @@
     <Compile Include="Rest\Api\V2010\Account\Queue\MemberResource.cs" />
     <Compile Include="Rest\Api\V2010\Account\RecordingOptions.cs" />
     <Compile Include="Rest\Api\V2010\Account\RecordingResource.cs" />
+    <Compile Include="Rest\Api\V2010\Account\Recording\AddOnResultOptions.cs" />
+    <Compile Include="Rest\Api\V2010\Account\Recording\AddOnResultResource.cs" />
+    <Compile Include="Rest\Api\V2010\Account\Recording\AddOnResult\PayloadOptions.cs" />
+    <Compile Include="Rest\Api\V2010\Account\Recording\AddOnResult\PayloadResource.cs" />
     <Compile Include="Rest\Api\V2010\Account\Recording\TranscriptionOptions.cs" />
     <Compile Include="Rest\Api\V2010\Account\Recording\TranscriptionResource.cs" />
     <Compile Include="Rest\Api\V2010\Account\SandboxOptions.cs" />
@@ -205,6 +225,8 @@
     <Compile Include="Rest\Chat\V1\Service\RoleResource.cs" />
     <Compile Include="Rest\Chat\V1\Service\UserOptions.cs" />
     <Compile Include="Rest\Chat\V1\Service\UserResource.cs" />
+    <Compile Include="Rest\Chat\V1\Service\User\UserChannelOptions.cs" />
+    <Compile Include="Rest\Chat\V1\Service\User\UserChannelResource.cs" />
     <Compile Include="Rest\IpMessaging\V1\CredentialOptions.cs" />
     <Compile Include="Rest\IpMessaging\V1\CredentialResource.cs" />
     <Compile Include="Rest\IpMessaging\V1\ServiceOptions.cs" />
@@ -221,6 +243,8 @@
     <Compile Include="Rest\IpMessaging\V1\Service\RoleResource.cs" />
     <Compile Include="Rest\IpMessaging\V1\Service\UserOptions.cs" />
     <Compile Include="Rest\IpMessaging\V1\Service\UserResource.cs" />
+    <Compile Include="Rest\IpMessaging\V1\Service\User\UserChannelOptions.cs" />
+    <Compile Include="Rest\IpMessaging\V1\Service\User\UserChannelResource.cs" />
     <Compile Include="Rest\Lookups\V1\PhoneNumberOptions.cs" />
     <Compile Include="Rest\Lookups\V1\PhoneNumberResource.cs" />
     <Compile Include="Rest\Monitor\V1\AlertOptions.cs" />
@@ -239,14 +263,20 @@
     <Compile Include="Rest\Preview\Sync\ServiceResource.cs" />
     <Compile Include="Rest\Preview\Sync\Service\DocumentOptions.cs" />
     <Compile Include="Rest\Preview\Sync\Service\DocumentResource.cs" />
+    <Compile Include="Rest\Preview\Sync\Service\Document\DocumentPermissionOptions.cs" />
+    <Compile Include="Rest\Preview\Sync\Service\Document\DocumentPermissionResource.cs" />
     <Compile Include="Rest\Preview\Sync\Service\SyncListOptions.cs" />
     <Compile Include="Rest\Preview\Sync\Service\SyncListResource.cs" />
     <Compile Include="Rest\Preview\Sync\Service\SyncList\SyncListItemOptions.cs" />
     <Compile Include="Rest\Preview\Sync\Service\SyncList\SyncListItemResource.cs" />
+    <Compile Include="Rest\Preview\Sync\Service\SyncList\SyncListPermissionOptions.cs" />
+    <Compile Include="Rest\Preview\Sync\Service\SyncList\SyncListPermissionResource.cs" />
     <Compile Include="Rest\Preview\Sync\Service\SyncMapOptions.cs" />
     <Compile Include="Rest\Preview\Sync\Service\SyncMapResource.cs" />
     <Compile Include="Rest\Preview\Sync\Service\SyncMap\SyncMapItemOptions.cs" />
     <Compile Include="Rest\Preview\Sync\Service\SyncMap\SyncMapItemResource.cs" />
+    <Compile Include="Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionOptions.cs" />
+    <Compile Include="Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionResource.cs" />
     <Compile Include="Rest\Preview\Wireless\CommandOptions.cs" />
     <Compile Include="Rest\Preview\Wireless\CommandResource.cs" />
     <Compile Include="Rest\Preview\Wireless\DeviceOptions.cs" />
@@ -308,22 +338,6 @@
     <Compile Include="Rest\Trunking\V1\Trunk\PhoneNumberOptions.cs" />
     <Compile Include="Rest\Trunking\V1\Trunk\PhoneNumberResource.cs" />
     <!-- End Yoyodyne Generated Artifacts -->
-    <Compile Include="Jwt\BaseJwt.cs" />
-    <Compile Include="Jwt\AccessToken\Token.cs" />
-    <Compile Include="Jwt\AccessToken\IGrant.cs" />
-    <Compile Include="Jwt\AccessToken\ConversationsGrant.cs" />
-    <Compile Include="Jwt\AccessToken\IpMessagingGrant.cs" />
-    <Compile Include="Jwt\AccessToken\SyncGrant.cs" />
-    <Compile Include="Jwt\AccessToken\VideoGrant.cs" />
-    <Compile Include="Jwt\AccessToken\VoiceGrant.cs" />
-    <Compile Include="Jwt\Client\ClientCapability.cs" />
-    <Compile Include="Jwt\Client\IScope.cs" />
-    <Compile Include="Jwt\Client\EventStreamScope.cs" />
-    <Compile Include="Jwt\Client\IncomingClientScope.cs" />
-    <Compile Include="Jwt\Client\OutgoingClientScope.cs" />
-    <Compile Include="Jwt\Taskrouter\TaskRouterCapability.cs" />
-    <Compile Include="Jwt\Taskrouter\Policy.cs" />
-    <Compile Include="Jwt\Taskrouter\PolicyUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

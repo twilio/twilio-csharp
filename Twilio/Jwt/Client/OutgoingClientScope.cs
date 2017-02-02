@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+
+#if NET40
 using System.Net;
+#else
+using System.Web;
+#endif
 
 namespace Twilio.Jwt.Client
 {
@@ -40,7 +45,7 @@ namespace Twilio.Jwt.Client
 					queryArgs.Add(BuildParameter("appParams", GetAppParams()));
 				}
 
-				var queryString = String.Join("&", queryArgs);
+				var queryString = String.Join("&", queryArgs.ToArray());
 				return $"{Scope}?{queryString}";
 			}
 		}
@@ -53,12 +58,16 @@ namespace Twilio.Jwt.Client
 				queryParams.Add(BuildParameter(entry.Key, entry.Value));
 			}
 
-			return String.Join("&", queryParams);
+			return String.Join("&", queryParams.ToArray());
 		}
 
 		private string BuildParameter(string k, string v)
 		{
+#if NET40
 			return WebUtility.UrlEncode(k) + "=" + WebUtility.UrlEncode(v);
+#else
+			return HttpUtility.UrlEncode(k) + "=" + HttpUtility.UrlEncode(v);
+#endif
 		}
 	}
 }

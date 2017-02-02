@@ -77,13 +77,9 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         public bool? CommandsEnabled { get; set; }
         /// <summary>
-        /// The renewal_period
+        /// The renewal
         /// </summary>
-        public int? RenewalPeriod { get; set; }
-        /// <summary>
-        /// The renewal_units
-        /// </summary>
-        public string RenewalUnits { get; set; }
+        public string Renewal { get; set; }
     
         /// <summary>
         /// Construct a new CreateRatePlanOptions
@@ -129,14 +125,9 @@ namespace Twilio.Rest.Preview.Wireless
                 p.Add(new KeyValuePair<string, string>("CommandsEnabled", CommandsEnabled.Value.ToString()));
             }
             
-            if (RenewalPeriod != null)
+            if (Renewal != null)
             {
-                p.Add(new KeyValuePair<string, string>("RenewalPeriod", RenewalPeriod.Value.ToString()));
-            }
-            
-            if (RenewalUnits != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RenewalUnits", RenewalUnits));
+                p.Add(new KeyValuePair<string, string>("Renewal", Renewal));
             }
             
             return p;

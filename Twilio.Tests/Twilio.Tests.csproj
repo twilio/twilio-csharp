@@ -29,6 +29,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Reflection, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\..\..\..\..\Library\Frameworks\Mono.framework\Versions\4.4.2\lib\mono\4.5-api\Facades\System.Reflection.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.3.2.0\lib\net45\nunit.framework.dll</HintPath>
@@ -97,6 +100,8 @@
     <Compile Include="Rest\Api\V2010\Account\QueueResourceTest.cs" />
     <Compile Include="Rest\Api\V2010\Account\Queue\MemberResourceTest.cs" />
     <Compile Include="Rest\Api\V2010\Account\RecordingResourceTest.cs" />
+    <Compile Include="Rest\Api\V2010\Account\Recording\AddOnResultResourceTest.cs" />
+    <Compile Include="Rest\Api\V2010\Account\Recording\AddOnResult\PayloadResourceTest.cs" />
     <Compile Include="Rest\Api\V2010\Account\Recording\TranscriptionResourceTest.cs" />
     <Compile Include="Rest\Api\V2010\Account\SandboxResourceTest.cs" />
     <Compile Include="Rest\Api\V2010\Account\ShortCodeResourceTest.cs" />
@@ -130,6 +135,7 @@
     <Compile Include="Rest\Chat\V1\Service\Channel\MessageResourceTest.cs" />
     <Compile Include="Rest\Chat\V1\Service\RoleResourceTest.cs" />
     <Compile Include="Rest\Chat\V1\Service\UserResourceTest.cs" />
+    <Compile Include="Rest\Chat\V1\Service\User\UserChannelResourceTest.cs" />
     <Compile Include="Rest\IpMessaging\V1\CredentialResourceTest.cs" />
     <Compile Include="Rest\IpMessaging\V1\ServiceResourceTest.cs" />
     <Compile Include="Rest\IpMessaging\V1\Service\ChannelResourceTest.cs" />
@@ -138,6 +144,7 @@
     <Compile Include="Rest\IpMessaging\V1\Service\Channel\MessageResourceTest.cs" />
     <Compile Include="Rest\IpMessaging\V1\Service\RoleResourceTest.cs" />
     <Compile Include="Rest\IpMessaging\V1\Service\UserResourceTest.cs" />
+    <Compile Include="Rest\IpMessaging\V1\Service\User\UserChannelResourceTest.cs" />
     <Compile Include="Rest\Lookups\V1\PhoneNumberResourceTest.cs" />
     <Compile Include="Rest\Monitor\V1\AlertResourceTest.cs" />
     <Compile Include="Rest\Monitor\V1\EventResourceTest.cs" />
@@ -147,10 +154,13 @@
     <Compile Include="Rest\Notify\V1\Service\NotificationResourceTest.cs" />
     <Compile Include="Rest\Preview\Sync\ServiceResourceTest.cs" />
     <Compile Include="Rest\Preview\Sync\Service\DocumentResourceTest.cs" />
+    <Compile Include="Rest\Preview\Sync\Service\Document\DocumentPermissionResourceTest.cs" />
     <Compile Include="Rest\Preview\Sync\Service\SyncListResourceTest.cs" />
     <Compile Include="Rest\Preview\Sync\Service\SyncList\SyncListItemResourceTest.cs" />
+    <Compile Include="Rest\Preview\Sync\Service\SyncList\SyncListPermissionResourceTest.cs" />
     <Compile Include="Rest\Preview\Sync\Service\SyncMapResourceTest.cs" />
     <Compile Include="Rest\Preview\Sync\Service\SyncMap\SyncMapItemResourceTest.cs" />
+    <Compile Include="Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionResourceTest.cs" />
     <Compile Include="Rest\Preview\Wireless\CommandResourceTest.cs" />
     <Compile Include="Rest\Preview\Wireless\DeviceResourceTest.cs" />
     <Compile Include="Rest\Preview\Wireless\Device\UsageResourceTest.cs" />
@@ -183,15 +193,12 @@
     <Compile Include="Rest\Trunking\V1\Trunk\PhoneNumberResourceTest.cs" />
     <!-- End Yoyodyne Generated Artifacts -->
     <Compile Include="Converters/*.cs" />
+    <Compile Include="Jwt/Client/*.cs" />
+    <Compile Include="Jwt/Taskrouter/*.cs" />
+    <Compile Include="Jwt/AccessToken/*.cs" />
     <Compile Include="TwiML/*.cs" />
+    <Compile Include="Security/*.cs" />
     <Compile Include="TwilioTest.cs" />
-    <Compile Include="Jwt\Client\EventStreamScopeTest.cs" />
-    <Compile Include="Jwt\Client\IncomingClientScopeTest.cs" />
-    <Compile Include="Jwt\Client\OutgoingClientScopeTest.cs" />
-    <Compile Include="Jwt\Client\ClientCapabilityTest.cs" />
-    <Compile Include="Jwt\Taskrouter\PolicyTest.cs" />
-    <Compile Include="Jwt\Taskrouter\TaskRouterCapabilityTest.cs" />
-    <Compile Include="Jwt\AccessToken\AccessTokenTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

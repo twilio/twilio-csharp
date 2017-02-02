@@ -228,13 +228,12 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="dataLimit"> The data_limit </param>
         /// <param name="dataMetering"> The data_metering </param>
         /// <param name="commandsEnabled"> The commands_enabled </param>
-        /// <param name="renewalPeriod"> The renewal_period </param>
-        /// <param name="renewalUnits"> The renewal_units </param>
+        /// <param name="renewal"> The renewal </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RatePlan </returns> 
-        public static RatePlanResource Create(string alias = null, string friendlyName = null, List<string> roaming = null, int? dataLimit = null, string dataMetering = null, bool? commandsEnabled = null, int? renewalPeriod = null, string renewalUnits = null, ITwilioRestClient client = null)
+        public static RatePlanResource Create(string alias = null, string friendlyName = null, List<string> roaming = null, int? dataLimit = null, string dataMetering = null, bool? commandsEnabled = null, string renewal = null, ITwilioRestClient client = null)
         {
-            var options = new CreateRatePlanOptions{Alias = alias, FriendlyName = friendlyName, Roaming = roaming, DataLimit = dataLimit, DataMetering = dataMetering, CommandsEnabled = commandsEnabled, RenewalPeriod = renewalPeriod, RenewalUnits = renewalUnits};
+            var options = new CreateRatePlanOptions{Alias = alias, FriendlyName = friendlyName, Roaming = roaming, DataLimit = dataLimit, DataMetering = dataMetering, CommandsEnabled = commandsEnabled, Renewal = renewal};
             return Create(options, client);
         }
     
@@ -249,13 +248,12 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="dataLimit"> The data_limit </param>
         /// <param name="dataMetering"> The data_metering </param>
         /// <param name="commandsEnabled"> The commands_enabled </param>
-        /// <param name="renewalPeriod"> The renewal_period </param>
-        /// <param name="renewalUnits"> The renewal_units </param>
+        /// <param name="renewal"> The renewal </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RatePlan </returns> 
-        public static async System.Threading.Tasks.Task<RatePlanResource> CreateAsync(string alias = null, string friendlyName = null, List<string> roaming = null, int? dataLimit = null, string dataMetering = null, bool? commandsEnabled = null, int? renewalPeriod = null, string renewalUnits = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RatePlanResource> CreateAsync(string alias = null, string friendlyName = null, List<string> roaming = null, int? dataLimit = null, string dataMetering = null, bool? commandsEnabled = null, string renewal = null, ITwilioRestClient client = null)
         {
-            var options = new CreateRatePlanOptions{Alias = alias, FriendlyName = friendlyName, Roaming = roaming, DataLimit = dataLimit, DataMetering = dataMetering, CommandsEnabled = commandsEnabled, RenewalPeriod = renewalPeriod, RenewalUnits = renewalUnits};
+            var options = new CreateRatePlanOptions{Alias = alias, FriendlyName = friendlyName, Roaming = roaming, DataLimit = dataLimit, DataMetering = dataMetering, CommandsEnabled = commandsEnabled, Renewal = renewal};
             return await CreateAsync(options, client);
         }
         #endif
@@ -391,7 +389,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// The renewal
         /// </summary>
         [JsonProperty("renewal")]
-        public object Renewal { get; private set; }
+        public string Renewal { get; private set; }
         /// <summary>
         /// The date_created
         /// </summary>

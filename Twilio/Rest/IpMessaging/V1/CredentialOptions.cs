@@ -48,6 +48,10 @@ namespace Twilio.Rest.IpMessaging.V1
         /// The api_key
         /// </summary>
         public string ApiKey { get; set; }
+        /// <summary>
+        /// The secret
+        /// </summary>
+        public string Secret { get; set; }
     
         /// <summary>
         /// Construct a new CreateCredentialOptions
@@ -93,6 +97,11 @@ namespace Twilio.Rest.IpMessaging.V1
             if (ApiKey != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApiKey", ApiKey));
+            }
+            
+            if (Secret != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Secret", Secret));
             }
             
             return p;
@@ -152,6 +161,10 @@ namespace Twilio.Rest.IpMessaging.V1
         /// The api_key
         /// </summary>
         public string ApiKey { get; set; }
+        /// <summary>
+        /// The secret
+        /// </summary>
+        public string Secret { get; set; }
     
         /// <summary>
         /// Construct a new UpdateCredentialOptions
@@ -192,6 +205,11 @@ namespace Twilio.Rest.IpMessaging.V1
             if (ApiKey != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApiKey", ApiKey));
+            }
+            
+            if (Secret != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Secret", Secret));
             }
             
             return p;
