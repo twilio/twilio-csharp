@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Twilio.JWT
+namespace Twilio.Jwt.AccessToken
 {
     /// <summary>
     /// Grant for Twilio Sync
@@ -15,9 +15,12 @@ namespace Twilio.JWT
         /// </summary>
         ///
         /// <returns>the grant key</returns>
-        public string GetGrantKey()
+        public string Key
         {
-            return "data_sync";
+			get
+			{
+				return "data_sync";
+			}
         }
 
         /// <summary>
@@ -25,19 +28,24 @@ namespace Twilio.JWT
         /// </summary>
         ///
         /// <returns>the grant payload</returns>
-        public object GetPayload()
+        public object Payload
         {
-            var payload = new Dictionary<string, string>();
+			get
+			{
+				var payload = new Dictionary<string, string>();
 
-            if (ServiceSid != null) {
-                payload.Add("service_sid", ServiceSid);
-            }
+				if (ServiceSid != null)
+				{
+					payload.Add("service_sid", ServiceSid);
+				}
 
-            if (EndpointId != null) {
-                payload.Add("endpoint_id", EndpointId);
-            }
+				if (EndpointId != null)
+				{
+					payload.Add("endpoint_id", EndpointId);
+				}
 
-            return payload;
+				return payload;
+			}
         }
     }
 }

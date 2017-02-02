@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Twilio.JWT
+namespace Twilio.Jwt.AccessToken
 {
     /// <summary>
     /// Grant to expose Twilio Video
@@ -14,9 +14,12 @@ namespace Twilio.JWT
         /// </summary>
         ///
         /// <returns>the video grant key</returns>
-        public string GetGrantKey()
+        public string Key
         {
-            return "video";
+			get
+			{
+				return "video";
+			}
         }
 
         /// <summary>
@@ -24,15 +27,18 @@ namespace Twilio.JWT
         /// </summary>
         ///
         /// <returns>the video grant payload</returns>
-        public object GetPayload()
+        public object Payload
         {
-            var payload = new Dictionary<string, object>();
-            if (ConfigurationProfileSid != null)
-            {
-                payload.Add("configuration_profile_sid", ConfigurationProfileSid);
-            }
+			get
+			{
+				var payload = new Dictionary<string, object>();
+				if (ConfigurationProfileSid != null)
+				{
+					payload.Add("configuration_profile_sid", ConfigurationProfileSid);
+				}
 
-            return payload;
+				return payload;
+			}
         }
     }
 }

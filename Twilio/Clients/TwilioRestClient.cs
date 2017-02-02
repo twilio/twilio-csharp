@@ -42,7 +42,7 @@ namespace Twilio.Clients
 			_password = password;
 
 	        AccountSid = accountSid ?? username;
-	        HttpClient = httpClient ?? new WebRequestClient();
+			HttpClient = httpClient ?? null; // new WebRequestClient();
 	        Region = region;
 	    }
 

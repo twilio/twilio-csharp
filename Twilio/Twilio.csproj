@@ -8,8 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Twilio</RootNamespace>
     <AssemblyName>Twilio</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,18 +50,6 @@
     <Compile Include="Http\Request.cs" />
     <Compile Include="Http\Response.cs" />
     <Compile Include="Http\WebRequestClient.cs" />
-    <Compile Include="JWT\AccessToken.cs" />
-    <Compile Include="JWT\ConversationsGrant.cs" />
-    <Compile Include="JWT\HttpUtility.cs" />
-    <Compile Include="JWT\IGrant.cs" />
-    <Compile Include="JWT\IpMessagingGrant.cs" />
-    <Compile Include="JWT\Policy.cs" />
-    <Compile Include="JWT\VideoGrant.cs" />
-    <Compile Include="JWT\VoiceGrant.cs" />
-    <Compile Include="JWT\SyncGrant.cs" />
-    <Compile Include="JWT\ScopeURI.cs" />
-    <Compile Include="JWT\TaskRouterCapability.cs" />
-    <Compile Include="JWT\TwilioCapability.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rest\Domain.cs" />
     <Compile Include="Types\IEndpoint.cs" />
@@ -321,29 +308,42 @@
     <Compile Include="Rest\Trunking\V1\Trunk\PhoneNumberOptions.cs" />
     <Compile Include="Rest\Trunking\V1\Trunk\PhoneNumberResource.cs" />
     <!-- End Yoyodyne Generated Artifacts -->
+    <Compile Include="Jwt\BaseJwt.cs" />
+    <Compile Include="Jwt\AccessToken\Token.cs" />
+    <Compile Include="Jwt\AccessToken\IGrant.cs" />
+    <Compile Include="Jwt\AccessToken\ConversationsGrant.cs" />
+    <Compile Include="Jwt\AccessToken\IpMessagingGrant.cs" />
+    <Compile Include="Jwt\AccessToken\SyncGrant.cs" />
+    <Compile Include="Jwt\AccessToken\VideoGrant.cs" />
+    <Compile Include="Jwt\AccessToken\VoiceGrant.cs" />
+    <Compile Include="Jwt\Client\ClientCapability.cs" />
+    <Compile Include="Jwt\Client\IScope.cs" />
+    <Compile Include="Jwt\Client\EventStreamScope.cs" />
+    <Compile Include="Jwt\Client\IncomingClientScope.cs" />
+    <Compile Include="Jwt\Client\OutgoingClientScope.cs" />
+    <Compile Include="Jwt\Taskrouter\TaskRouterCapability.cs" />
+    <Compile Include="Jwt\Taskrouter\Policy.cs" />
+    <Compile Include="Jwt\Taskrouter\PolicyUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.Net.Http">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Tokens">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.2\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="JWT">
-      <HintPath>..\packages\Portable.JWT.1.0.5\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\JWT.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Logging">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.1.1.2\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TwiML\" />
+    <Folder Include="Jwt\AccessToken\" />
+    <Folder Include="Jwt\Client\" />
+    <Folder Include="Jwt\Taskrouter\" />
   </ItemGroup>
 </Project>

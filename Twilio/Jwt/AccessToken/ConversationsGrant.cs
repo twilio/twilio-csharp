@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Twilio.JWT
+namespace Twilio.Jwt.AccessToken
 {
     /// <summary>
     /// Grant to use for Twilio Conversations
@@ -14,25 +14,31 @@ namespace Twilio.JWT
         /// </summary>
         ///
         /// <returns>grant key</returns>
-        public string GetGrantKey()
-        {
-            return "rtc";
-        }
+		public string Key
+		{
+			get
+			{
+				return "rtc";
+			}
+		}
 
-        /// <summary>
+		/// <summary>
         /// Get the grant payload
         /// </summary>
         ///
         /// <returns>grant payload</returns>
-        public object GetPayload()
-        {
-            var payload = new Dictionary<string, string>();
-            if (ConfigurationProfileSid != null)
-            {
-                payload.Add("configuration_profile_sid", ConfigurationProfileSid);
-            }
+		public object Payload
+		{
+			get
+			{
+				var payload = new Dictionary<string, string>();
+				if (ConfigurationProfileSid != null)
+				{
+					payload.Add("configuration_profile_sid", ConfigurationProfileSid);
+				}
 
-            return payload;
-        }
+				return payload;
+			}
+		}
     }
 }
