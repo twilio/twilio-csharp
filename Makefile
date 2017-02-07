@@ -1,6 +1,10 @@
+
+install:
+	dotnet restore Twilio/Twilio.csproj
+
 test:
 	rm -rf Twilio.Tests/obj
-	xbuild Twilio.sln
+	dotnet build Twilio/Twilio.csproj
 	nunit Twilio.Tests/bin/Debug/Twilio.Tests.dll
 
 release: test
