@@ -340,7 +340,6 @@
     <Compile Include="Rest\Trunking\V1\Trunk\PhoneNumberResource.cs" />
     <!-- End Yoyodyne Generated Artifacts -->
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
     <None Include="project.json" />
   </ItemGroup>
