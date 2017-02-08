@@ -1,4 +1,4 @@
-﻿#if NET35
+﻿#if !NET40
 using System;
 using System.IO;
 using System.Net;
@@ -62,7 +62,7 @@ namespace Twilio.Http
             #if !__MonoCS__
 	        var property = typeof(HttpWebRequest).GetRuntimeProperty("UserAgent");
 	        const string libraryVersion = "twilio-csharp/" + AssemblyInfomation.AssemblyInformationalVersion + PlatVersion;
-	        property.SetValue(request, libraryVersion, null);
+	        request.UserAgent = libraryVersion;
             #endif
 	    }
 

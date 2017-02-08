@@ -47,6 +47,7 @@
     <Compile Include="..\Twilio\Http\HttpMethod.cs"><Link>Http\HttpMethod.cs</Link></Compile>
     <Compile Include="..\Twilio\Http\Request.cs"><Link>Http\Request.cs</Link></Compile>
     <Compile Include="..\Twilio\Http\Response.cs"><Link>Http\Response.cs</Link></Compile>
+    <Compile Include="..\Twilio\Http\SystemNetHttpClient.cs"><Link>Http\SystemNetHttpClient.cs</Link></Compile>
     <Compile Include="..\Twilio\Http\WebRequestClient.cs"><Link>Http\WebRequestClient.cs</Link></Compile>
     <Compile Include="..\Twilio\Jwt\BaseJwt.cs"><Link>Jwt\BaseJwt.cs</Link></Compile>
     <Compile Include="..\Twilio\Jwt\AccessToken\Token.cs"><Link>Jwt\AccessToken\Token.cs</Link></Compile>

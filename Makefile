@@ -10,5 +10,7 @@ test:
 
 release: test
 	rm -rf Twilio.Tests/obj
+	dotnet restore /p:Configuration=Release Twilio/Twilio.csproj
+	dotnet build /p:Configuration=Release Twilio/Twilio.csproj
 	xbuild /p:Configuration=Release Twilio.sln
 	nuget pack Twilio.nuspec

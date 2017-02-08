@@ -50,6 +50,7 @@
     <Compile Include="Http\HttpMethod.cs" />
     <Compile Include="Http\Request.cs" />
     <Compile Include="Http\Response.cs" />
+    <Compile Include="Http\SystemNetHttpClient.cs" />
     <Compile Include="Http\WebRequestClient.cs" />
     <Compile Include="Jwt\BaseJwt.cs" />
     <Compile Include="Jwt\AccessToken\Token.cs" />

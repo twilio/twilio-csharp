@@ -42,7 +42,7 @@ namespace Twilio.Clients
 			_password = password;
 
 	        AccountSid = accountSid ?? username;
-			HttpClient = httpClient ?? null; // new WebRequestClient();
+			HttpClient = httpClient ?? DefaultClient();
 	        Region = region;
 	    }
 
@@ -72,6 +72,15 @@ namespace Twilio.Clients
 	        var response = await HttpClient.MakeRequestAysnc(request);
 	        return ProcessResponse(response);
 	    }
+		private static HttpClient DefaultClient()
+		{
+			return new SystemNetHttpClient();
+		}
+		#else
+		private static HttpClient DefaultClient()
+		{
+			return new WebRequestClient();
+		}
         #endif
 
 	    private static Response ProcessResponse(Response response)
