@@ -4,6 +4,6 @@
     "NSubstitude": "2.0.0-rc"
   },
   "frameworks": {
-    "netstandard2.0": {}
+    "netstandard1.6": {}
   }
 }
