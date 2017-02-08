@@ -4,8 +4,9 @@ install:
 
 test:
 	rm -rf Twilio.Tests/obj
-	dotnet build Twilio/Twilio.csproj
-	nunit Twilio.Tests/bin/Debug/Twilio.Tests.dll
+	dotnet restore Twilio.Tests/Twilio.Tests.csproj
+	dotnet build Twilio.Tests/Twilio.Tests.csproj
+	dotnet run --project Twilio.Tests/Twilio.Tests.csproj
 
 release: test
 	rm -rf Twilio.Tests/obj
