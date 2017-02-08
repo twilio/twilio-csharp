@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "NUnit": "3.6.0",
+    "NSubstitude": "2.0.0-rc"
+  },
+  "frameworks": {
+    "netstandard2.0": {}
+  }
+}
