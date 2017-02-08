@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{C0F9BB35-A31F-4892-A964-C46911774364}</ProjectGuid>
+    <ProjectGuid>{12BED4CC-0E34-4B83-ACF0-F834EAFBE416}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Twilio</RootNamespace>
     <TargetFramework>netstandard1.5</TargetFramework>
@@ -364,7 +364,6 @@
     <PackageReference Include="Microsoft.IdentityModel.Logging" Version="1.1.2" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.1.2" />
     <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
-    <PackageReference Include="NETStandard.Library" Version="1.6.0" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.1.2" />
     <PackageReference Include="System.Runtime" Version="4.3.0" />
