@@ -16,7 +16,7 @@
         <dependency id="JWT" version="[1.3.4]" />
         <dependency id="Newtonsoft.Json" version="[9.0.1]" />
       </group>
-      <group targetFramework="net45">
+      <group targetFramework="net461">
         <dependency id="Newtonsoft.Json" version="[9.0.1]" />
       </group>
       <group targetFramework="netstandard1.5">
@@ -41,7 +41,7 @@
   </metadata>
   <files>
     <file src="Twilio/bin/Release/netstandard1.5/Twilio.dll" target="lib/netstandard1.5" />
-    <file src="Twilio/bin/Release/netstandard1.5/Twilio.dll" target="lib/net45" />
+    <file src="Twilio/bin/Release/netstandard1.5/Twilio.dll" target="lib/net461" />
     <file src="Twilio35/bin/Release/Twilio35.dll" target="lib/net35" />
   </files>
 </package>
