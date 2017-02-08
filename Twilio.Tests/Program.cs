@@ -8,7 +8,6 @@ namespace Twilio.Tests
     {
         static int Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             return new AutoRun(typeof(TwilioTest).GetTypeInfo().Assembly).Execute(args);
         }
     }
