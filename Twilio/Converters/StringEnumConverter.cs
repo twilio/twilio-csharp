@@ -24,11 +24,15 @@ namespace Twilio.Converters
 		{
 			if (reader.Value == null)
 			{
-			    if (objectType.GenericTypeArguments.Length == 0)
-			    {
-			        return null;
-			    }
-			    var constructedListType = MakeGenericType(objectType);
+				#if NET40
+				if (objectType.GenericTypeArguments.Length == 0) 
+				#else
+				if (objectType.GetGenericArguments().Length == 0)
+				#endif
+				{
+					return null;
+				}
+				var constructedListType = MakeGenericType(objectType);
 				var results = (IList) Activator.CreateInstance(constructedListType);
 				reader.Read();
 
@@ -54,25 +58,25 @@ namespace Twilio.Converters
 			return objectType == typeof(Enum);
 		}
 
-	    private static Type MakeGenericType(Type objectType)
-	    {
-	        var listType = typeof(List<>);
+		private static Type MakeGenericType(Type objectType)
+		{
+			var listType = typeof(List<>);
 
-            #if NET40
-	        return listType.MakeGenericType(objectType.GenericTypeArguments[0]);
-            #else
-            return listType.MakeGenericType(objectType.GetGenericArguments()[0]);
-            #endif
-	    }
+			#if NET40
+			return listType.MakeGenericType(objectType.GenericTypeArguments[0]);
+			#else
+			return listType.MakeGenericType(objectType.GetGenericArguments()[0]);
+			#endif
+		}
 
-	    private static StringEnum CreateEnum(Type objectType)
-	    {
-            #if NET40
-	        return (StringEnum) Activator.CreateInstance(objectType.GenericTypeArguments[0]);
-            #else
-            return (StringEnum) Activator.CreateInstance(objectType.GetGenericArguments()[0]);
-            #endif
-	    }
+		private static StringEnum CreateEnum(Type objectType)
+		{
+			#if NET40
+			return (StringEnum) Activator.CreateInstance(objectType.GenericTypeArguments[0]);
+			#else
+			return (StringEnum) Activator.CreateInstance(objectType.GetGenericArguments()[0]);
+			#endif
+		}
 	}
 
 }
