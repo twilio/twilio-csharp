@@ -4,15 +4,10 @@ dist: trusty
 sudo: required
 
 install:
-  - sudo apt-get install -y liblldb-3.6 liblttng-ust0 libunwind8
-  - wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Installers/Latest/dotnet-host-ubuntu-x64.latest.deb
-  - sudo dpkg -i dotnet-host-ubuntu-x64.latest.deb
-  - wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Installers/Latest/dotnet-hostfxr-ubuntu-x64.latest.deb
-  - sudo dpkg -i dotnet-hostfxr-ubuntu-x64.latest.deb
-  - wget https://dotnetcli.blob.core.windows.net/dotnet/preview/Installers/Latest/dotnet-sharedframework-ubuntu-x64.latest.deb
-  - sudo dpkg -i dotnet-sharedframework-ubuntu-x64.latest.deb
-  - wget https://dotnetcli.blob.core.windows.net/dotnet/Sdk/rel-1.0.0/dotnet-sdk-ubuntu-x64.latest.deb
-  - sudo dpkg -i dotnet-sdk-ubuntu-x64.latest.deb
+  - sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
+  - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+  - sudo apt-get update
+  - sudo apt-get install dotnet-dev-1.0.0-rc4-004771
   - dotnet restore Twilio.Tests/Twilio.Tests.csproj
   - dotnet build Twilio.Tests/Twilio.Tests.csproj
 
