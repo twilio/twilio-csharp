@@ -1,168 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{65458612-8B1E-492A-999F-53C04DE31F91}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Twilio.Tests</RootNamespace>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-  </PropertyGroup>
-  <ItemGroup>
-<!-- Yoyodyne Generated Artifacts -->
-    <Compile Include="Rest\Accounts\V1\Credential\PublicKeyResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\AccountResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\AddressResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Address\DependentPhoneNumberResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\ApplicationResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\AuthorizedConnectAppResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\AvailablePhoneNumberCountryResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\AvailablePhoneNumberCountry\LocalResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\AvailablePhoneNumberCountry\MobileResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\AvailablePhoneNumberCountry\TollFreeResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\CallResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Call\FeedbackResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Call\FeedbackSummaryResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Call\NotificationResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Call\RecordingResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\ConferenceResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Conference\ParticipantResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\ConnectAppResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\IncomingPhoneNumberResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\IncomingPhoneNumber\LocalResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\IncomingPhoneNumber\MobileResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\IncomingPhoneNumber\TollFreeResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\KeyResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\MessageResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Message\FeedbackResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Message\MediaResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\NewKeyResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\NewSigningKeyResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\NotificationResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\OutgoingCallerIdResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\QueueResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Queue\MemberResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\RecordingResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Recording\AddOnResultResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Recording\AddOnResult\PayloadResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Recording\TranscriptionResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\SandboxResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\ShortCodeResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\SigningKeyResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Sip\CredentialListResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Sip\CredentialList\CredentialResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Sip\DomainResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Sip\Domain\CredentialListMappingResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Sip\Domain\IpAccessControlListMappingResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Sip\Domain\RegistrationEndpointResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Sip\IpAccessControlListResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Sip\IpAccessControlList\IpAddressResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\TokenResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\TranscriptionResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Usage\RecordResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Usage\Record\AllTimeResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Usage\Record\DailyResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Usage\Record\LastMonthResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Usage\Record\MonthlyResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Usage\Record\ThisMonthResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Usage\Record\TodayResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Usage\Record\YearlyResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Usage\Record\YesterdayResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\Usage\TriggerResourceTest.cs" />
-    <Compile Include="Rest\Api\V2010\Account\ValidationRequestResourceTest.cs" />
-    <Compile Include="Rest\Chat\V1\CredentialResourceTest.cs" />
-    <Compile Include="Rest\Chat\V1\ServiceResourceTest.cs" />
-    <Compile Include="Rest\Chat\V1\Service\ChannelResourceTest.cs" />
-    <Compile Include="Rest\Chat\V1\Service\Channel\InviteResourceTest.cs" />
-    <Compile Include="Rest\Chat\V1\Service\Channel\MemberResourceTest.cs" />
-    <Compile Include="Rest\Chat\V1\Service\Channel\MessageResourceTest.cs" />
-    <Compile Include="Rest\Chat\V1\Service\RoleResourceTest.cs" />
-    <Compile Include="Rest\Chat\V1\Service\UserResourceTest.cs" />
-    <Compile Include="Rest\Chat\V1\Service\User\UserChannelResourceTest.cs" />
-    <Compile Include="Rest\IpMessaging\V1\CredentialResourceTest.cs" />
-    <Compile Include="Rest\IpMessaging\V1\ServiceResourceTest.cs" />
-    <Compile Include="Rest\IpMessaging\V1\Service\ChannelResourceTest.cs" />
-    <Compile Include="Rest\IpMessaging\V1\Service\Channel\InviteResourceTest.cs" />
-    <Compile Include="Rest\IpMessaging\V1\Service\Channel\MemberResourceTest.cs" />
-    <Compile Include="Rest\IpMessaging\V1\Service\Channel\MessageResourceTest.cs" />
-    <Compile Include="Rest\IpMessaging\V1\Service\RoleResourceTest.cs" />
-    <Compile Include="Rest\IpMessaging\V1\Service\UserResourceTest.cs" />
-    <Compile Include="Rest\IpMessaging\V1\Service\User\UserChannelResourceTest.cs" />
-    <Compile Include="Rest\Lookups\V1\PhoneNumberResourceTest.cs" />
-    <Compile Include="Rest\Monitor\V1\AlertResourceTest.cs" />
-    <Compile Include="Rest\Monitor\V1\EventResourceTest.cs" />
-    <Compile Include="Rest\Notify\V1\CredentialResourceTest.cs" />
-    <Compile Include="Rest\Notify\V1\ServiceResourceTest.cs" />
-    <Compile Include="Rest\Notify\V1\Service\BindingResourceTest.cs" />
-    <Compile Include="Rest\Notify\V1\Service\NotificationResourceTest.cs" />
-    <Compile Include="Rest\Preview\Sync\ServiceResourceTest.cs" />
-    <Compile Include="Rest\Preview\Sync\Service\DocumentResourceTest.cs" />
-    <Compile Include="Rest\Preview\Sync\Service\Document\DocumentPermissionResourceTest.cs" />
-    <Compile Include="Rest\Preview\Sync\Service\SyncListResourceTest.cs" />
-    <Compile Include="Rest\Preview\Sync\Service\SyncList\SyncListItemResourceTest.cs" />
-    <Compile Include="Rest\Preview\Sync\Service\SyncList\SyncListPermissionResourceTest.cs" />
-    <Compile Include="Rest\Preview\Sync\Service\SyncMapResourceTest.cs" />
-    <Compile Include="Rest\Preview\Sync\Service\SyncMap\SyncMapItemResourceTest.cs" />
-    <Compile Include="Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionResourceTest.cs" />
-    <Compile Include="Rest\Preview\Wireless\CommandResourceTest.cs" />
-    <Compile Include="Rest\Preview\Wireless\DeviceResourceTest.cs" />
-    <Compile Include="Rest\Preview\Wireless\Device\UsageResourceTest.cs" />
-    <Compile Include="Rest\Preview\Wireless\RatePlanResourceTest.cs" />
-    <Compile Include="Rest\Pricing\V1\Messaging\CountryResourceTest.cs" />
-    <Compile Include="Rest\Pricing\V1\PhoneNumber\CountryResourceTest.cs" />
-    <Compile Include="Rest\Pricing\V1\Voice\CountryResourceTest.cs" />
-    <Compile Include="Rest\Pricing\V1\Voice\NumberResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\WorkspaceResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\ActivityResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\EventResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\TaskChannelResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\TaskQueueResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueueStatisticsResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\TaskQueue\TaskQueuesStatisticsResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\TaskResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\Task\ReservationResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\WorkerResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\Worker\ReservationResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\Worker\WorkerChannelResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\Worker\WorkerStatisticsResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\Worker\WorkersStatisticsResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\WorkflowResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\Workflow\WorkflowStatisticsResourceTest.cs" />
-    <Compile Include="Rest\Taskrouter\V1\Workspace\WorkspaceStatisticsResourceTest.cs" />
-    <Compile Include="Rest\Trunking\V1\TrunkResourceTest.cs" />
-    <Compile Include="Rest\Trunking\V1\Trunk\CredentialListResourceTest.cs" />
-    <Compile Include="Rest\Trunking\V1\Trunk\IpAccessControlListResourceTest.cs" />
-    <Compile Include="Rest\Trunking\V1\Trunk\OriginationUrlResourceTest.cs" />
-    <Compile Include="Rest\Trunking\V1\Trunk\PhoneNumberResourceTest.cs" />
-    <!-- End Yoyodyne Generated Artifacts -->
-    <Compile Include="Converters/*.cs" />
-    <Compile Include="Jwt/Client/*.cs" />
-    <Compile Include="Jwt/Taskrouter/*.cs" />
-    <Compile Include="Jwt/AccessToken/*.cs" />
-    <Compile Include="TwiML/*.cs" />
-    <Compile Include="Security/*.cs" />
-    <Compile Include="TwilioTest.cs" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twilio\Twilio.csproj">
       <Project>{12BED4CC-0E34-4B83-ACF0-F834EAFBE416}</Project>
@@ -170,12 +12,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Jwt\Client\" />
-    <Folder Include="Jwt\Taskrouter\" />
-    <Folder Include="Jwt\AccessToken\" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="NUnit" Version="3.6.0" />
     <PackageReference Include="NSubstitute" Version="2.0.0-rc" />
+    <PackageReference Include="NUnitLite" Version="3.6.0" />
   </ItemGroup>
 </Project>

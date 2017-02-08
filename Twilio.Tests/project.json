@@ -1,9 +1,10 @@
 {
   "dependencies": {
     "NUnit": "3.6.0",
-    "NSubstitude": "2.0.0-rc"
+    "NSubstitude": "2.0.0-rc",
+    "NUnitLite": "3.6.0"
   },
   "frameworks": {
-    "netstandard1.6": {}
+    "netcoreapp1.0": {}
   }
 }

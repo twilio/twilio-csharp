@@ -1,9 +1,8 @@
-﻿using System;
+using System;
 using System.Reflection;
 using NUnitLite;
-using Twilio.Tests;
 
-namespace Twilio.TestRunner
+namespace Twilio.Tests
 {
     class Program
     {
