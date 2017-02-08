@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -14,13 +15,29 @@ namespace Twilio.Security
             _hmac = new HMACSHA1(Encoding.UTF8.GetBytes(secret));
         }
 
-        public bool Validate(string url, Dictionary<string, string> parameters, string expected)
+		public bool Validate(string url, NameValueCollection parameters, string expected)
+		{
+			var signature = GetValidationSignature(url, ToDictionary(parameters));
+			return SecureCompare(signature, expected);
+		}
+
+        public bool Validate(string url, IDictionary<string, string> parameters, string expected)
         {
             var signature = GetValidationSignature(url, parameters);
             return SecureCompare(signature, expected);
         }
 
-        private string GetValidationSignature(string url, Dictionary<string, string> parameters)
+		private static IDictionary<string, string> ToDictionary(NameValueCollection col)
+		{
+			var dict = new Dictionary<string, string>();
+			foreach (var k in col.AllKeys)
+			{
+				dict.Add(k, col[k]);
+			}
+			return dict;
+		}
+
+        private string GetValidationSignature(string url, IDictionary<string, string> parameters)
         {
             var b = new StringBuilder(url);
             if (parameters != null)
@@ -37,7 +54,6 @@ namespace Twilio.Security
             var hash = _hmac.ComputeHash(Encoding.UTF8.GetBytes(b.ToString()));
             return Convert.ToBase64String(hash);
         }
-
 
         private static bool SecureCompare(string a, string b)
         {
