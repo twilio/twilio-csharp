@@ -481,6 +481,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
+        /// <summary>
         /// The url
         /// </summary>
         [JsonProperty("url")]

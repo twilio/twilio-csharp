@@ -133,9 +133,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Activity </returns> 
-        public static ActivityResource Update(string workspaceSid, string sid, string friendlyName, ITwilioRestClient client = null)
+        public static ActivityResource Update(string workspaceSid, string sid, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateActivityOptions(workspaceSid, sid, friendlyName);
+            var options = new UpdateActivityOptions(workspaceSid, sid){FriendlyName = friendlyName};
             return Update(options, client);
         }
     
@@ -149,9 +149,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Activity </returns> 
-        public static async System.Threading.Tasks.Task<ActivityResource> UpdateAsync(string workspaceSid, string sid, string friendlyName, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ActivityResource> UpdateAsync(string workspaceSid, string sid, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateActivityOptions(workspaceSid, sid, friendlyName);
+            var options = new UpdateActivityOptions(workspaceSid, sid){FriendlyName = friendlyName};
             return await UpdateAsync(options, client);
         }
         #endif

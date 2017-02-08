@@ -64,6 +64,10 @@ namespace Twilio.Rest.Notify.V1.Service
         /// The facebook_messenger
         /// </summary>
         public object FacebookMessenger { get; set; }
+        /// <summary>
+        /// The fcm
+        /// </summary>
+        public string Fcm { get; set; }
     
         /// <summary>
         /// Construct a new CreateNotificationOptions
@@ -146,6 +150,11 @@ namespace Twilio.Rest.Notify.V1.Service
             if (FacebookMessenger != null)
             {
                 p.Add(new KeyValuePair<string, string>("FacebookMessenger", FacebookMessenger.ToString()));
+            }
+            
+            if (Fcm != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Fcm", Fcm));
             }
             
             return p;

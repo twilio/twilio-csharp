@@ -387,9 +387,9 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="attributes"> The attributes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
-        public static MessageResource Update(string serviceSid, string channelSid, string sid, string body, string attributes = null, ITwilioRestClient client = null)
+        public static MessageResource Update(string serviceSid, string channelSid, string sid, string body = null, string attributes = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(serviceSid, channelSid, sid, body){Attributes = attributes};
+            var options = new UpdateMessageOptions(serviceSid, channelSid, sid){Body = body, Attributes = attributes};
             return Update(options, client);
         }
     
@@ -405,9 +405,9 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="attributes"> The attributes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string serviceSid, string channelSid, string sid, string body, string attributes = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string serviceSid, string channelSid, string sid, string body = null, string attributes = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(serviceSid, channelSid, sid, body){Attributes = attributes};
+            var options = new UpdateMessageOptions(serviceSid, channelSid, sid){Body = body, Attributes = attributes};
             return await UpdateAsync(options, client);
         }
         #endif

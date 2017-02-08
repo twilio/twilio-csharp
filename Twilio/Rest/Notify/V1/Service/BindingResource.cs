@@ -21,6 +21,7 @@ namespace Twilio.Rest.Notify.V1.Service
             public static readonly BindingTypeEnum Apn = new BindingTypeEnum("apn");
             public static readonly BindingTypeEnum Gcm = new BindingTypeEnum("gcm");
             public static readonly BindingTypeEnum Sms = new BindingTypeEnum("sms");
+            public static readonly BindingTypeEnum Fcm = new BindingTypeEnum("fcm");
             public static readonly BindingTypeEnum FacebookMessenger = new BindingTypeEnum("facebook-messenger");
         }
     

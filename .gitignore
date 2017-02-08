@@ -216,3 +216,7 @@ Thumbs.db
 
 .vscode/
 *.nupkg
+
+Testrig
+Twilio/project.lock.json
+testrunner/

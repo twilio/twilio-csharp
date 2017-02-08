@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
@@ -162,7 +163,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// The assignment_status
         /// </summary>
-        public TaskResource.StatusEnum AssignmentStatus { get; set; }
+        public List<string> AssignmentStatus { get; set; }
         /// <summary>
         /// The workflow_sid
         /// </summary>
@@ -204,6 +205,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public ReadTaskOptions(string workspaceSid)
         {
             WorkspaceSid = workspaceSid;
+            AssignmentStatus = new List<string>();
         }
     
         /// <summary>
@@ -219,7 +221,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             
             if (AssignmentStatus != null)
             {
-                p.Add(new KeyValuePair<string, string>("AssignmentStatus", AssignmentStatus.ToString()));
+                p.AddRange(AssignmentStatus.Select(prop => new KeyValuePair<string, string>("AssignmentStatus", prop)));
             }
             
             if (WorkflowSid != null)
@@ -278,14 +280,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string WorkspaceSid { get; }
         /// <summary>
-        /// The attributes
-        /// </summary>
-        public string Attributes { get; set; }
-        /// <summary>
-        /// The workflow_sid
-        /// </summary>
-        public string WorkflowSid { get; set; }
-        /// <summary>
         /// The timeout
         /// </summary>
         public int? Timeout { get; set; }
@@ -297,6 +291,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The task_channel
         /// </summary>
         public string TaskChannel { get; set; }
+        /// <summary>
+        /// The workflow_sid
+        /// </summary>
+        public string WorkflowSid { get; set; }
+        /// <summary>
+        /// The attributes
+        /// </summary>
+        public string Attributes { get; set; }
     
         /// <summary>
         /// Construct a new CreateTaskOptions
@@ -314,16 +316,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Attributes != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
-            }
-            
-            if (WorkflowSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("WorkflowSid", WorkflowSid.ToString()));
-            }
-            
             if (Timeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("Timeout", Timeout.Value.ToString()));
@@ -337,6 +329,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (TaskChannel != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
+            }
+            
+            if (WorkflowSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("WorkflowSid", WorkflowSid.ToString()));
+            }
+            
+            if (Attributes != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
             
             return p;

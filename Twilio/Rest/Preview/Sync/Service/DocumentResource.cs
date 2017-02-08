@@ -443,6 +443,11 @@ namespace Twilio.Rest.Preview.Sync.Service
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
+        /// <summary>
         /// The revision
         /// </summary>
         [JsonProperty("revision")]
