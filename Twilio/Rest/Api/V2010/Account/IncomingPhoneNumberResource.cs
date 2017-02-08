@@ -90,7 +90,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
         /// <param name="statusCallback"> URL Twilio will use to pass status parameters </param>
         /// <param name="statusCallbackMethod"> HTTP method twilio will use with status callback </param>
-        /// <param name="trunkSid"> Unique string to identify the trunk </param>
         /// <param name="voiceApplicationSid"> The unique sid of the application to handle this number </param>
         /// <param name="voiceCallerIdLookup"> Look up the caller's caller-ID </param>
         /// <param name="voiceFallbackMethod"> HTTP method used with fallback_url </param>
@@ -99,11 +98,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
         /// <param name="emergencyStatus"> The emergency_status </param>
         /// <param name="emergencyAddressSid"> The emergency_address_sid </param>
+        /// <param name="trunkSid"> Unique string to identify the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
-        public static IncomingPhoneNumberResource Update(string sid, string ownerAccountSid = null, string accountSid = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string trunkSid = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, ITwilioRestClient client = null)
+        public static IncomingPhoneNumberResource Update(string sid, string ownerAccountSid = null, string accountSid = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, string trunkSid = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateIncomingPhoneNumberOptions(sid){OwnerAccountSid = ownerAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, TrunkSid = trunkSid, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid};
+            var options = new UpdateIncomingPhoneNumberOptions(sid){OwnerAccountSid = ownerAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid};
             return Update(options, client);
         }
     
@@ -124,7 +124,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
         /// <param name="statusCallback"> URL Twilio will use to pass status parameters </param>
         /// <param name="statusCallbackMethod"> HTTP method twilio will use with status callback </param>
-        /// <param name="trunkSid"> Unique string to identify the trunk </param>
         /// <param name="voiceApplicationSid"> The unique sid of the application to handle this number </param>
         /// <param name="voiceCallerIdLookup"> Look up the caller's caller-ID </param>
         /// <param name="voiceFallbackMethod"> HTTP method used with fallback_url </param>
@@ -133,11 +132,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
         /// <param name="emergencyStatus"> The emergency_status </param>
         /// <param name="emergencyAddressSid"> The emergency_address_sid </param>
+        /// <param name="trunkSid"> Unique string to identify the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> UpdateAsync(string sid, string ownerAccountSid = null, string accountSid = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string trunkSid = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> UpdateAsync(string sid, string ownerAccountSid = null, string accountSid = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, string trunkSid = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateIncomingPhoneNumberOptions(sid){OwnerAccountSid = ownerAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, TrunkSid = trunkSid, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid};
+            var options = new UpdateIncomingPhoneNumberOptions(sid){OwnerAccountSid = ownerAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -445,7 +445,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
         /// <param name="statusCallback"> URL Twilio will use to pass status parameters </param>
         /// <param name="statusCallbackMethod"> HTTP method twilio will use with status callback </param>
-        /// <param name="trunkSid"> Unique string to identify the trunk </param>
         /// <param name="voiceApplicationSid"> The unique sid of the application to handle this number </param>
         /// <param name="voiceCallerIdLookup"> Look up the caller's caller-ID </param>
         /// <param name="voiceFallbackMethod"> HTTP method used with fallback_url </param>
@@ -454,11 +453,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
         /// <param name="emergencyStatus"> The emergency_status </param>
         /// <param name="emergencyAddressSid"> The emergency_address_sid </param>
+        /// <param name="trunkSid"> Unique string to identify the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
-        public static IncomingPhoneNumberResource Create(string ownerAccountSid = null, Types.PhoneNumber phoneNumber = null, string areaCode = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string trunkSid = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, ITwilioRestClient client = null)
+        public static IncomingPhoneNumberResource Create(string ownerAccountSid = null, Types.PhoneNumber phoneNumber = null, string areaCode = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, string trunkSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateIncomingPhoneNumberOptions{OwnerAccountSid = ownerAccountSid, PhoneNumber = phoneNumber, AreaCode = areaCode, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, TrunkSid = trunkSid, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid};
+            var options = new CreateIncomingPhoneNumberOptions{OwnerAccountSid = ownerAccountSid, PhoneNumber = phoneNumber, AreaCode = areaCode, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid};
             return Create(options, client);
         }
     
@@ -479,7 +479,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
         /// <param name="statusCallback"> URL Twilio will use to pass status parameters </param>
         /// <param name="statusCallbackMethod"> HTTP method twilio will use with status callback </param>
-        /// <param name="trunkSid"> Unique string to identify the trunk </param>
         /// <param name="voiceApplicationSid"> The unique sid of the application to handle this number </param>
         /// <param name="voiceCallerIdLookup"> Look up the caller's caller-ID </param>
         /// <param name="voiceFallbackMethod"> HTTP method used with fallback_url </param>
@@ -488,11 +487,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
         /// <param name="emergencyStatus"> The emergency_status </param>
         /// <param name="emergencyAddressSid"> The emergency_address_sid </param>
+        /// <param name="trunkSid"> Unique string to identify the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> CreateAsync(string ownerAccountSid = null, Types.PhoneNumber phoneNumber = null, string areaCode = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string trunkSid = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> CreateAsync(string ownerAccountSid = null, Types.PhoneNumber phoneNumber = null, string areaCode = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, string trunkSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateIncomingPhoneNumberOptions{OwnerAccountSid = ownerAccountSid, PhoneNumber = phoneNumber, AreaCode = areaCode, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, TrunkSid = trunkSid, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid};
+            var options = new CreateIncomingPhoneNumberOptions{OwnerAccountSid = ownerAccountSid, PhoneNumber = phoneNumber, AreaCode = areaCode, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid};
             return await CreateAsync(options, client);
         }
         #endif

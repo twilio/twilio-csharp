@@ -51,7 +51,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// The friendly_name
         /// </summary>
-        public string FriendlyName { get; }
+        public string FriendlyName { get; set; }
     
         /// <summary>
         /// Construct a new UpdateActivityOptions
@@ -59,12 +59,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        public UpdateActivityOptions(string workspaceSid, string sid, string friendlyName)
+        public UpdateActivityOptions(string workspaceSid, string sid)
         {
             WorkspaceSid = workspaceSid;
             Sid = sid;
-            FriendlyName = friendlyName;
         }
     
         /// <summary>

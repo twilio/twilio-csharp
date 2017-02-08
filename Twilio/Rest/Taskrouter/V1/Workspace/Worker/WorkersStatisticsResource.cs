@@ -132,6 +132,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
+        [JsonProperty("url")]
+        public Uri Url { get; private set; }
     
         private WorkersStatisticsResource()
         {

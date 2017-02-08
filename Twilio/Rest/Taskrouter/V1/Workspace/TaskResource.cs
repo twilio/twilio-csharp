@@ -312,7 +312,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns> 
-        public static ResourceSet<TaskResource> Read(string workspaceSid, int? priority = null, TaskResource.StatusEnum assignmentStatus = null, string workflowSid = null, string workflowName = null, string taskQueueSid = null, string taskQueueName = null, string taskChannel = null, string evaluateTaskAttributes = null, string ordering = null, bool? hasAddons = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<TaskResource> Read(string workspaceSid, int? priority = null, List<string> assignmentStatus = null, string workflowSid = null, string workflowName = null, string taskQueueSid = null, string taskQueueName = null, string taskChannel = null, string evaluateTaskAttributes = null, string ordering = null, bool? hasAddons = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadTaskOptions(workspaceSid){Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, TaskChannel = taskChannel, EvaluateTaskAttributes = evaluateTaskAttributes, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -338,7 +338,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(string workspaceSid, int? priority = null, TaskResource.StatusEnum assignmentStatus = null, string workflowSid = null, string workflowName = null, string taskQueueSid = null, string taskQueueName = null, string taskChannel = null, string evaluateTaskAttributes = null, string ordering = null, bool? hasAddons = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(string workspaceSid, int? priority = null, List<string> assignmentStatus = null, string workflowSid = null, string workflowName = null, string taskQueueSid = null, string taskQueueName = null, string taskChannel = null, string evaluateTaskAttributes = null, string ordering = null, bool? hasAddons = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
             var options = new ReadTaskOptions(workspaceSid){Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, TaskChannel = taskChannel, EvaluateTaskAttributes = evaluateTaskAttributes, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -412,16 +412,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="workflowSid"> The workflow_sid </param>
         /// <param name="timeout"> The timeout </param>
         /// <param name="priority"> The priority </param>
         /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="workflowSid"> The workflow_sid </param>
+        /// <param name="attributes"> The attributes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns> 
-        public static TaskResource Create(string workspaceSid, string attributes = null, string workflowSid = null, int? timeout = null, int? priority = null, string taskChannel = null, ITwilioRestClient client = null)
+        public static TaskResource Create(string workspaceSid, int? timeout = null, int? priority = null, string taskChannel = null, string workflowSid = null, string attributes = null, ITwilioRestClient client = null)
         {
-            var options = new CreateTaskOptions(workspaceSid){Attributes = attributes, WorkflowSid = workflowSid, Timeout = timeout, Priority = priority, TaskChannel = taskChannel};
+            var options = new CreateTaskOptions(workspaceSid){Timeout = timeout, Priority = priority, TaskChannel = taskChannel, WorkflowSid = workflowSid, Attributes = attributes};
             return Create(options, client);
         }
     
@@ -431,16 +431,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         ///
         /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="workflowSid"> The workflow_sid </param>
         /// <param name="timeout"> The timeout </param>
         /// <param name="priority"> The priority </param>
         /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="workflowSid"> The workflow_sid </param>
+        /// <param name="attributes"> The attributes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(string workspaceSid, string attributes = null, string workflowSid = null, int? timeout = null, int? priority = null, string taskChannel = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(string workspaceSid, int? timeout = null, int? priority = null, string taskChannel = null, string workflowSid = null, string attributes = null, ITwilioRestClient client = null)
         {
-            var options = new CreateTaskOptions(workspaceSid){Attributes = attributes, WorkflowSid = workflowSid, Timeout = timeout, Priority = priority, TaskChannel = taskChannel};
+            var options = new CreateTaskOptions(workspaceSid){Timeout = timeout, Priority = priority, TaskChannel = taskChannel, WorkflowSid = workflowSid, Attributes = attributes};
             return await CreateAsync(options, client);
         }
         #endif

@@ -11,6 +11,7 @@ namespace Twilio.Http
 		public HttpMethod Method { get; }
 	    public string Username { get; set; }
 	    public string Password { get; set; }
+		public List<KeyValuePair<string, string>> PostParams { get { return _postParams; } } 
 
 	    private readonly Uri _uri;
         private readonly List<KeyValuePair<string, string>> _queryParams;
