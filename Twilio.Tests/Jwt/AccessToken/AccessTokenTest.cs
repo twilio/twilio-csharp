@@ -220,5 +220,40 @@ namespace Twilio.Tests.Jwt.AccessToken
 			var decodedVg = ToDict(decodedGrants["video"]);
 			Assert.AreEqual("CP123", decodedVg["configuration_profile_sid"]);
 		}
+
+		[Test]
+		public void TestCreateTaskRouterGrant()
+		{
+			var grants = new HashSet<IGrant>
+			{
+				{
+					new TaskRouterGrant
+					{
+						WorkspaceSid = "WS123",
+						WorkerSid = "WK123",
+						Role = "worker"
+					}
+				}
+			};
+			var token = new TestToken("AC456", "SK123", "superdupersecretsecret", grants: grants).ToJwt();
+			Assert.IsNotNull(token);
+			Assert.IsNotEmpty(token);
+
+			var decoded = new JwtSecurityToken(token);
+			var payload = decoded.Payload;
+			Assert.IsNotNull(payload);
+
+			Assert.AreEqual("SK123", payload.Iss);
+			Assert.AreEqual("AC456", payload.Sub);
+			Assert.Greater(payload.Exp.Value, BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+
+			var decodedGrants = ToDict(payload["grants"]);
+			Assert.AreEqual(1, decodedGrants.Count);
+
+			var decodedTrg = ToDict(decodedGrants["task_router"]);
+			Assert.AreEqual("WS123", decodedTrg["workspace_sid"]);
+			Assert.AreEqual("WK123", decodedTrg["worker_sid"]);
+			Assert.AreEqual("worker", decodedTrg["role"]);
+		}
 	}
 }
