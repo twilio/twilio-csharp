@@ -30,13 +30,13 @@ namespace Twilio.Types
 	        double? basePrice,
 	        [JsonProperty("current_priece")]
 	        double? currentPrice,
-	        [JsonProperty("type")]
-	        TypeEnum type
+	        [JsonProperty("number_type")]
+	        TypeEnum number_type
 	    )
 	    {
 	        BasePrice = basePrice;
 	        CurrentPrice = currentPrice;
-	        Type = type;
+	        Type = number_type;
 	    }
 	}
 }
