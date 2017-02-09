@@ -201,7 +201,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     
         /// <summary>
-        /// The country_code
+        /// The ISO Country code to lookup phone numbers for.
         /// </summary>
         [JsonProperty("country_code")]
         public string CountryCode { get; private set; }

@@ -291,13 +291,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="type"> The type </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns> 
-        public static ResourceSet<ChannelResource> Read(string serviceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<ChannelResource> Read(string serviceSid, List<ChannelResource.ChannelTypeEnum> type = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadChannelOptions(serviceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadChannelOptions(serviceSid){Type = type, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -307,13 +308,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="type"> The type </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ChannelResource>> ReadAsync(string serviceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ChannelResource>> ReadAsync(string serviceSid, List<ChannelResource.ChannelTypeEnum> type = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadChannelOptions(serviceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadChannelOptions(serviceSid){Type = type, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -486,6 +488,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }
+        /// <summary>
+        /// The members_count
+        /// </summary>
+        [JsonProperty("members_count")]
+        public int? MembersCount { get; private set; }
+        /// <summary>
+        /// The messages_count
+        /// </summary>
+        [JsonProperty("messages_count")]
+        public int? MessagesCount { get; private set; }
         /// <summary>
         /// The url
         /// </summary>

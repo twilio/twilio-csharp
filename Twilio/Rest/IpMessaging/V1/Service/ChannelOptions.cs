@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 
 namespace Twilio.Rest.IpMessaging.V1.Service 
@@ -140,6 +141,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// The service_sid
         /// </summary>
         public string ServiceSid { get; }
+        /// <summary>
+        /// The type
+        /// </summary>
+        public List<ChannelResource.ChannelTypeEnum> Type { get; set; }
     
         /// <summary>
         /// Construct a new ReadChannelOptions
@@ -149,6 +154,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public ReadChannelOptions(string serviceSid)
         {
             ServiceSid = serviceSid;
+            Type = new List<ChannelResource.ChannelTypeEnum>();
         }
     
         /// <summary>
@@ -157,6 +163,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (Type != null)
+            {
+                p.AddRange(Type.Select(prop => new KeyValuePair<string, string>("Type", prop.ToString())));
+            }
+            
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

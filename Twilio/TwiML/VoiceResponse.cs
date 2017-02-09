@@ -177,7 +177,7 @@ namespace Twilio.TwiML
 
         public VoiceResponse Record(bool? transcribe=null,
             bool? playBeep=null,
-            int? tiemout=null,
+            int? timeout=null,
             int? maxLength=null,
             string action=null,
             string method=null,
@@ -194,9 +194,9 @@ namespace Twilio.TwiML
             {
                 record.Add(new XAttribute("playBeep", playBeep));
             }
-            if (tiemout != null)
+            if (timeout != null)
             {
-                record.Add(new XAttribute("tiemout", tiemout));
+                record.Add(new XAttribute("timeout", timeout));
             }
             if (maxLength != null)
             {

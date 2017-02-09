@@ -106,8 +106,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
         /// <param name="sendDigits"> Digits to send </param>
         /// <param name="ifMachine"> Action to take if a machine has answered the call </param>
-        /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
-        /// <param name="machineDetectionTimeout"> Number of miliseconds to wait for machine detection </param>
         /// <param name="timeout"> Number of seconds to wait for an answer </param>
         /// <param name="record"> Whether or not to record the Call </param>
         /// <param name="recordingChannels"> The recording_channels </param>
@@ -117,9 +115,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns> 
-        public static CallResource Create(IEndpoint to, Types.PhoneNumber from, string accountSid = null, Uri url = null, string applicationSid = null, Twilio.Http.HttpMethod method = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, List<string> statusCallbackEvent = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string sendDigits = null, string ifMachine = null, string machineDetection = null, int? machineDetectionTimeout = null, int? timeout = null, bool? record = null, string recordingChannels = null, string recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, ITwilioRestClient client = null)
+        public static CallResource Create(IEndpoint to, Types.PhoneNumber from, string accountSid = null, Uri url = null, string applicationSid = null, Twilio.Http.HttpMethod method = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, List<string> statusCallbackEvent = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string sendDigits = null, string ifMachine = null, int? timeout = null, bool? record = null, string recordingChannels = null, string recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){AccountSid = accountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
+            var options = new CreateCallOptions(to, from){AccountSid = accountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
             return Create(options, client);
         }
     
@@ -141,8 +139,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
         /// <param name="sendDigits"> Digits to send </param>
         /// <param name="ifMachine"> Action to take if a machine has answered the call </param>
-        /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
-        /// <param name="machineDetectionTimeout"> Number of miliseconds to wait for machine detection </param>
         /// <param name="timeout"> Number of seconds to wait for an answer </param>
         /// <param name="record"> Whether or not to record the Call </param>
         /// <param name="recordingChannels"> The recording_channels </param>
@@ -152,9 +148,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns> 
-        public static async System.Threading.Tasks.Task<CallResource> CreateAsync(IEndpoint to, Types.PhoneNumber from, string accountSid = null, Uri url = null, string applicationSid = null, Twilio.Http.HttpMethod method = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, List<string> statusCallbackEvent = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string sendDigits = null, string ifMachine = null, string machineDetection = null, int? machineDetectionTimeout = null, int? timeout = null, bool? record = null, string recordingChannels = null, string recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CallResource> CreateAsync(IEndpoint to, Types.PhoneNumber from, string accountSid = null, Uri url = null, string applicationSid = null, Twilio.Http.HttpMethod method = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, List<string> statusCallbackEvent = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string sendDigits = null, string ifMachine = null, int? timeout = null, bool? record = null, string recordingChannels = null, string recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){AccountSid = accountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
+            var options = new CreateCallOptions(to, from){AccountSid = accountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
             return await CreateAsync(options, client);
         }
         #endif

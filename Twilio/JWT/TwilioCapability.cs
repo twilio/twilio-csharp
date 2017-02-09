@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using JWT;
 
 namespace Twilio.JWT
 {
@@ -98,7 +97,8 @@ namespace Twilio.JWT
 				scope
 			};
 
-			return JsonWebToken.Encode(payload, _authToken, JwtHashAlgorithm.HS256);
+			return null;
+			//return JsonWebToken.Encode(payload, _authToken, JwtHashAlgorithm.HS256);
 		}
 
 		private static int ConvertToUnixTimestamp(DateTime date)

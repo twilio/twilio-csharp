@@ -81,11 +81,12 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="gcm"> The gcm </param>
         /// <param name="sms"> The sms </param>
         /// <param name="facebookMessenger"> The facebook_messenger </param>
+        /// <param name="fcm"> The fcm </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Notification </returns> 
-        public static NotificationResource Create(string serviceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, object facebookMessenger = null, ITwilioRestClient client = null)
+        public static NotificationResource Create(string serviceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, object facebookMessenger = null, string fcm = null, ITwilioRestClient client = null)
         {
-            var options = new CreateNotificationOptions(serviceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger};
+            var options = new CreateNotificationOptions(serviceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm};
             return Create(options, client);
         }
     
@@ -108,11 +109,12 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="gcm"> The gcm </param>
         /// <param name="sms"> The sms </param>
         /// <param name="facebookMessenger"> The facebook_messenger </param>
+        /// <param name="fcm"> The fcm </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns> 
-        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string serviceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, object facebookMessenger = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string serviceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, object facebookMessenger = null, string fcm = null, ITwilioRestClient client = null)
         {
-            var options = new CreateNotificationOptions(serviceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger};
+            var options = new CreateNotificationOptions(serviceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm};
             return await CreateAsync(options, client);
         }
         #endif
@@ -212,6 +214,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         [JsonProperty("gcm")]
         public object Gcm { get; private set; }
+        /// <summary>
+        /// The fcm
+        /// </summary>
+        [JsonProperty("fcm")]
+        public object Fcm { get; private set; }
         /// <summary>
         /// The sms
         /// </summary>

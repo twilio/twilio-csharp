@@ -56,10 +56,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// Unique string to identify the trunk
-        /// </summary>
-        public string TrunkSid { get; set; }
-        /// <summary>
         /// The unique sid of the application to handle this number
         /// </summary>
         public string VoiceApplicationSid { get; set; }
@@ -91,6 +87,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The emergency_address_sid
         /// </summary>
         public string EmergencyAddressSid { get; set; }
+        /// <summary>
+        /// Unique string to identify the trunk
+        /// </summary>
+        public string TrunkSid { get; set; }
     
         /// <summary>
         /// Construct a new UpdateIncomingPhoneNumberOptions
@@ -158,11 +158,6 @@ namespace Twilio.Rest.Api.V2010.Account
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
             }
             
-            if (TrunkSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TrunkSid", TrunkSid.ToString()));
-            }
-            
             if (VoiceApplicationSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceApplicationSid", VoiceApplicationSid.ToString()));
@@ -201,6 +196,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (EmergencyAddressSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("EmergencyAddressSid", EmergencyAddressSid.ToString()));
+            }
+            
+            if (TrunkSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TrunkSid", TrunkSid.ToString()));
             }
             
             return p;
@@ -369,10 +369,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// Unique string to identify the trunk
-        /// </summary>
-        public string TrunkSid { get; set; }
-        /// <summary>
         /// The unique sid of the application to handle this number
         /// </summary>
         public string VoiceApplicationSid { get; set; }
@@ -404,6 +400,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The emergency_address_sid
         /// </summary>
         public string EmergencyAddressSid { get; set; }
+        /// <summary>
+        /// Unique string to identify the trunk
+        /// </summary>
+        public string TrunkSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -466,11 +466,6 @@ namespace Twilio.Rest.Api.V2010.Account
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
             }
             
-            if (TrunkSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TrunkSid", TrunkSid.ToString()));
-            }
-            
             if (VoiceApplicationSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceApplicationSid", VoiceApplicationSid.ToString()));
@@ -509,6 +504,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (EmergencyAddressSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("EmergencyAddressSid", EmergencyAddressSid.ToString()));
+            }
+            
+            if (TrunkSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TrunkSid", TrunkSid.ToString()));
             }
             
             return p;

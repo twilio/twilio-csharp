@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using Twilio.TwiML;
 
 namespace Twilio.Tests.TwiML
@@ -12,7 +13,7 @@ namespace Twilio.Tests.TwiML
             var mr = new MessagingResponse();
             Assert.AreEqual(
                 mr.ToString(), 
-                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response />"
             );
         }
@@ -24,9 +25,9 @@ namespace Twilio.Tests.TwiML
             mr.Message("foobar", to: "+11234567890", method: "GET");
             Assert.AreEqual(
                 mr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-                "<Response>\n" +
-                "  <Message to=\"+11234567890\" method=\"GET\">foobar</Message>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Response>" + Environment.NewLine +
+                "  <Message to=\"+11234567890\" method=\"GET\">foobar</Message>" + Environment.NewLine +
                 "</Response>" 
             );
         }
@@ -45,15 +46,15 @@ namespace Twilio.Tests.TwiML
             mr.Message(m1).Message(m2);
             Assert.AreEqual(
                 mr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-                "<Response>\n" +
-                "  <Message to=\"+11111111111\" from=\"+12222222222\">\n" +
-                "    <Body>foobar</Body>\n" + 
-                "    <Body>barbaz</Body>\n" + 
-                "  </Message>\n" +
-                "  <Message>\n" +
-                "    <Body>barbaz2</Body>\n" + 
-                "  </Message>\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Response>" + Environment.NewLine +
+                "  <Message to=\"+11111111111\" from=\"+12222222222\">" + Environment.NewLine +
+                "    <Body>foobar</Body>" + Environment.NewLine + 
+                "    <Body>barbaz</Body>" + Environment.NewLine + 
+                "  </Message>" + Environment.NewLine +
+                "  <Message>" + Environment.NewLine +
+                "    <Body>barbaz2</Body>" + Environment.NewLine + 
+                "  </Message>" + Environment.NewLine +
                 "</Response>"   
             );
         }
@@ -66,9 +67,9 @@ namespace Twilio.Tests.TwiML
 
             Assert.AreEqual(
                 mr.ToString(),
-                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-                "<Response>\n" +
-                "  <Redirect method=\"GET\" url=\"http://www.twilio.com\" />\n" +
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Response>" + Environment.NewLine +
+                "  <Redirect method=\"GET\" url=\"http://www.twilio.com\" />" + Environment.NewLine +
                 "</Response>" 
             );
         }

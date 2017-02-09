@@ -27,7 +27,8 @@ namespace Twilio.Exceptions
     {
         public string Param { get; }
 
-        public InvalidRequestException(string message, string param, Exception exception) : base(message, exception) {
+        public InvalidRequestException(string message, string param, Exception exception) : base(message, exception) 
+		{
             Param = param;
         }
     }

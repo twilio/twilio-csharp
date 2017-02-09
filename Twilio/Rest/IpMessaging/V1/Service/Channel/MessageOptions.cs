@@ -200,7 +200,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <summary>
         /// The body
         /// </summary>
-        public string Body { get; }
+        public string Body { get; set; }
         /// <summary>
         /// The attributes
         /// </summary>
@@ -213,13 +213,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
         /// <param name="sid"> The sid </param>
-        /// <param name="body"> The body </param>
-        public UpdateMessageOptions(string serviceSid, string channelSid, string sid, string body)
+        public UpdateMessageOptions(string serviceSid, string channelSid, string sid)
         {
             ServiceSid = serviceSid;
             ChannelSid = channelSid;
             Sid = sid;
-            Body = body;
         }
     
         /// <summary>

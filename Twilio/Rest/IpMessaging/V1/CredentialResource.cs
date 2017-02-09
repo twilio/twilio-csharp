@@ -20,6 +20,7 @@ namespace Twilio.Rest.IpMessaging.V1
         
             public static readonly PushServiceEnum Gcm = new PushServiceEnum("gcm");
             public static readonly PushServiceEnum Apn = new PushServiceEnum("apn");
+            public static readonly PushServiceEnum Fcm = new PushServiceEnum("fcm");
         }
     
         private static Request BuildReadRequest(ReadCredentialOptions options, ITwilioRestClient client)
@@ -169,11 +170,12 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="privateKey"> The private_key </param>
         /// <param name="sandbox"> The sandbox </param>
         /// <param name="apiKey"> The api_key </param>
+        /// <param name="secret"> The secret </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns> 
-        public static CredentialResource Create(CredentialResource.PushServiceEnum type, string friendlyName = null, string certificate = null, string privateKey = null, bool? sandbox = null, string apiKey = null, ITwilioRestClient client = null)
+        public static CredentialResource Create(CredentialResource.PushServiceEnum type, string friendlyName = null, string certificate = null, string privateKey = null, bool? sandbox = null, string apiKey = null, string secret = null, ITwilioRestClient client = null)
         {
-            var options = new CreateCredentialOptions(type){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey};
+            var options = new CreateCredentialOptions(type){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
             return Create(options, client);
         }
     
@@ -188,11 +190,12 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="privateKey"> The private_key </param>
         /// <param name="sandbox"> The sandbox </param>
         /// <param name="apiKey"> The api_key </param>
+        /// <param name="secret"> The secret </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<CredentialResource> CreateAsync(CredentialResource.PushServiceEnum type, string friendlyName = null, string certificate = null, string privateKey = null, bool? sandbox = null, string apiKey = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialResource> CreateAsync(CredentialResource.PushServiceEnum type, string friendlyName = null, string certificate = null, string privateKey = null, bool? sandbox = null, string apiKey = null, string secret = null, ITwilioRestClient client = null)
         {
-            var options = new CreateCredentialOptions(type){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey};
+            var options = new CreateCredentialOptions(type){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
             return await CreateAsync(options, client);
         }
         #endif
@@ -317,11 +320,12 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="privateKey"> The private_key </param>
         /// <param name="sandbox"> The sandbox </param>
         /// <param name="apiKey"> The api_key </param>
+        /// <param name="secret"> The secret </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns> 
-        public static CredentialResource Update(string sid, string friendlyName = null, string certificate = null, string privateKey = null, bool? sandbox = null, string apiKey = null, ITwilioRestClient client = null)
+        public static CredentialResource Update(string sid, string friendlyName = null, string certificate = null, string privateKey = null, bool? sandbox = null, string apiKey = null, string secret = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateCredentialOptions(sid){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey};
+            var options = new UpdateCredentialOptions(sid){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
             return Update(options, client);
         }
     
@@ -336,11 +340,12 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="privateKey"> The private_key </param>
         /// <param name="sandbox"> The sandbox </param>
         /// <param name="apiKey"> The api_key </param>
+        /// <param name="secret"> The secret </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(string sid, string friendlyName = null, string certificate = null, string privateKey = null, bool? sandbox = null, string apiKey = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(string sid, string friendlyName = null, string certificate = null, string privateKey = null, bool? sandbox = null, string apiKey = null, string secret = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateCredentialOptions(sid){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey};
+            var options = new UpdateCredentialOptions(sid){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
             return await UpdateAsync(options, client);
         }
         #endif

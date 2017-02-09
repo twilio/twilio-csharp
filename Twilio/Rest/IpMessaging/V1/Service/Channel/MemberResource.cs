@@ -457,16 +457,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// The last_consumed_message_index
-        /// </summary>
-        [JsonProperty("last_consumed_message_index")]
-        public int? LastConsumedMessageIndex { get; private set; }
-        /// <summary>
-        /// The last_consumption_timestamp
-        /// </summary>
-        [JsonProperty("last_consumption_timestamp")]
-        public DateTime? LastConsumptionTimestamp { get; private set; }
-        /// <summary>
         /// The date_created
         /// </summary>
         [JsonProperty("date_created")]
@@ -481,6 +471,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }
+        /// <summary>
+        /// The last_consumed_message_index
+        /// </summary>
+        [JsonProperty("last_consumed_message_index")]
+        public int? LastConsumedMessageIndex { get; private set; }
+        /// <summary>
+        /// The last_consumption_timestamp
+        /// </summary>
+        [JsonProperty("last_consumption_timestamp")]
+        public DateTime? LastConsumptionTimestamp { get; private set; }
         /// <summary>
         /// The url
         /// </summary>
