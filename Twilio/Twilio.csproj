@@ -60,7 +60,6 @@
     <Compile Include="Jwt\AccessToken\SyncGrant.cs" />
     <Compile Include="Jwt\AccessToken\VideoGrant.cs" />
     <Compile Include="Jwt\AccessToken\VoiceGrant.cs" />
-    <Compile Include="Jwt\AccessToken\TaskRouterGrant.cs" />
     <Compile Include="Jwt\Client\ClientCapability.cs" />
     <Compile Include="Jwt\Client\IScope.cs" />
     <Compile Include="Jwt\Client\EventStreamScope.cs" />
