@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Twilio.Tests</RootNamespace>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.6.0" />
+    <PackageReference Include="NSubstitute" Version="2.0.0-rc" />
+    <PackageReference Include="NUnitLite" Version="3.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Twilio\Twilio.csproj" />
+  </ItemGroup>
+</Project>
