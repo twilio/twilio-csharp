@@ -1,3 +1,4 @@
+.PHONY: clean test install release
 
 clean:
 	dotnet clean
@@ -8,7 +9,7 @@ install:
 test:
 	dotnet restore
 	dotnet build
-	dotnet run --project test/Twilio.Tests/Twilio.Tests.csproj
+	dotnet run --project test/Twilio.Test/Twilio.Test.csproj
 
 release: test
 	dotnet restore -c Release

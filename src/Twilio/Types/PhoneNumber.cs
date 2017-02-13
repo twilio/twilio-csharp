@@ -1,4 +1,4 @@
-﻿anamespace Twilio.Types
+﻿namespace Twilio.Types
 {
     public class PhoneNumber : IEndpoint
     {
