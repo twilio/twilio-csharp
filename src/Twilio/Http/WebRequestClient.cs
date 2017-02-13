@@ -59,11 +59,12 @@ namespace Twilio.Http
 
         private static void SetUserAgent(HttpWebRequest request)
         {
-            #if !__MonoCS__
-            var property = typeof(HttpWebRequest).GetRuntimeProperty("UserAgent");
-            const string libraryVersion = "twilio-csharp/" + AssemblyInfomation.AssemblyInformationalVersion + PlatVersion;
-            request.UserAgent = libraryVersion;
-            #endif
+            var property = typeof(HttpWebRequest).GetProperty("UserAgent");
+            if (property != null)
+            {
+                const string libraryVersion = "twilio-csharp/" + AssemblyInfomation.AssemblyInformationalVersion + PlatVersion;
+                request.UserAgent = libraryVersion;
+            }
         }
 
         private static Stream GetStream(WebRequest request)

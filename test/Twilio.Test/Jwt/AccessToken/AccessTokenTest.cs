@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
 using NUnit.Framework;
 using Twilio.Jwt;
 using Twilio.Jwt.AccessToken;
+#if NET35
+using JWT;
+
+// TODO: Implement .NET 3.5 friendly tests
+
+#else
+using System.IdentityModel.Tokens.Jwt;
+using Newtonsoft.Json;
 
 namespace Twilio.Tests.Jwt.AccessToken
 {
@@ -222,3 +227,4 @@ namespace Twilio.Tests.Jwt.AccessToken
         }
     }
 }
+#endif
