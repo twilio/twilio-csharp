@@ -17,10 +17,10 @@ namespace Twilio.Jwt.AccessToken
         /// <returns>the grant key</returns>
         public string Key
         {
-			get
-			{
-				return "data_sync";
-			}
+            get
+            {
+                return "data_sync";
+            }
         }
 
         /// <summary>
@@ -30,22 +30,22 @@ namespace Twilio.Jwt.AccessToken
         /// <returns>the grant payload</returns>
         public object Payload
         {
-			get
-			{
-				var payload = new Dictionary<string, string>();
+            get
+            {
+                var payload = new Dictionary<string, string>();
 
-				if (ServiceSid != null)
-				{
-					payload.Add("service_sid", ServiceSid);
-				}
+                if (ServiceSid != null)
+                {
+                    payload.Add("service_sid", ServiceSid);
+                }
 
-				if (EndpointId != null)
-				{
-					payload.Add("endpoint_id", EndpointId);
-				}
+                if (EndpointId != null)
+                {
+                    payload.Add("endpoint_id", EndpointId);
+                }
 
-				return payload;
-			}
+                return payload;
+            }
         }
     }
 }

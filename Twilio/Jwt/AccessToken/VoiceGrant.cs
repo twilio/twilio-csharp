@@ -19,10 +19,10 @@ namespace Twilio.Jwt.AccessToken
         /// <returns>the grant key</returns>
         public string Key
         {
-			get
-			{
-				return "voice";
-			}
+            get
+            {
+                return "voice";
+            }
         }
 
         /// <summary>
@@ -32,32 +32,32 @@ namespace Twilio.Jwt.AccessToken
         /// <returns>the grant payload</returns>
         public object Payload
         {
-			get
-			{
-				var payload = new Dictionary<string, object>();
-				if (OutgoingApplicationSid != null)
-				{
-					var outgoing = new Dictionary<string, object> { { "application_sid", OutgoingApplicationSid } };
-					if (OutgoingApplicationParams != null)
-					{
-						outgoing.Add("params", OutgoingApplicationParams);
-					}
+            get
+            {
+                var payload = new Dictionary<string, object>();
+                if (OutgoingApplicationSid != null)
+                {
+                    var outgoing = new Dictionary<string, object> { { "application_sid", OutgoingApplicationSid } };
+                    if (OutgoingApplicationParams != null)
+                    {
+                        outgoing.Add("params", OutgoingApplicationParams);
+                    }
 
-					payload.Add("outgoing", outgoing);
-				}
+                    payload.Add("outgoing", outgoing);
+                }
 
-				if (PushCredentialSid != null)
-				{
-					payload.Add("push_credential_sid", PushCredentialSid);
-				}
+                if (PushCredentialSid != null)
+                {
+                    payload.Add("push_credential_sid", PushCredentialSid);
+                }
 
-				if (EndpointId != null)
-				{
-					payload.Add("endpoint_id", EndpointId);
-				}
+                if (EndpointId != null)
+                {
+                    payload.Add("endpoint_id", EndpointId);
+                }
 
-				return payload;
-			}
+                return payload;
+            }
         }
     }
 }

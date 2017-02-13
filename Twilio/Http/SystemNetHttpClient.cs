@@ -80,9 +80,9 @@ namespace Twilio.Http
         private HttpRequestMessage BuildHttpRequest(Request request)
         {
             var httpRequest = new HttpRequestMessage(
-				new System.Net.Http.HttpMethod(request.Method.ToString()), 
+                new System.Net.Http.HttpMethod(request.Method.ToString()), 
                 request.ConstructUrl()
-			);
+            );
 
             var authBytes = Authentication(request.Username, request.Password);
             httpRequest.Headers.Authorization = new AuthenticationHeaderValue("Basic", authBytes);

@@ -14,31 +14,31 @@ namespace Twilio.Jwt.AccessToken
         /// </summary>
         ///
         /// <returns>grant key</returns>
-		public string Key
-		{
-			get
-			{
-				return "rtc";
-			}
-		}
+        public string Key
+        {
+            get
+            {
+                return "rtc";
+            }
+        }
 
-		/// <summary>
+        /// <summary>
         /// Get the grant payload
         /// </summary>
         ///
         /// <returns>grant payload</returns>
-		public object Payload
-		{
-			get
-			{
-				var payload = new Dictionary<string, string>();
-				if (ConfigurationProfileSid != null)
-				{
-					payload.Add("configuration_profile_sid", ConfigurationProfileSid);
-				}
+        public object Payload
+        {
+            get
+            {
+                var payload = new Dictionary<string, string>();
+                if (ConfigurationProfileSid != null)
+                {
+                    payload.Add("configuration_profile_sid", ConfigurationProfileSid);
+                }
 
-				return payload;
-			}
-		}
+                return payload;
+            }
+        }
     }
 }

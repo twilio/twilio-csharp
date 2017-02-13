@@ -10,13 +10,13 @@
         /// </summary>
         ///
         /// <returns>String - the name of the grant</returns>
-		string Key { get; }
+        string Key { get; }
 
         /// <summary>
         /// Get the data of the grant
         /// </summary>
         ///
         /// <returns>Object - the data of the grant</returns>
-		object Payload { get; }
+        object Payload { get; }
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Twilio.Jwt
 {
-	public interface IScope
-	{
-		string Payload { get; }
-	}
+    public interface IScope
+    {
+        string Payload { get; }
+    }
 }

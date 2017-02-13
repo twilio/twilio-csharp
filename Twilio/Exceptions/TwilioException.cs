@@ -2,14 +2,14 @@
 
 namespace Twilio.Exceptions
 {
-	public class TwilioException : Exception
-	{
-		public TwilioException() {}
+    public class TwilioException : Exception
+    {
+        public TwilioException() {}
 
-		public TwilioException (string message) : base(message) {}
+        public TwilioException (string message) : base(message) {}
 
-		public TwilioException(string message, Exception exception) : base(message, exception) {}
-	}
+        public TwilioException(string message, Exception exception) : base(message, exception) {}
+    }
 
     public class ApiConnectionException : TwilioException
     {
@@ -28,7 +28,7 @@ namespace Twilio.Exceptions
         public string Param { get; }
 
         public InvalidRequestException(string message, string param, Exception exception) : base(message, exception) 
-		{
+        {
             Param = param;
         }
     }

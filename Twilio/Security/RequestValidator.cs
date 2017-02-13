@@ -15,11 +15,11 @@ namespace Twilio.Security
             _hmac = new HMACSHA1(Encoding.UTF8.GetBytes(secret));
         }
 
-		public bool Validate(string url, NameValueCollection parameters, string expected)
-		{
-			var signature = GetValidationSignature(url, ToDictionary(parameters));
-			return SecureCompare(signature, expected);
-		}
+        public bool Validate(string url, NameValueCollection parameters, string expected)
+        {
+            var signature = GetValidationSignature(url, ToDictionary(parameters));
+            return SecureCompare(signature, expected);
+        }
 
         public bool Validate(string url, IDictionary<string, string> parameters, string expected)
         {
@@ -27,15 +27,15 @@ namespace Twilio.Security
             return SecureCompare(signature, expected);
         }
 
-		private static IDictionary<string, string> ToDictionary(NameValueCollection col)
-		{
-			var dict = new Dictionary<string, string>();
-			foreach (var k in col.AllKeys)
-			{
-				dict.Add(k, col[k]);
-			}
-			return dict;
-		}
+        private static IDictionary<string, string> ToDictionary(NameValueCollection col)
+        {
+            var dict = new Dictionary<string, string>();
+            foreach (var k in col.AllKeys)
+            {
+                dict.Add(k, col[k]);
+            }
+            return dict;
+        }
 
         private string GetValidationSignature(string url, IDictionary<string, string> parameters)
         {
