@@ -24,3 +24,6 @@ if ($lastExitCode -ne 0) { exit $lastExitCode }
 
 dotnet run --framework netcoreapp1.1 --project .\test\Twilio.Test\Twilio.Test.csproj
 if ($lastExitCode -ne 0) { exit $lastExitCode }
+
+msbuild .\src\Twilio\Twilio.csproj /t:pack /p:TargetFramework=netstandard1.4 /p:Configuration=Release /verbosity:minimal
+if ($lastExitCode -ne 0) { exit $lastExitCode }
