@@ -1,4 +1,4 @@
-﻿#if NET40
+﻿#if !NET35
 using System;
 using System.Collections.Generic;
 using NUnit.Framework;
