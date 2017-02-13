@@ -1,13 +1,9 @@
-﻿using System;
+﻿#if NET40
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using Twilio.Jwt;
 using Twilio.Jwt.Client;
-#if NET35
-using JWT;
-
-// TODO: Implement .NET 3.5 friendly tests
-#else
 using System.IdentityModel.Tokens.Jwt;
 
 namespace Twilio.Tests.Jwt.Client
