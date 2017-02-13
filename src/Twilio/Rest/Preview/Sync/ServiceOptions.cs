@@ -73,6 +73,10 @@ namespace Twilio.Rest.Preview.Sync
         /// The reachability_webhooks_enabled
         /// </summary>
         public bool? ReachabilityWebhooksEnabled { get; set; }
+        /// <summary>
+        /// The acl_enabled
+        /// </summary>
+        public bool? AclEnabled { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -93,6 +97,11 @@ namespace Twilio.Rest.Preview.Sync
             if (ReachabilityWebhooksEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString()));
+            }
+            
+            if (AclEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString()));
             }
             
             return p;
@@ -134,6 +143,10 @@ namespace Twilio.Rest.Preview.Sync
         /// The reachability_webhooks_enabled
         /// </summary>
         public bool? ReachabilityWebhooksEnabled { get; set; }
+        /// <summary>
+        /// The acl_enabled
+        /// </summary>
+        public bool? AclEnabled { get; set; }
     
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -164,6 +177,11 @@ namespace Twilio.Rest.Preview.Sync
             if (ReachabilityWebhooksEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString()));
+            }
+            
+            if (AclEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString()));
             }
             
             return p;

@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch a specific members of the queue
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch a specific members of the queue
         /// </summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
         /// </summary>
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
         /// </summary>
@@ -189,7 +189,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return new ResourceSet<MemberResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of members in the queue
         /// </summary>
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of members in the queue
         /// </summary>

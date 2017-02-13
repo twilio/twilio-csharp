@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return new ResourceSet<CredentialListResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of Credentials belonging to the account used to make the request
         /// </summary>
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of Credentials belonging to the account used to make the request
         /// </summary>
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Add a Credential to the list
         /// </summary>
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Add a Credential to the list
         /// </summary>
@@ -206,7 +206,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a specific Credential in a list
         /// </summary>
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a specific Credential in a list
         /// </summary>
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Change the password of a Credential record
         /// </summary>
@@ -308,7 +308,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Change the password of a Credential record
         /// </summary>
@@ -350,7 +350,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Remove a credential from a CredentialList
         /// </summary>
@@ -380,7 +380,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Remove a credential from a CredentialList
         /// </summary>

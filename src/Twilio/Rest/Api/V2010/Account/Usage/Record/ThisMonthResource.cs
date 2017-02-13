@@ -137,7 +137,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             return new ResourceSet<ThisMonthResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>

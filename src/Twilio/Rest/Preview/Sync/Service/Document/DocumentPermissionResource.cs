@@ -37,7 +37,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch a specific Sync Document Permission.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch a specific Sync Document Permission.
         /// </summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete a specific Sync Document Permission.
         /// </summary>
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete a specific Sync Document Permission.
         /// </summary>
@@ -185,7 +185,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             return new ResourceSet<DocumentPermissionResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Document.
         /// </summary>
@@ -219,7 +219,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Document.
         /// </summary>
@@ -283,7 +283,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Update an identity's access to a specific Sync Document.
         /// </summary>
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Update an identity's access to a specific Sync Document.
         /// </summary>

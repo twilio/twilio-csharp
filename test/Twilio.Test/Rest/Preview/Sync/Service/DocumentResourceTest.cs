@@ -22,14 +22,14 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Preview,
-                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/Sid",
+                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
             
             try
             {
-                DocumentResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sid", client: twilioRestClient);
+                DocumentResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -47,7 +47,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"created_by\": \"created_by\",\"data\": {},\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"revision\": \"revision\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"permissions\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions\"}}"
                                      ));
             
-            var response = DocumentResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sid", client: twilioRestClient);
+            var response = DocumentResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -58,14 +58,14 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.Delete,
                 Twilio.Rest.Domain.Preview,
-                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/Sid",
+                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
             
             try
             {
-                DocumentResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sid", client: twilioRestClient);
+                DocumentResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -83,7 +83,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
                                          "null"
                                      ));
             
-            var response = DocumentResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sid", client: twilioRestClient);
+            var response = DocumentResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -181,7 +181,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Preview,
-                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/Sid",
+                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 ""
             );
             request.AddPostParam("Data", Serialize("{}"));
@@ -189,7 +189,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
             
             try
             {
-                DocumentResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sid", "{}", client: twilioRestClient);
+                DocumentResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "{}", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -207,7 +207,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"created_by\": \"created_by\",\"data\": {},\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"revision\": \"revision\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"permissions\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents/ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions\"}}"
                                      ));
             
-            var response = DocumentResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Sid", "{}", client: twilioRestClient);
+            var response = DocumentResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "{}", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

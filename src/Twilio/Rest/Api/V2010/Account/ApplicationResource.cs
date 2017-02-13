@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Create a new application within your account
         /// </summary>
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Create a new application within your account
         /// </summary>
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete the application by the specified application sid
         /// </summary>
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete the application by the specified application sid
         /// </summary>
@@ -207,7 +207,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch the application specified by the provided sid
         /// </summary>
@@ -237,7 +237,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch the application specified by the provided sid
         /// </summary>
@@ -280,7 +280,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new ResourceSet<ApplicationResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of applications representing an application within the requesting account
         /// </summary>
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of applications representing an application within the requesting account
         /// </summary>
@@ -378,7 +378,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Updates the application's properties
         /// </summary>
@@ -423,7 +423,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Updates the application's properties
         /// </summary>

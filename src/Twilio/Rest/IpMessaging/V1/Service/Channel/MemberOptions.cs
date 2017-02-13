@@ -235,7 +235,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             
             if (LastConsumedMessageIndex != null)
             {
-                p.Add(new KeyValuePair<string, string>("LastConsumedMessageIndex", LastConsumedMessageIndex.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("LastConsumedMessageIndex", LastConsumedMessageIndex.ToString()));
             }
             
             return p;

@@ -1,7 +1,8 @@
 ﻿
 using System.Net;
 using Twilio.Exceptions;
-#if NET40
+
+#if !NET35
 using System.Threading.Tasks;
 #endif
 
@@ -59,7 +60,7 @@ namespace Twilio.Clients
             return ProcessResponse(response);
         }
 
-        #if NET40
+#if !NET35
         /// <summary>
         /// Make a request to the Twilio API
         /// </summary>
@@ -76,12 +77,12 @@ namespace Twilio.Clients
         {
             return new SystemNetHttpClient();
         }
-        #else
+#else
         private static HttpClient DefaultClient()
         {
             return new WebRequestClient();
         }
-        #endif
+#endif
 
         private static Response ProcessResponse(Response response)
         {

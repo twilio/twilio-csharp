@@ -37,7 +37,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>

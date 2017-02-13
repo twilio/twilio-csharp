@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch a notification belonging to the account used to make the request
         /// </summary>
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch a notification belonging to the account used to make the request
         /// </summary>
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete a notification identified by the NotificationSid from an accounts log
         /// </summary>
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete a notification identified by the NotificationSid from an accounts log
         /// </summary>
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new ResourceSet<NotificationResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of notifications belonging to the account used to make the request
         /// </summary>
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of notifications belonging to the account used to make the request
         /// </summary>

@@ -39,7 +39,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             return new ResourceSet<TaskQueuesStatisticsResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>

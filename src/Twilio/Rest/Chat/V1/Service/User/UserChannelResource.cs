@@ -50,7 +50,7 @@ namespace Twilio.Rest.Chat.V1.Service.User
             return new ResourceSet<UserChannelResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Chat.V1.Service.User
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>

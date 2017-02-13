@@ -111,11 +111,11 @@ namespace Twilio.Base
 
         private static MethodInfo GetNextPage()
         {
-            #if NET40
+#if !NET35
             return typeof(T).GetRuntimeMethod("NextPage", new[]{ typeof(Page<T>), typeof(ITwilioRestClient) });
-            #else
+#else
             return typeof(T).GetMethod("NextPage", new[]{ typeof(Page<T>), typeof(ITwilioRestClient) });
-            #endif
+#endif
         }
     }
 }

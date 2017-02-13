@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch an instance of a conference
         /// </summary>
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch an instance of a conference
         /// </summary>
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new ResourceSet<ConferenceResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of conferences belonging to the account used to make the request
         /// </summary>
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of conferences belonging to the account used to make the request
         /// </summary>
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>
@@ -272,7 +272,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>

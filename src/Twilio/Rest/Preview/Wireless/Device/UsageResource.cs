@@ -37,7 +37,7 @@ namespace Twilio.Rest.Preview.Wireless.Device
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Preview.Wireless.Device
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>

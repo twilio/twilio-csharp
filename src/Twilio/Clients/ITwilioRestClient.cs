@@ -30,7 +30,7 @@ namespace Twilio.Clients
         /// <returns>response of the request</returns>
         Response Request(Request request);
 
-        #if NET40
+#if !NET35
         /// <summary>
         /// Make a request to Twilio
         /// </summary>
@@ -38,7 +38,7 @@ namespace Twilio.Clients
         /// <param name="request">Request to make</param>
         /// <returns>response of the request</returns>
         System.Threading.Tasks.Task<Response> RequestAsync(Request request);
-        #endif
+#endif
     }
 }
 

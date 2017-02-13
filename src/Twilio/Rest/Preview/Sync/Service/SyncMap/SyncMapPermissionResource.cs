@@ -37,7 +37,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch a specific Sync Map Permission.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch a specific Sync Map Permission.
         /// </summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete a specific Sync Map Permission.
         /// </summary>
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete a specific Sync Map Permission.
         /// </summary>
@@ -185,7 +185,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return new ResourceSet<SyncMapPermissionResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Map.
         /// </summary>
@@ -219,7 +219,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Map.
         /// </summary>
@@ -283,7 +283,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Update an identity's access to a specific Sync Map.
         /// </summary>
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Update an identity's access to a specific Sync Map.
         /// </summary>

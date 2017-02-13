@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return new ResourceSet<CredentialResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>
@@ -360,7 +360,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>
@@ -391,7 +391,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>

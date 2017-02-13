@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch an instance of a feedback entry for a call
         /// </summary>
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch an instance of a feedback entry for a call
         /// </summary>
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Create or update a feedback entry for a call
         /// </summary>
@@ -231,7 +231,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Create or update a feedback entry for a call
         /// </summary>

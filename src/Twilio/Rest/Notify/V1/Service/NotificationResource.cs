@@ -47,7 +47,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>

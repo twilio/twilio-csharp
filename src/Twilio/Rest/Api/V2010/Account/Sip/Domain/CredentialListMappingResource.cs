@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return new ResourceSet<CredentialListMappingResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -283,7 +283,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>

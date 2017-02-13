@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return new ResourceSet<IpAccessControlListResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of ip-access-control-lists belonging to the account used to make the request
         /// </summary>
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of ip-access-control-lists belonging to the account used to make the request
         /// </summary>
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Create a new IpAccessControlList resource
         /// </summary>
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Create a new IpAccessControlList resource
         /// </summary>
@@ -206,7 +206,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch a specific instance of an IpAccessControlList
         /// </summary>
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch a specific instance of an IpAccessControlList
         /// </summary>
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Rename an IpAccessControlList
         /// </summary>
@@ -308,7 +308,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Rename an IpAccessControlList
         /// </summary>
@@ -350,7 +350,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete an IpAccessControlList from the requested account
         /// </summary>
@@ -380,7 +380,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete an IpAccessControlList from the requested account
         /// </summary>

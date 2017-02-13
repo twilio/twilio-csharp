@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch an instance of an Add-on result
         /// </summary>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch an instance of an Add-on result
         /// </summary>
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return new ResourceSet<AddOnResultResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of results belonging to the recording
         /// </summary>
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of results belonging to the recording
         /// </summary>
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete a result and purge all associated Payloads
         /// </summary>
@@ -257,7 +257,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete a result and purge all associated Payloads
         /// </summary>

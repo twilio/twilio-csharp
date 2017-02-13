@@ -6,12 +6,22 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Chat.V1.Service.Channel 
 {
 
     public class MessageResource : Resource 
     {
+        public sealed class OrderTypeEnum : StringEnum 
+        {
+            private OrderTypeEnum(string value) : base(value) {}
+            public OrderTypeEnum() {}
+        
+            public static readonly OrderTypeEnum Asc = new OrderTypeEnum("asc");
+            public static readonly OrderTypeEnum Desc = new OrderTypeEnum("desc");
+        }
+    
         private static Request BuildFetchRequest(FetchMessageOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -37,7 +47,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -68,7 +78,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -110,7 +120,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -143,7 +153,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -189,7 +199,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return new ResourceSet<MessageResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -213,30 +223,32 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="order"> The order </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
-        public static ResourceSet<MessageResource> Read(string serviceSid, string channelSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<MessageResource> Read(string serviceSid, string channelSid, MessageResource.OrderTypeEnum order = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMessageOptions(serviceSid, channelSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadMessageOptions(serviceSid, channelSid){Order = order, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
         ///
         /// <param name="serviceSid"> The service_sid </param>
         /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="order"> The order </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(string serviceSid, string channelSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(string serviceSid, string channelSid, MessageResource.OrderTypeEnum order = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMessageOptions(serviceSid, channelSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadMessageOptions(serviceSid, channelSid){Order = order, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -287,7 +299,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>
@@ -318,7 +330,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>
@@ -360,7 +372,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>
@@ -393,7 +405,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>

@@ -40,7 +40,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             return new ResourceSet<CountryResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>

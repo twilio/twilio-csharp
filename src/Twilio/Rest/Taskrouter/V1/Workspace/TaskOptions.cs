@@ -181,10 +181,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string TaskQueueName { get; set; }
         /// <summary>
-        /// The task_channel
-        /// </summary>
-        public string TaskChannel { get; set; }
-        /// <summary>
         /// The evaluate_task_attributes
         /// </summary>
         public string EvaluateTaskAttributes { get; set; }
@@ -242,11 +238,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (TaskQueueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskQueueName", TaskQueueName));
-            }
-            
-            if (TaskChannel != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
             }
             
             if (EvaluateTaskAttributes != null)

@@ -64,7 +64,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Send a message from the account used to make the request
         /// </summary>
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Send a message from the account used to make the request
         /// </summary>
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Deletes a message record from your account
         /// </summary>
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Deletes a message record from your account
         /// </summary>
@@ -222,7 +222,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch a message belonging to the account used to make the request
         /// </summary>
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch a message belonging to the account used to make the request
         /// </summary>
@@ -295,7 +295,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new ResourceSet<MessageResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of messages belonging to the account used to make the request
         /// </summary>
@@ -333,7 +333,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of messages belonging to the account used to make the request
         /// </summary>
@@ -401,7 +401,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
         /// </summary>
@@ -432,7 +432,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
         /// </summary>

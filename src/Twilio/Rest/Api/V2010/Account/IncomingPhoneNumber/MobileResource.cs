@@ -51,7 +51,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return new ResourceSet<MobileResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>

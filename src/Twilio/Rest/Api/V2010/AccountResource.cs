@@ -57,7 +57,7 @@ namespace Twilio.Rest.Api.V2010
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Create a new Twilio Subaccount from the account making the request
         /// </summary>
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Create a new Twilio Subaccount from the account making the request
         /// </summary>
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Api.V2010
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch the account specified by the provided Account Sid
         /// </summary>
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Api.V2010
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch the account specified by the provided Account Sid
         /// </summary>
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Api.V2010
             return new ResourceSet<AccountResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieves a collection of Accounts belonging to the account used to make the request
         /// </summary>
@@ -231,7 +231,7 @@ namespace Twilio.Rest.Api.V2010
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieves a collection of Accounts belonging to the account used to make the request
         /// </summary>
@@ -295,7 +295,7 @@ namespace Twilio.Rest.Api.V2010
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>
@@ -326,7 +326,7 @@ namespace Twilio.Rest.Api.V2010
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>

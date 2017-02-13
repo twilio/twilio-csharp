@@ -24,11 +24,11 @@ namespace Twilio.Converters
         {
             if (reader.Value == null)
             {
-                #if NET40
+#if !NET35
                 if (objectType.GenericTypeArguments.Length == 0) 
-                #else
+#else
                 if (objectType.GetGenericArguments().Length == 0)
-                #endif
+#endif
                 {
                     return null;
                 }
@@ -62,20 +62,20 @@ namespace Twilio.Converters
         {
             var listType = typeof(List<>);
 
-            #if NET40
+#if !NET35
             return listType.MakeGenericType(objectType.GenericTypeArguments[0]);
-            #else
+#else
             return listType.MakeGenericType(objectType.GetGenericArguments()[0]);
-            #endif
+#endif
         }
 
         private static StringEnum CreateEnum(Type objectType)
         {
-            #if NET40
+#if !NET35
             return (StringEnum) Activator.CreateInstance(objectType.GenericTypeArguments[0]);
-            #else
+#else
             return (StringEnum) Activator.CreateInstance(objectType.GetGenericArguments()[0]);
-            #endif
+#endif
         }
     }
 

@@ -39,7 +39,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return new ResourceSet<WorkerChannelResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>

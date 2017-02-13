@@ -22,14 +22,14 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Preview,
-                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MapSid/Permissions/Identity",
+                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/Identity",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
             
             try
             {
-                SyncMapPermissionResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MapSid", "Identity", client: twilioRestClient);
+                SyncMapPermissionResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -47,7 +47,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"map_sid\": \"MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"identity\",\"read\": true,\"write\": true,\"manage\": true,\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/identity\"}"
                                      ));
             
-            var response = SyncMapPermissionResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MapSid", "Identity", client: twilioRestClient);
+            var response = SyncMapPermissionResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity", client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -58,14 +58,14 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             var request = new Request(
                 HttpMethod.Delete,
                 Twilio.Rest.Domain.Preview,
-                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MapSid/Permissions/Identity",
+                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/Identity",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
             
             try
             {
-                SyncMapPermissionResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MapSid", "Identity", client: twilioRestClient);
+                SyncMapPermissionResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -83,7 +83,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
                                          "null"
                                      ));
             
-            var response = SyncMapPermissionResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MapSid", "Identity", client: twilioRestClient);
+            var response = SyncMapPermissionResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity", client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -94,14 +94,14 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Preview,
-                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MapSid/Permissions",
+                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
             
             try
             {
-                SyncMapPermissionResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MapSid", client: twilioRestClient);
+                SyncMapPermissionResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -119,7 +119,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
                                          "{\"permissions\": [],\"meta\": {\"first_page_url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/sidOrUniqueName/Permissions?PageSize=50&Page=0\",\"key\": \"permissions\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/sidOrUniqueName/Permissions?PageSize=50&Page=0\"}}"
                                      ));
             
-            var response = SyncMapPermissionResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MapSid", client: twilioRestClient);
+            var response = SyncMapPermissionResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -134,7 +134,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
                                          "{\"permissions\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"map_sid\": \"MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"identity\",\"read\": true,\"write\": true,\"manage\": true,\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/identity\"}],\"meta\": {\"first_page_url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/sidOrUniqueName/Permissions?PageSize=50&Page=0\",\"key\": \"permissions\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/sidOrUniqueName/Permissions?PageSize=50&Page=0\"}}"
                                      ));
             
-            var response = SyncMapPermissionResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MapSid", client: twilioRestClient);
+            var response = SyncMapPermissionResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -145,7 +145,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Preview,
-                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MapSid/Permissions/Identity",
+                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/Identity",
                 ""
             );
             request.AddPostParam("Read", Serialize(true));
@@ -155,7 +155,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
             
             try
             {
-                SyncMapPermissionResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MapSid", "Identity", true, true, true, client: twilioRestClient);
+                SyncMapPermissionResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity", true, true, true, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -173,7 +173,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"map_sid\": \"MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"identity\",\"read\": true,\"write\": true,\"manage\": true,\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/identity\"}"
                                      ));
             
-            var response = SyncMapPermissionResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MapSid", "Identity", true, true, true, client: twilioRestClient);
+            var response = SyncMapPermissionResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity", true, true, true, client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

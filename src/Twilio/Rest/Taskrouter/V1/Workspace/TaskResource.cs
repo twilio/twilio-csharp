@@ -50,7 +50,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>
@@ -202,7 +202,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>
@@ -232,7 +232,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>
@@ -275,7 +275,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return new ResourceSet<TaskResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -304,7 +304,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workflowName"> The workflow_name </param>
         /// <param name="taskQueueSid"> The task_queue_sid </param>
         /// <param name="taskQueueName"> The task_queue_name </param>
-        /// <param name="taskChannel"> The task_channel </param>
         /// <param name="evaluateTaskAttributes"> The evaluate_task_attributes </param>
         /// <param name="ordering"> The ordering </param>
         /// <param name="hasAddons"> The has_addons </param>
@@ -312,13 +311,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns> 
-        public static ResourceSet<TaskResource> Read(string workspaceSid, int? priority = null, List<string> assignmentStatus = null, string workflowSid = null, string workflowName = null, string taskQueueSid = null, string taskQueueName = null, string taskChannel = null, string evaluateTaskAttributes = null, string ordering = null, bool? hasAddons = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<TaskResource> Read(string workspaceSid, int? priority = null, List<string> assignmentStatus = null, string workflowSid = null, string workflowName = null, string taskQueueSid = null, string taskQueueName = null, string evaluateTaskAttributes = null, string ordering = null, bool? hasAddons = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTaskOptions(workspaceSid){Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, TaskChannel = taskChannel, EvaluateTaskAttributes = evaluateTaskAttributes, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit};
+            var options = new ReadTaskOptions(workspaceSid){Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, EvaluateTaskAttributes = evaluateTaskAttributes, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -330,7 +329,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workflowName"> The workflow_name </param>
         /// <param name="taskQueueSid"> The task_queue_sid </param>
         /// <param name="taskQueueName"> The task_queue_name </param>
-        /// <param name="taskChannel"> The task_channel </param>
         /// <param name="evaluateTaskAttributes"> The evaluate_task_attributes </param>
         /// <param name="ordering"> The ordering </param>
         /// <param name="hasAddons"> The has_addons </param>
@@ -338,9 +336,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(string workspaceSid, int? priority = null, List<string> assignmentStatus = null, string workflowSid = null, string workflowName = null, string taskQueueSid = null, string taskQueueName = null, string taskChannel = null, string evaluateTaskAttributes = null, string ordering = null, bool? hasAddons = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(string workspaceSid, int? priority = null, List<string> assignmentStatus = null, string workflowSid = null, string workflowName = null, string taskQueueSid = null, string taskQueueName = null, string evaluateTaskAttributes = null, string ordering = null, bool? hasAddons = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTaskOptions(workspaceSid){Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, TaskChannel = taskChannel, EvaluateTaskAttributes = evaluateTaskAttributes, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit};
+            var options = new ReadTaskOptions(workspaceSid){Priority = priority, AssignmentStatus = assignmentStatus, WorkflowSid = workflowSid, WorkflowName = workflowName, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, EvaluateTaskAttributes = evaluateTaskAttributes, Ordering = ordering, HasAddons = hasAddons, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -391,7 +389,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -425,7 +423,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>

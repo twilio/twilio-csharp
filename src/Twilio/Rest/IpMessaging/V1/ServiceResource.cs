@@ -37,7 +37,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -106,7 +106,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>
@@ -135,7 +135,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>
@@ -175,7 +175,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -204,7 +204,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -246,7 +246,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return new ResourceSet<ServiceResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -278,7 +278,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -340,7 +340,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>
@@ -437,7 +437,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>

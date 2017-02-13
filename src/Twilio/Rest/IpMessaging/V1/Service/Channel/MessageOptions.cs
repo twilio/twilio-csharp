@@ -116,6 +116,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// The channel_sid
         /// </summary>
         public string ChannelSid { get; }
+        /// <summary>
+        /// The order
+        /// </summary>
+        public MessageResource.OrderTypeEnum Order { get; set; }
     
         /// <summary>
         /// Construct a new ReadMessageOptions
@@ -135,6 +139,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (Order != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Order", Order.ToString()));
+            }
+            
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

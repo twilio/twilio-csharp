@@ -22,14 +22,14 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Preview,
-                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ListSid/Permissions/Identity",
+                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/Identity",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
             
             try
             {
-                SyncListPermissionResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ListSid", "Identity", client: twilioRestClient);
+                SyncListPermissionResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -47,7 +47,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"list_sid\": \"ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"identity\",\"read\": true,\"write\": true,\"manage\": true,\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/identity\"}"
                                      ));
             
-            var response = SyncListPermissionResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ListSid", "Identity", client: twilioRestClient);
+            var response = SyncListPermissionResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity", client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -58,14 +58,14 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
             var request = new Request(
                 HttpMethod.Delete,
                 Twilio.Rest.Domain.Preview,
-                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ListSid/Permissions/Identity",
+                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/Identity",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
             
             try
             {
-                SyncListPermissionResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ListSid", "Identity", client: twilioRestClient);
+                SyncListPermissionResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -83,7 +83,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
                                          "null"
                                      ));
             
-            var response = SyncListPermissionResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ListSid", "Identity", client: twilioRestClient);
+            var response = SyncListPermissionResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity", client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -94,14 +94,14 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Preview,
-                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ListSid/Permissions",
+                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
             
             try
             {
-                SyncListPermissionResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ListSid", client: twilioRestClient);
+                SyncListPermissionResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -119,7 +119,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
                                          "{\"permissions\": [],\"meta\": {\"first_page_url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/sidOrUniqueName/Permissions?PageSize=50&Page=0\",\"key\": \"permissions\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/sidOrUniqueName/Permissions?PageSize=50&Page=0\"}}"
                                      ));
             
-            var response = SyncListPermissionResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ListSid", client: twilioRestClient);
+            var response = SyncListPermissionResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -134,7 +134,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
                                          "{\"permissions\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"list_sid\": \"ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"identity\",\"read\": true,\"write\": true,\"manage\": true,\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/identity\"}],\"meta\": {\"first_page_url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/sidOrUniqueName/Permissions?PageSize=50&Page=0\",\"key\": \"permissions\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/sidOrUniqueName/Permissions?PageSize=50&Page=0\"}}"
                                      ));
             
-            var response = SyncListPermissionResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ListSid", client: twilioRestClient);
+            var response = SyncListPermissionResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
     
@@ -145,7 +145,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Preview,
-                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ListSid/Permissions/Identity",
+                "/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/Identity",
                 ""
             );
             request.AddPostParam("Read", Serialize(true));
@@ -155,7 +155,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
             
             try
             {
-                SyncListPermissionResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ListSid", "Identity", true, true, true, client: twilioRestClient);
+                SyncListPermissionResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity", true, true, true, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -173,7 +173,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"list_sid\": \"ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"identity\",\"read\": true,\"write\": true,\"manage\": true,\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Permissions/identity\"}"
                                      ));
             
-            var response = SyncListPermissionResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ListSid", "Identity", true, true, true, client: twilioRestClient);
+            var response = SyncListPermissionResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Identity", true, true, true, client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

@@ -56,7 +56,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>
@@ -202,7 +202,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -233,7 +233,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return new ResourceSet<SyncListItemResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -381,7 +381,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>
@@ -413,7 +413,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>

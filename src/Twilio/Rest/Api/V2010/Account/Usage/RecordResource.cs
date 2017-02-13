@@ -137,7 +137,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return new ResourceSet<RecordResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>

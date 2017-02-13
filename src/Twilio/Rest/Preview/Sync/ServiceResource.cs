@@ -37,7 +37,7 @@ namespace Twilio.Rest.Preview.Sync
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Preview.Sync
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// fetch
         /// </summary>
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Preview.Sync
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Preview.Sync
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// delete
         /// </summary>
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Preview.Sync
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -198,15 +198,16 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="webhookUrl"> The webhook_url </param>
         /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
+        /// <param name="aclEnabled"> The acl_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Create(string friendlyName = null, Uri webhookUrl = null, bool? reachabilityWebhooksEnabled = null, ITwilioRestClient client = null)
+        public static ServiceResource Create(string friendlyName = null, Uri webhookUrl = null, bool? reachabilityWebhooksEnabled = null, bool? aclEnabled = null, ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions{FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled};
+            var options = new CreateServiceOptions{FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -214,11 +215,12 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="webhookUrl"> The webhook_url </param>
         /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
+        /// <param name="aclEnabled"> The acl_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null, Uri webhookUrl = null, bool? reachabilityWebhooksEnabled = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null, Uri webhookUrl = null, bool? reachabilityWebhooksEnabled = null, bool? aclEnabled = null, ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions{FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled};
+            var options = new CreateServiceOptions{FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -250,7 +252,7 @@ namespace Twilio.Rest.Preview.Sync
             return new ResourceSet<ServiceResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -282,7 +284,7 @@ namespace Twilio.Rest.Preview.Sync
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -344,7 +346,7 @@ namespace Twilio.Rest.Preview.Sync
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>
@@ -368,15 +370,16 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="webhookUrl"> The webhook_url </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
+        /// <param name="aclEnabled"> The acl_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Update(string sid, Uri webhookUrl = null, string friendlyName = null, bool? reachabilityWebhooksEnabled = null, ITwilioRestClient client = null)
+        public static ServiceResource Update(string sid, Uri webhookUrl = null, string friendlyName = null, bool? reachabilityWebhooksEnabled = null, bool? aclEnabled = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(sid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled};
+            var options = new UpdateServiceOptions(sid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// update
         /// </summary>
@@ -385,11 +388,12 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="webhookUrl"> The webhook_url </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
+        /// <param name="aclEnabled"> The acl_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string sid, Uri webhookUrl = null, string friendlyName = null, bool? reachabilityWebhooksEnabled = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string sid, Uri webhookUrl = null, string friendlyName = null, bool? reachabilityWebhooksEnabled = null, bool? aclEnabled = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(sid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled};
+            var options = new UpdateServiceOptions(sid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -453,6 +457,11 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         [JsonProperty("reachability_webhooks_enabled")]
         public bool? ReachabilityWebhooksEnabled { get; private set; }
+        /// <summary>
+        /// The acl_enabled
+        /// </summary>
+        [JsonProperty("acl_enabled")]
+        public bool? AclEnabled { get; private set; }
         /// <summary>
         /// The links
         /// </summary>

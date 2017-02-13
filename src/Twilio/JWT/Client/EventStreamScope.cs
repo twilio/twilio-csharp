@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#if NET40
+#if !NET35
 using System.Net;
 #else
 using System.Web;
@@ -50,7 +50,7 @@ namespace Twilio.Jwt.Client
 
         private string BuildParameter(string k, string v)
         {
-#if NET40
+#if !NET35
             return WebUtility.UrlEncode(k) + "=" + WebUtility.UrlEncode(v);
 #else
             return HttpUtility.UrlEncode(k) + "=" + HttpUtility.UrlEncode(v);

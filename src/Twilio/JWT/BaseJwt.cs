@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-#if NET40
+#if !NET35
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 #else
@@ -13,7 +13,7 @@ namespace Twilio.Jwt
 {
     public abstract class BaseJwt
     {
-#if NET40
+#if !NET35
         private static readonly string Algorithm = "HS256";
 #else
         private static readonly JwtHashAlgorithm Algorithm = JwtHashAlgorithm.HS256;
@@ -69,7 +69,7 @@ namespace Twilio.Jwt
             return BuildToken(headers, payload);
         }
 
-#if NET40
+#if !NET35
         private JwtHeader BuildHeaders()
         {
             return new JwtHeader(new SigningCredentials(

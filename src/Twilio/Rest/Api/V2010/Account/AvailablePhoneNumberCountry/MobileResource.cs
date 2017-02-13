@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             return new ResourceSet<MobileResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// read
         /// </summary>

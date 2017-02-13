@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch an outgoing-caller-id belonging to the account used to make the request
         /// </summary>
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Fetch(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Fetch an outgoing-caller-id belonging to the account used to make the request
         /// </summary>
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Updates the caller-id
         /// </summary>
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Update(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Updates the caller-id
         /// </summary>
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete the caller-id specified from the account
         /// </summary>
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Delete(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Delete the caller-id specified from the account
         /// </summary>
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new ResourceSet<OutgoingCallerIdResource>(page, options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
         /// </summary>
@@ -289,7 +289,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return Read(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
         /// </summary>

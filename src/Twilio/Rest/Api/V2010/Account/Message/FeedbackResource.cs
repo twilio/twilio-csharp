@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return FromJson(response.Content);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return Create(options, client);
         }
     
-        #if NET40
+        #if !NET35
         /// <summary>
         /// create
         /// </summary>
