@@ -9,7 +9,8 @@ install:
   - sudo apt-get update
   - sudo apt-get install dotnet-dev-1.0.0-rc4-004771
   - dotnet restore
-  - dotnet build
+  - dotnet build --framework netstandard1.5 src/Twilio/Twilio.csproj
+  - dotnet build --framework netcoreapp1.1 test/Twilio.Test/Twilio.Test.csproj
 
 script:
   - dotnet run --project test/Twilio.Tests/Twilio.Tests.csproj
