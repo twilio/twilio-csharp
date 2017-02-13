@@ -13,4 +13,4 @@ install:
   - dotnet build --framework netcoreapp1.1 test/Twilio.Test/Twilio.Test.csproj
 
 script:
-  - dotnet run --project test/Twilio.Tests/Twilio.Tests.csproj
+  - dotnet run --project test/Twilio.Test/Twilio.Test.csproj
