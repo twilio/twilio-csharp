@@ -2,7 +2,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <RootNamespace>Twilio.Tests</RootNamespace>
-    <TargetFrameworks>netcoreapp1.1;net35</TargetFrameworks>
+    <TargetFrameworks>netcoreapp1.1;net451;net35</TargetFrameworks>
+    <RuntimeIdentifier Condition=" '$(TargetFramework)' == 'net451' ">win7-x86</RuntimeIdentifier>
     <RuntimeIdentifier Condition=" '$(TargetFramework)' == 'net35' ">win7-x86</RuntimeIdentifier>
   </PropertyGroup>
   <ItemGroup>

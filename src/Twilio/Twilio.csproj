@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Label="NuGet">
-    <TargetFrameworks>netstandard1.4;net35</TargetFrameworks>
+    <TargetFrameworks>netstandard1.4;net451;net35</TargetFrameworks>
     <IsPackable>true</IsPackable>
     <PackageId>Twilio</PackageId>
     <Description>Twilio REST API helper library</Description>
@@ -30,6 +30,14 @@
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.1.2" />
     <PackageReference Include="Microsoft.IdentityModel.Logging" Version="1.1.2" />
     <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.1.2" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.1.2" />
+    <PackageReference Include="Microsoft.IdentityModel.Logging" Version="1.1.2" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net35' ">
     <Reference Include="System" />
