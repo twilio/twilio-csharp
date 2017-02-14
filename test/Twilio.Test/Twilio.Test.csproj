@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Twilio.Tests</RootNamespace>
+    <TargetFrameworks>netcoreapp1.1;net451;net35</TargetFrameworks>
+    <RuntimeIdentifier Condition=" '$(TargetFramework)' == 'net451' ">win7-x86</RuntimeIdentifier>
+    <RuntimeIdentifier Condition=" '$(TargetFramework)' == 'net35' ">win7-x86</RuntimeIdentifier>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.6.0" />
+    <PackageReference Include="NSubstitute" Version="2.0.0-rc" />
+    <PackageReference Include="NUnitLite" Version="3.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Twilio\Twilio.csproj" />
+  </ItemGroup>
+</Project>
