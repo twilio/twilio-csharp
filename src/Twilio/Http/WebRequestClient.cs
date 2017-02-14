@@ -20,6 +20,7 @@ namespace Twilio.Http
             {
                 var stream = GetStream(httpRequest);
                 stream.Write(request.EncodePostParams(), 0, request.EncodePostParams().Length);
+                stream.Close();
             }
 
             try
