@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch an outgoing-caller-id belonging to the account used to make the request
+    /// </summary>
     public class FetchOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
     {
         /// <summary>
@@ -36,6 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Updates the caller-id
+    /// </summary>
     public class UpdateOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
     {
         /// <summary>
@@ -76,6 +82,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Delete the caller-id specified from the account
+    /// </summary>
     public class DeleteOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
     {
         /// <summary>
@@ -107,6 +116,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
+    /// </summary>
     public class ReadOutgoingCallerIdOptions : ReadOptions<OutgoingCallerIdResource> 
     {
         /// <summary>

@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Wireless.Device 
 {
 
+    /// <summary>
+    /// UsageResource
+    /// </summary>
     public class UsageResource : Resource 
     {
         private static Request BuildFetchRequest(FetchUsageOptions options, ITwilioRestClient client)

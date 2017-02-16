@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Sip 
 {
 
+    /// <summary>
+    /// Retrieve a list of ip-access-control-lists belonging to the account used to make the request
+    /// </summary>
     public class ReadIpAccessControlListOptions : ReadOptions<IpAccessControlListResource> 
     {
         /// <summary>
@@ -27,6 +30,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Create a new IpAccessControlList resource
+    /// </summary>
     public class CreateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
@@ -63,6 +69,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Fetch a specific instance of an IpAccessControlList
+    /// </summary>
     public class FetchIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
@@ -94,6 +103,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Rename an IpAccessControlList
+    /// </summary>
     public class UpdateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
@@ -136,6 +148,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Delete an IpAccessControlList from the requested account
+    /// </summary>
     public class DeleteIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>

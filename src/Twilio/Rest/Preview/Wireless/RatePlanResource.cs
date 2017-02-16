@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Wireless 
 {
 
+    /// <summary>
+    /// RatePlanResource
+    /// </summary>
     public class RatePlanResource : Resource 
     {
         private static Request BuildReadRequest(ReadRatePlanOptions options, ITwilioRestClient client)

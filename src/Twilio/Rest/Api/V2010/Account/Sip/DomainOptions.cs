@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Sip 
 {
 
+    /// <summary>
+    /// Retrieve a list of domains belonging to the account used to make the request
+    /// </summary>
     public class ReadDomainOptions : ReadOptions<DomainResource> 
     {
         /// <summary>
@@ -27,6 +30,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Create a new Domain
+    /// </summary>
     public class CreateDomainOptions : IOptions<DomainResource> 
     {
         /// <summary>
@@ -135,6 +141,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Fetch an instance of a Domain
+    /// </summary>
     public class FetchDomainOptions : IOptions<DomainResource> 
     {
         /// <summary>
@@ -166,6 +175,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Update the attributes of a domain
+    /// </summary>
     public class UpdateDomainOptions : IOptions<DomainResource> 
     {
         /// <summary>
@@ -269,6 +281,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// DeleteDomainOptions
+    /// </summary>
     public class DeleteDomainOptions : IOptions<DomainResource> 
     {
         /// <summary>

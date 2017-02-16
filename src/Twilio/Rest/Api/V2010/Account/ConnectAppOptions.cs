@@ -6,6 +6,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch an instance of a connect-app
+    /// </summary>
     public class FetchConnectAppOptions : IOptions<ConnectAppResource> 
     {
         /// <summary>
@@ -37,6 +40,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Update a connect-app with the specified parameters
+    /// </summary>
     public class UpdateConnectAppOptions : IOptions<ConnectAppResource> 
     {
         /// <summary>
@@ -141,6 +147,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of connect-apps belonging to the account used to make the request
+    /// </summary>
     public class ReadConnectAppOptions : ReadOptions<ConnectAppResource> 
     {
         /// <summary>

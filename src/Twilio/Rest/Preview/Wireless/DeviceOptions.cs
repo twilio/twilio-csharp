@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Preview.Wireless 
 {
 
+    /// <summary>
+    /// FetchDeviceOptions
+    /// </summary>
     public class FetchDeviceOptions : IOptions<DeviceResource> 
     {
         /// <summary>
@@ -32,6 +35,9 @@ namespace Twilio.Rest.Preview.Wireless
         }
     }
 
+    /// <summary>
+    /// ReadDeviceOptions
+    /// </summary>
     public class ReadDeviceOptions : ReadOptions<DeviceResource> 
     {
         /// <summary>
@@ -77,6 +83,9 @@ namespace Twilio.Rest.Preview.Wireless
         }
     }
 
+    /// <summary>
+    /// CreateDeviceOptions
+    /// </summary>
     public class CreateDeviceOptions : IOptions<DeviceResource> 
     {
         /// <summary>
@@ -181,6 +190,9 @@ namespace Twilio.Rest.Preview.Wireless
         }
     }
 
+    /// <summary>
+    /// UpdateDeviceOptions
+    /// </summary>
     public class UpdateDeviceOptions : IOptions<DeviceResource> 
     {
         /// <summary>

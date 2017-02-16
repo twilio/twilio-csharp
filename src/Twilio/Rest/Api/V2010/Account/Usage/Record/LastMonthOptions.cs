@@ -6,6 +6,9 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Usage.Record 
 {
 
+    /// <summary>
+    /// ReadLastMonthOptions
+    /// </summary>
     public class ReadLastMonthOptions : ReadOptions<LastMonthResource> 
     {
         /// <summary>

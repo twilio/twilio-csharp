@@ -6,6 +6,9 @@ using Twilio.Converters;
 namespace Twilio.Rest.Monitor.V1 
 {
 
+    /// <summary>
+    /// FetchEventOptions
+    /// </summary>
     public class FetchEventOptions : IOptions<EventResource> 
     {
         /// <summary>
@@ -33,6 +36,9 @@ namespace Twilio.Rest.Monitor.V1
         }
     }
 
+    /// <summary>
+    /// ReadEventOptions
+    /// </summary>
     public class ReadEventOptions : ReadOptions<EventResource> 
     {
         /// <summary>

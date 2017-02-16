@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Chat.V1 
 {
 
+    /// <summary>
+    /// CredentialResource
+    /// </summary>
     public class CredentialResource : Resource 
     {
         public sealed class PushServiceEnum : StringEnum 

@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Sync.Service.SyncList 
 {
 
+    /// <summary>
+    /// SyncListPermissionResource
+    /// </summary>
     public class SyncListPermissionResource : Resource 
     {
         private static Request BuildFetchRequest(FetchSyncListPermissionOptions options, ITwilioRestClient client)

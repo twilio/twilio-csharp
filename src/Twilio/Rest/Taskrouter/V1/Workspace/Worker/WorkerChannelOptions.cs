@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
+    /// <summary>
+    /// ReadWorkerChannelOptions
+    /// </summary>
     public class ReadWorkerChannelOptions : ReadOptions<WorkerChannelResource> 
     {
         /// <summary>
@@ -43,6 +46,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     }
 
+    /// <summary>
+    /// FetchWorkerChannelOptions
+    /// </summary>
     public class FetchWorkerChannelOptions : IOptions<WorkerChannelResource> 
     {
         /// <summary>
@@ -82,6 +88,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     }
 
+    /// <summary>
+    /// UpdateWorkerChannelOptions
+    /// </summary>
     public class UpdateWorkerChannelOptions : IOptions<WorkerChannelResource> 
     {
         /// <summary>

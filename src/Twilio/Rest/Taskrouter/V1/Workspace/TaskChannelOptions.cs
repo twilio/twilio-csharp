@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
+    /// <summary>
+    /// FetchTaskChannelOptions
+    /// </summary>
     public class FetchTaskChannelOptions : IOptions<TaskChannelResource> 
     {
         /// <summary>
@@ -38,6 +41,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     }
 
+    /// <summary>
+    /// ReadTaskChannelOptions
+    /// </summary>
     public class ReadTaskChannelOptions : ReadOptions<TaskChannelResource> 
     {
         /// <summary>

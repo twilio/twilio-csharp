@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// FetchSandboxOptions
+    /// </summary>
     public class FetchSandboxOptions : IOptions<SandboxResource> 
     {
         /// <summary>
@@ -22,6 +25,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// UpdateSandboxOptions
+    /// </summary>
     public class UpdateSandboxOptions : IOptions<SandboxResource> 
     {
         /// <summary>

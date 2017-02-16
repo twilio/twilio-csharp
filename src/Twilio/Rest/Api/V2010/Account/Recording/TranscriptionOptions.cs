@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Recording 
 {
 
+    /// <summary>
+    /// FetchTranscriptionOptions
+    /// </summary>
     public class FetchTranscriptionOptions : IOptions<TranscriptionResource> 
     {
         /// <summary>
@@ -42,6 +45,9 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         }
     }
 
+    /// <summary>
+    /// DeleteTranscriptionOptions
+    /// </summary>
     public class DeleteTranscriptionOptions : IOptions<TranscriptionResource> 
     {
         /// <summary>
@@ -79,6 +85,9 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         }
     }
 
+    /// <summary>
+    /// ReadTranscriptionOptions
+    /// </summary>
     public class ReadTranscriptionOptions : ReadOptions<TranscriptionResource> 
     {
         /// <summary>

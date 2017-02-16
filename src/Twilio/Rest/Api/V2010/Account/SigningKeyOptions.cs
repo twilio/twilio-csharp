@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// FetchSigningKeyOptions
+    /// </summary>
     public class FetchSigningKeyOptions : IOptions<SigningKeyResource> 
     {
         /// <summary>
@@ -36,6 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// UpdateSigningKeyOptions
+    /// </summary>
     public class UpdateSigningKeyOptions : IOptions<SigningKeyResource> 
     {
         /// <summary>
@@ -76,6 +82,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// DeleteSigningKeyOptions
+    /// </summary>
     public class DeleteSigningKeyOptions : IOptions<SigningKeyResource> 
     {
         /// <summary>
@@ -107,6 +116,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// ReadSigningKeyOptions
+    /// </summary>
     public class ReadSigningKeyOptions : ReadOptions<SigningKeyResource> 
     {
         /// <summary>

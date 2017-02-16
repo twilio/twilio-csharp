@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
+    /// <summary>
+    /// CredentialListResource
+    /// </summary>
     public class CredentialListResource : Resource 
     {
         private static Request BuildFetchRequest(FetchCredentialListOptions options, ITwilioRestClient client)

@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Sip 
 {
 
+    /// <summary>
+    /// Retrieve a list of Credentials belonging to the account used to make the request
+    /// </summary>
     public class ReadCredentialListOptions : ReadOptions<CredentialListResource> 
     {
         /// <summary>
@@ -27,6 +30,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Add a Credential to the list
+    /// </summary>
     public class CreateCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
@@ -63,6 +69,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Retrieve a specific Credential in a list
+    /// </summary>
     public class FetchCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
@@ -94,6 +103,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Change the password of a Credential record
+    /// </summary>
     public class UpdateCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
@@ -136,6 +148,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Remove a credential from a CredentialList
+    /// </summary>
     public class DeleteCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>

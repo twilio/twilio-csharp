@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Chat.V1.Service 
 {
 
+    /// <summary>
+    /// FetchUserOptions
+    /// </summary>
     public class FetchUserOptions : IOptions<UserResource> 
     {
         /// <summary>
@@ -38,6 +41,9 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     }
 
+    /// <summary>
+    /// DeleteUserOptions
+    /// </summary>
     public class DeleteUserOptions : IOptions<UserResource> 
     {
         /// <summary>
@@ -71,6 +77,9 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     }
 
+    /// <summary>
+    /// CreateUserOptions
+    /// </summary>
     public class CreateUserOptions : IOptions<UserResource> 
     {
         /// <summary>
@@ -136,6 +145,9 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     }
 
+    /// <summary>
+    /// ReadUserOptions
+    /// </summary>
     public class ReadUserOptions : ReadOptions<UserResource> 
     {
         /// <summary>
@@ -168,6 +180,9 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     }
 
+    /// <summary>
+    /// UpdateUserOptions
+    /// </summary>
     public class UpdateUserOptions : IOptions<UserResource> 
     {
         /// <summary>

@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Queue 
 {
 
+    /// <summary>
+    /// MemberResource
+    /// </summary>
     public class MemberResource : Resource 
     {
         private static Request BuildFetchRequest(FetchMemberOptions options, ITwilioRestClient client)

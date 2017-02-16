@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch an instance of a queue identified by the QueueSid
+    /// </summary>
     public class FetchQueueOptions : IOptions<QueueResource> 
     {
         /// <summary>
@@ -36,6 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Update the queue with the new parameters
+    /// </summary>
     public class UpdateQueueOptions : IOptions<QueueResource> 
     {
         /// <summary>
@@ -85,6 +91,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Remove an empty queue
+    /// </summary>
     public class DeleteQueueOptions : IOptions<QueueResource> 
     {
         /// <summary>
@@ -116,6 +125,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of queues belonging to the account used to make the request
+    /// </summary>
     public class ReadQueueOptions : ReadOptions<QueueResource> 
     {
         /// <summary>
@@ -138,6 +150,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Create a queue
+    /// </summary>
     public class CreateQueueOptions : IOptions<QueueResource> 
     {
         /// <summary>

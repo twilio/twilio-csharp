@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
+    /// <summary>
+    /// WorkerChannelResource
+    /// </summary>
     public class WorkerChannelResource : Resource 
     {
         private static Request BuildReadRequest(ReadWorkerChannelOptions options, ITwilioRestClient client)

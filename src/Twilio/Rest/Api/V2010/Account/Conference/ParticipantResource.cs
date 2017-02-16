@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.Conference 
 {
 
+    /// <summary>
+    /// ParticipantResource
+    /// </summary>
     public class ParticipantResource : Resource 
     {
         public sealed class StatusEnum : StringEnum 

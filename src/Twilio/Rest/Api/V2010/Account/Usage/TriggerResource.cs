@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.Usage 
 {
 
+    /// <summary>
+    /// TriggerResource
+    /// </summary>
     public class TriggerResource : Resource 
     {
         public sealed class UsageCategoryEnum : StringEnum 

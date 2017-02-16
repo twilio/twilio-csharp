@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
 {
 
+    /// <summary>
+    /// IpAccessControlListMappingResource
+    /// </summary>
     public class IpAccessControlListMappingResource : Resource 
     {
         private static Request BuildFetchRequest(FetchIpAccessControlListMappingOptions options, ITwilioRestClient client)

@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
+    /// <summary>
+    /// FetchWorkflowOptions
+    /// </summary>
     public class FetchWorkflowOptions : IOptions<WorkflowResource> 
     {
         /// <summary>
@@ -38,6 +41,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     }
 
+    /// <summary>
+    /// UpdateWorkflowOptions
+    /// </summary>
     public class UpdateWorkflowOptions : IOptions<WorkflowResource> 
     {
         /// <summary>
@@ -116,6 +122,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     }
 
+    /// <summary>
+    /// DeleteWorkflowOptions
+    /// </summary>
     public class DeleteWorkflowOptions : IOptions<WorkflowResource> 
     {
         /// <summary>
@@ -149,6 +158,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     }
 
+    /// <summary>
+    /// ReadWorkflowOptions
+    /// </summary>
     public class ReadWorkflowOptions : ReadOptions<WorkflowResource> 
     {
         /// <summary>
@@ -190,6 +202,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     }
 
+    /// <summary>
+    /// CreateWorkflowOptions
+    /// </summary>
     public class CreateWorkflowOptions : IOptions<WorkflowResource> 
     {
         /// <summary>

@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
 {
 
+    /// <summary>
+    /// TollFreeResource
+    /// </summary>
     public class TollFreeResource : Resource 
     {
         private static Request BuildReadRequest(ReadTollFreeOptions options, ITwilioRestClient client)

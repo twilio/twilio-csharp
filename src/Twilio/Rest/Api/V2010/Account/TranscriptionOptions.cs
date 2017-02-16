@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch and instance of a Transcription
+    /// </summary>
     public class FetchTranscriptionOptions : IOptions<TranscriptionResource> 
     {
         /// <summary>
@@ -36,6 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Delete a transcription from the account used to make the request
+    /// </summary>
     public class DeleteTranscriptionOptions : IOptions<TranscriptionResource> 
     {
         /// <summary>
@@ -67,6 +73,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of transcriptions belonging to the account used to make the request
+    /// </summary>
     public class ReadTranscriptionOptions : ReadOptions<TranscriptionResource> 
     {
         /// <summary>

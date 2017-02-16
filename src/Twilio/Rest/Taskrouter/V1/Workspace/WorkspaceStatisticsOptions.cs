@@ -6,6 +6,9 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
+    /// <summary>
+    /// FetchWorkspaceStatisticsOptions
+    /// </summary>
     public class FetchWorkspaceStatisticsOptions : IOptions<WorkspaceStatisticsResource> 
     {
         /// <summary>

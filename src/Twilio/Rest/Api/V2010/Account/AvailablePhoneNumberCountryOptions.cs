@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// ReadAvailablePhoneNumberCountryOptions
+    /// </summary>
     public class ReadAvailablePhoneNumberCountryOptions : ReadOptions<AvailablePhoneNumberCountryResource> 
     {
         /// <summary>
@@ -27,6 +30,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// FetchAvailablePhoneNumberCountryOptions
+    /// </summary>
     public class FetchAvailablePhoneNumberCountryOptions : IOptions<AvailablePhoneNumberCountryResource> 
     {
         /// <summary>

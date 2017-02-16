@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Address 
 {
 
+    /// <summary>
+    /// ReadDependentPhoneNumberOptions
+    /// </summary>
     public class ReadDependentPhoneNumberOptions : ReadOptions<DependentPhoneNumberResource> 
     {
         /// <summary>

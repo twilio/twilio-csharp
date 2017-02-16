@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Sip 
 {
 
+    /// <summary>
+    /// CredentialListResource
+    /// </summary>
     public class CredentialListResource : Resource 
     {
         private static Request BuildReadRequest(ReadCredentialListOptions options, ITwilioRestClient client)

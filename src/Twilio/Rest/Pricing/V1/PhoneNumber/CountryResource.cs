@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Pricing.V1.PhoneNumber 
 {
 
+    /// <summary>
+    /// CountryResource
+    /// </summary>
     public class CountryResource : Resource 
     {
         private static Request BuildReadRequest(ReadCountryOptions options, ITwilioRestClient client)

@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Preview.Wireless.Device 
 {
 
+    /// <summary>
+    /// FetchUsageOptions
+    /// </summary>
     public class FetchUsageOptions : IOptions<UsageResource> 
     {
         /// <summary>

@@ -7,6 +7,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
+    /// </summary>
     public class CreateCallOptions : IOptions<CallResource> 
     {
         /// <summary>
@@ -208,6 +211,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
+    /// </summary>
     public class DeleteCallOptions : IOptions<CallResource> 
     {
         /// <summary>
@@ -239,6 +245,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Fetch the Call specified by the provided Call Sid
+    /// </summary>
     public class FetchCallOptions : IOptions<CallResource> 
     {
         /// <summary>
@@ -270,6 +279,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieves a collection of Calls made to and from your account
+    /// </summary>
     public class ReadCallOptions : ReadOptions<CallResource> 
     {
         /// <summary>
@@ -386,6 +398,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Initiates a call redirect or terminates a call
+    /// </summary>
     public class UpdateCallOptions : IOptions<CallResource> 
     {
         /// <summary>

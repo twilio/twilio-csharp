@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
+    /// <summary>
+    /// NotificationResource
+    /// </summary>
     public class NotificationResource : Resource 
     {
         private static Request BuildFetchRequest(FetchNotificationOptions options, ITwilioRestClient client)

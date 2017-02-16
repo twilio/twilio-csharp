@@ -6,6 +6,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Send a message from the account used to make the request
+    /// </summary>
     public class CreateMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
@@ -115,6 +118,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Deletes a message record from your account
+    /// </summary>
     public class DeleteMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
@@ -146,6 +152,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Fetch a message belonging to the account used to make the request
+    /// </summary>
     public class FetchMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
@@ -177,6 +186,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of messages belonging to the account used to make the request
+    /// </summary>
     public class ReadMessageOptions : ReadOptions<MessageResource> 
     {
         /// <summary>
@@ -246,6 +258,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
+    /// </summary>
     public class UpdateMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>

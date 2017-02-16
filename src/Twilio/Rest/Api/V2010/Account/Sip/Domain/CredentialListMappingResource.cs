@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
 {
 
+    /// <summary>
+    /// CredentialListMappingResource
+    /// </summary>
     public class CredentialListMappingResource : Resource 
     {
         private static Request BuildCreateRequest(CreateCredentialListMappingOptions options, ITwilioRestClient client)

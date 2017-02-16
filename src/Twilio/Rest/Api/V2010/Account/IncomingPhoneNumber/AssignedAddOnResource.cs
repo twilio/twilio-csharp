@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
 {
 
+    /// <summary>
+    /// AssignedAddOnResource
+    /// </summary>
     public class AssignedAddOnResource : Resource 
     {
         private static Request BuildFetchRequest(FetchAssignedAddOnOptions options, ITwilioRestClient client)

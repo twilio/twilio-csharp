@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Pricing.V1.Voice 
 {
 
+    /// <summary>
+    /// ReadCountryOptions
+    /// </summary>
     public class ReadCountryOptions : ReadOptions<CountryResource> 
     {
         /// <summary>
@@ -22,6 +25,9 @@ namespace Twilio.Rest.Pricing.V1.Voice
         }
     }
 
+    /// <summary>
+    /// FetchCountryOptions
+    /// </summary>
     public class FetchCountryOptions : IOptions<CountryResource> 
     {
         /// <summary>

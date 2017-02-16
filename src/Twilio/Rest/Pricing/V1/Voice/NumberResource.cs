@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Pricing.V1.Voice 
 {
 
+    /// <summary>
+    /// NumberResource
+    /// </summary>
     public class NumberResource : Resource 
     {
         private static Request BuildFetchRequest(FetchNumberOptions options, ITwilioRestClient client)

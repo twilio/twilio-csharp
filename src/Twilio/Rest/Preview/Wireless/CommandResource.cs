@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Wireless 
 {
 
+    /// <summary>
+    /// CommandResource
+    /// </summary>
     public class CommandResource : Resource 
     {
         private static Request BuildFetchRequest(FetchCommandOptions options, ITwilioRestClient client)

@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
 {
 
+    /// <summary>
+    /// MessageResource
+    /// </summary>
     public class MessageResource : Resource 
     {
         public sealed class OrderTypeEnum : StringEnum 
@@ -468,6 +471,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         [JsonProperty("to")]
         public string To { get; private set; }
+        /// <summary>
+        /// The channel_sid
+        /// </summary>
+        [JsonProperty("channel_sid")]
+        public string ChannelSid { get; private set; }
         /// <summary>
         /// The date_created
         /// </summary>

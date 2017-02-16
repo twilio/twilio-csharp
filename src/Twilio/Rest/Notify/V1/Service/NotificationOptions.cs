@@ -6,6 +6,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Notify.V1.Service 
 {
 
+    /// <summary>
+    /// CreateNotificationOptions
+    /// </summary>
     public class CreateNotificationOptions : IOptions<NotificationResource> 
     {
         /// <summary>

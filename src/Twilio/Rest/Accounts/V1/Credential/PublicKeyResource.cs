@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Accounts.V1.Credential 
 {
 
+    /// <summary>
+    /// PublicKeyResource
+    /// </summary>
     public class PublicKeyResource : Resource 
     {
         private static Request BuildReadRequest(ReadPublicKeyOptions options, ITwilioRestClient client)

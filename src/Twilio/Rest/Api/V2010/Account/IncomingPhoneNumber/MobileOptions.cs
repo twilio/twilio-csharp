@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
 {
 
+    /// <summary>
+    /// ReadMobileOptions
+    /// </summary>
     public class ReadMobileOptions : ReadOptions<MobileResource> 
     {
         /// <summary>
@@ -54,6 +57,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         }
     }
 
+    /// <summary>
+    /// CreateMobileOptions
+    /// </summary>
     public class CreateMobileOptions : IOptions<MobileResource> 
     {
         /// <summary>

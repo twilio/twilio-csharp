@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// CreateValidationRequestOptions
+    /// </summary>
     public class CreateValidationRequestOptions : IOptions<ValidationRequestResource> 
     {
         /// <summary>

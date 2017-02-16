@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Chat.V1 
 {
 
+    /// <summary>
+    /// ServiceResource
+    /// </summary>
     public class ServiceResource : Resource 
     {
         private static Request BuildFetchRequest(FetchServiceOptions options, ITwilioRestClient client)

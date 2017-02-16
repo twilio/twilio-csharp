@@ -6,6 +6,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
+    /// <summary>
+    /// CreateFeedbackOptions
+    /// </summary>
     public class CreateFeedbackOptions : IOptions<FeedbackResource> 
     {
         /// <summary>
@@ -58,6 +61,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     }
 
+    /// <summary>
+    /// Fetch an instance of a feedback entry for a call
+    /// </summary>
     public class FetchFeedbackOptions : IOptions<FeedbackResource> 
     {
         /// <summary>
@@ -89,6 +95,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     }
 
+    /// <summary>
+    /// Create or update a feedback entry for a call
+    /// </summary>
     public class UpdateFeedbackOptions : IOptions<FeedbackResource> 
     {
         /// <summary>

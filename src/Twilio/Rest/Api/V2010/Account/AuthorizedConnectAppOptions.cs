@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch an instance of an authorized-connect-app
+    /// </summary>
     public class FetchAuthorizedConnectAppOptions : IOptions<AuthorizedConnectAppResource> 
     {
         /// <summary>
@@ -36,6 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
+    /// </summary>
     public class ReadAuthorizedConnectAppOptions : ReadOptions<AuthorizedConnectAppResource> 
     {
         /// <summary>

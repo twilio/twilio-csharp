@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
+    /// <summary>
+    /// TaskQueueResource
+    /// </summary>
     public class TaskQueueResource : Resource 
     {
         public sealed class TaskOrderEnum : StringEnum 

@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn 
 {
 
+    /// <summary>
+    /// InstalledAddOnExtensionResource
+    /// </summary>
     public class InstalledAddOnExtensionResource : Resource 
     {
         private static Request BuildFetchRequest(FetchInstalledAddOnExtensionOptions options, ITwilioRestClient client)

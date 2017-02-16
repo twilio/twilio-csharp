@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Sync.Service.Document 
 {
 
+    /// <summary>
+    /// DocumentPermissionResource
+    /// </summary>
     public class DocumentPermissionResource : Resource 
     {
         private static Request BuildFetchRequest(FetchDocumentPermissionOptions options, ITwilioRestClient client)

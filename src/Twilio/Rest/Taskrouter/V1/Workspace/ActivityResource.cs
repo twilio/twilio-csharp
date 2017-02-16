@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
+    /// <summary>
+    /// ActivityResource
+    /// </summary>
     public class ActivityResource : Resource 
     {
         private static Request BuildFetchRequest(FetchActivityOptions options, ITwilioRestClient client)

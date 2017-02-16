@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
 {
 
+    /// <summary>
+    /// LocalResource
+    /// </summary>
     public class LocalResource : Resource 
     {
         private static Request BuildReadRequest(ReadLocalOptions options, ITwilioRestClient client)

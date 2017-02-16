@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Preview.Marketplace 
 {
 
+    /// <summary>
+    /// Fetch an instance of an Add-on currently available to be installed.
+    /// </summary>
     public class FetchAvailableAddOnOptions : IOptions<AvailableAddOnResource> 
     {
         /// <summary>
@@ -32,6 +35,9 @@ namespace Twilio.Rest.Preview.Marketplace
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of Add-ons currently available to be installed.
+    /// </summary>
     public class ReadAvailableAddOnOptions : ReadOptions<AvailableAddOnResource> 
     {
         /// <summary>

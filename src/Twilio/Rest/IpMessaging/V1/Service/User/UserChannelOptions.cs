@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.IpMessaging.V1.Service.User 
 {
 
+    /// <summary>
+    /// ReadUserChannelOptions
+    /// </summary>
     public class ReadUserChannelOptions : ReadOptions<UserChannelResource> 
     {
         /// <summary>

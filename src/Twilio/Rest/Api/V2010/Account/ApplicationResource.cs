@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// ApplicationResource
+    /// </summary>
     public class ApplicationResource : Resource 
     {
         private static Request BuildCreateRequest(CreateApplicationOptions options, ITwilioRestClient client)

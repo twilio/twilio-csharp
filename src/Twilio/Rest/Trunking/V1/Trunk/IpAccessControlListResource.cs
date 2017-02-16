@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
+    /// <summary>
+    /// IpAccessControlListResource
+    /// </summary>
     public class IpAccessControlListResource : Resource 
     {
         private static Request BuildFetchRequest(FetchIpAccessControlListOptions options, ITwilioRestClient client)

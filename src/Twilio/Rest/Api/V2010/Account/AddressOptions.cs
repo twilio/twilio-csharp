@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// CreateAddressOptions
+    /// </summary>
     public class CreateAddressOptions : IOptions<AddressResource> 
     {
         /// <summary>
@@ -114,6 +117,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// DeleteAddressOptions
+    /// </summary>
     public class DeleteAddressOptions : IOptions<AddressResource> 
     {
         /// <summary>
@@ -145,6 +151,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// FetchAddressOptions
+    /// </summary>
     public class FetchAddressOptions : IOptions<AddressResource> 
     {
         /// <summary>
@@ -176,6 +185,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// UpdateAddressOptions
+    /// </summary>
     public class UpdateAddressOptions : IOptions<AddressResource> 
     {
         /// <summary>
@@ -270,6 +282,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// ReadAddressOptions
+    /// </summary>
     public class ReadAddressOptions : ReadOptions<AddressResource> 
     {
         /// <summary>

@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// SandboxResource
+    /// </summary>
     public class SandboxResource : Resource 
     {
         private static Request BuildFetchRequest(FetchSandboxOptions options, ITwilioRestClient client)

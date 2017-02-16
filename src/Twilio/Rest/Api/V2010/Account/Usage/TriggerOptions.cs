@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Usage 
 {
 
+    /// <summary>
+    /// Fetch and instance of a usage-trigger
+    /// </summary>
     public class FetchTriggerOptions : IOptions<TriggerResource> 
     {
         /// <summary>
@@ -36,6 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     }
 
+    /// <summary>
+    /// Update an instance of a usage trigger
+    /// </summary>
     public class UpdateTriggerOptions : IOptions<TriggerResource> 
     {
         /// <summary>
@@ -94,6 +100,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     }
 
+    /// <summary>
+    /// DeleteTriggerOptions
+    /// </summary>
     public class DeleteTriggerOptions : IOptions<TriggerResource> 
     {
         /// <summary>
@@ -125,6 +134,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     }
 
+    /// <summary>
+    /// Create a new UsageTrigger
+    /// </summary>
     public class CreateTriggerOptions : IOptions<TriggerResource> 
     {
         /// <summary>
@@ -219,6 +231,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of usage-triggers belonging to the account used to make the request
+    /// </summary>
     public class ReadTriggerOptions : ReadOptions<TriggerResource> 
     {
         /// <summary>

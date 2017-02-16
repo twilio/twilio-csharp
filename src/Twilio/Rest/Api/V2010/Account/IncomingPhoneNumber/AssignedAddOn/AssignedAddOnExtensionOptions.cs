@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn 
 {
 
+    /// <summary>
+    /// Fetch an instance of an Extension for the Assigned Add-on.
+    /// </summary>
     public class FetchAssignedAddOnExtensionOptions : IOptions<AssignedAddOnExtensionResource> 
     {
         /// <summary>
@@ -48,6 +51,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of Extensions for the Assigned Add-on.
+    /// </summary>
     public class ReadAssignedAddOnExtensionOptions : ReadOptions<AssignedAddOnExtensionResource> 
     {
         /// <summary>

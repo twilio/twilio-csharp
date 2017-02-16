@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Preview.Sync.Service.Document 
 {
 
+    /// <summary>
+    /// Fetch a specific Sync Document Permission.
+    /// </summary>
     public class FetchDocumentPermissionOptions : IOptions<DocumentPermissionResource> 
     {
         /// <summary>
@@ -44,6 +47,9 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         }
     }
 
+    /// <summary>
+    /// Delete a specific Sync Document Permission.
+    /// </summary>
     public class DeleteDocumentPermissionOptions : IOptions<DocumentPermissionResource> 
     {
         /// <summary>
@@ -83,6 +89,9 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of all Permissions applying to a Sync Document.
+    /// </summary>
     public class ReadDocumentPermissionOptions : ReadOptions<DocumentPermissionResource> 
     {
         /// <summary>
@@ -121,6 +130,9 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         }
     }
 
+    /// <summary>
+    /// Update an identity's access to a specific Sync Document.
+    /// </summary>
     public class UpdateDocumentPermissionOptions : IOptions<DocumentPermissionResource> 
     {
         /// <summary>

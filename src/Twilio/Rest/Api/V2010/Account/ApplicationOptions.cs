@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Create a new application within your account
+    /// </summary>
     public class CreateApplicationOptions : IOptions<ApplicationResource> 
     {
         /// <summary>
@@ -167,6 +170,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Delete the application by the specified application sid
+    /// </summary>
     public class DeleteApplicationOptions : IOptions<ApplicationResource> 
     {
         /// <summary>
@@ -198,6 +204,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Fetch the application specified by the provided sid
+    /// </summary>
     public class FetchApplicationOptions : IOptions<ApplicationResource> 
     {
         /// <summary>
@@ -229,6 +238,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of applications representing an application within the requesting account
+    /// </summary>
     public class ReadApplicationOptions : ReadOptions<ApplicationResource> 
     {
         /// <summary>
@@ -260,6 +272,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Updates the application's properties
+    /// </summary>
     public class UpdateApplicationOptions : IOptions<ApplicationResource> 
     {
         /// <summary>

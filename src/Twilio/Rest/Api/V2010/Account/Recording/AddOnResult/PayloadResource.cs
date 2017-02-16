@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult 
 {
 
+    /// <summary>
+    /// PayloadResource
+    /// </summary>
     public class PayloadResource : Resource 
     {
         private static Request BuildFetchRequest(FetchPayloadOptions options, ITwilioRestClient client)

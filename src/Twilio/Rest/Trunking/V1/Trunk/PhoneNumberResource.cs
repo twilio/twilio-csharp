@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
+    /// <summary>
+    /// PhoneNumberResource
+    /// </summary>
     public class PhoneNumberResource : Resource 
     {
         public sealed class AddressRequirementEnum : StringEnum 

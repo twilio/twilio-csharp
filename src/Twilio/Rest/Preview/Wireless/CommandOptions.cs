@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Preview.Wireless 
 {
 
+    /// <summary>
+    /// FetchCommandOptions
+    /// </summary>
     public class FetchCommandOptions : IOptions<CommandResource> 
     {
         /// <summary>
@@ -32,6 +35,9 @@ namespace Twilio.Rest.Preview.Wireless
         }
     }
 
+    /// <summary>
+    /// ReadCommandOptions
+    /// </summary>
     public class ReadCommandOptions : ReadOptions<CommandResource> 
     {
         /// <summary>
@@ -77,6 +83,9 @@ namespace Twilio.Rest.Preview.Wireless
         }
     }
 
+    /// <summary>
+    /// CreateCommandOptions
+    /// </summary>
     public class CreateCommandOptions : IOptions<CommandResource> 
     {
         /// <summary>

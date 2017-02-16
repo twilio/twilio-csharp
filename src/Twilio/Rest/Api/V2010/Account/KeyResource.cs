@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// KeyResource
+    /// </summary>
     public class KeyResource : Resource 
     {
         private static Request BuildFetchRequest(FetchKeyOptions options, ITwilioRestClient client)

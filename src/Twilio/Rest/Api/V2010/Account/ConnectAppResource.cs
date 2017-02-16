@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// ConnectAppResource
+    /// </summary>
     public class ConnectAppResource : Resource 
     {
         public sealed class PermissionEnum : StringEnum 

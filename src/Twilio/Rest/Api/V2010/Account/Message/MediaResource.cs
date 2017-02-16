@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {
 
+    /// <summary>
+    /// MediaResource
+    /// </summary>
     public class MediaResource : Resource 
     {
         private static Request BuildDeleteRequest(DeleteMediaOptions options, ITwilioRestClient client)

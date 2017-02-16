@@ -6,6 +6,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Preview.Wireless 
 {
 
+    /// <summary>
+    /// ReadRatePlanOptions
+    /// </summary>
     public class ReadRatePlanOptions : ReadOptions<RatePlanResource> 
     {
         /// <summary>
@@ -23,6 +26,9 @@ namespace Twilio.Rest.Preview.Wireless
         }
     }
 
+    /// <summary>
+    /// FetchRatePlanOptions
+    /// </summary>
     public class FetchRatePlanOptions : IOptions<RatePlanResource> 
     {
         /// <summary>
@@ -50,6 +56,9 @@ namespace Twilio.Rest.Preview.Wireless
         }
     }
 
+    /// <summary>
+    /// CreateRatePlanOptions
+    /// </summary>
     public class CreateRatePlanOptions : IOptions<RatePlanResource> 
     {
         /// <summary>
@@ -134,6 +143,9 @@ namespace Twilio.Rest.Preview.Wireless
         }
     }
 
+    /// <summary>
+    /// UpdateRatePlanOptions
+    /// </summary>
     public class UpdateRatePlanOptions : IOptions<RatePlanResource> 
     {
         /// <summary>

@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch an instance of a conference
+    /// </summary>
     public class FetchConferenceOptions : IOptions<ConferenceResource> 
     {
         /// <summary>
@@ -36,6 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of conferences belonging to the account used to make the request
+    /// </summary>
     public class ReadConferenceOptions : ReadOptions<ConferenceResource> 
     {
         /// <summary>
@@ -134,6 +140,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// UpdateConferenceOptions
+    /// </summary>
     public class UpdateConferenceOptions : IOptions<ConferenceResource> 
     {
         /// <summary>

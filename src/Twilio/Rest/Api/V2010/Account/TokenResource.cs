@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// TokenResource
+    /// </summary>
     public class TokenResource : Resource 
     {
         private static Request BuildCreateRequest(CreateTokenOptions options, ITwilioRestClient client)

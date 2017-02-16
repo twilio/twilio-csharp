@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Recording 
 {
 
+    /// <summary>
+    /// Fetch an instance of an Add-on result
+    /// </summary>
     public class FetchAddOnResultOptions : IOptions<AddOnResultResource> 
     {
         /// <summary>
@@ -42,6 +45,9 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of results belonging to the recording
+    /// </summary>
     public class ReadAddOnResultOptions : ReadOptions<AddOnResultResource> 
     {
         /// <summary>
@@ -78,6 +84,9 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         }
     }
 
+    /// <summary>
+    /// Delete a result and purge all associated Payloads
+    /// </summary>
     public class DeleteAddOnResultOptions : IOptions<AddOnResultResource> 
     {
         /// <summary>

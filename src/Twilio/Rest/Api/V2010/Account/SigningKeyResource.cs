@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// SigningKeyResource
+    /// </summary>
     public class SigningKeyResource : Resource 
     {
         private static Request BuildFetchRequest(FetchSigningKeyOptions options, ITwilioRestClient client)

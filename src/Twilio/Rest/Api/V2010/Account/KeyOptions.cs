@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// FetchKeyOptions
+    /// </summary>
     public class FetchKeyOptions : IOptions<KeyResource> 
     {
         /// <summary>
@@ -36,6 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// UpdateKeyOptions
+    /// </summary>
     public class UpdateKeyOptions : IOptions<KeyResource> 
     {
         /// <summary>
@@ -76,6 +82,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// DeleteKeyOptions
+    /// </summary>
     public class DeleteKeyOptions : IOptions<KeyResource> 
     {
         /// <summary>
@@ -107,6 +116,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// ReadKeyOptions
+    /// </summary>
     public class ReadKeyOptions : ReadOptions<KeyResource> 
     {
         /// <summary>

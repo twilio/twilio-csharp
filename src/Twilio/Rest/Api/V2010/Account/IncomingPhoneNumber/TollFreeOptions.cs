@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
 {
 
+    /// <summary>
+    /// ReadTollFreeOptions
+    /// </summary>
     public class ReadTollFreeOptions : ReadOptions<TollFreeResource> 
     {
         /// <summary>
@@ -54,6 +57,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         }
     }
 
+    /// <summary>
+    /// CreateTollFreeOptions
+    /// </summary>
     public class CreateTollFreeOptions : IOptions<TollFreeResource> 
     {
         /// <summary>

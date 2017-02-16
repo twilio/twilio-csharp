@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Sip 
 {
 
+    /// <summary>
+    /// DomainResource
+    /// </summary>
     public class DomainResource : Resource 
     {
         private static Request BuildReadRequest(ReadDomainOptions options, ITwilioRestClient client)

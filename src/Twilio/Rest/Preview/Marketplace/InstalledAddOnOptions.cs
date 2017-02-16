@@ -5,12 +5,19 @@ using Twilio.Base;
 namespace Twilio.Rest.Preview.Marketplace 
 {
 
+    /// <summary>
+    /// Install an Add-on for the Account specified.
+    /// </summary>
     public class CreateInstalledAddOnOptions : IOptions<InstalledAddOnResource> 
     {
         /// <summary>
         /// A string that uniquely identifies the Add-on to install
         /// </summary>
         public string AvailableAddOnSid { get; }
+        /// <summary>
+        /// A boolean reflecting your acceptance of the Terms of Service
+        /// </summary>
+        public bool? AcceptTermsOfService { get; }
         /// <summary>
         /// The JSON object representing the configuration
         /// </summary>
@@ -25,9 +32,11 @@ namespace Twilio.Rest.Preview.Marketplace
         /// </summary>
         ///
         /// <param name="availableAddOnSid"> A string that uniquely identifies the Add-on to install </param>
-        public CreateInstalledAddOnOptions(string availableAddOnSid)
+        /// <param name="acceptTermsOfService"> A boolean reflecting your acceptance of the Terms of Service </param>
+        public CreateInstalledAddOnOptions(string availableAddOnSid, bool? acceptTermsOfService)
         {
             AvailableAddOnSid = availableAddOnSid;
+            AcceptTermsOfService = acceptTermsOfService;
         }
     
         /// <summary>
@@ -39,6 +48,11 @@ namespace Twilio.Rest.Preview.Marketplace
             if (AvailableAddOnSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("AvailableAddOnSid", AvailableAddOnSid.ToString()));
+            }
+            
+            if (AcceptTermsOfService != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AcceptTermsOfService", AcceptTermsOfService.Value.ToString()));
             }
             
             if (Configuration != null)
@@ -55,6 +69,9 @@ namespace Twilio.Rest.Preview.Marketplace
         }
     }
 
+    /// <summary>
+    /// Remove an Add-on installation from your account
+    /// </summary>
     public class DeleteInstalledAddOnOptions : IOptions<InstalledAddOnResource> 
     {
         /// <summary>
@@ -82,6 +99,9 @@ namespace Twilio.Rest.Preview.Marketplace
         }
     }
 
+    /// <summary>
+    /// Fetch an instance of an Add-on currently installed on this Account.
+    /// </summary>
     public class FetchInstalledAddOnOptions : IOptions<InstalledAddOnResource> 
     {
         /// <summary>
@@ -109,6 +129,9 @@ namespace Twilio.Rest.Preview.Marketplace
         }
     }
 
+    /// <summary>
+    /// Update an Add-on installation for the Account specified.
+    /// </summary>
     public class UpdateInstalledAddOnOptions : IOptions<InstalledAddOnResource> 
     {
         /// <summary>
@@ -154,6 +177,9 @@ namespace Twilio.Rest.Preview.Marketplace
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of Add-ons currently installed on this Account.
+    /// </summary>
     public class ReadInstalledAddOnOptions : ReadOptions<InstalledAddOnResource> 
     {
         /// <summary>

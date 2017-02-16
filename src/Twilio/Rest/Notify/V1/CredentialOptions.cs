@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Notify.V1 
 {
 
+    /// <summary>
+    /// ReadCredentialOptions
+    /// </summary>
     public class ReadCredentialOptions : ReadOptions<CredentialResource> 
     {
         /// <summary>
@@ -22,6 +25,9 @@ namespace Twilio.Rest.Notify.V1
         }
     }
 
+    /// <summary>
+    /// CreateCredentialOptions
+    /// </summary>
     public class CreateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
@@ -108,6 +114,9 @@ namespace Twilio.Rest.Notify.V1
         }
     }
 
+    /// <summary>
+    /// FetchCredentialOptions
+    /// </summary>
     public class FetchCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
@@ -135,6 +144,9 @@ namespace Twilio.Rest.Notify.V1
         }
     }
 
+    /// <summary>
+    /// UpdateCredentialOptions
+    /// </summary>
     public class UpdateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
@@ -216,6 +228,9 @@ namespace Twilio.Rest.Notify.V1
         }
     }
 
+    /// <summary>
+    /// DeleteCredentialOptions
+    /// </summary>
     public class DeleteCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>

@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
+    /// <summary>
+    /// FetchOriginationUrlOptions
+    /// </summary>
     public class FetchOriginationUrlOptions : IOptions<OriginationUrlResource> 
     {
         /// <summary>
@@ -38,6 +41,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// DeleteOriginationUrlOptions
+    /// </summary>
     public class DeleteOriginationUrlOptions : IOptions<OriginationUrlResource> 
     {
         /// <summary>
@@ -71,6 +77,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// CreateOriginationUrlOptions
+    /// </summary>
     public class CreateOriginationUrlOptions : IOptions<OriginationUrlResource> 
     {
         /// <summary>
@@ -153,6 +162,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// ReadOriginationUrlOptions
+    /// </summary>
     public class ReadOriginationUrlOptions : ReadOptions<OriginationUrlResource> 
     {
         /// <summary>
@@ -185,6 +197,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// UpdateOriginationUrlOptions
+    /// </summary>
     public class UpdateOriginationUrlOptions : IOptions<OriginationUrlResource> 
     {
         /// <summary>

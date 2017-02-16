@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
+    /// <summary>
+    /// FetchPhoneNumberOptions
+    /// </summary>
     public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>
@@ -38,6 +41,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// DeletePhoneNumberOptions
+    /// </summary>
     public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>
@@ -71,6 +77,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// CreatePhoneNumberOptions
+    /// </summary>
     public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>
@@ -109,6 +118,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// ReadPhoneNumberOptions
+    /// </summary>
     public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource> 
     {
         /// <summary>

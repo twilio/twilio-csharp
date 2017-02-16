@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Sync.Service 
 {
 
+    /// <summary>
+    /// DocumentResource
+    /// </summary>
     public class DocumentResource : Resource 
     {
         private static Request BuildFetchRequest(FetchDocumentOptions options, ITwilioRestClient client)

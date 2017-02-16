@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// ShortCodeResource
+    /// </summary>
     public class ShortCodeResource : Resource 
     {
         private static Request BuildFetchRequest(FetchShortCodeOptions options, ITwilioRestClient client)

@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Preview.Marketplace 
 {
 
+    /// <summary>
+    /// InstalledAddOnResource
+    /// </summary>
     public class InstalledAddOnResource : Resource 
     {
         private static Request BuildCreateRequest(CreateInstalledAddOnOptions options, ITwilioRestClient client)
@@ -58,13 +61,14 @@ namespace Twilio.Rest.Preview.Marketplace
         /// </summary>
         ///
         /// <param name="availableAddOnSid"> A string that uniquely identifies the Add-on to install </param>
+        /// <param name="acceptTermsOfService"> A boolean reflecting your acceptance of the Terms of Service </param>
         /// <param name="configuration"> The JSON object representing the configuration </param>
         /// <param name="uniqueName"> The string that uniquely identifies this Add-on installation </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOn </returns> 
-        public static InstalledAddOnResource Create(string availableAddOnSid, object configuration = null, string uniqueName = null, ITwilioRestClient client = null)
+        public static InstalledAddOnResource Create(string availableAddOnSid, bool? acceptTermsOfService, object configuration = null, string uniqueName = null, ITwilioRestClient client = null)
         {
-            var options = new CreateInstalledAddOnOptions(availableAddOnSid){Configuration = configuration, UniqueName = uniqueName};
+            var options = new CreateInstalledAddOnOptions(availableAddOnSid, acceptTermsOfService){Configuration = configuration, UniqueName = uniqueName};
             return Create(options, client);
         }
     
@@ -74,13 +78,14 @@ namespace Twilio.Rest.Preview.Marketplace
         /// </summary>
         ///
         /// <param name="availableAddOnSid"> A string that uniquely identifies the Add-on to install </param>
+        /// <param name="acceptTermsOfService"> A boolean reflecting your acceptance of the Terms of Service </param>
         /// <param name="configuration"> The JSON object representing the configuration </param>
         /// <param name="uniqueName"> The string that uniquely identifies this Add-on installation </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOn </returns> 
-        public static async System.Threading.Tasks.Task<InstalledAddOnResource> CreateAsync(string availableAddOnSid, object configuration = null, string uniqueName = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InstalledAddOnResource> CreateAsync(string availableAddOnSid, bool? acceptTermsOfService, object configuration = null, string uniqueName = null, ITwilioRestClient client = null)
         {
-            var options = new CreateInstalledAddOnOptions(availableAddOnSid){Configuration = configuration, UniqueName = uniqueName};
+            var options = new CreateInstalledAddOnOptions(availableAddOnSid, acceptTermsOfService){Configuration = configuration, UniqueName = uniqueName};
             return await CreateAsync(options, client);
         }
         #endif

@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
+    /// <summary>
+    /// WorkerStatisticsResource
+    /// </summary>
     public class WorkerStatisticsResource : Resource 
     {
         private static Request BuildFetchRequest(FetchWorkerStatisticsOptions options, ITwilioRestClient client)

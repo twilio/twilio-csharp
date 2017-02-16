@@ -6,6 +6,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Chat.V1.Service 
 {
 
+    /// <summary>
+    /// FetchRoleOptions
+    /// </summary>
     public class FetchRoleOptions : IOptions<RoleResource> 
     {
         /// <summary>
@@ -39,6 +42,9 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     }
 
+    /// <summary>
+    /// DeleteRoleOptions
+    /// </summary>
     public class DeleteRoleOptions : IOptions<RoleResource> 
     {
         /// <summary>
@@ -72,6 +78,9 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     }
 
+    /// <summary>
+    /// CreateRoleOptions
+    /// </summary>
     public class CreateRoleOptions : IOptions<RoleResource> 
     {
         /// <summary>
@@ -132,6 +141,9 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     }
 
+    /// <summary>
+    /// ReadRoleOptions
+    /// </summary>
     public class ReadRoleOptions : ReadOptions<RoleResource> 
     {
         /// <summary>
@@ -164,6 +176,9 @@ namespace Twilio.Rest.Chat.V1.Service
         }
     }
 
+    /// <summary>
+    /// UpdateRoleOptions
+    /// </summary>
     public class UpdateRoleOptions : IOptions<RoleResource> 
     {
         /// <summary>

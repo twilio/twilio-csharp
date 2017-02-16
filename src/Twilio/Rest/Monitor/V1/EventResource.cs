@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Monitor.V1 
 {
 
+    /// <summary>
+    /// EventResource
+    /// </summary>
     public class EventResource : Resource 
     {
         private static Request BuildFetchRequest(FetchEventOptions options, ITwilioRestClient client)

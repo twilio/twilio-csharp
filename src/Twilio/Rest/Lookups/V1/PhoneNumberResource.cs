@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Lookups.V1 
 {
 
+    /// <summary>
+    /// PhoneNumberResource
+    /// </summary>
     public class PhoneNumberResource : Resource 
     {
         public sealed class TypeEnum : StringEnum 

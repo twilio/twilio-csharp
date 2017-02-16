@@ -6,6 +6,9 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
+    /// <summary>
+    /// FetchEventOptions
+    /// </summary>
     public class FetchEventOptions : IOptions<EventResource> 
     {
         /// <summary>
@@ -39,6 +42,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     }
 
+    /// <summary>
+    /// ReadEventOptions
+    /// </summary>
     public class ReadEventOptions : ReadOptions<EventResource> 
     {
         /// <summary>

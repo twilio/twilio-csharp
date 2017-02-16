@@ -6,6 +6,9 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Usage.Record 
 {
 
+    /// <summary>
+    /// ReadYearlyOptions
+    /// </summary>
     public class ReadYearlyOptions : ReadOptions<YearlyResource> 
     {
         /// <summary>

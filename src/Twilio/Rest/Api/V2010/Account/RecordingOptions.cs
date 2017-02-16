@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch an instance of a recording
+    /// </summary>
     public class FetchRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
@@ -36,6 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Delete a recording from your account
+    /// </summary>
     public class DeleteRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
@@ -67,6 +73,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of recordings belonging to the account used to make the request
+    /// </summary>
     public class ReadRecordingOptions : ReadOptions<RecordingResource> 
     {
         /// <summary>

@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {
 
+    /// <summary>
+    /// Delete media from your account. Once delete, you will no longer be billed
+    /// </summary>
     public class DeleteMediaOptions : IOptions<MediaResource> 
     {
         /// <summary>
@@ -42,6 +45,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
     }
 
+    /// <summary>
+    /// Fetch a single media instance belonging to the account used to make the request
+    /// </summary>
     public class FetchMediaOptions : IOptions<MediaResource> 
     {
         /// <summary>
@@ -79,6 +85,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of medias belonging to the account used to make the request
+    /// </summary>
     public class ReadMediaOptions : ReadOptions<MediaResource> 
     {
         /// <summary>

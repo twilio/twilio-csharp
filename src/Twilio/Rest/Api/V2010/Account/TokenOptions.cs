@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Create a new token
+    /// </summary>
     public class CreateTokenOptions : IOptions<TokenResource> 
     {
         /// <summary>

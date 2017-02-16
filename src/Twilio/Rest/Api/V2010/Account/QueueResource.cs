@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// QueueResource
+    /// </summary>
     public class QueueResource : Resource 
     {
         private static Request BuildFetchRequest(FetchQueueOptions options, ITwilioRestClient client)

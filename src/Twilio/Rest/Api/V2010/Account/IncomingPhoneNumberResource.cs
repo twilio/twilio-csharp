@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// IncomingPhoneNumberResource
+    /// </summary>
     public class IncomingPhoneNumberResource : Resource 
     {
         public sealed class AddressRequirementEnum : StringEnum 

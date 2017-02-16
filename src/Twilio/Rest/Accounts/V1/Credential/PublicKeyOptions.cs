@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Accounts.V1.Credential 
 {
 
+    /// <summary>
+    /// ReadPublicKeyOptions
+    /// </summary>
     public class ReadPublicKeyOptions : ReadOptions<PublicKeyResource> 
     {
         /// <summary>
@@ -22,6 +25,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
     }
 
+    /// <summary>
+    /// CreatePublicKeyOptions
+    /// </summary>
     public class CreatePublicKeyOptions : IOptions<PublicKeyResource> 
     {
         /// <summary>
@@ -72,6 +78,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
     }
 
+    /// <summary>
+    /// FetchPublicKeyOptions
+    /// </summary>
     public class FetchPublicKeyOptions : IOptions<PublicKeyResource> 
     {
         /// <summary>
@@ -99,6 +108,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
     }
 
+    /// <summary>
+    /// UpdatePublicKeyOptions
+    /// </summary>
     public class UpdatePublicKeyOptions : IOptions<PublicKeyResource> 
     {
         /// <summary>
@@ -135,6 +147,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
     }
 
+    /// <summary>
+    /// DeletePublicKeyOptions
+    /// </summary>
     public class DeletePublicKeyOptions : IOptions<PublicKeyResource> 
     {
         /// <summary>

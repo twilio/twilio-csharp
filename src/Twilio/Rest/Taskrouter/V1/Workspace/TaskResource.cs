@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
+    /// <summary>
+    /// TaskResource
+    /// </summary>
     public class TaskResource : Resource 
     {
         public sealed class StatusEnum : StringEnum 

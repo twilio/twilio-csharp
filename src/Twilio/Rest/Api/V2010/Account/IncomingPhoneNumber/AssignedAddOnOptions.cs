@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
 {
 
+    /// <summary>
+    /// Fetch an instance of an Add-on installation currently assigned to this Number.
+    /// </summary>
     public class FetchAssignedAddOnOptions : IOptions<AssignedAddOnResource> 
     {
         /// <summary>
@@ -42,6 +45,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of Add-on installations currently assigned to this Number.
+    /// </summary>
     public class ReadAssignedAddOnOptions : ReadOptions<AssignedAddOnResource> 
     {
         /// <summary>
@@ -78,6 +84,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         }
     }
 
+    /// <summary>
+    /// Assign an Add-on installation to the Number specified.
+    /// </summary>
     public class CreateAssignedAddOnOptions : IOptions<AssignedAddOnResource> 
     {
         /// <summary>
@@ -120,6 +129,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         }
     }
 
+    /// <summary>
+    /// Remove the assignment of an Add-on installation from the Number specified.
+    /// </summary>
     public class DeleteAssignedAddOnOptions : IOptions<AssignedAddOnResource> 
     {
         /// <summary>

@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Trunking.V1 
 {
 
+    /// <summary>
+    /// TrunkResource
+    /// </summary>
     public class TrunkResource : Resource 
     {
         private static Request BuildFetchRequest(FetchTrunkOptions options, ITwilioRestClient client)

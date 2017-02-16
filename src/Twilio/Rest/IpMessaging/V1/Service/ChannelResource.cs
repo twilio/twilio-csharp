@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.IpMessaging.V1.Service 
 {
 
+    /// <summary>
+    /// ChannelResource
+    /// </summary>
     public class ChannelResource : Resource 
     {
         public sealed class ChannelTypeEnum : StringEnum 

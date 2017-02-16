@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
+    /// <summary>
+    /// OriginationUrlResource
+    /// </summary>
     public class OriginationUrlResource : Resource 
     {
         private static Request BuildFetchRequest(FetchOriginationUrlOptions options, ITwilioRestClient client)

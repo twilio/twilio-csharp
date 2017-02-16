@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch an instance of a short code
+    /// </summary>
     public class FetchShortCodeOptions : IOptions<ShortCodeResource> 
     {
         /// <summary>
@@ -36,6 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Update a short code with the following parameters
+    /// </summary>
     public class UpdateShortCodeOptions : IOptions<ShortCodeResource> 
     {
         /// <summary>
@@ -121,6 +127,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of short-codes belonging to the account used to make the request
+    /// </summary>
     public class ReadShortCodeOptions : ReadOptions<ShortCodeResource> 
     {
         /// <summary>

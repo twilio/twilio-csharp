@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
 {
 
+    /// <summary>
+    /// InviteResource
+    /// </summary>
     public class InviteResource : Resource 
     {
         private static Request BuildFetchRequest(FetchInviteOptions options, ITwilioRestClient client)

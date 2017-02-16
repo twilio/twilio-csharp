@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Pricing.V1.Voice 
 {
 
+    /// <summary>
+    /// FetchNumberOptions
+    /// </summary>
     public class FetchNumberOptions : IOptions<NumberResource> 
     {
         /// <summary>

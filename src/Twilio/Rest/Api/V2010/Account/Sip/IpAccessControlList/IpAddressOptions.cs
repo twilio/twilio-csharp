@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList 
 {
 
+    /// <summary>
+    /// ReadIpAddressOptions
+    /// </summary>
     public class ReadIpAddressOptions : ReadOptions<IpAddressResource> 
     {
         /// <summary>
@@ -41,6 +44,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         }
     }
 
+    /// <summary>
+    /// CreateIpAddressOptions
+    /// </summary>
     public class CreateIpAddressOptions : IOptions<IpAddressResource> 
     {
         /// <summary>
@@ -94,6 +100,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         }
     }
 
+    /// <summary>
+    /// FetchIpAddressOptions
+    /// </summary>
     public class FetchIpAddressOptions : IOptions<IpAddressResource> 
     {
         /// <summary>
@@ -131,6 +140,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         }
     }
 
+    /// <summary>
+    /// UpdateIpAddressOptions
+    /// </summary>
     public class UpdateIpAddressOptions : IOptions<IpAddressResource> 
     {
         /// <summary>
@@ -186,6 +198,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         }
     }
 
+    /// <summary>
+    /// DeleteIpAddressOptions
+    /// </summary>
     public class DeleteIpAddressOptions : IOptions<IpAddressResource> 
     {
         /// <summary>

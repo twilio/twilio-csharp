@@ -6,6 +6,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Conference 
 {
 
+    /// <summary>
+    /// Fetch an instance of a participant
+    /// </summary>
     public class FetchParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
@@ -43,6 +46,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
     }
 
+    /// <summary>
+    /// Update the properties of this participant
+    /// </summary>
     public class UpdateParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
@@ -116,6 +122,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
     }
 
+    /// <summary>
+    /// CreateParticipantOptions
+    /// </summary>
     public class CreateParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
@@ -333,6 +342,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
     }
 
+    /// <summary>
+    /// Kick a participant from a given conference
+    /// </summary>
     public class DeleteParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
@@ -370,6 +382,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of participants belonging to the account used to make the request
+    /// </summary>
     public class ReadParticipantOptions : ReadOptions<ParticipantResource> 
     {
         /// <summary>

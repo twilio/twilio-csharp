@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Preview.Sync.Service 
 {
 
+    /// <summary>
+    /// FetchDocumentOptions
+    /// </summary>
     public class FetchDocumentOptions : IOptions<DocumentResource> 
     {
         /// <summary>
@@ -38,6 +41,9 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     }
 
+    /// <summary>
+    /// DeleteDocumentOptions
+    /// </summary>
     public class DeleteDocumentOptions : IOptions<DocumentResource> 
     {
         /// <summary>
@@ -71,6 +77,9 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     }
 
+    /// <summary>
+    /// CreateDocumentOptions
+    /// </summary>
     public class CreateDocumentOptions : IOptions<DocumentResource> 
     {
         /// <summary>
@@ -116,6 +125,9 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     }
 
+    /// <summary>
+    /// ReadDocumentOptions
+    /// </summary>
     public class ReadDocumentOptions : ReadOptions<DocumentResource> 
     {
         /// <summary>
@@ -148,6 +160,9 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     }
 
+    /// <summary>
+    /// UpdateDocumentOptions
+    /// </summary>
     public class UpdateDocumentOptions : IOptions<DocumentResource> 
     {
         /// <summary>

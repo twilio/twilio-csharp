@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Chat.V1.Service 
 {
 
+    /// <summary>
+    /// RoleResource
+    /// </summary>
     public class RoleResource : Resource 
     {
         public sealed class RoleTypeEnum : StringEnum 

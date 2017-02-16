@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList 
 {
 
+    /// <summary>
+    /// ReadCredentialOptions
+    /// </summary>
     public class ReadCredentialOptions : ReadOptions<CredentialResource> 
     {
         /// <summary>
@@ -41,6 +44,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         }
     }
 
+    /// <summary>
+    /// CreateCredentialOptions
+    /// </summary>
     public class CreateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
@@ -94,6 +100,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         }
     }
 
+    /// <summary>
+    /// FetchCredentialOptions
+    /// </summary>
     public class FetchCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
@@ -131,6 +140,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         }
     }
 
+    /// <summary>
+    /// UpdateCredentialOptions
+    /// </summary>
     public class UpdateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
@@ -177,6 +189,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         }
     }
 
+    /// <summary>
+    /// DeleteCredentialOptions
+    /// </summary>
     public class DeleteCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>

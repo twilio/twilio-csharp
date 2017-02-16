@@ -6,6 +6,9 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
+    /// <summary>
+    /// CreateFeedbackSummaryOptions
+    /// </summary>
     public class CreateFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
     {
         /// <summary>
@@ -80,6 +83,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     }
 
+    /// <summary>
+    /// FetchFeedbackSummaryOptions
+    /// </summary>
     public class FetchFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
     {
         /// <summary>
@@ -111,6 +117,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     }
 
+    /// <summary>
+    /// DeleteFeedbackSummaryOptions
+    /// </summary>
     public class DeleteFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
     {
         /// <summary>

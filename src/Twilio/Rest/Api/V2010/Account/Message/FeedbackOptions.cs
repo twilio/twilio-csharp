@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {
 
+    /// <summary>
+    /// CreateFeedbackOptions
+    /// </summary>
     public class CreateFeedbackOptions : IOptions<FeedbackResource> 
     {
         /// <summary>

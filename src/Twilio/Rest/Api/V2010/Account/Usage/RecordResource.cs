@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.Usage 
 {
 
+    /// <summary>
+    /// RecordResource
+    /// </summary>
     public class RecordResource : Resource 
     {
         public sealed class CategoryEnum : StringEnum 

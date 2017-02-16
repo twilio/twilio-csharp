@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Preview.Sync.Service.SyncList 
 {
 
+    /// <summary>
+    /// SyncListItemResource
+    /// </summary>
     public class SyncListItemResource : Resource 
     {
         public sealed class QueryResultOrderEnum : StringEnum 

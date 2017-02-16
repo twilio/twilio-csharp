@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Trunking.V1 
 {
 
+    /// <summary>
+    /// FetchTrunkOptions
+    /// </summary>
     public class FetchTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
@@ -32,6 +35,9 @@ namespace Twilio.Rest.Trunking.V1
         }
     }
 
+    /// <summary>
+    /// DeleteTrunkOptions
+    /// </summary>
     public class DeleteTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
@@ -59,6 +65,9 @@ namespace Twilio.Rest.Trunking.V1
         }
     }
 
+    /// <summary>
+    /// CreateTrunkOptions
+    /// </summary>
     public class CreateTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
@@ -126,6 +135,9 @@ namespace Twilio.Rest.Trunking.V1
         }
     }
 
+    /// <summary>
+    /// ReadTrunkOptions
+    /// </summary>
     public class ReadTrunkOptions : ReadOptions<TrunkResource> 
     {
         /// <summary>
@@ -143,6 +155,9 @@ namespace Twilio.Rest.Trunking.V1
         }
     }
 
+    /// <summary>
+    /// UpdateTrunkOptions
+    /// </summary>
     public class UpdateTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>

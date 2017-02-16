@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Preview.Sync.Service.SyncList 
 {
 
+    /// <summary>
+    /// Fetch a specific Sync List Permission.
+    /// </summary>
     public class FetchSyncListPermissionOptions : IOptions<SyncListPermissionResource> 
     {
         /// <summary>
@@ -44,6 +47,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     }
 
+    /// <summary>
+    /// Delete a specific Sync List Permission.
+    /// </summary>
     public class DeleteSyncListPermissionOptions : IOptions<SyncListPermissionResource> 
     {
         /// <summary>
@@ -83,6 +89,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of all Permissions applying to a Sync List.
+    /// </summary>
     public class ReadSyncListPermissionOptions : ReadOptions<SyncListPermissionResource> 
     {
         /// <summary>
@@ -121,6 +130,9 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         }
     }
 
+    /// <summary>
+    /// Update an identity's access to a specific Sync List.
+    /// </summary>
     public class UpdateSyncListPermissionOptions : IOptions<SyncListPermissionResource> 
     {
         /// <summary>

@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
+    /// <summary>
+    /// FetchIpAccessControlListOptions
+    /// </summary>
     public class FetchIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
@@ -38,6 +41,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// DeleteIpAccessControlListOptions
+    /// </summary>
     public class DeleteIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
@@ -71,6 +77,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// CreateIpAccessControlListOptions
+    /// </summary>
     public class CreateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
@@ -109,6 +118,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// ReadIpAccessControlListOptions
+    /// </summary>
     public class ReadIpAccessControlListOptions : ReadOptions<IpAccessControlListResource> 
     {
         /// <summary>

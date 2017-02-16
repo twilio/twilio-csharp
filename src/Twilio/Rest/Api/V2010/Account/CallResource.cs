@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// CallResource
+    /// </summary>
     public class CallResource : Resource 
     {
         public sealed class EventEnum : StringEnum 

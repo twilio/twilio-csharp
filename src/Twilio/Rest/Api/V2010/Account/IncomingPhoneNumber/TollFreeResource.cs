@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
 {
 
+    /// <summary>
+    /// TollFreeResource
+    /// </summary>
     public class TollFreeResource : Resource 
     {
         public sealed class AddressRequirementEnum : StringEnum 

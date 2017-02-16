@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.Recording 
 {
 
+    /// <summary>
+    /// AddOnResultResource
+    /// </summary>
     public class AddOnResultResource : Resource 
     {
         public sealed class StatusEnum : StringEnum 

@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
+    /// <summary>
+    /// RecordingResource
+    /// </summary>
     public class RecordingResource : Resource 
     {
         private static Request BuildFetchRequest(FetchRecordingOptions options, ITwilioRestClient client)

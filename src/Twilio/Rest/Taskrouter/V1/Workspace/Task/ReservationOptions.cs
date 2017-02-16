@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Task 
 {
 
+    /// <summary>
+    /// ReadReservationOptions
+    /// </summary>
     public class ReadReservationOptions : ReadOptions<ReservationResource> 
     {
         /// <summary>
@@ -52,6 +55,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         }
     }
 
+    /// <summary>
+    /// FetchReservationOptions
+    /// </summary>
     public class FetchReservationOptions : IOptions<ReservationResource> 
     {
         /// <summary>
@@ -91,6 +97,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         }
     }
 
+    /// <summary>
+    /// UpdateReservationOptions
+    /// </summary>
     public class UpdateReservationOptions : IOptions<ReservationResource> 
     {
         /// <summary>

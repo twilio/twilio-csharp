@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Preview.Sync.Service 
 {
 
+    /// <summary>
+    /// FetchSyncListOptions
+    /// </summary>
     public class FetchSyncListOptions : IOptions<SyncListResource> 
     {
         /// <summary>
@@ -38,6 +41,9 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     }
 
+    /// <summary>
+    /// DeleteSyncListOptions
+    /// </summary>
     public class DeleteSyncListOptions : IOptions<SyncListResource> 
     {
         /// <summary>
@@ -71,6 +77,9 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     }
 
+    /// <summary>
+    /// CreateSyncListOptions
+    /// </summary>
     public class CreateSyncListOptions : IOptions<SyncListResource> 
     {
         /// <summary>
@@ -107,6 +116,9 @@ namespace Twilio.Rest.Preview.Sync.Service
         }
     }
 
+    /// <summary>
+    /// ReadSyncListOptions
+    /// </summary>
     public class ReadSyncListOptions : ReadOptions<SyncListResource> 
     {
         /// <summary>

@@ -6,6 +6,9 @@ using Twilio.Base;
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
 {
 
+    /// <summary>
+    /// FetchMemberOptions
+    /// </summary>
     public class FetchMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
@@ -45,6 +48,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     }
 
+    /// <summary>
+    /// CreateMemberOptions
+    /// </summary>
     public class CreateMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
@@ -98,6 +104,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     }
 
+    /// <summary>
+    /// ReadMemberOptions
+    /// </summary>
     public class ReadMemberOptions : ReadOptions<MemberResource> 
     {
         /// <summary>
@@ -146,6 +155,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     }
 
+    /// <summary>
+    /// DeleteMemberOptions
+    /// </summary>
     public class DeleteMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
@@ -185,6 +197,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
     }
 
+    /// <summary>
+    /// UpdateMemberOptions
+    /// </summary>
     public class UpdateMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>

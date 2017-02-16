@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {
 
+    /// <summary>
+    /// FeedbackResource
+    /// </summary>
     public class FeedbackResource : Resource 
     {
         public sealed class OutcomeEnum : StringEnum 

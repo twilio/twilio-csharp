@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Notify.V1.Service 
 {
 
+    /// <summary>
+    /// NotificationResource
+    /// </summary>
     public class NotificationResource : Resource 
     {
         public sealed class PriorityEnum : StringEnum 

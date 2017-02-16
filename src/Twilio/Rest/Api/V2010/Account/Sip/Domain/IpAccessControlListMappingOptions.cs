@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
 {
 
+    /// <summary>
+    /// FetchIpAccessControlListMappingOptions
+    /// </summary>
     public class FetchIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
     {
         /// <summary>
@@ -42,6 +45,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     }
 
+    /// <summary>
+    /// CreateIpAccessControlListMappingOptions
+    /// </summary>
     public class CreateIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
     {
         /// <summary>
@@ -84,6 +90,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     }
 
+    /// <summary>
+    /// ReadIpAccessControlListMappingOptions
+    /// </summary>
     public class ReadIpAccessControlListMappingOptions : ReadOptions<IpAccessControlListMappingResource> 
     {
         /// <summary>
@@ -120,6 +129,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     }
 
+    /// <summary>
+    /// DeleteIpAccessControlListMappingOptions
+    /// </summary>
     public class DeleteIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
     {
         /// <summary>

@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// OutgoingCallerIdResource
+    /// </summary>
     public class OutgoingCallerIdResource : Resource 
     {
         private static Request BuildFetchRequest(FetchOutgoingCallerIdOptions options, ITwilioRestClient client)

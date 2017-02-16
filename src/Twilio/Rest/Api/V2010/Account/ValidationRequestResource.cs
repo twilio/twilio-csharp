@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// ValidationRequestResource
+    /// </summary>
     public class ValidationRequestResource : Resource 
     {
         private static Request BuildCreateRequest(CreateValidationRequestOptions options, ITwilioRestClient client)

@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
 {
 
+    /// <summary>
+    /// MemberResource
+    /// </summary>
     public class MemberResource : Resource 
     {
         private static Request BuildFetchRequest(FetchMemberOptions options, ITwilioRestClient client)

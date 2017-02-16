@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
+    /// <summary>
+    /// FetchCredentialListOptions
+    /// </summary>
     public class FetchCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
@@ -38,6 +41,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// DeleteCredentialListOptions
+    /// </summary>
     public class DeleteCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
@@ -71,6 +77,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// CreateCredentialListOptions
+    /// </summary>
     public class CreateCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
@@ -109,6 +118,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// ReadCredentialListOptions
+    /// </summary>
     public class ReadCredentialListOptions : ReadOptions<CredentialListResource> 
     {
         /// <summary>

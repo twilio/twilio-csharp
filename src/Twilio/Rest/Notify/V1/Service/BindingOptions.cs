@@ -7,6 +7,9 @@ using Twilio.Converters;
 namespace Twilio.Rest.Notify.V1.Service 
 {
 
+    /// <summary>
+    /// FetchBindingOptions
+    /// </summary>
     public class FetchBindingOptions : IOptions<BindingResource> 
     {
         /// <summary>
@@ -40,6 +43,9 @@ namespace Twilio.Rest.Notify.V1.Service
         }
     }
 
+    /// <summary>
+    /// DeleteBindingOptions
+    /// </summary>
     public class DeleteBindingOptions : IOptions<BindingResource> 
     {
         /// <summary>
@@ -73,6 +79,9 @@ namespace Twilio.Rest.Notify.V1.Service
         }
     }
 
+    /// <summary>
+    /// CreateBindingOptions
+    /// </summary>
     public class CreateBindingOptions : IOptions<BindingResource> 
     {
         /// <summary>
@@ -172,6 +181,9 @@ namespace Twilio.Rest.Notify.V1.Service
         }
     }
 
+    /// <summary>
+    /// ReadBindingOptions
+    /// </summary>
     public class ReadBindingOptions : ReadOptions<BindingResource> 
     {
         /// <summary>

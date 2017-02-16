@@ -7,6 +7,9 @@ using Twilio.Converters;
 namespace Twilio.Rest.Lookups.V1 
 {
 
+    /// <summary>
+    /// FetchPhoneNumberOptions
+    /// </summary>
     public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>

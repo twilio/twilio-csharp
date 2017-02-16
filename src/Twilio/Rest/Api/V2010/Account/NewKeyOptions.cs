@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// CreateNewKeyOptions
+    /// </summary>
     public class CreateNewKeyOptions : IOptions<NewKeyResource> 
     {
         /// <summary>

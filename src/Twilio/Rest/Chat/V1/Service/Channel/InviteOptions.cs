@@ -6,6 +6,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Chat.V1.Service.Channel 
 {
 
+    /// <summary>
+    /// FetchInviteOptions
+    /// </summary>
     public class FetchInviteOptions : IOptions<InviteResource> 
     {
         /// <summary>
@@ -45,6 +48,9 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         }
     }
 
+    /// <summary>
+    /// CreateInviteOptions
+    /// </summary>
     public class CreateInviteOptions : IOptions<InviteResource> 
     {
         /// <summary>
@@ -98,6 +104,9 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         }
     }
 
+    /// <summary>
+    /// ReadInviteOptions
+    /// </summary>
     public class ReadInviteOptions : ReadOptions<InviteResource> 
     {
         /// <summary>
@@ -146,6 +155,9 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         }
     }
 
+    /// <summary>
+    /// DeleteInviteOptions
+    /// </summary>
     public class DeleteInviteOptions : IOptions<InviteResource> 
     {
         /// <summary>

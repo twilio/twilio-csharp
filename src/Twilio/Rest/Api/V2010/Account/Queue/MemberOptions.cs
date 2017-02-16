@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Queue 
 {
 
+    /// <summary>
+    /// Fetch a specific members of the queue
+    /// </summary>
     public class FetchMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
@@ -42,6 +45,9 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
     }
 
+    /// <summary>
+    /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
+    /// </summary>
     public class UpdateMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
@@ -101,6 +107,9 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of members in the queue
+    /// </summary>
     public class ReadMemberOptions : ReadOptions<MemberResource> 
     {
         /// <summary>

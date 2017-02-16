@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
 {
 
+    /// <summary>
+    /// ReadTollFreeOptions
+    /// </summary>
     public class ReadTollFreeOptions : ReadOptions<TollFreeResource> 
     {
         /// <summary>

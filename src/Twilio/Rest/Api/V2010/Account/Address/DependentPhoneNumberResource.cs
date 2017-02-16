@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Address 
 {
 
+    /// <summary>
+    /// DependentPhoneNumberResource
+    /// </summary>
     public class DependentPhoneNumberResource : Resource 
     {
         private static Request BuildReadRequest(ReadDependentPhoneNumberOptions options, ITwilioRestClient client)

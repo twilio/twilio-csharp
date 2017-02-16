@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Monitor.V1 
 {
 
+    /// <summary>
+    /// AlertResource
+    /// </summary>
     public class AlertResource : Resource 
     {
         private static Request BuildFetchRequest(FetchAlertOptions options, ITwilioRestClient client)

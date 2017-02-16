@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList 
 {
 
+    /// <summary>
+    /// IpAddressResource
+    /// </summary>
     public class IpAddressResource : Resource 
     {
         private static Request BuildReadRequest(ReadIpAddressOptions options, ITwilioRestClient client)

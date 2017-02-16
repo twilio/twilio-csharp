@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
 {
 
+    /// <summary>
+    /// CreateCredentialListMappingOptions
+    /// </summary>
     public class CreateCredentialListMappingOptions : IOptions<CredentialListMappingResource> 
     {
         /// <summary>
@@ -47,6 +50,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     }
 
+    /// <summary>
+    /// ReadCredentialListMappingOptions
+    /// </summary>
     public class ReadCredentialListMappingOptions : ReadOptions<CredentialListMappingResource> 
     {
         /// <summary>
@@ -83,6 +89,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     }
 
+    /// <summary>
+    /// FetchCredentialListMappingOptions
+    /// </summary>
     public class FetchCredentialListMappingOptions : IOptions<CredentialListMappingResource> 
     {
         /// <summary>
@@ -120,6 +129,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     }
 
+    /// <summary>
+    /// DeleteCredentialListMappingOptions
+    /// </summary>
     public class DeleteCredentialListMappingOptions : IOptions<CredentialListMappingResource> 
     {
         /// <summary>

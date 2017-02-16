@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Notify.V1 
 {
 
+    /// <summary>
+    /// ServiceResource
+    /// </summary>
     public class ServiceResource : Resource 
     {
         private static Request BuildCreateRequest(CreateServiceOptions options, ITwilioRestClient client)

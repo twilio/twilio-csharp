@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn 
 {
 
+    /// <summary>
+    /// Fetch an instance of an Extension for the Installed Add-on.
+    /// </summary>
     public class FetchInstalledAddOnExtensionOptions : IOptions<InstalledAddOnExtensionResource> 
     {
         /// <summary>
@@ -38,6 +41,9 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         }
     }
 
+    /// <summary>
+    /// Update an Extension for an Add-on installation.
+    /// </summary>
     public class UpdateInstalledAddOnExtensionOptions : IOptions<InstalledAddOnExtensionResource> 
     {
         /// <summary>
@@ -82,6 +88,9 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of Extensions for the Installed Add-on.
+    /// </summary>
     public class ReadInstalledAddOnExtensionOptions : ReadOptions<InstalledAddOnExtensionResource> 
     {
         /// <summary>

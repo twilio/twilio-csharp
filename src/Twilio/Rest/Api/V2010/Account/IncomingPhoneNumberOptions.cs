@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Update an incoming-phone-number instance
+    /// </summary>
     public class UpdateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
@@ -207,6 +210,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Fetch an incoming-phone-number belonging to the account used to make the request
+    /// </summary>
     public class FetchIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
@@ -238,6 +244,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Delete a phone-numbers belonging to the account used to make the request
+    /// </summary>
     public class DeleteIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
@@ -269,6 +278,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request
+    /// </summary>
     public class ReadIncomingPhoneNumberOptions : ReadOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
@@ -318,6 +330,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Purchase a phone-number for the account
+    /// </summary>
     public class CreateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>

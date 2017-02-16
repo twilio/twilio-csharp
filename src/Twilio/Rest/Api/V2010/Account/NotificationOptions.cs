@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch a notification belonging to the account used to make the request
+    /// </summary>
     public class FetchNotificationOptions : IOptions<NotificationResource> 
     {
         /// <summary>
@@ -36,6 +39,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Delete a notification identified by the NotificationSid from an accounts log
+    /// </summary>
     public class DeleteNotificationOptions : IOptions<NotificationResource> 
     {
         /// <summary>
@@ -67,6 +73,9 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of notifications belonging to the account used to make the request
+    /// </summary>
     public class ReadNotificationOptions : ReadOptions<NotificationResource> 
     {
         /// <summary>

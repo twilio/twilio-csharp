@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
+    /// <summary>
+    /// EventResource
+    /// </summary>
     public class EventResource : Resource 
     {
         private static Request BuildFetchRequest(FetchEventOptions options, ITwilioRestClient client)
