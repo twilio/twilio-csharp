@@ -3,10 +3,20 @@ using System.Collections.Generic;
 
 namespace Twilio.Jwt
 {
+    /// <summary>
+    /// JWT for Twilio Client
+    /// </summary>
     public class ClientCapability : BaseJwt
     {
         private readonly HashSet<IScope> _scopes;
 
+        /// <summary>
+        /// Create a new Client JWT
+        /// </summary>
+        /// <param name="accountSid">Twilio Account SID</param>
+        /// <param name="authToken">Twilio auth token</param>
+        /// <param name="expiration">JWT expiration</param>
+        /// <param name="scopes">Scopes to give access to</param>
         public ClientCapability(
             string accountSid,
             string authToken,
@@ -17,6 +27,9 @@ namespace Twilio.Jwt
             this._scopes = scopes;
         }
 
+        /// <summary>
+        /// JWT headers
+        /// </summary>
         public override Dictionary<string, object> Headers
         {
             get
@@ -25,6 +38,9 @@ namespace Twilio.Jwt
             }
         }
 
+        /// <summary>
+        /// Get the JWT claims in JSON format
+        /// </summary>
         public override Dictionary<string, object> Claims
         {
             get

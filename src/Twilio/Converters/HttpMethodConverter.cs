@@ -4,6 +4,9 @@ using Newtonsoft.Json.Linq;
 
 namespace Twilio.Converters
 {
+    /// <summary>
+    /// Convert between strings and HttpMethod
+    /// </summary>
     public class HttpMethodConverter : JsonConverter
     {
         /// <summary>

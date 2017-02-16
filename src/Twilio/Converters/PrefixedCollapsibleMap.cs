@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace Twilio.Converters
 {
+    /// <summary>
+    /// Flatten nested maps and give all entries a prefix
+    /// </summary>
     public class PrefixedCollapsibleMap
     {
         private static Dictionary<string, string> Flatten(
@@ -28,6 +31,12 @@ namespace Twilio.Converters
             return result;
         }
 
+        /// <summary>
+        /// Flatten Dictionary separating nested keys with a .
+        /// </summary>
+        /// <param name="inputDict">Dictionary to flatten</param>
+        /// <param name="prefix">Prefix to give all entries</param>
+        /// <returns>Flattened Dictionary</returns>
         public static Dictionary<string, string> Serialize(
             Dictionary<string, object> inputDict,
             string prefix

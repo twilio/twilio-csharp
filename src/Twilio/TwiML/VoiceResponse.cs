@@ -4,15 +4,33 @@ using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
+    /// <summary>
+    /// Voice TwiML response
+    /// </summary>
     public class VoiceResponse
     {
         private readonly XElement _response;
 
+        /// <summary>
+        /// Create new VoiceResponse
+        /// </summary>
         public VoiceResponse()
         {
             _response = new XElement("Response");
         }
 
+        /// <summary>
+        /// Dial a phone number
+        /// </summary>
+        /// <param name="number">Number to dial</param>
+        /// <param name="hangupOnStar">Hangup call on *</param>
+        /// <param name="timeout">Timeout to wait for answer</param>
+        /// <param name="timeLimit">Max time of call</param>
+        /// <param name="action">Action URL</param>
+        /// <param name="method">Action URL method</param>
+        /// <param name="callerId">Caller ID to display</param>
+        /// <param name="record">Record the call</param>
+        /// <returns>VoiceResponse TwiML</returns>
         public VoiceResponse Dial(string number,
             bool? hangupOnStar=null,
             int? timeout=null,
@@ -56,12 +74,27 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Dial a resource
+        /// </summary>
+        /// <param name="dial">Dial TwiML</param>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Dial(Dial dial)
         {
             _response.Add(dial.Element);
             return this;
         }
 
+        /// <summary>
+        /// Enqueue an action
+        /// </summary>
+        /// <param name="name">Queue name</param>
+        /// <param name="action">Action URL</param>
+        /// <param name="method">Action URL method</param>
+        /// <param name="waitUrl">Wait URL</param>
+        /// <param name="waitUrlMethod">Wait URL method</param>
+        /// <param name="workflowSid">TaskRouter workflow SID</param>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Enqueue(string name,
             string action=null,
             string method=null,
@@ -95,6 +128,15 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Gather data
+        /// </summary>
+        /// <param name="timeout">Timeout to wait for data</param>
+        /// <param name="numDigits">Number of digits to collect</param>
+        /// <param name="action">Action URL</param>
+        /// <param name="method">Action URL method</param>
+        /// <param name="finishOnKey">Finish gather on key</param>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Gather(int? timeout=null,
             int? numDigits=null,
             string action=null,
@@ -127,24 +169,42 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Gather data
+        /// </summary>
+        /// <param name="gather">Gather TwiML</param>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Gather(Gather gather)
         {
             _response.Add(gather.Element);
             return this;
         }
 
+        /// <summary>
+        /// Hangup call
+        /// </summary>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Hangup()
         {
             _response.Add(new XElement("Hangup"));
             return this;
         }
 
+        /// <summary>
+        /// Leave call queue
+        /// </summary>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Leave()
         {
             _response.Add(new XElement("Leave"));
             return this;
         }
 
+        /// <summary>
+        /// Pause call
+        /// </summary>
+        /// <param name="length">seconds to pause</param>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Pause(int? length=null)
         {
             var pause = new XElement("Pause");
@@ -157,6 +217,13 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Play a recording
+        /// </summary>
+        /// <param name="url">URL of recording</param>
+        /// <param name="loop">times to loop</param>
+        /// <param name="digits">Play DTMF tones</param>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Play(string url,
             int? loop=null,
             int? digits=null)
@@ -175,6 +242,19 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Record call
+        /// </summary>
+        /// <param name="transcribe">Transcribe the recording</param>
+        /// <param name="playBeep">Play beep before recording</param>
+        /// <param name="timeout">Timeout recording after silence</param>
+        /// <param name="maxLength">Max length of recording</param>
+        /// <param name="action">Action URL</param>
+        /// <param name="method">Action URL method</param>
+        /// <param name="finishOnKey">Finish recording on digit</param>
+        /// <param name="transcribeCallback">Transcrible the callback</param>
+        /// <param name="trim">Trim recording</param>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Record(bool? transcribe=null,
             bool? playBeep=null,
             int? timeout=null,
@@ -227,6 +307,12 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Redirect call
+        /// </summary>
+        /// <param name="url">TwiML URL</param>
+        /// <param name="method">TwiML URL method</param>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Redirect(string url,
             string method=null)
         {
@@ -240,6 +326,11 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Reject call 
+        /// </summary>
+        /// <param name="reason">Rejection reason</param>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Reject(string reason=null)
         {
             var reject = new XElement("Reject");
@@ -252,6 +343,14 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Say something
+        /// </summary>
+        /// <param name="body">Message to read</param>
+        /// <param name="loop">Times to loop</param>
+        /// <param name="language">Language of message body</param>
+        /// <param name="voice">Voice to use</param>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Say(string body,
             int? loop=null,
             string language=null,
@@ -275,6 +374,16 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Send an SMS
+        /// </summary>
+        /// <param name="body">Body of text message</param>
+        /// <param name="to">Recipient</param>
+        /// <param name="from">Sender</param>
+        /// <param name="method">Action URL method</param>
+        /// <param name="action">Action URL</param>
+        /// <param name="statusCallback">Status callback URL</param>
+        /// <returns>VoiceResponse</returns>
         public VoiceResponse Sms(string body,
             string to=null,
             string from=null,
@@ -308,6 +417,10 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Generate XML
+        /// </summary>
+        /// <returns>TwiML XML</returns>
         public override string ToString()
         {
             var declaration = new XDeclaration("1.0", "utf-8", null);

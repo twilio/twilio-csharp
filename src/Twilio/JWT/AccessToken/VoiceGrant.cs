@@ -7,9 +7,24 @@ namespace Twilio.Jwt.AccessToken
     /// </summary>
     public class VoiceGrant : IGrant
     {
+        /// <summary>
+        /// Outgoing application SID
+        /// </summary>
         public string OutgoingApplicationSid { get; set; }
+
+        /// <summary>
+        /// Parameters to send to the outgoing application
+        /// </summary>
         public Dictionary<string, string> OutgoingApplicationParams { get; set; }
+
+        /// <summary>
+        /// Push credential SID
+        /// </summary>
         public string PushCredentialSid { get; set; }
+
+        /// <summary>
+        /// Endpoint ID
+        /// </summary>
         public string EndpointId { get; set; }
 
         /// <summary>

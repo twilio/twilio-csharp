@@ -7,14 +7,31 @@ using Twilio.Types;
 
 namespace Twilio.Converters
 {
+    /// <summary>
+    /// Converts between enums and strings
+    /// </summary>
     public class StringEnumConverter : JsonConverter
     {
+        /// <summary>
+        /// Writes value to a JsonWriter
+        /// </summary>
+        /// <param name="writer">JsonWriter to use</param>
+        /// <param name="value">value to write</param>
+        /// <param name="serializer">unused</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             var t = JToken.FromObject(value.ToString());
             t.WriteTo(writer);
         }
 
+        /// <summary>
+        /// Converts string to an enum
+        /// </summary>
+        /// <param name="reader">JsonReader to read from</param>
+        /// <param name="objectType">unused</param>
+        /// <param name="existingValue">unused</param>
+        /// <param name="serializer">unused</param>
+        /// <returns>Converted object</returns>
         public override object ReadJson(
             JsonReader reader,
             Type objectType,
@@ -53,6 +70,11 @@ namespace Twilio.Converters
             return instance;
         }
 
+        /// <summary>
+        /// Determines if an object can be converted
+        /// </summary>
+        /// <param name="objectType">Object type to convert</param>
+        /// <returns>true if it can be converted; false otherwise</returns>
         public override bool CanConvert(Type objectType)
         {
             return objectType == typeof(Enum);
