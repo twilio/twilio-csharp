@@ -63,7 +63,8 @@ Console.WriteLine(response);
 ``` 
 
 ## Migrating from earlier versions
-See the migration guide [here][3] 
+See the migration guide [here][3]. Also, if you were using the Twilio.Mvc package, that has been replaced by the [Twilio.AspNet.Mvc][4]
+package which is compatible with this version of the library.
 
 ## Alpha Version
 The alpha version of the Twilio .NET library is available on nuget.  This version is a superset of the mainline version that includes all of the Twilio Products that are currently in beta. To install the alpha version from the NuGet Package manager console, add the *-prerelease* flag to the *Install-Package* command:
@@ -83,3 +84,4 @@ If you've instead found a bug in the library or would like new features added, g
 [1]: http://www.twilio.com/docs/api/rest
 [2]: http://www.twilio.com/docs/api/twiml
 [3]: https://www.twilio.com/docs/libraries/csharp/migrating-your-csharp-dot-net-application-twilio-sdk-4x-5x
+[4]: https://github.com/twilio/twilio-aspnet
