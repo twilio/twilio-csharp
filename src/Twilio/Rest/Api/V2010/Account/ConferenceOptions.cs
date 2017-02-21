@@ -13,11 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique conference Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchConferenceOptions
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> Fetch by unique conference Sid </param>
         public FetchConferenceOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Filter by date created
         /// </summary>
@@ -148,11 +148,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The status
         /// </summary>
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> The sid </param>
         public UpdateConferenceOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>

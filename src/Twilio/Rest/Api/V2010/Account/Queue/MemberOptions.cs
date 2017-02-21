@@ -13,15 +13,15 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The Queue in which to find the members
         /// </summary>
-        public string QueueSid { get; }
+        public string PathQueueSid { get; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
     
         /// <summary>
         /// Construct a new FetchMemberOptions
@@ -31,8 +31,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="callSid"> The call_sid </param>
         public FetchMemberOptions(string queueSid, string callSid)
         {
-            QueueSid = queueSid;
-            CallSid = callSid;
+            PathQueueSid = queueSid;
+            PathCallSid = callSid;
         }
     
         /// <summary>
@@ -53,15 +53,15 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The Queue in which to find the members
         /// </summary>
-        public string QueueSid { get; }
+        public string PathQueueSid { get; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// The url
         /// </summary>
@@ -81,8 +81,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="method"> The method </param>
         public UpdateMemberOptions(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method)
         {
-            QueueSid = queueSid;
-            CallSid = callSid;
+            PathQueueSid = queueSid;
+            PathCallSid = callSid;
             Url = url;
             Method = method;
         }
@@ -115,11 +115,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The Queue in which to find members
         /// </summary>
-        public string QueueSid { get; }
+        public string PathQueueSid { get; }
     
         /// <summary>
         /// Construct a new ReadMemberOptions
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="queueSid"> The Queue in which to find members </param>
         public ReadMemberOptions(string queueSid)
         {
-            QueueSid = queueSid;
+            PathQueueSid = queueSid;
         }
     
         /// <summary>

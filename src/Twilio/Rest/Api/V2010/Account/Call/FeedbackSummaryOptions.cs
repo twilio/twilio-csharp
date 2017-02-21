@@ -14,7 +14,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The start_date
         /// </summary>
@@ -91,11 +91,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchFeedbackSummaryOptions
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="sid"> The sid </param>
         public FetchFeedbackSummaryOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -125,11 +125,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteFeedbackSummaryOptions
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="sid"> The sid </param>
         public DeleteFeedbackSummaryOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>

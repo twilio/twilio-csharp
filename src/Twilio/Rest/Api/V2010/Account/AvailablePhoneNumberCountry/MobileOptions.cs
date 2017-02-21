@@ -13,11 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The country_code
         /// </summary>
-        public string CountryCode { get; }
+        public string PathCountryCode { get; }
         /// <summary>
         /// The area_code
         /// </summary>
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="countryCode"> The country_code </param>
         public ReadMobileOptions(string countryCode)
         {
-            CountryCode = countryCode;
+            PathCountryCode = countryCode;
         }
     
         /// <summary>

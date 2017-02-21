@@ -13,11 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchSigningKeyOptions
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> The sid </param>
         public FetchSigningKeyOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -47,11 +47,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> The sid </param>
         public UpdateSigningKeyOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -90,11 +90,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteSigningKeyOptions
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> The sid </param>
         public DeleteSigningKeyOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters

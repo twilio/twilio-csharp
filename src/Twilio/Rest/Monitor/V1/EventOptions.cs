@@ -14,7 +14,7 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchEventOptions
@@ -23,7 +23,7 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="sid"> The sid </param>
         public FetchEventOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>

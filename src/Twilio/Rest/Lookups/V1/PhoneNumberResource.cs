@@ -31,7 +31,7 @@ namespace Twilio.Rest.Lookups.V1
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Lookups,
-                "/v1/PhoneNumbers/" + options.PhoneNumber + "",
+                "/v1/PhoneNumbers/" + options.PathPhoneNumber + "",
                 client.Region,
                 queryParams: options.GetParams()
             );

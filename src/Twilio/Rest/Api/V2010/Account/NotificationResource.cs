@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Notifications/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Notifications/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Notification </returns> 
         public static NotificationResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchNotificationOptions(sid){AccountSid = accountSid};
+            var options = new FetchNotificationOptions(sid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Notification </returns> 
         public static async System.Threading.Tasks.Task<NotificationResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchNotificationOptions(sid){AccountSid = accountSid};
+            var options = new FetchNotificationOptions(sid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Notifications/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Notifications/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Notification </returns> 
         public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteNotificationOptions(sid){AccountSid = accountSid};
+            var options = new DeleteNotificationOptions(sid){PathAccountSid = accountSid};
             return Delete(options, client);
         }
     
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Notification </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteNotificationOptions(sid){AccountSid = accountSid};
+            var options = new DeleteNotificationOptions(sid){PathAccountSid = accountSid};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Notifications.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Notifications.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -217,7 +217,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Notification </returns> 
         public static ResourceSet<NotificationResource> Read(string accountSid = null, int? log = null, DateTime? messageDateBefore = null, DateTime? messageDate = null, DateTime? messageDateAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadNotificationOptions{AccountSid = accountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadNotificationOptions{PathAccountSid = accountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -237,7 +237,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Notification </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<NotificationResource>> ReadAsync(string accountSid = null, int? log = null, DateTime? messageDateBefore = null, DateTime? messageDate = null, DateTime? messageDateAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadNotificationOptions{AccountSid = accountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadNotificationOptions{PathAccountSid = accountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

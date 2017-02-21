@@ -13,11 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The address_sid
         /// </summary>
-        public string AddressSid { get; }
+        public string PathAddressSid { get; }
     
         /// <summary>
         /// Construct a new ReadDependentPhoneNumberOptions
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// <param name="addressSid"> The address_sid </param>
         public ReadDependentPhoneNumberOptions(string addressSid)
         {
-            AddressSid = addressSid;
+            PathAddressSid = addressSid;
         }
     
         /// <summary>

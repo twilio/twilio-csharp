@@ -117,7 +117,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
-                "/v1/PhoneNumbers/Countries/" + options.IsoCountry + "",
+                "/v1/PhoneNumbers/Countries/" + options.PathIsoCountry + "",
                 client.Region,
                 queryParams: options.GetParams()
             );

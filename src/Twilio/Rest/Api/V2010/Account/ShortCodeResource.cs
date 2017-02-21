@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SMS/ShortCodes/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SMS/ShortCodes/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of ShortCode </returns> 
         public static ShortCodeResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchShortCodeOptions(sid){AccountSid = accountSid};
+            var options = new FetchShortCodeOptions(sid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
         public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchShortCodeOptions(sid){AccountSid = accountSid};
+            var options = new FetchShortCodeOptions(sid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SMS/ShortCodes/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SMS/ShortCodes/" + options.PathSid + ".json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of ShortCode </returns> 
         public static ShortCodeResource Update(string sid, string accountSid = null, string friendlyName = null, string apiVersion = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateShortCodeOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod};
+            var options = new UpdateShortCodeOptions(sid){PathAccountSid = accountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod};
             return Update(options, client);
         }
     
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
         public static async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(string sid, string accountSid = null, string friendlyName = null, string apiVersion = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateShortCodeOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod};
+            var options = new UpdateShortCodeOptions(sid){PathAccountSid = accountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SMS/ShortCodes.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SMS/ShortCodes.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of ShortCode </returns> 
         public static ResourceSet<ShortCodeResource> Read(string accountSid = null, string friendlyName = null, string shortCode = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadShortCodeOptions{AccountSid = accountSid, FriendlyName = friendlyName, ShortCode = shortCode, PageSize = pageSize, Limit = limit};
+            var options = new ReadShortCodeOptions{PathAccountSid = accountSid, FriendlyName = friendlyName, ShortCode = shortCode, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(string accountSid = null, string friendlyName = null, string shortCode = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadShortCodeOptions{AccountSid = accountSid, FriendlyName = friendlyName, ShortCode = shortCode, PageSize = pageSize, Limit = limit};
+            var options = new ReadShortCodeOptions{PathAccountSid = accountSid, FriendlyName = friendlyName, ShortCode = shortCode, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

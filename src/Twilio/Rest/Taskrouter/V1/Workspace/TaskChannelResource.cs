@@ -20,7 +20,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/TaskChannels/" + options.Sid + "",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/TaskChannels/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/TaskChannels",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/TaskChannels",
                 client.Region,
                 queryParams: options.GetParams()
             );

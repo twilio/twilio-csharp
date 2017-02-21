@@ -13,11 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique notification Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchNotificationOptions
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> Fetch by unique notification Sid </param>
         public FetchNotificationOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -47,11 +47,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Delete by unique notification Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteNotificationOptions
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> Delete by unique notification Sid </param>
         public DeleteNotificationOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Filter by log level
         /// </summary>

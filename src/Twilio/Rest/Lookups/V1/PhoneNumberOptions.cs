@@ -15,7 +15,7 @@ namespace Twilio.Rest.Lookups.V1
         /// <summary>
         /// The phone_number
         /// </summary>
-        public Types.PhoneNumber PhoneNumber { get; }
+        public Types.PhoneNumber PathPhoneNumber { get; }
         /// <summary>
         /// The country_code
         /// </summary>
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Lookups.V1
         /// <param name="phoneNumber"> The phone_number </param>
         public FetchPhoneNumberOptions(Types.PhoneNumber phoneNumber)
         {
-            PhoneNumber = phoneNumber;
+            PathPhoneNumber = phoneNumber;
             Type = new List<string>();
             AddOns = new List<string>();
         }

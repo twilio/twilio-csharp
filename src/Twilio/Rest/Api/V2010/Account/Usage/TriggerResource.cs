@@ -139,7 +139,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Usage/Triggers/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Usage/Triggers/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -185,7 +185,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <returns> A single instance of Trigger </returns> 
         public static TriggerResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchTriggerOptions(sid){AccountSid = accountSid};
+            var options = new FetchTriggerOptions(sid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -200,7 +200,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<TriggerResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchTriggerOptions(sid){AccountSid = accountSid};
+            var options = new FetchTriggerOptions(sid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Usage/Triggers/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Usage/Triggers/" + options.PathSid + ".json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -259,7 +259,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <returns> A single instance of Trigger </returns> 
         public static TriggerResource Update(string sid, string accountSid = null, Twilio.Http.HttpMethod callbackMethod = null, Uri callbackUrl = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateTriggerOptions(sid){AccountSid = accountSid, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName};
+            var options = new UpdateTriggerOptions(sid){PathAccountSid = accountSid, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName};
             return Update(options, client);
         }
     
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<TriggerResource> UpdateAsync(string sid, string accountSid = null, Twilio.Http.HttpMethod callbackMethod = null, Uri callbackUrl = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateTriggerOptions(sid){AccountSid = accountSid, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName};
+            var options = new UpdateTriggerOptions(sid){PathAccountSid = accountSid, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -287,7 +287,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Usage/Triggers/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Usage/Triggers/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -333,7 +333,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <returns> A single instance of Trigger </returns> 
         public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteTriggerOptions(sid){AccountSid = accountSid};
+            var options = new DeleteTriggerOptions(sid){PathAccountSid = accountSid};
             return Delete(options, client);
         }
     
@@ -348,7 +348,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteTriggerOptions(sid){AccountSid = accountSid};
+            var options = new DeleteTriggerOptions(sid){PathAccountSid = accountSid};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -358,7 +358,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Usage/Triggers.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Usage/Triggers.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -410,7 +410,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <returns> A single instance of Trigger </returns> 
         public static TriggerResource Create(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategoryEnum usageCategory, string accountSid = null, Twilio.Http.HttpMethod callbackMethod = null, string friendlyName = null, TriggerResource.RecurringEnum recurring = null, TriggerResource.TriggerFieldEnum triggerBy = null, ITwilioRestClient client = null)
         {
-            var options = new CreateTriggerOptions(callbackUrl, triggerValue, usageCategory){AccountSid = accountSid, CallbackMethod = callbackMethod, FriendlyName = friendlyName, Recurring = recurring, TriggerBy = triggerBy};
+            var options = new CreateTriggerOptions(callbackUrl, triggerValue, usageCategory){PathAccountSid = accountSid, CallbackMethod = callbackMethod, FriendlyName = friendlyName, Recurring = recurring, TriggerBy = triggerBy};
             return Create(options, client);
         }
     
@@ -431,7 +431,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<TriggerResource> CreateAsync(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategoryEnum usageCategory, string accountSid = null, Twilio.Http.HttpMethod callbackMethod = null, string friendlyName = null, TriggerResource.RecurringEnum recurring = null, TriggerResource.TriggerFieldEnum triggerBy = null, ITwilioRestClient client = null)
         {
-            var options = new CreateTriggerOptions(callbackUrl, triggerValue, usageCategory){AccountSid = accountSid, CallbackMethod = callbackMethod, FriendlyName = friendlyName, Recurring = recurring, TriggerBy = triggerBy};
+            var options = new CreateTriggerOptions(callbackUrl, triggerValue, usageCategory){PathAccountSid = accountSid, CallbackMethod = callbackMethod, FriendlyName = friendlyName, Recurring = recurring, TriggerBy = triggerBy};
             return await CreateAsync(options, client);
         }
         #endif
@@ -441,7 +441,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Usage/Triggers.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Usage/Triggers.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -495,7 +495,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <returns> A single instance of Trigger </returns> 
         public static ResourceSet<TriggerResource> Read(string accountSid = null, TriggerResource.RecurringEnum recurring = null, TriggerResource.TriggerFieldEnum triggerBy = null, TriggerResource.UsageCategoryEnum usageCategory = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTriggerOptions{AccountSid = accountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
+            var options = new ReadTriggerOptions{PathAccountSid = accountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -514,7 +514,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <returns> Task that resolves to A single instance of Trigger </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<TriggerResource>> ReadAsync(string accountSid = null, TriggerResource.RecurringEnum recurring = null, TriggerResource.TriggerFieldEnum triggerBy = null, TriggerResource.UsageCategoryEnum usageCategory = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTriggerOptions{AccountSid = accountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
+            var options = new ReadTriggerOptions{PathAccountSid = accountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

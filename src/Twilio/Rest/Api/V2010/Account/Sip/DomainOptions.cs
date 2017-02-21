@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The unique address on Twilio to route SIP traffic
         /// </summary>
@@ -149,11 +149,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique Domain Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchDomainOptions
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="sid"> Fetch by unique Domain Sid </param>
         public FetchDomainOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -183,11 +183,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The auth_type
         /// </summary>
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="sid"> The sid </param>
         public UpdateDomainOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -289,11 +289,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteDomainOptions
@@ -302,7 +302,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="sid"> The sid </param>
         public DeleteDomainOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>

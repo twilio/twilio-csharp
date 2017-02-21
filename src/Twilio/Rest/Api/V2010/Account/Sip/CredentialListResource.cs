@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/CredentialLists.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/CredentialLists.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> A single instance of CredentialList </returns> 
         public static ResourceSet<CredentialListResource> Read(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadCredentialListOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadCredentialListOptions{PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<CredentialListResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadCredentialListOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadCredentialListOptions{PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/CredentialLists.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/CredentialLists.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> A single instance of CredentialList </returns> 
         public static CredentialListResource Create(string friendlyName, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateCredentialListOptions(friendlyName){AccountSid = accountSid};
+            var options = new CreateCredentialListOptions(friendlyName){PathAccountSid = accountSid};
             return Create(options, client);
         }
     
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
         public static async System.Threading.Tasks.Task<CredentialListResource> CreateAsync(string friendlyName, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateCredentialListOptions(friendlyName){AccountSid = accountSid};
+            var options = new CreateCredentialListOptions(friendlyName){PathAccountSid = accountSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -189,7 +189,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -235,7 +235,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> A single instance of CredentialList </returns> 
         public static CredentialListResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchCredentialListOptions(sid){AccountSid = accountSid};
+            var options = new FetchCredentialListOptions(sid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -250,7 +250,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
         public static async System.Threading.Tasks.Task<CredentialListResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchCredentialListOptions(sid){AccountSid = accountSid};
+            var options = new FetchCredentialListOptions(sid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -260,7 +260,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + options.PathSid + ".json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -307,7 +307,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> A single instance of CredentialList </returns> 
         public static CredentialListResource Update(string sid, string friendlyName, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateCredentialListOptions(sid, friendlyName){AccountSid = accountSid};
+            var options = new UpdateCredentialListOptions(sid, friendlyName){PathAccountSid = accountSid};
             return Update(options, client);
         }
     
@@ -323,7 +323,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
         public static async System.Threading.Tasks.Task<CredentialListResource> UpdateAsync(string sid, string friendlyName, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateCredentialListOptions(sid, friendlyName){AccountSid = accountSid};
+            var options = new UpdateCredentialListOptions(sid, friendlyName){PathAccountSid = accountSid};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -333,7 +333,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -379,7 +379,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> A single instance of CredentialList </returns> 
         public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteCredentialListOptions(sid){AccountSid = accountSid};
+            var options = new DeleteCredentialListOptions(sid){PathAccountSid = accountSid};
             return Delete(options, client);
         }
     
@@ -394,7 +394,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteCredentialListOptions(sid){AccountSid = accountSid};
+            var options = new DeleteCredentialListOptions(sid){PathAccountSid = accountSid};
             return await DeleteAsync(options, client);
         }
         #endif

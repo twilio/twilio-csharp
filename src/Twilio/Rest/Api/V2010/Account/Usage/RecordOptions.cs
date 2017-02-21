@@ -14,7 +14,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Only include usage of a given category
         /// </summary>

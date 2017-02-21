@@ -13,11 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique usage-trigger Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchTriggerOptions
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
         public FetchTriggerOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -47,11 +47,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// HTTP method to use with callback_url
         /// </summary>
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="sid"> The sid </param>
         public UpdateTriggerOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -108,11 +108,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteTriggerOptions
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="sid"> The sid </param>
         public DeleteTriggerOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// URL Twilio will request when the trigger fires
         /// </summary>
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Filter by recurring
         /// </summary>

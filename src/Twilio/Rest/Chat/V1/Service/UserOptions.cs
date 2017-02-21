@@ -13,11 +13,11 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchUserOptions
@@ -27,8 +27,8 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="sid"> The sid </param>
         public FetchUserOptions(string serviceSid, string sid)
         {
-            ServiceSid = serviceSid;
-            Sid = sid;
+            PathServiceSid = serviceSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -49,11 +49,11 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteUserOptions
@@ -63,8 +63,8 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="sid"> The sid </param>
         public DeleteUserOptions(string serviceSid, string sid)
         {
-            ServiceSid = serviceSid;
-            Sid = sid;
+            PathServiceSid = serviceSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The identity
         /// </summary>
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="identity"> The identity </param>
         public CreateUserOptions(string serviceSid, string identity)
         {
-            ServiceSid = serviceSid;
+            PathServiceSid = serviceSid;
             Identity = identity;
         }
     
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
     
         /// <summary>
         /// Construct a new ReadUserOptions
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="serviceSid"> The service_sid </param>
         public ReadUserOptions(string serviceSid)
         {
-            ServiceSid = serviceSid;
+            PathServiceSid = serviceSid;
         }
     
         /// <summary>
@@ -188,11 +188,11 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The role_sid
         /// </summary>
@@ -214,8 +214,8 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="sid"> The sid </param>
         public UpdateUserOptions(string serviceSid, string sid)
         {
-            ServiceSid = serviceSid;
-            Sid = sid;
+            PathServiceSid = serviceSid;
+            PathSid = sid;
         }
     
         /// <summary>

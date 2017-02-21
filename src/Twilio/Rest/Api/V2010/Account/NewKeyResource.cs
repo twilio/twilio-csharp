@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Keys.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Keys.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of NewKey </returns> 
         public static NewKeyResource Create(string accountSid = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new CreateNewKeyOptions{AccountSid = accountSid, FriendlyName = friendlyName};
+            var options = new CreateNewKeyOptions{PathAccountSid = accountSid, FriendlyName = friendlyName};
             return Create(options, client);
         }
     
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of NewKey </returns> 
         public static async System.Threading.Tasks.Task<NewKeyResource> CreateAsync(string accountSid = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new CreateNewKeyOptions{AccountSid = accountSid, FriendlyName = friendlyName};
+            var options = new CreateNewKeyOptions{PathAccountSid = accountSid, FriendlyName = friendlyName};
             return await CreateAsync(options, client);
         }
         #endif

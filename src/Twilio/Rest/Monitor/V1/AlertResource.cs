@@ -20,7 +20,7 @@ namespace Twilio.Rest.Monitor.V1
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
-                "/v1/Alerts/" + options.Sid + "",
+                "/v1/Alerts/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Monitor.V1
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Monitor,
-                "/v1/Alerts/" + options.Sid + "",
+                "/v1/Alerts/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );

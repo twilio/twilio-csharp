@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Recordings/" + options.ReferenceSid + "/AddOnResults/" + options.AddOnResultSid + "/Payloads/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Recordings/" + options.PathReferenceSid + "/AddOnResults/" + options.PathAddOnResultSid + "/Payloads/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <returns> A single instance of Payload </returns> 
         public static PayloadResource Fetch(string referenceSid, string addOnResultSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchPayloadOptions(referenceSid, addOnResultSid, sid){AccountSid = accountSid};
+            var options = new FetchPayloadOptions(referenceSid, addOnResultSid, sid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <returns> Task that resolves to A single instance of Payload </returns> 
         public static async System.Threading.Tasks.Task<PayloadResource> FetchAsync(string referenceSid, string addOnResultSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchPayloadOptions(referenceSid, addOnResultSid, sid){AccountSid = accountSid};
+            var options = new FetchPayloadOptions(referenceSid, addOnResultSid, sid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Recordings/" + options.ReferenceSid + "/AddOnResults/" + options.AddOnResultSid + "/Payloads.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Recordings/" + options.PathReferenceSid + "/AddOnResults/" + options.PathAddOnResultSid + "/Payloads.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <returns> A single instance of Payload </returns> 
         public static ResourceSet<PayloadResource> Read(string referenceSid, string addOnResultSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadPayloadOptions(referenceSid, addOnResultSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadPayloadOptions(referenceSid, addOnResultSid){PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <returns> Task that resolves to A single instance of Payload </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<PayloadResource>> ReadAsync(string referenceSid, string addOnResultSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadPayloadOptions(referenceSid, addOnResultSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadPayloadOptions(referenceSid, addOnResultSid){PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Recordings/" + options.ReferenceSid + "/AddOnResults/" + options.AddOnResultSid + "/Payloads/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Recordings/" + options.PathReferenceSid + "/AddOnResults/" + options.PathAddOnResultSid + "/Payloads/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <returns> A single instance of Payload </returns> 
         public static bool Delete(string referenceSid, string addOnResultSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeletePayloadOptions(referenceSid, addOnResultSid, sid){AccountSid = accountSid};
+            var options = new DeletePayloadOptions(referenceSid, addOnResultSid, sid){PathAccountSid = accountSid};
             return Delete(options, client);
         }
     
@@ -262,7 +262,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <returns> Task that resolves to A single instance of Payload </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string referenceSid, string addOnResultSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeletePayloadOptions(referenceSid, addOnResultSid, sid){AccountSid = accountSid};
+            var options = new DeletePayloadOptions(referenceSid, addOnResultSid, sid){PathAccountSid = accountSid};
             return await DeleteAsync(options, client);
         }
         #endif

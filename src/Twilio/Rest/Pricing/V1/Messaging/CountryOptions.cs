@@ -33,7 +33,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// <summary>
         /// The iso_country
         /// </summary>
-        public string IsoCountry { get; }
+        public string PathIsoCountry { get; }
     
         /// <summary>
         /// Construct a new FetchCountryOptions
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// <param name="isoCountry"> The iso_country </param>
         public FetchCountryOptions(string isoCountry)
         {
-            IsoCountry = isoCountry;
+            PathIsoCountry = isoCountry;
         }
     
         /// <summary>

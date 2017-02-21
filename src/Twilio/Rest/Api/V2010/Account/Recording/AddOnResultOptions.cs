@@ -13,15 +13,15 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The reference_sid
         /// </summary>
-        public string ReferenceSid { get; }
+        public string PathReferenceSid { get; }
         /// <summary>
         /// Fetch by unique result Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchAddOnResultOptions
@@ -31,8 +31,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="sid"> Fetch by unique result Sid </param>
         public FetchAddOnResultOptions(string referenceSid, string sid)
         {
-            ReferenceSid = referenceSid;
-            Sid = sid;
+            PathReferenceSid = referenceSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -53,11 +53,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The reference_sid
         /// </summary>
-        public string ReferenceSid { get; }
+        public string PathReferenceSid { get; }
     
         /// <summary>
         /// Construct a new ReadAddOnResultOptions
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="referenceSid"> The reference_sid </param>
         public ReadAddOnResultOptions(string referenceSid)
         {
-            ReferenceSid = referenceSid;
+            PathReferenceSid = referenceSid;
         }
     
         /// <summary>
@@ -92,15 +92,15 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The reference_sid
         /// </summary>
-        public string ReferenceSid { get; }
+        public string PathReferenceSid { get; }
         /// <summary>
         /// Delete by unique result Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteAddOnResultOptions
@@ -110,8 +110,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <param name="sid"> Delete by unique result Sid </param>
         public DeleteAddOnResultOptions(string referenceSid, string sid)
         {
-            ReferenceSid = referenceSid;
-            Sid = sid;
+            PathReferenceSid = referenceSid;
+            PathSid = sid;
         }
     
         /// <summary>

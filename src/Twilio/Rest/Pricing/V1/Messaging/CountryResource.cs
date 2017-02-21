@@ -117,7 +117,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
-                "/v1/Messaging/Countries/" + options.IsoCountry + "",
+                "/v1/Messaging/Countries/" + options.PathIsoCountry + "",
                 client.Region,
                 queryParams: options.GetParams()
             );

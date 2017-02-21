@@ -30,7 +30,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Messages/" + options.MessageSid + "/Feedback.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathMessageSid + "/Feedback.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <returns> A single instance of Feedback </returns> 
         public static FeedbackResource Create(string messageSid, string accountSid = null, FeedbackResource.OutcomeEnum outcome = null, ITwilioRestClient client = null)
         {
-            var options = new CreateFeedbackOptions(messageSid){AccountSid = accountSid, Outcome = outcome};
+            var options = new CreateFeedbackOptions(messageSid){PathAccountSid = accountSid, Outcome = outcome};
             return Create(options, client);
         }
     
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <returns> Task that resolves to A single instance of Feedback </returns> 
         public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string messageSid, string accountSid = null, FeedbackResource.OutcomeEnum outcome = null, ITwilioRestClient client = null)
         {
-            var options = new CreateFeedbackOptions(messageSid){AccountSid = accountSid, Outcome = outcome};
+            var options = new CreateFeedbackOptions(messageSid){PathAccountSid = accountSid, Outcome = outcome};
             return await CreateAsync(options, client);
         }
         #endif

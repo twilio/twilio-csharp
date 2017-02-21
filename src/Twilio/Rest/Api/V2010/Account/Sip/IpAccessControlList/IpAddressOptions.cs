@@ -13,11 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The ip_access_control_list_sid
         /// </summary>
-        public string IpAccessControlListSid { get; }
+        public string PathIpAccessControlListSid { get; }
     
         /// <summary>
         /// Construct a new ReadIpAddressOptions
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         public ReadIpAddressOptions(string ipAccessControlListSid)
         {
-            IpAccessControlListSid = ipAccessControlListSid;
+            PathIpAccessControlListSid = ipAccessControlListSid;
         }
     
         /// <summary>
@@ -52,11 +52,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The ip_access_control_list_sid
         /// </summary>
-        public string IpAccessControlListSid { get; }
+        public string PathIpAccessControlListSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="ipAddress"> The ip_address </param>
         public CreateIpAddressOptions(string ipAccessControlListSid, string friendlyName, string ipAddress)
         {
-            IpAccessControlListSid = ipAccessControlListSid;
+            PathIpAccessControlListSid = ipAccessControlListSid;
             FriendlyName = friendlyName;
             IpAddress = ipAddress;
         }
@@ -108,15 +108,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The ip_access_control_list_sid
         /// </summary>
-        public string IpAccessControlListSid { get; }
+        public string PathIpAccessControlListSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchIpAddressOptions
@@ -126,8 +126,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="sid"> The sid </param>
         public FetchIpAddressOptions(string ipAccessControlListSid, string sid)
         {
-            IpAccessControlListSid = ipAccessControlListSid;
-            Sid = sid;
+            PathIpAccessControlListSid = ipAccessControlListSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -148,15 +148,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The ip_access_control_list_sid
         /// </summary>
-        public string IpAccessControlListSid { get; }
+        public string PathIpAccessControlListSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The ip_address
         /// </summary>
@@ -174,8 +174,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="sid"> The sid </param>
         public UpdateIpAddressOptions(string ipAccessControlListSid, string sid)
         {
-            IpAccessControlListSid = ipAccessControlListSid;
-            Sid = sid;
+            PathIpAccessControlListSid = ipAccessControlListSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -206,15 +206,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The ip_access_control_list_sid
         /// </summary>
-        public string IpAccessControlListSid { get; }
+        public string PathIpAccessControlListSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteIpAddressOptions
@@ -224,8 +224,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="sid"> The sid </param>
         public DeleteIpAddressOptions(string ipAccessControlListSid, string sid)
         {
-            IpAccessControlListSid = ipAccessControlListSid;
-            Sid = sid;
+            PathIpAccessControlListSid = ipAccessControlListSid;
+            PathSid = sid;
         }
     
         /// <summary>

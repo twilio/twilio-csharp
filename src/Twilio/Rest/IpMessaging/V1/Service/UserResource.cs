@@ -20,7 +20,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Users/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Users/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -91,7 +91,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Users/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Users/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -162,7 +162,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Users",
+                "/v1/Services/" + options.PathServiceSid + "/Users",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -239,7 +239,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Users",
+                "/v1/Services/" + options.PathServiceSid + "/Users",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -337,7 +337,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Users/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Users/" + options.PathSid + "",
                 client.Region,
                 postParams: options.GetParams()
             );

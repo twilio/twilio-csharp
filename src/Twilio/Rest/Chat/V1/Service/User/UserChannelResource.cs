@@ -31,7 +31,7 @@ namespace Twilio.Rest.Chat.V1.Service.User
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Chat,
-                "/v1/Services/" + options.ServiceSid + "/Users/" + options.UserSid + "/Channels",
+                "/v1/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels",
                 client.Region,
                 queryParams: options.GetParams()
             );

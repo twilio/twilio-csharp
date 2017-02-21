@@ -13,11 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The message_sid
         /// </summary>
-        public string MessageSid { get; }
+        public string PathMessageSid { get; }
         /// <summary>
         /// The outcome
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="messageSid"> The message_sid </param>
         public CreateFeedbackOptions(string messageSid)
         {
-            MessageSid = messageSid;
+            PathMessageSid = messageSid;
         }
     
         /// <summary>

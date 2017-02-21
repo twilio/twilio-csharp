@@ -13,19 +13,19 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The reference_sid
         /// </summary>
-        public string ReferenceSid { get; }
+        public string PathReferenceSid { get; }
         /// <summary>
         /// The add_on_result_sid
         /// </summary>
-        public string AddOnResultSid { get; }
+        public string PathAddOnResultSid { get; }
         /// <summary>
         /// Fetch by unique payload Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchPayloadOptions
@@ -36,9 +36,9 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <param name="sid"> Fetch by unique payload Sid </param>
         public FetchPayloadOptions(string referenceSid, string addOnResultSid, string sid)
         {
-            ReferenceSid = referenceSid;
-            AddOnResultSid = addOnResultSid;
-            Sid = sid;
+            PathReferenceSid = referenceSid;
+            PathAddOnResultSid = addOnResultSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -59,15 +59,15 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The reference_sid
         /// </summary>
-        public string ReferenceSid { get; }
+        public string PathReferenceSid { get; }
         /// <summary>
         /// The add_on_result_sid
         /// </summary>
-        public string AddOnResultSid { get; }
+        public string PathAddOnResultSid { get; }
     
         /// <summary>
         /// Construct a new ReadPayloadOptions
@@ -77,8 +77,8 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <param name="addOnResultSid"> The add_on_result_sid </param>
         public ReadPayloadOptions(string referenceSid, string addOnResultSid)
         {
-            ReferenceSid = referenceSid;
-            AddOnResultSid = addOnResultSid;
+            PathReferenceSid = referenceSid;
+            PathAddOnResultSid = addOnResultSid;
         }
     
         /// <summary>
@@ -104,19 +104,19 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The reference_sid
         /// </summary>
-        public string ReferenceSid { get; }
+        public string PathReferenceSid { get; }
         /// <summary>
         /// The add_on_result_sid
         /// </summary>
-        public string AddOnResultSid { get; }
+        public string PathAddOnResultSid { get; }
         /// <summary>
         /// Delete by unique payload Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeletePayloadOptions
@@ -127,9 +127,9 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <param name="sid"> Delete by unique payload Sid </param>
         public DeletePayloadOptions(string referenceSid, string addOnResultSid, string sid)
         {
-            ReferenceSid = referenceSid;
-            AddOnResultSid = addOnResultSid;
-            Sid = sid;
+            PathReferenceSid = referenceSid;
+            PathAddOnResultSid = addOnResultSid;
+            PathSid = sid;
         }
     
         /// <summary>

@@ -122,7 +122,7 @@ namespace Twilio.Rest.Chat.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchCredentialOptions
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="sid"> The sid </param>
         public FetchCredentialOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Chat.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -185,7 +185,7 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="sid"> The sid </param>
         public UpdateCredentialOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Chat.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteCredentialOptions
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="sid"> The sid </param>
         public DeleteCredentialOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>

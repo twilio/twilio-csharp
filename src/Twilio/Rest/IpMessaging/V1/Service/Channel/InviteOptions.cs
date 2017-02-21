@@ -14,15 +14,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchInviteOptions
@@ -33,9 +33,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="sid"> The sid </param>
         public FetchInviteOptions(string serviceSid, string channelSid, string sid)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
-            Sid = sid;
+            PathServiceSid = serviceSid;
+            PathChannelSid = channelSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -56,11 +56,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The identity
         /// </summary>
@@ -79,8 +79,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="identity"> The identity </param>
         public CreateInviteOptions(string serviceSid, string channelSid, string identity)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
+            PathServiceSid = serviceSid;
+            PathChannelSid = channelSid;
             Identity = identity;
         }
     
@@ -112,11 +112,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The identity
         /// </summary>
@@ -130,8 +130,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="channelSid"> The channel_sid </param>
         public ReadInviteOptions(string serviceSid, string channelSid)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
+            PathServiceSid = serviceSid;
+            PathChannelSid = channelSid;
             Identity = new List<string>();
         }
     
@@ -163,15 +163,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteInviteOptions
@@ -182,9 +182,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="sid"> The sid </param>
         public DeleteInviteOptions(string serviceSid, string channelSid, string sid)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
-            Sid = sid;
+            PathServiceSid = serviceSid;
+            PathChannelSid = channelSid;
+            PathSid = sid;
         }
     
         /// <summary>

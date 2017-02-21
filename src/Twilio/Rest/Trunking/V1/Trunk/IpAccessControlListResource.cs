@@ -20,7 +20,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/IpAccessControlLists/" + options.Sid + "",
+                "/v1/Trunks/" + options.PathTrunkSid + "/IpAccessControlLists/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/IpAccessControlLists/" + options.Sid + "",
+                "/v1/Trunks/" + options.PathTrunkSid + "/IpAccessControlLists/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/IpAccessControlLists",
+                "/v1/Trunks/" + options.PathTrunkSid + "/IpAccessControlLists",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -233,7 +233,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/IpAccessControlLists",
+                "/v1/Trunks/" + options.PathTrunkSid + "/IpAccessControlLists",
                 client.Region,
                 queryParams: options.GetParams()
             );

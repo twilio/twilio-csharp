@@ -20,7 +20,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/OriginationUrls/" + options.Sid + "",
+                "/v1/Trunks/" + options.PathTrunkSid + "/OriginationUrls/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/OriginationUrls/" + options.Sid + "",
+                "/v1/Trunks/" + options.PathTrunkSid + "/OriginationUrls/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/OriginationUrls",
+                "/v1/Trunks/" + options.PathTrunkSid + "/OriginationUrls",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/OriginationUrls",
+                "/v1/Trunks/" + options.PathTrunkSid + "/OriginationUrls",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -339,7 +339,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/OriginationUrls/" + options.Sid + "",
+                "/v1/Trunks/" + options.PathTrunkSid + "/OriginationUrls/" + options.PathSid + "",
                 client.Region,
                 postParams: options.GetParams()
             );

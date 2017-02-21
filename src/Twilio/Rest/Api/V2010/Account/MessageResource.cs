@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Messages.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Message </returns> 
         public static MessageResource Create(Types.PhoneNumber to, string accountSid = null, Types.PhoneNumber from = null, string messagingServiceSid = null, string body = null, List<Uri> mediaUrl = null, Uri statusCallback = null, string applicationSid = null, decimal? maxPrice = null, bool? provideFeedback = null, ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){AccountSid = accountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback};
+            var options = new CreateMessageOptions(to){PathAccountSid = accountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback};
             return Create(options, client);
         }
     
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(Types.PhoneNumber to, string accountSid = null, Types.PhoneNumber from = null, string messagingServiceSid = null, string body = null, List<Uri> mediaUrl = null, Uri statusCallback = null, string applicationSid = null, decimal? maxPrice = null, bool? provideFeedback = null, ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){AccountSid = accountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback};
+            var options = new CreateMessageOptions(to){PathAccountSid = accountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback};
             return await CreateAsync(options, client);
         }
         #endif
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Messages/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Message </returns> 
         public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteMessageOptions(sid){AccountSid = accountSid};
+            var options = new DeleteMessageOptions(sid){PathAccountSid = accountSid};
             return Delete(options, client);
         }
     
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteMessageOptions(sid){AccountSid = accountSid};
+            var options = new DeleteMessageOptions(sid){PathAccountSid = accountSid};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -205,7 +205,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Messages/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Message </returns> 
         public static MessageResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchMessageOptions(sid){AccountSid = accountSid};
+            var options = new FetchMessageOptions(sid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchMessageOptions(sid){AccountSid = accountSid};
+            var options = new FetchMessageOptions(sid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -276,7 +276,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Messages.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -332,7 +332,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Message </returns> 
         public static ResourceSet<MessageResource> Read(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, DateTime? dateSentBefore = null, DateTime? dateSent = null, DateTime? dateSentAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMessageOptions{AccountSid = accountSid, To = to, From = from, DateSentBefore = dateSentBefore, DateSent = dateSent, DateSentAfter = dateSentAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadMessageOptions{PathAccountSid = accountSid, To = to, From = from, DateSentBefore = dateSentBefore, DateSent = dateSent, DateSentAfter = dateSentAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -353,7 +353,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, DateTime? dateSentBefore = null, DateTime? dateSent = null, DateTime? dateSentAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMessageOptions{AccountSid = accountSid, To = to, From = from, DateSentBefore = dateSentBefore, DateSent = dateSent, DateSentAfter = dateSentAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadMessageOptions{PathAccountSid = accountSid, To = to, From = from, DateSentBefore = dateSentBefore, DateSent = dateSent, DateSentAfter = dateSentAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -384,7 +384,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Messages/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathSid + ".json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -431,7 +431,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Message </returns> 
         public static MessageResource Update(string sid, string body, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(sid, body){AccountSid = accountSid};
+            var options = new UpdateMessageOptions(sid, body){PathAccountSid = accountSid};
             return Update(options, client);
         }
     
@@ -447,7 +447,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string sid, string body, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(sid, body){AccountSid = accountSid};
+            var options = new UpdateMessageOptions(sid, body){PathAccountSid = accountSid};
             return await UpdateAsync(options, client);
         }
         #endif

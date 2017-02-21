@@ -13,11 +13,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchTaskChannelOptions
@@ -27,8 +27,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="sid"> The sid </param>
         public FetchTaskChannelOptions(string workspaceSid, string sid)
         {
-            WorkspaceSid = workspaceSid;
-            Sid = sid;
+            PathWorkspaceSid = workspaceSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
     
         /// <summary>
         /// Construct a new ReadTaskChannelOptions
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workspaceSid"> The workspace_sid </param>
         public ReadTaskChannelOptions(string workspaceSid)
         {
-            WorkspaceSid = workspaceSid;
+            PathWorkspaceSid = workspaceSid;
         }
     
         /// <summary>

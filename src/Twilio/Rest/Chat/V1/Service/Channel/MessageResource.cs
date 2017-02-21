@@ -30,7 +30,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Chat,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Messages/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Chat,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Messages",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Chat,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Messages",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -282,7 +282,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Chat,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Messages/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -355,7 +355,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Chat,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Messages/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages/" + options.PathSid + "",
                 client.Region,
                 postParams: options.GetParams()
             );

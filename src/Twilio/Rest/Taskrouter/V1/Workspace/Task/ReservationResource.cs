@@ -34,7 +34,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/Tasks/" + options.TaskSid + "/Reservations",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks/" + options.PathTaskSid + "/Reservations",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/Tasks/" + options.TaskSid + "/Reservations/" + options.Sid + "",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks/" + options.PathTaskSid + "/Reservations/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/Tasks/" + options.TaskSid + "/Reservations/" + options.Sid + "",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks/" + options.PathTaskSid + "/Reservations/" + options.PathSid + "",
                 client.Region,
                 postParams: options.GetParams()
             );

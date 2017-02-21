@@ -13,11 +13,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchOriginationUrlOptions
@@ -27,8 +27,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="sid"> The sid </param>
         public FetchOriginationUrlOptions(string trunkSid, string sid)
         {
-            TrunkSid = trunkSid;
-            Sid = sid;
+            PathTrunkSid = trunkSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -49,11 +49,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteOriginationUrlOptions
@@ -63,8 +63,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="sid"> The sid </param>
         public DeleteOriginationUrlOptions(string trunkSid, string sid)
         {
-            TrunkSid = trunkSid;
-            Sid = sid;
+            PathTrunkSid = trunkSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The weight
         /// </summary>
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="sipUrl"> The sip_url </param>
         public CreateOriginationUrlOptions(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl)
         {
-            TrunkSid = trunkSid;
+            PathTrunkSid = trunkSid;
             Weight = weight;
             Priority = priority;
             Enabled = enabled;
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
     
         /// <summary>
         /// Construct a new ReadOriginationUrlOptions
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="trunkSid"> The trunk_sid </param>
         public ReadOriginationUrlOptions(string trunkSid)
         {
-            TrunkSid = trunkSid;
+            PathTrunkSid = trunkSid;
         }
     
         /// <summary>
@@ -205,11 +205,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The weight
         /// </summary>
@@ -239,8 +239,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="sid"> The sid </param>
         public UpdateOriginationUrlOptions(string trunkSid, string sid)
         {
-            TrunkSid = trunkSid;
-            Sid = sid;
+            PathTrunkSid = trunkSid;
+            PathSid = sid;
         }
     
         /// <summary>

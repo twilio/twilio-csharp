@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.DomainSid + "/CredentialListMappings.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.PathDomainSid + "/CredentialListMappings.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> A single instance of CredentialListMapping </returns> 
         public static CredentialListMappingResource Create(string domainSid, string credentialListSid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateCredentialListMappingOptions(domainSid, credentialListSid){AccountSid = accountSid};
+            var options = new CreateCredentialListMappingOptions(domainSid, credentialListSid){PathAccountSid = accountSid};
             return Create(options, client);
         }
     
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
         public static async System.Threading.Tasks.Task<CredentialListMappingResource> CreateAsync(string domainSid, string credentialListSid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateCredentialListMappingOptions(domainSid, credentialListSid){AccountSid = accountSid};
+            var options = new CreateCredentialListMappingOptions(domainSid, credentialListSid){PathAccountSid = accountSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.DomainSid + "/CredentialListMappings.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.PathDomainSid + "/CredentialListMappings.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> A single instance of CredentialListMapping </returns> 
         public static ResourceSet<CredentialListMappingResource> Read(string domainSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadCredentialListMappingOptions(domainSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadCredentialListMappingOptions(domainSid){PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<CredentialListMappingResource>> ReadAsync(string domainSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadCredentialListMappingOptions(domainSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadCredentialListMappingOptions(domainSid){PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.DomainSid + "/CredentialListMappings/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.PathDomainSid + "/CredentialListMappings/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> A single instance of CredentialListMapping </returns> 
         public static CredentialListMappingResource Fetch(string domainSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchCredentialListMappingOptions(domainSid, sid){AccountSid = accountSid};
+            var options = new FetchCredentialListMappingOptions(domainSid, sid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -256,7 +256,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
         public static async System.Threading.Tasks.Task<CredentialListMappingResource> FetchAsync(string domainSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchCredentialListMappingOptions(domainSid, sid){AccountSid = accountSid};
+            var options = new FetchCredentialListMappingOptions(domainSid, sid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.DomainSid + "/CredentialListMappings/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.PathDomainSid + "/CredentialListMappings/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> A single instance of CredentialListMapping </returns> 
         public static bool Delete(string domainSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteCredentialListMappingOptions(domainSid, sid){AccountSid = accountSid};
+            var options = new DeleteCredentialListMappingOptions(domainSid, sid){PathAccountSid = accountSid};
             return Delete(options, client);
         }
     
@@ -329,7 +329,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string domainSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteCredentialListMappingOptions(domainSid, sid){AccountSid = accountSid};
+            var options = new DeleteCredentialListMappingOptions(domainSid, sid){PathAccountSid = accountSid};
             return await DeleteAsync(options, client);
         }
         #endif

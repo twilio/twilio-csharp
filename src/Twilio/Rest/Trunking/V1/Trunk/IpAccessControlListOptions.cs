@@ -13,11 +13,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchIpAccessControlListOptions
@@ -27,8 +27,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="sid"> The sid </param>
         public FetchIpAccessControlListOptions(string trunkSid, string sid)
         {
-            TrunkSid = trunkSid;
-            Sid = sid;
+            PathTrunkSid = trunkSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -49,11 +49,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteIpAccessControlListOptions
@@ -63,8 +63,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="sid"> The sid </param>
         public DeleteIpAccessControlListOptions(string trunkSid, string sid)
         {
-            TrunkSid = trunkSid;
-            Sid = sid;
+            PathTrunkSid = trunkSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The ip_access_control_list_sid
         /// </summary>
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         public CreateIpAccessControlListOptions(string trunkSid, string ipAccessControlListSid)
         {
-            TrunkSid = trunkSid;
+            PathTrunkSid = trunkSid;
             IpAccessControlListSid = ipAccessControlListSid;
         }
     
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
     
         /// <summary>
         /// Construct a new ReadIpAccessControlListOptions
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="trunkSid"> The trunk_sid </param>
         public ReadIpAccessControlListOptions(string trunkSid)
         {
-            TrunkSid = trunkSid;
+            PathTrunkSid = trunkSid;
         }
     
         /// <summary>

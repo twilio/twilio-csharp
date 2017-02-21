@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Queues/" + options.QueueSid + "/Members/" + options.CallSid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Queues/" + options.PathQueueSid + "/Members/" + options.PathCallSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <returns> A single instance of Member </returns> 
         public static MemberResource Fetch(string queueSid, string callSid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchMemberOptions(queueSid, callSid){AccountSid = accountSid};
+            var options = new FetchMemberOptions(queueSid, callSid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <returns> Task that resolves to A single instance of Member </returns> 
         public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(string queueSid, string callSid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchMemberOptions(queueSid, callSid){AccountSid = accountSid};
+            var options = new FetchMemberOptions(queueSid, callSid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Queues/" + options.QueueSid + "/Members/" + options.CallSid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Queues/" + options.PathQueueSid + "/Members/" + options.PathCallSid + ".json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <returns> A single instance of Member </returns> 
         public static MemberResource Update(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateMemberOptions(queueSid, callSid, url, method){AccountSid = accountSid};
+            var options = new UpdateMemberOptions(queueSid, callSid, url, method){PathAccountSid = accountSid};
             return Update(options, client);
         }
     
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <returns> Task that resolves to A single instance of Member </returns> 
         public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateMemberOptions(queueSid, callSid, url, method){AccountSid = accountSid};
+            var options = new UpdateMemberOptions(queueSid, callSid, url, method){PathAccountSid = accountSid};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Queues/" + options.QueueSid + "/Members.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Queues/" + options.PathQueueSid + "/Members.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -222,7 +222,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <returns> A single instance of Member </returns> 
         public static ResourceSet<MemberResource> Read(string queueSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMemberOptions(queueSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadMemberOptions(queueSid){PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <returns> Task that resolves to A single instance of Member </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(string queueSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMemberOptions(queueSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadMemberOptions(queueSid){PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

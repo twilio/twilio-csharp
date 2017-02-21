@@ -20,7 +20,7 @@ namespace Twilio.Rest.Monitor.V1
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
-                "/v1/Events/" + options.Sid + "",
+                "/v1/Events/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );

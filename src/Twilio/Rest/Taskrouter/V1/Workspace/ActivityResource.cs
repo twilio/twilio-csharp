@@ -20,7 +20,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/Activities/" + options.Sid + "",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Activities/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/Activities/" + options.Sid + "",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Activities/" + options.PathSid + "",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/Activities/" + options.Sid + "",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Activities/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -235,7 +235,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/Activities",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Activities",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -337,7 +337,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/Activities",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Activities",
                 client.Region,
                 postParams: options.GetParams()
             );

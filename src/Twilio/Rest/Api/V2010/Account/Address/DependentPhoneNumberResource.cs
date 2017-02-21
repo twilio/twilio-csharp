@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Addresses/" + options.AddressSid + "/DependentPhoneNumbers.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Addresses/" + options.PathAddressSid + "/DependentPhoneNumbers.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// <returns> A single instance of DependentPhoneNumber </returns> 
         public static ResourceSet<DependentPhoneNumberResource> Read(string addressSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadDependentPhoneNumberOptions(addressSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadDependentPhoneNumberOptions(addressSid){PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// <returns> Task that resolves to A single instance of DependentPhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(string addressSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadDependentPhoneNumberOptions(addressSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadDependentPhoneNumberOptions(addressSid){PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

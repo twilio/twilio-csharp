@@ -14,7 +14,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchServiceOptions
@@ -23,7 +23,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="sid"> The sid </param>
         public FetchServiceOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -44,7 +44,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteServiceOptions
@@ -53,7 +53,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="sid"> The sid </param>
         public DeleteServiceOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -129,7 +129,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -410,7 +410,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <param name="sid"> The sid </param>
         public UpdateServiceOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
             WebhookFilters = new List<string>();
         }
     

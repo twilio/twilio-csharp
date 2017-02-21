@@ -21,7 +21,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Tokens.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Tokens.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Token </returns> 
         public static TokenResource Create(string accountSid = null, int? ttl = null, ITwilioRestClient client = null)
         {
-            var options = new CreateTokenOptions{AccountSid = accountSid, Ttl = ttl};
+            var options = new CreateTokenOptions{PathAccountSid = accountSid, Ttl = ttl};
             return Create(options, client);
         }
     
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Token </returns> 
         public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(string accountSid = null, int? ttl = null, ITwilioRestClient client = null)
         {
-            var options = new CreateTokenOptions{AccountSid = accountSid, Ttl = ttl};
+            var options = new CreateTokenOptions{PathAccountSid = accountSid, Ttl = ttl};
             return await CreateAsync(options, client);
         }
         #endif

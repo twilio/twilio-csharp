@@ -13,11 +13,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The task_sid
         /// </summary>
-        public string TaskSid { get; }
+        public string PathTaskSid { get; }
         /// <summary>
         /// The reservation_status
         /// </summary>
@@ -31,8 +31,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="taskSid"> The task_sid </param>
         public ReadReservationOptions(string workspaceSid, string taskSid)
         {
-            WorkspaceSid = workspaceSid;
-            TaskSid = taskSid;
+            PathWorkspaceSid = workspaceSid;
+            PathTaskSid = taskSid;
         }
     
         /// <summary>
@@ -63,15 +63,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The task_sid
         /// </summary>
-        public string TaskSid { get; }
+        public string PathTaskSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchReservationOptions
@@ -82,9 +82,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="sid"> The sid </param>
         public FetchReservationOptions(string workspaceSid, string taskSid, string sid)
         {
-            WorkspaceSid = workspaceSid;
-            TaskSid = taskSid;
-            Sid = sid;
+            PathWorkspaceSid = workspaceSid;
+            PathTaskSid = taskSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -105,15 +105,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The task_sid
         /// </summary>
-        public string TaskSid { get; }
+        public string PathTaskSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The reservation_status
         /// </summary>
@@ -200,9 +200,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="sid"> The sid </param>
         public UpdateReservationOptions(string workspaceSid, string taskSid, string sid)
         {
-            WorkspaceSid = workspaceSid;
-            TaskSid = taskSid;
-            Sid = sid;
+            PathWorkspaceSid = workspaceSid;
+            PathTaskSid = taskSid;
+            PathSid = sid;
         }
     
         /// <summary>

@@ -30,7 +30,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/AuthorizedConnectApps/" + options.ConnectAppSid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/AuthorizedConnectApps/" + options.PathConnectAppSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of AuthorizedConnectApp </returns> 
         public static AuthorizedConnectAppResource Fetch(string connectAppSid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAuthorizedConnectAppOptions(connectAppSid){AccountSid = accountSid};
+            var options = new FetchAuthorizedConnectAppOptions(connectAppSid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns> 
         public static async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(string connectAppSid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAuthorizedConnectAppOptions(connectAppSid){AccountSid = accountSid};
+            var options = new FetchAuthorizedConnectAppOptions(connectAppSid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/AuthorizedConnectApps.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/AuthorizedConnectApps.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of AuthorizedConnectApp </returns> 
         public static ResourceSet<AuthorizedConnectAppResource> Read(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadAuthorizedConnectAppOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadAuthorizedConnectAppOptions{PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<AuthorizedConnectAppResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadAuthorizedConnectAppOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadAuthorizedConnectAppOptions{PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

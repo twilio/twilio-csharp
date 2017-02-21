@@ -54,7 +54,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences/" + options.ConferenceSid + "/Participants/" + options.CallSid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Conferences/" + options.PathConferenceSid + "/Participants/" + options.PathCallSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <returns> A single instance of Participant </returns> 
         public static ParticipantResource Fetch(string conferenceSid, string callSid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchParticipantOptions(conferenceSid, callSid){AccountSid = accountSid};
+            var options = new FetchParticipantOptions(conferenceSid, callSid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string conferenceSid, string callSid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchParticipantOptions(conferenceSid, callSid){AccountSid = accountSid};
+            var options = new FetchParticipantOptions(conferenceSid, callSid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -127,7 +127,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences/" + options.ConferenceSid + "/Participants/" + options.CallSid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Conferences/" + options.PathConferenceSid + "/Participants/" + options.PathCallSid + ".json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <returns> A single instance of Participant </returns> 
         public static ParticipantResource Update(string conferenceSid, string callSid, string accountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(conferenceSid, callSid){AccountSid = accountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod};
+            var options = new UpdateParticipantOptions(conferenceSid, callSid){PathAccountSid = accountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod};
             return Update(options, client);
         }
     
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string conferenceSid, string callSid, string accountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(conferenceSid, callSid){AccountSid = accountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod};
+            var options = new UpdateParticipantOptions(conferenceSid, callSid){PathAccountSid = accountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -208,7 +208,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences/" + options.ConferenceSid + "/Participants.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Conferences/" + options.PathConferenceSid + "/Participants.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -274,7 +274,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <returns> A single instance of Participant </returns> 
         public static ParticipantResource Create(string conferenceSid, Types.PhoneNumber from, Types.PhoneNumber to, string accountSid = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, List<string> statusCallbackEvent = null, int? timeout = null, bool? record = null, bool? muted = null, ParticipantResource.BeepEnum beep = null, bool? startConferenceOnEnter = null, bool? endConferenceOnExit = null, Uri waitUrl = null, Twilio.Http.HttpMethod waitMethod = null, bool? earlyMedia = null, int? maxParticipants = null, ParticipantResource.ConferenceRecordEnum conferenceRecord = null, string conferenceTrim = null, Uri conferenceStatusCallback = null, Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null, List<string> conferenceStatusCallbackEvent = null, ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(conferenceSid, from, to){AccountSid = accountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent};
+            var options = new CreateParticipantOptions(conferenceSid, from, to){PathAccountSid = accountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent};
             return Create(options, client);
         }
     
@@ -309,7 +309,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string conferenceSid, Types.PhoneNumber from, Types.PhoneNumber to, string accountSid = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, List<string> statusCallbackEvent = null, int? timeout = null, bool? record = null, bool? muted = null, ParticipantResource.BeepEnum beep = null, bool? startConferenceOnEnter = null, bool? endConferenceOnExit = null, Uri waitUrl = null, Twilio.Http.HttpMethod waitMethod = null, bool? earlyMedia = null, int? maxParticipants = null, ParticipantResource.ConferenceRecordEnum conferenceRecord = null, string conferenceTrim = null, Uri conferenceStatusCallback = null, Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null, List<string> conferenceStatusCallbackEvent = null, ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(conferenceSid, from, to){AccountSid = accountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent};
+            var options = new CreateParticipantOptions(conferenceSid, from, to){PathAccountSid = accountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent};
             return await CreateAsync(options, client);
         }
         #endif
@@ -319,7 +319,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences/" + options.ConferenceSid + "/Participants/" + options.CallSid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Conferences/" + options.PathConferenceSid + "/Participants/" + options.PathCallSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -366,7 +366,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <returns> A single instance of Participant </returns> 
         public static bool Delete(string conferenceSid, string callSid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteParticipantOptions(conferenceSid, callSid){AccountSid = accountSid};
+            var options = new DeleteParticipantOptions(conferenceSid, callSid){PathAccountSid = accountSid};
             return Delete(options, client);
         }
     
@@ -382,7 +382,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string conferenceSid, string callSid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteParticipantOptions(conferenceSid, callSid){AccountSid = accountSid};
+            var options = new DeleteParticipantOptions(conferenceSid, callSid){PathAccountSid = accountSid};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -392,7 +392,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences/" + options.ConferenceSid + "/Participants.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Conferences/" + options.PathConferenceSid + "/Participants.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -446,7 +446,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <returns> A single instance of Participant </returns> 
         public static ResourceSet<ParticipantResource> Read(string conferenceSid, string accountSid = null, bool? muted = null, bool? hold = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadParticipantOptions(conferenceSid){AccountSid = accountSid, Muted = muted, Hold = hold, PageSize = pageSize, Limit = limit};
+            var options = new ReadParticipantOptions(conferenceSid){PathAccountSid = accountSid, Muted = muted, Hold = hold, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -465,7 +465,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(string conferenceSid, string accountSid = null, bool? muted = null, bool? hold = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadParticipantOptions(conferenceSid){AccountSid = accountSid, Muted = muted, Hold = hold, PageSize = pageSize, Limit = limit};
+            var options = new ReadParticipantOptions(conferenceSid){PathAccountSid = accountSid, Muted = muted, Hold = hold, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

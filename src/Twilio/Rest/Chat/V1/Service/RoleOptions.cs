@@ -14,11 +14,11 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchRoleOptions
@@ -28,8 +28,8 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="sid"> The sid </param>
         public FetchRoleOptions(string serviceSid, string sid)
         {
-            ServiceSid = serviceSid;
-            Sid = sid;
+            PathServiceSid = serviceSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -50,11 +50,11 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteRoleOptions
@@ -64,8 +64,8 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="sid"> The sid </param>
         public DeleteRoleOptions(string serviceSid, string sid)
         {
-            ServiceSid = serviceSid;
-            Sid = sid;
+            PathServiceSid = serviceSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="permission"> The permission </param>
         public CreateRoleOptions(string serviceSid, string friendlyName, RoleResource.RoleTypeEnum type, List<string> permission)
         {
-            ServiceSid = serviceSid;
+            PathServiceSid = serviceSid;
             FriendlyName = friendlyName;
             Type = type;
             Permission = permission;
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
     
         /// <summary>
         /// Construct a new ReadRoleOptions
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="serviceSid"> The service_sid </param>
         public ReadRoleOptions(string serviceSid)
         {
-            ServiceSid = serviceSid;
+            PathServiceSid = serviceSid;
         }
     
         /// <summary>
@@ -184,11 +184,11 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The permission
         /// </summary>
@@ -203,8 +203,8 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="permission"> The permission </param>
         public UpdateRoleOptions(string serviceSid, string sid, List<string> permission)
         {
-            ServiceSid = serviceSid;
-            Sid = sid;
+            PathServiceSid = serviceSid;
+            PathSid = sid;
             Permission = permission;
         }
     

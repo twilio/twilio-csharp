@@ -13,7 +13,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// <summary>
         /// The number
         /// </summary>
-        public Types.PhoneNumber Number { get; }
+        public Types.PhoneNumber PathNumber { get; }
     
         /// <summary>
         /// Construct a new FetchNumberOptions
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// <param name="number"> The number </param>
         public FetchNumberOptions(Types.PhoneNumber number)
         {
-            Number = number;
+            PathNumber = number;
         }
     
         /// <summary>

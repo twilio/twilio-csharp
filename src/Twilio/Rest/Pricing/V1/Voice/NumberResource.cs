@@ -21,7 +21,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
-                "/v1/Voice/Numbers/" + options.Number + "",
+                "/v1/Voice/Numbers/" + options.PathNumber + "",
                 client.Region,
                 queryParams: options.GetParams()
             );

@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Transcriptions/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Transcriptions/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Transcription </returns> 
         public static TranscriptionResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchTranscriptionOptions(sid){AccountSid = accountSid};
+            var options = new FetchTranscriptionOptions(sid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Transcription </returns> 
         public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchTranscriptionOptions(sid){AccountSid = accountSid};
+            var options = new FetchTranscriptionOptions(sid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Transcriptions/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Transcriptions/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Transcription </returns> 
         public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteTranscriptionOptions(sid){AccountSid = accountSid};
+            var options = new DeleteTranscriptionOptions(sid){PathAccountSid = accountSid};
             return Delete(options, client);
         }
     
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Transcription </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteTranscriptionOptions(sid){AccountSid = accountSid};
+            var options = new DeleteTranscriptionOptions(sid){PathAccountSid = accountSid};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Transcriptions.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Transcriptions.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Transcription </returns> 
         public static ResourceSet<TranscriptionResource> Read(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTranscriptionOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadTranscriptionOptions{PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of Transcription </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTranscriptionOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadTranscriptionOptions{PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

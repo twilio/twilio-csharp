@@ -13,11 +13,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The user_sid
         /// </summary>
-        public string UserSid { get; }
+        public string PathUserSid { get; }
     
         /// <summary>
         /// Construct a new ReadUserChannelOptions
@@ -27,8 +27,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// <param name="userSid"> The user_sid </param>
         public ReadUserChannelOptions(string serviceSid, string userSid)
         {
-            ServiceSid = serviceSid;
-            UserSid = userSid;
+            PathServiceSid = serviceSid;
+            PathUserSid = userSid;
         }
     
         /// <summary>

@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Recordings/" + options.ReferenceSid + "/AddOnResults/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Recordings/" + options.PathReferenceSid + "/AddOnResults/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <returns> A single instance of AddOnResult </returns> 
         public static AddOnResultResource Fetch(string referenceSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAddOnResultOptions(referenceSid, sid){AccountSid = accountSid};
+            var options = new FetchAddOnResultOptions(referenceSid, sid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <returns> Task that resolves to A single instance of AddOnResult </returns> 
         public static async System.Threading.Tasks.Task<AddOnResultResource> FetchAsync(string referenceSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAddOnResultOptions(referenceSid, sid){AccountSid = accountSid};
+            var options = new FetchAddOnResultOptions(referenceSid, sid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Recordings/" + options.ReferenceSid + "/AddOnResults.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Recordings/" + options.PathReferenceSid + "/AddOnResults.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -161,7 +161,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <returns> A single instance of AddOnResult </returns> 
         public static ResourceSet<AddOnResultResource> Read(string referenceSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadAddOnResultOptions(referenceSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadAddOnResultOptions(referenceSid){PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <returns> Task that resolves to A single instance of AddOnResult </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<AddOnResultResource>> ReadAsync(string referenceSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadAddOnResultOptions(referenceSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadAddOnResultOptions(referenceSid){PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Recordings/" + options.ReferenceSid + "/AddOnResults/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Recordings/" + options.PathReferenceSid + "/AddOnResults/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -256,7 +256,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <returns> A single instance of AddOnResult </returns> 
         public static bool Delete(string referenceSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteAddOnResultOptions(referenceSid, sid){AccountSid = accountSid};
+            var options = new DeleteAddOnResultOptions(referenceSid, sid){PathAccountSid = accountSid};
             return Delete(options, client);
         }
     
@@ -272,7 +272,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <returns> Task that resolves to A single instance of AddOnResult </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string referenceSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteAddOnResultOptions(referenceSid, sid){AccountSid = accountSid};
+            var options = new DeleteAddOnResultOptions(referenceSid, sid){PathAccountSid = accountSid};
             return await DeleteAsync(options, client);
         }
         #endif

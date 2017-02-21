@@ -13,15 +13,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchNotificationOptions
@@ -31,8 +31,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="sid"> The sid </param>
         public FetchNotificationOptions(string callSid, string sid)
         {
-            CallSid = callSid;
-            Sid = sid;
+            PathCallSid = callSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -53,15 +53,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteNotificationOptions
@@ -71,8 +71,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="sid"> The sid </param>
         public DeleteNotificationOptions(string callSid, string sid)
         {
-            CallSid = callSid;
-            Sid = sid;
+            PathCallSid = callSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -93,11 +93,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// The log
         /// </summary>
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="callSid"> The call_sid </param>
         public ReadNotificationOptions(string callSid)
         {
-            CallSid = callSid;
+            PathCallSid = callSid;
         }
     
         /// <summary>

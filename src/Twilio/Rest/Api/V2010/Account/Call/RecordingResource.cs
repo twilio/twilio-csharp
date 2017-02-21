@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls/" + options.CallSid + "/Recordings/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Recordings/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> A single instance of Recording </returns> 
         public static RecordingResource Fetch(string callSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchRecordingOptions(callSid, sid){AccountSid = accountSid};
+            var options = new FetchRecordingOptions(callSid, sid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string callSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchRecordingOptions(callSid, sid){AccountSid = accountSid};
+            var options = new FetchRecordingOptions(callSid, sid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls/" + options.CallSid + "/Recordings/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Recordings/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> A single instance of Recording </returns> 
         public static bool Delete(string callSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteRecordingOptions(callSid, sid){AccountSid = accountSid};
+            var options = new DeleteRecordingOptions(callSid, sid){PathAccountSid = accountSid};
             return Delete(options, client);
         }
     
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string callSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteRecordingOptions(callSid, sid){AccountSid = accountSid};
+            var options = new DeleteRecordingOptions(callSid, sid){PathAccountSid = accountSid};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls/" + options.CallSid + "/Recordings.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Recordings.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -221,7 +221,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> A single instance of Recording </returns> 
         public static ResourceSet<RecordingResource> Read(string callSid, string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions(callSid){AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions(callSid){PathAccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(string callSid, string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions(callSid){AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions(callSid){PathAccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

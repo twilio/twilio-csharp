@@ -14,7 +14,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The minutes
         /// </summary>
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="workspaceSid"> The workspace_sid </param>
         public FetchWorkspaceStatisticsOptions(string workspaceSid)
         {
-            WorkspaceSid = workspaceSid;
+            PathWorkspaceSid = workspaceSid;
         }
     
         /// <summary>

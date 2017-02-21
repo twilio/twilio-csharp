@@ -13,15 +13,15 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchMessageOptions
@@ -32,9 +32,9 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="sid"> The sid </param>
         public FetchMessageOptions(string serviceSid, string channelSid, string sid)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
-            Sid = sid;
+            PathServiceSid = serviceSid;
+            PathChannelSid = channelSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -55,11 +55,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The body
         /// </summary>
@@ -82,8 +82,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="body"> The body </param>
         public CreateMessageOptions(string serviceSid, string channelSid, string body)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
+            PathServiceSid = serviceSid;
+            PathChannelSid = channelSid;
             Body = body;
         }
     
@@ -120,11 +120,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The order
         /// </summary>
@@ -138,8 +138,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="channelSid"> The channel_sid </param>
         public ReadMessageOptions(string serviceSid, string channelSid)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
+            PathServiceSid = serviceSid;
+            PathChannelSid = channelSid;
         }
     
         /// <summary>
@@ -170,15 +170,15 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteMessageOptions
@@ -189,9 +189,9 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="sid"> The sid </param>
         public DeleteMessageOptions(string serviceSid, string channelSid, string sid)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
-            Sid = sid;
+            PathServiceSid = serviceSid;
+            PathChannelSid = channelSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -212,15 +212,15 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The body
         /// </summary>
@@ -239,9 +239,9 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <param name="sid"> The sid </param>
         public UpdateMessageOptions(string serviceSid, string channelSid, string sid)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
-            Sid = sid;
+            PathServiceSid = serviceSid;
+            PathChannelSid = channelSid;
+            PathSid = sid;
         }
     
         /// <summary>

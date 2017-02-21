@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/OutgoingCallerIds.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/OutgoingCallerIds.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of ValidationRequest </returns> 
         public static ValidationRequestResource Create(Types.PhoneNumber phoneNumber, string accountSid = null, string friendlyName = null, int? callDelay = null, string extension = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new CreateValidationRequestOptions(phoneNumber){AccountSid = accountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new CreateValidationRequestOptions(phoneNumber){PathAccountSid = accountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
             return Create(options, client);
         }
     
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> Task that resolves to A single instance of ValidationRequest </returns> 
         public static async System.Threading.Tasks.Task<ValidationRequestResource> CreateAsync(Types.PhoneNumber phoneNumber, string accountSid = null, string friendlyName = null, int? callDelay = null, string extension = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new CreateValidationRequestOptions(phoneNumber){AccountSid = accountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new CreateValidationRequestOptions(phoneNumber){PathAccountSid = accountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
             return await CreateAsync(options, client);
         }
         #endif

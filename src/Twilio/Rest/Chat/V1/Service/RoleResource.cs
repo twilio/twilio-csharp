@@ -30,7 +30,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Chat,
-                "/v1/Services/" + options.ServiceSid + "/Roles/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Roles/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Chat,
-                "/v1/Services/" + options.ServiceSid + "/Roles/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Roles/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Chat,
-                "/v1/Services/" + options.ServiceSid + "/Roles",
+                "/v1/Services/" + options.PathServiceSid + "/Roles",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Chat,
-                "/v1/Services/" + options.ServiceSid + "/Roles",
+                "/v1/Services/" + options.PathServiceSid + "/Roles",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -345,7 +345,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Chat,
-                "/v1/Services/" + options.ServiceSid + "/Roles/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Roles/" + options.PathSid + "",
                 client.Region,
                 postParams: options.GetParams()
             );

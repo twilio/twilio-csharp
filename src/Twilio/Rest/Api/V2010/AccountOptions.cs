@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Fetch by unique Account Sid
         /// </summary>
-        public string Sid { get; set; }
+        public string PathSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; set; }
+        public string PathSid { get; set; }
         /// <summary>
         /// FriendlyName to update
         /// </summary>

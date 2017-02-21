@@ -14,11 +14,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// The quality_score
         /// </summary>
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="qualityScore"> The quality_score </param>
         public CreateFeedbackOptions(string callSid, int? qualityScore)
         {
-            CallSid = callSid;
+            PathCallSid = callSid;
             QualityScore = qualityScore;
             Issue = new List<FeedbackResource.IssuesEnum>();
         }
@@ -69,11 +69,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The call sid that uniquely identifies the call
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
     
         /// <summary>
         /// Construct a new FetchFeedbackOptions
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="callSid"> The call sid that uniquely identifies the call </param>
         public FetchFeedbackOptions(string callSid)
         {
-            CallSid = callSid;
+            PathCallSid = callSid;
         }
     
         /// <summary>
@@ -103,11 +103,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// An integer from 1 to 5
         /// </summary>
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="qualityScore"> An integer from 1 to 5 </param>
         public UpdateFeedbackOptions(string callSid, int? qualityScore)
         {
-            CallSid = callSid;
+            PathCallSid = callSid;
             QualityScore = qualityScore;
             Issue = new List<FeedbackResource.IssuesEnum>();
         }

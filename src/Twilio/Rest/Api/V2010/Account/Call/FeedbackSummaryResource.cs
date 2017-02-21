@@ -32,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> A single instance of FeedbackSummary </returns> 
         public static FeedbackSummaryResource Create(DateTime? startDate, DateTime? endDate, string accountSid = null, bool? includeSubaccounts = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new CreateFeedbackSummaryOptions(startDate, endDate){AccountSid = accountSid, IncludeSubaccounts = includeSubaccounts, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new CreateFeedbackSummaryOptions(startDate, endDate){PathAccountSid = accountSid, IncludeSubaccounts = includeSubaccounts, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
             return Create(options, client);
         }
     
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<FeedbackSummaryResource> CreateAsync(DateTime? startDate, DateTime? endDate, string accountSid = null, bool? includeSubaccounts = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new CreateFeedbackSummaryOptions(startDate, endDate){AccountSid = accountSid, IncludeSubaccounts = includeSubaccounts, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new CreateFeedbackSummaryOptions(startDate, endDate){PathAccountSid = accountSid, IncludeSubaccounts = includeSubaccounts, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
             return await CreateAsync(options, client);
         }
         #endif
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> A single instance of FeedbackSummary </returns> 
         public static FeedbackSummaryResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchFeedbackSummaryOptions(sid){AccountSid = accountSid};
+            var options = new FetchFeedbackSummaryOptions(sid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<FeedbackSummaryResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchFeedbackSummaryOptions(sid){AccountSid = accountSid};
+            var options = new FetchFeedbackSummaryOptions(sid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> A single instance of FeedbackSummary </returns> 
         public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteFeedbackSummaryOptions(sid){AccountSid = accountSid};
+            var options = new DeleteFeedbackSummaryOptions(sid){PathAccountSid = accountSid};
             return Delete(options, client);
         }
     
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteFeedbackSummaryOptions(sid){AccountSid = accountSid};
+            var options = new DeleteFeedbackSummaryOptions(sid){PathAccountSid = accountSid};
             return await DeleteAsync(options, client);
         }
         #endif

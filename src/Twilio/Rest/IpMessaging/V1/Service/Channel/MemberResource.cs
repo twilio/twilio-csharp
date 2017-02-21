@@ -20,7 +20,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -93,7 +93,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -168,7 +168,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -270,7 +270,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -343,7 +343,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members/" + options.PathSid + "",
                 client.Region,
                 postParams: options.GetParams()
             );

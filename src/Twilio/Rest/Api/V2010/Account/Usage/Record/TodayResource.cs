@@ -118,7 +118,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Usage/Records/Today.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Usage/Records/Today.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <returns> A single instance of Today </returns> 
         public static ResourceSet<TodayResource> Read(string accountSid = null, TodayResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTodayOptions{AccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadTodayOptions{PathAccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <returns> Task that resolves to A single instance of Today </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<TodayResource>> ReadAsync(string accountSid = null, TodayResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTodayOptions{AccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadTodayOptions{PathAccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

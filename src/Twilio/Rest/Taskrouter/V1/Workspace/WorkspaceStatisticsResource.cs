@@ -20,7 +20,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/Statistics",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Statistics",
                 client.Region,
                 queryParams: options.GetParams()
             );

@@ -13,7 +13,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchTrunkOptions
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="sid"> The sid </param>
         public FetchTrunkOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteTrunkOptions
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="sid"> The sid </param>
         public DeleteTrunkOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -196,7 +196,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="sid"> The sid </param>
         public UpdateTrunkOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>

@@ -13,11 +13,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The worker_sid
         /// </summary>
-        public string WorkerSid { get; }
+        public string PathWorkerSid { get; }
     
         /// <summary>
         /// Construct a new ReadWorkerChannelOptions
@@ -27,8 +27,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="workerSid"> The worker_sid </param>
         public ReadWorkerChannelOptions(string workspaceSid, string workerSid)
         {
-            WorkspaceSid = workspaceSid;
-            WorkerSid = workerSid;
+            PathWorkspaceSid = workspaceSid;
+            PathWorkerSid = workerSid;
         }
     
         /// <summary>
@@ -54,15 +54,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The worker_sid
         /// </summary>
-        public string WorkerSid { get; }
+        public string PathWorkerSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchWorkerChannelOptions
@@ -73,9 +73,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="sid"> The sid </param>
         public FetchWorkerChannelOptions(string workspaceSid, string workerSid, string sid)
         {
-            WorkspaceSid = workspaceSid;
-            WorkerSid = workerSid;
-            Sid = sid;
+            PathWorkspaceSid = workspaceSid;
+            PathWorkerSid = workerSid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -96,15 +96,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The worker_sid
         /// </summary>
-        public string WorkerSid { get; }
+        public string PathWorkerSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The capacity
         /// </summary>
@@ -123,9 +123,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="sid"> The sid </param>
         public UpdateWorkerChannelOptions(string workspaceSid, string workerSid, string sid)
         {
-            WorkspaceSid = workspaceSid;
-            WorkerSid = workerSid;
-            Sid = sid;
+            PathWorkspaceSid = workspaceSid;
+            PathWorkerSid = workerSid;
+            PathSid = sid;
         }
     
         /// <summary>

@@ -13,7 +13,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchWorkspaceOptions
@@ -22,7 +22,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="sid"> The sid </param>
         public FetchWorkspaceOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The default_activity_sid
         /// </summary>
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="sid"> The sid </param>
         public UpdateWorkspaceOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -246,7 +246,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteWorkspaceOptions
@@ -255,7 +255,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="sid"> The sid </param>
         public DeleteWorkspaceOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>

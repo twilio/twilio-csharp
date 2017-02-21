@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// A human readable description of this resource
         /// </summary>
@@ -77,11 +77,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique ip-access-control-list Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchIpAccessControlListOptions
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="sid"> Fetch by unique ip-access-control-list Sid </param>
         public FetchIpAccessControlListOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -111,11 +111,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// A human readable description of this resource
         /// </summary>
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="friendlyName"> A human readable description of this resource </param>
         public UpdateIpAccessControlListOptions(string sid, string friendlyName)
         {
-            Sid = sid;
+            PathSid = sid;
             FriendlyName = friendlyName;
         }
     
@@ -156,11 +156,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Delete by unique ip-access-control-list Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteIpAccessControlListOptions
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="sid"> Delete by unique ip-access-control-list Sid </param>
         public DeleteIpAccessControlListOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>

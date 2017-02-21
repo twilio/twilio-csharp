@@ -15,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Phone number, SIP address or client identifier to call
         /// </summary>
@@ -219,11 +219,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Call Sid that uniquely identifies the Call to delete
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteCallOptions
@@ -232,7 +232,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> Call Sid that uniquely identifies the Call to delete </param>
         public DeleteCallOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -253,11 +253,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Call Sid that uniquely identifies the Call to fetch
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchCallOptions
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> Call Sid that uniquely identifies the Call to fetch </param>
         public FetchCallOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>
@@ -287,7 +287,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Phone number or Client identifier to filter `to` on
         /// </summary>
@@ -406,11 +406,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Call Sid that uniquely identifies the Call to update
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// URL that returns TwiML
         /// </summary>
@@ -447,7 +447,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
         public UpdateCallOptions(string sid)
         {
-            Sid = sid;
+            PathSid = sid;
         }
     
         /// <summary>

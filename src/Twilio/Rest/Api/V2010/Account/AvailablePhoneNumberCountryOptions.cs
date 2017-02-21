@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -38,11 +38,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The country_code
         /// </summary>
-        public string CountryCode { get; }
+        public string PathCountryCode { get; }
     
         /// <summary>
         /// Construct a new FetchAvailablePhoneNumberCountryOptions
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="countryCode"> The country_code </param>
         public FetchAvailablePhoneNumberCountryOptions(string countryCode)
         {
-            CountryCode = countryCode;
+            PathCountryCode = countryCode;
         }
     
         /// <summary>

@@ -32,7 +32,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/PhoneNumbers/" + options.Sid + "",
+                "/v1/Trunks/" + options.PathTrunkSid + "/PhoneNumbers/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/PhoneNumbers/" + options.Sid + "",
+                "/v1/Trunks/" + options.PathTrunkSid + "/PhoneNumbers/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/PhoneNumbers",
+                "/v1/Trunks/" + options.PathTrunkSid + "/PhoneNumbers",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/PhoneNumbers",
+                "/v1/Trunks/" + options.PathTrunkSid + "/PhoneNumbers",
                 client.Region,
                 queryParams: options.GetParams()
             );

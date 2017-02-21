@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.DomainSid + "/IpAccessControlListMappings/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.PathDomainSid + "/IpAccessControlListMappings/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> A single instance of IpAccessControlListMapping </returns> 
         public static IpAccessControlListMappingResource Fetch(string domainSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchIpAccessControlListMappingOptions(domainSid, sid){AccountSid = accountSid};
+            var options = new FetchIpAccessControlListMappingOptions(domainSid, sid){PathAccountSid = accountSid};
             return Fetch(options, client);
         }
     
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
         public static async System.Threading.Tasks.Task<IpAccessControlListMappingResource> FetchAsync(string domainSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchIpAccessControlListMappingOptions(domainSid, sid){AccountSid = accountSid};
+            var options = new FetchIpAccessControlListMappingOptions(domainSid, sid){PathAccountSid = accountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.DomainSid + "/IpAccessControlListMappings.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.PathDomainSid + "/IpAccessControlListMappings.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> A single instance of IpAccessControlListMapping </returns> 
         public static IpAccessControlListMappingResource Create(string domainSid, string ipAccessControlListSid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateIpAccessControlListMappingOptions(domainSid, ipAccessControlListSid){AccountSid = accountSid};
+            var options = new CreateIpAccessControlListMappingOptions(domainSid, ipAccessControlListSid){PathAccountSid = accountSid};
             return Create(options, client);
         }
     
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
         public static async System.Threading.Tasks.Task<IpAccessControlListMappingResource> CreateAsync(string domainSid, string ipAccessControlListSid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateIpAccessControlListMappingOptions(domainSid, ipAccessControlListSid){AccountSid = accountSid};
+            var options = new CreateIpAccessControlListMappingOptions(domainSid, ipAccessControlListSid){PathAccountSid = accountSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.DomainSid + "/IpAccessControlListMappings.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.PathDomainSid + "/IpAccessControlListMappings.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> A single instance of IpAccessControlListMapping </returns> 
         public static ResourceSet<IpAccessControlListMappingResource> Read(string domainSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadIpAccessControlListMappingOptions(domainSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadIpAccessControlListMappingOptions(domainSid){PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -235,7 +235,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListMappingResource>> ReadAsync(string domainSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadIpAccessControlListMappingOptions(domainSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadIpAccessControlListMappingOptions(domainSid){PathAccountSid = accountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.DomainSid + "/IpAccessControlListMappings/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.PathDomainSid + "/IpAccessControlListMappings/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> A single instance of IpAccessControlListMapping </returns> 
         public static bool Delete(string domainSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteIpAccessControlListMappingOptions(domainSid, sid){AccountSid = accountSid};
+            var options = new DeleteIpAccessControlListMappingOptions(domainSid, sid){PathAccountSid = accountSid};
             return Delete(options, client);
         }
     
@@ -329,7 +329,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string domainSid, string sid, string accountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteIpAccessControlListMappingOptions(domainSid, sid){AccountSid = accountSid};
+            var options = new DeleteIpAccessControlListMappingOptions(domainSid, sid){PathAccountSid = accountSid};
             return await DeleteAsync(options, client);
         }
         #endif

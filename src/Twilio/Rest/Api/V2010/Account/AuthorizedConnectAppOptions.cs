@@ -13,11 +13,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The connect_app_sid
         /// </summary>
-        public string ConnectAppSid { get; }
+        public string PathConnectAppSid { get; }
     
         /// <summary>
         /// Construct a new FetchAuthorizedConnectAppOptions
@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="connectAppSid"> The connect_app_sid </param>
         public FetchAuthorizedConnectAppOptions(string connectAppSid)
         {
-            ConnectAppSid = connectAppSid;
+            PathConnectAppSid = connectAppSid;
         }
     
         /// <summary>
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
