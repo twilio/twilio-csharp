@@ -23,15 +23,25 @@ namespace Twilio.Exceptions
         /// <summary>
         /// Error message
         /// </summary>
+        public override string Message {
+            get
+            {
+                return _message;
+            }        
+        }
+
         [JsonProperty("message")]
-        public string Body { get; private set; }
+        private string _message
+        {
+            get; set;
+        }
 
         /// <summary>
         /// More info if provided
         /// </summary>
         [JsonProperty("more_info")]
         public string MoreInfo { get; private set; }
-
+        
         /// <summary>
         /// Create an empty RestException
         /// </summary>
@@ -48,7 +58,7 @@ namespace Twilio.Exceptions
         ) {
             Status = status;
             Code = code;
-            Body = message;
+            _message = message;
             MoreInfo = moreInfo;
         }
 
