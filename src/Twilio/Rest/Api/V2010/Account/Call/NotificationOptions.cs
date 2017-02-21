@@ -138,18 +138,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             
             if (MessageDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessageDate", MessageDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("MessageDate", MessageDate.Value.ToString("yyyy-MM-dd")));
             }
             else
             {
                 if (MessageDateBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("MessageDate<", MessageDateBefore.ToString()));
+                    p.Add(new KeyValuePair<string, string>("MessageDate<", MessageDateBefore.Value.ToString("yyyy-MM-dd")));
                 }
             
                 if (MessageDateAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("MessageDate>", MessageDateAfter.ToString()));
+                    p.Add(new KeyValuePair<string, string>("MessageDate>", MessageDateAfter.Value.ToString("yyyy-MM-dd")));
                 }
             }
             

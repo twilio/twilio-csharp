@@ -234,18 +234,18 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (DateSent != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateSent", DateSent.ToString()));
+                p.Add(new KeyValuePair<string, string>("DateSent", DateSent.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             else
             {
                 if (DateSentBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateSent<", DateSentBefore.ToString()));
+                    p.Add(new KeyValuePair<string, string>("DateSent<", DateSentBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             
                 if (DateSentAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateSent>", DateSentAfter.ToString()));
+                    p.Add(new KeyValuePair<string, string>("DateSent>", DateSentAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             }
             
