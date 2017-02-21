@@ -20,10 +20,10 @@ namespace Twilio.Rest.Monitor.V1
         /// Construct a new FetchEventOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchEventOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchEventOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

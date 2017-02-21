@@ -24,10 +24,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new FetchConnectAppOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique connect-app Sid </param>
-        public FetchConnectAppOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique connect-app Sid </param>
+        public FetchConnectAppOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -90,10 +90,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateConnectAppOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateConnectAppOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateConnectAppOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
             Permissions = new List<ConnectAppResource.PermissionEnum>();
         }
     

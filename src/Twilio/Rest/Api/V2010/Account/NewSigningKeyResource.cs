@@ -60,13 +60,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// create
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NewSigningKey </returns> 
-        public static NewSigningKeyResource Create(string accountSid = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static NewSigningKeyResource Create(string pathAccountSid = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new CreateNewSigningKeyOptions{PathAccountSid = accountSid, FriendlyName = friendlyName};
+            var options = new CreateNewSigningKeyOptions{PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
             return Create(options, client);
         }
     
@@ -75,13 +75,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// create
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NewSigningKey </returns> 
-        public static async System.Threading.Tasks.Task<NewSigningKeyResource> CreateAsync(string accountSid = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NewSigningKeyResource> CreateAsync(string pathAccountSid = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new CreateNewSigningKeyOptions{PathAccountSid = accountSid, FriendlyName = friendlyName};
+            var options = new CreateNewSigningKeyOptions{PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
             return await CreateAsync(options, client);
         }
         #endif

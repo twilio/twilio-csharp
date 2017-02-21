@@ -60,13 +60,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskChannel </returns> 
-        public static TaskChannelResource Fetch(string workspaceSid, string sid, ITwilioRestClient client = null)
+        public static TaskChannelResource Fetch(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchTaskChannelOptions(workspaceSid, sid);
+            var options = new FetchTaskChannelOptions(pathWorkspaceSid, pathSid);
             return Fetch(options, client);
         }
     
@@ -75,13 +75,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
-        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchTaskChannelOptions(workspaceSid, sid);
+            var options = new FetchTaskChannelOptions(pathWorkspaceSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -135,14 +135,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// read
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskChannel </returns> 
-        public static ResourceSet<TaskChannelResource> Read(string workspaceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<TaskChannelResource> Read(string pathWorkspaceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTaskChannelOptions(workspaceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadTaskChannelOptions(pathWorkspaceSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -151,14 +151,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// read
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(string workspaceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(string pathWorkspaceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTaskChannelOptions(workspaceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadTaskChannelOptions(pathWorkspaceSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

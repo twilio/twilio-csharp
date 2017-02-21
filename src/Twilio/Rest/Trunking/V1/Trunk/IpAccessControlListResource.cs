@@ -60,13 +60,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// fetch
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlList </returns> 
-        public static IpAccessControlListResource Fetch(string trunkSid, string sid, ITwilioRestClient client = null)
+        public static IpAccessControlListResource Fetch(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchIpAccessControlListOptions(trunkSid, sid);
+            var options = new FetchIpAccessControlListOptions(pathTrunkSid, pathSid);
             return Fetch(options, client);
         }
     
@@ -75,13 +75,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// fetch
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns> 
-        public static async System.Threading.Tasks.Task<IpAccessControlListResource> FetchAsync(string trunkSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IpAccessControlListResource> FetchAsync(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchIpAccessControlListOptions(trunkSid, sid);
+            var options = new FetchIpAccessControlListOptions(pathTrunkSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -131,13 +131,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// delete
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlList </returns> 
-        public static bool Delete(string trunkSid, string sid, ITwilioRestClient client = null)
+        public static bool Delete(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteIpAccessControlListOptions(trunkSid, sid);
+            var options = new DeleteIpAccessControlListOptions(pathTrunkSid, pathSid);
             return Delete(options, client);
         }
     
@@ -146,13 +146,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// delete
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string trunkSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteIpAccessControlListOptions(trunkSid, sid);
+            var options = new DeleteIpAccessControlListOptions(pathTrunkSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif
@@ -202,13 +202,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// create
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlList </returns> 
-        public static IpAccessControlListResource Create(string trunkSid, string ipAccessControlListSid, ITwilioRestClient client = null)
+        public static IpAccessControlListResource Create(string pathTrunkSid, string ipAccessControlListSid, ITwilioRestClient client = null)
         {
-            var options = new CreateIpAccessControlListOptions(trunkSid, ipAccessControlListSid);
+            var options = new CreateIpAccessControlListOptions(pathTrunkSid, ipAccessControlListSid);
             return Create(options, client);
         }
     
@@ -217,13 +217,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// create
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns> 
-        public static async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(string trunkSid, string ipAccessControlListSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(string pathTrunkSid, string ipAccessControlListSid, ITwilioRestClient client = null)
         {
-            var options = new CreateIpAccessControlListOptions(trunkSid, ipAccessControlListSid);
+            var options = new CreateIpAccessControlListOptions(pathTrunkSid, ipAccessControlListSid);
             return await CreateAsync(options, client);
         }
         #endif
@@ -277,14 +277,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// read
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlList </returns> 
-        public static ResourceSet<IpAccessControlListResource> Read(string trunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<IpAccessControlListResource> Read(string pathTrunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadIpAccessControlListOptions(trunkSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadIpAccessControlListOptions(pathTrunkSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -293,14 +293,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// read
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListResource>> ReadAsync(string trunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListResource>> ReadAsync(string pathTrunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadIpAccessControlListOptions(trunkSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadIpAccessControlListOptions(pathTrunkSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

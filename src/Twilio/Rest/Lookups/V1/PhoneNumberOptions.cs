@@ -37,10 +37,10 @@ namespace Twilio.Rest.Lookups.V1
         /// Construct a new FetchPhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="phoneNumber"> The phone_number </param>
-        public FetchPhoneNumberOptions(Types.PhoneNumber phoneNumber)
+        /// <param name="pathPhoneNumber"> The phone_number </param>
+        public FetchPhoneNumberOptions(Types.PhoneNumber pathPhoneNumber)
         {
-            PathPhoneNumber = phoneNumber;
+            PathPhoneNumber = pathPhoneNumber;
             Type = new List<string>();
             AddOns = new List<string>();
         }

@@ -75,15 +75,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// read
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="userSid"> The user_sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserChannel </returns> 
-        public static ResourceSet<UserChannelResource> Read(string serviceSid, string userSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<UserChannelResource> Read(string pathServiceSid, string pathUserSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadUserChannelOptions(serviceSid, userSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -92,15 +92,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// read
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="userSid"> The user_sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(string serviceSid, string userSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(string pathServiceSid, string pathUserSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadUserChannelOptions(serviceSid, userSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

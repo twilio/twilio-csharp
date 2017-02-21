@@ -31,14 +31,14 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// Construct a new FetchPayloadOptions
         /// </summary>
         ///
-        /// <param name="referenceSid"> The reference_sid </param>
-        /// <param name="addOnResultSid"> The add_on_result_sid </param>
-        /// <param name="sid"> Fetch by unique payload Sid </param>
-        public FetchPayloadOptions(string referenceSid, string addOnResultSid, string sid)
+        /// <param name="pathReferenceSid"> The reference_sid </param>
+        /// <param name="pathAddOnResultSid"> The add_on_result_sid </param>
+        /// <param name="pathSid"> Fetch by unique payload Sid </param>
+        public FetchPayloadOptions(string pathReferenceSid, string pathAddOnResultSid, string pathSid)
         {
-            PathReferenceSid = referenceSid;
-            PathAddOnResultSid = addOnResultSid;
-            PathSid = sid;
+            PathReferenceSid = pathReferenceSid;
+            PathAddOnResultSid = pathAddOnResultSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// Construct a new ReadPayloadOptions
         /// </summary>
         ///
-        /// <param name="referenceSid"> The reference_sid </param>
-        /// <param name="addOnResultSid"> The add_on_result_sid </param>
-        public ReadPayloadOptions(string referenceSid, string addOnResultSid)
+        /// <param name="pathReferenceSid"> The reference_sid </param>
+        /// <param name="pathAddOnResultSid"> The add_on_result_sid </param>
+        public ReadPayloadOptions(string pathReferenceSid, string pathAddOnResultSid)
         {
-            PathReferenceSid = referenceSid;
-            PathAddOnResultSid = addOnResultSid;
+            PathReferenceSid = pathReferenceSid;
+            PathAddOnResultSid = pathAddOnResultSid;
         }
     
         /// <summary>
@@ -122,14 +122,14 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// Construct a new DeletePayloadOptions
         /// </summary>
         ///
-        /// <param name="referenceSid"> The reference_sid </param>
-        /// <param name="addOnResultSid"> The add_on_result_sid </param>
-        /// <param name="sid"> Delete by unique payload Sid </param>
-        public DeletePayloadOptions(string referenceSid, string addOnResultSid, string sid)
+        /// <param name="pathReferenceSid"> The reference_sid </param>
+        /// <param name="pathAddOnResultSid"> The add_on_result_sid </param>
+        /// <param name="pathSid"> Delete by unique payload Sid </param>
+        public DeletePayloadOptions(string pathReferenceSid, string pathAddOnResultSid, string pathSid)
         {
-            PathReferenceSid = referenceSid;
-            PathAddOnResultSid = addOnResultSid;
-            PathSid = sid;
+            PathReferenceSid = pathReferenceSid;
+            PathAddOnResultSid = pathAddOnResultSid;
+            PathSid = pathSid;
         }
     
         /// <summary>

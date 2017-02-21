@@ -23,10 +23,10 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// Construct a new ReadDependentPhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="addressSid"> The address_sid </param>
-        public ReadDependentPhoneNumberOptions(string addressSid)
+        /// <param name="pathAddressSid"> The address_sid </param>
+        public ReadDependentPhoneNumberOptions(string pathAddressSid)
         {
-            PathAddressSid = addressSid;
+            PathAddressSid = pathAddressSid;
         }
     
         /// <summary>

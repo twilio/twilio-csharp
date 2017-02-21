@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="to"> Phone number, SIP address or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="url"> Url from which to fetch TwiML </param>
         /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
         /// <param name="method"> HTTP method to use to fetch TwiML </param>
@@ -118,9 +118,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns> 
-        public static CallResource Create(IEndpoint to, Types.PhoneNumber from, string accountSid = null, Uri url = null, string applicationSid = null, Twilio.Http.HttpMethod method = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, List<string> statusCallbackEvent = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string sendDigits = null, string ifMachine = null, int? timeout = null, bool? record = null, string recordingChannels = null, string recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, ITwilioRestClient client = null)
+        public static CallResource Create(IEndpoint to, Types.PhoneNumber from, string pathAccountSid = null, Uri url = null, string applicationSid = null, Twilio.Http.HttpMethod method = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, List<string> statusCallbackEvent = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string sendDigits = null, string ifMachine = null, int? timeout = null, bool? record = null, string recordingChannels = null, string recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = accountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
             return Create(options, client);
         }
     
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///
         /// <param name="to"> Phone number, SIP address or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="url"> Url from which to fetch TwiML </param>
         /// <param name="applicationSid"> ApplicationSid that configures from where to fetch TwiML </param>
         /// <param name="method"> HTTP method to use to fetch TwiML </param>
@@ -151,9 +151,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns> 
-        public static async System.Threading.Tasks.Task<CallResource> CreateAsync(IEndpoint to, Types.PhoneNumber from, string accountSid = null, Uri url = null, string applicationSid = null, Twilio.Http.HttpMethod method = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, List<string> statusCallbackEvent = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string sendDigits = null, string ifMachine = null, int? timeout = null, bool? record = null, string recordingChannels = null, string recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CallResource> CreateAsync(IEndpoint to, Types.PhoneNumber from, string pathAccountSid = null, Uri url = null, string applicationSid = null, Twilio.Http.HttpMethod method = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, List<string> statusCallbackEvent = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string sendDigits = null, string ifMachine = null, int? timeout = null, bool? record = null, string recordingChannels = null, string recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = accountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
             return await CreateAsync(options, client);
         }
         #endif
@@ -203,13 +203,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
         /// </summary>
         ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to delete </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to delete </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns> 
-        public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteCallOptions(sid){PathAccountSid = accountSid};
+            var options = new DeleteCallOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
     
@@ -218,13 +218,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
         /// </summary>
         ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to delete </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to delete </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteCallOptions(sid){PathAccountSid = accountSid};
+            var options = new DeleteCallOptions(pathSid){PathAccountSid = pathAccountSid};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -274,13 +274,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch the Call specified by the provided Call Sid
         /// </summary>
         ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to fetch </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to fetch </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns> 
-        public static CallResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static CallResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchCallOptions(sid){PathAccountSid = accountSid};
+            var options = new FetchCallOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
     
@@ -289,13 +289,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch the Call specified by the provided Call Sid
         /// </summary>
         ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to fetch </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to fetch </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns> 
-        public static async System.Threading.Tasks.Task<CallResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CallResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchCallOptions(sid){PathAccountSid = accountSid};
+            var options = new FetchCallOptions(pathSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -349,7 +349,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieves a collection of Calls made to and from your account
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="to"> Phone number or Client identifier to filter `to` on </param>
         /// <param name="from"> Phone number or Client identifier to filter `from` on </param>
         /// <param name="parentCallSid"> Parent Call Sid to filter on </param>
@@ -364,9 +364,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns> 
-        public static ResourceSet<CallResource> Read(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, string parentCallSid = null, CallResource.StatusEnum status = null, DateTime? startTimeBefore = null, DateTime? startTime = null, DateTime? startTimeAfter = null, DateTime? endTimeBefore = null, DateTime? endTime = null, DateTime? endTimeAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<CallResource> Read(string pathAccountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, string parentCallSid = null, CallResource.StatusEnum status = null, DateTime? startTimeBefore = null, DateTime? startTime = null, DateTime? startTimeAfter = null, DateTime? endTimeBefore = null, DateTime? endTime = null, DateTime? endTimeAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadCallOptions{PathAccountSid = accountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTimeBefore = startTimeBefore, StartTime = startTime, StartTimeAfter = startTimeAfter, EndTimeBefore = endTimeBefore, EndTime = endTime, EndTimeAfter = endTimeAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadCallOptions{PathAccountSid = pathAccountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTimeBefore = startTimeBefore, StartTime = startTime, StartTimeAfter = startTimeAfter, EndTimeBefore = endTimeBefore, EndTime = endTime, EndTimeAfter = endTimeAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -375,7 +375,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieves a collection of Calls made to and from your account
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="to"> Phone number or Client identifier to filter `to` on </param>
         /// <param name="from"> Phone number or Client identifier to filter `from` on </param>
         /// <param name="parentCallSid"> Parent Call Sid to filter on </param>
@@ -390,9 +390,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CallResource>> ReadAsync(string accountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, string parentCallSid = null, CallResource.StatusEnum status = null, DateTime? startTimeBefore = null, DateTime? startTime = null, DateTime? startTimeAfter = null, DateTime? endTimeBefore = null, DateTime? endTime = null, DateTime? endTimeAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CallResource>> ReadAsync(string pathAccountSid = null, Types.PhoneNumber to = null, Types.PhoneNumber from = null, string parentCallSid = null, CallResource.StatusEnum status = null, DateTime? startTimeBefore = null, DateTime? startTime = null, DateTime? startTimeAfter = null, DateTime? endTimeBefore = null, DateTime? endTime = null, DateTime? endTimeAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadCallOptions{PathAccountSid = accountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTimeBefore = startTimeBefore, StartTime = startTime, StartTimeAfter = startTimeAfter, EndTimeBefore = endTimeBefore, EndTime = endTime, EndTimeAfter = endTimeAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadCallOptions{PathAccountSid = pathAccountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTimeBefore = startTimeBefore, StartTime = startTime, StartTimeAfter = startTimeAfter, EndTimeBefore = endTimeBefore, EndTime = endTime, EndTimeAfter = endTimeAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -463,8 +463,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Initiates a call redirect or terminates a call
         /// </summary>
         ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to update </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="url"> URL that returns TwiML </param>
         /// <param name="method"> HTTP method to use to fetch TwiML </param>
         /// <param name="status"> Status to update the Call with </param>
@@ -474,9 +474,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns> 
-        public static CallResource Update(string sid, string accountSid = null, Uri url = null, Twilio.Http.HttpMethod method = null, CallResource.UpdateStatusEnum status = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
+        public static CallResource Update(string pathSid, string pathAccountSid = null, Uri url = null, Twilio.Http.HttpMethod method = null, CallResource.UpdateStatusEnum status = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateCallOptions(sid){PathAccountSid = accountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
             return Update(options, client);
         }
     
@@ -485,8 +485,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Initiates a call redirect or terminates a call
         /// </summary>
         ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to update </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="url"> URL that returns TwiML </param>
         /// <param name="method"> HTTP method to use to fetch TwiML </param>
         /// <param name="status"> Status to update the Call with </param>
@@ -496,9 +496,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns> 
-        public static async System.Threading.Tasks.Task<CallResource> UpdateAsync(string sid, string accountSid = null, Uri url = null, Twilio.Http.HttpMethod method = null, CallResource.UpdateStatusEnum status = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CallResource> UpdateAsync(string pathSid, string pathAccountSid = null, Uri url = null, Twilio.Http.HttpMethod method = null, CallResource.UpdateStatusEnum status = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateCallOptions(sid){PathAccountSid = accountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
             return await UpdateAsync(options, client);
         }
         #endif

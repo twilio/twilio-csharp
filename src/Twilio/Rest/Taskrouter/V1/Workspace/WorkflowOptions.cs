@@ -23,12 +23,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new FetchWorkflowOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchWorkflowOptions(string workspaceSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchWorkflowOptions(string pathWorkspaceSid, string pathSid)
         {
-            PathWorkspaceSid = workspaceSid;
-            PathSid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -79,12 +79,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new UpdateWorkflowOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        public UpdateWorkflowOptions(string workspaceSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public UpdateWorkflowOptions(string pathWorkspaceSid, string pathSid)
         {
-            PathWorkspaceSid = workspaceSid;
-            PathSid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -140,12 +140,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new DeleteWorkflowOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteWorkflowOptions(string workspaceSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteWorkflowOptions(string pathWorkspaceSid, string pathSid)
         {
-            PathWorkspaceSid = workspaceSid;
-            PathSid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -176,10 +176,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new ReadWorkflowOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        public ReadWorkflowOptions(string workspaceSid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        public ReadWorkflowOptions(string pathWorkspaceSid)
         {
-            PathWorkspaceSid = workspaceSid;
+            PathWorkspaceSid = pathWorkspaceSid;
         }
     
         /// <summary>
@@ -236,12 +236,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new CreateWorkflowOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="configuration"> The configuration </param>
-        public CreateWorkflowOptions(string workspaceSid, string friendlyName, string configuration)
+        public CreateWorkflowOptions(string pathWorkspaceSid, string friendlyName, string configuration)
         {
-            PathWorkspaceSid = workspaceSid;
+            PathWorkspaceSid = pathWorkspaceSid;
             FriendlyName = friendlyName;
             Configuration = configuration;
         }

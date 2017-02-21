@@ -19,10 +19,10 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// Construct a new FetchNumberOptions
         /// </summary>
         ///
-        /// <param name="number"> The number </param>
-        public FetchNumberOptions(Types.PhoneNumber number)
+        /// <param name="pathNumber"> The number </param>
+        public FetchNumberOptions(Types.PhoneNumber pathNumber)
         {
-            PathNumber = number;
+            PathNumber = pathNumber;
         }
     
         /// <summary>

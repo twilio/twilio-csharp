@@ -60,12 +60,12 @@ namespace Twilio.Rest.Monitor.V1
         /// fetch
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns> 
-        public static EventResource Fetch(string sid, ITwilioRestClient client = null)
+        public static EventResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchEventOptions(sid);
+            var options = new FetchEventOptions(pathSid);
             return Fetch(options, client);
         }
     
@@ -74,12 +74,12 @@ namespace Twilio.Rest.Monitor.V1
         /// fetch
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns> 
-        public static async System.Threading.Tasks.Task<EventResource> FetchAsync(string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EventResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchEventOptions(sid);
+            var options = new FetchEventOptions(pathSid);
             return await FetchAsync(options, client);
         }
         #endif

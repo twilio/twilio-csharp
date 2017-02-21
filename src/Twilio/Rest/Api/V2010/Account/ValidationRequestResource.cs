@@ -61,7 +61,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="callDelay"> The call_delay </param>
         /// <param name="extension"> The extension </param>
@@ -69,9 +69,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ValidationRequest </returns> 
-        public static ValidationRequestResource Create(Types.PhoneNumber phoneNumber, string accountSid = null, string friendlyName = null, int? callDelay = null, string extension = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
+        public static ValidationRequestResource Create(Types.PhoneNumber phoneNumber, string pathAccountSid = null, string friendlyName = null, int? callDelay = null, string extension = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new CreateValidationRequestOptions(phoneNumber){PathAccountSid = accountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new CreateValidationRequestOptions(phoneNumber){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
             return Create(options, client);
         }
     
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="phoneNumber"> The phone_number </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="callDelay"> The call_delay </param>
         /// <param name="extension"> The extension </param>
@@ -89,9 +89,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ValidationRequest </returns> 
-        public static async System.Threading.Tasks.Task<ValidationRequestResource> CreateAsync(Types.PhoneNumber phoneNumber, string accountSid = null, string friendlyName = null, int? callDelay = null, string extension = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ValidationRequestResource> CreateAsync(Types.PhoneNumber phoneNumber, string pathAccountSid = null, string friendlyName = null, int? callDelay = null, string extension = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new CreateValidationRequestOptions(phoneNumber){PathAccountSid = accountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new CreateValidationRequestOptions(phoneNumber){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CallDelay = callDelay, Extension = extension, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
             return await CreateAsync(options, client);
         }
         #endif

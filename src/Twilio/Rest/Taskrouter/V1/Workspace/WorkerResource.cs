@@ -64,7 +64,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// read
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="activityName"> The activity_name </param>
         /// <param name="activitySid"> The activity_sid </param>
         /// <param name="available"> The available </param>
@@ -76,9 +76,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Worker </returns> 
-        public static ResourceSet<WorkerResource> Read(string workspaceSid, string activityName = null, string activitySid = null, string available = null, string friendlyName = null, string targetWorkersExpression = null, string taskQueueName = null, string taskQueueSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<WorkerResource> Read(string pathWorkspaceSid, string activityName = null, string activitySid = null, string available = null, string friendlyName = null, string targetWorkersExpression = null, string taskQueueName = null, string taskQueueSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadWorkerOptions(workspaceSid){ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadWorkerOptions(pathWorkspaceSid){ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// read
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="activityName"> The activity_name </param>
         /// <param name="activitySid"> The activity_sid </param>
         /// <param name="available"> The available </param>
@@ -99,9 +99,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Worker </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<WorkerResource>> ReadAsync(string workspaceSid, string activityName = null, string activitySid = null, string available = null, string friendlyName = null, string targetWorkersExpression = null, string taskQueueName = null, string taskQueueSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<WorkerResource>> ReadAsync(string pathWorkspaceSid, string activityName = null, string activitySid = null, string available = null, string friendlyName = null, string targetWorkersExpression = null, string taskQueueName = null, string taskQueueSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadWorkerOptions(workspaceSid){ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadWorkerOptions(pathWorkspaceSid){ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -172,15 +172,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// create
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="activitySid"> The activity_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Worker </returns> 
-        public static WorkerResource Create(string workspaceSid, string friendlyName, string activitySid = null, string attributes = null, ITwilioRestClient client = null)
+        public static WorkerResource Create(string pathWorkspaceSid, string friendlyName, string activitySid = null, string attributes = null, ITwilioRestClient client = null)
         {
-            var options = new CreateWorkerOptions(workspaceSid, friendlyName){ActivitySid = activitySid, Attributes = attributes};
+            var options = new CreateWorkerOptions(pathWorkspaceSid, friendlyName){ActivitySid = activitySid, Attributes = attributes};
             return Create(options, client);
         }
     
@@ -189,15 +189,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// create
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="activitySid"> The activity_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Worker </returns> 
-        public static async System.Threading.Tasks.Task<WorkerResource> CreateAsync(string workspaceSid, string friendlyName, string activitySid = null, string attributes = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkerResource> CreateAsync(string pathWorkspaceSid, string friendlyName, string activitySid = null, string attributes = null, ITwilioRestClient client = null)
         {
-            var options = new CreateWorkerOptions(workspaceSid, friendlyName){ActivitySid = activitySid, Attributes = attributes};
+            var options = new CreateWorkerOptions(pathWorkspaceSid, friendlyName){ActivitySid = activitySid, Attributes = attributes};
             return await CreateAsync(options, client);
         }
         #endif
@@ -247,13 +247,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Worker </returns> 
-        public static WorkerResource Fetch(string workspaceSid, string sid, ITwilioRestClient client = null)
+        public static WorkerResource Fetch(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchWorkerOptions(workspaceSid, sid);
+            var options = new FetchWorkerOptions(pathWorkspaceSid, pathSid);
             return Fetch(options, client);
         }
     
@@ -262,13 +262,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Worker </returns> 
-        public static async System.Threading.Tasks.Task<WorkerResource> FetchAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkerResource> FetchAsync(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchWorkerOptions(workspaceSid, sid);
+            var options = new FetchWorkerOptions(pathWorkspaceSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -318,16 +318,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// update
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="activitySid"> The activity_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Worker </returns> 
-        public static WorkerResource Update(string workspaceSid, string sid, string activitySid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static WorkerResource Update(string pathWorkspaceSid, string pathSid, string activitySid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateWorkerOptions(workspaceSid, sid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName};
+            var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName};
             return Update(options, client);
         }
     
@@ -336,16 +336,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// update
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="activitySid"> The activity_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Worker </returns> 
-        public static async System.Threading.Tasks.Task<WorkerResource> UpdateAsync(string workspaceSid, string sid, string activitySid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkerResource> UpdateAsync(string pathWorkspaceSid, string pathSid, string activitySid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateWorkerOptions(workspaceSid, sid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName};
+            var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -395,13 +395,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// delete
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Worker </returns> 
-        public static bool Delete(string workspaceSid, string sid, ITwilioRestClient client = null)
+        public static bool Delete(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteWorkerOptions(workspaceSid, sid);
+            var options = new DeleteWorkerOptions(pathWorkspaceSid, pathSid);
             return Delete(options, client);
         }
     
@@ -410,13 +410,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// delete
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Worker </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string workspaceSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteWorkerOptions(workspaceSid, sid);
+            var options = new DeleteWorkerOptions(pathWorkspaceSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif

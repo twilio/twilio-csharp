@@ -23,12 +23,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Construct a new FetchPhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchPhoneNumberOptions(string trunkSid, string sid)
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchPhoneNumberOptions(string pathTrunkSid, string pathSid)
         {
-            PathTrunkSid = trunkSid;
-            PathSid = sid;
+            PathTrunkSid = pathTrunkSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -59,12 +59,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Construct a new DeletePhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeletePhoneNumberOptions(string trunkSid, string sid)
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeletePhoneNumberOptions(string pathTrunkSid, string pathSid)
         {
-            PathTrunkSid = trunkSid;
-            PathSid = sid;
+            PathTrunkSid = pathTrunkSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -95,11 +95,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Construct a new CreatePhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="phoneNumberSid"> The phone_number_sid </param>
-        public CreatePhoneNumberOptions(string trunkSid, string phoneNumberSid)
+        public CreatePhoneNumberOptions(string pathTrunkSid, string phoneNumberSid)
         {
-            PathTrunkSid = trunkSid;
+            PathTrunkSid = pathTrunkSid;
             PhoneNumberSid = phoneNumberSid;
         }
     
@@ -132,10 +132,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Construct a new ReadPhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        public ReadPhoneNumberOptions(string trunkSid)
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        public ReadPhoneNumberOptions(string pathTrunkSid)
         {
-            PathTrunkSid = trunkSid;
+            PathTrunkSid = pathTrunkSid;
         }
     
         /// <summary>

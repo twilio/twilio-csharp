@@ -60,13 +60,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// fetch
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
-        public static UserResource Fetch(string serviceSid, string sid, ITwilioRestClient client = null)
+        public static UserResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchUserOptions(serviceSid, sid);
+            var options = new FetchUserOptions(pathServiceSid, pathSid);
             return Fetch(options, client);
         }
     
@@ -75,13 +75,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// fetch
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string serviceSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchUserOptions(serviceSid, sid);
+            var options = new FetchUserOptions(pathServiceSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -131,13 +131,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// delete
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
-        public static bool Delete(string serviceSid, string sid, ITwilioRestClient client = null)
+        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteUserOptions(serviceSid, sid);
+            var options = new DeleteUserOptions(pathServiceSid, pathSid);
             return Delete(options, client);
         }
     
@@ -146,13 +146,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// delete
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string serviceSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteUserOptions(serviceSid, sid);
+            var options = new DeleteUserOptions(pathServiceSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif
@@ -202,16 +202,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// create
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="roleSid"> The role_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
-        public static UserResource Create(string serviceSid, string identity, string roleSid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static UserResource Create(string pathServiceSid, string identity, string roleSid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new CreateUserOptions(serviceSid, identity){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
+            var options = new CreateUserOptions(pathServiceSid, identity){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
             return Create(options, client);
         }
     
@@ -220,16 +220,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// create
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="roleSid"> The role_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string serviceSid, string identity, string roleSid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string pathServiceSid, string identity, string roleSid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new CreateUserOptions(serviceSid, identity){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
+            var options = new CreateUserOptions(pathServiceSid, identity){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
             return await CreateAsync(options, client);
         }
         #endif
@@ -283,14 +283,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// read
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
-        public static ResourceSet<UserResource> Read(string serviceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<UserResource> Read(string pathServiceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadUserOptions(serviceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadUserOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -299,14 +299,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// read
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(string serviceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(string pathServiceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadUserOptions(serviceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadUserOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -377,16 +377,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// update
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="roleSid"> The role_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
-        public static UserResource Update(string serviceSid, string sid, string roleSid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static UserResource Update(string pathServiceSid, string pathSid, string roleSid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateUserOptions(serviceSid, sid){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
+            var options = new UpdateUserOptions(pathServiceSid, pathSid){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
             return Update(options, client);
         }
     
@@ -395,16 +395,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// update
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="roleSid"> The role_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(string serviceSid, string sid, string roleSid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(string pathServiceSid, string pathSid, string roleSid = null, string attributes = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateUserOptions(serviceSid, sid){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
+            var options = new UpdateUserOptions(pathServiceSid, pathSid){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
             return await UpdateAsync(options, client);
         }
         #endif

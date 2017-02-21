@@ -20,10 +20,10 @@ namespace Twilio.Rest.Chat.V1
         /// Construct a new FetchServiceOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchServiceOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchServiceOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -50,10 +50,10 @@ namespace Twilio.Rest.Chat.V1
         /// Construct a new DeleteServiceOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteServiceOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteServiceOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -407,10 +407,10 @@ namespace Twilio.Rest.Chat.V1
         /// Construct a new UpdateServiceOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateServiceOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateServiceOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
             WebhookFilters = new List<string>();
         }
     

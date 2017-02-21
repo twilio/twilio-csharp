@@ -27,10 +27,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Construct a new CreateFeedbackOptions
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        public CreateFeedbackOptions(string messageSid)
+        /// <param name="pathMessageSid"> The message_sid </param>
+        public CreateFeedbackOptions(string pathMessageSid)
         {
-            PathMessageSid = messageSid;
+            PathMessageSid = pathMessageSid;
         }
     
         /// <summary>

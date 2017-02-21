@@ -23,12 +23,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new FetchActivityOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchActivityOptions(string workspaceSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchActivityOptions(string pathWorkspaceSid, string pathSid)
         {
-            PathWorkspaceSid = workspaceSid;
-            PathSid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -63,12 +63,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new UpdateActivityOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        public UpdateActivityOptions(string workspaceSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public UpdateActivityOptions(string pathWorkspaceSid, string pathSid)
         {
-            PathWorkspaceSid = workspaceSid;
-            PathSid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -104,12 +104,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new DeleteActivityOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteActivityOptions(string workspaceSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteActivityOptions(string pathWorkspaceSid, string pathSid)
         {
-            PathWorkspaceSid = workspaceSid;
-            PathSid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -144,10 +144,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new ReadActivityOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        public ReadActivityOptions(string workspaceSid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        public ReadActivityOptions(string pathWorkspaceSid)
         {
-            PathWorkspaceSid = workspaceSid;
+            PathWorkspaceSid = pathWorkspaceSid;
         }
     
         /// <summary>
@@ -197,11 +197,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new CreateActivityOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        public CreateActivityOptions(string workspaceSid, string friendlyName)
+        public CreateActivityOptions(string pathWorkspaceSid, string friendlyName)
         {
-            PathWorkspaceSid = workspaceSid;
+            PathWorkspaceSid = pathWorkspaceSid;
             FriendlyName = friendlyName;
         }
     

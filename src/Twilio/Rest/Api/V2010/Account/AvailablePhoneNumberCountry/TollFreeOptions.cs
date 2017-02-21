@@ -87,10 +87,10 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// Construct a new ReadTollFreeOptions
         /// </summary>
         ///
-        /// <param name="countryCode"> The country_code </param>
-        public ReadTollFreeOptions(string countryCode)
+        /// <param name="pathCountryCode"> The country_code </param>
+        public ReadTollFreeOptions(string pathCountryCode)
         {
-            PathCountryCode = countryCode;
+            PathCountryCode = pathCountryCode;
         }
     
         /// <summary>

@@ -248,12 +248,12 @@ namespace Twilio.Rest.Chat.V1
         /// fetch
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns> 
-        public static CredentialResource Fetch(string sid, ITwilioRestClient client = null)
+        public static CredentialResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchCredentialOptions(sid);
+            var options = new FetchCredentialOptions(pathSid);
             return Fetch(options, client);
         }
     
@@ -262,12 +262,12 @@ namespace Twilio.Rest.Chat.V1
         /// fetch
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<CredentialResource> FetchAsync(string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchCredentialOptions(sid);
+            var options = new FetchCredentialOptions(pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Chat.V1
         /// update
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="certificate"> The certificate </param>
         /// <param name="privateKey"> The private_key </param>
@@ -326,9 +326,9 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="secret"> The secret </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns> 
-        public static CredentialResource Update(string sid, string friendlyName = null, string certificate = null, string privateKey = null, bool? sandbox = null, string apiKey = null, string secret = null, ITwilioRestClient client = null)
+        public static CredentialResource Update(string pathSid, string friendlyName = null, string certificate = null, string privateKey = null, bool? sandbox = null, string apiKey = null, string secret = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateCredentialOptions(sid){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
+            var options = new UpdateCredentialOptions(pathSid){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
             return Update(options, client);
         }
     
@@ -337,7 +337,7 @@ namespace Twilio.Rest.Chat.V1
         /// update
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="certificate"> The certificate </param>
         /// <param name="privateKey"> The private_key </param>
@@ -346,9 +346,9 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="secret"> The secret </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(string sid, string friendlyName = null, string certificate = null, string privateKey = null, bool? sandbox = null, string apiKey = null, string secret = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(string pathSid, string friendlyName = null, string certificate = null, string privateKey = null, bool? sandbox = null, string apiKey = null, string secret = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateCredentialOptions(sid){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
+            var options = new UpdateCredentialOptions(pathSid){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -398,12 +398,12 @@ namespace Twilio.Rest.Chat.V1
         /// delete
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns> 
-        public static bool Delete(string sid, ITwilioRestClient client = null)
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteCredentialOptions(sid);
+            var options = new DeleteCredentialOptions(pathSid);
             return Delete(options, client);
         }
     
@@ -412,12 +412,12 @@ namespace Twilio.Rest.Chat.V1
         /// delete
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteCredentialOptions(sid);
+            var options = new DeleteCredentialOptions(pathSid);
             return await DeleteAsync(options, client);
         }
         #endif

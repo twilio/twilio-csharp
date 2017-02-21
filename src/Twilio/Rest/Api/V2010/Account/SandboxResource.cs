@@ -60,12 +60,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// fetch
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sandbox </returns> 
-        public static SandboxResource Fetch(string accountSid = null, ITwilioRestClient client = null)
+        public static SandboxResource Fetch(string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchSandboxOptions{PathAccountSid = accountSid};
+            var options = new FetchSandboxOptions{PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
     
@@ -74,12 +74,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// fetch
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sandbox </returns> 
-        public static async System.Threading.Tasks.Task<SandboxResource> FetchAsync(string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SandboxResource> FetchAsync(string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchSandboxOptions{PathAccountSid = accountSid};
+            var options = new FetchSandboxOptions{PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// update
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="voiceUrl"> The voice_url </param>
         /// <param name="voiceMethod"> The voice_method </param>
         /// <param name="smsUrl"> The sms_url </param>
@@ -138,9 +138,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sandbox </returns> 
-        public static SandboxResource Update(string accountSid = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
+        public static SandboxResource Update(string pathAccountSid = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateSandboxOptions{PathAccountSid = accountSid, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, SmsUrl = smsUrl, SmsMethod = smsMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new UpdateSandboxOptions{PathAccountSid = pathAccountSid, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, SmsUrl = smsUrl, SmsMethod = smsMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
             return Update(options, client);
         }
     
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// update
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="voiceUrl"> The voice_url </param>
         /// <param name="voiceMethod"> The voice_method </param>
         /// <param name="smsUrl"> The sms_url </param>
@@ -158,9 +158,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sandbox </returns> 
-        public static async System.Threading.Tasks.Task<SandboxResource> UpdateAsync(string accountSid = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SandboxResource> UpdateAsync(string pathAccountSid = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateSandboxOptions{PathAccountSid = accountSid, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, SmsUrl = smsUrl, SmsMethod = smsMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new UpdateSandboxOptions{PathAccountSid = pathAccountSid, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, SmsUrl = smsUrl, SmsMethod = smsMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
             return await UpdateAsync(options, client);
         }
         #endif

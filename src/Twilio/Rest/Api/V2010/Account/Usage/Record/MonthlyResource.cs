@@ -162,7 +162,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="category"> The category </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
@@ -170,9 +170,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Monthly </returns> 
-        public static ResourceSet<MonthlyResource> Read(string accountSid = null, MonthlyResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<MonthlyResource> Read(string pathAccountSid = null, MonthlyResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMonthlyOptions{PathAccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadMonthlyOptions{PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="category"> The category </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
@@ -189,9 +189,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Monthly </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MonthlyResource>> ReadAsync(string accountSid = null, MonthlyResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MonthlyResource>> ReadAsync(string pathAccountSid = null, MonthlyResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMonthlyOptions{PathAccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadMonthlyOptions{PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

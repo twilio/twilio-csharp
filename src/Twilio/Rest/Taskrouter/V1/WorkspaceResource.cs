@@ -70,12 +70,12 @@ namespace Twilio.Rest.Taskrouter.V1
         /// fetch
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workspace </returns> 
-        public static WorkspaceResource Fetch(string sid, ITwilioRestClient client = null)
+        public static WorkspaceResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchWorkspaceOptions(sid);
+            var options = new FetchWorkspaceOptions(pathSid);
             return Fetch(options, client);
         }
     
@@ -84,12 +84,12 @@ namespace Twilio.Rest.Taskrouter.V1
         /// fetch
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workspace </returns> 
-        public static async System.Threading.Tasks.Task<WorkspaceResource> FetchAsync(string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkspaceResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchWorkspaceOptions(sid);
+            var options = new FetchWorkspaceOptions(pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// update
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="defaultActivitySid"> The default_activity_sid </param>
         /// <param name="eventCallbackUrl"> The event_callback_url </param>
         /// <param name="eventsFilter"> The events_filter </param>
@@ -149,9 +149,9 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="prioritizeQueueOrder"> The prioritize_queue_order </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workspace </returns> 
-        public static WorkspaceResource Update(string sid, string defaultActivitySid = null, Uri eventCallbackUrl = null, string eventsFilter = null, string friendlyName = null, bool? multiTaskEnabled = null, string timeoutActivitySid = null, WorkspaceResource.QueueOrderEnum prioritizeQueueOrder = null, ITwilioRestClient client = null)
+        public static WorkspaceResource Update(string pathSid, string defaultActivitySid = null, Uri eventCallbackUrl = null, string eventsFilter = null, string friendlyName = null, bool? multiTaskEnabled = null, string timeoutActivitySid = null, WorkspaceResource.QueueOrderEnum prioritizeQueueOrder = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateWorkspaceOptions(sid){DefaultActivitySid = defaultActivitySid, EventCallbackUrl = eventCallbackUrl, EventsFilter = eventsFilter, FriendlyName = friendlyName, MultiTaskEnabled = multiTaskEnabled, TimeoutActivitySid = timeoutActivitySid, PrioritizeQueueOrder = prioritizeQueueOrder};
+            var options = new UpdateWorkspaceOptions(pathSid){DefaultActivitySid = defaultActivitySid, EventCallbackUrl = eventCallbackUrl, EventsFilter = eventsFilter, FriendlyName = friendlyName, MultiTaskEnabled = multiTaskEnabled, TimeoutActivitySid = timeoutActivitySid, PrioritizeQueueOrder = prioritizeQueueOrder};
             return Update(options, client);
         }
     
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// update
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="defaultActivitySid"> The default_activity_sid </param>
         /// <param name="eventCallbackUrl"> The event_callback_url </param>
         /// <param name="eventsFilter"> The events_filter </param>
@@ -170,9 +170,9 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <param name="prioritizeQueueOrder"> The prioritize_queue_order </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workspace </returns> 
-        public static async System.Threading.Tasks.Task<WorkspaceResource> UpdateAsync(string sid, string defaultActivitySid = null, Uri eventCallbackUrl = null, string eventsFilter = null, string friendlyName = null, bool? multiTaskEnabled = null, string timeoutActivitySid = null, WorkspaceResource.QueueOrderEnum prioritizeQueueOrder = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkspaceResource> UpdateAsync(string pathSid, string defaultActivitySid = null, Uri eventCallbackUrl = null, string eventsFilter = null, string friendlyName = null, bool? multiTaskEnabled = null, string timeoutActivitySid = null, WorkspaceResource.QueueOrderEnum prioritizeQueueOrder = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateWorkspaceOptions(sid){DefaultActivitySid = defaultActivitySid, EventCallbackUrl = eventCallbackUrl, EventsFilter = eventsFilter, FriendlyName = friendlyName, MultiTaskEnabled = multiTaskEnabled, TimeoutActivitySid = timeoutActivitySid, PrioritizeQueueOrder = prioritizeQueueOrder};
+            var options = new UpdateWorkspaceOptions(pathSid){DefaultActivitySid = defaultActivitySid, EventCallbackUrl = eventCallbackUrl, EventsFilter = eventsFilter, FriendlyName = friendlyName, MultiTaskEnabled = multiTaskEnabled, TimeoutActivitySid = timeoutActivitySid, PrioritizeQueueOrder = prioritizeQueueOrder};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -399,12 +399,12 @@ namespace Twilio.Rest.Taskrouter.V1
         /// delete
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workspace </returns> 
-        public static bool Delete(string sid, ITwilioRestClient client = null)
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteWorkspaceOptions(sid);
+            var options = new DeleteWorkspaceOptions(pathSid);
             return Delete(options, client);
         }
     
@@ -413,12 +413,12 @@ namespace Twilio.Rest.Taskrouter.V1
         /// delete
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workspace </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteWorkspaceOptions(sid);
+            var options = new DeleteWorkspaceOptions(pathSid);
             return await DeleteAsync(options, client);
         }
         #endif

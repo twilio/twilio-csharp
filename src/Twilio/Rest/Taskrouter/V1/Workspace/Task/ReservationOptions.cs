@@ -27,12 +27,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// Construct a new ReadReservationOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        public ReadReservationOptions(string workspaceSid, string taskSid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathTaskSid"> The task_sid </param>
+        public ReadReservationOptions(string pathWorkspaceSid, string pathTaskSid)
         {
-            PathWorkspaceSid = workspaceSid;
-            PathTaskSid = taskSid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathTaskSid = pathTaskSid;
         }
     
         /// <summary>
@@ -77,14 +77,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// Construct a new FetchReservationOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchReservationOptions(string workspaceSid, string taskSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathTaskSid"> The task_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchReservationOptions(string pathWorkspaceSid, string pathTaskSid, string pathSid)
         {
-            PathWorkspaceSid = workspaceSid;
-            PathTaskSid = taskSid;
-            PathSid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathTaskSid = pathTaskSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -195,14 +195,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// Construct a new UpdateReservationOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        /// <param name="sid"> The sid </param>
-        public UpdateReservationOptions(string workspaceSid, string taskSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathTaskSid"> The task_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public UpdateReservationOptions(string pathWorkspaceSid, string pathTaskSid, string pathSid)
         {
-            PathWorkspaceSid = workspaceSid;
-            PathTaskSid = taskSid;
-            PathSid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathTaskSid = pathTaskSid;
+            PathSid = pathSid;
         }
     
         /// <summary>

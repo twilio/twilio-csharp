@@ -23,10 +23,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new FetchQueueOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique queue Sid </param>
-        public FetchQueueOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique queue Sid </param>
+        public FetchQueueOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -65,10 +65,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateQueueOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateQueueOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateQueueOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -109,10 +109,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new DeleteQueueOptions
         /// </summary>
         ///
-        /// <param name="sid"> Delete by unique queue Sid </param>
-        public DeleteQueueOptions(string sid)
+        /// <param name="pathSid"> Delete by unique queue Sid </param>
+        public DeleteQueueOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

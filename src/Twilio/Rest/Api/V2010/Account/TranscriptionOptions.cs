@@ -23,10 +23,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new FetchTranscriptionOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique transcription Sid </param>
-        public FetchTranscriptionOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique transcription Sid </param>
+        public FetchTranscriptionOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -57,10 +57,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new DeleteTranscriptionOptions
         /// </summary>
         ///
-        /// <param name="sid"> Delete by unique transcription Sid </param>
-        public DeleteTranscriptionOptions(string sid)
+        /// <param name="pathSid"> Delete by unique transcription Sid </param>
+        public DeleteTranscriptionOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

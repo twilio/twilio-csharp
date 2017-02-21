@@ -23,10 +23,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new FetchRecordingOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique recording Sid </param>
-        public FetchRecordingOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique recording Sid </param>
+        public FetchRecordingOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -57,10 +57,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new DeleteRecordingOptions
         /// </summary>
         ///
-        /// <param name="sid"> Delete by unique recording Sid </param>
-        public DeleteRecordingOptions(string sid)
+        /// <param name="pathSid"> Delete by unique recording Sid </param>
+        public DeleteRecordingOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

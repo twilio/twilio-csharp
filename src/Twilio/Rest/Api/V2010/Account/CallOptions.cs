@@ -229,10 +229,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new DeleteCallOptions
         /// </summary>
         ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to delete </param>
-        public DeleteCallOptions(string sid)
+        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to delete </param>
+        public DeleteCallOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -263,10 +263,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new FetchCallOptions
         /// </summary>
         ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to fetch </param>
-        public FetchCallOptions(string sid)
+        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to fetch </param>
+        public FetchCallOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -444,10 +444,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateCallOptions
         /// </summary>
         ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
-        public UpdateCallOptions(string sid)
+        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to update </param>
+        public UpdateCallOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

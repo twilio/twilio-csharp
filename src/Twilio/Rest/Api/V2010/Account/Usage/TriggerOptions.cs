@@ -23,10 +23,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// Construct a new FetchTriggerOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
-        public FetchTriggerOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique usage-trigger Sid </param>
+        public FetchTriggerOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -69,10 +69,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// Construct a new UpdateTriggerOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateTriggerOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateTriggerOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -118,10 +118,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// Construct a new DeleteTriggerOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteTriggerOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteTriggerOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

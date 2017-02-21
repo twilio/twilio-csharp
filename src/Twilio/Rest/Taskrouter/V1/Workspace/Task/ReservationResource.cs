@@ -78,16 +78,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// read
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathTaskSid"> The task_sid </param>
         /// <param name="reservationStatus"> The reservation_status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Reservation </returns> 
-        public static ResourceSet<ReservationResource> Read(string workspaceSid, string taskSid, ReservationResource.StatusEnum reservationStatus = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<ReservationResource> Read(string pathWorkspaceSid, string pathTaskSid, ReservationResource.StatusEnum reservationStatus = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadReservationOptions(workspaceSid, taskSid){ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
+            var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -96,16 +96,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// read
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathTaskSid"> The task_sid </param>
         /// <param name="reservationStatus"> The reservation_status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(string workspaceSid, string taskSid, ReservationResource.StatusEnum reservationStatus = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ReservationResource>> ReadAsync(string pathWorkspaceSid, string pathTaskSid, ReservationResource.StatusEnum reservationStatus = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadReservationOptions(workspaceSid, taskSid){ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
+            var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -176,14 +176,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathTaskSid"> The task_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Reservation </returns> 
-        public static ReservationResource Fetch(string workspaceSid, string taskSid, string sid, ITwilioRestClient client = null)
+        public static ReservationResource Fetch(string pathWorkspaceSid, string pathTaskSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchReservationOptions(workspaceSid, taskSid, sid);
+            var options = new FetchReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid);
             return Fetch(options, client);
         }
     
@@ -192,14 +192,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathTaskSid"> The task_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns> 
-        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(string workspaceSid, string taskSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(string pathWorkspaceSid, string pathTaskSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchReservationOptions(workspaceSid, taskSid, sid);
+            var options = new FetchReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -249,9 +249,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// update
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathTaskSid"> The task_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="reservationStatus"> The reservation_status </param>
         /// <param name="workerActivitySid"> The worker_activity_sid </param>
         /// <param name="instruction"> The instruction </param>
@@ -273,9 +273,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="redirectUrl"> The redirect_url </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Reservation </returns> 
-        public static ReservationResource Update(string workspaceSid, string taskSid, string sid, ReservationResource.StatusEnum reservationStatus = null, string workerActivitySid = null, string instruction = null, string dequeuePostWorkActivitySid = null, string dequeueFrom = null, string dequeueRecord = null, int? dequeueTimeout = null, string dequeueTo = null, Uri dequeueStatusCallbackUrl = null, string callFrom = null, string callRecord = null, int? callTimeout = null, string callTo = null, Uri callUrl = null, Uri callStatusCallbackUrl = null, bool? callAccept = null, string redirectCallSid = null, bool? redirectAccept = null, Uri redirectUrl = null, ITwilioRestClient client = null)
+        public static ReservationResource Update(string pathWorkspaceSid, string pathTaskSid, string pathSid, ReservationResource.StatusEnum reservationStatus = null, string workerActivitySid = null, string instruction = null, string dequeuePostWorkActivitySid = null, string dequeueFrom = null, string dequeueRecord = null, int? dequeueTimeout = null, string dequeueTo = null, Uri dequeueStatusCallbackUrl = null, string callFrom = null, string callRecord = null, int? callTimeout = null, string callTo = null, Uri callUrl = null, Uri callStatusCallbackUrl = null, bool? callAccept = null, string redirectCallSid = null, bool? redirectAccept = null, Uri redirectUrl = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateReservationOptions(workspaceSid, taskSid, sid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl};
+            var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl};
             return Update(options, client);
         }
     
@@ -284,9 +284,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// update
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathTaskSid"> The task_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="reservationStatus"> The reservation_status </param>
         /// <param name="workerActivitySid"> The worker_activity_sid </param>
         /// <param name="instruction"> The instruction </param>
@@ -308,9 +308,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="redirectUrl"> The redirect_url </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns> 
-        public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(string workspaceSid, string taskSid, string sid, ReservationResource.StatusEnum reservationStatus = null, string workerActivitySid = null, string instruction = null, string dequeuePostWorkActivitySid = null, string dequeueFrom = null, string dequeueRecord = null, int? dequeueTimeout = null, string dequeueTo = null, Uri dequeueStatusCallbackUrl = null, string callFrom = null, string callRecord = null, int? callTimeout = null, string callTo = null, Uri callUrl = null, Uri callStatusCallbackUrl = null, bool? callAccept = null, string redirectCallSid = null, bool? redirectAccept = null, Uri redirectUrl = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(string pathWorkspaceSid, string pathTaskSid, string pathSid, ReservationResource.StatusEnum reservationStatus = null, string workerActivitySid = null, string instruction = null, string dequeuePostWorkActivitySid = null, string dequeueFrom = null, string dequeueRecord = null, int? dequeueTimeout = null, string dequeueTo = null, Uri dequeueStatusCallbackUrl = null, string callFrom = null, string callRecord = null, int? callTimeout = null, string callTo = null, Uri callUrl = null, Uri callStatusCallbackUrl = null, bool? callAccept = null, string redirectCallSid = null, bool? redirectAccept = null, Uri redirectUrl = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateReservationOptions(workspaceSid, taskSid, sid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl};
+            var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl};
             return await UpdateAsync(options, client);
         }
         #endif

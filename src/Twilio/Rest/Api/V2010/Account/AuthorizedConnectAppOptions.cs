@@ -23,10 +23,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new FetchAuthorizedConnectAppOptions
         /// </summary>
         ///
-        /// <param name="connectAppSid"> The connect_app_sid </param>
-        public FetchAuthorizedConnectAppOptions(string connectAppSid)
+        /// <param name="pathConnectAppSid"> The connect_app_sid </param>
+        public FetchAuthorizedConnectAppOptions(string pathConnectAppSid)
         {
-            PathConnectAppSid = connectAppSid;
+            PathConnectAppSid = pathConnectAppSid;
         }
     
         /// <summary>

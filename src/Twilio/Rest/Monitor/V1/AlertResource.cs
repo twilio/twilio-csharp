@@ -60,12 +60,12 @@ namespace Twilio.Rest.Monitor.V1
         /// fetch
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Alert </returns> 
-        public static AlertResource Fetch(string sid, ITwilioRestClient client = null)
+        public static AlertResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchAlertOptions(sid);
+            var options = new FetchAlertOptions(pathSid);
             return Fetch(options, client);
         }
     
@@ -74,12 +74,12 @@ namespace Twilio.Rest.Monitor.V1
         /// fetch
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns> 
-        public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchAlertOptions(sid);
+            var options = new FetchAlertOptions(pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -129,12 +129,12 @@ namespace Twilio.Rest.Monitor.V1
         /// delete
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Alert </returns> 
-        public static bool Delete(string sid, ITwilioRestClient client = null)
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteAlertOptions(sid);
+            var options = new DeleteAlertOptions(pathSid);
             return Delete(options, client);
         }
     
@@ -143,12 +143,12 @@ namespace Twilio.Rest.Monitor.V1
         /// delete
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteAlertOptions(sid);
+            var options = new DeleteAlertOptions(pathSid);
             return await DeleteAsync(options, client);
         }
         #endif

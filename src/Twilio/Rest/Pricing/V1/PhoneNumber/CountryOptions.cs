@@ -39,10 +39,10 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         /// Construct a new FetchCountryOptions
         /// </summary>
         ///
-        /// <param name="isoCountry"> The iso_country </param>
-        public FetchCountryOptions(string isoCountry)
+        /// <param name="pathIsoCountry"> The iso_country </param>
+        public FetchCountryOptions(string pathIsoCountry)
         {
-            PathIsoCountry = isoCountry;
+            PathIsoCountry = pathIsoCountry;
         }
     
         /// <summary>

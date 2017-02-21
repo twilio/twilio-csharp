@@ -27,11 +27,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// Construct a new CreateCredentialListMappingOptions
         /// </summary>
         ///
-        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="pathDomainSid"> The domain_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
-        public CreateCredentialListMappingOptions(string domainSid, string credentialListSid)
+        public CreateCredentialListMappingOptions(string pathDomainSid, string credentialListSid)
         {
-            PathDomainSid = domainSid;
+            PathDomainSid = pathDomainSid;
             CredentialListSid = credentialListSid;
         }
     
@@ -68,10 +68,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// Construct a new ReadCredentialListMappingOptions
         /// </summary>
         ///
-        /// <param name="domainSid"> The domain_sid </param>
-        public ReadCredentialListMappingOptions(string domainSid)
+        /// <param name="pathDomainSid"> The domain_sid </param>
+        public ReadCredentialListMappingOptions(string pathDomainSid)
         {
-            PathDomainSid = domainSid;
+            PathDomainSid = pathDomainSid;
         }
     
         /// <summary>
@@ -111,12 +111,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// Construct a new FetchCredentialListMappingOptions
         /// </summary>
         ///
-        /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchCredentialListMappingOptions(string domainSid, string sid)
+        /// <param name="pathDomainSid"> The domain_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchCredentialListMappingOptions(string pathDomainSid, string pathSid)
         {
-            PathDomainSid = domainSid;
-            PathSid = sid;
+            PathDomainSid = pathDomainSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -151,12 +151,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// Construct a new DeleteCredentialListMappingOptions
         /// </summary>
         ///
-        /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteCredentialListMappingOptions(string domainSid, string sid)
+        /// <param name="pathDomainSid"> The domain_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteCredentialListMappingOptions(string pathDomainSid, string pathSid)
         {
-            PathDomainSid = domainSid;
-            PathSid = sid;
+            PathDomainSid = pathDomainSid;
+            PathSid = pathSid;
         }
     
         /// <summary>

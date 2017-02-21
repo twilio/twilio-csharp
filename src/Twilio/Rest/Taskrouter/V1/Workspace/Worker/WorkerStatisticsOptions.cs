@@ -36,12 +36,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// Construct a new FetchWorkerStatisticsOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        public FetchWorkerStatisticsOptions(string workspaceSid, string workerSid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
+        public FetchWorkerStatisticsOptions(string pathWorkspaceSid, string pathWorkerSid)
         {
-            PathWorkspaceSid = workspaceSid;
-            PathWorkerSid = workerSid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathWorkerSid = pathWorkerSid;
         }
     
         /// <summary>

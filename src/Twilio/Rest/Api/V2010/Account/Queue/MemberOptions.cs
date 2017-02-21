@@ -27,12 +27,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// Construct a new FetchMemberOptions
         /// </summary>
         ///
-        /// <param name="queueSid"> The Queue in which to find the members </param>
-        /// <param name="callSid"> The call_sid </param>
-        public FetchMemberOptions(string queueSid, string callSid)
+        /// <param name="pathQueueSid"> The Queue in which to find the members </param>
+        /// <param name="pathCallSid"> The call_sid </param>
+        public FetchMemberOptions(string pathQueueSid, string pathCallSid)
         {
-            PathQueueSid = queueSid;
-            PathCallSid = callSid;
+            PathQueueSid = pathQueueSid;
+            PathCallSid = pathCallSid;
         }
     
         /// <summary>
@@ -75,14 +75,14 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// Construct a new UpdateMemberOptions
         /// </summary>
         ///
-        /// <param name="queueSid"> The Queue in which to find the members </param>
-        /// <param name="callSid"> The call_sid </param>
+        /// <param name="pathQueueSid"> The Queue in which to find the members </param>
+        /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="url"> The url </param>
         /// <param name="method"> The method </param>
-        public UpdateMemberOptions(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method)
+        public UpdateMemberOptions(string pathQueueSid, string pathCallSid, Uri url, Twilio.Http.HttpMethod method)
         {
-            PathQueueSid = queueSid;
-            PathCallSid = callSid;
+            PathQueueSid = pathQueueSid;
+            PathCallSid = pathCallSid;
             Url = url;
             Method = method;
         }
@@ -125,10 +125,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// Construct a new ReadMemberOptions
         /// </summary>
         ///
-        /// <param name="queueSid"> The Queue in which to find members </param>
-        public ReadMemberOptions(string queueSid)
+        /// <param name="pathQueueSid"> The Queue in which to find members </param>
+        public ReadMemberOptions(string pathQueueSid)
         {
-            PathQueueSid = queueSid;
+            PathQueueSid = pathQueueSid;
         }
     
         /// <summary>

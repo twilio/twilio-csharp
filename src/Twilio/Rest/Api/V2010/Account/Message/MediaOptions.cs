@@ -27,12 +27,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Construct a new DeleteMediaOptions
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Delete by unique media Sid </param>
-        public DeleteMediaOptions(string messageSid, string sid)
+        /// <param name="pathMessageSid"> The message_sid </param>
+        /// <param name="pathSid"> Delete by unique media Sid </param>
+        public DeleteMediaOptions(string pathMessageSid, string pathSid)
         {
-            PathMessageSid = messageSid;
-            PathSid = sid;
+            PathMessageSid = pathMessageSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -67,12 +67,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Construct a new FetchMediaOptions
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Fetch by unique media Sid </param>
-        public FetchMediaOptions(string messageSid, string sid)
+        /// <param name="pathMessageSid"> The message_sid </param>
+        /// <param name="pathSid"> Fetch by unique media Sid </param>
+        public FetchMediaOptions(string pathMessageSid, string pathSid)
         {
-            PathMessageSid = messageSid;
-            PathSid = sid;
+            PathMessageSid = pathMessageSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -115,10 +115,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Construct a new ReadMediaOptions
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        public ReadMediaOptions(string messageSid)
+        /// <param name="pathMessageSid"> The message_sid </param>
+        public ReadMediaOptions(string pathMessageSid)
         {
-            PathMessageSid = messageSid;
+            PathMessageSid = pathMessageSid;
         }
     
         /// <summary>

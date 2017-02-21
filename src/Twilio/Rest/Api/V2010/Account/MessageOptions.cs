@@ -136,10 +136,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new DeleteMessageOptions
         /// </summary>
         ///
-        /// <param name="sid"> The message to delete </param>
-        public DeleteMessageOptions(string sid)
+        /// <param name="pathSid"> The message to delete </param>
+        public DeleteMessageOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -170,10 +170,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new FetchMessageOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique message Sid </param>
-        public FetchMessageOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique message Sid </param>
+        public FetchMessageOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -280,11 +280,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateMessageOptions
         /// </summary>
         ///
-        /// <param name="sid"> The message to redact </param>
+        /// <param name="pathSid"> The message to redact </param>
         /// <param name="body"> The body </param>
-        public UpdateMessageOptions(string sid, string body)
+        public UpdateMessageOptions(string pathSid, string body)
         {
-            PathSid = sid;
+            PathSid = pathSid;
             Body = body;
         }
     

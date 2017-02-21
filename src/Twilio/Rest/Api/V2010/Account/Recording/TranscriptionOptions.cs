@@ -27,12 +27,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// Construct a new FetchTranscriptionOptions
         /// </summary>
         ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchTranscriptionOptions(string recordingSid, string sid)
+        /// <param name="pathRecordingSid"> The recording_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchTranscriptionOptions(string pathRecordingSid, string pathSid)
         {
-            PathRecordingSid = recordingSid;
-            PathSid = sid;
+            PathRecordingSid = pathRecordingSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -67,12 +67,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// Construct a new DeleteTranscriptionOptions
         /// </summary>
         ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteTranscriptionOptions(string recordingSid, string sid)
+        /// <param name="pathRecordingSid"> The recording_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteTranscriptionOptions(string pathRecordingSid, string pathSid)
         {
-            PathRecordingSid = recordingSid;
-            PathSid = sid;
+            PathRecordingSid = pathRecordingSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -103,10 +103,10 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// Construct a new ReadTranscriptionOptions
         /// </summary>
         ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        public ReadTranscriptionOptions(string recordingSid)
+        /// <param name="pathRecordingSid"> The recording_sid </param>
+        public ReadTranscriptionOptions(string pathRecordingSid)
         {
-            PathRecordingSid = recordingSid;
+            PathRecordingSid = pathRecordingSid;
         }
     
         /// <summary>

@@ -24,12 +24,12 @@ namespace Twilio.Rest.Chat.V1.Service
         /// Construct a new FetchChannelOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchChannelOptions(string serviceSid, string sid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchChannelOptions(string pathServiceSid, string pathSid)
         {
-            PathServiceSid = serviceSid;
-            PathSid = sid;
+            PathServiceSid = pathServiceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -60,12 +60,12 @@ namespace Twilio.Rest.Chat.V1.Service
         /// Construct a new DeleteChannelOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteChannelOptions(string serviceSid, string sid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteChannelOptions(string pathServiceSid, string pathSid)
         {
-            PathServiceSid = serviceSid;
-            PathSid = sid;
+            PathServiceSid = pathServiceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -108,10 +108,10 @@ namespace Twilio.Rest.Chat.V1.Service
         /// Construct a new CreateChannelOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        public CreateChannelOptions(string serviceSid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        public CreateChannelOptions(string pathServiceSid)
         {
-            PathServiceSid = serviceSid;
+            PathServiceSid = pathServiceSid;
         }
     
         /// <summary>
@@ -162,10 +162,10 @@ namespace Twilio.Rest.Chat.V1.Service
         /// Construct a new ReadChannelOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        public ReadChannelOptions(string serviceSid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        public ReadChannelOptions(string pathServiceSid)
         {
-            PathServiceSid = serviceSid;
+            PathServiceSid = pathServiceSid;
             Type = new List<ChannelResource.ChannelTypeEnum>();
         }
     
@@ -219,12 +219,12 @@ namespace Twilio.Rest.Chat.V1.Service
         /// Construct a new UpdateChannelOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="sid"> The sid </param>
-        public UpdateChannelOptions(string serviceSid, string sid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public UpdateChannelOptions(string pathServiceSid, string pathSid)
         {
-            PathServiceSid = serviceSid;
-            PathSid = sid;
+            PathServiceSid = pathServiceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>

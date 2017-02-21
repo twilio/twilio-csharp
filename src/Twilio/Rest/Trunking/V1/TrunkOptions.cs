@@ -19,10 +19,10 @@ namespace Twilio.Rest.Trunking.V1
         /// Construct a new FetchTrunkOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchTrunkOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchTrunkOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -49,10 +49,10 @@ namespace Twilio.Rest.Trunking.V1
         /// Construct a new DeleteTrunkOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteTrunkOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteTrunkOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -193,10 +193,10 @@ namespace Twilio.Rest.Trunking.V1
         /// Construct a new UpdateTrunkOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateTrunkOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateTrunkOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

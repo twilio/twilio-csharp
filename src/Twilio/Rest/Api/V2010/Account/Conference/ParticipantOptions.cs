@@ -28,12 +28,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new FetchParticipantOptions
         /// </summary>
         ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="callSid"> The call_sid </param>
-        public FetchParticipantOptions(string conferenceSid, string callSid)
+        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="pathCallSid"> The call_sid </param>
+        public FetchParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
-            PathConferenceSid = conferenceSid;
-            PathCallSid = callSid;
+            PathConferenceSid = pathConferenceSid;
+            PathCallSid = pathCallSid;
         }
     
         /// <summary>
@@ -84,12 +84,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new UpdateParticipantOptions
         /// </summary>
         ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="callSid"> The call_sid </param>
-        public UpdateParticipantOptions(string conferenceSid, string callSid)
+        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="pathCallSid"> The call_sid </param>
+        public UpdateParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
-            PathConferenceSid = conferenceSid;
-            PathCallSid = callSid;
+            PathConferenceSid = pathConferenceSid;
+            PathCallSid = pathCallSid;
         }
     
         /// <summary>
@@ -220,12 +220,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new CreateParticipantOptions
         /// </summary>
         ///
-        /// <param name="conferenceSid"> The conference_sid </param>
+        /// <param name="pathConferenceSid"> The conference_sid </param>
         /// <param name="from"> The from </param>
         /// <param name="to"> The to </param>
-        public CreateParticipantOptions(string conferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
+        public CreateParticipantOptions(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
         {
-            PathConferenceSid = conferenceSid;
+            PathConferenceSid = pathConferenceSid;
             From = from;
             To = to;
             StatusCallbackEvent = new List<string>();
@@ -364,12 +364,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new DeleteParticipantOptions
         /// </summary>
         ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="callSid"> The call_sid </param>
-        public DeleteParticipantOptions(string conferenceSid, string callSid)
+        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="pathCallSid"> The call_sid </param>
+        public DeleteParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
-            PathConferenceSid = conferenceSid;
-            PathCallSid = callSid;
+            PathConferenceSid = pathConferenceSid;
+            PathCallSid = pathCallSid;
         }
     
         /// <summary>
@@ -408,10 +408,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new ReadParticipantOptions
         /// </summary>
         ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        public ReadParticipantOptions(string conferenceSid)
+        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
+        public ReadParticipantOptions(string pathConferenceSid)
         {
-            PathConferenceSid = conferenceSid;
+            PathConferenceSid = pathConferenceSid;
         }
     
         /// <summary>

@@ -27,12 +27,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// Construct a new FetchAddOnResultOptions
         /// </summary>
         ///
-        /// <param name="referenceSid"> The reference_sid </param>
-        /// <param name="sid"> Fetch by unique result Sid </param>
-        public FetchAddOnResultOptions(string referenceSid, string sid)
+        /// <param name="pathReferenceSid"> The reference_sid </param>
+        /// <param name="pathSid"> Fetch by unique result Sid </param>
+        public FetchAddOnResultOptions(string pathReferenceSid, string pathSid)
         {
-            PathReferenceSid = referenceSid;
-            PathSid = sid;
+            PathReferenceSid = pathReferenceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -63,10 +63,10 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// Construct a new ReadAddOnResultOptions
         /// </summary>
         ///
-        /// <param name="referenceSid"> The reference_sid </param>
-        public ReadAddOnResultOptions(string referenceSid)
+        /// <param name="pathReferenceSid"> The reference_sid </param>
+        public ReadAddOnResultOptions(string pathReferenceSid)
         {
-            PathReferenceSid = referenceSid;
+            PathReferenceSid = pathReferenceSid;
         }
     
         /// <summary>
@@ -106,12 +106,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// Construct a new DeleteAddOnResultOptions
         /// </summary>
         ///
-        /// <param name="referenceSid"> The reference_sid </param>
-        /// <param name="sid"> Delete by unique result Sid </param>
-        public DeleteAddOnResultOptions(string referenceSid, string sid)
+        /// <param name="pathReferenceSid"> The reference_sid </param>
+        /// <param name="pathSid"> Delete by unique result Sid </param>
+        public DeleteAddOnResultOptions(string pathReferenceSid, string pathSid)
         {
-            PathReferenceSid = referenceSid;
-            PathSid = sid;
+            PathReferenceSid = pathReferenceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>

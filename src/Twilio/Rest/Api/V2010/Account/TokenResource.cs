@@ -61,13 +61,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Create a new token
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="ttl"> The duration in seconds the credentials are valid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Token </returns> 
-        public static TokenResource Create(string accountSid = null, int? ttl = null, ITwilioRestClient client = null)
+        public static TokenResource Create(string pathAccountSid = null, int? ttl = null, ITwilioRestClient client = null)
         {
-            var options = new CreateTokenOptions{PathAccountSid = accountSid, Ttl = ttl};
+            var options = new CreateTokenOptions{PathAccountSid = pathAccountSid, Ttl = ttl};
             return Create(options, client);
         }
     
@@ -76,13 +76,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Create a new token
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="ttl"> The duration in seconds the credentials are valid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Token </returns> 
-        public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(string accountSid = null, int? ttl = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(string pathAccountSid = null, int? ttl = null, ITwilioRestClient client = null)
         {
-            var options = new CreateTokenOptions{PathAccountSid = accountSid, Ttl = ttl};
+            var options = new CreateTokenOptions{PathAccountSid = pathAccountSid, Ttl = ttl};
             return await CreateAsync(options, client);
         }
         #endif

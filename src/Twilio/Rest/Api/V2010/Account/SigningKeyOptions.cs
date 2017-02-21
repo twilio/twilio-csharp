@@ -23,10 +23,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new FetchSigningKeyOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchSigningKeyOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchSigningKeyOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -61,10 +61,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateSigningKeyOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateSigningKeyOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateSigningKeyOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -100,10 +100,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new DeleteSigningKeyOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteSigningKeyOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteSigningKeyOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

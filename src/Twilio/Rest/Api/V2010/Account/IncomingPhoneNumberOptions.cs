@@ -99,10 +99,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateIncomingPhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateIncomingPhoneNumberOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateIncomingPhoneNumberOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -223,10 +223,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new FetchIncomingPhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique incoming-phone-number Sid </param>
-        public FetchIncomingPhoneNumberOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique incoming-phone-number Sid </param>
+        public FetchIncomingPhoneNumberOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -257,10 +257,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new DeleteIncomingPhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="sid"> Delete by unique phone-number Sid </param>
-        public DeleteIncomingPhoneNumberOptions(string sid)
+        /// <param name="pathSid"> Delete by unique phone-number Sid </param>
+        public DeleteIncomingPhoneNumberOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

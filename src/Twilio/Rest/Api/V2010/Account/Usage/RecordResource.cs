@@ -162,7 +162,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="category"> Only include usage of a given category </param>
         /// <param name="startDate"> Filter by start date </param>
         /// <param name="endDate"> Filter by end date </param>
@@ -170,9 +170,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Record </returns> 
-        public static ResourceSet<RecordResource> Read(string accountSid = null, RecordResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<RecordResource> Read(string pathAccountSid = null, RecordResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadRecordOptions{PathAccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordOptions{PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="category"> Only include usage of a given category </param>
         /// <param name="startDate"> Filter by start date </param>
         /// <param name="endDate"> Filter by end date </param>
@@ -189,9 +189,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Record </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordResource>> ReadAsync(string accountSid = null, RecordResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordResource>> ReadAsync(string pathAccountSid = null, RecordResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadRecordOptions{PathAccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordOptions{PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

@@ -101,10 +101,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Construct a new FetchFeedbackSummaryOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchFeedbackSummaryOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchFeedbackSummaryOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -135,10 +135,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Construct a new DeleteFeedbackSummaryOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteFeedbackSummaryOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteFeedbackSummaryOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

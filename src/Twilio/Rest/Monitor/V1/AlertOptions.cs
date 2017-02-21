@@ -20,10 +20,10 @@ namespace Twilio.Rest.Monitor.V1
         /// Construct a new FetchAlertOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchAlertOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchAlertOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -50,10 +50,10 @@ namespace Twilio.Rest.Monitor.V1
         /// Construct a new DeleteAlertOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteAlertOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteAlertOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

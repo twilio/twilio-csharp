@@ -87,10 +87,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Construct a new FetchCredentialListOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique credential Sid </param>
-        public FetchCredentialListOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique credential Sid </param>
+        public FetchCredentialListOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -125,11 +125,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Construct a new UpdateCredentialListOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        public UpdateCredentialListOptions(string sid, string friendlyName)
+        public UpdateCredentialListOptions(string pathSid, string friendlyName)
         {
-            PathSid = sid;
+            PathSid = pathSid;
             FriendlyName = friendlyName;
         }
     
@@ -166,10 +166,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Construct a new DeleteCredentialListOptions
         /// </summary>
         ///
-        /// <param name="sid"> Delete by unique credential Sid </param>
-        public DeleteCredentialListOptions(string sid)
+        /// <param name="pathSid"> Delete by unique credential Sid </param>
+        public DeleteCredentialListOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

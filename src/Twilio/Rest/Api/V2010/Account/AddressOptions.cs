@@ -135,10 +135,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new DeleteAddressOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteAddressOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteAddressOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -169,10 +169,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new FetchAddressOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchAddressOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchAddressOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -231,10 +231,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateAddressOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateAddressOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateAddressOptions(string pathSid)
         {
-            PathSid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

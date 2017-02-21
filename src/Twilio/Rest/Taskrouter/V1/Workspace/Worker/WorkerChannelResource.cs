@@ -64,15 +64,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// read
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerChannel </returns> 
-        public static ResourceSet<WorkerChannelResource> Read(string workspaceSid, string workerSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<WorkerChannelResource> Read(string pathWorkspaceSid, string pathWorkerSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadWorkerChannelOptions(workspaceSid, workerSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -81,15 +81,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// read
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(string workspaceSid, string workerSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(string pathWorkspaceSid, string pathWorkerSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadWorkerChannelOptions(workspaceSid, workerSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -160,14 +160,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerChannel </returns> 
-        public static WorkerChannelResource Fetch(string workspaceSid, string workerSid, string sid, ITwilioRestClient client = null)
+        public static WorkerChannelResource Fetch(string pathWorkspaceSid, string pathWorkerSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchWorkerChannelOptions(workspaceSid, workerSid, sid);
+            var options = new FetchWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid);
             return Fetch(options, client);
         }
     
@@ -176,14 +176,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns> 
-        public static async System.Threading.Tasks.Task<WorkerChannelResource> FetchAsync(string workspaceSid, string workerSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkerChannelResource> FetchAsync(string pathWorkspaceSid, string pathWorkerSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchWorkerChannelOptions(workspaceSid, workerSid, sid);
+            var options = new FetchWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -233,16 +233,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// update
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="capacity"> The capacity </param>
         /// <param name="available"> The available </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerChannel </returns> 
-        public static WorkerChannelResource Update(string workspaceSid, string workerSid, string sid, int? capacity = null, bool? available = null, ITwilioRestClient client = null)
+        public static WorkerChannelResource Update(string pathWorkspaceSid, string pathWorkerSid, string pathSid, int? capacity = null, bool? available = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateWorkerChannelOptions(workspaceSid, workerSid, sid){Capacity = capacity, Available = available};
+            var options = new UpdateWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){Capacity = capacity, Available = available};
             return Update(options, client);
         }
     
@@ -251,16 +251,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// update
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="capacity"> The capacity </param>
         /// <param name="available"> The available </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns> 
-        public static async System.Threading.Tasks.Task<WorkerChannelResource> UpdateAsync(string workspaceSid, string workerSid, string sid, int? capacity = null, bool? available = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkerChannelResource> UpdateAsync(string pathWorkspaceSid, string pathWorkerSid, string pathSid, int? capacity = null, bool? available = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateWorkerChannelOptions(workspaceSid, workerSid, sid){Capacity = capacity, Available = available};
+            var options = new UpdateWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){Capacity = capacity, Available = available};
             return await UpdateAsync(options, client);
         }
         #endif

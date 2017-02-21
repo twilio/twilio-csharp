@@ -76,15 +76,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// create
         /// </summary>
         ///
-        /// <param name="callSid"> The call_sid </param>
+        /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="qualityScore"> The quality_score </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="issue"> The issue </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Feedback </returns> 
-        public static FeedbackResource Create(string callSid, int? qualityScore, string accountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
+        public static FeedbackResource Create(string pathCallSid, int? qualityScore, string pathAccountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
         {
-            var options = new CreateFeedbackOptions(callSid, qualityScore){PathAccountSid = accountSid, Issue = issue};
+            var options = new CreateFeedbackOptions(pathCallSid, qualityScore){PathAccountSid = pathAccountSid, Issue = issue};
             return Create(options, client);
         }
     
@@ -93,15 +93,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// create
         /// </summary>
         ///
-        /// <param name="callSid"> The call_sid </param>
+        /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="qualityScore"> The quality_score </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="issue"> The issue </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns> 
-        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string callSid, int? qualityScore, string accountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string pathCallSid, int? qualityScore, string pathAccountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
         {
-            var options = new CreateFeedbackOptions(callSid, qualityScore){PathAccountSid = accountSid, Issue = issue};
+            var options = new CreateFeedbackOptions(pathCallSid, qualityScore){PathAccountSid = pathAccountSid, Issue = issue};
             return await CreateAsync(options, client);
         }
         #endif
@@ -151,13 +151,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Fetch an instance of a feedback entry for a call
         /// </summary>
         ///
-        /// <param name="callSid"> The call sid that uniquely identifies the call </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Feedback </returns> 
-        public static FeedbackResource Fetch(string callSid, string accountSid = null, ITwilioRestClient client = null)
+        public static FeedbackResource Fetch(string pathCallSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchFeedbackOptions(callSid){PathAccountSid = accountSid};
+            var options = new FetchFeedbackOptions(pathCallSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
     
@@ -166,13 +166,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Fetch an instance of a feedback entry for a call
         /// </summary>
         ///
-        /// <param name="callSid"> The call sid that uniquely identifies the call </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns> 
-        public static async System.Threading.Tasks.Task<FeedbackResource> FetchAsync(string callSid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FeedbackResource> FetchAsync(string pathCallSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchFeedbackOptions(callSid){PathAccountSid = accountSid};
+            var options = new FetchFeedbackOptions(pathCallSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -222,15 +222,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Create or update a feedback entry for a call
         /// </summary>
         ///
-        /// <param name="callSid"> The call_sid </param>
+        /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="qualityScore"> An integer from 1 to 5 </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="issue"> Issues experienced during the call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Feedback </returns> 
-        public static FeedbackResource Update(string callSid, int? qualityScore, string accountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
+        public static FeedbackResource Update(string pathCallSid, int? qualityScore, string pathAccountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateFeedbackOptions(callSid, qualityScore){PathAccountSid = accountSid, Issue = issue};
+            var options = new UpdateFeedbackOptions(pathCallSid, qualityScore){PathAccountSid = pathAccountSid, Issue = issue};
             return Update(options, client);
         }
     
@@ -239,15 +239,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Create or update a feedback entry for a call
         /// </summary>
         ///
-        /// <param name="callSid"> The call_sid </param>
+        /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="qualityScore"> An integer from 1 to 5 </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="issue"> Issues experienced during the call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns> 
-        public static async System.Threading.Tasks.Task<FeedbackResource> UpdateAsync(string callSid, int? qualityScore, string accountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FeedbackResource> UpdateAsync(string pathCallSid, int? qualityScore, string pathAccountSid = null, List<FeedbackResource.IssuesEnum> issue = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateFeedbackOptions(callSid, qualityScore){PathAccountSid = accountSid, Issue = issue};
+            var options = new UpdateFeedbackOptions(pathCallSid, qualityScore){PathAccountSid = pathAccountSid, Issue = issue};
             return await UpdateAsync(options, client);
         }
         #endif

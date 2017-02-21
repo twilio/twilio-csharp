@@ -27,14 +27,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// Construct a new FetchMessageOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchMessageOptions(string serviceSid, string channelSid, string sid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchMessageOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
-            PathServiceSid = serviceSid;
-            PathChannelSid = channelSid;
-            PathSid = sid;
+            PathServiceSid = pathServiceSid;
+            PathChannelSid = pathChannelSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -77,13 +77,13 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// Construct a new CreateMessageOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="body"> The body </param>
-        public CreateMessageOptions(string serviceSid, string channelSid, string body)
+        public CreateMessageOptions(string pathServiceSid, string pathChannelSid, string body)
         {
-            PathServiceSid = serviceSid;
-            PathChannelSid = channelSid;
+            PathServiceSid = pathServiceSid;
+            PathChannelSid = pathChannelSid;
             Body = body;
         }
     
@@ -134,12 +134,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// Construct a new ReadMessageOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        public ReadMessageOptions(string serviceSid, string channelSid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        public ReadMessageOptions(string pathServiceSid, string pathChannelSid)
         {
-            PathServiceSid = serviceSid;
-            PathChannelSid = channelSid;
+            PathServiceSid = pathServiceSid;
+            PathChannelSid = pathChannelSid;
         }
     
         /// <summary>
@@ -184,14 +184,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// Construct a new DeleteMessageOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteMessageOptions(string serviceSid, string channelSid, string sid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteMessageOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
-            PathServiceSid = serviceSid;
-            PathChannelSid = channelSid;
-            PathSid = sid;
+            PathServiceSid = pathServiceSid;
+            PathChannelSid = pathChannelSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -234,14 +234,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// Construct a new UpdateMessageOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
-        public UpdateMessageOptions(string serviceSid, string channelSid, string sid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public UpdateMessageOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
-            PathServiceSid = serviceSid;
-            PathChannelSid = channelSid;
-            PathSid = sid;
+            PathServiceSid = pathServiceSid;
+            PathChannelSid = pathChannelSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
