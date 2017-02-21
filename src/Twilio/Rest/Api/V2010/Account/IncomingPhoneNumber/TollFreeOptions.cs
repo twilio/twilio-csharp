@@ -11,9 +11,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
     public class ReadTollFreeOptions : ReadOptions<TollFreeResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The account_sid
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string AccountSid { get; set; }
         /// <summary>
         /// The beta
         /// </summary>
@@ -63,9 +63,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
     public class CreateTollFreeOptions : IOptions<TollFreeResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The account_sid
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string AccountSid { get; set; }
         /// <summary>
         /// The phone_number
         /// </summary>

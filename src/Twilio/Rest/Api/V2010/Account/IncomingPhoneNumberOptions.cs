@@ -11,9 +11,9 @@ namespace Twilio.Rest.Api.V2010.Account
     public class UpdateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The new owner of the phone number
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string AccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
@@ -111,11 +111,6 @@ namespace Twilio.Rest.Api.V2010.Account
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (AccountSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
-            }
-            
             if (ApiVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
@@ -216,9 +211,9 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The account_sid
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string AccountSid { get; set; }
         /// <summary>
         /// Fetch by unique incoming-phone-number Sid
         /// </summary>
@@ -250,9 +245,9 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The account_sid
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string AccountSid { get; set; }
         /// <summary>
         /// Delete by unique phone-number Sid
         /// </summary>
@@ -284,9 +279,9 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadIncomingPhoneNumberOptions : ReadOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The account_sid
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string AccountSid { get; set; }
         /// <summary>
         /// Include new phone numbers
         /// </summary>
@@ -336,9 +331,9 @@ namespace Twilio.Rest.Api.V2010.Account
     public class CreateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The account_sid
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string AccountSid { get; set; }
         /// <summary>
         /// The phone number
         /// </summary>
