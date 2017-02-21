@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
+    /// <summary>
+    /// WorkerStatisticsResource
+    /// </summary>
     public class WorkerStatisticsResource : Resource 
     {
         private static Request BuildFetchRequest(FetchWorkerStatisticsOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/Workers/" + options.WorkerSid + "/Statistics",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathWorkerSid + "/Statistics",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -57,16 +60,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerStatistics </returns> 
-        public static WorkerStatisticsResource Fetch(string workspaceSid, string workerSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
+        public static WorkerStatisticsResource Fetch(string pathWorkspaceSid, string pathWorkerSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
         {
-            var options = new FetchWorkerStatisticsOptions(workspaceSid, workerSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
+            var options = new FetchWorkerStatisticsOptions(pathWorkspaceSid, pathWorkerSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
             return Fetch(options, client);
         }
     
@@ -75,16 +78,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(string workspaceSid, string workerSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(string pathWorkspaceSid, string pathWorkerSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
         {
-            var options = new FetchWorkerStatisticsOptions(workspaceSid, workerSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
+            var options = new FetchWorkerStatisticsOptions(pathWorkspaceSid, pathWorkerSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
             return await FetchAsync(options, client);
         }
         #endif

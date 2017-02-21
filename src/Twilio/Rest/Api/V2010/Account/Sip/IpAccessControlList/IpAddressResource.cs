@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList 
 {
 
+    /// <summary>
+    /// IpAddressResource
+    /// </summary>
     public class IpAddressResource : Resource 
     {
         private static Request BuildReadRequest(ReadIpAddressOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + options.IpAccessControlListSid + "/IpAddresses.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + options.PathIpAccessControlListSid + "/IpAddresses.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -61,15 +64,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// read
         /// </summary>
         ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAddress </returns> 
-        public static ResourceSet<IpAddressResource> Read(string ipAccessControlListSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<IpAddressResource> Read(string pathIpAccessControlListSid, string pathAccountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadIpAddressOptions(ipAccessControlListSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadIpAddressOptions(pathIpAccessControlListSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -78,15 +81,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// read
         /// </summary>
         ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAddress </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<IpAddressResource>> ReadAsync(string ipAccessControlListSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<IpAddressResource>> ReadAsync(string pathIpAccessControlListSid, string pathAccountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadIpAddressOptions(ipAccessControlListSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadIpAddressOptions(pathIpAccessControlListSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -117,7 +120,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + options.IpAccessControlListSid + "/IpAddresses.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + options.PathIpAccessControlListSid + "/IpAddresses.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -157,15 +160,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// create
         /// </summary>
         ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="ipAddress"> The ip_address </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAddress </returns> 
-        public static IpAddressResource Create(string ipAccessControlListSid, string friendlyName, string ipAddress, string accountSid = null, ITwilioRestClient client = null)
+        public static IpAddressResource Create(string pathIpAccessControlListSid, string friendlyName, string ipAddress, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateIpAddressOptions(ipAccessControlListSid, friendlyName, ipAddress){AccountSid = accountSid};
+            var options = new CreateIpAddressOptions(pathIpAccessControlListSid, friendlyName, ipAddress){PathAccountSid = pathAccountSid};
             return Create(options, client);
         }
     
@@ -174,15 +177,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// create
         /// </summary>
         ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="ipAddress"> The ip_address </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAddress </returns> 
-        public static async System.Threading.Tasks.Task<IpAddressResource> CreateAsync(string ipAccessControlListSid, string friendlyName, string ipAddress, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IpAddressResource> CreateAsync(string pathIpAccessControlListSid, string friendlyName, string ipAddress, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateIpAddressOptions(ipAccessControlListSid, friendlyName, ipAddress){AccountSid = accountSid};
+            var options = new CreateIpAddressOptions(pathIpAccessControlListSid, friendlyName, ipAddress){PathAccountSid = pathAccountSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -192,7 +195,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + options.IpAccessControlListSid + "/IpAddresses/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + options.PathIpAccessControlListSid + "/IpAddresses/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -232,14 +235,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// fetch
         /// </summary>
         ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAddress </returns> 
-        public static IpAddressResource Fetch(string ipAccessControlListSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static IpAddressResource Fetch(string pathIpAccessControlListSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchIpAddressOptions(ipAccessControlListSid, sid){AccountSid = accountSid};
+            var options = new FetchIpAddressOptions(pathIpAccessControlListSid, pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
     
@@ -248,14 +251,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// fetch
         /// </summary>
         ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAddress </returns> 
-        public static async System.Threading.Tasks.Task<IpAddressResource> FetchAsync(string ipAccessControlListSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IpAddressResource> FetchAsync(string pathIpAccessControlListSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchIpAddressOptions(ipAccessControlListSid, sid){AccountSid = accountSid};
+            var options = new FetchIpAddressOptions(pathIpAccessControlListSid, pathSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -265,7 +268,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + options.IpAccessControlListSid + "/IpAddresses/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + options.PathIpAccessControlListSid + "/IpAddresses/" + options.PathSid + ".json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -305,16 +308,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// update
         /// </summary>
         ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="ipAddress"> The ip_address </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAddress </returns> 
-        public static IpAddressResource Update(string ipAccessControlListSid, string sid, string accountSid = null, string ipAddress = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static IpAddressResource Update(string pathIpAccessControlListSid, string pathSid, string pathAccountSid = null, string ipAddress = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateIpAddressOptions(ipAccessControlListSid, sid){AccountSid = accountSid, IpAddress = ipAddress, FriendlyName = friendlyName};
+            var options = new UpdateIpAddressOptions(pathIpAccessControlListSid, pathSid){PathAccountSid = pathAccountSid, IpAddress = ipAddress, FriendlyName = friendlyName};
             return Update(options, client);
         }
     
@@ -323,16 +326,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// update
         /// </summary>
         ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="ipAddress"> The ip_address </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAddress </returns> 
-        public static async System.Threading.Tasks.Task<IpAddressResource> UpdateAsync(string ipAccessControlListSid, string sid, string accountSid = null, string ipAddress = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IpAddressResource> UpdateAsync(string pathIpAccessControlListSid, string pathSid, string pathAccountSid = null, string ipAddress = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateIpAddressOptions(ipAccessControlListSid, sid){AccountSid = accountSid, IpAddress = ipAddress, FriendlyName = friendlyName};
+            var options = new UpdateIpAddressOptions(pathIpAccessControlListSid, pathSid){PathAccountSid = pathAccountSid, IpAddress = ipAddress, FriendlyName = friendlyName};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -342,7 +345,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + options.IpAccessControlListSid + "/IpAddresses/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/IpAccessControlLists/" + options.PathIpAccessControlListSid + "/IpAddresses/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -382,14 +385,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// delete
         /// </summary>
         ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAddress </returns> 
-        public static bool Delete(string ipAccessControlListSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathIpAccessControlListSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteIpAddressOptions(ipAccessControlListSid, sid){AccountSid = accountSid};
+            var options = new DeleteIpAddressOptions(pathIpAccessControlListSid, pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
     
@@ -398,14 +401,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// delete
         /// </summary>
         ///
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAddress </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string ipAccessControlListSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathIpAccessControlListSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteIpAddressOptions(ipAccessControlListSid, sid){AccountSid = accountSid};
+            var options = new DeleteIpAddressOptions(pathIpAccessControlListSid, pathSid){PathAccountSid = pathAccountSid};
             return await DeleteAsync(options, client);
         }
         #endif

@@ -5,31 +5,34 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Recording 
 {
 
+    /// <summary>
+    /// FetchTranscriptionOptions
+    /// </summary>
     public class FetchTranscriptionOptions : IOptions<TranscriptionResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The recording_sid
         /// </summary>
-        public string RecordingSid { get; }
+        public string PathRecordingSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchTranscriptionOptions
         /// </summary>
         ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchTranscriptionOptions(string recordingSid, string sid)
+        /// <param name="pathRecordingSid"> The recording_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchTranscriptionOptions(string pathRecordingSid, string pathSid)
         {
-            RecordingSid = recordingSid;
-            Sid = sid;
+            PathRecordingSid = pathRecordingSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -42,31 +45,34 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         }
     }
 
+    /// <summary>
+    /// DeleteTranscriptionOptions
+    /// </summary>
     public class DeleteTranscriptionOptions : IOptions<TranscriptionResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The recording_sid
         /// </summary>
-        public string RecordingSid { get; }
+        public string PathRecordingSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteTranscriptionOptions
         /// </summary>
         ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteTranscriptionOptions(string recordingSid, string sid)
+        /// <param name="pathRecordingSid"> The recording_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteTranscriptionOptions(string pathRecordingSid, string pathSid)
         {
-            RecordingSid = recordingSid;
-            Sid = sid;
+            PathRecordingSid = pathRecordingSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -79,25 +85,28 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         }
     }
 
+    /// <summary>
+    /// ReadTranscriptionOptions
+    /// </summary>
     public class ReadTranscriptionOptions : ReadOptions<TranscriptionResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The recording_sid
         /// </summary>
-        public string RecordingSid { get; }
+        public string PathRecordingSid { get; }
     
         /// <summary>
         /// Construct a new ReadTranscriptionOptions
         /// </summary>
         ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        public ReadTranscriptionOptions(string recordingSid)
+        /// <param name="pathRecordingSid"> The recording_sid </param>
+        public ReadTranscriptionOptions(string pathRecordingSid)
         {
-            RecordingSid = recordingSid;
+            PathRecordingSid = pathRecordingSid;
         }
     
         /// <summary>

@@ -5,25 +5,28 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch an instance of a conference
+    /// </summary>
     public class FetchConferenceOptions : IOptions<ConferenceResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique conference Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchConferenceOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique conference Sid </param>
-        public FetchConferenceOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique conference Sid </param>
+        public FetchConferenceOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -36,12 +39,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of conferences belonging to the account used to make the request
+    /// </summary>
     public class ReadConferenceOptions : ReadOptions<ConferenceResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Filter by date created
         /// </summary>
@@ -83,35 +89,35 @@ namespace Twilio.Rest.Api.V2010.Account
             var p = new List<KeyValuePair<string, string>>();
             if (DateCreated != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.ToString()));
+                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd")));
             }
             else
             {
                 if (DateCreatedBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.ToString()));
+                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd")));
                 }
             
                 if (DateCreatedAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.ToString()));
+                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
                 }
             }
             
             if (DateUpdated != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateUpdated", DateUpdated.ToString()));
+                p.Add(new KeyValuePair<string, string>("DateUpdated", DateUpdated.Value.ToString("yyyy-MM-dd")));
             }
             else
             {
                 if (DateUpdatedBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateUpdated<", DateUpdatedBefore.ToString()));
+                    p.Add(new KeyValuePair<string, string>("DateUpdated<", DateUpdatedBefore.Value.ToString("yyyy-MM-dd")));
                 }
             
                 if (DateUpdatedAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateUpdated>", DateUpdatedAfter.ToString()));
+                    p.Add(new KeyValuePair<string, string>("DateUpdated>", DateUpdatedAfter.Value.ToString("yyyy-MM-dd")));
                 }
             }
             
@@ -134,16 +140,19 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// UpdateConferenceOptions
+    /// </summary>
     public class UpdateConferenceOptions : IOptions<ConferenceResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The status
         /// </summary>
@@ -153,10 +162,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateConferenceOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateConferenceOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateConferenceOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

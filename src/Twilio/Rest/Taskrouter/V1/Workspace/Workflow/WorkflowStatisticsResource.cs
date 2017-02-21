@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow 
 {
 
+    /// <summary>
+    /// WorkflowStatisticsResource
+    /// </summary>
     public class WorkflowStatisticsResource : Resource 
     {
         private static Request BuildFetchRequest(FetchWorkflowStatisticsOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/Workflows/" + options.WorkflowSid + "/Statistics",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workflows/" + options.PathWorkflowSid + "/Statistics",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -57,16 +60,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workflowSid"> The workflow_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkflowSid"> The workflow_sid </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkflowStatistics </returns> 
-        public static WorkflowStatisticsResource Fetch(string workspaceSid, string workflowSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
+        public static WorkflowStatisticsResource Fetch(string pathWorkspaceSid, string pathWorkflowSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
         {
-            var options = new FetchWorkflowStatisticsOptions(workspaceSid, workflowSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
+            var options = new FetchWorkflowStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
             return Fetch(options, client);
         }
     
@@ -75,16 +78,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workflowSid"> The workflow_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkflowSid"> The workflow_sid </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkflowStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowStatisticsResource> FetchAsync(string workspaceSid, string workflowSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkflowStatisticsResource> FetchAsync(string pathWorkspaceSid, string pathWorkflowSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, ITwilioRestClient client = null)
         {
-            var options = new FetchWorkflowStatisticsOptions(workspaceSid, workflowSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
+            var options = new FetchWorkflowStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
             return await FetchAsync(options, client);
         }
         #endif

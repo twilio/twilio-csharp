@@ -6,12 +6,15 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Usage 
 {
 
+    /// <summary>
+    /// Retrieve a list of usage-records belonging to the account used to make the request
+    /// </summary>
     public class ReadRecordOptions : ReadOptions<RecordResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Only include usage of a given category
         /// </summary>

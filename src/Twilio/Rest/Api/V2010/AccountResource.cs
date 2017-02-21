@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010 
 {
 
+    /// <summary>
+    /// AccountResource
+    /// </summary>
     public class AccountResource : Resource 
     {
         public sealed class StatusEnum : StringEnum 
@@ -106,7 +109,7 @@ namespace Twilio.Rest.Api.V2010
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.Sid ?? client.AccountSid) + ".json",
+                "/2010-04-01/Accounts/" + (options.PathSid ?? client.AccountSid) + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -146,12 +149,12 @@ namespace Twilio.Rest.Api.V2010
         /// Fetch the account specified by the provided Account Sid
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique Account Sid </param>
+        /// <param name="pathSid"> Fetch by unique Account Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns> 
-        public static AccountResource Fetch(string sid = null, ITwilioRestClient client = null)
+        public static AccountResource Fetch(string pathSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAccountOptions{Sid = sid};
+            var options = new FetchAccountOptions{PathSid = pathSid};
             return Fetch(options, client);
         }
     
@@ -160,12 +163,12 @@ namespace Twilio.Rest.Api.V2010
         /// Fetch the account specified by the provided Account Sid
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique Account Sid </param>
+        /// <param name="pathSid"> Fetch by unique Account Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns> 
-        public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(string sid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(string pathSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAccountOptions{Sid = sid};
+            var options = new FetchAccountOptions{PathSid = pathSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -275,7 +278,7 @@ namespace Twilio.Rest.Api.V2010
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.Sid ?? client.AccountSid) + ".json",
+                "/2010-04-01/Accounts/" + (options.PathSid ?? client.AccountSid) + ".json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -315,14 +318,14 @@ namespace Twilio.Rest.Api.V2010
         /// Modify the properties of a given Account
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> FriendlyName to update </param>
         /// <param name="status"> Status to update the Account with </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns> 
-        public static AccountResource Update(string sid = null, string friendlyName = null, AccountResource.StatusEnum status = null, ITwilioRestClient client = null)
+        public static AccountResource Update(string pathSid = null, string friendlyName = null, AccountResource.StatusEnum status = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateAccountOptions{Sid = sid, FriendlyName = friendlyName, Status = status};
+            var options = new UpdateAccountOptions{PathSid = pathSid, FriendlyName = friendlyName, Status = status};
             return Update(options, client);
         }
     
@@ -331,14 +334,14 @@ namespace Twilio.Rest.Api.V2010
         /// Modify the properties of a given Account
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> FriendlyName to update </param>
         /// <param name="status"> Status to update the Account with </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns> 
-        public static async System.Threading.Tasks.Task<AccountResource> UpdateAsync(string sid = null, string friendlyName = null, AccountResource.StatusEnum status = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountResource> UpdateAsync(string pathSid = null, string friendlyName = null, AccountResource.StatusEnum status = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateAccountOptions{Sid = sid, FriendlyName = friendlyName, Status = status};
+            var options = new UpdateAccountOptions{PathSid = pathSid, FriendlyName = friendlyName, Status = status};
             return await UpdateAsync(options, client);
         }
         #endif

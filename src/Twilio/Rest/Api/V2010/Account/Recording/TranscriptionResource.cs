@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.Recording 
 {
 
+    /// <summary>
+    /// TranscriptionResource
+    /// </summary>
     public class TranscriptionResource : Resource 
     {
         public sealed class StatusEnum : StringEnum 
@@ -28,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Recordings/" + options.RecordingSid + "/Transcriptions/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Recordings/" + options.PathRecordingSid + "/Transcriptions/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -68,14 +71,14 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// fetch
         /// </summary>
         ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathRecordingSid"> The recording_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcription </returns> 
-        public static TranscriptionResource Fetch(string recordingSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static TranscriptionResource Fetch(string pathRecordingSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchTranscriptionOptions(recordingSid, sid){AccountSid = accountSid};
+            var options = new FetchTranscriptionOptions(pathRecordingSid, pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
     
@@ -84,14 +87,14 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// fetch
         /// </summary>
         ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathRecordingSid"> The recording_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns> 
-        public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(string recordingSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(string pathRecordingSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchTranscriptionOptions(recordingSid, sid){AccountSid = accountSid};
+            var options = new FetchTranscriptionOptions(pathRecordingSid, pathSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -101,7 +104,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Recordings/" + options.RecordingSid + "/Transcriptions/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Recordings/" + options.PathRecordingSid + "/Transcriptions/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -141,14 +144,14 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// delete
         /// </summary>
         ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathRecordingSid"> The recording_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcription </returns> 
-        public static bool Delete(string recordingSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathRecordingSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteTranscriptionOptions(recordingSid, sid){AccountSid = accountSid};
+            var options = new DeleteTranscriptionOptions(pathRecordingSid, pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
     
@@ -157,14 +160,14 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// delete
         /// </summary>
         ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathRecordingSid"> The recording_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string recordingSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathRecordingSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteTranscriptionOptions(recordingSid, sid){AccountSid = accountSid};
+            var options = new DeleteTranscriptionOptions(pathRecordingSid, pathSid){PathAccountSid = pathAccountSid};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -174,7 +177,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Recordings/" + options.RecordingSid + "/Transcriptions.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Recordings/" + options.PathRecordingSid + "/Transcriptions.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -218,15 +221,15 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// read
         /// </summary>
         ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathRecordingSid"> The recording_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcription </returns> 
-        public static ResourceSet<TranscriptionResource> Read(string recordingSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<TranscriptionResource> Read(string pathRecordingSid, string pathAccountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTranscriptionOptions(recordingSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadTranscriptionOptions(pathRecordingSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -235,15 +238,15 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// read
         /// </summary>
         ///
-        /// <param name="recordingSid"> The recording_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathRecordingSid"> The recording_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(string recordingSid, string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TranscriptionResource>> ReadAsync(string pathRecordingSid, string pathAccountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTranscriptionOptions(recordingSid){AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadTranscriptionOptions(pathRecordingSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// ApplicationResource
+    /// </summary>
     public class ApplicationResource : Resource 
     {
         private static Request BuildCreateRequest(CreateApplicationOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Applications.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -58,7 +61,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="friendlyName"> Human readable description of this resource </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="apiVersion"> The API version to use </param>
         /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
         /// <param name="voiceMethod"> HTTP method to use with the URL </param>
@@ -75,9 +78,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns> 
-        public static ApplicationResource Create(string friendlyName, string accountSid = null, string apiVersion = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, bool? voiceCallerIdLookup = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsStatusCallback = null, Uri messageStatusCallback = null, ITwilioRestClient client = null)
+        public static ApplicationResource Create(string friendlyName, string pathAccountSid = null, string apiVersion = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, bool? voiceCallerIdLookup = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsStatusCallback = null, Uri messageStatusCallback = null, ITwilioRestClient client = null)
         {
-            var options = new CreateApplicationOptions(friendlyName){AccountSid = accountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
+            var options = new CreateApplicationOptions(friendlyName){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
             return Create(options, client);
         }
     
@@ -87,7 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         ///
         /// <param name="friendlyName"> Human readable description of this resource </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="apiVersion"> The API version to use </param>
         /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
         /// <param name="voiceMethod"> HTTP method to use with the URL </param>
@@ -104,9 +107,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns> 
-        public static async System.Threading.Tasks.Task<ApplicationResource> CreateAsync(string friendlyName, string accountSid = null, string apiVersion = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, bool? voiceCallerIdLookup = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsStatusCallback = null, Uri messageStatusCallback = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ApplicationResource> CreateAsync(string friendlyName, string pathAccountSid = null, string apiVersion = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, bool? voiceCallerIdLookup = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsStatusCallback = null, Uri messageStatusCallback = null, ITwilioRestClient client = null)
         {
-            var options = new CreateApplicationOptions(friendlyName){AccountSid = accountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
+            var options = new CreateApplicationOptions(friendlyName){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
             return await CreateAsync(options, client);
         }
         #endif
@@ -116,7 +119,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Applications/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -156,13 +159,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Delete the application by the specified application sid
         /// </summary>
         ///
-        /// <param name="sid"> The application sid to delete </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The application sid to delete </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns> 
-        public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteApplicationOptions(sid){AccountSid = accountSid};
+            var options = new DeleteApplicationOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
     
@@ -171,13 +174,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Delete the application by the specified application sid
         /// </summary>
         ///
-        /// <param name="sid"> The application sid to delete </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The application sid to delete </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteApplicationOptions(sid){AccountSid = accountSid};
+            var options = new DeleteApplicationOptions(pathSid){PathAccountSid = pathAccountSid};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -187,7 +190,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Applications/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -227,13 +230,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch the application specified by the provided sid
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique Application Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> Fetch by unique Application Sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns> 
-        public static ApplicationResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static ApplicationResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchApplicationOptions(sid){AccountSid = accountSid};
+            var options = new FetchApplicationOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
     
@@ -242,13 +245,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch the application specified by the provided sid
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique Application Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> Fetch by unique Application Sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns> 
-        public static async System.Threading.Tasks.Task<ApplicationResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ApplicationResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchApplicationOptions(sid){AccountSid = accountSid};
+            var options = new FetchApplicationOptions(pathSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -258,7 +261,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Applications.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -302,15 +305,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve a list of applications representing an application within the requesting account
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> Filter by friendly name </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns> 
-        public static ResourceSet<ApplicationResource> Read(string accountSid = null, string friendlyName = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<ApplicationResource> Read(string pathAccountSid = null, string friendlyName = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadApplicationOptions{AccountSid = accountSid, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
+            var options = new ReadApplicationOptions{PathAccountSid = pathAccountSid, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -319,15 +322,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve a list of applications representing an application within the requesting account
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> Filter by friendly name </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ApplicationResource>> ReadAsync(string accountSid = null, string friendlyName = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ApplicationResource>> ReadAsync(string pathAccountSid = null, string friendlyName = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadApplicationOptions{AccountSid = accountSid, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
+            var options = new ReadApplicationOptions{PathAccountSid = pathAccountSid, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -358,7 +361,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Applications/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Applications/" + options.PathSid + ".json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -398,8 +401,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Updates the application's properties
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> Human readable description of this resource </param>
         /// <param name="apiVersion"> The API version to use </param>
         /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
@@ -417,9 +420,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns> 
-        public static ApplicationResource Update(string sid, string accountSid = null, string friendlyName = null, string apiVersion = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, bool? voiceCallerIdLookup = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsStatusCallback = null, Uri messageStatusCallback = null, ITwilioRestClient client = null)
+        public static ApplicationResource Update(string pathSid, string pathAccountSid = null, string friendlyName = null, string apiVersion = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, bool? voiceCallerIdLookup = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsStatusCallback = null, Uri messageStatusCallback = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateApplicationOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
+            var options = new UpdateApplicationOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
             return Update(options, client);
         }
     
@@ -428,8 +431,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Updates the application's properties
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> Human readable description of this resource </param>
         /// <param name="apiVersion"> The API version to use </param>
         /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
@@ -447,9 +450,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns> 
-        public static async System.Threading.Tasks.Task<ApplicationResource> UpdateAsync(string sid, string accountSid = null, string friendlyName = null, string apiVersion = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, bool? voiceCallerIdLookup = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsStatusCallback = null, Uri messageStatusCallback = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ApplicationResource> UpdateAsync(string pathSid, string pathAccountSid = null, string friendlyName = null, string apiVersion = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, bool? voiceCallerIdLookup = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsStatusCallback = null, Uri messageStatusCallback = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateApplicationOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
+            var options = new UpdateApplicationOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
             return await UpdateAsync(options, client);
         }
         #endif

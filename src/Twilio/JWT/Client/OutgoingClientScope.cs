@@ -9,6 +9,9 @@ using System.Web;
 
 namespace Twilio.Jwt.Client
 {
+    /// <summary>
+    /// Scope capability
+    /// </summary>
     public class OutgoingClientScope : IScope
     {
         private static readonly string Scope = "scope:client:outgoing";
@@ -17,6 +20,12 @@ namespace Twilio.Jwt.Client
         private readonly string _clientName;
         private readonly Dictionary<string, string> _parameters;
 
+        /// <summary>
+        /// Create a new OutgoingClientScope
+        /// </summary>
+        /// <param name="applicationSid">Twilio Application SID</param>
+        /// <param name="clientName">Name of client</param>
+        /// <param name="parameters">Parameters to pass</param>
         public OutgoingClientScope(
             string applicationSid,
             string clientName = null,
@@ -28,6 +37,9 @@ namespace Twilio.Jwt.Client
             this._parameters = parameters;
         }
 
+        /// <summary>
+        /// Generate scope payload
+        /// </summary>
         public string Payload
         {
             get

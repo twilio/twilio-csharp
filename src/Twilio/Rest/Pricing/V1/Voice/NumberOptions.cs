@@ -5,21 +5,24 @@ using Twilio.Base;
 namespace Twilio.Rest.Pricing.V1.Voice 
 {
 
+    /// <summary>
+    /// FetchNumberOptions
+    /// </summary>
     public class FetchNumberOptions : IOptions<NumberResource> 
     {
         /// <summary>
         /// The number
         /// </summary>
-        public Types.PhoneNumber Number { get; }
+        public Types.PhoneNumber PathNumber { get; }
     
         /// <summary>
         /// Construct a new FetchNumberOptions
         /// </summary>
         ///
-        /// <param name="number"> The number </param>
-        public FetchNumberOptions(Types.PhoneNumber number)
+        /// <param name="pathNumber"> The number </param>
+        public FetchNumberOptions(Types.PhoneNumber pathNumber)
         {
-            Number = number;
+            PathNumber = pathNumber;
         }
     
         /// <summary>

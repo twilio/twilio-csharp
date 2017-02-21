@@ -2,10 +2,26 @@
 
 namespace Twilio.TwiML
 {
+    /// <summary>
+    /// Dial TwiML Verb
+    /// </summary>
     public class Dial
     {
+        /// <summary>
+        /// XML Element for Dial Verb
+        /// </summary>
         public XElement Element { get; }
 
+        /// <summary>
+        /// Create new Dial verb
+        /// </summary>
+        /// <param name="hangupOnStar">Hang up call on press of *</param>
+        /// <param name="timeout">Dial timeout</param>
+        /// <param name="timeLimit">Max duration of call</param>
+        /// <param name="action">TwiML URL</param>
+        /// <param name="method">HTTP Method</param>
+        /// <param name="callerId">Caller ID to display</param>
+        /// <param name="record">Record value</param>
         public Dial(bool? hangupOnStar=null,
             int? timeout=null,
             int? timeLimit=null,
@@ -45,6 +61,17 @@ namespace Twilio.TwiML
             }
         }
 
+        /// <summary>
+        /// Dial a Number
+        /// </summary>
+        /// <param name="phoneNumber">Number to dial</param>
+        /// <param name="sendDigits">Play DTMF tones when call answered</param>
+        /// <param name="url">TwiML URL</param>
+        /// <param name="method">HTTP method for the TwiML URL</param>
+        /// <param name="statusCallbackEvent">Status callback events</param>
+        /// <param name="statusCallback">Status callback URL</param>
+        /// <param name="statusCallbackMethod">Status callback URL method</param>
+        /// <returns>Dial element</returns>
         public Dial Number(string phoneNumber,
             string sendDigits=null,
             string url=null,
@@ -83,6 +110,16 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Dial a client
+        /// </summary>
+        /// <param name="name">Client name</param>
+        /// <param name="method">TwiML URL</param>
+        /// <param name="url">TwiML URL method</param>
+        /// <param name="statusCallbackEvent">Status callback events</param>
+        /// <param name="statusCallbackMethod">Status callback URL method</param>
+        /// <param name="statusCallback">Status callback URL</param>
+        /// <returns>Dial element</returns>
         public Dial Client(string name,
             string method=null,
             string url=null,
@@ -116,6 +153,18 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Dial a SIP address
+        /// </summary>
+        /// <param name="address">SIP address</param>
+        /// <param name="username">SIP username</param>
+        /// <param name="password">SIP password</param>
+        /// <param name="url">TwiML URL</param>
+        /// <param name="method">TwiML URL method</param>
+        /// <param name="statusCallbackEvent">status callback events</param>
+        /// <param name="statusCallback">Status callback URL</param>
+        /// <param name="statusCallbackMethod">Status callback URL method</param>
+        /// <returns>Dial element</returns>
         public Dial Sip(string address,
             string username=null,
             string password=null,
@@ -159,6 +208,21 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Dial a conference
+        /// </summary>
+        /// <param name="name">Conference name</param>
+        /// <param name="muted">Join conferenced muted</param>
+        /// <param name="startConferenceOnEnter">Start conference on enter</param>
+        /// <param name="endConferenceOnExit">End the conference on exit</param>
+        /// <param name="maxParticipants">Max number of people in the conference</param>
+        /// <param name="beep">Notification sound</param>
+        /// <param name="record">Recording the conference</param>
+        /// <param name="trim">Trim recording</param>
+        /// <param name="waitMethod">Wait URL method</param>
+        /// <param name="waitUrl">Wait TwiML URL</param>
+        /// <param name="eventCallbackUrl">URL to hit on conference events</param>
+        /// <returns>Dial element</returns>
         public Dial Conference(string name,
             bool? muted=null,
             bool? startConferenceOnEnter=null,
@@ -217,6 +281,15 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Dial a Queue
+        /// </summary>
+        /// <param name="name">Queue name</param>
+        /// <param name="url">TwiML URL</param>
+        /// <param name="method">TwiML URL method</param>
+        /// <param name="reservationSid">TaskRouter reservation SID</param>
+        /// <param name="postWorkActivitySid">TaskRouter activity SID</param>
+        /// <returns></returns>
         public Dial Queue(string name,
             string url=null,
             string method=null,

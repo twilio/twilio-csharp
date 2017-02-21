@@ -5,31 +5,34 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
+    /// <summary>
+    /// FetchNotificationOptions
+    /// </summary>
     public class FetchNotificationOptions : IOptions<NotificationResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchNotificationOptions
         /// </summary>
         ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchNotificationOptions(string callSid, string sid)
+        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchNotificationOptions(string pathCallSid, string pathSid)
         {
-            CallSid = callSid;
-            Sid = sid;
+            PathCallSid = pathCallSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -42,31 +45,34 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     }
 
+    /// <summary>
+    /// DeleteNotificationOptions
+    /// </summary>
     public class DeleteNotificationOptions : IOptions<NotificationResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteNotificationOptions
         /// </summary>
         ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteNotificationOptions(string callSid, string sid)
+        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteNotificationOptions(string pathCallSid, string pathSid)
         {
-            CallSid = callSid;
-            Sid = sid;
+            PathCallSid = pathCallSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -79,16 +85,19 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     }
 
+    /// <summary>
+    /// ReadNotificationOptions
+    /// </summary>
     public class ReadNotificationOptions : ReadOptions<NotificationResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// The log
         /// </summary>
@@ -110,10 +119,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Construct a new ReadNotificationOptions
         /// </summary>
         ///
-        /// <param name="callSid"> The call_sid </param>
-        public ReadNotificationOptions(string callSid)
+        /// <param name="pathCallSid"> The call_sid </param>
+        public ReadNotificationOptions(string pathCallSid)
         {
-            CallSid = callSid;
+            PathCallSid = pathCallSid;
         }
     
         /// <summary>
@@ -129,18 +138,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             
             if (MessageDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessageDate", MessageDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("MessageDate", MessageDate.Value.ToString("yyyy-MM-dd")));
             }
             else
             {
                 if (MessageDateBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("MessageDate<", MessageDateBefore.ToString()));
+                    p.Add(new KeyValuePair<string, string>("MessageDate<", MessageDateBefore.Value.ToString("yyyy-MM-dd")));
                 }
             
                 if (MessageDateAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("MessageDate>", MessageDateAfter.ToString()));
+                    p.Add(new KeyValuePair<string, string>("MessageDate>", MessageDateAfter.Value.ToString("yyyy-MM-dd")));
                 }
             }
             

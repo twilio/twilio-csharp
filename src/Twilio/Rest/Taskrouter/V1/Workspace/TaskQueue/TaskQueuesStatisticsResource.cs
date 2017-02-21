@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue 
 {
 
+    /// <summary>
+    /// TaskQueuesStatisticsResource
+    /// </summary>
     public class TaskQueuesStatisticsResource : Resource 
     {
         private static Request BuildReadRequest(ReadTaskQueuesStatisticsOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/TaskQueues/Statistics",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/TaskQueues/Statistics",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -61,7 +64,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// read
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="endDate"> The end_date </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="minutes"> The minutes </param>
@@ -70,9 +73,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueuesStatistics </returns> 
-        public static ResourceSet<TaskQueuesStatisticsResource> Read(string workspaceSid, DateTime? endDate = null, string friendlyName = null, int? minutes = null, DateTime? startDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<TaskQueuesStatisticsResource> Read(string pathWorkspaceSid, DateTime? endDate = null, string friendlyName = null, int? minutes = null, DateTime? startDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTaskQueuesStatisticsOptions(workspaceSid){EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadTaskQueuesStatisticsOptions(pathWorkspaceSid){EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -81,7 +84,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// read
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="endDate"> The end_date </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="minutes"> The minutes </param>
@@ -90,9 +93,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueuesStatistics </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(string workspaceSid, DateTime? endDate = null, string friendlyName = null, int? minutes = null, DateTime? startDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(string pathWorkspaceSid, DateTime? endDate = null, string friendlyName = null, int? minutes = null, DateTime? startDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTaskQueuesStatisticsOptions(workspaceSid){EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadTaskQueuesStatisticsOptions(pathWorkspaceSid){EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

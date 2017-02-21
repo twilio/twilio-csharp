@@ -5,12 +5,15 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// CreateNewKeyOptions
+    /// </summary>
     public class CreateNewKeyOptions : IOptions<NewKeyResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The friendly_name
         /// </summary>

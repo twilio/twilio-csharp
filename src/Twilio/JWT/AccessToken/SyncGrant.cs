@@ -7,7 +7,14 @@ namespace Twilio.Jwt.AccessToken
     /// </summary>
     public class SyncGrant : IGrant
     {
+        /// <summary>
+        /// Sync service SID
+        /// </summary>
         public string ServiceSid { get; set; }
+        
+        /// <summary>
+        /// Endpoint ID
+        /// </summary>
         public string EndpointId { get; set; }
 
         /// <summary>

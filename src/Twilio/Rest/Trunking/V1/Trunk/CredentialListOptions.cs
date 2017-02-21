@@ -5,27 +5,30 @@ using Twilio.Base;
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
+    /// <summary>
+    /// FetchCredentialListOptions
+    /// </summary>
     public class FetchCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchCredentialListOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchCredentialListOptions(string trunkSid, string sid)
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchCredentialListOptions(string pathTrunkSid, string pathSid)
         {
-            TrunkSid = trunkSid;
-            Sid = sid;
+            PathTrunkSid = pathTrunkSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -38,27 +41,30 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// DeleteCredentialListOptions
+    /// </summary>
     public class DeleteCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteCredentialListOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteCredentialListOptions(string trunkSid, string sid)
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteCredentialListOptions(string pathTrunkSid, string pathSid)
         {
-            TrunkSid = trunkSid;
-            Sid = sid;
+            PathTrunkSid = pathTrunkSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -71,12 +77,15 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// CreateCredentialListOptions
+    /// </summary>
     public class CreateCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The credential_list_sid
         /// </summary>
@@ -86,11 +95,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Construct a new CreateCredentialListOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
-        public CreateCredentialListOptions(string trunkSid, string credentialListSid)
+        public CreateCredentialListOptions(string pathTrunkSid, string credentialListSid)
         {
-            TrunkSid = trunkSid;
+            PathTrunkSid = pathTrunkSid;
             CredentialListSid = credentialListSid;
         }
     
@@ -109,21 +118,24 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// ReadCredentialListOptions
+    /// </summary>
     public class ReadCredentialListOptions : ReadOptions<CredentialListResource> 
     {
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
     
         /// <summary>
         /// Construct a new ReadCredentialListOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        public ReadCredentialListOptions(string trunkSid)
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        public ReadCredentialListOptions(string pathTrunkSid)
         {
-            TrunkSid = trunkSid;
+            PathTrunkSid = pathTrunkSid;
         }
     
         /// <summary>

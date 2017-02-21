@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Chat.V1 
 {
 
+    /// <summary>
+    /// ReadCredentialOptions
+    /// </summary>
     public class ReadCredentialOptions : ReadOptions<CredentialResource> 
     {
         /// <summary>
@@ -22,6 +25,9 @@ namespace Twilio.Rest.Chat.V1
         }
     }
 
+    /// <summary>
+    /// CreateCredentialOptions
+    /// </summary>
     public class CreateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
@@ -108,21 +114,24 @@ namespace Twilio.Rest.Chat.V1
         }
     }
 
+    /// <summary>
+    /// FetchCredentialOptions
+    /// </summary>
     public class FetchCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchCredentialOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchCredentialOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchCredentialOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -135,12 +144,15 @@ namespace Twilio.Rest.Chat.V1
         }
     }
 
+    /// <summary>
+    /// UpdateCredentialOptions
+    /// </summary>
     public class UpdateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -170,10 +182,10 @@ namespace Twilio.Rest.Chat.V1
         /// Construct a new UpdateCredentialOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateCredentialOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateCredentialOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -216,21 +228,24 @@ namespace Twilio.Rest.Chat.V1
         }
     }
 
+    /// <summary>
+    /// DeleteCredentialOptions
+    /// </summary>
     public class DeleteCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteCredentialOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteCredentialOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteCredentialOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

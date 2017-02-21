@@ -5,27 +5,30 @@ using Twilio.Base;
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
+    /// <summary>
+    /// FetchTaskChannelOptions
+    /// </summary>
     public class FetchTaskChannelOptions : IOptions<TaskChannelResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchTaskChannelOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchTaskChannelOptions(string workspaceSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchTaskChannelOptions(string pathWorkspaceSid, string pathSid)
         {
-            WorkspaceSid = workspaceSid;
-            Sid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -38,21 +41,24 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     }
 
+    /// <summary>
+    /// ReadTaskChannelOptions
+    /// </summary>
     public class ReadTaskChannelOptions : ReadOptions<TaskChannelResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
     
         /// <summary>
         /// Construct a new ReadTaskChannelOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        public ReadTaskChannelOptions(string workspaceSid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        public ReadTaskChannelOptions(string pathWorkspaceSid)
         {
-            WorkspaceSid = workspaceSid;
+            PathWorkspaceSid = pathWorkspaceSid;
         }
     
         /// <summary>

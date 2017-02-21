@@ -9,17 +9,27 @@ using System.Web;
 
 namespace Twilio.Jwt.Client
 {
+    /// <summary>
+    /// Event stream scope for client capabilites
+    /// </summary>
     public class EventStreamScope : IScope
     {
         private static readonly string Scope = "scope:stream:subscribe";
 
         private readonly Dictionary<string, string> _filters;
 
+        /// <summary>
+        /// Create a new EventStreamScope
+        /// </summary>
+        /// <param name="filters">filters to use</param>
         public EventStreamScope(Dictionary<string, string> filters = null)
         {
             this._filters = filters;
         }
 
+        /// <summary>
+        /// Generate scope payload
+        /// </summary>
         public string Payload
         {
             get

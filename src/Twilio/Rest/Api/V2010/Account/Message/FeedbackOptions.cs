@@ -5,16 +5,19 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {
 
+    /// <summary>
+    /// CreateFeedbackOptions
+    /// </summary>
     public class CreateFeedbackOptions : IOptions<FeedbackResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The message_sid
         /// </summary>
-        public string MessageSid { get; }
+        public string PathMessageSid { get; }
         /// <summary>
         /// The outcome
         /// </summary>
@@ -24,10 +27,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Construct a new CreateFeedbackOptions
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        public CreateFeedbackOptions(string messageSid)
+        /// <param name="pathMessageSid"> The message_sid </param>
+        public CreateFeedbackOptions(string pathMessageSid)
         {
-            MessageSid = messageSid;
+            PathMessageSid = pathMessageSid;
         }
     
         /// <summary>

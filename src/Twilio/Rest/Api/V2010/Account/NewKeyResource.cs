@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// NewKeyResource
+    /// </summary>
     public class NewKeyResource : Resource 
     {
         private static Request BuildCreateRequest(CreateNewKeyOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Keys.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Keys.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -57,13 +60,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// create
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NewKey </returns> 
-        public static NewKeyResource Create(string accountSid = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static NewKeyResource Create(string pathAccountSid = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new CreateNewKeyOptions{AccountSid = accountSid, FriendlyName = friendlyName};
+            var options = new CreateNewKeyOptions{PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
             return Create(options, client);
         }
     
@@ -72,13 +75,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// create
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NewKey </returns> 
-        public static async System.Threading.Tasks.Task<NewKeyResource> CreateAsync(string accountSid = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NewKeyResource> CreateAsync(string pathAccountSid = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new CreateNewKeyOptions{AccountSid = accountSid, FriendlyName = friendlyName};
+            var options = new CreateNewKeyOptions{PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
             return await CreateAsync(options, client);
         }
         #endif

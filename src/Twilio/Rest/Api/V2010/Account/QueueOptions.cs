@@ -5,25 +5,28 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch an instance of a queue identified by the QueueSid
+    /// </summary>
     public class FetchQueueOptions : IOptions<QueueResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique queue Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchQueueOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique queue Sid </param>
-        public FetchQueueOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique queue Sid </param>
+        public FetchQueueOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -36,16 +39,19 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Update the queue with the new parameters
+    /// </summary>
     public class UpdateQueueOptions : IOptions<QueueResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// A human readable description of the queue
         /// </summary>
@@ -59,10 +65,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateQueueOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateQueueOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateQueueOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -85,25 +91,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Remove an empty queue
+    /// </summary>
     public class DeleteQueueOptions : IOptions<QueueResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Delete by unique queue Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteQueueOptions
         /// </summary>
         ///
-        /// <param name="sid"> Delete by unique queue Sid </param>
-        public DeleteQueueOptions(string sid)
+        /// <param name="pathSid"> Delete by unique queue Sid </param>
+        public DeleteQueueOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -116,12 +125,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of queues belonging to the account used to make the request
+    /// </summary>
     public class ReadQueueOptions : ReadOptions<QueueResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -138,12 +150,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Create a queue
+    /// </summary>
     public class CreateQueueOptions : IOptions<QueueResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// A user-provided string that identifies this queue.
         /// </summary>

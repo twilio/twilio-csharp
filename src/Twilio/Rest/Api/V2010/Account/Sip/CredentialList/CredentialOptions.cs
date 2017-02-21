@@ -5,25 +5,28 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList 
 {
 
+    /// <summary>
+    /// ReadCredentialOptions
+    /// </summary>
     public class ReadCredentialOptions : ReadOptions<CredentialResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The credential_list_sid
         /// </summary>
-        public string CredentialListSid { get; }
+        public string PathCredentialListSid { get; }
     
         /// <summary>
         /// Construct a new ReadCredentialOptions
         /// </summary>
         ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        public ReadCredentialOptions(string credentialListSid)
+        /// <param name="pathCredentialListSid"> The credential_list_sid </param>
+        public ReadCredentialOptions(string pathCredentialListSid)
         {
-            CredentialListSid = credentialListSid;
+            PathCredentialListSid = pathCredentialListSid;
         }
     
         /// <summary>
@@ -41,16 +44,19 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         }
     }
 
+    /// <summary>
+    /// CreateCredentialOptions
+    /// </summary>
     public class CreateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The credential_list_sid
         /// </summary>
-        public string CredentialListSid { get; }
+        public string PathCredentialListSid { get; }
         /// <summary>
         /// The username
         /// </summary>
@@ -64,12 +70,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// Construct a new CreateCredentialOptions
         /// </summary>
         ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="pathCredentialListSid"> The credential_list_sid </param>
         /// <param name="username"> The username </param>
         /// <param name="password"> The password </param>
-        public CreateCredentialOptions(string credentialListSid, string username, string password)
+        public CreateCredentialOptions(string pathCredentialListSid, string username, string password)
         {
-            CredentialListSid = credentialListSid;
+            PathCredentialListSid = pathCredentialListSid;
             Username = username;
             Password = password;
         }
@@ -94,31 +100,34 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         }
     }
 
+    /// <summary>
+    /// FetchCredentialOptions
+    /// </summary>
     public class FetchCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The credential_list_sid
         /// </summary>
-        public string CredentialListSid { get; }
+        public string PathCredentialListSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchCredentialOptions
         /// </summary>
         ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchCredentialOptions(string credentialListSid, string sid)
+        /// <param name="pathCredentialListSid"> The credential_list_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchCredentialOptions(string pathCredentialListSid, string pathSid)
         {
-            CredentialListSid = credentialListSid;
-            Sid = sid;
+            PathCredentialListSid = pathCredentialListSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -131,20 +140,23 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         }
     }
 
+    /// <summary>
+    /// UpdateCredentialOptions
+    /// </summary>
     public class UpdateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The credential_list_sid
         /// </summary>
-        public string CredentialListSid { get; }
+        public string PathCredentialListSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The password
         /// </summary>
@@ -154,12 +166,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// Construct a new UpdateCredentialOptions
         /// </summary>
         ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        public UpdateCredentialOptions(string credentialListSid, string sid)
+        /// <param name="pathCredentialListSid"> The credential_list_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public UpdateCredentialOptions(string pathCredentialListSid, string pathSid)
         {
-            CredentialListSid = credentialListSid;
-            Sid = sid;
+            PathCredentialListSid = pathCredentialListSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -177,31 +189,34 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         }
     }
 
+    /// <summary>
+    /// DeleteCredentialOptions
+    /// </summary>
     public class DeleteCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The credential_list_sid
         /// </summary>
-        public string CredentialListSid { get; }
+        public string PathCredentialListSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteCredentialOptions
         /// </summary>
         ///
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteCredentialOptions(string credentialListSid, string sid)
+        /// <param name="pathCredentialListSid"> The credential_list_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteCredentialOptions(string pathCredentialListSid, string pathSid)
         {
-            CredentialListSid = credentialListSid;
-            Sid = sid;
+            PathCredentialListSid = pathCredentialListSid;
+            PathSid = pathSid;
         }
     
         /// <summary>

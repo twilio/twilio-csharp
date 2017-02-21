@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// ConferenceResource
+    /// </summary>
     public class ConferenceResource : Resource 
     {
         public sealed class StatusEnum : StringEnum 
@@ -36,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Conferences/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -76,13 +79,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch an instance of a conference
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique conference Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> Fetch by unique conference Sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conference </returns> 
-        public static ConferenceResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static ConferenceResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchConferenceOptions(sid){AccountSid = accountSid};
+            var options = new FetchConferenceOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
     
@@ -91,13 +94,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch an instance of a conference
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique conference Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> Fetch by unique conference Sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns> 
-        public static async System.Threading.Tasks.Task<ConferenceResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConferenceResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchConferenceOptions(sid){AccountSid = accountSid};
+            var options = new FetchConferenceOptions(pathSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -107,7 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Conferences.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -151,7 +154,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve a list of conferences belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="dateCreatedBefore"> Filter by date created </param>
         /// <param name="dateCreated"> Filter by date created </param>
         /// <param name="dateCreatedAfter"> Filter by date created </param>
@@ -164,9 +167,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conference </returns> 
-        public static ResourceSet<ConferenceResource> Read(string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, DateTime? dateUpdatedBefore = null, DateTime? dateUpdated = null, DateTime? dateUpdatedAfter = null, string friendlyName = null, ConferenceResource.StatusEnum status = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<ConferenceResource> Read(string pathAccountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, DateTime? dateUpdatedBefore = null, DateTime? dateUpdated = null, DateTime? dateUpdatedAfter = null, string friendlyName = null, ConferenceResource.StatusEnum status = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadConferenceOptions{AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, DateUpdatedBefore = dateUpdatedBefore, DateUpdated = dateUpdated, DateUpdatedAfter = dateUpdatedAfter, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadConferenceOptions{PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, DateUpdatedBefore = dateUpdatedBefore, DateUpdated = dateUpdated, DateUpdatedAfter = dateUpdatedAfter, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -175,7 +178,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve a list of conferences belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="dateCreatedBefore"> Filter by date created </param>
         /// <param name="dateCreated"> Filter by date created </param>
         /// <param name="dateCreatedAfter"> Filter by date created </param>
@@ -188,9 +191,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ConferenceResource>> ReadAsync(string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, DateTime? dateUpdatedBefore = null, DateTime? dateUpdated = null, DateTime? dateUpdatedAfter = null, string friendlyName = null, ConferenceResource.StatusEnum status = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ConferenceResource>> ReadAsync(string pathAccountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, DateTime? dateUpdatedBefore = null, DateTime? dateUpdated = null, DateTime? dateUpdatedAfter = null, string friendlyName = null, ConferenceResource.StatusEnum status = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadConferenceOptions{AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, DateUpdatedBefore = dateUpdatedBefore, DateUpdated = dateUpdated, DateUpdatedAfter = dateUpdatedAfter, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadConferenceOptions{PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, DateUpdatedBefore = dateUpdatedBefore, DateUpdated = dateUpdated, DateUpdatedAfter = dateUpdatedAfter, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -221,7 +224,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Conferences/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Conferences/" + options.PathSid + ".json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -261,14 +264,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// update
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="status"> The status </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conference </returns> 
-        public static ConferenceResource Update(string sid, string accountSid = null, ConferenceResource.UpdateStatusEnum status = null, ITwilioRestClient client = null)
+        public static ConferenceResource Update(string pathSid, string pathAccountSid = null, ConferenceResource.UpdateStatusEnum status = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateConferenceOptions(sid){AccountSid = accountSid, Status = status};
+            var options = new UpdateConferenceOptions(pathSid){PathAccountSid = pathAccountSid, Status = status};
             return Update(options, client);
         }
     
@@ -277,14 +280,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// update
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="status"> The status </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns> 
-        public static async System.Threading.Tasks.Task<ConferenceResource> UpdateAsync(string sid, string accountSid = null, ConferenceResource.UpdateStatusEnum status = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ConferenceResource> UpdateAsync(string pathSid, string pathAccountSid = null, ConferenceResource.UpdateStatusEnum status = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateConferenceOptions(sid){AccountSid = accountSid, Status = status};
+            var options = new UpdateConferenceOptions(pathSid){PathAccountSid = pathAccountSid, Status = status};
             return await UpdateAsync(options, client);
         }
         #endif

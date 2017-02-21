@@ -5,12 +5,15 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
 {
 
+    /// <summary>
+    /// ReadLocalOptions
+    /// </summary>
     public class ReadLocalOptions : ReadOptions<LocalResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The account_sid
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The beta
         /// </summary>
@@ -54,12 +57,15 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         }
     }
 
+    /// <summary>
+    /// CreateLocalOptions
+    /// </summary>
     public class CreateLocalOptions : IOptions<LocalResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The account_sid
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The phone_number
         /// </summary>

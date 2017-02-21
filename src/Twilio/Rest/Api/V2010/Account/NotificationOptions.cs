@@ -5,25 +5,28 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch a notification belonging to the account used to make the request
+    /// </summary>
     public class FetchNotificationOptions : IOptions<NotificationResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique notification Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchNotificationOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique notification Sid </param>
-        public FetchNotificationOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique notification Sid </param>
+        public FetchNotificationOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -36,25 +39,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Delete a notification identified by the NotificationSid from an accounts log
+    /// </summary>
     public class DeleteNotificationOptions : IOptions<NotificationResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Delete by unique notification Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteNotificationOptions
         /// </summary>
         ///
-        /// <param name="sid"> Delete by unique notification Sid </param>
-        public DeleteNotificationOptions(string sid)
+        /// <param name="pathSid"> Delete by unique notification Sid </param>
+        public DeleteNotificationOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -67,12 +73,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of notifications belonging to the account used to make the request
+    /// </summary>
     public class ReadNotificationOptions : ReadOptions<NotificationResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Filter by log level
         /// </summary>
@@ -103,18 +112,18 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (MessageDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessageDate", MessageDate.ToString()));
+                p.Add(new KeyValuePair<string, string>("MessageDate", MessageDate.Value.ToString("yyyy-MM-dd")));
             }
             else
             {
                 if (MessageDateBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("MessageDate<", MessageDateBefore.ToString()));
+                    p.Add(new KeyValuePair<string, string>("MessageDate<", MessageDateBefore.Value.ToString("yyyy-MM-dd")));
                 }
             
                 if (MessageDateAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("MessageDate>", MessageDateAfter.ToString()));
+                    p.Add(new KeyValuePair<string, string>("MessageDate>", MessageDateAfter.Value.ToString("yyyy-MM-dd")));
                 }
             }
             

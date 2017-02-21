@@ -6,12 +6,15 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
+    /// <summary>
+    /// FetchWorkersStatisticsOptions
+    /// </summary>
     public class FetchWorkersStatisticsOptions : IOptions<WorkersStatisticsResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The minutes
         /// </summary>
@@ -41,10 +44,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// Construct a new FetchWorkersStatisticsOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        public FetchWorkersStatisticsOptions(string workspaceSid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        public FetchWorkersStatisticsOptions(string pathWorkspaceSid)
         {
-            WorkspaceSid = workspaceSid;
+            PathWorkspaceSid = pathWorkspaceSid;
         }
     
         /// <summary>

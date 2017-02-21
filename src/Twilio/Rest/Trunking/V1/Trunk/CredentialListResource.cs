@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
+    /// <summary>
+    /// CredentialListResource
+    /// </summary>
     public class CredentialListResource : Resource 
     {
         private static Request BuildFetchRequest(FetchCredentialListOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/CredentialLists/" + options.Sid + "",
+                "/v1/Trunks/" + options.PathTrunkSid + "/CredentialLists/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -57,13 +60,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// fetch
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialList </returns> 
-        public static CredentialListResource Fetch(string trunkSid, string sid, ITwilioRestClient client = null)
+        public static CredentialListResource Fetch(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchCredentialListOptions(trunkSid, sid);
+            var options = new FetchCredentialListOptions(pathTrunkSid, pathSid);
             return Fetch(options, client);
         }
     
@@ -72,13 +75,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// fetch
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
-        public static async System.Threading.Tasks.Task<CredentialListResource> FetchAsync(string trunkSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialListResource> FetchAsync(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchCredentialListOptions(trunkSid, sid);
+            var options = new FetchCredentialListOptions(pathTrunkSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -88,7 +91,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/CredentialLists/" + options.Sid + "",
+                "/v1/Trunks/" + options.PathTrunkSid + "/CredentialLists/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -128,13 +131,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// delete
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialList </returns> 
-        public static bool Delete(string trunkSid, string sid, ITwilioRestClient client = null)
+        public static bool Delete(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteCredentialListOptions(trunkSid, sid);
+            var options = new DeleteCredentialListOptions(pathTrunkSid, pathSid);
             return Delete(options, client);
         }
     
@@ -143,13 +146,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// delete
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string trunkSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteCredentialListOptions(trunkSid, sid);
+            var options = new DeleteCredentialListOptions(pathTrunkSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif
@@ -159,7 +162,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/CredentialLists",
+                "/v1/Trunks/" + options.PathTrunkSid + "/CredentialLists",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -199,13 +202,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// create
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialList </returns> 
-        public static CredentialListResource Create(string trunkSid, string credentialListSid, ITwilioRestClient client = null)
+        public static CredentialListResource Create(string pathTrunkSid, string credentialListSid, ITwilioRestClient client = null)
         {
-            var options = new CreateCredentialListOptions(trunkSid, credentialListSid);
+            var options = new CreateCredentialListOptions(pathTrunkSid, credentialListSid);
             return Create(options, client);
         }
     
@@ -214,13 +217,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// create
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
-        public static async System.Threading.Tasks.Task<CredentialListResource> CreateAsync(string trunkSid, string credentialListSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialListResource> CreateAsync(string pathTrunkSid, string credentialListSid, ITwilioRestClient client = null)
         {
-            var options = new CreateCredentialListOptions(trunkSid, credentialListSid);
+            var options = new CreateCredentialListOptions(pathTrunkSid, credentialListSid);
             return await CreateAsync(options, client);
         }
         #endif
@@ -230,7 +233,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/CredentialLists",
+                "/v1/Trunks/" + options.PathTrunkSid + "/CredentialLists",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -274,14 +277,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// read
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialList </returns> 
-        public static ResourceSet<CredentialListResource> Read(string trunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<CredentialListResource> Read(string pathTrunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadCredentialListOptions(trunkSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadCredentialListOptions(pathTrunkSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -290,14 +293,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// read
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CredentialListResource>> ReadAsync(string trunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CredentialListResource>> ReadAsync(string pathTrunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadCredentialListOptions(trunkSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadCredentialListOptions(pathTrunkSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

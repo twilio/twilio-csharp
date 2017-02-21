@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
 {
 
+    /// <summary>
+    /// MemberResource
+    /// </summary>
     public class MemberResource : Resource 
     {
         private static Request BuildFetchRequest(FetchMemberOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -57,14 +60,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// fetch
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
-        public static MemberResource Fetch(string serviceSid, string channelSid, string sid, ITwilioRestClient client = null)
+        public static MemberResource Fetch(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchMemberOptions(serviceSid, channelSid, sid);
+            var options = new FetchMemberOptions(pathServiceSid, pathChannelSid, pathSid);
             return Fetch(options, client);
         }
     
@@ -73,14 +76,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// fetch
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(string serviceSid, string channelSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchMemberOptions(serviceSid, channelSid, sid);
+            var options = new FetchMemberOptions(pathServiceSid, pathChannelSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -90,7 +93,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -130,15 +133,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// create
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="roleSid"> The role_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
-        public static MemberResource Create(string serviceSid, string channelSid, string identity, string roleSid = null, ITwilioRestClient client = null)
+        public static MemberResource Create(string pathServiceSid, string pathChannelSid, string identity, string roleSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateMemberOptions(serviceSid, channelSid, identity){RoleSid = roleSid};
+            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid};
             return Create(options, client);
         }
     
@@ -147,15 +150,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// create
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="roleSid"> The role_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(string serviceSid, string channelSid, string identity, string roleSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(string pathServiceSid, string pathChannelSid, string identity, string roleSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateMemberOptions(serviceSid, channelSid, identity){RoleSid = roleSid};
+            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -165,7 +168,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -209,16 +212,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// read
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
-        public static ResourceSet<MemberResource> Read(string serviceSid, string channelSid, List<string> identity = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<MemberResource> Read(string pathServiceSid, string pathChannelSid, List<string> identity = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMemberOptions(serviceSid, channelSid){Identity = identity, PageSize = pageSize, Limit = limit};
+            var options = new ReadMemberOptions(pathServiceSid, pathChannelSid){Identity = identity, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -227,16 +230,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// read
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(string serviceSid, string channelSid, List<string> identity = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(string pathServiceSid, string pathChannelSid, List<string> identity = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMemberOptions(serviceSid, channelSid){Identity = identity, PageSize = pageSize, Limit = limit};
+            var options = new ReadMemberOptions(pathServiceSid, pathChannelSid){Identity = identity, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -267,7 +270,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -307,14 +310,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// delete
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
-        public static bool Delete(string serviceSid, string channelSid, string sid, ITwilioRestClient client = null)
+        public static bool Delete(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteMemberOptions(serviceSid, channelSid, sid);
+            var options = new DeleteMemberOptions(pathServiceSid, pathChannelSid, pathSid);
             return Delete(options, client);
         }
     
@@ -323,14 +326,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// delete
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string serviceSid, string channelSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteMemberOptions(serviceSid, channelSid, sid);
+            var options = new DeleteMemberOptions(pathServiceSid, pathChannelSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif
@@ -340,7 +343,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
-                "/v1/Services/" + options.ServiceSid + "/Channels/" + options.ChannelSid + "/Members/" + options.Sid + "",
+                "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members/" + options.PathSid + "",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -380,16 +383,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// update
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="roleSid"> The role_sid </param>
         /// <param name="lastConsumedMessageIndex"> The last_consumed_message_index </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
-        public static MemberResource Update(string serviceSid, string channelSid, string sid, string roleSid = null, int? lastConsumedMessageIndex = null, ITwilioRestClient client = null)
+        public static MemberResource Update(string pathServiceSid, string pathChannelSid, string pathSid, string roleSid = null, int? lastConsumedMessageIndex = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateMemberOptions(serviceSid, channelSid, sid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex};
+            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex};
             return Update(options, client);
         }
     
@@ -398,16 +401,16 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// update
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="roleSid"> The role_sid </param>
         /// <param name="lastConsumedMessageIndex"> The last_consumed_message_index </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string serviceSid, string channelSid, string sid, string roleSid = null, int? lastConsumedMessageIndex = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string pathServiceSid, string pathChannelSid, string pathSid, string roleSid = null, int? lastConsumedMessageIndex = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateMemberOptions(serviceSid, channelSid, sid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex};
+            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex};
             return await UpdateAsync(options, client);
         }
         #endif

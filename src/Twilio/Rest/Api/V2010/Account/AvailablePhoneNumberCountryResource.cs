@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// AvailablePhoneNumberCountryResource
+    /// </summary>
     public class AvailablePhoneNumberCountryResource : Resource 
     {
         private static Request BuildReadRequest(ReadAvailablePhoneNumberCountryOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/AvailablePhoneNumbers.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/AvailablePhoneNumbers.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -61,14 +64,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AvailablePhoneNumberCountry </returns> 
-        public static ResourceSet<AvailablePhoneNumberCountryResource> Read(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<AvailablePhoneNumberCountryResource> Read(string pathAccountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadAvailablePhoneNumberCountryOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadAvailablePhoneNumberCountryOptions{PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -77,14 +80,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AvailablePhoneNumberCountry </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AvailablePhoneNumberCountryResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AvailablePhoneNumberCountryResource>> ReadAsync(string pathAccountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadAvailablePhoneNumberCountryOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadAvailablePhoneNumberCountryOptions{PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -115,7 +118,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/AvailablePhoneNumbers/" + options.CountryCode + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/AvailablePhoneNumbers/" + options.PathCountryCode + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -155,13 +158,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// fetch
         /// </summary>
         ///
-        /// <param name="countryCode"> The country_code </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathCountryCode"> The country_code </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AvailablePhoneNumberCountry </returns> 
-        public static AvailablePhoneNumberCountryResource Fetch(string countryCode, string accountSid = null, ITwilioRestClient client = null)
+        public static AvailablePhoneNumberCountryResource Fetch(string pathCountryCode, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAvailablePhoneNumberCountryOptions(countryCode){AccountSid = accountSid};
+            var options = new FetchAvailablePhoneNumberCountryOptions(pathCountryCode){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
     
@@ -170,13 +173,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// fetch
         /// </summary>
         ///
-        /// <param name="countryCode"> The country_code </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathCountryCode"> The country_code </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AvailablePhoneNumberCountry </returns> 
-        public static async System.Threading.Tasks.Task<AvailablePhoneNumberCountryResource> FetchAsync(string countryCode, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AvailablePhoneNumberCountryResource> FetchAsync(string pathCountryCode, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAvailablePhoneNumberCountryOptions(countryCode){AccountSid = accountSid};
+            var options = new FetchAvailablePhoneNumberCountryOptions(pathCountryCode){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
         }
         #endif

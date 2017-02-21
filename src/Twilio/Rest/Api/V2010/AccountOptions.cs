@@ -5,6 +5,9 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010 
 {
 
+    /// <summary>
+    /// Create a new Twilio Subaccount from the account making the request
+    /// </summary>
     public class CreateAccountOptions : IOptions<AccountResource> 
     {
         /// <summary>
@@ -27,12 +30,15 @@ namespace Twilio.Rest.Api.V2010
         }
     }
 
+    /// <summary>
+    /// Fetch the account specified by the provided Account Sid
+    /// </summary>
     public class FetchAccountOptions : IOptions<AccountResource> 
     {
         /// <summary>
         /// Fetch by unique Account Sid
         /// </summary>
-        public string Sid { get; set; }
+        public string PathSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -44,6 +50,9 @@ namespace Twilio.Rest.Api.V2010
         }
     }
 
+    /// <summary>
+    /// Retrieves a collection of Accounts belonging to the account used to make the request
+    /// </summary>
     public class ReadAccountOptions : ReadOptions<AccountResource> 
     {
         /// <summary>
@@ -80,12 +89,15 @@ namespace Twilio.Rest.Api.V2010
         }
     }
 
+    /// <summary>
+    /// Modify the properties of a given Account
+    /// </summary>
     public class UpdateAccountOptions : IOptions<AccountResource> 
     {
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; set; }
+        public string PathSid { get; set; }
         /// <summary>
         /// FriendlyName to update
         /// </summary>

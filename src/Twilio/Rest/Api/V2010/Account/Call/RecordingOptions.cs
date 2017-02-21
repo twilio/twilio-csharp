@@ -5,31 +5,34 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
+    /// <summary>
+    /// FetchRecordingOptions
+    /// </summary>
     public class FetchRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchRecordingOptions
         /// </summary>
         ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchRecordingOptions(string callSid, string sid)
+        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchRecordingOptions(string pathCallSid, string pathSid)
         {
-            CallSid = callSid;
-            Sid = sid;
+            PathCallSid = pathCallSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -42,31 +45,34 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     }
 
+    /// <summary>
+    /// DeleteRecordingOptions
+    /// </summary>
     public class DeleteRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteRecordingOptions
         /// </summary>
         ///
-        /// <param name="callSid"> The call_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteRecordingOptions(string callSid, string sid)
+        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteRecordingOptions(string pathCallSid, string pathSid)
         {
-            CallSid = callSid;
-            Sid = sid;
+            PathCallSid = pathCallSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -79,16 +85,19 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     }
 
+    /// <summary>
+    /// ReadRecordingOptions
+    /// </summary>
     public class ReadRecordingOptions : ReadOptions<RecordingResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// The date_created
         /// </summary>
@@ -106,10 +115,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Construct a new ReadRecordingOptions
         /// </summary>
         ///
-        /// <param name="callSid"> The call_sid </param>
-        public ReadRecordingOptions(string callSid)
+        /// <param name="pathCallSid"> The call_sid </param>
+        public ReadRecordingOptions(string pathCallSid)
         {
-            CallSid = callSid;
+            PathCallSid = pathCallSid;
         }
     
         /// <summary>
@@ -120,18 +129,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var p = new List<KeyValuePair<string, string>>();
             if (DateCreated != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.ToString()));
+                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd")));
             }
             else
             {
                 if (DateCreatedBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.ToString()));
+                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd")));
                 }
             
                 if (DateCreatedAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.ToString()));
+                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
                 }
             }
             

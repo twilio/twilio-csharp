@@ -5,27 +5,30 @@ using Twilio.Base;
 namespace Twilio.Rest.Taskrouter.V1.Workspace 
 {
 
+    /// <summary>
+    /// FetchTaskQueueOptions
+    /// </summary>
     public class FetchTaskQueueOptions : IOptions<TaskQueueResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchTaskQueueOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchTaskQueueOptions(string workspaceSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchTaskQueueOptions(string pathWorkspaceSid, string pathSid)
         {
-            WorkspaceSid = workspaceSid;
-            Sid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -38,16 +41,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     }
 
+    /// <summary>
+    /// UpdateTaskQueueOptions
+    /// </summary>
     public class UpdateTaskQueueOptions : IOptions<TaskQueueResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -77,12 +83,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new UpdateTaskQueueOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        public UpdateTaskQueueOptions(string workspaceSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public UpdateTaskQueueOptions(string pathWorkspaceSid, string pathSid)
         {
-            WorkspaceSid = workspaceSid;
-            Sid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -125,12 +131,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     }
 
+    /// <summary>
+    /// ReadTaskQueueOptions
+    /// </summary>
     public class ReadTaskQueueOptions : ReadOptions<TaskQueueResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -148,10 +157,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new ReadTaskQueueOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        public ReadTaskQueueOptions(string workspaceSid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        public ReadTaskQueueOptions(string pathWorkspaceSid)
         {
-            WorkspaceSid = workspaceSid;
+            PathWorkspaceSid = pathWorkspaceSid;
         }
     
         /// <summary>
@@ -184,12 +193,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     }
 
+    /// <summary>
+    /// CreateTaskQueueOptions
+    /// </summary>
     public class CreateTaskQueueOptions : IOptions<TaskQueueResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -219,13 +231,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new CreateTaskQueueOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
         /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
-        public CreateTaskQueueOptions(string workspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid)
+        public CreateTaskQueueOptions(string pathWorkspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid)
         {
-            WorkspaceSid = workspaceSid;
+            PathWorkspaceSid = pathWorkspaceSid;
             FriendlyName = friendlyName;
             ReservationActivitySid = reservationActivitySid;
             AssignmentActivitySid = assignmentActivitySid;
@@ -271,27 +283,30 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     }
 
+    /// <summary>
+    /// DeleteTaskQueueOptions
+    /// </summary>
     public class DeleteTaskQueueOptions : IOptions<TaskQueueResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteTaskQueueOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteTaskQueueOptions(string workspaceSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteTaskQueueOptions(string pathWorkspaceSid, string pathSid)
         {
-            WorkspaceSid = workspaceSid;
-            Sid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathSid = pathSid;
         }
     
         /// <summary>

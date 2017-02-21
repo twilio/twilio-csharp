@@ -5,31 +5,34 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Queue 
 {
 
+    /// <summary>
+    /// Fetch a specific members of the queue
+    /// </summary>
     public class FetchMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The Queue in which to find the members
         /// </summary>
-        public string QueueSid { get; }
+        public string PathQueueSid { get; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
     
         /// <summary>
         /// Construct a new FetchMemberOptions
         /// </summary>
         ///
-        /// <param name="queueSid"> The Queue in which to find the members </param>
-        /// <param name="callSid"> The call_sid </param>
-        public FetchMemberOptions(string queueSid, string callSid)
+        /// <param name="pathQueueSid"> The Queue in which to find the members </param>
+        /// <param name="pathCallSid"> The call_sid </param>
+        public FetchMemberOptions(string pathQueueSid, string pathCallSid)
         {
-            QueueSid = queueSid;
-            CallSid = callSid;
+            PathQueueSid = pathQueueSid;
+            PathCallSid = pathCallSid;
         }
     
         /// <summary>
@@ -42,20 +45,23 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
     }
 
+    /// <summary>
+    /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
+    /// </summary>
     public class UpdateMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The Queue in which to find the members
         /// </summary>
-        public string QueueSid { get; }
+        public string PathQueueSid { get; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// The url
         /// </summary>
@@ -69,14 +75,14 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// Construct a new UpdateMemberOptions
         /// </summary>
         ///
-        /// <param name="queueSid"> The Queue in which to find the members </param>
-        /// <param name="callSid"> The call_sid </param>
+        /// <param name="pathQueueSid"> The Queue in which to find the members </param>
+        /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="url"> The url </param>
         /// <param name="method"> The method </param>
-        public UpdateMemberOptions(string queueSid, string callSid, Uri url, Twilio.Http.HttpMethod method)
+        public UpdateMemberOptions(string pathQueueSid, string pathCallSid, Uri url, Twilio.Http.HttpMethod method)
         {
-            QueueSid = queueSid;
-            CallSid = callSid;
+            PathQueueSid = pathQueueSid;
+            PathCallSid = pathCallSid;
             Url = url;
             Method = method;
         }
@@ -101,25 +107,28 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of members in the queue
+    /// </summary>
     public class ReadMemberOptions : ReadOptions<MemberResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The Queue in which to find members
         /// </summary>
-        public string QueueSid { get; }
+        public string PathQueueSid { get; }
     
         /// <summary>
         /// Construct a new ReadMemberOptions
         /// </summary>
         ///
-        /// <param name="queueSid"> The Queue in which to find members </param>
-        public ReadMemberOptions(string queueSid)
+        /// <param name="pathQueueSid"> The Queue in which to find members </param>
+        public ReadMemberOptions(string pathQueueSid)
         {
-            QueueSid = queueSid;
+            PathQueueSid = pathQueueSid;
         }
     
         /// <summary>

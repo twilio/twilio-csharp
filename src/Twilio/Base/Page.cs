@@ -8,10 +8,22 @@ using static System.String;
 
 namespace Twilio.Base
 {
+    /// <summary>
+    /// Page of resources
+    /// </summary>
+    /// <typeparam name="T">Resource type</typeparam>
     public class Page<T> where T : Resource
     {
+        /// <summary>
+        /// Records for this page
+        /// </summary>
         public List<T> Records { get; }
+
+        /// <summary>
+        /// Page size
+        /// </summary>
         public int PageSize { get; }
+
         private readonly string _uri;
         private readonly string _url;
         private readonly string _firstPageUri;
@@ -60,31 +72,65 @@ namespace Twilio.Base
             return b.ToString();
         }
 
+        /// <summary>
+        /// Generate the first page URL
+        /// </summary>
+        /// <param name="domain">Twilio subdomain</param>
+        /// <param name="region">Twilio region</param>
+        /// <returns>URL for the first page of results</returns>
         public string GetFirstPageUrl(Domain domain, string region)
         {
             return _firstPageUrl ?? UrlFromUri(domain, region, _firstPageUri);
         }
 
+        /// <summary>
+        /// Get the next page URL
+        /// </summary>
+        /// <param name="domain">Twilio subdomain</param>
+        /// <param name="region">Twilio region</param>
+        /// <returns>URL for the next page of results</returns>
         public string GetNextPageUrl(Domain domain, string region)
         {
             return _nextPageUrl ?? UrlFromUri(domain, region, _nextPageUri);
         }
 
+        /// <summary>
+        /// Get the previous page URL
+        /// </summary>
+        /// <param name="domain">Twilio subdomain</param>
+        /// <param name="region">Twilio region</param>
+        /// <returns>URL for the previous page of results</returns>
         public string GetPreviousPageUrl(Domain domain, string region)
         {
             return _previousPageUrl ?? UrlFromUri(domain, region, _previousPageUri);
         }
 
+        /// <summary>
+        /// Get the URL for the current page
+        /// </summary>
+        /// <param name="domain">Twilio subdomain</param>
+        /// <param name="region">Twilio region</param>
+        /// <returns>URL for the current page of results</returns>
         public string GetUrl(Domain domain, string region)
         {
             return _url ?? UrlFromUri(domain, region, _uri);
         }
 
+        /// <summary>
+        /// Determines if there is another page of results
+        /// </summary>
+        /// <returns>true if there is a next page; false otherwise</returns>
         public bool HasNextPage()
         {
             return !IsNullOrEmpty(_nextPageUrl) || !IsNullOrEmpty(_nextPageUri);
         }
 
+        /// <summary>
+        /// Converts a JSON payload to a Page of results
+        /// </summary>
+        /// <param name="recordKey">JSON key where the records are</param>
+        /// <param name="json">JSON payload</param>
+        /// <returns>Page of results</returns>
         public static Page<T> FromJson(string recordKey, string json)
         {
             var root = JObject.Parse(json);

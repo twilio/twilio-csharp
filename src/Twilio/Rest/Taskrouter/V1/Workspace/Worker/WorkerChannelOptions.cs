@@ -5,27 +5,30 @@ using Twilio.Base;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
+    /// <summary>
+    /// ReadWorkerChannelOptions
+    /// </summary>
     public class ReadWorkerChannelOptions : ReadOptions<WorkerChannelResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The worker_sid
         /// </summary>
-        public string WorkerSid { get; }
+        public string PathWorkerSid { get; }
     
         /// <summary>
         /// Construct a new ReadWorkerChannelOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        public ReadWorkerChannelOptions(string workspaceSid, string workerSid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
+        public ReadWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid)
         {
-            WorkspaceSid = workspaceSid;
-            WorkerSid = workerSid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathWorkerSid = pathWorkerSid;
         }
     
         /// <summary>
@@ -43,33 +46,36 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     }
 
+    /// <summary>
+    /// FetchWorkerChannelOptions
+    /// </summary>
     public class FetchWorkerChannelOptions : IOptions<WorkerChannelResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The worker_sid
         /// </summary>
-        public string WorkerSid { get; }
+        public string PathWorkerSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchWorkerChannelOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchWorkerChannelOptions(string workspaceSid, string workerSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
         {
-            WorkspaceSid = workspaceSid;
-            WorkerSid = workerSid;
-            Sid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathWorkerSid = pathWorkerSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -82,20 +88,23 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     }
 
+    /// <summary>
+    /// UpdateWorkerChannelOptions
+    /// </summary>
     public class UpdateWorkerChannelOptions : IOptions<WorkerChannelResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The worker_sid
         /// </summary>
-        public string WorkerSid { get; }
+        public string PathWorkerSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The capacity
         /// </summary>
@@ -109,14 +118,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// Construct a new UpdateWorkerChannelOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        /// <param name="sid"> The sid </param>
-        public UpdateWorkerChannelOptions(string workspaceSid, string workerSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public UpdateWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
         {
-            WorkspaceSid = workspaceSid;
-            WorkerSid = workerSid;
-            Sid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathWorkerSid = pathWorkerSid;
+            PathSid = pathSid;
         }
     
         /// <summary>

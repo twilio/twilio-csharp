@@ -5,27 +5,30 @@ using Twilio.Base;
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
+    /// <summary>
+    /// FetchOriginationUrlOptions
+    /// </summary>
     public class FetchOriginationUrlOptions : IOptions<OriginationUrlResource> 
     {
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchOriginationUrlOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchOriginationUrlOptions(string trunkSid, string sid)
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchOriginationUrlOptions(string pathTrunkSid, string pathSid)
         {
-            TrunkSid = trunkSid;
-            Sid = sid;
+            PathTrunkSid = pathTrunkSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -38,27 +41,30 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// DeleteOriginationUrlOptions
+    /// </summary>
     public class DeleteOriginationUrlOptions : IOptions<OriginationUrlResource> 
     {
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteOriginationUrlOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteOriginationUrlOptions(string trunkSid, string sid)
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteOriginationUrlOptions(string pathTrunkSid, string pathSid)
         {
-            TrunkSid = trunkSid;
-            Sid = sid;
+            PathTrunkSid = pathTrunkSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -71,12 +77,15 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// CreateOriginationUrlOptions
+    /// </summary>
     public class CreateOriginationUrlOptions : IOptions<OriginationUrlResource> 
     {
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The weight
         /// </summary>
@@ -102,15 +111,15 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Construct a new CreateOriginationUrlOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="weight"> The weight </param>
         /// <param name="priority"> The priority </param>
         /// <param name="enabled"> The enabled </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="sipUrl"> The sip_url </param>
-        public CreateOriginationUrlOptions(string trunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl)
+        public CreateOriginationUrlOptions(string pathTrunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl)
         {
-            TrunkSid = trunkSid;
+            PathTrunkSid = pathTrunkSid;
             Weight = weight;
             Priority = priority;
             Enabled = enabled;
@@ -153,21 +162,24 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// ReadOriginationUrlOptions
+    /// </summary>
     public class ReadOriginationUrlOptions : ReadOptions<OriginationUrlResource> 
     {
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
     
         /// <summary>
         /// Construct a new ReadOriginationUrlOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        public ReadOriginationUrlOptions(string trunkSid)
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        public ReadOriginationUrlOptions(string pathTrunkSid)
         {
-            TrunkSid = trunkSid;
+            PathTrunkSid = pathTrunkSid;
         }
     
         /// <summary>
@@ -185,16 +197,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
     }
 
+    /// <summary>
+    /// UpdateOriginationUrlOptions
+    /// </summary>
     public class UpdateOriginationUrlOptions : IOptions<OriginationUrlResource> 
     {
         /// <summary>
         /// The trunk_sid
         /// </summary>
-        public string TrunkSid { get; }
+        public string PathTrunkSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The weight
         /// </summary>
@@ -220,12 +235,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Construct a new UpdateOriginationUrlOptions
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
-        public UpdateOriginationUrlOptions(string trunkSid, string sid)
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public UpdateOriginationUrlOptions(string pathTrunkSid, string pathSid)
         {
-            TrunkSid = trunkSid;
-            Sid = sid;
+            PathTrunkSid = pathTrunkSid;
+            PathSid = pathSid;
         }
     
         /// <summary>

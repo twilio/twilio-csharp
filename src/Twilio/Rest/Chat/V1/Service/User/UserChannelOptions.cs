@@ -5,27 +5,30 @@ using Twilio.Base;
 namespace Twilio.Rest.Chat.V1.Service.User 
 {
 
+    /// <summary>
+    /// ReadUserChannelOptions
+    /// </summary>
     public class ReadUserChannelOptions : ReadOptions<UserChannelResource> 
     {
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The user_sid
         /// </summary>
-        public string UserSid { get; }
+        public string PathUserSid { get; }
     
         /// <summary>
         /// Construct a new ReadUserChannelOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="userSid"> The user_sid </param>
-        public ReadUserChannelOptions(string serviceSid, string userSid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
+        public ReadUserChannelOptions(string pathServiceSid, string pathUserSid)
         {
-            ServiceSid = serviceSid;
-            UserSid = userSid;
+            PathServiceSid = pathServiceSid;
+            PathUserSid = pathUserSid;
         }
     
         /// <summary>

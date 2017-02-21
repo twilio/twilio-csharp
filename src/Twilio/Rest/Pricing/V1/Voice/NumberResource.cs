@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Pricing.V1.Voice 
 {
 
+    /// <summary>
+    /// NumberResource
+    /// </summary>
     public class NumberResource : Resource 
     {
         private static Request BuildFetchRequest(FetchNumberOptions options, ITwilioRestClient client)
@@ -18,7 +21,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
-                "/v1/Voice/Numbers/" + options.Number + "",
+                "/v1/Voice/Numbers/" + options.PathNumber + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -58,12 +61,12 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// fetch
         /// </summary>
         ///
-        /// <param name="number"> The number </param>
+        /// <param name="pathNumber"> The number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Number </returns> 
-        public static NumberResource Fetch(Types.PhoneNumber number, ITwilioRestClient client = null)
+        public static NumberResource Fetch(Types.PhoneNumber pathNumber, ITwilioRestClient client = null)
         {
-            var options = new FetchNumberOptions(number);
+            var options = new FetchNumberOptions(pathNumber);
             return Fetch(options, client);
         }
     
@@ -72,12 +75,12 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// fetch
         /// </summary>
         ///
-        /// <param name="number"> The number </param>
+        /// <param name="pathNumber"> The number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Number </returns> 
-        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(Types.PhoneNumber number, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(Types.PhoneNumber pathNumber, ITwilioRestClient client = null)
         {
-            var options = new FetchNumberOptions(number);
+            var options = new FetchNumberOptions(pathNumber);
             return await FetchAsync(options, client);
         }
         #endif

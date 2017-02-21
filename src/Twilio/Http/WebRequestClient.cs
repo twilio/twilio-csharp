@@ -9,10 +9,19 @@ using Newtonsoft.Json;
 
 namespace Twilio.Http
 {
+
+    /// <summary>
+    /// Sample client to make requests
+    /// </summary>
     public class WebRequestClient : HttpClient
     {
         private const string PlatVersion = " (.NET 3.5)";
 
+        /// <summary>
+        /// Make an HTTP request
+        /// </summary>
+        /// <param name="request">Twilio request</param>
+        /// <returns>Twilio response</returns>
         public override Response MakeRequest(Request request)
         {
             var httpRequest = BuildHttpRequest(request);

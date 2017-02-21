@@ -3,6 +3,9 @@ using Twilio.Exceptions;
 
 namespace Twilio
 {
+    /// <summary>
+    /// Default Twilio Client
+    /// </summary>
     public class TwilioClient
     {
         private static string _username;
@@ -12,12 +15,23 @@ namespace Twilio
 
         private TwilioClient() {}
 
+        /// <summary>
+        /// Initialize base client with username and password
+        /// </summary>
+        /// <param name="username">Auth username</param>
+        /// <param name="password">Auth password</param>
         public static void Init(string username, string password)
         {
             SetUsername(username);
             SetPassword(password);
         }
 
+        /// <summary>
+        /// Initialize base client with separate account SID
+        /// </summary>
+        /// <param name="username">Auth username</param>
+        /// <param name="password">Auth password</param>
+        /// <param name="accountSid">Account SID to use</param>
         public static void Init(string username, string password, string accountSid)
         {
             SetUsername(username);
@@ -25,6 +39,10 @@ namespace Twilio
             SetAccountSid(accountSid);
         }
 
+        /// <summary>
+        /// Set the client username
+        /// </summary>
+        /// <param name="username">Auth username</param>
         public static void SetUsername(string username)
         {
             if (username == null)
@@ -40,6 +58,10 @@ namespace Twilio
             _username = username;
         }
 
+        /// <summary>
+        /// Set the client password
+        /// </summary>
+        /// <param name="password">Auth password</param>
         public static void SetPassword(string password) {
             if (password == null)
             {
@@ -54,6 +76,10 @@ namespace Twilio
             _password = password;
         }
 
+        /// <summary>
+        /// Set the client Account SID
+        /// </summary>
+        /// <param name="accountSid">Client Account SID</param>
         public static void SetAccountSid(string accountSid)
         {
             if (accountSid == null)
@@ -69,6 +95,10 @@ namespace Twilio
             _accountSid = accountSid;
         }
 
+        /// <summary>
+        /// Get the rest client
+        /// </summary>
+        /// <returns>The rest client</returns>
         public static ITwilioRestClient GetRestClient()
         {
             if (_restClient != null)
@@ -87,11 +117,18 @@ namespace Twilio
             return _restClient;
         }
 
+        /// <summary>
+        /// Set the rest client
+        /// </summary>
+        /// <param name="restClient">Rest Client to use</param>
         public static void SetRestClient(ITwilioRestClient restClient)
         {
             _restClient = restClient;
         }
 
+        /// <summary>
+        /// Clear out the Rest Client
+        /// </summary>
         public static void Invalidate()
         {
             _restClient = null;

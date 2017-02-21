@@ -6,12 +6,15 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue 
 {
 
+    /// <summary>
+    /// ReadTaskQueuesStatisticsOptions
+    /// </summary>
     public class ReadTaskQueuesStatisticsOptions : ReadOptions<TaskQueuesStatisticsResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The end_date
         /// </summary>
@@ -33,10 +36,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// Construct a new ReadTaskQueuesStatisticsOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        public ReadTaskQueuesStatisticsOptions(string workspaceSid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        public ReadTaskQueuesStatisticsOptions(string pathWorkspaceSid)
         {
-            WorkspaceSid = workspaceSid;
+            PathWorkspaceSid = pathWorkspaceSid;
         }
     
         /// <summary>

@@ -5,25 +5,28 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// FetchKeyOptions
+    /// </summary>
     public class FetchKeyOptions : IOptions<KeyResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchKeyOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchKeyOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchKeyOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -36,16 +39,19 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// UpdateKeyOptions
+    /// </summary>
     public class UpdateKeyOptions : IOptions<KeyResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -55,10 +61,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateKeyOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateKeyOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateKeyOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -76,25 +82,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// DeleteKeyOptions
+    /// </summary>
     public class DeleteKeyOptions : IOptions<KeyResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteKeyOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteKeyOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteKeyOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -107,12 +116,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// ReadKeyOptions
+    /// </summary>
     public class ReadKeyOptions : ReadOptions<KeyResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters

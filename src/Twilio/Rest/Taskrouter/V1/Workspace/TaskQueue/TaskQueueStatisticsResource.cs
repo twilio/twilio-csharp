@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue 
 {
 
+    /// <summary>
+    /// TaskQueueStatisticsResource
+    /// </summary>
     public class TaskQueueStatisticsResource : Resource 
     {
         private static Request BuildFetchRequest(FetchTaskQueueStatisticsOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
-                "/v1/Workspaces/" + options.WorkspaceSid + "/TaskQueues/" + options.TaskQueueSid + "/Statistics",
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/TaskQueues/" + options.PathTaskQueueSid + "/Statistics",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -57,16 +60,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
         /// <param name="endDate"> The end_date </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueueStatistics </returns> 
-        public static TaskQueueStatisticsResource Fetch(string workspaceSid, string taskQueueSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, ITwilioRestClient client = null)
+        public static TaskQueueStatisticsResource Fetch(string pathWorkspaceSid, string pathTaskQueueSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, ITwilioRestClient client = null)
         {
-            var options = new FetchTaskQueueStatisticsOptions(workspaceSid, taskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate};
+            var options = new FetchTaskQueueStatisticsOptions(pathWorkspaceSid, pathTaskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate};
             return Fetch(options, client);
         }
     
@@ -75,16 +78,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// fetch
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
         /// <param name="endDate"> The end_date </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueueStatistics </returns> 
-        public static async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(string workspaceSid, string taskQueueSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(string pathWorkspaceSid, string pathTaskQueueSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, ITwilioRestClient client = null)
         {
-            var options = new FetchTaskQueueStatisticsOptions(workspaceSid, taskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate};
+            var options = new FetchTaskQueueStatisticsOptions(pathWorkspaceSid, pathTaskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate};
             return await FetchAsync(options, client);
         }
         #endif

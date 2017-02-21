@@ -6,12 +6,15 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Send a message from the account used to make the request
+    /// </summary>
     public class CreateMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The phone number to receive the message
         /// </summary>
@@ -115,25 +118,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Deletes a message record from your account
+    /// </summary>
     public class DeleteMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The message to delete
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteMessageOptions
         /// </summary>
         ///
-        /// <param name="sid"> The message to delete </param>
-        public DeleteMessageOptions(string sid)
+        /// <param name="pathSid"> The message to delete </param>
+        public DeleteMessageOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -146,25 +152,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Fetch a message belonging to the account used to make the request
+    /// </summary>
     public class FetchMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique message Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchMessageOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique message Sid </param>
-        public FetchMessageOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique message Sid </param>
+        public FetchMessageOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -177,12 +186,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of messages belonging to the account used to make the request
+    /// </summary>
     public class ReadMessageOptions : ReadOptions<MessageResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Filter by messages to this number
         /// </summary>
@@ -222,18 +234,18 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (DateSent != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateSent", DateSent.ToString()));
+                p.Add(new KeyValuePair<string, string>("DateSent", DateSent.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             else
             {
                 if (DateSentBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateSent<", DateSentBefore.ToString()));
+                    p.Add(new KeyValuePair<string, string>("DateSent<", DateSentBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             
                 if (DateSentAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateSent>", DateSentAfter.ToString()));
+                    p.Add(new KeyValuePair<string, string>("DateSent>", DateSentAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             }
             
@@ -246,16 +258,19 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
+    /// </summary>
     public class UpdateMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The message to redact
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The body
         /// </summary>
@@ -265,11 +280,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateMessageOptions
         /// </summary>
         ///
-        /// <param name="sid"> The message to redact </param>
+        /// <param name="pathSid"> The message to redact </param>
         /// <param name="body"> The body </param>
-        public UpdateMessageOptions(string sid, string body)
+        public UpdateMessageOptions(string pathSid, string body)
         {
-            Sid = sid;
+            PathSid = pathSid;
             Body = body;
         }
     

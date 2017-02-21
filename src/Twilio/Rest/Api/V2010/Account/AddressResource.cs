@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// AddressResource
+    /// </summary>
     public class AddressResource : Resource 
     {
         private static Request BuildCreateRequest(CreateAddressOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Addresses.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Addresses.json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -63,14 +66,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="region"> The region </param>
         /// <param name="postalCode"> The postal_code </param>
         /// <param name="isoCountry"> The iso_country </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="emergencyEnabled"> The emergency_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns> 
-        public static AddressResource Create(string customerName, string street, string city, string region, string postalCode, string isoCountry, string accountSid = null, string friendlyName = null, bool? emergencyEnabled = null, ITwilioRestClient client = null)
+        public static AddressResource Create(string customerName, string street, string city, string region, string postalCode, string isoCountry, string pathAccountSid = null, string friendlyName = null, bool? emergencyEnabled = null, ITwilioRestClient client = null)
         {
-            var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){AccountSid = accountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled};
+            var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled};
             return Create(options, client);
         }
     
@@ -85,14 +88,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="region"> The region </param>
         /// <param name="postalCode"> The postal_code </param>
         /// <param name="isoCountry"> The iso_country </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="emergencyEnabled"> The emergency_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<AddressResource> CreateAsync(string customerName, string street, string city, string region, string postalCode, string isoCountry, string accountSid = null, string friendlyName = null, bool? emergencyEnabled = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AddressResource> CreateAsync(string customerName, string street, string city, string region, string postalCode, string isoCountry, string pathAccountSid = null, string friendlyName = null, bool? emergencyEnabled = null, ITwilioRestClient client = null)
         {
-            var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){AccountSid = accountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled};
+            var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -102,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Addresses/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Addresses/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -142,13 +145,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// delete
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns> 
-        public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteAddressOptions(sid){AccountSid = accountSid};
+            var options = new DeleteAddressOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
     
@@ -157,13 +160,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// delete
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteAddressOptions(sid){AccountSid = accountSid};
+            var options = new DeleteAddressOptions(pathSid){PathAccountSid = pathAccountSid};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -173,7 +176,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Addresses/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Addresses/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -213,13 +216,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// fetch
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns> 
-        public static AddressResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static AddressResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAddressOptions(sid){AccountSid = accountSid};
+            var options = new FetchAddressOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
     
@@ -228,13 +231,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// fetch
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<AddressResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AddressResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAddressOptions(sid){AccountSid = accountSid};
+            var options = new FetchAddressOptions(pathSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -244,7 +247,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Addresses/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Addresses/" + options.PathSid + ".json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -284,8 +287,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// update
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="customerName"> The customer_name </param>
         /// <param name="street"> The street </param>
@@ -295,9 +298,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="emergencyEnabled"> The emergency_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns> 
-        public static AddressResource Update(string sid, string accountSid = null, string friendlyName = null, string customerName = null, string street = null, string city = null, string region = null, string postalCode = null, bool? emergencyEnabled = null, ITwilioRestClient client = null)
+        public static AddressResource Update(string pathSid, string pathAccountSid = null, string friendlyName = null, string customerName = null, string street = null, string city = null, string region = null, string postalCode = null, bool? emergencyEnabled = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateAddressOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled};
+            var options = new UpdateAddressOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled};
             return Update(options, client);
         }
     
@@ -306,8 +309,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// update
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="customerName"> The customer_name </param>
         /// <param name="street"> The street </param>
@@ -317,9 +320,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="emergencyEnabled"> The emergency_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<AddressResource> UpdateAsync(string sid, string accountSid = null, string friendlyName = null, string customerName = null, string street = null, string city = null, string region = null, string postalCode = null, bool? emergencyEnabled = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AddressResource> UpdateAsync(string pathSid, string pathAccountSid = null, string friendlyName = null, string customerName = null, string street = null, string city = null, string region = null, string postalCode = null, bool? emergencyEnabled = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateAddressOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled};
+            var options = new UpdateAddressOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -329,7 +332,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Addresses.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Addresses.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -373,7 +376,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="customerName"> The customer_name </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="isoCountry"> The iso_country </param>
@@ -381,9 +384,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns> 
-        public static ResourceSet<AddressResource> Read(string accountSid = null, string customerName = null, string friendlyName = null, string isoCountry = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<AddressResource> Read(string pathAccountSid = null, string customerName = null, string friendlyName = null, string isoCountry = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadAddressOptions{AccountSid = accountSid, CustomerName = customerName, FriendlyName = friendlyName, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
+            var options = new ReadAddressOptions{PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -392,7 +395,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="customerName"> The customer_name </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="isoCountry"> The iso_country </param>
@@ -400,9 +403,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AddressResource>> ReadAsync(string accountSid = null, string customerName = null, string friendlyName = null, string isoCountry = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AddressResource>> ReadAsync(string pathAccountSid = null, string customerName = null, string friendlyName = null, string isoCountry = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadAddressOptions{AccountSid = accountSid, CustomerName = customerName, FriendlyName = friendlyName, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
+            var options = new ReadAddressOptions{PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

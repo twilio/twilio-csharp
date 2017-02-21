@@ -6,16 +6,19 @@ using Twilio.Converters;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue 
 {
 
+    /// <summary>
+    /// FetchTaskQueueStatisticsOptions
+    /// </summary>
     public class FetchTaskQueueStatisticsOptions : IOptions<TaskQueueStatisticsResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The task_queue_sid
         /// </summary>
-        public string TaskQueueSid { get; }
+        public string PathTaskQueueSid { get; }
         /// <summary>
         /// The end_date
         /// </summary>
@@ -33,12 +36,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// Construct a new FetchTaskQueueStatisticsOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
-        public FetchTaskQueueStatisticsOptions(string workspaceSid, string taskQueueSid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
+        public FetchTaskQueueStatisticsOptions(string pathWorkspaceSid, string pathTaskQueueSid)
         {
-            WorkspaceSid = workspaceSid;
-            TaskQueueSid = taskQueueSid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathTaskQueueSid = pathTaskQueueSid;
         }
     
         /// <summary>

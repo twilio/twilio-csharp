@@ -7,6 +7,9 @@ namespace Twilio.Jwt.AccessToken
     /// </summary>
     public class VideoGrant : IGrant
     {
+        /// <summary>
+        /// Configuration profile SID
+        /// </summary>
         public string ConfigurationProfileSid { get; set; }
 
         /// <summary>

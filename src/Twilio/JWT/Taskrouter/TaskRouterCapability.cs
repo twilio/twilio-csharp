@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Twilio.Jwt.Taskrouter
 {
+    /// <summary>
+    /// JWT for TaskRouter use
+    /// </summary>
     public class TaskRouterCapability : BaseJwt
     {
         private readonly string _accountSid;
@@ -11,6 +14,16 @@ namespace Twilio.Jwt.Taskrouter
         private readonly string _channelId;
         private readonly List<Policy> _policies;
 
+        /// <summary>
+        /// Create a new TaskRouter JWT
+        /// </summary>
+        /// <param name="accountSid">Twilio account SID</param>
+        /// <param name="authToken">Twilio auth token</param>
+        /// <param name="workspaceSid">TaskRouter workspace SID</param>
+        /// <param name="channelId">TaskRouter channel ID</param>
+        /// <param name="friendlyName">Friendly name for this JWT</param>
+        /// <param name="expiration">JWT expiration</param>
+        /// <param name="policies">JWT policies</param>
         public TaskRouterCapability(
             string accountSid,
             string authToken,
@@ -28,6 +41,9 @@ namespace Twilio.Jwt.Taskrouter
             this._policies = policies;
         }
 
+        /// <summary>
+        /// Get the JWT headers
+        /// </summary>
         public override Dictionary<string, object> Headers
         {
             get
@@ -36,6 +52,9 @@ namespace Twilio.Jwt.Taskrouter
             }
         }
 
+        /// <summary>
+        /// Generate JWT payload
+        /// </summary>
         public override Dictionary<string, object> Claims
         {
             get

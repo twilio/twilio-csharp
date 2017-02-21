@@ -11,6 +11,9 @@ using JWT;
 
 namespace Twilio.Jwt
 {
+    /// <summary>
+    /// Base JWT implementation
+    /// </summary>
     public abstract class BaseJwt
     {
 #if !NET35
@@ -19,17 +22,41 @@ namespace Twilio.Jwt
         private static readonly JwtHashAlgorithm Algorithm = JwtHashAlgorithm.HS256;
 #endif
 
+        /// <summary>
+        /// Unique identifier for the JWT
+        /// </summary>
         public virtual string Id { get; }
+
+        /// <summary>
+        /// Subject of the JWT
+        /// </summary>
         public virtual string Subject { get; }
+
+        /// <summary>
+        /// Not before time of the JWT
+        /// </summary>
         public virtual DateTime? Nbf { get; }
 
+        /// <summary>
+        /// JWT headers
+        /// </summary>
         public abstract Dictionary<string, object> Headers { get; }
+
+        /// <summary>
+        /// JWT claims
+        /// </summary>
         public abstract Dictionary<string, object> Claims { get; }
 
         private readonly string _secret;
         private readonly string _issuer;
         private readonly DateTime _expiration;
 
+        /// <summary>
+        /// Create a new JWT
+        /// </summary>
+        /// <param name="secret">JWT secret</param>
+        /// <param name="issuer">JWT issuer</param>
+        /// <param name="expiration">Expiration time</param>
         protected BaseJwt(string secret, string issuer, DateTime expiration)
         {
             this._secret = secret;
@@ -37,6 +64,10 @@ namespace Twilio.Jwt
             this._expiration = expiration;
         }
 
+        /// <summary>
+        /// Convert to JWT string
+        /// </summary>
+        /// <returns>JWT string</returns>
         public string ToJwt()
         {
             var headers = BuildHeaders();
@@ -114,6 +145,11 @@ namespace Twilio.Jwt
         }
 #endif
 
+        /// <summary>
+        /// Get seconds since epoch
+        /// </summary>
+        /// <param name="date">time to diff against</param>
+        /// <returns>seconds since epoch</returns>
         public static long ConvertToUnixTimestamp(DateTime date)
         {
             var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);

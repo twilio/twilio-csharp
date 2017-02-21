@@ -7,12 +7,15 @@ using Twilio.Converters;
 namespace Twilio.Rest.Lookups.V1 
 {
 
+    /// <summary>
+    /// FetchPhoneNumberOptions
+    /// </summary>
     public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>
         /// The phone_number
         /// </summary>
-        public Types.PhoneNumber PhoneNumber { get; }
+        public Types.PhoneNumber PathPhoneNumber { get; }
         /// <summary>
         /// The country_code
         /// </summary>
@@ -34,10 +37,10 @@ namespace Twilio.Rest.Lookups.V1
         /// Construct a new FetchPhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="phoneNumber"> The phone_number </param>
-        public FetchPhoneNumberOptions(Types.PhoneNumber phoneNumber)
+        /// <param name="pathPhoneNumber"> The phone_number </param>
+        public FetchPhoneNumberOptions(Types.PhoneNumber pathPhoneNumber)
         {
-            PhoneNumber = phoneNumber;
+            PathPhoneNumber = pathPhoneNumber;
             Type = new List<string>();
             AddOns = new List<string>();
         }

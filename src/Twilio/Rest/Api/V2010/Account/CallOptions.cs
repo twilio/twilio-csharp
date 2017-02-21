@@ -7,12 +7,15 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
+    /// </summary>
     public class CreateCallOptions : IOptions<CallResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Phone number, SIP address or client identifier to call
         /// </summary>
@@ -208,25 +211,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
+    /// </summary>
     public class DeleteCallOptions : IOptions<CallResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Call Sid that uniquely identifies the Call to delete
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteCallOptions
         /// </summary>
         ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to delete </param>
-        public DeleteCallOptions(string sid)
+        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to delete </param>
+        public DeleteCallOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -239,25 +245,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Fetch the Call specified by the provided Call Sid
+    /// </summary>
     public class FetchCallOptions : IOptions<CallResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Call Sid that uniquely identifies the Call to fetch
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchCallOptions
         /// </summary>
         ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to fetch </param>
-        public FetchCallOptions(string sid)
+        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to fetch </param>
+        public FetchCallOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -270,12 +279,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieves a collection of Calls made to and from your account
+    /// </summary>
     public class ReadCallOptions : ReadOptions<CallResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Phone number or Client identifier to filter `to` on
         /// </summary>
@@ -345,35 +357,35 @@ namespace Twilio.Rest.Api.V2010.Account
             
             if (StartTime != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartTime", StartTime.ToString()));
+                p.Add(new KeyValuePair<string, string>("StartTime", StartTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             else
             {
                 if (StartTimeBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("StartTime<", StartTimeBefore.ToString()));
+                    p.Add(new KeyValuePair<string, string>("StartTime<", StartTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             
                 if (StartTimeAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("StartTime>", StartTimeAfter.ToString()));
+                    p.Add(new KeyValuePair<string, string>("StartTime>", StartTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             }
             
             if (EndTime != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndTime", EndTime.ToString()));
+                p.Add(new KeyValuePair<string, string>("EndTime", EndTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             else
             {
                 if (EndTimeBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("EndTime<", EndTimeBefore.ToString()));
+                    p.Add(new KeyValuePair<string, string>("EndTime<", EndTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             
                 if (EndTimeAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("EndTime>", EndTimeAfter.ToString()));
+                    p.Add(new KeyValuePair<string, string>("EndTime>", EndTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             }
             
@@ -386,16 +398,19 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Initiates a call redirect or terminates a call
+    /// </summary>
     public class UpdateCallOptions : IOptions<CallResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Call Sid that uniquely identifies the Call to update
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// URL that returns TwiML
         /// </summary>
@@ -429,10 +444,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateCallOptions
         /// </summary>
         ///
-        /// <param name="sid"> Call Sid that uniquely identifies the Call to update </param>
-        public UpdateCallOptions(string sid)
+        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to update </param>
+        public UpdateCallOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

@@ -5,12 +5,15 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// FetchSandboxOptions
+    /// </summary>
     public class FetchSandboxOptions : IOptions<SandboxResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -22,12 +25,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// UpdateSandboxOptions
+    /// </summary>
     public class UpdateSandboxOptions : IOptions<SandboxResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The voice_url
         /// </summary>

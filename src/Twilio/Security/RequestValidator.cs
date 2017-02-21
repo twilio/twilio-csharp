@@ -6,21 +6,42 @@ using System.Text;
 
 namespace Twilio.Security
 {
+    /// <summary>
+    /// Twilio request validator
+    /// </summary>
     public class RequestValidator
     {
         private readonly HMACSHA1 _hmac;
 
+        /// <summary>
+        /// Create a new RequestValidator
+        /// </summary>
+        /// <param name="secret">Signing secret</param>
         public RequestValidator(string secret)
         {
             _hmac = new HMACSHA1(Encoding.UTF8.GetBytes(secret));
         }
 
+        /// <summary>
+        /// Validate against a request
+        /// </summary>
+        /// <param name="url">Request URL</param>
+        /// <param name="parameters">Request parameters</param>
+        /// <param name="expected">Expected result</param>
+        /// <returns>true if the signature matches the result; false otherwise</returns>
         public bool Validate(string url, NameValueCollection parameters, string expected)
         {
             var signature = GetValidationSignature(url, ToDictionary(parameters));
             return SecureCompare(signature, expected);
         }
 
+        /// <summary>
+        /// Validate against a request
+        /// </summary>
+        /// <param name="url">Request URL</param>
+        /// <param name="parameters">Request parameters</param>
+        /// <param name="expected">Expected result</param>
+        /// <returns>true if the signature matches the result; false otherwise</returns>
         public bool Validate(string url, IDictionary<string, string> parameters, string expected)
         {
             var signature = GetValidationSignature(url, parameters);

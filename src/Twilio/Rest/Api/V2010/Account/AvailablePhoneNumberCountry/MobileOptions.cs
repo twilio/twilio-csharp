@@ -5,16 +5,19 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
 {
 
+    /// <summary>
+    /// ReadMobileOptions
+    /// </summary>
     public class ReadMobileOptions : ReadOptions<MobileResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The country_code
         /// </summary>
-        public string CountryCode { get; }
+        public string PathCountryCode { get; }
         /// <summary>
         /// The area_code
         /// </summary>
@@ -84,10 +87,10 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// Construct a new ReadMobileOptions
         /// </summary>
         ///
-        /// <param name="countryCode"> The country_code </param>
-        public ReadMobileOptions(string countryCode)
+        /// <param name="pathCountryCode"> The country_code </param>
+        public ReadMobileOptions(string pathCountryCode)
         {
-            CountryCode = countryCode;
+            PathCountryCode = pathCountryCode;
         }
     
         /// <summary>

@@ -5,12 +5,15 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Create a new application within your account
+    /// </summary>
     public class CreateApplicationOptions : IOptions<ApplicationResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Human readable description of this resource
         /// </summary>
@@ -167,25 +170,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Delete the application by the specified application sid
+    /// </summary>
     public class DeleteApplicationOptions : IOptions<ApplicationResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The application sid to delete
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteApplicationOptions
         /// </summary>
         ///
-        /// <param name="sid"> The application sid to delete </param>
-        public DeleteApplicationOptions(string sid)
+        /// <param name="pathSid"> The application sid to delete </param>
+        public DeleteApplicationOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -198,25 +204,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Fetch the application specified by the provided sid
+    /// </summary>
     public class FetchApplicationOptions : IOptions<ApplicationResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique Application Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchApplicationOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique Application Sid </param>
-        public FetchApplicationOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique Application Sid </param>
+        public FetchApplicationOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -229,12 +238,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of applications representing an application within the requesting account
+    /// </summary>
     public class ReadApplicationOptions : ReadOptions<ApplicationResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Filter by friendly name
         /// </summary>
@@ -260,16 +272,19 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Updates the application's properties
+    /// </summary>
     public class UpdateApplicationOptions : IOptions<ApplicationResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// Human readable description of this resource
         /// </summary>
@@ -335,10 +350,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateApplicationOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateApplicationOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateApplicationOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

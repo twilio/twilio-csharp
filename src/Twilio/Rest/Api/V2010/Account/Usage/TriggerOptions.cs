@@ -5,25 +5,28 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Usage 
 {
 
+    /// <summary>
+    /// Fetch and instance of a usage-trigger
+    /// </summary>
     public class FetchTriggerOptions : IOptions<TriggerResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique usage-trigger Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchTriggerOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique usage-trigger Sid </param>
-        public FetchTriggerOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique usage-trigger Sid </param>
+        public FetchTriggerOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -36,16 +39,19 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     }
 
+    /// <summary>
+    /// Update an instance of a usage trigger
+    /// </summary>
     public class UpdateTriggerOptions : IOptions<TriggerResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// HTTP method to use with callback_url
         /// </summary>
@@ -63,10 +69,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// Construct a new UpdateTriggerOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateTriggerOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateTriggerOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -94,25 +100,28 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     }
 
+    /// <summary>
+    /// DeleteTriggerOptions
+    /// </summary>
     public class DeleteTriggerOptions : IOptions<TriggerResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteTriggerOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteTriggerOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteTriggerOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -125,12 +134,15 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     }
 
+    /// <summary>
+    /// Create a new UsageTrigger
+    /// </summary>
     public class CreateTriggerOptions : IOptions<TriggerResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// URL Twilio will request when the trigger fires
         /// </summary>
@@ -219,12 +231,15 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of usage-triggers belonging to the account used to make the request
+    /// </summary>
     public class ReadTriggerOptions : ReadOptions<TriggerResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Filter by recurring
         /// </summary>

@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Trunking.V1.Trunk 
 {
 
+    /// <summary>
+    /// PhoneNumberResource
+    /// </summary>
     public class PhoneNumberResource : Resource 
     {
         public sealed class AddressRequirementEnum : StringEnum 
@@ -29,7 +32,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/PhoneNumbers/" + options.Sid + "",
+                "/v1/Trunks/" + options.PathTrunkSid + "/PhoneNumbers/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -69,13 +72,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// fetch
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
-        public static PhoneNumberResource Fetch(string trunkSid, string sid, ITwilioRestClient client = null)
+        public static PhoneNumberResource Fetch(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchPhoneNumberOptions(trunkSid, sid);
+            var options = new FetchPhoneNumberOptions(pathTrunkSid, pathSid);
             return Fetch(options, client);
         }
     
@@ -84,13 +87,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// fetch
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(string trunkSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchPhoneNumberOptions(trunkSid, sid);
+            var options = new FetchPhoneNumberOptions(pathTrunkSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -100,7 +103,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/PhoneNumbers/" + options.Sid + "",
+                "/v1/Trunks/" + options.PathTrunkSid + "/PhoneNumbers/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -140,13 +143,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// delete
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
-        public static bool Delete(string trunkSid, string sid, ITwilioRestClient client = null)
+        public static bool Delete(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeletePhoneNumberOptions(trunkSid, sid);
+            var options = new DeletePhoneNumberOptions(pathTrunkSid, pathSid);
             return Delete(options, client);
         }
     
@@ -155,13 +158,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// delete
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string trunkSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeletePhoneNumberOptions(trunkSid, sid);
+            var options = new DeletePhoneNumberOptions(pathTrunkSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif
@@ -171,7 +174,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/PhoneNumbers",
+                "/v1/Trunks/" + options.PathTrunkSid + "/PhoneNumbers",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -211,13 +214,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// create
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="phoneNumberSid"> The phone_number_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
-        public static PhoneNumberResource Create(string trunkSid, string phoneNumberSid, ITwilioRestClient client = null)
+        public static PhoneNumberResource Create(string pathTrunkSid, string phoneNumberSid, ITwilioRestClient client = null)
         {
-            var options = new CreatePhoneNumberOptions(trunkSid, phoneNumberSid);
+            var options = new CreatePhoneNumberOptions(pathTrunkSid, phoneNumberSid);
             return Create(options, client);
         }
     
@@ -226,13 +229,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// create
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="phoneNumberSid"> The phone_number_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(string trunkSid, string phoneNumberSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(string pathTrunkSid, string phoneNumberSid, ITwilioRestClient client = null)
         {
-            var options = new CreatePhoneNumberOptions(trunkSid, phoneNumberSid);
+            var options = new CreatePhoneNumberOptions(pathTrunkSid, phoneNumberSid);
             return await CreateAsync(options, client);
         }
         #endif
@@ -242,7 +245,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
-                "/v1/Trunks/" + options.TrunkSid + "/PhoneNumbers",
+                "/v1/Trunks/" + options.PathTrunkSid + "/PhoneNumbers",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -286,14 +289,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// read
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
-        public static ResourceSet<PhoneNumberResource> Read(string trunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<PhoneNumberResource> Read(string pathTrunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadPhoneNumberOptions(trunkSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadPhoneNumberOptions(pathTrunkSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -302,14 +305,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// read
         /// </summary>
         ///
-        /// <param name="trunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(string trunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(string pathTrunkSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadPhoneNumberOptions(trunkSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadPhoneNumberOptions(pathTrunkSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

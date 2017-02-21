@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Api.V2010.Account.Usage.Record 
 {
 
+    /// <summary>
+    /// AllTimeResource
+    /// </summary>
     public class AllTimeResource : Resource 
     {
         public sealed class CategoryEnum : StringEnum 
@@ -115,7 +118,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Usage/Records/AllTime.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Usage/Records/AllTime.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -159,7 +162,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="category"> The category </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
@@ -167,9 +170,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AllTime </returns> 
-        public static ResourceSet<AllTimeResource> Read(string accountSid = null, AllTimeResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<AllTimeResource> Read(string pathAccountSid = null, AllTimeResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadAllTimeOptions{AccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadAllTimeOptions{PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -178,7 +181,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="category"> The category </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
@@ -186,9 +189,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AllTime </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AllTimeResource>> ReadAsync(string accountSid = null, AllTimeResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AllTimeResource>> ReadAsync(string pathAccountSid = null, AllTimeResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadAllTimeOptions{AccountSid = accountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadAllTimeOptions{PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

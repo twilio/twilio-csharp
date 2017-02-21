@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {
 
+    /// <summary>
+    /// MediaResource
+    /// </summary>
     public class MediaResource : Resource 
     {
         private static Request BuildDeleteRequest(DeleteMediaOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Messages/" + options.MessageSid + "/Media/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathMessageSid + "/Media/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -57,14 +60,14 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Delete media from your account. Once delete, you will no longer be billed
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Delete by unique media Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathMessageSid"> The message_sid </param>
+        /// <param name="pathSid"> Delete by unique media Sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Media </returns> 
-        public static bool Delete(string messageSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathMessageSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteMediaOptions(messageSid, sid){AccountSid = accountSid};
+            var options = new DeleteMediaOptions(pathMessageSid, pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
     
@@ -73,14 +76,14 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Delete media from your account. Once delete, you will no longer be billed
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Delete by unique media Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathMessageSid"> The message_sid </param>
+        /// <param name="pathSid"> Delete by unique media Sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string messageSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathMessageSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteMediaOptions(messageSid, sid){AccountSid = accountSid};
+            var options = new DeleteMediaOptions(pathMessageSid, pathSid){PathAccountSid = pathAccountSid};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -90,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Messages/" + options.MessageSid + "/Media/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathMessageSid + "/Media/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -130,14 +133,14 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Fetch a single media instance belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Fetch by unique media Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathMessageSid"> The message_sid </param>
+        /// <param name="pathSid"> Fetch by unique media Sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Media </returns> 
-        public static MediaResource Fetch(string messageSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static MediaResource Fetch(string pathMessageSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchMediaOptions(messageSid, sid){AccountSid = accountSid};
+            var options = new FetchMediaOptions(pathMessageSid, pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
     
@@ -146,14 +149,14 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Fetch a single media instance belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Fetch by unique media Sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathMessageSid"> The message_sid </param>
+        /// <param name="pathSid"> Fetch by unique media Sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns> 
-        public static async System.Threading.Tasks.Task<MediaResource> FetchAsync(string messageSid, string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MediaResource> FetchAsync(string pathMessageSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchMediaOptions(messageSid, sid){AccountSid = accountSid};
+            var options = new FetchMediaOptions(pathMessageSid, pathSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -163,7 +166,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/Messages/" + options.MessageSid + "/Media.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathMessageSid + "/Media.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -207,8 +210,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Retrieve a list of medias belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathMessageSid"> The message_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="dateCreatedBefore"> Filter by date created </param>
         /// <param name="dateCreated"> Filter by date created </param>
         /// <param name="dateCreatedAfter"> Filter by date created </param>
@@ -216,9 +219,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Media </returns> 
-        public static ResourceSet<MediaResource> Read(string messageSid, string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<MediaResource> Read(string pathMessageSid, string pathAccountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMediaOptions(messageSid){AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadMediaOptions(pathMessageSid){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -227,8 +230,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Retrieve a list of medias belonging to the account used to make the request
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathMessageSid"> The message_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="dateCreatedBefore"> Filter by date created </param>
         /// <param name="dateCreated"> Filter by date created </param>
         /// <param name="dateCreatedAfter"> Filter by date created </param>
@@ -236,9 +239,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Media </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MediaResource>> ReadAsync(string messageSid, string accountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MediaResource>> ReadAsync(string pathMessageSid, string pathAccountSid = null, DateTime? dateCreatedBefore = null, DateTime? dateCreated = null, DateTime? dateCreatedAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMediaOptions(messageSid){AccountSid = accountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadMediaOptions(pathMessageSid){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

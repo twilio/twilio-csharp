@@ -5,21 +5,24 @@ using Twilio.Base;
 namespace Twilio.Rest.Trunking.V1 
 {
 
+    /// <summary>
+    /// FetchTrunkOptions
+    /// </summary>
     public class FetchTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchTrunkOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchTrunkOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchTrunkOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -32,21 +35,24 @@ namespace Twilio.Rest.Trunking.V1
         }
     }
 
+    /// <summary>
+    /// DeleteTrunkOptions
+    /// </summary>
     public class DeleteTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteTrunkOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteTrunkOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteTrunkOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -59,6 +65,9 @@ namespace Twilio.Rest.Trunking.V1
         }
     }
 
+    /// <summary>
+    /// CreateTrunkOptions
+    /// </summary>
     public class CreateTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
@@ -126,6 +135,9 @@ namespace Twilio.Rest.Trunking.V1
         }
     }
 
+    /// <summary>
+    /// ReadTrunkOptions
+    /// </summary>
     public class ReadTrunkOptions : ReadOptions<TrunkResource> 
     {
         /// <summary>
@@ -143,12 +155,15 @@ namespace Twilio.Rest.Trunking.V1
         }
     }
 
+    /// <summary>
+    /// UpdateTrunkOptions
+    /// </summary>
     public class UpdateTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -178,10 +193,10 @@ namespace Twilio.Rest.Trunking.V1
         /// Construct a new UpdateTrunkOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateTrunkOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateTrunkOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

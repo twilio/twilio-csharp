@@ -6,12 +6,15 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
+    /// <summary>
+    /// CreateFeedbackSummaryOptions
+    /// </summary>
     public class CreateFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The start_date
         /// </summary>
@@ -80,25 +83,28 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     }
 
+    /// <summary>
+    /// FetchFeedbackSummaryOptions
+    /// </summary>
     public class FetchFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchFeedbackSummaryOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchFeedbackSummaryOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchFeedbackSummaryOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -111,25 +117,28 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
     }
 
+    /// <summary>
+    /// DeleteFeedbackSummaryOptions
+    /// </summary>
     public class DeleteFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteFeedbackSummaryOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteFeedbackSummaryOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteFeedbackSummaryOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

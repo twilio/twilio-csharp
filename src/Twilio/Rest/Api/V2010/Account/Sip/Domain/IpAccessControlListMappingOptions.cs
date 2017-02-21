@@ -5,31 +5,34 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
 {
 
+    /// <summary>
+    /// FetchIpAccessControlListMappingOptions
+    /// </summary>
     public class FetchIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The domain_sid
         /// </summary>
-        public string DomainSid { get; }
+        public string PathDomainSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchIpAccessControlListMappingOptions
         /// </summary>
         ///
-        /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchIpAccessControlListMappingOptions(string domainSid, string sid)
+        /// <param name="pathDomainSid"> The domain_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
         {
-            DomainSid = domainSid;
-            Sid = sid;
+            PathDomainSid = pathDomainSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -42,16 +45,19 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     }
 
+    /// <summary>
+    /// CreateIpAccessControlListMappingOptions
+    /// </summary>
     public class CreateIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The domain_sid
         /// </summary>
-        public string DomainSid { get; }
+        public string PathDomainSid { get; }
         /// <summary>
         /// The ip_access_control_list_sid
         /// </summary>
@@ -61,11 +67,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// Construct a new CreateIpAccessControlListMappingOptions
         /// </summary>
         ///
-        /// <param name="domainSid"> The domain_sid </param>
+        /// <param name="pathDomainSid"> The domain_sid </param>
         /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        public CreateIpAccessControlListMappingOptions(string domainSid, string ipAccessControlListSid)
+        public CreateIpAccessControlListMappingOptions(string pathDomainSid, string ipAccessControlListSid)
         {
-            DomainSid = domainSid;
+            PathDomainSid = pathDomainSid;
             IpAccessControlListSid = ipAccessControlListSid;
         }
     
@@ -84,25 +90,28 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     }
 
+    /// <summary>
+    /// ReadIpAccessControlListMappingOptions
+    /// </summary>
     public class ReadIpAccessControlListMappingOptions : ReadOptions<IpAccessControlListMappingResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The domain_sid
         /// </summary>
-        public string DomainSid { get; }
+        public string PathDomainSid { get; }
     
         /// <summary>
         /// Construct a new ReadIpAccessControlListMappingOptions
         /// </summary>
         ///
-        /// <param name="domainSid"> The domain_sid </param>
-        public ReadIpAccessControlListMappingOptions(string domainSid)
+        /// <param name="pathDomainSid"> The domain_sid </param>
+        public ReadIpAccessControlListMappingOptions(string pathDomainSid)
         {
-            DomainSid = domainSid;
+            PathDomainSid = pathDomainSid;
         }
     
         /// <summary>
@@ -120,31 +129,34 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
     }
 
+    /// <summary>
+    /// DeleteIpAccessControlListMappingOptions
+    /// </summary>
     public class DeleteIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The domain_sid
         /// </summary>
-        public string DomainSid { get; }
+        public string PathDomainSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteIpAccessControlListMappingOptions
         /// </summary>
         ///
-        /// <param name="domainSid"> The domain_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteIpAccessControlListMappingOptions(string domainSid, string sid)
+        /// <param name="pathDomainSid"> The domain_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
         {
-            DomainSid = domainSid;
-            Sid = sid;
+            PathDomainSid = pathDomainSid;
+            PathSid = pathSid;
         }
     
         /// <summary>

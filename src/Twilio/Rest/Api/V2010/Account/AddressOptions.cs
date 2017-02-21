@@ -5,12 +5,15 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// CreateAddressOptions
+    /// </summary>
     public class CreateAddressOptions : IOptions<AddressResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The customer_name
         /// </summary>
@@ -114,25 +117,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// DeleteAddressOptions
+    /// </summary>
     public class DeleteAddressOptions : IOptions<AddressResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteAddressOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteAddressOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteAddressOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -145,25 +151,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// FetchAddressOptions
+    /// </summary>
     public class FetchAddressOptions : IOptions<AddressResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchAddressOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchAddressOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchAddressOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -176,16 +185,19 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// UpdateAddressOptions
+    /// </summary>
     public class UpdateAddressOptions : IOptions<AddressResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -219,10 +231,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateAddressOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateAddressOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateAddressOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -270,12 +282,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// ReadAddressOptions
+    /// </summary>
     public class ReadAddressOptions : ReadOptions<AddressResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The customer_name
         /// </summary>

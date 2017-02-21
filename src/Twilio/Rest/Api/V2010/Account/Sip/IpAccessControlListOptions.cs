@@ -5,12 +5,15 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Sip 
 {
 
+    /// <summary>
+    /// Retrieve a list of ip-access-control-lists belonging to the account used to make the request
+    /// </summary>
     public class ReadIpAccessControlListOptions : ReadOptions<IpAccessControlListResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -27,12 +30,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Create a new IpAccessControlList resource
+    /// </summary>
     public class CreateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// A human readable description of this resource
         /// </summary>
@@ -63,25 +69,28 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Fetch a specific instance of an IpAccessControlList
+    /// </summary>
     public class FetchIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique ip-access-control-list Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchIpAccessControlListOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique ip-access-control-list Sid </param>
-        public FetchIpAccessControlListOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique ip-access-control-list Sid </param>
+        public FetchIpAccessControlListOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -94,16 +103,19 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Rename an IpAccessControlList
+    /// </summary>
     public class UpdateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// A human readable description of this resource
         /// </summary>
@@ -113,11 +125,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Construct a new UpdateIpAccessControlListOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> A human readable description of this resource </param>
-        public UpdateIpAccessControlListOptions(string sid, string friendlyName)
+        public UpdateIpAccessControlListOptions(string pathSid, string friendlyName)
         {
-            Sid = sid;
+            PathSid = pathSid;
             FriendlyName = friendlyName;
         }
     
@@ -136,25 +148,28 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Delete an IpAccessControlList from the requested account
+    /// </summary>
     public class DeleteIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Delete by unique ip-access-control-list Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteIpAccessControlListOptions
         /// </summary>
         ///
-        /// <param name="sid"> Delete by unique ip-access-control-list Sid </param>
-        public DeleteIpAccessControlListOptions(string sid)
+        /// <param name="pathSid"> Delete by unique ip-access-control-list Sid </param>
+        public DeleteIpAccessControlListOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

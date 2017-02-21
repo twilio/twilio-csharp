@@ -6,12 +6,15 @@ using Twilio.Converters;
 namespace Twilio.Rest.Api.V2010.Account.Usage.Record 
 {
 
+    /// <summary>
+    /// ReadDailyOptions
+    /// </summary>
     public class ReadDailyOptions : ReadOptions<DailyResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The category
         /// </summary>

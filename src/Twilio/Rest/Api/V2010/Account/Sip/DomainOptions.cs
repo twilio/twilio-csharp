@@ -5,12 +5,15 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Sip 
 {
 
+    /// <summary>
+    /// Retrieve a list of domains belonging to the account used to make the request
+    /// </summary>
     public class ReadDomainOptions : ReadOptions<DomainResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -27,12 +30,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Create a new Domain
+    /// </summary>
     public class CreateDomainOptions : IOptions<DomainResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The unique address on Twilio to route SIP traffic
         /// </summary>
@@ -135,25 +141,28 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Fetch an instance of a Domain
+    /// </summary>
     public class FetchDomainOptions : IOptions<DomainResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique Domain Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchDomainOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique Domain Sid </param>
-        public FetchDomainOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique Domain Sid </param>
+        public FetchDomainOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -166,16 +175,19 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// Update the attributes of a domain
+    /// </summary>
     public class UpdateDomainOptions : IOptions<DomainResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The auth_type
         /// </summary>
@@ -213,10 +225,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Construct a new UpdateDomainOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateDomainOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateDomainOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -269,25 +281,28 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
     }
 
+    /// <summary>
+    /// DeleteDomainOptions
+    /// </summary>
     public class DeleteDomainOptions : IOptions<DomainResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteDomainOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public DeleteDomainOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public DeleteDomainOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>

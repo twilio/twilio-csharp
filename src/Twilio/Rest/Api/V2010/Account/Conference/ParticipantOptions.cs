@@ -6,31 +6,34 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Conference 
 {
 
+    /// <summary>
+    /// Fetch an instance of a participant
+    /// </summary>
     public class FetchParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The string that uniquely identifies this conference
         /// </summary>
-        public string ConferenceSid { get; }
+        public string PathConferenceSid { get; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
     
         /// <summary>
         /// Construct a new FetchParticipantOptions
         /// </summary>
         ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="callSid"> The call_sid </param>
-        public FetchParticipantOptions(string conferenceSid, string callSid)
+        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="pathCallSid"> The call_sid </param>
+        public FetchParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
-            ConferenceSid = conferenceSid;
-            CallSid = callSid;
+            PathConferenceSid = pathConferenceSid;
+            PathCallSid = pathCallSid;
         }
     
         /// <summary>
@@ -43,20 +46,23 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
     }
 
+    /// <summary>
+    /// Update the properties of this participant
+    /// </summary>
     public class UpdateParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The string that uniquely identifies this conference
         /// </summary>
-        public string ConferenceSid { get; }
+        public string PathConferenceSid { get; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
         /// <summary>
         /// Indicates if the participant should be muted
         /// </summary>
@@ -78,12 +84,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new UpdateParticipantOptions
         /// </summary>
         ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="callSid"> The call_sid </param>
-        public UpdateParticipantOptions(string conferenceSid, string callSid)
+        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="pathCallSid"> The call_sid </param>
+        public UpdateParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
-            ConferenceSid = conferenceSid;
-            CallSid = callSid;
+            PathConferenceSid = pathConferenceSid;
+            PathCallSid = pathCallSid;
         }
     
         /// <summary>
@@ -116,16 +122,19 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
     }
 
+    /// <summary>
+    /// CreateParticipantOptions
+    /// </summary>
     public class CreateParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The conference_sid
         /// </summary>
-        public string ConferenceSid { get; }
+        public string PathConferenceSid { get; }
         /// <summary>
         /// The from
         /// </summary>
@@ -211,12 +220,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new CreateParticipantOptions
         /// </summary>
         ///
-        /// <param name="conferenceSid"> The conference_sid </param>
+        /// <param name="pathConferenceSid"> The conference_sid </param>
         /// <param name="from"> The from </param>
         /// <param name="to"> The to </param>
-        public CreateParticipantOptions(string conferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
+        public CreateParticipantOptions(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
         {
-            ConferenceSid = conferenceSid;
+            PathConferenceSid = pathConferenceSid;
             From = from;
             To = to;
             StatusCallbackEvent = new List<string>();
@@ -333,31 +342,34 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
     }
 
+    /// <summary>
+    /// Kick a participant from a given conference
+    /// </summary>
     public class DeleteParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The string that uniquely identifies this conference
         /// </summary>
-        public string ConferenceSid { get; }
+        public string PathConferenceSid { get; }
         /// <summary>
         /// The call_sid
         /// </summary>
-        public string CallSid { get; }
+        public string PathCallSid { get; }
     
         /// <summary>
         /// Construct a new DeleteParticipantOptions
         /// </summary>
         ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="callSid"> The call_sid </param>
-        public DeleteParticipantOptions(string conferenceSid, string callSid)
+        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
+        /// <param name="pathCallSid"> The call_sid </param>
+        public DeleteParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
-            ConferenceSid = conferenceSid;
-            CallSid = callSid;
+            PathConferenceSid = pathConferenceSid;
+            PathCallSid = pathCallSid;
         }
     
         /// <summary>
@@ -370,16 +382,19 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of participants belonging to the account used to make the request
+    /// </summary>
     public class ReadParticipantOptions : ReadOptions<ParticipantResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The string that uniquely identifies this conference
         /// </summary>
-        public string ConferenceSid { get; }
+        public string PathConferenceSid { get; }
         /// <summary>
         /// Filter by muted participants
         /// </summary>
@@ -393,10 +408,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new ReadParticipantOptions
         /// </summary>
         ///
-        /// <param name="conferenceSid"> The string that uniquely identifies this conference </param>
-        public ReadParticipantOptions(string conferenceSid)
+        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
+        public ReadParticipantOptions(string pathConferenceSid)
         {
-            ConferenceSid = conferenceSid;
+            PathConferenceSid = pathConferenceSid;
         }
     
         /// <summary>

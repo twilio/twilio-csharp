@@ -15,8 +15,19 @@ namespace Twilio.Clients
     /// </summary>
     public class TwilioRestClient : ITwilioRestClient
     {
+        /// <summary>
+        /// Client to make HTTP requests
+        /// </summary>
         public HttpClient HttpClient { get; }
+
+        /// <summary>
+        /// Account SID to use for requests
+        /// </summary>
         public string AccountSid { get; }
+
+        /// <summary>
+        /// Twilio region to make requests to
+        /// </summary>
         public string Region { get; }
 
         private readonly string _username;

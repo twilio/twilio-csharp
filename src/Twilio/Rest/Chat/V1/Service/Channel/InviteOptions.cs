@@ -6,33 +6,36 @@ using Twilio.Base;
 namespace Twilio.Rest.Chat.V1.Service.Channel 
 {
 
+    /// <summary>
+    /// FetchInviteOptions
+    /// </summary>
     public class FetchInviteOptions : IOptions<InviteResource> 
     {
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchInviteOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchInviteOptions(string serviceSid, string channelSid, string sid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchInviteOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
-            Sid = sid;
+            PathServiceSid = pathServiceSid;
+            PathChannelSid = pathChannelSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -45,16 +48,19 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         }
     }
 
+    /// <summary>
+    /// CreateInviteOptions
+    /// </summary>
     public class CreateInviteOptions : IOptions<InviteResource> 
     {
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The identity
         /// </summary>
@@ -68,13 +74,13 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// Construct a new CreateInviteOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
-        public CreateInviteOptions(string serviceSid, string channelSid, string identity)
+        public CreateInviteOptions(string pathServiceSid, string pathChannelSid, string identity)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
+            PathServiceSid = pathServiceSid;
+            PathChannelSid = pathChannelSid;
             Identity = identity;
         }
     
@@ -98,16 +104,19 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         }
     }
 
+    /// <summary>
+    /// ReadInviteOptions
+    /// </summary>
     public class ReadInviteOptions : ReadOptions<InviteResource> 
     {
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The identity
         /// </summary>
@@ -117,12 +126,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// Construct a new ReadInviteOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        public ReadInviteOptions(string serviceSid, string channelSid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        public ReadInviteOptions(string pathServiceSid, string pathChannelSid)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
+            PathServiceSid = pathServiceSid;
+            PathChannelSid = pathChannelSid;
             Identity = new List<string>();
         }
     
@@ -146,33 +155,36 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         }
     }
 
+    /// <summary>
+    /// DeleteInviteOptions
+    /// </summary>
     public class DeleteInviteOptions : IOptions<InviteResource> 
     {
         /// <summary>
         /// The service_sid
         /// </summary>
-        public string ServiceSid { get; }
+        public string PathServiceSid { get; }
         /// <summary>
         /// The channel_sid
         /// </summary>
-        public string ChannelSid { get; }
+        public string PathChannelSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteInviteOptions
         /// </summary>
         ///
-        /// <param name="serviceSid"> The service_sid </param>
-        /// <param name="channelSid"> The channel_sid </param>
-        /// <param name="sid"> The sid </param>
-        public DeleteInviteOptions(string serviceSid, string channelSid, string sid)
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteInviteOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
-            ServiceSid = serviceSid;
-            ChannelSid = channelSid;
-            Sid = sid;
+            PathServiceSid = pathServiceSid;
+            PathChannelSid = pathChannelSid;
+            PathSid = pathSid;
         }
     
         /// <summary>

@@ -5,25 +5,28 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch an outgoing-caller-id belonging to the account used to make the request
+    /// </summary>
     public class FetchOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique outgoing-caller-id Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchOutgoingCallerIdOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique outgoing-caller-id Sid </param>
-        public FetchOutgoingCallerIdOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique outgoing-caller-id Sid </param>
+        public FetchOutgoingCallerIdOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -36,16 +39,19 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Updates the caller-id
+    /// </summary>
     public class UpdateOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Update by unique outgoing-caller-id Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// A human readable description of the caller ID
         /// </summary>
@@ -55,10 +61,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateOutgoingCallerIdOptions
         /// </summary>
         ///
-        /// <param name="sid"> Update by unique outgoing-caller-id Sid </param>
-        public UpdateOutgoingCallerIdOptions(string sid)
+        /// <param name="pathSid"> Update by unique outgoing-caller-id Sid </param>
+        public UpdateOutgoingCallerIdOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -76,25 +82,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Delete the caller-id specified from the account
+    /// </summary>
     public class DeleteOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Delete by unique outgoing-caller-id Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteOutgoingCallerIdOptions
         /// </summary>
         ///
-        /// <param name="sid"> Delete by unique outgoing-caller-id Sid </param>
-        public DeleteOutgoingCallerIdOptions(string sid)
+        /// <param name="pathSid"> Delete by unique outgoing-caller-id Sid </param>
+        public DeleteOutgoingCallerIdOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -107,12 +116,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
+    /// </summary>
     public class ReadOutgoingCallerIdOptions : ReadOptions<OutgoingCallerIdResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Filter by phone number
         /// </summary>

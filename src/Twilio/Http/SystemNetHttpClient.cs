@@ -11,17 +11,29 @@ using System.Threading.Tasks;
 
 namespace Twilio.Http
 {
+    /// <summary>
+    /// Sample client to make HTTP requests
+    /// </summary>
     public class SystemNetHttpClient : HttpClient
     {
         private const string PlatVersion = " (.NET 4+)";
 
         private readonly System.Net.Http.HttpClient _httpClient;
 
+        /// <summary>
+        /// Create new HttpClient
+        /// </summary>
+        /// <param name="httpClient">HTTP client to use</param>
         public SystemNetHttpClient(System.Net.Http.HttpClient httpClient = null)
         {
             _httpClient = httpClient ?? new System.Net.Http.HttpClient();
         }
 
+        /// <summary>
+        /// Make a synchronous request
+        /// </summary>
+        /// <param name="request">Twilio request</param>
+        /// <returns>Twilio response</returns>
         public override Response MakeRequest(Request request)
         {
             var task = MakeRequestAysnc(request);
@@ -29,6 +41,11 @@ namespace Twilio.Http
             return task.Result;
         }
 
+        /// <summary>
+        /// Make an asynchronous request
+        /// </summary>
+        /// <param name="request">Twilio response</param>
+        /// <returns>Task that resolves to the response</returns>
         public override async Task<Response> MakeRequestAysnc(Request request)
         {
             var httpRequest = BuildHttpRequest(request);

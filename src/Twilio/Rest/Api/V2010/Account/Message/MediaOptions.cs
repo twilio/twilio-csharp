@@ -5,31 +5,34 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {
 
+    /// <summary>
+    /// Delete media from your account. Once delete, you will no longer be billed
+    /// </summary>
     public class DeleteMediaOptions : IOptions<MediaResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The message_sid
         /// </summary>
-        public string MessageSid { get; }
+        public string PathMessageSid { get; }
         /// <summary>
         /// Delete by unique media Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteMediaOptions
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Delete by unique media Sid </param>
-        public DeleteMediaOptions(string messageSid, string sid)
+        /// <param name="pathMessageSid"> The message_sid </param>
+        /// <param name="pathSid"> Delete by unique media Sid </param>
+        public DeleteMediaOptions(string pathMessageSid, string pathSid)
         {
-            MessageSid = messageSid;
-            Sid = sid;
+            PathMessageSid = pathMessageSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -42,31 +45,34 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
     }
 
+    /// <summary>
+    /// Fetch a single media instance belonging to the account used to make the request
+    /// </summary>
     public class FetchMediaOptions : IOptions<MediaResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The message_sid
         /// </summary>
-        public string MessageSid { get; }
+        public string PathMessageSid { get; }
         /// <summary>
         /// Fetch by unique media Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchMediaOptions
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        /// <param name="sid"> Fetch by unique media Sid </param>
-        public FetchMediaOptions(string messageSid, string sid)
+        /// <param name="pathMessageSid"> The message_sid </param>
+        /// <param name="pathSid"> Fetch by unique media Sid </param>
+        public FetchMediaOptions(string pathMessageSid, string pathSid)
         {
-            MessageSid = messageSid;
-            Sid = sid;
+            PathMessageSid = pathMessageSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -79,16 +85,19 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of medias belonging to the account used to make the request
+    /// </summary>
     public class ReadMediaOptions : ReadOptions<MediaResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The message_sid
         /// </summary>
-        public string MessageSid { get; }
+        public string PathMessageSid { get; }
         /// <summary>
         /// Filter by date created
         /// </summary>
@@ -106,10 +115,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Construct a new ReadMediaOptions
         /// </summary>
         ///
-        /// <param name="messageSid"> The message_sid </param>
-        public ReadMediaOptions(string messageSid)
+        /// <param name="pathMessageSid"> The message_sid </param>
+        public ReadMediaOptions(string pathMessageSid)
         {
-            MessageSid = messageSid;
+            PathMessageSid = pathMessageSid;
         }
     
         /// <summary>
@@ -120,18 +129,18 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var p = new List<KeyValuePair<string, string>>();
             if (DateCreated != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.ToString()));
+                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
             else
             {
                 if (DateCreatedBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.ToString()));
+                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             
                 if (DateCreatedAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.ToString()));
+                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             }
             

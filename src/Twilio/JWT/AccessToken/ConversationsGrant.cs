@@ -7,6 +7,9 @@ namespace Twilio.Jwt.AccessToken
     /// </summary>
     public class ConversationsGrant : IGrant
     {
+        /// <summary>
+        /// Configuration profile SID for the grant
+        /// </summary>
         public string ConfigurationProfileSid { get; set; }
 
         /// <summary>

@@ -3,15 +3,27 @@ using System.Xml.Linq;
 
 namespace Twilio.TwiML
 {
+    /// <summary>
+    /// Messaging TwiML response
+    /// </summary>
     public class MessagingResponse
     {
         private readonly XElement _response;
 
+        /// <summary>
+        /// Create a new MessagingResponse
+        /// </summary>
         public MessagingResponse()
         {
             _response = new XElement("Response");
         }
 
+        /// <summary>
+        /// Redirect to a URL
+        /// </summary>
+        /// <param name="method">HTTP Method</param>
+        /// <param name="url">URL to redirect to</param>
+        /// <returns>TwiML</returns>
         public MessagingResponse Redirect(string method=null, string url=null)
         {
             var redirect = new XElement("Redirect");
@@ -29,6 +41,16 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Send a message
+        /// </summary>
+        /// <param name="body">Message body</param>
+        /// <param name="to">Recipient</param>
+        /// <param name="from">Sender</param>
+        /// <param name="method">Action URL method</param>
+        /// <param name="action">Action URL</param>
+        /// <param name="statusCallback">Status callback URL</param>
+        /// <returns>TwiML</returns>
         public MessagingResponse Message(string body, string to=null, string from=null, string method=null, string action=null, string statusCallback=null)
         {
             var message = new XElement("Message", body);
@@ -61,12 +83,21 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Send a message
+        /// </summary>
+        /// <param name="message">Message to send</param>
+        /// <returns>TwiML</returns>
         public MessagingResponse Message(Message message)
         {
             _response.Add(message.Element);
             return this;
         }
 
+        /// <summary>
+        /// Generate XML for TwiML
+        /// </summary>
+        /// <returns>TwiML XML</returns>
         public override string ToString()
         {
             var declaration = new XDeclaration("1.0", "utf-8", null);

@@ -5,16 +5,19 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Update an incoming-phone-number instance
+    /// </summary>
     public class UpdateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The new owner of the phone number
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The new owner of the phone number
         /// </summary>
@@ -96,10 +99,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateIncomingPhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateIncomingPhoneNumberOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateIncomingPhoneNumberOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -108,11 +111,6 @@ namespace Twilio.Rest.Api.V2010.Account
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (AccountSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
-            }
-            
             if (ApiVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
@@ -207,25 +205,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Fetch an incoming-phone-number belonging to the account used to make the request
+    /// </summary>
     public class FetchIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The account_sid
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique incoming-phone-number Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchIncomingPhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique incoming-phone-number Sid </param>
-        public FetchIncomingPhoneNumberOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique incoming-phone-number Sid </param>
+        public FetchIncomingPhoneNumberOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -238,25 +239,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Delete a phone-numbers belonging to the account used to make the request
+    /// </summary>
     public class DeleteIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The account_sid
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Delete by unique phone-number Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new DeleteIncomingPhoneNumberOptions
         /// </summary>
         ///
-        /// <param name="sid"> Delete by unique phone-number Sid </param>
-        public DeleteIncomingPhoneNumberOptions(string sid)
+        /// <param name="pathSid"> Delete by unique phone-number Sid </param>
+        public DeleteIncomingPhoneNumberOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -269,12 +273,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request
+    /// </summary>
     public class ReadIncomingPhoneNumberOptions : ReadOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The account_sid
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Include new phone numbers
         /// </summary>
@@ -318,12 +325,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Purchase a phone-number for the account
+    /// </summary>
     public class CreateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The owner_account_sid
+        /// The account_sid
         /// </summary>
-        public string OwnerAccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The phone number
         /// </summary>

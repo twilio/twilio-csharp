@@ -5,16 +5,19 @@ using Twilio.Base;
 namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
 {
 
+    /// <summary>
+    /// ReadReservationOptions
+    /// </summary>
     public class ReadReservationOptions : ReadOptions<ReservationResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The worker_sid
         /// </summary>
-        public string WorkerSid { get; }
+        public string PathWorkerSid { get; }
         /// <summary>
         /// The reservation_status
         /// </summary>
@@ -24,12 +27,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// Construct a new ReadReservationOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        public ReadReservationOptions(string workspaceSid, string workerSid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
+        public ReadReservationOptions(string pathWorkspaceSid, string pathWorkerSid)
         {
-            WorkspaceSid = workspaceSid;
-            WorkerSid = workerSid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathWorkerSid = pathWorkerSid;
         }
     
         /// <summary>
@@ -52,33 +55,36 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     }
 
+    /// <summary>
+    /// FetchReservationOptions
+    /// </summary>
     public class FetchReservationOptions : IOptions<ReservationResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The worker_sid
         /// </summary>
-        public string WorkerSid { get; }
+        public string PathWorkerSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchReservationOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        /// <param name="sid"> The sid </param>
-        public FetchReservationOptions(string workspaceSid, string workerSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public FetchReservationOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
         {
-            WorkspaceSid = workspaceSid;
-            WorkerSid = workerSid;
-            Sid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathWorkerSid = pathWorkerSid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -91,20 +97,23 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
     }
 
+    /// <summary>
+    /// UpdateReservationOptions
+    /// </summary>
     public class UpdateReservationOptions : IOptions<ReservationResource> 
     {
         /// <summary>
         /// The workspace_sid
         /// </summary>
-        public string WorkspaceSid { get; }
+        public string PathWorkspaceSid { get; }
         /// <summary>
         /// The worker_sid
         /// </summary>
-        public string WorkerSid { get; }
+        public string PathWorkerSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// The reservation_status
         /// </summary>
@@ -186,14 +195,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// Construct a new UpdateReservationOptions
         /// </summary>
         ///
-        /// <param name="workspaceSid"> The workspace_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
-        /// <param name="sid"> The sid </param>
-        public UpdateReservationOptions(string workspaceSid, string workerSid, string sid)
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkerSid"> The worker_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public UpdateReservationOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
         {
-            WorkspaceSid = workspaceSid;
-            WorkerSid = workerSid;
-            Sid = sid;
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathWorkerSid = pathWorkerSid;
+            PathSid = pathSid;
         }
     
         /// <summary>

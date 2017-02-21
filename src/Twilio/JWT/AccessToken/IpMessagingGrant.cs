@@ -7,9 +7,24 @@ namespace Twilio.Jwt.AccessToken
     /// </summary>
     public class IpMessagingGrant : IGrant
     {
+        /// <summary>
+        /// Service SID
+        /// </summary>
         public string ServiceSid { get; set; }
+        
+        /// <summary>
+        /// Endpoint ID
+        /// </summary>
         public string EndpointId { get; set; }
+        
+        /// <summary>
+        /// Deployment role SID
+        /// </summary>
         public string DeploymentRoleSid { get; set; }
+        
+        /// <summary>
+        /// Push credential SID
+        /// </summary>
         public string PushCredentialSid { get; set; }
 
         /// <summary>

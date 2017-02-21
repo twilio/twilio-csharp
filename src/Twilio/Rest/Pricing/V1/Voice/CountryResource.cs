@@ -11,6 +11,9 @@ using Twilio.Types;
 namespace Twilio.Rest.Pricing.V1.Voice 
 {
 
+    /// <summary>
+    /// CountryResource
+    /// </summary>
     public class CountryResource : Resource 
     {
         private static Request BuildReadRequest(ReadCountryOptions options, ITwilioRestClient client)
@@ -114,7 +117,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
-                "/v1/Voice/Countries/" + options.IsoCountry + "",
+                "/v1/Voice/Countries/" + options.PathIsoCountry + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -154,12 +157,12 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// fetch
         /// </summary>
         ///
-        /// <param name="isoCountry"> The iso_country </param>
+        /// <param name="pathIsoCountry"> The iso_country </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Country </returns> 
-        public static CountryResource Fetch(string isoCountry, ITwilioRestClient client = null)
+        public static CountryResource Fetch(string pathIsoCountry, ITwilioRestClient client = null)
         {
-            var options = new FetchCountryOptions(isoCountry);
+            var options = new FetchCountryOptions(pathIsoCountry);
             return Fetch(options, client);
         }
     
@@ -168,12 +171,12 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// fetch
         /// </summary>
         ///
-        /// <param name="isoCountry"> The iso_country </param>
+        /// <param name="pathIsoCountry"> The iso_country </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Country </returns> 
-        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(string isoCountry, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(string pathIsoCountry, ITwilioRestClient client = null)
         {
-            var options = new FetchCountryOptions(isoCountry);
+            var options = new FetchCountryOptions(pathIsoCountry);
             return await FetchAsync(options, client);
         }
         #endif

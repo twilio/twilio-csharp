@@ -10,6 +10,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// SigningKeyResource
+    /// </summary>
     public class SigningKeyResource : Resource 
     {
         private static Request BuildFetchRequest(FetchSigningKeyOptions options, ITwilioRestClient client)
@@ -17,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SigningKeys/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SigningKeys/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -57,13 +60,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// fetch
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SigningKey </returns> 
-        public static SigningKeyResource Fetch(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static SigningKeyResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchSigningKeyOptions(sid){AccountSid = accountSid};
+            var options = new FetchSigningKeyOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
     
@@ -72,13 +75,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// fetch
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SigningKey </returns> 
-        public static async System.Threading.Tasks.Task<SigningKeyResource> FetchAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SigningKeyResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchSigningKeyOptions(sid){AccountSid = accountSid};
+            var options = new FetchSigningKeyOptions(pathSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -88,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SigningKeys/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SigningKeys/" + options.PathSid + ".json",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -128,14 +131,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// update
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SigningKey </returns> 
-        public static SigningKeyResource Update(string sid, string accountSid = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static SigningKeyResource Update(string pathSid, string pathAccountSid = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateSigningKeyOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName};
+            var options = new UpdateSigningKeyOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
             return Update(options, client);
         }
     
@@ -144,14 +147,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// update
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SigningKey </returns> 
-        public static async System.Threading.Tasks.Task<SigningKeyResource> UpdateAsync(string sid, string accountSid = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SigningKeyResource> UpdateAsync(string pathSid, string pathAccountSid = null, string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateSigningKeyOptions(sid){AccountSid = accountSid, FriendlyName = friendlyName};
+            var options = new UpdateSigningKeyOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -161,7 +164,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SigningKeys/" + options.Sid + ".json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SigningKeys/" + options.PathSid + ".json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -201,13 +204,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// delete
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SigningKey </returns> 
-        public static bool Delete(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteSigningKeyOptions(sid){AccountSid = accountSid};
+            var options = new DeleteSigningKeyOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
     
@@ -216,13 +219,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// delete
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SigningKey </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string sid, string accountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
-            var options = new DeleteSigningKeyOptions(sid){AccountSid = accountSid};
+            var options = new DeleteSigningKeyOptions(pathSid){PathAccountSid = pathAccountSid};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -232,7 +235,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Api,
-                "/2010-04-01/Accounts/" + (options.AccountSid ?? client.AccountSid) + "/SigningKeys.json",
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SigningKeys.json",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -276,14 +279,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SigningKey </returns> 
-        public static ResourceSet<SigningKeyResource> Read(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<SigningKeyResource> Read(string pathAccountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadSigningKeyOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadSigningKeyOptions{PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
     
@@ -292,14 +295,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// read
         /// </summary>
         ///
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SigningKey </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SigningKeyResource>> ReadAsync(string accountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SigningKeyResource>> ReadAsync(string pathAccountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadSigningKeyOptions{AccountSid = accountSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadSigningKeyOptions{PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

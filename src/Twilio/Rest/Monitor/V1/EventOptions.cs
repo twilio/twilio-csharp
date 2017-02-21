@@ -6,21 +6,24 @@ using Twilio.Converters;
 namespace Twilio.Rest.Monitor.V1 
 {
 
+    /// <summary>
+    /// FetchEventOptions
+    /// </summary>
     public class FetchEventOptions : IOptions<EventResource> 
     {
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchEventOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public FetchEventOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public FetchEventOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -33,6 +36,9 @@ namespace Twilio.Rest.Monitor.V1
         }
     }
 
+    /// <summary>
+    /// ReadEventOptions
+    /// </summary>
     public class ReadEventOptions : ReadOptions<EventResource> 
     {
         /// <summary>

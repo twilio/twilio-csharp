@@ -5,12 +5,15 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// ReadAvailablePhoneNumberCountryOptions
+    /// </summary>
     public class ReadAvailablePhoneNumberCountryOptions : ReadOptions<AvailablePhoneNumberCountryResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
@@ -27,25 +30,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// FetchAvailablePhoneNumberCountryOptions
+    /// </summary>
     public class FetchAvailablePhoneNumberCountryOptions : IOptions<AvailablePhoneNumberCountryResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The country_code
         /// </summary>
-        public string CountryCode { get; }
+        public string PathCountryCode { get; }
     
         /// <summary>
         /// Construct a new FetchAvailablePhoneNumberCountryOptions
         /// </summary>
         ///
-        /// <param name="countryCode"> The country_code </param>
-        public FetchAvailablePhoneNumberCountryOptions(string countryCode)
+        /// <param name="pathCountryCode"> The country_code </param>
+        public FetchAvailablePhoneNumberCountryOptions(string pathCountryCode)
         {
-            CountryCode = countryCode;
+            PathCountryCode = pathCountryCode;
         }
     
         /// <summary>

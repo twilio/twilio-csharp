@@ -6,25 +6,28 @@ using Twilio.Base;
 namespace Twilio.Rest.Api.V2010.Account 
 {
 
+    /// <summary>
+    /// Fetch an instance of a connect-app
+    /// </summary>
     public class FetchConnectAppOptions : IOptions<ConnectAppResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// Fetch by unique connect-app Sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
     
         /// <summary>
         /// Construct a new FetchConnectAppOptions
         /// </summary>
         ///
-        /// <param name="sid"> Fetch by unique connect-app Sid </param>
-        public FetchConnectAppOptions(string sid)
+        /// <param name="pathSid"> Fetch by unique connect-app Sid </param>
+        public FetchConnectAppOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
         }
     
         /// <summary>
@@ -37,16 +40,19 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Update a connect-app with the specified parameters
+    /// </summary>
     public class UpdateConnectAppOptions : IOptions<ConnectAppResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
         /// <summary>
         /// The sid
         /// </summary>
-        public string Sid { get; }
+        public string PathSid { get; }
         /// <summary>
         /// URIL Twilio sends requests when users authorize
         /// </summary>
@@ -84,10 +90,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateConnectAppOptions
         /// </summary>
         ///
-        /// <param name="sid"> The sid </param>
-        public UpdateConnectAppOptions(string sid)
+        /// <param name="pathSid"> The sid </param>
+        public UpdateConnectAppOptions(string pathSid)
         {
-            Sid = sid;
+            PathSid = pathSid;
             Permissions = new List<ConnectAppResource.PermissionEnum>();
         }
     
@@ -141,12 +147,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Retrieve a list of connect-apps belonging to the account used to make the request
+    /// </summary>
     public class ReadConnectAppOptions : ReadOptions<ConnectAppResource> 
     {
         /// <summary>
         /// The account_sid
         /// </summary>
-        public string AccountSid { get; set; }
+        public string PathAccountSid { get; set; }
     
         /// <summary>
         /// Generate the necessary parameters
