@@ -1,16 +1,17 @@
+.PHONY: clean test install release
+
+clean:
+	dotnet clean
 
 install:
-	dotnet restore Twilio/Twilio.csproj
+	dotnet restore
 
 test:
-	rm -rf Twilio.Tests/obj
-	dotnet restore Twilio.Tests/Twilio.Tests.csproj
-	dotnet build Twilio.Tests/Twilio.Tests.csproj
-	dotnet run --project Twilio.Tests/Twilio.Tests.csproj
+	dotnet restore
+	dotnet build --framework netstandard1.4 src/Twilio/Twilio.csproj
+	dotnet build --framework netcoreapp1.1 test/Twilio.Test/Twilio.Test.csproj
+	dotnet run --framework netcoreapp1.1 --project test/Twilio.Test/Twilio.Test.csproj
 
 release: test
-	rm -rf Twilio/obj
-	dotnet restore /p:Configuration=Release Twilio/Twilio.csproj
-	dotnet build /p:Configuration=Release Twilio/Twilio.csproj
-	xbuild /p:Configuration=Release Twilio35/Twilio35.csproj
-	nuget pack Twilio.nuspec
+	dotnet build -c Release
+	dotnet pack src/Twilio/Twilio.csproj -c Release -o .

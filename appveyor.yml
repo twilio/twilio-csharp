@@ -1,0 +1,9 @@
+version: '{build}'
+image: Visual Studio 2017 RC
+configuration: Release
+build_script:
+- ps: . .\build.ps1
+test: off
+artifacts:
+- path: src\Twilio\bin\Release\Twilio.*.nupkg
+  name: Package
