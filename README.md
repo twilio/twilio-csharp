@@ -4,19 +4,19 @@ Twilio provides a simple HTTP-based API for sending and receiving phone calls an
 
 ### Adding Twilio libraries to your .NET project
 
-The best and easiest way to add the Twilio libraries to your .NET project is to use the NuGet package manager.  NuGet is a Visual Studio extension that makes it easy to install and update third-party libraries and tools in Visual Studio.  
+The best and easiest way to add the Twilio libraries to your .NET project is to use the NuGet package manager.
 
-[http://docs.nuget.org/docs/start-here/installing-nuget](http://docs.nuget.org/docs/start-here/installing-nuget)
+#### With Visual Studio IDE
 
-Once you have installed the NuGet extension, you can choose to install the Twilio libraries using either the Package Manager dialog, or using the Package Manager console.
-
-#### Installing via the Package Manager Console
-
-To install a Twilio library using the Package Manager console, first open the console, then Use the _Install-Package_ command to install the different Twilio packages:
-
-Install REST API wrapper:
+From within Visual Studio, you can use the NuGet GUI to search for and install the Twilio NuGet package. Or, as a shortcut, simply type the following command into the Package Manager Console:
 
     Install-Package Twilio
+
+#### With .NET Core Command Line Tools
+
+If you are building with the .NET Core command line tools, then you can run the following command from within your project directory:
+
+    dotnet add package Twilio
 
 ### Sample Usage
 
@@ -63,7 +63,8 @@ Console.WriteLine(response);
 ``` 
 
 ## Migrating from earlier versions
-See the migration guide [here][3] 
+See the migration guide [here][3]. Also, if you were using the Twilio.Mvc package, that has been replaced by the [Twilio.AspNet.Mvc][4]
+package which is compatible with this version of the library.
 
 ## Alpha Version
 The alpha version of the Twilio .NET library is available on nuget.  This version is a superset of the mainline version that includes all of the Twilio Products that are currently in beta. To install the alpha version from the NuGet Package manager console, add the *-prerelease* flag to the *Install-Package* command:
@@ -83,3 +84,4 @@ If you've instead found a bug in the library or would like new features added, g
 [1]: http://www.twilio.com/docs/api/rest
 [2]: http://www.twilio.com/docs/api/twiml
 [3]: https://www.twilio.com/docs/libraries/csharp/migrating-your-csharp-dot-net-application-twilio-sdk-4x-5x
+[4]: https://github.com/twilio/twilio-aspnet
