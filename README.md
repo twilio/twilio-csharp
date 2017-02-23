@@ -4,19 +4,19 @@ Twilio provides a simple HTTP-based API for sending and receiving phone calls an
 
 ### Adding Twilio libraries to your .NET project
 
-The best and easiest way to add the Twilio libraries to your .NET project is to use the NuGet package manager.  NuGet is a Visual Studio extension that makes it easy to install and update third-party libraries and tools in Visual Studio.  
+The best and easiest way to add the Twilio libraries to your .NET project is to use the NuGet package manager.
 
-[http://docs.nuget.org/docs/start-here/installing-nuget](http://docs.nuget.org/docs/start-here/installing-nuget)
+#### With Visual Studio IDE
 
-Once you have installed the NuGet extension, you can choose to install the Twilio libraries using either the Package Manager dialog, or using the Package Manager console.
-
-#### Installing via the Package Manager Console
-
-To install a Twilio library using the Package Manager console, first open the console, then Use the _Install-Package_ command to install the different Twilio packages:
-
-Install REST API wrapper:
+From within Visual Studio, you can use the NuGet GUI to search for and install the Twilio NuGet package. Or, as a shortcut, simply type the following command into the Package Manager Console:
 
     Install-Package Twilio
+
+#### With .NET Core Command Line Tools
+
+If you are building with the .NET Core command line tools, then you can run the following command from within your project directory:
+
+    dotnet add package Twilio
 
 ### Sample Usage
 
