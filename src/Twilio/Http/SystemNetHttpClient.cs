@@ -57,15 +57,15 @@ namespace Twilio.Http
             HttpResponseMessage response = null;
             try
             {
-                response = await _httpClient.SendAsync(httpRequest); 
-                var reader = new StreamReader(await response.Content.ReadAsStreamAsync());
-                return new Response(response.StatusCode, await reader.ReadToEndAsync());
+                response = await _httpClient.SendAsync(httpRequest).ConfigureAwait(false); 
+                var reader = new StreamReader(await response.Content.ReadAsStreamAsync().ConfigureAwait(false));
+                return new Response(response.StatusCode, await reader.ReadToEndAsync().ConfigureAwait(false));
             }
             catch (AggregateException ae)
             {
                 if (ae.InnerExceptions.OfType<HttpRequestException>().Any() && response != null)
                 {
-                    throw await HandleErrorResponse(response);
+                    throw await HandleErrorResponse(response).ConfigureAwait(false);
                 }
             }
             return null;
@@ -79,7 +79,7 @@ namespace Twilio.Http
                 return new TwilioException("Internal Server error: " + errorResponse.StatusCode);
             }
 
-            var responseStream = await errorResponse.Content.ReadAsStreamAsync();
+            var responseStream = await errorResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
             var errorReader = new StreamReader(responseStream);
             var errorContent = errorReader.ReadToEnd();
 
