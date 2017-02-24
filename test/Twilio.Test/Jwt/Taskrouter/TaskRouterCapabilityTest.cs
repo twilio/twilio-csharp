@@ -1,11 +1,9 @@
-﻿#if !NET35
-using System;
+﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using Twilio.Jwt;
 using Twilio.Jwt.Taskrouter;
 using Twilio.Http;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace Twilio.Tests.Jwt.Taskrouter
 {
@@ -27,17 +25,15 @@ namespace Twilio.Tests.Jwt.Taskrouter
 
             var jwt = new TaskRouterCapability(AccountSid, AuthToken, WorkspaceSid, WorkerSid, policies: policies).ToJwt();
 
-            var token = new JwtSecurityToken(jwt);
-            var headers = token.Header;
+            var token = new DecodedJwt(jwt, AuthToken);
             var payload = token.Payload;
 
             Assert.AreEqual(WorkspaceSid, payload["workspace_sid"]);
             Assert.AreEqual(WorkerSid, payload["channel"]);
             Assert.AreEqual(AccountSid, payload["account_sid"]);
-            Assert.AreEqual(AccountSid, payload.Iss);
+            Assert.AreEqual(AccountSid, payload["iss"]);
 
-            Assert.Greater(payload.Exp.Value, BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
         }
     }
 }
-#endif
