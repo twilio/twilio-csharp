@@ -1,7 +1,14 @@
 twilio-csharp Changelog
 =======================
 
-[2017-02-09] Version 5.0.0
+
+[2017-02-24] Version 5.0.2-alpha1
+--------------------------
+ - URL encode all parameters
+ - Remove erroneous JWT header in .NET 3.5
+
+
+[2017-02-21] Version 5.0.1-alpha1
 --------------------------
 **New Major Version**
 

@@ -127,7 +127,7 @@ namespace Twilio.Jwt
 #else
         private Dictionary<string, object> BuildHeaders()
         {
-            return new Dictionary<string, object> { { "typ", "JWT" } };
+            return new Dictionary<string, object>();
         }
 
         private Dictionary<string, object> BuildPayload()

@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using Twilio.Rest;
 
+#if !NET35
+using System.Net;
+#else
+using System.Web;
+#endif
+
 namespace Twilio.Http
 {
     /// <summary>
@@ -118,7 +124,11 @@ namespace Twilio.Http
                     result += "&";
                 }
 
-                result += pair.Key + "=" + pair.Value;
+#if !NET35
+                result += WebUtility.UrlEncode(pair.Key) + "=" + WebUtility.UrlEncode(pair.Value);
+#else
+                result += HttpUtility.UrlEncode(pair.Key) + "=" + HttpUtility.UrlEncode(pair.Value);
+#endif
             }
 
             return result;
