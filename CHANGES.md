@@ -2,6 +2,11 @@ twilio-csharp Changelog
 =======================
 
 
+[2017-02-24] Version 5.0.2
+--------------------------
+ - Fix async/await for MVC/WPF apps
+
+
 [2017-02-24] Version 5.0.1
 --------------------------
  - URL encode all parameters
