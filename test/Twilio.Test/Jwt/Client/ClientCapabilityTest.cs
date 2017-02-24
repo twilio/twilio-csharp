@@ -1,10 +1,8 @@
-﻿#if !NET35
-using System;
+﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using Twilio.Jwt;
 using Twilio.Jwt.Client;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace Twilio.Tests.Jwt.Client
 {
@@ -19,12 +17,11 @@ namespace Twilio.Tests.Jwt.Client
         {
             var jwt = new ClientCapability(AccountSid, Secret).ToJwt();
 
-            var token = new JwtSecurityToken(jwt);
-            var headers = token.Header;
+            var token = new DecodedJwt(jwt, Secret);
             var payload = token.Payload;
 
-            Assert.AreEqual(AccountSid, payload.Iss);
-            Assert.Greater(payload.Exp.Value, BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+            Assert.AreEqual(AccountSid, payload["iss"]);
+            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
         }
 
         [Test]
@@ -39,12 +36,11 @@ namespace Twilio.Tests.Jwt.Client
 
             var jwt = new ClientCapability(AccountSid, Secret, scopes: scopes).ToJwt();
 
-            var token = new JwtSecurityToken(jwt);
-            var headers = token.Header;
+            var token = new DecodedJwt(jwt, Secret);
             var payload = token.Payload;
 
-            Assert.AreEqual(AccountSid, payload.Iss);
-            Assert.Greater(payload.Exp.Value, BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+            Assert.AreEqual(AccountSid, payload["iss"]);
+            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
 
             Assert.AreEqual(
                 "scope:client:incoming?clientName=incomingClient " +
@@ -55,4 +51,3 @@ namespace Twilio.Tests.Jwt.Client
         }
     }
 }
-#endif
