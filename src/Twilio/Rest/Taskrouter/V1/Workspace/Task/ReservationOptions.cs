@@ -22,7 +22,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// The reservation_status
         /// </summary>
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadReservationOptions
         /// </summary>
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             PathWorkspaceSid = pathWorkspaceSid;
             PathTaskSid = pathTaskSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -45,12 +45,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             {
                 p.Add(new KeyValuePair<string, string>("ReservationStatus", ReservationStatus.ToString()));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchReservationOptions
         /// </summary>
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             PathTaskSid = pathTaskSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// The redirect_url
         /// </summary>
         public Uri RedirectUrl { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateReservationOptions
         /// </summary>
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             PathTaskSid = pathTaskSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -215,97 +215,97 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             {
                 p.Add(new KeyValuePair<string, string>("ReservationStatus", ReservationStatus.ToString()));
             }
-            
+
             if (WorkerActivitySid != null)
             {
                 p.Add(new KeyValuePair<string, string>("WorkerActivitySid", WorkerActivitySid.ToString()));
             }
-            
+
             if (Instruction != null)
             {
                 p.Add(new KeyValuePair<string, string>("Instruction", Instruction));
             }
-            
+
             if (DequeuePostWorkActivitySid != null)
             {
                 p.Add(new KeyValuePair<string, string>("DequeuePostWorkActivitySid", DequeuePostWorkActivitySid.ToString()));
             }
-            
+
             if (DequeueFrom != null)
             {
                 p.Add(new KeyValuePair<string, string>("DequeueFrom", DequeueFrom));
             }
-            
+
             if (DequeueRecord != null)
             {
                 p.Add(new KeyValuePair<string, string>("DequeueRecord", DequeueRecord));
             }
-            
+
             if (DequeueTimeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("DequeueTimeout", DequeueTimeout.Value.ToString()));
             }
-            
+
             if (DequeueTo != null)
             {
                 p.Add(new KeyValuePair<string, string>("DequeueTo", DequeueTo));
             }
-            
+
             if (DequeueStatusCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("DequeueStatusCallbackUrl", DequeueStatusCallbackUrl.ToString()));
             }
-            
+
             if (CallFrom != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallFrom", CallFrom));
             }
-            
+
             if (CallRecord != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallRecord", CallRecord));
             }
-            
+
             if (CallTimeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallTimeout", CallTimeout.Value.ToString()));
             }
-            
+
             if (CallTo != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallTo", CallTo));
             }
-            
+
             if (CallUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallUrl", CallUrl.ToString()));
             }
-            
+
             if (CallStatusCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallStatusCallbackUrl", CallStatusCallbackUrl.ToString()));
             }
-            
+
             if (CallAccept != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallAccept", CallAccept.Value.ToString()));
             }
-            
+
             if (RedirectCallSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("RedirectCallSid", RedirectCallSid.ToString()));
             }
-            
+
             if (RedirectAccept != null)
             {
                 p.Add(new KeyValuePair<string, string>("RedirectAccept", RedirectAccept.Value.ToString()));
             }
-            
+
             if (RedirectUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("RedirectUrl", RedirectUrl.ToString()));
             }
-            
+
             return p;
         }
     }

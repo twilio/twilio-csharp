@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch by unique transcription Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchTranscriptionOptions
         /// </summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Delete by unique transcription Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteTranscriptionOptions
         /// </summary>
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The account_sid
         /// </summary>
         public string PathAccountSid { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

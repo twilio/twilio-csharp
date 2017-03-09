@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of domains belonging to the account used to make the request
         /// </summary>
@@ -37,11 +37,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<DomainResource>.FromJson("domains", response.Content);
             return new ResourceSet<DomainResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of domains belonging to the account used to make the request
@@ -54,12 +54,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<DomainResource>.FromJson("domains", response.Content);
             return new ResourceSet<DomainResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of domains belonging to the account used to make the request
         /// </summary>
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var options = new ReadDomainOptions{PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of domains belonging to the account used to make the request
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -108,11 +108,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<DomainResource>.FromJson("domains", response.Content);
         }
-    
+
         private static Request BuildCreateRequest(CreateDomainOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Create a new Domain
         /// </summary>
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create a new Domain
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Create a new Domain
         /// </summary>
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var options = new CreateDomainOptions(domainName){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, AuthType = authType, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceStatusCallbackMethod = voiceStatusCallbackMethod};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create a new Domain
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchDomainOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch an instance of a Domain
         /// </summary>
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of a Domain
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch an instance of a Domain
         /// </summary>
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var options = new FetchDomainOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of a Domain
@@ -270,7 +270,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateDomainOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -281,7 +281,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Update the attributes of a domain
         /// </summary>
@@ -295,7 +295,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Update the attributes of a domain
@@ -311,7 +311,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Update the attributes of a domain
         /// </summary>
@@ -333,7 +333,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var options = new UpdateDomainOptions(pathSid){PathAccountSid = pathAccountSid, AuthType = authType, FriendlyName = friendlyName, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceUrl = voiceUrl};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Update the attributes of a domain
@@ -357,7 +357,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteDomainOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -368,7 +368,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -382,7 +382,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -398,7 +398,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -412,7 +412,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var options = new DeleteDomainOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -428,7 +428,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a DomainResource object
         /// </summary>
@@ -447,7 +447,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The unique id of the account that sent the message
         /// </summary>
@@ -531,10 +531,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
-    
+
         private DomainResource()
         {
-        
+
         }
     }
 

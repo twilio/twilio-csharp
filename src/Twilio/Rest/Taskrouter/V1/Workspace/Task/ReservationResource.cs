@@ -20,7 +20,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-        
+
             public static readonly StatusEnum Pending = new StatusEnum("pending");
             public static readonly StatusEnum Accepted = new StatusEnum("accepted");
             public static readonly StatusEnum Rejected = new StatusEnum("rejected");
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             public static readonly StatusEnum Canceled = new StatusEnum("canceled");
             public static readonly StatusEnum Rescinded = new StatusEnum("rescinded");
         }
-    
+
         private static Request BuildReadRequest(ReadReservationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -51,11 +51,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<ReservationResource>.FromJson("reservations", response.Content);
             return new ResourceSet<ReservationResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -68,12 +68,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<ReservationResource>.FromJson("reservations", response.Content);
             return new ResourceSet<ReservationResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             var options = new ReadReservationOptions(pathWorkspaceSid, pathTaskSid){ReservationStatus = reservationStatus, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -126,11 +126,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<ReservationResource>.FromJson("reservations", response.Content);
         }
-    
+
         private static Request BuildFetchRequest(FetchReservationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -186,7 +186,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             var options = new FetchReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateReservationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -214,7 +214,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -278,7 +278,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a ReservationResource object
         /// </summary>
@@ -333,7 +333,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -390,10 +390,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
-    
+
         private ReservationResource()
         {
-        
+
         }
     }
 

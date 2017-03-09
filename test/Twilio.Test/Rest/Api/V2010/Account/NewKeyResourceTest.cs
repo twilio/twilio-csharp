@@ -27,7 +27,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
             );
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 NewKeyResource.Create(client: twilioRestClient);
@@ -36,7 +36,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestCreateResponse()
         {
@@ -47,7 +47,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                                          System.Net.HttpStatusCode.Created,
                                          "{\"sid\": \"SKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"foo\",\"date_created\": \"Mon, 13 Jun 2016 22:50:08 +0000\",\"date_updated\": \"Mon, 13 Jun 2016 22:50:08 +0000\",\"secret\": \"foobar\"}"
                                      ));
-            
+
             var response = NewKeyResource.Create(client: twilioRestClient);
             Assert.NotNull(response);
         }

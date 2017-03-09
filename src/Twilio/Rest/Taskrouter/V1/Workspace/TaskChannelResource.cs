@@ -25,7 +25,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var options = new FetchTaskChannelOptions(pathWorkspaceSid, pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadTaskChannelOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -108,11 +108,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<TaskChannelResource>.FromJson("channels", response.Content);
             return new ResourceSet<TaskChannelResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -125,12 +125,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<TaskChannelResource>.FromJson("channels", response.Content);
             return new ResourceSet<TaskChannelResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var options = new ReadTaskChannelOptions(pathWorkspaceSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -179,11 +179,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<TaskChannelResource>.FromJson("channels", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a TaskChannelResource object
         /// </summary>
@@ -202,7 +202,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -243,10 +243,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private TaskChannelResource()
         {
-        
+
         }
     }
 

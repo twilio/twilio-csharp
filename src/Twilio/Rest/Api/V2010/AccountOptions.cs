@@ -14,7 +14,7 @@ namespace Twilio.Rest.Api.V2010
         /// A human readable description of the account
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             return p;
         }
     }
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010
         /// Fetch by unique Account Sid
         /// </summary>
         public string PathSid { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Api.V2010
         /// Status to filter on
         /// </summary>
         public AccountResource.StatusEnum Status { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -74,17 +74,17 @@ namespace Twilio.Rest.Api.V2010
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Api.V2010
         /// Status to update the Account with
         /// </summary>
         public AccountResource.StatusEnum Status { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -117,12 +117,12 @@ namespace Twilio.Rest.Api.V2010
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
-            
+
             return p;
         }
     }

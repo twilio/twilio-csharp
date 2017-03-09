@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch by unique outgoing-caller-id Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchOutgoingCallerIdOptions
         /// </summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// A human readable description of the caller ID
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateOutgoingCallerIdOptions
         /// </summary>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             return p;
         }
     }
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Delete by unique outgoing-caller-id Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteOutgoingCallerIdOptions
         /// </summary>
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -133,7 +133,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Filter by friendly name
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -144,17 +144,17 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

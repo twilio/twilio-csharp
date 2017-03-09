@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -37,11 +37,11 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<DependentPhoneNumberResource>.FromJson("dependent_phone_numbers", response.Content);
             return new ResourceSet<DependentPhoneNumberResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -54,12 +54,12 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<DependentPhoneNumberResource>.FromJson("dependent_phone_numbers", response.Content);
             return new ResourceSet<DependentPhoneNumberResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             var options = new ReadDependentPhoneNumberOptions(pathAddressSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -110,11 +110,11 @@ namespace Twilio.Rest.Api.V2010.Account.Address
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<DependentPhoneNumberResource>.FromJson("dependent_phone_numbers", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a DependentPhoneNumberResource object
         /// </summary>
@@ -133,7 +133,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -191,10 +191,10 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// </summary>
         [JsonProperty("capabilities")]
         public Dictionary<string, string> Capabilities { get; private set; }
-    
+
         private DependentPhoneNumberResource()
         {
-        
+
         }
     }
 

@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchNotificationOptions
         /// </summary>
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             PathCallSid = pathCallSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteNotificationOptions
         /// </summary>
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             PathCallSid = pathCallSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The message_date
         /// </summary>
         public DateTime? MessageDateAfter { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadNotificationOptions
         /// </summary>
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             PathCallSid = pathCallSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             {
                 p.Add(new KeyValuePair<string, string>("Log", Log.Value.ToString()));
             }
-            
+
             if (MessageDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessageDate", MessageDate.Value.ToString("yyyy-MM-dd")));
@@ -146,18 +146,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 {
                     p.Add(new KeyValuePair<string, string>("MessageDate<", MessageDateBefore.Value.ToString("yyyy-MM-dd")));
                 }
-            
+
                 if (MessageDateAfter != null)
                 {
                     p.Add(new KeyValuePair<string, string>("MessageDate>", MessageDateAfter.Value.ToString("yyyy-MM-dd")));
                 }
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

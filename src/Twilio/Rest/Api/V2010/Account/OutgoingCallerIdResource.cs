@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch an outgoing-caller-id belonging to the account used to make the request
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an outgoing-caller-id belonging to the account used to make the request
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch an outgoing-caller-id belonging to the account used to make the request
         /// </summary>
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new FetchOutgoingCallerIdOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an outgoing-caller-id belonging to the account used to make the request
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateOutgoingCallerIdOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Updates the caller-id
         /// </summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Updates the caller-id
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Updates the caller-id
         /// </summary>
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new UpdateOutgoingCallerIdOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Updates the caller-id
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteOutgoingCallerIdOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Delete the caller-id specified from the account
         /// </summary>
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete the caller-id specified from the account
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Delete the caller-id specified from the account
         /// </summary>
@@ -213,7 +213,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new DeleteOutgoingCallerIdOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete the caller-id specified from the account
@@ -229,7 +229,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadOutgoingCallerIdOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
         /// </summary>
@@ -252,11 +252,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<OutgoingCallerIdResource>.FromJson("outgoing_caller_ids", response.Content);
             return new ResourceSet<OutgoingCallerIdResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
@@ -269,12 +269,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<OutgoingCallerIdResource>.FromJson("outgoing_caller_ids", response.Content);
             return new ResourceSet<OutgoingCallerIdResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
         /// </summary>
@@ -291,7 +291,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new ReadOutgoingCallerIdOptions{PathAccountSid = pathAccountSid, PhoneNumber = phoneNumber, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
@@ -310,7 +310,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -327,11 +327,11 @@ namespace Twilio.Rest.Api.V2010.Account
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<OutgoingCallerIdResource>.FromJson("outgoing_caller_ids", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a OutgoingCallerIdResource object
         /// </summary>
@@ -350,7 +350,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// A string that uniquely identifies this outgoing-caller-ids
         /// </summary>
@@ -387,10 +387,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-    
+
         private OutgoingCallerIdResource()
         {
-        
+
         }
     }
 

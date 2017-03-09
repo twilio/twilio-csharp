@@ -18,7 +18,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchUserOptions
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Chat.V1.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteUserOptions
         /// </summary>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Chat.V1.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateUserOptions
         /// </summary>
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Chat.V1.Service
             PathServiceSid = pathServiceSid;
             Identity = identity;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -125,22 +125,22 @@ namespace Twilio.Rest.Chat.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("Identity", Identity));
             }
-            
+
             if (RoleSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
             }
-            
+
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             return p;
         }
     }
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadUserOptions
         /// </summary>
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Chat.V1.Service
         {
             PathServiceSid = pathServiceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Chat.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -205,7 +205,7 @@ namespace Twilio.Rest.Chat.V1.Service
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateUserOptions
         /// </summary>
@@ -217,7 +217,7 @@ namespace Twilio.Rest.Chat.V1.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -228,17 +228,17 @@ namespace Twilio.Rest.Chat.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
             }
-            
+
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             return p;
         }
     }

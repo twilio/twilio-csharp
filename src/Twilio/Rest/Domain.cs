@@ -7,7 +7,8 @@ namespace Twilio.Rest
     {
         private Domain(string value) : base(value) {}
         public Domain() {}
-    
+
+        public static readonly Domain Accounts = new Domain("accounts");
         public static readonly Domain Api = new Domain("api");
         public static readonly Domain Chat = new Domain("ip-messaging");
         public static readonly Domain IpMessaging = new Domain("ip-messaging");

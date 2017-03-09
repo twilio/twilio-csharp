@@ -31,7 +31,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// The start_date
         /// </summary>
         public DateTime? StartDate { get; set; }
-    
+
         /// <summary>
         /// Construct a new FetchTaskQueueStatisticsOptions
         /// </summary>
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             PathWorkspaceSid = pathWorkspaceSid;
             PathTaskQueueSid = pathTaskQueueSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -54,17 +54,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             {
                 p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
-            
+
             if (Minutes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Minutes", Minutes.Value.ToString()));
             }
-            
+
             if (StartDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
-            
+
             return p;
         }
     }

@@ -18,7 +18,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchActivityOptions
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateActivityOptions
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             return p;
         }
     }
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteActivityOptions
         /// </summary>
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The available
         /// </summary>
         public string Available { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadActivityOptions
         /// </summary>
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         {
             PathWorkspaceSid = pathWorkspaceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -160,17 +160,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (Available != null)
             {
                 p.Add(new KeyValuePair<string, string>("Available", Available));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -192,7 +192,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The available
         /// </summary>
         public bool? Available { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateActivityOptions
         /// </summary>
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             FriendlyName = friendlyName;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -215,12 +215,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (Available != null)
             {
                 p.Add(new KeyValuePair<string, string>("Available", Available.Value.ToString()));
             }
-            
+
             return p;
         }
     }

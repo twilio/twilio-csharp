@@ -22,7 +22,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchMessageOptions
         /// </summary>
@@ -36,7 +36,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             PathChannelSid = pathChannelSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -72,7 +72,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// The attributes
         /// </summary>
         public string Attributes { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateMessageOptions
         /// </summary>
@@ -86,7 +86,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             PathChannelSid = pathChannelSid;
             Body = body;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -97,17 +97,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             {
                 p.Add(new KeyValuePair<string, string>("Body", Body));
             }
-            
+
             if (From != null)
             {
                 p.Add(new KeyValuePair<string, string>("From", From));
             }
-            
+
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
-            
+
             return p;
         }
     }
@@ -129,7 +129,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// The order
         /// </summary>
         public MessageResource.OrderTypeEnum Order { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadMessageOptions
         /// </summary>
@@ -141,7 +141,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             PathServiceSid = pathServiceSid;
             PathChannelSid = pathChannelSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -152,12 +152,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             {
                 p.Add(new KeyValuePair<string, string>("Order", Order.ToString()));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -179,7 +179,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteMessageOptions
         /// </summary>
@@ -193,7 +193,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             PathChannelSid = pathChannelSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -229,7 +229,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// The attributes
         /// </summary>
         public string Attributes { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateMessageOptions
         /// </summary>
@@ -243,7 +243,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             PathChannelSid = pathChannelSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -254,12 +254,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
             {
                 p.Add(new KeyValuePair<string, string>("Body", Body));
             }
-            
+
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
-            
+
             return p;
         }
     }

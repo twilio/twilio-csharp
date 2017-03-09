@@ -18,7 +18,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// The worker_sid
         /// </summary>
         public string PathWorkerSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadWorkerChannelOptions
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             PathWorkspaceSid = pathWorkspaceSid;
             PathWorkerSid = pathWorkerSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchWorkerChannelOptions
         /// </summary>
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             PathWorkerSid = pathWorkerSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// The available
         /// </summary>
         public bool? Available { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateWorkerChannelOptions
         /// </summary>
@@ -127,7 +127,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             PathWorkerSid = pathWorkerSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -138,12 +138,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             {
                 p.Add(new KeyValuePair<string, string>("Capacity", Capacity.Value.ToString()));
             }
-            
+
             if (Available != null)
             {
                 p.Add(new KeyValuePair<string, string>("Available", Available.Value.ToString()));
             }
-            
+
             return p;
         }
     }

@@ -14,7 +14,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// The account_sid
         /// </summary>
         public string PathAccountSid { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// The voice_status_callback_method
         /// </summary>
         public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateDomainOptions
         /// </summary>
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         {
             DomainName = domainName;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -96,47 +96,47 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             {
                 p.Add(new KeyValuePair<string, string>("DomainName", DomainName));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (AuthType != null)
             {
                 p.Add(new KeyValuePair<string, string>("AuthType", AuthType));
             }
-            
+
             if (VoiceUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.ToString()));
             }
-            
+
             if (VoiceMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
             }
-            
+
             if (VoiceFallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.ToString()));
             }
-            
+
             if (VoiceFallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
             }
-            
+
             if (VoiceStatusCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", VoiceStatusCallbackUrl.ToString()));
             }
-            
+
             if (VoiceStatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackMethod", VoiceStatusCallbackMethod.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Fetch by unique Domain Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchDomainOptions
         /// </summary>
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -220,7 +220,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// The voice_url
         /// </summary>
         public Uri VoiceUrl { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateDomainOptions
         /// </summary>
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -241,42 +241,42 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             {
                 p.Add(new KeyValuePair<string, string>("AuthType", AuthType));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (VoiceFallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
             }
-            
+
             if (VoiceFallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.ToString()));
             }
-            
+
             if (VoiceMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
             }
-            
+
             if (VoiceStatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackMethod", VoiceStatusCallbackMethod.ToString()));
             }
-            
+
             if (VoiceStatusCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", VoiceStatusCallbackUrl.ToString()));
             }
-            
+
             if (VoiceUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -294,7 +294,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteDomainOptions
         /// </summary>
@@ -304,7 +304,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

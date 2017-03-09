@@ -19,7 +19,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchRoleOptions
         /// </summary>
@@ -31,7 +31,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -55,7 +55,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteRoleOptions
         /// </summary>
@@ -67,7 +67,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -99,7 +99,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// The permission
         /// </summary>
         public List<string> Permission { get; }
-    
+
         /// <summary>
         /// Construct a new CreateRoleOptions
         /// </summary>
@@ -115,7 +115,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             Type = type;
             Permission = permission;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -126,17 +126,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (Type != null)
             {
                 p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
             }
-            
+
             if (Permission != null)
             {
                 p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop)));
             }
-            
+
             return p;
         }
     }
@@ -150,7 +150,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadRoleOptions
         /// </summary>
@@ -160,7 +160,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         {
             PathServiceSid = pathServiceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -171,7 +171,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -193,7 +193,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// The permission
         /// </summary>
         public List<string> Permission { get; }
-    
+
         /// <summary>
         /// Construct a new UpdateRoleOptions
         /// </summary>
@@ -207,7 +207,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             PathSid = pathSid;
             Permission = permission;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -218,7 +218,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             {
                 p.AddRange(Permission.Select(prop => new KeyValuePair<string, string>("Permission", prop)));
             }
-            
+
             return p;
         }
     }

@@ -20,23 +20,23 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             private SourceEnum(string value) : base(value) {}
             public SourceEnum() {}
-        
+
             public static readonly SourceEnum Dialverb = new SourceEnum("DialVerb");
             public static readonly SourceEnum Conference = new SourceEnum("Conference");
             public static readonly SourceEnum Outboundapi = new SourceEnum("OutboundAPI");
             public static readonly SourceEnum Trunking = new SourceEnum("Trunking");
             public static readonly SourceEnum Recordverb = new SourceEnum("RecordVerb");
         }
-    
+
         public sealed class StatusEnum : StringEnum 
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-        
+
             public static readonly StatusEnum Processing = new StatusEnum("processing");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
         }
-    
+
         private static Request BuildFetchRequest(FetchRecordingOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch an instance of a recording
         /// </summary>
@@ -61,7 +61,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of a recording
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch an instance of a recording
         /// </summary>
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new FetchRecordingOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of a recording
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteRecordingOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Delete a recording from your account
         /// </summary>
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete a recording from your account
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Delete a recording from your account
         /// </summary>
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new DeleteRecordingOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete a recording from your account
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadRecordingOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -189,7 +189,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of recordings belonging to the account used to make the request
         /// </summary>
@@ -201,11 +201,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<RecordingResource>.FromJson("recordings", response.Content);
             return new ResourceSet<RecordingResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of recordings belonging to the account used to make the request
@@ -218,12 +218,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<RecordingResource>.FromJson("recordings", response.Content);
             return new ResourceSet<RecordingResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of recordings belonging to the account used to make the request
         /// </summary>
@@ -242,7 +242,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new ReadRecordingOptions{PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of recordings belonging to the account used to make the request
@@ -263,7 +263,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -280,11 +280,11 @@ namespace Twilio.Rest.Api.V2010.Account
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<RecordingResource>.FromJson("recordings", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a RecordingResource object
         /// </summary>
@@ -303,7 +303,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The unique sid that identifies this account
         /// </summary>
@@ -371,10 +371,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-    
+
         private RecordingResource()
         {
-        
+
         }
     }
 

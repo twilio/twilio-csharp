@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The duration in seconds the credentials are valid
         /// </summary>
         public int? Ttl { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -29,7 +29,7 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
-            
+
             return p;
         }
     }

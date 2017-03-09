@@ -20,20 +20,20 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-        
+
             public static readonly StatusEnum Init = new StatusEnum("init");
             public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
         }
-    
+
         public sealed class UpdateStatusEnum : StringEnum 
         {
             private UpdateStatusEnum(string value) : base(value) {}
             public UpdateStatusEnum() {}
-        
+
             public static readonly UpdateStatusEnum Completed = new UpdateStatusEnum("completed");
         }
-    
+
         private static Request BuildFetchRequest(FetchConferenceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch an instance of a conference
         /// </summary>
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of a conference
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch an instance of a conference
         /// </summary>
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new FetchConferenceOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of a conference
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadConferenceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of conferences belonging to the account used to make the request
         /// </summary>
@@ -127,11 +127,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<ConferenceResource>.FromJson("conferences", response.Content);
             return new ResourceSet<ConferenceResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of conferences belonging to the account used to make the request
@@ -144,12 +144,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<ConferenceResource>.FromJson("conferences", response.Content);
             return new ResourceSet<ConferenceResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of conferences belonging to the account used to make the request
         /// </summary>
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new ReadConferenceOptions{PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, DateUpdatedBefore = dateUpdatedBefore, DateUpdated = dateUpdated, DateUpdatedAfter = dateUpdatedAfter, FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of conferences belonging to the account used to make the request
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -214,11 +214,11 @@ namespace Twilio.Rest.Api.V2010.Account
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<ConferenceResource>.FromJson("conferences", response.Content);
         }
-    
+
         private static Request BuildUpdateRequest(UpdateConferenceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -229,7 +229,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -259,7 +259,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -274,7 +274,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new UpdateConferenceOptions(pathSid){PathAccountSid = pathAccountSid, Status = status};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -291,7 +291,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a ConferenceResource object
         /// </summary>
@@ -310,7 +310,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The unique sid that identifies this account
         /// </summary>
@@ -362,10 +362,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
-    
+
         private ConferenceResource()
         {
-        
+
         }
     }
 

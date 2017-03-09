@@ -46,7 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The emergency_enabled
         /// </summary>
         public bool? EmergencyEnabled { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateAddressOptions
         /// </summary>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account
             PostalCode = postalCode;
             IsoCountry = isoCountry;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -77,42 +77,42 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("CustomerName", CustomerName));
             }
-            
+
             if (Street != null)
             {
                 p.Add(new KeyValuePair<string, string>("Street", Street));
             }
-            
+
             if (City != null)
             {
                 p.Add(new KeyValuePair<string, string>("City", City));
             }
-            
+
             if (Region != null)
             {
                 p.Add(new KeyValuePair<string, string>("Region", Region));
             }
-            
+
             if (PostalCode != null)
             {
                 p.Add(new KeyValuePair<string, string>("PostalCode", PostalCode));
             }
-            
+
             if (IsoCountry != null)
             {
                 p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry.ToString()));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (EmergencyEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteAddressOptions
         /// </summary>
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchAddressOptions
         /// </summary>
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The emergency_enabled
         /// </summary>
         public bool? EmergencyEnabled { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateAddressOptions
         /// </summary>
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -247,37 +247,37 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (CustomerName != null)
             {
                 p.Add(new KeyValuePair<string, string>("CustomerName", CustomerName));
             }
-            
+
             if (Street != null)
             {
                 p.Add(new KeyValuePair<string, string>("Street", Street));
             }
-            
+
             if (City != null)
             {
                 p.Add(new KeyValuePair<string, string>("City", City));
             }
-            
+
             if (Region != null)
             {
                 p.Add(new KeyValuePair<string, string>("Region", Region));
             }
-            
+
             if (PostalCode != null)
             {
                 p.Add(new KeyValuePair<string, string>("PostalCode", PostalCode));
             }
-            
+
             if (EmergencyEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -303,7 +303,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The iso_country
         /// </summary>
         public string IsoCountry { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -314,22 +314,22 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("CustomerName", CustomerName));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (IsoCountry != null)
             {
                 p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry.ToString()));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

@@ -25,7 +25,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -37,11 +37,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<WorkerResource>.FromJson("workers", response.Content);
             return new ResourceSet<WorkerResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -54,12 +54,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<WorkerResource>.FromJson("workers", response.Content);
             return new ResourceSet<WorkerResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var options = new ReadWorkerOptions(pathWorkspaceSid){ActivityName = activityName, ActivitySid = activitySid, Available = available, FriendlyName = friendlyName, TargetWorkersExpression = targetWorkersExpression, TaskQueueName = taskQueueName, TaskQueueSid = taskQueueSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -122,11 +122,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<WorkerResource>.FromJson("workers", response.Content);
         }
-    
+
         private static Request BuildCreateRequest(CreateWorkerOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var options = new CreateWorkerOptions(pathWorkspaceSid, friendlyName){ActivitySid = activitySid, Attributes = attributes};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -201,7 +201,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchWorkerOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -242,7 +242,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -256,7 +256,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var options = new FetchWorkerOptions(pathWorkspaceSid, pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -272,7 +272,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateWorkerOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -283,7 +283,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -297,7 +297,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -330,7 +330,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -349,7 +349,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteWorkerOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -360,7 +360,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -374,7 +374,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -390,7 +390,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -404,7 +404,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var options = new DeleteWorkerOptions(pathWorkspaceSid, pathSid);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -420,7 +420,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a WorkerResource object
         /// </summary>
@@ -439,7 +439,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -505,10 +505,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
-    
+
         private WorkerResource()
         {
-        
+
         }
     }
 

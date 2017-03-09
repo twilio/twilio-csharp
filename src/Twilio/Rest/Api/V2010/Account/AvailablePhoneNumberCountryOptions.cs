@@ -14,7 +14,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The account_sid
         /// </summary>
         public string PathAccountSid { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The country_code
         /// </summary>
         public string PathCountryCode { get; }
-    
+
         /// <summary>
         /// Construct a new FetchAvailablePhoneNumberCountryOptions
         /// </summary>
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathCountryCode = pathCountryCode;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

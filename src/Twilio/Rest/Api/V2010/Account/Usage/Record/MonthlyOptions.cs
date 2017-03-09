@@ -27,7 +27,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// The end_date
         /// </summary>
         public DateTime? EndDate { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -38,22 +38,22 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             {
                 p.Add(new KeyValuePair<string, string>("Category", Category.ToString()));
             }
-            
+
             if (StartDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
             }
-            
+
             if (EndDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

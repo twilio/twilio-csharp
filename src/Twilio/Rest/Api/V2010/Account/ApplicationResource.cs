@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Create a new application within your account
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create a new application within your account
@@ -55,12 +55,12 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Create a new application within your account
         /// </summary>
         ///
-        /// <param name="friendlyName"> Human readable description of this resource </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="apiVersion"> The API version to use </param>
         /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
@@ -83,13 +83,13 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new CreateApplicationOptions(friendlyName){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create a new application within your account
         /// </summary>
         ///
-        /// <param name="friendlyName"> Human readable description of this resource </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="apiVersion"> The API version to use </param>
         /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteApplicationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Delete the application by the specified application sid
         /// </summary>
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete the application by the specified application sid
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Delete the application by the specified application sid
         /// </summary>
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new DeleteApplicationOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete the application by the specified application sid
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchApplicationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch the application specified by the provided sid
         /// </summary>
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch the application specified by the provided sid
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the application specified by the provided sid
         /// </summary>
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new FetchApplicationOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch the application specified by the provided sid
@@ -255,7 +255,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadApplicationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of applications representing an application within the requesting account
         /// </summary>
@@ -278,11 +278,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<ApplicationResource>.FromJson("applications", response.Content);
             return new ResourceSet<ApplicationResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of applications representing an application within the requesting account
@@ -295,12 +295,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<ApplicationResource>.FromJson("applications", response.Content);
             return new ResourceSet<ApplicationResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of applications representing an application within the requesting account
         /// </summary>
@@ -316,7 +316,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new ReadApplicationOptions{PathAccountSid = pathAccountSid, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of applications representing an application within the requesting account
@@ -334,7 +334,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -351,11 +351,11 @@ namespace Twilio.Rest.Api.V2010.Account
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<ApplicationResource>.FromJson("applications", response.Content);
         }
-    
+
         private static Request BuildUpdateRequest(UpdateApplicationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -366,7 +366,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Updates the application's properties
         /// </summary>
@@ -380,7 +380,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Updates the application's properties
@@ -396,7 +396,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Updates the application's properties
         /// </summary>
@@ -425,7 +425,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new UpdateApplicationOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Updates the application's properties
@@ -456,7 +456,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a ApplicationResource object
         /// </summary>
@@ -475,7 +475,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// A string that uniquely identifies this resource
         /// </summary>
@@ -581,10 +581,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
-    
+
         private ApplicationResource()
         {
-        
+
         }
     }
 

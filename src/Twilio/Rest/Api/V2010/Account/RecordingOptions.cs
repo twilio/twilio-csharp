@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch by unique recording Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchRecordingOptions
         /// </summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Delete by unique recording Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteRecordingOptions
         /// </summary>
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Filter by call_sid
         /// </summary>
         public string CallSid { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -115,23 +115,23 @@ namespace Twilio.Rest.Api.V2010.Account
                 {
                     p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
-            
+
                 if (DateCreatedAfter != null)
                 {
                     p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             }
-            
+
             if (CallSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallSid", CallSid.ToString()));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

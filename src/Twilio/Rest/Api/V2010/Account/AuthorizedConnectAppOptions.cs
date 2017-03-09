@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The connect_app_sid
         /// </summary>
         public string PathConnectAppSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchAuthorizedConnectAppOptions
         /// </summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathConnectAppSid = pathConnectAppSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The account_sid
         /// </summary>
         public string PathAccountSid { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -59,7 +59,7 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

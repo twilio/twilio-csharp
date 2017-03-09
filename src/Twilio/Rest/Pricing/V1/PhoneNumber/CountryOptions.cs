@@ -20,7 +20,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         /// The iso_country
         /// </summary>
         public string PathIsoCountry { get; }
-    
+
         /// <summary>
         /// Construct a new FetchCountryOptions
         /// </summary>
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         {
             PathIsoCountry = pathIsoCountry;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

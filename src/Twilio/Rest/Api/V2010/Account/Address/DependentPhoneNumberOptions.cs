@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// The address_sid
         /// </summary>
         public string PathAddressSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadDependentPhoneNumberOptions
         /// </summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         {
             PathAddressSid = pathAddressSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

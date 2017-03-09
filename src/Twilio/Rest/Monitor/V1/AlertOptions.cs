@@ -15,7 +15,7 @@ namespace Twilio.Rest.Monitor.V1
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchAlertOptions
         /// </summary>
@@ -25,7 +25,7 @@ namespace Twilio.Rest.Monitor.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Monitor.V1
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteAlertOptions
         /// </summary>
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Monitor.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Monitor.V1
         /// The end_date
         /// </summary>
         public DateTime? EndDate { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -94,22 +94,22 @@ namespace Twilio.Rest.Monitor.V1
             {
                 p.Add(new KeyValuePair<string, string>("LogLevel", LogLevel));
             }
-            
+
             if (StartDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
             }
-            
+
             if (EndDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

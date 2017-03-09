@@ -19,7 +19,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchChannelOptions
         /// </summary>
@@ -31,7 +31,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -55,7 +55,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteChannelOptions
         /// </summary>
@@ -67,7 +67,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -103,7 +103,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// The type
         /// </summary>
         public ChannelResource.ChannelTypeEnum Type { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateChannelOptions
         /// </summary>
@@ -113,7 +113,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         {
             PathServiceSid = pathServiceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -124,22 +124,22 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
-            
+
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
-            
+
             if (Type != null)
             {
                 p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -157,7 +157,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// The type
         /// </summary>
         public List<ChannelResource.ChannelTypeEnum> Type { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadChannelOptions
         /// </summary>
@@ -168,7 +168,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             PathServiceSid = pathServiceSid;
             Type = new List<ChannelResource.ChannelTypeEnum>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -179,12 +179,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             {
                 p.AddRange(Type.Select(prop => new KeyValuePair<string, string>("Type", prop.ToString())));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -214,7 +214,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// The attributes
         /// </summary>
         public string Attributes { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateChannelOptions
         /// </summary>
@@ -226,7 +226,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -237,17 +237,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
-            
+
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
-            
+
             return p;
         }
     }

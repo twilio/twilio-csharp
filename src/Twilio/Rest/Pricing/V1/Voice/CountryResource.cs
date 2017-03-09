@@ -26,7 +26,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -38,11 +38,11 @@ namespace Twilio.Rest.Pricing.V1.Voice
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<CountryResource>.FromJson("countries", response.Content);
             return new ResourceSet<CountryResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -55,12 +55,12 @@ namespace Twilio.Rest.Pricing.V1.Voice
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<CountryResource>.FromJson("countries", response.Content);
             return new ResourceSet<CountryResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             var options = new ReadCountryOptions{PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -107,11 +107,11 @@ namespace Twilio.Rest.Pricing.V1.Voice
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<CountryResource>.FromJson("countries", response.Content);
         }
-    
+
         private static Request BuildFetchRequest(FetchCountryOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             var options = new FetchCountryOptions(pathIsoCountry);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a CountryResource object
         /// </summary>
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The country
         /// </summary>
@@ -230,10 +230,10 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private CountryResource()
         {
-        
+
         }
     }
 

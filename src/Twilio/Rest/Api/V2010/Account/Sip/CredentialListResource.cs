@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of Credentials belonging to the account used to make the request
         /// </summary>
@@ -37,11 +37,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<CredentialListResource>.FromJson("credential_lists", response.Content);
             return new ResourceSet<CredentialListResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of Credentials belonging to the account used to make the request
@@ -54,12 +54,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<CredentialListResource>.FromJson("credential_lists", response.Content);
             return new ResourceSet<CredentialListResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of Credentials belonging to the account used to make the request
         /// </summary>
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var options = new ReadCredentialListOptions{PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of Credentials belonging to the account used to make the request
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -108,11 +108,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<CredentialListResource>.FromJson("credential_lists", response.Content);
         }
-    
+
         private static Request BuildCreateRequest(CreateCredentialListOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Add a Credential to the list
         /// </summary>
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Add a Credential to the list
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Add a Credential to the list
         /// </summary>
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var options = new CreateCredentialListOptions(friendlyName){PathAccountSid = pathAccountSid};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Add a Credential to the list
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchCredentialListOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -194,7 +194,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a specific Credential in a list
         /// </summary>
@@ -208,7 +208,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a specific Credential in a list
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a specific Credential in a list
         /// </summary>
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var options = new FetchCredentialListOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a specific Credential in a list
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateCredentialListOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -265,7 +265,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Change the password of a Credential record
         /// </summary>
@@ -279,7 +279,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Change the password of a Credential record
@@ -295,7 +295,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Change the password of a Credential record
         /// </summary>
@@ -310,7 +310,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var options = new UpdateCredentialListOptions(pathSid, friendlyName){PathAccountSid = pathAccountSid};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Change the password of a Credential record
@@ -327,7 +327,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteCredentialListOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -338,7 +338,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Remove a credential from a CredentialList
         /// </summary>
@@ -352,7 +352,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Remove a credential from a CredentialList
@@ -368,7 +368,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Remove a credential from a CredentialList
         /// </summary>
@@ -382,7 +382,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             var options = new DeleteCredentialListOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Remove a credential from a CredentialList
@@ -398,7 +398,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a CredentialListResource object
         /// </summary>
@@ -417,7 +417,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The unique sid that identifies this account
         /// </summary>
@@ -453,10 +453,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-    
+
         private CredentialListResource()
         {
-        
+
         }
     }
 

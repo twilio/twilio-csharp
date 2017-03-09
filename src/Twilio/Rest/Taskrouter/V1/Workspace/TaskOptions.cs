@@ -19,7 +19,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchTaskOptions
         /// </summary>
@@ -31,7 +31,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The task_channel
         /// </summary>
         public string TaskChannel { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateTaskOptions
         /// </summary>
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -98,27 +98,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
-            
+
             if (AssignmentStatus != null)
             {
                 p.Add(new KeyValuePair<string, string>("AssignmentStatus", AssignmentStatus.ToString()));
             }
-            
+
             if (Reason != null)
             {
                 p.Add(new KeyValuePair<string, string>("Reason", Reason));
             }
-            
+
             if (Priority != null)
             {
                 p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
             }
-            
+
             if (TaskChannel != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
             }
-            
+
             return p;
         }
     }
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteTaskOptions
         /// </summary>
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The has_addons
         /// </summary>
         public bool? HasAddons { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadTaskOptions
         /// </summary>
@@ -215,7 +215,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             AssignmentStatus = new List<string>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -226,52 +226,52 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
             }
-            
+
             if (AssignmentStatus != null)
             {
                 p.AddRange(AssignmentStatus.Select(prop => new KeyValuePair<string, string>("AssignmentStatus", prop)));
             }
-            
+
             if (WorkflowSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("WorkflowSid", WorkflowSid.ToString()));
             }
-            
+
             if (WorkflowName != null)
             {
                 p.Add(new KeyValuePair<string, string>("WorkflowName", WorkflowName));
             }
-            
+
             if (TaskQueueSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskQueueSid", TaskQueueSid.ToString()));
             }
-            
+
             if (TaskQueueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskQueueName", TaskQueueName));
             }
-            
+
             if (EvaluateTaskAttributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("EvaluateTaskAttributes", EvaluateTaskAttributes));
             }
-            
+
             if (Ordering != null)
             {
                 p.Add(new KeyValuePair<string, string>("Ordering", Ordering));
             }
-            
+
             if (HasAddons != null)
             {
                 p.Add(new KeyValuePair<string, string>("HasAddons", HasAddons.Value.ToString()));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The attributes
         /// </summary>
         public string Attributes { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateTaskOptions
         /// </summary>
@@ -315,7 +315,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         {
             PathWorkspaceSid = pathWorkspaceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -326,27 +326,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("Timeout", Timeout.Value.ToString()));
             }
-            
+
             if (Priority != null)
             {
                 p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
             }
-            
+
             if (TaskChannel != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
             }
-            
+
             if (WorkflowSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("WorkflowSid", WorkflowSid.ToString()));
             }
-            
+
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
-            
+
             return p;
         }
     }

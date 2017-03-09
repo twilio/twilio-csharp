@@ -42,7 +42,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The task_queue_sid
         /// </summary>
         public string TaskQueueSid { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadWorkerOptions
         /// </summary>
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         {
             PathWorkspaceSid = pathWorkspaceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -63,42 +63,42 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("ActivityName", ActivityName));
             }
-            
+
             if (ActivitySid != null)
             {
                 p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid.ToString()));
             }
-            
+
             if (Available != null)
             {
                 p.Add(new KeyValuePair<string, string>("Available", Available));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (TargetWorkersExpression != null)
             {
                 p.Add(new KeyValuePair<string, string>("TargetWorkersExpression", TargetWorkersExpression));
             }
-            
+
             if (TaskQueueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskQueueName", TaskQueueName));
             }
-            
+
             if (TaskQueueSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskQueueSid", TaskQueueSid.ToString()));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The attributes
         /// </summary>
         public string Attributes { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateWorkerOptions
         /// </summary>
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             FriendlyName = friendlyName;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -147,17 +147,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (ActivitySid != null)
             {
                 p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid.ToString()));
             }
-            
+
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
-            
+
             return p;
         }
     }
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchWorkerOptions
         /// </summary>
@@ -187,7 +187,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateWorkerOptions
         /// </summary>
@@ -235,7 +235,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -246,17 +246,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("ActivitySid", ActivitySid.ToString()));
             }
-            
+
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             return p;
         }
     }
@@ -274,7 +274,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteWorkerOptions
         /// </summary>
@@ -286,7 +286,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

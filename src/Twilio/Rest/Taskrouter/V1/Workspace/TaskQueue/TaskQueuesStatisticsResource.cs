@@ -25,7 +25,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -37,11 +37,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<TaskQueuesStatisticsResource>.FromJson("task_queues_statistics", response.Content);
             return new ResourceSet<TaskQueuesStatisticsResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -54,12 +54,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<TaskQueuesStatisticsResource>.FromJson("task_queues_statistics", response.Content);
             return new ResourceSet<TaskQueuesStatisticsResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             var options = new ReadTaskQueuesStatisticsOptions(pathWorkspaceSid){EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -116,11 +116,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<TaskQueuesStatisticsResource>.FromJson("task_queues_statistics", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a TaskQueuesStatisticsResource object
         /// </summary>
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -165,10 +165,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
-    
+
         private TaskQueuesStatisticsResource()
         {
-        
+
         }
     }
 

@@ -19,7 +19,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch by unique connect-app Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchConnectAppOptions
         /// </summary>
@@ -29,7 +29,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The set of permissions that your ConnectApp requests.
         /// </summary>
         public List<ConnectAppResource.PermissionEnum> Permissions { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateConnectAppOptions
         /// </summary>
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Api.V2010.Account
             PathSid = pathSid;
             Permissions = new List<ConnectAppResource.PermissionEnum>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -107,42 +107,42 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("AuthorizeRedirectUrl", AuthorizeRedirectUrl.ToString()));
             }
-            
+
             if (CompanyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("CompanyName", CompanyName));
             }
-            
+
             if (DeauthorizeCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("DeauthorizeCallbackMethod", DeauthorizeCallbackMethod.ToString()));
             }
-            
+
             if (DeauthorizeCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("DeauthorizeCallbackUrl", DeauthorizeCallbackUrl.ToString()));
             }
-            
+
             if (Description != null)
             {
                 p.Add(new KeyValuePair<string, string>("Description", Description));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (HomepageUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("HomepageUrl", HomepageUrl.ToString()));
             }
-            
+
             if (Permissions != null)
             {
                 p.AddRange(Permissions.Select(prop => new KeyValuePair<string, string>("Permissions", prop.ToString())));
             }
-            
+
             return p;
         }
     }
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The account_sid
         /// </summary>
         public string PathAccountSid { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

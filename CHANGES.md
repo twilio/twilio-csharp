@@ -1,6 +1,13 @@
 twilio-csharp Changelog
 =======================
 
+[2017-03-09] Version 5.1.0
+--------------------------
+ - Fix bug with reading `AvailablePhoneNumbers`
+ - Add `accounts.twilio.com` subdomain
+    - Add `PublicKeyResource`
+ - Remove `SandboxResource`
+
 
 [2017-02-24] Version 5.0.2
 --------------------------

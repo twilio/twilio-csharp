@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch an instance of a result payload
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of a result payload
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch an instance of a result payload
         /// </summary>
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             var options = new FetchPayloadOptions(pathReferenceSid, pathAddOnResultSid, pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of a result payload
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadPayloadOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of payloads belonging to the Add-on result
         /// </summary>
@@ -112,11 +112,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<PayloadResource>.FromJson("payloads", response.Content);
             return new ResourceSet<PayloadResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of payloads belonging to the Add-on result
@@ -129,12 +129,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<PayloadResource>.FromJson("payloads", response.Content);
             return new ResourceSet<PayloadResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of payloads belonging to the Add-on result
         /// </summary>
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             var options = new ReadPayloadOptions(pathReferenceSid, pathAddOnResultSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of payloads belonging to the Add-on result
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -187,11 +187,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<PayloadResource>.FromJson("payloads", response.Content);
         }
-    
+
         private static Request BuildDeleteRequest(DeletePayloadOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -202,7 +202,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Delete a payload from the result along with all associated Data
         /// </summary>
@@ -216,7 +216,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete a payload from the result along with all associated Data
@@ -232,7 +232,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Delete a payload from the result along with all associated Data
         /// </summary>
@@ -248,7 +248,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             var options = new DeletePayloadOptions(pathReferenceSid, pathAddOnResultSid, pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete a payload from the result along with all associated Data
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a PayloadResource object
         /// </summary>
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// A string that uniquely identifies this payload
         /// </summary>
@@ -341,10 +341,10 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
-    
+
         private PayloadResource()
         {
-        
+
         }
     }
 

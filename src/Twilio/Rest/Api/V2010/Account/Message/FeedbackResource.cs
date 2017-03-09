@@ -20,11 +20,11 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         {
             private OutcomeEnum(string value) : base(value) {}
             public OutcomeEnum() {}
-        
+
             public static readonly OutcomeEnum Confirmed = new OutcomeEnum("confirmed");
             public static readonly OutcomeEnum Umconfirmed = new OutcomeEnum("umconfirmed");
         }
-    
+
         private static Request BuildCreateRequest(CreateFeedbackOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var options = new CreateFeedbackOptions(pathMessageSid){PathAccountSid = pathAccountSid, Outcome = outcome};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a FeedbackResource object
         /// </summary>
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -148,10 +148,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-    
+
         private FeedbackResource()
         {
-        
+
         }
     }
 

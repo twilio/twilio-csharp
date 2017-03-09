@@ -51,7 +51,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The provide_feedback
         /// </summary>
         public bool? ProvideFeedback { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateMessageOptions
         /// </summary>
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account
             To = to;
             MediaUrl = new List<Uri>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -73,47 +73,47 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("To", To.ToString()));
             }
-            
+
             if (From != null)
             {
                 p.Add(new KeyValuePair<string, string>("From", From.ToString()));
             }
-            
+
             if (MessagingServiceSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
             }
-            
+
             if (Body != null)
             {
                 p.Add(new KeyValuePair<string, string>("Body", Body));
             }
-            
+
             if (MediaUrl != null)
             {
                 p.AddRange(MediaUrl.Select(prop => new KeyValuePair<string, string>("MediaUrl", prop.ToString())));
             }
-            
+
             if (StatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
             }
-            
+
             if (ApplicationSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApplicationSid", ApplicationSid.ToString()));
             }
-            
+
             if (MaxPrice != null)
             {
                 p.Add(new KeyValuePair<string, string>("MaxPrice", MaxPrice.Value.ToString()));
             }
-            
+
             if (ProvideFeedback != null)
             {
                 p.Add(new KeyValuePair<string, string>("ProvideFeedback", ProvideFeedback.Value.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The message to delete
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteMessageOptions
         /// </summary>
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch by unique message Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchMessageOptions
         /// </summary>
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -215,7 +215,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Filter by date sent
         /// </summary>
         public DateTime? DateSentAfter { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -226,12 +226,12 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("To", To.ToString()));
             }
-            
+
             if (From != null)
             {
                 p.Add(new KeyValuePair<string, string>("From", From.ToString()));
             }
-            
+
             if (DateSent != null)
             {
                 p.Add(new KeyValuePair<string, string>("DateSent", DateSent.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
@@ -242,18 +242,18 @@ namespace Twilio.Rest.Api.V2010.Account
                 {
                     p.Add(new KeyValuePair<string, string>("DateSent<", DateSentBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
-            
+
                 if (DateSentAfter != null)
                 {
                     p.Add(new KeyValuePair<string, string>("DateSent>", DateSentAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -275,7 +275,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The body
         /// </summary>
         public string Body { get; }
-    
+
         /// <summary>
         /// Construct a new UpdateMessageOptions
         /// </summary>
@@ -287,7 +287,7 @@ namespace Twilio.Rest.Api.V2010.Account
             PathSid = pathSid;
             Body = body;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -298,7 +298,7 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("Body", Body));
             }
-            
+
             return p;
         }
     }

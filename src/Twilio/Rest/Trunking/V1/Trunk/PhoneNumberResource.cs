@@ -20,13 +20,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             private AddressRequirementEnum(string value) : base(value) {}
             public AddressRequirementEnum() {}
-        
+
             public static readonly AddressRequirementEnum None = new AddressRequirementEnum("none");
             public static readonly AddressRequirementEnum Any = new AddressRequirementEnum("any");
             public static readonly AddressRequirementEnum Local = new AddressRequirementEnum("local");
             public static readonly AddressRequirementEnum Foreign = new AddressRequirementEnum("foreign");
         }
-    
+
         private static Request BuildFetchRequest(FetchPhoneNumberOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var options = new FetchPhoneNumberOptions(pathTrunkSid, pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeletePhoneNumberOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var options = new DeletePhoneNumberOptions(pathTrunkSid, pathSid);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildCreateRequest(CreatePhoneNumberOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var options = new CreatePhoneNumberOptions(pathTrunkSid, phoneNumberSid);
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadPhoneNumberOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -250,7 +250,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -262,11 +262,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<PhoneNumberResource>.FromJson("phone_numbers", response.Content);
             return new ResourceSet<PhoneNumberResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -279,12 +279,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<PhoneNumberResource>.FromJson("phone_numbers", response.Content);
             return new ResourceSet<PhoneNumberResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -299,7 +299,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var options = new ReadPhoneNumberOptions(pathTrunkSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -316,7 +316,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -333,11 +333,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<PhoneNumberResource>.FromJson("phone_numbers", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a PhoneNumberResource object
         /// </summary>
@@ -356,7 +356,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -494,10 +494,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
-    
+
         private PhoneNumberResource()
         {
-        
+
         }
     }
 

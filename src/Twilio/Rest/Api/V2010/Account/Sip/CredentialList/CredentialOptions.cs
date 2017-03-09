@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// The credential_list_sid
         /// </summary>
         public string PathCredentialListSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadCredentialOptions
         /// </summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         {
             PathCredentialListSid = pathCredentialListSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// The password
         /// </summary>
         public string Password { get; }
-    
+
         /// <summary>
         /// Construct a new CreateCredentialOptions
         /// </summary>
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             Username = username;
             Password = password;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -90,12 +90,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             {
                 p.Add(new KeyValuePair<string, string>("Username", Username));
             }
-            
+
             if (Password != null)
             {
                 p.Add(new KeyValuePair<string, string>("Password", Password));
             }
-            
+
             return p;
         }
     }
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchCredentialOptions
         /// </summary>
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             PathCredentialListSid = pathCredentialListSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -161,7 +161,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// The password
         /// </summary>
         public string Password { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateCredentialOptions
         /// </summary>
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             PathCredentialListSid = pathCredentialListSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             {
                 p.Add(new KeyValuePair<string, string>("Password", Password));
             }
-            
+
             return p;
         }
     }
@@ -206,7 +206,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteCredentialOptions
         /// </summary>
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
             PathCredentialListSid = pathCredentialListSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

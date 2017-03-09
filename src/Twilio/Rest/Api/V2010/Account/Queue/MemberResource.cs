@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch a specific members of the queue
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch a specific members of the queue
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch a specific members of the queue
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var options = new FetchMemberOptions(pathQueueSid, pathCallSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch a specific members of the queue
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateMemberOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
         /// </summary>
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
         /// </summary>
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var options = new UpdateMemberOptions(pathQueueSid, pathCallSid, url, method){PathAccountSid = pathAccountSid};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadMemberOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of members in the queue
         /// </summary>
@@ -187,11 +187,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<MemberResource>.FromJson("queue_members", response.Content);
             return new ResourceSet<MemberResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of members in the queue
@@ -204,12 +204,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<MemberResource>.FromJson("queue_members", response.Content);
             return new ResourceSet<MemberResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of members in the queue
         /// </summary>
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var options = new ReadMemberOptions(pathQueueSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of members in the queue
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -260,11 +260,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<MemberResource>.FromJson("queue_members", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a MemberResource object
         /// </summary>
@@ -283,7 +283,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// Unique string that identifies this resource
         /// </summary>
@@ -309,10 +309,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         [JsonProperty("wait_time")]
         public int? WaitTime { get; private set; }
-    
+
         private MemberResource()
         {
-        
+
         }
     }
 

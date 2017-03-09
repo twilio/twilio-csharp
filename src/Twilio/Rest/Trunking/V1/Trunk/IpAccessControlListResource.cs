@@ -25,7 +25,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var options = new FetchIpAccessControlListOptions(pathTrunkSid, pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteIpAccessControlListOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var options = new DeleteIpAccessControlListOptions(pathTrunkSid, pathSid);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildCreateRequest(CreateIpAccessControlListOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var options = new CreateIpAccessControlListOptions(pathTrunkSid, ipAccessControlListSid);
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadIpAccessControlListOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -250,11 +250,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<IpAccessControlListResource>.FromJson("ip_access_control_lists", response.Content);
             return new ResourceSet<IpAccessControlListResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -267,12 +267,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<IpAccessControlListResource>.FromJson("ip_access_control_lists", response.Content);
             return new ResourceSet<IpAccessControlListResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -287,7 +287,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var options = new ReadIpAccessControlListOptions(pathTrunkSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -304,7 +304,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -321,11 +321,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<IpAccessControlListResource>.FromJson("ip_access_control_lists", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a IpAccessControlListResource object
         /// </summary>
@@ -344,7 +344,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -380,10 +380,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private IpAccessControlListResource()
         {
-        
+
         }
     }
 

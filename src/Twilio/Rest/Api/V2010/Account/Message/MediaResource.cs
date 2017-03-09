@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Delete media from your account. Once delete, you will no longer be billed
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete media from your account. Once delete, you will no longer be billed
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Delete media from your account. Once delete, you will no longer be billed
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var options = new DeleteMediaOptions(pathMessageSid, pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete media from your account. Once delete, you will no longer be billed
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchMediaOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch a single media instance belonging to the account used to make the request
         /// </summary>
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch a single media instance belonging to the account used to make the request
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch a single media instance belonging to the account used to make the request
         /// </summary>
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var options = new FetchMediaOptions(pathMessageSid, pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch a single media instance belonging to the account used to make the request
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadMediaOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of medias belonging to the account used to make the request
         /// </summary>
@@ -183,11 +183,11 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<MediaResource>.FromJson("media_list", response.Content);
             return new ResourceSet<MediaResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of medias belonging to the account used to make the request
@@ -200,12 +200,12 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<MediaResource>.FromJson("media_list", response.Content);
             return new ResourceSet<MediaResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of medias belonging to the account used to make the request
         /// </summary>
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var options = new ReadMediaOptions(pathMessageSid){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of medias belonging to the account used to make the request
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -262,11 +262,11 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<MediaResource>.FromJson("media_list", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a MediaResource object
         /// </summary>
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The unique sid that identifies this account
         /// </summary>
@@ -321,10 +321,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-    
+
         private MediaResource()
         {
-        
+
         }
     }
 

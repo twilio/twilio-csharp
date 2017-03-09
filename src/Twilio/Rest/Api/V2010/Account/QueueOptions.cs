@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch by unique queue Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchQueueOptions
         /// </summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The max number of members allowed in the queue
         /// </summary>
         public int? MaxSize { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateQueueOptions
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -81,12 +81,12 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (MaxSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("MaxSize", MaxSize.Value.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Delete by unique queue Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteQueueOptions
         /// </summary>
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The account_sid
         /// </summary>
         public string PathAccountSid { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The max number of calls allowed in the queue
         /// </summary>
         public int? MaxSize { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateQueueOptions
         /// </summary>
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             FriendlyName = friendlyName;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -188,12 +188,12 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (MaxSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("MaxSize", MaxSize.Value.ToString()));
             }
-            
+
             return p;
         }
     }

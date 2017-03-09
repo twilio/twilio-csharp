@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// Fetch by unique usage-trigger Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchTriggerOptions
         /// </summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// A user-specified, human-readable name for the trigger.
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateTriggerOptions
         /// </summary>
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -85,17 +85,17 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             {
                 p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
             }
-            
+
             if (CallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.ToString()));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             return p;
         }
     }
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteTriggerOptions
         /// </summary>
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// The field in the UsageRecord that fires the trigger
         /// </summary>
         public TriggerResource.TriggerFieldEnum TriggerBy { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateTriggerOptions
         /// </summary>
@@ -185,7 +185,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             TriggerValue = triggerValue;
             UsageCategory = usageCategory;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -196,37 +196,37 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             {
                 p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.ToString()));
             }
-            
+
             if (TriggerValue != null)
             {
                 p.Add(new KeyValuePair<string, string>("TriggerValue", TriggerValue));
             }
-            
+
             if (UsageCategory != null)
             {
                 p.Add(new KeyValuePair<string, string>("UsageCategory", UsageCategory.ToString()));
             }
-            
+
             if (CallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (Recurring != null)
             {
                 p.Add(new KeyValuePair<string, string>("Recurring", Recurring.ToString()));
             }
-            
+
             if (TriggerBy != null)
             {
                 p.Add(new KeyValuePair<string, string>("TriggerBy", TriggerBy.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// Filter by Usage Category
         /// </summary>
         public TriggerResource.UsageCategoryEnum UsageCategory { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -263,22 +263,22 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             {
                 p.Add(new KeyValuePair<string, string>("Recurring", Recurring.ToString()));
             }
-            
+
             if (TriggerBy != null)
             {
                 p.Add(new KeyValuePair<string, string>("TriggerBy", TriggerBy.ToString()));
             }
-            
+
             if (UsageCategory != null)
             {
                 p.Add(new KeyValuePair<string, string>("UsageCategory", UsageCategory.ToString()));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

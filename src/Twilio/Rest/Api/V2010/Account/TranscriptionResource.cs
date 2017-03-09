@@ -20,12 +20,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-        
+
             public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
             public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
-    
+
         private static Request BuildFetchRequest(FetchTranscriptionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch and instance of a Transcription
         /// </summary>
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch and instance of a Transcription
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch and instance of a Transcription
         /// </summary>
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new FetchTranscriptionOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch and instance of a Transcription
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteTranscriptionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Delete a transcription from the account used to make the request
         /// </summary>
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete a transcription from the account used to make the request
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Delete a transcription from the account used to make the request
         /// </summary>
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new DeleteTranscriptionOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete a transcription from the account used to make the request
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadTranscriptionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of transcriptions belonging to the account used to make the request
         /// </summary>
@@ -190,11 +190,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
             return new ResourceSet<TranscriptionResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of transcriptions belonging to the account used to make the request
@@ -207,12 +207,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
             return new ResourceSet<TranscriptionResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of transcriptions belonging to the account used to make the request
         /// </summary>
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new ReadTranscriptionOptions{PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of transcriptions belonging to the account used to make the request
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -261,11 +261,11 @@ namespace Twilio.Rest.Api.V2010.Account
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a TranscriptionResource object
         /// </summary>
@@ -284,7 +284,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The unique sid that identifies this account
         /// </summary>
@@ -351,10 +351,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-    
+
         private TranscriptionResource()
         {
-        
+
         }
     }
 

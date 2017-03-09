@@ -18,7 +18,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// The user_sid
         /// </summary>
         public string PathUserSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadUserChannelOptions
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
             PathServiceSid = pathServiceSid;
             PathUserSid = pathUserSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -41,7 +41,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

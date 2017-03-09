@@ -25,7 +25,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -37,11 +37,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<WorkerChannelResource>.FromJson("channels", response.Content);
             return new ResourceSet<WorkerChannelResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -54,12 +54,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<WorkerChannelResource>.FromJson("channels", response.Content);
             return new ResourceSet<WorkerChannelResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var options = new ReadWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -110,11 +110,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<WorkerChannelResource>.FromJson("channels", response.Content);
         }
-    
+
         private static Request BuildFetchRequest(FetchWorkerChannelOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var options = new FetchWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -187,7 +187,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateWorkerChannelOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             var options = new UpdateWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){Capacity = capacity, Available = available};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -264,7 +264,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a WorkerChannelResource object
         /// </summary>
@@ -283,7 +283,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -354,10 +354,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private WorkerChannelResource()
         {
-        
+
         }
     }
 

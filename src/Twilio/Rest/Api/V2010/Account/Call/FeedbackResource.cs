@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             private IssuesEnum(string value) : base(value) {}
             public IssuesEnum() {}
-        
+
             public static readonly IssuesEnum AudioLatency = new IssuesEnum("audio-latency");
             public static readonly IssuesEnum DigitsNotCaptured = new IssuesEnum("digits-not-captured");
             public static readonly IssuesEnum DroppedCall = new IssuesEnum("dropped-call");
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             public static readonly IssuesEnum PostDialDelay = new IssuesEnum("post-dial-delay");
             public static readonly IssuesEnum UnsolicitedCall = new IssuesEnum("unsolicited-call");
         }
-    
+
         private static Request BuildCreateRequest(CreateFeedbackOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var options = new CreateFeedbackOptions(pathCallSid, qualityScore){PathAccountSid = pathAccountSid, Issue = issue};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchFeedbackOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch an instance of a feedback entry for a call
         /// </summary>
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of a feedback entry for a call
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch an instance of a feedback entry for a call
         /// </summary>
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var options = new FetchFeedbackOptions(pathCallSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of a feedback entry for a call
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateFeedbackOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -187,7 +187,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Create or update a feedback entry for a call
         /// </summary>
@@ -201,7 +201,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create or update a feedback entry for a call
@@ -217,7 +217,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Create or update a feedback entry for a call
         /// </summary>
@@ -233,7 +233,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var options = new UpdateFeedbackOptions(pathCallSid, qualityScore){PathAccountSid = pathAccountSid, Issue = issue};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create or update a feedback entry for a call
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a FeedbackResource object
         /// </summary>
@@ -270,7 +270,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -302,10 +302,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
-    
+
         private FeedbackResource()
         {
-        
+
         }
     }
 

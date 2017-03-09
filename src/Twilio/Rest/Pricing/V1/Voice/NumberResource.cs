@@ -26,7 +26,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             var options = new FetchNumberOptions(pathNumber);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a NumberResource object
         /// </summary>
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The number
         /// </summary>
@@ -140,10 +140,10 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private NumberResource()
         {
-        
+
         }
     }
 

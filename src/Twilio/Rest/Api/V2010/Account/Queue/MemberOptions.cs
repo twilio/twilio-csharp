@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// The call_sid
         /// </summary>
         public string PathCallSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchMemberOptions
         /// </summary>
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             PathQueueSid = pathQueueSid;
             PathCallSid = pathCallSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// The method
         /// </summary>
         public Twilio.Http.HttpMethod Method { get; }
-    
+
         /// <summary>
         /// Construct a new UpdateMemberOptions
         /// </summary>
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             Url = url;
             Method = method;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -97,12 +97,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             {
                 p.Add(new KeyValuePair<string, string>("Url", Url.ToString()));
             }
-            
+
             if (Method != null)
             {
                 p.Add(new KeyValuePair<string, string>("Method", Method.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -120,7 +120,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// The Queue in which to find members
         /// </summary>
         public string PathQueueSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadMemberOptions
         /// </summary>
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         {
             PathQueueSid = pathQueueSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

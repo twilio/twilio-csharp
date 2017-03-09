@@ -20,11 +20,11 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             private QueueOrderEnum(string value) : base(value) {}
             public QueueOrderEnum() {}
-        
+
             public static readonly QueueOrderEnum Fifo = new QueueOrderEnum("FIFO");
             public static readonly QueueOrderEnum Lifo = new QueueOrderEnum("LIFO");
         }
-    
+
         private static Request BuildFetchRequest(FetchWorkspaceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Taskrouter.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Taskrouter.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var options = new FetchWorkspaceOptions(pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Taskrouter.V1
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateWorkspaceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Taskrouter.V1
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Taskrouter.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var options = new UpdateWorkspaceOptions(pathSid){DefaultActivitySid = defaultActivitySid, EventCallbackUrl = eventCallbackUrl, EventsFilter = eventsFilter, FriendlyName = friendlyName, MultiTaskEnabled = multiTaskEnabled, TimeoutActivitySid = timeoutActivitySid, PrioritizeQueueOrder = prioritizeQueueOrder};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Taskrouter.V1
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadWorkspaceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -187,7 +187,7 @@ namespace Twilio.Rest.Taskrouter.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -199,11 +199,11 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<WorkspaceResource>.FromJson("workspaces", response.Content);
             return new ResourceSet<WorkspaceResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -216,12 +216,12 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<WorkspaceResource>.FromJson("workspaces", response.Content);
             return new ResourceSet<WorkspaceResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var options = new ReadWorkspaceOptions{FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -253,7 +253,7 @@ namespace Twilio.Rest.Taskrouter.V1
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -270,11 +270,11 @@ namespace Twilio.Rest.Taskrouter.V1
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<WorkspaceResource>.FromJson("workspaces", response.Content);
         }
-    
+
         private static Request BuildCreateRequest(CreateWorkspaceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Taskrouter.V1
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -299,7 +299,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -315,7 +315,7 @@ namespace Twilio.Rest.Taskrouter.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -333,7 +333,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var options = new CreateWorkspaceOptions(friendlyName){EventCallbackUrl = eventCallbackUrl, EventsFilter = eventsFilter, MultiTaskEnabled = multiTaskEnabled, Template = template, PrioritizeQueueOrder = prioritizeQueueOrder};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -353,7 +353,7 @@ namespace Twilio.Rest.Taskrouter.V1
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteWorkspaceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -364,7 +364,7 @@ namespace Twilio.Rest.Taskrouter.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -378,7 +378,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -394,7 +394,7 @@ namespace Twilio.Rest.Taskrouter.V1
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -407,7 +407,7 @@ namespace Twilio.Rest.Taskrouter.V1
             var options = new DeleteWorkspaceOptions(pathSid);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -422,7 +422,7 @@ namespace Twilio.Rest.Taskrouter.V1
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a WorkspaceResource object
         /// </summary>
@@ -441,7 +441,7 @@ namespace Twilio.Rest.Taskrouter.V1
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -518,10 +518,10 @@ namespace Twilio.Rest.Taskrouter.V1
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
-    
+
         private WorkspaceResource()
         {
-        
+
         }
     }
 
