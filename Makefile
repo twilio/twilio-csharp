@@ -1,4 +1,4 @@
-.PHONY: clean test install release
+.PHONY: clean test install release docs
 
 clean:
 	dotnet clean
@@ -15,3 +15,6 @@ test:
 release: test
 	dotnet build -c Release
 	dotnet pack src/Twilio/Twilio.csproj -c Release -o .
+
+docs:
+	doxygen Doxyfile
