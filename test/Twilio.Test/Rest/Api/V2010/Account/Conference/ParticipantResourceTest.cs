@@ -27,7 +27,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
             );
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ParticipantResource.Fetch("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -36,7 +36,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestFetchResponse()
         {
@@ -47,11 +47,11 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"conference_sid\": \"CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"date_updated\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"end_conference_on_exit\": false,\"muted\": false,\"hold\": false,\"status\": \"complete\",\"start_conference_on_enter\": true,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
-            
+
             var response = ParticipantResource.Fetch("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestUpdateRequest()
         {
@@ -64,7 +64,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
             );
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ParticipantResource.Update("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -73,7 +73,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestUpdateResponse()
         {
@@ -84,11 +84,11 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"conference_sid\": \"CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"date_updated\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"end_conference_on_exit\": false,\"muted\": false,\"hold\": false,\"status\": \"complete\",\"start_conference_on_enter\": true,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
-            
+
             var response = ParticipantResource.Update("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestCreateRequest()
         {
@@ -103,7 +103,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
             request.AddPostParam("To", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ParticipantResource.Create("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+987654321"), new Twilio.Types.PhoneNumber("+987654321"), client: twilioRestClient);
@@ -112,7 +112,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestCreateWithSidResponse()
         {
@@ -123,11 +123,11 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
                                          System.Net.HttpStatusCode.Created,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"conference_sid\": \"CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"date_updated\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"end_conference_on_exit\": false,\"muted\": false,\"hold\": false,\"status\": \"complete\",\"start_conference_on_enter\": true,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
-            
+
             var response = ParticipantResource.Create("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+987654321"), new Twilio.Types.PhoneNumber("+987654321"), client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestCreateWithFriendlyNameResponse()
         {
@@ -138,11 +138,11 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
                                          System.Net.HttpStatusCode.Created,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"conference_sid\": \"CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"date_updated\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"end_conference_on_exit\": false,\"muted\": false,\"hold\": false,\"status\": \"complete\",\"start_conference_on_enter\": true,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
-            
+
             var response = ParticipantResource.Create("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+987654321"), new Twilio.Types.PhoneNumber("+987654321"), client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestDeleteRequest()
         {
@@ -155,7 +155,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
             );
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ParticipantResource.Delete("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -164,7 +164,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestDeleteResponse()
         {
@@ -175,11 +175,11 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
                                          System.Net.HttpStatusCode.NoContent,
                                          "null"
                                      ));
-            
+
             var response = ParticipantResource.Delete("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadRequest()
         {
@@ -192,7 +192,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
             );
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ParticipantResource.Read("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -201,7 +201,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestReadFullResponse()
         {
@@ -212,11 +212,11 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
                                          System.Net.HttpStatusCode.OK,
                                          "{\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json?Page=0&PageSize=50\",\"next_page_uri\": null,\"page\": 0,\"page_size\": 50,\"participants\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"conference_sid\": \"CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"date_updated\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"end_conference_on_exit\": false,\"muted\": false,\"hold\": false,\"status\": \"complete\",\"start_conference_on_enter\": true,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}],\"previous_page_uri\": null,\"start\": 0,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json\"}"
                                      ));
-            
+
             var response = ParticipantResource.Read("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadEmptyResponse()
         {
@@ -227,7 +227,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
                                          System.Net.HttpStatusCode.OK,
                                          "{\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json?Page=0&PageSize=50\",\"next_page_uri\": null,\"page\": 0,\"page_size\": 50,\"participants\": [],\"previous_page_uri\": null,\"start\": 0,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants.json\"}"
                                      ));
-            
+
             var response = ParticipantResource.Read("CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }

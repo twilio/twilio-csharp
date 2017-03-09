@@ -25,7 +25,7 @@ namespace Twilio.Rest.Preview.Wireless
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Wireless
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Preview.Wireless
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Preview.Wireless
             var options = new FetchCommandOptions(pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Preview.Wireless
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadCommandOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Preview.Wireless
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -106,11 +106,11 @@ namespace Twilio.Rest.Preview.Wireless
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<CommandResource>.FromJson("commands", response.Content);
             return new ResourceSet<CommandResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -123,12 +123,12 @@ namespace Twilio.Rest.Preview.Wireless
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<CommandResource>.FromJson("commands", response.Content);
             return new ResourceSet<CommandResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Preview.Wireless
             var options = new ReadCommandOptions{Device = device, Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Preview.Wireless
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -183,11 +183,11 @@ namespace Twilio.Rest.Preview.Wireless
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<CommandResource>.FromJson("commands", response.Content);
         }
-    
+
         private static Request BuildCreateRequest(CreateCommandOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Preview.Wireless
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Preview.Wireless
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Preview.Wireless
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Preview.Wireless
             var options = new CreateCommandOptions(command){Device = device, Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Preview.Wireless
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a CommandResource object
         /// </summary>
@@ -287,7 +287,7 @@ namespace Twilio.Rest.Preview.Wireless
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The sid
         /// </summary>
@@ -343,10 +343,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private CommandResource()
         {
-        
+
         }
     }
 

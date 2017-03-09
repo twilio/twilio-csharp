@@ -26,7 +26,7 @@ namespace Twilio.Tests.Rest.Chat.V1
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ServiceResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Chat.V1
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestFetchResponse()
         {
@@ -46,11 +46,11 @@ namespace Twilio.Tests.Rest.Chat.V1
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"consumption_report_interval\": 100,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"default_channel_creator_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_channel_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_service_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"links\": {},\"notifications\": {},\"post_webhook_url\": \"post_webhook_url\",\"pre_webhook_url\": \"pre_webhook_url\",\"reachability_enabled\": false,\"read_status_enabled\": false,\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"typing_indicator_timeout\": 100,\"url\": \"http://www.example.com\",\"webhook_filters\": [\"webhook_filters\"],\"webhook_method\": \"webhook_method\",\"webhooks\": {}}"
                                      ));
-            
+
             var response = ServiceResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestDeleteRequest()
         {
@@ -62,7 +62,7 @@ namespace Twilio.Tests.Rest.Chat.V1
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ServiceResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -71,7 +71,7 @@ namespace Twilio.Tests.Rest.Chat.V1
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestDeleteResponse()
         {
@@ -82,11 +82,11 @@ namespace Twilio.Tests.Rest.Chat.V1
                                          System.Net.HttpStatusCode.NoContent,
                                          "null"
                                      ));
-            
+
             var response = ServiceResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestCreateRequest()
         {
@@ -99,7 +99,7 @@ namespace Twilio.Tests.Rest.Chat.V1
             );
             request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ServiceResource.Create("FriendlyName", client: twilioRestClient);
@@ -108,7 +108,7 @@ namespace Twilio.Tests.Rest.Chat.V1
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestCreateResponse()
         {
@@ -119,11 +119,11 @@ namespace Twilio.Tests.Rest.Chat.V1
                                          System.Net.HttpStatusCode.Created,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"consumption_report_interval\": 100,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"default_channel_creator_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_channel_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_service_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"links\": {},\"notifications\": {},\"post_webhook_url\": \"post_webhook_url\",\"pre_webhook_url\": \"pre_webhook_url\",\"reachability_enabled\": false,\"read_status_enabled\": false,\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"typing_indicator_timeout\": 100,\"url\": \"http://www.example.com\",\"webhook_filters\": [\"webhook_filters\"],\"webhook_method\": \"webhook_method\",\"webhooks\": {}}"
                                      ));
-            
+
             var response = ServiceResource.Create("FriendlyName", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadRequest()
         {
@@ -135,7 +135,7 @@ namespace Twilio.Tests.Rest.Chat.V1
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ServiceResource.Read(client: twilioRestClient);
@@ -144,7 +144,7 @@ namespace Twilio.Tests.Rest.Chat.V1
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestReadEmptyResponse()
         {
@@ -155,11 +155,11 @@ namespace Twilio.Tests.Rest.Chat.V1
                                          System.Net.HttpStatusCode.OK,
                                          "{\"meta\": {\"first_page_url\": \"https://ip-messaging.twilio.com/v1/Services?Page=0&PageSize=50\",\"key\": \"services\",\"next_page_url\": null,\"page\": 0,\"page_size\": 0,\"previous_page_url\": null,\"url\": \"https://ip-messaging.twilio.com/v1/Services\"},\"services\": []}"
                                      ));
-            
+
             var response = ServiceResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadFullResponse()
         {
@@ -170,11 +170,11 @@ namespace Twilio.Tests.Rest.Chat.V1
                                          System.Net.HttpStatusCode.OK,
                                          "{\"meta\": {\"first_page_url\": \"https://ip-messaging.twilio.com/v1/Services?Page=0&PageSize=50\",\"key\": \"services\",\"next_page_url\": null,\"page\": 0,\"page_size\": 1,\"previous_page_url\": null,\"url\": \"https://ip-messaging.twilio.com/v1/Services\"},\"services\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"consumption_report_interval\": 100,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"default_channel_creator_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_channel_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_service_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"links\": {},\"notifications\": {},\"post_webhook_url\": \"post_webhook_url\",\"pre_webhook_url\": \"pre_webhook_url\",\"reachability_enabled\": false,\"read_status_enabled\": false,\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"typing_indicator_timeout\": 100,\"url\": \"http://www.example.com\",\"webhook_filters\": [\"webhook_filters\"],\"webhook_method\": \"webhook_method\",\"webhooks\": {}}]}"
                                      ));
-            
+
             var response = ServiceResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestUpdateRequest()
         {
@@ -186,7 +186,7 @@ namespace Twilio.Tests.Rest.Chat.V1
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ServiceResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -195,7 +195,7 @@ namespace Twilio.Tests.Rest.Chat.V1
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestUpdateResponse()
         {
@@ -206,7 +206,7 @@ namespace Twilio.Tests.Rest.Chat.V1
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"consumption_report_interval\": 100,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"default_channel_creator_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_channel_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_service_role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"links\": {},\"notifications\": {},\"post_webhook_url\": \"post_webhook_url\",\"pre_webhook_url\": \"pre_webhook_url\",\"reachability_enabled\": false,\"read_status_enabled\": false,\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"typing_indicator_timeout\": 100,\"url\": \"http://www.example.com\",\"webhook_filters\": [\"webhook_filters\"],\"webhook_method\": \"webhook_method\",\"webhooks\": {}}"
                                      ));
-            
+
             var response = ServiceResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }

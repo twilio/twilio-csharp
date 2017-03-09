@@ -18,7 +18,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchSyncMapOptions
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteSyncMapOptions
         /// </summary>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// The unique_name
         /// </summary>
         public string UniqueName { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateSyncMapOptions
         /// </summary>
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         {
             PathServiceSid = pathServiceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
-            
+
             return p;
         }
     }
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadSyncMapOptions
         /// </summary>
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         {
             PathServiceSid = pathServiceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

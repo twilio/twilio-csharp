@@ -25,7 +25,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch a specific Sync List Permission.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch a specific Sync List Permission.
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch a specific Sync List Permission.
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             var options = new FetchSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch a specific Sync List Permission.
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteSyncListPermissionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Delete a specific Sync List Permission.
         /// </summary>
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete a specific Sync List Permission.
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Delete a specific Sync List Permission.
         /// </summary>
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             var options = new DeleteSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete a specific Sync List Permission.
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadSyncListPermissionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync List.
         /// </summary>
@@ -183,11 +183,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<SyncListPermissionResource>.FromJson("permissions", response.Content);
             return new ResourceSet<SyncListPermissionResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync List.
@@ -200,12 +200,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<SyncListPermissionResource>.FromJson("permissions", response.Content);
             return new ResourceSet<SyncListPermissionResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync List.
         /// </summary>
@@ -221,7 +221,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             var options = new ReadSyncListPermissionOptions(pathServiceSid, pathListSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync List.
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -256,11 +256,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<SyncListPermissionResource>.FromJson("permissions", response.Content);
         }
-    
+
         private static Request BuildUpdateRequest(UpdateSyncListPermissionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -271,7 +271,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Update an identity's access to a specific Sync List.
         /// </summary>
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Update an identity's access to a specific Sync List.
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Update an identity's access to a specific Sync List.
         /// </summary>
@@ -319,7 +319,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             var options = new UpdateSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity, read, write, manage);
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Update an identity's access to a specific Sync List.
@@ -339,7 +339,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a SyncListPermissionResource object
         /// </summary>
@@ -358,7 +358,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// Twilio Account SID.
         /// </summary>
@@ -399,10 +399,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private SyncListPermissionResource()
         {
-        
+
         }
     }
 

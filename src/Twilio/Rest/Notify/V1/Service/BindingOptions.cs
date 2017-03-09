@@ -20,7 +20,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchBindingOptions
         /// </summary>
@@ -32,7 +32,7 @@ namespace Twilio.Rest.Notify.V1.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteBindingOptions
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Notify.V1.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// The credential_sid
         /// </summary>
         public string CredentialSid { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateBindingOptions
         /// </summary>
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Notify.V1.Service
             Address = address;
             Tag = new List<string>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -146,37 +146,37 @@ namespace Twilio.Rest.Notify.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("Endpoint", Endpoint));
             }
-            
+
             if (Identity != null)
             {
                 p.Add(new KeyValuePair<string, string>("Identity", Identity));
             }
-            
+
             if (BindingType != null)
             {
                 p.Add(new KeyValuePair<string, string>("BindingType", BindingType.ToString()));
             }
-            
+
             if (Address != null)
             {
                 p.Add(new KeyValuePair<string, string>("Address", Address));
             }
-            
+
             if (Tag != null)
             {
                 p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop)));
             }
-            
+
             if (NotificationProtocolVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("NotificationProtocolVersion", NotificationProtocolVersion));
             }
-            
+
             if (CredentialSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("CredentialSid", CredentialSid.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -206,7 +206,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// The tag
         /// </summary>
         public List<string> Tag { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadBindingOptions
         /// </summary>
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Notify.V1.Service
             Identity = new List<string>();
             Tag = new List<string>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -229,27 +229,27 @@ namespace Twilio.Rest.Notify.V1.Service
             {
                 p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
             }
-            
+
             if (EndDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
             }
-            
+
             if (Identity != null)
             {
                 p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
             }
-            
+
             if (Tag != null)
             {
                 p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop)));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

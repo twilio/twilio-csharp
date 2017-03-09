@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchRecordingOptions
         /// </summary>
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             PathCallSid = pathCallSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteRecordingOptions
         /// </summary>
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             PathCallSid = pathCallSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The date_created
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadRecordingOptions
         /// </summary>
@@ -120,7 +120,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             PathCallSid = pathCallSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -137,18 +137,18 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 {
                     p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd")));
                 }
-            
+
                 if (DateCreatedAfter != null)
                 {
                     p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd")));
                 }
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

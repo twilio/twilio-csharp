@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch a notification belonging to the account used to make the request
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch a notification belonging to the account used to make the request
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch a notification belonging to the account used to make the request
         /// </summary>
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new FetchNotificationOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch a notification belonging to the account used to make the request
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteNotificationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Delete a notification identified by the NotificationSid from an accounts log
         /// </summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete a notification identified by the NotificationSid from an accounts log
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Delete a notification identified by the NotificationSid from an accounts log
         /// </summary>
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new DeleteNotificationOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete a notification identified by the NotificationSid from an accounts log
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadNotificationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of notifications belonging to the account used to make the request
         /// </summary>
@@ -179,11 +179,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<NotificationResource>.FromJson("notifications", response.Content);
             return new ResourceSet<NotificationResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of notifications belonging to the account used to make the request
@@ -196,12 +196,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<NotificationResource>.FromJson("notifications", response.Content);
             return new ResourceSet<NotificationResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of notifications belonging to the account used to make the request
         /// </summary>
@@ -220,7 +220,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new ReadNotificationOptions{PathAccountSid = pathAccountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of notifications belonging to the account used to make the request
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -258,11 +258,11 @@ namespace Twilio.Rest.Api.V2010.Account
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<NotificationResource>.FromJson("notifications", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a NotificationResource object
         /// </summary>
@@ -281,7 +281,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The unique sid that identifies this account
         /// </summary>
@@ -368,10 +368,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-    
+
         private NotificationResource()
         {
-        
+
         }
     }
 

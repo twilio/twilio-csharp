@@ -14,7 +14,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchSimOptions
         /// </summary>
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// The sim_registration_code
         /// </summary>
         public string SimRegistrationCode { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -71,32 +71,32 @@ namespace Twilio.Rest.Preview.Wireless
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status));
             }
-            
+
             if (Iccid != null)
             {
                 p.Add(new KeyValuePair<string, string>("Iccid", Iccid));
             }
-            
+
             if (RatePlan != null)
             {
                 p.Add(new KeyValuePair<string, string>("RatePlan", RatePlan));
             }
-            
+
             if (EId != null)
             {
                 p.Add(new KeyValuePair<string, string>("EId", EId));
             }
-            
+
             if (SimRegistrationCode != null)
             {
                 p.Add(new KeyValuePair<string, string>("SimRegistrationCode", SimRegistrationCode));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// The commands_callback_url
         /// </summary>
         public Uri CommandsCallbackUrl { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateSimOptions
         /// </summary>
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -163,42 +163,42 @@ namespace Twilio.Rest.Preview.Wireless
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
-            
+
             if (CallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod));
             }
-            
+
             if (CallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.ToString()));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (RatePlan != null)
             {
                 p.Add(new KeyValuePair<string, string>("RatePlan", RatePlan.ToString()));
             }
-            
+
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status));
             }
-            
+
             if (CommandsCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommandsCallbackMethod", CommandsCallbackMethod.ToString()));
             }
-            
+
             if (CommandsCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommandsCallbackUrl", CommandsCallbackUrl.ToString()));
             }
-            
+
             return p;
         }
     }

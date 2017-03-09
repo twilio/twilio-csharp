@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var options = new CreateCredentialListMappingOptions(pathDomainSid, credentialListSid){PathAccountSid = pathAccountSid};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadCredentialListMappingOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -110,11 +110,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<CredentialListMappingResource>.FromJson("credential_list_mappings", response.Content);
             return new ResourceSet<CredentialListMappingResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -127,12 +127,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<CredentialListMappingResource>.FromJson("credential_list_mappings", response.Content);
             return new ResourceSet<CredentialListMappingResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var options = new ReadCredentialListMappingOptions(pathDomainSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -183,11 +183,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<CredentialListMappingResource>.FromJson("credential_list_mappings", response.Content);
         }
-    
+
         private static Request BuildFetchRequest(FetchCredentialListMappingOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var options = new FetchCredentialListMappingOptions(pathDomainSid, pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -260,7 +260,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteCredentialListMappingOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -271,7 +271,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -316,7 +316,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var options = new DeleteCredentialListMappingOptions(pathDomainSid, pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -333,7 +333,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a CredentialListMappingResource object
         /// </summary>
@@ -352,7 +352,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -388,10 +388,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
-    
+
         private CredentialListMappingResource()
         {
-        
+
         }
     }
 

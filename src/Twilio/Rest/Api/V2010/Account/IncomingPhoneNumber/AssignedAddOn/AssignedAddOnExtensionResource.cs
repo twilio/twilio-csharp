@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch an instance of an Extension for the Assigned Add-on.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of an Extension for the Assigned Add-on.
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch an instance of an Extension for the Assigned Add-on.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             var options = new FetchAssignedAddOnExtensionOptions(pathResourceSid, pathAssignedAddOnSid, pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of an Extension for the Assigned Add-on.
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadAssignedAddOnExtensionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of Extensions for the Assigned Add-on.
         /// </summary>
@@ -112,11 +112,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<AssignedAddOnExtensionResource>.FromJson("extensions", response.Content);
             return new ResourceSet<AssignedAddOnExtensionResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of Extensions for the Assigned Add-on.
@@ -129,12 +129,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<AssignedAddOnExtensionResource>.FromJson("extensions", response.Content);
             return new ResourceSet<AssignedAddOnExtensionResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of Extensions for the Assigned Add-on.
         /// </summary>
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             var options = new ReadAssignedAddOnExtensionOptions(pathResourceSid, pathAssignedAddOnSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of Extensions for the Assigned Add-on.
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -187,11 +187,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<AssignedAddOnExtensionResource>.FromJson("extensions", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a AssignedAddOnExtensionResource object
         /// </summary>
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// A string that uniquely identifies this Extension
         /// </summary>
@@ -256,10 +256,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
-    
+
         private AssignedAddOnExtensionResource()
         {
-        
+
         }
     }
 

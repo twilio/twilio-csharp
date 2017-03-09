@@ -15,7 +15,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Human readable description of this resource
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
@@ -74,17 +74,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// URL to make requests to with status updates
         /// </summary>
         public Uri MessageStatusCallback { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateApplicationOptions
         /// </summary>
         ///
-        /// <param name="friendlyName"> Human readable description of this resource </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         public CreateApplicationOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -95,77 +95,77 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (ApiVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
             }
-            
+
             if (VoiceUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.ToString()));
             }
-            
+
             if (VoiceMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
             }
-            
+
             if (VoiceFallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.ToString()));
             }
-            
+
             if (VoiceFallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
             }
-            
+
             if (StatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
             }
-            
+
             if (StatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
             }
-            
+
             if (VoiceCallerIdLookup != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString()));
             }
-            
+
             if (SmsUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.ToString()));
             }
-            
+
             if (SmsMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
             }
-            
+
             if (SmsFallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.ToString()));
             }
-            
+
             if (SmsFallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
             }
-            
+
             if (SmsStatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsStatusCallback", SmsStatusCallback.ToString()));
             }
-            
+
             if (MessageStatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessageStatusCallback", MessageStatusCallback.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The application sid to delete
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteApplicationOptions
         /// </summary>
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -217,7 +217,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch by unique Application Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchApplicationOptions
         /// </summary>
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Filter by friendly name
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -262,12 +262,12 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -345,7 +345,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// URL to make requests to with status updates
         /// </summary>
         public Uri MessageStatusCallback { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateApplicationOptions
         /// </summary>
@@ -355,7 +355,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -366,77 +366,77 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (ApiVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
             }
-            
+
             if (VoiceUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.ToString()));
             }
-            
+
             if (VoiceMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
             }
-            
+
             if (VoiceFallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.ToString()));
             }
-            
+
             if (VoiceFallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
             }
-            
+
             if (StatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
             }
-            
+
             if (StatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
             }
-            
+
             if (VoiceCallerIdLookup != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString()));
             }
-            
+
             if (SmsUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.ToString()));
             }
-            
+
             if (SmsMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
             }
-            
+
             if (SmsFallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.ToString()));
             }
-            
+
             if (SmsFallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
             }
-            
+
             if (SmsStatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsStatusCallback", SmsStatusCallback.ToString()));
             }
-            
+
             if (MessageStatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessageStatusCallback", MessageStatusCallback.ToString()));
             }
-            
+
             return p;
         }
     }

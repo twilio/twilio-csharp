@@ -21,7 +21,7 @@ namespace Twilio.Rest.Preview.Wireless
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchRatePlanOptions
         /// </summary>
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// The renewal
         /// </summary>
         public string Renewal { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateRatePlanOptions
         /// </summary>
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             Roaming = new List<string>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -108,37 +108,37 @@ namespace Twilio.Rest.Preview.Wireless
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (Roaming != null)
             {
                 p.AddRange(Roaming.Select(prop => new KeyValuePair<string, string>("Roaming", prop)));
             }
-            
+
             if (DataLimit != null)
             {
                 p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.Value.ToString()));
             }
-            
+
             if (DataMetering != null)
             {
                 p.Add(new KeyValuePair<string, string>("DataMetering", DataMetering));
             }
-            
+
             if (CommandsEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommandsEnabled", CommandsEnabled.Value.ToString()));
             }
-            
+
             if (Renewal != null)
             {
                 p.Add(new KeyValuePair<string, string>("Renewal", Renewal));
             }
-            
+
             return p;
         }
     }
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateRatePlanOptions
         /// </summary>
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -181,12 +181,12 @@ namespace Twilio.Rest.Preview.Wireless
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             return p;
         }
     }

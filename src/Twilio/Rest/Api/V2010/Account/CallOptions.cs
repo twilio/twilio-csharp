@@ -92,7 +92,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The sip_auth_password
         /// </summary>
         public string SipAuthPassword { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateCallOptions
         /// </summary>
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account
             From = from;
             StatusCallbackEvent = new List<string>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -116,97 +116,97 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("To", To.ToString()));
             }
-            
+
             if (From != null)
             {
                 p.Add(new KeyValuePair<string, string>("From", From.ToString()));
             }
-            
+
             if (Url != null)
             {
                 p.Add(new KeyValuePair<string, string>("Url", Url.ToString()));
             }
-            
+
             if (ApplicationSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApplicationSid", ApplicationSid.ToString()));
             }
-            
+
             if (Method != null)
             {
                 p.Add(new KeyValuePair<string, string>("Method", Method.ToString()));
             }
-            
+
             if (FallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.ToString()));
             }
-            
+
             if (FallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("FallbackMethod", FallbackMethod.ToString()));
             }
-            
+
             if (StatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
             }
-            
+
             if (StatusCallbackEvent != null)
             {
                 p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", prop)));
             }
-            
+
             if (StatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
             }
-            
+
             if (SendDigits != null)
             {
                 p.Add(new KeyValuePair<string, string>("SendDigits", SendDigits));
             }
-            
+
             if (IfMachine != null)
             {
                 p.Add(new KeyValuePair<string, string>("IfMachine", IfMachine));
             }
-            
+
             if (Timeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("Timeout", Timeout.Value.ToString()));
             }
-            
+
             if (Record != null)
             {
                 p.Add(new KeyValuePair<string, string>("Record", Record.Value.ToString()));
             }
-            
+
             if (RecordingChannels != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingChannels", RecordingChannels));
             }
-            
+
             if (RecordingStatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingStatusCallback", RecordingStatusCallback));
             }
-            
+
             if (RecordingStatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingStatusCallbackMethod", RecordingStatusCallbackMethod.ToString()));
             }
-            
+
             if (SipAuthUsername != null)
             {
                 p.Add(new KeyValuePair<string, string>("SipAuthUsername", SipAuthUsername));
             }
-            
+
             if (SipAuthPassword != null)
             {
                 p.Add(new KeyValuePair<string, string>("SipAuthPassword", SipAuthPassword));
             }
-            
+
             return p;
         }
     }
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Call Sid that uniquely identifies the Call to delete
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteCallOptions
         /// </summary>
@@ -234,7 +234,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Call Sid that uniquely identifies the Call to fetch
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchCallOptions
         /// </summary>
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -328,7 +328,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// EndTime to filter on
         /// </summary>
         public DateTime? EndTimeAfter { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -339,22 +339,22 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("To", To.ToString()));
             }
-            
+
             if (From != null)
             {
                 p.Add(new KeyValuePair<string, string>("From", From.ToString()));
             }
-            
+
             if (ParentCallSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("ParentCallSid", ParentCallSid.ToString()));
             }
-            
+
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
-            
+
             if (StartTime != null)
             {
                 p.Add(new KeyValuePair<string, string>("StartTime", StartTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
@@ -365,13 +365,13 @@ namespace Twilio.Rest.Api.V2010.Account
                 {
                     p.Add(new KeyValuePair<string, string>("StartTime<", StartTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
-            
+
                 if (StartTimeAfter != null)
                 {
                     p.Add(new KeyValuePair<string, string>("StartTime>", StartTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             }
-            
+
             if (EndTime != null)
             {
                 p.Add(new KeyValuePair<string, string>("EndTime", EndTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
@@ -382,18 +382,18 @@ namespace Twilio.Rest.Api.V2010.Account
                 {
                     p.Add(new KeyValuePair<string, string>("EndTime<", EndTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
-            
+
                 if (EndTimeAfter != null)
                 {
                     p.Add(new KeyValuePair<string, string>("EndTime>", EndTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
                 }
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -439,7 +439,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// HTTP Method to use with StatusCallback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateCallOptions
         /// </summary>
@@ -449,7 +449,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -460,37 +460,37 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("Url", Url.ToString()));
             }
-            
+
             if (Method != null)
             {
                 p.Add(new KeyValuePair<string, string>("Method", Method.ToString()));
             }
-            
+
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
-            
+
             if (FallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.ToString()));
             }
-            
+
             if (FallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("FallbackMethod", FallbackMethod.ToString()));
             }
-            
+
             if (StatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
             }
-            
+
             if (StatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
             }
-            
+
             return p;
         }
     }

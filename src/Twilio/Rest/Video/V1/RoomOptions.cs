@@ -15,7 +15,7 @@ namespace Twilio.Rest.Video.V1
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchRoomOptions
         /// </summary>
@@ -25,7 +25,7 @@ namespace Twilio.Rest.Video.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Video.V1
         /// The max_participants
         /// </summary>
         public int? MaxParticipants { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -76,32 +76,32 @@ namespace Twilio.Rest.Video.V1
             {
                 p.Add(new KeyValuePair<string, string>("EnableTurn", EnableTurn.Value.ToString()));
             }
-            
+
             if (Type != null)
             {
                 p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
             }
-            
+
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
-            
+
             if (StatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
             }
-            
+
             if (StatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
             }
-            
+
             if (MaxParticipants != null)
             {
                 p.Add(new KeyValuePair<string, string>("MaxParticipants", MaxParticipants.Value.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -127,7 +127,7 @@ namespace Twilio.Rest.Video.V1
         /// The unique_name
         /// </summary>
         public string UniqueName { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -138,27 +138,27 @@ namespace Twilio.Rest.Video.V1
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
-            
+
             if (StartTimeAfter != null)
             {
                 p.Add(new KeyValuePair<string, string>("StartTimeAfter", StartTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
-            
+
             if (StartTimeBefore != null)
             {
                 p.Add(new KeyValuePair<string, string>("StartTimeBefore", StartTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
-            
+
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Video.V1
         /// The status
         /// </summary>
         public RoomResource.RoomStatusEnum Status { get; }
-    
+
         /// <summary>
         /// Construct a new UpdateRoomOptions
         /// </summary>
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Video.V1
             PathSid = pathSid;
             Status = status;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Video.V1
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
-            
+
             return p;
         }
     }

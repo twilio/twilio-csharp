@@ -26,7 +26,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 BindingResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestFetchResponse()
         {
@@ -46,11 +46,11 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address\": \"a7c658f4111ec4ff5a1a647f9d0edd819025b9f20522d2fae897049f32873e73\",\"binding_type\": \"apn\",\"credential_sid\": null,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"endpoint\": \"26607274\",\"identity\": \"24987039\",\"notification_protocol_version\": \"3\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"tags\": [\"26607274\"],\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
-            
+
             var response = BindingResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestDeleteRequest()
         {
@@ -62,7 +62,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 BindingResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -71,7 +71,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestDeleteResponse()
         {
@@ -82,11 +82,11 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
                                          System.Net.HttpStatusCode.NoContent,
                                          "null"
                                      ));
-            
+
             var response = BindingResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestCreateRequest()
         {
@@ -102,7 +102,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
             request.AddPostParam("BindingType", Serialize(BindingResource.BindingTypeEnum.Apn));
             request.AddPostParam("Address", Serialize("Address"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 BindingResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Endpoint", "Identity", BindingResource.BindingTypeEnum.Apn, "Address", client: twilioRestClient);
@@ -111,7 +111,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestCreateResponse()
         {
@@ -122,11 +122,11 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
                                          System.Net.HttpStatusCode.Created,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address\": \"a7c658f4111ec4ff5a1a647f9d0edd819025b9f20522d2fae897049f32873e73\",\"binding_type\": \"apn\",\"credential_sid\": null,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"endpoint\": \"26607274\",\"identity\": \"24987039\",\"notification_protocol_version\": \"3\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"tags\": [\"26607274\"],\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
-            
+
             var response = BindingResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Endpoint", "Identity", BindingResource.BindingTypeEnum.Apn, "Address", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadRequest()
         {
@@ -138,7 +138,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 BindingResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -147,7 +147,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestReadEmptyResponse()
         {
@@ -158,11 +158,11 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
                                          System.Net.HttpStatusCode.OK,
                                          "{\"bindings\": [],\"meta\": {\"first_page_url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings?PageSize=50&Page=0\",\"key\": \"bindings\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings?PageSize=50&Page=0\"}}"
                                      ));
-            
+
             var response = BindingResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadFullResponse()
         {
@@ -173,7 +173,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
                                          System.Net.HttpStatusCode.OK,
                                          "{\"bindings\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address\": \"a7c658f4111ec4ff5a1a647f9d0edd819025b9f20522d2fae897049f32873e73\",\"binding_type\": \"apn\",\"credential_sid\": null,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"endpoint\": \"26607274\",\"identity\": \"24987039\",\"notification_protocol_version\": \"3\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"tags\": [\"26607274\"],\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"meta\": {\"first_page_url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings?PageSize=50&Page=0\",\"key\": \"bindings\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings?PageSize=50&Page=0\"}}"
                                      ));
-            
+
             var response = BindingResource.Read("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }

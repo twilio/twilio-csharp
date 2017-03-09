@@ -14,7 +14,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchWorkspaceOptions
         /// </summary>
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// The prioritize_queue_order
         /// </summary>
         public WorkspaceResource.QueueOrderEnum PrioritizeQueueOrder { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateWorkspaceOptions
         /// </summary>
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -93,37 +93,37 @@ namespace Twilio.Rest.Taskrouter.V1
             {
                 p.Add(new KeyValuePair<string, string>("DefaultActivitySid", DefaultActivitySid.ToString()));
             }
-            
+
             if (EventCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("EventCallbackUrl", EventCallbackUrl.ToString()));
             }
-            
+
             if (EventsFilter != null)
             {
                 p.Add(new KeyValuePair<string, string>("EventsFilter", EventsFilter));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (MultiTaskEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("MultiTaskEnabled", MultiTaskEnabled.Value.ToString()));
             }
-            
+
             if (TimeoutActivitySid != null)
             {
                 p.Add(new KeyValuePair<string, string>("TimeoutActivitySid", TimeoutActivitySid.ToString()));
             }
-            
+
             if (PrioritizeQueueOrder != null)
             {
                 p.Add(new KeyValuePair<string, string>("PrioritizeQueueOrder", PrioritizeQueueOrder.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -148,12 +148,12 @@ namespace Twilio.Rest.Taskrouter.V1
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -187,7 +187,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// The prioritize_queue_order
         /// </summary>
         public WorkspaceResource.QueueOrderEnum PrioritizeQueueOrder { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateWorkspaceOptions
         /// </summary>
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             FriendlyName = friendlyName;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -208,32 +208,32 @@ namespace Twilio.Rest.Taskrouter.V1
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (EventCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("EventCallbackUrl", EventCallbackUrl.ToString()));
             }
-            
+
             if (EventsFilter != null)
             {
                 p.Add(new KeyValuePair<string, string>("EventsFilter", EventsFilter));
             }
-            
+
             if (MultiTaskEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("MultiTaskEnabled", MultiTaskEnabled.Value.ToString()));
             }
-            
+
             if (Template != null)
             {
                 p.Add(new KeyValuePair<string, string>("Template", Template));
             }
-            
+
             if (PrioritizeQueueOrder != null)
             {
                 p.Add(new KeyValuePair<string, string>("PrioritizeQueueOrder", PrioritizeQueueOrder.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteWorkspaceOptions
         /// </summary>
@@ -257,7 +257,7 @@ namespace Twilio.Rest.Taskrouter.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

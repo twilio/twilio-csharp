@@ -26,7 +26,7 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 PublicKeyResource.Read(client: twilioRestClient);
@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestReadEmptyResponse()
         {
@@ -46,11 +46,11 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
                                          System.Net.HttpStatusCode.OK,
                                          "{\"credentials\": [],\"meta\": {\"first_page_url\": \"https://accounts.twilio.com/v1/Credentials/PublicKeys?PageSize=50&Page=0\",\"key\": \"credentials\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://accounts.twilio.com/v1/Credentials/PublicKeys?PageSize=50&Page=0\"}}"
                                      ));
-            
+
             var response = PublicKeyResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadFullResponse()
         {
@@ -61,11 +61,11 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
                                          System.Net.HttpStatusCode.OK,
                                          "{\"credentials\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-31T04:00:00Z\",\"date_updated\": \"2015-07-31T04:00:00Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://accounts.twilio.com/v1/Credentials/PublicKeys/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"meta\": {\"first_page_url\": \"https://accounts.twilio.com/v1/Credentials/PublicKeys?PageSize=50&Page=0\",\"key\": \"credentials\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://accounts.twilio.com/v1/Credentials/PublicKeys?PageSize=50&Page=0\"}}"
                                      ));
-            
+
             var response = PublicKeyResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestCreateRequest()
         {
@@ -78,7 +78,7 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
             );
             request.AddPostParam("PublicKey", Serialize("publickey"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 PublicKeyResource.Create("publickey", client: twilioRestClient);
@@ -87,7 +87,7 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestCreateResponse()
         {
@@ -98,11 +98,11 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
                                          System.Net.HttpStatusCode.Created,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-31T04:00:00Z\",\"date_updated\": \"2015-07-31T04:00:00Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://accounts.twilio.com/v1/Credentials/PublicKeys/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
-            
+
             var response = PublicKeyResource.Create("publickey", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestFetchRequest()
         {
@@ -114,7 +114,7 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 PublicKeyResource.Fetch("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -123,7 +123,7 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestFetchResponse()
         {
@@ -134,11 +134,11 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-31T04:00:00Z\",\"date_updated\": \"2015-07-31T04:00:00Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://accounts.twilio.com/v1/Credentials/PublicKeys/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
-            
+
             var response = PublicKeyResource.Fetch("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestUpdateRequest()
         {
@@ -150,7 +150,7 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 PublicKeyResource.Update("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -159,7 +159,7 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestUpdateResponse()
         {
@@ -170,11 +170,11 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-31T04:00:00Z\",\"date_updated\": \"2015-07-31T04:00:00Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://accounts.twilio.com/v1/Credentials/PublicKeys/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
-            
+
             var response = PublicKeyResource.Update("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestDeleteRequest()
         {
@@ -186,7 +186,7 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 PublicKeyResource.Delete("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -195,7 +195,7 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestDeleteResponse()
         {
@@ -206,7 +206,7 @@ namespace Twilio.Tests.Rest.Accounts.V1.Credential
                                          System.Net.HttpStatusCode.NoContent,
                                          "null"
                                      ));
-            
+
             var response = PublicKeyResource.Delete("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }

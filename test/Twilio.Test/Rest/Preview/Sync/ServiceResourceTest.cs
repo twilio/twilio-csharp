@@ -26,7 +26,7 @@ namespace Twilio.Tests.Rest.Preview.Sync
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ServiceResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Preview.Sync
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestFetchResponse()
         {
@@ -46,11 +46,11 @@ namespace Twilio.Tests.Rest.Preview.Sync
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"links\": {\"documents\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents\",\"lists\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists\",\"maps\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps\"},\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"webhook_url\": \"http://www.example.com\",\"reachability_webhooks_enabled\": false,\"acl_enabled\": false}"
                                      ));
-            
+
             var response = ServiceResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestDeleteRequest()
         {
@@ -62,7 +62,7 @@ namespace Twilio.Tests.Rest.Preview.Sync
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ServiceResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -71,7 +71,7 @@ namespace Twilio.Tests.Rest.Preview.Sync
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestDeleteResponse()
         {
@@ -82,11 +82,11 @@ namespace Twilio.Tests.Rest.Preview.Sync
                                          System.Net.HttpStatusCode.NoContent,
                                          "null"
                                      ));
-            
+
             var response = ServiceResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestCreateRequest()
         {
@@ -98,7 +98,7 @@ namespace Twilio.Tests.Rest.Preview.Sync
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ServiceResource.Create(client: twilioRestClient);
@@ -107,7 +107,7 @@ namespace Twilio.Tests.Rest.Preview.Sync
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestCreateResponse()
         {
@@ -118,11 +118,11 @@ namespace Twilio.Tests.Rest.Preview.Sync
                                          System.Net.HttpStatusCode.Created,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"links\": {\"documents\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents\",\"lists\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists\",\"maps\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps\"},\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"webhook_url\": \"http://www.example.com\",\"reachability_webhooks_enabled\": false,\"acl_enabled\": true}"
                                      ));
-            
+
             var response = ServiceResource.Create(client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadRequest()
         {
@@ -134,7 +134,7 @@ namespace Twilio.Tests.Rest.Preview.Sync
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ServiceResource.Read(client: twilioRestClient);
@@ -143,7 +143,7 @@ namespace Twilio.Tests.Rest.Preview.Sync
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestReadEmptyResponse()
         {
@@ -154,11 +154,11 @@ namespace Twilio.Tests.Rest.Preview.Sync
                                          System.Net.HttpStatusCode.OK,
                                          "{\"meta\": {\"first_page_url\": \"https://preview.twilio.com/Sync/Services?PageSize=50&Page=0\",\"key\": \"services\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/Sync/Services?PageSize=50&Page=0\"},\"services\": []}"
                                      ));
-            
+
             var response = ServiceResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadFullResponse()
         {
@@ -169,11 +169,11 @@ namespace Twilio.Tests.Rest.Preview.Sync
                                          System.Net.HttpStatusCode.OK,
                                          "{\"meta\": {\"first_page_url\": \"https://preview.twilio.com/Sync/Services?PageSize=50&Page=0\",\"key\": \"services\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/Sync/Services?PageSize=50&Page=0\"},\"services\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"links\": {\"documents\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents\",\"lists\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists\",\"maps\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps\"},\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"webhook_url\": \"http://www.example.com\",\"reachability_webhooks_enabled\": false,\"acl_enabled\": false}]}"
                                      ));
-            
+
             var response = ServiceResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestUpdateRequest()
         {
@@ -185,7 +185,7 @@ namespace Twilio.Tests.Rest.Preview.Sync
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 ServiceResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -194,7 +194,7 @@ namespace Twilio.Tests.Rest.Preview.Sync
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestUpdateResponse()
         {
@@ -205,7 +205,7 @@ namespace Twilio.Tests.Rest.Preview.Sync
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"links\": {\"documents\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Documents\",\"lists\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists\",\"maps\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps\"},\"sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"webhook_url\": \"http://www.example.com\",\"reachability_webhooks_enabled\": false,\"acl_enabled\": true}"
                                      ));
-            
+
             var response = ServiceResource.Update("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }

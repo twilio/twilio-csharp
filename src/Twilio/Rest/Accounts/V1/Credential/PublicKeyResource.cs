@@ -25,9 +25,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
-        /// read
+        /// Retrieves a collection of Public Key Credentials belonging to the account used to make the request
         /// </summary>
         ///
         /// <param name="options"> Read PublicKey parameters </param>
@@ -37,14 +37,14 @@ namespace Twilio.Rest.Accounts.V1.Credential
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<PublicKeyResource>.FromJson("credentials", response.Content);
             return new ResourceSet<PublicKeyResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieves a collection of Public Key Credentials belonging to the account used to make the request
         /// </summary>
         ///
         /// <param name="options"> Read PublicKey parameters </param>
@@ -54,14 +54,14 @@ namespace Twilio.Rest.Accounts.V1.Credential
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<PublicKeyResource>.FromJson("credentials", response.Content);
             return new ResourceSet<PublicKeyResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
-        /// read
+        /// Retrieves a collection of Public Key Credentials belonging to the account used to make the request
         /// </summary>
         ///
         /// <param name="pageSize"> Page size </param>
@@ -73,10 +73,10 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var options = new ReadPublicKeyOptions{PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieves a collection of Public Key Credentials belonging to the account used to make the request
         /// </summary>
         ///
         /// <param name="pageSize"> Page size </param>
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -106,11 +106,11 @@ namespace Twilio.Rest.Accounts.V1.Credential
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<PublicKeyResource>.FromJson("credentials", response.Content);
         }
-    
+
         private static Request BuildCreateRequest(CreatePublicKeyOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -121,9 +121,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
-        /// create
+        /// Create a new Public Key Credential
         /// </summary>
         ///
         /// <param name="options"> Create PublicKey parameters </param>
@@ -135,10 +135,10 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Public Key Credential
         /// </summary>
         ///
         /// <param name="options"> Create PublicKey parameters </param>
@@ -151,14 +151,14 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
-        /// create
+        /// Create a new Public Key Credential
         /// </summary>
         ///
-        /// <param name="publicKey"> The public_key </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="publicKey"> URL encoded representation of the public key </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <param name="accountSid"> The Subaccount this Credential should be associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PublicKey </returns> 
         public static PublicKeyResource Create(string publicKey, string friendlyName = null, string accountSid = null, ITwilioRestClient client = null)
@@ -166,15 +166,15 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var options = new CreatePublicKeyOptions(publicKey){FriendlyName = friendlyName, AccountSid = accountSid};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Public Key Credential
         /// </summary>
         ///
-        /// <param name="publicKey"> The public_key </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="publicKey"> URL encoded representation of the public key </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <param name="accountSid"> The Subaccount this Credential should be associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns> 
         public static async System.Threading.Tasks.Task<PublicKeyResource> CreateAsync(string publicKey, string friendlyName = null, string accountSid = null, ITwilioRestClient client = null)
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchPublicKeyOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -194,9 +194,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
-        /// fetch
+        /// Fetch the public key specified by the provided Credential Sid
         /// </summary>
         ///
         /// <param name="options"> Fetch PublicKey parameters </param>
@@ -208,10 +208,10 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch the public key specified by the provided Credential Sid
         /// </summary>
         ///
         /// <param name="options"> Fetch PublicKey parameters </param>
@@ -224,12 +224,12 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
-        /// fetch
+        /// Fetch the public key specified by the provided Credential Sid
         /// </summary>
         ///
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PublicKey </returns> 
         public static PublicKeyResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -237,13 +237,13 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var options = new FetchPublicKeyOptions(pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch the public key specified by the provided Credential Sid
         /// </summary>
         ///
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns> 
         public static async System.Threading.Tasks.Task<PublicKeyResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdatePublicKeyOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -263,9 +263,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
-        /// update
+        /// Modify the properties of a given Account
         /// </summary>
         ///
         /// <param name="options"> Update PublicKey parameters </param>
@@ -277,10 +277,10 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
-        /// update
+        /// Modify the properties of a given Account
         /// </summary>
         ///
         /// <param name="options"> Update PublicKey parameters </param>
@@ -293,13 +293,13 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
-        /// update
+        /// Modify the properties of a given Account
         /// </summary>
         ///
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PublicKey </returns> 
         public static PublicKeyResource Update(string pathSid, string friendlyName = null, ITwilioRestClient client = null)
@@ -307,14 +307,14 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var options = new UpdatePublicKeyOptions(pathSid){FriendlyName = friendlyName};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
-        /// update
+        /// Modify the properties of a given Account
         /// </summary>
         ///
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns> 
         public static async System.Threading.Tasks.Task<PublicKeyResource> UpdateAsync(string pathSid, string friendlyName = null, ITwilioRestClient client = null)
@@ -323,7 +323,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeletePublicKeyOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -334,9 +334,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
-        /// delete
+        /// Delete a Credential from your account
         /// </summary>
         ///
         /// <param name="options"> Delete PublicKey parameters </param>
@@ -348,10 +348,10 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a Credential from your account
         /// </summary>
         ///
         /// <param name="options"> Delete PublicKey parameters </param>
@@ -364,12 +364,12 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
-        /// delete
+        /// Delete a Credential from your account
         /// </summary>
         ///
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PublicKey </returns> 
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -377,13 +377,13 @@ namespace Twilio.Rest.Accounts.V1.Credential
             var options = new DeletePublicKeyOptions(pathSid);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a Credential from your account
         /// </summary>
         ///
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -392,7 +392,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a PublicKeyResource object
         /// </summary>
@@ -411,41 +411,41 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// AccountSid the Credential resource belongs to
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable description of this resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URI for this resource, relative to `https://accounts.twilio.com`
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private PublicKeyResource()
         {
-        
+
         }
     }
 

@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// Fetch by unique payload Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchPayloadOptions
         /// </summary>
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             PathAddOnResultSid = pathAddOnResultSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// The add_on_result_sid
         /// </summary>
         public string PathAddOnResultSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadPayloadOptions
         /// </summary>
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             PathReferenceSid = pathReferenceSid;
             PathAddOnResultSid = pathAddOnResultSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// Delete by unique payload Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeletePayloadOptions
         /// </summary>
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
             PathAddOnResultSid = pathAddOnResultSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

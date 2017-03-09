@@ -27,7 +27,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The issue
         /// </summary>
         public List<FeedbackResource.IssuesEnum> Issue { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateFeedbackOptions
         /// </summary>
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             QualityScore = qualityScore;
             Issue = new List<FeedbackResource.IssuesEnum>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -51,12 +51,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             {
                 p.Add(new KeyValuePair<string, string>("QualityScore", QualityScore.Value.ToString()));
             }
-            
+
             if (Issue != null)
             {
                 p.AddRange(Issue.Select(prop => new KeyValuePair<string, string>("Issue", prop.ToString())));
             }
-            
+
             return p;
         }
     }
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The call sid that uniquely identifies the call
         /// </summary>
         public string PathCallSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchFeedbackOptions
         /// </summary>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             PathCallSid = pathCallSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Issues experienced during the call
         /// </summary>
         public List<FeedbackResource.IssuesEnum> Issue { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateFeedbackOptions
         /// </summary>
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             QualityScore = qualityScore;
             Issue = new List<FeedbackResource.IssuesEnum>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -140,12 +140,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             {
                 p.Add(new KeyValuePair<string, string>("QualityScore", QualityScore.Value.ToString()));
             }
-            
+
             if (Issue != null)
             {
                 p.AddRange(Issue.Select(prop => new KeyValuePair<string, string>("Issue", prop.ToString())));
             }
-            
+
             return p;
         }
     }

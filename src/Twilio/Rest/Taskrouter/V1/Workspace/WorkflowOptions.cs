@@ -18,7 +18,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchWorkflowOptions
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The task_reservation_timeout
         /// </summary>
         public int? TaskReservationTimeout { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateWorkflowOptions
         /// </summary>
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -97,27 +97,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (AssignmentCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("AssignmentCallbackUrl", AssignmentCallbackUrl.ToString()));
             }
-            
+
             if (FallbackAssignmentCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("FallbackAssignmentCallbackUrl", FallbackAssignmentCallbackUrl.ToString()));
             }
-            
+
             if (Configuration != null)
             {
                 p.Add(new KeyValuePair<string, string>("Configuration", Configuration));
             }
-            
+
             if (TaskReservationTimeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskReservationTimeout", TaskReservationTimeout.Value.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteWorkflowOptions
         /// </summary>
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadWorkflowOptions
         /// </summary>
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         {
             PathWorkspaceSid = pathWorkspaceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -192,12 +192,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -231,7 +231,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The task_reservation_timeout
         /// </summary>
         public int? TaskReservationTimeout { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateWorkflowOptions
         /// </summary>
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             FriendlyName = friendlyName;
             Configuration = configuration;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -256,27 +256,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (Configuration != null)
             {
                 p.Add(new KeyValuePair<string, string>("Configuration", Configuration));
             }
-            
+
             if (AssignmentCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("AssignmentCallbackUrl", AssignmentCallbackUrl.ToString()));
             }
-            
+
             if (FallbackAssignmentCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("FallbackAssignmentCallbackUrl", FallbackAssignmentCallbackUrl.ToString()));
             }
-            
+
             if (TaskReservationTimeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskReservationTimeout", TaskReservationTimeout.Value.ToString()));
             }
-            
+
             return p;
         }
     }

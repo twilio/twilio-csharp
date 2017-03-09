@@ -20,11 +20,11 @@ namespace Twilio.Rest.Chat.V1.Service
         {
             private RoleTypeEnum(string value) : base(value) {}
             public RoleTypeEnum() {}
-        
+
             public static readonly RoleTypeEnum Channel = new RoleTypeEnum("channel");
             public static readonly RoleTypeEnum Deployment = new RoleTypeEnum("deployment");
         }
-    
+
         private static Request BuildFetchRequest(FetchRoleOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Chat.V1.Service
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var options = new FetchRoleOptions(pathServiceSid, pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteRoleOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Chat.V1.Service
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -120,7 +120,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var options = new DeleteRoleOptions(pathServiceSid, pathSid);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildCreateRequest(CreateRoleOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Chat.V1.Service
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -207,7 +207,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var options = new CreateRoleOptions(pathServiceSid, friendlyName, type, permission);
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadRoleOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Chat.V1.Service
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -264,11 +264,11 @@ namespace Twilio.Rest.Chat.V1.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<RoleResource>.FromJson("roles", response.Content);
             return new ResourceSet<RoleResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -281,12 +281,12 @@ namespace Twilio.Rest.Chat.V1.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<RoleResource>.FromJson("roles", response.Content);
             return new ResourceSet<RoleResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var options = new ReadRoleOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -335,11 +335,11 @@ namespace Twilio.Rest.Chat.V1.Service
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<RoleResource>.FromJson("roles", response.Content);
         }
-    
+
         private static Request BuildUpdateRequest(UpdateRoleOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -350,7 +350,7 @@ namespace Twilio.Rest.Chat.V1.Service
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -364,7 +364,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -380,7 +380,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -395,7 +395,7 @@ namespace Twilio.Rest.Chat.V1.Service
             var options = new UpdateRoleOptions(pathServiceSid, pathSid, permission);
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -412,7 +412,7 @@ namespace Twilio.Rest.Chat.V1.Service
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a RoleResource object
         /// </summary>
@@ -431,7 +431,7 @@ namespace Twilio.Rest.Chat.V1.Service
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The sid
         /// </summary>
@@ -478,10 +478,10 @@ namespace Twilio.Rest.Chat.V1.Service
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private RoleResource()
         {
-        
+
         }
     }
 

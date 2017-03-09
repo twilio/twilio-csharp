@@ -14,7 +14,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// The account_sid
         /// </summary>
         public string PathAccountSid { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// A human readable description of this resource
         /// </summary>
         public string FriendlyName { get; }
-    
+
         /// <summary>
         /// Construct a new CreateIpAccessControlListOptions
         /// </summary>
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         {
             FriendlyName = friendlyName;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             return p;
         }
     }
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Fetch by unique ip-access-control-list Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchIpAccessControlListOptions
         /// </summary>
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -120,7 +120,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// A human readable description of this resource
         /// </summary>
         public string FriendlyName { get; }
-    
+
         /// <summary>
         /// Construct a new UpdateIpAccessControlListOptions
         /// </summary>
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             PathSid = pathSid;
             FriendlyName = friendlyName;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             return p;
         }
     }
@@ -161,7 +161,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Delete by unique ip-access-control-list Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteIpAccessControlListOptions
         /// </summary>
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

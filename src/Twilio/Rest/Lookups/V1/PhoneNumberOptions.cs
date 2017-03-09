@@ -32,7 +32,7 @@ namespace Twilio.Rest.Lookups.V1
         /// The add_ons_data
         /// </summary>
         public Dictionary<string, object> AddOnsData { get; set; }
-    
+
         /// <summary>
         /// Construct a new FetchPhoneNumberOptions
         /// </summary>
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Lookups.V1
             Type = new List<string>();
             AddOns = new List<string>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -55,22 +55,22 @@ namespace Twilio.Rest.Lookups.V1
             {
                 p.Add(new KeyValuePair<string, string>("CountryCode", CountryCode));
             }
-            
+
             if (Type != null)
             {
                 p.AddRange(Type.Select(prop => new KeyValuePair<string, string>("Type", prop)));
             }
-            
+
             if (AddOns != null)
             {
                 p.AddRange(AddOns.Select(prop => new KeyValuePair<string, string>("AddOns", prop)));
             }
-            
+
             if (AddOnsData != null)
             {
                 p.AddRange(PrefixedCollapsibleMap.Serialize(AddOnsData, "AddOns"));
             }
-            
+
             return p;
         }
     }

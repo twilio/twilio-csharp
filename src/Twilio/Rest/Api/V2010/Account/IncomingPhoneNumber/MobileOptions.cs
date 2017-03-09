@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// The phone_number
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -37,22 +37,22 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             {
                 p.Add(new KeyValuePair<string, string>("Beta", Beta.Value.ToString()));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (PhoneNumber != null)
             {
                 p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// The voice_url
         /// </summary>
         public Uri VoiceUrl { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateMobileOptions
         /// </summary>
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             PhoneNumber = phoneNumber;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -151,82 +151,82 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             {
                 p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
             }
-            
+
             if (ApiVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (SmsApplicationSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsApplicationSid", SmsApplicationSid.ToString()));
             }
-            
+
             if (SmsFallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
             }
-            
+
             if (SmsFallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.ToString()));
             }
-            
+
             if (SmsMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
             }
-            
+
             if (SmsUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.ToString()));
             }
-            
+
             if (StatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
             }
-            
+
             if (StatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
             }
-            
+
             if (VoiceApplicationSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceApplicationSid", VoiceApplicationSid.ToString()));
             }
-            
+
             if (VoiceCallerIdLookup != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString()));
             }
-            
+
             if (VoiceFallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
             }
-            
+
             if (VoiceFallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.ToString()));
             }
-            
+
             if (VoiceMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
             }
-            
+
             if (VoiceUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.ToString()));
             }
-            
+
             return p;
         }
     }

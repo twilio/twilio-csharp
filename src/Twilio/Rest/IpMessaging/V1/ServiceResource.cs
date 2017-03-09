@@ -25,7 +25,7 @@ namespace Twilio.Rest.IpMessaging.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.IpMessaging.V1
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -55,7 +55,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.IpMessaging.V1
             var options = new FetchServiceOptions(pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -83,7 +83,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteServiceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -94,7 +94,7 @@ namespace Twilio.Rest.IpMessaging.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -108,7 +108,7 @@ namespace Twilio.Rest.IpMessaging.V1
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -124,7 +124,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -137,7 +137,7 @@ namespace Twilio.Rest.IpMessaging.V1
             var options = new DeleteServiceOptions(pathSid);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -152,7 +152,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildCreateRequest(CreateServiceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -163,7 +163,7 @@ namespace Twilio.Rest.IpMessaging.V1
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -177,7 +177,7 @@ namespace Twilio.Rest.IpMessaging.V1
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -193,7 +193,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -206,7 +206,7 @@ namespace Twilio.Rest.IpMessaging.V1
             var options = new CreateServiceOptions(friendlyName);
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -221,7 +221,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadServiceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -232,7 +232,7 @@ namespace Twilio.Rest.IpMessaging.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -244,11 +244,11 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<ServiceResource>.FromJson("services", response.Content);
             return new ResourceSet<ServiceResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -261,12 +261,12 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<ServiceResource>.FromJson("services", response.Content);
             return new ResourceSet<ServiceResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -280,7 +280,7 @@ namespace Twilio.Rest.IpMessaging.V1
             var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -296,7 +296,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -313,11 +313,11 @@ namespace Twilio.Rest.IpMessaging.V1
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<ServiceResource>.FromJson("services", response.Content);
         }
-    
+
         private static Request BuildUpdateRequest(UpdateServiceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -328,7 +328,7 @@ namespace Twilio.Rest.IpMessaging.V1
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -342,7 +342,7 @@ namespace Twilio.Rest.IpMessaging.V1
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -358,7 +358,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -439,7 +439,7 @@ namespace Twilio.Rest.IpMessaging.V1
             var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, DefaultServiceRoleSid = defaultServiceRoleSid, DefaultChannelRoleSid = defaultChannelRoleSid, DefaultChannelCreatorRoleSid = defaultChannelCreatorRoleSid, ReadStatusEnabled = readStatusEnabled, ReachabilityEnabled = reachabilityEnabled, TypingIndicatorTimeout = typingIndicatorTimeout, ConsumptionReportInterval = consumptionReportInterval, NotificationsNewMessageEnabled = notificationsNewMessageEnabled, NotificationsNewMessageTemplate = notificationsNewMessageTemplate, NotificationsAddedToChannelEnabled = notificationsAddedToChannelEnabled, NotificationsAddedToChannelTemplate = notificationsAddedToChannelTemplate, NotificationsRemovedFromChannelEnabled = notificationsRemovedFromChannelEnabled, NotificationsRemovedFromChannelTemplate = notificationsRemovedFromChannelTemplate, NotificationsInvitedToChannelEnabled = notificationsInvitedToChannelEnabled, NotificationsInvitedToChannelTemplate = notificationsInvitedToChannelTemplate, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, WebhookMethod = webhookMethod, WebhookFilters = webhookFilters, WebhooksOnMessageSendUrl = webhooksOnMessageSendUrl, WebhooksOnMessageSendMethod = webhooksOnMessageSendMethod, WebhooksOnMessageSendFormat = webhooksOnMessageSendFormat, WebhooksOnMessageUpdateUrl = webhooksOnMessageUpdateUrl, WebhooksOnMessageUpdateMethod = webhooksOnMessageUpdateMethod, WebhooksOnMessageUpdateFormat = webhooksOnMessageUpdateFormat, WebhooksOnMessageRemoveUrl = webhooksOnMessageRemoveUrl, WebhooksOnMessageRemoveMethod = webhooksOnMessageRemoveMethod, WebhooksOnMessageRemoveFormat = webhooksOnMessageRemoveFormat, WebhooksOnChannelAddUrl = webhooksOnChannelAddUrl, WebhooksOnChannelAddMethod = webhooksOnChannelAddMethod, WebhooksOnChannelAddFormat = webhooksOnChannelAddFormat, WebhooksOnChannelDestroyUrl = webhooksOnChannelDestroyUrl, WebhooksOnChannelDestroyMethod = webhooksOnChannelDestroyMethod, WebhooksOnChannelDestroyFormat = webhooksOnChannelDestroyFormat, WebhooksOnChannelUpdateUrl = webhooksOnChannelUpdateUrl, WebhooksOnChannelUpdateMethod = webhooksOnChannelUpdateMethod, WebhooksOnChannelUpdateFormat = webhooksOnChannelUpdateFormat, WebhooksOnMemberAddUrl = webhooksOnMemberAddUrl, WebhooksOnMemberAddMethod = webhooksOnMemberAddMethod, WebhooksOnMemberAddFormat = webhooksOnMemberAddFormat, WebhooksOnMemberRemoveUrl = webhooksOnMemberRemoveUrl, WebhooksOnMemberRemoveMethod = webhooksOnMemberRemoveMethod, WebhooksOnMemberRemoveFormat = webhooksOnMemberRemoveFormat, WebhooksOnMessageSentUrl = webhooksOnMessageSentUrl, WebhooksOnMessageSentMethod = webhooksOnMessageSentMethod, WebhooksOnMessageSentFormat = webhooksOnMessageSentFormat, WebhooksOnMessageUpdatedUrl = webhooksOnMessageUpdatedUrl, WebhooksOnMessageUpdatedMethod = webhooksOnMessageUpdatedMethod, WebhooksOnMessageUpdatedFormat = webhooksOnMessageUpdatedFormat, WebhooksOnMessageRemovedUrl = webhooksOnMessageRemovedUrl, WebhooksOnMessageRemovedMethod = webhooksOnMessageRemovedMethod, WebhooksOnMessageRemovedFormat = webhooksOnMessageRemovedFormat, WebhooksOnChannelAddedUrl = webhooksOnChannelAddedUrl, WebhooksOnChannelAddedMethod = webhooksOnChannelAddedMethod, WebhooksOnChannelAddedFormat = webhooksOnChannelAddedFormat, WebhooksOnChannelDestroyedUrl = webhooksOnChannelDestroyedUrl, WebhooksOnChannelDestroyedMethod = webhooksOnChannelDestroyedMethod, WebhooksOnChannelDestroyedFormat = webhooksOnChannelDestroyedFormat, WebhooksOnChannelUpdatedUrl = webhooksOnChannelUpdatedUrl, WebhooksOnChannelUpdatedMethod = webhooksOnChannelUpdatedMethod, WebhooksOnChannelUpdatedFormat = webhooksOnChannelUpdatedFormat, WebhooksOnMemberAddedUrl = webhooksOnMemberAddedUrl, WebhooksOnMemberAddedMethod = webhooksOnMemberAddedMethod, WebhooksOnMemberAddedFormat = webhooksOnMemberAddedFormat, WebhooksOnMemberRemovedUrl = webhooksOnMemberRemovedUrl, WebhooksOnMemberRemovedMethod = webhooksOnMemberRemovedMethod, WebhooksOnMemberRemovedFormat = webhooksOnMemberRemovedFormat};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -522,7 +522,7 @@ namespace Twilio.Rest.IpMessaging.V1
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a ServiceResource object
         /// </summary>
@@ -541,7 +541,7 @@ namespace Twilio.Rest.IpMessaging.V1
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The sid
         /// </summary>
@@ -642,10 +642,10 @@ namespace Twilio.Rest.IpMessaging.V1
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
-    
+
         private ServiceResource()
         {
-        
+
         }
     }
 

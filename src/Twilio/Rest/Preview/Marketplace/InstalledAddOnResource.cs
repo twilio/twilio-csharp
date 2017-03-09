@@ -25,7 +25,7 @@ namespace Twilio.Rest.Preview.Marketplace
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Install an Add-on for the Account specified.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Install an Add-on for the Account specified.
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Preview.Marketplace
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Install an Add-on for the Account specified.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var options = new CreateInstalledAddOnOptions(availableAddOnSid, acceptTermsOfService){Configuration = configuration, UniqueName = uniqueName};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Install an Add-on for the Account specified.
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Preview.Marketplace
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteInstalledAddOnOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Preview.Marketplace
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Remove an Add-on installation from your account
         /// </summary>
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Remove an Add-on installation from your account
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Preview.Marketplace
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Remove an Add-on installation from your account
         /// </summary>
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var options = new DeleteInstalledAddOnOptions(pathSid);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Remove an Add-on installation from your account
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Preview.Marketplace
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchInstalledAddOnOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Preview.Marketplace
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch an instance of an Add-on currently installed on this Account.
         /// </summary>
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of an Add-on currently installed on this Account.
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Preview.Marketplace
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch an instance of an Add-on currently installed on this Account.
         /// </summary>
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var options = new FetchInstalledAddOnOptions(pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of an Add-on currently installed on this Account.
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Preview.Marketplace
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateInstalledAddOnOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Preview.Marketplace
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Update an Add-on installation for the Account specified.
         /// </summary>
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Update an Add-on installation for the Account specified.
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Preview.Marketplace
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Update an Add-on installation for the Account specified.
         /// </summary>
@@ -283,7 +283,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var options = new UpdateInstalledAddOnOptions(pathSid){Configuration = configuration, UniqueName = uniqueName};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Update an Add-on installation for the Account specified.
@@ -300,7 +300,7 @@ namespace Twilio.Rest.Preview.Marketplace
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadInstalledAddOnOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -311,7 +311,7 @@ namespace Twilio.Rest.Preview.Marketplace
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of Add-ons currently installed on this Account.
         /// </summary>
@@ -323,11 +323,11 @@ namespace Twilio.Rest.Preview.Marketplace
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<InstalledAddOnResource>.FromJson("installed_add_ons", response.Content);
             return new ResourceSet<InstalledAddOnResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of Add-ons currently installed on this Account.
@@ -340,12 +340,12 @@ namespace Twilio.Rest.Preview.Marketplace
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<InstalledAddOnResource>.FromJson("installed_add_ons", response.Content);
             return new ResourceSet<InstalledAddOnResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of Add-ons currently installed on this Account.
         /// </summary>
@@ -359,7 +359,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var options = new ReadInstalledAddOnOptions{PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of Add-ons currently installed on this Account.
@@ -375,7 +375,7 @@ namespace Twilio.Rest.Preview.Marketplace
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -392,11 +392,11 @@ namespace Twilio.Rest.Preview.Marketplace
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<InstalledAddOnResource>.FromJson("installed_add_ons", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a InstalledAddOnResource object
         /// </summary>
@@ -415,7 +415,7 @@ namespace Twilio.Rest.Preview.Marketplace
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// A string that uniquely identifies this Add-on installation
         /// </summary>
@@ -466,10 +466,10 @@ namespace Twilio.Rest.Preview.Marketplace
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
-    
+
         private InstalledAddOnResource()
         {
-        
+
         }
     }
 

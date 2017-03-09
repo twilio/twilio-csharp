@@ -20,13 +20,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-        
+
             public static readonly StatusEnum Queued = new StatusEnum("queued");
             public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
             public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
-    
+
         private static Request BuildCreateRequest(CreateFeedbackSummaryOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var options = new CreateFeedbackSummaryOptions(startDate, endDate){PathAccountSid = pathAccountSid, IncludeSubaccounts = includeSubaccounts, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchFeedbackSummaryOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var options = new FetchFeedbackSummaryOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteFeedbackSummaryOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -187,7 +187,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -201,7 +201,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -217,7 +217,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -231,7 +231,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             var options = new DeleteFeedbackSummaryOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a FeedbackSummaryResource object
         /// </summary>
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -338,10 +338,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FeedbackSummaryResource.StatusEnum Status { get; private set; }
-    
+
         private FeedbackSummaryResource()
         {
-        
+
         }
     }
 

@@ -18,7 +18,7 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
         /// The unique Extension Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchAvailableAddOnExtensionOptions
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
             PathAvailableAddOnSid = pathAvailableAddOnSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
         /// The available_add_on_sid
         /// </summary>
         public string PathAvailableAddOnSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadAvailableAddOnExtensionOptions
         /// </summary>
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
         {
             PathAvailableAddOnSid = pathAvailableAddOnSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

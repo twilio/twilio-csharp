@@ -22,7 +22,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// Identity of the user to whom the Sync Document Permission applies.
         /// </summary>
         public string PathIdentity { get; }
-    
+
         /// <summary>
         /// Construct a new FetchDocumentPermissionOptions
         /// </summary>
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             PathDocumentSid = pathDocumentSid;
             PathIdentity = pathIdentity;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// Identity of the user to whom the Sync Document Permission applies.
         /// </summary>
         public string PathIdentity { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteDocumentPermissionOptions
         /// </summary>
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             PathDocumentSid = pathDocumentSid;
             PathIdentity = pathIdentity;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// Sync Document SID or unique name.
         /// </summary>
         public string PathDocumentSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadDocumentPermissionOptions
         /// </summary>
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             PathServiceSid = pathServiceSid;
             PathDocumentSid = pathDocumentSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// Manage access.
         /// </summary>
         public bool? Manage { get; }
-    
+
         /// <summary>
         /// Construct a new UpdateDocumentPermissionOptions
         /// </summary>
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             Write = write;
             Manage = manage;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -190,17 +190,17 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             {
                 p.Add(new KeyValuePair<string, string>("Read", Read.Value.ToString()));
             }
-            
+
             if (Write != null)
             {
                 p.Add(new KeyValuePair<string, string>("Write", Write.Value.ToString()));
             }
-            
+
             if (Manage != null)
             {
                 p.Add(new KeyValuePair<string, string>("Manage", Manage.Value.ToString()));
             }
-            
+
             return p;
         }
     }

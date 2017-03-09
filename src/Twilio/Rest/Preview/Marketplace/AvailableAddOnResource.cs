@@ -25,7 +25,7 @@ namespace Twilio.Rest.Preview.Marketplace
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch an instance of an Add-on currently available to be installed.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of an Add-on currently available to be installed.
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Preview.Marketplace
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch an instance of an Add-on currently available to be installed.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var options = new FetchAvailableAddOnOptions(pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of an Add-on currently available to be installed.
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Preview.Marketplace
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadAvailableAddOnOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Preview.Marketplace
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of Add-ons currently available to be installed.
         /// </summary>
@@ -106,11 +106,11 @@ namespace Twilio.Rest.Preview.Marketplace
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
             return new ResourceSet<AvailableAddOnResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of Add-ons currently available to be installed.
@@ -123,12 +123,12 @@ namespace Twilio.Rest.Preview.Marketplace
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
             return new ResourceSet<AvailableAddOnResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of Add-ons currently available to be installed.
         /// </summary>
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var options = new ReadAvailableAddOnOptions{PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of Add-ons currently available to be installed.
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Preview.Marketplace
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -175,11 +175,11 @@ namespace Twilio.Rest.Preview.Marketplace
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<AvailableAddOnResource>.FromJson("available_add_ons", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a AvailableAddOnResource object
         /// </summary>
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Preview.Marketplace
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// A string that uniquely identifies this Add-on
         /// </summary>
@@ -234,10 +234,10 @@ namespace Twilio.Rest.Preview.Marketplace
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
-    
+
         private AvailableAddOnResource()
         {
-        
+
         }
     }
 

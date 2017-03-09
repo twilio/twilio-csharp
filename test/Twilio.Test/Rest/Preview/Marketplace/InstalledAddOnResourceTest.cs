@@ -28,7 +28,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
             request.AddPostParam("AvailableAddOnSid", Serialize("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
             request.AddPostParam("AcceptTermsOfService", Serialize(true));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 InstalledAddOnResource.Create("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", true, client: twilioRestClient);
@@ -37,7 +37,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestCreateResponse()
         {
@@ -48,11 +48,11 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
                                          System.Net.HttpStatusCode.Created,
                                          "{\"sid\": \"XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"VoiceBase High Accuracy Transcription\",\"description\": \"Automatic Transcription and Keyword Extract...\",\"configuration\": {\"bad_words\": true},\"unique_name\": \"voicebase_high_accuracy_transcription_1\",\"date_created\": \"2016-04-07T23:52:28Z\",\"date_updated\": \"2016-04-07T23:52:28Z\",\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"extensions\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions\",\"available_add_on\": \"https://preview.twilio.com/marketplace/AvailableAddOns/XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}"
                                      ));
-            
+
             var response = InstalledAddOnResource.Create("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", true, client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestDeleteRequest()
         {
@@ -64,7 +64,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 InstalledAddOnResource.Delete("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -73,7 +73,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestDeleteResponse()
         {
@@ -84,11 +84,11 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
                                          System.Net.HttpStatusCode.NoContent,
                                          "null"
                                      ));
-            
+
             var response = InstalledAddOnResource.Delete("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestFetchRequest()
         {
@@ -100,7 +100,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 InstalledAddOnResource.Fetch("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -109,7 +109,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestFetchResponse()
         {
@@ -120,11 +120,11 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
                                          System.Net.HttpStatusCode.OK,
                                          "{\"sid\": \"XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"VoiceBase High Accuracy Transcription\",\"description\": \"Automatic Transcription and Keyword Extract...\",\"configuration\": {\"bad_words\": true},\"unique_name\": \"voicebase_high_accuracy_transcription\",\"date_created\": \"2016-04-07T23:52:28Z\",\"date_updated\": \"2016-04-07T23:52:28Z\",\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"extensions\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions\",\"available_add_on\": \"https://preview.twilio.com/marketplace/AvailableAddOns/XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}"
                                      ));
-            
+
             var response = InstalledAddOnResource.Fetch("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestUpdateRequest()
         {
@@ -136,7 +136,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 InstalledAddOnResource.Update("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -145,7 +145,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestUpdateResponse()
         {
@@ -156,11 +156,11 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
                                          System.Net.HttpStatusCode.OK,
                                          "{\"sid\": \"XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"VoiceBase High Accuracy Transcription\",\"description\": \"Automatic Transcription and Keyword Extract...\",\"configuration\": {\"bad_words\": true},\"unique_name\": \"voicebase_high_accuracy_transcription_2\",\"date_created\": \"2016-04-07T23:52:28Z\",\"date_updated\": \"2016-04-07T23:52:28Z\",\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"extensions\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions\",\"available_add_on\": \"https://preview.twilio.com/marketplace/AvailableAddOns/XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}"
                                      ));
-            
+
             var response = InstalledAddOnResource.Update("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadRequest()
         {
@@ -172,7 +172,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 InstalledAddOnResource.Read(client: twilioRestClient);
@@ -181,7 +181,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestReadFullResponse()
         {
@@ -192,11 +192,11 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
                                          System.Net.HttpStatusCode.OK,
                                          "{\"installed_add_ons\": [{\"sid\": \"XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"VoiceBase High Accuracy Transcription\",\"description\": \"Automatic Transcription and Keyword Extract...\",\"configuration\": {\"bad_words\": true},\"unique_name\": \"voicebase_high_accuracy_transcription\",\"date_created\": \"2016-04-07T23:52:28Z\",\"date_updated\": \"2016-04-07T23:52:28Z\",\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"extensions\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions\",\"available_add_on\": \"https://preview.twilio.com/marketplace/AvailableAddOns/XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://preview.twilio.com/marketplace/InstalledAddOns?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"installed_add_ons\"}}"
                                      ));
-            
+
             var response = InstalledAddOnResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadEmptyResponse()
         {
@@ -207,7 +207,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
                                          System.Net.HttpStatusCode.OK,
                                          "{\"installed_add_ons\": [],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://preview.twilio.com/marketplace/InstalledAddOns?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"installed_add_ons\"}}"
                                      ));
-            
+
             var response = InstalledAddOnResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }

@@ -22,7 +22,7 @@ namespace Twilio.Rest.Preview.Wireless.Sim
         /// The start
         /// </summary>
         public string Start { get; set; }
-    
+
         /// <summary>
         /// Construct a new FetchUsageOptions
         /// </summary>
@@ -32,7 +32,7 @@ namespace Twilio.Rest.Preview.Wireless.Sim
         {
             PathSimSid = pathSimSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -43,12 +43,12 @@ namespace Twilio.Rest.Preview.Wireless.Sim
             {
                 p.Add(new KeyValuePair<string, string>("End", End));
             }
-            
+
             if (Start != null)
             {
                 p.Add(new KeyValuePair<string, string>("Start", Start));
             }
-            
+
             return p;
         }
     }

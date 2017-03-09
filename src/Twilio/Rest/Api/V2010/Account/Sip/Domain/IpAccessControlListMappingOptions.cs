@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchIpAccessControlListMappingOptions
         /// </summary>
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             PathDomainSid = pathDomainSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// The ip_access_control_list_sid
         /// </summary>
         public string IpAccessControlListSid { get; }
-    
+
         /// <summary>
         /// Construct a new CreateIpAccessControlListMappingOptions
         /// </summary>
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             PathDomainSid = pathDomainSid;
             IpAccessControlListSid = ipAccessControlListSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             {
                 p.Add(new KeyValuePair<string, string>("IpAccessControlListSid", IpAccessControlListSid.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// The domain_sid
         /// </summary>
         public string PathDomainSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadIpAccessControlListMappingOptions
         /// </summary>
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         {
             PathDomainSid = pathDomainSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteIpAccessControlListMappingOptions
         /// </summary>
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             PathDomainSid = pathDomainSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

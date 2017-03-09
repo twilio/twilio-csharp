@@ -20,20 +20,20 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         {
             private QueryResultOrderEnum(string value) : base(value) {}
             public QueryResultOrderEnum() {}
-        
+
             public static readonly QueryResultOrderEnum Asc = new QueryResultOrderEnum("asc");
             public static readonly QueryResultOrderEnum Desc = new QueryResultOrderEnum("desc");
         }
-    
+
         public sealed class QueryFromBoundTypeEnum : StringEnum 
         {
             private QueryFromBoundTypeEnum(string value) : base(value) {}
             public QueryFromBoundTypeEnum() {}
-        
+
             public static readonly QueryFromBoundTypeEnum Inclusive = new QueryFromBoundTypeEnum("inclusive");
             public static readonly QueryFromBoundTypeEnum Exclusive = new QueryFromBoundTypeEnum("exclusive");
         }
-    
+
         private static Request BuildFetchRequest(FetchSyncMapItemOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var options = new FetchSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteSyncMapItemOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var options = new DeleteSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildCreateRequest(CreateSyncMapItemOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -220,7 +220,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var options = new CreateSyncMapItemOptions(pathServiceSid, pathMapSid, key, data);
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadSyncMapItemOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -265,7 +265,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -277,11 +277,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<SyncMapItemResource>.FromJson("items", response.Content);
             return new ResourceSet<SyncMapItemResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -294,12 +294,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<SyncMapItemResource>.FromJson("items", response.Content);
             return new ResourceSet<SyncMapItemResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var options = new ReadSyncMapItemOptions(pathServiceSid, pathMapSid){Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -339,7 +339,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -356,11 +356,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<SyncMapItemResource>.FromJson("items", response.Content);
         }
-    
+
         private static Request BuildUpdateRequest(UpdateSyncMapItemOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -371,7 +371,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -385,7 +385,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -401,7 +401,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -417,7 +417,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey, data);
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -435,7 +435,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a SyncMapItemResource object
         /// </summary>
@@ -454,7 +454,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The key
         /// </summary>
@@ -505,10 +505,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }
-    
+
         private SyncMapItemResource()
         {
-        
+
         }
     }
 

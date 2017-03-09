@@ -22,7 +22,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// The index
         /// </summary>
         public int? PathIndex { get; }
-    
+
         /// <summary>
         /// Construct a new FetchSyncListItemOptions
         /// </summary>
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             PathListSid = pathListSid;
             PathIndex = pathIndex;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// The index
         /// </summary>
         public int? PathIndex { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteSyncListItemOptions
         /// </summary>
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             PathListSid = pathListSid;
             PathIndex = pathIndex;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// The data
         /// </summary>
         public object Data { get; }
-    
+
         /// <summary>
         /// Construct a new CreateSyncListItemOptions
         /// </summary>
@@ -120,7 +120,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             PathListSid = pathListSid;
             Data = data;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             {
                 p.Add(new KeyValuePair<string, string>("Data", Data.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -161,7 +161,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// The bounds
         /// </summary>
         public SyncListItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadSyncListItemOptions
         /// </summary>
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             PathServiceSid = pathServiceSid;
             PathListSid = pathListSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -184,22 +184,22 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             {
                 p.Add(new KeyValuePair<string, string>("Order", Order.ToString()));
             }
-            
+
             if (From != null)
             {
                 p.Add(new KeyValuePair<string, string>("From", From));
             }
-            
+
             if (Bounds != null)
             {
                 p.Add(new KeyValuePair<string, string>("Bounds", Bounds.ToString()));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// The data
         /// </summary>
         public object Data { get; }
-    
+
         /// <summary>
         /// Construct a new UpdateSyncListItemOptions
         /// </summary>
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             PathIndex = pathIndex;
             Data = data;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             {
                 p.Add(new KeyValuePair<string, string>("Data", Data.ToString()));
             }
-            
+
             return p;
         }
     }

@@ -14,7 +14,7 @@ namespace Twilio.Rest.Preview.Sync
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Preview.Sync
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Preview.Sync
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Preview.Sync
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Preview.Sync
         /// The acl_enabled
         /// </summary>
         public bool? AclEnabled { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -97,22 +97,22 @@ namespace Twilio.Rest.Preview.Sync
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (WebhookUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.ToString()));
             }
-            
+
             if (ReachabilityWebhooksEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString()));
             }
-            
+
             if (AclEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Preview.Sync
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Preview.Sync
         /// The acl_enabled
         /// </summary>
         public bool? AclEnabled { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Preview.Sync
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -183,22 +183,22 @@ namespace Twilio.Rest.Preview.Sync
             {
                 p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.ToString()));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (ReachabilityWebhooksEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString()));
             }
-            
+
             if (AclEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString()));
             }
-            
+
             return p;
         }
     }

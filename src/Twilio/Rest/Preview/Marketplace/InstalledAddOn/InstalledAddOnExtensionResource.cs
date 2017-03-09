@@ -25,7 +25,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch an instance of an Extension for the Installed Add-on.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of an Extension for the Installed Add-on.
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch an instance of an Extension for the Installed Add-on.
         /// </summary>
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             var options = new FetchInstalledAddOnExtensionOptions(pathInstalledAddOnSid, pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of an Extension for the Installed Add-on.
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateInstalledAddOnExtensionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Update an Extension for an Add-on installation.
         /// </summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Update an Extension for an Add-on installation.
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Update an Extension for an Add-on installation.
         /// </summary>
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             var options = new UpdateInstalledAddOnExtensionOptions(pathInstalledAddOnSid, pathSid, enabled);
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Update an Extension for an Add-on installation.
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadInstalledAddOnExtensionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of Extensions for the Installed Add-on.
         /// </summary>
@@ -181,11 +181,11 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<InstalledAddOnExtensionResource>.FromJson("extensions", response.Content);
             return new ResourceSet<InstalledAddOnExtensionResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of Extensions for the Installed Add-on.
@@ -198,12 +198,12 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<InstalledAddOnExtensionResource>.FromJson("extensions", response.Content);
             return new ResourceSet<InstalledAddOnExtensionResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of Extensions for the Installed Add-on.
         /// </summary>
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             var options = new ReadInstalledAddOnExtensionOptions(pathInstalledAddOnSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of Extensions for the Installed Add-on.
@@ -235,7 +235,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -252,11 +252,11 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<InstalledAddOnExtensionResource>.FromJson("extensions", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a InstalledAddOnExtensionResource object
         /// </summary>
@@ -275,7 +275,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// A string that uniquely identifies this Extension
         /// </summary>
@@ -311,10 +311,10 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private InstalledAddOnExtensionResource()
         {
-        
+
         }
     }
 

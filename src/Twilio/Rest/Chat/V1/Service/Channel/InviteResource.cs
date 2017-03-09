@@ -25,7 +25,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var options = new FetchInviteOptions(pathServiceSid, pathChannelSid, pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildCreateRequest(CreateInviteOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var options = new CreateInviteOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadInviteOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -185,11 +185,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<InviteResource>.FromJson("invites", response.Content);
             return new ResourceSet<InviteResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -202,12 +202,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<InviteResource>.FromJson("invites", response.Content);
             return new ResourceSet<InviteResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var options = new ReadInviteOptions(pathServiceSid, pathChannelSid){Identity = identity, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -260,11 +260,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<InviteResource>.FromJson("invites", response.Content);
         }
-    
+
         private static Request BuildDeleteRequest(DeleteInviteOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -275,7 +275,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -289,7 +289,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -320,7 +320,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             var options = new DeleteInviteOptions(pathServiceSid, pathChannelSid, pathSid);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -337,7 +337,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a InviteResource object
         /// </summary>
@@ -356,7 +356,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The sid
         /// </summary>
@@ -407,10 +407,10 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private InviteResource()
         {
-        
+
         }
     }
 

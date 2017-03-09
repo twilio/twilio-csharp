@@ -20,18 +20,18 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             private EventEnum(string value) : base(value) {}
             public EventEnum() {}
-        
+
             public static readonly EventEnum Initiated = new EventEnum("initiated");
             public static readonly EventEnum Ringing = new EventEnum("ringing");
             public static readonly EventEnum Answered = new EventEnum("answered");
             public static readonly EventEnum Completed = new EventEnum("completed");
         }
-    
+
         public sealed class StatusEnum : StringEnum 
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-        
+
             public static readonly StatusEnum Queued = new StatusEnum("queued");
             public static readonly StatusEnum Ringing = new StatusEnum("ringing");
             public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
@@ -41,16 +41,16 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly StatusEnum NoAnswer = new StatusEnum("no-answer");
             public static readonly StatusEnum Canceled = new StatusEnum("canceled");
         }
-    
+
         public sealed class UpdateStatusEnum : StringEnum 
         {
             private UpdateStatusEnum(string value) : base(value) {}
             public UpdateStatusEnum() {}
-        
+
             public static readonly UpdateStatusEnum Canceled = new UpdateStatusEnum("canceled");
             public static readonly UpdateStatusEnum Completed = new UpdateStatusEnum("completed");
         }
-    
+
         private static Request BuildCreateRequest(CreateCallOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -61,7 +61,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
         /// </summary>
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
         /// </summary>
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteCallOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
         /// </summary>
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
         /// </summary>
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new DeleteCallOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchCallOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch the Call specified by the provided Call Sid
         /// </summary>
@@ -253,7 +253,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch the Call specified by the provided Call Sid
@@ -269,7 +269,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the Call specified by the provided Call Sid
         /// </summary>
@@ -283,7 +283,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new FetchCallOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch the Call specified by the provided Call Sid
@@ -299,7 +299,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadCallOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -310,7 +310,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieves a collection of Calls made to and from your account
         /// </summary>
@@ -322,11 +322,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<CallResource>.FromJson("calls", response.Content);
             return new ResourceSet<CallResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieves a collection of Calls made to and from your account
@@ -339,12 +339,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<CallResource>.FromJson("calls", response.Content);
             return new ResourceSet<CallResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieves a collection of Calls made to and from your account
         /// </summary>
@@ -369,7 +369,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new ReadCallOptions{PathAccountSid = pathAccountSid, To = to, From = from, ParentCallSid = parentCallSid, Status = status, StartTimeBefore = startTimeBefore, StartTime = startTime, StartTimeAfter = startTimeAfter, EndTimeBefore = endTimeBefore, EndTime = endTime, EndTimeAfter = endTimeAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieves a collection of Calls made to and from your account
@@ -396,7 +396,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -413,11 +413,11 @@ namespace Twilio.Rest.Api.V2010.Account
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<CallResource>.FromJson("calls", response.Content);
         }
-    
+
         private static Request BuildUpdateRequest(UpdateCallOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -428,7 +428,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Initiates a call redirect or terminates a call
         /// </summary>
@@ -442,7 +442,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Initiates a call redirect or terminates a call
@@ -458,7 +458,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Initiates a call redirect or terminates a call
         /// </summary>
@@ -479,7 +479,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Initiates a call redirect or terminates a call
@@ -502,7 +502,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a CallResource object
         /// </summary>
@@ -521,7 +521,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The unique id of the Account responsible for creating this Call
         /// </summary>
@@ -648,10 +648,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-    
+
         private CallResource()
         {
-        
+
         }
     }
 

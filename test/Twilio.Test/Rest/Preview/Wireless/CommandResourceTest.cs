@@ -26,7 +26,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 CommandResource.Fetch("DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestFetchResponse()
         {
@@ -46,11 +46,11 @@ namespace Twilio.Tests.Rest.Preview.Wireless
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"command\": \"command\",\"command_mode\": \"command_mode\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"device_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sim_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"direction\": \"direction\",\"sid\": \"DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"status\",\"url\": \"https://preview.twilio.com/wireless/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
-            
+
             var response = CommandResource.Fetch("DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadRequest()
         {
@@ -62,7 +62,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 CommandResource.Read(client: twilioRestClient);
@@ -71,7 +71,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestReadEmptyResponse()
         {
@@ -82,11 +82,11 @@ namespace Twilio.Tests.Rest.Preview.Wireless
                                          System.Net.HttpStatusCode.OK,
                                          "{\"commands\": [],\"meta\": {\"first_page_url\": \"https://preview.twilio.com/wireless/Commands?PageSize=50&Page=0\",\"key\": \"commands\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/wireless/Commands?PageSize=50&Page=0\"}}"
                                      ));
-            
+
             var response = CommandResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadFullResponse()
         {
@@ -97,11 +97,11 @@ namespace Twilio.Tests.Rest.Preview.Wireless
                                          System.Net.HttpStatusCode.OK,
                                          "{\"commands\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"command\": \"command\",\"command_mode\": \"command_mode\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"device_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sim_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"direction\": \"direction\",\"sid\": \"DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"status\",\"url\": \"https://preview.twilio.com/wireless/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"meta\": {\"first_page_url\": \"https://preview.twilio.com/wireless/Commands?PageSize=50&Page=0\",\"key\": \"commands\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/wireless/Commands?PageSize=50&Page=0\"}}"
                                      ));
-            
+
             var response = CommandResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestCreateRequest()
         {
@@ -114,7 +114,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             );
             request.AddPostParam("Command", Serialize("Command"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 CommandResource.Create("Command", client: twilioRestClient);
@@ -123,7 +123,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestCreateResponse()
         {
@@ -134,7 +134,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
                                          System.Net.HttpStatusCode.Created,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"command\": \"command\",\"command_mode\": \"command_mode\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"device_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sim_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"direction\": \"direction\",\"sid\": \"DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"status\",\"url\": \"https://preview.twilio.com/wireless/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
-            
+
             var response = CommandResource.Create("Command", client: twilioRestClient);
             Assert.NotNull(response);
         }

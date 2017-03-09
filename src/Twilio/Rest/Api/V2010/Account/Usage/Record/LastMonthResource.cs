@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         {
             private CategoryEnum(string value) : base(value) {}
             public CategoryEnum() {}
-        
+
             public static readonly CategoryEnum AuthyAuthentications = new CategoryEnum("authy-authentications");
             public static readonly CategoryEnum AuthyCallsOutbound = new CategoryEnum("authy-calls-outbound");
             public static readonly CategoryEnum AuthyMonthlyFees = new CategoryEnum("authy-monthly-fees");
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum TurnmegabytesUseast = new CategoryEnum("turnmegabytes-useast");
             public static readonly CategoryEnum TurnmegabytesUswest = new CategoryEnum("turnmegabytes-uswest");
         }
-    
+
         private static Request BuildReadRequest(ReadLastMonthOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -135,11 +135,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<LastMonthResource>.FromJson("usage_records", response.Content);
             return new ResourceSet<LastMonthResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -152,12 +152,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<LastMonthResource>.FromJson("usage_records", response.Content);
             return new ResourceSet<LastMonthResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             var options = new ReadLastMonthOptions{PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -212,11 +212,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<LastMonthResource>.FromJson("usage_records", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a LastMonthResource object
         /// </summary>
@@ -235,7 +235,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -307,10 +307,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// </summary>
         [JsonProperty("usage_unit")]
         public string UsageUnit { get; private set; }
-    
+
         private LastMonthResource()
         {
-        
+
         }
     }
 

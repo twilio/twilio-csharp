@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new FetchSigningKeyOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateSigningKeyOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new UpdateSigningKeyOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteSigningKeyOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -213,7 +213,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new DeleteSigningKeyOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -229,7 +229,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadSigningKeyOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -252,11 +252,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<SigningKeyResource>.FromJson("signing_keys", response.Content);
             return new ResourceSet<SigningKeyResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -269,12 +269,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<SigningKeyResource>.FromJson("signing_keys", response.Content);
             return new ResourceSet<SigningKeyResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -289,7 +289,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new ReadSigningKeyOptions{PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -306,7 +306,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -323,11 +323,11 @@ namespace Twilio.Rest.Api.V2010.Account
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<SigningKeyResource>.FromJson("signing_keys", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a SigningKeyResource object
         /// </summary>
@@ -346,7 +346,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The sid
         /// </summary>
@@ -367,10 +367,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
-    
+
         private SigningKeyResource()
         {
-        
+
         }
     }
 

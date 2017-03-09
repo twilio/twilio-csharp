@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -37,11 +37,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<AvailablePhoneNumberCountryResource>.FromJson("countries", response.Content);
             return new ResourceSet<AvailablePhoneNumberCountryResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -54,12 +54,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<AvailablePhoneNumberCountryResource>.FromJson("countries", response.Content);
             return new ResourceSet<AvailablePhoneNumberCountryResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new ReadAvailablePhoneNumberCountryOptions{PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -108,11 +108,11 @@ namespace Twilio.Rest.Api.V2010.Account
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<AvailablePhoneNumberCountryResource>.FromJson("countries", response.Content);
         }
-    
+
         private static Request BuildFetchRequest(FetchAvailablePhoneNumberCountryOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new FetchAvailablePhoneNumberCountryOptions(pathCountryCode){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a AvailablePhoneNumberCountryResource object
         /// </summary>
@@ -202,7 +202,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The ISO Country code to lookup phone numbers for.
         /// </summary>
@@ -228,10 +228,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
-    
+
         private AvailablePhoneNumberCountryResource()
         {
-        
+
         }
     }
 

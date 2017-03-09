@@ -46,7 +46,7 @@ namespace Twilio.Rest.Notify.V1
         /// The default_fcm_notification_protocol_version
         /// </summary>
         public string DefaultFcmNotificationProtocolVersion { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -57,47 +57,47 @@ namespace Twilio.Rest.Notify.V1
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (ApnCredentialSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApnCredentialSid", ApnCredentialSid.ToString()));
             }
-            
+
             if (GcmCredentialSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("GcmCredentialSid", GcmCredentialSid.ToString()));
             }
-            
+
             if (MessagingServiceSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
             }
-            
+
             if (FacebookMessengerPageId != null)
             {
                 p.Add(new KeyValuePair<string, string>("FacebookMessengerPageId", FacebookMessengerPageId));
             }
-            
+
             if (DefaultApnNotificationProtocolVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultApnNotificationProtocolVersion", DefaultApnNotificationProtocolVersion));
             }
-            
+
             if (DefaultGcmNotificationProtocolVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultGcmNotificationProtocolVersion", DefaultGcmNotificationProtocolVersion));
             }
-            
+
             if (FcmCredentialSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("FcmCredentialSid", FcmCredentialSid.ToString()));
             }
-            
+
             if (DefaultFcmNotificationProtocolVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultFcmNotificationProtocolVersion", DefaultFcmNotificationProtocolVersion));
             }
-            
+
             return p;
         }
     }
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Notify.V1
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Notify.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Notify.V1
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Notify.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Notify.V1
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -182,12 +182,12 @@ namespace Twilio.Rest.Notify.V1
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -237,7 +237,7 @@ namespace Twilio.Rest.Notify.V1
         /// The default_fcm_notification_protocol_version
         /// </summary>
         public string DefaultFcmNotificationProtocolVersion { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Notify.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -258,47 +258,47 @@ namespace Twilio.Rest.Notify.V1
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (ApnCredentialSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApnCredentialSid", ApnCredentialSid.ToString()));
             }
-            
+
             if (GcmCredentialSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("GcmCredentialSid", GcmCredentialSid.ToString()));
             }
-            
+
             if (MessagingServiceSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
             }
-            
+
             if (FacebookMessengerPageId != null)
             {
                 p.Add(new KeyValuePair<string, string>("FacebookMessengerPageId", FacebookMessengerPageId));
             }
-            
+
             if (DefaultApnNotificationProtocolVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultApnNotificationProtocolVersion", DefaultApnNotificationProtocolVersion));
             }
-            
+
             if (DefaultGcmNotificationProtocolVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultGcmNotificationProtocolVersion", DefaultGcmNotificationProtocolVersion));
             }
-            
+
             if (FcmCredentialSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("FcmCredentialSid", FcmCredentialSid.ToString()));
             }
-            
+
             if (DefaultFcmNotificationProtocolVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultFcmNotificationProtocolVersion", DefaultFcmNotificationProtocolVersion));
             }
-            
+
             return p;
         }
     }

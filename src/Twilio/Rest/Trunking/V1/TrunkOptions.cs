@@ -14,7 +14,7 @@ namespace Twilio.Rest.Trunking.V1
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchTrunkOptions
         /// </summary>
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Trunking.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Trunking.V1
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteTrunkOptions
         /// </summary>
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Trunking.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Trunking.V1
         /// The secure
         /// </summary>
         public bool? Secure { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -105,32 +105,32 @@ namespace Twilio.Rest.Trunking.V1
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (DomainName != null)
             {
                 p.Add(new KeyValuePair<string, string>("DomainName", DomainName));
             }
-            
+
             if (DisasterRecoveryUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("DisasterRecoveryUrl", DisasterRecoveryUrl.ToString()));
             }
-            
+
             if (DisasterRecoveryMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("DisasterRecoveryMethod", DisasterRecoveryMethod.ToString()));
             }
-            
+
             if (Recording != null)
             {
                 p.Add(new KeyValuePair<string, string>("Recording", Recording));
             }
-            
+
             if (Secure != null)
             {
                 p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Trunking.V1
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Trunking.V1
         /// The secure
         /// </summary>
         public bool? Secure { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateTrunkOptions
         /// </summary>
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Trunking.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -209,32 +209,32 @@ namespace Twilio.Rest.Trunking.V1
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (DomainName != null)
             {
                 p.Add(new KeyValuePair<string, string>("DomainName", DomainName));
             }
-            
+
             if (DisasterRecoveryUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("DisasterRecoveryUrl", DisasterRecoveryUrl.ToString()));
             }
-            
+
             if (DisasterRecoveryMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("DisasterRecoveryMethod", DisasterRecoveryMethod.ToString()));
             }
-            
+
             if (Recording != null)
             {
                 p.Add(new KeyValuePair<string, string>("Recording", Recording));
             }
-            
+
             if (Secure != null)
             {
                 p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString()));
             }
-            
+
             return p;
         }
     }

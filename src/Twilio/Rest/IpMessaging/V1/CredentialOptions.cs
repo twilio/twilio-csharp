@@ -20,7 +20,7 @@ namespace Twilio.Rest.IpMessaging.V1
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -58,7 +58,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// The secret
         /// </summary>
         public string Secret { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateCredentialOptions
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             Type = type;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -79,37 +79,37 @@ namespace Twilio.Rest.IpMessaging.V1
             {
                 p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (Certificate != null)
             {
                 p.Add(new KeyValuePair<string, string>("Certificate", Certificate));
             }
-            
+
             if (PrivateKey != null)
             {
                 p.Add(new KeyValuePair<string, string>("PrivateKey", PrivateKey));
             }
-            
+
             if (Sandbox != null)
             {
                 p.Add(new KeyValuePair<string, string>("Sandbox", Sandbox.Value.ToString()));
             }
-            
+
             if (ApiKey != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApiKey", ApiKey));
             }
-            
+
             if (Secret != null)
             {
                 p.Add(new KeyValuePair<string, string>("Secret", Secret));
             }
-            
+
             return p;
         }
     }
@@ -123,7 +123,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchCredentialOptions
         /// </summary>
@@ -133,7 +133,7 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -177,7 +177,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// The secret
         /// </summary>
         public string Secret { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateCredentialOptions
         /// </summary>
@@ -187,7 +187,7 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -198,32 +198,32 @@ namespace Twilio.Rest.IpMessaging.V1
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (Certificate != null)
             {
                 p.Add(new KeyValuePair<string, string>("Certificate", Certificate));
             }
-            
+
             if (PrivateKey != null)
             {
                 p.Add(new KeyValuePair<string, string>("PrivateKey", PrivateKey));
             }
-            
+
             if (Sandbox != null)
             {
                 p.Add(new KeyValuePair<string, string>("Sandbox", Sandbox.Value.ToString()));
             }
-            
+
             if (ApiKey != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApiKey", ApiKey));
             }
-            
+
             if (Secret != null)
             {
                 p.Add(new KeyValuePair<string, string>("Secret", Secret));
             }
-            
+
             return p;
         }
     }
@@ -237,7 +237,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteCredentialOptions
         /// </summary>
@@ -247,7 +247,7 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

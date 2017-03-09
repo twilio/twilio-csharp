@@ -18,7 +18,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchTaskChannelOptions
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The workspace_sid
         /// </summary>
         public string PathWorkspaceSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadTaskChannelOptions
         /// </summary>
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         {
             PathWorkspaceSid = pathWorkspaceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

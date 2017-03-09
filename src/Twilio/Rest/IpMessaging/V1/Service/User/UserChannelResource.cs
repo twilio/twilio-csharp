@@ -20,12 +20,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         {
             private ChannelStatusEnum(string value) : base(value) {}
             public ChannelStatusEnum() {}
-        
+
             public static readonly ChannelStatusEnum Joined = new ChannelStatusEnum("joined");
             public static readonly ChannelStatusEnum Invited = new ChannelStatusEnum("invited");
             public static readonly ChannelStatusEnum NotParticipating = new ChannelStatusEnum("not_participating");
         }
-    
+
         private static Request BuildReadRequest(ReadUserChannelOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -36,7 +36,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -48,11 +48,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<UserChannelResource>.FromJson("channels", response.Content);
             return new ResourceSet<UserChannelResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -65,12 +65,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<UserChannelResource>.FromJson("channels", response.Content);
             return new ResourceSet<UserChannelResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -86,7 +86,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
             var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -104,7 +104,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -121,11 +121,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<UserChannelResource>.FromJson("channels", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a UserChannelResource object
         /// </summary>
@@ -144,7 +144,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -186,10 +186,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
-    
+
         private UserChannelResource()
         {
-        
+
         }
     }
 

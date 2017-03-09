@@ -25,7 +25,7 @@ namespace Twilio.Rest.Notify.V1
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Notify.V1
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Notify.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Notify.V1
             var options = new CreateServiceOptions{FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Notify.V1
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteServiceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Notify.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Notify.V1
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Notify.V1
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Notify.V1
             var options = new DeleteServiceOptions(pathSid);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Notify.V1
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchServiceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Notify.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Notify.V1
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Notify.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -222,7 +222,7 @@ namespace Twilio.Rest.Notify.V1
             var options = new FetchServiceOptions(pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -237,7 +237,7 @@ namespace Twilio.Rest.Notify.V1
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadServiceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -248,7 +248,7 @@ namespace Twilio.Rest.Notify.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -260,11 +260,11 @@ namespace Twilio.Rest.Notify.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<ServiceResource>.FromJson("services", response.Content);
             return new ResourceSet<ServiceResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -277,12 +277,12 @@ namespace Twilio.Rest.Notify.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<ServiceResource>.FromJson("services", response.Content);
             return new ResourceSet<ServiceResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -297,7 +297,7 @@ namespace Twilio.Rest.Notify.V1
             var options = new ReadServiceOptions{FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Notify.V1
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -331,11 +331,11 @@ namespace Twilio.Rest.Notify.V1
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<ServiceResource>.FromJson("services", response.Content);
         }
-    
+
         private static Request BuildUpdateRequest(UpdateServiceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -346,7 +346,7 @@ namespace Twilio.Rest.Notify.V1
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -360,7 +360,7 @@ namespace Twilio.Rest.Notify.V1
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -376,7 +376,7 @@ namespace Twilio.Rest.Notify.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -398,7 +398,7 @@ namespace Twilio.Rest.Notify.V1
             var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -422,7 +422,7 @@ namespace Twilio.Rest.Notify.V1
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a ServiceResource object
         /// </summary>
@@ -441,7 +441,7 @@ namespace Twilio.Rest.Notify.V1
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The sid
         /// </summary>
@@ -517,10 +517,10 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
-    
+
         private ServiceResource()
         {
-        
+
         }
     }
 

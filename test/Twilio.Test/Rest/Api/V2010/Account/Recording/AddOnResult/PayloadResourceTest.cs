@@ -27,7 +27,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Recording.AddOnResult
             );
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 PayloadResource.Fetch("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -36,7 +36,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Recording.AddOnResult
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestFetchResponse()
         {
@@ -47,11 +47,11 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Recording.AddOnResult
                                          System.Net.HttpStatusCode.OK,
                                          "{\"sid\": \"XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"reference_sid\": \"REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"add_on_sid\": \"XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"add_on_configuration_sid\": \"XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"add_on_result_sid\": \"XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"label\": \"XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"content_type\": \"application/json\",\"date_created\": \"Wed, 01 Sep 2010 15:15:41 +0000\",\"date_updated\": \"Wed, 01 Sep 2010 15:15:41 +0000\",\"subresource_uris\": {\"data\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AddOnResults/XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Payloads/XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Data.json\"}}"
                                      ));
-            
+
             var response = PayloadResource.Fetch("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadRequest()
         {
@@ -64,7 +64,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Recording.AddOnResult
             );
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 PayloadResource.Read("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -73,7 +73,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Recording.AddOnResult
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestReadFullResponse()
         {
@@ -84,11 +84,11 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Recording.AddOnResult
                                          System.Net.HttpStatusCode.OK,
                                          "{\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AddOnResults/XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Payloads.json?PageSize=50&Page=0\",\"next_page_uri\": null,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"payloads\": [{\"sid\": \"XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"reference_sid\": \"REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"add_on_sid\": \"XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"add_on_configuration_sid\": \"XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"add_on_result_sid\": \"XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"label\": \"XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"content_type\": \"application/json\",\"date_created\": \"Wed, 01 Sep 2010 15:15:41 +0000\",\"date_updated\": \"Wed, 01 Sep 2010 15:15:41 +0000\",\"subresource_uris\": {\"data\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AddOnResults/XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Payloads/XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Data.json\"}}],\"start\": 0,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AddOnResults/XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Payloads.json?PageSize=50&Page=0\"}"
                                      ));
-            
+
             var response = PayloadResource.Read("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestReadEmptyResponse()
         {
@@ -99,11 +99,11 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Recording.AddOnResult
                                          System.Net.HttpStatusCode.OK,
                                          "{\"end\": 0,\"first_page_uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AddOnResults/XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Payloads.json?PageSize=50&Page=0\",\"next_page_uri\": null,\"page\": 0,\"page_size\": 50,\"previous_page_uri\": null,\"payloads\": [],\"start\": 0,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AddOnResults/XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Payloads.json?PageSize=50&Page=0\"}"
                                      ));
-            
+
             var response = PayloadResource.Read("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestDeleteRequest()
         {
@@ -116,7 +116,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Recording.AddOnResult
             );
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 PayloadResource.Delete("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -125,7 +125,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Recording.AddOnResult
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestDeleteResponse()
         {
@@ -136,7 +136,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Recording.AddOnResult
                                          System.Net.HttpStatusCode.NoContent,
                                          "null"
                                      ));
-            
+
             var response = PayloadResource.Delete("REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }

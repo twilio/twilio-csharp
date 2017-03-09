@@ -25,7 +25,7 @@ namespace Twilio.Rest.Preview.Wireless.Sim
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Wireless.Sim
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Preview.Wireless.Sim
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Preview.Wireless.Sim
             var options = new FetchUsageOptions(pathSimSid){End = end, Start = start};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Preview.Wireless.Sim
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a UsageResource object
         /// </summary>
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Preview.Wireless.Sim
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The sim_sid
         /// </summary>
@@ -152,10 +152,10 @@ namespace Twilio.Rest.Preview.Wireless.Sim
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private UsageResource()
         {
-        
+
         }
     }
 

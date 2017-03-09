@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// The in_lata
         /// </summary>
         public string InLata { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadLocalOptions
         /// </summary>
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         {
             PathCountryCode = pathCountryCode;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -103,87 +103,87 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             {
                 p.Add(new KeyValuePair<string, string>("AreaCode", AreaCode.Value.ToString()));
             }
-            
+
             if (Contains != null)
             {
                 p.Add(new KeyValuePair<string, string>("Contains", Contains));
             }
-            
+
             if (SmsEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsEnabled", SmsEnabled.Value.ToString()));
             }
-            
+
             if (MmsEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("MmsEnabled", MmsEnabled.Value.ToString()));
             }
-            
+
             if (VoiceEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceEnabled", VoiceEnabled.Value.ToString()));
             }
-            
+
             if (ExcludeAllAddressRequired != null)
             {
                 p.Add(new KeyValuePair<string, string>("ExcludeAllAddressRequired", ExcludeAllAddressRequired.Value.ToString()));
             }
-            
+
             if (ExcludeLocalAddressRequired != null)
             {
                 p.Add(new KeyValuePair<string, string>("ExcludeLocalAddressRequired", ExcludeLocalAddressRequired.Value.ToString()));
             }
-            
+
             if (ExcludeForeignAddressRequired != null)
             {
                 p.Add(new KeyValuePair<string, string>("ExcludeForeignAddressRequired", ExcludeForeignAddressRequired.Value.ToString()));
             }
-            
+
             if (Beta != null)
             {
                 p.Add(new KeyValuePair<string, string>("Beta", Beta.Value.ToString()));
             }
-            
+
             if (NearNumber != null)
             {
                 p.Add(new KeyValuePair<string, string>("NearNumber", NearNumber.ToString()));
             }
-            
+
             if (NearLatLong != null)
             {
                 p.Add(new KeyValuePair<string, string>("NearLatLong", NearLatLong));
             }
-            
+
             if (Distance != null)
             {
                 p.Add(new KeyValuePair<string, string>("Distance", Distance.Value.ToString()));
             }
-            
+
             if (InPostalCode != null)
             {
                 p.Add(new KeyValuePair<string, string>("InPostalCode", InPostalCode));
             }
-            
+
             if (InRegion != null)
             {
                 p.Add(new KeyValuePair<string, string>("InRegion", InRegion));
             }
-            
+
             if (InRateCenter != null)
             {
                 p.Add(new KeyValuePair<string, string>("InRateCenter", InRateCenter));
             }
-            
+
             if (InLata != null)
             {
                 p.Add(new KeyValuePair<string, string>("InLata", InLata));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

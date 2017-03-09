@@ -20,11 +20,11 @@ namespace Twilio.Rest.Notify.V1.Service
         {
             private PriorityEnum(string value) : base(value) {}
             public PriorityEnum() {}
-        
+
             public static readonly PriorityEnum High = new PriorityEnum("high");
             public static readonly PriorityEnum Low = new PriorityEnum("low");
         }
-    
+
         private static Request BuildCreateRequest(CreateNotificationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Notify.V1.Service
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a NotificationResource object
         /// </summary>
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Notify.V1.Service
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The sid
         /// </summary>
@@ -232,10 +232,10 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         [JsonProperty("facebook_messenger")]
         public object FacebookMessenger { get; private set; }
-    
+
         private NotificationResource()
         {
-        
+
         }
     }
 

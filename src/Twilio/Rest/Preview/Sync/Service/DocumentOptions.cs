@@ -18,7 +18,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchDocumentOptions
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteDocumentOptions
         /// </summary>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// The data
         /// </summary>
         public object Data { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateDocumentOptions
         /// </summary>
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         {
             PathServiceSid = pathServiceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -115,12 +115,12 @@ namespace Twilio.Rest.Preview.Sync.Service
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
-            
+
             if (Data != null)
             {
                 p.Add(new KeyValuePair<string, string>("Data", Data.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadDocumentOptions
         /// </summary>
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         {
             PathServiceSid = pathServiceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// The data
         /// </summary>
         public object Data { get; }
-    
+
         /// <summary>
         /// Construct a new UpdateDocumentOptions
         /// </summary>
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             PathSid = pathSid;
             Data = data;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -202,7 +202,7 @@ namespace Twilio.Rest.Preview.Sync.Service
             {
                 p.Add(new KeyValuePair<string, string>("Data", Data.ToString()));
             }
-            
+
             return p;
         }
     }

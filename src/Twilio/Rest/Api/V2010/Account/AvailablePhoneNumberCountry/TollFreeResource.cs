@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -38,11 +38,11 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<TollFreeResource>.FromJson("available_phone_numbers", response.Content);
             return new ResourceSet<TollFreeResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -55,12 +55,12 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<TollFreeResource>.FromJson("available_phone_numbers", response.Content);
             return new ResourceSet<TollFreeResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             var options = new ReadTollFreeOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -143,11 +143,11 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<TollFreeResource>.FromJson("available_phone_numbers", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a TollFreeResource object
         /// </summary>
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The friendly_name
         /// </summary>
@@ -229,10 +229,10 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         [JsonProperty("capabilities")]
         public PhoneNumberCapabilities Capabilities { get; private set; }
-    
+
         private TollFreeResource()
         {
-        
+
         }
     }
 

@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// The outcome
         /// </summary>
         public FeedbackResource.OutcomeEnum Outcome { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateFeedbackOptions
         /// </summary>
@@ -32,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         {
             PathMessageSid = pathMessageSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             {
                 p.Add(new KeyValuePair<string, string>("Outcome", Outcome.ToString()));
             }
-            
+
             return p;
         }
     }

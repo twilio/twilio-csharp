@@ -14,7 +14,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// The unique Available Add-on Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchAvailableAddOnOptions
         /// </summary>
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Preview.Marketplace
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Preview.Marketplace
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

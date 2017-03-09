@@ -39,7 +39,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
-    
+
         /// <summary>
         /// Construct a new FetchWorkersStatisticsOptions
         /// </summary>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         {
             PathWorkspaceSid = pathWorkspaceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -60,32 +60,32 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             {
                 p.Add(new KeyValuePair<string, string>("Minutes", Minutes.Value.ToString()));
             }
-            
+
             if (StartDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
-            
+
             if (EndDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
-            
+
             if (TaskQueueSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskQueueSid", TaskQueueSid.ToString()));
             }
-            
+
             if (TaskQueueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskQueueName", TaskQueueName));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             return p;
         }
     }

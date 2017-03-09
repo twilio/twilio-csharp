@@ -18,7 +18,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchCredentialListOptions
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             PathTrunkSid = pathTrunkSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteCredentialListOptions
         /// </summary>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             PathTrunkSid = pathTrunkSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// The credential_list_sid
         /// </summary>
         public string CredentialListSid { get; }
-    
+
         /// <summary>
         /// Construct a new CreateCredentialListOptions
         /// </summary>
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             PathTrunkSid = pathTrunkSid;
             CredentialListSid = credentialListSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             {
                 p.Add(new KeyValuePair<string, string>("CredentialListSid", CredentialListSid.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -127,7 +127,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// The trunk_sid
         /// </summary>
         public string PathTrunkSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadCredentialListOptions
         /// </summary>
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             PathTrunkSid = pathTrunkSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

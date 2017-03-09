@@ -15,7 +15,7 @@ namespace Twilio.Rest.Monitor.V1
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchEventOptions
         /// </summary>
@@ -25,7 +25,7 @@ namespace Twilio.Rest.Monitor.V1
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Monitor.V1
         /// The end_date
         /// </summary>
         public DateTime? EndDate { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -76,37 +76,37 @@ namespace Twilio.Rest.Monitor.V1
             {
                 p.Add(new KeyValuePair<string, string>("ActorSid", ActorSid.ToString()));
             }
-            
+
             if (EventType != null)
             {
                 p.Add(new KeyValuePair<string, string>("EventType", EventType));
             }
-            
+
             if (ResourceSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("ResourceSid", ResourceSid.ToString()));
             }
-            
+
             if (SourceIpAddress != null)
             {
                 p.Add(new KeyValuePair<string, string>("SourceIpAddress", SourceIpAddress));
             }
-            
+
             if (StartDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
             }
-            
+
             if (EndDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

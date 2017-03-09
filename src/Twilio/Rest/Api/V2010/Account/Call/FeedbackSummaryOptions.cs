@@ -35,7 +35,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The status_callback_method
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateFeedbackSummaryOptions
         /// </summary>
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             StartDate = startDate;
             EndDate = endDate;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -58,27 +58,27 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             {
                 p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd")));
             }
-            
+
             if (EndDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
             }
-            
+
             if (IncludeSubaccounts != null)
             {
                 p.Add(new KeyValuePair<string, string>("IncludeSubaccounts", IncludeSubaccounts.Value.ToString()));
             }
-            
+
             if (StatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
             }
-            
+
             if (StatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchFeedbackSummaryOptions
         /// </summary>
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteFeedbackSummaryOptions
         /// </summary>
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

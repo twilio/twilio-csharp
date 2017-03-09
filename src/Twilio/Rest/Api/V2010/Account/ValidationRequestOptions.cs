@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The status_callback_method
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateValidationRequestOptions
         /// </summary>
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PhoneNumber = phoneNumber;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -59,32 +59,32 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (CallDelay != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallDelay", CallDelay.Value.ToString()));
             }
-            
+
             if (Extension != null)
             {
                 p.Add(new KeyValuePair<string, string>("Extension", Extension));
             }
-            
+
             if (StatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
             }
-            
+
             if (StatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
             }
-            
+
             return p;
         }
     }

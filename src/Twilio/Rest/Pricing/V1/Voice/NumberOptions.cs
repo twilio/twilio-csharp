@@ -14,7 +14,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// The number
         /// </summary>
         public Types.PhoneNumber PathNumber { get; }
-    
+
         /// <summary>
         /// Construct a new FetchNumberOptions
         /// </summary>
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         {
             PathNumber = pathNumber;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

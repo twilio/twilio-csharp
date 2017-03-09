@@ -22,7 +22,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// Identity of the user to whom the Sync Map Permission applies.
         /// </summary>
         public string PathIdentity { get; }
-    
+
         /// <summary>
         /// Construct a new FetchSyncMapPermissionOptions
         /// </summary>
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             PathMapSid = pathMapSid;
             PathIdentity = pathIdentity;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// Identity of the user to whom the Sync Map Permission applies.
         /// </summary>
         public string PathIdentity { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteSyncMapPermissionOptions
         /// </summary>
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             PathMapSid = pathMapSid;
             PathIdentity = pathIdentity;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// Sync Map SID or unique name.
         /// </summary>
         public string PathMapSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadSyncMapPermissionOptions
         /// </summary>
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             PathServiceSid = pathServiceSid;
             PathMapSid = pathMapSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// Manage access.
         /// </summary>
         public bool? Manage { get; }
-    
+
         /// <summary>
         /// Construct a new UpdateSyncMapPermissionOptions
         /// </summary>
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             Write = write;
             Manage = manage;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -190,17 +190,17 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             {
                 p.Add(new KeyValuePair<string, string>("Read", Read.Value.ToString()));
             }
-            
+
             if (Write != null)
             {
                 p.Add(new KeyValuePair<string, string>("Write", Write.Value.ToString()));
             }
-            
+
             if (Manage != null)
             {
                 p.Add(new KeyValuePair<string, string>("Manage", Manage.Value.ToString()));
             }
-            
+
             return p;
         }
     }

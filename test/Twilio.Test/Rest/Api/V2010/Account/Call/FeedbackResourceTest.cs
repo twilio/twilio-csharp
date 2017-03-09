@@ -28,7 +28,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
             request.AddPostParam("QualityScore", Serialize(1));
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 FeedbackResource.Create("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1, client: twilioRestClient);
@@ -37,7 +37,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestCreateResponse()
         {
@@ -48,11 +48,11 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
                                          System.Net.HttpStatusCode.Created,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"date_updated\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"issues\": [\"imperfect-audio\",\"post-dial-delay\"],\"quality_score\": 5,\"sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
-            
+
             var response = FeedbackResource.Create("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1, client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestFetchRequest()
         {
@@ -65,7 +65,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
             );
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 FeedbackResource.Fetch("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -74,7 +74,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestFetchResponse()
         {
@@ -85,11 +85,11 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"date_updated\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"issues\": [\"imperfect-audio\",\"post-dial-delay\"],\"quality_score\": 5,\"sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
-            
+
             var response = FeedbackResource.Fetch("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
-    
+
         [Test]
         public void TestUpdateRequest()
         {
@@ -103,7 +103,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
             request.AddPostParam("QualityScore", Serialize(1));
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-            
+
             try
             {
                 FeedbackResource.Update("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1, client: twilioRestClient);
@@ -112,7 +112,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
         }
-    
+
         [Test]
         public void TestUpdateResponse()
         {
@@ -123,7 +123,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"date_updated\": \"Thu, 20 Aug 2015 21:45:46 +0000\",\"issues\": [\"imperfect-audio\",\"post-dial-delay\"],\"quality_score\": 5,\"sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
-            
+
             var response = FeedbackResource.Update("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 1, client: twilioRestClient);
             Assert.NotNull(response);
         }

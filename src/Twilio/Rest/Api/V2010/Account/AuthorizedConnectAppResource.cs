@@ -20,11 +20,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             private PermissionEnum(string value) : base(value) {}
             public PermissionEnum() {}
-        
+
             public static readonly PermissionEnum GetAll = new PermissionEnum("get-all");
             public static readonly PermissionEnum PostAll = new PermissionEnum("post-all");
         }
-    
+
         private static Request BuildFetchRequest(FetchAuthorizedConnectAppOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch an instance of an authorized-connect-app
         /// </summary>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of an authorized-connect-app
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch an instance of an authorized-connect-app
         /// </summary>
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new FetchAuthorizedConnectAppOptions(pathConnectAppSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of an authorized-connect-app
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadAuthorizedConnectAppOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
         /// </summary>
@@ -118,11 +118,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<AuthorizedConnectAppResource>.FromJson("authorized_connect_apps", response.Content);
             return new ResourceSet<AuthorizedConnectAppResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
@@ -135,12 +135,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<AuthorizedConnectAppResource>.FromJson("authorized_connect_apps", response.Content);
             return new ResourceSet<AuthorizedConnectAppResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
         /// </summary>
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new ReadAuthorizedConnectAppOptions{PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -189,11 +189,11 @@ namespace Twilio.Rest.Api.V2010.Account
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<AuthorizedConnectAppResource>.FromJson("authorized_connect_apps", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a AuthorizedConnectAppResource object
         /// </summary>
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The unique sid that identifies this account
         /// </summary>
@@ -264,10 +264,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-    
+
         private AuthorizedConnectAppResource()
         {
-        
+
         }
     }
 

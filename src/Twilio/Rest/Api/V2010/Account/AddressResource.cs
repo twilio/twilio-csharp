@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteAddressOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new DeleteAddressOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchAddressOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new FetchAddressOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateAddressOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -282,7 +282,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -303,7 +303,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new UpdateAddressOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -326,7 +326,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadAddressOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -337,7 +337,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -349,11 +349,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<AddressResource>.FromJson("addresses", response.Content);
             return new ResourceSet<AddressResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -366,12 +366,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<AddressResource>.FromJson("addresses", response.Content);
             return new ResourceSet<AddressResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -389,7 +389,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new ReadAddressOptions{PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -409,7 +409,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -426,11 +426,11 @@ namespace Twilio.Rest.Api.V2010.Account
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<AddressResource>.FromJson("addresses", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a AddressResource object
         /// </summary>
@@ -449,7 +449,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -520,10 +520,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("validated")]
         public bool? Validated { get; private set; }
-    
+
         private AddressResource()
         {
-        
+
         }
     }
 

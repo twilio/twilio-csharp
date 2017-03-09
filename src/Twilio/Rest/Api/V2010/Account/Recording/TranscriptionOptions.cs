@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchTranscriptionOptions
         /// </summary>
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             PathRecordingSid = pathRecordingSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteTranscriptionOptions
         /// </summary>
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             PathRecordingSid = pathRecordingSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// The recording_sid
         /// </summary>
         public string PathRecordingSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadTranscriptionOptions
         /// </summary>
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         {
             PathRecordingSid = pathRecordingSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

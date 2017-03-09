@@ -23,7 +23,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchMemberOptions
         /// </summary>
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             PathChannelSid = pathChannelSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// The role_sid
         /// </summary>
         public string RoleSid { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateMemberOptions
         /// </summary>
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             PathChannelSid = pathChannelSid;
             Identity = identity;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -94,12 +94,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             {
                 p.Add(new KeyValuePair<string, string>("Identity", Identity));
             }
-            
+
             if (RoleSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// The identity
         /// </summary>
         public List<string> Identity { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadMemberOptions
         /// </summary>
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             PathChannelSid = pathChannelSid;
             Identity = new List<string>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -145,12 +145,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             {
                 p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteMemberOptions
         /// </summary>
@@ -186,7 +186,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             PathChannelSid = pathChannelSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -222,7 +222,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// The last_consumed_message_index
         /// </summary>
         public int? LastConsumedMessageIndex { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateMemberOptions
         /// </summary>
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             PathChannelSid = pathChannelSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -247,12 +247,12 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
             {
                 p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
             }
-            
+
             if (LastConsumedMessageIndex != null)
             {
                 p.Add(new KeyValuePair<string, string>("LastConsumedMessageIndex", LastConsumedMessageIndex.ToString()));
             }
-            
+
             return p;
         }
     }

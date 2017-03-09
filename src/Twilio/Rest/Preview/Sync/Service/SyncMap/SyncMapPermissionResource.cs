@@ -25,7 +25,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch a specific Sync Map Permission.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch a specific Sync Map Permission.
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch a specific Sync Map Permission.
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var options = new FetchSyncMapPermissionOptions(pathServiceSid, pathMapSid, pathIdentity);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch a specific Sync Map Permission.
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteSyncMapPermissionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Delete a specific Sync Map Permission.
         /// </summary>
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete a specific Sync Map Permission.
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Delete a specific Sync Map Permission.
         /// </summary>
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var options = new DeleteSyncMapPermissionOptions(pathServiceSid, pathMapSid, pathIdentity);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Delete a specific Sync Map Permission.
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadSyncMapPermissionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Map.
         /// </summary>
@@ -183,11 +183,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<SyncMapPermissionResource>.FromJson("permissions", response.Content);
             return new ResourceSet<SyncMapPermissionResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Map.
@@ -200,12 +200,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<SyncMapPermissionResource>.FromJson("permissions", response.Content);
             return new ResourceSet<SyncMapPermissionResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Map.
         /// </summary>
@@ -221,7 +221,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var options = new ReadSyncMapPermissionOptions(pathServiceSid, pathMapSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Map.
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -256,11 +256,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<SyncMapPermissionResource>.FromJson("permissions", response.Content);
         }
-    
+
         private static Request BuildUpdateRequest(UpdateSyncMapPermissionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -271,7 +271,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Update an identity's access to a specific Sync Map.
         /// </summary>
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Update an identity's access to a specific Sync Map.
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Update an identity's access to a specific Sync Map.
         /// </summary>
@@ -319,7 +319,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             var options = new UpdateSyncMapPermissionOptions(pathServiceSid, pathMapSid, pathIdentity, read, write, manage);
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Update an identity's access to a specific Sync Map.
@@ -339,7 +339,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a SyncMapPermissionResource object
         /// </summary>
@@ -358,7 +358,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// Twilio Account SID.
         /// </summary>
@@ -399,10 +399,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private SyncMapPermissionResource()
         {
-        
+
         }
     }
 

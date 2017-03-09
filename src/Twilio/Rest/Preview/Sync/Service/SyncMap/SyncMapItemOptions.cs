@@ -22,7 +22,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// The key
         /// </summary>
         public string PathKey { get; }
-    
+
         /// <summary>
         /// Construct a new FetchSyncMapItemOptions
         /// </summary>
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             PathMapSid = pathMapSid;
             PathKey = pathKey;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// The key
         /// </summary>
         public string PathKey { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteSyncMapItemOptions
         /// </summary>
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             PathMapSid = pathMapSid;
             PathKey = pathKey;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// The data
         /// </summary>
         public object Data { get; }
-    
+
         /// <summary>
         /// Construct a new CreateSyncMapItemOptions
         /// </summary>
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             Key = key;
             Data = data;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -137,12 +137,12 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             {
                 p.Add(new KeyValuePair<string, string>("Key", Key));
             }
-            
+
             if (Data != null)
             {
                 p.Add(new KeyValuePair<string, string>("Data", Data.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// The bounds
         /// </summary>
         public SyncMapItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadSyncMapItemOptions
         /// </summary>
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             PathServiceSid = pathServiceSid;
             PathMapSid = pathMapSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -195,22 +195,22 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             {
                 p.Add(new KeyValuePair<string, string>("Order", Order.ToString()));
             }
-            
+
             if (From != null)
             {
                 p.Add(new KeyValuePair<string, string>("From", From));
             }
-            
+
             if (Bounds != null)
             {
                 p.Add(new KeyValuePair<string, string>("Bounds", Bounds.ToString()));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// The data
         /// </summary>
         public object Data { get; }
-    
+
         /// <summary>
         /// Construct a new UpdateSyncMapItemOptions
         /// </summary>
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             PathKey = pathKey;
             Data = data;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -263,7 +263,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
             {
                 p.Add(new KeyValuePair<string, string>("Data", Data.ToString()));
             }
-            
+
             return p;
         }
     }

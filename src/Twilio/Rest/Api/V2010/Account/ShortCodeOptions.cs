@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch by unique short-code Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchShortCodeOptions
         /// </summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// HTTP method Twilio will use with sms fallback url
         /// </summary>
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateShortCodeOptions
         /// </summary>
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -97,32 +97,32 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (ApiVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
             }
-            
+
             if (SmsUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.ToString()));
             }
-            
+
             if (SmsMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
             }
-            
+
             if (SmsFallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.ToString()));
             }
-            
+
             if (SmsFallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Filter by ShortCode
         /// </summary>
         public string ShortCode { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -155,17 +155,17 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (ShortCode != null)
             {
                 p.Add(new KeyValuePair<string, string>("ShortCode", ShortCode));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

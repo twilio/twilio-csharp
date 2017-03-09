@@ -20,12 +20,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-        
+
             public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
             public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
-    
+
         private static Request BuildFetchRequest(FetchTranscriptionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             var options = new FetchTranscriptionOptions(pathRecordingSid, pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteTranscriptionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             var options = new DeleteTranscriptionOptions(pathRecordingSid, pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadTranscriptionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -194,11 +194,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
             return new ResourceSet<TranscriptionResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -211,12 +211,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
             return new ResourceSet<TranscriptionResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -232,7 +232,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             var options = new ReadTranscriptionOptions(pathRecordingSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -250,7 +250,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -267,11 +267,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<TranscriptionResource>.FromJson("transcriptions", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a TranscriptionResource object
         /// </summary>
@@ -290,7 +290,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -357,10 +357,10 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-    
+
         private TranscriptionResource()
         {
-        
+
         }
     }
 

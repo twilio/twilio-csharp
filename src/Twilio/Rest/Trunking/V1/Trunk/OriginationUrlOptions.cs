@@ -18,7 +18,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchOriginationUrlOptions
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             PathTrunkSid = pathTrunkSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteOriginationUrlOptions
         /// </summary>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             PathTrunkSid = pathTrunkSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// The sip_url
         /// </summary>
         public Uri SipUrl { get; }
-    
+
         /// <summary>
         /// Construct a new CreateOriginationUrlOptions
         /// </summary>
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             FriendlyName = friendlyName;
             SipUrl = sipUrl;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -137,27 +137,27 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             {
                 p.Add(new KeyValuePair<string, string>("Weight", Weight.Value.ToString()));
             }
-            
+
             if (Priority != null)
             {
                 p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
             }
-            
+
             if (Enabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString()));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (SipUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("SipUrl", SipUrl.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// The trunk_sid
         /// </summary>
         public string PathTrunkSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadOriginationUrlOptions
         /// </summary>
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             PathTrunkSid = pathTrunkSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -192,7 +192,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// The sip_url
         /// </summary>
         public Uri SipUrl { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateOriginationUrlOptions
         /// </summary>
@@ -242,7 +242,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             PathTrunkSid = pathTrunkSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -253,27 +253,27 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             {
                 p.Add(new KeyValuePair<string, string>("Weight", Weight.Value.ToString()));
             }
-            
+
             if (Priority != null)
             {
                 p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
             }
-            
+
             if (Enabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString()));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (SipUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("SipUrl", SipUrl.ToString()));
             }
-            
+
             return p;
         }
     }

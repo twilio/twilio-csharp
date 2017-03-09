@@ -20,14 +20,14 @@ namespace Twilio.Rest.Notify.V1.Service
         {
             private BindingTypeEnum(string value) : base(value) {}
             public BindingTypeEnum() {}
-        
+
             public static readonly BindingTypeEnum Apn = new BindingTypeEnum("apn");
             public static readonly BindingTypeEnum Gcm = new BindingTypeEnum("gcm");
             public static readonly BindingTypeEnum Sms = new BindingTypeEnum("sms");
             public static readonly BindingTypeEnum Fcm = new BindingTypeEnum("fcm");
             public static readonly BindingTypeEnum FacebookMessenger = new BindingTypeEnum("facebook-messenger");
         }
-    
+
         private static Request BuildFetchRequest(FetchBindingOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Notify.V1.Service
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var options = new FetchBindingOptions(pathServiceSid, pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteBindingOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Notify.V1.Service
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var options = new DeleteBindingOptions(pathServiceSid, pathSid);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildCreateRequest(CreateBindingOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Notify.V1.Service
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -194,7 +194,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var options = new CreateBindingOptions(pathServiceSid, endpoint, identity, bindingType, address){Tag = tag, NotificationProtocolVersion = notificationProtocolVersion, CredentialSid = credentialSid};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadBindingOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -263,7 +263,7 @@ namespace Twilio.Rest.Notify.V1.Service
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -275,11 +275,11 @@ namespace Twilio.Rest.Notify.V1.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<BindingResource>.FromJson("bindings", response.Content);
             return new ResourceSet<BindingResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -292,12 +292,12 @@ namespace Twilio.Rest.Notify.V1.Service
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<BindingResource>.FromJson("bindings", response.Content);
             return new ResourceSet<BindingResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -316,7 +316,7 @@ namespace Twilio.Rest.Notify.V1.Service
             var options = new ReadBindingOptions(pathServiceSid){StartDate = startDate, EndDate = endDate, Identity = identity, Tag = tag, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -337,7 +337,7 @@ namespace Twilio.Rest.Notify.V1.Service
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -354,11 +354,11 @@ namespace Twilio.Rest.Notify.V1.Service
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<BindingResource>.FromJson("bindings", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a BindingResource object
         /// </summary>
@@ -377,7 +377,7 @@ namespace Twilio.Rest.Notify.V1.Service
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The sid
         /// </summary>
@@ -443,10 +443,10 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private BindingResource()
         {
-        
+
         }
     }
 

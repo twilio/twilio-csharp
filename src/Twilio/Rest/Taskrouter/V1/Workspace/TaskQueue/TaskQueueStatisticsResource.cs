@@ -25,7 +25,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             var options = new FetchTaskQueueStatisticsOptions(pathWorkspaceSid, pathTaskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a TaskQueueStatisticsResource object
         /// </summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -141,10 +141,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private TaskQueueStatisticsResource()
         {
-        
+
         }
     }
 

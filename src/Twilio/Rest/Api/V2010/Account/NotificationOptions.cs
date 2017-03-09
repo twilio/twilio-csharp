@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch by unique notification Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchNotificationOptions
         /// </summary>
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Delete by unique notification Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteNotificationOptions
         /// </summary>
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Filter by date
         /// </summary>
         public DateTime? MessageDateAfter { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Api.V2010.Account
             {
                 p.Add(new KeyValuePair<string, string>("Log", Log.Value.ToString()));
             }
-            
+
             if (MessageDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessageDate", MessageDate.Value.ToString("yyyy-MM-dd")));
@@ -120,18 +120,18 @@ namespace Twilio.Rest.Api.V2010.Account
                 {
                     p.Add(new KeyValuePair<string, string>("MessageDate<", MessageDateBefore.Value.ToString("yyyy-MM-dd")));
                 }
-            
+
                 if (MessageDateAfter != null)
                 {
                     p.Add(new KeyValuePair<string, string>("MessageDate>", MessageDateAfter.Value.ToString("yyyy-MM-dd")));
                 }
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

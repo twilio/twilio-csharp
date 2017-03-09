@@ -25,7 +25,7 @@ namespace Twilio.Rest.Monitor.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Monitor.V1
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Monitor.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Monitor.V1
             var options = new FetchEventOptions(pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Monitor.V1
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadEventOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Monitor.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -106,11 +106,11 @@ namespace Twilio.Rest.Monitor.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<EventResource>.FromJson("events", response.Content);
             return new ResourceSet<EventResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -123,12 +123,12 @@ namespace Twilio.Rest.Monitor.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<EventResource>.FromJson("events", response.Content);
             return new ResourceSet<EventResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Monitor.V1
             var options = new ReadEventOptions{ActorSid = actorSid, EventType = eventType, ResourceSid = resourceSid, SourceIpAddress = sourceIpAddress, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Monitor.V1
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -187,11 +187,11 @@ namespace Twilio.Rest.Monitor.V1
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<EventResource>.FromJson("events", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a EventResource object
         /// </summary>
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Monitor.V1
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -281,10 +281,10 @@ namespace Twilio.Rest.Monitor.V1
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
-    
+
         private EventResource()
         {
-        
+
         }
     }
 

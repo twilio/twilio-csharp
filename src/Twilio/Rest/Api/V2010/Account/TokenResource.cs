@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Create a new token
         /// </summary>
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create a new token
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Create a new token
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new CreateTokenOptions{PathAccountSid = pathAccountSid, Ttl = ttl};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create a new token
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a TokenResource object
         /// </summary>
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The unique sid that identifies this account
         /// </summary>
@@ -141,10 +141,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("username")]
         public string Username { get; private set; }
-    
+
         private TokenResource()
         {
-        
+
         }
     }
 

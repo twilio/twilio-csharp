@@ -20,12 +20,12 @@ namespace Twilio.Rest.Lookups.V1
         {
             private TypeEnum(string value) : base(value) {}
             public TypeEnum() {}
-        
+
             public static readonly TypeEnum Landline = new TypeEnum("landline");
             public static readonly TypeEnum Mobile = new TypeEnum("mobile");
             public static readonly TypeEnum Voip = new TypeEnum("voip");
         }
-    
+
         private static Request BuildFetchRequest(FetchPhoneNumberOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Lookups.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Lookups.V1
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Lookups.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Lookups.V1
             var options = new FetchPhoneNumberOptions(pathPhoneNumber){CountryCode = countryCode, Type = type, AddOns = addOns, AddOnsData = addOnsData};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Lookups.V1
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a PhoneNumberResource object
         /// </summary>
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Lookups.V1
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The caller_name
         /// </summary>
@@ -158,10 +158,10 @@ namespace Twilio.Rest.Lookups.V1
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private PhoneNumberResource()
         {
-        
+
         }
     }
 

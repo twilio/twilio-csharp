@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             private UsageCategoryEnum(string value) : base(value) {}
             public UsageCategoryEnum() {}
-        
+
             public static readonly UsageCategoryEnum AuthyAuthentications = new UsageCategoryEnum("authy-authentications");
             public static readonly UsageCategoryEnum AuthyCallsOutbound = new UsageCategoryEnum("authy-calls-outbound");
             public static readonly UsageCategoryEnum AuthyMonthlyFees = new UsageCategoryEnum("authy-monthly-fees");
@@ -112,28 +112,28 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum TurnmegabytesUseast = new UsageCategoryEnum("turnmegabytes-useast");
             public static readonly UsageCategoryEnum TurnmegabytesUswest = new UsageCategoryEnum("turnmegabytes-uswest");
         }
-    
+
         public sealed class RecurringEnum : StringEnum 
         {
             private RecurringEnum(string value) : base(value) {}
             public RecurringEnum() {}
-        
+
             public static readonly RecurringEnum Daily = new RecurringEnum("daily");
             public static readonly RecurringEnum Monthly = new RecurringEnum("monthly");
             public static readonly RecurringEnum Yearly = new RecurringEnum("yearly");
             public static readonly RecurringEnum Alltime = new RecurringEnum("alltime");
         }
-    
+
         public sealed class TriggerFieldEnum : StringEnum 
         {
             private TriggerFieldEnum(string value) : base(value) {}
             public TriggerFieldEnum() {}
-        
+
             public static readonly TriggerFieldEnum Count = new TriggerFieldEnum("count");
             public static readonly TriggerFieldEnum Usage = new TriggerFieldEnum("usage");
             public static readonly TriggerFieldEnum Price = new TriggerFieldEnum("price");
         }
-    
+
         private static Request BuildFetchRequest(FetchTriggerOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch and instance of a usage-trigger
         /// </summary>
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch and instance of a usage-trigger
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch and instance of a usage-trigger
         /// </summary>
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var options = new FetchTriggerOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch and instance of a usage-trigger
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateTriggerOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -215,7 +215,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Update an instance of a usage trigger
         /// </summary>
@@ -229,7 +229,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Update an instance of a usage trigger
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Update an instance of a usage trigger
         /// </summary>
@@ -262,7 +262,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var options = new UpdateTriggerOptions(pathSid){PathAccountSid = pathAccountSid, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Update an instance of a usage trigger
@@ -281,7 +281,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteTriggerOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -292,7 +292,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -306,7 +306,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -322,7 +322,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -336,7 +336,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var options = new DeleteTriggerOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -352,7 +352,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildCreateRequest(CreateTriggerOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -363,7 +363,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Create a new UsageTrigger
         /// </summary>
@@ -377,7 +377,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create a new UsageTrigger
@@ -393,7 +393,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Create a new UsageTrigger
         /// </summary>
@@ -413,7 +413,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var options = new CreateTriggerOptions(callbackUrl, triggerValue, usageCategory){PathAccountSid = pathAccountSid, CallbackMethod = callbackMethod, FriendlyName = friendlyName, Recurring = recurring, TriggerBy = triggerBy};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create a new UsageTrigger
@@ -435,7 +435,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadTriggerOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -446,7 +446,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of usage-triggers belonging to the account used to make the request
         /// </summary>
@@ -458,11 +458,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<TriggerResource>.FromJson("usage_triggers", response.Content);
             return new ResourceSet<TriggerResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of usage-triggers belonging to the account used to make the request
@@ -475,12 +475,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<TriggerResource>.FromJson("usage_triggers", response.Content);
             return new ResourceSet<TriggerResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of usage-triggers belonging to the account used to make the request
         /// </summary>
@@ -498,7 +498,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var options = new ReadTriggerOptions{PathAccountSid = pathAccountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of usage-triggers belonging to the account used to make the request
@@ -518,7 +518,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -535,11 +535,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<TriggerResource>.FromJson("usage_triggers", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a TriggerResource object
         /// </summary>
@@ -558,7 +558,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account this trigger monitors.
         /// </summary>
@@ -643,10 +643,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// </summary>
         [JsonProperty("usage_record_uri")]
         public string UsageRecordUri { get; private set; }
-    
+
         private TriggerResource()
         {
-        
+
         }
     }
 

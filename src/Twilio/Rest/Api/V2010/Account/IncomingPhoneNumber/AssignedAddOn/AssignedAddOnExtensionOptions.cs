@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         /// The unique Extension Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchAssignedAddOnExtensionOptions
         /// </summary>
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             PathAssignedAddOnSid = pathAssignedAddOnSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         /// The assigned_add_on_sid
         /// </summary>
         public string PathAssignedAddOnSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadAssignedAddOnExtensionOptions
         /// </summary>
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             PathResourceSid = pathResourceSid;
             PathAssignedAddOnSid = pathAssignedAddOnSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

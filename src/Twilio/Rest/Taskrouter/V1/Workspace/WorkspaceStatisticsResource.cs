@@ -25,7 +25,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var options = new FetchWorkspaceStatisticsOptions(pathWorkspaceSid){Minutes = minutes, StartDate = startDate, EndDate = endDate};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a WorkspaceStatisticsResource object
         /// </summary>
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The realtime
         /// </summary>
@@ -134,10 +134,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private WorkspaceStatisticsResource()
         {
-        
+
         }
     }
 

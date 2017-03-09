@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// Fetch by unique result Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchAddOnResultOptions
         /// </summary>
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             PathReferenceSid = pathReferenceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// The reference_sid
         /// </summary>
         public string PathReferenceSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadAddOnResultOptions
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         {
             PathReferenceSid = pathReferenceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// Delete by unique result Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteAddOnResultOptions
         /// </summary>
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
             PathReferenceSid = pathReferenceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

@@ -20,21 +20,21 @@ namespace Twilio.Rest.Video.V1
         {
             private RoomStatusEnum(string value) : base(value) {}
             public RoomStatusEnum() {}
-        
+
             public static readonly RoomStatusEnum InProgress = new RoomStatusEnum("in-progress");
             public static readonly RoomStatusEnum Completed = new RoomStatusEnum("completed");
             public static readonly RoomStatusEnum Failed = new RoomStatusEnum("failed");
         }
-    
+
         public sealed class RoomTypeEnum : StringEnum 
         {
             private RoomTypeEnum(string value) : base(value) {}
             public RoomTypeEnum() {}
-        
+
             public static readonly RoomTypeEnum PeerToPeer = new RoomTypeEnum("peer-to-peer");
             public static readonly RoomTypeEnum Group = new RoomTypeEnum("group");
         }
-    
+
         private static Request BuildFetchRequest(FetchRoomOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Video.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -59,7 +59,7 @@ namespace Twilio.Rest.Video.V1
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Video.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Video.V1
             var options = new FetchRoomOptions(pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Video.V1
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildCreateRequest(CreateRoomOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Video.V1
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Video.V1
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Video.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Video.V1
             var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Video.V1
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadRoomOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Video.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -205,11 +205,11 @@ namespace Twilio.Rest.Video.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<RoomResource>.FromJson("rooms", response.Content);
             return new ResourceSet<RoomResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -222,12 +222,12 @@ namespace Twilio.Rest.Video.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<RoomResource>.FromJson("rooms", response.Content);
             return new ResourceSet<RoomResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Video.V1
             var options = new ReadRoomOptions{Status = status, StartTimeAfter = startTimeAfter, StartTimeBefore = startTimeBefore, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -265,7 +265,7 @@ namespace Twilio.Rest.Video.V1
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -282,11 +282,11 @@ namespace Twilio.Rest.Video.V1
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<RoomResource>.FromJson("rooms", response.Content);
         }
-    
+
         private static Request BuildUpdateRequest(UpdateRoomOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -297,7 +297,7 @@ namespace Twilio.Rest.Video.V1
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -311,7 +311,7 @@ namespace Twilio.Rest.Video.V1
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -327,7 +327,7 @@ namespace Twilio.Rest.Video.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -341,7 +341,7 @@ namespace Twilio.Rest.Video.V1
             var options = new UpdateRoomOptions(pathSid, status);
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -357,7 +357,7 @@ namespace Twilio.Rest.Video.V1
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a RoomResource object
         /// </summary>
@@ -376,7 +376,7 @@ namespace Twilio.Rest.Video.V1
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The sid
         /// </summary>
@@ -455,10 +455,10 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private RoomResource()
         {
-        
+
         }
     }
 

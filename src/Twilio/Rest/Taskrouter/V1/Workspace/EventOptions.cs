@@ -19,7 +19,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchEventOptions
         /// </summary>
@@ -31,7 +31,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             PathWorkspaceSid = pathWorkspaceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The workflow_sid
         /// </summary>
         public string WorkflowSid { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadEventOptions
         /// </summary>
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         {
             PathWorkspaceSid = pathWorkspaceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -108,52 +108,52 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             {
                 p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
-            
+
             if (EventType != null)
             {
                 p.Add(new KeyValuePair<string, string>("EventType", EventType));
             }
-            
+
             if (Minutes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Minutes", Minutes.Value.ToString()));
             }
-            
+
             if (ReservationSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("ReservationSid", ReservationSid.ToString()));
             }
-            
+
             if (StartDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
-            
+
             if (TaskQueueSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskQueueSid", TaskQueueSid.ToString()));
             }
-            
+
             if (TaskSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskSid", TaskSid.ToString()));
             }
-            
+
             if (WorkerSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("WorkerSid", WorkerSid.ToString()));
             }
-            
+
             if (WorkflowSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("WorkflowSid", WorkflowSid.ToString()));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

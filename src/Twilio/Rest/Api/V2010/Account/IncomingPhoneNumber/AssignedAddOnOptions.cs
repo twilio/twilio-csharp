@@ -22,7 +22,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// The unique Installed Add-on Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchAssignedAddOnOptions
         /// </summary>
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             PathResourceSid = pathResourceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// The resource_sid
         /// </summary>
         public string PathResourceSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadAssignedAddOnOptions
         /// </summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             PathResourceSid = pathResourceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// A string that uniquely identifies the Add-on installation
         /// </summary>
         public string InstalledAddOnSid { get; }
-    
+
         /// <summary>
         /// Construct a new CreateAssignedAddOnOptions
         /// </summary>
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             PathResourceSid = pathResourceSid;
             InstalledAddOnSid = installedAddOnSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             {
                 p.Add(new KeyValuePair<string, string>("InstalledAddOnSid", InstalledAddOnSid.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// The Installed Add-on Sid to remove
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteAssignedAddOnOptions
         /// </summary>
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             PathResourceSid = pathResourceSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>

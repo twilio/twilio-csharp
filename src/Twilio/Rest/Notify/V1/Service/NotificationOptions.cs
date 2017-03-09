@@ -71,7 +71,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// The fcm
         /// </summary>
         public string Fcm { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateNotificationOptions
         /// </summary>
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Notify.V1.Service
             Identity = new List<string>();
             Tag = new List<string>();
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -94,72 +94,72 @@ namespace Twilio.Rest.Notify.V1.Service
             {
                 p.AddRange(Identity.Select(prop => new KeyValuePair<string, string>("Identity", prop)));
             }
-            
+
             if (Tag != null)
             {
                 p.AddRange(Tag.Select(prop => new KeyValuePair<string, string>("Tag", prop)));
             }
-            
+
             if (Body != null)
             {
                 p.Add(new KeyValuePair<string, string>("Body", Body));
             }
-            
+
             if (Priority != null)
             {
                 p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
             }
-            
+
             if (Ttl != null)
             {
                 p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
-            
+
             if (Title != null)
             {
                 p.Add(new KeyValuePair<string, string>("Title", Title));
             }
-            
+
             if (Sound != null)
             {
                 p.Add(new KeyValuePair<string, string>("Sound", Sound));
             }
-            
+
             if (Action != null)
             {
                 p.Add(new KeyValuePair<string, string>("Action", Action));
             }
-            
+
             if (Data != null)
             {
                 p.Add(new KeyValuePair<string, string>("Data", Data));
             }
-            
+
             if (Apn != null)
             {
                 p.Add(new KeyValuePair<string, string>("Apn", Apn));
             }
-            
+
             if (Gcm != null)
             {
                 p.Add(new KeyValuePair<string, string>("Gcm", Gcm));
             }
-            
+
             if (Sms != null)
             {
                 p.Add(new KeyValuePair<string, string>("Sms", Sms));
             }
-            
+
             if (FacebookMessenger != null)
             {
                 p.Add(new KeyValuePair<string, string>("FacebookMessenger", FacebookMessenger.ToString()));
             }
-            
+
             if (Fcm != null)
             {
                 p.Add(new KeyValuePair<string, string>("Fcm", Fcm));
             }
-            
+
             return p;
         }
     }

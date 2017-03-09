@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             private CategoryEnum(string value) : base(value) {}
             public CategoryEnum() {}
-        
+
             public static readonly CategoryEnum AuthyAuthentications = new CategoryEnum("authy-authentications");
             public static readonly CategoryEnum AuthyCallsOutbound = new CategoryEnum("authy-calls-outbound");
             public static readonly CategoryEnum AuthyMonthlyFees = new CategoryEnum("authy-monthly-fees");
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly CategoryEnum TurnmegabytesUseast = new CategoryEnum("turnmegabytes-useast");
             public static readonly CategoryEnum TurnmegabytesUswest = new CategoryEnum("turnmegabytes-uswest");
         }
-    
+
         private static Request BuildReadRequest(ReadRecordOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>
@@ -135,11 +135,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<RecordResource>.FromJson("usage_records", response.Content);
             return new ResourceSet<RecordResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of usage-records belonging to the account used to make the request
@@ -152,12 +152,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<RecordResource>.FromJson("usage_records", response.Content);
             return new ResourceSet<RecordResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var options = new ReadRecordOptions{PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of usage-records belonging to the account used to make the request
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -212,11 +212,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<RecordResource>.FromJson("usage_records", response.Content);
         }
-    
+
         /// <summary>
         /// Converts a JSON string into a RecordResource object
         /// </summary>
@@ -235,7 +235,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The Account that accrued the usage
         /// </summary>
@@ -307,10 +307,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// </summary>
         [JsonProperty("usage_unit")]
         public string UsageUnit { get; private set; }
-    
+
         private RecordResource()
         {
-        
+
         }
     }
 

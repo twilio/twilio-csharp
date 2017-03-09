@@ -31,7 +31,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// The start_date
         /// </summary>
         public DateTime? StartDate { get; set; }
-    
+
         /// <summary>
         /// Construct a new ReadTaskQueuesStatisticsOptions
         /// </summary>
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         {
             PathWorkspaceSid = pathWorkspaceSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -52,27 +52,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             {
                 p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
-            
+
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
-            
+
             if (Minutes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Minutes", Minutes.Value.ToString()));
             }
-            
+
             if (StartDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

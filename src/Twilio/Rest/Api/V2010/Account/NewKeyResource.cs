@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new CreateNewKeyOptions{PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a NewKeyResource object
         /// </summary>
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The sid
         /// </summary>
@@ -130,10 +130,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("secret")]
         public string Secret { get; private set; }
-    
+
         private NewKeyResource()
         {
-        
+
         }
     }
 

@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch an instance of an Add-on installation currently assigned to this Number.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of an Add-on installation currently assigned to this Number.
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch an instance of an Add-on installation currently assigned to this Number.
         /// </summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var options = new FetchAssignedAddOnOptions(pathResourceSid, pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch an instance of an Add-on installation currently assigned to this Number.
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadAssignedAddOnOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of Add-on installations currently assigned to this Number.
         /// </summary>
@@ -110,11 +110,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<AssignedAddOnResource>.FromJson("assigned_add_ons", response.Content);
             return new ResourceSet<AssignedAddOnResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of Add-on installations currently assigned to this Number.
@@ -127,12 +127,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<AssignedAddOnResource>.FromJson("assigned_add_ons", response.Content);
             return new ResourceSet<AssignedAddOnResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of Add-on installations currently assigned to this Number.
         /// </summary>
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var options = new ReadAssignedAddOnOptions(pathResourceSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of Add-on installations currently assigned to this Number.
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -183,11 +183,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<AssignedAddOnResource>.FromJson("assigned_add_ons", response.Content);
         }
-    
+
         private static Request BuildCreateRequest(CreateAssignedAddOnOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Assign an Add-on installation to the Number specified.
         /// </summary>
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Assign an Add-on installation to the Number specified.
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Assign an Add-on installation to the Number specified.
         /// </summary>
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var options = new CreateAssignedAddOnOptions(pathResourceSid, installedAddOnSid){PathAccountSid = pathAccountSid};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Assign an Add-on installation to the Number specified.
@@ -260,7 +260,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteAssignedAddOnOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -271,7 +271,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Remove the assignment of an Add-on installation from the Number specified.
         /// </summary>
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Remove the assignment of an Add-on installation from the Number specified.
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Remove the assignment of an Add-on installation from the Number specified.
         /// </summary>
@@ -316,7 +316,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var options = new DeleteAssignedAddOnOptions(pathResourceSid, pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Remove the assignment of an Add-on installation from the Number specified.
@@ -333,7 +333,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a AssignedAddOnResource object
         /// </summary>
@@ -352,7 +352,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// A string that uniquely identifies this assigned Add-on installation
         /// </summary>
@@ -408,10 +408,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
-    
+
         private AssignedAddOnResource()
         {
-        
+
         }
     }
 

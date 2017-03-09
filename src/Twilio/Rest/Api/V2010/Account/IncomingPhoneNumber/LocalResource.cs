@@ -20,13 +20,13 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             private AddressRequirementEnum(string value) : base(value) {}
             public AddressRequirementEnum() {}
-        
+
             public static readonly AddressRequirementEnum None = new AddressRequirementEnum("none");
             public static readonly AddressRequirementEnum Any = new AddressRequirementEnum("any");
             public static readonly AddressRequirementEnum Local = new AddressRequirementEnum("local");
             public static readonly AddressRequirementEnum Foreign = new AddressRequirementEnum("foreign");
         }
-    
+
         private static Request BuildReadRequest(ReadLocalOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -49,11 +49,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<LocalResource>.FromJson("incoming_phone_numbers", response.Content);
             return new ResourceSet<LocalResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -66,12 +66,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<LocalResource>.FromJson("incoming_phone_numbers", response.Content);
             return new ResourceSet<LocalResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var options = new ReadLocalOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -126,11 +126,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<LocalResource>.FromJson("incoming_phone_numbers", response.Content);
         }
-    
+
         private static Request BuildCreateRequest(CreateLocalOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -200,7 +200,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var options = new CreateLocalOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -231,7 +231,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a LocalResource object
         /// </summary>
@@ -250,7 +250,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The account_sid
         /// </summary>
@@ -383,10 +383,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
-    
+
         private LocalResource()
         {
-        
+
         }
     }
 

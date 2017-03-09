@@ -18,7 +18,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// The unique Extension Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchInstalledAddOnExtensionOptions
         /// </summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             PathInstalledAddOnSid = pathInstalledAddOnSid;
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// A Boolean indicating if the Extension will be invoked
         /// </summary>
         public bool? Enabled { get; }
-    
+
         /// <summary>
         /// Construct a new UpdateInstalledAddOnExtensionOptions
         /// </summary>
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             PathSid = pathSid;
             Enabled = enabled;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             {
                 p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// The installed_add_on_sid
         /// </summary>
         public string PathInstalledAddOnSid { get; }
-    
+
         /// <summary>
         /// Construct a new ReadInstalledAddOnExtensionOptions
         /// </summary>
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         {
             PathInstalledAddOnSid = pathInstalledAddOnSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

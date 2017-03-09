@@ -20,7 +20,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-        
+
             public static readonly StatusEnum Queued = new StatusEnum("queued");
             public static readonly StatusEnum Sending = new StatusEnum("sending");
             public static readonly StatusEnum Sent = new StatusEnum("sent");
@@ -30,18 +30,18 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly StatusEnum Receiving = new StatusEnum("receiving");
             public static readonly StatusEnum Received = new StatusEnum("received");
         }
-    
+
         public sealed class DirectionEnum : StringEnum 
         {
             private DirectionEnum(string value) : base(value) {}
             public DirectionEnum() {}
-        
+
             public static readonly DirectionEnum Inbound = new DirectionEnum("inbound");
             public static readonly DirectionEnum OutboundApi = new DirectionEnum("outbound-api");
             public static readonly DirectionEnum OutboundCall = new DirectionEnum("outbound-call");
             public static readonly DirectionEnum OutboundReply = new DirectionEnum("outbound-reply");
         }
-    
+
         private static Request BuildCreateRequest(CreateMessageOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Send a message from the account used to make the request
         /// </summary>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Send a message from the account used to make the request
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Send a message from the account used to make the request
         /// </summary>
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Send a message from the account used to make the request
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteMessageOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Deletes a message record from your account
         /// </summary>
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// Deletes a message record from your account
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// Deletes a message record from your account
         /// </summary>
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new DeleteMessageOptions(pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Deletes a message record from your account
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchMessageOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch a message belonging to the account used to make the request
         /// </summary>
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch a message belonging to the account used to make the request
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch a message belonging to the account used to make the request
         /// </summary>
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new FetchMessageOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch a message belonging to the account used to make the request
@@ -270,7 +270,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadMessageOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -281,7 +281,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieve a list of messages belonging to the account used to make the request
         /// </summary>
@@ -293,11 +293,11 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<MessageResource>.FromJson("messages", response.Content);
             return new ResourceSet<MessageResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of messages belonging to the account used to make the request
@@ -310,12 +310,12 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<MessageResource>.FromJson("messages", response.Content);
             return new ResourceSet<MessageResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieve a list of messages belonging to the account used to make the request
         /// </summary>
@@ -335,7 +335,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new ReadMessageOptions{PathAccountSid = pathAccountSid, To = to, From = from, DateSentBefore = dateSentBefore, DateSent = dateSent, DateSentAfter = dateSentAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieve a list of messages belonging to the account used to make the request
@@ -357,7 +357,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -374,11 +374,11 @@ namespace Twilio.Rest.Api.V2010.Account
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<MessageResource>.FromJson("messages", response.Content);
         }
-    
+
         private static Request BuildUpdateRequest(UpdateMessageOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -389,7 +389,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
         /// </summary>
@@ -403,7 +403,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
@@ -419,7 +419,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
         /// </summary>
@@ -434,7 +434,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var options = new UpdateMessageOptions(pathSid, body){PathAccountSid = pathAccountSid};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
@@ -451,7 +451,7 @@ namespace Twilio.Rest.Api.V2010.Account
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a MessageResource object
         /// </summary>
@@ -470,7 +470,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The unique sid that identifies this account
         /// </summary>
@@ -574,10 +574,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-    
+
         private MessageResource()
         {
-        
+
         }
     }
 

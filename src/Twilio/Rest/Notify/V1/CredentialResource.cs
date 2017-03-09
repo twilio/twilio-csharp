@@ -20,12 +20,12 @@ namespace Twilio.Rest.Notify.V1
         {
             private PushServiceEnum(string value) : base(value) {}
             public PushServiceEnum() {}
-        
+
             public static readonly PushServiceEnum Gcm = new PushServiceEnum("gcm");
             public static readonly PushServiceEnum Apn = new PushServiceEnum("apn");
             public static readonly PushServiceEnum Fcm = new PushServiceEnum("fcm");
         }
-    
+
         private static Request BuildReadRequest(ReadCredentialOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Notify.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -48,11 +48,11 @@ namespace Twilio.Rest.Notify.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<CredentialResource>.FromJson("credentials", response.Content);
             return new ResourceSet<CredentialResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -65,12 +65,12 @@ namespace Twilio.Rest.Notify.V1
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<CredentialResource>.FromJson("credentials", response.Content);
             return new ResourceSet<CredentialResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// read
         /// </summary>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Notify.V1
             var options = new ReadCredentialOptions{PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// read
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Notify.V1
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -117,11 +117,11 @@ namespace Twilio.Rest.Notify.V1
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<CredentialResource>.FromJson("credentials", response.Content);
         }
-    
+
         private static Request BuildCreateRequest(CreateCredentialOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Notify.V1
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Notify.V1
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Notify.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// create
         /// </summary>
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Notify.V1
             var options = new CreateCredentialOptions(type){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// create
@@ -202,7 +202,7 @@ namespace Twilio.Rest.Notify.V1
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchCredentialOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -213,7 +213,7 @@ namespace Twilio.Rest.Notify.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Notify.V1
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Notify.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// fetch
         /// </summary>
@@ -256,7 +256,7 @@ namespace Twilio.Rest.Notify.V1
             var options = new FetchCredentialOptions(pathSid);
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// fetch
@@ -271,7 +271,7 @@ namespace Twilio.Rest.Notify.V1
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildUpdateRequest(UpdateCredentialOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -282,7 +282,7 @@ namespace Twilio.Rest.Notify.V1
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -296,7 +296,7 @@ namespace Twilio.Rest.Notify.V1
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -312,7 +312,7 @@ namespace Twilio.Rest.Notify.V1
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// update
         /// </summary>
@@ -331,7 +331,7 @@ namespace Twilio.Rest.Notify.V1
             var options = new UpdateCredentialOptions(pathSid){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// update
@@ -352,7 +352,7 @@ namespace Twilio.Rest.Notify.V1
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildDeleteRequest(DeleteCredentialOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -363,7 +363,7 @@ namespace Twilio.Rest.Notify.V1
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -377,7 +377,7 @@ namespace Twilio.Rest.Notify.V1
             var response = client.Request(BuildDeleteRequest(options, client));
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -393,7 +393,7 @@ namespace Twilio.Rest.Notify.V1
             return response.StatusCode == System.Net.HttpStatusCode.NoContent;
         }
         #endif
-    
+
         /// <summary>
         /// delete
         /// </summary>
@@ -406,7 +406,7 @@ namespace Twilio.Rest.Notify.V1
             var options = new DeleteCredentialOptions(pathSid);
             return Delete(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// delete
@@ -421,7 +421,7 @@ namespace Twilio.Rest.Notify.V1
             return await DeleteAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a CredentialResource object
         /// </summary>
@@ -440,7 +440,7 @@ namespace Twilio.Rest.Notify.V1
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The sid
         /// </summary>
@@ -482,10 +482,10 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-    
+
         private CredentialResource()
         {
-        
+
         }
     }
 

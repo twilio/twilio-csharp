@@ -20,21 +20,21 @@ namespace Twilio.Rest.Api.V2010
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
-        
+
             public static readonly StatusEnum Active = new StatusEnum("active");
             public static readonly StatusEnum Suspended = new StatusEnum("suspended");
             public static readonly StatusEnum Closed = new StatusEnum("closed");
         }
-    
+
         public sealed class TypeEnum : StringEnum 
         {
             private TypeEnum(string value) : base(value) {}
             public TypeEnum() {}
-        
+
             public static readonly TypeEnum Trial = new TypeEnum("Trial");
             public static readonly TypeEnum Full = new TypeEnum("Full");
         }
-    
+
         private static Request BuildCreateRequest(CreateAccountOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Api.V2010
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Create a new Twilio Subaccount from the account making the request
         /// </summary>
@@ -59,7 +59,7 @@ namespace Twilio.Rest.Api.V2010
             var response = client.Request(BuildCreateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create a new Twilio Subaccount from the account making the request
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Create a new Twilio Subaccount from the account making the request
         /// </summary>
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Api.V2010
             var options = new CreateAccountOptions{FriendlyName = friendlyName};
             return Create(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Create a new Twilio Subaccount from the account making the request
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Api.V2010
             return await CreateAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildFetchRequest(FetchAccountOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Api.V2010
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Fetch the account specified by the provided Account Sid
         /// </summary>
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010
             var response = client.Request(BuildFetchRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch the account specified by the provided Account Sid
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Api.V2010
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the account specified by the provided Account Sid
         /// </summary>
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Api.V2010
             var options = new FetchAccountOptions{PathSid = pathSid};
             return Fetch(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Fetch the account specified by the provided Account Sid
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Api.V2010
             return await FetchAsync(options, client);
         }
         #endif
-    
+
         private static Request BuildReadRequest(ReadAccountOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Api.V2010
                 queryParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Retrieves a collection of Accounts belonging to the account used to make the request
         /// </summary>
@@ -195,11 +195,11 @@ namespace Twilio.Rest.Api.V2010
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
-            
+
             var page = Page<AccountResource>.FromJson("accounts", response.Content);
             return new ResourceSet<AccountResource>(page, options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieves a collection of Accounts belonging to the account used to make the request
@@ -212,12 +212,12 @@ namespace Twilio.Rest.Api.V2010
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
-            
+
             var page = Page<AccountResource>.FromJson("accounts", response.Content);
             return new ResourceSet<AccountResource>(page, options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Retrieves a collection of Accounts belonging to the account used to make the request
         /// </summary>
@@ -233,7 +233,7 @@ namespace Twilio.Rest.Api.V2010
             var options = new ReadAccountOptions{FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Retrieves a collection of Accounts belonging to the account used to make the request
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Api.V2010
             return await ReadAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
@@ -268,11 +268,11 @@ namespace Twilio.Rest.Api.V2010
                     client.Region
                 )
             );
-            
+
             var response = client.Request(request);
             return Page<AccountResource>.FromJson("accounts", response.Content);
         }
-    
+
         private static Request BuildUpdateRequest(UpdateAccountOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -283,7 +283,7 @@ namespace Twilio.Rest.Api.V2010
                 postParams: options.GetParams()
             );
         }
-    
+
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>
@@ -297,7 +297,7 @@ namespace Twilio.Rest.Api.V2010
             var response = client.Request(BuildUpdateRequest(options, client));
             return FromJson(response.Content);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Modify the properties of a given Account
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Api.V2010
             return FromJson(response.Content);
         }
         #endif
-    
+
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>
@@ -328,7 +328,7 @@ namespace Twilio.Rest.Api.V2010
             var options = new UpdateAccountOptions{PathSid = pathSid, FriendlyName = friendlyName, Status = status};
             return Update(options, client);
         }
-    
+
         #if !NET35
         /// <summary>
         /// Modify the properties of a given Account
@@ -345,7 +345,7 @@ namespace Twilio.Rest.Api.V2010
             return await UpdateAsync(options, client);
         }
         #endif
-    
+
         /// <summary>
         /// Converts a JSON string into a AccountResource object
         /// </summary>
@@ -364,7 +364,7 @@ namespace Twilio.Rest.Api.V2010
                 throw new ApiException(e.Message, e);
             }
         }
-    
+
         /// <summary>
         /// The authorization token for this account
         /// </summary>
@@ -417,10 +417,10 @@ namespace Twilio.Rest.Api.V2010
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-    
+
         private AccountResource()
         {
-        
+
         }
     }
 

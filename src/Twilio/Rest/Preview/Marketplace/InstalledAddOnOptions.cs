@@ -26,7 +26,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// The string that uniquely identifies this Add-on installation
         /// </summary>
         public string UniqueName { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateInstalledAddOnOptions
         /// </summary>
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Preview.Marketplace
             AvailableAddOnSid = availableAddOnSid;
             AcceptTermsOfService = acceptTermsOfService;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -49,22 +49,22 @@ namespace Twilio.Rest.Preview.Marketplace
             {
                 p.Add(new KeyValuePair<string, string>("AvailableAddOnSid", AvailableAddOnSid.ToString()));
             }
-            
+
             if (AcceptTermsOfService != null)
             {
                 p.Add(new KeyValuePair<string, string>("AcceptTermsOfService", AcceptTermsOfService.Value.ToString()));
             }
-            
+
             if (Configuration != null)
             {
                 p.Add(new KeyValuePair<string, string>("Configuration", Configuration.ToString()));
             }
-            
+
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
-            
+
             return p;
         }
     }
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// The Installed Add-on Sid to delete
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new DeleteInstalledAddOnOptions
         /// </summary>
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Preview.Marketplace
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// The unique Installed Add-on Sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchInstalledAddOnOptions
         /// </summary>
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Preview.Marketplace
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// The string that uniquely identifies this Add-on installation
         /// </summary>
         public string UniqueName { get; set; }
-    
+
         /// <summary>
         /// Construct a new UpdateInstalledAddOnOptions
         /// </summary>
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Preview.Marketplace
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -167,12 +167,12 @@ namespace Twilio.Rest.Preview.Marketplace
             {
                 p.Add(new KeyValuePair<string, string>("Configuration", Configuration.ToString()));
             }
-            
+
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
-            
+
             return p;
         }
     }
@@ -192,7 +192,7 @@ namespace Twilio.Rest.Preview.Marketplace
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }

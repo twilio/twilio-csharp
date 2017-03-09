@@ -14,7 +14,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// The sid
         /// </summary>
         public string PathSid { get; }
-    
+
         /// <summary>
         /// Construct a new FetchCommandOptions
         /// </summary>
@@ -24,7 +24,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             PathSid = pathSid;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// The direction
         /// </summary>
         public string Direction { get; set; }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -67,27 +67,27 @@ namespace Twilio.Rest.Preview.Wireless
             {
                 p.Add(new KeyValuePair<string, string>("Device", Device));
             }
-            
+
             if (Sim != null)
             {
                 p.Add(new KeyValuePair<string, string>("Sim", Sim));
             }
-            
+
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status));
             }
-            
+
             if (Direction != null)
             {
                 p.Add(new KeyValuePair<string, string>("Direction", Direction));
             }
-            
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
-            
+
             return p;
         }
     }
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// The include_sid
         /// </summary>
         public string IncludeSid { get; set; }
-    
+
         /// <summary>
         /// Construct a new CreateCommandOptions
         /// </summary>
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             Command = command;
         }
-    
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -146,37 +146,37 @@ namespace Twilio.Rest.Preview.Wireless
             {
                 p.Add(new KeyValuePair<string, string>("Command", Command));
             }
-            
+
             if (Device != null)
             {
                 p.Add(new KeyValuePair<string, string>("Device", Device));
             }
-            
+
             if (Sim != null)
             {
                 p.Add(new KeyValuePair<string, string>("Sim", Sim));
             }
-            
+
             if (CallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod));
             }
-            
+
             if (CallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.ToString()));
             }
-            
+
             if (CommandMode != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommandMode", CommandMode));
             }
-            
+
             if (IncludeSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("IncludeSid", IncludeSid));
             }
-            
+
             return p;
         }
     }
