@@ -142,14 +142,19 @@ namespace Twilio.Base
             var uriNode = root["uri"];
             if (uriNode != null)
             {
+                JToken pageSize;
+                JToken firstPageUri;
+                JToken nextPageUri;
+                JToken previousPageUri;
+
                 // v2010 API
                 return new Page<T>(
                     parsedRecords,
-                    root["page_size"].Value<int>(),
+                    root.TryGetValue("page_size", out pageSize) ? root["page_size"].Value<int>() : parsedRecords.Count,
                     uri: uriNode.Value<string>(),
-                    firstPageUri: root["first_page_uri"].Value<string>(),
-                    nextPageUri: root["next_page_uri"].Value<string>(),
-                    previousPageUri: root["previous_page_uri"].Value<string>()
+                    firstPageUri: root.TryGetValue("first_page_uri", out firstPageUri) ? root["first_page_uri"].Value<string>() : null,
+                    nextPageUri: root.TryGetValue("next_page_uri", out nextPageUri) ? root["next_page_uri"].Value<string>() : null,
+                    previousPageUri: root.TryGetValue("previous_page_uri", out previousPageUri) ? root["previous_page_uri"].Value<string>() : null
                 );
             }
 
