@@ -1,4 +1,4 @@
-[![Travis branch](https://img.shields.io/travis/twilio/twilio-php/master.svg)](https://travis-ci.org/twilio/twilio-php/branches)
+[![AppVeyor](https://img.shields.io/appveyor/ci/TwilioAPI/twilio-csharp/master.svg)](https://img.shields.io/appveyor/ci/TwilioAPI/twilio-csharp/master.svg)
 [![NuGet](https://img.shields.io/nuget/v/Twilio.svg)](https://www.nuget.org/packages/Twilio)
 [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Twilio.svg?label=nuget (alpha))](https://www.nuget.org/packages/Twilio)
 
