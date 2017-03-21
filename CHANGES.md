@@ -2,6 +2,11 @@ twilio-csharp Changelog
 =======================
 
 
+[2017-03-21] Version 5.1.2-alpha1
+--------------------------
+ - Add `Equals` and `GetHashCode` to `StringEnum`
+
+
 [2017-03-09] Version 5.1.1-alpha1
 --------------------------
  - Fix bug in reading `AvailablePhoneNumbers`
