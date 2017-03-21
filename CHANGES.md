@@ -1,7 +1,8 @@
 twilio-csharp Changelog
 =======================
 
-[2017-02-24] Version 5.1.1-alpha1
+
+[2017-03-09] Version 5.1.1-alpha1
 --------------------------
  - Fix bug in reading `AvailablePhoneNumbers`
  - Remove `SandboxResource`

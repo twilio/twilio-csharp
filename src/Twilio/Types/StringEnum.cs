@@ -1,4 +1,6 @@
-﻿namespace Twilio.Types
+﻿using System;
+
+namespace Twilio.Types
 {
     /// <summary>
     /// Enum object for strings
@@ -37,6 +39,27 @@
         public override string ToString()
         {
             return _value;
+        }
+
+        public override int GetHashCode()
+        {
+            return _value.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !obj.GetType().Equals(GetType()))
+            {
+                return false;
+            }
+
+            var o = (StringEnum) Convert.ChangeType(obj, GetType());
+            if (o == null)
+            {
+                return false;
+            }
+
+            return o._value.Equals(_value);
         }
     }
 }
