@@ -26,6 +26,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             public static readonly StatusEnum Assigned = new StatusEnum("assigned");
             public static readonly StatusEnum Canceled = new StatusEnum("canceled");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
+            public static readonly StatusEnum Wrapping = new StatusEnum("wrapping");
         }
 
         private static Request BuildFetchRequest(FetchTaskOptions options, ITwilioRestClient client)

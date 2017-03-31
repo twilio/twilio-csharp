@@ -2,6 +2,15 @@ twilio-csharp Changelog
 =======================
 
 
+[2017-04-01] Version 5.2.1-alpha1
+--------------------------
+ - Add Twilio Programmable Fax
+ - Add messaging.twilio.com API
+ - Add answering machine detection to Programmable Voice
+ - Add channel limits to Programmable Chat
+ - Update Twilio Video with recordings
+
+
 [2017-03-21] Version 5.1.2-alpha1
 --------------------------
  - Add `Equals` and `GetHashCode` to `StringEnum`

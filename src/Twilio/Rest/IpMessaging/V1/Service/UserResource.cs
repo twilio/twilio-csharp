@@ -484,6 +484,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
+        /// The joined_channels_count
+        /// </summary>
+        [JsonProperty("joined_channels_count")]
+        public int? JoinedChannelsCount { get; private set; }
+        /// <summary>
         /// The links
         /// </summary>
         [JsonProperty("links")]

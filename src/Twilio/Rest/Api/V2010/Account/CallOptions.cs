@@ -92,6 +92,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The sip_auth_password
         /// </summary>
         public string SipAuthPassword { get; set; }
+        /// <summary>
+        /// Enable machine detection or end of greeting detection
+        /// </summary>
+        public string MachineDetection { get; set; }
+        /// <summary>
+        /// Number of miliseconds to wait for machine detection
+        /// </summary>
+        public int? MachineDetectionTimeout { get; set; }
 
         /// <summary>
         /// Construct a new CreateCallOptions
@@ -205,6 +213,16 @@ namespace Twilio.Rest.Api.V2010.Account
             if (SipAuthPassword != null)
             {
                 p.Add(new KeyValuePair<string, string>("SipAuthPassword", SipAuthPassword));
+            }
+
+            if (MachineDetection != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MachineDetection", MachineDetection));
+            }
+
+            if (MachineDetectionTimeout != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MachineDetectionTimeout", MachineDetectionTimeout.Value.ToString()));
             }
 
             return p;

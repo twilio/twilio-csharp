@@ -65,6 +65,10 @@ namespace Twilio.Rest.Video.V1
         /// The max_participants
         /// </summary>
         public int? MaxParticipants { get; set; }
+        /// <summary>
+        /// The record_participants_on_connect
+        /// </summary>
+        public bool? RecordParticipantsOnConnect { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -100,6 +104,11 @@ namespace Twilio.Rest.Video.V1
             if (MaxParticipants != null)
             {
                 p.Add(new KeyValuePair<string, string>("MaxParticipants", MaxParticipants.Value.ToString()));
+            }
+
+            if (RecordParticipantsOnConnect != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RecordParticipantsOnConnect", RecordParticipantsOnConnect.Value.ToString()));
             }
 
             return p;

@@ -155,11 +155,12 @@ namespace Twilio.Rest.Video.V1
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="maxParticipants"> The max_participants </param>
+        /// <param name="recordParticipantsOnConnect"> The record_participants_on_connect </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns> 
-        public static RoomResource Create(bool? enableTurn = null, RoomResource.RoomTypeEnum type = null, string uniqueName = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, int? maxParticipants = null, ITwilioRestClient client = null)
+        public static RoomResource Create(bool? enableTurn = null, RoomResource.RoomTypeEnum type = null, string uniqueName = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, int? maxParticipants = null, bool? recordParticipantsOnConnect = null, ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants};
+            var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect};
             return Create(options, client);
         }
 
@@ -174,11 +175,12 @@ namespace Twilio.Rest.Video.V1
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="maxParticipants"> The max_participants </param>
+        /// <param name="recordParticipantsOnConnect"> The record_participants_on_connect </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns> 
-        public static async System.Threading.Tasks.Task<RoomResource> CreateAsync(bool? enableTurn = null, RoomResource.RoomTypeEnum type = null, string uniqueName = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, int? maxParticipants = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RoomResource> CreateAsync(bool? enableTurn = null, RoomResource.RoomTypeEnum type = null, string uniqueName = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, int? maxParticipants = null, bool? recordParticipantsOnConnect = null, ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants};
+            var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect};
             return await CreateAsync(options, client);
         }
         #endif
@@ -450,6 +452,11 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         [JsonProperty("max_participants")]
         public int? MaxParticipants { get; private set; }
+        /// <summary>
+        /// The record_participants_on_connect
+        /// </summary>
+        [JsonProperty("record_participants_on_connect")]
+        public bool? RecordParticipantsOnConnect { get; private set; }
         /// <summary>
         /// The url
         /// </summary>
