@@ -1,6 +1,11 @@
 twilio-csharp Changelog
 =======================
 
+[2017-04-01] Version 5.2.0
+--------------------------
+ - Add answering machine detection to Programmable Voice
+ - Add channel limits to Programmable Chat
+
 [2017-03-21] Version 5.1.1
 --------------------------
  - Add `Equals` and `GetHashCode` to `StringEnum`

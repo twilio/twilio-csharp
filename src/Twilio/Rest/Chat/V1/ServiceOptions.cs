@@ -402,6 +402,14 @@ namespace Twilio.Rest.Chat.V1
         /// The webhooks.on_member_removed.format
         /// </summary>
         public string WebhooksOnMemberRemovedFormat { get; set; }
+        /// <summary>
+        /// The limits.channel_members
+        /// </summary>
+        public int? LimitsChannelMembers { get; set; }
+        /// <summary>
+        /// The limits.user_channels
+        /// </summary>
+        public int? LimitsUserChannels { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -758,6 +766,16 @@ namespace Twilio.Rest.Chat.V1
             if (WebhooksOnMemberRemovedFormat != null)
             {
                 p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemoved.Format", WebhooksOnMemberRemovedFormat));
+            }
+
+            if (LimitsChannelMembers != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Limits.ChannelMembers", LimitsChannelMembers.Value.ToString()));
+            }
+
+            if (LimitsUserChannels != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Limits.UserChannels", LimitsUserChannels.Value.ToString()));
             }
 
             return p;
