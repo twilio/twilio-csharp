@@ -200,7 +200,7 @@ namespace Twilio.Tests.Jwt.AccessToken
         {
             var grants = new HashSet<IGrant>
             {
-                { new VideoGrant { ConfigurationProfileSid = "CP123" } }
+                { new VideoGrant { Room = "RM123" } }
             };
             var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
             Assert.IsNotNull(token);
@@ -218,7 +218,7 @@ namespace Twilio.Tests.Jwt.AccessToken
             Assert.AreEqual(1, decodedGrants.Count);
 
             var decodedVg = ToDict(decodedGrants["video"]);
-            Assert.AreEqual("CP123", decodedVg["configuration_profile_sid"]);
+            Assert.AreEqual("RM123", decodedVg["room"]);
         }
 
     }
