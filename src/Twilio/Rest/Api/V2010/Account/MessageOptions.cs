@@ -51,6 +51,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The provide_feedback
         /// </summary>
         public bool? ProvideFeedback { get; set; }
+        /// <summary>
+        /// The validity_period
+        /// </summary>
+        public int? ValidityPeriod { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -112,6 +116,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (ProvideFeedback != null)
             {
                 p.Add(new KeyValuePair<string, string>("ProvideFeedback", ProvideFeedback.Value.ToString()));
+            }
+
+            if (ValidityPeriod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.Value.ToString()));
             }
 
             return p;

@@ -1,6 +1,13 @@
 twilio-csharp Changelog
 =======================
 
+[2017-04-12] Version 5.2.1
+--------------------------
+- Add `validityPeriod` to Message creation
+- Update VideoGrant.
+    - Add `room` as preferred grant granularity.
+    - Deprecate setting `configurationProfileSid` on grant.
+
 [2017-04-01] Version 5.2.0
 --------------------------
  - Add answering machine detection to Programmable Voice
