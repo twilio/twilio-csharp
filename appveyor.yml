@@ -1,6 +1,9 @@
 version: '{build}'
 image: Visual Studio 2017 RC
 configuration: Release
+branches:
+    only:
+      - alpha
 build_script:
 - ps: . .\build.ps1
 test: off
