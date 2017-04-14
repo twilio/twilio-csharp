@@ -1,5 +1,5 @@
 version: '{build}'
-image: Visual Studio 2017 RC
+image: Visual Studio 2017
 configuration: Release
 branches:
     only:
