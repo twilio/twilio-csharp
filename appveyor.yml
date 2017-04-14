@@ -7,3 +7,7 @@ test: off
 artifacts:
 - path: src\Twilio\bin\Release\Twilio.*.nupkg
   name: Package
+branches:
+  only:
+    - master
+    - alpha
