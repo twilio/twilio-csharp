@@ -45,6 +45,9 @@ try {
 
     msbuild .\src\Twilio\Twilio.csproj /t:pack /p:Configuration=Release /verbosity:minimal
     if ($lastExitCode -ne 0) { exit $lastExitCode }
+
+    Move-Item src\Twilio\bin\Release\Twilio.*.nupkg .\
+    if ($lastExitCode -ne 0) { exit $lastExitCode }
 } catch {
     write-host "Caught an exception:" -ForegroundColor Red
     write-host "Exception Type: $($_.Exception.GetType().FullName)" -ForegroundColor Red

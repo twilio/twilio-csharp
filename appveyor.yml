@@ -5,7 +5,7 @@ build_script:
 - ps: . .\build.ps1
 test: off
 artifacts:
-- path: src\Twilio\bin\Release\Twilio.*.nupkg
+- path: .\Twilio.*.nupkg
 branches:
   only:
     - master
