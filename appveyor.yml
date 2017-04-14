@@ -1,13 +1,12 @@
 version: '{build}'
 image: Visual Studio 2017
 configuration: Release
-branches:
-    only:
-      - master
-      - alpha
 build_script:
 - ps: . .\build.ps1
 test: off
 artifacts:
-- path: src\Twilio\bin\Release\Twilio.*.nupkg
-  name: Package
+- path: .\Twilio.*.nupkg
+branches:
+    only:
+      - master
+      - alpha
