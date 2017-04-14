@@ -1,4 +1,4 @@
-[![AppVeyor](https://img.shields.io/appveyor/ci/TwilioAPI/twilio-csharp/master.svg)](https://img.shields.io/appveyor/ci/TwilioAPI/twilio-csharp/master.svg)
+[![Build status](https://ci.appveyor.com/api/projects/status/e0qcgl8r6rid4akb/branch/alpha?svg=true)](https://ci.appveyor.com/project/TwilioAPI/twilio-csharp-lum8a/branch/alpha)
 [![NuGet](https://img.shields.io/nuget/v/Twilio.svg)](https://www.nuget.org/packages/Twilio)
 [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Twilio.svg?label=nuget (alpha))](https://www.nuget.org/packages/Twilio)
 
