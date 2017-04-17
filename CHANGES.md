@@ -1,6 +1,10 @@
 twilio-csharp Changelog
 =======================
 
+[2017-04-12] Version 5.3.0
+--------------------------
+- Allow moving Phone Numbers to subaccounts
+
 [2017-04-12] Version 5.2.1
 --------------------------
 - Add `validityPeriod` to Message creation

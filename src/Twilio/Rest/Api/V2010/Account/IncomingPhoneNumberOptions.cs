@@ -111,6 +111,11 @@ namespace Twilio.Rest.Api.V2010.Account
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (AccountSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
+            }
+
             if (ApiVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
