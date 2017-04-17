@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2017-04-17] Version 5.3.1-alpha1
+--------------------------
+- Allow moving Phone Numbers to subaccounts
+- Add `SmartEncoding` to Messaging Services
+- Allow deleting of Wireless `RatePlans`
+
 [2017-04-13] Version 5.2.2-alpha1
 --------------------------
 - Add `validityPeriod` to Message creation

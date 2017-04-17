@@ -334,6 +334,75 @@ namespace Twilio.Rest.Preview.Wireless
         }
         #endif
 
+        private static Request BuildDeleteRequest(DeleteRatePlanOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Preview,
+                "/wireless/RatePlans/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="options"> Delete RatePlan parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RatePlan </returns> 
+        public static bool Delete(DeleteRatePlanOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="options"> Delete RatePlan parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRatePlanOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RatePlan </returns> 
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRatePlanOptions(pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRatePlanOptions(pathSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a RatePlanResource object
         /// </summary>

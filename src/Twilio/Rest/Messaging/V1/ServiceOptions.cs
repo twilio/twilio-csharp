@@ -42,6 +42,10 @@ namespace Twilio.Rest.Messaging.V1
         /// The mms_converter
         /// </summary>
         public bool? MmsConverter { get; set; }
+        /// <summary>
+        /// The smart_encoding
+        /// </summary>
+        public bool? SmartEncoding { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -99,6 +103,11 @@ namespace Twilio.Rest.Messaging.V1
                 p.Add(new KeyValuePair<string, string>("MmsConverter", MmsConverter.Value.ToString()));
             }
 
+            if (SmartEncoding != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmartEncoding", SmartEncoding.Value.ToString()));
+            }
+
             return p;
         }
     }
@@ -144,6 +153,10 @@ namespace Twilio.Rest.Messaging.V1
         /// The mms_converter
         /// </summary>
         public bool? MmsConverter { get; set; }
+        /// <summary>
+        /// The smart_encoding
+        /// </summary>
+        public bool? SmartEncoding { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -199,6 +212,11 @@ namespace Twilio.Rest.Messaging.V1
             if (MmsConverter != null)
             {
                 p.Add(new KeyValuePair<string, string>("MmsConverter", MmsConverter.Value.ToString()));
+            }
+
+            if (SmartEncoding != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmartEncoding", SmartEncoding.Value.ToString()));
             }
 
             return p;

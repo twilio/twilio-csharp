@@ -68,11 +68,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="stickySender"> The sticky_sender </param>
         /// <param name="mmsConverter"> The mms_converter </param>
+        /// <param name="smartEncoding"> The smart_encoding </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Create(string friendlyName, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, ITwilioRestClient client = null)
+        public static ServiceResource Create(string friendlyName, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, bool? smartEncoding = null, ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter};
+            var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding};
             return Create(options, client);
         }
 
@@ -89,11 +90,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="stickySender"> The sticky_sender </param>
         /// <param name="mmsConverter"> The mms_converter </param>
+        /// <param name="smartEncoding"> The smart_encoding </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, bool? smartEncoding = null, ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter};
+            var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding};
             return await CreateAsync(options, client);
         }
         #endif
@@ -152,11 +154,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="stickySender"> The sticky_sender </param>
         /// <param name="mmsConverter"> The mms_converter </param>
+        /// <param name="smartEncoding"> The smart_encoding </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Update(string pathSid, string friendlyName = null, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, ITwilioRestClient client = null)
+        public static ServiceResource Update(string pathSid, string friendlyName = null, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, bool? smartEncoding = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding};
             return Update(options, client);
         }
 
@@ -174,11 +177,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="stickySender"> The sticky_sender </param>
         /// <param name="mmsConverter"> The mms_converter </param>
+        /// <param name="smartEncoding"> The smart_encoding </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, string friendlyName = null, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, string friendlyName = null, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, bool? smartEncoding = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -498,6 +502,11 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         [JsonProperty("mms_converter")]
         public bool? MmsConverter { get; private set; }
+        /// <summary>
+        /// The smart_encoding
+        /// </summary>
+        [JsonProperty("smart_encoding")]
+        public bool? SmartEncoding { get; private set; }
         /// <summary>
         /// The url
         /// </summary>

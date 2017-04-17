@@ -191,4 +191,34 @@ namespace Twilio.Rest.Preview.Wireless
         }
     }
 
+    /// <summary>
+    /// DeleteRatePlanOptions
+    /// </summary>
+    public class DeleteRatePlanOptions : IOptions<RatePlanResource> 
+    {
+        /// <summary>
+        /// The sid
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteRatePlanOptions
+        /// </summary>
+        ///
+        /// <param name="pathSid"> The sid </param>
+        public DeleteRatePlanOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }
