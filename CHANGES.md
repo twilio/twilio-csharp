@@ -1,7 +1,7 @@
 twilio-csharp Changelog
 =======================
 
-[2017-04-12] Version 5.3.0
+[2017-04-17] Version 5.3.0
 --------------------------
 - Allow moving Phone Numbers to subaccounts
 
