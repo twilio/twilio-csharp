@@ -5,6 +5,7 @@ namespace Twilio.Jwt.AccessToken
     /// <summary>
     /// Grant to use for Twilio Conversations
     /// </summary>
+    [System.Obsolete("ConversationsGrant is deprecated, use VideoGrant instead")]
     public class ConversationsGrant : IGrant
     {
         /// <summary>
