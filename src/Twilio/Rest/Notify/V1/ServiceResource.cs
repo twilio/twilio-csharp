@@ -69,11 +69,12 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
         /// <param name="fcmCredentialSid"> The fcm_credential_sid </param>
         /// <param name="defaultFcmNotificationProtocolVersion"> The default_fcm_notification_protocol_version </param>
+        /// <param name="logEnabled"> The log_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Create(string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, ITwilioRestClient client = null)
+        public static ServiceResource Create(string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, bool? logEnabled = null, ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions{FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion};
+            var options = new CreateServiceOptions{FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled};
             return Create(options, client);
         }
 
@@ -91,11 +92,12 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
         /// <param name="fcmCredentialSid"> The fcm_credential_sid </param>
         /// <param name="defaultFcmNotificationProtocolVersion"> The default_fcm_notification_protocol_version </param>
+        /// <param name="logEnabled"> The log_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, bool? logEnabled = null, ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions{FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion};
+            var options = new CreateServiceOptions{FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -391,11 +393,12 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
         /// <param name="fcmCredentialSid"> The fcm_credential_sid </param>
         /// <param name="defaultFcmNotificationProtocolVersion"> The default_fcm_notification_protocol_version </param>
+        /// <param name="logEnabled"> The log_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Update(string pathSid, string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, ITwilioRestClient client = null)
+        public static ServiceResource Update(string pathSid, string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, bool? logEnabled = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled};
             return Update(options, client);
         }
 
@@ -414,11 +417,12 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
         /// <param name="fcmCredentialSid"> The fcm_credential_sid </param>
         /// <param name="defaultFcmNotificationProtocolVersion"> The default_fcm_notification_protocol_version </param>
+        /// <param name="logEnabled"> The log_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, bool? logEnabled = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -507,6 +511,11 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         [JsonProperty("default_fcm_notification_protocol_version")]
         public string DefaultFcmNotificationProtocolVersion { get; private set; }
+        /// <summary>
+        /// The log_enabled
+        /// </summary>
+        [JsonProperty("log_enabled")]
+        public bool? LogEnabled { get; private set; }
         /// <summary>
         /// The url
         /// </summary>

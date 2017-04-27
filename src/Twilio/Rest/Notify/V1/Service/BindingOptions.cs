@@ -89,10 +89,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The endpoint
-        /// </summary>
-        public string Endpoint { get; }
-        /// <summary>
         /// The identity
         /// </summary>
         public string Identity { get; }
@@ -116,20 +112,22 @@ namespace Twilio.Rest.Notify.V1.Service
         /// The credential_sid
         /// </summary>
         public string CredentialSid { get; set; }
+        /// <summary>
+        /// The endpoint
+        /// </summary>
+        public string Endpoint { get; set; }
 
         /// <summary>
         /// Construct a new CreateBindingOptions
         /// </summary>
         ///
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="endpoint"> The endpoint </param>
         /// <param name="identity"> The identity </param>
         /// <param name="bindingType"> The binding_type </param>
         /// <param name="address"> The address </param>
-        public CreateBindingOptions(string pathServiceSid, string endpoint, string identity, BindingResource.BindingTypeEnum bindingType, string address)
+        public CreateBindingOptions(string pathServiceSid, string identity, BindingResource.BindingTypeEnum bindingType, string address)
         {
             PathServiceSid = pathServiceSid;
-            Endpoint = endpoint;
             Identity = identity;
             BindingType = bindingType;
             Address = address;
@@ -142,11 +140,6 @@ namespace Twilio.Rest.Notify.V1.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Endpoint != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Endpoint", Endpoint));
-            }
-
             if (Identity != null)
             {
                 p.Add(new KeyValuePair<string, string>("Identity", Identity));
@@ -175,6 +168,11 @@ namespace Twilio.Rest.Notify.V1.Service
             if (CredentialSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("CredentialSid", CredentialSid.ToString()));
+            }
+
+            if (Endpoint != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Endpoint", Endpoint));
             }
 
             return p;

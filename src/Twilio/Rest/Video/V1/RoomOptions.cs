@@ -125,17 +125,17 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         public RoomResource.RoomStatusEnum Status { get; set; }
         /// <summary>
-        /// The start_time_after
-        /// </summary>
-        public DateTime? StartTimeAfter { get; set; }
-        /// <summary>
-        /// The start_time_before
-        /// </summary>
-        public DateTime? StartTimeBefore { get; set; }
-        /// <summary>
         /// The unique_name
         /// </summary>
         public string UniqueName { get; set; }
+        /// <summary>
+        /// The date_created_after
+        /// </summary>
+        public DateTime? DateCreatedAfter { get; set; }
+        /// <summary>
+        /// The date_created_before
+        /// </summary>
+        public DateTime? DateCreatedBefore { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -148,19 +148,19 @@ namespace Twilio.Rest.Video.V1
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
 
-            if (StartTimeAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartTimeAfter", StartTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
-            }
-
-            if (StartTimeBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StartTimeBefore", StartTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
-            }
-
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+            }
+
+            if (DateCreatedAfter != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", DateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+            }
+
+            if (DateCreatedBefore != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateCreatedBefore", DateCreatedBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
             }
 
             if (PageSize != null)

@@ -177,13 +177,14 @@ namespace Twilio.Rest.Video.V1
         ///
         /// <param name="status"> The status </param>
         /// <param name="sourceSid"> The source_sid </param>
+        /// <param name="groupingSid"> The grouping_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
-        public static ResourceSet<RecordingResource> Read(RecordingResource.StatusEnum status = null, string sourceSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<RecordingResource> Read(RecordingResource.StatusEnum status = null, string sourceSid = null, List<string> groupingSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions{Status = status, SourceSid = sourceSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions{Status = status, SourceSid = sourceSid, GroupingSid = groupingSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -194,13 +195,14 @@ namespace Twilio.Rest.Video.V1
         ///
         /// <param name="status"> The status </param>
         /// <param name="sourceSid"> The source_sid </param>
+        /// <param name="groupingSid"> The grouping_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(RecordingResource.StatusEnum status = null, string sourceSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(RecordingResource.StatusEnum status = null, string sourceSid = null, List<string> groupingSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions{Status = status, SourceSid = sourceSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions{Status = status, SourceSid = sourceSid, GroupingSid = groupingSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -373,6 +375,11 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("codec")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.CodecEnum Codec { get; private set; }
+        /// <summary>
+        /// The grouping_sids
+        /// </summary>
+        [JsonProperty("grouping_sids")]
+        public object GroupingSids { get; private set; }
         /// <summary>
         /// The links
         /// </summary>

@@ -71,6 +71,10 @@ namespace Twilio.Rest.Notify.V1.Service
         /// The fcm
         /// </summary>
         public string Fcm { get; set; }
+        /// <summary>
+        /// The segment
+        /// </summary>
+        public List<string> Segment { get; set; }
 
         /// <summary>
         /// Construct a new CreateNotificationOptions
@@ -82,6 +86,7 @@ namespace Twilio.Rest.Notify.V1.Service
             PathServiceSid = pathServiceSid;
             Identity = new List<string>();
             Tag = new List<string>();
+            Segment = new List<string>();
         }
 
         /// <summary>
@@ -158,6 +163,11 @@ namespace Twilio.Rest.Notify.V1.Service
             if (Fcm != null)
             {
                 p.Add(new KeyValuePair<string, string>("Fcm", Fcm));
+            }
+
+            if (Segment != null)
+            {
+                p.AddRange(Segment.Select(prop => new KeyValuePair<string, string>("Segment", prop)));
             }
 
             return p;

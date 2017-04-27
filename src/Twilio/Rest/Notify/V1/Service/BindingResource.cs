@@ -26,6 +26,7 @@ namespace Twilio.Rest.Notify.V1.Service
             public static readonly BindingTypeEnum Sms = new BindingTypeEnum("sms");
             public static readonly BindingTypeEnum Fcm = new BindingTypeEnum("fcm");
             public static readonly BindingTypeEnum FacebookMessenger = new BindingTypeEnum("facebook-messenger");
+            public static readonly BindingTypeEnum Alexa = new BindingTypeEnum("alexa");
         }
 
         private static Request BuildFetchRequest(FetchBindingOptions options, ITwilioRestClient client)
@@ -216,18 +217,18 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         ///
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="endpoint"> The endpoint </param>
         /// <param name="identity"> The identity </param>
         /// <param name="bindingType"> The binding_type </param>
         /// <param name="address"> The address </param>
         /// <param name="tag"> The tag </param>
         /// <param name="notificationProtocolVersion"> The notification_protocol_version </param>
         /// <param name="credentialSid"> The credential_sid </param>
+        /// <param name="endpoint"> The endpoint </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns> 
-        public static BindingResource Create(string pathServiceSid, string endpoint, string identity, BindingResource.BindingTypeEnum bindingType, string address, List<string> tag = null, string notificationProtocolVersion = null, string credentialSid = null, ITwilioRestClient client = null)
+        public static BindingResource Create(string pathServiceSid, string identity, BindingResource.BindingTypeEnum bindingType, string address, List<string> tag = null, string notificationProtocolVersion = null, string credentialSid = null, string endpoint = null, ITwilioRestClient client = null)
         {
-            var options = new CreateBindingOptions(pathServiceSid, endpoint, identity, bindingType, address){Tag = tag, NotificationProtocolVersion = notificationProtocolVersion, CredentialSid = credentialSid};
+            var options = new CreateBindingOptions(pathServiceSid, identity, bindingType, address){Tag = tag, NotificationProtocolVersion = notificationProtocolVersion, CredentialSid = credentialSid, Endpoint = endpoint};
             return Create(options, client);
         }
 
@@ -237,18 +238,18 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         ///
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="endpoint"> The endpoint </param>
         /// <param name="identity"> The identity </param>
         /// <param name="bindingType"> The binding_type </param>
         /// <param name="address"> The address </param>
         /// <param name="tag"> The tag </param>
         /// <param name="notificationProtocolVersion"> The notification_protocol_version </param>
         /// <param name="credentialSid"> The credential_sid </param>
+        /// <param name="endpoint"> The endpoint </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<BindingResource> CreateAsync(string pathServiceSid, string endpoint, string identity, BindingResource.BindingTypeEnum bindingType, string address, List<string> tag = null, string notificationProtocolVersion = null, string credentialSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BindingResource> CreateAsync(string pathServiceSid, string identity, BindingResource.BindingTypeEnum bindingType, string address, List<string> tag = null, string notificationProtocolVersion = null, string credentialSid = null, string endpoint = null, ITwilioRestClient client = null)
         {
-            var options = new CreateBindingOptions(pathServiceSid, endpoint, identity, bindingType, address){Tag = tag, NotificationProtocolVersion = notificationProtocolVersion, CredentialSid = credentialSid};
+            var options = new CreateBindingOptions(pathServiceSid, identity, bindingType, address){Tag = tag, NotificationProtocolVersion = notificationProtocolVersion, CredentialSid = credentialSid, Endpoint = endpoint};
             return await CreateAsync(options, client);
         }
         #endif
@@ -443,6 +444,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
 
         private BindingResource()
         {

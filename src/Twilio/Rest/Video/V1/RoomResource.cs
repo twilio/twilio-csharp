@@ -235,16 +235,16 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         ///
         /// <param name="status"> The status </param>
-        /// <param name="startTimeAfter"> The start_time_after </param>
-        /// <param name="startTimeBefore"> The start_time_before </param>
         /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="dateCreatedAfter"> The date_created_after </param>
+        /// <param name="dateCreatedBefore"> The date_created_before </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns> 
-        public static ResourceSet<RoomResource> Read(RoomResource.RoomStatusEnum status = null, DateTime? startTimeAfter = null, DateTime? startTimeBefore = null, string uniqueName = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<RoomResource> Read(RoomResource.RoomStatusEnum status = null, string uniqueName = null, DateTime? dateCreatedAfter = null, DateTime? dateCreatedBefore = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadRoomOptions{Status = status, StartTimeAfter = startTimeAfter, StartTimeBefore = startTimeBefore, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
+            var options = new ReadRoomOptions{Status = status, UniqueName = uniqueName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -254,16 +254,16 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         ///
         /// <param name="status"> The status </param>
-        /// <param name="startTimeAfter"> The start_time_after </param>
-        /// <param name="startTimeBefore"> The start_time_before </param>
         /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="dateCreatedAfter"> The date_created_after </param>
+        /// <param name="dateCreatedBefore"> The date_created_before </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<RoomResource>> ReadAsync(RoomResource.RoomStatusEnum status = null, DateTime? startTimeAfter = null, DateTime? startTimeBefore = null, string uniqueName = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RoomResource>> ReadAsync(RoomResource.RoomStatusEnum status = null, string uniqueName = null, DateTime? dateCreatedAfter = null, DateTime? dateCreatedBefore = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadRoomOptions{Status = status, StartTimeAfter = startTimeAfter, StartTimeBefore = startTimeBefore, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
+            var options = new ReadRoomOptions{Status = status, UniqueName = uniqueName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -426,11 +426,6 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
-        /// <summary>
-        /// The start_time
-        /// </summary>
-        [JsonProperty("start_time")]
-        public DateTime? StartTime { get; private set; }
         /// <summary>
         /// The end_time
         /// </summary>

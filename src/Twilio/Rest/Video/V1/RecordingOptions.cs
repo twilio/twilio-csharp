@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 
 namespace Twilio.Rest.Video.V1 
@@ -48,6 +49,18 @@ namespace Twilio.Rest.Video.V1
         /// The source_sid
         /// </summary>
         public string SourceSid { get; set; }
+        /// <summary>
+        /// The grouping_sid
+        /// </summary>
+        public List<string> GroupingSid { get; set; }
+
+        /// <summary>
+        /// Construct a new ReadRecordingOptions
+        /// </summary>
+        public ReadRecordingOptions()
+        {
+            GroupingSid = new List<string>();
+        }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -63,6 +76,11 @@ namespace Twilio.Rest.Video.V1
             if (SourceSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("SourceSid", SourceSid.ToString()));
+            }
+
+            if (GroupingSid != null)
+            {
+                p.AddRange(GroupingSid.Select(prop => new KeyValuePair<string, string>("GroupingSid", prop.ToString())));
             }
 
             if (PageSize != null)

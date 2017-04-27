@@ -29,26 +29,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
 
-        public sealed class BeepEnum : StringEnum 
-        {
-            private BeepEnum(string value) : base(value) {}
-            public BeepEnum() {}
-
-            public static readonly BeepEnum True = new BeepEnum("true");
-            public static readonly BeepEnum False = new BeepEnum("false");
-            public static readonly BeepEnum Onenter = new BeepEnum("onEnter");
-            public static readonly BeepEnum Onexit = new BeepEnum("onExit");
-        }
-
-        public sealed class ConferenceRecordEnum : StringEnum 
-        {
-            private ConferenceRecordEnum(string value) : base(value) {}
-            public ConferenceRecordEnum() {}
-
-            public static readonly ConferenceRecordEnum DoNotRecord = new ConferenceRecordEnum("do-not-record");
-            public static readonly ConferenceRecordEnum RecordFromStart = new ConferenceRecordEnum("record-from-start");
-        }
-
         private static Request BuildFetchRequest(FetchParticipantOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -270,11 +250,19 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="conferenceStatusCallback"> The conference_status_callback </param>
         /// <param name="conferenceStatusCallbackMethod"> The conference_status_callback_method </param>
         /// <param name="conferenceStatusCallbackEvent"> The conference_status_callback_event </param>
+        /// <param name="recordingChannels"> The recording_channels </param>
+        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
+        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
+        /// <param name="sipAuthUsername"> The sip_auth_username </param>
+        /// <param name="sipAuthPassword"> The sip_auth_password </param>
+        /// <param name="region"> The region </param>
+        /// <param name="conferenceRecordingStatusCallback"> The conference_recording_status_callback </param>
+        /// <param name="conferenceRecordingStatusCallbackMethod"> The conference_recording_status_callback_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
-        public static ParticipantResource Create(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to, string pathAccountSid = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, List<string> statusCallbackEvent = null, int? timeout = null, bool? record = null, bool? muted = null, ParticipantResource.BeepEnum beep = null, bool? startConferenceOnEnter = null, bool? endConferenceOnExit = null, Uri waitUrl = null, Twilio.Http.HttpMethod waitMethod = null, bool? earlyMedia = null, int? maxParticipants = null, ParticipantResource.ConferenceRecordEnum conferenceRecord = null, string conferenceTrim = null, Uri conferenceStatusCallback = null, Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null, List<string> conferenceStatusCallbackEvent = null, ITwilioRestClient client = null)
+        public static ParticipantResource Create(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to, string pathAccountSid = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, List<string> statusCallbackEvent = null, int? timeout = null, bool? record = null, bool? muted = null, string beep = null, bool? startConferenceOnEnter = null, bool? endConferenceOnExit = null, Uri waitUrl = null, Twilio.Http.HttpMethod waitMethod = null, bool? earlyMedia = null, int? maxParticipants = null, string conferenceRecord = null, string conferenceTrim = null, Uri conferenceStatusCallback = null, Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null, List<string> conferenceStatusCallbackEvent = null, string recordingChannels = null, Uri recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, string region = null, Uri conferenceRecordingStatusCallback = null, Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent};
+            var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod};
             return Create(options, client);
         }
 
@@ -305,11 +293,19 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="conferenceStatusCallback"> The conference_status_callback </param>
         /// <param name="conferenceStatusCallbackMethod"> The conference_status_callback_method </param>
         /// <param name="conferenceStatusCallbackEvent"> The conference_status_callback_event </param>
+        /// <param name="recordingChannels"> The recording_channels </param>
+        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
+        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
+        /// <param name="sipAuthUsername"> The sip_auth_username </param>
+        /// <param name="sipAuthPassword"> The sip_auth_password </param>
+        /// <param name="region"> The region </param>
+        /// <param name="conferenceRecordingStatusCallback"> The conference_recording_status_callback </param>
+        /// <param name="conferenceRecordingStatusCallbackMethod"> The conference_recording_status_callback_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to, string pathAccountSid = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, List<string> statusCallbackEvent = null, int? timeout = null, bool? record = null, bool? muted = null, ParticipantResource.BeepEnum beep = null, bool? startConferenceOnEnter = null, bool? endConferenceOnExit = null, Uri waitUrl = null, Twilio.Http.HttpMethod waitMethod = null, bool? earlyMedia = null, int? maxParticipants = null, ParticipantResource.ConferenceRecordEnum conferenceRecord = null, string conferenceTrim = null, Uri conferenceStatusCallback = null, Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null, List<string> conferenceStatusCallbackEvent = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to, string pathAccountSid = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, List<string> statusCallbackEvent = null, int? timeout = null, bool? record = null, bool? muted = null, string beep = null, bool? startConferenceOnEnter = null, bool? endConferenceOnExit = null, Uri waitUrl = null, Twilio.Http.HttpMethod waitMethod = null, bool? earlyMedia = null, int? maxParticipants = null, string conferenceRecord = null, string conferenceTrim = null, Uri conferenceStatusCallback = null, Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null, List<string> conferenceStatusCallbackEvent = null, string recordingChannels = null, Uri recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, string region = null, Uri conferenceRecordingStatusCallback = null, Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent};
+            var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod};
             return await CreateAsync(options, client);
         }
         #endif

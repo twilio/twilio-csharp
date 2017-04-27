@@ -46,6 +46,10 @@ namespace Twilio.Rest.Notify.V1
         /// The default_fcm_notification_protocol_version
         /// </summary>
         public string DefaultFcmNotificationProtocolVersion { get; set; }
+        /// <summary>
+        /// The log_enabled
+        /// </summary>
+        public bool? LogEnabled { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -96,6 +100,11 @@ namespace Twilio.Rest.Notify.V1
             if (DefaultFcmNotificationProtocolVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultFcmNotificationProtocolVersion", DefaultFcmNotificationProtocolVersion));
+            }
+
+            if (LogEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LogEnabled", LogEnabled.Value.ToString()));
             }
 
             return p;
@@ -237,6 +246,10 @@ namespace Twilio.Rest.Notify.V1
         /// The default_fcm_notification_protocol_version
         /// </summary>
         public string DefaultFcmNotificationProtocolVersion { get; set; }
+        /// <summary>
+        /// The log_enabled
+        /// </summary>
+        public bool? LogEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -297,6 +310,11 @@ namespace Twilio.Rest.Notify.V1
             if (DefaultFcmNotificationProtocolVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultFcmNotificationProtocolVersion", DefaultFcmNotificationProtocolVersion));
+            }
+
+            if (LogEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LogEnabled", LogEnabled.Value.ToString()));
             }
 
             return p;
