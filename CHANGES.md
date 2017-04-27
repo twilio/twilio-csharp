@@ -1,7 +1,7 @@
 twilio-csharp Changelog
 =======================
 
-[2017-04-27] Version 5.4.0-alpha1
+[2017-04-27] Version 5.4.1-alpha1
 ---------------------------------
 - Add support for Chat V2
 - Remove conference participant `Beep` and `ConferenceRecord` enums, use `String` instead (backwards incompatible).
