@@ -21,6 +21,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             private CategoryEnum(string value) : base(value) {}
             public CategoryEnum() {}
 
+            public static readonly CategoryEnum AnsweringMachineDetection = new CategoryEnum("answering-machine-detection");
             public static readonly CategoryEnum AuthyAuthentications = new CategoryEnum("authy-authentications");
             public static readonly CategoryEnum AuthyCallsOutbound = new CategoryEnum("authy-calls-outbound");
             public static readonly CategoryEnum AuthyMonthlyFees = new CategoryEnum("authy-monthly-fees");
@@ -49,12 +50,40 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum ConversationsEvents = new CategoryEnum("conversations-events");
             public static readonly CategoryEnum ConversationsParticipantEvents = new CategoryEnum("conversations-participant-events");
             public static readonly CategoryEnum ConversationsParticipants = new CategoryEnum("conversations-participants");
+            public static readonly CategoryEnum Cps = new CategoryEnum("cps");
             public static readonly CategoryEnum IpMessaging = new CategoryEnum("ip-messaging");
             public static readonly CategoryEnum IpMessagingCommands = new CategoryEnum("ip-messaging-commands");
             public static readonly CategoryEnum IpMessagingDataStorage = new CategoryEnum("ip-messaging-data-storage");
             public static readonly CategoryEnum IpMessagingDataTransfer = new CategoryEnum("ip-messaging-data-transfer");
             public static readonly CategoryEnum IpMessagingEndpointConnectivity = new CategoryEnum("ip-messaging-endpoint-connectivity");
             public static readonly CategoryEnum Lookups = new CategoryEnum("lookups");
+            public static readonly CategoryEnum Marketplace = new CategoryEnum("marketplace");
+            public static readonly CategoryEnum MarketplaceAlgorithmiaNamedEntityRecognition = new CategoryEnum("marketplace-algorithmia-named-entity-recognition");
+            public static readonly CategoryEnum MarketplaceDigitalSegmentBusinessInfo = new CategoryEnum("marketplace-digital-segment-business-info");
+            public static readonly CategoryEnum MarketplaceGoogleSpeechToText = new CategoryEnum("marketplace-google-speech-to-text");
+            public static readonly CategoryEnum MarketplaceIbmWatsonMessageInsights = new CategoryEnum("marketplace-ibm-watson-message-insights");
+            public static readonly CategoryEnum MarketplaceIbmWatsonMessageSentiment = new CategoryEnum("marketplace-ibm-watson-message-sentiment");
+            public static readonly CategoryEnum MarketplaceIbmWatsonRecordingAnalysis = new CategoryEnum("marketplace-ibm-watson-recording-analysis");
+            public static readonly CategoryEnum MarketplaceIcehookSystemsScout = new CategoryEnum("marketplace-icehook-systems-scout");
+            public static readonly CategoryEnum MarketplaceInfogroupDataaxleBizinfo = new CategoryEnum("marketplace-infogroup-dataaxle-bizinfo");
+            public static readonly CategoryEnum MarketplaceMarchexCleancall = new CategoryEnum("marketplace-marchex-cleancall");
+            public static readonly CategoryEnum MarketplaceMarchexSentimentAnalysisForSms = new CategoryEnum("marketplace-marchex-sentiment-analysis-for-sms");
+            public static readonly CategoryEnum MarketplaceMarketplaceNextcallerSocialId = new CategoryEnum("marketplace-marketplace-nextcaller-social-id");
+            public static readonly CategoryEnum MarketplaceMobileCommonsOptOutClassifier = new CategoryEnum("marketplace-mobile-commons-opt-out-classifier");
+            public static readonly CategoryEnum MarketplaceNexiwaveVoicemailToText = new CategoryEnum("marketplace-nexiwave-voicemail-to-text");
+            public static readonly CategoryEnum MarketplaceNextcallerAdvancedCallerIdentification = new CategoryEnum("marketplace-nextcaller-advanced-caller-identification");
+            public static readonly CategoryEnum MarketplaceNomoroboSpamScore = new CategoryEnum("marketplace-nomorobo-spam-score");
+            public static readonly CategoryEnum MarketplacePayfoneTcpaCompliance = new CategoryEnum("marketplace-payfone-tcpa-compliance");
+            public static readonly CategoryEnum MarketplaceTeloOpencnam = new CategoryEnum("marketplace-telo-opencnam");
+            public static readonly CategoryEnum MarketplaceTruecnamTrueSpam = new CategoryEnum("marketplace-truecnam-true-spam");
+            public static readonly CategoryEnum MarketplaceTwilioCallerNameLookupUs = new CategoryEnum("marketplace-twilio-caller-name-lookup-us");
+            public static readonly CategoryEnum MarketplaceTwilioCarrierInformationLookup = new CategoryEnum("marketplace-twilio-carrier-information-lookup");
+            public static readonly CategoryEnum MarketplaceVoicebasePci = new CategoryEnum("marketplace-voicebase-pci");
+            public static readonly CategoryEnum MarketplaceVoicebaseTranscription = new CategoryEnum("marketplace-voicebase-transcription");
+            public static readonly CategoryEnum MarketplaceWhitepagesProCallerIdentification = new CategoryEnum("marketplace-whitepages-pro-caller-identification");
+            public static readonly CategoryEnum MarketplaceWhitepagesProPhoneIntelligence = new CategoryEnum("marketplace-whitepages-pro-phone-intelligence");
+            public static readonly CategoryEnum MarketplaceWhitepagesProPhoneReputation = new CategoryEnum("marketplace-whitepages-pro-phone-reputation");
+            public static readonly CategoryEnum MarketplaceWolframShortAnswer = new CategoryEnum("marketplace-wolfram-short-answer");
             public static readonly CategoryEnum Mediastorage = new CategoryEnum("mediastorage");
             public static readonly CategoryEnum Mms = new CategoryEnum("mms");
             public static readonly CategoryEnum MmsInbound = new CategoryEnum("mms-inbound");
@@ -67,6 +96,16 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum MonitorStorage = new CategoryEnum("monitor-storage");
             public static readonly CategoryEnum MonitorWrites = new CategoryEnum("monitor-writes");
             public static readonly CategoryEnum NumberFormatLookups = new CategoryEnum("number-format-lookups");
+            public static readonly CategoryEnum Pchat = new CategoryEnum("pchat");
+            public static readonly CategoryEnum PchatActions = new CategoryEnum("pchat-actions");
+            public static readonly CategoryEnum PchatAps = new CategoryEnum("pchat-aps");
+            public static readonly CategoryEnum PchatNotifications = new CategoryEnum("pchat-notifications");
+            public static readonly CategoryEnum PchatReads = new CategoryEnum("pchat-reads");
+            public static readonly CategoryEnum Pfax = new CategoryEnum("pfax");
+            public static readonly CategoryEnum PfaxMinutes = new CategoryEnum("pfax-minutes");
+            public static readonly CategoryEnum PfaxMinutesInbound = new CategoryEnum("pfax-minutes-inbound");
+            public static readonly CategoryEnum PfaxMinutesOutbound = new CategoryEnum("pfax-minutes-outbound");
+            public static readonly CategoryEnum PfaxPages = new CategoryEnum("pfax-pages");
             public static readonly CategoryEnum Phonenumbers = new CategoryEnum("phonenumbers");
             public static readonly CategoryEnum PhonenumbersCps = new CategoryEnum("phonenumbers-cps");
             public static readonly CategoryEnum PhonenumbersEmergency = new CategoryEnum("phonenumbers-emergency");
@@ -75,6 +114,17 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum PhonenumbersSetups = new CategoryEnum("phonenumbers-setups");
             public static readonly CategoryEnum PhonenumbersTollfree = new CategoryEnum("phonenumbers-tollfree");
             public static readonly CategoryEnum Premiumsupport = new CategoryEnum("premiumsupport");
+            public static readonly CategoryEnum Pv = new CategoryEnum("pv");
+            public static readonly CategoryEnum PvRoomParticipants = new CategoryEnum("pv-room-participants");
+            public static readonly CategoryEnum PvRoomParticipantsAu1 = new CategoryEnum("pv-room-participants-au1");
+            public static readonly CategoryEnum PvRoomParticipantsBr1 = new CategoryEnum("pv-room-participants-br1");
+            public static readonly CategoryEnum PvRoomParticipantsIe1 = new CategoryEnum("pv-room-participants-ie1");
+            public static readonly CategoryEnum PvRoomParticipantsJp1 = new CategoryEnum("pv-room-participants-jp1");
+            public static readonly CategoryEnum PvRoomParticipantsSg1 = new CategoryEnum("pv-room-participants-sg1");
+            public static readonly CategoryEnum PvRoomParticipantsUs1 = new CategoryEnum("pv-room-participants-us1");
+            public static readonly CategoryEnum PvRoomParticipantsUs2 = new CategoryEnum("pv-room-participants-us2");
+            public static readonly CategoryEnum PvRooms = new CategoryEnum("pv-rooms");
+            public static readonly CategoryEnum PvSipEndpointRegistrations = new CategoryEnum("pv-sip-endpoint-registrations");
             public static readonly CategoryEnum Recordings = new CategoryEnum("recordings");
             public static readonly CategoryEnum Recordingstorage = new CategoryEnum("recordingstorage");
             public static readonly CategoryEnum Shortcodes = new CategoryEnum("shortcodes");
@@ -89,6 +139,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum SmsInboundLongcode = new CategoryEnum("sms-inbound-longcode");
             public static readonly CategoryEnum SmsInboundShortcode = new CategoryEnum("sms-inbound-shortcode");
             public static readonly CategoryEnum SmsOutbound = new CategoryEnum("sms-outbound");
+            public static readonly CategoryEnum SmsOutboundContentInspection = new CategoryEnum("sms-outbound-content-inspection");
             public static readonly CategoryEnum SmsOutboundLongcode = new CategoryEnum("sms-outbound-longcode");
             public static readonly CategoryEnum SmsOutboundShortcode = new CategoryEnum("sms-outbound-shortcode");
             public static readonly CategoryEnum TaskrouterTasks = new CategoryEnum("taskrouter-tasks");
@@ -111,6 +162,33 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum TurnmegabytesSingapore = new CategoryEnum("turnmegabytes-singapore");
             public static readonly CategoryEnum TurnmegabytesUseast = new CategoryEnum("turnmegabytes-useast");
             public static readonly CategoryEnum TurnmegabytesUswest = new CategoryEnum("turnmegabytes-uswest");
+            public static readonly CategoryEnum TwilioInterconnect = new CategoryEnum("twilio-interconnect");
+            public static readonly CategoryEnum VoiceInsights = new CategoryEnum("voice-insights");
+            public static readonly CategoryEnum Wireless = new CategoryEnum("wireless");
+            public static readonly CategoryEnum WirelessOrders = new CategoryEnum("wireless-orders");
+            public static readonly CategoryEnum WirelessOrdersBulk = new CategoryEnum("wireless-orders-bulk");
+            public static readonly CategoryEnum WirelessOrdersEsim = new CategoryEnum("wireless-orders-esim");
+            public static readonly CategoryEnum WirelessOrdersStarter = new CategoryEnum("wireless-orders-starter");
+            public static readonly CategoryEnum WirelessUsage = new CategoryEnum("wireless-usage");
+            public static readonly CategoryEnum WirelessUsageCommands = new CategoryEnum("wireless-usage-commands");
+            public static readonly CategoryEnum WirelessUsageCommandsHome = new CategoryEnum("wireless-usage-commands-home");
+            public static readonly CategoryEnum WirelessUsageCommandsRoaming = new CategoryEnum("wireless-usage-commands-roaming");
+            public static readonly CategoryEnum WirelessUsageData = new CategoryEnum("wireless-usage-data");
+            public static readonly CategoryEnum WirelessUsageDataCustomAdditionalmb = new CategoryEnum("wireless-usage-data-custom-additionalmb");
+            public static readonly CategoryEnum WirelessUsageDataCustomFirst5Mb = new CategoryEnum("wireless-usage-data-custom-first5mb");
+            public static readonly CategoryEnum WirelessUsageDataDomesticRoaming = new CategoryEnum("wireless-usage-data-domestic-roaming");
+            public static readonly CategoryEnum WirelessUsageDataIndividualAdditionalgb = new CategoryEnum("wireless-usage-data-individual-additionalgb");
+            public static readonly CategoryEnum WirelessUsageDataIndividualFirstgb = new CategoryEnum("wireless-usage-data-individual-firstgb");
+            public static readonly CategoryEnum WirelessUsageDataInternationalRoamingCanada = new CategoryEnum("wireless-usage-data-international-roaming-canada");
+            public static readonly CategoryEnum WirelessUsageDataInternationalRoamingIndia = new CategoryEnum("wireless-usage-data-international-roaming-india");
+            public static readonly CategoryEnum WirelessUsageDataInternationalRoamingMexico = new CategoryEnum("wireless-usage-data-international-roaming-mexico");
+            public static readonly CategoryEnum WirelessUsageDataPooled = new CategoryEnum("wireless-usage-data-pooled");
+            public static readonly CategoryEnum WirelessUsageDataPooledDownlink = new CategoryEnum("wireless-usage-data-pooled-downlink");
+            public static readonly CategoryEnum WirelessUsageDataPooledUplink = new CategoryEnum("wireless-usage-data-pooled-uplink");
+            public static readonly CategoryEnum WirelessUsageMrc = new CategoryEnum("wireless-usage-mrc");
+            public static readonly CategoryEnum WirelessUsageMrcCustom = new CategoryEnum("wireless-usage-mrc-custom");
+            public static readonly CategoryEnum WirelessUsageMrcIndividual = new CategoryEnum("wireless-usage-mrc-individual");
+            public static readonly CategoryEnum WirelessUsageMrcPooled = new CategoryEnum("wireless-usage-mrc-pooled");
         }
 
         private static Request BuildReadRequest(ReadDailyOptions options, ITwilioRestClient client)

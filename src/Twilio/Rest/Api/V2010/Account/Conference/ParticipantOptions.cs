@@ -170,7 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// The beep
         /// </summary>
-        public ParticipantResource.BeepEnum Beep { get; set; }
+        public string Beep { get; set; }
         /// <summary>
         /// The start_conference_on_enter
         /// </summary>
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// The conference_record
         /// </summary>
-        public ParticipantResource.ConferenceRecordEnum ConferenceRecord { get; set; }
+        public string ConferenceRecord { get; set; }
         /// <summary>
         /// The conference_trim
         /// </summary>
@@ -215,6 +215,38 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// The conference_status_callback_event
         /// </summary>
         public List<string> ConferenceStatusCallbackEvent { get; set; }
+        /// <summary>
+        /// The recording_channels
+        /// </summary>
+        public string RecordingChannels { get; set; }
+        /// <summary>
+        /// The recording_status_callback
+        /// </summary>
+        public Uri RecordingStatusCallback { get; set; }
+        /// <summary>
+        /// The recording_status_callback_method
+        /// </summary>
+        public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
+        /// <summary>
+        /// The sip_auth_username
+        /// </summary>
+        public string SipAuthUsername { get; set; }
+        /// <summary>
+        /// The sip_auth_password
+        /// </summary>
+        public string SipAuthPassword { get; set; }
+        /// <summary>
+        /// The region
+        /// </summary>
+        public string Region { get; set; }
+        /// <summary>
+        /// The conference_recording_status_callback
+        /// </summary>
+        public Uri ConferenceRecordingStatusCallback { get; set; }
+        /// <summary>
+        /// The conference_recording_status_callback_method
+        /// </summary>
+        public Twilio.Http.HttpMethod ConferenceRecordingStatusCallbackMethod { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -280,7 +312,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (Beep != null)
             {
-                p.Add(new KeyValuePair<string, string>("Beep", Beep.ToString()));
+                p.Add(new KeyValuePair<string, string>("Beep", Beep));
             }
 
             if (StartConferenceOnEnter != null)
@@ -315,7 +347,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (ConferenceRecord != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConferenceRecord", ConferenceRecord.ToString()));
+                p.Add(new KeyValuePair<string, string>("ConferenceRecord", ConferenceRecord));
             }
 
             if (ConferenceTrim != null)
@@ -336,6 +368,46 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (ConferenceStatusCallbackEvent != null)
             {
                 p.AddRange(ConferenceStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceStatusCallbackEvent", prop)));
+            }
+
+            if (RecordingChannels != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RecordingChannels", RecordingChannels));
+            }
+
+            if (RecordingStatusCallback != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RecordingStatusCallback", RecordingStatusCallback.ToString()));
+            }
+
+            if (RecordingStatusCallbackMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RecordingStatusCallbackMethod", RecordingStatusCallbackMethod.ToString()));
+            }
+
+            if (SipAuthUsername != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SipAuthUsername", SipAuthUsername));
+            }
+
+            if (SipAuthPassword != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SipAuthPassword", SipAuthPassword));
+            }
+
+            if (Region != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Region", Region));
+            }
+
+            if (ConferenceRecordingStatusCallback != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ConferenceRecordingStatusCallback", ConferenceRecordingStatusCallback.ToString()));
+            }
+
+            if (ConferenceRecordingStatusCallbackMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ConferenceRecordingStatusCallbackMethod", ConferenceRecordingStatusCallbackMethod.ToString()));
             }
 
             return p;
