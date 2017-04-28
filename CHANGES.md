@@ -1,6 +1,13 @@
 twilio-csharp Changelog
 =======================
 
+[2017-04-27] Version 5.4.0
+--------------------------
+- Add support for Chat V2
+- Remove conference participant `Beep` and `ConferenceRecord` enums, use `String` instead (backwards incompatible).
+- Add `recordingChannels`, `recordingStatusCallback`, `recordingStatusCallbackMethod`, `sipAuthUsername`, `sipAuthPassword`, `region`, `conferenceRecordingStatusCallback`, `conferenceRecordingStatusCallbackMethod` parameter support to conference participant creation.
+- Update missing categories in Usage Trigger enums.
+
 [2017-04-17] Version 5.3.0
 --------------------------
 - Allow moving Phone Numbers to subaccounts
