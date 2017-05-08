@@ -221,7 +221,13 @@ namespace Twilio.TwiML
         /// <param name="trim">Trim recording</param>
         /// <param name="waitMethod">Wait URL method</param>
         /// <param name="waitUrl">Wait TwiML URL</param>
-        /// <param name="eventCallbackUrl">URL to hit on conference events</param>
+        /// <param name="eventCallbackUrl">URL to hit on conference events, deprecated in favor of 'recordingStatusCallback', providing a 'recordingStatusCallback' will ignore 'eventCallbackUrl' if provided</param>
+        /// <param name="region">Where Twilio should mix the conference</param>
+        /// <param name="statusCallbackEvent">Specify which conference state changes should generate a webhook to the URL specified in the 'statusCallback'</param>
+        /// <param name="statusCallback">URL to hit on conference events</param>
+        /// <param name="statusCallbackMethod">Method to use when hitting 'statusCallback' url</param>
+        /// <param name="recordingStatusCallback">If a conference recording was requested via the record attribute, Twilio will make a request to this URL when the recording is available to access</param>
+        /// <param name="recordingStatusCallbackMethod">Method to use when hitting 'recordingStatusCallback'</param>
         /// <returns>Dial element</returns>
         public Dial Conference(string name,
             bool? muted=null,
@@ -233,7 +239,13 @@ namespace Twilio.TwiML
             string trim=null,
             string waitMethod=null,
             string waitUrl=null,
-            string eventCallbackUrl=null)
+            string eventCallbackUrl=null,
+            string region=null,
+            string statusCallbackEvent=null,
+            string statusCallback=null,
+            string statusCallbackMethod=null,
+            string recordingStatusCallback=null,
+            string recordingStatusCallbackMethod=null)
         {
             var conference = new XElement("Conference", name);
             if (muted != null)
@@ -272,9 +284,33 @@ namespace Twilio.TwiML
             {
                 conference.Add(new XAttribute("waitUrl", waitUrl));
             }
-            if (!string.IsNullOrEmpty(eventCallbackUrl))
+            if (!string.IsNullOrEmpty(eventCallbackUrl) && string.IsNullOrEmpty(recordingStatusCallback))
             {
                 conference.Add(new XAttribute("eventCallbackUrl", eventCallbackUrl));
+            }
+            if (!string.IsNullOrEmpty(region))
+            {
+                conference.Add(new XAttribute("region", region));
+            }
+            if (!string.IsNullOrEmpty(statusCallbackEvent))
+            {
+                conference.Add(new XAttribute("statusCallbackEvent", statusCallbackEvent));
+            }
+            if (!string.IsNullOrEmpty(statusCallback))
+            {
+                conference.Add(new XAttribute("statusCallback", statusCallback));
+            }
+            if (!string.IsNullOrEmpty(statusCallbackMethod))
+            {
+                conference.Add(new XAttribute("statusCallbackMethod", statusCallbackMethod));
+            }
+            if (!string.IsNullOrEmpty(recordingStatusCallback))
+            {
+                conference.Add(new XAttribute("recordingStatusCallback", recordingStatusCallback));
+            }
+            if (!string.IsNullOrEmpty(recordingStatusCallbackMethod))
+            {
+                conference.Add(new XAttribute("recordingStatusCallbackMethod", recordingStatusCallbackMethod));
             }
 
             Element.Add(conference);
