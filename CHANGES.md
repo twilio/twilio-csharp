@@ -5,6 +5,7 @@ twilio-csharp Changelog
 --------------------------
 - Set AssemblyVersion in dll correctly.
 - Add new categories in Usage Trigger enums.
+- Add missing Twiml Dial Conference attributes.
 
 [2017-04-27] Version 5.4.0
 --------------------------
