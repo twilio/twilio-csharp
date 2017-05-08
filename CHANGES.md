@@ -1,6 +1,11 @@
 twilio-csharp Changelog
 =======================
 
+[2017-05-08] Version 5.4.2-alpha1
+--------------------------
+- Set AssemblyVersion in dll correctly.
+- Add new categories in Usage Trigger enums.<Paste>
+
 [2017-04-27] Version 5.4.1-alpha1
 ---------------------------------
 - Add support for Chat V2
