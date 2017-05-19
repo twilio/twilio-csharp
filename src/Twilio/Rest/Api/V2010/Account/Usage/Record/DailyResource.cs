@@ -201,6 +201,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum WirelessUsageMrcCustom = new CategoryEnum("wireless-usage-mrc-custom");
             public static readonly CategoryEnum WirelessUsageMrcIndividual = new CategoryEnum("wireless-usage-mrc-individual");
             public static readonly CategoryEnum WirelessUsageMrcPooled = new CategoryEnum("wireless-usage-mrc-pooled");
+            public static readonly CategoryEnum Sync = new CategoryEnum("sync");
         }
 
         private static Request BuildReadRequest(ReadDailyOptions options, ITwilioRestClient client)

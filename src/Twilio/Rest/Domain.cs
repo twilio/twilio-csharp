@@ -17,6 +17,7 @@ namespace Twilio.Rest
         public static readonly Domain Pricing = new Domain("pricing");
         public static readonly Domain Taskrouter = new Domain("taskrouter");
         public static readonly Domain Trunking = new Domain("trunking");
+        public static readonly Domain Video = new Domain("video");
     }
 
 }

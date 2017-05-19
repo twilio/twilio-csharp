@@ -1,6 +1,11 @@
 twilio-csharp Changelog
 =======================
 
+[2017-05-19] Version 5.4.2
+--------------------------
+- Added support for `video.twilio.com`.
+- Updated Usage Trigger enums with missing categories.
+
 [2017-05-08] Version 5.4.1
 --------------------------
 - Set AssemblyVersion in dll correctly.
