@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/e0qcgl8r6rid4akb/branch/alpha?svg=true)](https://ci.appveyor.com/project/TwilioAPI/twilio-csharp-lum8a/branch/alpha)
+[![Build status](https://ci.appveyor.com/api/projects/status/e0qcgl8r6rid4akb/branch/master?svg=true)](https://ci.appveyor.com/project/TwilioAPI/twilio-csharp-lum8a/branch/master)
 [![NuGet](https://img.shields.io/nuget/v/Twilio.svg)](https://www.nuget.org/packages/Twilio)
 [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Twilio.svg?label=nuget (alpha))](https://www.nuget.org/packages/Twilio)
 
@@ -89,4 +89,3 @@ If you've instead found a bug in the library or would like new features added, g
 [2]: http://www.twilio.com/docs/api/twiml
 [3]: https://www.twilio.com/docs/libraries/csharp/migrating-your-csharp-dot-net-application-twilio-sdk-4x-5x
 [4]: https://github.com/twilio/twilio-aspnet
-
