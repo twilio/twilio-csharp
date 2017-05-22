@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Converters;
 
 namespace Twilio.Rest.Preview.Sync.Service.SyncList 
 {
@@ -129,7 +130,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             var p = new List<KeyValuePair<string, string>>();
             if (Data != null)
             {
-                p.Add(new KeyValuePair<string, string>("Data", Data.ToString()));
+                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
             }
 
             return p;
@@ -250,7 +251,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             var p = new List<KeyValuePair<string, string>>();
             if (Data != null)
             {
-                p.Add(new KeyValuePair<string, string>("Data", Data.ToString()));
+                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
             }
 
             return p;

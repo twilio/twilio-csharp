@@ -244,11 +244,19 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="status"> The status </param>
         /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
         /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
+        /// <param name="smsFallbackMethod"> The sms_fallback_method </param>
+        /// <param name="smsFallbackUrl"> The sms_fallback_url </param>
+        /// <param name="smsMethod"> The sms_method </param>
+        /// <param name="smsUrl"> The sms_url </param>
+        /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
+        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
+        /// <param name="voiceMethod"> The voice_method </param>
+        /// <param name="voiceUrl"> The voice_url </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sim </returns> 
-        public static SimResource Update(string pathSid, string uniqueName = null, string callbackMethod = null, Uri callbackUrl = null, string friendlyName = null, string ratePlan = null, string status = null, Twilio.Http.HttpMethod commandsCallbackMethod = null, Uri commandsCallbackUrl = null, ITwilioRestClient client = null)
+        public static SimResource Update(string pathSid, string uniqueName = null, string callbackMethod = null, Uri callbackUrl = null, string friendlyName = null, string ratePlan = null, string status = null, Twilio.Http.HttpMethod commandsCallbackMethod = null, Uri commandsCallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl};
+            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl};
             return Update(options, client);
         }
 
@@ -266,11 +274,19 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="status"> The status </param>
         /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
         /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
+        /// <param name="smsFallbackMethod"> The sms_fallback_method </param>
+        /// <param name="smsFallbackUrl"> The sms_fallback_url </param>
+        /// <param name="smsMethod"> The sms_method </param>
+        /// <param name="smsUrl"> The sms_url </param>
+        /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
+        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
+        /// <param name="voiceMethod"> The voice_method </param>
+        /// <param name="voiceUrl"> The voice_url </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns> 
-        public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(string pathSid, string uniqueName = null, string callbackMethod = null, Uri callbackUrl = null, string friendlyName = null, string ratePlan = null, string status = null, Twilio.Http.HttpMethod commandsCallbackMethod = null, Uri commandsCallbackUrl = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(string pathSid, string uniqueName = null, string callbackMethod = null, Uri callbackUrl = null, string friendlyName = null, string ratePlan = null, string status = null, Twilio.Http.HttpMethod commandsCallbackMethod = null, Uri commandsCallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl};
+            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -344,6 +360,50 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         [JsonProperty("commands_callback_method")]
         public string CommandsCallbackMethod { get; private set; }
+        /// <summary>
+        /// The sms_fallback_method
+        /// </summary>
+        [JsonProperty("sms_fallback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
+        public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
+        /// <summary>
+        /// The sms_fallback_url
+        /// </summary>
+        [JsonProperty("sms_fallback_url")]
+        public Uri SmsFallbackUrl { get; private set; }
+        /// <summary>
+        /// The sms_method
+        /// </summary>
+        [JsonProperty("sms_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
+        public Twilio.Http.HttpMethod SmsMethod { get; private set; }
+        /// <summary>
+        /// The sms_url
+        /// </summary>
+        [JsonProperty("sms_url")]
+        public Uri SmsUrl { get; private set; }
+        /// <summary>
+        /// The voice_fallback_method
+        /// </summary>
+        [JsonProperty("voice_fallback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
+        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
+        /// <summary>
+        /// The voice_fallback_url
+        /// </summary>
+        [JsonProperty("voice_fallback_url")]
+        public Uri VoiceFallbackUrl { get; private set; }
+        /// <summary>
+        /// The voice_method
+        /// </summary>
+        [JsonProperty("voice_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
+        public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
+        /// <summary>
+        /// The voice_url
+        /// </summary>
+        [JsonProperty("voice_url")]
+        public Uri VoiceUrl { get; private set; }
         /// <summary>
         /// The date_created
         /// </summary>

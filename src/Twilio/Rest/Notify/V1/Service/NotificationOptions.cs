@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Twilio.Base;
+using Twilio.Converters;
 
 namespace Twilio.Rest.Notify.V1.Service 
 {
@@ -157,7 +158,7 @@ namespace Twilio.Rest.Notify.V1.Service
 
             if (FacebookMessenger != null)
             {
-                p.Add(new KeyValuePair<string, string>("FacebookMessenger", FacebookMessenger.ToString()));
+                p.Add(new KeyValuePair<string, string>("FacebookMessenger", Serializers.JsonObject(FacebookMessenger)));
             }
 
             if (Fcm != null)

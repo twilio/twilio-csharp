@@ -142,6 +142,38 @@ namespace Twilio.Rest.Preview.Wireless
         /// The commands_callback_url
         /// </summary>
         public Uri CommandsCallbackUrl { get; set; }
+        /// <summary>
+        /// The sms_fallback_method
+        /// </summary>
+        public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
+        /// <summary>
+        /// The sms_fallback_url
+        /// </summary>
+        public Uri SmsFallbackUrl { get; set; }
+        /// <summary>
+        /// The sms_method
+        /// </summary>
+        public Twilio.Http.HttpMethod SmsMethod { get; set; }
+        /// <summary>
+        /// The sms_url
+        /// </summary>
+        public Uri SmsUrl { get; set; }
+        /// <summary>
+        /// The voice_fallback_method
+        /// </summary>
+        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
+        /// <summary>
+        /// The voice_fallback_url
+        /// </summary>
+        public Uri VoiceFallbackUrl { get; set; }
+        /// <summary>
+        /// The voice_method
+        /// </summary>
+        public Twilio.Http.HttpMethod VoiceMethod { get; set; }
+        /// <summary>
+        /// The voice_url
+        /// </summary>
+        public Uri VoiceUrl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSimOptions
@@ -197,6 +229,46 @@ namespace Twilio.Rest.Preview.Wireless
             if (CommandsCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommandsCallbackUrl", CommandsCallbackUrl.ToString()));
+            }
+
+            if (SmsFallbackMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
+            }
+
+            if (SmsFallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.ToString()));
+            }
+
+            if (SmsMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
+            }
+
+            if (SmsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.ToString()));
+            }
+
+            if (VoiceFallbackMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VoiceFallbackMethod", VoiceFallbackMethod.ToString()));
+            }
+
+            if (VoiceFallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.ToString()));
+            }
+
+            if (VoiceMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VoiceMethod", VoiceMethod.ToString()));
+            }
+
+            if (VoiceUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.ToString()));
             }
 
             return p;

@@ -70,9 +70,9 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The roaming
+        /// The data_enabled
         /// </summary>
-        public List<string> Roaming { get; set; }
+        public bool? DataEnabled { get; set; }
         /// <summary>
         /// The data_limit
         /// </summary>
@@ -82,20 +82,32 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         public string DataMetering { get; set; }
         /// <summary>
+        /// The messaging_enabled
+        /// </summary>
+        public bool? MessagingEnabled { get; set; }
+        /// <summary>
+        /// The voice_enabled
+        /// </summary>
+        public bool? VoiceEnabled { get; set; }
+        /// <summary>
         /// The commands_enabled
         /// </summary>
         public bool? CommandsEnabled { get; set; }
         /// <summary>
-        /// The renewal
+        /// The national_roaming_enabled
         /// </summary>
-        public string Renewal { get; set; }
+        public bool? NationalRoamingEnabled { get; set; }
+        /// <summary>
+        /// The international_roaming
+        /// </summary>
+        public List<string> InternationalRoaming { get; set; }
 
         /// <summary>
         /// Construct a new CreateRatePlanOptions
         /// </summary>
         public CreateRatePlanOptions()
         {
-            Roaming = new List<string>();
+            InternationalRoaming = new List<string>();
         }
 
         /// <summary>
@@ -114,9 +126,9 @@ namespace Twilio.Rest.Preview.Wireless
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
 
-            if (Roaming != null)
+            if (DataEnabled != null)
             {
-                p.AddRange(Roaming.Select(prop => new KeyValuePair<string, string>("Roaming", prop)));
+                p.Add(new KeyValuePair<string, string>("DataEnabled", DataEnabled.Value.ToString()));
             }
 
             if (DataLimit != null)
@@ -129,14 +141,29 @@ namespace Twilio.Rest.Preview.Wireless
                 p.Add(new KeyValuePair<string, string>("DataMetering", DataMetering));
             }
 
+            if (MessagingEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MessagingEnabled", MessagingEnabled.Value.ToString()));
+            }
+
+            if (VoiceEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VoiceEnabled", VoiceEnabled.Value.ToString()));
+            }
+
             if (CommandsEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommandsEnabled", CommandsEnabled.Value.ToString()));
             }
 
-            if (Renewal != null)
+            if (NationalRoamingEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Renewal", Renewal));
+                p.Add(new KeyValuePair<string, string>("NationalRoamingEnabled", NationalRoamingEnabled.Value.ToString()));
+            }
+
+            if (InternationalRoaming != null)
+            {
+                p.AddRange(InternationalRoaming.Select(prop => new KeyValuePair<string, string>("InternationalRoaming", prop)));
             }
 
             return p;

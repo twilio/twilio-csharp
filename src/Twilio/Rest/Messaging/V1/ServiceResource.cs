@@ -6,6 +6,7 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Messaging.V1 
 {
@@ -15,6 +16,16 @@ namespace Twilio.Rest.Messaging.V1
     /// </summary>
     public class ServiceResource : Resource 
     {
+        public sealed class ScanMessageContentEnum : StringEnum 
+        {
+            private ScanMessageContentEnum(string value) : base(value) {}
+            public ScanMessageContentEnum() {}
+
+            public static readonly ScanMessageContentEnum Inherit = new ScanMessageContentEnum("inherit");
+            public static readonly ScanMessageContentEnum Enable = new ScanMessageContentEnum("enable");
+            public static readonly ScanMessageContentEnum Disable = new ScanMessageContentEnum("disable");
+        }
+
         private static Request BuildCreateRequest(CreateServiceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -69,11 +80,15 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="stickySender"> The sticky_sender </param>
         /// <param name="mmsConverter"> The mms_converter </param>
         /// <param name="smartEncoding"> The smart_encoding </param>
+        /// <param name="scanMessageContent"> The scan_message_content </param>
+        /// <param name="fallbackToLongCode"> The fallback_to_long_code </param>
+        /// <param name="areaCodeGeomatch"> The area_code_geomatch </param>
+        /// <param name="validityPeriod"> The validity_period </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Create(string friendlyName, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, bool? smartEncoding = null, ITwilioRestClient client = null)
+        public static ServiceResource Create(string friendlyName, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, bool? smartEncoding = null, ServiceResource.ScanMessageContentEnum scanMessageContent = null, bool? fallbackToLongCode = null, bool? areaCodeGeomatch = null, int? validityPeriod = null, ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding};
+            var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod};
             return Create(options, client);
         }
 
@@ -91,11 +106,15 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="stickySender"> The sticky_sender </param>
         /// <param name="mmsConverter"> The mms_converter </param>
         /// <param name="smartEncoding"> The smart_encoding </param>
+        /// <param name="scanMessageContent"> The scan_message_content </param>
+        /// <param name="fallbackToLongCode"> The fallback_to_long_code </param>
+        /// <param name="areaCodeGeomatch"> The area_code_geomatch </param>
+        /// <param name="validityPeriod"> The validity_period </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, bool? smartEncoding = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, bool? smartEncoding = null, ServiceResource.ScanMessageContentEnum scanMessageContent = null, bool? fallbackToLongCode = null, bool? areaCodeGeomatch = null, int? validityPeriod = null, ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding};
+            var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod};
             return await CreateAsync(options, client);
         }
         #endif
@@ -155,11 +174,15 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="stickySender"> The sticky_sender </param>
         /// <param name="mmsConverter"> The mms_converter </param>
         /// <param name="smartEncoding"> The smart_encoding </param>
+        /// <param name="scanMessageContent"> The scan_message_content </param>
+        /// <param name="fallbackToLongCode"> The fallback_to_long_code </param>
+        /// <param name="areaCodeGeomatch"> The area_code_geomatch </param>
+        /// <param name="validityPeriod"> The validity_period </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Update(string pathSid, string friendlyName = null, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, bool? smartEncoding = null, ITwilioRestClient client = null)
+        public static ServiceResource Update(string pathSid, string friendlyName = null, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, bool? smartEncoding = null, ServiceResource.ScanMessageContentEnum scanMessageContent = null, bool? fallbackToLongCode = null, bool? areaCodeGeomatch = null, int? validityPeriod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod};
             return Update(options, client);
         }
 
@@ -178,11 +201,15 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="stickySender"> The sticky_sender </param>
         /// <param name="mmsConverter"> The mms_converter </param>
         /// <param name="smartEncoding"> The smart_encoding </param>
+        /// <param name="scanMessageContent"> The scan_message_content </param>
+        /// <param name="fallbackToLongCode"> The fallback_to_long_code </param>
+        /// <param name="areaCodeGeomatch"> The area_code_geomatch </param>
+        /// <param name="validityPeriod"> The validity_period </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, string friendlyName = null, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, bool? smartEncoding = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, string friendlyName = null, Uri inboundRequestUrl = null, Twilio.Http.HttpMethod inboundMethod = null, Uri fallbackUrl = null, Twilio.Http.HttpMethod fallbackMethod = null, Uri statusCallback = null, bool? stickySender = null, bool? mmsConverter = null, bool? smartEncoding = null, ServiceResource.ScanMessageContentEnum scanMessageContent = null, bool? fallbackToLongCode = null, bool? areaCodeGeomatch = null, int? validityPeriod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -507,6 +534,27 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         [JsonProperty("smart_encoding")]
         public bool? SmartEncoding { get; private set; }
+        /// <summary>
+        /// The scan_message_content
+        /// </summary>
+        [JsonProperty("scan_message_content")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; private set; }
+        /// <summary>
+        /// The fallback_to_long_code
+        /// </summary>
+        [JsonProperty("fallback_to_long_code")]
+        public bool? FallbackToLongCode { get; private set; }
+        /// <summary>
+        /// The area_code_geomatch
+        /// </summary>
+        [JsonProperty("area_code_geomatch")]
+        public bool? AreaCodeGeomatch { get; private set; }
+        /// <summary>
+        /// The validity_period
+        /// </summary>
+        [JsonProperty("validity_period")]
+        public int? ValidityPeriod { get; private set; }
         /// <summary>
         /// The url
         /// </summary>

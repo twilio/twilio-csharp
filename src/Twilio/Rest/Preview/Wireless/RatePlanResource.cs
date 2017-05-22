@@ -227,16 +227,19 @@ namespace Twilio.Rest.Preview.Wireless
         ///
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="roaming"> The roaming </param>
+        /// <param name="dataEnabled"> The data_enabled </param>
         /// <param name="dataLimit"> The data_limit </param>
         /// <param name="dataMetering"> The data_metering </param>
+        /// <param name="messagingEnabled"> The messaging_enabled </param>
+        /// <param name="voiceEnabled"> The voice_enabled </param>
         /// <param name="commandsEnabled"> The commands_enabled </param>
-        /// <param name="renewal"> The renewal </param>
+        /// <param name="nationalRoamingEnabled"> The national_roaming_enabled </param>
+        /// <param name="internationalRoaming"> The international_roaming </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RatePlan </returns> 
-        public static RatePlanResource Create(string uniqueName = null, string friendlyName = null, List<string> roaming = null, int? dataLimit = null, string dataMetering = null, bool? commandsEnabled = null, string renewal = null, ITwilioRestClient client = null)
+        public static RatePlanResource Create(string uniqueName = null, string friendlyName = null, bool? dataEnabled = null, int? dataLimit = null, string dataMetering = null, bool? messagingEnabled = null, bool? voiceEnabled = null, bool? commandsEnabled = null, bool? nationalRoamingEnabled = null, List<string> internationalRoaming = null, ITwilioRestClient client = null)
         {
-            var options = new CreateRatePlanOptions{UniqueName = uniqueName, FriendlyName = friendlyName, Roaming = roaming, DataLimit = dataLimit, DataMetering = dataMetering, CommandsEnabled = commandsEnabled, Renewal = renewal};
+            var options = new CreateRatePlanOptions{UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, CommandsEnabled = commandsEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming};
             return Create(options, client);
         }
 
@@ -247,16 +250,19 @@ namespace Twilio.Rest.Preview.Wireless
         ///
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="roaming"> The roaming </param>
+        /// <param name="dataEnabled"> The data_enabled </param>
         /// <param name="dataLimit"> The data_limit </param>
         /// <param name="dataMetering"> The data_metering </param>
+        /// <param name="messagingEnabled"> The messaging_enabled </param>
+        /// <param name="voiceEnabled"> The voice_enabled </param>
         /// <param name="commandsEnabled"> The commands_enabled </param>
-        /// <param name="renewal"> The renewal </param>
+        /// <param name="nationalRoamingEnabled"> The national_roaming_enabled </param>
+        /// <param name="internationalRoaming"> The international_roaming </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RatePlan </returns> 
-        public static async System.Threading.Tasks.Task<RatePlanResource> CreateAsync(string uniqueName = null, string friendlyName = null, List<string> roaming = null, int? dataLimit = null, string dataMetering = null, bool? commandsEnabled = null, string renewal = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RatePlanResource> CreateAsync(string uniqueName = null, string friendlyName = null, bool? dataEnabled = null, int? dataLimit = null, string dataMetering = null, bool? messagingEnabled = null, bool? voiceEnabled = null, bool? commandsEnabled = null, bool? nationalRoamingEnabled = null, List<string> internationalRoaming = null, ITwilioRestClient client = null)
         {
-            var options = new CreateRatePlanOptions{UniqueName = uniqueName, FriendlyName = friendlyName, Roaming = roaming, DataLimit = dataLimit, DataMetering = dataMetering, CommandsEnabled = commandsEnabled, Renewal = renewal};
+            var options = new CreateRatePlanOptions{UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, CommandsEnabled = commandsEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming};
             return await CreateAsync(options, client);
         }
         #endif
@@ -443,25 +449,40 @@ namespace Twilio.Rest.Preview.Wireless
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The roaming
+        /// The data_enabled
         /// </summary>
-        [JsonProperty("roaming")]
-        public List<string> Roaming { get; private set; }
+        [JsonProperty("data_enabled")]
+        public bool? DataEnabled { get; private set; }
         /// <summary>
-        /// The data
+        /// The data_metering
         /// </summary>
-        [JsonProperty("data")]
-        public object Data { get; private set; }
+        [JsonProperty("data_metering")]
+        public string DataMetering { get; private set; }
         /// <summary>
-        /// The commands
+        /// The data_limit
         /// </summary>
-        [JsonProperty("commands")]
-        public object Commands { get; private set; }
+        [JsonProperty("data_limit")]
+        public int? DataLimit { get; private set; }
         /// <summary>
-        /// The renewal
+        /// The messaging_enabled
         /// </summary>
-        [JsonProperty("renewal")]
-        public string Renewal { get; private set; }
+        [JsonProperty("messaging_enabled")]
+        public bool? MessagingEnabled { get; private set; }
+        /// <summary>
+        /// The voice_enabled
+        /// </summary>
+        [JsonProperty("voice_enabled")]
+        public bool? VoiceEnabled { get; private set; }
+        /// <summary>
+        /// The national_roaming_enabled
+        /// </summary>
+        [JsonProperty("national_roaming_enabled")]
+        public bool? NationalRoamingEnabled { get; private set; }
+        /// <summary>
+        /// The international_roaming
+        /// </summary>
+        [JsonProperty("international_roaming")]
+        public List<string> InternationalRoaming { get; private set; }
         /// <summary>
         /// The date_created
         /// </summary>

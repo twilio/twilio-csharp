@@ -1,6 +1,16 @@
 twilio-csharp Changelog
 =======================
 
+[2017-05-22] Version 6.2.0-alpha-1
+----------------------------------
+- Added support for video.twilio.com.
+- Updated Usage Trigger enums with missing categories.
+- Alpha Changes:
+    - Add wireless domain.
+    - Add fax domain.
+    - Add sync domain.
+    - Add `area_code_geomatch` to messaging `Service`.
+
 [2017-05-08] Version 5.4.2-alpha1
 --------------------------
 - Set AssemblyVersion in dll correctly.

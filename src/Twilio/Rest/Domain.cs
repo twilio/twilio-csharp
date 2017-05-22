@@ -22,6 +22,8 @@ namespace Twilio.Rest
         public static readonly Domain Trunking = new Domain("trunking");
         public static readonly Domain Video = new Domain("video");
         public static readonly Domain Messaging = new Domain("messaging");
+        public static readonly Domain Wireless = new Domain("wireless");
+        public static readonly Domain Sync = new Domain("sync");
     }
 
 }

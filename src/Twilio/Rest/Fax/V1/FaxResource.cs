@@ -180,13 +180,15 @@ namespace Twilio.Rest.Fax.V1
         ///
         /// <param name="from"> The from </param>
         /// <param name="to"> The to </param>
+        /// <param name="dateCreatedOnOrBefore"> The date_created_on_or_before </param>
+        /// <param name="dateCreatedAfter"> The date_created_after </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fax </returns> 
-        public static ResourceSet<FaxResource> Read(string from = null, string to = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<FaxResource> Read(string from = null, string to = null, DateTime? dateCreatedOnOrBefore = null, DateTime? dateCreatedAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadFaxOptions{From = from, To = to, PageSize = pageSize, Limit = limit};
+            var options = new ReadFaxOptions{From = from, To = to, DateCreatedOnOrBefore = dateCreatedOnOrBefore, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -197,13 +199,15 @@ namespace Twilio.Rest.Fax.V1
         ///
         /// <param name="from"> The from </param>
         /// <param name="to"> The to </param>
+        /// <param name="dateCreatedOnOrBefore"> The date_created_on_or_before </param>
+        /// <param name="dateCreatedAfter"> The date_created_after </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fax </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FaxResource>> ReadAsync(string from = null, string to = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<FaxResource>> ReadAsync(string from = null, string to = null, DateTime? dateCreatedOnOrBefore = null, DateTime? dateCreatedAfter = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadFaxOptions{From = from, To = to, PageSize = pageSize, Limit = limit};
+            var options = new ReadFaxOptions{From = from, To = to, DateCreatedOnOrBefore = dateCreatedOnOrBefore, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -274,16 +278,18 @@ namespace Twilio.Rest.Fax.V1
         /// create
         /// </summary>
         ///
-        /// <param name="from"> The from </param>
         /// <param name="to"> The to </param>
         /// <param name="mediaUrl"> The media_url </param>
         /// <param name="quality"> The quality </param>
         /// <param name="statusCallback"> The status_callback </param>
+        /// <param name="from"> The from </param>
+        /// <param name="sipAuthUsername"> The sip_auth_username </param>
+        /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fax </returns> 
-        public static FaxResource Create(string from, string to, Uri mediaUrl, FaxResource.QualityEnum quality = null, Uri statusCallback = null, ITwilioRestClient client = null)
+        public static FaxResource Create(string to, Uri mediaUrl, FaxResource.QualityEnum quality = null, Uri statusCallback = null, string from = null, string sipAuthUsername = null, string sipAuthPassword = null, ITwilioRestClient client = null)
         {
-            var options = new CreateFaxOptions(from, to, mediaUrl){Quality = quality, StatusCallback = statusCallback};
+            var options = new CreateFaxOptions(to, mediaUrl){Quality = quality, StatusCallback = statusCallback, From = from, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
             return Create(options, client);
         }
 
@@ -292,16 +298,18 @@ namespace Twilio.Rest.Fax.V1
         /// create
         /// </summary>
         ///
-        /// <param name="from"> The from </param>
         /// <param name="to"> The to </param>
         /// <param name="mediaUrl"> The media_url </param>
         /// <param name="quality"> The quality </param>
         /// <param name="statusCallback"> The status_callback </param>
+        /// <param name="from"> The from </param>
+        /// <param name="sipAuthUsername"> The sip_auth_username </param>
+        /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fax </returns> 
-        public static async System.Threading.Tasks.Task<FaxResource> CreateAsync(string from, string to, Uri mediaUrl, FaxResource.QualityEnum quality = null, Uri statusCallback = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<FaxResource> CreateAsync(string to, Uri mediaUrl, FaxResource.QualityEnum quality = null, Uri statusCallback = null, string from = null, string sipAuthUsername = null, string sipAuthPassword = null, ITwilioRestClient client = null)
         {
-            var options = new CreateFaxOptions(from, to, mediaUrl){Quality = quality, StatusCallback = statusCallback};
+            var options = new CreateFaxOptions(to, mediaUrl){Quality = quality, StatusCallback = statusCallback, From = from, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword};
             return await CreateAsync(options, client);
         }
         #endif
@@ -377,6 +385,75 @@ namespace Twilio.Rest.Fax.V1
         }
         #endif
 
+        private static Request BuildDeleteRequest(DeleteFaxOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Fax,
+                "/v1/Faxes/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="options"> Delete Fax parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Fax </returns> 
+        public static bool Delete(DeleteFaxOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="options"> Delete Fax parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Fax </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFaxOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Fax </returns> 
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteFaxOptions(pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// delete
+        /// </summary>
+        ///
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Fax </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteFaxOptions(pathSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a FaxResource object
         /// </summary>
@@ -422,6 +499,11 @@ namespace Twilio.Rest.Fax.V1
         [JsonProperty("quality")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FaxResource.QualityEnum Quality { get; private set; }
+        /// <summary>
+        /// The media_sid
+        /// </summary>
+        [JsonProperty("media_sid")]
+        public string MediaSid { get; private set; }
         /// <summary>
         /// The media_url
         /// </summary>
@@ -474,6 +556,11 @@ namespace Twilio.Rest.Fax.V1
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
         /// <summary>
         /// The url
         /// </summary>

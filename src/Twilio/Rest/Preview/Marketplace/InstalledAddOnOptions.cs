@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Converters;
 
 namespace Twilio.Rest.Preview.Marketplace 
 {
@@ -57,7 +58,7 @@ namespace Twilio.Rest.Preview.Marketplace
 
             if (Configuration != null)
             {
-                p.Add(new KeyValuePair<string, string>("Configuration", Configuration.ToString()));
+                p.Add(new KeyValuePair<string, string>("Configuration", Serializers.JsonObject(Configuration)));
             }
 
             if (UniqueName != null)
@@ -165,7 +166,7 @@ namespace Twilio.Rest.Preview.Marketplace
             var p = new List<KeyValuePair<string, string>>();
             if (Configuration != null)
             {
-                p.Add(new KeyValuePair<string, string>("Configuration", Configuration.ToString()));
+                p.Add(new KeyValuePair<string, string>("Configuration", Serializers.JsonObject(Configuration)));
             }
 
             if (UniqueName != null)

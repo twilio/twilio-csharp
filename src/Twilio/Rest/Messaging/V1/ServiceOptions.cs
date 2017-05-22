@@ -46,6 +46,22 @@ namespace Twilio.Rest.Messaging.V1
         /// The smart_encoding
         /// </summary>
         public bool? SmartEncoding { get; set; }
+        /// <summary>
+        /// The scan_message_content
+        /// </summary>
+        public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
+        /// <summary>
+        /// The fallback_to_long_code
+        /// </summary>
+        public bool? FallbackToLongCode { get; set; }
+        /// <summary>
+        /// The area_code_geomatch
+        /// </summary>
+        public bool? AreaCodeGeomatch { get; set; }
+        /// <summary>
+        /// The validity_period
+        /// </summary>
+        public int? ValidityPeriod { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -108,6 +124,26 @@ namespace Twilio.Rest.Messaging.V1
                 p.Add(new KeyValuePair<string, string>("SmartEncoding", SmartEncoding.Value.ToString()));
             }
 
+            if (ScanMessageContent != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ScanMessageContent", ScanMessageContent.ToString()));
+            }
+
+            if (FallbackToLongCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FallbackToLongCode", FallbackToLongCode.Value.ToString()));
+            }
+
+            if (AreaCodeGeomatch != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AreaCodeGeomatch", AreaCodeGeomatch.Value.ToString()));
+            }
+
+            if (ValidityPeriod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.Value.ToString()));
+            }
+
             return p;
         }
     }
@@ -157,6 +193,22 @@ namespace Twilio.Rest.Messaging.V1
         /// The smart_encoding
         /// </summary>
         public bool? SmartEncoding { get; set; }
+        /// <summary>
+        /// The scan_message_content
+        /// </summary>
+        public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
+        /// <summary>
+        /// The fallback_to_long_code
+        /// </summary>
+        public bool? FallbackToLongCode { get; set; }
+        /// <summary>
+        /// The area_code_geomatch
+        /// </summary>
+        public bool? AreaCodeGeomatch { get; set; }
+        /// <summary>
+        /// The validity_period
+        /// </summary>
+        public int? ValidityPeriod { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -217,6 +269,26 @@ namespace Twilio.Rest.Messaging.V1
             if (SmartEncoding != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmartEncoding", SmartEncoding.Value.ToString()));
+            }
+
+            if (ScanMessageContent != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ScanMessageContent", ScanMessageContent.ToString()));
+            }
+
+            if (FallbackToLongCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FallbackToLongCode", FallbackToLongCode.Value.ToString()));
+            }
+
+            if (AreaCodeGeomatch != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AreaCodeGeomatch", AreaCodeGeomatch.Value.ToString()));
+            }
+
+            if (ValidityPeriod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.Value.ToString()));
             }
 
             return p;
