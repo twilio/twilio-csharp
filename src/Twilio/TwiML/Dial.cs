@@ -22,13 +22,21 @@ namespace Twilio.TwiML
         /// <param name="method">HTTP Method</param>
         /// <param name="callerId">Caller ID to display</param>
         /// <param name="record">Record value</param>
+        /// <param name="trim">Trim silence</param>
+        /// <param name="recordingStatusCallback">Callback for recording status</param>
+        /// <param name="recordingStatusCallbackMethod">Method for recording status callback URL</param>
+        /// <param name="ringTone">Country code ring tone</param>
         public Dial(bool? hangupOnStar=null,
             int? timeout=null,
             int? timeLimit=null,
             string action=null,
             string method=null,
             string callerId=null,
-            string record=null)
+            string record=null,
+            string trim=null,
+            string recordingStatusCallback=null,
+            string recordingStatusCallbackMethod=null,
+            string ringTone=null)
         {
             Element = new XElement("Dial");
             if (hangupOnStar != null)
@@ -58,6 +66,22 @@ namespace Twilio.TwiML
             if (!string.IsNullOrEmpty(record))
             {
                 Element.Add(new XAttribute("record", record));
+            }
+            if (!string.IsNullOrEmpty(trim))
+            {
+                Element.Add(new XAttribute("trim", trim));
+            }
+            if (!string.IsNullOrEmpty(recordingStatusCallback))
+            {
+                Element.Add(new XAttribute("recordingStatusCallback", recordingStatusCallback));
+            }
+            if (!string.IsNullOrEmpty(recordingStatusCallbackMethod))
+            {
+                Element.Add(new XAttribute("recordingStatusCallbackMethod", recordingStatusCallbackMethod));
+            }
+            if (!string.IsNullOrEmpty(ringTone))
+            {
+                Element.Add(new XAttribute("ringTone", ringTone));
             }
         }
 
