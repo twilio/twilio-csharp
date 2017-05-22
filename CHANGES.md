@@ -1,6 +1,10 @@
 twilio-csharp Changelog
 =======================
 
+[2017-05-22] Version 5.5.0
+--------------------------
+- Rename room `Recordings` resource to `RoomRecordings` to avoid class name conflict (backwards incompatible).
+
 [2017-05-19] Version 5.4.2
 --------------------------
 - Added support for `video.twilio.com`.
