@@ -1,0 +1,211 @@
+diff --git b/src/Twilio/TwiML/Dial.cs a/src/Twilio/TwiML/Dial.cs
+index f046e58..6443e3c 100644
+--- b/src/Twilio/TwiML/Dial.cs
++++ a/src/Twilio/TwiML/Dial.cs
+@@ -22,13 +22,21 @@ namespace Twilio.TwiML
+         /// <param name="method">HTTP Method</param>
+         /// <param name="callerId">Caller ID to display</param>
+         /// <param name="record">Record value</param>
++        /// <param name="trim">Trim silence</param>
++        /// <param name="recordingStatusCallback">Callback for recording status</param>
++        /// <param name="recordingStatusCallbackMethod">Method for recording status callback URL</param>
++        /// <param name="ringTone">Country code ring tone</param>
+         public Dial(bool? hangupOnStar=null,
+             int? timeout=null,
+             int? timeLimit=null,
+             string action=null,
+             string method=null,
+             string callerId=null,
+-            string record=null)
++            string record=null,
++            string trim=null,
++            string recordingStatusCallback=null,
++            string recordingStatusCallbackMethod=null,
++            string ringTone=null)
+         {
+             Element = new XElement("Dial");
+             if (hangupOnStar != null)
+@@ -59,6 +67,22 @@ namespace Twilio.TwiML
+             {
+                 Element.Add(new XAttribute("record", record));
+             }
++            if (!string.IsNullOrEmpty(trim))
++            {
++                Element.Add(new XAttribute("trim", trim));
++            }
++            if (!string.IsNullOrEmpty(recordingStatusCallback))
++            {
++                Element.Add(new XAttribute("recordingStatusCallback", recordingStatusCallback));
++            }
++            if (!string.IsNullOrEmpty(recordingStatusCallbackMethod))
++            {
++                Element.Add(new XAttribute("recordingStatusCallbackMethod", recordingStatusCallbackMethod));
++            }
++            if (!string.IsNullOrEmpty(ringTone))
++            {
++                Element.Add(new XAttribute("ringTone", ringTone));
++            }
+         }
+ 
+         /// <summary>
+diff --git b/src/Twilio/TwiML/Gather.cs a/src/Twilio/TwiML/Gather.cs
+index 631bf85..186f1f5 100644
+--- b/src/Twilio/TwiML/Gather.cs
++++ a/src/Twilio/TwiML/Gather.cs
+@@ -84,7 +84,7 @@ namespace Twilio.TwiML
+         /// <param name="loop">Times to look</param>
+         /// <param name="digits">Play DTMF tones</param>
+         /// <returns>Gather Element</returns>
+-        public Gather Play(string url, int? loop=null, int? digits=null)
++        public Gather Play(string url, int? loop=null, string digits=null)
+         {
+             var play = new XElement("Play", url);
+ 
+@@ -92,7 +92,7 @@ namespace Twilio.TwiML
+             {
+                 play.Add(new XAttribute("loop", loop));
+             }
+-            if (digits != null)
++            if (!string.IsNullOrEmpty(digits))
+             {
+                 play.Add(new XAttribute("digits", digits));
+             }
+diff --git b/src/Twilio/TwiML/VoiceResponse.cs a/src/Twilio/TwiML/VoiceResponse.cs
+index 9948e2c..eb79b7e 100644
+--- b/src/Twilio/TwiML/VoiceResponse.cs
++++ a/src/Twilio/TwiML/VoiceResponse.cs
+@@ -30,6 +30,10 @@ namespace Twilio.TwiML
+         /// <param name="method">Action URL method</param>
+         /// <param name="callerId">Caller ID to display</param>
+         /// <param name="record">Record the call</param>
++        /// <param name="trim">Trim silence</param>
++        /// <param name="recordingStatusCallback">Callback for recording status</param>
++        /// <param name="recordingStatusCallbackMethod">Method for recording status callback URL</param>
++        /// <param name="ringTone">Country code ring tone</param>
+         /// <returns>VoiceResponse TwiML</returns>
+         public VoiceResponse Dial(string number,
+             bool? hangupOnStar=null,
+@@ -38,7 +42,11 @@ namespace Twilio.TwiML
+             string action=null,
+             string method=null,
+             string callerId=null,
+-            string record=null) 
++            string record=null,
++            string trim=null,
++            string recordingStatusCallback=null,
++            string recordingStatusCallbackMethod=null,
++            string ringTone=null) 
+         {
+             var dial = new XElement("Dial", number);
+             if (hangupOnStar != null)
+@@ -69,6 +77,22 @@ namespace Twilio.TwiML
+             {
+                 dial.Add(new XAttribute("record", record));
+             }
++            if (!string.IsNullOrEmpty(trim))
++            {
++                dial.Add(new XAttribute("trim", trim));
++            }
++            if (!string.IsNullOrEmpty(recordingStatusCallback))
++            {
++                dial.Add(new XAttribute("recordingStatusCallback", recordingStatusCallback));
++            }
++            if (!string.IsNullOrEmpty(recordingStatusCallbackMethod))
++            {
++                dial.Add(new XAttribute("recordingStatusCallbackMethod", recordingStatusCallbackMethod));
++            }
++            if (!string.IsNullOrEmpty(ringTone))
++            {
++                dial.Add(new XAttribute("ringTone", ringTone));
++            }
+ 
+             _response.Add(dial);
+             return this;
+@@ -226,14 +250,14 @@ namespace Twilio.TwiML
+         /// <returns>VoiceResponse</returns>
+         public VoiceResponse Play(string url,
+             int? loop=null,
+-            int? digits=null)
++            string digits=null)
+         {
+             var play = new XElement("Play", url);
+             if (loop != null)
+             {
+                 play.Add(new XAttribute("loop", loop));
+             } 
+-            if (digits != null)
++            if (!string.IsNullOrEmpty(digits))
+             {
+                 play.Add(new XAttribute("digits", digits));
+             }
+@@ -254,6 +278,8 @@ namespace Twilio.TwiML
+         /// <param name="finishOnKey">Finish recording on digit</param>
+         /// <param name="transcribeCallback">Transcrible the callback</param>
+         /// <param name="trim">Trim recording</param>
++        /// <param name="recordingStatusCallback">Recording status callback URL</param>
++        /// <param name="recordingStatusCallbackMethod">Recording status callback URL method</param>
+         /// <returns>VoiceResponse</returns>
+         public VoiceResponse Record(bool? transcribe=null,
+             bool? playBeep=null,
+@@ -263,7 +289,9 @@ namespace Twilio.TwiML
+             string method=null,
+             string finishOnKey=null,
+             string transcribeCallback=null,
+-            string trim=null)
++            string trim=null,
++            string recordingStatusCallback=null,
++            string recordingStatusCallbackMethod=null)
+         {
+             var record = new XElement("Record");
+             if (transcribe != null)
+@@ -302,6 +330,14 @@ namespace Twilio.TwiML
+             {
+                 record.Add(new XAttribute("trim", trim));
+             }
++            if (!string.IsNullOrEmpty(recordingStatusCallback))
++            {
++                record.Add(new XAttribute("recordingStatusCallback", recordingStatusCallback));
++            }
++            if (!string.IsNullOrEmpty(recordingStatusCallbackMethod))
++            {
++                record.Add(new XAttribute("recordingStatusCallbackMethod", recordingStatusCallbackMethod));
++            }
+ 
+             _response.Add(record);
+             return this;
+diff --git b/test/Twilio.Test/TwiML/VoiceResponseTest.cs a/test/Twilio.Test/TwiML/VoiceResponseTest.cs
+index 0cc2ecc..eabbd15 100644
+--- b/test/Twilio.Test/TwiML/VoiceResponseTest.cs
++++ a/test/Twilio.Test/TwiML/VoiceResponseTest.cs
+@@ -22,13 +22,13 @@ namespace Twilio.Tests.TwiML
+         public void TestDial()
+         {
+             var vr = new VoiceResponse();
+-            vr.Dial("+11234567890", method: "GET", timeout: 5);
++            vr.Dial("+11234567890", method: "GET", timeout: 5, ringTone:"US");
+ 
+             Assert.AreEqual(
+                 vr.ToString(),
+                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                 "<Response>" + Environment.NewLine +
+-                "  <Dial timeout=\"5\" method=\"GET\">+11234567890</Dial>" + Environment.NewLine + 
++                "  <Dial timeout=\"5\" method=\"GET\" ringTone=\"US\">+11234567890</Dial>" + Environment.NewLine + 
+                 "</Response>"
+             );
+         }
+@@ -152,13 +152,13 @@ namespace Twilio.Tests.TwiML
+         public void TestPlay()
+         {
+             var vr = new VoiceResponse();
+-            vr.Play("www.twilio.com", loop: 2);
++            vr.Play("www.twilio.com", loop: 2, digits: "5w");
+ 
+             Assert.AreEqual(
+                 vr.ToString(),
+                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                 "<Response>" + Environment.NewLine +
+-                "  <Play loop=\"2\">www.twilio.com</Play>" + Environment.NewLine + 
++                "  <Play loop=\"2\" digits=\"5w\">www.twilio.com</Play>" + Environment.NewLine + 
+                 "</Response>"
+             );
+         }

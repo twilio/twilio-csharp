@@ -22,13 +22,13 @@ namespace Twilio.Tests.TwiML
         public void TestDial()
         {
             var vr = new VoiceResponse();
-            vr.Dial("+11234567890", method: "GET", timeout: 5);
+            vr.Dial("+11234567890", method: "GET", timeout: 5, ringTone:"US");
 
             Assert.AreEqual(
                 vr.ToString(),
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
-                "  <Dial timeout=\"5\" method=\"GET\">+11234567890</Dial>" + Environment.NewLine + 
+                "  <Dial timeout=\"5\" method=\"GET\" ringTone=\"US\">+11234567890</Dial>" + Environment.NewLine + 
                 "</Response>"
             );
         }
@@ -152,13 +152,13 @@ namespace Twilio.Tests.TwiML
         public void TestPlay()
         {
             var vr = new VoiceResponse();
-            vr.Play("www.twilio.com", loop: 2);
+            vr.Play("www.twilio.com", loop: 2, digits: "5w");
 
             Assert.AreEqual(
                 vr.ToString(),
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
-                "  <Play loop=\"2\">www.twilio.com</Play>" + Environment.NewLine + 
+                "  <Play loop=\"2\" digits=\"5w\">www.twilio.com</Play>" + Environment.NewLine + 
                 "</Response>"
             );
         }
