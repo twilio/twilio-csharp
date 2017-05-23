@@ -30,6 +30,10 @@ namespace Twilio.TwiML
         /// <param name="method">Action URL method</param>
         /// <param name="callerId">Caller ID to display</param>
         /// <param name="record">Record the call</param>
+        /// <param name="trim">Trim silence</param>
+        /// <param name="recordingStatusCallback">Callback for recording status</param>
+        /// <param name="recordingStatusCallbackMethod">Method for recording status callback URL</param>
+        /// <param name="ringTone">Country code ring tone</param>
         /// <returns>VoiceResponse TwiML</returns>
         public VoiceResponse Dial(string number,
             bool? hangupOnStar=null,
@@ -38,7 +42,11 @@ namespace Twilio.TwiML
             string action=null,
             string method=null,
             string callerId=null,
-            string record=null) 
+            string record=null,
+            string trim=null,
+            string recordingStatusCallback=null,
+            string recordingStatusCallbackMethod=null,
+            string ringTone=null) 
         {
             var dial = new XElement("Dial", number);
             if (hangupOnStar != null)
@@ -68,6 +76,22 @@ namespace Twilio.TwiML
             if (!string.IsNullOrEmpty(record))
             {
                 dial.Add(new XAttribute("record", record));
+            }
+            if (!string.IsNullOrEmpty(trim))
+            {
+                dial.Add(new XAttribute("trim", trim));
+            }
+            if (!string.IsNullOrEmpty(recordingStatusCallback))
+            {
+                dial.Add(new XAttribute("recordingStatusCallback", recordingStatusCallback));
+            }
+            if (!string.IsNullOrEmpty(recordingStatusCallbackMethod))
+            {
+                dial.Add(new XAttribute("recordingStatusCallbackMethod", recordingStatusCallbackMethod));
+            }
+            if (!string.IsNullOrEmpty(ringTone))
+            {
+                dial.Add(new XAttribute("ringTone", ringTone));
             }
 
             _response.Add(dial);
@@ -226,14 +250,14 @@ namespace Twilio.TwiML
         /// <returns>VoiceResponse</returns>
         public VoiceResponse Play(string url,
             int? loop=null,
-            int? digits=null)
+            string digits=null)
         {
             var play = new XElement("Play", url);
             if (loop != null)
             {
                 play.Add(new XAttribute("loop", loop));
             } 
-            if (digits != null)
+            if (!string.IsNullOrEmpty(digits))
             {
                 play.Add(new XAttribute("digits", digits));
             }
@@ -254,6 +278,8 @@ namespace Twilio.TwiML
         /// <param name="finishOnKey">Finish recording on digit</param>
         /// <param name="transcribeCallback">Transcrible the callback</param>
         /// <param name="trim">Trim recording</param>
+        /// <param name="recordingStatusCallback">Recording status callback URL</param>
+        /// <param name="recordingStatusCallbackMethod">Recording status callback URL method</param>
         /// <returns>VoiceResponse</returns>
         public VoiceResponse Record(bool? transcribe=null,
             bool? playBeep=null,
@@ -263,7 +289,9 @@ namespace Twilio.TwiML
             string method=null,
             string finishOnKey=null,
             string transcribeCallback=null,
-            string trim=null)
+            string trim=null,
+            string recordingStatusCallback=null,
+            string recordingStatusCallbackMethod=null)
         {
             var record = new XElement("Record");
             if (transcribe != null)
@@ -301,6 +329,14 @@ namespace Twilio.TwiML
             if (!string.IsNullOrEmpty(trim))
             {
                 record.Add(new XAttribute("trim", trim));
+            }
+            if (!string.IsNullOrEmpty(recordingStatusCallback))
+            {
+                record.Add(new XAttribute("recordingStatusCallback", recordingStatusCallback));
+            }
+            if (!string.IsNullOrEmpty(recordingStatusCallbackMethod))
+            {
+                record.Add(new XAttribute("recordingStatusCallbackMethod", recordingStatusCallbackMethod));
             }
 
             _response.Add(record);

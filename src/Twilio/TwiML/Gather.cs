@@ -84,7 +84,7 @@ namespace Twilio.TwiML
         /// <param name="loop">Times to look</param>
         /// <param name="digits">Play DTMF tones</param>
         /// <returns>Gather Element</returns>
-        public Gather Play(string url, int? loop=null, int? digits=null)
+        public Gather Play(string url, int? loop=null, string digits=null)
         {
             var play = new XElement("Play", url);
 
@@ -92,7 +92,7 @@ namespace Twilio.TwiML
             {
                 play.Add(new XAttribute("loop", loop));
             }
-            if (digits != null)
+            if (!string.IsNullOrEmpty(digits))
             {
                 play.Add(new XAttribute("digits", digits));
             }
