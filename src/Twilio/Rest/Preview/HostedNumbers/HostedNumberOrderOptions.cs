@@ -1,0 +1,374 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Twilio.Base;
+
+namespace Twilio.Rest.Preview.HostedNumbers 
+{
+
+    /// <summary>
+    /// Fetch a specific HostedNumberOrder.
+    /// </summary>
+    public class FetchHostedNumberOrderOptions : IOptions<HostedNumberOrderResource> 
+    {
+        /// <summary>
+        /// HostedNumberOrder sid.
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new FetchHostedNumberOrderOptions
+        /// </summary>
+        ///
+        /// <param name="pathSid"> HostedNumberOrder sid. </param>
+        public FetchHostedNumberOrderOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// Cancel the HostedNumberOrder (only available when the status is in `received`).
+    /// </summary>
+    public class DeleteHostedNumberOrderOptions : IOptions<HostedNumberOrderResource> 
+    {
+        /// <summary>
+        /// HostedNumberOrder sid.
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteHostedNumberOrderOptions
+        /// </summary>
+        ///
+        /// <param name="pathSid"> HostedNumberOrder sid. </param>
+        public DeleteHostedNumberOrderOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// Updates a specific HostedNumberOrder.
+    /// </summary>
+    public class UpdateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource> 
+    {
+        /// <summary>
+        /// The sid
+        /// </summary>
+        public string PathSid { get; }
+        /// <summary>
+        /// A human readable description of this resource.
+        /// </summary>
+        public string FriendlyName { get; set; }
+        /// <summary>
+        /// A unique, developer assigned name of this HostedNumberOrder.
+        /// </summary>
+        public string UniqueName { get; set; }
+        /// <summary>
+        /// Email.
+        /// </summary>
+        public string Email { get; set; }
+        /// <summary>
+        /// A list of emails.
+        /// </summary>
+        public List<string> CcEmails { get; set; }
+        /// <summary>
+        /// The Status of this HostedNumberOrder.
+        /// </summary>
+        public HostedNumberOrderResource.StatusEnum Status { get; set; }
+
+        /// <summary>
+        /// Construct a new UpdateHostedNumberOrderOptions
+        /// </summary>
+        ///
+        /// <param name="pathSid"> The sid </param>
+        public UpdateHostedNumberOrderOptions(string pathSid)
+        {
+            PathSid = pathSid;
+            CcEmails = new List<string>();
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (UniqueName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+            }
+
+            if (Email != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Email", Email));
+            }
+
+            if (CcEmails != null)
+            {
+                p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", prop)));
+            }
+
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// Retrieve a list of HostedNumberOrders belonging to the account initiating the request.
+    /// </summary>
+    public class ReadHostedNumberOrderOptions : ReadOptions<HostedNumberOrderResource> 
+    {
+        /// <summary>
+        /// The Status of this HostedNumberOrder.
+        /// </summary>
+        public HostedNumberOrderResource.StatusEnum Status { get; set; }
+        /// <summary>
+        /// An E164 formatted phone number.
+        /// </summary>
+        public Types.PhoneNumber PhoneNumber { get; set; }
+        /// <summary>
+        /// IncomingPhoneNumber sid.
+        /// </summary>
+        public string IncomingPhoneNumberSid { get; set; }
+        /// <summary>
+        /// A human readable description of this resource.
+        /// </summary>
+        public string FriendlyName { get; set; }
+        /// <summary>
+        /// A unique, developer assigned name of this HostedNumberOrder.
+        /// </summary>
+        public string UniqueName { get; set; }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public override List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            if (PhoneNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
+            }
+
+            if (IncomingPhoneNumberSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IncomingPhoneNumberSid", IncomingPhoneNumberSid.ToString()));
+            }
+
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (UniqueName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+            }
+
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// Host a phone number's capability on Twilio's platform.
+    /// </summary>
+    public class CreateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource> 
+    {
+        /// <summary>
+        /// Address sid.
+        /// </summary>
+        public string AddressSid { get; }
+        /// <summary>
+        /// An E164 formatted phone number.
+        /// </summary>
+        public Types.PhoneNumber PhoneNumber { get; }
+        /// <summary>
+        /// Phone number type.
+        /// </summary>
+        public HostedNumberOrderResource.TypeEnum Type { get; }
+        /// <summary>
+        /// ISO country code.
+        /// </summary>
+        public string IsoCountry { get; }
+        /// <summary>
+        /// Specify SMS capability to host.
+        /// </summary>
+        public bool? SmsCapability { get; }
+        /// <summary>
+        /// Email.
+        /// </summary>
+        public string Email { get; }
+        /// <summary>
+        /// Account Sid.
+        /// </summary>
+        public string AccountSid { get; set; }
+        /// <summary>
+        /// A human readable description of this resource.
+        /// </summary>
+        public string FriendlyName { get; set; }
+        /// <summary>
+        /// A unique, developer assigned name of this HostedNumberOrder.
+        /// </summary>
+        public string UniqueName { get; set; }
+        /// <summary>
+        /// A list of emails.
+        /// </summary>
+        public List<string> CcEmails { get; set; }
+        /// <summary>
+        /// SMS URL.
+        /// </summary>
+        public Uri SmsUrl { get; set; }
+        /// <summary>
+        /// SMS Method.
+        /// </summary>
+        public Twilio.Http.HttpMethod SmsMethod { get; set; }
+        /// <summary>
+        /// SMS Fallback URL.
+        /// </summary>
+        public Uri SmsFallbackUrl { get; set; }
+        /// <summary>
+        /// SMS Fallback Method.
+        /// </summary>
+        public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
+
+        /// <summary>
+        /// Construct a new CreateHostedNumberOrderOptions
+        /// </summary>
+        ///
+        /// <param name="addressSid"> Address sid. </param>
+        /// <param name="phoneNumber"> An E164 formatted phone number. </param>
+        /// <param name="type"> Phone number type. </param>
+        /// <param name="isoCountry"> ISO country code. </param>
+        /// <param name="smsCapability"> Specify SMS capability to host. </param>
+        /// <param name="email"> Email. </param>
+        public CreateHostedNumberOrderOptions(string addressSid, Types.PhoneNumber phoneNumber, HostedNumberOrderResource.TypeEnum type, string isoCountry, bool? smsCapability, string email)
+        {
+            AddressSid = addressSid;
+            PhoneNumber = phoneNumber;
+            Type = type;
+            IsoCountry = isoCountry;
+            SmsCapability = smsCapability;
+            Email = email;
+            CcEmails = new List<string>();
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (AddressSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
+            }
+
+            if (PhoneNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
+            }
+
+            if (Type != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
+            }
+
+            if (IsoCountry != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
+            }
+
+            if (SmsCapability != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsCapability", SmsCapability.Value.ToString()));
+            }
+
+            if (Email != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Email", Email));
+            }
+
+            if (AccountSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
+            }
+
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (UniqueName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+            }
+
+            if (CcEmails != null)
+            {
+                p.AddRange(CcEmails.Select(prop => new KeyValuePair<string, string>("CcEmails", prop)));
+            }
+
+            if (SmsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.ToString()));
+            }
+
+            if (SmsMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsMethod", SmsMethod.ToString()));
+            }
+
+            if (SmsFallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.ToString()));
+            }
+
+            if (SmsFallbackMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsFallbackMethod", SmsFallbackMethod.ToString()));
+            }
+
+            return p;
+        }
+    }
+
+}
