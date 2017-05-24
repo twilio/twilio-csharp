@@ -1,7 +1,7 @@
 twilio-csharp Changelog
 =======================
 
-[2018-05-24] Version 5.5.0-alpha1
+[2018-05-24] Version 5.5.1-alpha1
 ----------------------------------
 
 - Add HostedNumbers preview support.
