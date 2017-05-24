@@ -1,6 +1,14 @@
 twilio-csharp Changelog
 =======================
 
+[2018-05-24] Version 5.5.0-alpha1
+----------------------------------
+
+- Add HostedNumbers preview support.
+- Add Proxy preview support.
+- Add BulkExports preview support.
+- Rename RecordingList to RoomRecordingList.
+
 [2017-05-22] Version 5.4.3-alpha1
 ----------------------------------
 - Added support for video.twilio.com.

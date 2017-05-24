@@ -160,12 +160,24 @@ namespace Twilio.TwiML
         /// <param name="action">Action URL</param>
         /// <param name="method">Action URL method</param>
         /// <param name="finishOnKey">Finish gather on key</param>
+        /// <param name="partialResultCallback">Callback for partial results</param>
+        /// <param name="partialResultCallbackMethod">Callback URL method</param>
+        /// <param name="language">Locale</param>
+        /// <param name="hints">Speech recognition hints</param>
+        /// <param name="bargeIn">Stop media on speech</param>
+        /// <param name="acknowledgeSoundUrl">URL for speech recognition</param>
         /// <returns>VoiceResponse</returns>
         public VoiceResponse Gather(int? timeout=null,
             int? numDigits=null,
             string action=null,
             string method=null,
-            string finishOnKey=null)
+            string finishOnKey=null,
+            string partialResultCallback=null,
+            string partialResultCallbackMethod=null,
+            string language=null,
+            string hints=null,
+            bool? bargeIn=null,
+            string acknowledgeSoundUrl=null)
         {
             var gather = new XElement("Gather");
             if (timeout != null)
@@ -188,7 +200,31 @@ namespace Twilio.TwiML
             {
                 gather.Add(new XAttribute("finishOnKey", finishOnKey));
             }
-
+            if (!string.IsNullOrEmpty(partialResultCallback))
+            {
+                gather.Add(new XAttribute("partialResultCallback", partialResultCallback));
+            }
+            if (!string.IsNullOrEmpty(partialResultCallbackMethod))
+            {
+                gather.Add(new XAttribute("partialResultCallbackMethod", partialResultCallbackMethod));
+            }
+            if (!string.IsNullOrEmpty(language))
+            {
+                gather.Add(new XAttribute("language", language));
+            }
+            if (!string.IsNullOrEmpty(hints))
+            {
+                gather.Add(new XAttribute("hints", hints));
+            }
+            if (bargeIn != null)
+            {
+                gather.Add(new XAttribute("bargeIn", bargeIn));
+            }
+            if (!string.IsNullOrEmpty(acknowledgeSoundUrl))
+            {
+                gather.Add(new XAttribute("acknowledgeSoundUrl", acknowledgeSoundUrl));
+            }
+            
             _response.Add(gather);
             return this;
         }
