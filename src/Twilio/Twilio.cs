@@ -1,7 +1,7 @@
 ﻿using Twilio.Clients;
 using Twilio.Exceptions;
 
-namespace Twilio
+namespace Twilio {
 {
     /// <summary>
     /// Default Twilio Client
