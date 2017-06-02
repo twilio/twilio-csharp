@@ -86,7 +86,7 @@ namespace Twilio.TwiML
         /// <returns>Gather Element</returns>
         public Gather Play(string url=null, int? loop=null, string digits=null)
         {
-            var play;
+            var play = null;
 
             if (!string.IsNullOrEmpty(digits))
             {
