@@ -71,7 +71,7 @@ namespace Twilio.TwiML
             if (!string.IsNullOrEmpty(voice))
             {
                 say.Add(new XAttribute("voice", voice));
-            }          
+            }
 
             Element.Add(say);
             return this;
@@ -84,9 +84,18 @@ namespace Twilio.TwiML
         /// <param name="loop">Times to look</param>
         /// <param name="digits">Play DTMF tones</param>
         /// <returns>Gather Element</returns>
-        public Gather Play(string url, int? loop=null, string digits=null)
+        public Gather Play(string url=null, int? loop=null, string digits=null)
         {
-            var play = new XElement("Play", url);
+            XElement play = null;
+
+            if (!string.IsNullOrEmpty(url))
+            {
+                play = new XElement("Play", url);
+            }
+            else
+            {
+                play = new XElement("Play");
+            }
 
             if (loop != null)
             {
@@ -118,6 +127,18 @@ namespace Twilio.TwiML
             return this;
         }
 
+        /// <summary>
+        /// Generate XML for TwiML
+        /// </summary>
+        /// <returns>TwiML XML</returns>
+        public override string ToString()
+        {
+            var declaration = new XDeclaration("1.0", "utf-8", null);
+            var document = new XDocument(declaration, Element);
+
+            var wr = new Utf8StringWriter();
+            document.Save(wr);
+            return wr.GetStringBuilder().ToString();
+        }
     }
 }
-
