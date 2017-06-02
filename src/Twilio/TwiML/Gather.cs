@@ -88,7 +88,7 @@ namespace Twilio.TwiML
         {
             XElement play = null;
 
-            if (!string.IsNullOrEmpty(digits))
+            if (!string.IsNullOrEmpty(url))
             {
                 play = new XElement("Play", url);
             }
