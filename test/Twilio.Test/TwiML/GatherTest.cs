@@ -11,7 +11,7 @@ namespace Twilio.Tests.TwiML
         public void TestEmptyPlayUrlGather()
         {
             var g = new Gather();
-            g.say('Hello');
+            g.say("Hello");
             g.play();
 
             Assert.AreEqual(
@@ -28,7 +28,7 @@ namespace Twilio.Tests.TwiML
         public void TestEmptyPlayUrlGather()
         {
           var g = new Gather();
-          g.say('Hello');
+          g.say("Hello");
           g.play("hey.mp3");
 
           Assert.AreEqual(
