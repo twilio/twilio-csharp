@@ -90,7 +90,7 @@ namespace Twilio.TwiML
         /// <param name="loop">Times to look</param>
         /// <param name="digits">Play DTMF tones</param>
         /// <returns>Gather Element</returns>
-        public Gather Play(string url, int? loop=null, string digits=null)
+        public Gather Play(string url=null, int? loop=null, string digits=null)
         {
             var play = new XElement("Play", url);
 
