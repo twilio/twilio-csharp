@@ -5,12 +5,12 @@ using Twilio.TwiML;
 namespace Twilio.Tests.TwiML
 {
     [TestFixture]
-    public class GatherTest
+    public class PlayTest
     {
         [Test]
-        public void TestEmptyPlayUrlGather()
+        public void TestEmptyPlayUrl()
         {
-            var p = new Play();
+            var p = new Gather.Play();
 
             Assert.AreEqual(
                 p.ToString(),
@@ -22,9 +22,9 @@ namespace Twilio.Tests.TwiML
         }
 
         [Test]
-        public void TestPlayUrlGather()
+        public void TestPlayUrl()
         {
-          var p = new Play("hey.mp3");
+          var p = new Gather.Play("hey.mp3");
 
           Assert.AreEqual(
               p.ToString(),
