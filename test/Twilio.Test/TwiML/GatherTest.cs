@@ -5,31 +5,37 @@ using Twilio.TwiML;
 namespace Twilio.Tests.TwiML
 {
     [TestFixture]
-    public class PlayTest
+    public class GatherTest
     {
         [Test]
-        public void TestEmptyPlayUrl()
+        public void TestEmptyPlayUrlGather()
         {
-            var p = new Gather.Play();
+            var g = new Gather();
+            g.Say("Hello");
+            g.Play();
 
             Assert.AreEqual(
                 p.ToString(),
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Gather>" + Environment.NewLine +
+                "  <Say>Hello</Say>" + Environment.NewLine +
                 "  <Play />" + Environment.NewLine +
                 "</Gather>"
             );
         }
 
         [Test]
-        public void TestPlayUrl()
+        public void TestPlayUrlGather()
         {
-          var p = new Gather.Play("hey.mp3");
+          var g = new Gather();
+          g.Say("Hello");
+          g.Play("hey.mp3");
 
           Assert.AreEqual(
-              p.ToString(),
+              g.ToString(),
               "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
               "<Gather>" + Environment.NewLine +
+              "  <Say>Hello</Say>" + Environment.NewLine +
               "  <Play>hey.mp3</Play>" + Environment.NewLine +
               "</Gather>"
           );
