@@ -25,7 +25,7 @@ namespace Twilio.Tests.TwiML
         }
 
         [Test]
-        public void TestEmptyPlayUrlGather()
+        public void TestPlayUrlGather()
         {
           var g = new Gather();
           g.say("Hello");
