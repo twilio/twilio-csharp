@@ -10,15 +10,12 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestEmptyPlayUrlGather()
         {
-            var g = new Gather();
-            g.say("Hello");
-            g.play();
+            var p = new Play();
 
             Assert.AreEqual(
-                g.ToString(),
+                p.ToString(),
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Gather>" + Environment.NewLine +
-                "  <Say>Hello</Say>" + Environment.NewLine +
                 "  <Play />" + Environment.NewLine +
                 "</Gather>"
             );
@@ -27,15 +24,12 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestPlayUrlGather()
         {
-          var g = new Gather();
-          g.say("Hello");
-          g.play("hey.mp3");
+          var p = new Play("hey.mp3");
 
           Assert.AreEqual(
-              g.ToString(),
+              p.ToString(),
               "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
               "<Gather>" + Environment.NewLine +
-              "  <Say>Hello</Say>" + Environment.NewLine +
               "  <Play>hey.mp3</Play>" + Environment.NewLine +
               "</Gather>"
           );
