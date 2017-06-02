@@ -86,13 +86,15 @@ namespace Twilio.TwiML
         /// <returns>Gather Element</returns>
         public Gather Play(string url=null, int? loop=null, string digits=null)
         {
+            var play;
+
             if (!string.IsNullOrEmpty(digits))
             {
-                var play = new XElement("Play", url);
+                play = new XElement("Play", url);
             }
             else
             {
-                var play = new XElement("Play");
+                play = new XElement("Play");
             }
 
             if (loop != null)
