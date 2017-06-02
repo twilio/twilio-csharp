@@ -15,7 +15,7 @@ namespace Twilio.Tests.TwiML
             g.Play();
 
             Assert.AreEqual(
-                p.ToString(),
+                g.ToString(),
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Gather>" + Environment.NewLine +
                 "  <Say>Hello</Say>" + Environment.NewLine +
