@@ -40,16 +40,26 @@ namespace Twilio.Http
             }
             catch (WebException e)
             {
-                throw HandleErrorResponse((HttpWebResponse) e.Response);
+                try
+                {
+                    throw HandleErrorResponse((HttpWebResponse)e.Response, e);
+                }
+                catch (TwilioException twilioException)
+                {
+                    // If the exception is not TwilioException - the error response parsing failed
+                    throw twilioException;
+                }
+
+                throw e;
             }
         }
 
-        private static Exception HandleErrorResponse(HttpWebResponse errorResponse)
+        private static TwilioException HandleErrorResponse(HttpWebResponse errorResponse, Exception innerException)
         {
             if (errorResponse.StatusCode >= HttpStatusCode.InternalServerError &&
                 errorResponse.StatusCode < HttpStatusCode.HttpVersionNotSupported)
             {
-                return new TwilioException("Internal Server error: " + errorResponse.StatusDescription);
+                return new TwilioException("Internal Server error: " + errorResponse.StatusDescription, innerException);
             }
 
             var responseStream = errorResponse.GetResponseStream();
@@ -59,11 +69,11 @@ namespace Twilio.Http
             try
             {
                 var restEx = RestException.FromJson(errorContent);
-                return restEx ?? new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent);
+                return restEx ?? new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent, innerException);
             }
             catch (JsonReaderException)
             {
-                return new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent);
+                return new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent, innerException);
             }
         }
 
