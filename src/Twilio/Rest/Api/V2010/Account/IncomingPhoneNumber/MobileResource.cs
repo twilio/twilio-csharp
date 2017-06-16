@@ -80,13 +80,14 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="beta"> The beta </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="origin"> The origin </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Mobile </returns> 
-        public static ResourceSet<MobileResource> Read(string pathAccountSid = null, bool? beta = null, string friendlyName = null, Types.PhoneNumber phoneNumber = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<MobileResource> Read(string pathAccountSid = null, bool? beta = null, string friendlyName = null, Types.PhoneNumber phoneNumber = null, string origin = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMobileOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, PageSize = pageSize, Limit = limit};
+            var options = new ReadMobileOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -99,13 +100,14 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="beta"> The beta </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="origin"> The origin </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Mobile </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MobileResource>> ReadAsync(string pathAccountSid = null, bool? beta = null, string friendlyName = null, Types.PhoneNumber phoneNumber = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MobileResource>> ReadAsync(string pathAccountSid = null, bool? beta = null, string friendlyName = null, Types.PhoneNumber phoneNumber = null, string origin = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMobileOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, PageSize = pageSize, Limit = limit};
+            var options = new ReadMobileOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -339,6 +341,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
+        /// <summary>
+        /// The origin
+        /// </summary>
+        [JsonProperty("origin")]
+        public string Origin { get; private set; }
         /// <summary>
         /// The sid
         /// </summary>

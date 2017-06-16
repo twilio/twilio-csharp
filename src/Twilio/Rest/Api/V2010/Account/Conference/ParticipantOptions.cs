@@ -79,6 +79,14 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// The hold_method
         /// </summary>
         public Twilio.Http.HttpMethod HoldMethod { get; set; }
+        /// <summary>
+        /// The announce_url
+        /// </summary>
+        public Uri AnnounceUrl { get; set; }
+        /// <summary>
+        /// The announce_url_method
+        /// </summary>
+        public Twilio.Http.HttpMethod AnnounceUrlMethod { get; set; }
 
         /// <summary>
         /// Construct a new UpdateParticipantOptions
@@ -116,6 +124,16 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (HoldMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("HoldMethod", HoldMethod.ToString()));
+            }
+
+            if (AnnounceUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AnnounceUrl", AnnounceUrl.ToString()));
+            }
+
+            if (AnnounceUrlMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AnnounceUrlMethod", AnnounceUrlMethod.ToString()));
             }
 
             return p;

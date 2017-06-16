@@ -26,6 +26,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// The phone_number
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; set; }
+        /// <summary>
+        /// The origin
+        /// </summary>
+        public string Origin { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -46,6 +50,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             if (PhoneNumber != null)
             {
                 p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
+            }
+
+            if (Origin != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Origin", Origin));
             }
 
             if (PageSize != null)

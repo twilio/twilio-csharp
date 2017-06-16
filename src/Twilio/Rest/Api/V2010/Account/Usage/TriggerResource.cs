@@ -154,6 +154,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum SmsOutboundLongcode = new UsageCategoryEnum("sms-outbound-longcode");
             public static readonly UsageCategoryEnum SmsOutboundShortcode = new UsageCategoryEnum("sms-outbound-shortcode");
             public static readonly UsageCategoryEnum SmsMessagesFeatures = new UsageCategoryEnum("sms-messages-features");
+            public static readonly UsageCategoryEnum Sync = new UsageCategoryEnum("sync");
+            public static readonly UsageCategoryEnum SyncActions = new UsageCategoryEnum("sync-actions");
+            public static readonly UsageCategoryEnum SyncEndpointHours = new UsageCategoryEnum("sync-endpoint-hours");
+            public static readonly UsageCategoryEnum SyncEndpointHoursAboveDailyCap = new UsageCategoryEnum("sync-endpoint-hours-above-daily-cap");
             public static readonly UsageCategoryEnum TaskrouterTasks = new UsageCategoryEnum("taskrouter-tasks");
             public static readonly UsageCategoryEnum Totalprice = new UsageCategoryEnum("totalprice");
             public static readonly UsageCategoryEnum Transcriptions = new UsageCategoryEnum("transcriptions");
@@ -201,7 +205,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum WirelessUsageMrcCustom = new UsageCategoryEnum("wireless-usage-mrc-custom");
             public static readonly UsageCategoryEnum WirelessUsageMrcIndividual = new UsageCategoryEnum("wireless-usage-mrc-individual");
             public static readonly UsageCategoryEnum WirelessUsageMrcPooled = new UsageCategoryEnum("wireless-usage-mrc-pooled");
-            public static readonly UsageCategoryEnum Sync = new UsageCategoryEnum("sync");
         }
 
         public sealed class RecurringEnum : StringEnum 

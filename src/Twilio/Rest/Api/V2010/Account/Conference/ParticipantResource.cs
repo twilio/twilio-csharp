@@ -154,11 +154,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="hold"> The hold </param>
         /// <param name="holdUrl"> The hold_url </param>
         /// <param name="holdMethod"> The hold_method </param>
+        /// <param name="announceUrl"> The announce_url </param>
+        /// <param name="announceUrlMethod"> The announce_url_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
-        public static ParticipantResource Update(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, ITwilioRestClient client = null)
+        public static ParticipantResource Update(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, Uri announceUrl = null, Twilio.Http.HttpMethod announceUrlMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod};
+            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceUrlMethod = announceUrlMethod};
             return Update(options, client);
         }
 
@@ -174,11 +176,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="hold"> The hold </param>
         /// <param name="holdUrl"> The hold_url </param>
         /// <param name="holdMethod"> The hold_method </param>
+        /// <param name="announceUrl"> The announce_url </param>
+        /// <param name="announceUrlMethod"> The announce_url_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, Uri announceUrl = null, Twilio.Http.HttpMethod announceUrlMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod};
+            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceUrlMethod = announceUrlMethod};
             return await UpdateAsync(options, client);
         }
         #endif

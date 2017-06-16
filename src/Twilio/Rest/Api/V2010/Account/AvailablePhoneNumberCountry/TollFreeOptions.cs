@@ -82,6 +82,10 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// The in_lata
         /// </summary>
         public string InLata { get; set; }
+        /// <summary>
+        /// The in_locality
+        /// </summary>
+        public string InLocality { get; set; }
 
         /// <summary>
         /// Construct a new ReadTollFreeOptions
@@ -177,6 +181,11 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             if (InLata != null)
             {
                 p.Add(new KeyValuePair<string, string>("InLata", InLata));
+            }
+
+            if (InLocality != null)
+            {
+                p.Add(new KeyValuePair<string, string>("InLocality", InLocality));
             }
 
             if (PageSize != null)

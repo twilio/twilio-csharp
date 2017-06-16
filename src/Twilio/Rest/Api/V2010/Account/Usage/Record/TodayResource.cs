@@ -154,6 +154,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum SmsOutboundLongcode = new CategoryEnum("sms-outbound-longcode");
             public static readonly CategoryEnum SmsOutboundShortcode = new CategoryEnum("sms-outbound-shortcode");
             public static readonly CategoryEnum SmsMessagesFeatures = new CategoryEnum("sms-messages-features");
+            public static readonly CategoryEnum Sync = new CategoryEnum("sync");
+            public static readonly CategoryEnum SyncActions = new CategoryEnum("sync-actions");
+            public static readonly CategoryEnum SyncEndpointHours = new CategoryEnum("sync-endpoint-hours");
+            public static readonly CategoryEnum SyncEndpointHoursAboveDailyCap = new CategoryEnum("sync-endpoint-hours-above-daily-cap");
             public static readonly CategoryEnum TaskrouterTasks = new CategoryEnum("taskrouter-tasks");
             public static readonly CategoryEnum Totalprice = new CategoryEnum("totalprice");
             public static readonly CategoryEnum Transcriptions = new CategoryEnum("transcriptions");
@@ -201,7 +205,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum WirelessUsageMrcCustom = new CategoryEnum("wireless-usage-mrc-custom");
             public static readonly CategoryEnum WirelessUsageMrcIndividual = new CategoryEnum("wireless-usage-mrc-individual");
             public static readonly CategoryEnum WirelessUsageMrcPooled = new CategoryEnum("wireless-usage-mrc-pooled");
-            public static readonly CategoryEnum Sync = new CategoryEnum("sync");
         }
 
         private static Request BuildReadRequest(ReadTodayOptions options, ITwilioRestClient client)
