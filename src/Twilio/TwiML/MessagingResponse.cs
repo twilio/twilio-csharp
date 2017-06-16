@@ -26,17 +26,13 @@ namespace Twilio.TwiML
         /// <returns>TwiML</returns>
         public MessagingResponse Redirect(string method=null, string url=null)
         {
-            var redirect = new XElement("Redirect");
+            var redirect = new XElement("Redirect", url);
+
             if (!string.IsNullOrEmpty(method))
             {
                 redirect.Add(new XAttribute("method", method));
             }
 
-            if (!string.IsNullOrEmpty(url))
-            {
-                redirect.Add(new XAttribute("url", url));
-            }
-            
             _response.Add(redirect);
             return this;
         }
@@ -68,7 +64,7 @@ namespace Twilio.TwiML
             {
                 message.Add(new XAttribute("method", method));
             }
-            
+
             if (!string.IsNullOrEmpty(action))
             {
                 message.Add(new XAttribute("action", action));
@@ -109,4 +105,3 @@ namespace Twilio.TwiML
         }
     }
 }
-
