@@ -30,15 +30,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
             public static readonly StatusEnum ActionRequired = new StatusEnum("action-required");
         }
 
-        public sealed class TypeEnum : StringEnum 
-        {
-            private TypeEnum(string value) : base(value) {}
-            public TypeEnum() {}
-
-            public static readonly TypeEnum Local = new TypeEnum("local");
-            public static readonly TypeEnum Tollfree = new TypeEnum("tollfree");
-        }
-
         private static Request BuildFetchRequest(FetchHostedNumberOrderOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -342,6 +333,26 @@ namespace Twilio.Rest.Preview.HostedNumbers
         #endif
 
         /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        ///
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns> 
+        public static Page<HostedNumberOrderResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<HostedNumberOrderResource>.FromJson("items", response.Content);
+        }
+
+        /// <summary>
         /// Fetch the next page of records
         /// </summary>
         ///
@@ -353,6 +364,27 @@ namespace Twilio.Rest.Preview.HostedNumbers
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
+                    Rest.Domain.Preview,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<HostedNumberOrderResource>.FromJson("items", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns> 
+        public static Page<HostedNumberOrderResource> PreviousPage(Page<HostedNumberOrderResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(
                     Rest.Domain.Preview,
                     client.Region
                 )
@@ -409,7 +441,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         ///
         /// <param name="addressSid"> Address sid. </param>
         /// <param name="phoneNumber"> An E164 formatted phone number. </param>
-        /// <param name="type"> Phone number type. </param>
         /// <param name="isoCountry"> ISO country code. </param>
         /// <param name="smsCapability"> Specify SMS capability to host. </param>
         /// <param name="email"> Email. </param>
@@ -423,9 +454,9 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="smsFallbackMethod"> SMS Fallback Method. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
-        public static HostedNumberOrderResource Create(string addressSid, Types.PhoneNumber phoneNumber, HostedNumberOrderResource.TypeEnum type, string isoCountry, bool? smsCapability, string email, string accountSid = null, string friendlyName = null, string uniqueName = null, List<string> ccEmails = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, ITwilioRestClient client = null)
+        public static HostedNumberOrderResource Create(string addressSid, Types.PhoneNumber phoneNumber, string isoCountry, bool? smsCapability, string email, string accountSid = null, string friendlyName = null, string uniqueName = null, List<string> ccEmails = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new CreateHostedNumberOrderOptions(addressSid, phoneNumber, type, isoCountry, smsCapability, email){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod};
+            var options = new CreateHostedNumberOrderOptions(addressSid, phoneNumber, isoCountry, smsCapability, email){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod};
             return Create(options, client);
         }
 
@@ -436,7 +467,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         ///
         /// <param name="addressSid"> Address sid. </param>
         /// <param name="phoneNumber"> An E164 formatted phone number. </param>
-        /// <param name="type"> Phone number type. </param>
         /// <param name="isoCountry"> ISO country code. </param>
         /// <param name="smsCapability"> Specify SMS capability to host. </param>
         /// <param name="email"> Email. </param>
@@ -450,9 +480,9 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="smsFallbackMethod"> SMS Fallback Method. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> CreateAsync(string addressSid, Types.PhoneNumber phoneNumber, HostedNumberOrderResource.TypeEnum type, string isoCountry, bool? smsCapability, string email, string accountSid = null, string friendlyName = null, string uniqueName = null, List<string> ccEmails = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> CreateAsync(string addressSid, Types.PhoneNumber phoneNumber, string isoCountry, bool? smsCapability, string email, string accountSid = null, string friendlyName = null, string uniqueName = null, List<string> ccEmails = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, ITwilioRestClient client = null)
         {
-            var options = new CreateHostedNumberOrderOptions(addressSid, phoneNumber, type, isoCountry, smsCapability, email){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod};
+            var options = new CreateHostedNumberOrderOptions(addressSid, phoneNumber, isoCountry, smsCapability, email){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod};
             return await CreateAsync(options, client);
         }
         #endif

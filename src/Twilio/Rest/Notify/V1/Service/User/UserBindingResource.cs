@@ -26,6 +26,7 @@ namespace Twilio.Rest.Notify.V1.Service.User
             public static readonly BindingTypeEnum Sms = new BindingTypeEnum("sms");
             public static readonly BindingTypeEnum Fcm = new BindingTypeEnum("fcm");
             public static readonly BindingTypeEnum FacebookMessenger = new BindingTypeEnum("facebook-messenger");
+            public static readonly BindingTypeEnum Alexa = new BindingTypeEnum("alexa");
         }
 
         private static Request BuildFetchRequest(FetchUserBindingOptions options, ITwilioRestClient client)
@@ -343,6 +344,26 @@ namespace Twilio.Rest.Notify.V1.Service.User
         #endif
 
         /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        ///
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns> 
+        public static Page<UserBindingResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<UserBindingResource>.FromJson("bindings", response.Content);
+        }
+
+        /// <summary>
         /// Fetch the next page of records
         /// </summary>
         ///
@@ -354,6 +375,27 @@ namespace Twilio.Rest.Notify.V1.Service.User
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
+                    Rest.Domain.Notify,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<UserBindingResource>.FromJson("bindings", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns> 
+        public static Page<UserBindingResource> PreviousPage(Page<UserBindingResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(
                     Rest.Domain.Notify,
                     client.Region
                 )

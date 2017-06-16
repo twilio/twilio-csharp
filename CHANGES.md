@@ -1,7 +1,22 @@
 twilio-csharp Changelog
 =======================
 
-[2018-05-24] Version 5.5.1-alpha1
+[2017-06-16] Version 5.5.2-alpha1
+---------------------------------
+- Make url parameter optional in Play Twiml.
+- Add support for reentrant paging, fetching a specific page when listing resources.
+- Add Gather Twiml input attribute.
+- Make url parameter of Message Redirect Twiml the xml tag value.
+- Remove max page size coercion from library when listing resources.
+- Add `locality` property to available phone numbers and allow filter by `inLocality` option when searching available phone numbers.
+- Add `origin` parameter to incoming phone numbers.
+- Support `announceUrl` and `announcUrlMethod` properties for conference participants.
+- Add new usage categories.
+- Alpha Changes:
+    - Change Wireless usage api list key to `usage_records`
+    - Add alexa support to notify
+
+[2017-05-24] Version 5.5.1-alpha1
 ----------------------------------
 
 - Add HostedNumbers preview support.

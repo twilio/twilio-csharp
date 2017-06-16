@@ -168,6 +168,26 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         #endif
 
         /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        ///
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns> 
+        public static Page<CredentialListMappingResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<CredentialListMappingResource>.FromJson("credential_list_mappings", response.Content);
+        }
+
+        /// <summary>
         /// Fetch the next page of records
         /// </summary>
         ///
@@ -179,6 +199,27 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<CredentialListMappingResource>.FromJson("credential_list_mappings", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns> 
+        public static Page<CredentialListMappingResource> PreviousPage(Page<CredentialListMappingResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(
                     Rest.Domain.Api,
                     client.Region
                 )

@@ -23,6 +23,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
 
             public static readonly GranularityEnum Hourly = new GranularityEnum("hourly");
             public static readonly GranularityEnum Daily = new GranularityEnum("daily");
+            public static readonly GranularityEnum All = new GranularityEnum("all");
         }
 
         private static Request BuildReadRequest(ReadUsageRecordOptions options, ITwilioRestClient client)
@@ -109,6 +110,26 @@ namespace Twilio.Rest.Wireless.V1.Sim
         #endif
 
         /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        ///
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns> 
+        public static Page<UsageRecordResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<UsageRecordResource>.FromJson("usage_records", response.Content);
+        }
+
+        /// <summary>
         /// Fetch the next page of records
         /// </summary>
         ///
@@ -120,6 +141,27 @@ namespace Twilio.Rest.Wireless.V1.Sim
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
+                    Rest.Domain.Wireless,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<UsageRecordResource>.FromJson("usage_records", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns> 
+        public static Page<UsageRecordResource> PreviousPage(Page<UsageRecordResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(
                     Rest.Domain.Wireless,
                     client.Region
                 )

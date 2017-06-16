@@ -86,11 +86,12 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="facebookMessenger"> The facebook_messenger </param>
         /// <param name="fcm"> The fcm </param>
         /// <param name="segment"> The segment </param>
+        /// <param name="alexa"> The alexa </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Notification </returns> 
-        public static NotificationResource Create(string pathServiceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, object facebookMessenger = null, string fcm = null, List<string> segment = null, ITwilioRestClient client = null)
+        public static NotificationResource Create(string pathServiceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, object facebookMessenger = null, string fcm = null, List<string> segment = null, string alexa = null, ITwilioRestClient client = null)
         {
-            var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment};
+            var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa};
             return Create(options, client);
         }
 
@@ -115,11 +116,12 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="facebookMessenger"> The facebook_messenger </param>
         /// <param name="fcm"> The fcm </param>
         /// <param name="segment"> The segment </param>
+        /// <param name="alexa"> The alexa </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns> 
-        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string pathServiceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, object facebookMessenger = null, string fcm = null, List<string> segment = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string pathServiceSid, List<string> identity = null, List<string> tag = null, string body = null, NotificationResource.PriorityEnum priority = null, int? ttl = null, string title = null, string sound = null, string action = null, string data = null, string apn = null, string gcm = null, string sms = null, object facebookMessenger = null, string fcm = null, List<string> segment = null, string alexa = null, ITwilioRestClient client = null)
         {
-            var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment};
+            var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa};
             return await CreateAsync(options, client);
         }
         #endif
@@ -239,6 +241,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         [JsonProperty("facebook_messenger")]
         public object FacebookMessenger { get; private set; }
+        /// <summary>
+        /// The alexa
+        /// </summary>
+        [JsonProperty("alexa")]
+        public object Alexa { get; private set; }
 
         private NotificationResource()
         {

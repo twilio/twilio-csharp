@@ -76,6 +76,10 @@ namespace Twilio.Rest.Notify.V1.Service
         /// The segment
         /// </summary>
         public List<string> Segment { get; set; }
+        /// <summary>
+        /// The alexa
+        /// </summary>
+        public string Alexa { get; set; }
 
         /// <summary>
         /// Construct a new CreateNotificationOptions
@@ -169,6 +173,11 @@ namespace Twilio.Rest.Notify.V1.Service
             if (Segment != null)
             {
                 p.AddRange(Segment.Select(prop => new KeyValuePair<string, string>("Segment", prop)));
+            }
+
+            if (Alexa != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Alexa", Alexa));
             }
 
             return p;

@@ -27,7 +27,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific fax media instance.
         /// </summary>
         ///
         /// <param name="options"> Fetch FaxMedia parameters </param>
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Fax.V1.Fax
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific fax media instance.
         /// </summary>
         ///
         /// <param name="options"> Fetch FaxMedia parameters </param>
@@ -57,11 +57,11 @@ namespace Twilio.Rest.Fax.V1.Fax
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific fax media instance.
         /// </summary>
         ///
-        /// <param name="pathFaxSid"> The fax_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFaxSid"> Fax SID </param>
+        /// <param name="pathSid"> A string that uniquely identifies this fax media </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FaxMedia </returns> 
         public static FaxMediaResource Fetch(string pathFaxSid, string pathSid, ITwilioRestClient client = null)
@@ -72,11 +72,11 @@ namespace Twilio.Rest.Fax.V1.Fax
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific fax media instance.
         /// </summary>
         ///
-        /// <param name="pathFaxSid"> The fax_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFaxSid"> Fax SID </param>
+        /// <param name="pathSid"> A string that uniquely identifies this fax media </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FaxMedia </returns> 
         public static async System.Threading.Tasks.Task<FaxMediaResource> FetchAsync(string pathFaxSid, string pathSid, ITwilioRestClient client = null)
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all fax media instances for the specified fax.
         /// </summary>
         ///
         /// <param name="options"> Read FaxMedia parameters </param>
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Fax.V1.Fax
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all fax media instances for the specified fax.
         /// </summary>
         ///
         /// <param name="options"> Read FaxMedia parameters </param>
@@ -132,10 +132,10 @@ namespace Twilio.Rest.Fax.V1.Fax
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all fax media instances for the specified fax.
         /// </summary>
         ///
-        /// <param name="pathFaxSid"> The fax_sid </param>
+        /// <param name="pathFaxSid"> Fax SID </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -148,10 +148,10 @@ namespace Twilio.Rest.Fax.V1.Fax
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all fax media instances for the specified fax.
         /// </summary>
         ///
-        /// <param name="pathFaxSid"> The fax_sid </param>
+        /// <param name="pathFaxSid"> Fax SID </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -162,6 +162,26 @@ namespace Twilio.Rest.Fax.V1.Fax
             return await ReadAsync(options, client);
         }
         #endif
+
+        /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        ///
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns> 
+        public static Page<FaxMediaResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<FaxMediaResource>.FromJson("media", response.Content);
+        }
 
         /// <summary>
         /// Fetch the next page of records
@@ -184,6 +204,27 @@ namespace Twilio.Rest.Fax.V1.Fax
             return Page<FaxMediaResource>.FromJson("media", response.Content);
         }
 
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns> 
+        public static Page<FaxMediaResource> PreviousPage(Page<FaxMediaResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(
+                    Rest.Domain.Fax,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<FaxMediaResource>.FromJson("media", response.Content);
+        }
+
         private static Request BuildDeleteRequest(DeleteFaxMediaOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -196,7 +237,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         }
 
         /// <summary>
-        /// delete
+        /// Delete a specific fax media instance.
         /// </summary>
         ///
         /// <param name="options"> Delete FaxMedia parameters </param>
@@ -211,7 +252,7 @@ namespace Twilio.Rest.Fax.V1.Fax
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a specific fax media instance.
         /// </summary>
         ///
         /// <param name="options"> Delete FaxMedia parameters </param>
@@ -226,11 +267,11 @@ namespace Twilio.Rest.Fax.V1.Fax
         #endif
 
         /// <summary>
-        /// delete
+        /// Delete a specific fax media instance.
         /// </summary>
         ///
-        /// <param name="pathFaxSid"> The fax_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFaxSid"> Fax SID </param>
+        /// <param name="pathSid"> A string that uniquely identifies this fax media </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FaxMedia </returns> 
         public static bool Delete(string pathFaxSid, string pathSid, ITwilioRestClient client = null)
@@ -241,11 +282,11 @@ namespace Twilio.Rest.Fax.V1.Fax
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a specific fax media instance.
         /// </summary>
         ///
-        /// <param name="pathFaxSid"> The fax_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFaxSid"> Fax SID </param>
+        /// <param name="pathSid"> A string that uniquely identifies this fax media </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FaxMedia </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFaxSid, string pathSid, ITwilioRestClient client = null)
@@ -275,37 +316,37 @@ namespace Twilio.Rest.Fax.V1.Fax
         }
 
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this fax media
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account SID
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The fax_sid
+        /// Fax SID
         /// </summary>
         [JsonProperty("fax_sid")]
         public string FaxSid { get; private set; }
         /// <summary>
-        /// The content_type
+        /// Media content type
         /// </summary>
         [JsonProperty("content_type")]
         public string ContentType { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this fax media was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this fax media was updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

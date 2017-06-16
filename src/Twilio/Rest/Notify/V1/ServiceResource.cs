@@ -70,11 +70,13 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="fcmCredentialSid"> The fcm_credential_sid </param>
         /// <param name="defaultFcmNotificationProtocolVersion"> The default_fcm_notification_protocol_version </param>
         /// <param name="logEnabled"> The log_enabled </param>
+        /// <param name="alexaSkillId"> The alexa_skill_id </param>
+        /// <param name="defaultAlexaNotificationProtocolVersion"> The default_alexa_notification_protocol_version </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Create(string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, bool? logEnabled = null, ITwilioRestClient client = null)
+        public static ServiceResource Create(string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, bool? logEnabled = null, string alexaSkillId = null, string defaultAlexaNotificationProtocolVersion = null, ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions{FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled};
+            var options = new CreateServiceOptions{FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled, AlexaSkillId = alexaSkillId, DefaultAlexaNotificationProtocolVersion = defaultAlexaNotificationProtocolVersion};
             return Create(options, client);
         }
 
@@ -93,11 +95,13 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="fcmCredentialSid"> The fcm_credential_sid </param>
         /// <param name="defaultFcmNotificationProtocolVersion"> The default_fcm_notification_protocol_version </param>
         /// <param name="logEnabled"> The log_enabled </param>
+        /// <param name="alexaSkillId"> The alexa_skill_id </param>
+        /// <param name="defaultAlexaNotificationProtocolVersion"> The default_alexa_notification_protocol_version </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, bool? logEnabled = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, bool? logEnabled = null, string alexaSkillId = null, string defaultAlexaNotificationProtocolVersion = null, ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions{FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled};
+            var options = new CreateServiceOptions{FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled, AlexaSkillId = alexaSkillId, DefaultAlexaNotificationProtocolVersion = defaultAlexaNotificationProtocolVersion};
             return await CreateAsync(options, client);
         }
         #endif
@@ -318,6 +322,26 @@ namespace Twilio.Rest.Notify.V1
         #endif
 
         /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        ///
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns> 
+        public static Page<ServiceResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<ServiceResource>.FromJson("services", response.Content);
+        }
+
+        /// <summary>
         /// Fetch the next page of records
         /// </summary>
         ///
@@ -329,6 +353,27 @@ namespace Twilio.Rest.Notify.V1
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
+                    Rest.Domain.Notify,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<ServiceResource>.FromJson("services", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns> 
+        public static Page<ServiceResource> PreviousPage(Page<ServiceResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(
                     Rest.Domain.Notify,
                     client.Region
                 )
@@ -394,11 +439,13 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="fcmCredentialSid"> The fcm_credential_sid </param>
         /// <param name="defaultFcmNotificationProtocolVersion"> The default_fcm_notification_protocol_version </param>
         /// <param name="logEnabled"> The log_enabled </param>
+        /// <param name="alexaSkillId"> The alexa_skill_id </param>
+        /// <param name="defaultAlexaNotificationProtocolVersion"> The default_alexa_notification_protocol_version </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Update(string pathSid, string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, bool? logEnabled = null, ITwilioRestClient client = null)
+        public static ServiceResource Update(string pathSid, string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, bool? logEnabled = null, string alexaSkillId = null, string defaultAlexaNotificationProtocolVersion = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled, AlexaSkillId = alexaSkillId, DefaultAlexaNotificationProtocolVersion = defaultAlexaNotificationProtocolVersion};
             return Update(options, client);
         }
 
@@ -418,11 +465,13 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="fcmCredentialSid"> The fcm_credential_sid </param>
         /// <param name="defaultFcmNotificationProtocolVersion"> The default_fcm_notification_protocol_version </param>
         /// <param name="logEnabled"> The log_enabled </param>
+        /// <param name="alexaSkillId"> The alexa_skill_id </param>
+        /// <param name="defaultAlexaNotificationProtocolVersion"> The default_alexa_notification_protocol_version </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, bool? logEnabled = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, string friendlyName = null, string apnCredentialSid = null, string gcmCredentialSid = null, string messagingServiceSid = null, string facebookMessengerPageId = null, string defaultApnNotificationProtocolVersion = null, string defaultGcmNotificationProtocolVersion = null, string fcmCredentialSid = null, string defaultFcmNotificationProtocolVersion = null, bool? logEnabled = null, string alexaSkillId = null, string defaultAlexaNotificationProtocolVersion = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled, AlexaSkillId = alexaSkillId, DefaultAlexaNotificationProtocolVersion = defaultAlexaNotificationProtocolVersion};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -526,6 +575,16 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
+        /// <summary>
+        /// The alexa_skill_id
+        /// </summary>
+        [JsonProperty("alexa_skill_id")]
+        public string AlexaSkillId { get; private set; }
+        /// <summary>
+        /// The default_alexa_notification_protocol_version
+        /// </summary>
+        [JsonProperty("default_alexa_notification_protocol_version")]
+        public string DefaultAlexaNotificationProtocolVersion { get; private set; }
 
         private ServiceResource()
         {

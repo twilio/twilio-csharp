@@ -6,16 +6,16 @@ namespace Twilio.Rest.Fax.V1.Fax
 {
 
     /// <summary>
-    /// FetchFaxMediaOptions
+    /// Fetch a specific fax media instance.
     /// </summary>
     public class FetchFaxMediaOptions : IOptions<FaxMediaResource> 
     {
         /// <summary>
-        /// The fax_sid
+        /// Fax SID
         /// </summary>
         public string PathFaxSid { get; }
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this fax media
         /// </summary>
         public string PathSid { get; }
 
@@ -23,8 +23,8 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// Construct a new FetchFaxMediaOptions
         /// </summary>
         ///
-        /// <param name="pathFaxSid"> The fax_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFaxSid"> Fax SID </param>
+        /// <param name="pathSid"> A string that uniquely identifies this fax media </param>
         public FetchFaxMediaOptions(string pathFaxSid, string pathSid)
         {
             PathFaxSid = pathFaxSid;
@@ -42,12 +42,12 @@ namespace Twilio.Rest.Fax.V1.Fax
     }
 
     /// <summary>
-    /// ReadFaxMediaOptions
+    /// Retrieve a list of all fax media instances for the specified fax.
     /// </summary>
     public class ReadFaxMediaOptions : ReadOptions<FaxMediaResource> 
     {
         /// <summary>
-        /// The fax_sid
+        /// Fax SID
         /// </summary>
         public string PathFaxSid { get; }
 
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// Construct a new ReadFaxMediaOptions
         /// </summary>
         ///
-        /// <param name="pathFaxSid"> The fax_sid </param>
+        /// <param name="pathFaxSid"> Fax SID </param>
         public ReadFaxMediaOptions(string pathFaxSid)
         {
             PathFaxSid = pathFaxSid;
@@ -77,16 +77,16 @@ namespace Twilio.Rest.Fax.V1.Fax
     }
 
     /// <summary>
-    /// DeleteFaxMediaOptions
+    /// Delete a specific fax media instance.
     /// </summary>
     public class DeleteFaxMediaOptions : IOptions<FaxMediaResource> 
     {
         /// <summary>
-        /// The fax_sid
+        /// Fax SID
         /// </summary>
         public string PathFaxSid { get; }
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this fax media
         /// </summary>
         public string PathSid { get; }
 
@@ -94,8 +94,8 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// Construct a new DeleteFaxMediaOptions
         /// </summary>
         ///
-        /// <param name="pathFaxSid"> The fax_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFaxSid"> Fax SID </param>
+        /// <param name="pathSid"> A string that uniquely identifies this fax media </param>
         public DeleteFaxMediaOptions(string pathFaxSid, string pathSid)
         {
             PathFaxSid = pathFaxSid;

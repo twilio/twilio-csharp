@@ -24,6 +24,7 @@ namespace Twilio.Rest.Wireless.V1
             public static readonly StatusEnum New = new StatusEnum("new");
             public static readonly StatusEnum Ready = new StatusEnum("ready");
             public static readonly StatusEnum Active = new StatusEnum("active");
+            public static readonly StatusEnum Suspended = new StatusEnum("suspended");
             public static readonly StatusEnum Deactivated = new StatusEnum("deactivated");
             public static readonly StatusEnum Canceled = new StatusEnum("canceled");
             public static readonly StatusEnum Scheduled = new StatusEnum("scheduled");
@@ -185,6 +186,26 @@ namespace Twilio.Rest.Wireless.V1
         #endif
 
         /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        ///
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns> 
+        public static Page<SimResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<SimResource>.FromJson("sims", response.Content);
+        }
+
+        /// <summary>
         /// Fetch the next page of records
         /// </summary>
         ///
@@ -196,6 +217,27 @@ namespace Twilio.Rest.Wireless.V1
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
+                    Rest.Domain.Wireless,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<SimResource>.FromJson("sims", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns> 
+        public static Page<SimResource> PreviousPage(Page<SimResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(
                     Rest.Domain.Wireless,
                     client.Region
                 )

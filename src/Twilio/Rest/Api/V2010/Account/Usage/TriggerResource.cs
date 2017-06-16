@@ -154,6 +154,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum SmsOutboundLongcode = new UsageCategoryEnum("sms-outbound-longcode");
             public static readonly UsageCategoryEnum SmsOutboundShortcode = new UsageCategoryEnum("sms-outbound-shortcode");
             public static readonly UsageCategoryEnum SmsMessagesFeatures = new UsageCategoryEnum("sms-messages-features");
+            public static readonly UsageCategoryEnum Sync = new UsageCategoryEnum("sync");
+            public static readonly UsageCategoryEnum SyncActions = new UsageCategoryEnum("sync-actions");
+            public static readonly UsageCategoryEnum SyncEndpointHours = new UsageCategoryEnum("sync-endpoint-hours");
+            public static readonly UsageCategoryEnum SyncEndpointHoursAboveDailyCap = new UsageCategoryEnum("sync-endpoint-hours-above-daily-cap");
             public static readonly UsageCategoryEnum TaskrouterTasks = new UsageCategoryEnum("taskrouter-tasks");
             public static readonly UsageCategoryEnum Totalprice = new UsageCategoryEnum("totalprice");
             public static readonly UsageCategoryEnum Transcriptions = new UsageCategoryEnum("transcriptions");
@@ -201,7 +205,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum WirelessUsageMrcCustom = new UsageCategoryEnum("wireless-usage-mrc-custom");
             public static readonly UsageCategoryEnum WirelessUsageMrcIndividual = new UsageCategoryEnum("wireless-usage-mrc-individual");
             public static readonly UsageCategoryEnum WirelessUsageMrcPooled = new UsageCategoryEnum("wireless-usage-mrc-pooled");
-            public static readonly UsageCategoryEnum Sync = new UsageCategoryEnum("sync");
         }
 
         public sealed class RecurringEnum : StringEnum 
@@ -611,6 +614,26 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         #endif
 
         /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        ///
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns> 
+        public static Page<TriggerResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<TriggerResource>.FromJson("usage_triggers", response.Content);
+        }
+
+        /// <summary>
         /// Fetch the next page of records
         /// </summary>
         ///
@@ -622,6 +645,27 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<TriggerResource>.FromJson("usage_triggers", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns> 
+        public static Page<TriggerResource> PreviousPage(Page<TriggerResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(
                     Rest.Domain.Api,
                     client.Region
                 )

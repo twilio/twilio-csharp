@@ -186,7 +186,6 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
             );
             request.AddPostParam("AddressSid", Serialize("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
             request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
-            request.AddPostParam("Type", Serialize(HostedNumberOrderResource.TypeEnum.Local));
             request.AddPostParam("IsoCountry", Serialize("IsoCountry"));
             request.AddPostParam("SmsCapability", Serialize(true));
             request.AddPostParam("Email", Serialize("Email"));
@@ -194,7 +193,7 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
 
             try
             {
-                HostedNumberOrderResource.Create("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+987654321"), HostedNumberOrderResource.TypeEnum.Local, "IsoCountry", true, "Email", client: twilioRestClient);
+                HostedNumberOrderResource.Create("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+987654321"), "IsoCountry", true, "Email", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -212,7 +211,7 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": \"AD11111111111111111111111111111111\",\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": \"test@twilio.com\",\"friendly_name\": null,\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": null,\"status\": \"received\",\"unique_name\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = HostedNumberOrderResource.Create("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+987654321"), HostedNumberOrderResource.TypeEnum.Local, "IsoCountry", true, "Email", client: twilioRestClient);
+            var response = HostedNumberOrderResource.Create("ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+987654321"), "IsoCountry", true, "Email", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

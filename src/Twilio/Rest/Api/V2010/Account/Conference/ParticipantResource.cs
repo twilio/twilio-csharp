@@ -154,11 +154,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="hold"> The hold </param>
         /// <param name="holdUrl"> The hold_url </param>
         /// <param name="holdMethod"> The hold_method </param>
+        /// <param name="announceUrl"> The announce_url </param>
+        /// <param name="announceUrlMethod"> The announce_url_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
-        public static ParticipantResource Update(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, ITwilioRestClient client = null)
+        public static ParticipantResource Update(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, Uri announceUrl = null, Twilio.Http.HttpMethod announceUrlMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod};
+            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceUrlMethod = announceUrlMethod};
             return Update(options, client);
         }
 
@@ -174,11 +176,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="hold"> The hold </param>
         /// <param name="holdUrl"> The hold_url </param>
         /// <param name="holdMethod"> The hold_method </param>
+        /// <param name="announceUrl"> The announce_url </param>
+        /// <param name="announceUrlMethod"> The announce_url_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, Uri announceUrl = null, Twilio.Http.HttpMethod announceUrlMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod};
+            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceUrlMethod = announceUrlMethod};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -467,6 +471,26 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         #endif
 
         /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        ///
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns> 
+        public static Page<ParticipantResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<ParticipantResource>.FromJson("participants", response.Content);
+        }
+
+        /// <summary>
         /// Fetch the next page of records
         /// </summary>
         ///
@@ -478,6 +502,27 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<ParticipantResource>.FromJson("participants", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns> 
+        public static Page<ParticipantResource> PreviousPage(Page<ParticipantResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(
                     Rest.Domain.Api,
                     client.Region
                 )

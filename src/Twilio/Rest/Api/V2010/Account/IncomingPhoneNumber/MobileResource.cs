@@ -80,13 +80,14 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="beta"> The beta </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="origin"> The origin </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Mobile </returns> 
-        public static ResourceSet<MobileResource> Read(string pathAccountSid = null, bool? beta = null, string friendlyName = null, Types.PhoneNumber phoneNumber = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<MobileResource> Read(string pathAccountSid = null, bool? beta = null, string friendlyName = null, Types.PhoneNumber phoneNumber = null, string origin = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMobileOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, PageSize = pageSize, Limit = limit};
+            var options = new ReadMobileOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -99,16 +100,37 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="beta"> The beta </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="origin"> The origin </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Mobile </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MobileResource>> ReadAsync(string pathAccountSid = null, bool? beta = null, string friendlyName = null, Types.PhoneNumber phoneNumber = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MobileResource>> ReadAsync(string pathAccountSid = null, bool? beta = null, string friendlyName = null, Types.PhoneNumber phoneNumber = null, string origin = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMobileOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, PageSize = pageSize, Limit = limit};
+            var options = new ReadMobileOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
+
+        /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        ///
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns> 
+        public static Page<MobileResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<MobileResource>.FromJson("incoming_phone_numbers", response.Content);
+        }
 
         /// <summary>
         /// Fetch the next page of records
@@ -122,6 +144,27 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<MobileResource>.FromJson("incoming_phone_numbers", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns> 
+        public static Page<MobileResource> PreviousPage(Page<MobileResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(
                     Rest.Domain.Api,
                     client.Region
                 )
@@ -298,6 +341,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
+        /// <summary>
+        /// The origin
+        /// </summary>
+        [JsonProperty("origin")]
+        public string Origin { get; private set; }
         /// <summary>
         /// The sid
         /// </summary>

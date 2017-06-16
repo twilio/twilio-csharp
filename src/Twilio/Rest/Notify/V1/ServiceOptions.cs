@@ -50,6 +50,14 @@ namespace Twilio.Rest.Notify.V1
         /// The log_enabled
         /// </summary>
         public bool? LogEnabled { get; set; }
+        /// <summary>
+        /// The alexa_skill_id
+        /// </summary>
+        public string AlexaSkillId { get; set; }
+        /// <summary>
+        /// The default_alexa_notification_protocol_version
+        /// </summary>
+        public string DefaultAlexaNotificationProtocolVersion { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -105,6 +113,16 @@ namespace Twilio.Rest.Notify.V1
             if (LogEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("LogEnabled", LogEnabled.Value.ToString()));
+            }
+
+            if (AlexaSkillId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AlexaSkillId", AlexaSkillId));
+            }
+
+            if (DefaultAlexaNotificationProtocolVersion != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DefaultAlexaNotificationProtocolVersion", DefaultAlexaNotificationProtocolVersion));
             }
 
             return p;
@@ -250,6 +268,14 @@ namespace Twilio.Rest.Notify.V1
         /// The log_enabled
         /// </summary>
         public bool? LogEnabled { get; set; }
+        /// <summary>
+        /// The alexa_skill_id
+        /// </summary>
+        public string AlexaSkillId { get; set; }
+        /// <summary>
+        /// The default_alexa_notification_protocol_version
+        /// </summary>
+        public string DefaultAlexaNotificationProtocolVersion { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -315,6 +341,16 @@ namespace Twilio.Rest.Notify.V1
             if (LogEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("LogEnabled", LogEnabled.Value.ToString()));
+            }
+
+            if (AlexaSkillId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AlexaSkillId", AlexaSkillId));
+            }
+
+            if (DefaultAlexaNotificationProtocolVersion != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DefaultAlexaNotificationProtocolVersion", DefaultAlexaNotificationProtocolVersion));
             }
 
             return p;

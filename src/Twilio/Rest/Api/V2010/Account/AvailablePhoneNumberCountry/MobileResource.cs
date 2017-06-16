@@ -83,13 +83,14 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="inRegion"> The in_region </param>
         /// <param name="inRateCenter"> The in_rate_center </param>
         /// <param name="inLata"> The in_lata </param>
+        /// <param name="inLocality"> The in_locality </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Mobile </returns> 
-        public static ResourceSet<MobileResource> Read(string pathCountryCode, string pathAccountSid = null, int? areaCode = null, string contains = null, bool? smsEnabled = null, bool? mmsEnabled = null, bool? voiceEnabled = null, bool? excludeAllAddressRequired = null, bool? excludeLocalAddressRequired = null, bool? excludeForeignAddressRequired = null, bool? beta = null, Types.PhoneNumber nearNumber = null, string nearLatLong = null, int? distance = null, string inPostalCode = null, string inRegion = null, string inRateCenter = null, string inLata = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<MobileResource> Read(string pathCountryCode, string pathAccountSid = null, int? areaCode = null, string contains = null, bool? smsEnabled = null, bool? mmsEnabled = null, bool? voiceEnabled = null, bool? excludeAllAddressRequired = null, bool? excludeLocalAddressRequired = null, bool? excludeForeignAddressRequired = null, bool? beta = null, Types.PhoneNumber nearNumber = null, string nearLatLong = null, int? distance = null, string inPostalCode = null, string inRegion = null, string inRateCenter = null, string inLata = null, string inLocality = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMobileOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, PageSize = pageSize, Limit = limit};
+            var options = new ReadMobileOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -116,16 +117,37 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="inRegion"> The in_region </param>
         /// <param name="inRateCenter"> The in_rate_center </param>
         /// <param name="inLata"> The in_lata </param>
+        /// <param name="inLocality"> The in_locality </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Mobile </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MobileResource>> ReadAsync(string pathCountryCode, string pathAccountSid = null, int? areaCode = null, string contains = null, bool? smsEnabled = null, bool? mmsEnabled = null, bool? voiceEnabled = null, bool? excludeAllAddressRequired = null, bool? excludeLocalAddressRequired = null, bool? excludeForeignAddressRequired = null, bool? beta = null, Types.PhoneNumber nearNumber = null, string nearLatLong = null, int? distance = null, string inPostalCode = null, string inRegion = null, string inRateCenter = null, string inLata = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MobileResource>> ReadAsync(string pathCountryCode, string pathAccountSid = null, int? areaCode = null, string contains = null, bool? smsEnabled = null, bool? mmsEnabled = null, bool? voiceEnabled = null, bool? excludeAllAddressRequired = null, bool? excludeLocalAddressRequired = null, bool? excludeForeignAddressRequired = null, bool? beta = null, Types.PhoneNumber nearNumber = null, string nearLatLong = null, int? distance = null, string inPostalCode = null, string inRegion = null, string inRateCenter = null, string inLata = null, string inLocality = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadMobileOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, PageSize = pageSize, Limit = limit};
+            var options = new ReadMobileOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
+
+        /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        ///
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns> 
+        public static Page<MobileResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<MobileResource>.FromJson("available_phone_numbers", response.Content);
+        }
 
         /// <summary>
         /// Fetch the next page of records
@@ -139,6 +161,27 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
+                    Rest.Domain.Api,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<MobileResource>.FromJson("available_phone_numbers", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        ///
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns> 
+        public static Page<MobileResource> PreviousPage(Page<MobileResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(
                     Rest.Domain.Api,
                     client.Region
                 )
@@ -184,6 +227,11 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         [JsonProperty("lata")]
         public string Lata { get; private set; }
+        /// <summary>
+        /// The locality
+        /// </summary>
+        [JsonProperty("locality")]
+        public string Locality { get; private set; }
         /// <summary>
         /// The rate_center
         /// </summary>
