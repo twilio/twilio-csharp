@@ -69,7 +69,7 @@ namespace Twilio.Tests.TwiML
                 mr.ToString(),
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
-                "  <Redirect method=\"GET\" url=\"http://www.twilio.com\" />" + Environment.NewLine +
+                "  <Redirect method=\"GET\">http://www.twilio.com</Redirect>" + Environment.NewLine +
                 "</Response>" 
             );
         }

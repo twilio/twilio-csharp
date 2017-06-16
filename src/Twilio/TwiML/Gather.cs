@@ -17,11 +17,13 @@ namespace Twilio.TwiML
         /// </summary>
         /// <param name="timeout">Gather timeout</param>
         /// <param name="numDigits">Number of digits to gather</param>
+        /// <param name="input">list of inputs accepted</param>
         /// <param name="action">Action URL</param>
         /// <param name="method">Aciton URL method</param>
         /// <param name="finishOnKey">Finish gather on key</param>
         public Gather(int? timeout=null,
             int? numDigits=null,
+            string input=null,
             string action=null,
             string method=null,
             string finishOnKey=null)
@@ -34,6 +36,10 @@ namespace Twilio.TwiML
             if (numDigits != null)
             {
                 Element.Add(new XAttribute("numDigits", numDigits));
+            }
+            if (input != null)
+            {
+                Element.Add(new XAttribute("input", input));
             }
             if (action != null)
             {
@@ -84,7 +90,7 @@ namespace Twilio.TwiML
         /// <param name="loop">Times to look</param>
         /// <param name="digits">Play DTMF tones</param>
         /// <returns>Gather Element</returns>
-        public Gather Play(string url, int? loop=null, string digits=null)
+        public Gather Play(string url=null, int? loop=null, string digits=null)
         {
             var play = new XElement("Play", url);
 
@@ -117,7 +123,5 @@ namespace Twilio.TwiML
             Element.Add(pause);
             return this;
         }
-
     }
 }
-

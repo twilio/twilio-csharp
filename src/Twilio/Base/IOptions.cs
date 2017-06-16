@@ -23,8 +23,6 @@ namespace Twilio.Base
     /// <typeparam name="T">Resource type</typeparam>
     public abstract class ReadOptions<T> : IOptions<T> where T : Resource
     {
-        private const int MaxPageSize = 1000;
-
         private int? _pageSize;
 
         /// <summary>
@@ -40,7 +38,7 @@ namespace Twilio.Base
                     return;
                 }
 
-                _pageSize = Math.Min(value.Value, MaxPageSize);
+                _pageSize = value.Value;
             }
         }
 
@@ -62,7 +60,7 @@ namespace Twilio.Base
                 _limit = value;
                 if (_pageSize == null)
                 {
-                    _pageSize = (int) Math.Min(value.Value, MaxPageSize);
+                    _pageSize = (int) value.Value;
                 }
             }
         }
