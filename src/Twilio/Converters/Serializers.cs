@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using Newtonsoft.Json;
 
 namespace Twilio.Converters
@@ -16,6 +18,28 @@ namespace Twilio.Converters
         public static string JsonObject(object input)
         {
             return (input is string) ? (string) input : JsonConvert.SerializeObject(input);
+        }
+
+        /// <summary>
+        /// Produce a ISO 8601 compatible string from input if possible
+        /// </summary>
+        /// <param name="input">DateTime intance to serialize to string</param>
+        /// <returns>A string</returns>
+        public static string DateTimeIso8601(DateTime input)
+        {
+              return input.ToString("yyyy-MM-ddTHH:mm:ssZ");
+        }
+
+        public static string DateTimeIso8601(string input)
+        {
+            CultureInfo enUS = new CultureInfo("en-US");
+            DateTimeStyles utc = DateTimeStyles.AdjustToUniversal;
+            DateTime parsedDateTime;
+
+            if (DateTime.TryParse(input, enUS, utc, out parsedDateTime))
+              return DateTimeIso8601(parsedDateTime);
+            else
+              return String.Empty;
         }
     }
 }
