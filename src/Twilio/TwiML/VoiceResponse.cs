@@ -196,7 +196,7 @@ namespace Twilio.TwiML
             {
                 gather.Add(new XAttribute("method", method));
             }
-            if (!string.IsNullOrEmpty(finishOnKey))
+            if (finishOnKey != null)
             {
                 gather.Add(new XAttribute("finishOnKey", finishOnKey));
             }
