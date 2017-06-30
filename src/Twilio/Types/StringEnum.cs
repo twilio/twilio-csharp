@@ -61,6 +61,27 @@ namespace Twilio.Types
 
             return o._value.Equals(_value);
         }
+
+        public static bool operator ==(StringEnum a, StringEnum b)
+        {
+            if (System.Object.ReferenceEquals(a, b))
+            {
+                return true;
+            }
+
+            if (((object)a == null) || ((object)b == null))
+            {
+                return false;
+            }
+            
+            return a.Equals(b);
+        }
+
+        public static bool operator!=(StringEnum a, StringEnum b)
+        {
+            return !(a == b);
+        }
+
     }
 }
 

@@ -48,6 +48,7 @@ namespace Twilio.Tests.Types
 
             Assert.AreNotEqual(i.E1, Enum2.V1);
             Assert.AreEqual(i.E1, Enum1.V1);
+            Assert.IsTrue(i.E1 == Enum1.V1);
         }
     }
 }
