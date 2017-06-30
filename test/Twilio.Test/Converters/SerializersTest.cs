@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using Twilio.Converters;
@@ -41,5 +42,44 @@ namespace Twilio.Tests.Converters
             var result = Serializers.JsonObject(input);
             Assert.AreEqual(input, result);
         }
+
+        [Test]
+        public void TestDateTimeIso8601WithDateTime()
+        {
+            var expect = "2017-06-19T12:13:14Z";
+            var input = new DateTime(2017, 06, 19, 12, 13, 14);
+            var result = Serializers.DateTimeIso8601(input);
+            Assert.AreEqual(expect, result);
+        }
+
+        [Test]
+        public void TestDateTimeIso8601WithString()
+        {
+            var input = "2017-06-19T12:13:14Z";
+            var result = Serializers.DateTimeIso8601(input);
+            Assert.AreEqual(input, result);
+        }
+
+        [Test]
+        public void TestDateTimeIso8601WithStringConvertsTZ()
+        {
+            var result = Serializers.DateTimeIso8601("2017-06-19T11:13:14-01:00");
+            Assert.AreEqual("2017-06-19T12:13:14Z", result);
+        }
+
+        [Test]
+        public void TestDateTimeIso8601WithNull()
+        {
+            var result = Serializers.DateTimeIso8601(null);
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void TestDateTimeIso8601WithGarbage()
+        {
+            var result = Serializers.DateTimeIso8601("not-a-time");
+            Assert.AreEqual("not-a-time", result);
+        }
+
     }
 }
