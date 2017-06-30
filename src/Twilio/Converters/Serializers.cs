@@ -32,6 +32,8 @@ namespace Twilio.Converters
 
         public static string DateTimeIso8601(string input)
         {
+            if (input == null) return null;
+
             CultureInfo enUS = new CultureInfo("en-US");
             DateTimeStyles utc = DateTimeStyles.AdjustToUniversal;
             DateTime parsedDateTime;
@@ -39,7 +41,7 @@ namespace Twilio.Converters
             if (DateTime.TryParse(input, enUS, utc, out parsedDateTime))
               return DateTimeIso8601(parsedDateTime);
             else
-              return String.Empty;
+              return input;
         }
     }
 }

@@ -61,10 +61,24 @@ namespace Twilio.Tests.Converters
         }
 
         [Test]
+        public void TestDateTimeIso8601WithStringConvertsTZ()
+        {
+            var result = Serializers.DateTimeIso8601("2017-06-19T11:13:14-01:00");
+            Assert.AreEqual("2017-06-19T12:13:14Z", result);
+        }
+
+        [Test]
         public void TestDateTimeIso8601WithNull()
         {
             var result = Serializers.DateTimeIso8601(null);
-            Assert.AreEqual(String.Empty, result);
+            Assert.AreEqual(null, result);
+        }
+
+        [Test]
+        public void TestDateTimeIso8601WithGarbage()
+        {
+            var result = Serializers.DateTimeIso8601("not-a-time");
+            Assert.AreEqual("not-a-time", result);
         }
 
     }
