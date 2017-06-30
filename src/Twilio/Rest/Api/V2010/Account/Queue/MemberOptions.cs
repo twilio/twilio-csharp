@@ -95,7 +95,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var p = new List<KeyValuePair<string, string>>();
             if (Url != null)
             {
-                p.Add(new KeyValuePair<string, string>("Url", Url.ToString()));
+                p.Add(new KeyValuePair<string, string>("Url", Url.AbsoluteUri));
             }
 
             if (Method != null)

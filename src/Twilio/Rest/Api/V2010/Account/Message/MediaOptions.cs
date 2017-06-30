@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Converters;
 
 namespace Twilio.Rest.Api.V2010.Account.Message 
 {
@@ -129,18 +130,18 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             var p = new List<KeyValuePair<string, string>>();
             if (DateCreated != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreated", DateCreated.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
             }
             else
             {
                 if (DateCreatedBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateCreated<", DateCreatedBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("DateCreated<", Serializers.DateTimeIso8601(DateCreatedBefore)));
                 }
 
                 if (DateCreatedAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("DateCreated>", DateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("DateCreated>", Serializers.DateTimeIso8601(DateCreatedAfter)));
                 }
             }
 

@@ -105,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var p = new List<KeyValuePair<string, string>>();
             if (AuthorizeRedirectUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("AuthorizeRedirectUrl", AuthorizeRedirectUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("AuthorizeRedirectUrl", AuthorizeRedirectUrl.AbsoluteUri));
             }
 
             if (CompanyName != null)
@@ -120,7 +120,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (DeauthorizeCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("DeauthorizeCallbackUrl", DeauthorizeCallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("DeauthorizeCallbackUrl", DeauthorizeCallbackUrl.AbsoluteUri));
             }
 
             if (Description != null)
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (HomepageUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("HomepageUrl", HomepageUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("HomepageUrl", HomepageUrl.AbsoluteUri));
             }
 
             if (Permissions != null)

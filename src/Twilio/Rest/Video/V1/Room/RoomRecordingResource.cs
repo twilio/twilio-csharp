@@ -178,13 +178,17 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         ///
         /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="status"> The status </param>
+        /// <param name="sourceSid"> The source_sid </param>
+        /// <param name="dateCreatedAfter"> The date_created_after </param>
+        /// <param name="dateCreatedBefore"> The date_created_before </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RoomRecording </returns> 
-        public static ResourceSet<RoomRecordingResource> Read(string pathRoomSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<RoomRecordingResource> Read(string pathRoomSid, RoomRecordingResource.StatusEnum status = null, string sourceSid = null, DateTime? dateCreatedAfter = null, DateTime? dateCreatedBefore = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadRoomRecordingOptions(pathRoomSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadRoomRecordingOptions(pathRoomSid){Status = status, SourceSid = sourceSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -194,13 +198,17 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         ///
         /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="status"> The status </param>
+        /// <param name="sourceSid"> The source_sid </param>
+        /// <param name="dateCreatedAfter"> The date_created_after </param>
+        /// <param name="dateCreatedBefore"> The date_created_before </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RoomRecording </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<RoomRecordingResource>> ReadAsync(string pathRoomSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RoomRecordingResource>> ReadAsync(string pathRoomSid, RoomRecordingResource.StatusEnum status = null, string sourceSid = null, DateTime? dateCreatedAfter = null, DateTime? dateCreatedBefore = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadRoomRecordingOptions(pathRoomSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadRoomRecordingOptions(pathRoomSid){Status = status, SourceSid = sourceSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

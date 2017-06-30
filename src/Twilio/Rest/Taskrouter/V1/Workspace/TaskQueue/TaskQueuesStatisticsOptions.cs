@@ -50,7 +50,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
             var p = new List<KeyValuePair<string, string>>();
             if (EndDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
             }
 
             if (FriendlyName != null)
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
 
             if (StartDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartDate", StartDate.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("StartDate", Serializers.DateTimeIso8601(StartDate)));
             }
 
             if (PageSize != null)

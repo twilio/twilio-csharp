@@ -138,6 +138,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum PvSipEndpointRegistrations = new UsageCategoryEnum("pv-sip-endpoint-registrations");
             public static readonly UsageCategoryEnum Recordings = new UsageCategoryEnum("recordings");
             public static readonly UsageCategoryEnum Recordingstorage = new UsageCategoryEnum("recordingstorage");
+            public static readonly UsageCategoryEnum RoomsGroupMinutes = new UsageCategoryEnum("rooms-group-minutes");
+            public static readonly UsageCategoryEnum RoomsGroupBandwidth = new UsageCategoryEnum("rooms-group-bandwidth");
+            public static readonly UsageCategoryEnum RoomsPeerToPeerMinutes = new UsageCategoryEnum("rooms-peer-to-peer-minutes");
             public static readonly UsageCategoryEnum Shortcodes = new UsageCategoryEnum("shortcodes");
             public static readonly UsageCategoryEnum ShortcodesCustomerowned = new UsageCategoryEnum("shortcodes-customerowned");
             public static readonly UsageCategoryEnum ShortcodesMmsEnablement = new UsageCategoryEnum("shortcodes-mms-enablement");
@@ -154,6 +157,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum SmsOutboundLongcode = new UsageCategoryEnum("sms-outbound-longcode");
             public static readonly UsageCategoryEnum SmsOutboundShortcode = new UsageCategoryEnum("sms-outbound-shortcode");
             public static readonly UsageCategoryEnum SmsMessagesFeatures = new UsageCategoryEnum("sms-messages-features");
+            public static readonly UsageCategoryEnum SpeechRecognition = new UsageCategoryEnum("speech-recognition");
             public static readonly UsageCategoryEnum Sync = new UsageCategoryEnum("sync");
             public static readonly UsageCategoryEnum SyncActions = new UsageCategoryEnum("sync-actions");
             public static readonly UsageCategoryEnum SyncEndpointHours = new UsageCategoryEnum("sync-endpoint-hours");

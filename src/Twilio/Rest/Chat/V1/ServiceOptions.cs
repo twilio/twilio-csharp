@@ -510,12 +510,12 @@ namespace Twilio.Rest.Chat.V1
 
             if (PreWebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("PreWebhookUrl", PreWebhookUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("PreWebhookUrl", PreWebhookUrl.AbsoluteUri));
             }
 
             if (PostWebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("PostWebhookUrl", PostWebhookUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("PostWebhookUrl", PostWebhookUrl.AbsoluteUri));
             }
 
             if (WebhookMethod != null)
@@ -530,7 +530,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnMessageSendUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSend.Url", WebhooksOnMessageSendUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSend.Url", WebhooksOnMessageSendUrl.AbsoluteUri));
             }
 
             if (WebhooksOnMessageSendMethod != null)
@@ -545,7 +545,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnMessageUpdateUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdate.Url", WebhooksOnMessageUpdateUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdate.Url", WebhooksOnMessageUpdateUrl.AbsoluteUri));
             }
 
             if (WebhooksOnMessageUpdateMethod != null)
@@ -560,7 +560,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnMessageRemoveUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemove.Url", WebhooksOnMessageRemoveUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemove.Url", WebhooksOnMessageRemoveUrl.AbsoluteUri));
             }
 
             if (WebhooksOnMessageRemoveMethod != null)
@@ -575,7 +575,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnChannelAddUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdd.Url", WebhooksOnChannelAddUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdd.Url", WebhooksOnChannelAddUrl.AbsoluteUri));
             }
 
             if (WebhooksOnChannelAddMethod != null)
@@ -590,7 +590,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnChannelDestroyUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroy.Url", WebhooksOnChannelDestroyUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroy.Url", WebhooksOnChannelDestroyUrl.AbsoluteUri));
             }
 
             if (WebhooksOnChannelDestroyMethod != null)
@@ -605,7 +605,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnChannelUpdateUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdate.Url", WebhooksOnChannelUpdateUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdate.Url", WebhooksOnChannelUpdateUrl.AbsoluteUri));
             }
 
             if (WebhooksOnChannelUpdateMethod != null)
@@ -620,7 +620,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnMemberAddUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdd.Url", WebhooksOnMemberAddUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdd.Url", WebhooksOnMemberAddUrl.AbsoluteUri));
             }
 
             if (WebhooksOnMemberAddMethod != null)
@@ -635,7 +635,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnMemberRemoveUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemove.Url", WebhooksOnMemberRemoveUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemove.Url", WebhooksOnMemberRemoveUrl.AbsoluteUri));
             }
 
             if (WebhooksOnMemberRemoveMethod != null)
@@ -650,7 +650,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnMessageSentUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSent.Url", WebhooksOnMessageSentUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageSent.Url", WebhooksOnMessageSentUrl.AbsoluteUri));
             }
 
             if (WebhooksOnMessageSentMethod != null)
@@ -665,7 +665,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnMessageUpdatedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdated.Url", WebhooksOnMessageUpdatedUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageUpdated.Url", WebhooksOnMessageUpdatedUrl.AbsoluteUri));
             }
 
             if (WebhooksOnMessageUpdatedMethod != null)
@@ -680,7 +680,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnMessageRemovedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemoved.Url", WebhooksOnMessageRemovedUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMessageRemoved.Url", WebhooksOnMessageRemovedUrl.AbsoluteUri));
             }
 
             if (WebhooksOnMessageRemovedMethod != null)
@@ -695,7 +695,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnChannelAddedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdded.Url", WebhooksOnChannelAddedUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelAdded.Url", WebhooksOnChannelAddedUrl.AbsoluteUri));
             }
 
             if (WebhooksOnChannelAddedMethod != null)
@@ -710,7 +710,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnChannelDestroyedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroyed.Url", WebhooksOnChannelDestroyedUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelDestroyed.Url", WebhooksOnChannelDestroyedUrl.AbsoluteUri));
             }
 
             if (WebhooksOnChannelDestroyedMethod != null)
@@ -725,7 +725,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnChannelUpdatedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdated.Url", WebhooksOnChannelUpdatedUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnChannelUpdated.Url", WebhooksOnChannelUpdatedUrl.AbsoluteUri));
             }
 
             if (WebhooksOnChannelUpdatedMethod != null)
@@ -740,7 +740,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnMemberAddedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdded.Url", WebhooksOnMemberAddedUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberAdded.Url", WebhooksOnMemberAddedUrl.AbsoluteUri));
             }
 
             if (WebhooksOnMemberAddedMethod != null)
@@ -755,7 +755,7 @@ namespace Twilio.Rest.Chat.V1
 
             if (WebhooksOnMemberRemovedUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemoved.Url", WebhooksOnMemberRemovedUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("Webhooks.OnMemberRemoved.Url", WebhooksOnMemberRemovedUrl.AbsoluteUri));
             }
 
             if (WebhooksOnMemberRemovedMethod != null)

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Twilio.Base;
+using Twilio.Converters;
 using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account 
@@ -132,7 +133,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (Url != null)
             {
-                p.Add(new KeyValuePair<string, string>("Url", Url.ToString()));
+                p.Add(new KeyValuePair<string, string>("Url", Url.AbsoluteUri));
             }
 
             if (ApplicationSid != null)
@@ -147,7 +148,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (FallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.AbsoluteUri));
             }
 
             if (FallbackMethod != null)
@@ -157,7 +158,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
             }
 
             if (StatusCallbackEvent != null)
@@ -375,35 +376,35 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (StartTime != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartTime", StartTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("StartTime", Serializers.DateTimeIso8601(StartTime)));
             }
             else
             {
                 if (StartTimeBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("StartTime<", StartTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("StartTime<", Serializers.DateTimeIso8601(StartTimeBefore)));
                 }
 
                 if (StartTimeAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("StartTime>", StartTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("StartTime>", Serializers.DateTimeIso8601(StartTimeAfter)));
                 }
             }
 
             if (EndTime != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndTime", EndTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("EndTime", Serializers.DateTimeIso8601(EndTime)));
             }
             else
             {
                 if (EndTimeBefore != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("EndTime<", EndTimeBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("EndTime<", Serializers.DateTimeIso8601(EndTimeBefore)));
                 }
 
                 if (EndTimeAfter != null)
                 {
-                    p.Add(new KeyValuePair<string, string>("EndTime>", EndTimeAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                    p.Add(new KeyValuePair<string, string>("EndTime>", Serializers.DateTimeIso8601(EndTimeAfter)));
                 }
             }
 
@@ -476,7 +477,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var p = new List<KeyValuePair<string, string>>();
             if (Url != null)
             {
-                p.Add(new KeyValuePair<string, string>("Url", Url.ToString()));
+                p.Add(new KeyValuePair<string, string>("Url", Url.AbsoluteUri));
             }
 
             if (Method != null)
@@ -491,7 +492,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (FallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.AbsoluteUri));
             }
 
             if (FallbackMethod != null)
@@ -501,7 +502,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
             }
 
             if (StatusCallbackMethod != null)

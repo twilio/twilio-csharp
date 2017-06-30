@@ -253,7 +253,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (DequeueStatusCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("DequeueStatusCallbackUrl", DequeueStatusCallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("DequeueStatusCallbackUrl", DequeueStatusCallbackUrl.AbsoluteUri));
             }
 
             if (CallFrom != null)
@@ -278,12 +278,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (CallUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallUrl", CallUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("CallUrl", CallUrl.AbsoluteUri));
             }
 
             if (CallStatusCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallStatusCallbackUrl", CallStatusCallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("CallStatusCallbackUrl", CallStatusCallbackUrl.AbsoluteUri));
             }
 
             if (CallAccept != null)
@@ -303,7 +303,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (RedirectUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("RedirectUrl", RedirectUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("RedirectUrl", RedirectUrl.AbsoluteUri));
             }
 
             return p;

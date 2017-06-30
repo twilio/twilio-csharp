@@ -93,7 +93,7 @@ namespace Twilio.Rest.Video.V1
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
             }
 
             if (StatusCallbackMethod != null)
@@ -155,12 +155,12 @@ namespace Twilio.Rest.Video.V1
 
             if (DateCreatedAfter != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", DateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
             }
 
             if (DateCreatedBefore != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreatedBefore", DateCreatedBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
             }
 
             if (PageSize != null)

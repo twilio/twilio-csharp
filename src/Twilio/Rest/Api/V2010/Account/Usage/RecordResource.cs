@@ -138,6 +138,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly CategoryEnum PvSipEndpointRegistrations = new CategoryEnum("pv-sip-endpoint-registrations");
             public static readonly CategoryEnum Recordings = new CategoryEnum("recordings");
             public static readonly CategoryEnum Recordingstorage = new CategoryEnum("recordingstorage");
+            public static readonly CategoryEnum RoomsGroupMinutes = new CategoryEnum("rooms-group-minutes");
+            public static readonly CategoryEnum RoomsGroupBandwidth = new CategoryEnum("rooms-group-bandwidth");
+            public static readonly CategoryEnum RoomsPeerToPeerMinutes = new CategoryEnum("rooms-peer-to-peer-minutes");
             public static readonly CategoryEnum Shortcodes = new CategoryEnum("shortcodes");
             public static readonly CategoryEnum ShortcodesCustomerowned = new CategoryEnum("shortcodes-customerowned");
             public static readonly CategoryEnum ShortcodesMmsEnablement = new CategoryEnum("shortcodes-mms-enablement");
@@ -154,6 +157,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly CategoryEnum SmsOutboundLongcode = new CategoryEnum("sms-outbound-longcode");
             public static readonly CategoryEnum SmsOutboundShortcode = new CategoryEnum("sms-outbound-shortcode");
             public static readonly CategoryEnum SmsMessagesFeatures = new CategoryEnum("sms-messages-features");
+            public static readonly CategoryEnum SpeechRecognition = new CategoryEnum("speech-recognition");
             public static readonly CategoryEnum Sync = new CategoryEnum("sync");
             public static readonly CategoryEnum SyncActions = new CategoryEnum("sync-actions");
             public static readonly CategoryEnum SyncEndpointHours = new CategoryEnum("sync-endpoint-hours");
