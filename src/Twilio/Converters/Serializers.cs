@@ -25,25 +25,11 @@ namespace Twilio.Converters
         /// </summary>
         /// <param name="input">DateTime instance to serialize to string</param>
         /// <returns>A string</returns>
-        public static string DateTimeIso8601(DateTime input)
-        {
-              return input.ToString("yyyy-MM-ddTHH:mm:ssZ");
-        }
-
-        /// <summary>
-        /// Produce a ISO 8601 UTC compatible string from input if possible
-        /// </summary>
-        /// <param name="input">string representation of a time which will be converted to an iso8601 UTC string</param>
-        /// <returns>A string</returns>
-        public static string DateTimeIso8601(string input)
+        public static string DateTimeIso8601(DateTime? input)
         {
             if (input == null) return null;
 
-            var enUS = new CultureInfo("en-US");
-            var utc = DateTimeStyles.AdjustToUniversal;
-            DateTime parsedDateTime;
-
-            return DateTime.TryParse(input, enUS, utc, out parsedDateTime) ? DateTimeIso8601(parsedDateTime) : input;
+            return input.Value.ToString("yyyy-MM-ddTHH:mm:ssZ");
         }
     }
 }
