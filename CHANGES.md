@@ -5,6 +5,8 @@ twilio-csharp Changelog
 ---------------------------
 - Fix Url parameters with percent encoded characters not being properly serialized before being sent to the API.
 - Fix Iso8601 date time serialization not enforcing expected culture, timezone. Issue #372.
+- Allow empty string `finishOnKey` Gather Twiml attribute. Thanks @barclayadam!
+- Fix Enums comparison with `==` not working. Issue #376.
 - Support Recording encryption. Add `EncryptionType` and `EncryptionDetails` parameters to call recordings.
 - Add new usage record categories for rooms and speech recognition.
 
