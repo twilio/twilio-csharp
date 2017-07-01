@@ -3,12 +3,26 @@ twilio-csharp Changelog
 
 [2017-06-30] Version 5.5.3-alpha1
 ----------------------------------
+- Fix Url parameters with percent encoded characters not being properly serialized before being sent to the API.
+- Fix Iso8601 date time serialization not enforcing expected culture, timezone. Issue #372.
+- Allow empty string `finishOnKey` Gather Twiml attribute. Thanks @barclayadam!
+- Fix Enums comparison with `==` not working. Issue #376.
+- Support Recording encryption. Add `EncryptionType` and `EncryptionDetails` parameters to call recordings.
+- Add new usage record categories for rooms and speech recognition.
+
 **Video**
 - Filter recordings by date using the parameters `DateCreatedAfter` and `DateCreatedBefore`.
 - Override the default time-to-live of a recording's media URL through the `Ttl` parameter (in seconds, default value is 3600).
 - Add query parameters `SourceSid`, `Status`, `DateCreatedAfter` and `DateCreatedBefore` to the convenience method for retrieving Room recordings.
+
 **Wireless**
 - Added national and international data limits to the RatePlans resource.
+
+**Messaging**
+- Add `SynchronousValidation` property and parameter to Messaging Service.
+
+**Hosted Numbers**
+- Add `VerificationCode` parameter and property to HostedNumberOrder
 
 [2017-06-16] Version 5.5.2-alpha1
 ---------------------------------
