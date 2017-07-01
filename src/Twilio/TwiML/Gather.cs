@@ -49,7 +49,7 @@ namespace Twilio.TwiML
             {
                 Element.Add(new XAttribute("method", method));
             }
-            if (!string.IsNullOrEmpty(finishOnKey))
+            if (finishOnKey != null)
             {
                 Element.Add(new XAttribute("finishOnKey", finishOnKey));
             }
@@ -77,7 +77,7 @@ namespace Twilio.TwiML
             if (!string.IsNullOrEmpty(voice))
             {
                 say.Add(new XAttribute("voice", voice));
-            }          
+            }
 
             Element.Add(say);
             return this;

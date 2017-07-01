@@ -7,6 +7,6 @@ test: off
 artifacts:
 - path: .\Twilio.*.nupkg
 branches:
-    only:
-      - master
-      - alpha
+  only:
+    - master
+    - alpha

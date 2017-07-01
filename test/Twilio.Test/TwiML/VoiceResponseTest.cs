@@ -84,6 +84,21 @@ namespace Twilio.Tests.TwiML
         }
 
         [Test]
+        public void TestGatherEmptyFinishOnKey()
+        {
+            var vr = new VoiceResponse();
+            vr.Gather(timeout: 5, finishOnKey: string.Empty);
+
+            Assert.AreEqual(
+                vr.ToString(),
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Response>" + Environment.NewLine +
+                "  <Gather timeout=\"5\" finishOnKey=\"\" />" + Environment.NewLine +
+                "</Response>"
+            );
+        }
+
+        [Test]
         public void TestNestedGather()
         {
             var gather = new Gather();
@@ -97,6 +112,26 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
                 "  <Gather>" + Environment.NewLine +
+                "    <Say>Hello world</Say>" + Environment.NewLine +
+                "  </Gather>" + Environment.NewLine +
+                "</Response>"
+            );
+        }
+
+        [Test]
+        public void TestNestedGatherFinishOnKey()
+        {
+            var gather = new Gather(finishOnKey: string.Empty);
+            gather.Say("Hello world");
+
+            var vr = new VoiceResponse();
+            vr.Gather(gather);
+
+            Assert.AreEqual(
+                vr.ToString(),
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Response>" + Environment.NewLine +
+                "  <Gather finishOnKey=\"\">" + Environment.NewLine +
                 "    <Say>Hello world</Say>" + Environment.NewLine +
                 "  </Gather>" + Environment.NewLine +
                 "</Response>"
