@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
             }
 
             if (StatusCallbackMethod != null)

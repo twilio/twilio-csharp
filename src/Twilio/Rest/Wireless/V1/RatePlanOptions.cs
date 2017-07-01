@@ -97,6 +97,14 @@ namespace Twilio.Rest.Wireless.V1
         /// The international_roaming
         /// </summary>
         public List<string> InternationalRoaming { get; set; }
+        /// <summary>
+        /// The national_roaming_data_limit
+        /// </summary>
+        public int? NationalRoamingDataLimit { get; set; }
+        /// <summary>
+        /// The international_roaming_data_limit
+        /// </summary>
+        public int? InternationalRoamingDataLimit { get; set; }
 
         /// <summary>
         /// Construct a new CreateRatePlanOptions
@@ -155,6 +163,16 @@ namespace Twilio.Rest.Wireless.V1
             if (InternationalRoaming != null)
             {
                 p.AddRange(InternationalRoaming.Select(prop => new KeyValuePair<string, string>("InternationalRoaming", prop)));
+            }
+
+            if (NationalRoamingDataLimit != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NationalRoamingDataLimit", NationalRoamingDataLimit.Value.ToString()));
+            }
+
+            if (InternationalRoamingDataLimit != null)
+            {
+                p.Add(new KeyValuePair<string, string>("InternationalRoamingDataLimit", InternationalRoamingDataLimit.Value.ToString()));
             }
 
             return p;

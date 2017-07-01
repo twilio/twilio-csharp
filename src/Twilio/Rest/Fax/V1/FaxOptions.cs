@@ -76,12 +76,12 @@ namespace Twilio.Rest.Fax.V1
 
             if (DateCreatedOnOrBefore != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreatedOnOrBefore", DateCreatedOnOrBefore.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("DateCreatedOnOrBefore", Serializers.DateTimeIso8601(DateCreatedOnOrBefore)));
             }
 
             if (DateCreatedAfter != null)
             {
-                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", DateCreatedAfter.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
             }
 
             if (PageSize != null)
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Fax.V1
 
             if (MediaUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("MediaUrl", MediaUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("MediaUrl", MediaUrl.AbsoluteUri));
             }
 
             if (Quality != null)
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Fax.V1
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
             }
 
             if (From != null)

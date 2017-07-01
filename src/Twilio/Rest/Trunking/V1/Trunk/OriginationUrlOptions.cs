@@ -155,7 +155,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
             if (SipUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SipUrl", SipUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("SipUrl", SipUrl.AbsoluteUri));
             }
 
             return p;
@@ -271,7 +271,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
             if (SipUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SipUrl", SipUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("SipUrl", SipUrl.AbsoluteUri));
             }
 
             return p;

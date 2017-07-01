@@ -91,7 +91,7 @@ namespace Twilio.Rest.Preview.Proxy
 
             if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri));
             }
 
             return p;
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Preview.Proxy
 
             if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri));
             }
 
             return p;

@@ -372,6 +372,16 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
+        /// <summary>
+        /// The encryption_type
+        /// </summary>
+        [JsonProperty("encryption_type")]
+        public string EncryptionType { get; private set; }
+        /// <summary>
+        /// The encryption_details
+        /// </summary>
+        [JsonProperty("encryption_details")]
+        public object EncryptionDetails { get; private set; }
 
         private RecordingResource()
         {

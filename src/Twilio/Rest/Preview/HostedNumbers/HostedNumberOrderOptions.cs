@@ -95,6 +95,10 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// The Status of this HostedNumberOrder.
         /// </summary>
         public HostedNumberOrderResource.StatusEnum Status { get; set; }
+        /// <summary>
+        /// A verification code.
+        /// </summary>
+        public string VerificationCode { get; set; }
 
         /// <summary>
         /// Construct a new UpdateHostedNumberOrderOptions
@@ -136,6 +140,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            if (VerificationCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerificationCode", VerificationCode));
             }
 
             return p;
@@ -338,7 +347,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (SmsUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.AbsoluteUri));
             }
 
             if (SmsMethod != null)
@@ -348,7 +357,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (SmsFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.AbsoluteUri));
             }
 
             if (SmsFallbackMethod != null)

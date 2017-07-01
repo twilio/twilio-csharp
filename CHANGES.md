@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2017-06-30] Version 5.5.3-alpha1
+----------------------------------
+**Video**
+- Filter recordings by date using the parameters `DateCreatedAfter` and `DateCreatedBefore`.
+- Override the default time-to-live of a recording's media URL through the `Ttl` parameter (in seconds, default value is 3600).
+- Add query parameters `SourceSid`, `Status`, `DateCreatedAfter` and `DateCreatedBefore` to the convenience method for retrieving Room recordings.
+**Wireless**
+- Added national and international data limits to the RatePlans resource.
+
 [2017-06-16] Version 5.5.2-alpha1
 ---------------------------------
 - Make url parameter optional in Play Twiml.

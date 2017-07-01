@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Twilio.Base;
+using Twilio.Converters;
 
 namespace Twilio.Rest.Video.V1 
 {
@@ -53,6 +54,14 @@ namespace Twilio.Rest.Video.V1
         /// The grouping_sid
         /// </summary>
         public List<string> GroupingSid { get; set; }
+        /// <summary>
+        /// The date_created_after
+        /// </summary>
+        public DateTime? DateCreatedAfter { get; set; }
+        /// <summary>
+        /// The date_created_before
+        /// </summary>
+        public DateTime? DateCreatedBefore { get; set; }
 
         /// <summary>
         /// Construct a new ReadRecordingOptions
@@ -81,6 +90,16 @@ namespace Twilio.Rest.Video.V1
             if (GroupingSid != null)
             {
                 p.AddRange(GroupingSid.Select(prop => new KeyValuePair<string, string>("GroupingSid", prop.ToString())));
+            }
+
+            if (DateCreatedAfter != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
+            }
+
+            if (DateCreatedBefore != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
             }
 
             if (PageSize != null)

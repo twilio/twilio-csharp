@@ -62,6 +62,10 @@ namespace Twilio.Rest.Messaging.V1
         /// The validity_period
         /// </summary>
         public int? ValidityPeriod { get; set; }
+        /// <summary>
+        /// The synchronous_validation
+        /// </summary>
+        public bool? SynchronousValidation { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -86,7 +90,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (InboundRequestUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("InboundRequestUrl", InboundRequestUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("InboundRequestUrl", InboundRequestUrl.AbsoluteUri));
             }
 
             if (InboundMethod != null)
@@ -96,7 +100,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (FallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.AbsoluteUri));
             }
 
             if (FallbackMethod != null)
@@ -106,7 +110,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
             }
 
             if (StickySender != null)
@@ -142,6 +146,11 @@ namespace Twilio.Rest.Messaging.V1
             if (ValidityPeriod != null)
             {
                 p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.Value.ToString()));
+            }
+
+            if (SynchronousValidation != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString()));
             }
 
             return p;
@@ -209,6 +218,10 @@ namespace Twilio.Rest.Messaging.V1
         /// The validity_period
         /// </summary>
         public int? ValidityPeriod { get; set; }
+        /// <summary>
+        /// The synchronous_validation
+        /// </summary>
+        public bool? SynchronousValidation { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -233,7 +246,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (InboundRequestUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("InboundRequestUrl", InboundRequestUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("InboundRequestUrl", InboundRequestUrl.AbsoluteUri));
             }
 
             if (InboundMethod != null)
@@ -243,7 +256,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (FallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.AbsoluteUri));
             }
 
             if (FallbackMethod != null)
@@ -253,7 +266,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.ToString()));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
             }
 
             if (StickySender != null)
@@ -289,6 +302,11 @@ namespace Twilio.Rest.Messaging.V1
             if (ValidityPeriod != null)
             {
                 p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.Value.ToString()));
+            }
+
+            if (SynchronousValidation != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString()));
             }
 
             return p;

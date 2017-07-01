@@ -46,12 +46,12 @@ namespace Twilio.Rest.Wireless.V1.Sim
             var p = new List<KeyValuePair<string, string>>();
             if (End != null)
             {
-                p.Add(new KeyValuePair<string, string>("End", End.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("End", Serializers.DateTimeIso8601(End)));
             }
 
             if (Start != null)
             {
-                p.Add(new KeyValuePair<string, string>("Start", Start.Value.ToString("yyyy-MM-dd'T'HH:mm:ss")));
+                p.Add(new KeyValuePair<string, string>("Start", Serializers.DateTimeIso8601(Start)));
             }
 
             if (Granularity != null)

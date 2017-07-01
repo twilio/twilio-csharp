@@ -22,6 +22,8 @@ namespace Twilio.Rest.Preview.HostedNumbers
             public StatusEnum() {}
 
             public static readonly StatusEnum Received = new StatusEnum("received");
+            public static readonly StatusEnum PendingVerification = new StatusEnum("pending-verification");
+            public static readonly StatusEnum Verified = new StatusEnum("verified");
             public static readonly StatusEnum PendingLoa = new StatusEnum("pending-loa");
             public static readonly StatusEnum CarrierProcessing = new StatusEnum("carrier-processing");
             public static readonly StatusEnum Testing = new StatusEnum("testing");
@@ -219,11 +221,12 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="email"> Email. </param>
         /// <param name="ccEmails"> A list of emails. </param>
         /// <param name="status"> The Status of this HostedNumberOrder. </param>
+        /// <param name="verificationCode"> A verification code. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
-        public static HostedNumberOrderResource Update(string pathSid, string friendlyName = null, string uniqueName = null, string email = null, List<string> ccEmails = null, HostedNumberOrderResource.StatusEnum status = null, ITwilioRestClient client = null)
+        public static HostedNumberOrderResource Update(string pathSid, string friendlyName = null, string uniqueName = null, string email = null, List<string> ccEmails = null, HostedNumberOrderResource.StatusEnum status = null, string verificationCode = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateHostedNumberOrderOptions(pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Email = email, CcEmails = ccEmails, Status = status};
+            var options = new UpdateHostedNumberOrderOptions(pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Email = email, CcEmails = ccEmails, Status = status, VerificationCode = verificationCode};
             return Update(options, client);
         }
 
@@ -238,11 +241,12 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="email"> Email. </param>
         /// <param name="ccEmails"> A list of emails. </param>
         /// <param name="status"> The Status of this HostedNumberOrder. </param>
+        /// <param name="verificationCode"> A verification code. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> UpdateAsync(string pathSid, string friendlyName = null, string uniqueName = null, string email = null, List<string> ccEmails = null, HostedNumberOrderResource.StatusEnum status = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> UpdateAsync(string pathSid, string friendlyName = null, string uniqueName = null, string email = null, List<string> ccEmails = null, HostedNumberOrderResource.StatusEnum status = null, string verificationCode = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateHostedNumberOrderOptions(pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Email = email, CcEmails = ccEmails, Status = status};
+            var options = new UpdateHostedNumberOrderOptions(pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Email = email, CcEmails = ccEmails, Status = status, VerificationCode = verificationCode};
             return await UpdateAsync(options, client);
         }
         #endif

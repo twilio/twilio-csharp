@@ -84,7 +84,7 @@ namespace Twilio.Rest.Preview.BulkExports
 
             if (WebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.AbsoluteUri));
             }
 
             if (WebhookMethod != null)

@@ -100,7 +100,7 @@ namespace Twilio.Rest.Sync.V1
 
             if (WebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.AbsoluteUri));
             }
 
             if (ReachabilityWebhooksEnabled != null)
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Sync.V1
             var p = new List<KeyValuePair<string, string>>();
             if (WebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.AbsoluteUri));
             }
 
             if (FriendlyName != null)

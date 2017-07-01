@@ -203,7 +203,7 @@ namespace Twilio.Rest.Wireless.V1
 
             if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri));
             }
 
             if (FriendlyName != null)
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Wireless.V1
 
             if (CommandsCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CommandsCallbackUrl", CommandsCallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("CommandsCallbackUrl", CommandsCallbackUrl.AbsoluteUri));
             }
 
             if (SmsFallbackMethod != null)
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Wireless.V1
 
             if (SmsFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.AbsoluteUri));
             }
 
             if (SmsMethod != null)
@@ -248,7 +248,7 @@ namespace Twilio.Rest.Wireless.V1
 
             if (SmsUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.AbsoluteUri));
             }
 
             if (VoiceFallbackMethod != null)
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Wireless.V1
 
             if (VoiceFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.AbsoluteUri));
             }
 
             if (VoiceMethod != null)
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Wireless.V1
 
             if (VoiceUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.ToString()));
+                p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.AbsoluteUri));
             }
 
             return p;

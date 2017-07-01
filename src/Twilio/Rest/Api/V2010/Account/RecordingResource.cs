@@ -412,6 +412,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
+        /// <summary>
+        /// The type of encryption used for this resource.
+        /// </summary>
+        [JsonProperty("encryption_type")]
+        public string EncryptionType { get; private set; }
+        /// <summary>
+        /// The encryption_details
+        /// </summary>
+        [JsonProperty("encryption_details")]
+        public object EncryptionDetails { get; private set; }
 
         private RecordingResource()
         {
