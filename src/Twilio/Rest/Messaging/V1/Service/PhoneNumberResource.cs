@@ -6,7 +6,6 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Types;
 
 namespace Twilio.Rest.Messaging.V1.Service 
 {
@@ -427,7 +426,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// The capabilities
         /// </summary>
         [JsonProperty("capabilities")]
-        public List<PhoneNumberCapabilities> Capabilities { get; private set; }
+        public List<string> Capabilities { get; private set; }
         /// <summary>
         /// The url
         /// </summary>

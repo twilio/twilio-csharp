@@ -603,7 +603,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonConverter(typeof(StringEnumConverter))]
         public MessageResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The subresource_uris
+        /// The URI for any subresources
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }

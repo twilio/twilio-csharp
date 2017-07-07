@@ -80,6 +80,10 @@ namespace Twilio.Rest.Notify.V1.Service
         /// The alexa
         /// </summary>
         public string Alexa { get; set; }
+        /// <summary>
+        /// The to_binding
+        /// </summary>
+        public List<string> ToBinding { get; set; }
 
         /// <summary>
         /// Construct a new CreateNotificationOptions
@@ -92,6 +96,7 @@ namespace Twilio.Rest.Notify.V1.Service
             Identity = new List<string>();
             Tag = new List<string>();
             Segment = new List<string>();
+            ToBinding = new List<string>();
         }
 
         /// <summary>
@@ -178,6 +183,11 @@ namespace Twilio.Rest.Notify.V1.Service
             if (Alexa != null)
             {
                 p.Add(new KeyValuePair<string, string>("Alexa", Alexa));
+            }
+
+            if (ToBinding != null)
+            {
+                p.AddRange(ToBinding.Select(prop => new KeyValuePair<string, string>("ToBinding", prop)));
             }
 
             return p;

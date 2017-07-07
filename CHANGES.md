@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2017-07-07] Version 5.5.3-alpha2
+----------------------------------
+**Messaging**
+- Fix incorrectly typed capabilities property for PhoneNumbers. Issue #380.
+
+**Notify**
+- Add `ToBinding` optional parameter on Notifications resource creation. Accepted values are json strings.
+
+
 [2017-06-30] Version 5.5.3-alpha1
 ----------------------------------
 - Fix Url parameters with percent encoded characters not being properly serialized before being sent to the API.
