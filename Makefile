@@ -4,6 +4,7 @@ clean:
 	dotnet clean
 
 install:
+	@dotnet --version || (echo "Dotnet is not installed, please install Dotnet CLI"; exit 1);
 	dotnet restore
 
 test:
