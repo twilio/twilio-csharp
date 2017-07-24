@@ -5,6 +5,7 @@ namespace Twilio.Jwt.AccessToken
     /// <summary>
     /// Grant to use for IP Messaging
     /// </summary>
+    [System.Obsolete("IpMessagingGrant is deprecated, use ChatGrant instead")]
     public class IpMessagingGrant : IGrant
     {
         /// <summary>
