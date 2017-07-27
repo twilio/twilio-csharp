@@ -2,7 +2,22 @@
 [![NuGet](https://img.shields.io/nuget/v/Twilio.svg)](https://www.nuget.org/packages/Twilio)
 [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Twilio.svg?label=nuget (alpha))](https://www.nuget.org/packages/Twilio)
 
-# Twilio REST API and TwiML Libraries for .NET 
+## Recent Update
+
+As of release 5.6.0, Beta and Developer Preview products are now exposed via
+the main `twilio-python` artifact. Releases of the `alpha` branch have been
+discontinued.
+
+If you were using the `alpha` release line, you should be able to switch back
+to the normal release line without issue.
+
+If you were using the normal release line, you should now see several new
+product lines that were historically hidden from you due to their Beta or
+Developer Preview status. Such products are explicitly documented as
+Beta/Developer Preview both in the Twilio docs and console, as well as through
+in-line code documentation here in the library.
+
+# Twilio REST API and TwiML Libraries for .NET
 
 Twilio provides a simple HTTP-based API for sending and receiving phone calls and text messages. Learn more at [http://www.twilio.com][0]
 
@@ -29,15 +44,15 @@ The examples below show how to have your application initiate and outbound phone
 TwilioClient.Init("ACCOUNT_SID", "AUTH_TOKEN");
 
 var call = CallResource.Create(
-    new PhoneNumber("+11234567890"), 
-    from: new PhoneNumber("+10987654321"), 
+    new PhoneNumber("+11234567890"),
+    from: new PhoneNumber("+10987654321"),
     url: new Uri("https://my.twiml.here")
 );
 Console.WriteLine(call.Sid);
 
 var message = MessageResource.Create(
-    new PhoneNumber("+11234567890"), 
-    from: new PhoneNumber("+10987654321"), 
+    new PhoneNumber("+11234567890"),
+    from: new PhoneNumber("+10987654321"),
     body: "Hello World!"
 );
 Console.WriteLine(message.Sid);
@@ -53,7 +68,7 @@ var response = new VoiceResponse()
     .Play("http://demo.twilio.com/hellomonkey/monkey.mp3")
     .Gather(gather);
 Console.WriteLine(response);
-    
+
 /*
 <?xml version="1.0" encoding="utf-8"?>
 <Response>
@@ -64,7 +79,7 @@ Console.WriteLine(response);
   </Gather>
 </Response>
 */
-``` 
+```
 
 ## Migrating from earlier versions
 See the migration guide [here][3]. Also, if you were using the Twilio.Mvc package, that has been replaced by the [Twilio.AspNet.Mvc][4]
@@ -74,7 +89,7 @@ package which is compatible with this version of the library.
 The alpha version of the Twilio .NET library is available on nuget.  This version is a superset of the mainline version that includes all of the Twilio Products that are currently in beta. To install the alpha version from the NuGet Package manager console, add the *-prerelease* flag to the *Install-Package* command:
 
     Install-Package Twilio -prerelease
-    
+
 ## Getting help
 
 If you need help installing or using the library, please contact Twilio Support at help@twilio.com first. Twilio's Support staff are well-versed in all of the Twilio Helper Libraries, and usually reply within 24 hours.
