@@ -1,6 +1,28 @@
 twilio-csharp Changelog
 =======================
 
+[2017-07-27] Version 5.6.0
+---------------------------
+**Api**
+- Remove unused `encryption_type` property on Recordings *(breaking change)*
+- Update `status` enum for Messages to include 'accepted'
+- Update `AnnounceMethod` parameter naming for consistency
+
+**Messaging**
+- Fix incorrectly typed capabilities property for PhoneNumbers.
+
+**Notify**
+- Add `ToBinding` optional parameter on Notifications resource creation. Accepted values are json strings.
+
+**Preview**
+- Add `sms_application_sid` to HostedNumberOrders.
+- Add `verification_attempts` to HostedNumberOrders.
+- Add `status_callback_url` and `status_callback_method` to HostedNumberOrders.
+
+**Taskrouter**
+- Fully support conference functionality in reservations.
+
+
 [2017-06-30] Version 5.5.2
 ---------------------------
 - Fix Url parameters with percent encoded characters not being properly serialized before being sent to the API.
