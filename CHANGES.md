@@ -1,6 +1,22 @@
 twilio-csharp Changelog
 =======================
 
+[2017-08-11] Version 5.6.1
+---------------------------
+**Api**
+- Add New wireless usage keys added
+- Add `auto_correct_address` param for Addresses create and update
+
+**Preview**
+- Removed 'email' from bulk_exports configuration api [bi]. No migration plan needed because api has not been used yet.
+- Add AvailableNumbers resource.
+
+**Video**
+- Add `video_codec` enum and `video_codecs` parameter, which can be set to either `VP8` or `H264` during room creation.
+- Restrict recordings page size to 100
+- Add query parameters `SourceSid`, `Status`, `DateCreatedAfter` and `DateCreatedBefore` to the convenience method for retrieving Room recordings.
+
+
 [2017-07-27] Version 5.6.0
 ---------------------------
 This release adds Beta and Preview products to main artifact.

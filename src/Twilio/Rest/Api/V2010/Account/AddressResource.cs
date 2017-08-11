@@ -74,11 +74,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="emergencyEnabled"> The emergency_enabled </param>
+        /// <param name="autoCorrectAddress"> The auto_correct_address </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns> 
-        public static AddressResource Create(string customerName, string street, string city, string region, string postalCode, string isoCountry, string pathAccountSid = null, string friendlyName = null, bool? emergencyEnabled = null, ITwilioRestClient client = null)
+        public static AddressResource Create(string customerName, string street, string city, string region, string postalCode, string isoCountry, string pathAccountSid = null, string friendlyName = null, bool? emergencyEnabled = null, bool? autoCorrectAddress = null, ITwilioRestClient client = null)
         {
-            var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled};
+            var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress};
             return Create(options, client);
         }
 
@@ -96,11 +97,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="emergencyEnabled"> The emergency_enabled </param>
+        /// <param name="autoCorrectAddress"> The auto_correct_address </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<AddressResource> CreateAsync(string customerName, string street, string city, string region, string postalCode, string isoCountry, string pathAccountSid = null, string friendlyName = null, bool? emergencyEnabled = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AddressResource> CreateAsync(string customerName, string street, string city, string region, string postalCode, string isoCountry, string pathAccountSid = null, string friendlyName = null, bool? emergencyEnabled = null, bool? autoCorrectAddress = null, ITwilioRestClient client = null)
         {
-            var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled};
+            var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress};
             return await CreateAsync(options, client);
         }
         #endif
@@ -301,11 +303,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="region"> The region </param>
         /// <param name="postalCode"> The postal_code </param>
         /// <param name="emergencyEnabled"> The emergency_enabled </param>
+        /// <param name="autoCorrectAddress"> The auto_correct_address </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns> 
-        public static AddressResource Update(string pathSid, string pathAccountSid = null, string friendlyName = null, string customerName = null, string street = null, string city = null, string region = null, string postalCode = null, bool? emergencyEnabled = null, ITwilioRestClient client = null)
+        public static AddressResource Update(string pathSid, string pathAccountSid = null, string friendlyName = null, string customerName = null, string street = null, string city = null, string region = null, string postalCode = null, bool? emergencyEnabled = null, bool? autoCorrectAddress = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateAddressOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled};
+            var options = new UpdateAddressOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress};
             return Update(options, client);
         }
 
@@ -323,11 +326,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="region"> The region </param>
         /// <param name="postalCode"> The postal_code </param>
         /// <param name="emergencyEnabled"> The emergency_enabled </param>
+        /// <param name="autoCorrectAddress"> The auto_correct_address </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<AddressResource> UpdateAsync(string pathSid, string pathAccountSid = null, string friendlyName = null, string customerName = null, string street = null, string city = null, string region = null, string postalCode = null, bool? emergencyEnabled = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AddressResource> UpdateAsync(string pathSid, string pathAccountSid = null, string friendlyName = null, string customerName = null, string street = null, string city = null, string region = null, string postalCode = null, bool? emergencyEnabled = null, bool? autoCorrectAddress = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateAddressOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled};
+            var options = new UpdateAddressOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress};
             return await UpdateAsync(options, client);
         }
         #endif

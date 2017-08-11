@@ -51,6 +51,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The emergency_enabled
         /// </summary>
         public bool? EmergencyEnabled { get; set; }
+        /// <summary>
+        /// The auto_correct_address
+        /// </summary>
+        public bool? AutoCorrectAddress { get; set; }
 
         /// <summary>
         /// Construct a new CreateAddressOptions
@@ -116,6 +120,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (EmergencyEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString()));
+            }
+
+            if (AutoCorrectAddress != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AutoCorrectAddress", AutoCorrectAddress.Value.ToString()));
             }
 
             return p;
@@ -231,6 +240,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The emergency_enabled
         /// </summary>
         public bool? EmergencyEnabled { get; set; }
+        /// <summary>
+        /// The auto_correct_address
+        /// </summary>
+        public bool? AutoCorrectAddress { get; set; }
 
         /// <summary>
         /// Construct a new UpdateAddressOptions
@@ -281,6 +294,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (EmergencyEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString()));
+            }
+
+            if (AutoCorrectAddress != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AutoCorrectAddress", AutoCorrectAddress.Value.ToString()));
             }
 
             return p;

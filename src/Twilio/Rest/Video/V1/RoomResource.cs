@@ -40,6 +40,15 @@ namespace Twilio.Rest.Video.V1
             public static readonly RoomTypeEnum Group = new RoomTypeEnum("group");
         }
 
+        public sealed class VideoCodecEnum : StringEnum 
+        {
+            private VideoCodecEnum(string value) : base(value) {}
+            public VideoCodecEnum() {}
+
+            public static readonly VideoCodecEnum Vp8 = new VideoCodecEnum("VP8");
+            public static readonly VideoCodecEnum H264 = new VideoCodecEnum("H264");
+        }
+
         private static Request BuildFetchRequest(FetchRoomOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -161,11 +170,12 @@ namespace Twilio.Rest.Video.V1
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="maxParticipants"> The max_participants </param>
         /// <param name="recordParticipantsOnConnect"> The record_participants_on_connect </param>
+        /// <param name="videoCodecs"> The video_codecs </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns> 
-        public static RoomResource Create(bool? enableTurn = null, RoomResource.RoomTypeEnum type = null, string uniqueName = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, int? maxParticipants = null, bool? recordParticipantsOnConnect = null, ITwilioRestClient client = null)
+        public static RoomResource Create(bool? enableTurn = null, RoomResource.RoomTypeEnum type = null, string uniqueName = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, int? maxParticipants = null, bool? recordParticipantsOnConnect = null, RoomResource.VideoCodecEnum videoCodecs = null, ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect};
+            var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs};
             return Create(options, client);
         }
 
@@ -181,11 +191,12 @@ namespace Twilio.Rest.Video.V1
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="maxParticipants"> The max_participants </param>
         /// <param name="recordParticipantsOnConnect"> The record_participants_on_connect </param>
+        /// <param name="videoCodecs"> The video_codecs </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns> 
-        public static async System.Threading.Tasks.Task<RoomResource> CreateAsync(bool? enableTurn = null, RoomResource.RoomTypeEnum type = null, string uniqueName = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, int? maxParticipants = null, bool? recordParticipantsOnConnect = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RoomResource> CreateAsync(bool? enableTurn = null, RoomResource.RoomTypeEnum type = null, string uniqueName = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, int? maxParticipants = null, bool? recordParticipantsOnConnect = null, RoomResource.VideoCodecEnum videoCodecs = null, ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect};
+            var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs};
             return await CreateAsync(options, client);
         }
         #endif

@@ -67,10 +67,6 @@ namespace Twilio.Rest.Preview.BulkExports
         /// The webhook_method
         /// </summary>
         public string WebhookMethod { get; set; }
-        /// <summary>
-        /// The email
-        /// </summary>
-        public string Email { get; set; }
 
         /// <summary>
         /// Construct a new UpdateExportConfigurationOptions
@@ -101,11 +97,6 @@ namespace Twilio.Rest.Preview.BulkExports
             if (WebhookMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("WebhookMethod", WebhookMethod));
-            }
-
-            if (Email != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Email", Email));
             }
 
             return p;

@@ -141,12 +141,11 @@ namespace Twilio.Rest.Preview.BulkExports
         /// <param name="enabled"> The enabled </param>
         /// <param name="webhookUrl"> The webhook_url </param>
         /// <param name="webhookMethod"> The webhook_method </param>
-        /// <param name="email"> The email </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ExportConfiguration </returns> 
-        public static ExportConfigurationResource Update(string pathResourceType, bool? enabled = null, Uri webhookUrl = null, string webhookMethod = null, string email = null, ITwilioRestClient client = null)
+        public static ExportConfigurationResource Update(string pathResourceType, bool? enabled = null, Uri webhookUrl = null, string webhookMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateExportConfigurationOptions(pathResourceType){Enabled = enabled, WebhookUrl = webhookUrl, WebhookMethod = webhookMethod, Email = email};
+            var options = new UpdateExportConfigurationOptions(pathResourceType){Enabled = enabled, WebhookUrl = webhookUrl, WebhookMethod = webhookMethod};
             return Update(options, client);
         }
 
@@ -159,12 +158,11 @@ namespace Twilio.Rest.Preview.BulkExports
         /// <param name="enabled"> The enabled </param>
         /// <param name="webhookUrl"> The webhook_url </param>
         /// <param name="webhookMethod"> The webhook_method </param>
-        /// <param name="email"> The email </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportConfiguration </returns> 
-        public static async System.Threading.Tasks.Task<ExportConfigurationResource> UpdateAsync(string pathResourceType, bool? enabled = null, Uri webhookUrl = null, string webhookMethod = null, string email = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ExportConfigurationResource> UpdateAsync(string pathResourceType, bool? enabled = null, Uri webhookUrl = null, string webhookMethod = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateExportConfigurationOptions(pathResourceType){Enabled = enabled, WebhookUrl = webhookUrl, WebhookMethod = webhookMethod, Email = email};
+            var options = new UpdateExportConfigurationOptions(pathResourceType){Enabled = enabled, WebhookUrl = webhookUrl, WebhookMethod = webhookMethod};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -203,11 +201,6 @@ namespace Twilio.Rest.Preview.BulkExports
         /// </summary>
         [JsonProperty("webhook_method")]
         public string WebhookMethod { get; private set; }
-        /// <summary>
-        /// The email
-        /// </summary>
-        [JsonProperty("email")]
-        public string Email { get; private set; }
         /// <summary>
         /// The resource_type
         /// </summary>

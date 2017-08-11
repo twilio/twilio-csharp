@@ -191,22 +191,35 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum VoiceInsights = new UsageCategoryEnum("voice-insights");
             public static readonly UsageCategoryEnum Wireless = new UsageCategoryEnum("wireless");
             public static readonly UsageCategoryEnum WirelessOrders = new UsageCategoryEnum("wireless-orders");
+            public static readonly UsageCategoryEnum WirelessOrdersArtwork = new UsageCategoryEnum("wireless-orders-artwork");
             public static readonly UsageCategoryEnum WirelessOrdersBulk = new UsageCategoryEnum("wireless-orders-bulk");
             public static readonly UsageCategoryEnum WirelessOrdersEsim = new UsageCategoryEnum("wireless-orders-esim");
             public static readonly UsageCategoryEnum WirelessOrdersStarter = new UsageCategoryEnum("wireless-orders-starter");
             public static readonly UsageCategoryEnum WirelessUsage = new UsageCategoryEnum("wireless-usage");
             public static readonly UsageCategoryEnum WirelessUsageCommands = new UsageCategoryEnum("wireless-usage-commands");
+            public static readonly UsageCategoryEnum WirelessUsageCommandsAfrica = new UsageCategoryEnum("wireless-usage-commands-africa");
+            public static readonly UsageCategoryEnum WirelessUsageCommandsAsia = new UsageCategoryEnum("wireless-usage-commands-asia");
+            public static readonly UsageCategoryEnum WirelessUsageCommandsCentralandsouthamerica = new UsageCategoryEnum("wireless-usage-commands-centralandsouthamerica");
+            public static readonly UsageCategoryEnum WirelessUsageCommandsEurope = new UsageCategoryEnum("wireless-usage-commands-europe");
             public static readonly UsageCategoryEnum WirelessUsageCommandsHome = new UsageCategoryEnum("wireless-usage-commands-home");
+            public static readonly UsageCategoryEnum WirelessUsageCommandsNorthamerica = new UsageCategoryEnum("wireless-usage-commands-northamerica");
+            public static readonly UsageCategoryEnum WirelessUsageCommandsOceania = new UsageCategoryEnum("wireless-usage-commands-oceania");
             public static readonly UsageCategoryEnum WirelessUsageCommandsRoaming = new UsageCategoryEnum("wireless-usage-commands-roaming");
             public static readonly UsageCategoryEnum WirelessUsageData = new UsageCategoryEnum("wireless-usage-data");
+            public static readonly UsageCategoryEnum WirelessUsageDataAfrica = new UsageCategoryEnum("wireless-usage-data-africa");
+            public static readonly UsageCategoryEnum WirelessUsageDataAsia = new UsageCategoryEnum("wireless-usage-data-asia");
+            public static readonly UsageCategoryEnum WirelessUsageDataCentralandsouthamerica = new UsageCategoryEnum("wireless-usage-data-centralandsouthamerica");
             public static readonly UsageCategoryEnum WirelessUsageDataCustomAdditionalmb = new UsageCategoryEnum("wireless-usage-data-custom-additionalmb");
             public static readonly UsageCategoryEnum WirelessUsageDataCustomFirst5Mb = new UsageCategoryEnum("wireless-usage-data-custom-first5mb");
             public static readonly UsageCategoryEnum WirelessUsageDataDomesticRoaming = new UsageCategoryEnum("wireless-usage-data-domestic-roaming");
+            public static readonly UsageCategoryEnum WirelessUsageDataEurope = new UsageCategoryEnum("wireless-usage-data-europe");
             public static readonly UsageCategoryEnum WirelessUsageDataIndividualAdditionalgb = new UsageCategoryEnum("wireless-usage-data-individual-additionalgb");
             public static readonly UsageCategoryEnum WirelessUsageDataIndividualFirstgb = new UsageCategoryEnum("wireless-usage-data-individual-firstgb");
             public static readonly UsageCategoryEnum WirelessUsageDataInternationalRoamingCanada = new UsageCategoryEnum("wireless-usage-data-international-roaming-canada");
             public static readonly UsageCategoryEnum WirelessUsageDataInternationalRoamingIndia = new UsageCategoryEnum("wireless-usage-data-international-roaming-india");
             public static readonly UsageCategoryEnum WirelessUsageDataInternationalRoamingMexico = new UsageCategoryEnum("wireless-usage-data-international-roaming-mexico");
+            public static readonly UsageCategoryEnum WirelessUsageDataNorthamerica = new UsageCategoryEnum("wireless-usage-data-northamerica");
+            public static readonly UsageCategoryEnum WirelessUsageDataOceania = new UsageCategoryEnum("wireless-usage-data-oceania");
             public static readonly UsageCategoryEnum WirelessUsageDataPooled = new UsageCategoryEnum("wireless-usage-data-pooled");
             public static readonly UsageCategoryEnum WirelessUsageDataPooledDownlink = new UsageCategoryEnum("wireless-usage-data-pooled-downlink");
             public static readonly UsageCategoryEnum WirelessUsageDataPooledUplink = new UsageCategoryEnum("wireless-usage-data-pooled-uplink");
@@ -214,6 +227,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum WirelessUsageMrcCustom = new UsageCategoryEnum("wireless-usage-mrc-custom");
             public static readonly UsageCategoryEnum WirelessUsageMrcIndividual = new UsageCategoryEnum("wireless-usage-mrc-individual");
             public static readonly UsageCategoryEnum WirelessUsageMrcPooled = new UsageCategoryEnum("wireless-usage-mrc-pooled");
+            public static readonly UsageCategoryEnum WirelessUsageMrcSuspended = new UsageCategoryEnum("wireless-usage-mrc-suspended");
+            public static readonly UsageCategoryEnum WirelessUsageVoice = new UsageCategoryEnum("wireless-usage-voice");
+            public static readonly UsageCategoryEnum WirelessUsageSms = new UsageCategoryEnum("wireless-usage-sms");
         }
 
         public sealed class RecurringEnum : StringEnum 

@@ -74,6 +74,10 @@ namespace Twilio.Rest.Video.V1
         /// The record_participants_on_connect
         /// </summary>
         public bool? RecordParticipantsOnConnect { get; set; }
+        /// <summary>
+        /// The video_codecs
+        /// </summary>
+        public RoomResource.VideoCodecEnum VideoCodecs { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -114,6 +118,11 @@ namespace Twilio.Rest.Video.V1
             if (RecordParticipantsOnConnect != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordParticipantsOnConnect", RecordParticipantsOnConnect.Value.ToString()));
+            }
+
+            if (VideoCodecs != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VideoCodecs", VideoCodecs.ToString()));
             }
 
             return p;
