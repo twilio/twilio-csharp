@@ -21,12 +21,28 @@ namespace Twilio.TwiML
         /// <param name="action">Action URL</param>
         /// <param name="method">Aciton URL method</param>
         /// <param name="finishOnKey">Finish gather on key</param>
+        /// <param name="partialResultCallback">if provided, Twilio will make requests to your partialResultCallback in real-time as speech is recognized</param>
+        /// <param name="partialResultCallbackMethod">GET, POST</param>
+        /// <param name="language">The language Twilio should recognize as specified using a BCP-47 language tag</param>
+        /// <param name="hints">A list of words or phrases, up to 100 characters each that Twilio should expect during recognition</param>
+        /// <param name="profanityFilter">Specifies if Twilio should filter out profanities</param>
+        /// <param name="speechTimeout">sets the limit in seconds that Twilio will wait for speech before stopping</param>
+        /// <param name="bargeIn">Specifies if Twilio should stop playing media from nested or verbs once Twilio receives speech or DTMF</param>
         public Gather(int? timeout=null,
             int? numDigits=null,
             string input=null,
             string action=null,
             string method=null,
-            string finishOnKey=null)
+            string finishOnKey=null,
+            string partialResultCallback=null,
+            string partialResultCallbackMethod=null,
+            string language=null,
+            string hints=null,
+            bool profanityFilter=true,
+            int? speechTimeout=null,
+            bool bargeIn=true
+            
+            )
         {
             Element = new XElement("Gather");
             if (timeout != null)
@@ -52,6 +68,35 @@ namespace Twilio.TwiML
             if (finishOnKey != null)
             {
                 Element.Add(new XAttribute("finishOnKey", finishOnKey));
+            }
+            
+            if (partialResultCallback != null)
+            {
+                Element.Add(new XAttribute("partialResultCallback", partialResultCallback));
+            }
+            if (partialResultCallbackMethod != null)
+            {
+                Element.Add(new XAttribute("partialResultCallbackMethod", partialResultCallbackMethod));
+            }
+            if (language != null)
+            {
+                Element.Add(new XAttribute("language", language));
+            }
+            if (hints != null)
+            {
+                Element.Add(new XAttribute("hints", hints));
+            }
+            if (profanityFilter != true)
+            {
+                Element.Add(new XAttribute("profanityFilter", profanityFilter));
+            }
+            if (speechTimeout != null)
+            {
+                Element.Add(new XAttribute("speechTimeout", speechTimeout));
+            }
+            if (bargeIn != true)
+            {
+                Element.Add(new XAttribute("bargeIn", bargeIn));
             }
         }
 
