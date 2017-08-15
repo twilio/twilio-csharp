@@ -8,6 +8,16 @@ namespace Twilio.Http
     public abstract class HttpClient
     {
         /// <summary>
+        /// The last request made by this client
+        /// </summary>
+        public Request LastRequest { get; protected set; }
+
+        /// <summary>
+        /// The last response received by this client
+        /// </summary>
+        public Response LastResponse { get; protected set; }
+
+        /// <summary>
         /// Make the request to Twilio
         /// </summary>
         ///

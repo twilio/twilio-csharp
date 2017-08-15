@@ -54,12 +54,14 @@ namespace Twilio.Http
                 httpRequest.Content = new FormUrlEncodedContent(request.PostParams);
             }
 
+            this.LastRequest = request;
             HttpResponseMessage response = null;
             try
             {
                 response = await _httpClient.SendAsync(httpRequest).ConfigureAwait(false); 
                 var reader = new StreamReader(await response.Content.ReadAsStreamAsync().ConfigureAwait(false));
-                return new Response(response.StatusCode, await reader.ReadToEndAsync().ConfigureAwait(false));
+                this.LastResponse = new Response(response.StatusCode, await reader.ReadToEndAsync().ConfigureAwait(false));
+                return this.LastResponse;
             }
             catch (AggregateException ae)
             {
@@ -68,20 +70,23 @@ namespace Twilio.Http
                     throw await HandleErrorResponse(response).ConfigureAwait(false);
                 }
             }
+            this.LastResponse = null;
             return null;
         }
 
         private async Task<Exception> HandleErrorResponse(HttpResponseMessage errorResponse)
         {
+            var responseStream = await errorResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            var errorReader = new StreamReader(responseStream);
+            var errorContent = errorReader.ReadToEnd();
+            
+            this.LastResponse = new Response(errorResponse.StatusCode, errorContent);
+
             if (errorResponse.StatusCode >= HttpStatusCode.InternalServerError &&
                 errorResponse.StatusCode < HttpStatusCode.HttpVersionNotSupported)
             {
                 return new TwilioException("Internal Server error: " + errorResponse.StatusCode);
             }
-
-            var responseStream = await errorResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
-            var errorReader = new StreamReader(responseStream);
-            var errorContent = errorReader.ReadToEnd();
 
             try
             {
