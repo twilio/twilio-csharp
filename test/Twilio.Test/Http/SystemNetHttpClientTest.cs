@@ -75,10 +75,7 @@ namespace Twilio.Tests.Http
             Assert.AreEqual(HttpStatusCode.OK, resp.StatusCode);
             Assert.AreEqual("{'test': 'val'}", resp.Content);
             
-            Assert.IsNotNull(this.TwilioHttpClient.LastRequest);
             Assert.AreSame(testRequest, this.TwilioHttpClient.LastRequest);
-            
-            Assert.IsNotNull(this.TwilioHttpClient.LastResponse);
             Assert.AreSame(resp, this.TwilioHttpClient.LastResponse);
         }
         
@@ -98,6 +95,7 @@ namespace Twilio.Tests.Http
             
             Assert.AreEqual(HttpStatusCode.OK, resp.StatusCode);
             Assert.AreEqual("{'test': 'val'}", resp.Content);
+
             Assert.AreSame(testRequest, this.TwilioHttpClient.LastRequest);
             Assert.AreSame(resp, this.TwilioHttpClient.LastResponse);
         }
@@ -129,7 +127,6 @@ namespace Twilio.Tests.Http
                 
             Assert.AreSame(testRequest, this.TwilioHttpClient.LastRequest);
             Assert.IsNull(this.TwilioHttpClient.LastResponse);
-            
         }
 
         [Test]

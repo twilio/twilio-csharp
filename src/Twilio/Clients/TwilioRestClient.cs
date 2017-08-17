@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 #endif
 
 using Twilio.Http;
+#if NET35
+using Twilio.Http.Net35;
+#endif
 
 namespace Twilio.Clients
 {
@@ -74,6 +77,7 @@ namespace Twilio.Clients
             {
                 response = HttpClient.MakeRequest(request);
             }
+            catch (TwilioException) { throw; }  /* if client throws TwilioException then let it passthrough */
             catch (Exception clientException)
             {
                 throw new ApiConnectionException(
@@ -99,6 +103,7 @@ namespace Twilio.Clients
             {
                 response = await HttpClient.MakeRequestAsync(request);
             }
+            catch (TwilioException) { throw; }  /* if client throws TwilioException then let it passthrough */
             catch (Exception clientException)
             {
                 throw new ApiConnectionException(
