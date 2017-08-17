@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !NET35
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -175,3 +176,4 @@ namespace Twilio.Tests.Http
         }
     }
 }
+#endif
