@@ -18,7 +18,7 @@ namespace Twilio.Http
         public Response LastResponse { get; protected set; }
 
         /// <summary>
-        /// Make the request to Twilio, this should return a Response regardless of response status code.
+        /// Make a request to Twilio, returns non-2XX responses as well
         /// </summary>
         ///
         /// <param name="request">request to make</param>
@@ -28,7 +28,7 @@ namespace Twilio.Http
 
 #if !NET35
         /// <summary>
-        /// Make an async request to Twilio, this should return a Response regardless of response status code.
+        /// Make an async request to Twilio, returns non-2XX responses as well
         /// </summary>
         ///
         /// <param name="request">request to make</param>

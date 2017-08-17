@@ -74,11 +74,11 @@ namespace Twilio.Clients
             {
                 response = HttpClient.MakeRequest(request);
             }
-            catch (Exception innerException)
+            catch (Exception clientException)
             {
                 throw new ApiConnectionException(
                     "Connection Error: " + request.Method + request.ConstructUrl(),
-                    innerException
+                    clientException
                 );
             }
             return ProcessResponse(response);
@@ -99,11 +99,11 @@ namespace Twilio.Clients
             {
                 response = await HttpClient.MakeRequestAsync(request);
             }
-            catch (Exception innerException)
+            catch (Exception clientException)
             {
                 throw new ApiConnectionException(
                     "Connection Error: " + request.Method + request.ConstructUrl(),
-                    innerException
+                    clientException
                 );
             }
             return ProcessResponse(response);
