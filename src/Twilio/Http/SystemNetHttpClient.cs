@@ -36,9 +36,18 @@ namespace Twilio.Http
         /// <returns>Twilio response</returns>
         public override Response MakeRequest(Request request)
         {
-            var task = MakeRequestAysnc(request);
-            task.Wait();
-            return task.Result;
+            try
+            {
+                var task = MakeRequestAysnc(request);
+                task.Wait();
+                return task.Result;
+            }
+            catch (AggregateException ae)
+            {
+                // Combine nested AggregateExceptions
+                ae = ae.Flatten();
+                throw (ae.InnerExceptions.Count == 1) ? ae.InnerException : ae;
+            }
         }
 
         /// <summary>
@@ -55,48 +64,13 @@ namespace Twilio.Http
             }
 
             this.LastRequest = request;
-            HttpResponseMessage response = null;
-            try
-            {
-                response = await _httpClient.SendAsync(httpRequest).ConfigureAwait(false); 
-                var reader = new StreamReader(await response.Content.ReadAsStreamAsync().ConfigureAwait(false));
-                this.LastResponse = new Response(response.StatusCode, await reader.ReadToEndAsync().ConfigureAwait(false));
-                return this.LastResponse;
-            }
-            catch (AggregateException ae)
-            {
-                if (ae.InnerExceptions.OfType<HttpRequestException>().Any() && response != null)
-                {
-                    throw await HandleErrorResponse(response).ConfigureAwait(false);
-                }
-            }
             this.LastResponse = null;
-            return null;
-        }
-
-        private async Task<Exception> HandleErrorResponse(HttpResponseMessage errorResponse)
-        {
-            var responseStream = await errorResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
-            var errorReader = new StreamReader(responseStream);
-            var errorContent = errorReader.ReadToEnd();
             
-            this.LastResponse = new Response(errorResponse.StatusCode, errorContent);
-
-            if (errorResponse.StatusCode >= HttpStatusCode.InternalServerError &&
-                errorResponse.StatusCode < HttpStatusCode.HttpVersionNotSupported)
-            {
-                return new TwilioException("Internal Server error: " + errorResponse.StatusCode);
-            }
-
-            try
-            {
-                var restEx = RestException.FromJson(errorContent);
-                return restEx ?? new TwilioException("Error: " + errorResponse.StatusCode + " - " + errorContent);
-            }
-            catch (JsonReaderException)
-            {
-                return new TwilioException("Error: " + errorResponse.StatusCode + " - " + errorContent);
-            }
+            var response = await _httpClient.SendAsync(httpRequest).ConfigureAwait(false);
+            var reader = new StreamReader(await response.Content.ReadAsStreamAsync().ConfigureAwait(false));
+            this.LastResponse = new Response(response.StatusCode, await reader.ReadToEndAsync().ConfigureAwait(false));
+            
+            return this.LastResponse;
         }
 
         private HttpRequestMessage BuildHttpRequest(Request request)

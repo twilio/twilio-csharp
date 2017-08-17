@@ -18,19 +18,21 @@ namespace Twilio.Http
         public Response LastResponse { get; protected set; }
 
         /// <summary>
-        /// Make the request to Twilio
+        /// Make the request to Twilio, this should return a Response regardless of response status code.
         /// </summary>
         ///
         /// <param name="request">request to make</param>
+        /// <exception>throws exception on network or connection errors.</exception>
         /// <returns>response of the request</returns>
         public abstract Response MakeRequest(Request request);
 
 #if !NET35
         /// <summary>
-        /// Make an async request to Twilio
+        /// Make an async request to Twilio, this should return a Response regardless of response status code.
         /// </summary>
         ///
         /// <param name="request">request to make</param>
+        /// <exception>throws exception on network or connection errors.</exception>
         /// <returns>response of the request</returns>
         public abstract System.Threading.Tasks.Task<Response> MakeRequestAysnc(Request request);
 #endif

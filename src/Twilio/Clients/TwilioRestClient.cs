@@ -1,5 +1,7 @@
 ﻿
+using System;
 using System.Net;
+using Newtonsoft.Json;
 using Twilio.Exceptions;
 
 #if !NET35
@@ -67,7 +69,18 @@ namespace Twilio.Clients
         public Response Request(Request request)
         {
             request.SetAuth(_username, _password);
-            var response = HttpClient.MakeRequest(request);
+            Response response;
+            try
+            {
+                response = HttpClient.MakeRequest(request);
+            }
+            catch (Exception innerException)
+            {
+                throw new ApiConnectionException(
+                    "Connection Error: " + request.Method + request.ConstructUrl(),
+                    innerException
+                );
+            }
             return ProcessResponse(response);
         }
 
@@ -81,9 +94,21 @@ namespace Twilio.Clients
         public async Task<Response> RequestAsync(Request request)
         {
             request.SetAuth(_username, _password);
-            var response = await HttpClient.MakeRequestAysnc(request);
+            Response response;
+            try
+            {
+                response = await HttpClient.MakeRequestAysnc(request);
+            }
+            catch (Exception innerException)
+            {
+                throw new ApiConnectionException(
+                    "Connection Error: " + request.Method + request.ConstructUrl(),
+                    innerException
+                );
+            }
             return ProcessResponse(response);
         }
+        
         private static HttpClient DefaultClient()
         {
             return new SystemNetHttpClient();
@@ -99,7 +124,7 @@ namespace Twilio.Clients
         {
             if (response == null)
             {
-                throw new ApiConnectionException("MessageResource creation failed: Unable to connect to server");
+                throw new ApiConnectionException("Connection Error: No response received.");
             }
 
             if (response.StatusCode >= HttpStatusCode.OK && response.StatusCode < HttpStatusCode.Ambiguous)
@@ -107,11 +132,17 @@ namespace Twilio.Clients
                 return response;
             }
 
-            // Throw exception
-            var restException = RestException.FromJson(response.Content);
+            // Deserialize and throw exception
+            RestException restException = null;
+            try
+            {
+                restException = RestException.FromJson(response.Content);
+            }
+            catch (JsonReaderException) { /* Allow null check below to handle */ }
+            
             if (restException == null)
             {
-                throw new ApiException("Server Error, no content");
+                throw new ApiException("Api Error: " + response.StatusCode + " - " + (response.Content ?? "[no content]"));
             }
 
             throw new ApiException(

@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Castle.Core.Logging;
 using NUnit.Framework;
 using Twilio.Http;
 using HttpMethod = Twilio.Http.HttpMethod;
@@ -13,22 +14,33 @@ namespace Twilio.Tests.Http
     {
         private Uri _nextRequestUri;
         private HttpResponseMessage _nextResponse;
+        private Exception _nextError;
         public HttpRequestMessage InternalRequest { get; private set; }
-        public String FormData { get; private set; }
 
         public void Respond(String url, HttpStatusCode code, String content=null)
         {
             this._nextRequestUri = new Uri(url);
             this._nextResponse = new HttpResponseMessage(code);
             this._nextResponse.Content = new StringContent(content ?? "");
+            this._nextError = null;
+        }
+
+        public void Error(String url, Exception error)
+        {
+            this._nextRequestUri = new Uri(url);
+            this._nextError = error;
         }
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, 
-                                                                     CancellationToken cancellationToken)
+                                                               CancellationToken cancellationToken)
         {
             // Uri will contain query params, only assert on the uri route
             var route = request.RequestUri.ToString().Split('?')[0];
             Assert.AreEqual(this._nextRequestUri.ToString(), route);
+            if (this._nextError != null)
+            {
+                throw this._nextError;
+            }
             this.InternalRequest = request;
             return Task.FromResult(this._nextResponse);
         }
@@ -37,21 +49,21 @@ namespace Twilio.Tests.Http
     [TestFixture]
     public class SystemNetHttpClientTest : TwilioTest
     {
-        private MockResponseHandler mockHttp;
+        private MockResponseHandler _mockHttp;
         public SystemNetHttpClient TwilioHttpClient { get; set; }
         
         [SetUp]
         public void Init()
         {
-            this.mockHttp = new MockResponseHandler();
-            var internalHttpClient = new System.Net.Http.HttpClient(this.mockHttp);
+            this._mockHttp = new MockResponseHandler();
+            var internalHttpClient = new System.Net.Http.HttpClient(this._mockHttp);
             this.TwilioHttpClient = new SystemNetHttpClient(internalHttpClient);
         }
 
         [Test]
         public void TestMakeRequestSuccess()
         {
-            this.mockHttp.Respond(
+            this._mockHttp.Respond(
                 "https://api.twilio.com/v1/Resource.json",
                 HttpStatusCode.OK,
                 "{'test': 'val'}"
@@ -73,7 +85,7 @@ namespace Twilio.Tests.Http
         [Test]
         public void TestMakeRequestAsyncSuccess()
         {
-            this.mockHttp.Respond(
+            this._mockHttp.Respond(
                 "https://api.twilio.com/v1/Resource.json",
                 HttpStatusCode.OK,
                 "{'test': 'val'}"
@@ -86,33 +98,44 @@ namespace Twilio.Tests.Http
             
             Assert.AreEqual(HttpStatusCode.OK, resp.StatusCode);
             Assert.AreEqual("{'test': 'val'}", resp.Content);
-            
-            Assert.IsNotNull(this.TwilioHttpClient.LastRequest);
             Assert.AreSame(testRequest, this.TwilioHttpClient.LastRequest);
-            
-            Assert.IsNotNull(this.TwilioHttpClient.LastResponse);
             Assert.AreSame(resp, this.TwilioHttpClient.LastResponse);
         }
         
         [Test]
-        public void TestMakeRequestError()
+        public void TestMakeRequestReturnsNon200()
         {
-            // TODO: How does this work in the code?? Which method call throws?
-            this.mockHttp.Respond(
-                "https://api.twilio.com/v1/Resource.json",
-                HttpStatusCode.InternalServerError
-            );
+            this._mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.InternalServerError);
 
             Request testRequest = new Request(HttpMethod.Get, "https://api.twilio.com/v1/Resource.json");
             Response resp = this.TwilioHttpClient.MakeRequest(testRequest);
             
             Assert.AreEqual(HttpStatusCode.InternalServerError, resp.StatusCode);
+            Assert.AreSame(testRequest, this.TwilioHttpClient.LastRequest);
+            Assert.AreSame(resp, this.TwilioHttpClient.LastResponse);
+        }
+
+        [Test]
+        public void TestMakeRequestThrowsOnConnectionErrors()
+        {
+            this._mockHttp.Error(
+                "https://api.twilio.com/v1/Resource.json",
+                new HttpRequestException("Unable to connect!")
+            );
+            
+            Request testRequest = new Request(HttpMethod.Get, "https://api.twilio.com/v1/Resource.json");
+
+            Assert.Throws<HttpRequestException>(() => TwilioHttpClient.MakeRequest(testRequest));
+                
+            Assert.AreSame(testRequest, this.TwilioHttpClient.LastRequest);
+            Assert.IsNull(this.TwilioHttpClient.LastResponse);
+            
         }
 
         [Test]
         public void TestMakeRequestWithParams()
         {
-            this.mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.OK);
+            this._mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.OK);
 
             Request testRequest = new Request(HttpMethod.Post, "https://api.twilio.com/v1/Resource.json");
             testRequest.AddPostParam("post_param", "post_value");
@@ -120,7 +143,7 @@ namespace Twilio.Tests.Http
             
             this.TwilioHttpClient.MakeRequest(testRequest);
 
-            HttpRequestMessage internalRequest = this.mockHttp.InternalRequest;
+            HttpRequestMessage internalRequest = this._mockHttp.InternalRequest;
             
             Assert.AreEqual("https://api.twilio.com/v1/Resource.json?query_param=query_value", 
                             internalRequest.RequestUri.ToString());
@@ -132,14 +155,14 @@ namespace Twilio.Tests.Http
         [Test]
         public void TestMakeRequestAddsHeadersAndUserAgent()
         {
-            this.mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.OK);
+            this._mockHttp.Respond("https://api.twilio.com/v1/Resource.json", HttpStatusCode.OK);
 
             Request testRequest = new Request(HttpMethod.Get, "https://api.twilio.com/v1/Resource.json");
             testRequest.SetAuth("username", "password");
                                           
             this.TwilioHttpClient.MakeRequest(testRequest);
 
-            HttpRequestMessage internalRequest = this.mockHttp.InternalRequest;
+            HttpRequestMessage internalRequest = this._mockHttp.InternalRequest;
             Assert.IsNotNull(internalRequest);
             
             Assert.AreEqual("Basic", internalRequest.Headers.Authorization.Scheme);
