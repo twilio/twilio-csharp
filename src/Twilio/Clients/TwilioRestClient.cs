@@ -97,7 +97,7 @@ namespace Twilio.Clients
             Response response;
             try
             {
-                response = await HttpClient.MakeRequestAysnc(request);
+                response = await HttpClient.MakeRequestAsync(request);
             }
             catch (Exception innerException)
             {

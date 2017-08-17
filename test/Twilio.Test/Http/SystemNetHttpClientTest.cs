@@ -3,7 +3,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Castle.Core.Logging;
 using NUnit.Framework;
 using Twilio.Http;
 using HttpMethod = Twilio.Http.HttpMethod;
@@ -92,7 +91,7 @@ namespace Twilio.Tests.Http
             );
 
             Request testRequest = new Request(HttpMethod.Get, "https://api.twilio.com/v1/Resource.json");
-            Task<Response> result = this.TwilioHttpClient.MakeRequestAysnc(testRequest);
+            Task<Response> result = this.TwilioHttpClient.MakeRequestAsync(testRequest);
             result.Wait();
             Response resp = result.Result;
             

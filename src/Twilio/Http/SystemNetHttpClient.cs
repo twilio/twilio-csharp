@@ -38,7 +38,7 @@ namespace Twilio.Http
         {
             try
             {
-                var task = MakeRequestAysnc(request);
+                var task = MakeRequestAsync(request);
                 task.Wait();
                 return task.Result;
             }
@@ -55,7 +55,7 @@ namespace Twilio.Http
         /// </summary>
         /// <param name="request">Twilio response</param>
         /// <returns>Task that resolves to the response</returns>
-        public override async Task<Response> MakeRequestAysnc(Request request)
+        public override async Task<Response> MakeRequestAsync(Request request)
         {
             var httpRequest = BuildHttpRequest(request);
             if (!Equals(request.Method, HttpMethod.Get))
