@@ -354,7 +354,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// Update an identity's access to a specific Sync Map.
         /// </summary>
         ///
-        /// <param name="pathServiceSid"> Sync Service Instance SID. </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
         /// <param name="read"> Read access. </param>
@@ -373,7 +373,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// Update an identity's access to a specific Sync Map.
         /// </summary>
         ///
-        /// <param name="pathServiceSid"> Sync Service Instance SID. </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
         /// <param name="read"> Read access. </param>

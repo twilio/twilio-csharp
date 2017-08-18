@@ -149,7 +149,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
     public class UpdateDocumentPermissionOptions : IOptions<DocumentPermissionResource> 
     {
         /// <summary>
-        /// Sync Service Instance SID.
+        /// Sync Service Instance SID or unique name.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// Construct a new UpdateDocumentPermissionOptions
         /// </summary>
         ///
-        /// <param name="pathServiceSid"> Sync Service Instance SID. </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         /// <param name="read"> Read access. </param>

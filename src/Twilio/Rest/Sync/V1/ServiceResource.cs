@@ -474,6 +474,11 @@ namespace Twilio.Rest.Sync.V1
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
+        /// The unique_name
+        /// </summary>
+        [JsonProperty("unique_name")]
+        public string UniqueName { get; private set; }
+        /// <summary>
         /// The account_sid
         /// </summary>
         [JsonProperty("account_sid")]

@@ -41,6 +41,15 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly EmergencyStatusEnum Inactive = new EmergencyStatusEnum("Inactive");
         }
 
+        public sealed class VoiceReceiveModeEnum : StringEnum 
+        {
+            private VoiceReceiveModeEnum(string value) : base(value) {}
+            public VoiceReceiveModeEnum() {}
+
+            public static readonly VoiceReceiveModeEnum Voice = new VoiceReceiveModeEnum("voice");
+            public static readonly VoiceReceiveModeEnum Fax = new VoiceReceiveModeEnum("fax");
+        }
+
         private static Request BuildUpdateRequest(UpdateIncomingPhoneNumberOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -107,11 +116,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="emergencyStatus"> The emergency_status </param>
         /// <param name="emergencyAddressSid"> The emergency_address_sid </param>
         /// <param name="trunkSid"> Unique string to identify the trunk </param>
+        /// <param name="voiceReceiveMode"> The voice_receive_mode </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
-        public static IncomingPhoneNumberResource Update(string pathSid, string pathAccountSid = null, string accountSid = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, string trunkSid = null, ITwilioRestClient client = null)
+        public static IncomingPhoneNumberResource Update(string pathSid, string pathAccountSid = null, string accountSid = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, string trunkSid = null, IncomingPhoneNumberResource.VoiceReceiveModeEnum voiceReceiveMode = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateIncomingPhoneNumberOptions(pathSid){PathAccountSid = pathAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid};
+            var options = new UpdateIncomingPhoneNumberOptions(pathSid){PathAccountSid = pathAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, VoiceReceiveMode = voiceReceiveMode};
             return Update(options, client);
         }
 
@@ -141,11 +151,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="emergencyStatus"> The emergency_status </param>
         /// <param name="emergencyAddressSid"> The emergency_address_sid </param>
         /// <param name="trunkSid"> Unique string to identify the trunk </param>
+        /// <param name="voiceReceiveMode"> The voice_receive_mode </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> UpdateAsync(string pathSid, string pathAccountSid = null, string accountSid = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, string trunkSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> UpdateAsync(string pathSid, string pathAccountSid = null, string accountSid = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, string trunkSid = null, IncomingPhoneNumberResource.VoiceReceiveModeEnum voiceReceiveMode = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateIncomingPhoneNumberOptions(pathSid){PathAccountSid = pathAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid};
+            var options = new UpdateIncomingPhoneNumberOptions(pathSid){PathAccountSid = pathAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, VoiceReceiveMode = voiceReceiveMode};
             return await UpdateAsync(options, client);
         }
         #endif
