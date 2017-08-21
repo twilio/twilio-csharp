@@ -44,26 +44,33 @@ namespace Twilio.Http
             }
         }
 
-        private static Exception HandleErrorResponse(HttpWebResponse errorResponse)
+        private static TwilioException HandleErrorResponse(HttpWebResponse errorResponse, Exception innerException)
         {
             if (errorResponse.StatusCode >= HttpStatusCode.InternalServerError &&
                 errorResponse.StatusCode < HttpStatusCode.HttpVersionNotSupported)
             {
-                return new TwilioException("Internal Server error: " + errorResponse.StatusDescription);
+                return new TwilioException("Internal Server error: " + errorResponse.StatusDescription, innerException, innerException);
             }
 
-            var responseStream = errorResponse.GetResponseStream();
-            var errorReader = new StreamReader(responseStream);
-            var errorContent = errorReader.ReadToEnd();
+            try
+            {
+              var responseStream = errorResponse.GetResponseStream();
+              var errorReader = new StreamReader(responseStream);
+              var errorContent = errorReader.ReadToEnd();
+            }
+            catch (Exception e)
+            {
+              throw innerException;
+            }
 
             try
             {
                 var restEx = RestException.FromJson(errorContent);
-                return restEx ?? new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent);
+                return restEx ?? new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent, innerException);
             }
             catch (JsonReaderException)
             {
-                return new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent);
+                return new TwilioException("Error: " + errorResponse.StatusDescription + " - " + errorContent, innerException);
             }
         }
 
