@@ -42,7 +42,7 @@ namespace Twilio.Http
             {
                 // Combine nested AggregateExceptions
                 ae = ae.Flatten();
-                throw (ae.InnerExceptions.Count == 1) ? ae.InnerException : ae;
+                throw ae.InnerExceptions[0];
             }
         }
 
