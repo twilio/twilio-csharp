@@ -77,7 +77,6 @@ namespace Twilio.Clients
             {
                 response = HttpClient.MakeRequest(request);
             }
-            catch (TwilioException) { throw; }  /* if client throws TwilioException then let it passthrough */
             catch (Exception clientException)
             {
                 throw new ApiConnectionException(
@@ -103,7 +102,6 @@ namespace Twilio.Clients
             {
                 response = await HttpClient.MakeRequestAsync(request);
             }
-            catch (TwilioException) { throw; }  /* if client throws TwilioException then let it passthrough */
             catch (Exception clientException)
             {
                 throw new ApiConnectionException(
