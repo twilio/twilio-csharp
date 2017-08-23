@@ -149,7 +149,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     public class UpdateSyncMapPermissionOptions : IOptions<SyncMapPermissionResource> 
     {
         /// <summary>
-        /// Sync Service Instance SID.
+        /// Sync Service Instance SID or unique name.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// Construct a new UpdateSyncMapPermissionOptions
         /// </summary>
         ///
-        /// <param name="pathServiceSid"> Sync Service Instance SID. </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
         /// <param name="read"> Read access. </param>

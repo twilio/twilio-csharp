@@ -354,7 +354,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// Update an identity's access to a specific Sync List.
         /// </summary>
         ///
-        /// <param name="pathServiceSid"> Sync Service Instance SID. </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
         /// <param name="read"> Read access. </param>
@@ -373,7 +373,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// Update an identity's access to a specific Sync List.
         /// </summary>
         ///
-        /// <param name="pathServiceSid"> Sync Service Instance SID. </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
         /// <param name="read"> Read access. </param>

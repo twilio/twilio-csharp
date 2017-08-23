@@ -354,7 +354,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// Update an identity's access to a specific Sync Document.
         /// </summary>
         ///
-        /// <param name="pathServiceSid"> Sync Service Instance SID. </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         /// <param name="read"> Read access. </param>
@@ -373,7 +373,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// Update an identity's access to a specific Sync Document.
         /// </summary>
         ///
-        /// <param name="pathServiceSid"> Sync Service Instance SID. </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         /// <param name="read"> Read access. </param>

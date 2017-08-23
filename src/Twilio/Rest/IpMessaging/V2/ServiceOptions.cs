@@ -243,6 +243,10 @@ namespace Twilio.Rest.IpMessaging.V2
         /// The limits.user_channels
         /// </summary>
         public int? LimitsUserChannels { get; set; }
+        /// <summary>
+        /// The media.compatibility_message
+        /// </summary>
+        public string MediaCompatibilityMessage { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -394,6 +398,11 @@ namespace Twilio.Rest.IpMessaging.V2
             if (LimitsUserChannels != null)
             {
                 p.Add(new KeyValuePair<string, string>("Limits.UserChannels", LimitsUserChannels.Value.ToString()));
+            }
+
+            if (MediaCompatibilityMessage != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Media.CompatibilityMessage", MediaCompatibilityMessage));
             }
 
             return p;

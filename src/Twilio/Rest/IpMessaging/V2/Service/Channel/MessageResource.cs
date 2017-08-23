@@ -553,6 +553,16 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         [JsonProperty("index")]
         public int? Index { get; private set; }
         /// <summary>
+        /// The type
+        /// </summary>
+        [JsonProperty("type")]
+        public string Type { get; private set; }
+        /// <summary>
+        /// The media
+        /// </summary>
+        [JsonProperty("media")]
+        public object Media { get; private set; }
+        /// <summary>
         /// The url
         /// </summary>
         [JsonProperty("url")]

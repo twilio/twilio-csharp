@@ -149,7 +149,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     public class UpdateSyncListPermissionOptions : IOptions<SyncListPermissionResource> 
     {
         /// <summary>
-        /// Sync Service Instance SID.
+        /// Sync Service Instance SID or unique name.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// Construct a new UpdateSyncListPermissionOptions
         /// </summary>
         ///
-        /// <param name="pathServiceSid"> Sync Service Instance SID. </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
         /// <param name="read"> Read access. </param>

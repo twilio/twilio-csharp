@@ -99,6 +99,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Unique string to identify the trunk
         /// </summary>
         public string TrunkSid { get; set; }
+        /// <summary>
+        /// The voice_receive_mode
+        /// </summary>
+        public IncomingPhoneNumberResource.VoiceReceiveModeEnum VoiceReceiveMode { get; set; }
 
         /// <summary>
         /// Construct a new UpdateIncomingPhoneNumberOptions
@@ -209,6 +213,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (TrunkSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("TrunkSid", TrunkSid.ToString()));
+            }
+
+            if (VoiceReceiveMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VoiceReceiveMode", VoiceReceiveMode.ToString()));
             }
 
             return p;
