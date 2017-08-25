@@ -3,6 +3,12 @@ twilio-csharp Changelog
 
 [2017-08-25] Version 5.6.3
 ---------------------------
+**Library**
+- Fix warning on inclusive lower bound for Newtonsoft
+- Throw more specific subclasses of TwilioException when exceptions occur at the HTTP layer.
+- Poperly set root cause Exception as `innerException` on HTTP client exceptions. Issue #361.
+- Correct typo in HttpClient interface `MakeRequestAysnc` -> `MakeRequestAsync`.
+
 **Api**
 - Update `status` enum for Recordings to include 'failed'
 - Add `error_code` property on Recordings
@@ -12,7 +18,6 @@ twilio-csharp Changelog
 
 **Video**
 - New `media_region` parameter when creating a room, which controls which region media will be served out of.
-- Add `video_codec` enum and `video_codecs` parameter, which can be set to either `VP8` or `H264` during room creation.
 
 
 [2017-08-18] Version 5.6.2
