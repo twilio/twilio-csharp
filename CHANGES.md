@@ -8,6 +8,7 @@ twilio-csharp Changelog
 - Throw more specific subclasses of TwilioException when exceptions occur at the HTTP layer.
 - Poperly set root cause Exception as `innerException` on HTTP client exceptions. Issue #361.
 - Correct typo in HttpClient interface `MakeRequestAysnc` -> `MakeRequestAsync`.
+- Add `LastRequest` and `LastResponse` to `HttpClient` Interface. Set these in bundled http clients.
 
 **Api**
 - Update `status` enum for Recordings to include 'failed'
