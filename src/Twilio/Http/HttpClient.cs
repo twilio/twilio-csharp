@@ -8,21 +8,33 @@ namespace Twilio.Http
     public abstract class HttpClient
     {
         /// <summary>
-        /// Make the request to Twilio
+        /// The last request made by this client
+        /// </summary>
+        public Request LastRequest { get; protected set; }
+
+        /// <summary>
+        /// The last response received by this client
+        /// </summary>
+        public Response LastResponse { get; protected set; }
+
+        /// <summary>
+        /// Make a request to Twilio, returns non-2XX responses as well
         /// </summary>
         ///
         /// <param name="request">request to make</param>
+        /// <exception>throws exception on network or connection errors.</exception>
         /// <returns>response of the request</returns>
         public abstract Response MakeRequest(Request request);
 
 #if !NET35
         /// <summary>
-        /// Make an async request to Twilio
+        /// Make an async request to Twilio, returns non-2XX responses as well
         /// </summary>
         ///
         /// <param name="request">request to make</param>
+        /// <exception>throws exception on network or connection errors.</exception>
         /// <returns>response of the request</returns>
-        public abstract System.Threading.Tasks.Task<Response> MakeRequestAysnc(Request request);
+        public abstract System.Threading.Tasks.Task<Response> MakeRequestAsync(Request request);
 #endif
 
         /// <summary>
