@@ -78,6 +78,10 @@ namespace Twilio.Rest.Video.V1
         /// The video_codecs
         /// </summary>
         public RoomResource.VideoCodecEnum VideoCodecs { get; set; }
+        /// <summary>
+        /// The media_region
+        /// </summary>
+        public string MediaRegion { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -123,6 +127,11 @@ namespace Twilio.Rest.Video.V1
             if (VideoCodecs != null)
             {
                 p.Add(new KeyValuePair<string, string>("VideoCodecs", VideoCodecs.ToString()));
+            }
+
+            if (MediaRegion != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MediaRegion", MediaRegion));
             }
 
             return p;

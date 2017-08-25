@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Twilio.Base;
+using Twilio.Converters;
 
 namespace Twilio.Rest.Chat.V2.Service.Channel 
 {
@@ -74,6 +75,22 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// The role_sid
         /// </summary>
         public string RoleSid { get; set; }
+        /// <summary>
+        /// The last_consumed_message_index
+        /// </summary>
+        public int? LastConsumedMessageIndex { get; set; }
+        /// <summary>
+        /// The last_consumption_timestamp
+        /// </summary>
+        public DateTime? LastConsumptionTimestamp { get; set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
+        public DateTime? DateCreated { get; set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
+        public DateTime? DateUpdated { get; set; }
 
         /// <summary>
         /// Construct a new CreateMemberOptions
@@ -103,6 +120,26 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             if (RoleSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+            }
+
+            if (LastConsumedMessageIndex != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LastConsumedMessageIndex", LastConsumedMessageIndex.ToString()));
+            }
+
+            if (LastConsumptionTimestamp != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LastConsumptionTimestamp", Serializers.DateTimeIso8601(LastConsumptionTimestamp)));
+            }
+
+            if (DateCreated != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
+            }
+
+            if (DateUpdated != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
             }
 
             return p;
@@ -227,6 +264,18 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// The last_consumed_message_index
         /// </summary>
         public int? LastConsumedMessageIndex { get; set; }
+        /// <summary>
+        /// The last_consumption_timestamp
+        /// </summary>
+        public DateTime? LastConsumptionTimestamp { get; set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
+        public DateTime? DateCreated { get; set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
+        public DateTime? DateUpdated { get; set; }
 
         /// <summary>
         /// Construct a new UpdateMemberOptions
@@ -256,6 +305,21 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             if (LastConsumedMessageIndex != null)
             {
                 p.Add(new KeyValuePair<string, string>("LastConsumedMessageIndex", LastConsumedMessageIndex.ToString()));
+            }
+
+            if (LastConsumptionTimestamp != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LastConsumptionTimestamp", Serializers.DateTimeIso8601(LastConsumptionTimestamp)));
+            }
+
+            if (DateCreated != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
+            }
+
+            if (DateUpdated != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
             }
 
             return p;

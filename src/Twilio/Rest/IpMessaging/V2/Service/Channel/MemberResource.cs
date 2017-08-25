@@ -142,11 +142,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="roleSid"> The role_sid </param>
+        /// <param name="lastConsumedMessageIndex"> The last_consumed_message_index </param>
+        /// <param name="lastConsumptionTimestamp"> The last_consumption_timestamp </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
-        public static MemberResource Create(string pathServiceSid, string pathChannelSid, string identity, string roleSid = null, ITwilioRestClient client = null)
+        public static MemberResource Create(string pathServiceSid, string pathChannelSid, string identity, string roleSid = null, int? lastConsumedMessageIndex = null, DateTime? lastConsumptionTimestamp = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, ITwilioRestClient client = null)
         {
-            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid};
+            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated};
             return Create(options, client);
         }
 
@@ -159,11 +163,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="roleSid"> The role_sid </param>
+        /// <param name="lastConsumedMessageIndex"> The last_consumed_message_index </param>
+        /// <param name="lastConsumptionTimestamp"> The last_consumption_timestamp </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(string pathServiceSid, string pathChannelSid, string identity, string roleSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(string pathServiceSid, string pathChannelSid, string identity, string roleSid = null, int? lastConsumedMessageIndex = null, DateTime? lastConsumptionTimestamp = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, ITwilioRestClient client = null)
         {
-            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid};
+            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated};
             return await CreateAsync(options, client);
         }
         #endif
@@ -434,11 +442,14 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="pathSid"> The sid </param>
         /// <param name="roleSid"> The role_sid </param>
         /// <param name="lastConsumedMessageIndex"> The last_consumed_message_index </param>
+        /// <param name="lastConsumptionTimestamp"> The last_consumption_timestamp </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
-        public static MemberResource Update(string pathServiceSid, string pathChannelSid, string pathSid, string roleSid = null, int? lastConsumedMessageIndex = null, ITwilioRestClient client = null)
+        public static MemberResource Update(string pathServiceSid, string pathChannelSid, string pathSid, string roleSid = null, int? lastConsumedMessageIndex = null, DateTime? lastConsumptionTimestamp = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex};
+            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated};
             return Update(options, client);
         }
 
@@ -452,11 +463,14 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="pathSid"> The sid </param>
         /// <param name="roleSid"> The role_sid </param>
         /// <param name="lastConsumedMessageIndex"> The last_consumed_message_index </param>
+        /// <param name="lastConsumptionTimestamp"> The last_consumption_timestamp </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string pathServiceSid, string pathChannelSid, string pathSid, string roleSid = null, int? lastConsumedMessageIndex = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string pathServiceSid, string pathChannelSid, string pathSid, string roleSid = null, int? lastConsumedMessageIndex = null, DateTime? lastConsumptionTimestamp = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex};
+            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated};
             return await UpdateAsync(options, client);
         }
         #endif

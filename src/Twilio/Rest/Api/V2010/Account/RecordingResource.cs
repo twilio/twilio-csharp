@@ -40,6 +40,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             public static readonly StatusEnum Processing = new StatusEnum("processing");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
+            public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
 
         private static Request BuildFetchRequest(FetchRecordingOptions options, ITwilioRestClient client)
@@ -422,6 +423,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("encryption_details")]
         public object EncryptionDetails { get; private set; }
+        /// <summary>
+        /// More information about the recording failure, if Status is failed.
+        /// </summary>
+        [JsonProperty("error_code")]
+        public int? ErrorCode { get; private set; }
 
         private RecordingResource()
         {

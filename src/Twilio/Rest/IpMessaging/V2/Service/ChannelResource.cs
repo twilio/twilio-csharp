@@ -222,11 +222,14 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="type"> The type </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="createdBy"> The created_by </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns> 
-        public static ChannelResource Create(string pathServiceSid, string friendlyName = null, string uniqueName = null, string attributes = null, ChannelResource.ChannelTypeEnum type = null, ITwilioRestClient client = null)
+        public static ChannelResource Create(string pathServiceSid, string friendlyName = null, string uniqueName = null, string attributes = null, ChannelResource.ChannelTypeEnum type = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string createdBy = null, ITwilioRestClient client = null)
         {
-            var options = new CreateChannelOptions(pathServiceSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, Type = type};
+            var options = new CreateChannelOptions(pathServiceSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, Type = type, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
             return Create(options, client);
         }
 
@@ -240,11 +243,14 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="type"> The type </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="createdBy"> The created_by </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns> 
-        public static async System.Threading.Tasks.Task<ChannelResource> CreateAsync(string pathServiceSid, string friendlyName = null, string uniqueName = null, string attributes = null, ChannelResource.ChannelTypeEnum type = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ChannelResource> CreateAsync(string pathServiceSid, string friendlyName = null, string uniqueName = null, string attributes = null, ChannelResource.ChannelTypeEnum type = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string createdBy = null, ITwilioRestClient client = null)
         {
-            var options = new CreateChannelOptions(pathServiceSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, Type = type};
+            var options = new CreateChannelOptions(pathServiceSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, Type = type, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
             return await CreateAsync(options, client);
         }
         #endif
@@ -440,11 +446,14 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="attributes"> The attributes </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="createdBy"> The created_by </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns> 
-        public static ChannelResource Update(string pathServiceSid, string pathSid, string friendlyName = null, string uniqueName = null, string attributes = null, ITwilioRestClient client = null)
+        public static ChannelResource Update(string pathServiceSid, string pathSid, string friendlyName = null, string uniqueName = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string createdBy = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateChannelOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes};
+            var options = new UpdateChannelOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
             return Update(options, client);
         }
 
@@ -458,11 +467,14 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="attributes"> The attributes </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="createdBy"> The created_by </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns> 
-        public static async System.Threading.Tasks.Task<ChannelResource> UpdateAsync(string pathServiceSid, string pathSid, string friendlyName = null, string uniqueName = null, string attributes = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ChannelResource> UpdateAsync(string pathServiceSid, string pathSid, string friendlyName = null, string uniqueName = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string createdBy = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateChannelOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes};
+            var options = new UpdateChannelOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
             return await UpdateAsync(options, client);
         }
         #endif

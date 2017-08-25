@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Converters;
 
 namespace Twilio.Rest.Chat.V2.Service.Channel 
 {
@@ -77,6 +78,18 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// The attributes
         /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
+        public DateTime? DateCreated { get; set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
+        public DateTime? DateUpdated { get; set; }
+        /// <summary>
+        /// The last_updated_by
+        /// </summary>
+        public string LastUpdatedBy { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -111,6 +124,21 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+            }
+
+            if (DateCreated != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
+            }
+
+            if (DateUpdated != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
+            }
+
+            if (LastUpdatedBy != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LastUpdatedBy", LastUpdatedBy));
             }
 
             return p;
@@ -234,6 +262,18 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// The attributes
         /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The date_created
+        /// </summary>
+        public DateTime? DateCreated { get; set; }
+        /// <summary>
+        /// The date_updated
+        /// </summary>
+        public DateTime? DateUpdated { get; set; }
+        /// <summary>
+        /// The last_updated_by
+        /// </summary>
+        public string LastUpdatedBy { get; set; }
 
         /// <summary>
         /// Construct a new UpdateMessageOptions
@@ -263,6 +303,21 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+            }
+
+            if (DateCreated != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateCreated", Serializers.DateTimeIso8601(DateCreated)));
+            }
+
+            if (DateUpdated != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
+            }
+
+            if (LastUpdatedBy != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LastUpdatedBy", LastUpdatedBy));
             }
 
             return p;

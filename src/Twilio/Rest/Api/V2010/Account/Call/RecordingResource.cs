@@ -382,6 +382,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         [JsonProperty("encryption_details")]
         public object EncryptionDetails { get; private set; }
+        /// <summary>
+        /// The error_code
+        /// </summary>
+        [JsonProperty("error_code")]
+        public int? ErrorCode { get; private set; }
 
         private RecordingResource()
         {

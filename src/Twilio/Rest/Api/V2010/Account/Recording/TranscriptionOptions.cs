@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Converters;
 
 namespace Twilio.Rest.Api.V2010.Account.Recording 
 {

@@ -153,11 +153,14 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="body"> The body </param>
         /// <param name="from"> The from </param>
         /// <param name="attributes"> The attributes </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="lastUpdatedBy"> The last_updated_by </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
-        public static MessageResource Create(string pathServiceSid, string pathChannelSid, string body, string from = null, string attributes = null, ITwilioRestClient client = null)
+        public static MessageResource Create(string pathServiceSid, string pathChannelSid, string body, string from = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string lastUpdatedBy = null, ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(pathServiceSid, pathChannelSid, body){From = from, Attributes = attributes};
+            var options = new CreateMessageOptions(pathServiceSid, pathChannelSid, body){From = from, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy};
             return Create(options, client);
         }
 
@@ -171,11 +174,14 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="body"> The body </param>
         /// <param name="from"> The from </param>
         /// <param name="attributes"> The attributes </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="lastUpdatedBy"> The last_updated_by </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(string pathServiceSid, string pathChannelSid, string body, string from = null, string attributes = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(string pathServiceSid, string pathChannelSid, string body, string from = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string lastUpdatedBy = null, ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(pathServiceSid, pathChannelSid, body){From = from, Attributes = attributes};
+            var options = new CreateMessageOptions(pathServiceSid, pathChannelSid, body){From = from, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy};
             return await CreateAsync(options, client);
         }
         #endif
@@ -446,11 +452,14 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="pathSid"> The sid </param>
         /// <param name="body"> The body </param>
         /// <param name="attributes"> The attributes </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="lastUpdatedBy"> The last_updated_by </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
-        public static MessageResource Update(string pathServiceSid, string pathChannelSid, string pathSid, string body = null, string attributes = null, ITwilioRestClient client = null)
+        public static MessageResource Update(string pathServiceSid, string pathChannelSid, string pathSid, string body = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string lastUpdatedBy = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(pathServiceSid, pathChannelSid, pathSid){Body = body, Attributes = attributes};
+            var options = new UpdateMessageOptions(pathServiceSid, pathChannelSid, pathSid){Body = body, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy};
             return Update(options, client);
         }
 
@@ -464,11 +473,14 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="pathSid"> The sid </param>
         /// <param name="body"> The body </param>
         /// <param name="attributes"> The attributes </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="lastUpdatedBy"> The last_updated_by </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathServiceSid, string pathChannelSid, string pathSid, string body = null, string attributes = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathServiceSid, string pathChannelSid, string pathSid, string body = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string lastUpdatedBy = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(pathServiceSid, pathChannelSid, pathSid){Body = body, Attributes = attributes};
+            var options = new UpdateMessageOptions(pathServiceSid, pathChannelSid, pathSid){Body = body, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -532,6 +544,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The last_updated_by
+        /// </summary>
+        [JsonProperty("last_updated_by")]
+        public string LastUpdatedBy { get; private set; }
         /// <summary>
         /// The was_edited
         /// </summary>
