@@ -22,6 +22,11 @@
     <RepositoryType>git</RepositoryType>
     <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.4' ">1.6.1</NetStandardImplicitPackageVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>twilio.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>True</DelaySign>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="[9.0.1,)" />
   </ItemGroup>
