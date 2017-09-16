@@ -214,11 +214,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="voiceFallbackMethod"> HTTP method used with voice_fallback_url </param>
         /// <param name="voiceStatusCallbackUrl"> URL that Twilio will request with status updates </param>
         /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
+        /// <param name="sipRegistration"> The sip_registration </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Domain </returns> 
-        public static DomainResource Create(string domainName, string pathAccountSid = null, string friendlyName = null, string authType = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceStatusCallbackUrl = null, Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, ITwilioRestClient client = null)
+        public static DomainResource Create(string domainName, string pathAccountSid = null, string friendlyName = null, string authType = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceStatusCallbackUrl = null, Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, bool? sipRegistration = null, ITwilioRestClient client = null)
         {
-            var options = new CreateDomainOptions(domainName){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, AuthType = authType, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceStatusCallbackMethod = voiceStatusCallbackMethod};
+            var options = new CreateDomainOptions(domainName){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, AuthType = authType, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, SipRegistration = sipRegistration};
             return Create(options, client);
         }
 
@@ -237,11 +238,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="voiceFallbackMethod"> HTTP method used with voice_fallback_url </param>
         /// <param name="voiceStatusCallbackUrl"> URL that Twilio will request with status updates </param>
         /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
+        /// <param name="sipRegistration"> The sip_registration </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Domain </returns> 
-        public static async System.Threading.Tasks.Task<DomainResource> CreateAsync(string domainName, string pathAccountSid = null, string friendlyName = null, string authType = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceStatusCallbackUrl = null, Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DomainResource> CreateAsync(string domainName, string pathAccountSid = null, string friendlyName = null, string authType = null, Uri voiceUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceStatusCallbackUrl = null, Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, bool? sipRegistration = null, ITwilioRestClient client = null)
         {
-            var options = new CreateDomainOptions(domainName){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, AuthType = authType, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceStatusCallbackMethod = voiceStatusCallbackMethod};
+            var options = new CreateDomainOptions(domainName){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, AuthType = authType, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, SipRegistration = sipRegistration};
             return await CreateAsync(options, client);
         }
         #endif
@@ -372,11 +374,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
         /// <param name="voiceStatusCallbackUrl"> The voice_status_callback_url </param>
         /// <param name="voiceUrl"> The voice_url </param>
+        /// <param name="sipRegistration"> The sip_registration </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Domain </returns> 
-        public static DomainResource Update(string pathSid, string pathAccountSid = null, string authType = null, string friendlyName = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, Uri voiceStatusCallbackUrl = null, Uri voiceUrl = null, ITwilioRestClient client = null)
+        public static DomainResource Update(string pathSid, string pathAccountSid = null, string authType = null, string friendlyName = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, Uri voiceStatusCallbackUrl = null, Uri voiceUrl = null, bool? sipRegistration = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateDomainOptions(pathSid){PathAccountSid = pathAccountSid, AuthType = authType, FriendlyName = friendlyName, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceUrl = voiceUrl};
+            var options = new UpdateDomainOptions(pathSid){PathAccountSid = pathAccountSid, AuthType = authType, FriendlyName = friendlyName, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceUrl = voiceUrl, SipRegistration = sipRegistration};
             return Update(options, client);
         }
 
@@ -395,11 +398,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
         /// <param name="voiceStatusCallbackUrl"> The voice_status_callback_url </param>
         /// <param name="voiceUrl"> The voice_url </param>
+        /// <param name="sipRegistration"> The sip_registration </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Domain </returns> 
-        public static async System.Threading.Tasks.Task<DomainResource> UpdateAsync(string pathSid, string pathAccountSid = null, string authType = null, string friendlyName = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, Uri voiceStatusCallbackUrl = null, Uri voiceUrl = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DomainResource> UpdateAsync(string pathSid, string pathAccountSid = null, string authType = null, string friendlyName = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, Uri voiceStatusCallbackUrl = null, Uri voiceUrl = null, bool? sipRegistration = null, ITwilioRestClient client = null)
         {
-            var options = new UpdateDomainOptions(pathSid){PathAccountSid = pathAccountSid, AuthType = authType, FriendlyName = friendlyName, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceUrl = voiceUrl};
+            var options = new UpdateDomainOptions(pathSid){PathAccountSid = pathAccountSid, AuthType = authType, FriendlyName = friendlyName, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceUrl = voiceUrl, SipRegistration = sipRegistration};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -577,6 +581,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
+        /// <summary>
+        /// If SIP registration is allowed
+        /// </summary>
+        [JsonProperty("sip_registration")]
+        public bool? SipRegistration { get; private set; }
 
         private DomainResource()
         {

@@ -81,6 +81,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// The voice_status_callback_method
         /// </summary>
         public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
+        /// <summary>
+        /// The sip_registration
+        /// </summary>
+        public bool? SipRegistration { get; set; }
 
         /// <summary>
         /// Construct a new CreateDomainOptions
@@ -141,6 +145,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             if (VoiceStatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackMethod", VoiceStatusCallbackMethod.ToString()));
+            }
+
+            if (SipRegistration != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SipRegistration", SipRegistration.Value.ToString()));
             }
 
             return p;
@@ -226,6 +235,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// The voice_url
         /// </summary>
         public Uri VoiceUrl { get; set; }
+        /// <summary>
+        /// The sip_registration
+        /// </summary>
+        public bool? SipRegistration { get; set; }
 
         /// <summary>
         /// Construct a new UpdateDomainOptions
@@ -281,6 +294,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             if (VoiceUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.AbsoluteUri));
+            }
+
+            if (SipRegistration != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SipRegistration", SipRegistration.Value.ToString()));
             }
 
             return p;

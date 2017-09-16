@@ -56,6 +56,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum ConversationsParticipantEvents = new UsageCategoryEnum("conversations-participant-events");
             public static readonly UsageCategoryEnum ConversationsParticipants = new UsageCategoryEnum("conversations-participants");
             public static readonly UsageCategoryEnum Cps = new UsageCategoryEnum("cps");
+            public static readonly UsageCategoryEnum GroupRoomsMediaDownloaded = new UsageCategoryEnum("group-rooms-media-downloaded");
+            public static readonly UsageCategoryEnum GroupRoomsMediaRecorded = new UsageCategoryEnum("group-rooms-media-recorded");
+            public static readonly UsageCategoryEnum GroupRoomsMediaRouted = new UsageCategoryEnum("group-rooms-media-routed");
+            public static readonly UsageCategoryEnum GroupRoomsMediaStored = new UsageCategoryEnum("group-rooms-media-stored");
+            public static readonly UsageCategoryEnum GroupRoomsParticipantMinutes = new UsageCategoryEnum("group-rooms-participant-minutes");
+            public static readonly UsageCategoryEnum GroupRoomsRecordedMinutes = new UsageCategoryEnum("group-rooms-recorded-minutes");
             public static readonly UsageCategoryEnum IpMessaging = new UsageCategoryEnum("ip-messaging");
             public static readonly UsageCategoryEnum IpMessagingCommands = new UsageCategoryEnum("ip-messaging-commands");
             public static readonly UsageCategoryEnum IpMessagingDataStorage = new UsageCategoryEnum("ip-messaging-data-storage");
@@ -71,6 +77,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum MarketplaceIbmWatsonRecordingAnalysis = new UsageCategoryEnum("marketplace-ibm-watson-recording-analysis");
             public static readonly UsageCategoryEnum MarketplaceIcehookSystemsScout = new UsageCategoryEnum("marketplace-icehook-systems-scout");
             public static readonly UsageCategoryEnum MarketplaceInfogroupDataaxleBizinfo = new UsageCategoryEnum("marketplace-infogroup-dataaxle-bizinfo");
+            public static readonly UsageCategoryEnum MarketplaceCadenceTranscription = new UsageCategoryEnum("marketplace-cadence-transcription");
+            public static readonly UsageCategoryEnum MarketplaceCadenceTranslation = new UsageCategoryEnum("marketplace-cadence-translation");
+            public static readonly UsageCategoryEnum MarketplaceCapioSpeechToText = new UsageCategoryEnum("marketplace-capio-speech-to-text");
+            public static readonly UsageCategoryEnum MarketplaceFacebookOfflineConversions = new UsageCategoryEnum("marketplace-facebook-offline-conversions");
+            public static readonly UsageCategoryEnum MarketplaceKeenIoContactCenterAnalytics = new UsageCategoryEnum("marketplace-keen-io-contact-center-analytics");
             public static readonly UsageCategoryEnum MarketplaceMarchexCleancall = new UsageCategoryEnum("marketplace-marchex-cleancall");
             public static readonly UsageCategoryEnum MarketplaceMarchexSentimentAnalysisForSms = new UsageCategoryEnum("marketplace-marchex-sentiment-analysis-for-sms");
             public static readonly UsageCategoryEnum MarketplaceMarketplaceNextcallerSocialId = new UsageCategoryEnum("marketplace-marketplace-nextcaller-social-id");
@@ -95,6 +106,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum MarketplaceIbmWatsonToneAnalyzer = new UsageCategoryEnum("marketplace-ibm-watson-tone-analyzer");
             public static readonly UsageCategoryEnum MarketplaceRemeetingAutomaticSpeechRecognition = new UsageCategoryEnum("marketplace-remeeting-automatic-speech-recognition");
             public static readonly UsageCategoryEnum MarketplaceTcpaDefenseSolutionsBlacklistFeed = new UsageCategoryEnum("marketplace-tcpa-defense-solutions-blacklist-feed");
+            public static readonly UsageCategoryEnum MarketplaceVoicebaseTranscriptionCustomVocabulary = new UsageCategoryEnum("marketplace-voicebase-transcription-custom-vocabulary");
+            public static readonly UsageCategoryEnum MarketplaceYticaContactCenterReportingAnalytics = new UsageCategoryEnum("marketplace-ytica-contact-center-reporting-analytics");
             public static readonly UsageCategoryEnum Mediastorage = new UsageCategoryEnum("mediastorage");
             public static readonly UsageCategoryEnum Mms = new UsageCategoryEnum("mms");
             public static readonly UsageCategoryEnum MmsInbound = new UsageCategoryEnum("mms-inbound");
@@ -117,6 +130,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum PchatReads = new UsageCategoryEnum("pchat-reads");
             public static readonly UsageCategoryEnum PchatUsers = new UsageCategoryEnum("pchat-users");
             public static readonly UsageCategoryEnum PchatMessages = new UsageCategoryEnum("pchat-messages");
+            public static readonly UsageCategoryEnum PeerToPeerRoomsParticipantMinutes = new UsageCategoryEnum("peer-to-peer-rooms-participant-minutes");
             public static readonly UsageCategoryEnum Pfax = new UsageCategoryEnum("pfax");
             public static readonly UsageCategoryEnum PfaxMinutes = new UsageCategoryEnum("pfax-minutes");
             public static readonly UsageCategoryEnum PfaxMinutesInbound = new UsageCategoryEnum("pfax-minutes-inbound");
@@ -182,6 +196,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum Turnmegabytes = new UsageCategoryEnum("turnmegabytes");
             public static readonly UsageCategoryEnum TurnmegabytesAustralia = new UsageCategoryEnum("turnmegabytes-australia");
             public static readonly UsageCategoryEnum TurnmegabytesBrasil = new UsageCategoryEnum("turnmegabytes-brasil");
+            public static readonly UsageCategoryEnum TurnmegabytesIndia = new UsageCategoryEnum("turnmegabytes-india");
             public static readonly UsageCategoryEnum TurnmegabytesIreland = new UsageCategoryEnum("turnmegabytes-ireland");
             public static readonly UsageCategoryEnum TurnmegabytesJapan = new UsageCategoryEnum("turnmegabytes-japan");
             public static readonly UsageCategoryEnum TurnmegabytesSingapore = new UsageCategoryEnum("turnmegabytes-singapore");
@@ -189,6 +204,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum TurnmegabytesUswest = new UsageCategoryEnum("turnmegabytes-uswest");
             public static readonly UsageCategoryEnum TwilioInterconnect = new UsageCategoryEnum("twilio-interconnect");
             public static readonly UsageCategoryEnum VoiceInsights = new UsageCategoryEnum("voice-insights");
+            public static readonly UsageCategoryEnum VoiceInsightsAudioTrace = new UsageCategoryEnum("voice-insights-audio-trace");
+            public static readonly UsageCategoryEnum VoiceInsightsCarrierCalls = new UsageCategoryEnum("voice-insights-carrier-calls");
             public static readonly UsageCategoryEnum Wireless = new UsageCategoryEnum("wireless");
             public static readonly UsageCategoryEnum WirelessOrders = new UsageCategoryEnum("wireless-orders");
             public static readonly UsageCategoryEnum WirelessOrdersArtwork = new UsageCategoryEnum("wireless-orders-artwork");

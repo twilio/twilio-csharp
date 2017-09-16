@@ -1,6 +1,13 @@
 twilio-csharp Changelog
 =======================
 
+[2017-09-15] Version 5.6.5
+---------------------------
+**Api**
+- Add `sip_registration` property on SIP Domains
+- Add new video and market usage category keys
+
+
 [2017-09-01] Version 5.6.4
 ---------------------------
 **Sync**
