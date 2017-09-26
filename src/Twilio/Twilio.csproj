@@ -17,7 +17,7 @@
     <PackageTags>REST;SMS;voice;telephony;phone;twilio;twiml;video;wireless;api</PackageTags>
     <PackageIconUrl>https://www.twilio.com/marketing/bundles/marketing/img/favicons/favicon.ico</PackageIconUrl>
     <PackageProjectUrl>http://github.com/twilio/twilio-csharp</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.md</PackageLicenseUrl>
     <RepositoryUrl>http://github.com/twilio/twilio-csharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.4' ">1.6.1</NetStandardImplicitPackageVersion>
