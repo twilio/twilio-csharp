@@ -58,19 +58,19 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// The data
         /// </summary>
-        public string Data { get; set; }
+        public object Data { get; set; }
         /// <summary>
         /// The apn
         /// </summary>
-        public string Apn { get; set; }
+        public object Apn { get; set; }
         /// <summary>
         /// The gcm
         /// </summary>
-        public string Gcm { get; set; }
+        public object Gcm { get; set; }
         /// <summary>
         /// The sms
         /// </summary>
-        public string Sms { get; set; }
+        public object Sms { get; set; }
         /// <summary>
         /// The facebook_messenger
         /// </summary>
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// The fcm
         /// </summary>
-        public string Fcm { get; set; }
+        public object Fcm { get; set; }
         /// <summary>
         /// The segment
         /// </summary>
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// The alexa
         /// </summary>
-        public string Alexa { get; set; }
+        public object Alexa { get; set; }
         /// <summary>
         /// The to_binding
         /// </summary>
@@ -154,22 +154,22 @@ namespace Twilio.Rest.Notify.V1.Service
 
             if (Data != null)
             {
-                p.Add(new KeyValuePair<string, string>("Data", Data));
+                p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
             }
 
             if (Apn != null)
             {
-                p.Add(new KeyValuePair<string, string>("Apn", Apn));
+                p.Add(new KeyValuePair<string, string>("Apn", Serializers.JsonObject(Apn)));
             }
 
             if (Gcm != null)
             {
-                p.Add(new KeyValuePair<string, string>("Gcm", Gcm));
+                p.Add(new KeyValuePair<string, string>("Gcm", Serializers.JsonObject(Gcm)));
             }
 
             if (Sms != null)
             {
-                p.Add(new KeyValuePair<string, string>("Sms", Sms));
+                p.Add(new KeyValuePair<string, string>("Sms", Serializers.JsonObject(Sms)));
             }
 
             if (FacebookMessenger != null)
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Notify.V1.Service
 
             if (Fcm != null)
             {
-                p.Add(new KeyValuePair<string, string>("Fcm", Fcm));
+                p.Add(new KeyValuePair<string, string>("Fcm", Serializers.JsonObject(Fcm)));
             }
 
             if (Segment != null)
@@ -189,7 +189,7 @@ namespace Twilio.Rest.Notify.V1.Service
 
             if (Alexa != null)
             {
-                p.Add(new KeyValuePair<string, string>("Alexa", Alexa));
+                p.Add(new KeyValuePair<string, string>("Alexa", Serializers.JsonObject(Alexa)));
             }
 
             if (ToBinding != null)

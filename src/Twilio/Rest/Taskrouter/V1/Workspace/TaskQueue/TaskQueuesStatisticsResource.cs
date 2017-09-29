@@ -74,13 +74,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
+        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="splitByWaitTime"> The split_by_wait_time </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueuesStatistics </returns> 
-        public static ResourceSet<TaskQueuesStatisticsResource> Read(string pathWorkspaceSid, DateTime? endDate = null, string friendlyName = null, int? minutes = null, DateTime? startDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<TaskQueuesStatisticsResource> Read(string pathWorkspaceSid, DateTime? endDate = null, string friendlyName = null, int? minutes = null, DateTime? startDate = null, string taskChannel = null, string splitByWaitTime = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTaskQueuesStatisticsOptions(pathWorkspaceSid){EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadTaskQueuesStatisticsOptions(pathWorkspaceSid){EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -94,13 +96,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
+        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="splitByWaitTime"> The split_by_wait_time </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueuesStatistics </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(string pathWorkspaceSid, DateTime? endDate = null, string friendlyName = null, int? minutes = null, DateTime? startDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(string pathWorkspaceSid, DateTime? endDate = null, string friendlyName = null, int? minutes = null, DateTime? startDate = null, string taskChannel = null, string splitByWaitTime = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
         {
-            var options = new ReadTaskQueuesStatisticsOptions(pathWorkspaceSid){EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadTaskQueuesStatisticsOptions(pathWorkspaceSid){EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

@@ -36,6 +36,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// The end_date
         /// </summary>
         public DateTime? EndDate { get; set; }
+        /// <summary>
+        /// The task_channel
+        /// </summary>
+        public string TaskChannel { get; set; }
 
         /// <summary>
         /// Construct a new FetchWorkerStatisticsOptions
@@ -68,6 +72,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             if (EndDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
+            }
+
+            if (TaskChannel != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
             }
 
             return p;

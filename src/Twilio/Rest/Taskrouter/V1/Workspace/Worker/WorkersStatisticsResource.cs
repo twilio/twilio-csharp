@@ -72,11 +72,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="taskQueueSid"> The task_queue_sid </param>
         /// <param name="taskQueueName"> The task_queue_name </param>
         /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="taskChannel"> The task_channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkersStatistics </returns> 
-        public static WorkersStatisticsResource Fetch(string pathWorkspaceSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, string taskQueueSid = null, string taskQueueName = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static WorkersStatisticsResource Fetch(string pathWorkspaceSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, string taskQueueSid = null, string taskQueueName = null, string friendlyName = null, string taskChannel = null, ITwilioRestClient client = null)
         {
-            var options = new FetchWorkersStatisticsOptions(pathWorkspaceSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, FriendlyName = friendlyName};
+            var options = new FetchWorkersStatisticsOptions(pathWorkspaceSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, FriendlyName = friendlyName, TaskChannel = taskChannel};
             return Fetch(options, client);
         }
 
@@ -92,11 +93,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="taskQueueSid"> The task_queue_sid </param>
         /// <param name="taskQueueName"> The task_queue_name </param>
         /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="taskChannel"> The task_channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkersStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(string pathWorkspaceSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, string taskQueueSid = null, string taskQueueName = null, string friendlyName = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(string pathWorkspaceSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, string taskQueueSid = null, string taskQueueName = null, string friendlyName = null, string taskChannel = null, ITwilioRestClient client = null)
         {
-            var options = new FetchWorkersStatisticsOptions(pathWorkspaceSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, FriendlyName = friendlyName};
+            var options = new FetchWorkersStatisticsOptions(pathWorkspaceSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, FriendlyName = friendlyName, TaskChannel = taskChannel};
             return await FetchAsync(options, client);
         }
         #endif
@@ -121,20 +123,20 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
 
         /// <summary>
-        /// The account_sid
+        /// The realtime
         /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
+        [JsonProperty("realtime")]
+        public object Realtime { get; private set; }
         /// <summary>
         /// The cumulative
         /// </summary>
         [JsonProperty("cumulative")]
         public object Cumulative { get; private set; }
         /// <summary>
-        /// The realtime
+        /// The account_sid
         /// </summary>
-        [JsonProperty("realtime")]
-        public object Realtime { get; private set; }
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
         /// <summary>
         /// The workspace_sid
         /// </summary>

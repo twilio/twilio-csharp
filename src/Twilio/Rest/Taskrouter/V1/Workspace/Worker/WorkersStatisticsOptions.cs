@@ -44,6 +44,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The task_channel
+        /// </summary>
+        public string TaskChannel { get; set; }
 
         /// <summary>
         /// Construct a new FetchWorkersStatisticsOptions
@@ -89,6 +93,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (TaskChannel != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
             }
 
             return p;

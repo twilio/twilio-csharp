@@ -248,6 +248,14 @@ namespace Twilio.Rest.IpMessaging.V2
         /// The media.compatibility_message
         /// </summary>
         public string MediaCompatibilityMessage { get; set; }
+        /// <summary>
+        /// The pre_webhook_retry_count
+        /// </summary>
+        public int? PreWebhookRetryCount { get; set; }
+        /// <summary>
+        /// The post_webhook_retry_count
+        /// </summary>
+        public int? PostWebhookRetryCount { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -404,6 +412,16 @@ namespace Twilio.Rest.IpMessaging.V2
             if (MediaCompatibilityMessage != null)
             {
                 p.Add(new KeyValuePair<string, string>("Media.CompatibilityMessage", MediaCompatibilityMessage));
+            }
+
+            if (PreWebhookRetryCount != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PreWebhookRetryCount", PreWebhookRetryCount.Value.ToString()));
+            }
+
+            if (PostWebhookRetryCount != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PostWebhookRetryCount", PostWebhookRetryCount.Value.ToString()));
             }
 
             return p;

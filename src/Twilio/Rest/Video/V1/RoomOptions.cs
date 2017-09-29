@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
@@ -77,11 +78,19 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// The video_codecs
         /// </summary>
-        public RoomResource.VideoCodecEnum VideoCodecs { get; set; }
+        public List<RoomResource.VideoCodecEnum> VideoCodecs { get; set; }
         /// <summary>
         /// The media_region
         /// </summary>
         public string MediaRegion { get; set; }
+
+        /// <summary>
+        /// Construct a new CreateRoomOptions
+        /// </summary>
+        public CreateRoomOptions()
+        {
+            VideoCodecs = new List<RoomResource.VideoCodecEnum>();
+        }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -126,7 +135,7 @@ namespace Twilio.Rest.Video.V1
 
             if (VideoCodecs != null)
             {
-                p.Add(new KeyValuePair<string, string>("VideoCodecs", VideoCodecs.ToString()));
+                p.AddRange(VideoCodecs.Select(prop => new KeyValuePair<string, string>("VideoCodecs", prop.ToString())));
             }
 
             if (MediaRegion != null)

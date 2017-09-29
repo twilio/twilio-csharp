@@ -174,7 +174,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="mediaRegion"> The media_region </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns> 
-        public static RoomResource Create(bool? enableTurn = null, RoomResource.RoomTypeEnum type = null, string uniqueName = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, int? maxParticipants = null, bool? recordParticipantsOnConnect = null, RoomResource.VideoCodecEnum videoCodecs = null, string mediaRegion = null, ITwilioRestClient client = null)
+        public static RoomResource Create(bool? enableTurn = null, RoomResource.RoomTypeEnum type = null, string uniqueName = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, int? maxParticipants = null, bool? recordParticipantsOnConnect = null, List<RoomResource.VideoCodecEnum> videoCodecs = null, string mediaRegion = null, ITwilioRestClient client = null)
         {
             var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion};
             return Create(options, client);
@@ -196,7 +196,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="mediaRegion"> The media_region </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns> 
-        public static async System.Threading.Tasks.Task<RoomResource> CreateAsync(bool? enableTurn = null, RoomResource.RoomTypeEnum type = null, string uniqueName = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, int? maxParticipants = null, bool? recordParticipantsOnConnect = null, RoomResource.VideoCodecEnum videoCodecs = null, string mediaRegion = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RoomResource> CreateAsync(bool? enableTurn = null, RoomResource.RoomTypeEnum type = null, string uniqueName = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, int? maxParticipants = null, bool? recordParticipantsOnConnect = null, List<RoomResource.VideoCodecEnum> videoCodecs = null, string mediaRegion = null, ITwilioRestClient client = null)
         {
             var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion};
             return await CreateAsync(options, client);
@@ -511,6 +511,12 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         [JsonProperty("record_participants_on_connect")]
         public bool? RecordParticipantsOnConnect { get; private set; }
+        /// <summary>
+        /// The video_codecs
+        /// </summary>
+        [JsonProperty("video_codecs")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public List<RoomResource.VideoCodecEnum> VideoCodecs { get; private set; }
         /// <summary>
         /// The url
         /// </summary>

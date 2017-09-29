@@ -150,17 +150,18 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="body"> The body </param>
         /// <param name="from"> The from </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="dateCreated"> The date_created </param>
         /// <param name="dateUpdated"> The date_updated </param>
         /// <param name="lastUpdatedBy"> The last_updated_by </param>
+        /// <param name="body"> The body </param>
+        /// <param name="mediaSid"> The media_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
-        public static MessageResource Create(string pathServiceSid, string pathChannelSid, string body, string from = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string lastUpdatedBy = null, ITwilioRestClient client = null)
+        public static MessageResource Create(string pathServiceSid, string pathChannelSid, string from = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string lastUpdatedBy = null, string body = null, string mediaSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(pathServiceSid, pathChannelSid, body){From = from, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy};
+            var options = new CreateMessageOptions(pathServiceSid, pathChannelSid){From = from, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy, Body = body, MediaSid = mediaSid};
             return Create(options, client);
         }
 
@@ -171,17 +172,18 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="body"> The body </param>
         /// <param name="from"> The from </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="dateCreated"> The date_created </param>
         /// <param name="dateUpdated"> The date_updated </param>
         /// <param name="lastUpdatedBy"> The last_updated_by </param>
+        /// <param name="body"> The body </param>
+        /// <param name="mediaSid"> The media_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(string pathServiceSid, string pathChannelSid, string body, string from = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string lastUpdatedBy = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(string pathServiceSid, string pathChannelSid, string from = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string lastUpdatedBy = null, string body = null, string mediaSid = null, ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(pathServiceSid, pathChannelSid, body){From = from, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy};
+            var options = new CreateMessageOptions(pathServiceSid, pathChannelSid){From = from, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy, Body = body, MediaSid = mediaSid};
             return await CreateAsync(options, client);
         }
         #endif

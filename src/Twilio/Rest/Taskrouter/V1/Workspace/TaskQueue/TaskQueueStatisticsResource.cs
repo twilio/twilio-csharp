@@ -70,11 +70,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="endDate"> The end_date </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
+        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="splitByWaitTime"> The split_by_wait_time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueueStatistics </returns> 
-        public static TaskQueueStatisticsResource Fetch(string pathWorkspaceSid, string pathTaskQueueSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, ITwilioRestClient client = null)
+        public static TaskQueueStatisticsResource Fetch(string pathWorkspaceSid, string pathTaskQueueSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, string taskChannel = null, string splitByWaitTime = null, ITwilioRestClient client = null)
         {
-            var options = new FetchTaskQueueStatisticsOptions(pathWorkspaceSid, pathTaskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate};
+            var options = new FetchTaskQueueStatisticsOptions(pathWorkspaceSid, pathTaskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
             return Fetch(options, client);
         }
 
@@ -88,11 +90,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="endDate"> The end_date </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
+        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="splitByWaitTime"> The split_by_wait_time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueueStatistics </returns> 
-        public static async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(string pathWorkspaceSid, string pathTaskQueueSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(string pathWorkspaceSid, string pathTaskQueueSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, string taskChannel = null, string splitByWaitTime = null, ITwilioRestClient client = null)
         {
-            var options = new FetchTaskQueueStatisticsOptions(pathWorkspaceSid, pathTaskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate};
+            var options = new FetchTaskQueueStatisticsOptions(pathWorkspaceSid, pathTaskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
             return await FetchAsync(options, client);
         }
         #endif

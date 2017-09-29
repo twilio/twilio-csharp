@@ -67,10 +67,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The body
-        /// </summary>
-        public string Body { get; }
-        /// <summary>
         /// The from
         /// </summary>
         public string From { get; set; }
@@ -90,6 +86,14 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// The last_updated_by
         /// </summary>
         public string LastUpdatedBy { get; set; }
+        /// <summary>
+        /// The body
+        /// </summary>
+        public string Body { get; set; }
+        /// <summary>
+        /// The media_sid
+        /// </summary>
+        public string MediaSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -97,12 +101,10 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="body"> The body </param>
-        public CreateMessageOptions(string pathServiceSid, string pathChannelSid, string body)
+        public CreateMessageOptions(string pathServiceSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
             PathChannelSid = pathChannelSid;
-            Body = body;
         }
 
         /// <summary>
@@ -111,11 +113,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Body != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Body", Body));
-            }
-
             if (From != null)
             {
                 p.Add(new KeyValuePair<string, string>("From", From));
@@ -139,6 +136,16 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             if (LastUpdatedBy != null)
             {
                 p.Add(new KeyValuePair<string, string>("LastUpdatedBy", LastUpdatedBy));
+            }
+
+            if (Body != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Body", Body));
+            }
+
+            if (MediaSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MediaSid", MediaSid.ToString()));
             }
 
             return p;

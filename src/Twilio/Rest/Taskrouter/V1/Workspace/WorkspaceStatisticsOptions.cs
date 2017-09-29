@@ -32,6 +32,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The end_date
         /// </summary>
         public DateTime? EndDate { get; set; }
+        /// <summary>
+        /// The task_channel
+        /// </summary>
+        public string TaskChannel { get; set; }
+        /// <summary>
+        /// The split_by_wait_time
+        /// </summary>
+        public string SplitByWaitTime { get; set; }
 
         /// <summary>
         /// Construct a new FetchWorkspaceStatisticsOptions
@@ -62,6 +70,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (EndDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
+            }
+
+            if (TaskChannel != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
+            }
+
+            if (SplitByWaitTime != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SplitByWaitTime", SplitByWaitTime));
             }
 
             return p;
