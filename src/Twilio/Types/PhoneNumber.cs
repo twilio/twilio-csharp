@@ -17,6 +17,16 @@
         }
 
         /// <summary>
+        /// Add implicit constructor for PhoneNumber to make it assignable from string
+        /// </summary>
+        /// <param name="number">Phone number</param>
+        /// <returns></returns>
+        public static implicit operator PhoneNumber(string number)
+        {
+            return new PhoneNumber(number);
+        }
+
+        /// <summary>
         /// Convert to string
         /// </summary>
         /// <returns>String representation</returns>
