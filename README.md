@@ -60,13 +60,26 @@ Console.WriteLine(message.Sid);
 
 ### TwiML Generation
 ```csharp
-var gather = new Gather(numDigits: 1, action: "hello-monkey-handle-key.cshtml", method: "POST")
+// TwiML classes can be created as standalone elements
+var gather = new Gather(numDigits: 1, action: new Uri("hello-monkey-handle-key.cshtml"), method: HttpMethod.Post)
     .Say("To speak to a real monkey, press 1. Press 2 to record your own monkey howl. Press any other key to start over.");
 
+// Attributes can be set directly on the object
+gather.Timeout = 100;
+gather.MaxSpeechTime = 200
+
+// Arbitrary attributes can be set by calling set/getOption
+var dial = new Dial().SetOption("myAttribute", 200)
+                     .SetOption("newAttribute", false);
+
+// Or can be created and attached to a response directly using helper methods
 var response = new VoiceResponse()
     .Say("Hello Monkey")
-    .Play("http://demo.twilio.com/hellomonkey/monkey.mp3")
-    .Gather(gather);
+    .Play(new Uri("http://demo.twilio.com/hellomonkey/monkey.mp3"))
+    .Append(gather)
+    .Append(dial);
+    
+// Serialize the TwiML objects to XML string
 Console.WriteLine(response);
 
 /*
@@ -74,9 +87,10 @@ Console.WriteLine(response);
 <Response>
   <Say>Hello Monkey</Say>
   <Play>http://demo.twilio.com/hellomonkey/monkey.mp3</Play>
-  <Gather numDigits="1" action="hello-monkey-handle-key.cshtml" method="POST">
+  <Gather numDigits="1" action="hello-monkey-handle-key.cshtml" method="POST" timeout="100" maxSpeechTime="200">
     <Say>To speak to a real monkey, press 1. Press 2 to record your own monkey howl. Press any other key to start over.</Say>
   </Gather>
+  <Dial myAttribute="200" newAttribute="false"></Dial>
 </Response>
 */
 ```
