@@ -7,18 +7,18 @@ using NUnit.Framework;
 using System;
 using Twilio.Converters;
 using Twilio.TwiML;
-using Twilio.TwiML.Messaging;
+using Twilio.TwiML.Fax;
 
 namespace Twilio.Tests.TwiML 
 {
 
     [TestFixture]
-    public class MessagingResponseTest : TwilioTest 
+    public class FaxResponseTest : TwilioTest 
     {
         [Test]
         public void TestEmptyElement()
         {
-            var elem = new MessagingResponse();
+            var elem = new FaxResponse();
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
@@ -30,7 +30,7 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithExtraAttributes()
         {
-            var elem = new MessagingResponse();
+            var elem = new FaxResponse();
             elem.SetOption("newParam1", "value");
             elem.SetOption("newParam2", 1);
 
@@ -42,37 +42,16 @@ namespace Twilio.Tests.TwiML
         }
 
         [Test]
-        public void TestNestElement()
-        {
-            var elem = new MessagingResponse();
-            var child = new Message();
-            elem.Nest(child).Body();
-
-            Assert.AreEqual(
-                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Response>" + Environment.NewLine +
-                "  <Message>" + Environment.NewLine +
-                "    <Body></Body>" + Environment.NewLine +
-                "  </Message>" + Environment.NewLine +
-                "</Response>",
-                elem.ToString()
-            );
-        }
-
-        [Test]
         public void TestElementWithChildren()
         {
-            var elem = new MessagingResponse();
+            var elem = new FaxResponse();
 
-            elem.Message("body", "to", "from", new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
-
-            elem.Redirect(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
+            elem.Receive(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
-                "  <Message to=\"to\" from=\"from\" action=\"https://example.com\" method=\"GET\">body</Message>" + Environment.NewLine +
-                "  <Redirect method=\"GET\">https://example.com</Redirect>" + Environment.NewLine +
+                "  <Receive action=\"https://example.com\" method=\"GET\"></Receive>" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()
             );

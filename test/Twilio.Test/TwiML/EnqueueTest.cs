@@ -12,16 +12,16 @@ namespace Twilio.Tests.TwiML
 {
 
     [TestFixture]
-    public class GatherTest : TwilioTest 
+    public class EnqueueTest : TwilioTest 
     {
         [Test]
         public void TestEmptyElement()
         {
-            var elem = new Gather();
+            var elem = new Enqueue();
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Gather></Gather>",
+                "<Enqueue></Enqueue>",
                 elem.ToString()
             );
         }
@@ -29,25 +29,17 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new Gather(
-                Gather.InputEnum.Dtmf,
+            var elem = new Enqueue(
+                "name",
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                1,
-                "speech_timeout",
-                1,
-                true,
-                "finish_on_key",
-                1,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
-                Gather.LanguageEnum.AfZa,
-                "hints",
-                true
+                "workflow_sid"
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Gather input=\"dtmf\" action=\"https://example.com\" method=\"GET\" timeout=\"1\" speechTimeout=\"speech_timeout\" maxSpeechTime=\"1\" profanityFilter=\"true\" finishOnKey=\"finish_on_key\" numDigits=\"1\" partialResultCallback=\"https://example.com\" partialResultCallbackMethod=\"GET\" language=\"af-ZA\" hints=\"hints\" bargeIn=\"true\"></Gather>",
+                "<Enqueue action=\"https://example.com\" method=\"GET\" waitUrl=\"https://example.com\" waitUrlMethod=\"GET\" workflowSid=\"workflow_sid\">name</Enqueue>",
                 elem.ToString()
             );
         }
@@ -55,13 +47,13 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithExtraAttributes()
         {
-            var elem = new Gather();
+            var elem = new Enqueue();
             elem.SetOption("newParam1", "value");
             elem.SetOption("newParam2", 1);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Gather newParam1=\"value\" newParam2=\"1\"></Gather>",
+                "<Enqueue newParam1=\"value\" newParam2=\"1\"></Enqueue>",
                 elem.ToString()
             );
         }
@@ -69,21 +61,15 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithChildren()
         {
-            var elem = new Gather();
+            var elem = new Enqueue();
 
-            elem.Say("message", Say.VoiceEnum.Man, 1, Say.LanguageEnum.DaDk);
-
-            elem.Pause(1);
-
-            elem.Play(new Uri("https://example.com"), 1, "digits");
+            elem.Task("body");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Gather>" + Environment.NewLine +
-                "  <Say voice=\"man\" loop=\"1\" language=\"da-DK\">message</Say>" + Environment.NewLine +
-                "  <Pause length=\"1\"></Pause>" + Environment.NewLine +
-                "  <Play loop=\"1\" digits=\"digits\">https://example.com</Play>" + Environment.NewLine +
-                "</Gather>",
+                "<Enqueue>" + Environment.NewLine +
+                "  <Task>body</Task>" + Environment.NewLine +
+                "</Enqueue>",
                 elem.ToString()
             );
         }
