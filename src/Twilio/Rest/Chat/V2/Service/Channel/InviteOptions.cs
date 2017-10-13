@@ -33,7 +33,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// Construct a new FetchInviteOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
@@ -79,7 +78,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// Construct a new CreateInviteOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
@@ -131,7 +129,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// Construct a new ReadInviteOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         public ReadInviteOptions(string pathServiceSid, string pathChannelSid)
@@ -182,7 +179,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// Construct a new DeleteInviteOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>

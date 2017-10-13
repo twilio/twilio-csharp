@@ -53,7 +53,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchAvailablePhoneNumberCountryOptions
         /// </summary>
-        ///
         /// <param name="pathCountryCode"> The country_code </param>
         public FetchAvailablePhoneNumberCountryOptions(string pathCountryCode)
         {

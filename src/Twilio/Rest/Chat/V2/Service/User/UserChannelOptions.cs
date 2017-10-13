@@ -28,7 +28,6 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <summary>
         /// Construct a new ReadUserChannelOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathUserSid"> The user_sid </param>
         public ReadUserChannelOptions(string pathServiceSid, string pathUserSid)

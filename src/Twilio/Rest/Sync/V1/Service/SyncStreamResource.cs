@@ -36,7 +36,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch a specific Stream.
         /// </summary>
-        ///
         /// <param name="options"> Fetch SyncStream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncStream </returns> 
@@ -51,11 +50,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch a specific Stream.
         /// </summary>
-        ///
         /// <param name="options"> Fetch SyncStream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns> 
-        public static async System.Threading.Tasks.Task<SyncStreamResource> FetchAsync(FetchSyncStreamOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncStreamResource> FetchAsync(FetchSyncStreamOptions options, 
+                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -66,7 +65,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch a specific Stream.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Stream SID or unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -81,12 +79,13 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch a specific Stream.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Stream SID or unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns> 
-        public static async System.Threading.Tasks.Task<SyncStreamResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncStreamResource> FetchAsync(string pathServiceSid, 
+                                                                                       string pathSid, 
+                                                                                       ITwilioRestClient client = null)
         {
             var options = new FetchSyncStreamOptions(pathServiceSid, pathSid);
             return await FetchAsync(options, client);
@@ -107,7 +106,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Delete a specific Stream.
         /// </summary>
-        ///
         /// <param name="options"> Delete SyncStream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncStream </returns> 
@@ -122,11 +120,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Delete a specific Stream.
         /// </summary>
-        ///
         /// <param name="options"> Delete SyncStream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncStreamOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncStreamOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -137,7 +135,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Delete a specific Stream.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Stream SID or unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -152,12 +149,13 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Delete a specific Stream.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Stream SID or unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+                                                                          string pathSid, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteSyncStreamOptions(pathServiceSid, pathSid);
             return await DeleteAsync(options, client);
@@ -178,7 +176,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Create a new Stream.
         /// </summary>
-        ///
         /// <param name="options"> Create SyncStream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncStream </returns> 
@@ -193,11 +190,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Create a new Stream.
         /// </summary>
-        ///
         /// <param name="options"> Create SyncStream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns> 
-        public static async System.Threading.Tasks.Task<SyncStreamResource> CreateAsync(CreateSyncStreamOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncStreamResource> CreateAsync(CreateSyncStreamOptions options, 
+                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -208,12 +205,13 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Create a new Stream.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="uniqueName"> Stream unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncStream </returns> 
-        public static SyncStreamResource Create(string pathServiceSid, string uniqueName = null, ITwilioRestClient client = null)
+        public static SyncStreamResource Create(string pathServiceSid, 
+                                                string uniqueName = null, 
+                                                ITwilioRestClient client = null)
         {
             var options = new CreateSyncStreamOptions(pathServiceSid){UniqueName = uniqueName};
             return Create(options, client);
@@ -223,12 +221,13 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Create a new Stream.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="uniqueName"> Stream unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns> 
-        public static async System.Threading.Tasks.Task<SyncStreamResource> CreateAsync(string pathServiceSid, string uniqueName = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncStreamResource> CreateAsync(string pathServiceSid, 
+                                                                                        string uniqueName = null, 
+                                                                                        ITwilioRestClient client = null)
         {
             var options = new CreateSyncStreamOptions(pathServiceSid){UniqueName = uniqueName};
             return await CreateAsync(options, client);
@@ -249,7 +248,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Retrieve a list of all Streams in a Service Instance.
         /// </summary>
-        ///
         /// <param name="options"> Read SyncStream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncStream </returns> 
@@ -266,11 +264,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Retrieve a list of all Streams in a Service Instance.
         /// </summary>
-        ///
         /// <param name="options"> Read SyncStream parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncStreamResource>> ReadAsync(ReadSyncStreamOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncStreamResource>> ReadAsync(ReadSyncStreamOptions options, 
+                                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -283,13 +281,15 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Retrieve a list of all Streams in a Service Instance.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncStream </returns> 
-        public static ResourceSet<SyncStreamResource> Read(string pathServiceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<SyncStreamResource> Read(string pathServiceSid, 
+                                                           int? pageSize = null, 
+                                                           long? limit = null, 
+                                                           ITwilioRestClient client = null)
         {
             var options = new ReadSyncStreamOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -299,13 +299,15 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Retrieve a list of all Streams in a Service Instance.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncStreamResource>> ReadAsync(string pathServiceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncStreamResource>> ReadAsync(string pathServiceSid, 
+                                                                                                   int? pageSize = null, 
+                                                                                                   long? limit = null, 
+                                                                                                   ITwilioRestClient client = null)
         {
             var options = new ReadSyncStreamOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -315,7 +317,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -335,7 +336,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -356,7 +356,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -377,7 +376,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Converts a JSON string into a SyncStreamResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> SyncStreamResource object represented by the provided JSON </returns> 
         public static SyncStreamResource FromJson(string json)

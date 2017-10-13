@@ -25,6 +25,10 @@ namespace Twilio.Rest.Api.V2010
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
+            public static implicit operator StatusEnum(string value)
+            {
+                return new StatusEnum(value);
+            }
 
             public static readonly StatusEnum Active = new StatusEnum("active");
             public static readonly StatusEnum Suspended = new StatusEnum("suspended");
@@ -35,6 +39,10 @@ namespace Twilio.Rest.Api.V2010
         {
             private TypeEnum(string value) : base(value) {}
             public TypeEnum() {}
+            public static implicit operator TypeEnum(string value)
+            {
+                return new TypeEnum(value);
+            }
 
             public static readonly TypeEnum Trial = new TypeEnum("Trial");
             public static readonly TypeEnum Full = new TypeEnum("Full");
@@ -54,7 +62,6 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Create a new Twilio Subaccount from the account making the request
         /// </summary>
-        ///
         /// <param name="options"> Create Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns> 
@@ -69,11 +76,11 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Create a new Twilio Subaccount from the account making the request
         /// </summary>
-        ///
         /// <param name="options"> Create Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns> 
-        public static async System.Threading.Tasks.Task<AccountResource> CreateAsync(CreateAccountOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountResource> CreateAsync(CreateAccountOptions options, 
+                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -84,7 +91,6 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Create a new Twilio Subaccount from the account making the request
         /// </summary>
-        ///
         /// <param name="friendlyName"> A human readable description of the account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns> 
@@ -98,11 +104,11 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Create a new Twilio Subaccount from the account making the request
         /// </summary>
-        ///
         /// <param name="friendlyName"> A human readable description of the account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns> 
-        public static async System.Threading.Tasks.Task<AccountResource> CreateAsync(string friendlyName = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountResource> CreateAsync(string friendlyName = null, 
+                                                                                     ITwilioRestClient client = null)
         {
             var options = new CreateAccountOptions{FriendlyName = friendlyName};
             return await CreateAsync(options, client);
@@ -123,7 +129,6 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Fetch the account specified by the provided Account Sid
         /// </summary>
-        ///
         /// <param name="options"> Fetch Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns> 
@@ -138,11 +143,11 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Fetch the account specified by the provided Account Sid
         /// </summary>
-        ///
         /// <param name="options"> Fetch Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns> 
-        public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(FetchAccountOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(FetchAccountOptions options, 
+                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -153,7 +158,6 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Fetch the account specified by the provided Account Sid
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique Account Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns> 
@@ -167,11 +171,11 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Fetch the account specified by the provided Account Sid
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique Account Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns> 
-        public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(string pathSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(string pathSid = null, 
+                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchAccountOptions{PathSid = pathSid};
             return await FetchAsync(options, client);
@@ -192,7 +196,6 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Retrieves a collection of Accounts belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="options"> Read Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns> 
@@ -209,11 +212,11 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Retrieves a collection of Accounts belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="options"> Read Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AccountResource>> ReadAsync(ReadAccountOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AccountResource>> ReadAsync(ReadAccountOptions options, 
+                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -226,14 +229,17 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Retrieves a collection of Accounts belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="friendlyName"> FriendlyName to filter on </param>
         /// <param name="status"> Status to filter on </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns> 
-        public static ResourceSet<AccountResource> Read(string friendlyName = null, AccountResource.StatusEnum status = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<AccountResource> Read(string friendlyName = null, 
+                                                        AccountResource.StatusEnum status = null, 
+                                                        int? pageSize = null, 
+                                                        long? limit = null, 
+                                                        ITwilioRestClient client = null)
         {
             var options = new ReadAccountOptions{FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -243,14 +249,17 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Retrieves a collection of Accounts belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="friendlyName"> FriendlyName to filter on </param>
         /// <param name="status"> Status to filter on </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AccountResource>> ReadAsync(string friendlyName = null, AccountResource.StatusEnum status = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AccountResource>> ReadAsync(string friendlyName = null, 
+                                                                                                AccountResource.StatusEnum status = null, 
+                                                                                                int? pageSize = null, 
+                                                                                                long? limit = null, 
+                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadAccountOptions{FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -260,7 +269,6 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -280,7 +288,6 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -301,7 +308,6 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -333,7 +339,6 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>
-        ///
         /// <param name="options"> Update Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns> 
@@ -348,11 +353,11 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>
-        ///
         /// <param name="options"> Update Account parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns> 
-        public static async System.Threading.Tasks.Task<AccountResource> UpdateAsync(UpdateAccountOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountResource> UpdateAsync(UpdateAccountOptions options, 
+                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -363,13 +368,15 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> FriendlyName to update </param>
         /// <param name="status"> Status to update the Account with </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns> 
-        public static AccountResource Update(string pathSid = null, string friendlyName = null, AccountResource.StatusEnum status = null, ITwilioRestClient client = null)
+        public static AccountResource Update(string pathSid = null, 
+                                             string friendlyName = null, 
+                                             AccountResource.StatusEnum status = null, 
+                                             ITwilioRestClient client = null)
         {
             var options = new UpdateAccountOptions{PathSid = pathSid, FriendlyName = friendlyName, Status = status};
             return Update(options, client);
@@ -379,13 +386,15 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> FriendlyName to update </param>
         /// <param name="status"> Status to update the Account with </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns> 
-        public static async System.Threading.Tasks.Task<AccountResource> UpdateAsync(string pathSid = null, string friendlyName = null, AccountResource.StatusEnum status = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AccountResource> UpdateAsync(string pathSid = null, 
+                                                                                     string friendlyName = null, 
+                                                                                     AccountResource.StatusEnum status = null, 
+                                                                                     ITwilioRestClient client = null)
         {
             var options = new UpdateAccountOptions{PathSid = pathSid, FriendlyName = friendlyName, Status = status};
             return await UpdateAsync(options, client);
@@ -395,7 +404,6 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Converts a JSON string into a AccountResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> AccountResource object represented by the provided JSON </returns> 
         public static AccountResource FromJson(string json)

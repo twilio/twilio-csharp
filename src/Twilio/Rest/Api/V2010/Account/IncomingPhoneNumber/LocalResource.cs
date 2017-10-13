@@ -25,6 +25,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         {
             private AddressRequirementEnum(string value) : base(value) {}
             public AddressRequirementEnum() {}
+            public static implicit operator AddressRequirementEnum(string value)
+            {
+                return new AddressRequirementEnum(value);
+            }
 
             public static readonly AddressRequirementEnum None = new AddressRequirementEnum("none");
             public static readonly AddressRequirementEnum Any = new AddressRequirementEnum("any");
@@ -46,7 +50,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Local parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Local </returns> 
@@ -63,11 +66,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Local parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Local </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<LocalResource>> ReadAsync(ReadLocalOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<LocalResource>> ReadAsync(ReadLocalOptions options, 
+                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -80,7 +83,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="beta"> The beta </param>
         /// <param name="friendlyName"> The friendly_name </param>
@@ -90,7 +92,14 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Local </returns> 
-        public static ResourceSet<LocalResource> Read(string pathAccountSid = null, bool? beta = null, string friendlyName = null, Types.PhoneNumber phoneNumber = null, string origin = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<LocalResource> Read(string pathAccountSid = null, 
+                                                      bool? beta = null, 
+                                                      string friendlyName = null, 
+                                                      Types.PhoneNumber phoneNumber = null, 
+                                                      string origin = null, 
+                                                      int? pageSize = null, 
+                                                      long? limit = null, 
+                                                      ITwilioRestClient client = null)
         {
             var options = new ReadLocalOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -100,7 +109,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="beta"> The beta </param>
         /// <param name="friendlyName"> The friendly_name </param>
@@ -110,7 +118,14 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Local </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<LocalResource>> ReadAsync(string pathAccountSid = null, bool? beta = null, string friendlyName = null, Types.PhoneNumber phoneNumber = null, string origin = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<LocalResource>> ReadAsync(string pathAccountSid = null, 
+                                                                                              bool? beta = null, 
+                                                                                              string friendlyName = null, 
+                                                                                              Types.PhoneNumber phoneNumber = null, 
+                                                                                              string origin = null, 
+                                                                                              int? pageSize = null, 
+                                                                                              long? limit = null, 
+                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadLocalOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -120,7 +135,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -140,7 +154,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -161,7 +174,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -193,7 +205,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create Local parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Local </returns> 
@@ -208,11 +219,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create Local parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Local </returns> 
-        public static async System.Threading.Tasks.Task<LocalResource> CreateAsync(CreateLocalOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<LocalResource> CreateAsync(CreateLocalOptions options, 
+                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -223,7 +234,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="phoneNumber"> The phone_number </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="apiVersion"> The api_version </param>
@@ -244,7 +254,25 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="identitySid"> The identity_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Local </returns> 
-        public static LocalResource Create(Types.PhoneNumber phoneNumber, string pathAccountSid = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, string identitySid = null, ITwilioRestClient client = null)
+        public static LocalResource Create(Types.PhoneNumber phoneNumber, 
+                                           string pathAccountSid = null, 
+                                           string apiVersion = null, 
+                                           string friendlyName = null, 
+                                           string smsApplicationSid = null, 
+                                           Twilio.Http.HttpMethod smsFallbackMethod = null, 
+                                           Uri smsFallbackUrl = null, 
+                                           Twilio.Http.HttpMethod smsMethod = null, 
+                                           Uri smsUrl = null, 
+                                           Uri statusCallback = null, 
+                                           Twilio.Http.HttpMethod statusCallbackMethod = null, 
+                                           string voiceApplicationSid = null, 
+                                           bool? voiceCallerIdLookup = null, 
+                                           Twilio.Http.HttpMethod voiceFallbackMethod = null, 
+                                           Uri voiceFallbackUrl = null, 
+                                           Twilio.Http.HttpMethod voiceMethod = null, 
+                                           Uri voiceUrl = null, 
+                                           string identitySid = null, 
+                                           ITwilioRestClient client = null)
         {
             var options = new CreateLocalOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, IdentitySid = identitySid};
             return Create(options, client);
@@ -254,7 +282,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="phoneNumber"> The phone_number </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="apiVersion"> The api_version </param>
@@ -275,7 +302,25 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="identitySid"> The identity_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Local </returns> 
-        public static async System.Threading.Tasks.Task<LocalResource> CreateAsync(Types.PhoneNumber phoneNumber, string pathAccountSid = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, string identitySid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<LocalResource> CreateAsync(Types.PhoneNumber phoneNumber, 
+                                                                                   string pathAccountSid = null, 
+                                                                                   string apiVersion = null, 
+                                                                                   string friendlyName = null, 
+                                                                                   string smsApplicationSid = null, 
+                                                                                   Twilio.Http.HttpMethod smsFallbackMethod = null, 
+                                                                                   Uri smsFallbackUrl = null, 
+                                                                                   Twilio.Http.HttpMethod smsMethod = null, 
+                                                                                   Uri smsUrl = null, 
+                                                                                   Uri statusCallback = null, 
+                                                                                   Twilio.Http.HttpMethod statusCallbackMethod = null, 
+                                                                                   string voiceApplicationSid = null, 
+                                                                                   bool? voiceCallerIdLookup = null, 
+                                                                                   Twilio.Http.HttpMethod voiceFallbackMethod = null, 
+                                                                                   Uri voiceFallbackUrl = null, 
+                                                                                   Twilio.Http.HttpMethod voiceMethod = null, 
+                                                                                   Uri voiceUrl = null, 
+                                                                                   string identitySid = null, 
+                                                                                   ITwilioRestClient client = null)
         {
             var options = new CreateLocalOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, IdentitySid = identitySid};
             return await CreateAsync(options, client);
@@ -285,7 +330,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Converts a JSON string into a LocalResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> LocalResource object represented by the provided JSON </returns> 
         public static LocalResource FromJson(string json)

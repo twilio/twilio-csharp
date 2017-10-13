@@ -25,6 +25,10 @@ namespace Twilio.Rest.Video.V1
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
+            public static implicit operator StatusEnum(string value)
+            {
+                return new StatusEnum(value);
+            }
 
             public static readonly StatusEnum Processing = new StatusEnum("processing");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
@@ -36,6 +40,10 @@ namespace Twilio.Rest.Video.V1
         {
             private TypeEnum(string value) : base(value) {}
             public TypeEnum() {}
+            public static implicit operator TypeEnum(string value)
+            {
+                return new TypeEnum(value);
+            }
 
             public static readonly TypeEnum Audio = new TypeEnum("audio");
             public static readonly TypeEnum Video = new TypeEnum("video");
@@ -46,6 +54,10 @@ namespace Twilio.Rest.Video.V1
         {
             private FormatEnum(string value) : base(value) {}
             public FormatEnum() {}
+            public static implicit operator FormatEnum(string value)
+            {
+                return new FormatEnum(value);
+            }
 
             public static readonly FormatEnum Mka = new FormatEnum("mka");
             public static readonly FormatEnum Mkv = new FormatEnum("mkv");
@@ -55,6 +67,10 @@ namespace Twilio.Rest.Video.V1
         {
             private CodecEnum(string value) : base(value) {}
             public CodecEnum() {}
+            public static implicit operator CodecEnum(string value)
+            {
+                return new CodecEnum(value);
+            }
 
             public static readonly CodecEnum Vp8 = new CodecEnum("VP8");
             public static readonly CodecEnum H264 = new CodecEnum("H264");
@@ -76,7 +92,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
@@ -91,11 +106,11 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options, 
+                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -106,7 +121,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
@@ -120,11 +134,11 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string pathSid, 
+                                                                                      ITwilioRestClient client = null)
         {
             var options = new FetchRecordingOptions(pathSid);
             return await FetchAsync(options, client);
@@ -145,7 +159,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
@@ -162,11 +175,11 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options, 
+                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -179,7 +192,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="status"> The status </param>
         /// <param name="sourceSid"> The source_sid </param>
         /// <param name="groupingSid"> The grouping_sid </param>
@@ -189,7 +201,14 @@ namespace Twilio.Rest.Video.V1
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
-        public static ResourceSet<RecordingResource> Read(RecordingResource.StatusEnum status = null, string sourceSid = null, List<string> groupingSid = null, DateTime? dateCreatedAfter = null, DateTime? dateCreatedBefore = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<RecordingResource> Read(RecordingResource.StatusEnum status = null, 
+                                                          string sourceSid = null, 
+                                                          List<string> groupingSid = null, 
+                                                          DateTime? dateCreatedAfter = null, 
+                                                          DateTime? dateCreatedBefore = null, 
+                                                          int? pageSize = null, 
+                                                          long? limit = null, 
+                                                          ITwilioRestClient client = null)
         {
             var options = new ReadRecordingOptions{Status = status, SourceSid = sourceSid, GroupingSid = groupingSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -199,7 +218,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="status"> The status </param>
         /// <param name="sourceSid"> The source_sid </param>
         /// <param name="groupingSid"> The grouping_sid </param>
@@ -209,7 +227,14 @@ namespace Twilio.Rest.Video.V1
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(RecordingResource.StatusEnum status = null, string sourceSid = null, List<string> groupingSid = null, DateTime? dateCreatedAfter = null, DateTime? dateCreatedBefore = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(RecordingResource.StatusEnum status = null, 
+                                                                                                  string sourceSid = null, 
+                                                                                                  List<string> groupingSid = null, 
+                                                                                                  DateTime? dateCreatedAfter = null, 
+                                                                                                  DateTime? dateCreatedBefore = null, 
+                                                                                                  int? pageSize = null, 
+                                                                                                  long? limit = null, 
+                                                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadRecordingOptions{Status = status, SourceSid = sourceSid, GroupingSid = groupingSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -219,7 +244,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -239,7 +263,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -260,7 +283,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -292,7 +314,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
@@ -307,11 +328,11 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRecordingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRecordingOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -322,7 +343,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
@@ -336,7 +356,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
@@ -350,7 +369,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// Converts a JSON string into a RecordingResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> RecordingResource object represented by the provided JSON </returns> 
         public static RecordingResource FromJson(string json)

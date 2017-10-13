@@ -37,11 +37,11 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Fetch an instance of an Extension for the Installed Add-on.
         /// </summary>
-        ///
         /// <param name="options"> Fetch InstalledAddOnExtension parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOnExtension </returns> 
-        public static InstalledAddOnExtensionResource Fetch(FetchInstalledAddOnExtensionOptions options, ITwilioRestClient client = null)
+        public static InstalledAddOnExtensionResource Fetch(FetchInstalledAddOnExtensionOptions options, 
+                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -52,11 +52,11 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Fetch an instance of an Extension for the Installed Add-on.
         /// </summary>
-        ///
         /// <param name="options"> Fetch InstalledAddOnExtension parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnExtension </returns> 
-        public static async System.Threading.Tasks.Task<InstalledAddOnExtensionResource> FetchAsync(FetchInstalledAddOnExtensionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InstalledAddOnExtensionResource> FetchAsync(FetchInstalledAddOnExtensionOptions options, 
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -67,12 +67,13 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Fetch an instance of an Extension for the Installed Add-on.
         /// </summary>
-        ///
         /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
         /// <param name="pathSid"> The unique Extension Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOnExtension </returns> 
-        public static InstalledAddOnExtensionResource Fetch(string pathInstalledAddOnSid, string pathSid, ITwilioRestClient client = null)
+        public static InstalledAddOnExtensionResource Fetch(string pathInstalledAddOnSid, 
+                                                            string pathSid, 
+                                                            ITwilioRestClient client = null)
         {
             var options = new FetchInstalledAddOnExtensionOptions(pathInstalledAddOnSid, pathSid);
             return Fetch(options, client);
@@ -82,12 +83,13 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Fetch an instance of an Extension for the Installed Add-on.
         /// </summary>
-        ///
         /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
         /// <param name="pathSid"> The unique Extension Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnExtension </returns> 
-        public static async System.Threading.Tasks.Task<InstalledAddOnExtensionResource> FetchAsync(string pathInstalledAddOnSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InstalledAddOnExtensionResource> FetchAsync(string pathInstalledAddOnSid, 
+                                                                                                    string pathSid, 
+                                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchInstalledAddOnExtensionOptions(pathInstalledAddOnSid, pathSid);
             return await FetchAsync(options, client);
@@ -108,11 +110,11 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Update an Extension for an Add-on installation.
         /// </summary>
-        ///
         /// <param name="options"> Update InstalledAddOnExtension parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOnExtension </returns> 
-        public static InstalledAddOnExtensionResource Update(UpdateInstalledAddOnExtensionOptions options, ITwilioRestClient client = null)
+        public static InstalledAddOnExtensionResource Update(UpdateInstalledAddOnExtensionOptions options, 
+                                                             ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildUpdateRequest(options, client));
@@ -123,11 +125,11 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Update an Extension for an Add-on installation.
         /// </summary>
-        ///
         /// <param name="options"> Update InstalledAddOnExtension parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnExtension </returns> 
-        public static async System.Threading.Tasks.Task<InstalledAddOnExtensionResource> UpdateAsync(UpdateInstalledAddOnExtensionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InstalledAddOnExtensionResource> UpdateAsync(UpdateInstalledAddOnExtensionOptions options, 
+                                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -138,13 +140,15 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Update an Extension for an Add-on installation.
         /// </summary>
-        ///
         /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="enabled"> A Boolean indicating if the Extension will be invoked </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOnExtension </returns> 
-        public static InstalledAddOnExtensionResource Update(string pathInstalledAddOnSid, string pathSid, bool? enabled, ITwilioRestClient client = null)
+        public static InstalledAddOnExtensionResource Update(string pathInstalledAddOnSid, 
+                                                             string pathSid, 
+                                                             bool? enabled, 
+                                                             ITwilioRestClient client = null)
         {
             var options = new UpdateInstalledAddOnExtensionOptions(pathInstalledAddOnSid, pathSid, enabled);
             return Update(options, client);
@@ -154,13 +158,15 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Update an Extension for an Add-on installation.
         /// </summary>
-        ///
         /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="enabled"> A Boolean indicating if the Extension will be invoked </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnExtension </returns> 
-        public static async System.Threading.Tasks.Task<InstalledAddOnExtensionResource> UpdateAsync(string pathInstalledAddOnSid, string pathSid, bool? enabled, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<InstalledAddOnExtensionResource> UpdateAsync(string pathInstalledAddOnSid, 
+                                                                                                     string pathSid, 
+                                                                                                     bool? enabled, 
+                                                                                                     ITwilioRestClient client = null)
         {
             var options = new UpdateInstalledAddOnExtensionOptions(pathInstalledAddOnSid, pathSid, enabled);
             return await UpdateAsync(options, client);
@@ -181,11 +187,11 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Retrieve a list of Extensions for the Installed Add-on.
         /// </summary>
-        ///
         /// <param name="options"> Read InstalledAddOnExtension parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOnExtension </returns> 
-        public static ResourceSet<InstalledAddOnExtensionResource> Read(ReadInstalledAddOnExtensionOptions options, ITwilioRestClient client = null)
+        public static ResourceSet<InstalledAddOnExtensionResource> Read(ReadInstalledAddOnExtensionOptions options, 
+                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
@@ -198,11 +204,11 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Retrieve a list of Extensions for the Installed Add-on.
         /// </summary>
-        ///
         /// <param name="options"> Read InstalledAddOnExtension parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnExtension </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<InstalledAddOnExtensionResource>> ReadAsync(ReadInstalledAddOnExtensionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<InstalledAddOnExtensionResource>> ReadAsync(ReadInstalledAddOnExtensionOptions options, 
+                                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -215,13 +221,15 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Retrieve a list of Extensions for the Installed Add-on.
         /// </summary>
-        ///
         /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOnExtension </returns> 
-        public static ResourceSet<InstalledAddOnExtensionResource> Read(string pathInstalledAddOnSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<InstalledAddOnExtensionResource> Read(string pathInstalledAddOnSid, 
+                                                                        int? pageSize = null, 
+                                                                        long? limit = null, 
+                                                                        ITwilioRestClient client = null)
         {
             var options = new ReadInstalledAddOnExtensionOptions(pathInstalledAddOnSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -231,13 +239,15 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Retrieve a list of Extensions for the Installed Add-on.
         /// </summary>
-        ///
         /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnExtension </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<InstalledAddOnExtensionResource>> ReadAsync(string pathInstalledAddOnSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<InstalledAddOnExtensionResource>> ReadAsync(string pathInstalledAddOnSid, 
+                                                                                                                int? pageSize = null, 
+                                                                                                                long? limit = null, 
+                                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadInstalledAddOnExtensionOptions(pathInstalledAddOnSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -247,7 +257,6 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -267,11 +276,11 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
-        public static Page<InstalledAddOnExtensionResource> NextPage(Page<InstalledAddOnExtensionResource> page, ITwilioRestClient client)
+        public static Page<InstalledAddOnExtensionResource> NextPage(Page<InstalledAddOnExtensionResource> page, 
+                                                                     ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -288,11 +297,11 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
-        public static Page<InstalledAddOnExtensionResource> PreviousPage(Page<InstalledAddOnExtensionResource> page, ITwilioRestClient client)
+        public static Page<InstalledAddOnExtensionResource> PreviousPage(Page<InstalledAddOnExtensionResource> page, 
+                                                                         ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -309,7 +318,6 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Converts a JSON string into a InstalledAddOnExtensionResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> InstalledAddOnExtensionResource object represented by the provided JSON </returns> 
         public static InstalledAddOnExtensionResource FromJson(string json)

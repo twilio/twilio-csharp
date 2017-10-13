@@ -33,7 +33,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <summary>
         /// Construct a new ReadReservationOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskSid"> The task_sid </param>
         public ReadReservationOptions(string pathWorkspaceSid, string pathTaskSid)
@@ -83,7 +82,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <summary>
         /// Construct a new FetchReservationOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskSid"> The task_sid </param>
         /// <param name="pathSid"> The sid </param>
@@ -321,7 +319,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <summary>
         /// Construct a new UpdateReservationOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskSid"> The task_sid </param>
         /// <param name="pathSid"> The sid </param>

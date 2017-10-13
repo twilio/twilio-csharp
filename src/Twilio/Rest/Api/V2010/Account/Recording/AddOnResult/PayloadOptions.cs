@@ -36,7 +36,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <summary>
         /// Construct a new FetchPayloadOptions
         /// </summary>
-        ///
         /// <param name="pathReferenceSid"> The reference_sid </param>
         /// <param name="pathAddOnResultSid"> The add_on_result_sid </param>
         /// <param name="pathSid"> Fetch by unique payload Sid </param>
@@ -78,7 +77,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <summary>
         /// Construct a new ReadPayloadOptions
         /// </summary>
-        ///
         /// <param name="pathReferenceSid"> The reference_sid </param>
         /// <param name="pathAddOnResultSid"> The add_on_result_sid </param>
         public ReadPayloadOptions(string pathReferenceSid, string pathAddOnResultSid)
@@ -127,7 +125,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <summary>
         /// Construct a new DeletePayloadOptions
         /// </summary>
-        ///
         /// <param name="pathReferenceSid"> The reference_sid </param>
         /// <param name="pathAddOnResultSid"> The add_on_result_sid </param>
         /// <param name="pathSid"> Delete by unique payload Sid </param>

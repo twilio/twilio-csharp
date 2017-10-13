@@ -25,6 +25,10 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             private AddressRequirementEnum(string value) : base(value) {}
             public AddressRequirementEnum() {}
+            public static implicit operator AddressRequirementEnum(string value)
+            {
+                return new AddressRequirementEnum(value);
+            }
 
             public static readonly AddressRequirementEnum None = new AddressRequirementEnum("none");
             public static readonly AddressRequirementEnum Any = new AddressRequirementEnum("any");
@@ -36,6 +40,10 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             private EmergencyStatusEnum(string value) : base(value) {}
             public EmergencyStatusEnum() {}
+            public static implicit operator EmergencyStatusEnum(string value)
+            {
+                return new EmergencyStatusEnum(value);
+            }
 
             public static readonly EmergencyStatusEnum Active = new EmergencyStatusEnum("Active");
             public static readonly EmergencyStatusEnum Inactive = new EmergencyStatusEnum("Inactive");
@@ -45,6 +53,10 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             private VoiceReceiveModeEnum(string value) : base(value) {}
             public VoiceReceiveModeEnum() {}
+            public static implicit operator VoiceReceiveModeEnum(string value)
+            {
+                return new VoiceReceiveModeEnum(value);
+            }
 
             public static readonly VoiceReceiveModeEnum Voice = new VoiceReceiveModeEnum("voice");
             public static readonly VoiceReceiveModeEnum Fax = new VoiceReceiveModeEnum("fax");
@@ -64,11 +76,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Update an incoming-phone-number instance
         /// </summary>
-        ///
         /// <param name="options"> Update IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
-        public static IncomingPhoneNumberResource Update(UpdateIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        public static IncomingPhoneNumberResource Update(UpdateIncomingPhoneNumberOptions options, 
+                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildUpdateRequest(options, client));
@@ -79,11 +91,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Update an incoming-phone-number instance
         /// </summary>
-        ///
         /// <param name="options"> Update IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> UpdateAsync(UpdateIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> UpdateAsync(UpdateIncomingPhoneNumberOptions options, 
+                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -94,7 +106,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Update an incoming-phone-number instance
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The new owner of the phone number </param>
         /// <param name="accountSid"> The new owner of the phone number </param>
@@ -120,7 +131,30 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="identitySid"> Unique string that identifies the identity associated with number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
-        public static IncomingPhoneNumberResource Update(string pathSid, string pathAccountSid = null, string accountSid = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, string trunkSid = null, IncomingPhoneNumberResource.VoiceReceiveModeEnum voiceReceiveMode = null, string identitySid = null, ITwilioRestClient client = null)
+        public static IncomingPhoneNumberResource Update(string pathSid, 
+                                                         string pathAccountSid = null, 
+                                                         string accountSid = null, 
+                                                         string apiVersion = null, 
+                                                         string friendlyName = null, 
+                                                         string smsApplicationSid = null, 
+                                                         Twilio.Http.HttpMethod smsFallbackMethod = null, 
+                                                         Uri smsFallbackUrl = null, 
+                                                         Twilio.Http.HttpMethod smsMethod = null, 
+                                                         Uri smsUrl = null, 
+                                                         Uri statusCallback = null, 
+                                                         Twilio.Http.HttpMethod statusCallbackMethod = null, 
+                                                         string voiceApplicationSid = null, 
+                                                         bool? voiceCallerIdLookup = null, 
+                                                         Twilio.Http.HttpMethod voiceFallbackMethod = null, 
+                                                         Uri voiceFallbackUrl = null, 
+                                                         Twilio.Http.HttpMethod voiceMethod = null, 
+                                                         Uri voiceUrl = null, 
+                                                         IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, 
+                                                         string emergencyAddressSid = null, 
+                                                         string trunkSid = null, 
+                                                         IncomingPhoneNumberResource.VoiceReceiveModeEnum voiceReceiveMode = null, 
+                                                         string identitySid = null, 
+                                                         ITwilioRestClient client = null)
         {
             var options = new UpdateIncomingPhoneNumberOptions(pathSid){PathAccountSid = pathAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, VoiceReceiveMode = voiceReceiveMode, IdentitySid = identitySid};
             return Update(options, client);
@@ -130,7 +164,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Update an incoming-phone-number instance
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The new owner of the phone number </param>
         /// <param name="accountSid"> The new owner of the phone number </param>
@@ -156,7 +189,30 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="identitySid"> Unique string that identifies the identity associated with number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> UpdateAsync(string pathSid, string pathAccountSid = null, string accountSid = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, string trunkSid = null, IncomingPhoneNumberResource.VoiceReceiveModeEnum voiceReceiveMode = null, string identitySid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> UpdateAsync(string pathSid, 
+                                                                                                 string pathAccountSid = null, 
+                                                                                                 string accountSid = null, 
+                                                                                                 string apiVersion = null, 
+                                                                                                 string friendlyName = null, 
+                                                                                                 string smsApplicationSid = null, 
+                                                                                                 Twilio.Http.HttpMethod smsFallbackMethod = null, 
+                                                                                                 Uri smsFallbackUrl = null, 
+                                                                                                 Twilio.Http.HttpMethod smsMethod = null, 
+                                                                                                 Uri smsUrl = null, 
+                                                                                                 Uri statusCallback = null, 
+                                                                                                 Twilio.Http.HttpMethod statusCallbackMethod = null, 
+                                                                                                 string voiceApplicationSid = null, 
+                                                                                                 bool? voiceCallerIdLookup = null, 
+                                                                                                 Twilio.Http.HttpMethod voiceFallbackMethod = null, 
+                                                                                                 Uri voiceFallbackUrl = null, 
+                                                                                                 Twilio.Http.HttpMethod voiceMethod = null, 
+                                                                                                 Uri voiceUrl = null, 
+                                                                                                 IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, 
+                                                                                                 string emergencyAddressSid = null, 
+                                                                                                 string trunkSid = null, 
+                                                                                                 IncomingPhoneNumberResource.VoiceReceiveModeEnum voiceReceiveMode = null, 
+                                                                                                 string identitySid = null, 
+                                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateIncomingPhoneNumberOptions(pathSid){PathAccountSid = pathAccountSid, AccountSid = accountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, VoiceReceiveMode = voiceReceiveMode, IdentitySid = identitySid};
             return await UpdateAsync(options, client);
@@ -177,11 +233,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an incoming-phone-number belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="options"> Fetch IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
-        public static IncomingPhoneNumberResource Fetch(FetchIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        public static IncomingPhoneNumberResource Fetch(FetchIncomingPhoneNumberOptions options, 
+                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -192,11 +248,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an incoming-phone-number belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="options"> Fetch IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> FetchAsync(FetchIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> FetchAsync(FetchIncomingPhoneNumberOptions options, 
+                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -207,12 +263,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an incoming-phone-number belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique incoming-phone-number Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
-        public static IncomingPhoneNumberResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static IncomingPhoneNumberResource Fetch(string pathSid, 
+                                                        string pathAccountSid = null, 
+                                                        ITwilioRestClient client = null)
         {
             var options = new FetchIncomingPhoneNumberOptions(pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
@@ -222,12 +279,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an incoming-phone-number belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique incoming-phone-number Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> FetchAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> FetchAsync(string pathSid, 
+                                                                                                string pathAccountSid = null, 
+                                                                                                ITwilioRestClient client = null)
         {
             var options = new FetchIncomingPhoneNumberOptions(pathSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
@@ -248,7 +306,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete a phone-numbers belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="options"> Delete IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
@@ -263,11 +320,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete a phone-numbers belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="options"> Delete IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteIncomingPhoneNumberOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -278,7 +335,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete a phone-numbers belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="pathSid"> Delete by unique phone-number Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -293,12 +349,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete a phone-numbers belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="pathSid"> Delete by unique phone-number Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
+                                                                          string pathAccountSid = null, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteIncomingPhoneNumberOptions(pathSid){PathAccountSid = pathAccountSid};
             return await DeleteAsync(options, client);
@@ -319,11 +376,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="options"> Read IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
-        public static ResourceSet<IncomingPhoneNumberResource> Read(ReadIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        public static ResourceSet<IncomingPhoneNumberResource> Read(ReadIncomingPhoneNumberOptions options, 
+                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
@@ -336,11 +393,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="options"> Read IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<IncomingPhoneNumberResource>> ReadAsync(ReadIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<IncomingPhoneNumberResource>> ReadAsync(ReadIncomingPhoneNumberOptions options, 
+                                                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -353,7 +410,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="beta"> Include new phone numbers </param>
         /// <param name="friendlyName"> Filter by friendly name </param>
@@ -363,7 +419,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
-        public static ResourceSet<IncomingPhoneNumberResource> Read(string pathAccountSid = null, bool? beta = null, string friendlyName = null, Types.PhoneNumber phoneNumber = null, string origin = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<IncomingPhoneNumberResource> Read(string pathAccountSid = null, 
+                                                                    bool? beta = null, 
+                                                                    string friendlyName = null, 
+                                                                    Types.PhoneNumber phoneNumber = null, 
+                                                                    string origin = null, 
+                                                                    int? pageSize = null, 
+                                                                    long? limit = null, 
+                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadIncomingPhoneNumberOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -373,7 +436,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="beta"> Include new phone numbers </param>
         /// <param name="friendlyName"> Filter by friendly name </param>
@@ -383,7 +445,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<IncomingPhoneNumberResource>> ReadAsync(string pathAccountSid = null, bool? beta = null, string friendlyName = null, Types.PhoneNumber phoneNumber = null, string origin = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<IncomingPhoneNumberResource>> ReadAsync(string pathAccountSid = null, 
+                                                                                                            bool? beta = null, 
+                                                                                                            string friendlyName = null, 
+                                                                                                            Types.PhoneNumber phoneNumber = null, 
+                                                                                                            string origin = null, 
+                                                                                                            int? pageSize = null, 
+                                                                                                            long? limit = null, 
+                                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadIncomingPhoneNumberOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -393,7 +462,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -413,11 +481,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
-        public static Page<IncomingPhoneNumberResource> NextPage(Page<IncomingPhoneNumberResource> page, ITwilioRestClient client)
+        public static Page<IncomingPhoneNumberResource> NextPage(Page<IncomingPhoneNumberResource> page, 
+                                                                 ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -434,11 +502,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
-        public static Page<IncomingPhoneNumberResource> PreviousPage(Page<IncomingPhoneNumberResource> page, ITwilioRestClient client)
+        public static Page<IncomingPhoneNumberResource> PreviousPage(Page<IncomingPhoneNumberResource> page, 
+                                                                     ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -466,11 +534,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Purchase a phone-number for the account
         /// </summary>
-        ///
         /// <param name="options"> Create IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
-        public static IncomingPhoneNumberResource Create(CreateIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        public static IncomingPhoneNumberResource Create(CreateIncomingPhoneNumberOptions options, 
+                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
@@ -481,11 +549,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Purchase a phone-number for the account
         /// </summary>
-        ///
         /// <param name="options"> Create IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> CreateAsync(CreateIncomingPhoneNumberOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> CreateAsync(CreateIncomingPhoneNumberOptions options, 
+                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -496,7 +564,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Purchase a phone-number for the account
         /// </summary>
-        ///
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="phoneNumber"> The phone number </param>
         /// <param name="areaCode"> The desired area code for the new number </param>
@@ -521,7 +588,29 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="identitySid"> Unique string that identifies the identity associated with number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
-        public static IncomingPhoneNumberResource Create(string pathAccountSid = null, Types.PhoneNumber phoneNumber = null, string areaCode = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, string trunkSid = null, string identitySid = null, ITwilioRestClient client = null)
+        public static IncomingPhoneNumberResource Create(string pathAccountSid = null, 
+                                                         Types.PhoneNumber phoneNumber = null, 
+                                                         string areaCode = null, 
+                                                         string apiVersion = null, 
+                                                         string friendlyName = null, 
+                                                         string smsApplicationSid = null, 
+                                                         Twilio.Http.HttpMethod smsFallbackMethod = null, 
+                                                         Uri smsFallbackUrl = null, 
+                                                         Twilio.Http.HttpMethod smsMethod = null, 
+                                                         Uri smsUrl = null, 
+                                                         Uri statusCallback = null, 
+                                                         Twilio.Http.HttpMethod statusCallbackMethod = null, 
+                                                         string voiceApplicationSid = null, 
+                                                         bool? voiceCallerIdLookup = null, 
+                                                         Twilio.Http.HttpMethod voiceFallbackMethod = null, 
+                                                         Uri voiceFallbackUrl = null, 
+                                                         Twilio.Http.HttpMethod voiceMethod = null, 
+                                                         Uri voiceUrl = null, 
+                                                         IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, 
+                                                         string emergencyAddressSid = null, 
+                                                         string trunkSid = null, 
+                                                         string identitySid = null, 
+                                                         ITwilioRestClient client = null)
         {
             var options = new CreateIncomingPhoneNumberOptions{PathAccountSid = pathAccountSid, PhoneNumber = phoneNumber, AreaCode = areaCode, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, IdentitySid = identitySid};
             return Create(options, client);
@@ -531,7 +620,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Purchase a phone-number for the account
         /// </summary>
-        ///
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="phoneNumber"> The phone number </param>
         /// <param name="areaCode"> The desired area code for the new number </param>
@@ -556,7 +644,29 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="identitySid"> Unique string that identifies the identity associated with number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> CreateAsync(string pathAccountSid = null, Types.PhoneNumber phoneNumber = null, string areaCode = null, string apiVersion = null, string friendlyName = null, string smsApplicationSid = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsUrl = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string voiceApplicationSid = null, bool? voiceCallerIdLookup = null, Twilio.Http.HttpMethod voiceFallbackMethod = null, Uri voiceFallbackUrl = null, Twilio.Http.HttpMethod voiceMethod = null, Uri voiceUrl = null, IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, string emergencyAddressSid = null, string trunkSid = null, string identitySid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> CreateAsync(string pathAccountSid = null, 
+                                                                                                 Types.PhoneNumber phoneNumber = null, 
+                                                                                                 string areaCode = null, 
+                                                                                                 string apiVersion = null, 
+                                                                                                 string friendlyName = null, 
+                                                                                                 string smsApplicationSid = null, 
+                                                                                                 Twilio.Http.HttpMethod smsFallbackMethod = null, 
+                                                                                                 Uri smsFallbackUrl = null, 
+                                                                                                 Twilio.Http.HttpMethod smsMethod = null, 
+                                                                                                 Uri smsUrl = null, 
+                                                                                                 Uri statusCallback = null, 
+                                                                                                 Twilio.Http.HttpMethod statusCallbackMethod = null, 
+                                                                                                 string voiceApplicationSid = null, 
+                                                                                                 bool? voiceCallerIdLookup = null, 
+                                                                                                 Twilio.Http.HttpMethod voiceFallbackMethod = null, 
+                                                                                                 Uri voiceFallbackUrl = null, 
+                                                                                                 Twilio.Http.HttpMethod voiceMethod = null, 
+                                                                                                 Uri voiceUrl = null, 
+                                                                                                 IncomingPhoneNumberResource.EmergencyStatusEnum emergencyStatus = null, 
+                                                                                                 string emergencyAddressSid = null, 
+                                                                                                 string trunkSid = null, 
+                                                                                                 string identitySid = null, 
+                                                                                                 ITwilioRestClient client = null)
         {
             var options = new CreateIncomingPhoneNumberOptions{PathAccountSid = pathAccountSid, PhoneNumber = phoneNumber, AreaCode = areaCode, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, IdentitySid = identitySid};
             return await CreateAsync(options, client);
@@ -566,7 +676,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Converts a JSON string into a IncomingPhoneNumberResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> IncomingPhoneNumberResource object represented by the provided JSON </returns> 
         public static IncomingPhoneNumberResource FromJson(string json)

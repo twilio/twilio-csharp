@@ -48,7 +48,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// Construct a new FetchWorkflowStatisticsOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkflowSid"> The workflow_sid </param>
         public FetchWorkflowStatisticsOptions(string pathWorkspaceSid, string pathWorkflowSid)

@@ -24,7 +24,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// Construct a new FetchTrunkOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public FetchTrunkOptions(string pathSid)
         {
@@ -54,7 +53,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// Construct a new DeleteTrunkOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public DeleteTrunkOptions(string pathSid)
         {
@@ -198,7 +196,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// Construct a new UpdateTrunkOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateTrunkOptions(string pathSid)
         {

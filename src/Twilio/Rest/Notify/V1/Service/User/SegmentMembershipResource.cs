@@ -36,11 +36,11 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create SegmentMembership parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SegmentMembership </returns> 
-        public static SegmentMembershipResource Create(CreateSegmentMembershipOptions options, ITwilioRestClient client = null)
+        public static SegmentMembershipResource Create(CreateSegmentMembershipOptions options, 
+                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
@@ -51,11 +51,11 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create SegmentMembership parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SegmentMembership </returns> 
-        public static async System.Threading.Tasks.Task<SegmentMembershipResource> CreateAsync(CreateSegmentMembershipOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SegmentMembershipResource> CreateAsync(CreateSegmentMembershipOptions options, 
+                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -66,13 +66,15 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="segment"> The segment </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SegmentMembership </returns> 
-        public static SegmentMembershipResource Create(string pathServiceSid, string pathIdentity, string segment, ITwilioRestClient client = null)
+        public static SegmentMembershipResource Create(string pathServiceSid, 
+                                                       string pathIdentity, 
+                                                       string segment, 
+                                                       ITwilioRestClient client = null)
         {
             var options = new CreateSegmentMembershipOptions(pathServiceSid, pathIdentity, segment);
             return Create(options, client);
@@ -82,13 +84,15 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="segment"> The segment </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SegmentMembership </returns> 
-        public static async System.Threading.Tasks.Task<SegmentMembershipResource> CreateAsync(string pathServiceSid, string pathIdentity, string segment, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SegmentMembershipResource> CreateAsync(string pathServiceSid, 
+                                                                                               string pathIdentity, 
+                                                                                               string segment, 
+                                                                                               ITwilioRestClient client = null)
         {
             var options = new CreateSegmentMembershipOptions(pathServiceSid, pathIdentity, segment);
             return await CreateAsync(options, client);
@@ -109,7 +113,6 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete SegmentMembership parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SegmentMembership </returns> 
@@ -124,11 +127,11 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete SegmentMembership parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SegmentMembership </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSegmentMembershipOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSegmentMembershipOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -139,13 +142,15 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="pathSegment"> The segment </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SegmentMembership </returns> 
-        public static bool Delete(string pathServiceSid, string pathIdentity, string pathSegment, ITwilioRestClient client = null)
+        public static bool Delete(string pathServiceSid, 
+                                  string pathIdentity, 
+                                  string pathSegment, 
+                                  ITwilioRestClient client = null)
         {
             var options = new DeleteSegmentMembershipOptions(pathServiceSid, pathIdentity, pathSegment);
             return Delete(options, client);
@@ -155,13 +160,15 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="pathSegment"> The segment </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SegmentMembership </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathIdentity, string pathSegment, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+                                                                          string pathIdentity, 
+                                                                          string pathSegment, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteSegmentMembershipOptions(pathServiceSid, pathIdentity, pathSegment);
             return await DeleteAsync(options, client);
@@ -182,7 +189,6 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch SegmentMembership parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SegmentMembership </returns> 
@@ -197,11 +203,11 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch SegmentMembership parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SegmentMembership </returns> 
-        public static async System.Threading.Tasks.Task<SegmentMembershipResource> FetchAsync(FetchSegmentMembershipOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SegmentMembershipResource> FetchAsync(FetchSegmentMembershipOptions options, 
+                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -212,13 +218,15 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="pathSegment"> The segment </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SegmentMembership </returns> 
-        public static SegmentMembershipResource Fetch(string pathServiceSid, string pathIdentity, string pathSegment, ITwilioRestClient client = null)
+        public static SegmentMembershipResource Fetch(string pathServiceSid, 
+                                                      string pathIdentity, 
+                                                      string pathSegment, 
+                                                      ITwilioRestClient client = null)
         {
             var options = new FetchSegmentMembershipOptions(pathServiceSid, pathIdentity, pathSegment);
             return Fetch(options, client);
@@ -228,13 +236,15 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="pathSegment"> The segment </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SegmentMembership </returns> 
-        public static async System.Threading.Tasks.Task<SegmentMembershipResource> FetchAsync(string pathServiceSid, string pathIdentity, string pathSegment, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SegmentMembershipResource> FetchAsync(string pathServiceSid, 
+                                                                                              string pathIdentity, 
+                                                                                              string pathSegment, 
+                                                                                              ITwilioRestClient client = null)
         {
             var options = new FetchSegmentMembershipOptions(pathServiceSid, pathIdentity, pathSegment);
             return await FetchAsync(options, client);
@@ -244,7 +254,6 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// Converts a JSON string into a SegmentMembershipResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> SegmentMembershipResource object represented by the provided JSON </returns> 
         public static SegmentMembershipResource FromJson(string json)

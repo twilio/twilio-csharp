@@ -31,7 +31,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Construct a new FetchBindingOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchBindingOptions(string pathServiceSid, string pathSid)
@@ -69,7 +68,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Construct a new DeleteBindingOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteBindingOptions(string pathServiceSid, string pathSid)
@@ -131,12 +129,14 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Construct a new CreateBindingOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="bindingType"> The binding_type </param>
         /// <param name="address"> The address </param>
-        public CreateBindingOptions(string pathServiceSid, string identity, BindingResource.BindingTypeEnum bindingType, string address)
+        public CreateBindingOptions(string pathServiceSid, 
+                                    string identity, 
+                                    BindingResource.BindingTypeEnum bindingType, 
+                                    string address)
         {
             PathServiceSid = pathServiceSid;
             Identity = identity;
@@ -221,7 +221,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Construct a new ReadBindingOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public ReadBindingOptions(string pathServiceSid)
         {

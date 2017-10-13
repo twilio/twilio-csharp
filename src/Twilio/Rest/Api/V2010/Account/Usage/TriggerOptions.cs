@@ -28,7 +28,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Construct a new FetchTriggerOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique usage-trigger Sid </param>
         public FetchTriggerOptions(string pathSid)
         {
@@ -74,7 +73,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Construct a new UpdateTriggerOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateTriggerOptions(string pathSid)
         {
@@ -123,7 +121,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Construct a new DeleteTriggerOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public DeleteTriggerOptions(string pathSid)
         {
@@ -181,7 +178,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Construct a new CreateTriggerOptions
         /// </summary>
-        ///
         /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
         /// <param name="triggerValue"> the value at which the trigger will fire </param>
         /// <param name="usageCategory"> The usage category the trigger watches </param>

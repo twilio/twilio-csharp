@@ -30,7 +30,6 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// <summary>
         /// Construct a new FetchFaxMediaOptions
         /// </summary>
-        ///
         /// <param name="pathFaxSid"> Fax SID </param>
         /// <param name="pathSid"> A string that uniquely identifies this fax media </param>
         public FetchFaxMediaOptions(string pathFaxSid, string pathSid)
@@ -64,7 +63,6 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// <summary>
         /// Construct a new ReadFaxMediaOptions
         /// </summary>
-        ///
         /// <param name="pathFaxSid"> Fax SID </param>
         public ReadFaxMediaOptions(string pathFaxSid)
         {
@@ -105,7 +103,6 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// <summary>
         /// Construct a new DeleteFaxMediaOptions
         /// </summary>
-        ///
         /// <param name="pathFaxSid"> Fax SID </param>
         /// <param name="pathSid"> A string that uniquely identifies this fax media </param>
         public DeleteFaxMediaOptions(string pathFaxSid, string pathSid)

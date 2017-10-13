@@ -27,7 +27,6 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// Construct a new ReadDayOptions
         /// </summary>
-        ///
         /// <param name="pathResourceType"> The resource_type </param>
         public ReadDayOptions(string pathResourceType)
         {

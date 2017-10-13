@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Fetch an instance of an Add-on currently available to be installed.
         /// </summary>
-        ///
         /// <param name="options"> Fetch AvailableAddOn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AvailableAddOn </returns> 
@@ -52,11 +51,11 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Fetch an instance of an Add-on currently available to be installed.
         /// </summary>
-        ///
         /// <param name="options"> Fetch AvailableAddOn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AvailableAddOn </returns> 
-        public static async System.Threading.Tasks.Task<AvailableAddOnResource> FetchAsync(FetchAvailableAddOnOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AvailableAddOnResource> FetchAsync(FetchAvailableAddOnOptions options, 
+                                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -67,7 +66,6 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Fetch an instance of an Add-on currently available to be installed.
         /// </summary>
-        ///
         /// <param name="pathSid"> The unique Available Add-on Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AvailableAddOn </returns> 
@@ -81,11 +79,11 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Fetch an instance of an Add-on currently available to be installed.
         /// </summary>
-        ///
         /// <param name="pathSid"> The unique Available Add-on Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AvailableAddOn </returns> 
-        public static async System.Threading.Tasks.Task<AvailableAddOnResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AvailableAddOnResource> FetchAsync(string pathSid, 
+                                                                                           ITwilioRestClient client = null)
         {
             var options = new FetchAvailableAddOnOptions(pathSid);
             return await FetchAsync(options, client);
@@ -106,11 +104,11 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Retrieve a list of Add-ons currently available to be installed.
         /// </summary>
-        ///
         /// <param name="options"> Read AvailableAddOn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AvailableAddOn </returns> 
-        public static ResourceSet<AvailableAddOnResource> Read(ReadAvailableAddOnOptions options, ITwilioRestClient client = null)
+        public static ResourceSet<AvailableAddOnResource> Read(ReadAvailableAddOnOptions options, 
+                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
@@ -123,11 +121,11 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Retrieve a list of Add-ons currently available to be installed.
         /// </summary>
-        ///
         /// <param name="options"> Read AvailableAddOn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AvailableAddOn </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnResource>> ReadAsync(ReadAvailableAddOnOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnResource>> ReadAsync(ReadAvailableAddOnOptions options, 
+                                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -140,12 +138,13 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Retrieve a list of Add-ons currently available to be installed.
         /// </summary>
-        ///
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AvailableAddOn </returns> 
-        public static ResourceSet<AvailableAddOnResource> Read(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<AvailableAddOnResource> Read(int? pageSize = null, 
+                                                               long? limit = null, 
+                                                               ITwilioRestClient client = null)
         {
             var options = new ReadAvailableAddOnOptions{PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -155,12 +154,13 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Retrieve a list of Add-ons currently available to be installed.
         /// </summary>
-        ///
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AvailableAddOn </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnResource>> ReadAsync(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AvailableAddOnResource>> ReadAsync(int? pageSize = null, 
+                                                                                                       long? limit = null, 
+                                                                                                       ITwilioRestClient client = null)
         {
             var options = new ReadAvailableAddOnOptions{PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -170,7 +170,6 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -190,7 +189,6 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -211,7 +209,6 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -232,7 +229,6 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Converts a JSON string into a AvailableAddOnResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> AvailableAddOnResource object represented by the provided JSON </returns> 
         public static AvailableAddOnResource FromJson(string json)

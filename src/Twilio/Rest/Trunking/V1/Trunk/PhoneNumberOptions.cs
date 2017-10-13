@@ -28,7 +28,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new FetchPhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchPhoneNumberOptions(string pathTrunkSid, string pathSid)
@@ -64,7 +63,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new DeletePhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeletePhoneNumberOptions(string pathTrunkSid, string pathSid)
@@ -100,7 +98,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new CreatePhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="phoneNumberSid"> The phone_number_sid </param>
         public CreatePhoneNumberOptions(string pathTrunkSid, string phoneNumberSid)
@@ -137,7 +134,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new ReadPhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         public ReadPhoneNumberOptions(string pathTrunkSid)
         {

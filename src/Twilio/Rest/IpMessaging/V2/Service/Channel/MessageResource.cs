@@ -25,6 +25,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         {
             private OrderTypeEnum(string value) : base(value) {}
             public OrderTypeEnum() {}
+            public static implicit operator OrderTypeEnum(string value)
+            {
+                return new OrderTypeEnum(value);
+            }
 
             public static readonly OrderTypeEnum Asc = new OrderTypeEnum("asc");
             public static readonly OrderTypeEnum Desc = new OrderTypeEnum("desc");
@@ -44,7 +48,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
@@ -59,11 +62,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(FetchMessageOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(FetchMessageOptions options, 
+                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -74,13 +77,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
-        public static MessageResource Fetch(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
+        public static MessageResource Fetch(string pathServiceSid, 
+                                            string pathChannelSid, 
+                                            string pathSid, 
+                                            ITwilioRestClient client = null)
         {
             var options = new FetchMessageOptions(pathServiceSid, pathChannelSid, pathSid);
             return Fetch(options, client);
@@ -90,13 +95,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(string pathServiceSid, 
+                                                                                    string pathChannelSid, 
+                                                                                    string pathSid, 
+                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchMessageOptions(pathServiceSid, pathChannelSid, pathSid);
             return await FetchAsync(options, client);
@@ -117,7 +124,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
@@ -132,11 +138,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(CreateMessageOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(CreateMessageOptions options, 
+                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -147,7 +153,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="from"> The from </param>
@@ -159,7 +164,16 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="mediaSid"> The media_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
-        public static MessageResource Create(string pathServiceSid, string pathChannelSid, string from = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string lastUpdatedBy = null, string body = null, string mediaSid = null, ITwilioRestClient client = null)
+        public static MessageResource Create(string pathServiceSid, 
+                                             string pathChannelSid, 
+                                             string from = null, 
+                                             string attributes = null, 
+                                             DateTime? dateCreated = null, 
+                                             DateTime? dateUpdated = null, 
+                                             string lastUpdatedBy = null, 
+                                             string body = null, 
+                                             string mediaSid = null, 
+                                             ITwilioRestClient client = null)
         {
             var options = new CreateMessageOptions(pathServiceSid, pathChannelSid){From = from, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy, Body = body, MediaSid = mediaSid};
             return Create(options, client);
@@ -169,7 +183,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="from"> The from </param>
@@ -181,7 +194,16 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="mediaSid"> The media_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(string pathServiceSid, string pathChannelSid, string from = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string lastUpdatedBy = null, string body = null, string mediaSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(string pathServiceSid, 
+                                                                                     string pathChannelSid, 
+                                                                                     string from = null, 
+                                                                                     string attributes = null, 
+                                                                                     DateTime? dateCreated = null, 
+                                                                                     DateTime? dateUpdated = null, 
+                                                                                     string lastUpdatedBy = null, 
+                                                                                     string body = null, 
+                                                                                     string mediaSid = null, 
+                                                                                     ITwilioRestClient client = null)
         {
             var options = new CreateMessageOptions(pathServiceSid, pathChannelSid){From = from, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy, Body = body, MediaSid = mediaSid};
             return await CreateAsync(options, client);
@@ -202,7 +224,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
@@ -219,11 +240,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(ReadMessageOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(ReadMessageOptions options, 
+                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -236,7 +257,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="order"> The order </param>
@@ -244,7 +264,12 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
-        public static ResourceSet<MessageResource> Read(string pathServiceSid, string pathChannelSid, MessageResource.OrderTypeEnum order = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<MessageResource> Read(string pathServiceSid, 
+                                                        string pathChannelSid, 
+                                                        MessageResource.OrderTypeEnum order = null, 
+                                                        int? pageSize = null, 
+                                                        long? limit = null, 
+                                                        ITwilioRestClient client = null)
         {
             var options = new ReadMessageOptions(pathServiceSid, pathChannelSid){Order = order, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -254,7 +279,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="order"> The order </param>
@@ -262,7 +286,12 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(string pathServiceSid, string pathChannelSid, MessageResource.OrderTypeEnum order = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(string pathServiceSid, 
+                                                                                                string pathChannelSid, 
+                                                                                                MessageResource.OrderTypeEnum order = null, 
+                                                                                                int? pageSize = null, 
+                                                                                                long? limit = null, 
+                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadMessageOptions(pathServiceSid, pathChannelSid){Order = order, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -272,7 +301,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -292,7 +320,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -313,7 +340,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -345,7 +371,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
@@ -360,11 +385,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMessageOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMessageOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -375,13 +400,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
-        public static bool Delete(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
+        public static bool Delete(string pathServiceSid, 
+                                  string pathChannelSid, 
+                                  string pathSid, 
+                                  ITwilioRestClient client = null)
         {
             var options = new DeleteMessageOptions(pathServiceSid, pathChannelSid, pathSid);
             return Delete(options, client);
@@ -391,13 +418,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathChannelSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+                                                                          string pathChannelSid, 
+                                                                          string pathSid, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteMessageOptions(pathServiceSid, pathChannelSid, pathSid);
             return await DeleteAsync(options, client);
@@ -418,7 +447,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="options"> Update Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
@@ -433,11 +461,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="options"> Update Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(UpdateMessageOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(UpdateMessageOptions options, 
+                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -448,7 +476,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
@@ -459,7 +486,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="lastUpdatedBy"> The last_updated_by </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
-        public static MessageResource Update(string pathServiceSid, string pathChannelSid, string pathSid, string body = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string lastUpdatedBy = null, ITwilioRestClient client = null)
+        public static MessageResource Update(string pathServiceSid, 
+                                             string pathChannelSid, 
+                                             string pathSid, 
+                                             string body = null, 
+                                             string attributes = null, 
+                                             DateTime? dateCreated = null, 
+                                             DateTime? dateUpdated = null, 
+                                             string lastUpdatedBy = null, 
+                                             ITwilioRestClient client = null)
         {
             var options = new UpdateMessageOptions(pathServiceSid, pathChannelSid, pathSid){Body = body, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy};
             return Update(options, client);
@@ -469,7 +504,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
@@ -480,7 +514,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="lastUpdatedBy"> The last_updated_by </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathServiceSid, string pathChannelSid, string pathSid, string body = null, string attributes = null, DateTime? dateCreated = null, DateTime? dateUpdated = null, string lastUpdatedBy = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathServiceSid, 
+                                                                                     string pathChannelSid, 
+                                                                                     string pathSid, 
+                                                                                     string body = null, 
+                                                                                     string attributes = null, 
+                                                                                     DateTime? dateCreated = null, 
+                                                                                     DateTime? dateUpdated = null, 
+                                                                                     string lastUpdatedBy = null, 
+                                                                                     ITwilioRestClient client = null)
         {
             var options = new UpdateMessageOptions(pathServiceSid, pathChannelSid, pathSid){Body = body, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, LastUpdatedBy = lastUpdatedBy};
             return await UpdateAsync(options, client);
@@ -490,7 +532,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// Converts a JSON string into a MessageResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> MessageResource object represented by the provided JSON </returns> 
         public static MessageResource FromJson(string json)

@@ -31,7 +31,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new CreatePhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="sid"> Delete by unique phone-number Sid </param>
         public CreatePhoneNumberOptions(string pathServiceSid, string sid)
@@ -75,7 +74,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new DeletePhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Delete by unique phone-number Sid </param>
         public DeletePhoneNumberOptions(string pathServiceSid, string pathSid)
@@ -110,7 +108,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new ReadPhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public ReadPhoneNumberOptions(string pathServiceSid)
         {
@@ -152,7 +149,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new FetchPhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Fetch by unique phone-number Sid </param>
         public FetchPhoneNumberOptions(string pathServiceSid, string pathSid)

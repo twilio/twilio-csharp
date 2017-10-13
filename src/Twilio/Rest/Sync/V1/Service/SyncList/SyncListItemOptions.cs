@@ -34,7 +34,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Construct a new FetchSyncListItemOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="pathIndex"> The index </param>
@@ -78,7 +77,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Construct a new DeleteSyncListItemOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="pathIndex"> The index </param>
@@ -122,7 +120,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Construct a new CreateSyncListItemOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="data"> The data </param>
@@ -179,7 +176,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Construct a new ReadSyncListItemOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
         public ReadSyncListItemOptions(string pathServiceSid, string pathListSid)
@@ -245,7 +241,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Construct a new UpdateSyncListItemOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="pathIndex"> The index </param>

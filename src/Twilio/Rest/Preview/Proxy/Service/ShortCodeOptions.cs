@@ -31,7 +31,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new CreateShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="sid"> Delete by unique shortcode Sid </param>
         public CreateShortCodeOptions(string pathServiceSid, string sid)
@@ -75,7 +74,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new DeleteShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Delete by unique shortcode Sid </param>
         public DeleteShortCodeOptions(string pathServiceSid, string pathSid)
@@ -110,7 +108,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new ReadShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public ReadShortCodeOptions(string pathServiceSid)
         {
@@ -152,7 +149,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new FetchShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Fetch by unique shortcode Sid </param>
         public FetchShortCodeOptions(string pathServiceSid, string pathSid)

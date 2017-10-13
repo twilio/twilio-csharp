@@ -32,7 +32,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <summary>
         /// Construct a new CreateFeedbackOptions
         /// </summary>
-        ///
         /// <param name="pathMessageSid"> The message_sid </param>
         public CreateFeedbackOptions(string pathMessageSid)
         {

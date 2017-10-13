@@ -30,7 +30,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Construct a new CreateShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="sid"> A string that uniquely identifies this Short Code. </param>
         public CreateShortCodeOptions(string pathServiceSid, string sid)
@@ -73,7 +72,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Construct a new DeleteShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
         public DeleteShortCodeOptions(string pathServiceSid, string pathSid)
@@ -107,7 +105,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Construct a new ReadShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         public ReadShortCodeOptions(string pathServiceSid)
         {
@@ -148,7 +145,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Construct a new FetchShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
         public FetchShortCodeOptions(string pathServiceSid, string pathSid)

@@ -34,11 +34,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch WorkflowCumulativeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkflowCumulativeStatistics </returns> 
-        public static WorkflowCumulativeStatisticsResource Fetch(FetchWorkflowCumulativeStatisticsOptions options, ITwilioRestClient client = null)
+        public static WorkflowCumulativeStatisticsResource Fetch(FetchWorkflowCumulativeStatisticsOptions options, 
+                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -49,11 +49,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch WorkflowCumulativeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkflowCumulativeStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowCumulativeStatisticsResource> FetchAsync(FetchWorkflowCumulativeStatisticsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkflowCumulativeStatisticsResource> FetchAsync(FetchWorkflowCumulativeStatisticsOptions options, 
+                                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -64,7 +64,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkflowSid"> The workflow_sid </param>
         /// <param name="endDate"> The end_date </param>
@@ -74,7 +73,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <param name="splitByWaitTime"> The split_by_wait_time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkflowCumulativeStatistics </returns> 
-        public static WorkflowCumulativeStatisticsResource Fetch(string pathWorkspaceSid, string pathWorkflowSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, string taskChannel = null, string splitByWaitTime = null, ITwilioRestClient client = null)
+        public static WorkflowCumulativeStatisticsResource Fetch(string pathWorkspaceSid, 
+                                                                 string pathWorkflowSid, 
+                                                                 DateTime? endDate = null, 
+                                                                 int? minutes = null, 
+                                                                 DateTime? startDate = null, 
+                                                                 string taskChannel = null, 
+                                                                 string splitByWaitTime = null, 
+                                                                 ITwilioRestClient client = null)
         {
             var options = new FetchWorkflowCumulativeStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
             return Fetch(options, client);
@@ -84,7 +90,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkflowSid"> The workflow_sid </param>
         /// <param name="endDate"> The end_date </param>
@@ -94,7 +99,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <param name="splitByWaitTime"> The split_by_wait_time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkflowCumulativeStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid, string pathWorkflowSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, string taskChannel = null, string splitByWaitTime = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkflowCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid, 
+                                                                                                         string pathWorkflowSid, 
+                                                                                                         DateTime? endDate = null, 
+                                                                                                         int? minutes = null, 
+                                                                                                         DateTime? startDate = null, 
+                                                                                                         string taskChannel = null, 
+                                                                                                         string splitByWaitTime = null, 
+                                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchWorkflowCumulativeStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
             return await FetchAsync(options, client);
@@ -104,7 +116,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// Converts a JSON string into a WorkflowCumulativeStatisticsResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> WorkflowCumulativeStatisticsResource object represented by the provided JSON </returns> 
         public static WorkflowCumulativeStatisticsResource FromJson(string json)

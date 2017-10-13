@@ -28,7 +28,6 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// Construct a new FetchRoomRecordingOptions
         /// </summary>
-        ///
         /// <param name="pathRoomSid"> The room_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchRoomRecordingOptions(string pathRoomSid, string pathSid)
@@ -76,7 +75,6 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// Construct a new ReadRoomRecordingOptions
         /// </summary>
-        ///
         /// <param name="pathRoomSid"> The room_sid </param>
         public ReadRoomRecordingOptions(string pathRoomSid)
         {

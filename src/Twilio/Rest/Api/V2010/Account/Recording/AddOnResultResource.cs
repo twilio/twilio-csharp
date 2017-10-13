@@ -25,6 +25,10 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
+            public static implicit operator StatusEnum(string value)
+            {
+                return new StatusEnum(value);
+            }
 
             public static readonly StatusEnum Canceled = new StatusEnum("canceled");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
@@ -50,7 +54,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Fetch an instance of an Add-on result
         /// </summary>
-        ///
         /// <param name="options"> Fetch AddOnResult parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AddOnResult </returns> 
@@ -65,11 +68,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Fetch an instance of an Add-on result
         /// </summary>
-        ///
         /// <param name="options"> Fetch AddOnResult parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddOnResult </returns> 
-        public static async System.Threading.Tasks.Task<AddOnResultResource> FetchAsync(FetchAddOnResultOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AddOnResultResource> FetchAsync(FetchAddOnResultOptions options, 
+                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -80,13 +83,15 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Fetch an instance of an Add-on result
         /// </summary>
-        ///
         /// <param name="pathReferenceSid"> The reference_sid </param>
         /// <param name="pathSid"> Fetch by unique result Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AddOnResult </returns> 
-        public static AddOnResultResource Fetch(string pathReferenceSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static AddOnResultResource Fetch(string pathReferenceSid, 
+                                                string pathSid, 
+                                                string pathAccountSid = null, 
+                                                ITwilioRestClient client = null)
         {
             var options = new FetchAddOnResultOptions(pathReferenceSid, pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
@@ -96,13 +101,15 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Fetch an instance of an Add-on result
         /// </summary>
-        ///
         /// <param name="pathReferenceSid"> The reference_sid </param>
         /// <param name="pathSid"> Fetch by unique result Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddOnResult </returns> 
-        public static async System.Threading.Tasks.Task<AddOnResultResource> FetchAsync(string pathReferenceSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AddOnResultResource> FetchAsync(string pathReferenceSid, 
+                                                                                        string pathSid, 
+                                                                                        string pathAccountSid = null, 
+                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchAddOnResultOptions(pathReferenceSid, pathSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
@@ -123,7 +130,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Retrieve a list of results belonging to the recording
         /// </summary>
-        ///
         /// <param name="options"> Read AddOnResult parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AddOnResult </returns> 
@@ -140,11 +146,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Retrieve a list of results belonging to the recording
         /// </summary>
-        ///
         /// <param name="options"> Read AddOnResult parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddOnResult </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AddOnResultResource>> ReadAsync(ReadAddOnResultOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AddOnResultResource>> ReadAsync(ReadAddOnResultOptions options, 
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -157,14 +163,17 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Retrieve a list of results belonging to the recording
         /// </summary>
-        ///
         /// <param name="pathReferenceSid"> The reference_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AddOnResult </returns> 
-        public static ResourceSet<AddOnResultResource> Read(string pathReferenceSid, string pathAccountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<AddOnResultResource> Read(string pathReferenceSid, 
+                                                            string pathAccountSid = null, 
+                                                            int? pageSize = null, 
+                                                            long? limit = null, 
+                                                            ITwilioRestClient client = null)
         {
             var options = new ReadAddOnResultOptions(pathReferenceSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -174,14 +183,17 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Retrieve a list of results belonging to the recording
         /// </summary>
-        ///
         /// <param name="pathReferenceSid"> The reference_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddOnResult </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AddOnResultResource>> ReadAsync(string pathReferenceSid, string pathAccountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AddOnResultResource>> ReadAsync(string pathReferenceSid, 
+                                                                                                    string pathAccountSid = null, 
+                                                                                                    int? pageSize = null, 
+                                                                                                    long? limit = null, 
+                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadAddOnResultOptions(pathReferenceSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -191,7 +203,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -211,7 +222,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -232,7 +242,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -264,7 +273,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Delete a result and purge all associated Payloads
         /// </summary>
-        ///
         /// <param name="options"> Delete AddOnResult parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AddOnResult </returns> 
@@ -279,11 +287,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Delete a result and purge all associated Payloads
         /// </summary>
-        ///
         /// <param name="options"> Delete AddOnResult parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddOnResult </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAddOnResultOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAddOnResultOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -294,13 +302,15 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Delete a result and purge all associated Payloads
         /// </summary>
-        ///
         /// <param name="pathReferenceSid"> The reference_sid </param>
         /// <param name="pathSid"> Delete by unique result Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AddOnResult </returns> 
-        public static bool Delete(string pathReferenceSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathReferenceSid, 
+                                  string pathSid, 
+                                  string pathAccountSid = null, 
+                                  ITwilioRestClient client = null)
         {
             var options = new DeleteAddOnResultOptions(pathReferenceSid, pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
@@ -310,13 +320,15 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Delete a result and purge all associated Payloads
         /// </summary>
-        ///
         /// <param name="pathReferenceSid"> The reference_sid </param>
         /// <param name="pathSid"> Delete by unique result Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AddOnResult </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathReferenceSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathReferenceSid, 
+                                                                          string pathSid, 
+                                                                          string pathAccountSid = null, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteAddOnResultOptions(pathReferenceSid, pathSid){PathAccountSid = pathAccountSid};
             return await DeleteAsync(options, client);
@@ -326,7 +338,6 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
         /// <summary>
         /// Converts a JSON string into a AddOnResultResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> AddOnResultResource object represented by the provided JSON </returns> 
         public static AddOnResultResource FromJson(string json)

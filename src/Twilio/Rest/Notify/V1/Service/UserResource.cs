@@ -36,7 +36,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
@@ -51,11 +50,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(CreateUserOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(CreateUserOptions options, 
+                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -66,13 +65,15 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="segment"> The segment </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
-        public static UserResource Create(string pathServiceSid, string identity, List<string> segment = null, ITwilioRestClient client = null)
+        public static UserResource Create(string pathServiceSid, 
+                                          string identity, 
+                                          List<string> segment = null, 
+                                          ITwilioRestClient client = null)
         {
             var options = new CreateUserOptions(pathServiceSid, identity){Segment = segment};
             return Create(options, client);
@@ -82,13 +83,15 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="segment"> The segment </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string pathServiceSid, string identity, List<string> segment = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string pathServiceSid, 
+                                                                                  string identity, 
+                                                                                  List<string> segment = null, 
+                                                                                  ITwilioRestClient client = null)
         {
             var options = new CreateUserOptions(pathServiceSid, identity){Segment = segment};
             return await CreateAsync(options, client);
@@ -109,7 +112,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
@@ -124,11 +126,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -139,7 +141,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -154,12 +155,13 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathIdentity, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+                                                                          string pathIdentity, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteUserOptions(pathServiceSid, pathIdentity);
             return await DeleteAsync(options, client);
@@ -180,7 +182,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
@@ -195,11 +196,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(FetchUserOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(FetchUserOptions options, 
+                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -210,7 +211,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -225,12 +225,13 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string pathServiceSid, string pathIdentity, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string pathServiceSid, 
+                                                                                 string pathIdentity, 
+                                                                                 ITwilioRestClient client = null)
         {
             var options = new FetchUserOptions(pathServiceSid, pathIdentity);
             return await FetchAsync(options, client);
@@ -251,7 +252,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
@@ -268,11 +268,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(ReadUserOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(ReadUserOptions options, 
+                                                                                             ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -285,7 +285,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="segment"> The segment </param>
@@ -293,7 +292,12 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
-        public static ResourceSet<UserResource> Read(string pathServiceSid, List<string> identity = null, string segment = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<UserResource> Read(string pathServiceSid, 
+                                                     List<string> identity = null, 
+                                                     string segment = null, 
+                                                     int? pageSize = null, 
+                                                     long? limit = null, 
+                                                     ITwilioRestClient client = null)
         {
             var options = new ReadUserOptions(pathServiceSid){Identity = identity, Segment = segment, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -303,7 +307,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="segment"> The segment </param>
@@ -311,7 +314,12 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(string pathServiceSid, List<string> identity = null, string segment = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(string pathServiceSid, 
+                                                                                             List<string> identity = null, 
+                                                                                             string segment = null, 
+                                                                                             int? pageSize = null, 
+                                                                                             long? limit = null, 
+                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadUserOptions(pathServiceSid){Identity = identity, Segment = segment, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -321,7 +329,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -341,7 +348,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -362,7 +368,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -383,7 +388,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Converts a JSON string into a UserResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> UserResource object represented by the provided JSON </returns> 
         public static UserResource FromJson(string json)

@@ -52,7 +52,6 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Construct a new CreatePublicKeyOptions
         /// </summary>
-        ///
         /// <param name="publicKey"> URL encoded representation of the public key </param>
         public CreatePublicKeyOptions(string publicKey)
         {
@@ -97,7 +96,6 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Construct a new FetchPublicKeyOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique Credential Sid </param>
         public FetchPublicKeyOptions(string pathSid)
         {
@@ -131,7 +129,6 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Construct a new UpdatePublicKeyOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique Credential Sid </param>
         public UpdatePublicKeyOptions(string pathSid)
         {
@@ -166,7 +163,6 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Construct a new DeletePublicKeyOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeletePublicKeyOptions(string pathSid)
         {

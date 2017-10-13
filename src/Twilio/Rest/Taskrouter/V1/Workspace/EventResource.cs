@@ -34,7 +34,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Event parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns> 
@@ -49,11 +48,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Event parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns> 
-        public static async System.Threading.Tasks.Task<EventResource> FetchAsync(FetchEventOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EventResource> FetchAsync(FetchEventOptions options, 
+                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -64,7 +63,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -79,12 +77,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns> 
-        public static async System.Threading.Tasks.Task<EventResource> FetchAsync(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EventResource> FetchAsync(string pathWorkspaceSid, 
+                                                                                  string pathSid, 
+                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchEventOptions(pathWorkspaceSid, pathSid);
             return await FetchAsync(options, client);
@@ -105,7 +104,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Event parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns> 
@@ -122,11 +120,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Event parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(ReadEventOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(ReadEventOptions options, 
+                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -139,7 +137,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="endDate"> The end_date </param>
         /// <param name="eventType"> The event_type </param>
@@ -154,7 +151,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns> 
-        public static ResourceSet<EventResource> Read(string pathWorkspaceSid, DateTime? endDate = null, string eventType = null, int? minutes = null, string reservationSid = null, DateTime? startDate = null, string taskQueueSid = null, string taskSid = null, string workerSid = null, string workflowSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<EventResource> Read(string pathWorkspaceSid, 
+                                                      DateTime? endDate = null, 
+                                                      string eventType = null, 
+                                                      int? minutes = null, 
+                                                      string reservationSid = null, 
+                                                      DateTime? startDate = null, 
+                                                      string taskQueueSid = null, 
+                                                      string taskSid = null, 
+                                                      string workerSid = null, 
+                                                      string workflowSid = null, 
+                                                      int? pageSize = null, 
+                                                      long? limit = null, 
+                                                      ITwilioRestClient client = null)
         {
             var options = new ReadEventOptions(pathWorkspaceSid){EndDate = endDate, EventType = eventType, Minutes = minutes, ReservationSid = reservationSid, StartDate = startDate, TaskQueueSid = taskQueueSid, TaskSid = taskSid, WorkerSid = workerSid, WorkflowSid = workflowSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -164,7 +173,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="endDate"> The end_date </param>
         /// <param name="eventType"> The event_type </param>
@@ -179,7 +187,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(string pathWorkspaceSid, DateTime? endDate = null, string eventType = null, int? minutes = null, string reservationSid = null, DateTime? startDate = null, string taskQueueSid = null, string taskSid = null, string workerSid = null, string workflowSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(string pathWorkspaceSid, 
+                                                                                              DateTime? endDate = null, 
+                                                                                              string eventType = null, 
+                                                                                              int? minutes = null, 
+                                                                                              string reservationSid = null, 
+                                                                                              DateTime? startDate = null, 
+                                                                                              string taskQueueSid = null, 
+                                                                                              string taskSid = null, 
+                                                                                              string workerSid = null, 
+                                                                                              string workflowSid = null, 
+                                                                                              int? pageSize = null, 
+                                                                                              long? limit = null, 
+                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadEventOptions(pathWorkspaceSid){EndDate = endDate, EventType = eventType, Minutes = minutes, ReservationSid = reservationSid, StartDate = startDate, TaskQueueSid = taskQueueSid, TaskSid = taskSid, WorkerSid = workerSid, WorkflowSid = workflowSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -189,7 +209,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -209,7 +228,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -230,7 +248,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -251,7 +268,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Converts a JSON string into a EventResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> EventResource object represented by the provided JSON </returns> 
         public static EventResource FromJson(string json)

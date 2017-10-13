@@ -31,7 +31,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new FetchCertificateOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Certificate. </param>
         public FetchCertificateOptions(string pathFleetSid, string pathSid)
@@ -71,7 +70,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new DeleteCertificateOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Certificate. </param>
         public DeleteCertificateOptions(string pathFleetSid, string pathSid)
@@ -118,7 +116,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new CreateCertificateOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="certificateData"> The public certificate data. </param>
         public CreateCertificateOptions(string pathFleetSid, string certificateData)
@@ -172,7 +169,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new ReadCertificateOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         public ReadCertificateOptions(string pathFleetSid)
         {
@@ -228,7 +224,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new UpdateCertificateOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Certificate. </param>
         public UpdateCertificateOptions(string pathFleetSid, string pathSid)

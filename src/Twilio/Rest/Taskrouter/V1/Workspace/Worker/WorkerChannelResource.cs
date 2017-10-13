@@ -34,11 +34,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read WorkerChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerChannel </returns> 
-        public static ResourceSet<WorkerChannelResource> Read(ReadWorkerChannelOptions options, ITwilioRestClient client = null)
+        public static ResourceSet<WorkerChannelResource> Read(ReadWorkerChannelOptions options, 
+                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
@@ -51,11 +51,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read WorkerChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(ReadWorkerChannelOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(ReadWorkerChannelOptions options, 
+                                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -68,14 +68,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerChannel </returns> 
-        public static ResourceSet<WorkerChannelResource> Read(string pathWorkspaceSid, string pathWorkerSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<WorkerChannelResource> Read(string pathWorkspaceSid, 
+                                                              string pathWorkerSid, 
+                                                              int? pageSize = null, 
+                                                              long? limit = null, 
+                                                              ITwilioRestClient client = null)
         {
             var options = new ReadWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -85,14 +88,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(string pathWorkspaceSid, string pathWorkerSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<WorkerChannelResource>> ReadAsync(string pathWorkspaceSid, 
+                                                                                                      string pathWorkerSid, 
+                                                                                                      int? pageSize = null, 
+                                                                                                      long? limit = null, 
+                                                                                                      ITwilioRestClient client = null)
         {
             var options = new ReadWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -102,7 +108,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -122,7 +127,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -143,7 +147,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -175,7 +178,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch WorkerChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerChannel </returns> 
@@ -190,11 +192,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch WorkerChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns> 
-        public static async System.Threading.Tasks.Task<WorkerChannelResource> FetchAsync(FetchWorkerChannelOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkerChannelResource> FetchAsync(FetchWorkerChannelOptions options, 
+                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -205,13 +207,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerChannel </returns> 
-        public static WorkerChannelResource Fetch(string pathWorkspaceSid, string pathWorkerSid, string pathSid, ITwilioRestClient client = null)
+        public static WorkerChannelResource Fetch(string pathWorkspaceSid, 
+                                                  string pathWorkerSid, 
+                                                  string pathSid, 
+                                                  ITwilioRestClient client = null)
         {
             var options = new FetchWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid);
             return Fetch(options, client);
@@ -221,13 +225,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns> 
-        public static async System.Threading.Tasks.Task<WorkerChannelResource> FetchAsync(string pathWorkspaceSid, string pathWorkerSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkerChannelResource> FetchAsync(string pathWorkspaceSid, 
+                                                                                          string pathWorkerSid, 
+                                                                                          string pathSid, 
+                                                                                          ITwilioRestClient client = null)
         {
             var options = new FetchWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid);
             return await FetchAsync(options, client);
@@ -248,7 +254,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="options"> Update WorkerChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerChannel </returns> 
@@ -263,11 +268,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="options"> Update WorkerChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns> 
-        public static async System.Threading.Tasks.Task<WorkerChannelResource> UpdateAsync(UpdateWorkerChannelOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkerChannelResource> UpdateAsync(UpdateWorkerChannelOptions options, 
+                                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -278,7 +283,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pathSid"> The sid </param>
@@ -286,7 +290,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="available"> The available </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerChannel </returns> 
-        public static WorkerChannelResource Update(string pathWorkspaceSid, string pathWorkerSid, string pathSid, int? capacity = null, bool? available = null, ITwilioRestClient client = null)
+        public static WorkerChannelResource Update(string pathWorkspaceSid, 
+                                                   string pathWorkerSid, 
+                                                   string pathSid, 
+                                                   int? capacity = null, 
+                                                   bool? available = null, 
+                                                   ITwilioRestClient client = null)
         {
             var options = new UpdateWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){Capacity = capacity, Available = available};
             return Update(options, client);
@@ -296,7 +305,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pathSid"> The sid </param>
@@ -304,7 +312,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="available"> The available </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns> 
-        public static async System.Threading.Tasks.Task<WorkerChannelResource> UpdateAsync(string pathWorkspaceSid, string pathWorkerSid, string pathSid, int? capacity = null, bool? available = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkerChannelResource> UpdateAsync(string pathWorkspaceSid, 
+                                                                                           string pathWorkerSid, 
+                                                                                           string pathSid, 
+                                                                                           int? capacity = null, 
+                                                                                           bool? available = null, 
+                                                                                           ITwilioRestClient client = null)
         {
             var options = new UpdateWorkerChannelOptions(pathWorkspaceSid, pathWorkerSid, pathSid){Capacity = capacity, Available = available};
             return await UpdateAsync(options, client);
@@ -314,7 +327,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// Converts a JSON string into a WorkerChannelResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> WorkerChannelResource object represented by the provided JSON </returns> 
         public static WorkerChannelResource FromJson(string json)

@@ -26,7 +26,6 @@ namespace Twilio.Rest.Fax.V1
         /// <summary>
         /// Construct a new FetchFaxOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> A string that uniquely identifies this fax. </param>
         public FetchFaxOptions(string pathSid)
         {
@@ -145,7 +144,6 @@ namespace Twilio.Rest.Fax.V1
         /// <summary>
         /// Construct a new CreateFaxOptions
         /// </summary>
-        ///
         /// <param name="to"> The phone number or SIP address to send the fax to </param>
         /// <param name="mediaUrl"> URL that points to the fax media </param>
         public CreateFaxOptions(string to, Uri mediaUrl)
@@ -223,7 +221,6 @@ namespace Twilio.Rest.Fax.V1
         /// <summary>
         /// Construct a new UpdateFaxOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> A string that uniquely identifies this fax. </param>
         public UpdateFaxOptions(string pathSid)
         {
@@ -260,7 +257,6 @@ namespace Twilio.Rest.Fax.V1
         /// <summary>
         /// Construct a new DeleteFaxOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> A string that uniquely identifies this fax. </param>
         public DeleteFaxOptions(string pathSid)
         {

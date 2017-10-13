@@ -35,7 +35,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <summary>
         /// Construct a new FetchSyncMapItemOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
@@ -80,7 +79,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <summary>
         /// Construct a new DeleteSyncMapItemOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
@@ -129,7 +127,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <summary>
         /// Construct a new CreateSyncMapItemOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="key"> The key </param>
@@ -194,7 +191,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <summary>
         /// Construct a new ReadSyncMapItemOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         public ReadSyncMapItemOptions(string pathServiceSid, string pathMapSid)
@@ -261,7 +257,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <summary>
         /// Construct a new UpdateSyncMapItemOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>

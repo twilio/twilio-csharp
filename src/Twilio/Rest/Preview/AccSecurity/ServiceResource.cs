@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Create a new Verification Service.
         /// </summary>
-        ///
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -52,11 +51,11 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Create a new Verification Service.
         /// </summary>
-        ///
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, 
+                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -67,7 +66,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Create a new Verification Service.
         /// </summary>
-        ///
         /// <param name="name"> Friendly name of the service </param>
         /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -82,12 +80,13 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Create a new Verification Service.
         /// </summary>
-        ///
         /// <param name="name"> Friendly name of the service </param>
         /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string name, int? codeLength = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string name, 
+                                                                                     int? codeLength = null, 
+                                                                                     ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions(name){CodeLength = codeLength};
             return await CreateAsync(options, client);
@@ -108,7 +107,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Fetch specific Verification Service Instance.
         /// </summary>
-        ///
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -123,11 +121,11 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Fetch specific Verification Service Instance.
         /// </summary>
-        ///
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, 
+                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -138,7 +136,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Fetch specific Verification Service Instance.
         /// </summary>
-        ///
         /// <param name="pathSid"> Verification Service Instance SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -152,11 +149,11 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Fetch specific Verification Service Instance.
         /// </summary>
-        ///
         /// <param name="pathSid"> Verification Service Instance SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid, 
+                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(pathSid);
             return await FetchAsync(options, client);
@@ -177,7 +174,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Retrieve a list of all Phone Verification Services for an account.
         /// </summary>
-        ///
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -194,11 +190,11 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Retrieve a list of all Phone Verification Services for an account.
         /// </summary>
-        ///
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, 
+                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -211,12 +207,13 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Retrieve a list of all Phone Verification Services for an account.
         /// </summary>
-        ///
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ResourceSet<ServiceResource> Read(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<ServiceResource> Read(int? pageSize = null, 
+                                                        long? limit = null, 
+                                                        ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -226,12 +223,13 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Retrieve a list of all Phone Verification Services for an account.
         /// </summary>
-        ///
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null, 
+                                                                                                long? limit = null, 
+                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -241,7 +239,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -261,7 +258,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -282,7 +278,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -314,7 +309,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Update a specific Phone Verification Service.
         /// </summary>
-        ///
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -329,11 +323,11 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Update a specific Phone Verification Service.
         /// </summary>
-        ///
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options, 
+                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -344,13 +338,15 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Update a specific Phone Verification Service.
         /// </summary>
-        ///
         /// <param name="pathSid"> Service Sid. </param>
         /// <param name="name"> Friendly name of the service </param>
         /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Update(string pathSid, string name = null, int? codeLength = null, ITwilioRestClient client = null)
+        public static ServiceResource Update(string pathSid, 
+                                             string name = null, 
+                                             int? codeLength = null, 
+                                             ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(pathSid){Name = name, CodeLength = codeLength};
             return Update(options, client);
@@ -360,13 +356,15 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Update a specific Phone Verification Service.
         /// </summary>
-        ///
         /// <param name="pathSid"> Service Sid. </param>
         /// <param name="name"> Friendly name of the service </param>
         /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, string name = null, int? codeLength = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, 
+                                                                                     string name = null, 
+                                                                                     int? codeLength = null, 
+                                                                                     ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(pathSid){Name = name, CodeLength = codeLength};
             return await UpdateAsync(options, client);
@@ -376,7 +374,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Converts a JSON string into a ServiceResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ServiceResource object represented by the provided JSON </returns> 
         public static ServiceResource FromJson(string json)

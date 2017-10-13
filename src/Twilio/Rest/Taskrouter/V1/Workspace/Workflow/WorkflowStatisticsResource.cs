@@ -34,11 +34,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch WorkflowStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkflowStatistics </returns> 
-        public static WorkflowStatisticsResource Fetch(FetchWorkflowStatisticsOptions options, ITwilioRestClient client = null)
+        public static WorkflowStatisticsResource Fetch(FetchWorkflowStatisticsOptions options, 
+                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -49,11 +49,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch WorkflowStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkflowStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowStatisticsResource> FetchAsync(FetchWorkflowStatisticsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkflowStatisticsResource> FetchAsync(FetchWorkflowStatisticsOptions options, 
+                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -64,7 +64,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkflowSid"> The workflow_sid </param>
         /// <param name="minutes"> The minutes </param>
@@ -74,7 +73,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <param name="splitByWaitTime"> The split_by_wait_time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkflowStatistics </returns> 
-        public static WorkflowStatisticsResource Fetch(string pathWorkspaceSid, string pathWorkflowSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, string taskChannel = null, string splitByWaitTime = null, ITwilioRestClient client = null)
+        public static WorkflowStatisticsResource Fetch(string pathWorkspaceSid, 
+                                                       string pathWorkflowSid, 
+                                                       int? minutes = null, 
+                                                       DateTime? startDate = null, 
+                                                       DateTime? endDate = null, 
+                                                       string taskChannel = null, 
+                                                       string splitByWaitTime = null, 
+                                                       ITwilioRestClient client = null)
         {
             var options = new FetchWorkflowStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
             return Fetch(options, client);
@@ -84,7 +90,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkflowSid"> The workflow_sid </param>
         /// <param name="minutes"> The minutes </param>
@@ -94,7 +99,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <param name="splitByWaitTime"> The split_by_wait_time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkflowStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowStatisticsResource> FetchAsync(string pathWorkspaceSid, string pathWorkflowSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, string taskChannel = null, string splitByWaitTime = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkflowStatisticsResource> FetchAsync(string pathWorkspaceSid, 
+                                                                                               string pathWorkflowSid, 
+                                                                                               int? minutes = null, 
+                                                                                               DateTime? startDate = null, 
+                                                                                               DateTime? endDate = null, 
+                                                                                               string taskChannel = null, 
+                                                                                               string splitByWaitTime = null, 
+                                                                                               ITwilioRestClient client = null)
         {
             var options = new FetchWorkflowStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
             return await FetchAsync(options, client);
@@ -104,7 +116,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// Converts a JSON string into a WorkflowStatisticsResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> WorkflowStatisticsResource object represented by the provided JSON </returns> 
         public static WorkflowStatisticsResource FromJson(string json)

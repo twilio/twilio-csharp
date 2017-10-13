@@ -27,6 +27,10 @@ namespace Twilio.Rest.Notify.V1.Service
         {
             private BindingTypeEnum(string value) : base(value) {}
             public BindingTypeEnum() {}
+            public static implicit operator BindingTypeEnum(string value)
+            {
+                return new BindingTypeEnum(value);
+            }
 
             public static readonly BindingTypeEnum Apn = new BindingTypeEnum("apn");
             public static readonly BindingTypeEnum Gcm = new BindingTypeEnum("gcm");
@@ -50,7 +54,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns> 
@@ -65,11 +68,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(FetchBindingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(FetchBindingOptions options, 
+                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -80,7 +83,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -95,12 +97,13 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(string pathServiceSid, 
+                                                                                    string pathSid, 
+                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchBindingOptions(pathServiceSid, pathSid);
             return await FetchAsync(options, client);
@@ -121,7 +124,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns> 
@@ -136,11 +138,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBindingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBindingOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -151,7 +153,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -166,12 +167,13 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+                                                                          string pathSid, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteBindingOptions(pathServiceSid, pathSid);
             return await DeleteAsync(options, client);
@@ -192,7 +194,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns> 
@@ -207,11 +208,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<BindingResource> CreateAsync(CreateBindingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BindingResource> CreateAsync(CreateBindingOptions options, 
+                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -222,7 +223,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="bindingType"> The binding_type </param>
@@ -233,7 +233,15 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="endpoint"> The endpoint </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns> 
-        public static BindingResource Create(string pathServiceSid, string identity, BindingResource.BindingTypeEnum bindingType, string address, List<string> tag = null, string notificationProtocolVersion = null, string credentialSid = null, string endpoint = null, ITwilioRestClient client = null)
+        public static BindingResource Create(string pathServiceSid, 
+                                             string identity, 
+                                             BindingResource.BindingTypeEnum bindingType, 
+                                             string address, 
+                                             List<string> tag = null, 
+                                             string notificationProtocolVersion = null, 
+                                             string credentialSid = null, 
+                                             string endpoint = null, 
+                                             ITwilioRestClient client = null)
         {
             var options = new CreateBindingOptions(pathServiceSid, identity, bindingType, address){Tag = tag, NotificationProtocolVersion = notificationProtocolVersion, CredentialSid = credentialSid, Endpoint = endpoint};
             return Create(options, client);
@@ -243,7 +251,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
         /// <param name="bindingType"> The binding_type </param>
@@ -254,7 +261,15 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="endpoint"> The endpoint </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<BindingResource> CreateAsync(string pathServiceSid, string identity, BindingResource.BindingTypeEnum bindingType, string address, List<string> tag = null, string notificationProtocolVersion = null, string credentialSid = null, string endpoint = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BindingResource> CreateAsync(string pathServiceSid, 
+                                                                                     string identity, 
+                                                                                     BindingResource.BindingTypeEnum bindingType, 
+                                                                                     string address, 
+                                                                                     List<string> tag = null, 
+                                                                                     string notificationProtocolVersion = null, 
+                                                                                     string credentialSid = null, 
+                                                                                     string endpoint = null, 
+                                                                                     ITwilioRestClient client = null)
         {
             var options = new CreateBindingOptions(pathServiceSid, identity, bindingType, address){Tag = tag, NotificationProtocolVersion = notificationProtocolVersion, CredentialSid = credentialSid, Endpoint = endpoint};
             return await CreateAsync(options, client);
@@ -275,7 +290,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns> 
@@ -292,11 +306,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(ReadBindingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(ReadBindingOptions options, 
+                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -309,7 +323,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
@@ -319,7 +332,14 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns> 
-        public static ResourceSet<BindingResource> Read(string pathServiceSid, DateTime? startDate = null, DateTime? endDate = null, List<string> identity = null, List<string> tag = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<BindingResource> Read(string pathServiceSid, 
+                                                        DateTime? startDate = null, 
+                                                        DateTime? endDate = null, 
+                                                        List<string> identity = null, 
+                                                        List<string> tag = null, 
+                                                        int? pageSize = null, 
+                                                        long? limit = null, 
+                                                        ITwilioRestClient client = null)
         {
             var options = new ReadBindingOptions(pathServiceSid){StartDate = startDate, EndDate = endDate, Identity = identity, Tag = tag, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -329,7 +349,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
@@ -339,7 +358,14 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(string pathServiceSid, DateTime? startDate = null, DateTime? endDate = null, List<string> identity = null, List<string> tag = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(string pathServiceSid, 
+                                                                                                DateTime? startDate = null, 
+                                                                                                DateTime? endDate = null, 
+                                                                                                List<string> identity = null, 
+                                                                                                List<string> tag = null, 
+                                                                                                int? pageSize = null, 
+                                                                                                long? limit = null, 
+                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadBindingOptions(pathServiceSid){StartDate = startDate, EndDate = endDate, Identity = identity, Tag = tag, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -349,7 +375,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -369,7 +394,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -390,7 +414,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -411,7 +434,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Converts a JSON string into a BindingResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> BindingResource object represented by the provided JSON </returns> 
         public static BindingResource FromJson(string json)

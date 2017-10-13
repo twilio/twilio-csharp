@@ -36,11 +36,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Fetch a specific Sync List Permission.
         /// </summary>
-        ///
         /// <param name="options"> Fetch SyncListPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListPermission </returns> 
-        public static SyncListPermissionResource Fetch(FetchSyncListPermissionOptions options, ITwilioRestClient client = null)
+        public static SyncListPermissionResource Fetch(FetchSyncListPermissionOptions options, 
+                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -51,11 +51,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Fetch a specific Sync List Permission.
         /// </summary>
-        ///
         /// <param name="options"> Fetch SyncListPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListPermission </returns> 
-        public static async System.Threading.Tasks.Task<SyncListPermissionResource> FetchAsync(FetchSyncListPermissionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListPermissionResource> FetchAsync(FetchSyncListPermissionOptions options, 
+                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -66,13 +66,15 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Fetch a specific Sync List Permission.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListPermission </returns> 
-        public static SyncListPermissionResource Fetch(string pathServiceSid, string pathListSid, string pathIdentity, ITwilioRestClient client = null)
+        public static SyncListPermissionResource Fetch(string pathServiceSid, 
+                                                       string pathListSid, 
+                                                       string pathIdentity, 
+                                                       ITwilioRestClient client = null)
         {
             var options = new FetchSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity);
             return Fetch(options, client);
@@ -82,13 +84,15 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Fetch a specific Sync List Permission.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListPermission </returns> 
-        public static async System.Threading.Tasks.Task<SyncListPermissionResource> FetchAsync(string pathServiceSid, string pathListSid, string pathIdentity, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListPermissionResource> FetchAsync(string pathServiceSid, 
+                                                                                               string pathListSid, 
+                                                                                               string pathIdentity, 
+                                                                                               ITwilioRestClient client = null)
         {
             var options = new FetchSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity);
             return await FetchAsync(options, client);
@@ -109,7 +113,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Delete a specific Sync List Permission.
         /// </summary>
-        ///
         /// <param name="options"> Delete SyncListPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListPermission </returns> 
@@ -124,11 +127,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Delete a specific Sync List Permission.
         /// </summary>
-        ///
         /// <param name="options"> Delete SyncListPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListPermission </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncListPermissionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncListPermissionOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -139,13 +142,15 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Delete a specific Sync List Permission.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListPermission </returns> 
-        public static bool Delete(string pathServiceSid, string pathListSid, string pathIdentity, ITwilioRestClient client = null)
+        public static bool Delete(string pathServiceSid, 
+                                  string pathListSid, 
+                                  string pathIdentity, 
+                                  ITwilioRestClient client = null)
         {
             var options = new DeleteSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity);
             return Delete(options, client);
@@ -155,13 +160,15 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Delete a specific Sync List Permission.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListPermission </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathListSid, string pathIdentity, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+                                                                          string pathListSid, 
+                                                                          string pathIdentity, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity);
             return await DeleteAsync(options, client);
@@ -182,11 +189,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync List.
         /// </summary>
-        ///
         /// <param name="options"> Read SyncListPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListPermission </returns> 
-        public static ResourceSet<SyncListPermissionResource> Read(ReadSyncListPermissionOptions options, ITwilioRestClient client = null)
+        public static ResourceSet<SyncListPermissionResource> Read(ReadSyncListPermissionOptions options, 
+                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
@@ -199,11 +206,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync List.
         /// </summary>
-        ///
         /// <param name="options"> Read SyncListPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListPermission </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncListPermissionResource>> ReadAsync(ReadSyncListPermissionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncListPermissionResource>> ReadAsync(ReadSyncListPermissionOptions options, 
+                                                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -216,14 +223,17 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync List.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListPermission </returns> 
-        public static ResourceSet<SyncListPermissionResource> Read(string pathServiceSid, string pathListSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<SyncListPermissionResource> Read(string pathServiceSid, 
+                                                                   string pathListSid, 
+                                                                   int? pageSize = null, 
+                                                                   long? limit = null, 
+                                                                   ITwilioRestClient client = null)
         {
             var options = new ReadSyncListPermissionOptions(pathServiceSid, pathListSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -233,14 +243,17 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync List.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListPermission </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncListPermissionResource>> ReadAsync(string pathServiceSid, string pathListSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncListPermissionResource>> ReadAsync(string pathServiceSid, 
+                                                                                                           string pathListSid, 
+                                                                                                           int? pageSize = null, 
+                                                                                                           long? limit = null, 
+                                                                                                           ITwilioRestClient client = null)
         {
             var options = new ReadSyncListPermissionOptions(pathServiceSid, pathListSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -250,7 +263,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -270,11 +282,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
-        public static Page<SyncListPermissionResource> NextPage(Page<SyncListPermissionResource> page, ITwilioRestClient client)
+        public static Page<SyncListPermissionResource> NextPage(Page<SyncListPermissionResource> page, 
+                                                                ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -291,11 +303,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
-        public static Page<SyncListPermissionResource> PreviousPage(Page<SyncListPermissionResource> page, ITwilioRestClient client)
+        public static Page<SyncListPermissionResource> PreviousPage(Page<SyncListPermissionResource> page, 
+                                                                    ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -323,11 +335,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Update an identity's access to a specific Sync List.
         /// </summary>
-        ///
         /// <param name="options"> Update SyncListPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListPermission </returns> 
-        public static SyncListPermissionResource Update(UpdateSyncListPermissionOptions options, ITwilioRestClient client = null)
+        public static SyncListPermissionResource Update(UpdateSyncListPermissionOptions options, 
+                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildUpdateRequest(options, client));
@@ -338,11 +350,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Update an identity's access to a specific Sync List.
         /// </summary>
-        ///
         /// <param name="options"> Update SyncListPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListPermission </returns> 
-        public static async System.Threading.Tasks.Task<SyncListPermissionResource> UpdateAsync(UpdateSyncListPermissionOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListPermissionResource> UpdateAsync(UpdateSyncListPermissionOptions options, 
+                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -353,7 +365,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Update an identity's access to a specific Sync List.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
@@ -362,7 +373,13 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="manage"> Manage access. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListPermission </returns> 
-        public static SyncListPermissionResource Update(string pathServiceSid, string pathListSid, string pathIdentity, bool? read, bool? write, bool? manage, ITwilioRestClient client = null)
+        public static SyncListPermissionResource Update(string pathServiceSid, 
+                                                        string pathListSid, 
+                                                        string pathIdentity, 
+                                                        bool? read, 
+                                                        bool? write, 
+                                                        bool? manage, 
+                                                        ITwilioRestClient client = null)
         {
             var options = new UpdateSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity, read, write, manage);
             return Update(options, client);
@@ -372,7 +389,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Update an identity's access to a specific Sync List.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
@@ -381,7 +397,13 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="manage"> Manage access. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListPermission </returns> 
-        public static async System.Threading.Tasks.Task<SyncListPermissionResource> UpdateAsync(string pathServiceSid, string pathListSid, string pathIdentity, bool? read, bool? write, bool? manage, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListPermissionResource> UpdateAsync(string pathServiceSid, 
+                                                                                                string pathListSid, 
+                                                                                                string pathIdentity, 
+                                                                                                bool? read, 
+                                                                                                bool? write, 
+                                                                                                bool? manage, 
+                                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateSyncListPermissionOptions(pathServiceSid, pathListSid, pathIdentity, read, write, manage);
             return await UpdateAsync(options, client);
@@ -391,7 +413,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// Converts a JSON string into a SyncListPermissionResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> SyncListPermissionResource object represented by the provided JSON </returns> 
         public static SyncListPermissionResource FromJson(string json)

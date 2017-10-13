@@ -28,6 +28,10 @@ namespace Twilio.Rest.Preview.HostedNumbers
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
+            public static implicit operator StatusEnum(string value)
+            {
+                return new StatusEnum(value);
+            }
 
             public static readonly StatusEnum Opened = new StatusEnum("opened");
             public static readonly StatusEnum Signing = new StatusEnum("signing");
@@ -50,11 +54,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch a specific AuthorizationDocument.
         /// </summary>
-        ///
         /// <param name="options"> Fetch AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthorizationDocument </returns> 
-        public static AuthorizationDocumentResource Fetch(FetchAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        public static AuthorizationDocumentResource Fetch(FetchAuthorizationDocumentOptions options, 
+                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -65,11 +69,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch a specific AuthorizationDocument.
         /// </summary>
-        ///
         /// <param name="options"> Fetch AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns> 
-        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> FetchAsync(FetchAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> FetchAsync(FetchAuthorizationDocumentOptions options, 
+                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -80,7 +84,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch a specific AuthorizationDocument.
         /// </summary>
-        ///
         /// <param name="pathSid"> AuthorizationDocument sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthorizationDocument </returns> 
@@ -94,11 +97,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch a specific AuthorizationDocument.
         /// </summary>
-        ///
         /// <param name="pathSid"> AuthorizationDocument sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns> 
-        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> FetchAsync(string pathSid, 
+                                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchAuthorizationDocumentOptions(pathSid);
             return await FetchAsync(options, client);
@@ -119,11 +122,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Updates a specific AuthorizationDocument.
         /// </summary>
-        ///
         /// <param name="options"> Update AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthorizationDocument </returns> 
-        public static AuthorizationDocumentResource Update(UpdateAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        public static AuthorizationDocumentResource Update(UpdateAuthorizationDocumentOptions options, 
+                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildUpdateRequest(options, client));
@@ -134,11 +137,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Updates a specific AuthorizationDocument.
         /// </summary>
-        ///
         /// <param name="options"> Update AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns> 
-        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> UpdateAsync(UpdateAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> UpdateAsync(UpdateAuthorizationDocumentOptions options, 
+                                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -149,7 +152,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Updates a specific AuthorizationDocument.
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids. </param>
         /// <param name="addressSid"> Address sid. </param>
@@ -158,7 +160,13 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="status"> The Status of this AuthorizationDocument. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthorizationDocument </returns> 
-        public static AuthorizationDocumentResource Update(string pathSid, List<string> hostedNumberOrderSids = null, string addressSid = null, string email = null, List<string> ccEmails = null, AuthorizationDocumentResource.StatusEnum status = null, ITwilioRestClient client = null)
+        public static AuthorizationDocumentResource Update(string pathSid, 
+                                                           List<string> hostedNumberOrderSids = null, 
+                                                           string addressSid = null, 
+                                                           string email = null, 
+                                                           List<string> ccEmails = null, 
+                                                           AuthorizationDocumentResource.StatusEnum status = null, 
+                                                           ITwilioRestClient client = null)
         {
             var options = new UpdateAuthorizationDocumentOptions(pathSid){HostedNumberOrderSids = hostedNumberOrderSids, AddressSid = addressSid, Email = email, CcEmails = ccEmails, Status = status};
             return Update(options, client);
@@ -168,7 +176,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Updates a specific AuthorizationDocument.
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids. </param>
         /// <param name="addressSid"> Address sid. </param>
@@ -177,7 +184,13 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="status"> The Status of this AuthorizationDocument. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns> 
-        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> UpdateAsync(string pathSid, List<string> hostedNumberOrderSids = null, string addressSid = null, string email = null, List<string> ccEmails = null, AuthorizationDocumentResource.StatusEnum status = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> UpdateAsync(string pathSid, 
+                                                                                                   List<string> hostedNumberOrderSids = null, 
+                                                                                                   string addressSid = null, 
+                                                                                                   string email = null, 
+                                                                                                   List<string> ccEmails = null, 
+                                                                                                   AuthorizationDocumentResource.StatusEnum status = null, 
+                                                                                                   ITwilioRestClient client = null)
         {
             var options = new UpdateAuthorizationDocumentOptions(pathSid){HostedNumberOrderSids = hostedNumberOrderSids, AddressSid = addressSid, Email = email, CcEmails = ccEmails, Status = status};
             return await UpdateAsync(options, client);
@@ -198,11 +211,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Retrieve a list of AuthorizationDocuments belonging to the account initiating the request.
         /// </summary>
-        ///
         /// <param name="options"> Read AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthorizationDocument </returns> 
-        public static ResourceSet<AuthorizationDocumentResource> Read(ReadAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        public static ResourceSet<AuthorizationDocumentResource> Read(ReadAuthorizationDocumentOptions options, 
+                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
@@ -215,11 +228,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Retrieve a list of AuthorizationDocuments belonging to the account initiating the request.
         /// </summary>
-        ///
         /// <param name="options"> Read AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizationDocumentResource>> ReadAsync(ReadAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizationDocumentResource>> ReadAsync(ReadAuthorizationDocumentOptions options, 
+                                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -232,12 +245,13 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Retrieve a list of AuthorizationDocuments belonging to the account initiating the request.
         /// </summary>
-        ///
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthorizationDocument </returns> 
-        public static ResourceSet<AuthorizationDocumentResource> Read(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<AuthorizationDocumentResource> Read(int? pageSize = null, 
+                                                                      long? limit = null, 
+                                                                      ITwilioRestClient client = null)
         {
             var options = new ReadAuthorizationDocumentOptions{PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -247,12 +261,13 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Retrieve a list of AuthorizationDocuments belonging to the account initiating the request.
         /// </summary>
-        ///
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizationDocumentResource>> ReadAsync(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizationDocumentResource>> ReadAsync(int? pageSize = null, 
+                                                                                                              long? limit = null, 
+                                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadAuthorizationDocumentOptions{PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -262,7 +277,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -282,11 +296,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
-        public static Page<AuthorizationDocumentResource> NextPage(Page<AuthorizationDocumentResource> page, ITwilioRestClient client)
+        public static Page<AuthorizationDocumentResource> NextPage(Page<AuthorizationDocumentResource> page, 
+                                                                   ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -303,11 +317,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
-        public static Page<AuthorizationDocumentResource> PreviousPage(Page<AuthorizationDocumentResource> page, ITwilioRestClient client)
+        public static Page<AuthorizationDocumentResource> PreviousPage(Page<AuthorizationDocumentResource> page, 
+                                                                       ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -335,11 +349,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.
         /// </summary>
-        ///
         /// <param name="options"> Create AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthorizationDocument </returns> 
-        public static AuthorizationDocumentResource Create(CreateAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        public static AuthorizationDocumentResource Create(CreateAuthorizationDocumentOptions options, 
+                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
@@ -350,11 +364,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.
         /// </summary>
-        ///
         /// <param name="options"> Create AuthorizationDocument parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns> 
-        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> CreateAsync(CreateAuthorizationDocumentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> CreateAsync(CreateAuthorizationDocumentOptions options, 
+                                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -365,14 +379,17 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.
         /// </summary>
-        ///
         /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids. </param>
         /// <param name="addressSid"> Address sid. </param>
         /// <param name="email"> Email. </param>
         /// <param name="ccEmails"> A list of emails. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthorizationDocument </returns> 
-        public static AuthorizationDocumentResource Create(List<string> hostedNumberOrderSids, string addressSid, string email, List<string> ccEmails = null, ITwilioRestClient client = null)
+        public static AuthorizationDocumentResource Create(List<string> hostedNumberOrderSids, 
+                                                           string addressSid, 
+                                                           string email, 
+                                                           List<string> ccEmails = null, 
+                                                           ITwilioRestClient client = null)
         {
             var options = new CreateAuthorizationDocumentOptions(hostedNumberOrderSids, addressSid, email){CcEmails = ccEmails};
             return Create(options, client);
@@ -382,14 +399,17 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.
         /// </summary>
-        ///
         /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids. </param>
         /// <param name="addressSid"> Address sid. </param>
         /// <param name="email"> Email. </param>
         /// <param name="ccEmails"> A list of emails. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns> 
-        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> CreateAsync(List<string> hostedNumberOrderSids, string addressSid, string email, List<string> ccEmails = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> CreateAsync(List<string> hostedNumberOrderSids, 
+                                                                                                   string addressSid, 
+                                                                                                   string email, 
+                                                                                                   List<string> ccEmails = null, 
+                                                                                                   ITwilioRestClient client = null)
         {
             var options = new CreateAuthorizationDocumentOptions(hostedNumberOrderSids, addressSid, email){CcEmails = ccEmails};
             return await CreateAsync(options, client);
@@ -399,7 +419,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Converts a JSON string into a AuthorizationDocumentResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> AuthorizationDocumentResource object represented by the provided JSON </returns> 
         public static AuthorizationDocumentResource FromJson(string json)

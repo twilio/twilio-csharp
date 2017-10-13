@@ -30,7 +30,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Construct a new CreatePhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="phoneNumberSid"> The phone_number_sid </param>
         public CreatePhoneNumberOptions(string pathServiceSid, string phoneNumberSid)
@@ -73,7 +72,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Construct a new DeletePhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeletePhoneNumberOptions(string pathServiceSid, string pathSid)
@@ -107,7 +105,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Construct a new ReadPhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public ReadPhoneNumberOptions(string pathServiceSid)
         {
@@ -148,7 +145,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Construct a new FetchPhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchPhoneNumberOptions(string pathServiceSid, string pathSid)

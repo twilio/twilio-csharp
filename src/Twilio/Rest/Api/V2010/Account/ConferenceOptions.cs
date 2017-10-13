@@ -28,7 +28,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchConferenceOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique conference Sid </param>
         public FetchConferenceOptions(string pathSid)
         {
@@ -167,7 +166,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new UpdateConferenceOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateConferenceOptions(string pathSid)
         {

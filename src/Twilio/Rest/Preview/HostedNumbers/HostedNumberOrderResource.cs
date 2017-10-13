@@ -28,6 +28,10 @@ namespace Twilio.Rest.Preview.HostedNumbers
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
+            public static implicit operator StatusEnum(string value)
+            {
+                return new StatusEnum(value);
+            }
 
             public static readonly StatusEnum Received = new StatusEnum("received");
             public static readonly StatusEnum PendingVerification = new StatusEnum("pending-verification");
@@ -54,7 +58,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch a specific HostedNumberOrder.
         /// </summary>
-        ///
         /// <param name="options"> Fetch HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
@@ -69,11 +72,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch a specific HostedNumberOrder.
         /// </summary>
-        ///
         /// <param name="options"> Fetch HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> FetchAsync(FetchHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> FetchAsync(FetchHostedNumberOrderOptions options, 
+                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -84,7 +87,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch a specific HostedNumberOrder.
         /// </summary>
-        ///
         /// <param name="pathSid"> HostedNumberOrder sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
@@ -98,11 +100,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch a specific HostedNumberOrder.
         /// </summary>
-        ///
         /// <param name="pathSid"> HostedNumberOrder sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> FetchAsync(string pathSid, 
+                                                                                              ITwilioRestClient client = null)
         {
             var options = new FetchHostedNumberOrderOptions(pathSid);
             return await FetchAsync(options, client);
@@ -123,7 +125,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Cancel the HostedNumberOrder (only available when the status is in `received`).
         /// </summary>
-        ///
         /// <param name="options"> Delete HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
@@ -138,11 +139,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Cancel the HostedNumberOrder (only available when the status is in `received`).
         /// </summary>
-        ///
         /// <param name="options"> Delete HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteHostedNumberOrderOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -153,7 +154,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Cancel the HostedNumberOrder (only available when the status is in `received`).
         /// </summary>
-        ///
         /// <param name="pathSid"> HostedNumberOrder sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
@@ -167,7 +167,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Cancel the HostedNumberOrder (only available when the status is in `received`).
         /// </summary>
-        ///
         /// <param name="pathSid"> HostedNumberOrder sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
@@ -192,11 +191,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Updates a specific HostedNumberOrder.
         /// </summary>
-        ///
         /// <param name="options"> Update HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
-        public static HostedNumberOrderResource Update(UpdateHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static HostedNumberOrderResource Update(UpdateHostedNumberOrderOptions options, 
+                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildUpdateRequest(options, client));
@@ -207,11 +206,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Updates a specific HostedNumberOrder.
         /// </summary>
-        ///
         /// <param name="options"> Update HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> UpdateAsync(UpdateHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> UpdateAsync(UpdateHostedNumberOrderOptions options, 
+                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -222,7 +221,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Updates a specific HostedNumberOrder.
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> A human readable description of this resource. </param>
         /// <param name="uniqueName"> A unique, developer assigned name of this HostedNumberOrder. </param>
@@ -232,7 +230,14 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="verificationCode"> A verification code. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
-        public static HostedNumberOrderResource Update(string pathSid, string friendlyName = null, string uniqueName = null, string email = null, List<string> ccEmails = null, HostedNumberOrderResource.StatusEnum status = null, string verificationCode = null, ITwilioRestClient client = null)
+        public static HostedNumberOrderResource Update(string pathSid, 
+                                                       string friendlyName = null, 
+                                                       string uniqueName = null, 
+                                                       string email = null, 
+                                                       List<string> ccEmails = null, 
+                                                       HostedNumberOrderResource.StatusEnum status = null, 
+                                                       string verificationCode = null, 
+                                                       ITwilioRestClient client = null)
         {
             var options = new UpdateHostedNumberOrderOptions(pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Email = email, CcEmails = ccEmails, Status = status, VerificationCode = verificationCode};
             return Update(options, client);
@@ -242,7 +247,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Updates a specific HostedNumberOrder.
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> A human readable description of this resource. </param>
         /// <param name="uniqueName"> A unique, developer assigned name of this HostedNumberOrder. </param>
@@ -252,7 +256,14 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="verificationCode"> A verification code. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> UpdateAsync(string pathSid, string friendlyName = null, string uniqueName = null, string email = null, List<string> ccEmails = null, HostedNumberOrderResource.StatusEnum status = null, string verificationCode = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> UpdateAsync(string pathSid, 
+                                                                                               string friendlyName = null, 
+                                                                                               string uniqueName = null, 
+                                                                                               string email = null, 
+                                                                                               List<string> ccEmails = null, 
+                                                                                               HostedNumberOrderResource.StatusEnum status = null, 
+                                                                                               string verificationCode = null, 
+                                                                                               ITwilioRestClient client = null)
         {
             var options = new UpdateHostedNumberOrderOptions(pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Email = email, CcEmails = ccEmails, Status = status, VerificationCode = verificationCode};
             return await UpdateAsync(options, client);
@@ -273,11 +284,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Retrieve a list of HostedNumberOrders belonging to the account initiating the request.
         /// </summary>
-        ///
         /// <param name="options"> Read HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
-        public static ResourceSet<HostedNumberOrderResource> Read(ReadHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static ResourceSet<HostedNumberOrderResource> Read(ReadHostedNumberOrderOptions options, 
+                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
@@ -290,11 +301,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Retrieve a list of HostedNumberOrders belonging to the account initiating the request.
         /// </summary>
-        ///
         /// <param name="options"> Read HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<HostedNumberOrderResource>> ReadAsync(ReadHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<HostedNumberOrderResource>> ReadAsync(ReadHostedNumberOrderOptions options, 
+                                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -307,7 +318,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Retrieve a list of HostedNumberOrders belonging to the account initiating the request.
         /// </summary>
-        ///
         /// <param name="status"> The Status of this HostedNumberOrder. </param>
         /// <param name="phoneNumber"> An E164 formatted phone number. </param>
         /// <param name="incomingPhoneNumberSid"> IncomingPhoneNumber sid. </param>
@@ -317,7 +327,14 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
-        public static ResourceSet<HostedNumberOrderResource> Read(HostedNumberOrderResource.StatusEnum status = null, Types.PhoneNumber phoneNumber = null, string incomingPhoneNumberSid = null, string friendlyName = null, string uniqueName = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<HostedNumberOrderResource> Read(HostedNumberOrderResource.StatusEnum status = null, 
+                                                                  Types.PhoneNumber phoneNumber = null, 
+                                                                  string incomingPhoneNumberSid = null, 
+                                                                  string friendlyName = null, 
+                                                                  string uniqueName = null, 
+                                                                  int? pageSize = null, 
+                                                                  long? limit = null, 
+                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadHostedNumberOrderOptions{Status = status, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -327,7 +344,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Retrieve a list of HostedNumberOrders belonging to the account initiating the request.
         /// </summary>
-        ///
         /// <param name="status"> The Status of this HostedNumberOrder. </param>
         /// <param name="phoneNumber"> An E164 formatted phone number. </param>
         /// <param name="incomingPhoneNumberSid"> IncomingPhoneNumber sid. </param>
@@ -337,7 +353,14 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<HostedNumberOrderResource>> ReadAsync(HostedNumberOrderResource.StatusEnum status = null, Types.PhoneNumber phoneNumber = null, string incomingPhoneNumberSid = null, string friendlyName = null, string uniqueName = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<HostedNumberOrderResource>> ReadAsync(HostedNumberOrderResource.StatusEnum status = null, 
+                                                                                                          Types.PhoneNumber phoneNumber = null, 
+                                                                                                          string incomingPhoneNumberSid = null, 
+                                                                                                          string friendlyName = null, 
+                                                                                                          string uniqueName = null, 
+                                                                                                          int? pageSize = null, 
+                                                                                                          long? limit = null, 
+                                                                                                          ITwilioRestClient client = null)
         {
             var options = new ReadHostedNumberOrderOptions{Status = status, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -347,7 +370,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -367,11 +389,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
-        public static Page<HostedNumberOrderResource> NextPage(Page<HostedNumberOrderResource> page, ITwilioRestClient client)
+        public static Page<HostedNumberOrderResource> NextPage(Page<HostedNumberOrderResource> page, 
+                                                               ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -388,11 +410,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
-        public static Page<HostedNumberOrderResource> PreviousPage(Page<HostedNumberOrderResource> page, ITwilioRestClient client)
+        public static Page<HostedNumberOrderResource> PreviousPage(Page<HostedNumberOrderResource> page, 
+                                                                   ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -420,11 +442,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Host a phone number's capability on Twilio's platform.
         /// </summary>
-        ///
         /// <param name="options"> Create HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
-        public static HostedNumberOrderResource Create(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static HostedNumberOrderResource Create(CreateHostedNumberOrderOptions options, 
+                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
@@ -435,11 +457,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Host a phone number's capability on Twilio's platform.
         /// </summary>
-        ///
         /// <param name="options"> Create HostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> CreateAsync(CreateHostedNumberOrderOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> CreateAsync(CreateHostedNumberOrderOptions options, 
+                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -450,7 +472,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Host a phone number's capability on Twilio's platform.
         /// </summary>
-        ///
         /// <param name="phoneNumber"> An E164 formatted phone number. </param>
         /// <param name="isoCountry"> ISO country code. </param>
         /// <param name="smsCapability"> Specify SMS capability to host. </param>
@@ -469,7 +490,23 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="email"> Email. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
-        public static HostedNumberOrderResource Create(Types.PhoneNumber phoneNumber, string isoCountry, bool? smsCapability, string accountSid = null, string friendlyName = null, string uniqueName = null, List<string> ccEmails = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri statusCallbackUrl = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string smsApplicationSid = null, string addressSid = null, string email = null, ITwilioRestClient client = null)
+        public static HostedNumberOrderResource Create(Types.PhoneNumber phoneNumber, 
+                                                       string isoCountry, 
+                                                       bool? smsCapability, 
+                                                       string accountSid = null, 
+                                                       string friendlyName = null, 
+                                                       string uniqueName = null, 
+                                                       List<string> ccEmails = null, 
+                                                       Uri smsUrl = null, 
+                                                       Twilio.Http.HttpMethod smsMethod = null, 
+                                                       Uri smsFallbackUrl = null, 
+                                                       Twilio.Http.HttpMethod smsFallbackMethod = null, 
+                                                       Uri statusCallbackUrl = null, 
+                                                       Twilio.Http.HttpMethod statusCallbackMethod = null, 
+                                                       string smsApplicationSid = null, 
+                                                       string addressSid = null, 
+                                                       string email = null, 
+                                                       ITwilioRestClient client = null)
         {
             var options = new CreateHostedNumberOrderOptions(phoneNumber, isoCountry, smsCapability){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, AddressSid = addressSid, Email = email};
             return Create(options, client);
@@ -479,7 +516,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Host a phone number's capability on Twilio's platform.
         /// </summary>
-        ///
         /// <param name="phoneNumber"> An E164 formatted phone number. </param>
         /// <param name="isoCountry"> ISO country code. </param>
         /// <param name="smsCapability"> Specify SMS capability to host. </param>
@@ -498,7 +534,23 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="email"> Email. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> CreateAsync(Types.PhoneNumber phoneNumber, string isoCountry, bool? smsCapability, string accountSid = null, string friendlyName = null, string uniqueName = null, List<string> ccEmails = null, Uri smsUrl = null, Twilio.Http.HttpMethod smsMethod = null, Uri smsFallbackUrl = null, Twilio.Http.HttpMethod smsFallbackMethod = null, Uri statusCallbackUrl = null, Twilio.Http.HttpMethod statusCallbackMethod = null, string smsApplicationSid = null, string addressSid = null, string email = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<HostedNumberOrderResource> CreateAsync(Types.PhoneNumber phoneNumber, 
+                                                                                               string isoCountry, 
+                                                                                               bool? smsCapability, 
+                                                                                               string accountSid = null, 
+                                                                                               string friendlyName = null, 
+                                                                                               string uniqueName = null, 
+                                                                                               List<string> ccEmails = null, 
+                                                                                               Uri smsUrl = null, 
+                                                                                               Twilio.Http.HttpMethod smsMethod = null, 
+                                                                                               Uri smsFallbackUrl = null, 
+                                                                                               Twilio.Http.HttpMethod smsFallbackMethod = null, 
+                                                                                               Uri statusCallbackUrl = null, 
+                                                                                               Twilio.Http.HttpMethod statusCallbackMethod = null, 
+                                                                                               string smsApplicationSid = null, 
+                                                                                               string addressSid = null, 
+                                                                                               string email = null, 
+                                                                                               ITwilioRestClient client = null)
         {
             var options = new CreateHostedNumberOrderOptions(phoneNumber, isoCountry, smsCapability){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, AddressSid = addressSid, Email = email};
             return await CreateAsync(options, client);
@@ -508,7 +560,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Converts a JSON string into a HostedNumberOrderResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> HostedNumberOrderResource object represented by the provided JSON </returns> 
         public static HostedNumberOrderResource FromJson(string json)

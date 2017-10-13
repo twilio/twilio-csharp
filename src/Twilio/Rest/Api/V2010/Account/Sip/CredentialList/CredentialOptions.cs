@@ -28,7 +28,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <summary>
         /// Construct a new ReadCredentialOptions
         /// </summary>
-        ///
         /// <param name="pathCredentialListSid"> The credential_list_sid </param>
         public ReadCredentialOptions(string pathCredentialListSid)
         {
@@ -75,7 +74,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <summary>
         /// Construct a new CreateCredentialOptions
         /// </summary>
-        ///
         /// <param name="pathCredentialListSid"> The credential_list_sid </param>
         /// <param name="username"> The username </param>
         /// <param name="password"> The password </param>
@@ -127,7 +125,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <summary>
         /// Construct a new FetchCredentialOptions
         /// </summary>
-        ///
         /// <param name="pathCredentialListSid"> The credential_list_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchCredentialOptions(string pathCredentialListSid, string pathSid)
@@ -171,7 +168,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <summary>
         /// Construct a new UpdateCredentialOptions
         /// </summary>
-        ///
         /// <param name="pathCredentialListSid"> The credential_list_sid </param>
         /// <param name="pathSid"> The sid </param>
         public UpdateCredentialOptions(string pathCredentialListSid, string pathSid)
@@ -216,7 +212,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <summary>
         /// Construct a new DeleteCredentialOptions
         /// </summary>
-        ///
         /// <param name="pathCredentialListSid"> The credential_list_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteCredentialOptions(string pathCredentialListSid, string pathSid)

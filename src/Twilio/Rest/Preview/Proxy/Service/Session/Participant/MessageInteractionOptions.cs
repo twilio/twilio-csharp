@@ -44,7 +44,6 @@ namespace Twilio.Rest.Preview.Proxy.Service.Session.Participant
         /// <summary>
         /// Construct a new CreateMessageInteractionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSessionSid"> The session_sid </param>
         /// <param name="pathParticipantSid"> The participant_sid </param>
@@ -104,12 +103,14 @@ namespace Twilio.Rest.Preview.Proxy.Service.Session.Participant
         /// <summary>
         /// Construct a new FetchMessageInteractionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
         /// <param name="pathParticipantSid"> Participant Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Interaction. </param>
-        public FetchMessageInteractionOptions(string pathServiceSid, string pathSessionSid, string pathParticipantSid, string pathSid)
+        public FetchMessageInteractionOptions(string pathServiceSid, 
+                                              string pathSessionSid, 
+                                              string pathParticipantSid, 
+                                              string pathSid)
         {
             PathServiceSid = pathServiceSid;
             PathSessionSid = pathSessionSid;
@@ -151,7 +152,6 @@ namespace Twilio.Rest.Preview.Proxy.Service.Session.Participant
         /// <summary>
         /// Construct a new ReadMessageInteractionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
         /// <param name="pathParticipantSid"> Participant Sid. </param>

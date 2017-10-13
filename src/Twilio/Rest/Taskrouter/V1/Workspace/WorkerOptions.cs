@@ -52,7 +52,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Construct a new ReadWorkerOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         public ReadWorkerOptions(string pathWorkspaceSid)
         {
@@ -134,7 +133,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Construct a new CreateWorkerOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         public CreateWorkerOptions(string pathWorkspaceSid, string friendlyName)
@@ -185,7 +183,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Construct a new FetchWorkerOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchWorkerOptions(string pathWorkspaceSid, string pathSid)
@@ -233,7 +230,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Construct a new UpdateWorkerOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         public UpdateWorkerOptions(string pathWorkspaceSid, string pathSid)
@@ -284,7 +280,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Construct a new DeleteWorkerOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteWorkerOptions(string pathWorkspaceSid, string pathSid)

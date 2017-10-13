@@ -53,7 +53,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Construct a new CreateIpAccessControlListOptions
         /// </summary>
-        ///
         /// <param name="friendlyName"> A human readable description of this resource </param>
         public CreateIpAccessControlListOptions(string friendlyName)
         {
@@ -92,7 +91,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Construct a new FetchIpAccessControlListOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique ip-access-control-list Sid </param>
         public FetchIpAccessControlListOptions(string pathSid)
         {
@@ -130,7 +128,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Construct a new UpdateIpAccessControlListOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> A human readable description of this resource </param>
         public UpdateIpAccessControlListOptions(string pathSid, string friendlyName)
@@ -171,7 +168,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Construct a new DeleteIpAccessControlListOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Delete by unique ip-access-control-list Sid </param>
         public DeleteIpAccessControlListOptions(string pathSid)
         {

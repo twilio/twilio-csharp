@@ -32,7 +32,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new FetchRecordingOptions
         /// </summary>
-        ///
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchRecordingOptions(string pathCallSid, string pathSid)
@@ -72,7 +71,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new DeleteRecordingOptions
         /// </summary>
-        ///
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteRecordingOptions(string pathCallSid, string pathSid)
@@ -120,7 +118,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new ReadRecordingOptions
         /// </summary>
-        ///
         /// <param name="pathCallSid"> The call_sid </param>
         public ReadRecordingOptions(string pathCallSid)
         {

@@ -26,7 +26,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Construct a new ReadSegmentOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public ReadSegmentOptions(string pathServiceSid)
         {

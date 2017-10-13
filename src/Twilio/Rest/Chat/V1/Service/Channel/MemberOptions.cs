@@ -33,7 +33,6 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <summary>
         /// Construct a new FetchMemberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
@@ -79,7 +78,6 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <summary>
         /// Construct a new CreateMemberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> The identity </param>
@@ -131,7 +129,6 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <summary>
         /// Construct a new ReadMemberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         public ReadMemberOptions(string pathServiceSid, string pathChannelSid)
@@ -182,7 +179,6 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <summary>
         /// Construct a new DeleteMemberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
@@ -232,7 +228,6 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// <summary>
         /// Construct a new UpdateMemberOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>

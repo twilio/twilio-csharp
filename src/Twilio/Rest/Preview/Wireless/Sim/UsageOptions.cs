@@ -35,7 +35,6 @@ namespace Twilio.Rest.Preview.Wireless.Sim
         /// <summary>
         /// Construct a new FetchUsageOptions
         /// </summary>
-        ///
         /// <param name="pathSimSid"> The sim_sid </param>
         public FetchUsageOptions(string pathSimSid)
         {

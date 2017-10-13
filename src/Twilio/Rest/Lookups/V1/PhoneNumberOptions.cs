@@ -41,7 +41,6 @@ namespace Twilio.Rest.Lookups.V1
         /// <summary>
         /// Construct a new FetchPhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathPhoneNumber"> The phone_number </param>
         public FetchPhoneNumberOptions(Types.PhoneNumber pathPhoneNumber)
         {

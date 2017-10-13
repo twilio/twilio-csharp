@@ -34,7 +34,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// <summary>
         /// Construct a new CreateStreamMessageOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathStreamSid"> The stream_sid </param>
         /// <param name="data"> Stream Message body. </param>

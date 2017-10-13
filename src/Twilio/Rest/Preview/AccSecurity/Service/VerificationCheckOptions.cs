@@ -35,7 +35,6 @@ namespace Twilio.Rest.Preview.AccSecurity.Service
         /// <summary>
         /// Construct a new CreateVerificationCheckOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="code"> The verification string </param>
         public CreateVerificationCheckOptions(string pathServiceSid, string code)

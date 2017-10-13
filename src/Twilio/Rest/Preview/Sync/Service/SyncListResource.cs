@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch SyncList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncList </returns> 
@@ -52,11 +51,11 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch SyncList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncList </returns> 
-        public static async System.Threading.Tasks.Task<SyncListResource> FetchAsync(FetchSyncListOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListResource> FetchAsync(FetchSyncListOptions options, 
+                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -67,7 +66,6 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -82,12 +80,13 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncList </returns> 
-        public static async System.Threading.Tasks.Task<SyncListResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListResource> FetchAsync(string pathServiceSid, 
+                                                                                     string pathSid, 
+                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchSyncListOptions(pathServiceSid, pathSid);
             return await FetchAsync(options, client);
@@ -108,7 +107,6 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete SyncList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncList </returns> 
@@ -123,11 +121,11 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete SyncList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncList </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncListOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncListOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -138,7 +136,6 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -153,12 +150,13 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncList </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+                                                                          string pathSid, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteSyncListOptions(pathServiceSid, pathSid);
             return await DeleteAsync(options, client);
@@ -179,7 +177,6 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create SyncList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncList </returns> 
@@ -194,11 +191,11 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create SyncList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncList </returns> 
-        public static async System.Threading.Tasks.Task<SyncListResource> CreateAsync(CreateSyncListOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListResource> CreateAsync(CreateSyncListOptions options, 
+                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -209,12 +206,13 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncList </returns> 
-        public static SyncListResource Create(string pathServiceSid, string uniqueName = null, ITwilioRestClient client = null)
+        public static SyncListResource Create(string pathServiceSid, 
+                                              string uniqueName = null, 
+                                              ITwilioRestClient client = null)
         {
             var options = new CreateSyncListOptions(pathServiceSid){UniqueName = uniqueName};
             return Create(options, client);
@@ -224,12 +222,13 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncList </returns> 
-        public static async System.Threading.Tasks.Task<SyncListResource> CreateAsync(string pathServiceSid, string uniqueName = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncListResource> CreateAsync(string pathServiceSid, 
+                                                                                      string uniqueName = null, 
+                                                                                      ITwilioRestClient client = null)
         {
             var options = new CreateSyncListOptions(pathServiceSid){UniqueName = uniqueName};
             return await CreateAsync(options, client);
@@ -250,7 +249,6 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read SyncList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncList </returns> 
@@ -267,11 +265,11 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read SyncList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncList </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncListResource>> ReadAsync(ReadSyncListOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncListResource>> ReadAsync(ReadSyncListOptions options, 
+                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -284,13 +282,15 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncList </returns> 
-        public static ResourceSet<SyncListResource> Read(string pathServiceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<SyncListResource> Read(string pathServiceSid, 
+                                                         int? pageSize = null, 
+                                                         long? limit = null, 
+                                                         ITwilioRestClient client = null)
         {
             var options = new ReadSyncListOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -300,13 +300,15 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncList </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncListResource>> ReadAsync(string pathServiceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncListResource>> ReadAsync(string pathServiceSid, 
+                                                                                                 int? pageSize = null, 
+                                                                                                 long? limit = null, 
+                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadSyncListOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -316,7 +318,6 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -336,7 +337,6 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -357,7 +357,6 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -378,7 +377,6 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <summary>
         /// Converts a JSON string into a SyncListResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> SyncListResource object represented by the provided JSON </returns> 
         public static SyncListResource FromJson(string json)

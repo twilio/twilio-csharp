@@ -25,6 +25,10 @@ namespace Twilio.Rest.Lookups.V1
         {
             private TypeEnum(string value) : base(value) {}
             public TypeEnum() {}
+            public static implicit operator TypeEnum(string value)
+            {
+                return new TypeEnum(value);
+            }
 
             public static readonly TypeEnum Landline = new TypeEnum("landline");
             public static readonly TypeEnum Mobile = new TypeEnum("mobile");
@@ -45,7 +49,6 @@ namespace Twilio.Rest.Lookups.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
@@ -60,11 +63,11 @@ namespace Twilio.Rest.Lookups.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options, 
+                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -75,7 +78,6 @@ namespace Twilio.Rest.Lookups.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathPhoneNumber"> The phone_number </param>
         /// <param name="countryCode"> The country_code </param>
         /// <param name="type"> The type </param>
@@ -83,7 +85,12 @@ namespace Twilio.Rest.Lookups.V1
         /// <param name="addOnsData"> The add_ons_data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
-        public static PhoneNumberResource Fetch(Types.PhoneNumber pathPhoneNumber, string countryCode = null, List<string> type = null, List<string> addOns = null, Dictionary<string, object> addOnsData = null, ITwilioRestClient client = null)
+        public static PhoneNumberResource Fetch(Types.PhoneNumber pathPhoneNumber, 
+                                                string countryCode = null, 
+                                                List<string> type = null, 
+                                                List<string> addOns = null, 
+                                                Dictionary<string, object> addOnsData = null, 
+                                                ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(pathPhoneNumber){CountryCode = countryCode, Type = type, AddOns = addOns, AddOnsData = addOnsData};
             return Fetch(options, client);
@@ -93,7 +100,6 @@ namespace Twilio.Rest.Lookups.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathPhoneNumber"> The phone_number </param>
         /// <param name="countryCode"> The country_code </param>
         /// <param name="type"> The type </param>
@@ -101,7 +107,12 @@ namespace Twilio.Rest.Lookups.V1
         /// <param name="addOnsData"> The add_ons_data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, string countryCode = null, List<string> type = null, List<string> addOns = null, Dictionary<string, object> addOnsData = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, 
+                                                                                        string countryCode = null, 
+                                                                                        List<string> type = null, 
+                                                                                        List<string> addOns = null, 
+                                                                                        Dictionary<string, object> addOnsData = null, 
+                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(pathPhoneNumber){CountryCode = countryCode, Type = type, AddOns = addOns, AddOnsData = addOnsData};
             return await FetchAsync(options, client);
@@ -111,7 +122,6 @@ namespace Twilio.Rest.Lookups.V1
         /// <summary>
         /// Converts a JSON string into a PhoneNumberResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> PhoneNumberResource object represented by the provided JSON </returns> 
         public static PhoneNumberResource FromJson(string json)

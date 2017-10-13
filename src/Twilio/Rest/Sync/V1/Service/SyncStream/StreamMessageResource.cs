@@ -36,7 +36,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// <summary>
         /// Create a new Stream Message.
         /// </summary>
-        ///
         /// <param name="options"> Create StreamMessage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of StreamMessage </returns> 
@@ -51,11 +50,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// <summary>
         /// Create a new Stream Message.
         /// </summary>
-        ///
         /// <param name="options"> Create StreamMessage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of StreamMessage </returns> 
-        public static async System.Threading.Tasks.Task<StreamMessageResource> CreateAsync(CreateStreamMessageOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<StreamMessageResource> CreateAsync(CreateStreamMessageOptions options, 
+                                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -66,13 +65,15 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// <summary>
         /// Create a new Stream Message.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathStreamSid"> The stream_sid </param>
         /// <param name="data"> Stream Message body. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of StreamMessage </returns> 
-        public static StreamMessageResource Create(string pathServiceSid, string pathStreamSid, object data, ITwilioRestClient client = null)
+        public static StreamMessageResource Create(string pathServiceSid, 
+                                                   string pathStreamSid, 
+                                                   object data, 
+                                                   ITwilioRestClient client = null)
         {
             var options = new CreateStreamMessageOptions(pathServiceSid, pathStreamSid, data);
             return Create(options, client);
@@ -82,13 +83,15 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// <summary>
         /// Create a new Stream Message.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathStreamSid"> The stream_sid </param>
         /// <param name="data"> Stream Message body. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of StreamMessage </returns> 
-        public static async System.Threading.Tasks.Task<StreamMessageResource> CreateAsync(string pathServiceSid, string pathStreamSid, object data, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<StreamMessageResource> CreateAsync(string pathServiceSid, 
+                                                                                           string pathStreamSid, 
+                                                                                           object data, 
+                                                                                           ITwilioRestClient client = null)
         {
             var options = new CreateStreamMessageOptions(pathServiceSid, pathStreamSid, data);
             return await CreateAsync(options, client);
@@ -98,7 +101,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// <summary>
         /// Converts a JSON string into a StreamMessageResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> StreamMessageResource object represented by the provided JSON </returns> 
         public static StreamMessageResource FromJson(string json)

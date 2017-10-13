@@ -31,7 +31,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new FetchDeviceOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Device. </param>
         public FetchDeviceOptions(string pathFleetSid, string pathSid)
@@ -70,7 +69,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new DeleteDeviceOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Device. </param>
         public DeleteDeviceOptions(string pathFleetSid, string pathSid)
@@ -126,7 +124,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new CreateDeviceOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         public CreateDeviceOptions(string pathFleetSid)
         {
@@ -188,7 +185,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new ReadDeviceOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         public ReadDeviceOptions(string pathFleetSid)
         {
@@ -252,7 +248,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new UpdateDeviceOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Device. </param>
         public UpdateDeviceOptions(string pathFleetSid, string pathSid)

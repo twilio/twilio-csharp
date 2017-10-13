@@ -28,7 +28,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchQueueOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique queue Sid </param>
         public FetchQueueOptions(string pathSid)
         {
@@ -70,7 +69,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new UpdateQueueOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateQueueOptions(string pathSid)
         {
@@ -114,7 +112,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new DeleteQueueOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Delete by unique queue Sid </param>
         public DeleteQueueOptions(string pathSid)
         {
@@ -177,7 +174,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new CreateQueueOptions
         /// </summary>
-        ///
         /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
         public CreateQueueOptions(string friendlyName)
         {

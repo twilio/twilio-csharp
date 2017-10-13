@@ -89,7 +89,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Construct a new CreateDomainOptions
         /// </summary>
-        ///
         /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
         public CreateDomainOptions(string domainName)
         {
@@ -173,7 +172,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Construct a new FetchDomainOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique Domain Sid </param>
         public FetchDomainOptions(string pathSid)
         {
@@ -243,7 +241,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Construct a new UpdateDomainOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateDomainOptions(string pathSid)
         {
@@ -322,7 +319,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Construct a new DeleteDomainOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public DeleteDomainOptions(string pathSid)
         {

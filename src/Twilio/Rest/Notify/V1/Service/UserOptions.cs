@@ -35,7 +35,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Construct a new CreateUserOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="identity"> The identity </param>
         public CreateUserOptions(string pathServiceSid, string identity)
@@ -84,7 +83,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Construct a new DeleteUserOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         public DeleteUserOptions(string pathServiceSid, string pathIdentity)
@@ -122,7 +120,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Construct a new FetchUserOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         public FetchUserOptions(string pathServiceSid, string pathIdentity)
@@ -164,7 +161,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Construct a new ReadUserOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public ReadUserOptions(string pathServiceSid)
         {

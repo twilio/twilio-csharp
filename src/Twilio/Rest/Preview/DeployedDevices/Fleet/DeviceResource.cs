@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Device </returns> 
@@ -52,11 +51,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns> 
-        public static async System.Threading.Tasks.Task<DeviceResource> FetchAsync(FetchDeviceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeviceResource> FetchAsync(FetchDeviceOptions options, 
+                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -67,7 +66,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Device. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -82,12 +80,13 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Device. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns> 
-        public static async System.Threading.Tasks.Task<DeviceResource> FetchAsync(string pathFleetSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeviceResource> FetchAsync(string pathFleetSid, 
+                                                                                   string pathSid, 
+                                                                                   ITwilioRestClient client = null)
         {
             var options = new FetchDeviceOptions(pathFleetSid, pathSid);
             return await FetchAsync(options, client);
@@ -108,7 +107,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Delete a specific Device from the Fleet, also removing it from associated Deployments.
         /// </summary>
-        ///
         /// <param name="options"> Delete Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Device </returns> 
@@ -123,11 +121,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Delete a specific Device from the Fleet, also removing it from associated Deployments.
         /// </summary>
-        ///
         /// <param name="options"> Delete Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDeviceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDeviceOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -138,7 +136,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Delete a specific Device from the Fleet, also removing it from associated Deployments.
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Device. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -153,12 +150,13 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Delete a specific Device from the Fleet, also removing it from associated Deployments.
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Device. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFleetSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFleetSid, 
+                                                                          string pathSid, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteDeviceOptions(pathFleetSid, pathSid);
             return await DeleteAsync(options, client);
@@ -180,7 +178,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// Create a new Device in the Fleet, optionally giving it a unique name, friendly name, and assigning to a Deployment
         /// and/or human identity.
         /// </summary>
-        ///
         /// <param name="options"> Create Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Device </returns> 
@@ -196,11 +193,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// Create a new Device in the Fleet, optionally giving it a unique name, friendly name, and assigning to a Deployment
         /// and/or human identity.
         /// </summary>
-        ///
         /// <param name="options"> Create Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns> 
-        public static async System.Threading.Tasks.Task<DeviceResource> CreateAsync(CreateDeviceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeviceResource> CreateAsync(CreateDeviceOptions options, 
+                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -212,7 +209,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// Create a new Device in the Fleet, optionally giving it a unique name, friendly name, and assigning to a Deployment
         /// and/or human identity.
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="uniqueName"> A unique, addressable name of this Device. </param>
         /// <param name="friendlyName"> A human readable description for this Device. </param>
@@ -221,7 +217,13 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="enabled"> The enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Device </returns> 
-        public static DeviceResource Create(string pathFleetSid, string uniqueName = null, string friendlyName = null, string identity = null, string deploymentSid = null, bool? enabled = null, ITwilioRestClient client = null)
+        public static DeviceResource Create(string pathFleetSid, 
+                                            string uniqueName = null, 
+                                            string friendlyName = null, 
+                                            string identity = null, 
+                                            string deploymentSid = null, 
+                                            bool? enabled = null, 
+                                            ITwilioRestClient client = null)
         {
             var options = new CreateDeviceOptions(pathFleetSid){UniqueName = uniqueName, FriendlyName = friendlyName, Identity = identity, DeploymentSid = deploymentSid, Enabled = enabled};
             return Create(options, client);
@@ -232,7 +234,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// Create a new Device in the Fleet, optionally giving it a unique name, friendly name, and assigning to a Deployment
         /// and/or human identity.
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="uniqueName"> A unique, addressable name of this Device. </param>
         /// <param name="friendlyName"> A human readable description for this Device. </param>
@@ -241,7 +242,13 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="enabled"> The enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns> 
-        public static async System.Threading.Tasks.Task<DeviceResource> CreateAsync(string pathFleetSid, string uniqueName = null, string friendlyName = null, string identity = null, string deploymentSid = null, bool? enabled = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeviceResource> CreateAsync(string pathFleetSid, 
+                                                                                    string uniqueName = null, 
+                                                                                    string friendlyName = null, 
+                                                                                    string identity = null, 
+                                                                                    string deploymentSid = null, 
+                                                                                    bool? enabled = null, 
+                                                                                    ITwilioRestClient client = null)
         {
             var options = new CreateDeviceOptions(pathFleetSid){UniqueName = uniqueName, FriendlyName = friendlyName, Identity = identity, DeploymentSid = deploymentSid, Enabled = enabled};
             return await CreateAsync(options, client);
@@ -262,7 +269,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Retrieve a list of all Devices belonging to the Fleet.
         /// </summary>
-        ///
         /// <param name="options"> Read Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Device </returns> 
@@ -279,11 +285,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Retrieve a list of all Devices belonging to the Fleet.
         /// </summary>
-        ///
         /// <param name="options"> Read Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DeviceResource>> ReadAsync(ReadDeviceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DeviceResource>> ReadAsync(ReadDeviceOptions options, 
+                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -296,14 +302,17 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Retrieve a list of all Devices belonging to the Fleet.
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="deploymentSid"> Find all Devices grouped under the specified Deployment. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Device </returns> 
-        public static ResourceSet<DeviceResource> Read(string pathFleetSid, string deploymentSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<DeviceResource> Read(string pathFleetSid, 
+                                                       string deploymentSid = null, 
+                                                       int? pageSize = null, 
+                                                       long? limit = null, 
+                                                       ITwilioRestClient client = null)
         {
             var options = new ReadDeviceOptions(pathFleetSid){DeploymentSid = deploymentSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -313,14 +322,17 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Retrieve a list of all Devices belonging to the Fleet.
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="deploymentSid"> Find all Devices grouped under the specified Deployment. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DeviceResource>> ReadAsync(string pathFleetSid, string deploymentSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DeviceResource>> ReadAsync(string pathFleetSid, 
+                                                                                               string deploymentSid = null, 
+                                                                                               int? pageSize = null, 
+                                                                                               long? limit = null, 
+                                                                                               ITwilioRestClient client = null)
         {
             var options = new ReadDeviceOptions(pathFleetSid){DeploymentSid = deploymentSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -330,7 +342,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -350,7 +361,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -371,7 +381,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -404,7 +413,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// Update the given properties of a specific Device in the Fleet, giving it a friendly name, assigning to a Deployment,
         /// or a human identity.
         /// </summary>
-        ///
         /// <param name="options"> Update Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Device </returns> 
@@ -420,11 +428,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// Update the given properties of a specific Device in the Fleet, giving it a friendly name, assigning to a Deployment,
         /// or a human identity.
         /// </summary>
-        ///
         /// <param name="options"> Update Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns> 
-        public static async System.Threading.Tasks.Task<DeviceResource> UpdateAsync(UpdateDeviceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeviceResource> UpdateAsync(UpdateDeviceOptions options, 
+                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -436,7 +444,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// Update the given properties of a specific Device in the Fleet, giving it a friendly name, assigning to a Deployment,
         /// or a human identity.
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Device. </param>
         /// <param name="friendlyName"> A human readable description for this Device. </param>
@@ -445,7 +452,13 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="enabled"> The enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Device </returns> 
-        public static DeviceResource Update(string pathFleetSid, string pathSid, string friendlyName = null, string identity = null, string deploymentSid = null, bool? enabled = null, ITwilioRestClient client = null)
+        public static DeviceResource Update(string pathFleetSid, 
+                                            string pathSid, 
+                                            string friendlyName = null, 
+                                            string identity = null, 
+                                            string deploymentSid = null, 
+                                            bool? enabled = null, 
+                                            ITwilioRestClient client = null)
         {
             var options = new UpdateDeviceOptions(pathFleetSid, pathSid){FriendlyName = friendlyName, Identity = identity, DeploymentSid = deploymentSid, Enabled = enabled};
             return Update(options, client);
@@ -456,7 +469,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// Update the given properties of a specific Device in the Fleet, giving it a friendly name, assigning to a Deployment,
         /// or a human identity.
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Device. </param>
         /// <param name="friendlyName"> A human readable description for this Device. </param>
@@ -465,7 +477,13 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="enabled"> The enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Device </returns> 
-        public static async System.Threading.Tasks.Task<DeviceResource> UpdateAsync(string pathFleetSid, string pathSid, string friendlyName = null, string identity = null, string deploymentSid = null, bool? enabled = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DeviceResource> UpdateAsync(string pathFleetSid, 
+                                                                                    string pathSid, 
+                                                                                    string friendlyName = null, 
+                                                                                    string identity = null, 
+                                                                                    string deploymentSid = null, 
+                                                                                    bool? enabled = null, 
+                                                                                    ITwilioRestClient client = null)
         {
             var options = new UpdateDeviceOptions(pathFleetSid, pathSid){FriendlyName = friendlyName, Identity = identity, DeploymentSid = deploymentSid, Enabled = enabled};
             return await UpdateAsync(options, client);
@@ -475,7 +493,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Converts a JSON string into a DeviceResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> DeviceResource object represented by the provided JSON </returns> 
         public static DeviceResource FromJson(string json)

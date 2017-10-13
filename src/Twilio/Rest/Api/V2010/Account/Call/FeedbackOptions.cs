@@ -37,7 +37,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new CreateFeedbackOptions
         /// </summary>
-        ///
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="qualityScore"> The quality_score </param>
         public CreateFeedbackOptions(string pathCallSid, int? qualityScore)
@@ -84,7 +83,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new FetchFeedbackOptions
         /// </summary>
-        ///
         /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
         public FetchFeedbackOptions(string pathCallSid)
         {
@@ -126,7 +124,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new UpdateFeedbackOptions
         /// </summary>
-        ///
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="qualityScore"> An integer from 1 to 5 </param>
         public UpdateFeedbackOptions(string pathCallSid, int? qualityScore)

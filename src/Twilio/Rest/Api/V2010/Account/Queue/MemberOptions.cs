@@ -32,7 +32,6 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <summary>
         /// Construct a new FetchMemberOptions
         /// </summary>
-        ///
         /// <param name="pathQueueSid"> The Queue in which to find the members </param>
         /// <param name="pathCallSid"> The call_sid </param>
         public FetchMemberOptions(string pathQueueSid, string pathCallSid)
@@ -80,7 +79,6 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <summary>
         /// Construct a new UpdateMemberOptions
         /// </summary>
-        ///
         /// <param name="pathQueueSid"> The Queue in which to find the members </param>
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="url"> The url </param>
@@ -130,7 +128,6 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <summary>
         /// Construct a new ReadMemberOptions
         /// </summary>
-        ///
         /// <param name="pathQueueSid"> The Queue in which to find members </param>
         public ReadMemberOptions(string pathQueueSid)
         {

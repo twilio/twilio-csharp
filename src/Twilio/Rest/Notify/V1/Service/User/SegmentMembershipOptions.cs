@@ -34,7 +34,6 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// Construct a new CreateSegmentMembershipOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="segment"> The segment </param>
@@ -83,7 +82,6 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// Construct a new DeleteSegmentMembershipOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="pathSegment"> The segment </param>
@@ -127,7 +125,6 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// Construct a new FetchSegmentMembershipOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="pathSegment"> The segment </param>

@@ -28,7 +28,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Construct a new FetchTaskQueueOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchTaskQueueOptions(string pathWorkspaceSid, string pathSid)
@@ -88,7 +87,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Construct a new UpdateTaskQueueOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         public UpdateTaskQueueOptions(string pathWorkspaceSid, string pathSid)
@@ -162,7 +160,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Construct a new ReadTaskQueueOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         public ReadTaskQueueOptions(string pathWorkspaceSid)
         {
@@ -236,12 +233,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Construct a new CreateTaskQueueOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
         /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
-        public CreateTaskQueueOptions(string pathWorkspaceSid, string friendlyName, string reservationActivitySid, string assignmentActivitySid)
+        public CreateTaskQueueOptions(string pathWorkspaceSid, 
+                                      string friendlyName, 
+                                      string reservationActivitySid, 
+                                      string assignmentActivitySid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
             FriendlyName = friendlyName;
@@ -306,7 +305,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Construct a new DeleteTaskQueueOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteTaskQueueOptions(string pathWorkspaceSid, string pathSid)

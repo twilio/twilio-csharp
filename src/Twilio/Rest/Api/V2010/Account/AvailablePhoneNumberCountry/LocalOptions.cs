@@ -96,7 +96,6 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <summary>
         /// Construct a new ReadLocalOptions
         /// </summary>
-        ///
         /// <param name="pathCountryCode"> The country_code </param>
         public ReadLocalOptions(string pathCountryCode)
         {

@@ -34,7 +34,6 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <summary>
         /// Construct a new ReadDataSessionOptions
         /// </summary>
-        ///
         /// <param name="pathSimSid"> The sim_sid </param>
         public ReadDataSessionOptions(string pathSimSid)
         {

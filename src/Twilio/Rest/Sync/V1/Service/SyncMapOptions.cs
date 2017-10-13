@@ -30,7 +30,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new FetchSyncMapOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchSyncMapOptions(string pathServiceSid, string pathSid)
@@ -68,7 +67,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new DeleteSyncMapOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteSyncMapOptions(string pathServiceSid, string pathSid)
@@ -106,7 +104,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new CreateSyncMapOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public CreateSyncMapOptions(string pathServiceSid)
         {
@@ -143,7 +140,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new ReadSyncMapOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public ReadSyncMapOptions(string pathServiceSid)
         {

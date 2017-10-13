@@ -25,6 +25,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         {
             private ChannelStatusEnum(string value) : base(value) {}
             public ChannelStatusEnum() {}
+            public static implicit operator ChannelStatusEnum(string value)
+            {
+                return new ChannelStatusEnum(value);
+            }
 
             public static readonly ChannelStatusEnum Joined = new ChannelStatusEnum("joined");
             public static readonly ChannelStatusEnum Invited = new ChannelStatusEnum("invited");
@@ -45,7 +49,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserChannel </returns> 
@@ -62,11 +65,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(ReadUserChannelOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(ReadUserChannelOptions options, 
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -79,14 +82,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathUserSid"> The user_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserChannel </returns> 
-        public static ResourceSet<UserChannelResource> Read(string pathServiceSid, string pathUserSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<UserChannelResource> Read(string pathServiceSid, 
+                                                            string pathUserSid, 
+                                                            int? pageSize = null, 
+                                                            long? limit = null, 
+                                                            ITwilioRestClient client = null)
         {
             var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -96,14 +102,17 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathUserSid"> The user_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(string pathServiceSid, string pathUserSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(string pathServiceSid, 
+                                                                                                    string pathUserSid, 
+                                                                                                    int? pageSize = null, 
+                                                                                                    long? limit = null, 
+                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -113,7 +122,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -133,7 +141,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -154,7 +161,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -175,7 +181,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// <summary>
         /// Converts a JSON string into a UserChannelResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> UserChannelResource object represented by the provided JSON </returns> 
         public static UserChannelResource FromJson(string json)

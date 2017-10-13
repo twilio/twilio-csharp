@@ -112,7 +112,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new UpdateIncomingPhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateIncomingPhoneNumberOptions(string pathSid)
         {
@@ -251,7 +250,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchIncomingPhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique incoming-phone-number Sid </param>
         public FetchIncomingPhoneNumberOptions(string pathSid)
         {
@@ -285,7 +283,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new DeleteIncomingPhoneNumberOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Delete by unique phone-number Sid </param>
         public DeleteIncomingPhoneNumberOptions(string pathSid)
         {

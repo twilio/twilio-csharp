@@ -27,7 +27,6 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// Construct a new FetchCommandOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public FetchCommandOptions(string pathSid)
         {
@@ -144,7 +143,6 @@ namespace Twilio.Rest.Preview.Wireless
         /// <summary>
         /// Construct a new CreateCommandOptions
         /// </summary>
-        ///
         /// <param name="command"> The command </param>
         public CreateCommandOptions(string command)
         {

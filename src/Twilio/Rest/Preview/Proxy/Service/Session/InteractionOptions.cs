@@ -35,7 +35,6 @@ namespace Twilio.Rest.Preview.Proxy.Service.Session
         /// <summary>
         /// Construct a new FetchInteractionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Interaction. </param>
@@ -84,7 +83,6 @@ namespace Twilio.Rest.Preview.Proxy.Service.Session
         /// <summary>
         /// Construct a new ReadInteractionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
         public ReadInteractionOptions(string pathServiceSid, string pathSessionSid)

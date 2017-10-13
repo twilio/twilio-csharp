@@ -28,7 +28,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// Construct a new ReadWorkerChannelOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         public ReadWorkerChannelOptions(string pathWorkspaceSid, string pathWorkerSid)
@@ -73,7 +72,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// Construct a new FetchWorkerChannelOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pathSid"> The sid </param>
@@ -123,7 +121,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// Construct a new UpdateWorkerChannelOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pathSid"> The sid </param>

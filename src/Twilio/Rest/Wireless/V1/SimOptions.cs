@@ -26,7 +26,6 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Construct a new FetchSimOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public FetchSimOptions(string pathSid)
         {
@@ -190,7 +189,6 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Construct a new UpdateSimOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateSimOptions(string pathSid)
         {
