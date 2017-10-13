@@ -206,17 +206,17 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
             var p = new List<KeyValuePair<string, string>>();
             if (Read != null)
             {
-                p.Add(new KeyValuePair<string, string>("Read", Read.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Read", Read.Value.ToString().ToLower()));
             }
 
             if (Write != null)
             {
-                p.Add(new KeyValuePair<string, string>("Write", Write.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Write", Write.Value.ToString().ToLower()));
             }
 
             if (Manage != null)
             {
-                p.Add(new KeyValuePair<string, string>("Manage", Manage.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Manage", Manage.Value.ToString().ToLower()));
             }
 
             return p;

@@ -98,7 +98,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (InboundRequestUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("InboundRequestUrl", InboundRequestUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("InboundRequestUrl", InboundRequestUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (InboundMethod != null)
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (FallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (FallbackMethod != null)
@@ -118,22 +118,22 @@ namespace Twilio.Rest.Messaging.V1
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
             }
 
             if (StickySender != null)
             {
-                p.Add(new KeyValuePair<string, string>("StickySender", StickySender.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("StickySender", StickySender.Value.ToString().ToLower()));
             }
 
             if (MmsConverter != null)
             {
-                p.Add(new KeyValuePair<string, string>("MmsConverter", MmsConverter.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MmsConverter", MmsConverter.Value.ToString().ToLower()));
             }
 
             if (SmartEncoding != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmartEncoding", SmartEncoding.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("SmartEncoding", SmartEncoding.Value.ToString().ToLower()));
             }
 
             if (ScanMessageContent != null)
@@ -143,12 +143,12 @@ namespace Twilio.Rest.Messaging.V1
 
             if (FallbackToLongCode != null)
             {
-                p.Add(new KeyValuePair<string, string>("FallbackToLongCode", FallbackToLongCode.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("FallbackToLongCode", FallbackToLongCode.Value.ToString().ToLower()));
             }
 
             if (AreaCodeGeomatch != null)
             {
-                p.Add(new KeyValuePair<string, string>("AreaCodeGeomatch", AreaCodeGeomatch.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("AreaCodeGeomatch", AreaCodeGeomatch.Value.ToString().ToLower()));
             }
 
             if (ValidityPeriod != null)
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (SynchronousValidation != null)
             {
-                p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString().ToLower()));
             }
 
             return p;
@@ -256,7 +256,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (InboundRequestUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("InboundRequestUrl", InboundRequestUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("InboundRequestUrl", InboundRequestUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (InboundMethod != null)
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (FallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (FallbackMethod != null)
@@ -276,22 +276,22 @@ namespace Twilio.Rest.Messaging.V1
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
             }
 
             if (StickySender != null)
             {
-                p.Add(new KeyValuePair<string, string>("StickySender", StickySender.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("StickySender", StickySender.Value.ToString().ToLower()));
             }
 
             if (MmsConverter != null)
             {
-                p.Add(new KeyValuePair<string, string>("MmsConverter", MmsConverter.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MmsConverter", MmsConverter.Value.ToString().ToLower()));
             }
 
             if (SmartEncoding != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmartEncoding", SmartEncoding.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("SmartEncoding", SmartEncoding.Value.ToString().ToLower()));
             }
 
             if (ScanMessageContent != null)
@@ -301,12 +301,12 @@ namespace Twilio.Rest.Messaging.V1
 
             if (FallbackToLongCode != null)
             {
-                p.Add(new KeyValuePair<string, string>("FallbackToLongCode", FallbackToLongCode.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("FallbackToLongCode", FallbackToLongCode.Value.ToString().ToLower()));
             }
 
             if (AreaCodeGeomatch != null)
             {
-                p.Add(new KeyValuePair<string, string>("AreaCodeGeomatch", AreaCodeGeomatch.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("AreaCodeGeomatch", AreaCodeGeomatch.Value.ToString().ToLower()));
             }
 
             if (ValidityPeriod != null)
@@ -316,7 +316,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (SynchronousValidation != null)
             {
-                p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString().ToLower()));
             }
 
             return p;

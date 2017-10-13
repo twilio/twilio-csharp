@@ -127,11 +127,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="providerSid"> The provider_sid </param>
         /// <param name="contentRetention"> The content_retention </param>
         /// <param name="addressRetention"> The address_retention </param>
+        /// <param name="smartEncoded"> The smart_encoded </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
-        public static MessageResource Create(Types.PhoneNumber to, string pathAccountSid = null, Types.PhoneNumber from = null, string messagingServiceSid = null, string body = null, List<Uri> mediaUrl = null, Uri statusCallback = null, string applicationSid = null, decimal? maxPrice = null, bool? provideFeedback = null, int? validityPeriod = null, string maxRate = null, bool? forceDelivery = null, string providerSid = null, MessageResource.ContentRetentionEnum contentRetention = null, MessageResource.AddressRetentionEnum addressRetention = null, ITwilioRestClient client = null)
+        public static MessageResource Create(Types.PhoneNumber to, string pathAccountSid = null, Types.PhoneNumber from = null, string messagingServiceSid = null, string body = null, List<Uri> mediaUrl = null, Uri statusCallback = null, string applicationSid = null, decimal? maxPrice = null, bool? provideFeedback = null, int? validityPeriod = null, string maxRate = null, bool? forceDelivery = null, string providerSid = null, MessageResource.ContentRetentionEnum contentRetention = null, MessageResource.AddressRetentionEnum addressRetention = null, bool? smartEncoded = null, ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, MaxRate = maxRate, ForceDelivery = forceDelivery, ProviderSid = providerSid, ContentRetention = contentRetention, AddressRetention = addressRetention};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, MaxRate = maxRate, ForceDelivery = forceDelivery, ProviderSid = providerSid, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded};
             return Create(options, client);
         }
 
@@ -156,11 +157,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="providerSid"> The provider_sid </param>
         /// <param name="contentRetention"> The content_retention </param>
         /// <param name="addressRetention"> The address_retention </param>
+        /// <param name="smartEncoded"> The smart_encoded </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(Types.PhoneNumber to, string pathAccountSid = null, Types.PhoneNumber from = null, string messagingServiceSid = null, string body = null, List<Uri> mediaUrl = null, Uri statusCallback = null, string applicationSid = null, decimal? maxPrice = null, bool? provideFeedback = null, int? validityPeriod = null, string maxRate = null, bool? forceDelivery = null, string providerSid = null, MessageResource.ContentRetentionEnum contentRetention = null, MessageResource.AddressRetentionEnum addressRetention = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(Types.PhoneNumber to, string pathAccountSid = null, Types.PhoneNumber from = null, string messagingServiceSid = null, string body = null, List<Uri> mediaUrl = null, Uri statusCallback = null, string applicationSid = null, decimal? maxPrice = null, bool? provideFeedback = null, int? validityPeriod = null, string maxRate = null, bool? forceDelivery = null, string providerSid = null, MessageResource.ContentRetentionEnum contentRetention = null, MessageResource.AddressRetentionEnum addressRetention = null, bool? smartEncoded = null, ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, MaxRate = maxRate, ForceDelivery = forceDelivery, ProviderSid = providerSid, ContentRetention = contentRetention, AddressRetention = addressRetention};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, MaxRate = maxRate, ForceDelivery = forceDelivery, ProviderSid = providerSid, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded};
             return await CreateAsync(options, client);
         }
         #endif

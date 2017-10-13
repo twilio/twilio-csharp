@@ -87,12 +87,12 @@ namespace Twilio.Rest.Preview.BulkExports
             var p = new List<KeyValuePair<string, string>>();
             if (Enabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
             }
 
             if (WebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (WebhookMethod != null)

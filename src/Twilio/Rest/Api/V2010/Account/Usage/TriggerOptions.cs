@@ -94,7 +94,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
 
             if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (FriendlyName != null)
@@ -200,7 +200,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             var p = new List<KeyValuePair<string, string>>();
             if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (TriggerValue != null)

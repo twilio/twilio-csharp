@@ -244,10 +244,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
     public class CreateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource> 
     {
         /// <summary>
-        /// Address sid.
-        /// </summary>
-        public string AddressSid { get; }
-        /// <summary>
         /// An E164 formatted phone number.
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; }
@@ -259,10 +255,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// Specify SMS capability to host.
         /// </summary>
         public bool? SmsCapability { get; }
-        /// <summary>
-        /// Email.
-        /// </summary>
-        public string Email { get; }
         /// <summary>
         /// Account Sid.
         /// </summary>
@@ -307,23 +299,27 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// SMS Application Sid.
         /// </summary>
         public string SmsApplicationSid { get; set; }
+        /// <summary>
+        /// Address sid.
+        /// </summary>
+        public string AddressSid { get; set; }
+        /// <summary>
+        /// Email.
+        /// </summary>
+        public string Email { get; set; }
 
         /// <summary>
         /// Construct a new CreateHostedNumberOrderOptions
         /// </summary>
         ///
-        /// <param name="addressSid"> Address sid. </param>
         /// <param name="phoneNumber"> An E164 formatted phone number. </param>
         /// <param name="isoCountry"> ISO country code. </param>
         /// <param name="smsCapability"> Specify SMS capability to host. </param>
-        /// <param name="email"> Email. </param>
-        public CreateHostedNumberOrderOptions(string addressSid, Types.PhoneNumber phoneNumber, string isoCountry, bool? smsCapability, string email)
+        public CreateHostedNumberOrderOptions(Types.PhoneNumber phoneNumber, string isoCountry, bool? smsCapability)
         {
-            AddressSid = addressSid;
             PhoneNumber = phoneNumber;
             IsoCountry = isoCountry;
             SmsCapability = smsCapability;
-            Email = email;
             CcEmails = new List<string>();
         }
 
@@ -333,11 +329,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (AddressSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
-            }
-
             if (PhoneNumber != null)
             {
                 p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
@@ -350,12 +341,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (SmsCapability != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsCapability", SmsCapability.Value.ToString()));
-            }
-
-            if (Email != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Email", Email));
+                p.Add(new KeyValuePair<string, string>("SmsCapability", SmsCapability.Value.ToString().ToLower()));
             }
 
             if (AccountSid != null)
@@ -380,7 +366,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (SmsUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (SmsMethod != null)
@@ -390,7 +376,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (SmsFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (SmsFallbackMethod != null)
@@ -400,7 +386,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (StatusCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackUrl", StatusCallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("StatusCallbackUrl", StatusCallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (StatusCallbackMethod != null)
@@ -411,6 +397,16 @@ namespace Twilio.Rest.Preview.HostedNumbers
             if (SmsApplicationSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmsApplicationSid", SmsApplicationSid.ToString()));
+            }
+
+            if (AddressSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
+            }
+
+            if (Email != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Email", Email));
             }
 
             return p;

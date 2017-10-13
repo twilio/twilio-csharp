@@ -120,12 +120,12 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (EmergencyEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString().ToLower()));
             }
 
             if (AutoCorrectAddress != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCorrectAddress", AutoCorrectAddress.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("AutoCorrectAddress", AutoCorrectAddress.Value.ToString().ToLower()));
             }
 
             return p;
@@ -294,12 +294,12 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (EmergencyEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("EmergencyEnabled", EmergencyEnabled.Value.ToString().ToLower()));
             }
 
             if (AutoCorrectAddress != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCorrectAddress", AutoCorrectAddress.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("AutoCorrectAddress", AutoCorrectAddress.Value.ToString().ToLower()));
             }
 
             return p;

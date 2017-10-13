@@ -111,7 +111,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (SmsUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (SmsMethod != null)
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (SmsFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (SmsFallbackMethod != null)

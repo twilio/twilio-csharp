@@ -103,7 +103,7 @@ namespace Twilio.Rest.IpMessaging.V2
 
             if (Sandbox != null)
             {
-                p.Add(new KeyValuePair<string, string>("Sandbox", Sandbox.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Sandbox", Sandbox.Value.ToString().ToLower()));
             }
 
             if (ApiKey != null)
@@ -217,7 +217,7 @@ namespace Twilio.Rest.IpMessaging.V2
 
             if (Sandbox != null)
             {
-                p.Add(new KeyValuePair<string, string>("Sandbox", Sandbox.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Sandbox", Sandbox.Value.ToString().ToLower()));
             }
 
             if (ApiKey != null)

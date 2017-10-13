@@ -167,7 +167,7 @@ namespace Twilio.Rest.Fax.V1
 
             if (MediaUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("MediaUrl", MediaUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("MediaUrl", MediaUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (Quality != null)
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Fax.V1
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
             }
 
             if (From != null)
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Fax.V1
 
             if (StoreMedia != null)
             {
-                p.Add(new KeyValuePair<string, string>("StoreMedia", StoreMedia.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("StoreMedia", StoreMedia.Value.ToString().ToLower()));
             }
 
             return p;

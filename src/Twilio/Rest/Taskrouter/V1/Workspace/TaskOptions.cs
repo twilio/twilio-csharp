@@ -270,7 +270,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
             if (HasAddons != null)
             {
-                p.Add(new KeyValuePair<string, string>("HasAddons", HasAddons.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("HasAddons", HasAddons.Value.ToString().ToLower()));
             }
 
             if (PageSize != null)

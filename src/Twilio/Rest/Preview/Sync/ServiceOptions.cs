@@ -115,17 +115,17 @@ namespace Twilio.Rest.Preview.Sync
 
             if (WebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (ReachabilityWebhooksEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString().ToLower()));
             }
 
             if (AclEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString().ToLower()));
             }
 
             return p;
@@ -202,7 +202,7 @@ namespace Twilio.Rest.Preview.Sync
             var p = new List<KeyValuePair<string, string>>();
             if (WebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (FriendlyName != null)
@@ -212,12 +212,12 @@ namespace Twilio.Rest.Preview.Sync
 
             if (ReachabilityWebhooksEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ReachabilityWebhooksEnabled", ReachabilityWebhooksEnabled.Value.ToString().ToLower()));
             }
 
             if (AclEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString().ToLower()));
             }
 
             return p;

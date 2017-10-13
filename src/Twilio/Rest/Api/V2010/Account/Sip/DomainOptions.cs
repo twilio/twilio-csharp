@@ -119,7 +119,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             if (VoiceUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (VoiceMethod != null)
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             if (VoiceFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (VoiceFallbackMethod != null)
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             if (VoiceStatusCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", VoiceStatusCallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", VoiceStatusCallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (VoiceStatusCallbackMethod != null)
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             if (SipRegistration != null)
             {
-                p.Add(new KeyValuePair<string, string>("SipRegistration", SipRegistration.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("SipRegistration", SipRegistration.Value.ToString().ToLower()));
             }
 
             return p;
@@ -273,7 +273,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             if (VoiceFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (VoiceMethod != null)
@@ -288,17 +288,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             if (VoiceStatusCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", VoiceStatusCallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", VoiceStatusCallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (VoiceUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (SipRegistration != null)
             {
-                p.Add(new KeyValuePair<string, string>("SipRegistration", SipRegistration.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("SipRegistration", SipRegistration.Value.ToString().ToLower()));
             }
 
             return p;

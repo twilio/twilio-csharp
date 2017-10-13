@@ -119,7 +119,7 @@ namespace Twilio.Rest.Trunking.V1
 
             if (DisasterRecoveryUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("DisasterRecoveryUrl", DisasterRecoveryUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("DisasterRecoveryUrl", DisasterRecoveryUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (DisasterRecoveryMethod != null)
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Trunking.V1
 
             if (Secure != null)
             {
-                p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString().ToLower()));
             }
 
             return p;
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Trunking.V1
 
             if (DisasterRecoveryUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("DisasterRecoveryUrl", DisasterRecoveryUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("DisasterRecoveryUrl", DisasterRecoveryUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (DisasterRecoveryMethod != null)
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Trunking.V1
 
             if (Secure != null)
             {
-                p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString().ToLower()));
             }
 
             return p;

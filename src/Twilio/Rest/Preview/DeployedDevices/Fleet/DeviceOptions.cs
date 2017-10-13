@@ -161,7 +161,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
             if (Enabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
             }
 
             return p;
@@ -284,7 +284,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
             if (Enabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
             }
 
             return p;

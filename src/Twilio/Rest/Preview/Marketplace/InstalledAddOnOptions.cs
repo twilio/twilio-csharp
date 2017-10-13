@@ -61,7 +61,7 @@ namespace Twilio.Rest.Preview.Marketplace
 
             if (AcceptTermsOfService != null)
             {
-                p.Add(new KeyValuePair<string, string>("AcceptTermsOfService", AcceptTermsOfService.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("AcceptTermsOfService", AcceptTermsOfService.Value.ToString().ToLower()));
             }
 
             if (Configuration != null)

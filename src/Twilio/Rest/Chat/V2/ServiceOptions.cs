@@ -296,12 +296,12 @@ namespace Twilio.Rest.Chat.V2
 
             if (ReadStatusEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("ReadStatusEnabled", ReadStatusEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ReadStatusEnabled", ReadStatusEnabled.Value.ToString().ToLower()));
             }
 
             if (ReachabilityEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("ReachabilityEnabled", ReachabilityEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ReachabilityEnabled", ReachabilityEnabled.Value.ToString().ToLower()));
             }
 
             if (TypingIndicatorTimeout != null)
@@ -316,7 +316,7 @@ namespace Twilio.Rest.Chat.V2
 
             if (NotificationsNewMessageEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Enabled", NotificationsNewMessageEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.Enabled", NotificationsNewMessageEnabled.Value.ToString().ToLower()));
             }
 
             if (NotificationsNewMessageTemplate != null)
@@ -331,12 +331,12 @@ namespace Twilio.Rest.Chat.V2
 
             if (NotificationsNewMessageBadgeCountEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.BadgeCountEnabled", NotificationsNewMessageBadgeCountEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Notifications.NewMessage.BadgeCountEnabled", NotificationsNewMessageBadgeCountEnabled.Value.ToString().ToLower()));
             }
 
             if (NotificationsAddedToChannelEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Enabled", NotificationsAddedToChannelEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Notifications.AddedToChannel.Enabled", NotificationsAddedToChannelEnabled.Value.ToString().ToLower()));
             }
 
             if (NotificationsAddedToChannelTemplate != null)
@@ -351,7 +351,7 @@ namespace Twilio.Rest.Chat.V2
 
             if (NotificationsRemovedFromChannelEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Enabled", NotificationsRemovedFromChannelEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Notifications.RemovedFromChannel.Enabled", NotificationsRemovedFromChannelEnabled.Value.ToString().ToLower()));
             }
 
             if (NotificationsRemovedFromChannelTemplate != null)
@@ -366,7 +366,7 @@ namespace Twilio.Rest.Chat.V2
 
             if (NotificationsInvitedToChannelEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Enabled", NotificationsInvitedToChannelEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Notifications.InvitedToChannel.Enabled", NotificationsInvitedToChannelEnabled.Value.ToString().ToLower()));
             }
 
             if (NotificationsInvitedToChannelTemplate != null)
@@ -381,12 +381,12 @@ namespace Twilio.Rest.Chat.V2
 
             if (PreWebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("PreWebhookUrl", PreWebhookUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("PreWebhookUrl", PreWebhookUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (PostWebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("PostWebhookUrl", PostWebhookUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("PostWebhookUrl", PostWebhookUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (WebhookMethod != null)

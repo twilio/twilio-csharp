@@ -106,12 +106,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
             if (AssignmentCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("AssignmentCallbackUrl", AssignmentCallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("AssignmentCallbackUrl", AssignmentCallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (FallbackAssignmentCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("FallbackAssignmentCallbackUrl", FallbackAssignmentCallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("FallbackAssignmentCallbackUrl", FallbackAssignmentCallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (Configuration != null)
@@ -270,12 +270,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
             if (AssignmentCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("AssignmentCallbackUrl", AssignmentCallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("AssignmentCallbackUrl", AssignmentCallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (FallbackAssignmentCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("FallbackAssignmentCallbackUrl", FallbackAssignmentCallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("FallbackAssignmentCallbackUrl", FallbackAssignmentCallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (TaskReservationTimeout != null)

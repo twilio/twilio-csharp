@@ -120,7 +120,7 @@ namespace Twilio.Rest.Notify.V1
 
             if (LogEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("LogEnabled", LogEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("LogEnabled", LogEnabled.Value.ToString().ToLower()));
             }
 
             if (AlexaSkillId != null)
@@ -356,7 +356,7 @@ namespace Twilio.Rest.Notify.V1
 
             if (LogEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("LogEnabled", LogEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("LogEnabled", LogEnabled.Value.ToString().ToLower()));
             }
 
             if (AlexaSkillId != null)

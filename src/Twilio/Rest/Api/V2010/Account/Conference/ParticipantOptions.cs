@@ -114,17 +114,17 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var p = new List<KeyValuePair<string, string>>();
             if (Muted != null)
             {
-                p.Add(new KeyValuePair<string, string>("Muted", Muted.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Muted", Muted.Value.ToString().ToLower()));
             }
 
             if (Hold != null)
             {
-                p.Add(new KeyValuePair<string, string>("Hold", Hold.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Hold", Hold.Value.ToString().ToLower()));
             }
 
             if (HoldUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("HoldUrl", HoldUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("HoldUrl", HoldUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (HoldMethod != null)
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (AnnounceUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("AnnounceUrl", AnnounceUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("AnnounceUrl", AnnounceUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (AnnounceMethod != null)
@@ -306,7 +306,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
             }
 
             if (StatusCallbackMethod != null)
@@ -326,12 +326,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (Record != null)
             {
-                p.Add(new KeyValuePair<string, string>("Record", Record.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Record", Record.Value.ToString().ToLower()));
             }
 
             if (Muted != null)
             {
-                p.Add(new KeyValuePair<string, string>("Muted", Muted.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Muted", Muted.Value.ToString().ToLower()));
             }
 
             if (Beep != null)
@@ -341,17 +341,17 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (StartConferenceOnEnter != null)
             {
-                p.Add(new KeyValuePair<string, string>("StartConferenceOnEnter", StartConferenceOnEnter.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("StartConferenceOnEnter", StartConferenceOnEnter.Value.ToString().ToLower()));
             }
 
             if (EndConferenceOnExit != null)
             {
-                p.Add(new KeyValuePair<string, string>("EndConferenceOnExit", EndConferenceOnExit.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("EndConferenceOnExit", EndConferenceOnExit.Value.ToString().ToLower()));
             }
 
             if (WaitUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WaitUrl", WaitUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("WaitUrl", WaitUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (WaitMethod != null)
@@ -361,7 +361,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (EarlyMedia != null)
             {
-                p.Add(new KeyValuePair<string, string>("EarlyMedia", EarlyMedia.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("EarlyMedia", EarlyMedia.Value.ToString().ToLower()));
             }
 
             if (MaxParticipants != null)
@@ -381,7 +381,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (ConferenceStatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConferenceStatusCallback", ConferenceStatusCallback.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("ConferenceStatusCallback", ConferenceStatusCallback.AbsoluteUri.TrimEnd('/')));
             }
 
             if (ConferenceStatusCallbackMethod != null)
@@ -401,7 +401,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (RecordingStatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("RecordingStatusCallback", RecordingStatusCallback.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("RecordingStatusCallback", RecordingStatusCallback.AbsoluteUri.TrimEnd('/')));
             }
 
             if (RecordingStatusCallbackMethod != null)
@@ -426,7 +426,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (ConferenceRecordingStatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConferenceRecordingStatusCallback", ConferenceRecordingStatusCallback.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("ConferenceRecordingStatusCallback", ConferenceRecordingStatusCallback.AbsoluteUri.TrimEnd('/')));
             }
 
             if (ConferenceRecordingStatusCallbackMethod != null)
@@ -518,12 +518,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             var p = new List<KeyValuePair<string, string>>();
             if (Muted != null)
             {
-                p.Add(new KeyValuePair<string, string>("Muted", Muted.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Muted", Muted.Value.ToString().ToLower()));
             }
 
             if (Hold != null)
             {
-                p.Add(new KeyValuePair<string, string>("Hold", Hold.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Hold", Hold.Value.ToString().ToLower()));
             }
 
             if (PageSize != null)

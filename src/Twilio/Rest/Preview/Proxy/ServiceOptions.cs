@@ -101,12 +101,12 @@ namespace Twilio.Rest.Preview.Proxy
 
             if (AutoCreate != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreate", AutoCreate.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("AutoCreate", AutoCreate.Value.ToString().ToLower()));
             }
 
             if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             return p;
@@ -194,12 +194,12 @@ namespace Twilio.Rest.Preview.Proxy
 
             if (AutoCreate != null)
             {
-                p.Add(new KeyValuePair<string, string>("AutoCreate", AutoCreate.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("AutoCreate", AutoCreate.Value.ToString().ToLower()));
             }
 
             if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             return p;

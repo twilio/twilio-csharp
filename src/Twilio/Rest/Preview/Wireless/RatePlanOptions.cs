@@ -143,7 +143,7 @@ namespace Twilio.Rest.Preview.Wireless
 
             if (DataEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("DataEnabled", DataEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("DataEnabled", DataEnabled.Value.ToString().ToLower()));
             }
 
             if (DataLimit != null)
@@ -158,22 +158,22 @@ namespace Twilio.Rest.Preview.Wireless
 
             if (MessagingEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessagingEnabled", MessagingEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MessagingEnabled", MessagingEnabled.Value.ToString().ToLower()));
             }
 
             if (VoiceEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceEnabled", VoiceEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("VoiceEnabled", VoiceEnabled.Value.ToString().ToLower()));
             }
 
             if (CommandsEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("CommandsEnabled", CommandsEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("CommandsEnabled", CommandsEnabled.Value.ToString().ToLower()));
             }
 
             if (NationalRoamingEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("NationalRoamingEnabled", NationalRoamingEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("NationalRoamingEnabled", NationalRoamingEnabled.Value.ToString().ToLower()));
             }
 
             if (InternationalRoaming != null)

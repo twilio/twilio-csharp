@@ -151,7 +151,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
             if (Enabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
             }
 
             if (FriendlyName != null)
@@ -161,7 +161,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
             if (SipUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SipUrl", SipUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("SipUrl", SipUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             return p;
@@ -267,7 +267,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
             if (Enabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Enabled", Enabled.Value.ToString().ToLower()));
             }
 
             if (FriendlyName != null)
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
             if (SipUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SipUrl", SipUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("SipUrl", SipUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             return p;

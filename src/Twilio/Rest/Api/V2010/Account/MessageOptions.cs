@@ -81,6 +81,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The address_retention
         /// </summary>
         public MessageResource.AddressRetentionEnum AddressRetention { get; set; }
+        /// <summary>
+        /// The smart_encoded
+        /// </summary>
+        public bool? SmartEncoded { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -121,12 +125,12 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (MediaUrl != null)
             {
-                p.AddRange(MediaUrl.Select(prop => new KeyValuePair<string, string>("MediaUrl", prop.AbsoluteUri)));
+                p.AddRange(MediaUrl.Select(prop => new KeyValuePair<string, string>("MediaUrl", prop.AbsoluteUri.TrimEnd('/'))));
             }
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
             }
 
             if (ApplicationSid != null)
@@ -141,7 +145,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (ProvideFeedback != null)
             {
-                p.Add(new KeyValuePair<string, string>("ProvideFeedback", ProvideFeedback.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ProvideFeedback", ProvideFeedback.Value.ToString().ToLower()));
             }
 
             if (ValidityPeriod != null)
@@ -156,7 +160,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (ForceDelivery != null)
             {
-                p.Add(new KeyValuePair<string, string>("ForceDelivery", ForceDelivery.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ForceDelivery", ForceDelivery.Value.ToString().ToLower()));
             }
 
             if (ProviderSid != null)
@@ -172,6 +176,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (AddressRetention != null)
             {
                 p.Add(new KeyValuePair<string, string>("AddressRetention", AddressRetention.ToString()));
+            }
+
+            if (SmartEncoded != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmartEncoded", SmartEncoded.Value.ToString().ToLower()));
             }
 
             return p;

@@ -224,7 +224,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
             if (Available != null)
             {
-                p.Add(new KeyValuePair<string, string>("Available", Available.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Available", Available.Value.ToString().ToLower()));
             }
 
             return p;

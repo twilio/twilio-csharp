@@ -45,7 +45,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             var p = new List<KeyValuePair<string, string>>();
             if (Beta != null)
             {
-                p.Add(new KeyValuePair<string, string>("Beta", Beta.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Beta", Beta.Value.ToString().ToLower()));
             }
 
             if (FriendlyName != null)
@@ -145,6 +145,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// The voice_url
         /// </summary>
         public Uri VoiceUrl { get; set; }
+        /// <summary>
+        /// The identity_sid
+        /// </summary>
+        public string IdentitySid { get; set; }
 
         /// <summary>
         /// Construct a new CreateLocalOptions
@@ -189,7 +193,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
             if (SmsFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (SmsMethod != null)
@@ -199,12 +203,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
             if (SmsUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
             }
 
             if (StatusCallbackMethod != null)
@@ -219,7 +223,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
             if (VoiceCallerIdLookup != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("VoiceCallerIdLookup", VoiceCallerIdLookup.Value.ToString().ToLower()));
             }
 
             if (VoiceFallbackMethod != null)
@@ -229,7 +233,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
             if (VoiceFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (VoiceMethod != null)
@@ -239,7 +243,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
             if (VoiceUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.AbsoluteUri.TrimEnd('/')));
+            }
+
+            if (IdentitySid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IdentitySid", IdentitySid.ToString()));
             }
 
             return p;

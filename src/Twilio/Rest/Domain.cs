@@ -23,6 +23,7 @@ namespace Twilio.Rest
         public static readonly Domain Notify = new Domain("notify");
         public static readonly Domain Preview = new Domain("preview");
         public static readonly Domain Pricing = new Domain("pricing");
+        public static readonly Domain Proxy = new Domain("proxy");
         public static readonly Domain Taskrouter = new Domain("taskrouter");
         public static readonly Domain Trunking = new Domain("trunking");
         public static readonly Domain Video = new Domain("video");

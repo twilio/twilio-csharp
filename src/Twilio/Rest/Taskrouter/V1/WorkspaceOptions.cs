@@ -102,7 +102,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
             if (EventCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("EventCallbackUrl", EventCallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("EventCallbackUrl", EventCallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (EventsFilter != null)
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
             if (MultiTaskEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("MultiTaskEnabled", MultiTaskEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MultiTaskEnabled", MultiTaskEnabled.Value.ToString().ToLower()));
             }
 
             if (TimeoutActivitySid != null)
@@ -217,7 +217,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
             if (EventCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("EventCallbackUrl", EventCallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("EventCallbackUrl", EventCallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (EventsFilter != null)
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
             if (MultiTaskEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("MultiTaskEnabled", MultiTaskEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MultiTaskEnabled", MultiTaskEnabled.Value.ToString().ToLower()));
             }
 
             if (Template != null)

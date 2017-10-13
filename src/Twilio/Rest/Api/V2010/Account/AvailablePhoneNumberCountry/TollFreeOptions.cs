@@ -121,37 +121,37 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
 
             if (SmsEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsEnabled", SmsEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("SmsEnabled", SmsEnabled.Value.ToString().ToLower()));
             }
 
             if (MmsEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("MmsEnabled", MmsEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MmsEnabled", MmsEnabled.Value.ToString().ToLower()));
             }
 
             if (VoiceEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceEnabled", VoiceEnabled.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("VoiceEnabled", VoiceEnabled.Value.ToString().ToLower()));
             }
 
             if (ExcludeAllAddressRequired != null)
             {
-                p.Add(new KeyValuePair<string, string>("ExcludeAllAddressRequired", ExcludeAllAddressRequired.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ExcludeAllAddressRequired", ExcludeAllAddressRequired.Value.ToString().ToLower()));
             }
 
             if (ExcludeLocalAddressRequired != null)
             {
-                p.Add(new KeyValuePair<string, string>("ExcludeLocalAddressRequired", ExcludeLocalAddressRequired.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ExcludeLocalAddressRequired", ExcludeLocalAddressRequired.Value.ToString().ToLower()));
             }
 
             if (ExcludeForeignAddressRequired != null)
             {
-                p.Add(new KeyValuePair<string, string>("ExcludeForeignAddressRequired", ExcludeForeignAddressRequired.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ExcludeForeignAddressRequired", ExcludeForeignAddressRequired.Value.ToString().ToLower()));
             }
 
             if (Beta != null)
             {
-                p.Add(new KeyValuePair<string, string>("Beta", Beta.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Beta", Beta.Value.ToString().ToLower()));
             }
 
             if (NearNumber != null)

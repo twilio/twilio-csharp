@@ -490,6 +490,11 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
+        /// <summary>
+        /// The ip_address
+        /// </summary>
+        [JsonProperty("ip_address")]
+        public string IpAddress { get; private set; }
 
         private SimResource()
         {

@@ -100,7 +100,7 @@ namespace Twilio.Rest.Video.V1
             var p = new List<KeyValuePair<string, string>>();
             if (EnableTurn != null)
             {
-                p.Add(new KeyValuePair<string, string>("EnableTurn", EnableTurn.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("EnableTurn", EnableTurn.Value.ToString().ToLower()));
             }
 
             if (Type != null)
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Video.V1
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
             }
 
             if (StatusCallbackMethod != null)
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Video.V1
 
             if (RecordParticipantsOnConnect != null)
             {
-                p.Add(new KeyValuePair<string, string>("RecordParticipantsOnConnect", RecordParticipantsOnConnect.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("RecordParticipantsOnConnect", RecordParticipantsOnConnect.Value.ToString().ToLower()));
             }
 
             if (VideoCodecs != null)

@@ -179,7 +179,7 @@ namespace Twilio.Rest.Preview.Wireless
 
             if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (CommandMode != null)

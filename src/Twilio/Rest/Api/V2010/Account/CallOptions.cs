@@ -138,7 +138,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (Url != null)
             {
-                p.Add(new KeyValuePair<string, string>("Url", Url.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("Url", Url.AbsoluteUri.TrimEnd('/')));
             }
 
             if (ApplicationSid != null)
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (FallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (FallbackMethod != null)
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
             }
 
             if (StatusCallbackEvent != null)
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (Record != null)
             {
-                p.Add(new KeyValuePair<string, string>("Record", Record.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Record", Record.Value.ToString().ToLower()));
             }
 
             if (RecordingChannels != null)
@@ -482,7 +482,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var p = new List<KeyValuePair<string, string>>();
             if (Url != null)
             {
-                p.Add(new KeyValuePair<string, string>("Url", Url.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("Url", Url.AbsoluteUri.TrimEnd('/')));
             }
 
             if (Method != null)
@@ -497,7 +497,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (FallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("FallbackUrl", FallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             if (FallbackMethod != null)
@@ -507,7 +507,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
             }
 
             if (StatusCallbackMethod != null)
