@@ -39,7 +39,6 @@ namespace Twilio.Rest.Preview.AccSecurity.Service
         /// <summary>
         /// Construct a new CreateVerificationOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="to"> To phonenumber </param>
         /// <param name="channel"> sms or call </param>

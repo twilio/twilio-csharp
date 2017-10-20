@@ -25,6 +25,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
+            public static implicit operator StatusEnum(string value)
+            {
+                return new StatusEnum(value);
+            }
 
             public static readonly StatusEnum Queued = new StatusEnum("queued");
             public static readonly StatusEnum Connecting = new StatusEnum("connecting");
@@ -48,7 +52,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Fetch an instance of a participant
         /// </summary>
-        ///
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
@@ -63,11 +66,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Fetch an instance of a participant
         /// </summary>
-        ///
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options, 
+                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -78,13 +81,15 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Fetch an instance of a participant
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
-        public static ParticipantResource Fetch(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static ParticipantResource Fetch(string pathConferenceSid, 
+                                                string pathCallSid, 
+                                                string pathAccountSid = null, 
+                                                ITwilioRestClient client = null)
         {
             var options = new FetchParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
@@ -94,13 +99,15 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Fetch an instance of a participant
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string pathConferenceSid, 
+                                                                                        string pathCallSid, 
+                                                                                        string pathAccountSid = null, 
+                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
@@ -121,7 +128,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Update the properties of this participant
         /// </summary>
-        ///
         /// <param name="options"> Update Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
@@ -136,11 +142,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Update the properties of this participant
         /// </summary>
-        ///
         /// <param name="options"> Update Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(UpdateParticipantOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(UpdateParticipantOptions options, 
+                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -151,7 +157,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Update the properties of this participant
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
@@ -163,7 +168,16 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="announceMethod"> The announce_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
-        public static ParticipantResource Update(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, Uri announceUrl = null, Twilio.Http.HttpMethod announceMethod = null, ITwilioRestClient client = null)
+        public static ParticipantResource Update(string pathConferenceSid, 
+                                                 string pathCallSid, 
+                                                 string pathAccountSid = null, 
+                                                 bool? muted = null, 
+                                                 bool? hold = null, 
+                                                 Uri holdUrl = null, 
+                                                 Twilio.Http.HttpMethod holdMethod = null, 
+                                                 Uri announceUrl = null, 
+                                                 Twilio.Http.HttpMethod announceMethod = null, 
+                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceMethod = announceMethod};
             return Update(options, client);
@@ -173,7 +187,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Update the properties of this participant
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
@@ -185,7 +198,16 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="announceMethod"> The announce_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, bool? muted = null, bool? hold = null, Uri holdUrl = null, Twilio.Http.HttpMethod holdMethod = null, Uri announceUrl = null, Twilio.Http.HttpMethod announceMethod = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConferenceSid, 
+                                                                                         string pathCallSid, 
+                                                                                         string pathAccountSid = null, 
+                                                                                         bool? muted = null, 
+                                                                                         bool? hold = null, 
+                                                                                         Uri holdUrl = null, 
+                                                                                         Twilio.Http.HttpMethod holdMethod = null, 
+                                                                                         Uri announceUrl = null, 
+                                                                                         Twilio.Http.HttpMethod announceMethod = null, 
+                                                                                         ITwilioRestClient client = null)
         {
             var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceMethod = announceMethod};
             return await UpdateAsync(options, client);
@@ -206,7 +228,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
@@ -221,11 +242,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(CreateParticipantOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(CreateParticipantOptions options, 
+                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -236,7 +257,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The conference_sid </param>
         /// <param name="from"> The from </param>
         /// <param name="to"> The to </param>
@@ -269,7 +289,37 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="conferenceRecordingStatusCallbackMethod"> The conference_recording_status_callback_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
-        public static ParticipantResource Create(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to, string pathAccountSid = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, List<string> statusCallbackEvent = null, int? timeout = null, bool? record = null, bool? muted = null, string beep = null, bool? startConferenceOnEnter = null, bool? endConferenceOnExit = null, Uri waitUrl = null, Twilio.Http.HttpMethod waitMethod = null, bool? earlyMedia = null, int? maxParticipants = null, string conferenceRecord = null, string conferenceTrim = null, Uri conferenceStatusCallback = null, Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null, List<string> conferenceStatusCallbackEvent = null, string recordingChannels = null, Uri recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, string region = null, Uri conferenceRecordingStatusCallback = null, Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null, ITwilioRestClient client = null)
+        public static ParticipantResource Create(string pathConferenceSid, 
+                                                 Types.PhoneNumber from, 
+                                                 Types.PhoneNumber to, 
+                                                 string pathAccountSid = null, 
+                                                 Uri statusCallback = null, 
+                                                 Twilio.Http.HttpMethod statusCallbackMethod = null, 
+                                                 List<string> statusCallbackEvent = null, 
+                                                 int? timeout = null, 
+                                                 bool? record = null, 
+                                                 bool? muted = null, 
+                                                 string beep = null, 
+                                                 bool? startConferenceOnEnter = null, 
+                                                 bool? endConferenceOnExit = null, 
+                                                 Uri waitUrl = null, 
+                                                 Twilio.Http.HttpMethod waitMethod = null, 
+                                                 bool? earlyMedia = null, 
+                                                 int? maxParticipants = null, 
+                                                 string conferenceRecord = null, 
+                                                 string conferenceTrim = null, 
+                                                 Uri conferenceStatusCallback = null, 
+                                                 Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null, 
+                                                 List<string> conferenceStatusCallbackEvent = null, 
+                                                 string recordingChannels = null, 
+                                                 Uri recordingStatusCallback = null, 
+                                                 Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
+                                                 string sipAuthUsername = null, 
+                                                 string sipAuthPassword = null, 
+                                                 string region = null, 
+                                                 Uri conferenceRecordingStatusCallback = null, 
+                                                 Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null, 
+                                                 ITwilioRestClient client = null)
         {
             var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod};
             return Create(options, client);
@@ -279,7 +329,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The conference_sid </param>
         /// <param name="from"> The from </param>
         /// <param name="to"> The to </param>
@@ -312,7 +361,37 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="conferenceRecordingStatusCallbackMethod"> The conference_recording_status_callback_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to, string pathAccountSid = null, Uri statusCallback = null, Twilio.Http.HttpMethod statusCallbackMethod = null, List<string> statusCallbackEvent = null, int? timeout = null, bool? record = null, bool? muted = null, string beep = null, bool? startConferenceOnEnter = null, bool? endConferenceOnExit = null, Uri waitUrl = null, Twilio.Http.HttpMethod waitMethod = null, bool? earlyMedia = null, int? maxParticipants = null, string conferenceRecord = null, string conferenceTrim = null, Uri conferenceStatusCallback = null, Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null, List<string> conferenceStatusCallbackEvent = null, string recordingChannels = null, Uri recordingStatusCallback = null, Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, string sipAuthUsername = null, string sipAuthPassword = null, string region = null, Uri conferenceRecordingStatusCallback = null, Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathConferenceSid, 
+                                                                                         Types.PhoneNumber from, 
+                                                                                         Types.PhoneNumber to, 
+                                                                                         string pathAccountSid = null, 
+                                                                                         Uri statusCallback = null, 
+                                                                                         Twilio.Http.HttpMethod statusCallbackMethod = null, 
+                                                                                         List<string> statusCallbackEvent = null, 
+                                                                                         int? timeout = null, 
+                                                                                         bool? record = null, 
+                                                                                         bool? muted = null, 
+                                                                                         string beep = null, 
+                                                                                         bool? startConferenceOnEnter = null, 
+                                                                                         bool? endConferenceOnExit = null, 
+                                                                                         Uri waitUrl = null, 
+                                                                                         Twilio.Http.HttpMethod waitMethod = null, 
+                                                                                         bool? earlyMedia = null, 
+                                                                                         int? maxParticipants = null, 
+                                                                                         string conferenceRecord = null, 
+                                                                                         string conferenceTrim = null, 
+                                                                                         Uri conferenceStatusCallback = null, 
+                                                                                         Twilio.Http.HttpMethod conferenceStatusCallbackMethod = null, 
+                                                                                         List<string> conferenceStatusCallbackEvent = null, 
+                                                                                         string recordingChannels = null, 
+                                                                                         Uri recordingStatusCallback = null, 
+                                                                                         Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
+                                                                                         string sipAuthUsername = null, 
+                                                                                         string sipAuthPassword = null, 
+                                                                                         string region = null, 
+                                                                                         Uri conferenceRecordingStatusCallback = null, 
+                                                                                         Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null, 
+                                                                                         ITwilioRestClient client = null)
         {
             var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod};
             return await CreateAsync(options, client);
@@ -333,7 +412,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Kick a participant from a given conference
         /// </summary>
-        ///
         /// <param name="options"> Delete Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
@@ -348,11 +426,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Kick a participant from a given conference
         /// </summary>
-        ///
         /// <param name="options"> Delete Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteParticipantOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteParticipantOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -363,13 +441,15 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Kick a participant from a given conference
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
-        public static bool Delete(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathConferenceSid, 
+                                  string pathCallSid, 
+                                  string pathAccountSid = null, 
+                                  ITwilioRestClient client = null)
         {
             var options = new DeleteParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
@@ -379,13 +459,15 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Kick a participant from a given conference
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathConferenceSid, string pathCallSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathConferenceSid, 
+                                                                          string pathCallSid, 
+                                                                          string pathAccountSid = null, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid};
             return await DeleteAsync(options, client);
@@ -406,7 +488,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Retrieve a list of participants belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
@@ -423,11 +504,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Retrieve a list of participants belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options, 
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -440,7 +521,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Retrieve a list of participants belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="muted"> Filter by muted participants </param>
@@ -449,7 +529,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
-        public static ResourceSet<ParticipantResource> Read(string pathConferenceSid, string pathAccountSid = null, bool? muted = null, bool? hold = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<ParticipantResource> Read(string pathConferenceSid, 
+                                                            string pathAccountSid = null, 
+                                                            bool? muted = null, 
+                                                            bool? hold = null, 
+                                                            int? pageSize = null, 
+                                                            long? limit = null, 
+                                                            ITwilioRestClient client = null)
         {
             var options = new ReadParticipantOptions(pathConferenceSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -459,7 +545,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Retrieve a list of participants belonging to the account used to make the request
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="muted"> Filter by muted participants </param>
@@ -468,7 +553,13 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(string pathConferenceSid, string pathAccountSid = null, bool? muted = null, bool? hold = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(string pathConferenceSid, 
+                                                                                                    string pathAccountSid = null, 
+                                                                                                    bool? muted = null, 
+                                                                                                    bool? hold = null, 
+                                                                                                    int? pageSize = null, 
+                                                                                                    long? limit = null, 
+                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadParticipantOptions(pathConferenceSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -478,7 +569,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -498,7 +588,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -519,7 +608,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -540,7 +628,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Converts a JSON string into a ParticipantResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ParticipantResource object represented by the provided JSON </returns> 
         public static ParticipantResource FromJson(string json)

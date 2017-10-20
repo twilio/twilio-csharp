@@ -28,7 +28,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchNotificationOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique notification Sid </param>
         public FetchNotificationOptions(string pathSid)
         {
@@ -62,7 +61,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new DeleteNotificationOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Delete by unique notification Sid </param>
         public DeleteNotificationOptions(string pathSid)
         {

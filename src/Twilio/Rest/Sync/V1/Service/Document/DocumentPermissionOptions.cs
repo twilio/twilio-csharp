@@ -34,7 +34,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Construct a new FetchDocumentPermissionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
@@ -78,7 +77,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Construct a new DeleteDocumentPermissionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
@@ -118,7 +116,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Construct a new ReadDocumentPermissionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         public ReadDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid)
@@ -177,14 +174,18 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Construct a new UpdateDocumentPermissionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         /// <param name="read"> Read access. </param>
         /// <param name="write"> Write access. </param>
         /// <param name="manage"> Manage access. </param>
-        public UpdateDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity, bool? read, bool? write, bool? manage)
+        public UpdateDocumentPermissionOptions(string pathServiceSid, 
+                                               string pathDocumentSid, 
+                                               string pathIdentity, 
+                                               bool? read, 
+                                               bool? write, 
+                                               bool? manage)
         {
             PathServiceSid = pathServiceSid;
             PathDocumentSid = pathDocumentSid;

@@ -12,6 +12,10 @@ namespace Twilio.Rest
     {
         private Domain(string value) : base(value) {}
         public Domain() {}
+        public static implicit operator Domain(string value)
+        {
+            return new Domain(value);
+        }
 
         public static readonly Domain Accounts = new Domain("accounts");
         public static readonly Domain Api = new Domain("api");

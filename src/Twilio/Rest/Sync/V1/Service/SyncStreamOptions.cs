@@ -30,7 +30,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new FetchSyncStreamOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Stream SID or unique name. </param>
         public FetchSyncStreamOptions(string pathServiceSid, string pathSid)
@@ -68,7 +67,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new DeleteSyncStreamOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Stream SID or unique name. </param>
         public DeleteSyncStreamOptions(string pathServiceSid, string pathSid)
@@ -106,7 +104,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new CreateSyncStreamOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public CreateSyncStreamOptions(string pathServiceSid)
         {
@@ -143,7 +140,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new ReadSyncStreamOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public ReadSyncStreamOptions(string pathServiceSid)
         {

@@ -34,7 +34,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch TaskChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskChannel </returns> 
@@ -49,11 +48,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch TaskChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
-        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(FetchTaskChannelOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(FetchTaskChannelOptions options, 
+                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -64,7 +63,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -79,12 +77,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
-        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(string pathWorkspaceSid, 
+                                                                                        string pathSid, 
+                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchTaskChannelOptions(pathWorkspaceSid, pathSid);
             return await FetchAsync(options, client);
@@ -105,7 +104,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read TaskChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskChannel </returns> 
@@ -122,11 +120,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read TaskChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(ReadTaskChannelOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(ReadTaskChannelOptions options, 
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -139,13 +137,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskChannel </returns> 
-        public static ResourceSet<TaskChannelResource> Read(string pathWorkspaceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<TaskChannelResource> Read(string pathWorkspaceSid, 
+                                                            int? pageSize = null, 
+                                                            long? limit = null, 
+                                                            ITwilioRestClient client = null)
         {
             var options = new ReadTaskChannelOptions(pathWorkspaceSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -155,13 +155,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(string pathWorkspaceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskChannelResource>> ReadAsync(string pathWorkspaceSid, 
+                                                                                                    int? pageSize = null, 
+                                                                                                    long? limit = null, 
+                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadTaskChannelOptions(pathWorkspaceSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -171,7 +173,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -191,7 +192,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -212,7 +212,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -233,7 +232,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Converts a JSON string into a TaskChannelResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> TaskChannelResource object represented by the provided JSON </returns> 
         public static TaskChannelResource FromJson(string json)

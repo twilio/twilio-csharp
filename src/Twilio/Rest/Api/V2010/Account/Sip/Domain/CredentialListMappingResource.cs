@@ -34,11 +34,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialListMapping </returns> 
-        public static CredentialListMappingResource Create(CreateCredentialListMappingOptions options, ITwilioRestClient client = null)
+        public static CredentialListMappingResource Create(CreateCredentialListMappingOptions options, 
+                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
@@ -49,11 +49,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
-        public static async System.Threading.Tasks.Task<CredentialListMappingResource> CreateAsync(CreateCredentialListMappingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialListMappingResource> CreateAsync(CreateCredentialListMappingOptions options, 
+                                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -64,13 +64,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathDomainSid"> The domain_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialListMapping </returns> 
-        public static CredentialListMappingResource Create(string pathDomainSid, string credentialListSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static CredentialListMappingResource Create(string pathDomainSid, 
+                                                           string credentialListSid, 
+                                                           string pathAccountSid = null, 
+                                                           ITwilioRestClient client = null)
         {
             var options = new CreateCredentialListMappingOptions(pathDomainSid, credentialListSid){PathAccountSid = pathAccountSid};
             return Create(options, client);
@@ -80,13 +82,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathDomainSid"> The domain_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
-        public static async System.Threading.Tasks.Task<CredentialListMappingResource> CreateAsync(string pathDomainSid, string credentialListSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialListMappingResource> CreateAsync(string pathDomainSid, 
+                                                                                                   string credentialListSid, 
+                                                                                                   string pathAccountSid = null, 
+                                                                                                   ITwilioRestClient client = null)
         {
             var options = new CreateCredentialListMappingOptions(pathDomainSid, credentialListSid){PathAccountSid = pathAccountSid};
             return await CreateAsync(options, client);
@@ -107,11 +111,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialListMapping </returns> 
-        public static ResourceSet<CredentialListMappingResource> Read(ReadCredentialListMappingOptions options, ITwilioRestClient client = null)
+        public static ResourceSet<CredentialListMappingResource> Read(ReadCredentialListMappingOptions options, 
+                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
@@ -124,11 +128,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CredentialListMappingResource>> ReadAsync(ReadCredentialListMappingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CredentialListMappingResource>> ReadAsync(ReadCredentialListMappingOptions options, 
+                                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -141,14 +145,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathDomainSid"> The domain_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialListMapping </returns> 
-        public static ResourceSet<CredentialListMappingResource> Read(string pathDomainSid, string pathAccountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<CredentialListMappingResource> Read(string pathDomainSid, 
+                                                                      string pathAccountSid = null, 
+                                                                      int? pageSize = null, 
+                                                                      long? limit = null, 
+                                                                      ITwilioRestClient client = null)
         {
             var options = new ReadCredentialListMappingOptions(pathDomainSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -158,14 +165,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathDomainSid"> The domain_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CredentialListMappingResource>> ReadAsync(string pathDomainSid, string pathAccountSid = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<CredentialListMappingResource>> ReadAsync(string pathDomainSid, 
+                                                                                                              string pathAccountSid = null, 
+                                                                                                              int? pageSize = null, 
+                                                                                                              long? limit = null, 
+                                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadCredentialListMappingOptions(pathDomainSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -175,7 +185,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -195,11 +204,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
-        public static Page<CredentialListMappingResource> NextPage(Page<CredentialListMappingResource> page, ITwilioRestClient client)
+        public static Page<CredentialListMappingResource> NextPage(Page<CredentialListMappingResource> page, 
+                                                                   ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -216,11 +225,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
-        public static Page<CredentialListMappingResource> PreviousPage(Page<CredentialListMappingResource> page, ITwilioRestClient client)
+        public static Page<CredentialListMappingResource> PreviousPage(Page<CredentialListMappingResource> page, 
+                                                                       ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -248,11 +257,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialListMapping </returns> 
-        public static CredentialListMappingResource Fetch(FetchCredentialListMappingOptions options, ITwilioRestClient client = null)
+        public static CredentialListMappingResource Fetch(FetchCredentialListMappingOptions options, 
+                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -263,11 +272,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
-        public static async System.Threading.Tasks.Task<CredentialListMappingResource> FetchAsync(FetchCredentialListMappingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialListMappingResource> FetchAsync(FetchCredentialListMappingOptions options, 
+                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -278,13 +287,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathDomainSid"> The domain_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialListMapping </returns> 
-        public static CredentialListMappingResource Fetch(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static CredentialListMappingResource Fetch(string pathDomainSid, 
+                                                          string pathSid, 
+                                                          string pathAccountSid = null, 
+                                                          ITwilioRestClient client = null)
         {
             var options = new FetchCredentialListMappingOptions(pathDomainSid, pathSid){PathAccountSid = pathAccountSid};
             return Fetch(options, client);
@@ -294,13 +305,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathDomainSid"> The domain_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
-        public static async System.Threading.Tasks.Task<CredentialListMappingResource> FetchAsync(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CredentialListMappingResource> FetchAsync(string pathDomainSid, 
+                                                                                                  string pathSid, 
+                                                                                                  string pathAccountSid = null, 
+                                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchCredentialListMappingOptions(pathDomainSid, pathSid){PathAccountSid = pathAccountSid};
             return await FetchAsync(options, client);
@@ -321,7 +334,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialListMapping </returns> 
@@ -336,11 +348,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCredentialListMappingOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCredentialListMappingOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -351,13 +363,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathDomainSid"> The domain_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialListMapping </returns> 
-        public static bool Delete(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static bool Delete(string pathDomainSid, 
+                                  string pathSid, 
+                                  string pathAccountSid = null, 
+                                  ITwilioRestClient client = null)
         {
             var options = new DeleteCredentialListMappingOptions(pathDomainSid, pathSid){PathAccountSid = pathAccountSid};
             return Delete(options, client);
@@ -367,13 +381,15 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathDomainSid"> The domain_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, 
+                                                                          string pathSid, 
+                                                                          string pathAccountSid = null, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteCredentialListMappingOptions(pathDomainSid, pathSid){PathAccountSid = pathAccountSid};
             return await DeleteAsync(options, client);
@@ -383,7 +399,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <summary>
         /// Converts a JSON string into a CredentialListMappingResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> CredentialListMappingResource object represented by the provided JSON </returns> 
         public static CredentialListMappingResource FromJson(string json)

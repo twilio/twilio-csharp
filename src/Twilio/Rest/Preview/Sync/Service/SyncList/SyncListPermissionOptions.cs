@@ -35,7 +35,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// Construct a new FetchSyncListPermissionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
@@ -80,7 +79,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// Construct a new DeleteSyncListPermissionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
@@ -121,7 +119,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// Construct a new ReadSyncListPermissionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         public ReadSyncListPermissionOptions(string pathServiceSid, string pathListSid)
@@ -181,14 +178,18 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <summary>
         /// Construct a new UpdateSyncListPermissionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Sync Service Instance SID. </param>
         /// <param name="pathListSid"> Sync List SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
         /// <param name="read"> Read access. </param>
         /// <param name="write"> Write access. </param>
         /// <param name="manage"> Manage access. </param>
-        public UpdateSyncListPermissionOptions(string pathServiceSid, string pathListSid, string pathIdentity, bool? read, bool? write, bool? manage)
+        public UpdateSyncListPermissionOptions(string pathServiceSid, 
+                                               string pathListSid, 
+                                               string pathIdentity, 
+                                               bool? read, 
+                                               bool? write, 
+                                               bool? manage)
         {
             PathServiceSid = pathServiceSid;
             PathListSid = pathListSid;

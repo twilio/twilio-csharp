@@ -28,7 +28,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchKeyOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public FetchKeyOptions(string pathSid)
         {
@@ -66,7 +65,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new UpdateKeyOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateKeyOptions(string pathSid)
         {
@@ -105,7 +103,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new DeleteKeyOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public DeleteKeyOptions(string pathSid)
         {

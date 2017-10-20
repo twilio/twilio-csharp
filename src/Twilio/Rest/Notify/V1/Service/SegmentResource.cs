@@ -36,7 +36,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Segment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Segment </returns> 
@@ -53,11 +52,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Segment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Segment </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SegmentResource>> ReadAsync(ReadSegmentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SegmentResource>> ReadAsync(ReadSegmentOptions options, 
+                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -70,13 +69,15 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Segment </returns> 
-        public static ResourceSet<SegmentResource> Read(string pathServiceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<SegmentResource> Read(string pathServiceSid, 
+                                                        int? pageSize = null, 
+                                                        long? limit = null, 
+                                                        ITwilioRestClient client = null)
         {
             var options = new ReadSegmentOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -86,13 +87,15 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Segment </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SegmentResource>> ReadAsync(string pathServiceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SegmentResource>> ReadAsync(string pathServiceSid, 
+                                                                                                int? pageSize = null, 
+                                                                                                long? limit = null, 
+                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadSegmentOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -102,7 +105,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -122,7 +124,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -143,7 +144,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -164,7 +164,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Converts a JSON string into a SegmentResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> SegmentResource object represented by the provided JSON </returns> 
         public static SegmentResource FromJson(string json)

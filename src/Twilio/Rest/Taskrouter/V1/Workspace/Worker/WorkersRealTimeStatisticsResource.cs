@@ -34,11 +34,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch WorkersRealTimeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkersRealTimeStatistics </returns> 
-        public static WorkersRealTimeStatisticsResource Fetch(FetchWorkersRealTimeStatisticsOptions options, ITwilioRestClient client = null)
+        public static WorkersRealTimeStatisticsResource Fetch(FetchWorkersRealTimeStatisticsOptions options, 
+                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -49,11 +49,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch WorkersRealTimeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkersRealTimeStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkersRealTimeStatisticsResource> FetchAsync(FetchWorkersRealTimeStatisticsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkersRealTimeStatisticsResource> FetchAsync(FetchWorkersRealTimeStatisticsOptions options, 
+                                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -64,12 +64,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="taskChannel"> The task_channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkersRealTimeStatistics </returns> 
-        public static WorkersRealTimeStatisticsResource Fetch(string pathWorkspaceSid, string taskChannel = null, ITwilioRestClient client = null)
+        public static WorkersRealTimeStatisticsResource Fetch(string pathWorkspaceSid, 
+                                                              string taskChannel = null, 
+                                                              ITwilioRestClient client = null)
         {
             var options = new FetchWorkersRealTimeStatisticsOptions(pathWorkspaceSid){TaskChannel = taskChannel};
             return Fetch(options, client);
@@ -79,12 +80,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="taskChannel"> The task_channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkersRealTimeStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkersRealTimeStatisticsResource> FetchAsync(string pathWorkspaceSid, string taskChannel = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkersRealTimeStatisticsResource> FetchAsync(string pathWorkspaceSid, 
+                                                                                                      string taskChannel = null, 
+                                                                                                      ITwilioRestClient client = null)
         {
             var options = new FetchWorkersRealTimeStatisticsOptions(pathWorkspaceSid){TaskChannel = taskChannel};
             return await FetchAsync(options, client);
@@ -94,7 +96,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// Converts a JSON string into a WorkersRealTimeStatisticsResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> WorkersRealTimeStatisticsResource object represented by the provided JSON </returns> 
         public static WorkersRealTimeStatisticsResource FromJson(string json)

@@ -110,7 +110,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new CreateCallOptions
         /// </summary>
-        ///
         /// <param name="to"> Phone number, SIP address or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
         public CreateCallOptions(IEndpoint to, Types.PhoneNumber from)
@@ -252,7 +251,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new DeleteCallOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Call Sid that uniquely identifies the Call to delete </param>
         public DeleteCallOptions(string pathSid)
         {
@@ -286,7 +284,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchCallOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Call Sid that uniquely identifies the Call to fetch </param>
         public FetchCallOptions(string pathSid)
         {
@@ -467,7 +464,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new UpdateCallOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Call Sid that uniquely identifies the Call to update </param>
         public UpdateCallOptions(string pathSid)
         {

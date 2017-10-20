@@ -28,7 +28,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Construct a new FetchAuthorizationDocumentOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> AuthorizationDocument sid. </param>
         public FetchAuthorizationDocumentOptions(string pathSid)
         {
@@ -81,7 +80,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Construct a new UpdateAuthorizationDocumentOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateAuthorizationDocumentOptions(string pathSid)
         {
@@ -176,7 +174,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <summary>
         /// Construct a new CreateAuthorizationDocumentOptions
         /// </summary>
-        ///
         /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids. </param>
         /// <param name="addressSid"> Address sid. </param>
         /// <param name="email"> Email. </param>

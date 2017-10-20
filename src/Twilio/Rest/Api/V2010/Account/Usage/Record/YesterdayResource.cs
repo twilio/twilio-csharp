@@ -25,6 +25,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         {
             private CategoryEnum(string value) : base(value) {}
             public CategoryEnum() {}
+            public static implicit operator CategoryEnum(string value)
+            {
+                return new CategoryEnum(value);
+            }
 
             public static readonly CategoryEnum AnsweringMachineDetection = new CategoryEnum("answering-machine-detection");
             public static readonly CategoryEnum AuthyAuthentications = new CategoryEnum("authy-authentications");
@@ -263,7 +267,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Yesterday parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Yesterday </returns> 
@@ -280,11 +283,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Yesterday parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Yesterday </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<YesterdayResource>> ReadAsync(ReadYesterdayOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<YesterdayResource>> ReadAsync(ReadYesterdayOptions options, 
+                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -297,7 +300,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="category"> The category </param>
         /// <param name="startDate"> The start_date </param>
@@ -306,7 +308,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Yesterday </returns> 
-        public static ResourceSet<YesterdayResource> Read(string pathAccountSid = null, YesterdayResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<YesterdayResource> Read(string pathAccountSid = null, 
+                                                          YesterdayResource.CategoryEnum category = null, 
+                                                          DateTime? startDate = null, 
+                                                          DateTime? endDate = null, 
+                                                          int? pageSize = null, 
+                                                          long? limit = null, 
+                                                          ITwilioRestClient client = null)
         {
             var options = new ReadYesterdayOptions{PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -316,7 +324,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="category"> The category </param>
         /// <param name="startDate"> The start_date </param>
@@ -325,7 +332,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Yesterday </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<YesterdayResource>> ReadAsync(string pathAccountSid = null, YesterdayResource.CategoryEnum category = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<YesterdayResource>> ReadAsync(string pathAccountSid = null, 
+                                                                                                  YesterdayResource.CategoryEnum category = null, 
+                                                                                                  DateTime? startDate = null, 
+                                                                                                  DateTime? endDate = null, 
+                                                                                                  int? pageSize = null, 
+                                                                                                  long? limit = null, 
+                                                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadYesterdayOptions{PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -335,7 +348,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -355,7 +367,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -376,7 +387,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -397,7 +407,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <summary>
         /// Converts a JSON string into a YesterdayResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> YesterdayResource object represented by the provided JSON </returns> 
         public static YesterdayResource FromJson(string json)

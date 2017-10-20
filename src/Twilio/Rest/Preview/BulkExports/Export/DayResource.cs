@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Day parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Day </returns> 
@@ -54,11 +53,11 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Day parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Day </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DayResource>> ReadAsync(ReadDayOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DayResource>> ReadAsync(ReadDayOptions options, 
+                                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -71,13 +70,15 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathResourceType"> The resource_type </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Day </returns> 
-        public static ResourceSet<DayResource> Read(string pathResourceType, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<DayResource> Read(string pathResourceType, 
+                                                    int? pageSize = null, 
+                                                    long? limit = null, 
+                                                    ITwilioRestClient client = null)
         {
             var options = new ReadDayOptions(pathResourceType){PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -87,13 +88,15 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathResourceType"> The resource_type </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Day </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DayResource>> ReadAsync(string pathResourceType, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DayResource>> ReadAsync(string pathResourceType, 
+                                                                                            int? pageSize = null, 
+                                                                                            long? limit = null, 
+                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadDayOptions(pathResourceType){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -103,7 +106,6 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -123,7 +125,6 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -144,7 +145,6 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -165,7 +165,6 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// Converts a JSON string into a DayResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> DayResource object represented by the provided JSON </returns> 
         public static DayResource FromJson(string json)

@@ -29,7 +29,6 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// Construct a new FetchChannelOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchChannelOptions(string pathServiceSid, string pathSid)
@@ -65,7 +64,6 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// Construct a new DeleteChannelOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteChannelOptions(string pathServiceSid, string pathSid)
@@ -125,7 +123,6 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// Construct a new CreateChannelOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public CreateChannelOptions(string pathServiceSid)
         {
@@ -194,7 +191,6 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// Construct a new ReadChannelOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public ReadChannelOptions(string pathServiceSid)
         {
@@ -263,7 +259,6 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// Construct a new UpdateChannelOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public UpdateChannelOptions(string pathServiceSid, string pathSid)

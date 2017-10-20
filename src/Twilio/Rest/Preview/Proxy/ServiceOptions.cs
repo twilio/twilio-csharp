@@ -27,7 +27,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
         public FetchServiceOptions(string pathSid)
         {
@@ -129,7 +128,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
         public DeleteServiceOptions(string pathSid)
         {
@@ -174,7 +172,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
         public UpdateServiceOptions(string pathSid)
         {

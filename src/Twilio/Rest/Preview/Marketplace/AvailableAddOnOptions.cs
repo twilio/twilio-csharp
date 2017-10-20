@@ -27,7 +27,6 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Construct a new FetchAvailableAddOnOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The unique Available Add-on Sid </param>
         public FetchAvailableAddOnOptions(string pathSid)
         {

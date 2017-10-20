@@ -31,7 +31,6 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Construct a new FetchInstalledAddOnExtensionOptions
         /// </summary>
-        ///
         /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
         /// <param name="pathSid"> The unique Extension Sid </param>
         public FetchInstalledAddOnExtensionOptions(string pathInstalledAddOnSid, string pathSid)
@@ -74,7 +73,6 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Construct a new UpdateInstalledAddOnExtensionOptions
         /// </summary>
-        ///
         /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="enabled"> A Boolean indicating if the Extension will be invoked </param>
@@ -116,7 +114,6 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Construct a new ReadInstalledAddOnExtensionOptions
         /// </summary>
-        ///
         /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
         public ReadInstalledAddOnExtensionOptions(string pathInstalledAddOnSid)
         {

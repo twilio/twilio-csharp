@@ -35,7 +35,6 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Local parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Local </returns> 
@@ -52,11 +51,11 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Local parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Local </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<LocalResource>> ReadAsync(ReadLocalOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<LocalResource>> ReadAsync(ReadLocalOptions options, 
+                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -69,7 +68,6 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathCountryCode"> The country_code </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="areaCode"> The area_code </param>
@@ -93,7 +91,28 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Local </returns> 
-        public static ResourceSet<LocalResource> Read(string pathCountryCode, string pathAccountSid = null, int? areaCode = null, string contains = null, bool? smsEnabled = null, bool? mmsEnabled = null, bool? voiceEnabled = null, bool? excludeAllAddressRequired = null, bool? excludeLocalAddressRequired = null, bool? excludeForeignAddressRequired = null, bool? beta = null, Types.PhoneNumber nearNumber = null, string nearLatLong = null, int? distance = null, string inPostalCode = null, string inRegion = null, string inRateCenter = null, string inLata = null, string inLocality = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<LocalResource> Read(string pathCountryCode, 
+                                                      string pathAccountSid = null, 
+                                                      int? areaCode = null, 
+                                                      string contains = null, 
+                                                      bool? smsEnabled = null, 
+                                                      bool? mmsEnabled = null, 
+                                                      bool? voiceEnabled = null, 
+                                                      bool? excludeAllAddressRequired = null, 
+                                                      bool? excludeLocalAddressRequired = null, 
+                                                      bool? excludeForeignAddressRequired = null, 
+                                                      bool? beta = null, 
+                                                      Types.PhoneNumber nearNumber = null, 
+                                                      string nearLatLong = null, 
+                                                      int? distance = null, 
+                                                      string inPostalCode = null, 
+                                                      string inRegion = null, 
+                                                      string inRateCenter = null, 
+                                                      string inLata = null, 
+                                                      string inLocality = null, 
+                                                      int? pageSize = null, 
+                                                      long? limit = null, 
+                                                      ITwilioRestClient client = null)
         {
             var options = new ReadLocalOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -103,7 +122,6 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathCountryCode"> The country_code </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="areaCode"> The area_code </param>
@@ -127,7 +145,28 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Local </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<LocalResource>> ReadAsync(string pathCountryCode, string pathAccountSid = null, int? areaCode = null, string contains = null, bool? smsEnabled = null, bool? mmsEnabled = null, bool? voiceEnabled = null, bool? excludeAllAddressRequired = null, bool? excludeLocalAddressRequired = null, bool? excludeForeignAddressRequired = null, bool? beta = null, Types.PhoneNumber nearNumber = null, string nearLatLong = null, int? distance = null, string inPostalCode = null, string inRegion = null, string inRateCenter = null, string inLata = null, string inLocality = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<LocalResource>> ReadAsync(string pathCountryCode, 
+                                                                                              string pathAccountSid = null, 
+                                                                                              int? areaCode = null, 
+                                                                                              string contains = null, 
+                                                                                              bool? smsEnabled = null, 
+                                                                                              bool? mmsEnabled = null, 
+                                                                                              bool? voiceEnabled = null, 
+                                                                                              bool? excludeAllAddressRequired = null, 
+                                                                                              bool? excludeLocalAddressRequired = null, 
+                                                                                              bool? excludeForeignAddressRequired = null, 
+                                                                                              bool? beta = null, 
+                                                                                              Types.PhoneNumber nearNumber = null, 
+                                                                                              string nearLatLong = null, 
+                                                                                              int? distance = null, 
+                                                                                              string inPostalCode = null, 
+                                                                                              string inRegion = null, 
+                                                                                              string inRateCenter = null, 
+                                                                                              string inLata = null, 
+                                                                                              string inLocality = null, 
+                                                                                              int? pageSize = null, 
+                                                                                              long? limit = null, 
+                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadLocalOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -137,7 +176,6 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -157,7 +195,6 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -178,7 +215,6 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -199,7 +235,6 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <summary>
         /// Converts a JSON string into a LocalResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> LocalResource object represented by the provided JSON </returns> 
         public static LocalResource FromJson(string json)

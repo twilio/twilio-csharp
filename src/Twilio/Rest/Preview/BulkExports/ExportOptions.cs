@@ -27,7 +27,6 @@ namespace Twilio.Rest.Preview.BulkExports
         /// <summary>
         /// Construct a new FetchExportOptions
         /// </summary>
-        ///
         /// <param name="pathResourceType"> The resource_type </param>
         public FetchExportOptions(string pathResourceType)
         {

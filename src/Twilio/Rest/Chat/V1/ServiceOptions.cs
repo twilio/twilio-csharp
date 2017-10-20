@@ -25,7 +25,6 @@ namespace Twilio.Rest.Chat.V1
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public FetchServiceOptions(string pathSid)
         {
@@ -55,7 +54,6 @@ namespace Twilio.Rest.Chat.V1
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public DeleteServiceOptions(string pathSid)
         {
@@ -85,7 +83,6 @@ namespace Twilio.Rest.Chat.V1
         /// <summary>
         /// Construct a new CreateServiceOptions
         /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
         public CreateServiceOptions(string friendlyName)
         {
@@ -420,7 +417,6 @@ namespace Twilio.Rest.Chat.V1
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateServiceOptions(string pathSid)
         {

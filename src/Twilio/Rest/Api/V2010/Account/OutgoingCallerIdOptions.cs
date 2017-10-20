@@ -28,7 +28,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchOutgoingCallerIdOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique outgoing-caller-id Sid </param>
         public FetchOutgoingCallerIdOptions(string pathSid)
         {
@@ -66,7 +65,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new UpdateOutgoingCallerIdOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Update by unique outgoing-caller-id Sid </param>
         public UpdateOutgoingCallerIdOptions(string pathSid)
         {
@@ -105,7 +103,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new DeleteOutgoingCallerIdOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Delete by unique outgoing-caller-id Sid </param>
         public DeleteOutgoingCallerIdOptions(string pathSid)
         {

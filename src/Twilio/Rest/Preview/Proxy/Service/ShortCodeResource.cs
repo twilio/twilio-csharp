@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Add an existing shortcode to this service to be used as a Proxy Number
         /// </summary>
-        ///
         /// <param name="options"> Create ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns> 
@@ -52,11 +51,11 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Add an existing shortcode to this service to be used as a Proxy Number
         /// </summary>
-        ///
         /// <param name="options"> Create ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<ShortCodeResource> CreateAsync(CreateShortCodeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ShortCodeResource> CreateAsync(CreateShortCodeOptions options, 
+                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -67,7 +66,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Add an existing shortcode to this service to be used as a Proxy Number
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="sid"> Delete by unique shortcode Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -82,12 +80,13 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Add an existing shortcode to this service to be used as a Proxy Number
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="sid"> Delete by unique shortcode Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<ShortCodeResource> CreateAsync(string pathServiceSid, string sid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ShortCodeResource> CreateAsync(string pathServiceSid, 
+                                                                                       string sid, 
+                                                                                       ITwilioRestClient client = null)
         {
             var options = new CreateShortCodeOptions(pathServiceSid, sid);
             return await CreateAsync(options, client);
@@ -108,7 +107,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Delete a shortcode belonging to this service.
         /// </summary>
-        ///
         /// <param name="options"> Delete ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns> 
@@ -123,11 +121,11 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Delete a shortcode belonging to this service.
         /// </summary>
-        ///
         /// <param name="options"> Delete ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteShortCodeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteShortCodeOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -138,7 +136,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Delete a shortcode belonging to this service.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Delete by unique shortcode Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -153,12 +150,13 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Delete a shortcode belonging to this service.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Delete by unique shortcode Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+                                                                          string pathSid, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteShortCodeOptions(pathServiceSid, pathSid);
             return await DeleteAsync(options, client);
@@ -179,7 +177,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Retrieve a list of shortcodes belonging to this service
         /// </summary>
-        ///
         /// <param name="options"> Read ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns> 
@@ -196,11 +193,11 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Retrieve a list of shortcodes belonging to this service
         /// </summary>
-        ///
         /// <param name="options"> Read ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(ReadShortCodeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(ReadShortCodeOptions options, 
+                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -213,13 +210,15 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Retrieve a list of shortcodes belonging to this service
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns> 
-        public static ResourceSet<ShortCodeResource> Read(string pathServiceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<ShortCodeResource> Read(string pathServiceSid, 
+                                                          int? pageSize = null, 
+                                                          long? limit = null, 
+                                                          ITwilioRestClient client = null)
         {
             var options = new ReadShortCodeOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -229,13 +228,15 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Retrieve a list of shortcodes belonging to this service
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(string pathServiceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(string pathServiceSid, 
+                                                                                                  int? pageSize = null, 
+                                                                                                  long? limit = null, 
+                                                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadShortCodeOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -245,7 +246,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -265,7 +265,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -286,7 +285,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -318,7 +316,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Fetch a shortcode belonging to this service
         /// </summary>
-        ///
         /// <param name="options"> Fetch ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns> 
@@ -333,11 +330,11 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Fetch a shortcode belonging to this service
         /// </summary>
-        ///
         /// <param name="options"> Fetch ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(FetchShortCodeOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(FetchShortCodeOptions options, 
+                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -348,7 +345,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Fetch a shortcode belonging to this service
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Fetch by unique shortcode Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -363,12 +359,13 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Fetch a shortcode belonging to this service
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> Fetch by unique shortcode Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(string pathServiceSid, 
+                                                                                      string pathSid, 
+                                                                                      ITwilioRestClient client = null)
         {
             var options = new FetchShortCodeOptions(pathServiceSid, pathSid);
             return await FetchAsync(options, client);
@@ -378,7 +375,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Converts a JSON string into a ShortCodeResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ShortCodeResource object represented by the provided JSON </returns> 
         public static ShortCodeResource FromJson(string json)

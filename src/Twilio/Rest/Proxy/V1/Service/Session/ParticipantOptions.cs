@@ -34,7 +34,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Construct a new FetchParticipantOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Participant. </param>
@@ -82,7 +81,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Construct a new ReadParticipantOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
         public ReadParticipantOptions(string pathServiceSid, string pathSessionSid)
@@ -155,7 +153,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Construct a new CreateParticipantOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
         /// <param name="identifier"> The phone number of this Participant. </param>
@@ -224,7 +221,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Construct a new DeleteParticipantOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Participant. </param>
@@ -288,7 +284,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Construct a new UpdateParticipantOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Participant. </param>

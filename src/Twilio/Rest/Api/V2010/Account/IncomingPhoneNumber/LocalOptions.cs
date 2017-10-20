@@ -153,7 +153,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Construct a new CreateLocalOptions
         /// </summary>
-        ///
         /// <param name="phoneNumber"> The phone_number </param>
         public CreateLocalOptions(Types.PhoneNumber phoneNumber)
         {

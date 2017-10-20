@@ -34,7 +34,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
@@ -49,11 +48,11 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
-        public static async System.Threading.Tasks.Task<TrunkResource> FetchAsync(FetchTrunkOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrunkResource> FetchAsync(FetchTrunkOptions options, 
+                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -64,7 +63,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
@@ -78,11 +76,11 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
-        public static async System.Threading.Tasks.Task<TrunkResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrunkResource> FetchAsync(string pathSid, 
+                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchTrunkOptions(pathSid);
             return await FetchAsync(options, client);
@@ -103,7 +101,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
@@ -118,11 +115,11 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTrunkOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTrunkOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -133,7 +130,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
@@ -147,7 +143,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
@@ -172,7 +167,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
@@ -187,11 +181,11 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
-        public static async System.Threading.Tasks.Task<TrunkResource> CreateAsync(CreateTrunkOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrunkResource> CreateAsync(CreateTrunkOptions options, 
+                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -202,7 +196,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="domainName"> The domain_name </param>
         /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
@@ -211,7 +204,13 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="secure"> The secure </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
-        public static TrunkResource Create(string friendlyName = null, string domainName = null, Uri disasterRecoveryUrl = null, Twilio.Http.HttpMethod disasterRecoveryMethod = null, string recording = null, bool? secure = null, ITwilioRestClient client = null)
+        public static TrunkResource Create(string friendlyName = null, 
+                                           string domainName = null, 
+                                           Uri disasterRecoveryUrl = null, 
+                                           Twilio.Http.HttpMethod disasterRecoveryMethod = null, 
+                                           string recording = null, 
+                                           bool? secure = null, 
+                                           ITwilioRestClient client = null)
         {
             var options = new CreateTrunkOptions{FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure};
             return Create(options, client);
@@ -221,7 +220,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="domainName"> The domain_name </param>
         /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
@@ -230,7 +228,13 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="secure"> The secure </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
-        public static async System.Threading.Tasks.Task<TrunkResource> CreateAsync(string friendlyName = null, string domainName = null, Uri disasterRecoveryUrl = null, Twilio.Http.HttpMethod disasterRecoveryMethod = null, string recording = null, bool? secure = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrunkResource> CreateAsync(string friendlyName = null, 
+                                                                                   string domainName = null, 
+                                                                                   Uri disasterRecoveryUrl = null, 
+                                                                                   Twilio.Http.HttpMethod disasterRecoveryMethod = null, 
+                                                                                   string recording = null, 
+                                                                                   bool? secure = null, 
+                                                                                   ITwilioRestClient client = null)
         {
             var options = new CreateTrunkOptions{FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure};
             return await CreateAsync(options, client);
@@ -251,7 +255,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
@@ -268,11 +271,11 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TrunkResource>> ReadAsync(ReadTrunkOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TrunkResource>> ReadAsync(ReadTrunkOptions options, 
+                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -285,12 +288,13 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
-        public static ResourceSet<TrunkResource> Read(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<TrunkResource> Read(int? pageSize = null, 
+                                                      long? limit = null, 
+                                                      ITwilioRestClient client = null)
         {
             var options = new ReadTrunkOptions{PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -300,12 +304,13 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TrunkResource>> ReadAsync(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<TrunkResource>> ReadAsync(int? pageSize = null, 
+                                                                                              long? limit = null, 
+                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadTrunkOptions{PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -315,7 +320,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -335,7 +339,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -356,7 +359,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -388,7 +390,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="options"> Update Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
@@ -403,11 +404,11 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="options"> Update Trunk parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
-        public static async System.Threading.Tasks.Task<TrunkResource> UpdateAsync(UpdateTrunkOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrunkResource> UpdateAsync(UpdateTrunkOptions options, 
+                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -418,7 +419,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="domainName"> The domain_name </param>
@@ -428,7 +428,14 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="secure"> The secure </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
-        public static TrunkResource Update(string pathSid, string friendlyName = null, string domainName = null, Uri disasterRecoveryUrl = null, Twilio.Http.HttpMethod disasterRecoveryMethod = null, string recording = null, bool? secure = null, ITwilioRestClient client = null)
+        public static TrunkResource Update(string pathSid, 
+                                           string friendlyName = null, 
+                                           string domainName = null, 
+                                           Uri disasterRecoveryUrl = null, 
+                                           Twilio.Http.HttpMethod disasterRecoveryMethod = null, 
+                                           string recording = null, 
+                                           bool? secure = null, 
+                                           ITwilioRestClient client = null)
         {
             var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure};
             return Update(options, client);
@@ -438,7 +445,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="domainName"> The domain_name </param>
@@ -448,7 +454,14 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="secure"> The secure </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
-        public static async System.Threading.Tasks.Task<TrunkResource> UpdateAsync(string pathSid, string friendlyName = null, string domainName = null, Uri disasterRecoveryUrl = null, Twilio.Http.HttpMethod disasterRecoveryMethod = null, string recording = null, bool? secure = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TrunkResource> UpdateAsync(string pathSid, 
+                                                                                   string friendlyName = null, 
+                                                                                   string domainName = null, 
+                                                                                   Uri disasterRecoveryUrl = null, 
+                                                                                   Twilio.Http.HttpMethod disasterRecoveryMethod = null, 
+                                                                                   string recording = null, 
+                                                                                   bool? secure = null, 
+                                                                                   ITwilioRestClient client = null)
         {
             var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure};
             return await UpdateAsync(options, client);
@@ -458,7 +471,6 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// Converts a JSON string into a TrunkResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> TrunkResource object represented by the provided JSON </returns> 
         public static TrunkResource FromJson(string json)

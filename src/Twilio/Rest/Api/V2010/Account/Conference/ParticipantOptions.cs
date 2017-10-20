@@ -33,7 +33,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Construct a new FetchParticipantOptions
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathCallSid"> The call_sid </param>
         public FetchParticipantOptions(string pathConferenceSid, string pathCallSid)
@@ -97,7 +96,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Construct a new UpdateParticipantOptions
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathCallSid"> The call_sid </param>
         public UpdateParticipantOptions(string pathConferenceSid, string pathCallSid)
@@ -275,7 +273,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Construct a new CreateParticipantOptions
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The conference_sid </param>
         /// <param name="from"> The from </param>
         /// <param name="to"> The to </param>
@@ -459,7 +456,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Construct a new DeleteParticipantOptions
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathCallSid"> The call_sid </param>
         public DeleteParticipantOptions(string pathConferenceSid, string pathCallSid)
@@ -503,7 +499,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Construct a new ReadParticipantOptions
         /// </summary>
-        ///
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         public ReadParticipantOptions(string pathConferenceSid)
         {

@@ -28,7 +28,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique short-code Sid </param>
         public FetchShortCodeOptions(string pathSid)
         {
@@ -86,7 +85,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new UpdateShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateShortCodeOptions(string pathSid)
         {

@@ -60,14 +60,18 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new CreateAddressOptions
         /// </summary>
-        ///
         /// <param name="customerName"> The customer_name </param>
         /// <param name="street"> The street </param>
         /// <param name="city"> The city </param>
         /// <param name="region"> The region </param>
         /// <param name="postalCode"> The postal_code </param>
         /// <param name="isoCountry"> The iso_country </param>
-        public CreateAddressOptions(string customerName, string street, string city, string region, string postalCode, string isoCountry)
+        public CreateAddressOptions(string customerName, 
+                                    string street, 
+                                    string city, 
+                                    string region, 
+                                    string postalCode, 
+                                    string isoCountry)
         {
             CustomerName = customerName;
             Street = street;
@@ -149,7 +153,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new DeleteAddressOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public DeleteAddressOptions(string pathSid)
         {
@@ -183,7 +186,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchAddressOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public FetchAddressOptions(string pathSid)
         {
@@ -249,7 +251,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new UpdateAddressOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateAddressOptions(string pathSid)
         {

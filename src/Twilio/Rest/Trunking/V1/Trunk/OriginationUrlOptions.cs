@@ -28,7 +28,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new FetchOriginationUrlOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchOriginationUrlOptions(string pathTrunkSid, string pathSid)
@@ -64,7 +63,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new DeleteOriginationUrlOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteOriginationUrlOptions(string pathTrunkSid, string pathSid)
@@ -116,14 +114,18 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new CreateOriginationUrlOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="weight"> The weight </param>
         /// <param name="priority"> The priority </param>
         /// <param name="enabled"> The enabled </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="sipUrl"> The sip_url </param>
-        public CreateOriginationUrlOptions(string pathTrunkSid, int? weight, int? priority, bool? enabled, string friendlyName, Uri sipUrl)
+        public CreateOriginationUrlOptions(string pathTrunkSid, 
+                                           int? weight, 
+                                           int? priority, 
+                                           bool? enabled, 
+                                           string friendlyName, 
+                                           Uri sipUrl)
         {
             PathTrunkSid = pathTrunkSid;
             Weight = weight;
@@ -181,7 +183,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new ReadOriginationUrlOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         public ReadOriginationUrlOptions(string pathTrunkSid)
         {
@@ -240,7 +241,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new UpdateOriginationUrlOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pathSid"> The sid </param>
         public UpdateOriginationUrlOptions(string pathTrunkSid, string pathSid)

@@ -29,7 +29,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchConnectAppOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique connect-app Sid </param>
         public FetchConnectAppOptions(string pathSid)
         {
@@ -95,7 +94,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new UpdateConnectAppOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateConnectAppOptions(string pathSid)
         {

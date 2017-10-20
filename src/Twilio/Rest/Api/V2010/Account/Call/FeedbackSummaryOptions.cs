@@ -44,7 +44,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new CreateFeedbackSummaryOptions
         /// </summary>
-        ///
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
         public CreateFeedbackSummaryOptions(DateTime? startDate, DateTime? endDate)
@@ -105,7 +104,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new FetchFeedbackSummaryOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public FetchFeedbackSummaryOptions(string pathSid)
         {
@@ -139,7 +137,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new DeleteFeedbackSummaryOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public DeleteFeedbackSummaryOptions(string pathSid)
         {

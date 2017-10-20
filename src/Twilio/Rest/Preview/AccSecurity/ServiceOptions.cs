@@ -31,7 +31,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Construct a new CreateServiceOptions
         /// </summary>
-        ///
         /// <param name="name"> Friendly name of the service </param>
         public CreateServiceOptions(string name)
         {
@@ -74,7 +73,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Verification Service Instance SID. </param>
         public FetchServiceOptions(string pathSid)
         {
@@ -138,7 +136,6 @@ namespace Twilio.Rest.Preview.AccSecurity
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Service Sid. </param>
         public UpdateServiceOptions(string pathSid)
         {

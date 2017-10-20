@@ -48,7 +48,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new CreateValidationRequestOptions
         /// </summary>
-        ///
         /// <param name="phoneNumber"> The phone_number </param>
         public CreateValidationRequestOptions(Types.PhoneNumber phoneNumber)
         {

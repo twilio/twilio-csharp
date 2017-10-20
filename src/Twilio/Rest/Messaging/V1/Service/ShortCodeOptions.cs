@@ -30,7 +30,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Construct a new CreateShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="shortCodeSid"> The short_code_sid </param>
         public CreateShortCodeOptions(string pathServiceSid, string shortCodeSid)
@@ -73,7 +72,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Construct a new DeleteShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteShortCodeOptions(string pathServiceSid, string pathSid)
@@ -107,7 +105,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Construct a new ReadShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public ReadShortCodeOptions(string pathServiceSid)
         {
@@ -148,7 +145,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Construct a new FetchShortCodeOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchShortCodeOptions(string pathServiceSid, string pathSid)

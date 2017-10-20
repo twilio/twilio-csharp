@@ -31,7 +31,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new FetchKeyOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
         public FetchKeyOptions(string pathFleetSid, string pathSid)
@@ -71,7 +70,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new DeleteKeyOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
         public DeleteKeyOptions(string pathFleetSid, string pathSid)
@@ -114,7 +112,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new CreateKeyOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         public CreateKeyOptions(string pathFleetSid)
         {
@@ -161,7 +158,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new ReadKeyOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         public ReadKeyOptions(string pathFleetSid)
         {
@@ -217,7 +213,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <summary>
         /// Construct a new UpdateKeyOptions
         /// </summary>
-        ///
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Key. </param>
         public UpdateKeyOptions(string pathFleetSid, string pathSid)

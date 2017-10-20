@@ -34,7 +34,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch WorkersStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkersStatistics </returns> 
@@ -49,11 +48,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch WorkersStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkersStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(FetchWorkersStatisticsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(FetchWorkersStatisticsOptions options, 
+                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -64,7 +63,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
@@ -75,7 +73,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="taskChannel"> The task_channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkersStatistics </returns> 
-        public static WorkersStatisticsResource Fetch(string pathWorkspaceSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, string taskQueueSid = null, string taskQueueName = null, string friendlyName = null, string taskChannel = null, ITwilioRestClient client = null)
+        public static WorkersStatisticsResource Fetch(string pathWorkspaceSid, 
+                                                      int? minutes = null, 
+                                                      DateTime? startDate = null, 
+                                                      DateTime? endDate = null, 
+                                                      string taskQueueSid = null, 
+                                                      string taskQueueName = null, 
+                                                      string friendlyName = null, 
+                                                      string taskChannel = null, 
+                                                      ITwilioRestClient client = null)
         {
             var options = new FetchWorkersStatisticsOptions(pathWorkspaceSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, FriendlyName = friendlyName, TaskChannel = taskChannel};
             return Fetch(options, client);
@@ -85,7 +91,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="minutes"> The minutes </param>
         /// <param name="startDate"> The start_date </param>
@@ -96,7 +101,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="taskChannel"> The task_channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkersStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(string pathWorkspaceSid, int? minutes = null, DateTime? startDate = null, DateTime? endDate = null, string taskQueueSid = null, string taskQueueName = null, string friendlyName = null, string taskChannel = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(string pathWorkspaceSid, 
+                                                                                              int? minutes = null, 
+                                                                                              DateTime? startDate = null, 
+                                                                                              DateTime? endDate = null, 
+                                                                                              string taskQueueSid = null, 
+                                                                                              string taskQueueName = null, 
+                                                                                              string friendlyName = null, 
+                                                                                              string taskChannel = null, 
+                                                                                              ITwilioRestClient client = null)
         {
             var options = new FetchWorkersStatisticsOptions(pathWorkspaceSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, FriendlyName = friendlyName, TaskChannel = taskChannel};
             return await FetchAsync(options, client);
@@ -106,7 +119,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// Converts a JSON string into a WorkersStatisticsResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> WorkersStatisticsResource object represented by the provided JSON </returns> 
         public static WorkersStatisticsResource FromJson(string json)

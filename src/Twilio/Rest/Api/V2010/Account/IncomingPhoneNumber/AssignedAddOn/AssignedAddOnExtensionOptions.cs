@@ -38,7 +38,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         /// <summary>
         /// Construct a new FetchAssignedAddOnExtensionOptions
         /// </summary>
-        ///
         /// <param name="pathResourceSid"> The resource_sid </param>
         /// <param name="pathAssignedAddOnSid"> The assigned_add_on_sid </param>
         /// <param name="pathSid"> The unique Extension Sid </param>
@@ -82,7 +81,6 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         /// <summary>
         /// Construct a new ReadAssignedAddOnExtensionOptions
         /// </summary>
-        ///
         /// <param name="pathResourceSid"> The resource_sid </param>
         /// <param name="pathAssignedAddOnSid"> The assigned_add_on_sid </param>
         public ReadAssignedAddOnExtensionOptions(string pathResourceSid, string pathAssignedAddOnSid)

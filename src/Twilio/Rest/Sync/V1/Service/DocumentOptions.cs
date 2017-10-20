@@ -30,7 +30,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new FetchDocumentOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchDocumentOptions(string pathServiceSid, string pathSid)
@@ -68,7 +67,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new DeleteDocumentOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteDocumentOptions(string pathServiceSid, string pathSid)
@@ -110,7 +108,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new CreateDocumentOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public CreateDocumentOptions(string pathServiceSid)
         {
@@ -152,7 +149,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new ReadDocumentOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public ReadDocumentOptions(string pathServiceSid)
         {
@@ -197,7 +193,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new UpdateDocumentOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="data"> The data </param>

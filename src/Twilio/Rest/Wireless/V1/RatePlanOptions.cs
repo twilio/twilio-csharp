@@ -49,7 +49,6 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Construct a new FetchRatePlanOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public FetchRatePlanOptions(string pathSid)
         {
@@ -214,7 +213,6 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Construct a new UpdateRatePlanOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateRatePlanOptions(string pathSid)
         {
@@ -256,7 +254,6 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Construct a new DeleteRatePlanOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public DeleteRatePlanOptions(string pathSid)
         {

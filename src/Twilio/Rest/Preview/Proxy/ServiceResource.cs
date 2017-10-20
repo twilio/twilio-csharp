@@ -37,7 +37,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Fetch a specific Service.
         /// </summary>
-        ///
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -52,11 +51,11 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Fetch a specific Service.
         /// </summary>
-        ///
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, 
+                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -67,7 +66,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Fetch a specific Service.
         /// </summary>
-        ///
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -81,11 +79,11 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Fetch a specific Service.
         /// </summary>
-        ///
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid, 
+                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(pathSid);
             return await FetchAsync(options, client);
@@ -106,7 +104,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Retrieve a list of all your Services.
         /// </summary>
-        ///
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -123,11 +120,11 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Retrieve a list of all your Services.
         /// </summary>
-        ///
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, 
+                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -140,12 +137,13 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Retrieve a list of all your Services.
         /// </summary>
-        ///
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ResourceSet<ServiceResource> Read(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<ServiceResource> Read(int? pageSize = null, 
+                                                        long? limit = null, 
+                                                        ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -155,12 +153,13 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Retrieve a list of all your Services.
         /// </summary>
-        ///
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null, 
+                                                                                                long? limit = null, 
+                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -170,7 +169,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -190,7 +188,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -211,7 +208,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -243,7 +239,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Create a new Service to hold the number pool and configuration.
         /// </summary>
-        ///
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -258,11 +253,11 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Create a new Service to hold the number pool and configuration.
         /// </summary>
-        ///
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, 
+                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -273,13 +268,15 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Create a new Service to hold the number pool and configuration.
         /// </summary>
-        ///
         /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <param name="autoCreate"> Boolean flag specifying whether to auto-create threads. </param>
         /// <param name="callbackUrl"> URL Twilio will request for callbacks. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Create(string friendlyName = null, bool? autoCreate = null, Uri callbackUrl = null, ITwilioRestClient client = null)
+        public static ServiceResource Create(string friendlyName = null, 
+                                             bool? autoCreate = null, 
+                                             Uri callbackUrl = null, 
+                                             ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions{FriendlyName = friendlyName, AutoCreate = autoCreate, CallbackUrl = callbackUrl};
             return Create(options, client);
@@ -289,13 +286,15 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Create a new Service to hold the number pool and configuration.
         /// </summary>
-        ///
         /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <param name="autoCreate"> Boolean flag specifying whether to auto-create threads. </param>
         /// <param name="callbackUrl"> URL Twilio will request for callbacks. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null, bool? autoCreate = null, Uri callbackUrl = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null, 
+                                                                                     bool? autoCreate = null, 
+                                                                                     Uri callbackUrl = null, 
+                                                                                     ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions{FriendlyName = friendlyName, AutoCreate = autoCreate, CallbackUrl = callbackUrl};
             return await CreateAsync(options, client);
@@ -316,7 +315,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Delete a specific Service.
         /// </summary>
-        ///
         /// <param name="options"> Delete Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -331,11 +329,11 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Delete a specific Service.
         /// </summary>
-        ///
         /// <param name="options"> Delete Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -346,7 +344,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Delete a specific Service.
         /// </summary>
-        ///
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -360,7 +357,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Delete a specific Service.
         /// </summary>
-        ///
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
@@ -385,7 +381,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Update an s access to a specific Sync List.
         /// </summary>
-        ///
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -400,11 +395,11 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Update an s access to a specific Sync List.
         /// </summary>
-        ///
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options, 
+                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -415,14 +410,17 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Update an s access to a specific Sync List.
         /// </summary>
-        ///
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
         /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <param name="autoCreate"> Boolean flag specifying whether to auto-create threads. </param>
         /// <param name="callbackUrl"> URL Twilio will request for callbacks. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Update(string pathSid, string friendlyName = null, bool? autoCreate = null, Uri callbackUrl = null, ITwilioRestClient client = null)
+        public static ServiceResource Update(string pathSid, 
+                                             string friendlyName = null, 
+                                             bool? autoCreate = null, 
+                                             Uri callbackUrl = null, 
+                                             ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, AutoCreate = autoCreate, CallbackUrl = callbackUrl};
             return Update(options, client);
@@ -432,14 +430,17 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Update an s access to a specific Sync List.
         /// </summary>
-        ///
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
         /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <param name="autoCreate"> Boolean flag specifying whether to auto-create threads. </param>
         /// <param name="callbackUrl"> URL Twilio will request for callbacks. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, string friendlyName = null, bool? autoCreate = null, Uri callbackUrl = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, 
+                                                                                     string friendlyName = null, 
+                                                                                     bool? autoCreate = null, 
+                                                                                     Uri callbackUrl = null, 
+                                                                                     ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, AutoCreate = autoCreate, CallbackUrl = callbackUrl};
             return await UpdateAsync(options, client);
@@ -449,7 +450,6 @@ namespace Twilio.Rest.Preview.Proxy
         /// <summary>
         /// Converts a JSON string into a ServiceResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> ServiceResource object represented by the provided JSON </returns> 
         public static ServiceResource FromJson(string json)

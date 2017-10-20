@@ -89,7 +89,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new CreateMessageOptions
         /// </summary>
-        ///
         /// <param name="to"> The phone number to receive the message </param>
         public CreateMessageOptions(Types.PhoneNumber to)
         {
@@ -204,7 +203,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new DeleteMessageOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The message to delete </param>
         public DeleteMessageOptions(string pathSid)
         {
@@ -238,7 +236,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchMessageOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique message Sid </param>
         public FetchMessageOptions(string pathSid)
         {
@@ -348,7 +345,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new UpdateMessageOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The message to redact </param>
         /// <param name="body"> The body </param>
         public UpdateMessageOptions(string pathSid, string body)

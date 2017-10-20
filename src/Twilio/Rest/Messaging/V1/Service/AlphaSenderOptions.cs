@@ -30,7 +30,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Construct a new CreateAlphaSenderOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="alphaSender"> The alpha_sender </param>
         public CreateAlphaSenderOptions(string pathServiceSid, string alphaSender)
@@ -69,7 +68,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Construct a new ReadAlphaSenderOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public ReadAlphaSenderOptions(string pathServiceSid)
         {
@@ -110,7 +108,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Construct a new FetchAlphaSenderOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchAlphaSenderOptions(string pathServiceSid, string pathSid)
@@ -148,7 +145,6 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Construct a new DeleteAlphaSenderOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteAlphaSenderOptions(string pathServiceSid, string pathSid)

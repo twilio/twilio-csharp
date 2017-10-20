@@ -39,7 +39,6 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Construct a new CreateInstalledAddOnOptions
         /// </summary>
-        ///
         /// <param name="availableAddOnSid"> A string that uniquely identifies the Add-on to install </param>
         /// <param name="acceptTermsOfService"> A boolean reflecting your acceptance of the Terms of Service </param>
         public CreateInstalledAddOnOptions(string availableAddOnSid, bool? acceptTermsOfService)
@@ -94,7 +93,6 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Construct a new DeleteInstalledAddOnOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The Installed Add-on Sid to delete </param>
         public DeleteInstalledAddOnOptions(string pathSid)
         {
@@ -127,7 +125,6 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Construct a new FetchInstalledAddOnOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The unique Installed Add-on Sid </param>
         public FetchInstalledAddOnOptions(string pathSid)
         {
@@ -168,7 +165,6 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Construct a new UpdateInstalledAddOnOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateInstalledAddOnOptions(string pathSid)
         {

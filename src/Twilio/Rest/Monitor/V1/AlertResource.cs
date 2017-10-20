@@ -34,7 +34,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Alert parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Alert </returns> 
@@ -49,11 +48,11 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Alert parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns> 
-        public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(FetchAlertOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(FetchAlertOptions options, 
+                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -64,7 +63,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Alert </returns> 
@@ -78,11 +76,11 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns> 
-        public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(string pathSid, 
+                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchAlertOptions(pathSid);
             return await FetchAsync(options, client);
@@ -103,7 +101,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete Alert parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Alert </returns> 
@@ -118,11 +115,11 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete Alert parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAlertOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAlertOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -133,7 +130,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Alert </returns> 
@@ -147,7 +143,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns> 
@@ -172,7 +167,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Alert parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Alert </returns> 
@@ -189,11 +183,11 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Alert parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AlertResource>> ReadAsync(ReadAlertOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AlertResource>> ReadAsync(ReadAlertOptions options, 
+                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -206,7 +200,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="logLevel"> The log_level </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
@@ -214,7 +207,12 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Alert </returns> 
-        public static ResourceSet<AlertResource> Read(string logLevel = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<AlertResource> Read(string logLevel = null, 
+                                                      DateTime? startDate = null, 
+                                                      DateTime? endDate = null, 
+                                                      int? pageSize = null, 
+                                                      long? limit = null, 
+                                                      ITwilioRestClient client = null)
         {
             var options = new ReadAlertOptions{LogLevel = logLevel, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -224,7 +222,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="logLevel"> The log_level </param>
         /// <param name="startDate"> The start_date </param>
         /// <param name="endDate"> The end_date </param>
@@ -232,7 +229,12 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AlertResource>> ReadAsync(string logLevel = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<AlertResource>> ReadAsync(string logLevel = null, 
+                                                                                              DateTime? startDate = null, 
+                                                                                              DateTime? endDate = null, 
+                                                                                              int? pageSize = null, 
+                                                                                              long? limit = null, 
+                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadAlertOptions{LogLevel = logLevel, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -242,7 +244,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -262,7 +263,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -283,7 +283,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -304,7 +303,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// Converts a JSON string into a AlertResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> AlertResource object represented by the provided JSON </returns> 
         public static AlertResource FromJson(string json)

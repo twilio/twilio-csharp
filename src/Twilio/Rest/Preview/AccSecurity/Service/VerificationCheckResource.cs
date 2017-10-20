@@ -28,6 +28,10 @@ namespace Twilio.Rest.Preview.AccSecurity.Service
         {
             private ChannelEnum(string value) : base(value) {}
             public ChannelEnum() {}
+            public static implicit operator ChannelEnum(string value)
+            {
+                return new ChannelEnum(value);
+            }
 
             public static readonly ChannelEnum Sms = new ChannelEnum("sms");
             public static readonly ChannelEnum Call = new ChannelEnum("call");
@@ -47,11 +51,11 @@ namespace Twilio.Rest.Preview.AccSecurity.Service
         /// <summary>
         /// challenge a specific Verification Check.
         /// </summary>
-        ///
         /// <param name="options"> Create VerificationCheck parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of VerificationCheck </returns> 
-        public static VerificationCheckResource Create(CreateVerificationCheckOptions options, ITwilioRestClient client = null)
+        public static VerificationCheckResource Create(CreateVerificationCheckOptions options, 
+                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
@@ -62,11 +66,11 @@ namespace Twilio.Rest.Preview.AccSecurity.Service
         /// <summary>
         /// challenge a specific Verification Check.
         /// </summary>
-        ///
         /// <param name="options"> Create VerificationCheck parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationCheck </returns> 
-        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(CreateVerificationCheckOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(CreateVerificationCheckOptions options, 
+                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -77,13 +81,15 @@ namespace Twilio.Rest.Preview.AccSecurity.Service
         /// <summary>
         /// challenge a specific Verification Check.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="code"> The verification string </param>
         /// <param name="to"> To phonenumber </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of VerificationCheck </returns> 
-        public static VerificationCheckResource Create(string pathServiceSid, string code, string to = null, ITwilioRestClient client = null)
+        public static VerificationCheckResource Create(string pathServiceSid, 
+                                                       string code, 
+                                                       string to = null, 
+                                                       ITwilioRestClient client = null)
         {
             var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to};
             return Create(options, client);
@@ -93,13 +99,15 @@ namespace Twilio.Rest.Preview.AccSecurity.Service
         /// <summary>
         /// challenge a specific Verification Check.
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="code"> The verification string </param>
         /// <param name="to"> To phonenumber </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationCheck </returns> 
-        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(string pathServiceSid, string code, string to = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(string pathServiceSid, 
+                                                                                               string code, 
+                                                                                               string to = null, 
+                                                                                               ITwilioRestClient client = null)
         {
             var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to};
             return await CreateAsync(options, client);
@@ -109,7 +117,6 @@ namespace Twilio.Rest.Preview.AccSecurity.Service
         /// <summary>
         /// Converts a JSON string into a VerificationCheckResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> VerificationCheckResource object represented by the provided JSON </returns> 
         public static VerificationCheckResource FromJson(string json)

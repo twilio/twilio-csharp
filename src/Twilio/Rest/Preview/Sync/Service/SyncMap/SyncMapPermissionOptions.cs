@@ -35,7 +35,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <summary>
         /// Construct a new FetchSyncMapPermissionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
@@ -80,7 +79,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <summary>
         /// Construct a new DeleteSyncMapPermissionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
@@ -121,7 +119,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <summary>
         /// Construct a new ReadSyncMapPermissionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         public ReadSyncMapPermissionOptions(string pathServiceSid, string pathMapSid)
@@ -181,14 +178,18 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <summary>
         /// Construct a new UpdateSyncMapPermissionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Sync Service Instance SID. </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
         /// <param name="read"> Read access. </param>
         /// <param name="write"> Write access. </param>
         /// <param name="manage"> Manage access. </param>
-        public UpdateSyncMapPermissionOptions(string pathServiceSid, string pathMapSid, string pathIdentity, bool? read, bool? write, bool? manage)
+        public UpdateSyncMapPermissionOptions(string pathServiceSid, 
+                                              string pathMapSid, 
+                                              string pathIdentity, 
+                                              bool? read, 
+                                              bool? write, 
+                                              bool? manage)
         {
             PathServiceSid = pathServiceSid;
             PathMapSid = pathMapSid;

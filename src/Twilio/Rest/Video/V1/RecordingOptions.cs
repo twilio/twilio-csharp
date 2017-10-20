@@ -25,7 +25,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// Construct a new FetchRecordingOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public FetchRecordingOptions(string pathSid)
         {
@@ -129,7 +128,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// Construct a new DeleteRecordingOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public DeleteRecordingOptions(string pathSid)
         {

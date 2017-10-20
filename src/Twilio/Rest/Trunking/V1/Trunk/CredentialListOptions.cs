@@ -28,7 +28,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new FetchCredentialListOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchCredentialListOptions(string pathTrunkSid, string pathSid)
@@ -64,7 +63,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new DeleteCredentialListOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteCredentialListOptions(string pathTrunkSid, string pathSid)
@@ -100,7 +98,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new CreateCredentialListOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="credentialListSid"> The credential_list_sid </param>
         public CreateCredentialListOptions(string pathTrunkSid, string credentialListSid)
@@ -137,7 +134,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Construct a new ReadCredentialListOptions
         /// </summary>
-        ///
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         public ReadCredentialListOptions(string pathTrunkSid)
         {

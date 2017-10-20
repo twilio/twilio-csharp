@@ -25,7 +25,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// Construct a new FetchRoomOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public FetchRoomOptions(string pathSid)
         {
@@ -221,7 +220,6 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// Construct a new UpdateRoomOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="status"> The status </param>
         public UpdateRoomOptions(string pathSid, RoomResource.RoomStatusEnum status)

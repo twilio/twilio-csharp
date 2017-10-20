@@ -27,6 +27,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         {
             private QueryResultOrderEnum(string value) : base(value) {}
             public QueryResultOrderEnum() {}
+            public static implicit operator QueryResultOrderEnum(string value)
+            {
+                return new QueryResultOrderEnum(value);
+            }
 
             public static readonly QueryResultOrderEnum Asc = new QueryResultOrderEnum("asc");
             public static readonly QueryResultOrderEnum Desc = new QueryResultOrderEnum("desc");
@@ -36,6 +40,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         {
             private QueryFromBoundTypeEnum(string value) : base(value) {}
             public QueryFromBoundTypeEnum() {}
+            public static implicit operator QueryFromBoundTypeEnum(string value)
+            {
+                return new QueryFromBoundTypeEnum(value);
+            }
 
             public static readonly QueryFromBoundTypeEnum Inclusive = new QueryFromBoundTypeEnum("inclusive");
             public static readonly QueryFromBoundTypeEnum Exclusive = new QueryFromBoundTypeEnum("exclusive");
@@ -55,7 +63,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch SyncMapItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
@@ -70,11 +77,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch SyncMapItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
-        public static async System.Threading.Tasks.Task<SyncMapItemResource> FetchAsync(FetchSyncMapItemOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncMapItemResource> FetchAsync(FetchSyncMapItemOptions options, 
+                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -85,13 +92,15 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
-        public static SyncMapItemResource Fetch(string pathServiceSid, string pathMapSid, string pathKey, ITwilioRestClient client = null)
+        public static SyncMapItemResource Fetch(string pathServiceSid, 
+                                                string pathMapSid, 
+                                                string pathKey, 
+                                                ITwilioRestClient client = null)
         {
             var options = new FetchSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey);
             return Fetch(options, client);
@@ -101,13 +110,15 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
-        public static async System.Threading.Tasks.Task<SyncMapItemResource> FetchAsync(string pathServiceSid, string pathMapSid, string pathKey, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncMapItemResource> FetchAsync(string pathServiceSid, 
+                                                                                        string pathMapSid, 
+                                                                                        string pathKey, 
+                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey);
             return await FetchAsync(options, client);
@@ -128,7 +139,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete SyncMapItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
@@ -143,11 +153,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete SyncMapItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncMapItemOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncMapItemOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -158,7 +168,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
@@ -174,13 +183,15 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathMapSid, string pathKey, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+                                                                          string pathMapSid, 
+                                                                          string pathKey, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey);
             return await DeleteAsync(options, client);
@@ -201,7 +212,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create SyncMapItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
@@ -216,11 +226,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create SyncMapItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
-        public static async System.Threading.Tasks.Task<SyncMapItemResource> CreateAsync(CreateSyncMapItemOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncMapItemResource> CreateAsync(CreateSyncMapItemOptions options, 
+                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -231,14 +241,17 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="key"> The key </param>
         /// <param name="data"> The data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
-        public static SyncMapItemResource Create(string pathServiceSid, string pathMapSid, string key, object data, ITwilioRestClient client = null)
+        public static SyncMapItemResource Create(string pathServiceSid, 
+                                                 string pathMapSid, 
+                                                 string key, 
+                                                 object data, 
+                                                 ITwilioRestClient client = null)
         {
             var options = new CreateSyncMapItemOptions(pathServiceSid, pathMapSid, key, data);
             return Create(options, client);
@@ -248,14 +261,17 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="key"> The key </param>
         /// <param name="data"> The data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
-        public static async System.Threading.Tasks.Task<SyncMapItemResource> CreateAsync(string pathServiceSid, string pathMapSid, string key, object data, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncMapItemResource> CreateAsync(string pathServiceSid, 
+                                                                                         string pathMapSid, 
+                                                                                         string key, 
+                                                                                         object data, 
+                                                                                         ITwilioRestClient client = null)
         {
             var options = new CreateSyncMapItemOptions(pathServiceSid, pathMapSid, key, data);
             return await CreateAsync(options, client);
@@ -276,7 +292,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read SyncMapItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
@@ -293,11 +308,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read SyncMapItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapItemResource>> ReadAsync(ReadSyncMapItemOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapItemResource>> ReadAsync(ReadSyncMapItemOptions options, 
+                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -310,7 +325,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="order"> The order </param>
@@ -320,7 +334,14 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
-        public static ResourceSet<SyncMapItemResource> Read(string pathServiceSid, string pathMapSid, SyncMapItemResource.QueryResultOrderEnum order = null, string from = null, SyncMapItemResource.QueryFromBoundTypeEnum bounds = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<SyncMapItemResource> Read(string pathServiceSid, 
+                                                            string pathMapSid, 
+                                                            SyncMapItemResource.QueryResultOrderEnum order = null, 
+                                                            string from = null, 
+                                                            SyncMapItemResource.QueryFromBoundTypeEnum bounds = null, 
+                                                            int? pageSize = null, 
+                                                            long? limit = null, 
+                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSyncMapItemOptions(pathServiceSid, pathMapSid){Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -330,7 +351,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="order"> The order </param>
@@ -340,7 +360,14 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapItemResource>> ReadAsync(string pathServiceSid, string pathMapSid, SyncMapItemResource.QueryResultOrderEnum order = null, string from = null, SyncMapItemResource.QueryFromBoundTypeEnum bounds = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapItemResource>> ReadAsync(string pathServiceSid, 
+                                                                                                    string pathMapSid, 
+                                                                                                    SyncMapItemResource.QueryResultOrderEnum order = null, 
+                                                                                                    string from = null, 
+                                                                                                    SyncMapItemResource.QueryFromBoundTypeEnum bounds = null, 
+                                                                                                    int? pageSize = null, 
+                                                                                                    long? limit = null, 
+                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSyncMapItemOptions(pathServiceSid, pathMapSid){Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -350,7 +377,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -370,7 +396,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -391,7 +416,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -423,7 +447,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="options"> Update SyncMapItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
@@ -438,11 +461,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="options"> Update SyncMapItem parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
-        public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(UpdateSyncMapItemOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(UpdateSyncMapItemOptions options, 
+                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -453,14 +476,17 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
         /// <param name="data"> The data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
-        public static SyncMapItemResource Update(string pathServiceSid, string pathMapSid, string pathKey, object data, ITwilioRestClient client = null)
+        public static SyncMapItemResource Update(string pathServiceSid, 
+                                                 string pathMapSid, 
+                                                 string pathKey, 
+                                                 object data, 
+                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey, data);
             return Update(options, client);
@@ -470,14 +496,17 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
         /// <param name="data"> The data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
-        public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(string pathServiceSid, string pathMapSid, string pathKey, object data, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(string pathServiceSid, 
+                                                                                         string pathMapSid, 
+                                                                                         string pathKey, 
+                                                                                         object data, 
+                                                                                         ITwilioRestClient client = null)
         {
             var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey, data);
             return await UpdateAsync(options, client);
@@ -487,7 +516,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Converts a JSON string into a SyncMapItemResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> SyncMapItemResource object represented by the provided JSON </returns> 
         public static SyncMapItemResource FromJson(string json)

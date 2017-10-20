@@ -95,7 +95,6 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <summary>
         /// Construct a new CreateNotificationOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         public CreateNotificationOptions(string pathServiceSid)
         {

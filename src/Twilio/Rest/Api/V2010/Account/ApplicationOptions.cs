@@ -84,7 +84,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new CreateApplicationOptions
         /// </summary>
-        ///
         /// <param name="friendlyName"> The friendly_name </param>
         public CreateApplicationOptions(string friendlyName)
         {
@@ -193,7 +192,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new DeleteApplicationOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The application sid to delete </param>
         public DeleteApplicationOptions(string pathSid)
         {
@@ -227,7 +225,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new FetchApplicationOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> Fetch by unique Application Sid </param>
         public FetchApplicationOptions(string pathSid)
         {
@@ -355,7 +352,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new UpdateApplicationOptions
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         public UpdateApplicationOptions(string pathSid)
         {

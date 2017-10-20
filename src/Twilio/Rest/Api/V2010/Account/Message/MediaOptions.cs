@@ -32,7 +32,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <summary>
         /// Construct a new DeleteMediaOptions
         /// </summary>
-        ///
         /// <param name="pathMessageSid"> The message_sid </param>
         /// <param name="pathSid"> Delete by unique media Sid </param>
         public DeleteMediaOptions(string pathMessageSid, string pathSid)
@@ -72,7 +71,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <summary>
         /// Construct a new FetchMediaOptions
         /// </summary>
-        ///
         /// <param name="pathMessageSid"> The message_sid </param>
         /// <param name="pathSid"> Fetch by unique media Sid </param>
         public FetchMediaOptions(string pathMessageSid, string pathSid)
@@ -120,7 +118,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <summary>
         /// Construct a new ReadMediaOptions
         /// </summary>
-        ///
         /// <param name="pathMessageSid"> The message_sid </param>
         public ReadMediaOptions(string pathMessageSid)
         {

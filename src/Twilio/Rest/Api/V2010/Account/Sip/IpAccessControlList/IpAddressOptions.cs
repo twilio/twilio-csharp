@@ -28,7 +28,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <summary>
         /// Construct a new ReadIpAddressOptions
         /// </summary>
-        ///
         /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
         public ReadIpAddressOptions(string pathIpAccessControlListSid)
         {
@@ -75,7 +74,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <summary>
         /// Construct a new CreateIpAddressOptions
         /// </summary>
-        ///
         /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="ipAddress"> The ip_address </param>
@@ -127,7 +125,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <summary>
         /// Construct a new FetchIpAddressOptions
         /// </summary>
-        ///
         /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchIpAddressOptions(string pathIpAccessControlListSid, string pathSid)
@@ -175,7 +172,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <summary>
         /// Construct a new UpdateIpAddressOptions
         /// </summary>
-        ///
         /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="pathSid"> The sid </param>
         public UpdateIpAddressOptions(string pathIpAccessControlListSid, string pathSid)
@@ -225,7 +221,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <summary>
         /// Construct a new DeleteIpAddressOptions
         /// </summary>
-        ///
         /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
         /// <param name="pathSid"> The sid </param>
         public DeleteIpAddressOptions(string pathIpAccessControlListSid, string pathSid)

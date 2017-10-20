@@ -34,11 +34,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch TaskQueueCumulativeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueueCumulativeStatistics </returns> 
-        public static TaskQueueCumulativeStatisticsResource Fetch(FetchTaskQueueCumulativeStatisticsOptions options, ITwilioRestClient client = null)
+        public static TaskQueueCumulativeStatisticsResource Fetch(FetchTaskQueueCumulativeStatisticsOptions options, 
+                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -49,11 +49,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch TaskQueueCumulativeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueueCumulativeStatistics </returns> 
-        public static async System.Threading.Tasks.Task<TaskQueueCumulativeStatisticsResource> FetchAsync(FetchTaskQueueCumulativeStatisticsOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskQueueCumulativeStatisticsResource> FetchAsync(FetchTaskQueueCumulativeStatisticsOptions options, 
+                                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -64,7 +64,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
         /// <param name="endDate"> The end_date </param>
@@ -74,7 +73,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="splitByWaitTime"> The split_by_wait_time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueueCumulativeStatistics </returns> 
-        public static TaskQueueCumulativeStatisticsResource Fetch(string pathWorkspaceSid, string pathTaskQueueSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, string taskChannel = null, string splitByWaitTime = null, ITwilioRestClient client = null)
+        public static TaskQueueCumulativeStatisticsResource Fetch(string pathWorkspaceSid, 
+                                                                  string pathTaskQueueSid, 
+                                                                  DateTime? endDate = null, 
+                                                                  int? minutes = null, 
+                                                                  DateTime? startDate = null, 
+                                                                  string taskChannel = null, 
+                                                                  string splitByWaitTime = null, 
+                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchTaskQueueCumulativeStatisticsOptions(pathWorkspaceSid, pathTaskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
             return Fetch(options, client);
@@ -84,7 +90,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
         /// <param name="endDate"> The end_date </param>
@@ -94,7 +99,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="splitByWaitTime"> The split_by_wait_time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueueCumulativeStatistics </returns> 
-        public static async System.Threading.Tasks.Task<TaskQueueCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid, string pathTaskQueueSid, DateTime? endDate = null, int? minutes = null, DateTime? startDate = null, string taskChannel = null, string splitByWaitTime = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<TaskQueueCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid, 
+                                                                                                          string pathTaskQueueSid, 
+                                                                                                          DateTime? endDate = null, 
+                                                                                                          int? minutes = null, 
+                                                                                                          DateTime? startDate = null, 
+                                                                                                          string taskChannel = null, 
+                                                                                                          string splitByWaitTime = null, 
+                                                                                                          ITwilioRestClient client = null)
         {
             var options = new FetchTaskQueueCumulativeStatisticsOptions(pathWorkspaceSid, pathTaskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
             return await FetchAsync(options, client);
@@ -104,7 +116,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// Converts a JSON string into a TaskQueueCumulativeStatisticsResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> TaskQueueCumulativeStatisticsResource object represented by the provided JSON </returns> 
         public static TaskQueueCumulativeStatisticsResource FromJson(string json)

@@ -28,7 +28,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Construct a new FetchTaskChannelOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         public FetchTaskChannelOptions(string pathWorkspaceSid, string pathSid)
@@ -60,7 +59,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// Construct a new ReadTaskChannelOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         public ReadTaskChannelOptions(string pathWorkspaceSid)
         {

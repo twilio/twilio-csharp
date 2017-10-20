@@ -36,7 +36,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Document parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns> 
@@ -51,11 +50,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Document parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
-        public static async System.Threading.Tasks.Task<DocumentResource> FetchAsync(FetchDocumentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DocumentResource> FetchAsync(FetchDocumentOptions options, 
+                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -66,7 +65,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -81,12 +79,13 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
-        public static async System.Threading.Tasks.Task<DocumentResource> FetchAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DocumentResource> FetchAsync(string pathServiceSid, 
+                                                                                     string pathSid, 
+                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchDocumentOptions(pathServiceSid, pathSid);
             return await FetchAsync(options, client);
@@ -107,7 +106,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete Document parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns> 
@@ -122,11 +120,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="options"> Delete Document parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDocumentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDocumentOptions options, 
+                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildDeleteRequest(options, client));
@@ -137,7 +135,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -152,12 +149,13 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+                                                                          string pathSid, 
+                                                                          ITwilioRestClient client = null)
         {
             var options = new DeleteDocumentOptions(pathServiceSid, pathSid);
             return await DeleteAsync(options, client);
@@ -178,7 +176,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create Document parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns> 
@@ -193,11 +190,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="options"> Create Document parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
-        public static async System.Threading.Tasks.Task<DocumentResource> CreateAsync(CreateDocumentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DocumentResource> CreateAsync(CreateDocumentOptions options, 
+                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildCreateRequest(options, client));
@@ -208,13 +205,15 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="data"> The data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns> 
-        public static DocumentResource Create(string pathServiceSid, string uniqueName = null, object data = null, ITwilioRestClient client = null)
+        public static DocumentResource Create(string pathServiceSid, 
+                                              string uniqueName = null, 
+                                              object data = null, 
+                                              ITwilioRestClient client = null)
         {
             var options = new CreateDocumentOptions(pathServiceSid){UniqueName = uniqueName, Data = data};
             return Create(options, client);
@@ -224,13 +223,15 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="data"> The data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
-        public static async System.Threading.Tasks.Task<DocumentResource> CreateAsync(string pathServiceSid, string uniqueName = null, object data = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DocumentResource> CreateAsync(string pathServiceSid, 
+                                                                                      string uniqueName = null, 
+                                                                                      object data = null, 
+                                                                                      ITwilioRestClient client = null)
         {
             var options = new CreateDocumentOptions(pathServiceSid){UniqueName = uniqueName, Data = data};
             return await CreateAsync(options, client);
@@ -251,7 +252,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Document parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns> 
@@ -268,11 +268,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Document parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DocumentResource>> ReadAsync(ReadDocumentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DocumentResource>> ReadAsync(ReadDocumentOptions options, 
+                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -285,13 +285,15 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns> 
-        public static ResourceSet<DocumentResource> Read(string pathServiceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<DocumentResource> Read(string pathServiceSid, 
+                                                         int? pageSize = null, 
+                                                         long? limit = null, 
+                                                         ITwilioRestClient client = null)
         {
             var options = new ReadDocumentOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -301,13 +303,15 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DocumentResource>> ReadAsync(string pathServiceSid, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<DocumentResource>> ReadAsync(string pathServiceSid, 
+                                                                                                 int? pageSize = null, 
+                                                                                                 long? limit = null, 
+                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadDocumentOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -317,7 +321,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -337,7 +340,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -358,7 +360,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -390,7 +391,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="options"> Update Document parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns> 
@@ -405,11 +405,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="options"> Update Document parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
-        public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(UpdateDocumentOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(UpdateDocumentOptions options, 
+                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildUpdateRequest(options, client));
@@ -420,13 +420,15 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="data"> The data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns> 
-        public static DocumentResource Update(string pathServiceSid, string pathSid, object data, ITwilioRestClient client = null)
+        public static DocumentResource Update(string pathServiceSid, 
+                                              string pathSid, 
+                                              object data, 
+                                              ITwilioRestClient client = null)
         {
             var options = new UpdateDocumentOptions(pathServiceSid, pathSid, data);
             return Update(options, client);
@@ -436,13 +438,15 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// update
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="data"> The data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
-        public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(string pathServiceSid, string pathSid, object data, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(string pathServiceSid, 
+                                                                                      string pathSid, 
+                                                                                      object data, 
+                                                                                      ITwilioRestClient client = null)
         {
             var options = new UpdateDocumentOptions(pathServiceSid, pathSid, data);
             return await UpdateAsync(options, client);
@@ -452,7 +456,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Converts a JSON string into a DocumentResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> DocumentResource object represented by the provided JSON </returns> 
         public static DocumentResource FromJson(string json)

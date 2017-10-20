@@ -32,7 +32,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new FetchSessionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
         public FetchSessionOptions(string pathServiceSid, string pathSid)
@@ -75,7 +74,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new ReadSessionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         public ReadSessionOptions(string pathServiceSid)
         {
@@ -139,7 +137,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new CreateSessionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         public CreateSessionOptions(string pathServiceSid)
         {
@@ -197,7 +194,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new DeleteSessionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
         public DeleteSessionOptions(string pathServiceSid, string pathSid)
@@ -252,7 +248,6 @@ namespace Twilio.Rest.Preview.Proxy.Service
         /// <summary>
         /// Construct a new UpdateSessionOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
         public UpdateSessionOptions(string pathServiceSid, string pathSid)

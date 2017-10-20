@@ -32,7 +32,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// Construct a new FetchTaskQueueRealTimeStatisticsOptions
         /// </summary>
-        ///
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
         public FetchTaskQueueRealTimeStatisticsOptions(string pathWorkspaceSid, string pathTaskQueueSid)

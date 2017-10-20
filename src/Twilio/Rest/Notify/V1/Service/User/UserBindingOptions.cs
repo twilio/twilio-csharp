@@ -35,7 +35,6 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// Construct a new FetchUserBindingOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="pathSid"> The sid </param>
@@ -79,7 +78,6 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// Construct a new DeleteUserBindingOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="pathSid"> The sid </param>
@@ -143,12 +141,14 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// Construct a new CreateUserBindingOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         /// <param name="bindingType"> The binding_type </param>
         /// <param name="address"> The address </param>
-        public CreateUserBindingOptions(string pathServiceSid, string pathIdentity, UserBindingResource.BindingTypeEnum bindingType, string address)
+        public CreateUserBindingOptions(string pathServiceSid, 
+                                        string pathIdentity, 
+                                        UserBindingResource.BindingTypeEnum bindingType, 
+                                        string address)
         {
             PathServiceSid = pathServiceSid;
             PathIdentity = pathIdentity;
@@ -228,7 +228,6 @@ namespace Twilio.Rest.Notify.V1.Service.User
         /// <summary>
         /// Construct a new ReadUserBindingOptions
         /// </summary>
-        ///
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathIdentity"> The identity </param>
         public ReadUserBindingOptions(string pathServiceSid, string pathIdentity)

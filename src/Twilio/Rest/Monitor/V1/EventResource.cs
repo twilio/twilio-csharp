@@ -34,7 +34,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Event parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns> 
@@ -49,11 +48,11 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="options"> Fetch Event parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns> 
-        public static async System.Threading.Tasks.Task<EventResource> FetchAsync(FetchEventOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EventResource> FetchAsync(FetchEventOptions options, 
+                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -64,7 +63,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns> 
@@ -78,11 +76,11 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        ///
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns> 
-        public static async System.Threading.Tasks.Task<EventResource> FetchAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<EventResource> FetchAsync(string pathSid, 
+                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchEventOptions(pathSid);
             return await FetchAsync(options, client);
@@ -103,7 +101,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Event parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns> 
@@ -120,11 +117,11 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="options"> Read Event parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(ReadEventOptions options, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(ReadEventOptions options, 
+                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
@@ -137,7 +134,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="actorSid"> The actor_sid </param>
         /// <param name="eventType"> The event_type </param>
         /// <param name="resourceSid"> The resource_sid </param>
@@ -148,7 +144,15 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns> 
-        public static ResourceSet<EventResource> Read(string actorSid = null, string eventType = null, string resourceSid = null, string sourceIpAddress = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static ResourceSet<EventResource> Read(string actorSid = null, 
+                                                      string eventType = null, 
+                                                      string resourceSid = null, 
+                                                      string sourceIpAddress = null, 
+                                                      DateTime? startDate = null, 
+                                                      DateTime? endDate = null, 
+                                                      int? pageSize = null, 
+                                                      long? limit = null, 
+                                                      ITwilioRestClient client = null)
         {
             var options = new ReadEventOptions{ActorSid = actorSid, EventType = eventType, ResourceSid = resourceSid, SourceIpAddress = sourceIpAddress, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
@@ -158,7 +162,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// read
         /// </summary>
-        ///
         /// <param name="actorSid"> The actor_sid </param>
         /// <param name="eventType"> The event_type </param>
         /// <param name="resourceSid"> The resource_sid </param>
@@ -169,7 +172,15 @@ namespace Twilio.Rest.Monitor.V1
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(string actorSid = null, string eventType = null, string resourceSid = null, string sourceIpAddress = null, DateTime? startDate = null, DateTime? endDate = null, int? pageSize = null, long? limit = null, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<ResourceSet<EventResource>> ReadAsync(string actorSid = null, 
+                                                                                              string eventType = null, 
+                                                                                              string resourceSid = null, 
+                                                                                              string sourceIpAddress = null, 
+                                                                                              DateTime? startDate = null, 
+                                                                                              DateTime? endDate = null, 
+                                                                                              int? pageSize = null, 
+                                                                                              long? limit = null, 
+                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadEventOptions{ActorSid = actorSid, EventType = eventType, ResourceSid = resourceSid, SourceIpAddress = sourceIpAddress, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
@@ -179,7 +190,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// Fetch the target page of records
         /// </summary>
-        ///
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
@@ -199,7 +209,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// Fetch the next page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
@@ -220,7 +229,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// Fetch the previous page of records
         /// </summary>
-        ///
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
@@ -241,7 +249,6 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// Converts a JSON string into a EventResource object
         /// </summary>
-        ///
         /// <param name="json"> Raw JSON string </param>
         /// <returns> EventResource object represented by the provided JSON </returns> 
         public static EventResource FromJson(string json)

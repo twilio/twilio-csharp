@@ -31,7 +31,6 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
         /// <summary>
         /// Construct a new FetchAvailableAddOnExtensionOptions
         /// </summary>
-        ///
         /// <param name="pathAvailableAddOnSid"> The available_add_on_sid </param>
         /// <param name="pathSid"> The unique Extension Sid </param>
         public FetchAvailableAddOnExtensionOptions(string pathAvailableAddOnSid, string pathSid)
@@ -66,7 +65,6 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
         /// <summary>
         /// Construct a new ReadAvailableAddOnExtensionOptions
         /// </summary>
-        ///
         /// <param name="pathAvailableAddOnSid"> The available_add_on_sid </param>
         public ReadAvailableAddOnExtensionOptions(string pathAvailableAddOnSid)
         {
