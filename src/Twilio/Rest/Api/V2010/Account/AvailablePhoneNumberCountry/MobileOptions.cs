@@ -92,6 +92,10 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// The in_locality
         /// </summary>
         public string InLocality { get; set; }
+        /// <summary>
+        /// The fax_enabled
+        /// </summary>
+        public bool? FaxEnabled { get; set; }
 
         /// <summary>
         /// Construct a new ReadMobileOptions
@@ -191,6 +195,11 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             if (InLocality != null)
             {
                 p.Add(new KeyValuePair<string, string>("InLocality", InLocality));
+            }
+
+            if (FaxEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FaxEnabled", FaxEnabled.Value.ToString().ToLower()));
             }
 
             if (PageSize != null)

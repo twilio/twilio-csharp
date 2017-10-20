@@ -87,6 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="inRateCenter"> The in_rate_center </param>
         /// <param name="inLata"> The in_lata </param>
         /// <param name="inLocality"> The in_locality </param>
+        /// <param name="faxEnabled"> The fax_enabled </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -110,11 +111,12 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
                                                          string inRateCenter = null, 
                                                          string inLata = null, 
                                                          string inLocality = null, 
+                                                         bool? faxEnabled = null, 
                                                          int? pageSize = null, 
                                                          long? limit = null, 
                                                          ITwilioRestClient client = null)
         {
-            var options = new ReadTollFreeOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, PageSize = pageSize, Limit = limit};
+            var options = new ReadTollFreeOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, FaxEnabled = faxEnabled, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -141,6 +143,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="inRateCenter"> The in_rate_center </param>
         /// <param name="inLata"> The in_lata </param>
         /// <param name="inLocality"> The in_locality </param>
+        /// <param name="faxEnabled"> The fax_enabled </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -164,11 +167,12 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
                                                                                                  string inRateCenter = null, 
                                                                                                  string inLata = null, 
                                                                                                  string inLocality = null, 
+                                                                                                 bool? faxEnabled = null, 
                                                                                                  int? pageSize = null, 
                                                                                                  long? limit = null, 
                                                                                                  ITwilioRestClient client = null)
         {
-            var options = new ReadTollFreeOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, PageSize = pageSize, Limit = limit};
+            var options = new ReadTollFreeOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, FaxEnabled = faxEnabled, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

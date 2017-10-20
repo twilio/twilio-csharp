@@ -149,6 +149,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// The identity_sid
         /// </summary>
         public string IdentitySid { get; set; }
+        /// <summary>
+        /// The address_sid
+        /// </summary>
+        public string AddressSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateLocalOptions
@@ -248,6 +252,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             if (IdentitySid != null)
             {
                 p.Add(new KeyValuePair<string, string>("IdentitySid", IdentitySid.ToString()));
+            }
+
+            if (AddressSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
             }
 
             return p;

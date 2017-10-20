@@ -252,6 +252,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="voiceMethod"> The voice_method </param>
         /// <param name="voiceUrl"> The voice_url </param>
         /// <param name="identitySid"> The identity_sid </param>
+        /// <param name="addressSid"> The address_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Local </returns> 
         public static LocalResource Create(Types.PhoneNumber phoneNumber, 
@@ -272,9 +273,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                                            Twilio.Http.HttpMethod voiceMethod = null, 
                                            Uri voiceUrl = null, 
                                            string identitySid = null, 
+                                           string addressSid = null, 
                                            ITwilioRestClient client = null)
         {
-            var options = new CreateLocalOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, IdentitySid = identitySid};
+            var options = new CreateLocalOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, IdentitySid = identitySid, AddressSid = addressSid};
             return Create(options, client);
         }
 
@@ -300,6 +302,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="voiceMethod"> The voice_method </param>
         /// <param name="voiceUrl"> The voice_url </param>
         /// <param name="identitySid"> The identity_sid </param>
+        /// <param name="addressSid"> The address_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Local </returns> 
         public static async System.Threading.Tasks.Task<LocalResource> CreateAsync(Types.PhoneNumber phoneNumber, 
@@ -320,9 +323,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                                                                                    Twilio.Http.HttpMethod voiceMethod = null, 
                                                                                    Uri voiceUrl = null, 
                                                                                    string identitySid = null, 
+                                                                                   string addressSid = null, 
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateLocalOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, IdentitySid = identitySid};
+            var options = new CreateLocalOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, IdentitySid = identitySid, AddressSid = addressSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -350,6 +354,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The address_sid
+        /// </summary>
+        [JsonProperty("address_sid")]
+        public string AddressSid { get; private set; }
         /// <summary>
         /// The address_requirements
         /// </summary>

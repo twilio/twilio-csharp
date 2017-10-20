@@ -40,7 +40,6 @@ namespace Twilio.TwiML
             this.TagName = tagName;
             this.Children = new List<TwiML>();
             this.Options = new List<KeyValuePair<string,string>>();
-            // TODO: For .NET4+ Inherit DynamicObject and add magic getter/setters?
         }
 
         /// <summary>

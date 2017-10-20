@@ -1,6 +1,6 @@
 *Note: These issues are for bugs and feature requests for the helper libraries.
-For api bugs, help, or feature requests, please email help@twilio.com and one of 
-our experts will assist you!*
+If you need help or support, please email help@twilio.com and one of our experts
+will assist you!*
 
 
 **Version:**

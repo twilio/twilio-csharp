@@ -108,6 +108,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Unique string that identifies the identity associated with number
         /// </summary>
         public string IdentitySid { get; set; }
+        /// <summary>
+        /// Unique string that identifies the address associated with number
+        /// </summary>
+        public string AddressSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateIncomingPhoneNumberOptions
@@ -227,6 +231,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (IdentitySid != null)
             {
                 p.Add(new KeyValuePair<string, string>("IdentitySid", IdentitySid.ToString()));
+            }
+
+            if (AddressSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
             }
 
             return p;
@@ -453,6 +462,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Unique string that identifies the identity associated with number
         /// </summary>
         public string IdentitySid { get; set; }
+        /// <summary>
+        /// Unique string that identifies the address associated with number
+        /// </summary>
+        public string AddressSid { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -563,6 +576,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (IdentitySid != null)
             {
                 p.Add(new KeyValuePair<string, string>("IdentitySid", IdentitySid.ToString()));
+            }
+
+            if (AddressSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
             }
 
             return p;
