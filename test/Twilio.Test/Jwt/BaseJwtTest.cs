@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using NUnit.Framework;
 using Twilio.Jwt;
 using Twilio.Tests.Jwt;
@@ -22,54 +23,51 @@ namespace Twilio.Tests.Jwt
         public override DateTime? Nbf { get => this._nbf; }
     }
         
-    }
     public class BaseJwtTest
     {
+        static DateTime TEST_TIME = new DateTime(2037, 9, 7, 9, 0, 0, DateTimeKind.Utc);
+        static long TEST_TIMESTAMP = 2135926800;     // 9/7/2037 9:00am (utc) in unix timestamp form
+        private static TimeZoneInfo OTHER_TZ = TimeZoneInfo.Local;
+
         [Test]
         public void TestSetUtcExp()
         {
-            var exp = new DateTime(1993, 9, 7, 9, 0, 0, DateTimeKind.Utc);
-
-            var encoded = new TestJwt(exp).ToJwt();
+            var encoded = new TestJwt(TEST_TIME).ToJwt();
             var decoded = new DecodedJwt(encoded, TestJwt.SECRET);
 
-            // 9/7/1993 9:00am (utc) in unix timestamp form
-            Assert.AreEqual(747392400, decoded.Payload["exp"]);
+            Assert.AreEqual(TEST_TIMESTAMP, decoded.Payload["exp"]);
         }
         
         [Test]
         public void TestSetLocalTimeExp()
         {
-            var exp = new DateTime(1993, 9, 7, 9, 0, 0, DateTimeKind.Local);
+            // Convert to PST before passing to JWT
+            var exp = TimeZoneInfo.ConvertTime(TEST_TIME, OTHER_TZ);
 
             var encoded = new TestJwt(exp).ToJwt();
             var decoded = new DecodedJwt(encoded, TestJwt.SECRET);
 
-            // 9/7/1993 4:00pm (utc) in unix timestamp form
-            Assert.AreEqual(747417600, decoded.Payload["exp"]);
+            Assert.AreEqual(TEST_TIMESTAMP, decoded.Payload["exp"]);
         }
         
         [Test]
         public void TestSetUtcNbf()
         {
-            var nbf = new DateTime(1993, 9, 7, 9, 0, 0, DateTimeKind.Utc);
-
-            var encoded = new TestJwt(DateTime.UtcNow, nbf).ToJwt();
+            var encoded = new TestJwt(DateTime.UtcNow.AddHours(1), TEST_TIME).ToJwt();
             var decoded = new DecodedJwt(encoded, TestJwt.SECRET);
 
-            // 9/7/1993 9:00am (utc) in unix timestamp form
-            Assert.AreEqual(747392400, decoded.Payload["nbf"]);
+            Assert.AreEqual(TEST_TIMESTAMP, decoded.Payload["nbf"]);
         }
         
         [Test]
         public void TestSetLocalTimeNbf()
         {
-            var nbf = new DateTime(1993, 9, 7, 9, 0, 0, DateTimeKind.Local);
+            var nbf = TimeZoneInfo.ConvertTime(TEST_TIME, OTHER_TZ);
 
-            var encoded = new TestJwt(DateTime.UtcNow, nbf).ToJwt();
+            var encoded = new TestJwt(DateTime.UtcNow.AddHours(1), nbf).ToJwt();
             var decoded = new DecodedJwt(encoded, TestJwt.SECRET);
 
-            // 9/7/1993 4:00pm (utc) in unix timestamp form
-            Assert.AreEqual(747417600, decoded.Payload["nbf"]);
+            Assert.AreEqual(TEST_TIMESTAMP, decoded.Payload["nbf"]);
         }
     }
+}
