@@ -1,6 +1,13 @@
 twilio-csharp Changelog
 =======================
 
+[2017-10-27] Version 5.8.1
+---------------------------
+**Chat**
+- Add Binding resource
+- Add UserBinding resource
+
+
 [2017-10-20] Version 5.8.0
 ---------------------------
 **TwiML**
