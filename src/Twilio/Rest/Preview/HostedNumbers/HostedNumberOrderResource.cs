@@ -336,7 +336,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                                   long? limit = null, 
                                                                   ITwilioRestClient client = null)
         {
-            var options = new ReadHostedNumberOrderOptions{Status = status, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
+            var options = new ReadHostedNumberOrderOptions(){Status = status, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -362,7 +362,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                                                                           long? limit = null, 
                                                                                                           ITwilioRestClient client = null)
         {
-            var options = new ReadHostedNumberOrderOptions{Status = status, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
+            var options = new ReadHostedNumberOrderOptions(){Status = status, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

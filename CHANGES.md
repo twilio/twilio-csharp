@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2017-11-03] Version 5.8.2
+---------------------------
+**Api**
+- Add programmable video keys
+
+**Video**
+- Add `Participants`
+
+
 [2017-10-27] Version 5.8.1
 ---------------------------
 **Chat**

@@ -208,7 +208,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// <returns> A single instance of Fleet </returns> 
         public static FleetResource Create(string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new CreateFleetOptions{FriendlyName = friendlyName};
+            var options = new CreateFleetOptions(){FriendlyName = friendlyName};
             return Create(options, client);
         }
 
@@ -222,7 +222,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(string friendlyName = null, 
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateFleetOptions{FriendlyName = friendlyName};
+            var options = new CreateFleetOptions(){FriendlyName = friendlyName};
             return await CreateAsync(options, client);
         }
         #endif
@@ -282,7 +282,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
                                                       long? limit = null, 
                                                       ITwilioRestClient client = null)
         {
-            var options = new ReadFleetOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadFleetOptions(){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -298,7 +298,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
                                                                                               long? limit = null, 
                                                                                               ITwilioRestClient client = null)
         {
-            var options = new ReadFleetOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadFleetOptions(){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

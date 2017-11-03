@@ -60,6 +60,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum ConversationsParticipantEvents = new UsageCategoryEnum("conversations-participant-events");
             public static readonly UsageCategoryEnum ConversationsParticipants = new UsageCategoryEnum("conversations-participants");
             public static readonly UsageCategoryEnum Cps = new UsageCategoryEnum("cps");
+            public static readonly UsageCategoryEnum GroupRooms = new UsageCategoryEnum("group-rooms");
             public static readonly UsageCategoryEnum GroupRoomsMediaDownloaded = new UsageCategoryEnum("group-rooms-media-downloaded");
             public static readonly UsageCategoryEnum GroupRoomsMediaRecorded = new UsageCategoryEnum("group-rooms-media-recorded");
             public static readonly UsageCategoryEnum GroupRoomsMediaRouted = new UsageCategoryEnum("group-rooms-media-routed");
@@ -207,6 +208,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum TurnmegabytesUseast = new UsageCategoryEnum("turnmegabytes-useast");
             public static readonly UsageCategoryEnum TurnmegabytesUswest = new UsageCategoryEnum("turnmegabytes-uswest");
             public static readonly UsageCategoryEnum TwilioInterconnect = new UsageCategoryEnum("twilio-interconnect");
+            public static readonly UsageCategoryEnum VideoRecordings = new UsageCategoryEnum("video-recordings");
             public static readonly UsageCategoryEnum VoiceInsights = new UsageCategoryEnum("voice-insights");
             public static readonly UsageCategoryEnum VoiceInsightsAudioTrace = new UsageCategoryEnum("voice-insights-audio-trace");
             public static readonly UsageCategoryEnum VoiceInsightsCarrierCalls = new UsageCategoryEnum("voice-insights-carrier-calls");
@@ -665,7 +667,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                         long? limit = null, 
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadTriggerOptions{PathAccountSid = pathAccountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
+            var options = new ReadTriggerOptions(){PathAccountSid = pathAccountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -689,7 +691,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                                                                                                 long? limit = null, 
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadTriggerOptions{PathAccountSid = pathAccountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
+            var options = new ReadTriggerOptions(){PathAccountSid = pathAccountSid, Recurring = recurring, TriggerBy = triggerBy, UsageCategory = usageCategory, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

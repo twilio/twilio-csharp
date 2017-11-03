@@ -145,7 +145,7 @@ namespace Twilio.Rest.Preview.Proxy
                                                         long? limit = null, 
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -161,7 +161,7 @@ namespace Twilio.Rest.Preview.Proxy
                                                                                                 long? limit = null, 
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -278,7 +278,7 @@ namespace Twilio.Rest.Preview.Proxy
                                              Uri callbackUrl = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions{FriendlyName = friendlyName, AutoCreate = autoCreate, CallbackUrl = callbackUrl};
+            var options = new CreateServiceOptions(){FriendlyName = friendlyName, AutoCreate = autoCreate, CallbackUrl = callbackUrl};
             return Create(options, client);
         }
 
@@ -296,7 +296,7 @@ namespace Twilio.Rest.Preview.Proxy
                                                                                      Uri callbackUrl = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions{FriendlyName = friendlyName, AutoCreate = autoCreate, CallbackUrl = callbackUrl};
+            var options = new CreateServiceOptions(){FriendlyName = friendlyName, AutoCreate = autoCreate, CallbackUrl = callbackUrl};
             return await CreateAsync(options, client);
         }
         #endif

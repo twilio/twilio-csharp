@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                             string friendlyName = null, 
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateNewKeyOptions{PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
+            var options = new CreateNewKeyOptions(){PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
             return Create(options, client);
         }
 
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                     string friendlyName = null, 
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateNewKeyOptions{PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
+            var options = new CreateNewKeyOptions(){PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
             return await CreateAsync(options, client);
         }
         #endif

@@ -193,7 +193,7 @@ namespace Twilio.Rest.Video.V1
                                           string mediaRegion = null, 
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion};
+            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion};
             return Create(options, client);
         }
 
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Video.V1
                                                                                   string mediaRegion = null, 
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions{EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion};
+            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion};
             return await CreateAsync(options, client);
         }
         #endif
@@ -291,7 +291,7 @@ namespace Twilio.Rest.Video.V1
                                                      long? limit = null, 
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadRoomOptions{Status = status, UniqueName = uniqueName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
+            var options = new ReadRoomOptions(){Status = status, UniqueName = uniqueName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -315,7 +315,7 @@ namespace Twilio.Rest.Video.V1
                                                                                              long? limit = null, 
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadRoomOptions{Status = status, UniqueName = uniqueName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
+            var options = new ReadRoomOptions(){Status = status, UniqueName = uniqueName, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

@@ -275,7 +275,7 @@ namespace Twilio.Rest.Chat.V2
                                                         long? limit = null, 
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -291,7 +291,7 @@ namespace Twilio.Rest.Chat.V2
                                                                                                 long? limit = null, 
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

@@ -92,7 +92,7 @@ namespace Twilio.Rest.Notify.V1
                                                            long? limit = null, 
                                                            ITwilioRestClient client = null)
         {
-            var options = new ReadCredentialOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadCredentialOptions(){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Notify.V1
                                                                                                    long? limit = null, 
                                                                                                    ITwilioRestClient client = null)
         {
-            var options = new ReadCredentialOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadCredentialOptions(){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

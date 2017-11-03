@@ -153,7 +153,7 @@ namespace Twilio.Rest.Preview.Wireless
                                                         long? limit = null, 
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadCommandOptions{Device = device, Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
+            var options = new ReadCommandOptions(){Device = device, Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Preview.Wireless
                                                                                                 long? limit = null, 
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadCommandOptions{Device = device, Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
+            var options = new ReadCommandOptions(){Device = device, Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

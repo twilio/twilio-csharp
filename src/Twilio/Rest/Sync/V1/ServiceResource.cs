@@ -210,7 +210,7 @@ namespace Twilio.Rest.Sync.V1
                                              bool? aclEnabled = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions{FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
+            var options = new CreateServiceOptions(){FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
             return Create(options, client);
         }
 
@@ -230,7 +230,7 @@ namespace Twilio.Rest.Sync.V1
                                                                                      bool? aclEnabled = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions{FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
+            var options = new CreateServiceOptions(){FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -290,7 +290,7 @@ namespace Twilio.Rest.Sync.V1
                                                         long? limit = null, 
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -306,7 +306,7 @@ namespace Twilio.Rest.Sync.V1
                                                                                                 long? limit = null, 
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

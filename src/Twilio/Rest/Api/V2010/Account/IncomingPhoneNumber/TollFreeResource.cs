@@ -101,7 +101,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                                                          long? limit = null, 
                                                          ITwilioRestClient client = null)
         {
-            var options = new ReadTollFreeOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
+            var options = new ReadTollFreeOptions(){PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -127,7 +127,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                                                                                                  long? limit = null, 
                                                                                                  ITwilioRestClient client = null)
         {
-            var options = new ReadTollFreeOptions{PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
+            var options = new ReadTollFreeOptions(){PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

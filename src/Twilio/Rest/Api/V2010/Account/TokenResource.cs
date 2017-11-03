@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <returns> A single instance of Token </returns> 
         public static TokenResource Create(string pathAccountSid = null, int? ttl = null, ITwilioRestClient client = null)
         {
-            var options = new CreateTokenOptions{PathAccountSid = pathAccountSid, Ttl = ttl};
+            var options = new CreateTokenOptions(){PathAccountSid = pathAccountSid, Ttl = ttl};
             return Create(options, client);
         }
 
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                    int? ttl = null, 
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateTokenOptions{PathAccountSid = pathAccountSid, Ttl = ttl};
+            var options = new CreateTokenOptions(){PathAccountSid = pathAccountSid, Ttl = ttl};
             return await CreateAsync(options, client);
         }
         #endif

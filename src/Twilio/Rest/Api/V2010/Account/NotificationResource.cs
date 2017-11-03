@@ -228,7 +228,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                              long? limit = null, 
                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadNotificationOptions{PathAccountSid = pathAccountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadNotificationOptions(){PathAccountSid = pathAccountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                                      long? limit = null, 
                                                                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadNotificationOptions{PathAccountSid = pathAccountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
+            var options = new ReadNotificationOptions(){PathAccountSid = pathAccountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

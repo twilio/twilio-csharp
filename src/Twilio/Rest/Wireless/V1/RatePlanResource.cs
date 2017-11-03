@@ -77,7 +77,7 @@ namespace Twilio.Rest.Wireless.V1
                                                          long? limit = null, 
                                                          ITwilioRestClient client = null)
         {
-            var options = new ReadRatePlanOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadRatePlanOptions(){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Wireless.V1
                                                                                                  long? limit = null, 
                                                                                                  ITwilioRestClient client = null)
         {
-            var options = new ReadRatePlanOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadRatePlanOptions(){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -293,7 +293,7 @@ namespace Twilio.Rest.Wireless.V1
                                               int? internationalRoamingDataLimit = null, 
                                               ITwilioRestClient client = null)
         {
-            var options = new CreateRatePlanOptions{UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming, NationalRoamingDataLimit = nationalRoamingDataLimit, InternationalRoamingDataLimit = internationalRoamingDataLimit};
+            var options = new CreateRatePlanOptions(){UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming, NationalRoamingDataLimit = nationalRoamingDataLimit, InternationalRoamingDataLimit = internationalRoamingDataLimit};
             return Create(options, client);
         }
 
@@ -327,7 +327,7 @@ namespace Twilio.Rest.Wireless.V1
                                                                                       int? internationalRoamingDataLimit = null, 
                                                                                       ITwilioRestClient client = null)
         {
-            var options = new CreateRatePlanOptions{UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming, NationalRoamingDataLimit = nationalRoamingDataLimit, InternationalRoamingDataLimit = internationalRoamingDataLimit};
+            var options = new CreateRatePlanOptions(){UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming, NationalRoamingDataLimit = nationalRoamingDataLimit, InternationalRoamingDataLimit = internationalRoamingDataLimit};
             return await CreateAsync(options, client);
         }
         #endif

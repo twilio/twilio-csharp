@@ -60,6 +60,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum ConversationsParticipantEvents = new CategoryEnum("conversations-participant-events");
             public static readonly CategoryEnum ConversationsParticipants = new CategoryEnum("conversations-participants");
             public static readonly CategoryEnum Cps = new CategoryEnum("cps");
+            public static readonly CategoryEnum GroupRooms = new CategoryEnum("group-rooms");
             public static readonly CategoryEnum GroupRoomsMediaDownloaded = new CategoryEnum("group-rooms-media-downloaded");
             public static readonly CategoryEnum GroupRoomsMediaRecorded = new CategoryEnum("group-rooms-media-recorded");
             public static readonly CategoryEnum GroupRoomsMediaRouted = new CategoryEnum("group-rooms-media-routed");
@@ -207,6 +208,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum TurnmegabytesUseast = new CategoryEnum("turnmegabytes-useast");
             public static readonly CategoryEnum TurnmegabytesUswest = new CategoryEnum("turnmegabytes-uswest");
             public static readonly CategoryEnum TwilioInterconnect = new CategoryEnum("twilio-interconnect");
+            public static readonly CategoryEnum VideoRecordings = new CategoryEnum("video-recordings");
             public static readonly CategoryEnum VoiceInsights = new CategoryEnum("voice-insights");
             public static readonly CategoryEnum VoiceInsightsAudioTrace = new CategoryEnum("voice-insights-audio-trace");
             public static readonly CategoryEnum VoiceInsightsCarrierCalls = new CategoryEnum("voice-insights-carrier-calls");
@@ -316,7 +318,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                                                       long? limit = null, 
                                                       ITwilioRestClient client = null)
         {
-            var options = new ReadDailyOptions{PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadDailyOptions(){PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -340,7 +342,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                                                                                               long? limit = null, 
                                                                                               ITwilioRestClient client = null)
         {
-            var options = new ReadDailyOptions{PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadDailyOptions(){PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

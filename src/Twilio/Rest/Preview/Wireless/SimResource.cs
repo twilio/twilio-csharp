@@ -155,7 +155,7 @@ namespace Twilio.Rest.Preview.Wireless
                                                     long? limit = null, 
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadSimOptions{Status = status, Iccid = iccid, RatePlan = ratePlan, EId = eId, SimRegistrationCode = simRegistrationCode, PageSize = pageSize, Limit = limit};
+            var options = new ReadSimOptions(){Status = status, Iccid = iccid, RatePlan = ratePlan, EId = eId, SimRegistrationCode = simRegistrationCode, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Preview.Wireless
                                                                                             long? limit = null, 
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadSimOptions{Status = status, Iccid = iccid, RatePlan = ratePlan, EId = eId, SimRegistrationCode = simRegistrationCode, PageSize = pageSize, Limit = limit};
+            var options = new ReadSimOptions(){Status = status, Iccid = iccid, RatePlan = ratePlan, EId = eId, SimRegistrationCode = simRegistrationCode, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

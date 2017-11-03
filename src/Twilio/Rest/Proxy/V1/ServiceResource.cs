@@ -144,7 +144,7 @@ namespace Twilio.Rest.Proxy.V1
                                                         long? limit = null, 
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Proxy.V1
                                                                                                 long? limit = null, 
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadServiceOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Proxy.V1
                                              Uri callbackUrl = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions{FriendlyName = friendlyName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl};
+            var options = new CreateServiceOptions(){FriendlyName = friendlyName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl};
             return Create(options, client);
         }
 
@@ -295,7 +295,7 @@ namespace Twilio.Rest.Proxy.V1
                                                                                      Uri callbackUrl = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions{FriendlyName = friendlyName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl};
+            var options = new CreateServiceOptions(){FriendlyName = friendlyName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl};
             return await CreateAsync(options, client);
         }
         #endif

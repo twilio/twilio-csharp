@@ -96,7 +96,7 @@ namespace Twilio.Rest.Api.V2010
         /// <returns> A single instance of Account </returns> 
         public static AccountResource Create(string friendlyName = null, ITwilioRestClient client = null)
         {
-            var options = new CreateAccountOptions{FriendlyName = friendlyName};
+            var options = new CreateAccountOptions(){FriendlyName = friendlyName};
             return Create(options, client);
         }
 
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Api.V2010
         public static async System.Threading.Tasks.Task<AccountResource> CreateAsync(string friendlyName = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateAccountOptions{FriendlyName = friendlyName};
+            var options = new CreateAccountOptions(){FriendlyName = friendlyName};
             return await CreateAsync(options, client);
         }
         #endif
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Api.V2010
         /// <returns> A single instance of Account </returns> 
         public static AccountResource Fetch(string pathSid = null, ITwilioRestClient client = null)
         {
-            var options = new FetchAccountOptions{PathSid = pathSid};
+            var options = new FetchAccountOptions(){PathSid = pathSid};
             return Fetch(options, client);
         }
 
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Api.V2010
         public static async System.Threading.Tasks.Task<AccountResource> FetchAsync(string pathSid = null, 
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new FetchAccountOptions{PathSid = pathSid};
+            var options = new FetchAccountOptions(){PathSid = pathSid};
             return await FetchAsync(options, client);
         }
         #endif
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Api.V2010
                                                         long? limit = null, 
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadAccountOptions{FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadAccountOptions(){FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -261,7 +261,7 @@ namespace Twilio.Rest.Api.V2010
                                                                                                 long? limit = null, 
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadAccountOptions{FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadAccountOptions(){FriendlyName = friendlyName, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -378,7 +378,7 @@ namespace Twilio.Rest.Api.V2010
                                              AccountResource.StatusEnum status = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateAccountOptions{PathSid = pathSid, FriendlyName = friendlyName, Status = status};
+            var options = new UpdateAccountOptions(){PathSid = pathSid, FriendlyName = friendlyName, Status = status};
             return Update(options, client);
         }
 
@@ -396,7 +396,7 @@ namespace Twilio.Rest.Api.V2010
                                                                                      AccountResource.StatusEnum status = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateAccountOptions{PathSid = pathSid, FriendlyName = friendlyName, Status = status};
+            var options = new UpdateAccountOptions(){PathSid = pathSid, FriendlyName = friendlyName, Status = status};
             return await UpdateAsync(options, client);
         }
         #endif

@@ -212,7 +212,7 @@ namespace Twilio.Rest.Trunking.V1
                                            bool? secure = null, 
                                            ITwilioRestClient client = null)
         {
-            var options = new CreateTrunkOptions{FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure};
+            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure};
             return Create(options, client);
         }
 
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Trunking.V1
                                                                                    bool? secure = null, 
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateTrunkOptions{FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure};
+            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure};
             return await CreateAsync(options, client);
         }
         #endif
@@ -296,7 +296,7 @@ namespace Twilio.Rest.Trunking.V1
                                                       long? limit = null, 
                                                       ITwilioRestClient client = null)
         {
-            var options = new ReadTrunkOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadTrunkOptions(){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -312,7 +312,7 @@ namespace Twilio.Rest.Trunking.V1
                                                                                               long? limit = null, 
                                                                                               ITwilioRestClient client = null)
         {
-            var options = new ReadTrunkOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadTrunkOptions(){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

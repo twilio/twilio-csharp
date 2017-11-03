@@ -76,7 +76,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
                                                         long? limit = null, 
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadCountryOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadCountryOptions(){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
                                                                                                 long? limit = null, 
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadCountryOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadCountryOptions(){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

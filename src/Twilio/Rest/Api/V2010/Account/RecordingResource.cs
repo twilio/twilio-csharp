@@ -256,7 +256,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                           long? limit = null, 
                                                           ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions{PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions(){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -282,7 +282,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                                   long? limit = null, 
                                                                                                   ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions{PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions(){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

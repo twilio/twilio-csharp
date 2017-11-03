@@ -146,7 +146,7 @@ namespace Twilio.Rest.Preview.Marketplace
                                                                long? limit = null, 
                                                                ITwilioRestClient client = null)
         {
-            var options = new ReadAvailableAddOnOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadAvailableAddOnOptions(){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Preview.Marketplace
                                                                                                        long? limit = null, 
                                                                                                        ITwilioRestClient client = null)
         {
-            var options = new ReadAvailableAddOnOptions{PageSize = pageSize, Limit = limit};
+            var options = new ReadAvailableAddOnOptions(){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
