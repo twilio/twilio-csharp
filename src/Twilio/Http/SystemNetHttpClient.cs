@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Twilio.Http
 {
@@ -12,7 +13,11 @@ namespace Twilio.Http
     /// </summary>
     public class SystemNetHttpClient : HttpClient
     {
-        private const string PlatVersion = " (.NET 4+)";
+        #if NET451
+        private string PlatVersion = " (.NET Framework 4.5.1+)";
+        #else
+        private string PlatVersion = $" ({RuntimeInformation.FrameworkDescription})";
+        #endif
 
         private readonly System.Net.Http.HttpClient _httpClient;
 
@@ -82,7 +87,7 @@ namespace Twilio.Http
             httpRequest.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             httpRequest.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("utf-8"));
 
-            const string libraryVersion = "twilio-csharp/" + AssemblyInfomation.AssemblyInformationalVersion + PlatVersion;
+            var libraryVersion = "twilio-csharp/" + AssemblyInfomation.AssemblyInformationalVersion + PlatVersion;
             httpRequest.Headers.TryAddWithoutValidation("User-Agent", libraryVersion);
 
             return httpRequest;
