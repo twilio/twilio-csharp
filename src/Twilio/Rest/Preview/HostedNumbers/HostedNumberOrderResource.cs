@@ -473,7 +473,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// Host a phone number's capability on Twilio's platform.
         /// </summary>
         /// <param name="phoneNumber"> An E164 formatted phone number. </param>
-        /// <param name="isoCountry"> ISO country code. </param>
         /// <param name="smsCapability"> Specify SMS capability to host. </param>
         /// <param name="accountSid"> Account Sid. </param>
         /// <param name="friendlyName"> A human readable description of this resource. </param>
@@ -491,7 +490,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
         public static HostedNumberOrderResource Create(Types.PhoneNumber phoneNumber, 
-                                                       string isoCountry, 
                                                        bool? smsCapability, 
                                                        string accountSid = null, 
                                                        string friendlyName = null, 
@@ -508,7 +506,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                        string email = null, 
                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateHostedNumberOrderOptions(phoneNumber, isoCountry, smsCapability){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, AddressSid = addressSid, Email = email};
+            var options = new CreateHostedNumberOrderOptions(phoneNumber, smsCapability){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, AddressSid = addressSid, Email = email};
             return Create(options, client);
         }
 
@@ -517,7 +515,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// Host a phone number's capability on Twilio's platform.
         /// </summary>
         /// <param name="phoneNumber"> An E164 formatted phone number. </param>
-        /// <param name="isoCountry"> ISO country code. </param>
         /// <param name="smsCapability"> Specify SMS capability to host. </param>
         /// <param name="accountSid"> Account Sid. </param>
         /// <param name="friendlyName"> A human readable description of this resource. </param>
@@ -535,7 +532,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
         public static async System.Threading.Tasks.Task<HostedNumberOrderResource> CreateAsync(Types.PhoneNumber phoneNumber, 
-                                                                                               string isoCountry, 
                                                                                                bool? smsCapability, 
                                                                                                string accountSid = null, 
                                                                                                string friendlyName = null, 
@@ -552,7 +548,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                                                                string email = null, 
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new CreateHostedNumberOrderOptions(phoneNumber, isoCountry, smsCapability){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, AddressSid = addressSid, Email = email};
+            var options = new CreateHostedNumberOrderOptions(phoneNumber, smsCapability){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, AddressSid = addressSid, Email = email};
             return await CreateAsync(options, client);
         }
         #endif

@@ -16,27 +16,12 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Types;
 
 namespace Twilio.Rest.Proxy.V1.Service.Session 
 {
 
     public class ParticipantResource : Resource 
     {
-        public sealed class ParticipantTypeEnum : StringEnum 
-        {
-            private ParticipantTypeEnum(string value) : base(value) {}
-            public ParticipantTypeEnum() {}
-            public static implicit operator ParticipantTypeEnum(string value)
-            {
-                return new ParticipantTypeEnum(value);
-            }
-
-            public static readonly ParticipantTypeEnum MessageOnly = new ParticipantTypeEnum("message-only");
-            public static readonly ParticipantTypeEnum VoiceOnly = new ParticipantTypeEnum("voice-only");
-            public static readonly ParticipantTypeEnum VoiceAndMessage = new ParticipantTypeEnum("voice-and-message");
-        }
-
         private static Request BuildFetchRequest(FetchParticipantOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -162,7 +147,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="participantType"> The participant_type </param>
         /// <param name="identifier"> The identifier </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -170,13 +154,12 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <returns> A single instance of Participant </returns> 
         public static ResourceSet<ParticipantResource> Read(string pathServiceSid, 
                                                             string pathSessionSid, 
-                                                            ParticipantResource.ParticipantTypeEnum participantType = null, 
                                                             string identifier = null, 
                                                             int? pageSize = null, 
                                                             long? limit = null, 
                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadParticipantOptions(pathServiceSid, pathSessionSid){ParticipantType = participantType, Identifier = identifier, PageSize = pageSize, Limit = limit};
+            var options = new ReadParticipantOptions(pathServiceSid, pathSessionSid){Identifier = identifier, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -186,7 +169,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="participantType"> The participant_type </param>
         /// <param name="identifier"> The identifier </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -194,13 +176,12 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(string pathServiceSid, 
                                                                                                     string pathSessionSid, 
-                                                                                                    ParticipantResource.ParticipantTypeEnum participantType = null, 
                                                                                                     string identifier = null, 
                                                                                                     int? pageSize = null, 
                                                                                                     long? limit = null, 
                                                                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadParticipantOptions(pathServiceSid, pathSessionSid){ParticipantType = participantType, Identifier = identifier, PageSize = pageSize, Limit = limit};
+            var options = new ReadParticipantOptions(pathServiceSid, pathSessionSid){Identifier = identifier, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -311,7 +292,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="pathSessionSid"> Session Sid. </param>
         /// <param name="identifier"> The phone number of this Participant. </param>
         /// <param name="friendlyName"> A human readable description of this resource. </param>
-        /// <param name="participantType"> The Participant Type of this Participant </param>
         /// <param name="proxyIdentifier"> The proxy phone number for this Participant. </param>
         /// <param name="proxyIdentifierSid"> Proxy Identifier Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -320,12 +300,11 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
                                                  string pathSessionSid, 
                                                  string identifier, 
                                                  string friendlyName = null, 
-                                                 ParticipantResource.ParticipantTypeEnum participantType = null, 
                                                  string proxyIdentifier = null, 
                                                  string proxyIdentifierSid = null, 
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){FriendlyName = friendlyName, ParticipantType = participantType, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid};
+            var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid};
             return Create(options, client);
         }
 
@@ -337,7 +316,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="pathSessionSid"> Session Sid. </param>
         /// <param name="identifier"> The phone number of this Participant. </param>
         /// <param name="friendlyName"> A human readable description of this resource. </param>
-        /// <param name="participantType"> The Participant Type of this Participant </param>
         /// <param name="proxyIdentifier"> The proxy phone number for this Participant. </param>
         /// <param name="proxyIdentifierSid"> Proxy Identifier Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -346,12 +324,11 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
                                                                                          string pathSessionSid, 
                                                                                          string identifier, 
                                                                                          string friendlyName = null, 
-                                                                                         ParticipantResource.ParticipantTypeEnum participantType = null, 
                                                                                          string proxyIdentifier = null, 
                                                                                          string proxyIdentifierSid = null, 
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){FriendlyName = friendlyName, ParticipantType = participantType, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid};
+            var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -478,7 +455,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Participant. </param>
-        /// <param name="participantType"> The Participant Type of this Participant </param>
         /// <param name="identifier"> The phone number of this Participant. </param>
         /// <param name="friendlyName"> A human readable description of this resource. </param>
         /// <param name="proxyIdentifier"> The proxy phone number for this Participant. </param>
@@ -488,14 +464,13 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         public static ParticipantResource Update(string pathServiceSid, 
                                                  string pathSessionSid, 
                                                  string pathSid, 
-                                                 ParticipantResource.ParticipantTypeEnum participantType = null, 
                                                  string identifier = null, 
                                                  string friendlyName = null, 
                                                  string proxyIdentifier = null, 
                                                  string proxyIdentifierSid = null, 
                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathServiceSid, pathSessionSid, pathSid){ParticipantType = participantType, Identifier = identifier, FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid};
+            var options = new UpdateParticipantOptions(pathServiceSid, pathSessionSid, pathSid){Identifier = identifier, FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid};
             return Update(options, client);
         }
 
@@ -506,7 +481,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Participant. </param>
-        /// <param name="participantType"> The Participant Type of this Participant </param>
         /// <param name="identifier"> The phone number of this Participant. </param>
         /// <param name="friendlyName"> A human readable description of this resource. </param>
         /// <param name="proxyIdentifier"> The proxy phone number for this Participant. </param>
@@ -516,14 +490,13 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathServiceSid, 
                                                                                          string pathSessionSid, 
                                                                                          string pathSid, 
-                                                                                         ParticipantResource.ParticipantTypeEnum participantType = null, 
                                                                                          string identifier = null, 
                                                                                          string friendlyName = null, 
                                                                                          string proxyIdentifier = null, 
                                                                                          string proxyIdentifierSid = null, 
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathServiceSid, pathSessionSid, pathSid){ParticipantType = participantType, Identifier = identifier, FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid};
+            var options = new UpdateParticipantOptions(pathServiceSid, pathSessionSid, pathSid){Identifier = identifier, FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -572,18 +545,12 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The Participant Type of this Participant
-        /// </summary>
-        [JsonProperty("participant_type")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public ParticipantResource.ParticipantTypeEnum ParticipantType { get; private set; }
-        /// <summary>
         /// The phone number of this Participant.
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; private set; }
         /// <summary>
-        /// The proxy phone number for this Participant.
+        /// The proxy_identifier
         /// </summary>
         [JsonProperty("proxy_identifier")]
         public string ProxyIdentifier { get; private set; }

@@ -39,6 +39,20 @@ namespace Twilio.Rest.Proxy.V1.Service
             public static readonly StatusEnum Completed = new StatusEnum("completed");
         }
 
+        public sealed class ModeEnum : StringEnum 
+        {
+            private ModeEnum(string value) : base(value) {}
+            public ModeEnum() {}
+            public static implicit operator ModeEnum(string value)
+            {
+                return new ModeEnum(value);
+            }
+
+            public static readonly ModeEnum MessageOnly = new ModeEnum("message-only");
+            public static readonly ModeEnum VoiceOnly = new ModeEnum("voice-only");
+            public static readonly ModeEnum VoiceAndMessage = new ModeEnum("voice-and-message");
+        }
+
         private static Request BuildFetchRequest(FetchSessionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -303,6 +317,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="uniqueName"> A unique, developer assigned name of this Session. </param>
         /// <param name="dateExpiry"> The date this Session was expiry </param>
         /// <param name="ttl"> TTL for a Session, in seconds. </param>
+        /// <param name="mode"> The Mode of this Session </param>
         /// <param name="status"> The Status of this Session </param>
         /// <param name="participants"> A list of phone numbers to add to this Session. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -311,11 +326,12 @@ namespace Twilio.Rest.Proxy.V1.Service
                                              string uniqueName = null, 
                                              DateTime? dateExpiry = null, 
                                              int? ttl = null, 
+                                             SessionResource.ModeEnum mode = null, 
                                              SessionResource.StatusEnum status = null, 
-                                             List<string> participants = null, 
+                                             List<object> participants = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateSessionOptions(pathServiceSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Status = status, Participants = participants};
+            var options = new CreateSessionOptions(pathServiceSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants};
             return Create(options, client);
         }
 
@@ -327,6 +343,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="uniqueName"> A unique, developer assigned name of this Session. </param>
         /// <param name="dateExpiry"> The date this Session was expiry </param>
         /// <param name="ttl"> TTL for a Session, in seconds. </param>
+        /// <param name="mode"> The Mode of this Session </param>
         /// <param name="status"> The Status of this Session </param>
         /// <param name="participants"> A list of phone numbers to add to this Session. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -335,11 +352,12 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                                                      string uniqueName = null, 
                                                                                      DateTime? dateExpiry = null, 
                                                                                      int? ttl = null, 
+                                                                                     SessionResource.ModeEnum mode = null, 
                                                                                      SessionResource.StatusEnum status = null, 
-                                                                                     List<string> participants = null, 
+                                                                                     List<object> participants = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateSessionOptions(pathServiceSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Status = status, Participants = participants};
+            var options = new CreateSessionOptions(pathServiceSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants};
             return await CreateAsync(options, client);
         }
         #endif
@@ -462,6 +480,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="uniqueName"> A unique, developer assigned name of this Session. </param>
         /// <param name="dateExpiry"> The date this Session was expiry </param>
         /// <param name="ttl"> TTL for a Session, in seconds. </param>
+        /// <param name="mode"> The Mode of this Session </param>
         /// <param name="status"> The Status of this Session </param>
         /// <param name="participants"> A list of phone numbers to add to this Session. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -471,11 +490,12 @@ namespace Twilio.Rest.Proxy.V1.Service
                                              string uniqueName = null, 
                                              DateTime? dateExpiry = null, 
                                              int? ttl = null, 
+                                             SessionResource.ModeEnum mode = null, 
                                              SessionResource.StatusEnum status = null, 
-                                             List<string> participants = null, 
+                                             List<object> participants = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateSessionOptions(pathServiceSid, pathSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Status = status, Participants = participants};
+            var options = new UpdateSessionOptions(pathServiceSid, pathSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants};
             return Update(options, client);
         }
 
@@ -488,6 +508,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="uniqueName"> A unique, developer assigned name of this Session. </param>
         /// <param name="dateExpiry"> The date this Session was expiry </param>
         /// <param name="ttl"> TTL for a Session, in seconds. </param>
+        /// <param name="mode"> The Mode of this Session </param>
         /// <param name="status"> The Status of this Session </param>
         /// <param name="participants"> A list of phone numbers to add to this Session. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -497,11 +518,12 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                                                      string uniqueName = null, 
                                                                                      DateTime? dateExpiry = null, 
                                                                                      int? ttl = null, 
+                                                                                     SessionResource.ModeEnum mode = null, 
                                                                                      SessionResource.StatusEnum status = null, 
-                                                                                     List<string> participants = null, 
+                                                                                     List<object> participants = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateSessionOptions(pathServiceSid, pathSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Status = status, Participants = participants};
+            var options = new UpdateSessionOptions(pathServiceSid, pathSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -580,6 +602,12 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         [JsonProperty("ttl")]
         public int? Ttl { get; private set; }
+        /// <summary>
+        /// The Mode of this Session
+        /// </summary>
+        [JsonProperty("mode")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public SessionResource.ModeEnum Mode { get; private set; }
         /// <summary>
         /// The date this Session was created
         /// </summary>

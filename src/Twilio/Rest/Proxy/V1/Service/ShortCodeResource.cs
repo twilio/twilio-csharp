@@ -16,6 +16,7 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Proxy.V1.Service 
 {
@@ -428,7 +429,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// Nested resource URLs.
         /// </summary>
         [JsonProperty("capabilities")]
-        public List<object> Capabilities { get; private set; }
+        public PhoneNumberCapabilities Capabilities { get; private set; }
         /// <summary>
         /// The URL of this resource.
         /// </summary>

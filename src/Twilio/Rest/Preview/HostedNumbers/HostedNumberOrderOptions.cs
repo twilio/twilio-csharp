@@ -245,10 +245,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; }
         /// <summary>
-        /// ISO country code.
-        /// </summary>
-        public string IsoCountry { get; }
-        /// <summary>
         /// Specify SMS capability to host.
         /// </summary>
         public bool? SmsCapability { get; }
@@ -309,12 +305,10 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// Construct a new CreateHostedNumberOrderOptions
         /// </summary>
         /// <param name="phoneNumber"> An E164 formatted phone number. </param>
-        /// <param name="isoCountry"> ISO country code. </param>
         /// <param name="smsCapability"> Specify SMS capability to host. </param>
-        public CreateHostedNumberOrderOptions(Types.PhoneNumber phoneNumber, string isoCountry, bool? smsCapability)
+        public CreateHostedNumberOrderOptions(Types.PhoneNumber phoneNumber, bool? smsCapability)
         {
             PhoneNumber = phoneNumber;
-            IsoCountry = isoCountry;
             SmsCapability = smsCapability;
             CcEmails = new List<string>();
         }
@@ -328,11 +322,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
             if (PhoneNumber != null)
             {
                 p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
-            }
-
-            if (IsoCountry != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry));
             }
 
             if (SmsCapability != null)

@@ -83,6 +83,22 @@ namespace Twilio.Rest.Proxy.V1
         /// URL Twilio will send callbacks to
         /// </summary>
         public Uri CallbackUrl { get; set; }
+        /// <summary>
+        /// Whether to find proxy numbers in the same areacode.
+        /// </summary>
+        public ServiceResource.GeoMatchLevelEnum GeoMatchLevel { get; set; }
+        /// <summary>
+        /// What behavior to use when choosing a proxy number.
+        /// </summary>
+        public ServiceResource.NumberSelectionBehaviorEnum NumberSelectionBehavior { get; set; }
+        /// <summary>
+        /// A URL for Twilio call before each Interaction.
+        /// </summary>
+        public Uri InterceptCallbackUrl { get; set; }
+        /// <summary>
+        /// A URL for Twilio call when a new Interaction has no Session.
+        /// </summary>
+        public Uri OutOfSessionCallbackUrl { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -103,6 +119,26 @@ namespace Twilio.Rest.Proxy.V1
             if (CallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri.TrimEnd('/')));
+            }
+
+            if (GeoMatchLevel != null)
+            {
+                p.Add(new KeyValuePair<string, string>("GeoMatchLevel", GeoMatchLevel.ToString()));
+            }
+
+            if (NumberSelectionBehavior != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NumberSelectionBehavior", NumberSelectionBehavior.ToString()));
+            }
+
+            if (InterceptCallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("InterceptCallbackUrl", InterceptCallbackUrl.AbsoluteUri.TrimEnd('/')));
+            }
+
+            if (OutOfSessionCallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("OutOfSessionCallbackUrl", OutOfSessionCallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             return p;
@@ -163,6 +199,22 @@ namespace Twilio.Rest.Proxy.V1
         /// URL Twilio will send callbacks to
         /// </summary>
         public Uri CallbackUrl { get; set; }
+        /// <summary>
+        /// Whether to find proxy numbers in the same areacode.
+        /// </summary>
+        public ServiceResource.GeoMatchLevelEnum GeoMatchLevel { get; set; }
+        /// <summary>
+        /// What behavior to use when choosing a proxy number.
+        /// </summary>
+        public ServiceResource.NumberSelectionBehaviorEnum NumberSelectionBehavior { get; set; }
+        /// <summary>
+        /// A URL for Twilio call before each Interaction.
+        /// </summary>
+        public Uri InterceptCallbackUrl { get; set; }
+        /// <summary>
+        /// A URL for Twilio call when a new Interaction has no Session.
+        /// </summary>
+        public Uri OutOfSessionCallbackUrl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -192,6 +244,26 @@ namespace Twilio.Rest.Proxy.V1
             if (CallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri.TrimEnd('/')));
+            }
+
+            if (GeoMatchLevel != null)
+            {
+                p.Add(new KeyValuePair<string, string>("GeoMatchLevel", GeoMatchLevel.ToString()));
+            }
+
+            if (NumberSelectionBehavior != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NumberSelectionBehavior", NumberSelectionBehavior.ToString()));
+            }
+
+            if (InterceptCallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("InterceptCallbackUrl", InterceptCallbackUrl.AbsoluteUri.TrimEnd('/')));
+            }
+
+            if (OutOfSessionCallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("OutOfSessionCallbackUrl", OutOfSessionCallbackUrl.AbsoluteUri.TrimEnd('/')));
             }
 
             return p;

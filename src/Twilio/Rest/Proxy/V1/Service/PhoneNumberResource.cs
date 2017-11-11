@@ -68,11 +68,15 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="sid"> A string that uniquely identifies this Phone Number. </param>
+        /// <param name="phoneNumber"> The phone_number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
-        public static PhoneNumberResource Create(string pathServiceSid, string sid, ITwilioRestClient client = null)
+        public static PhoneNumberResource Create(string pathServiceSid, 
+                                                 string sid = null, 
+                                                 Types.PhoneNumber phoneNumber = null, 
+                                                 ITwilioRestClient client = null)
         {
-            var options = new CreatePhoneNumberOptions(pathServiceSid, sid);
+            var options = new CreatePhoneNumberOptions(pathServiceSid){Sid = sid, PhoneNumber = phoneNumber};
             return Create(options, client);
         }
 
@@ -82,13 +86,15 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="sid"> A string that uniquely identifies this Phone Number. </param>
+        /// <param name="phoneNumber"> The phone_number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(string pathServiceSid, 
-                                                                                         string sid, 
+                                                                                         string sid = null, 
+                                                                                         Types.PhoneNumber phoneNumber = null, 
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreatePhoneNumberOptions(pathServiceSid, sid);
+            var options = new CreatePhoneNumberOptions(pathServiceSid){Sid = sid, PhoneNumber = phoneNumber};
             return await CreateAsync(options, client);
         }
         #endif
@@ -435,7 +441,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// A list of capabilities.
         /// </summary>
         [JsonProperty("capabilities")]
-        public List<PhoneNumberCapabilities> Capabilities { get; private set; }
+        public PhoneNumberCapabilities Capabilities { get; private set; }
         /// <summary>
         /// The URL of this resource.
         /// </summary>

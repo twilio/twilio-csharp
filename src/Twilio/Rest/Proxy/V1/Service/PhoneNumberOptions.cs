@@ -25,17 +25,19 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// A string that uniquely identifies this Phone Number.
         /// </summary>
-        public string Sid { get; }
+        public string Sid { get; set; }
+        /// <summary>
+        /// The phone_number
+        /// </summary>
+        public Types.PhoneNumber PhoneNumber { get; set; }
 
         /// <summary>
         /// Construct a new CreatePhoneNumberOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="sid"> A string that uniquely identifies this Phone Number. </param>
-        public CreatePhoneNumberOptions(string pathServiceSid, string sid)
+        public CreatePhoneNumberOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
-            Sid = sid;
         }
 
         /// <summary>
@@ -47,6 +49,11 @@ namespace Twilio.Rest.Proxy.V1.Service
             if (Sid != null)
             {
                 p.Add(new KeyValuePair<string, string>("Sid", Sid.ToString()));
+            }
+
+            if (PhoneNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
             }
 
             return p;

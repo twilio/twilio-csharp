@@ -190,13 +190,12 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
                 ""
             );
             request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
-            request.AddPostParam("IsoCountry", Serialize("IsoCountry"));
             request.AddPostParam("SmsCapability", Serialize(true));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+987654321"), "IsoCountry", true, client: twilioRestClient);
+                HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+987654321"), true, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -214,7 +213,7 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": \"AD11111111111111111111111111111111\",\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": \"test@twilio.com\",\"friendly_name\": null,\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": null,\"status\": \"received\",\"unique_name\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 0}"
                                      ));
 
-            var response = HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+987654321"), "IsoCountry", true, client: twilioRestClient);
+            var response = HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+987654321"), true, client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -229,7 +228,7 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": null,\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": null,\"friendly_name\": null,\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": null,\"status\": \"received\",\"unique_name\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 0}"
                                      ));
 
-            var response = HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+987654321"), "IsoCountry", true, client: twilioRestClient);
+            var response = HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+987654321"), true, client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

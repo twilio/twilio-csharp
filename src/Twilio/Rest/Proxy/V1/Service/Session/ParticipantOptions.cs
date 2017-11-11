@@ -70,10 +70,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// The participant_type
-        /// </summary>
-        public ParticipantResource.ParticipantTypeEnum ParticipantType { get; set; }
-        /// <summary>
         /// The identifier
         /// </summary>
         public string Identifier { get; set; }
@@ -95,11 +91,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (ParticipantType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ParticipantType", ParticipantType.ToString()));
-            }
-
             if (Identifier != null)
             {
                 p.Add(new KeyValuePair<string, string>("Identifier", Identifier));
@@ -138,10 +129,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The Participant Type of this Participant
-        /// </summary>
-        public ParticipantResource.ParticipantTypeEnum ParticipantType { get; set; }
-        /// <summary>
         /// The proxy phone number for this Participant.
         /// </summary>
         public string ProxyIdentifier { get; set; }
@@ -177,11 +164,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (ParticipantType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ParticipantType", ParticipantType.ToString()));
             }
 
             if (ProxyIdentifier != null)
@@ -261,10 +243,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The Participant Type of this Participant
-        /// </summary>
-        public ParticipantResource.ParticipantTypeEnum ParticipantType { get; set; }
-        /// <summary>
         /// The phone number of this Participant.
         /// </summary>
         public string Identifier { get; set; }
@@ -300,11 +278,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (ParticipantType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ParticipantType", ParticipantType.ToString()));
-            }
-
             if (Identifier != null)
             {
                 p.Add(new KeyValuePair<string, string>("Identifier", Identifier));

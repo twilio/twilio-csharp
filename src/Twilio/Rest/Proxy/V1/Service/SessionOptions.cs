@@ -127,13 +127,17 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
+        /// The Mode of this Session
+        /// </summary>
+        public SessionResource.ModeEnum Mode { get; set; }
+        /// <summary>
         /// The Status of this Session
         /// </summary>
         public SessionResource.StatusEnum Status { get; set; }
         /// <summary>
         /// A list of phone numbers to add to this Session.
         /// </summary>
-        public List<string> Participants { get; set; }
+        public List<object> Participants { get; set; }
 
         /// <summary>
         /// Construct a new CreateSessionOptions
@@ -142,7 +146,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         public CreateSessionOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
-            Participants = new List<string>();
+            Participants = new List<object>();
         }
 
         /// <summary>
@@ -166,6 +170,11 @@ namespace Twilio.Rest.Proxy.V1.Service
                 p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
 
+            if (Mode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Mode", Mode.ToString()));
+            }
+
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
@@ -173,7 +182,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
             if (Participants != null)
             {
-                p.AddRange(Participants.Select(prop => new KeyValuePair<string, string>("Participants", prop)));
+                p.AddRange(Participants.Select(prop => new KeyValuePair<string, string>("Participants", Serializers.JsonObject(prop))));
             }
 
             return p;
@@ -245,13 +254,17 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
+        /// The Mode of this Session
+        /// </summary>
+        public SessionResource.ModeEnum Mode { get; set; }
+        /// <summary>
         /// The Status of this Session
         /// </summary>
         public SessionResource.StatusEnum Status { get; set; }
         /// <summary>
         /// A list of phone numbers to add to this Session.
         /// </summary>
-        public List<string> Participants { get; set; }
+        public List<object> Participants { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSessionOptions
@@ -262,7 +275,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         {
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
-            Participants = new List<string>();
+            Participants = new List<object>();
         }
 
         /// <summary>
@@ -286,6 +299,11 @@ namespace Twilio.Rest.Proxy.V1.Service
                 p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
 
+            if (Mode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Mode", Mode.ToString()));
+            }
+
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
@@ -293,7 +311,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
             if (Participants != null)
             {
-                p.AddRange(Participants.Select(prop => new KeyValuePair<string, string>("Participants", prop)));
+                p.AddRange(Participants.Select(prop => new KeyValuePair<string, string>("Participants", Serializers.JsonObject(prop))));
             }
 
             return p;
