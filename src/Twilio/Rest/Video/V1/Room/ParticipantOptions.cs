@@ -12,9 +12,9 @@ namespace Twilio.Rest.Video.V1.Room
 {
 
     /// <summary>
-    /// FetchRoomParticipantOptions
+    /// FetchParticipantOptions
     /// </summary>
-    public class FetchRoomParticipantOptions : IOptions<RoomParticipantResource> 
+    public class FetchParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
         /// The room_sid
@@ -26,11 +26,11 @@ namespace Twilio.Rest.Video.V1.Room
         public string PathSid { get; }
 
         /// <summary>
-        /// Construct a new FetchRoomParticipantOptions
+        /// Construct a new FetchParticipantOptions
         /// </summary>
         /// <param name="pathRoomSid"> The room_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public FetchRoomParticipantOptions(string pathRoomSid, string pathSid)
+        public FetchParticipantOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
             PathSid = pathSid;
@@ -47,9 +47,9 @@ namespace Twilio.Rest.Video.V1.Room
     }
 
     /// <summary>
-    /// ReadRoomParticipantOptions
+    /// ReadParticipantOptions
     /// </summary>
-    public class ReadRoomParticipantOptions : ReadOptions<RoomParticipantResource> 
+    public class ReadParticipantOptions : ReadOptions<ParticipantResource> 
     {
         /// <summary>
         /// The room_sid
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// The status
         /// </summary>
-        public RoomParticipantResource.StatusEnum Status { get; set; }
+        public ParticipantResource.StatusEnum Status { get; set; }
         /// <summary>
         /// The identity
         /// </summary>
@@ -73,10 +73,10 @@ namespace Twilio.Rest.Video.V1.Room
         public DateTime? DateCreatedBefore { get; set; }
 
         /// <summary>
-        /// Construct a new ReadRoomParticipantOptions
+        /// Construct a new ReadParticipantOptions
         /// </summary>
         /// <param name="pathRoomSid"> The room_sid </param>
-        public ReadRoomParticipantOptions(string pathRoomSid)
+        public ReadParticipantOptions(string pathRoomSid)
         {
             PathRoomSid = pathRoomSid;
         }
@@ -117,9 +117,9 @@ namespace Twilio.Rest.Video.V1.Room
     }
 
     /// <summary>
-    /// UpdateRoomParticipantOptions
+    /// UpdateParticipantOptions
     /// </summary>
-    public class UpdateRoomParticipantOptions : IOptions<RoomParticipantResource> 
+    public class UpdateParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
         /// The room_sid
@@ -132,14 +132,14 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// The status
         /// </summary>
-        public RoomParticipantResource.StatusEnum Status { get; set; }
+        public ParticipantResource.StatusEnum Status { get; set; }
 
         /// <summary>
-        /// Construct a new UpdateRoomParticipantOptions
+        /// Construct a new UpdateParticipantOptions
         /// </summary>
         /// <param name="pathRoomSid"> The room_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public UpdateRoomParticipantOptions(string pathRoomSid, string pathSid)
+        public UpdateParticipantOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
             PathSid = pathSid;

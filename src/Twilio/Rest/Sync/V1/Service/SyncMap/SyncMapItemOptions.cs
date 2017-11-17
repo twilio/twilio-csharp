@@ -120,6 +120,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// The data
         /// </summary>
         public object Data { get; }
+        /// <summary>
+        /// The ttl
+        /// </summary>
+        public int? Ttl { get; set; }
 
         /// <summary>
         /// Construct a new CreateSyncMapItemOptions
@@ -150,6 +154,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             if (Data != null)
             {
                 p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+            }
+
+            if (Ttl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
 
             return p;
@@ -247,7 +256,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// The data
         /// </summary>
-        public object Data { get; }
+        public object Data { get; set; }
+        /// <summary>
+        /// The ttl
+        /// </summary>
+        public int? Ttl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSyncMapItemOptions
@@ -255,13 +268,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
-        /// <param name="data"> The data </param>
-        public UpdateSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey, object data)
+        public UpdateSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey)
         {
             PathServiceSid = pathServiceSid;
             PathMapSid = pathMapSid;
             PathKey = pathKey;
-            Data = data;
         }
 
         /// <summary>
@@ -273,6 +284,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             if (Data != null)
             {
                 p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+            }
+
+            if (Ttl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
 
             return p;

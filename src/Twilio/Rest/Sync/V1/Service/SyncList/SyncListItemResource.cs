@@ -244,14 +244,16 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="data"> The data </param>
+        /// <param name="ttl"> The ttl </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListItem </returns> 
         public static SyncListItemResource Create(string pathServiceSid, 
                                                   string pathListSid, 
                                                   object data, 
+                                                  int? ttl = null, 
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateSyncListItemOptions(pathServiceSid, pathListSid, data);
+            var options = new CreateSyncListItemOptions(pathServiceSid, pathListSid, data){Ttl = ttl};
             return Create(options, client);
         }
 
@@ -262,14 +264,16 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="data"> The data </param>
+        /// <param name="ttl"> The ttl </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(string pathServiceSid, 
                                                                                           string pathListSid, 
                                                                                           object data, 
+                                                                                          int? ttl = null, 
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateSyncListItemOptions(pathServiceSid, pathListSid, data);
+            var options = new CreateSyncListItemOptions(pathServiceSid, pathListSid, data){Ttl = ttl};
             return await CreateAsync(options, client);
         }
         #endif
@@ -477,15 +481,17 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="pathIndex"> The index </param>
         /// <param name="data"> The data </param>
+        /// <param name="ttl"> The ttl </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListItem </returns> 
         public static SyncListItemResource Update(string pathServiceSid, 
                                                   string pathListSid, 
                                                   int? pathIndex, 
-                                                  object data, 
+                                                  object data = null, 
+                                                  int? ttl = null, 
                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex, data);
+            var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){Data = data, Ttl = ttl};
             return Update(options, client);
         }
 
@@ -497,15 +503,17 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="pathIndex"> The index </param>
         /// <param name="data"> The data </param>
+        /// <param name="ttl"> The ttl </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(string pathServiceSid, 
                                                                                           string pathListSid, 
                                                                                           int? pathIndex, 
-                                                                                          object data, 
+                                                                                          object data = null, 
+                                                                                          int? ttl = null, 
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex, data);
+            var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){Data = data, Ttl = ttl};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -563,6 +571,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }
+        /// <summary>
+        /// The date_expires
+        /// </summary>
+        [JsonProperty("date_expires")]
+        public DateTime? DateExpires { get; private set; }
         /// <summary>
         /// The date_created
         /// </summary>

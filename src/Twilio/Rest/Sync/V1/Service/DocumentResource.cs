@@ -208,14 +208,16 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="data"> The data </param>
+        /// <param name="ttl"> The ttl </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns> 
         public static DocumentResource Create(string pathServiceSid, 
                                               string uniqueName = null, 
                                               object data = null, 
+                                              int? ttl = null, 
                                               ITwilioRestClient client = null)
         {
-            var options = new CreateDocumentOptions(pathServiceSid){UniqueName = uniqueName, Data = data};
+            var options = new CreateDocumentOptions(pathServiceSid){UniqueName = uniqueName, Data = data, Ttl = ttl};
             return Create(options, client);
         }
 
@@ -226,14 +228,16 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="data"> The data </param>
+        /// <param name="ttl"> The ttl </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
         public static async System.Threading.Tasks.Task<DocumentResource> CreateAsync(string pathServiceSid, 
                                                                                       string uniqueName = null, 
                                                                                       object data = null, 
+                                                                                      int? ttl = null, 
                                                                                       ITwilioRestClient client = null)
         {
-            var options = new CreateDocumentOptions(pathServiceSid){UniqueName = uniqueName, Data = data};
+            var options = new CreateDocumentOptions(pathServiceSid){UniqueName = uniqueName, Data = data, Ttl = ttl};
             return await CreateAsync(options, client);
         }
         #endif
@@ -423,14 +427,16 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="data"> The data </param>
+        /// <param name="ttl"> The ttl </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns> 
         public static DocumentResource Update(string pathServiceSid, 
                                               string pathSid, 
-                                              object data, 
+                                              object data = null, 
+                                              int? ttl = null, 
                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateDocumentOptions(pathServiceSid, pathSid, data);
+            var options = new UpdateDocumentOptions(pathServiceSid, pathSid){Data = data, Ttl = ttl};
             return Update(options, client);
         }
 
@@ -441,14 +447,16 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="data"> The data </param>
+        /// <param name="ttl"> The ttl </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
         public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(string pathServiceSid, 
                                                                                       string pathSid, 
-                                                                                      object data, 
+                                                                                      object data = null, 
+                                                                                      int? ttl = null, 
                                                                                       ITwilioRestClient client = null)
         {
-            var options = new UpdateDocumentOptions(pathServiceSid, pathSid, data);
+            var options = new UpdateDocumentOptions(pathServiceSid, pathSid){Data = data, Ttl = ttl};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -511,6 +519,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }
+        /// <summary>
+        /// The date_expires
+        /// </summary>
+        [JsonProperty("date_expires")]
+        public DateTime? DateExpires { get; private set; }
         /// <summary>
         /// The date_created
         /// </summary>

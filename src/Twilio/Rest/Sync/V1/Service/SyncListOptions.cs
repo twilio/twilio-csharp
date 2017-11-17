@@ -100,6 +100,10 @@ namespace Twilio.Rest.Sync.V1.Service
         /// The unique_name
         /// </summary>
         public string UniqueName { get; set; }
+        /// <summary>
+        /// The ttl
+        /// </summary>
+        public int? Ttl { get; set; }
 
         /// <summary>
         /// Construct a new CreateSyncListOptions
@@ -119,6 +123,57 @@ namespace Twilio.Rest.Sync.V1.Service
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+            }
+
+            if (Ttl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
+            }
+
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    /// 
+    /// UpdateSyncListOptions
+    /// </summary>
+    public class UpdateSyncListOptions : IOptions<SyncListResource> 
+    {
+        /// <summary>
+        /// The service_sid
+        /// </summary>
+        public string PathServiceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
+        public string PathSid { get; }
+        /// <summary>
+        /// The ttl
+        /// </summary>
+        public int? Ttl { get; set; }
+
+        /// <summary>
+        /// Construct a new UpdateSyncListOptions
+        /// </summary>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public UpdateSyncListOptions(string pathServiceSid, string pathSid)
+        {
+            PathServiceSid = pathServiceSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (Ttl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
 
             return p;

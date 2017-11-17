@@ -207,13 +207,15 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="ttl"> The ttl </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncList </returns> 
         public static SyncListResource Create(string pathServiceSid, 
                                               string uniqueName = null, 
+                                              int? ttl = null, 
                                               ITwilioRestClient client = null)
         {
-            var options = new CreateSyncListOptions(pathServiceSid){UniqueName = uniqueName};
+            var options = new CreateSyncListOptions(pathServiceSid){UniqueName = uniqueName, Ttl = ttl};
             return Create(options, client);
         }
 
@@ -223,14 +225,92 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="ttl"> The ttl </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncList </returns> 
         public static async System.Threading.Tasks.Task<SyncListResource> CreateAsync(string pathServiceSid, 
                                                                                       string uniqueName = null, 
+                                                                                      int? ttl = null, 
                                                                                       ITwilioRestClient client = null)
         {
-            var options = new CreateSyncListOptions(pathServiceSid){UniqueName = uniqueName};
+            var options = new CreateSyncListOptions(pathServiceSid){UniqueName = uniqueName, Ttl = ttl};
             return await CreateAsync(options, client);
+        }
+        #endif
+
+        private static Request BuildUpdateRequest(UpdateSyncListOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Sync,
+                "/v1/Services/" + options.PathServiceSid + "/Lists/" + options.PathSid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="options"> Update SyncList parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SyncList </returns> 
+        public static SyncListResource Update(UpdateSyncListOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="options"> Update SyncList parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SyncList </returns> 
+        public static async System.Threading.Tasks.Task<SyncListResource> UpdateAsync(UpdateSyncListOptions options, 
+                                                                                      ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="ttl"> The ttl </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SyncList </returns> 
+        public static SyncListResource Update(string pathServiceSid, 
+                                              string pathSid, 
+                                              int? ttl = null, 
+                                              ITwilioRestClient client = null)
+        {
+            var options = new UpdateSyncListOptions(pathServiceSid, pathSid){Ttl = ttl};
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="ttl"> The ttl </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SyncList </returns> 
+        public static async System.Threading.Tasks.Task<SyncListResource> UpdateAsync(string pathServiceSid, 
+                                                                                      string pathSid, 
+                                                                                      int? ttl = null, 
+                                                                                      ITwilioRestClient client = null)
+        {
+            var options = new UpdateSyncListOptions(pathServiceSid, pathSid){Ttl = ttl};
+            return await UpdateAsync(options, client);
         }
         #endif
 
@@ -426,6 +506,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         [JsonProperty("revision")]
         public string Revision { get; private set; }
+        /// <summary>
+        /// The date_expires
+        /// </summary>
+        [JsonProperty("date_expires")]
+        public DateTime? DateExpires { get; private set; }
         /// <summary>
         /// The date_created
         /// </summary>

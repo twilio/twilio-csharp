@@ -116,6 +116,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// The data
         /// </summary>
         public object Data { get; }
+        /// <summary>
+        /// The ttl
+        /// </summary>
+        public int? Ttl { get; set; }
 
         /// <summary>
         /// Construct a new CreateSyncListItemOptions
@@ -139,6 +143,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
             if (Data != null)
             {
                 p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+            }
+
+            if (Ttl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
 
             return p;
@@ -236,7 +245,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// The data
         /// </summary>
-        public object Data { get; }
+        public object Data { get; set; }
+        /// <summary>
+        /// The ttl
+        /// </summary>
+        public int? Ttl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSyncListItemOptions
@@ -244,13 +257,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="pathIndex"> The index </param>
-        /// <param name="data"> The data </param>
-        public UpdateSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex, object data)
+        public UpdateSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
         {
             PathServiceSid = pathServiceSid;
             PathListSid = pathListSid;
             PathIndex = pathIndex;
-            Data = data;
         }
 
         /// <summary>
@@ -262,6 +273,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
             if (Data != null)
             {
                 p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+            }
+
+            if (Ttl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
 
             return p;

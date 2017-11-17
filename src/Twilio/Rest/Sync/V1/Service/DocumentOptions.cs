@@ -104,6 +104,10 @@ namespace Twilio.Rest.Sync.V1.Service
         /// The data
         /// </summary>
         public object Data { get; set; }
+        /// <summary>
+        /// The ttl
+        /// </summary>
+        public int? Ttl { get; set; }
 
         /// <summary>
         /// Construct a new CreateDocumentOptions
@@ -128,6 +132,11 @@ namespace Twilio.Rest.Sync.V1.Service
             if (Data != null)
             {
                 p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+            }
+
+            if (Ttl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
 
             return p;
@@ -188,19 +197,21 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// The data
         /// </summary>
-        public object Data { get; }
+        public object Data { get; set; }
+        /// <summary>
+        /// The ttl
+        /// </summary>
+        public int? Ttl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateDocumentOptions
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="data"> The data </param>
-        public UpdateDocumentOptions(string pathServiceSid, string pathSid, object data)
+        public UpdateDocumentOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
-            Data = data;
         }
 
         /// <summary>
@@ -212,6 +223,11 @@ namespace Twilio.Rest.Sync.V1.Service
             if (Data != null)
             {
                 p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+            }
+
+            if (Ttl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
 
             return p;

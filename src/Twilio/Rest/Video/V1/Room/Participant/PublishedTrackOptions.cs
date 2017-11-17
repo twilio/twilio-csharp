@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Video.V1.Room.RoomParticipant 
+namespace Twilio.Rest.Video.V1.Room.Participant 
 {
 
     /// <summary>

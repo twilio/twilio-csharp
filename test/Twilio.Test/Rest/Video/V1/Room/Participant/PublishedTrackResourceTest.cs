@@ -12,9 +12,9 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Video.V1.Room.RoomParticipant;
+using Twilio.Rest.Video.V1.Room.Participant;
 
-namespace Twilio.Tests.Rest.Video.V1.Room.RoomParticipant 
+namespace Twilio.Tests.Rest.Video.V1.Room.Participant 
 {
 
     [TestFixture]
