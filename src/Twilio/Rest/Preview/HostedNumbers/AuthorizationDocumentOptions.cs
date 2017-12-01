@@ -132,11 +132,30 @@ namespace Twilio.Rest.Preview.HostedNumbers
     public class ReadAuthorizationDocumentOptions : ReadOptions<AuthorizationDocumentResource> 
     {
         /// <summary>
+        /// Email.
+        /// </summary>
+        public string Email { get; set; }
+        /// <summary>
+        /// The Status of this AuthorizationDocument.
+        /// </summary>
+        public AuthorizationDocumentResource.StatusEnum Status { get; set; }
+
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (Email != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Email", Email));
+            }
+
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

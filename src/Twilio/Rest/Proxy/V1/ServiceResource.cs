@@ -32,7 +32,7 @@ namespace Twilio.Rest.Proxy.V1
                 return new GeoMatchLevelEnum(value);
             }
 
-            public static readonly GeoMatchLevelEnum AreaCode = new GeoMatchLevelEnum("area_code");
+            public static readonly GeoMatchLevelEnum AreaCode = new GeoMatchLevelEnum("area-code");
             public static readonly GeoMatchLevelEnum Overlay = new GeoMatchLevelEnum("overlay");
             public static readonly GeoMatchLevelEnum Radius = new GeoMatchLevelEnum("radius");
             public static readonly GeoMatchLevelEnum Country = new GeoMatchLevelEnum("country");
@@ -47,8 +47,8 @@ namespace Twilio.Rest.Proxy.V1
                 return new NumberSelectionBehaviorEnum(value);
             }
 
-            public static readonly NumberSelectionBehaviorEnum AvoidSticky = new NumberSelectionBehaviorEnum("avoid_sticky");
-            public static readonly NumberSelectionBehaviorEnum PreferSticky = new NumberSelectionBehaviorEnum("prefer_sticky");
+            public static readonly NumberSelectionBehaviorEnum AvoidSticky = new NumberSelectionBehaviorEnum("avoid-sticky");
+            public static readonly NumberSelectionBehaviorEnum PreferSticky = new NumberSelectionBehaviorEnum("prefer-sticky");
         }
 
         private static Request BuildFetchRequest(FetchServiceOptions options, ITwilioRestClient client)
@@ -296,7 +296,7 @@ namespace Twilio.Rest.Proxy.V1
         /// <summary>
         /// Create a new Service for Twilio Proxy
         /// </summary>
-        /// <param name="friendlyName"> A human readable description of this resource. </param>
+        /// <param name="uniqueName"> The human-readable string that uniquely identifies this Service. </param>
         /// <param name="defaultTtl"> Default TTL for a Session, in seconds. </param>
         /// <param name="callbackUrl"> URL Twilio will send callbacks to </param>
         /// <param name="geoMatchLevel"> Whether to find proxy numbers in the same areacode. </param>
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Proxy.V1
         /// <param name="outOfSessionCallbackUrl"> A URL for Twilio call when a new Interaction has no Session. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Create(string friendlyName = null, 
+        public static ServiceResource Create(string uniqueName, 
                                              int? defaultTtl = null, 
                                              Uri callbackUrl = null, 
                                              ServiceResource.GeoMatchLevelEnum geoMatchLevel = null, 
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Proxy.V1
                                              Uri outOfSessionCallbackUrl = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(){FriendlyName = friendlyName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl};
+            var options = new CreateServiceOptions(uniqueName){DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl};
             return Create(options, client);
         }
 
@@ -322,7 +322,7 @@ namespace Twilio.Rest.Proxy.V1
         /// <summary>
         /// Create a new Service for Twilio Proxy
         /// </summary>
-        /// <param name="friendlyName"> A human readable description of this resource. </param>
+        /// <param name="uniqueName"> The human-readable string that uniquely identifies this Service. </param>
         /// <param name="defaultTtl"> Default TTL for a Session, in seconds. </param>
         /// <param name="callbackUrl"> URL Twilio will send callbacks to </param>
         /// <param name="geoMatchLevel"> Whether to find proxy numbers in the same areacode. </param>
@@ -331,7 +331,7 @@ namespace Twilio.Rest.Proxy.V1
         /// <param name="outOfSessionCallbackUrl"> A URL for Twilio call when a new Interaction has no Session. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null, 
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string uniqueName, 
                                                                                      int? defaultTtl = null, 
                                                                                      Uri callbackUrl = null, 
                                                                                      ServiceResource.GeoMatchLevelEnum geoMatchLevel = null, 
@@ -340,7 +340,7 @@ namespace Twilio.Rest.Proxy.V1
                                                                                      Uri outOfSessionCallbackUrl = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(){FriendlyName = friendlyName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl};
+            var options = new CreateServiceOptions(uniqueName){DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl};
             return await CreateAsync(options, client);
         }
         #endif
@@ -455,7 +455,7 @@ namespace Twilio.Rest.Proxy.V1
         /// Update a specific Service.
         /// </summary>
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
-        /// <param name="friendlyName"> A human readable description of this resource. </param>
+        /// <param name="uniqueName"> A human readable description of this resource. </param>
         /// <param name="defaultTtl"> Default TTL for a Session, in seconds. </param>
         /// <param name="callbackUrl"> URL Twilio will send callbacks to </param>
         /// <param name="geoMatchLevel"> Whether to find proxy numbers in the same areacode. </param>
@@ -465,7 +465,7 @@ namespace Twilio.Rest.Proxy.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Update(string pathSid, 
-                                             string friendlyName = null, 
+                                             string uniqueName = null, 
                                              int? defaultTtl = null, 
                                              Uri callbackUrl = null, 
                                              ServiceResource.GeoMatchLevelEnum geoMatchLevel = null, 
@@ -474,7 +474,7 @@ namespace Twilio.Rest.Proxy.V1
                                              Uri outOfSessionCallbackUrl = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl};
+            var options = new UpdateServiceOptions(pathSid){UniqueName = uniqueName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl};
             return Update(options, client);
         }
 
@@ -483,7 +483,7 @@ namespace Twilio.Rest.Proxy.V1
         /// Update a specific Service.
         /// </summary>
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
-        /// <param name="friendlyName"> A human readable description of this resource. </param>
+        /// <param name="uniqueName"> A human readable description of this resource. </param>
         /// <param name="defaultTtl"> Default TTL for a Session, in seconds. </param>
         /// <param name="callbackUrl"> URL Twilio will send callbacks to </param>
         /// <param name="geoMatchLevel"> Whether to find proxy numbers in the same areacode. </param>
@@ -493,7 +493,7 @@ namespace Twilio.Rest.Proxy.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, 
-                                                                                     string friendlyName = null, 
+                                                                                     string uniqueName = null, 
                                                                                      int? defaultTtl = null, 
                                                                                      Uri callbackUrl = null, 
                                                                                      ServiceResource.GeoMatchLevelEnum geoMatchLevel = null, 
@@ -502,7 +502,7 @@ namespace Twilio.Rest.Proxy.V1
                                                                                      Uri outOfSessionCallbackUrl = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl};
+            var options = new UpdateServiceOptions(pathSid){UniqueName = uniqueName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -533,8 +533,8 @@ namespace Twilio.Rest.Proxy.V1
         /// <summary>
         /// A human readable description of this resource.
         /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
+        [JsonProperty("unique_name")]
+        public string UniqueName { get; private set; }
         /// <summary>
         /// Account Sid.
         /// </summary>

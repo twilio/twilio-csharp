@@ -114,4 +114,47 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         }
     }
 
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    /// 
+    /// Delete a specific Interaction.
+    /// </summary>
+    public class DeleteInteractionOptions : IOptions<InteractionResource> 
+    {
+        /// <summary>
+        /// Service Sid.
+        /// </summary>
+        public string PathServiceSid { get; }
+        /// <summary>
+        /// Session Sid.
+        /// </summary>
+        public string PathSessionSid { get; }
+        /// <summary>
+        /// A string that uniquely identifies this Interaction.
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteInteractionOptions
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSessionSid"> Session Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Interaction. </param>
+        public DeleteInteractionOptions(string pathServiceSid, string pathSessionSid, string pathSid)
+        {
+            PathServiceSid = pathServiceSid;
+            PathSessionSid = pathSessionSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }

@@ -14,12 +14,41 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Address 
 {
 
     public class DependentPhoneNumberResource : Resource 
     {
+        public sealed class AddressRequirementEnum : StringEnum 
+        {
+            private AddressRequirementEnum(string value) : base(value) {}
+            public AddressRequirementEnum() {}
+            public static implicit operator AddressRequirementEnum(string value)
+            {
+                return new AddressRequirementEnum(value);
+            }
+
+            public static readonly AddressRequirementEnum None = new AddressRequirementEnum("none");
+            public static readonly AddressRequirementEnum Any = new AddressRequirementEnum("any");
+            public static readonly AddressRequirementEnum Local = new AddressRequirementEnum("local");
+            public static readonly AddressRequirementEnum Foreign = new AddressRequirementEnum("foreign");
+        }
+
+        public sealed class EmergencyStatusEnum : StringEnum 
+        {
+            private EmergencyStatusEnum(string value) : base(value) {}
+            public EmergencyStatusEnum() {}
+            public static implicit operator EmergencyStatusEnum(string value)
+            {
+                return new EmergencyStatusEnum(value);
+            }
+
+            public static readonly EmergencyStatusEnum Active = new EmergencyStatusEnum("Active");
+            public static readonly EmergencyStatusEnum Inactive = new EmergencyStatusEnum("Inactive");
+        }
+
         private static Request BuildReadRequest(ReadDependentPhoneNumberOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -185,6 +214,16 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         }
 
         /// <summary>
+        /// The sid
+        /// </summary>
+        [JsonProperty("sid")]
+        public string Sid { get; private set; }
+        /// <summary>
+        /// The account_sid
+        /// </summary>
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
+        /// <summary>
         /// The friendly_name
         /// </summary>
         [JsonProperty("friendly_name")]
@@ -197,50 +236,122 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
         /// <summary>
-        /// The lata
+        /// The voice_url
         /// </summary>
-        [JsonProperty("lata")]
-        public string Lata { get; private set; }
+        [JsonProperty("voice_url")]
+        public Uri VoiceUrl { get; private set; }
         /// <summary>
-        /// The rate_center
+        /// The voice_method
         /// </summary>
-        [JsonProperty("rate_center")]
-        public string RateCenter { get; private set; }
+        [JsonProperty("voice_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
+        public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
         /// <summary>
-        /// The latitude
+        /// The voice_fallback_method
         /// </summary>
-        [JsonProperty("latitude")]
-        public decimal? Latitude { get; private set; }
+        [JsonProperty("voice_fallback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
+        public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
         /// <summary>
-        /// The longitude
+        /// The voice_fallback_url
         /// </summary>
-        [JsonProperty("longitude")]
-        public decimal? Longitude { get; private set; }
+        [JsonProperty("voice_fallback_url")]
+        public Uri VoiceFallbackUrl { get; private set; }
         /// <summary>
-        /// The region
+        /// The voice_caller_id_lookup
         /// </summary>
-        [JsonProperty("region")]
-        public string Region { get; private set; }
+        [JsonProperty("voice_caller_id_lookup")]
+        public bool? VoiceCallerIdLookup { get; private set; }
         /// <summary>
-        /// The postal_code
+        /// The date_created
         /// </summary>
-        [JsonProperty("postal_code")]
-        public string PostalCode { get; private set; }
+        [JsonProperty("date_created")]
+        public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The iso_country
+        /// The date_updated
         /// </summary>
-        [JsonProperty("iso_country")]
-        public string IsoCountry { get; private set; }
+        [JsonProperty("date_updated")]
+        public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The sms_fallback_method
+        /// </summary>
+        [JsonProperty("sms_fallback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
+        public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
+        /// <summary>
+        /// The sms_fallback_url
+        /// </summary>
+        [JsonProperty("sms_fallback_url")]
+        public Uri SmsFallbackUrl { get; private set; }
+        /// <summary>
+        /// The sms_method
+        /// </summary>
+        [JsonProperty("sms_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
+        public Twilio.Http.HttpMethod SmsMethod { get; private set; }
+        /// <summary>
+        /// The sms_url
+        /// </summary>
+        [JsonProperty("sms_url")]
+        public Uri SmsUrl { get; private set; }
         /// <summary>
         /// The address_requirements
         /// </summary>
         [JsonProperty("address_requirements")]
-        public string AddressRequirements { get; private set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public DependentPhoneNumberResource.AddressRequirementEnum AddressRequirements { get; private set; }
         /// <summary>
         /// The capabilities
         /// </summary>
         [JsonProperty("capabilities")]
-        public Dictionary<string, string> Capabilities { get; private set; }
+        public object Capabilities { get; private set; }
+        /// <summary>
+        /// The status_callback
+        /// </summary>
+        [JsonProperty("status_callback")]
+        public Uri StatusCallback { get; private set; }
+        /// <summary>
+        /// The status_callback_method
+        /// </summary>
+        [JsonProperty("status_callback_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
+        public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
+        /// <summary>
+        /// The api_version
+        /// </summary>
+        [JsonProperty("api_version")]
+        public string ApiVersion { get; private set; }
+        /// <summary>
+        /// The sms_application_sid
+        /// </summary>
+        [JsonProperty("sms_application_sid")]
+        public string SmsApplicationSid { get; private set; }
+        /// <summary>
+        /// The voice_application_sid
+        /// </summary>
+        [JsonProperty("voice_application_sid")]
+        public string VoiceApplicationSid { get; private set; }
+        /// <summary>
+        /// The trunk_sid
+        /// </summary>
+        [JsonProperty("trunk_sid")]
+        public string TrunkSid { get; private set; }
+        /// <summary>
+        /// The emergency_status
+        /// </summary>
+        [JsonProperty("emergency_status")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public DependentPhoneNumberResource.EmergencyStatusEnum EmergencyStatus { get; private set; }
+        /// <summary>
+        /// The emergency_address_sid
+        /// </summary>
+        [JsonProperty("emergency_address_sid")]
+        public string EmergencyAddressSid { get; private set; }
+        /// <summary>
+        /// The uri
+        /// </summary>
+        [JsonProperty("uri")]
+        public string Uri { get; private set; }
 
         private DependentPhoneNumberResource()
         {

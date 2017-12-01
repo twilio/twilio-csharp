@@ -549,6 +549,11 @@ namespace Twilio.Rest.Video.V1
         [JsonConverter(typeof(StringEnumConverter))]
         public List<RoomResource.VideoCodecEnum> VideoCodecs { get; private set; }
         /// <summary>
+        /// The media_region
+        /// </summary>
+        [JsonProperty("media_region")]
+        public string MediaRegion { get; private set; }
+        /// <summary>
         /// The url
         /// </summary>
         [JsonProperty("url")]

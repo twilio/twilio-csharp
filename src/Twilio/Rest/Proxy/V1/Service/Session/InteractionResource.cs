@@ -296,6 +296,82 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             return Page<InteractionResource>.FromJson("interactions", response.Content);
         }
 
+        private static Request BuildDeleteRequest(DeleteInteractionOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Proxy,
+                "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSessionSid + "/Interactions/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Delete a specific Interaction.
+        /// </summary>
+        /// <param name="options"> Delete Interaction parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Interaction </returns> 
+        public static bool Delete(DeleteInteractionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a specific Interaction.
+        /// </summary>
+        /// <param name="options"> Delete Interaction parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Interaction </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInteractionOptions options, 
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Delete a specific Interaction.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSessionSid"> Session Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Interaction. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Interaction </returns> 
+        public static bool Delete(string pathServiceSid, 
+                                  string pathSessionSid, 
+                                  string pathSid, 
+                                  ITwilioRestClient client = null)
+        {
+            var options = new DeleteInteractionOptions(pathServiceSid, pathSessionSid, pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a specific Interaction.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSessionSid"> Session Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Interaction. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Interaction </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+                                                                          string pathSessionSid, 
+                                                                          string pathSid, 
+                                                                          ITwilioRestClient client = null)
+        {
+            var options = new DeleteInteractionOptions(pathServiceSid, pathSessionSid, pathSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a InteractionResource object
         /// </summary>

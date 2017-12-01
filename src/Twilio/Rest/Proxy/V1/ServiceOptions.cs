@@ -72,9 +72,9 @@ namespace Twilio.Rest.Proxy.V1
     public class CreateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// A human readable description of this resource.
+        /// The human-readable string that uniquely identifies this Service.
         /// </summary>
-        public string FriendlyName { get; set; }
+        public string UniqueName { get; }
         /// <summary>
         /// Default TTL for a Session, in seconds.
         /// </summary>
@@ -101,14 +101,23 @@ namespace Twilio.Rest.Proxy.V1
         public Uri OutOfSessionCallbackUrl { get; set; }
 
         /// <summary>
+        /// Construct a new CreateServiceOptions
+        /// </summary>
+        /// <param name="uniqueName"> The human-readable string that uniquely identifies this Service. </param>
+        public CreateServiceOptions(string uniqueName)
+        {
+            UniqueName = uniqueName;
+        }
+
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
+            if (UniqueName != null)
             {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
 
             if (DefaultTtl != null)
@@ -190,7 +199,7 @@ namespace Twilio.Rest.Proxy.V1
         /// <summary>
         /// A human readable description of this resource.
         /// </summary>
-        public string FriendlyName { get; set; }
+        public string UniqueName { get; set; }
         /// <summary>
         /// Default TTL for a Session, in seconds.
         /// </summary>
@@ -231,9 +240,9 @@ namespace Twilio.Rest.Proxy.V1
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
+            if (UniqueName != null)
             {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
 
             if (DefaultTtl != null)

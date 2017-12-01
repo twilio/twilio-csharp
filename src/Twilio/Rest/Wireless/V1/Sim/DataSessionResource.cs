@@ -211,12 +211,12 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// The operator_mcc
         /// </summary>
         [JsonProperty("operator_mcc")]
-        public int? OperatorMcc { get; private set; }
+        public string OperatorMcc { get; private set; }
         /// <summary>
         /// The operator_mnc
         /// </summary>
         [JsonProperty("operator_mnc")]
-        public int? OperatorMnc { get; private set; }
+        public string OperatorMnc { get; private set; }
         /// <summary>
         /// The operator_country
         /// </summary>

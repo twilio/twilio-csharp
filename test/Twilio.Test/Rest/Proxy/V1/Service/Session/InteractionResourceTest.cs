@@ -91,6 +91,42 @@ namespace Twilio.Tests.Rest.Proxy.V1.Service.Session
             var response = InteractionResource.Read("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
             Assert.NotNull(response);
         }
+
+        [Test]
+        public void TestDeleteRequest()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            var request = new Request(
+                HttpMethod.Delete,
+                Twilio.Rest.Domain.Proxy,
+                "/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sessions/KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Interactions/KIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                ""
+            );
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
+
+            try
+            {
+                InteractionResource.Delete("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "KIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            }
+            catch (ApiException) {}
+            twilioRestClient.Received().Request(request);
+        }
+
+        [Test]
+        public void TestDeleteResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.NoContent,
+                                         "null"
+                                     ));
+
+            var response = InteractionResource.Delete("KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "KCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "KIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
     }
 
 }

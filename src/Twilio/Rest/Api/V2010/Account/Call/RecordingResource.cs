@@ -14,12 +14,43 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Call 
 {
 
     public class RecordingResource : Resource 
     {
+        public sealed class SourceEnum : StringEnum 
+        {
+            private SourceEnum(string value) : base(value) {}
+            public SourceEnum() {}
+            public static implicit operator SourceEnum(string value)
+            {
+                return new SourceEnum(value);
+            }
+
+            public static readonly SourceEnum Dialverb = new SourceEnum("DialVerb");
+            public static readonly SourceEnum Conference = new SourceEnum("Conference");
+            public static readonly SourceEnum Outboundapi = new SourceEnum("OutboundAPI");
+            public static readonly SourceEnum Trunking = new SourceEnum("Trunking");
+            public static readonly SourceEnum Recordverb = new SourceEnum("RecordVerb");
+        }
+
+        public sealed class StatusEnum : StringEnum 
+        {
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
+            public static implicit operator StatusEnum(string value)
+            {
+                return new StatusEnum(value);
+            }
+
+            public static readonly StatusEnum Processing = new StatusEnum("processing");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
+            public static readonly StatusEnum Failed = new StatusEnum("failed");
+        }
+
         private static Request BuildFetchRequest(FetchRecordingOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -400,6 +431,28 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }
+        /// <summary>
+        /// The status
+        /// </summary>
+        [JsonProperty("status")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public RecordingResource.StatusEnum Status { get; private set; }
+        /// <summary>
+        /// The source
+        /// </summary>
+        [JsonProperty("source")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public RecordingResource.SourceEnum Source { get; private set; }
+        /// <summary>
+        /// The channels
+        /// </summary>
+        [JsonProperty("channels")]
+        public int? Channels { get; private set; }
+        /// <summary>
+        /// The price_unit
+        /// </summary>
+        [JsonProperty("price_unit")]
+        public string PriceUnit { get; private set; }
 
         private RecordingResource()
         {
