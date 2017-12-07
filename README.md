@@ -4,7 +4,7 @@
 ## Recent Update
 
 As of release 5.6.0, Beta and Developer Preview products are now exposed via
-the main `twilio-python` artifact. Releases of the `alpha` branch have been
+the main `twilio-csharp` artifact. Releases of the `alpha` branch have been
 discontinued.
 
 If you were using the `alpha` release line, you should be able to switch back
