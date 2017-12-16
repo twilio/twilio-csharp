@@ -269,6 +269,14 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// The conference_recording_status_callback_method
         /// </summary>
         public Twilio.Http.HttpMethod ConferenceRecordingStatusCallbackMethod { get; set; }
+        /// <summary>
+        /// The recording_status_callback_event
+        /// </summary>
+        public List<string> RecordingStatusCallbackEvent { get; set; }
+        /// <summary>
+        /// The conference_recording_status_callback_event
+        /// </summary>
+        public List<string> ConferenceRecordingStatusCallbackEvent { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -283,6 +291,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             To = to;
             StatusCallbackEvent = new List<string>();
             ConferenceStatusCallbackEvent = new List<string>();
+            RecordingStatusCallbackEvent = new List<string>();
+            ConferenceRecordingStatusCallbackEvent = new List<string>();
         }
 
         /// <summary>
@@ -429,6 +439,16 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (ConferenceRecordingStatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("ConferenceRecordingStatusCallbackMethod", ConferenceRecordingStatusCallbackMethod.ToString()));
+            }
+
+            if (RecordingStatusCallbackEvent != null)
+            {
+                p.AddRange(RecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("RecordingStatusCallbackEvent", prop)));
+            }
+
+            if (ConferenceRecordingStatusCallbackEvent != null)
+            {
+                p.AddRange(ConferenceRecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceRecordingStatusCallbackEvent", prop)));
             }
 
             return p;

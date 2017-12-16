@@ -4,6 +4,7 @@
 ///       /       /
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
@@ -49,6 +50,7 @@ namespace Twilio.TwiML
         /// <param name="trim"> Trim the recording </param>
         /// <param name="recordingStatusCallback"> Recording status callback URL </param>
         /// <param name="recordingStatusCallbackMethod"> Recording status callback URL method </param>
+        /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="answerOnBridge"> Preserve the ringing behavior of the inbound call until the Dialed call picks up
         ///                      </param>
         /// <param name="ringTone"> Ringtone allows you to override the ringback tone that Twilio will play back to the caller
@@ -60,10 +62,11 @@ namespace Twilio.TwiML
                                   bool? hangupOnStar = null, 
                                   int? timeLimit = null, 
                                   string callerId = null, 
-                                  Dial.TrimEnum record = null, 
+                                  Dial.RecordEnum record = null, 
                                   Dial.TrimEnum trim = null, 
                                   Uri recordingStatusCallback = null, 
                                   Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
+                                  List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null, 
                                   bool? answerOnBridge = null, 
                                   Dial.RingToneEnum ringTone = null)
         {
@@ -79,6 +82,7 @@ namespace Twilio.TwiML
                 trim,
                 recordingStatusCallback,
                 recordingStatusCallbackMethod,
+                recordingStatusCallbackEvent,
                 answerOnBridge,
                 ringTone
             );

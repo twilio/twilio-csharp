@@ -72,10 +72,11 @@ namespace Twilio.Tests.TwiML
                 true,
                 1,
                 "caller_id",
-                Dial.TrimEnum.TrimSilence,
+                Dial.RecordEnum.DoNotRecord,
                 Dial.TrimEnum.TrimSilence,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
+                Promoter.ListOfOne(Dial.RecordingEventEnum.InProgress),
                 true,
                 Dial.RingToneEnum.At
             );
@@ -156,7 +157,7 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
-                "  <Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"trim-silence\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" answerOnBridge=\"true\" ringTone=\"at\">number</Dial>" + Environment.NewLine +
+                "  <Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" answerOnBridge=\"true\" ringTone=\"at\">number</Dial>" + Environment.NewLine +
                 "  <Echo></Echo>" + Environment.NewLine +
                 "  <Enqueue action=\"https://example.com\" method=\"GET\" waitUrl=\"https://example.com\" waitUrlMethod=\"GET\" workflowSid=\"workflow_sid\">name</Enqueue>" + Environment.NewLine +
                 "  <Gather input=\"dtmf\" action=\"https://example.com\" method=\"GET\" timeout=\"1\" speechTimeout=\"speech_timeout\" maxSpeechTime=\"1\" profanityFilter=\"true\" finishOnKey=\"finish_on_key\" numDigits=\"1\" partialResultCallback=\"https://example.com\" partialResultCallbackMethod=\"GET\" language=\"af-ZA\" hints=\"hints\" bargeIn=\"true\"></Gather>" + Environment.NewLine +

@@ -3,6 +3,7 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
@@ -19,15 +20,27 @@ namespace Twilio.TwiML.Voice
         /// TaskRouter task attributes
         /// </summary>
         public string Body { get; set; }
+        /// <summary>
+        /// Task priority
+        /// </summary>
+        public int? Priority { get; set; }
+        /// <summary>
+        /// Timeout associated with task
+        /// </summary>
+        public int? Timeout { get; set; }
 
         /// <summary>
         /// Create a new Task
         /// </summary>
         /// <param name="body"> TaskRouter task attributes, the body of the TwiML Element. Also accepts stringified object
         ///            </param>
-        public Task(string body = null) : base("Task")
+        /// <param name="priority"> Task priority </param>
+        /// <param name="timeout"> Timeout associated with task </param>
+        public Task(string body = null, int? priority = null, int? timeout = null) : base("Task")
         {
             this.Body = body;
+            this.Priority = priority;
+            this.Timeout = timeout;
         }
 
         /// <summary>
@@ -36,6 +49,23 @@ namespace Twilio.TwiML.Voice
         protected override string GetElementBody()
         {
             return this.Body != null ? this.Body : string.Empty;
+        }
+
+        /// <summary>
+        /// Return the attributes of the TwiML tag
+        /// </summary>
+        protected override List<XAttribute> GetElementAttributes()
+        {
+            var attributes = new List<XAttribute>();
+            if (this.Priority != null)
+            {
+                attributes.Add(new XAttribute("priority", this.Priority.Value.ToString()));
+            }
+            if (this.Timeout != null)
+            {
+                attributes.Add(new XAttribute("timeout", this.Timeout.Value.ToString()));
+            }
+            return attributes;
         }
 
         /// <summary>

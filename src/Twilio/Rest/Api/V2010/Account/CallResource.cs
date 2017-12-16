@@ -133,6 +133,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
         /// <param name="machineDetectionTimeout"> Number of miliseconds to wait for machine detection </param>
+        /// <param name="recordingStatusCallbackEvent"> The recording_status_callback_event </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns> 
         public static CallResource Create(IEndpoint to, 
@@ -157,9 +158,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                           string sipAuthPassword = null, 
                                           string machineDetection = null, 
                                           int? machineDetectionTimeout = null, 
+                                          List<string> recordingStatusCallbackEvent = null, 
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent};
             return Create(options, client);
         }
 
@@ -189,6 +191,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
         /// <param name="machineDetectionTimeout"> Number of miliseconds to wait for machine detection </param>
+        /// <param name="recordingStatusCallbackEvent"> The recording_status_callback_event </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns> 
         public static async System.Threading.Tasks.Task<CallResource> CreateAsync(IEndpoint to, 
@@ -213,9 +216,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   string sipAuthPassword = null, 
                                                                                   string machineDetection = null, 
                                                                                   int? machineDetectionTimeout = null, 
+                                                                                  List<string> recordingStatusCallbackEvent = null, 
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent};
             return await CreateAsync(options, client);
         }
         #endif

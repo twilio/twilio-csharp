@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using Twilio.Types;
@@ -29,6 +30,36 @@ namespace Twilio.TwiML.Voice
 
             public static readonly TrimEnum TrimSilence = new TrimEnum("trim-silence");
             public static readonly TrimEnum DoNotTrim = new TrimEnum("do-not-trim");
+        }
+
+        public sealed class RecordEnum : StringEnum 
+        {
+            private RecordEnum(string value) : base(value) {}
+            public RecordEnum() {}
+            public static implicit operator RecordEnum(string value)
+            {
+                return new RecordEnum(value);
+            }
+
+            public static readonly RecordEnum DoNotRecord = new RecordEnum("do-not-record");
+            public static readonly RecordEnum RecordFromAnswer = new RecordEnum("record-from-answer");
+            public static readonly RecordEnum RecordFromRinging = new RecordEnum("record-from-ringing");
+            public static readonly RecordEnum RecordFromAnswerDual = new RecordEnum("record-from-answer-dual");
+            public static readonly RecordEnum RecordFromRingingDual = new RecordEnum("record-from-ringing-dual");
+        }
+
+        public sealed class RecordingEventEnum : StringEnum 
+        {
+            private RecordingEventEnum(string value) : base(value) {}
+            public RecordingEventEnum() {}
+            public static implicit operator RecordingEventEnum(string value)
+            {
+                return new RecordingEventEnum(value);
+            }
+
+            public static readonly RecordingEventEnum InProgress = new RecordingEventEnum("in-progress");
+            public static readonly RecordingEventEnum Completed = new RecordingEventEnum("completed");
+            public static readonly RecordingEventEnum Failed = new RecordingEventEnum("failed");
         }
 
         public sealed class RingToneEnum : StringEnum 
@@ -113,7 +144,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Record the call
         /// </summary>
-        public Dial.TrimEnum Record { get; set; }
+        public Dial.RecordEnum Record { get; set; }
         /// <summary>
         /// Trim the recording
         /// </summary>
@@ -126,6 +157,10 @@ namespace Twilio.TwiML.Voice
         /// Recording status callback URL method
         /// </summary>
         public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
+        /// <summary>
+        /// Recording status callback events
+        /// </summary>
+        public List<Dial.RecordingEventEnum> RecordingStatusCallbackEvent { get; set; }
         /// <summary>
         /// Preserve the ringing behavior of the inbound call until the Dialed call picks up
         /// </summary>
@@ -149,6 +184,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="trim"> Trim the recording </param>
         /// <param name="recordingStatusCallback"> Recording status callback URL </param>
         /// <param name="recordingStatusCallbackMethod"> Recording status callback URL method </param>
+        /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="answerOnBridge"> Preserve the ringing behavior of the inbound call until the Dialed call picks up
         ///                      </param>
         /// <param name="ringTone"> Ringtone allows you to override the ringback tone that Twilio will play back to the caller
@@ -160,10 +196,11 @@ namespace Twilio.TwiML.Voice
                     bool? hangupOnStar = null, 
                     int? timeLimit = null, 
                     string callerId = null, 
-                    Dial.TrimEnum record = null, 
+                    Dial.RecordEnum record = null, 
                     Dial.TrimEnum trim = null, 
                     Uri recordingStatusCallback = null, 
                     Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
+                    List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null, 
                     bool? answerOnBridge = null, 
                     Dial.RingToneEnum ringTone = null) : base("Dial")
         {
@@ -178,6 +215,7 @@ namespace Twilio.TwiML.Voice
             this.Trim = trim;
             this.RecordingStatusCallback = recordingStatusCallback;
             this.RecordingStatusCallbackMethod = recordingStatusCallbackMethod;
+            this.RecordingStatusCallbackEvent = recordingStatusCallbackEvent;
             this.AnswerOnBridge = answerOnBridge;
             this.RingTone = ringTone;
         }
@@ -235,6 +273,10 @@ namespace Twilio.TwiML.Voice
             if (this.RecordingStatusCallbackMethod != null)
             {
                 attributes.Add(new XAttribute("recordingStatusCallbackMethod", this.RecordingStatusCallbackMethod.ToString()));
+            }
+            if (this.RecordingStatusCallbackEvent != null)
+            {
+                attributes.Add(new XAttribute("recordingStatusCallbackEvent", String.Join(" ", this.RecordingStatusCallbackEvent.Select(e => e.ToString()).ToArray())));
             }
             if (this.AnswerOnBridge != null)
             {
@@ -310,6 +352,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="statusCallbackMethod"> Status callback URL method </param>
         /// <param name="recordingStatusCallback"> Recording status callback URL </param>
         /// <param name="recordingStatusCallbackMethod"> Recording status callback URL method </param>
+        /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="eventCallbackUrl"> Event callback URL </param>
         public Dial Conference(string name = null, 
                                bool? muted = null, 
@@ -328,6 +371,7 @@ namespace Twilio.TwiML.Voice
                                Twilio.Http.HttpMethod statusCallbackMethod = null, 
                                Uri recordingStatusCallback = null, 
                                Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
+                               List<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null, 
                                Uri eventCallbackUrl = null)
         {
             var newChild = new Conference(
@@ -348,6 +392,7 @@ namespace Twilio.TwiML.Voice
                 statusCallbackMethod,
                 recordingStatusCallback,
                 recordingStatusCallbackMethod,
+                recordingStatusCallbackEvent,
                 eventCallbackUrl
             );
             this.Append(newChild);

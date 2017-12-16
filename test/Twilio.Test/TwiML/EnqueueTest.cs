@@ -63,12 +63,12 @@ namespace Twilio.Tests.TwiML
         {
             var elem = new Enqueue();
 
-            elem.Task("body");
+            elem.Task("body", 1, 1);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Enqueue>" + Environment.NewLine +
-                "  <Task>body</Task>" + Environment.NewLine +
+                "  <Task priority=\"1\" timeout=\"1\">body</Task>" + Environment.NewLine +
                 "</Enqueue>",
                 elem.ToString()
             );

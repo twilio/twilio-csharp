@@ -61,6 +61,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum ConversationsParticipants = new UsageCategoryEnum("conversations-participants");
             public static readonly UsageCategoryEnum Cps = new UsageCategoryEnum("cps");
             public static readonly UsageCategoryEnum GroupRooms = new UsageCategoryEnum("group-rooms");
+            public static readonly UsageCategoryEnum GroupRoomsDataTrack = new UsageCategoryEnum("group-rooms-data-track");
+            public static readonly UsageCategoryEnum GroupRoomsEncryptedMediaRecorded = new UsageCategoryEnum("group-rooms-encrypted-media-recorded");
             public static readonly UsageCategoryEnum GroupRoomsMediaDownloaded = new UsageCategoryEnum("group-rooms-media-downloaded");
             public static readonly UsageCategoryEnum GroupRoomsMediaRecorded = new UsageCategoryEnum("group-rooms-media-recorded");
             public static readonly UsageCategoryEnum GroupRoomsMediaRouted = new UsageCategoryEnum("group-rooms-media-routed");

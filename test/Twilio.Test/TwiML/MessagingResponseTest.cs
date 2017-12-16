@@ -64,14 +64,21 @@ namespace Twilio.Tests.TwiML
         {
             var elem = new MessagingResponse();
 
-            elem.Message("body", "to", "from", new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
+            elem.Message(
+                "body",
+                "to",
+                "from",
+                new Uri("https://example.com"),
+                Twilio.Http.HttpMethod.Get,
+                new Uri("https://example.com")
+            );
 
             elem.Redirect(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
-                "  <Message to=\"to\" from=\"from\" action=\"https://example.com\" method=\"GET\">body</Message>" + Environment.NewLine +
+                "  <Message to=\"to\" from=\"from\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">body</Message>" + Environment.NewLine +
                 "  <Redirect method=\"GET\">https://example.com</Redirect>" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()

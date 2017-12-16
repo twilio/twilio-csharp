@@ -44,6 +44,19 @@ namespace Twilio.Rest.Preview.HostedNumbers
             public static readonly StatusEnum ActionRequired = new StatusEnum("action-required");
         }
 
+        public sealed class VerificationTypeEnum : StringEnum 
+        {
+            private VerificationTypeEnum(string value) : base(value) {}
+            public VerificationTypeEnum() {}
+            public static implicit operator VerificationTypeEnum(string value)
+            {
+                return new VerificationTypeEnum(value);
+            }
+
+            public static readonly VerificationTypeEnum PhoneCall = new VerificationTypeEnum("phone-call");
+            public static readonly VerificationTypeEnum PhoneBill = new VerificationTypeEnum("phone-bill");
+        }
+
         private static Request BuildFetchRequest(FetchHostedNumberOrderOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -228,6 +241,8 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="ccEmails"> A list of emails. </param>
         /// <param name="status"> The Status of this HostedNumberOrder. </param>
         /// <param name="verificationCode"> A verification code. </param>
+        /// <param name="verificationType"> Verification Type. </param>
+        /// <param name="verificationDocumentSid"> Verification Document Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
         public static HostedNumberOrderResource Update(string pathSid, 
@@ -237,9 +252,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                        List<string> ccEmails = null, 
                                                        HostedNumberOrderResource.StatusEnum status = null, 
                                                        string verificationCode = null, 
+                                                       HostedNumberOrderResource.VerificationTypeEnum verificationType = null, 
+                                                       string verificationDocumentSid = null, 
                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateHostedNumberOrderOptions(pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Email = email, CcEmails = ccEmails, Status = status, VerificationCode = verificationCode};
+            var options = new UpdateHostedNumberOrderOptions(pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Email = email, CcEmails = ccEmails, Status = status, VerificationCode = verificationCode, VerificationType = verificationType, VerificationDocumentSid = verificationDocumentSid};
             return Update(options, client);
         }
 
@@ -254,6 +271,8 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="ccEmails"> A list of emails. </param>
         /// <param name="status"> The Status of this HostedNumberOrder. </param>
         /// <param name="verificationCode"> A verification code. </param>
+        /// <param name="verificationType"> Verification Type. </param>
+        /// <param name="verificationDocumentSid"> Verification Document Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
         public static async System.Threading.Tasks.Task<HostedNumberOrderResource> UpdateAsync(string pathSid, 
@@ -263,9 +282,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                                                                List<string> ccEmails = null, 
                                                                                                HostedNumberOrderResource.StatusEnum status = null, 
                                                                                                string verificationCode = null, 
+                                                                                               HostedNumberOrderResource.VerificationTypeEnum verificationType = null, 
+                                                                                               string verificationDocumentSid = null, 
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateHostedNumberOrderOptions(pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Email = email, CcEmails = ccEmails, Status = status, VerificationCode = verificationCode};
+            var options = new UpdateHostedNumberOrderOptions(pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Email = email, CcEmails = ccEmails, Status = status, VerificationCode = verificationCode, VerificationType = verificationType, VerificationDocumentSid = verificationDocumentSid};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -487,6 +508,8 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="smsApplicationSid"> SMS Application Sid. </param>
         /// <param name="addressSid"> Address sid. </param>
         /// <param name="email"> Email. </param>
+        /// <param name="verificationType"> Verification Type. </param>
+        /// <param name="verificationDocumentSid"> Verification Document Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
         public static HostedNumberOrderResource Create(Types.PhoneNumber phoneNumber, 
@@ -504,9 +527,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                        string smsApplicationSid = null, 
                                                        string addressSid = null, 
                                                        string email = null, 
+                                                       HostedNumberOrderResource.VerificationTypeEnum verificationType = null, 
+                                                       string verificationDocumentSid = null, 
                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateHostedNumberOrderOptions(phoneNumber, smsCapability){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, AddressSid = addressSid, Email = email};
+            var options = new CreateHostedNumberOrderOptions(phoneNumber, smsCapability){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, AddressSid = addressSid, Email = email, VerificationType = verificationType, VerificationDocumentSid = verificationDocumentSid};
             return Create(options, client);
         }
 
@@ -529,6 +554,8 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="smsApplicationSid"> SMS Application Sid. </param>
         /// <param name="addressSid"> Address sid. </param>
         /// <param name="email"> Email. </param>
+        /// <param name="verificationType"> Verification Type. </param>
+        /// <param name="verificationDocumentSid"> Verification Document Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
         public static async System.Threading.Tasks.Task<HostedNumberOrderResource> CreateAsync(Types.PhoneNumber phoneNumber, 
@@ -546,9 +573,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                                                                string smsApplicationSid = null, 
                                                                                                string addressSid = null, 
                                                                                                string email = null, 
+                                                                                               HostedNumberOrderResource.VerificationTypeEnum verificationType = null, 
+                                                                                               string verificationDocumentSid = null, 
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new CreateHostedNumberOrderOptions(phoneNumber, smsCapability){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, AddressSid = addressSid, Email = email};
+            var options = new CreateHostedNumberOrderOptions(phoneNumber, smsCapability){AccountSid = accountSid, FriendlyName = friendlyName, UniqueName = uniqueName, CcEmails = ccEmails, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, StatusCallbackUrl = statusCallbackUrl, StatusCallbackMethod = statusCallbackMethod, SmsApplicationSid = smsApplicationSid, AddressSid = addressSid, Email = email, VerificationType = verificationType, VerificationDocumentSid = verificationDocumentSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -653,6 +682,17 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The method used for verifying ownership of the number to be hosted.
+        /// </summary>
+        [JsonProperty("verification_type")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public HostedNumberOrderResource.VerificationTypeEnum VerificationType { get; private set; }
+        /// <summary>
+        /// Verification Document Sid.
+        /// </summary>
+        [JsonProperty("verification_document_sid")]
+        public string VerificationDocumentSid { get; private set; }
 
         private HostedNumberOrderResource()
         {

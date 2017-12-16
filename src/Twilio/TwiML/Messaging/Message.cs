@@ -37,6 +37,10 @@ namespace Twilio.TwiML.Messaging
         /// Action URL Method
         /// </summary>
         public Twilio.Http.HttpMethod Method { get; set; }
+        /// <summary>
+        /// Status callback URL. Deprecated in favor of action.
+        /// </summary>
+        public Uri StatusCallback { get; set; }
 
         /// <summary>
         /// Create a new Message
@@ -46,17 +50,20 @@ namespace Twilio.TwiML.Messaging
         /// <param name="from"> Phone Number to send Message from. Also accepts stringified Types.PhoneNumber </param>
         /// <param name="action"> Action URL </param>
         /// <param name="method"> Action URL Method </param>
+        /// <param name="statusCallback"> Status callback URL. Deprecated in favor of action. </param>
         public Message(string body = null, 
                        string to = null, 
                        string from = null, 
                        Uri action = null, 
-                       Twilio.Http.HttpMethod method = null) : base("Message")
+                       Twilio.Http.HttpMethod method = null, 
+                       Uri statusCallback = null) : base("Message")
         {
             this.BodyAttribute = body;
             this.To = to;
             this.From = from;
             this.Action = action;
             this.Method = method;
+            this.StatusCallback = statusCallback;
         }
 
         /// <summary>
@@ -88,6 +95,10 @@ namespace Twilio.TwiML.Messaging
             if (this.Method != null)
             {
                 attributes.Add(new XAttribute("method", this.Method.ToString()));
+            }
+            if (this.StatusCallback != null)
+            {
+                attributes.Add(new XAttribute("statusCallback", this.StatusCallback.AbsoluteUri.TrimEnd('/')));
             }
             return attributes;
         }

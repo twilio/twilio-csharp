@@ -32,7 +32,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                 return new StatusEnum(value);
             }
 
-            public static readonly StatusEnum InProgess = new StatusEnum("in-progess");
+            public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
             public static readonly StatusEnum Closed = new StatusEnum("closed");
             public static readonly StatusEnum Failed = new StatusEnum("failed");
             public static readonly StatusEnum Unknown = new StatusEnum("unknown");

@@ -106,6 +106,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Number of miliseconds to wait for machine detection
         /// </summary>
         public int? MachineDetectionTimeout { get; set; }
+        /// <summary>
+        /// The recording_status_callback_event
+        /// </summary>
+        public List<string> RecordingStatusCallbackEvent { get; set; }
 
         /// <summary>
         /// Construct a new CreateCallOptions
@@ -117,6 +121,7 @@ namespace Twilio.Rest.Api.V2010.Account
             To = to;
             From = from;
             StatusCallbackEvent = new List<string>();
+            RecordingStatusCallbackEvent = new List<string>();
         }
 
         /// <summary>
@@ -228,6 +233,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (MachineDetectionTimeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("MachineDetectionTimeout", MachineDetectionTimeout.Value.ToString()));
+            }
+
+            if (RecordingStatusCallbackEvent != null)
+            {
+                p.AddRange(RecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("RecordingStatusCallbackEvent", prop)));
             }
 
             return p;

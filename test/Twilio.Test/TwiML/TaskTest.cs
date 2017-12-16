@@ -29,10 +29,10 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new Task("body");
+            var elem = new Task("body", 1, 1);
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Task>body</Task>",
+                "<Task priority=\"1\" timeout=\"1\">body</Task>",
                 elem.ToString()
             );
         }

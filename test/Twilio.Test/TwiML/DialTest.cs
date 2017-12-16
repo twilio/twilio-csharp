@@ -37,16 +37,17 @@ namespace Twilio.Tests.TwiML
                 true,
                 1,
                 "caller_id",
-                Dial.TrimEnum.TrimSilence,
+                Dial.RecordEnum.DoNotRecord,
                 Dial.TrimEnum.TrimSilence,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
+                Promoter.ListOfOne(Dial.RecordingEventEnum.InProgress),
                 true,
                 Dial.RingToneEnum.At
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"trim-silence\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" answerOnBridge=\"true\" ringTone=\"at\">number</Dial>",
+                "<Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" answerOnBridge=\"true\" ringTone=\"at\">number</Dial>",
                 elem.ToString()
             );
         }
@@ -97,6 +98,7 @@ namespace Twilio.Tests.TwiML
                 Twilio.Http.HttpMethod.Get,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
+                Promoter.ListOfOne(Conference.RecordingEventEnum.Started),
                 new Uri("https://example.com")
             );
 
@@ -135,7 +137,7 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Dial>" + Environment.NewLine +
                 "  <Client url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">name</Client>" + Environment.NewLine +
-                "  <Conference muted=\"true\" beep=\"true\" startConferenceOnEnter=\"true\" endConferenceOnExit=\"true\" waitUrl=\"https://example.com\" waitMethod=\"GET\" maxParticipants=\"1\" record=\"do-not-record\" region=\"us1\" whisper=\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" trim=\"trim-silence\" statusCallbackEvent=\"start\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" eventCallbackUrl=\"https://example.com\">name</Conference>" + Environment.NewLine +
+                "  <Conference muted=\"true\" beep=\"true\" startConferenceOnEnter=\"true\" endConferenceOnExit=\"true\" waitUrl=\"https://example.com\" waitMethod=\"GET\" maxParticipants=\"1\" record=\"do-not-record\" region=\"us1\" whisper=\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" trim=\"trim-silence\" statusCallbackEvent=\"start\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"started\" eventCallbackUrl=\"https://example.com\">name</Conference>" + Environment.NewLine +
                 "  <Number sendDigits=\"send_digits\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">+987654321</Number>" + Environment.NewLine +
                 "  <Queue url=\"https://example.com\" method=\"GET\" reservationSid=\"reservation_sid\" postWorkActivitySid=\"post_work_activity_sid\">name</Queue>" + Environment.NewLine +
                 "  <Sim>DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Sim>" + Environment.NewLine +
