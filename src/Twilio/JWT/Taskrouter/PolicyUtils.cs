@@ -21,7 +21,7 @@ namespace Twilio.Jwt.Taskrouter
         /// <returns>Default event bridge policies</returns>
         public static List<Policy> DefaultEventBridgePolicies(string accountSid, string channelId)
         {
-            var url = $"{TaskRouterEventUrl}/{accountSid}/{channelId}";
+            var url = TaskRouterEventUrl + "/" + accountSid + "/" + channelId;
             return new List<Policy>
             {
                 { new Policy(url, HttpMethod.Get) },
