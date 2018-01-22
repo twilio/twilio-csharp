@@ -1,6 +1,11 @@
 twilio-csharp Changelog
 =======================
 
+[2018-01-22] Version 5.9.4
+---------------------------
+**Library**
+- PR #407: Remove "$" String Interpolation to Support Compilation in .NET <4.6. Thanks @tjhalva!
+
 [2018-01-22] Version 5.9.3
 ---------------------------
 **Api**
