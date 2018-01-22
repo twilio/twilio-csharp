@@ -27,8 +27,8 @@ namespace Twilio.Jwt.Client
         {
             get
             {
-                var query = $"clientName={_clientName}";
-                return $"{Scope}?{query}";
+                var query = "clientName=" + _clientName;
+                return Scope + "?" + query;
             }
         }
     }

@@ -35,7 +35,7 @@ namespace Twilio.Jwt.AccessToken
         ) : base(secret, signingKeySid, expiration.HasValue ? expiration.Value : DateTime.UtcNow.AddSeconds(3600))
         {
             var now = BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow);
-            this._id = $"{signingKeySid}-{now}";
+            this._id = signingKeySid + "-" + now;
             this._accountSid = accountSid;
             this._identity = identity;
             this._nbf = nbf;
