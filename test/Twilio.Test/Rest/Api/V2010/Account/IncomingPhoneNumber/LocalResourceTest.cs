@@ -82,13 +82,13 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.IncomingPhoneNumber
                 "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/Local.json",
                 ""
             );
-            request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
+            request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+15017122661")));
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                LocalResource.Create(new Twilio.Types.PhoneNumber("+987654321"), client: twilioRestClient);
+                LocalResource.Create(new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -106,7 +106,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.IncomingPhoneNumber
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_requirements\": \"none\",\"address_sid\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"beta\": false,\"capabilities\": {\"mms\": true,\"sms\": false,\"voice\": true},\"date_created\": \"Thu, 30 Jul 2015 23:19:04 +0000\",\"date_updated\": \"Thu, 30 Jul 2015 23:19:04 +0000\",\"friendly_name\": \"(808) 925-5327\",\"identity_sid\": \"RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"phone_number\": \"+18089255327\",\"origin\": \"origin\",\"sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sms_application_sid\": \"\",\"sms_fallback_method\": \"POST\",\"sms_fallback_url\": \"\",\"sms_method\": \"POST\",\"sms_url\": \"\",\"status_callback\": \"\",\"status_callback_method\": \"POST\",\"trunk_sid\": null,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IncomingPhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\",\"voice_application_sid\": \"\",\"voice_caller_id_lookup\": false,\"voice_fallback_method\": \"POST\",\"voice_fallback_url\": null,\"voice_method\": \"POST\",\"voice_url\": null}"
                                      ));
 
-            var response = LocalResource.Create(new Twilio.Types.PhoneNumber("+987654321"), client: twilioRestClient);
+            var response = LocalResource.Create(new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

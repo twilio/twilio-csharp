@@ -102,6 +102,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Filter by call_sid
         /// </summary>
         public string CallSid { get; set; }
+        /// <summary>
+        /// The conference_sid
+        /// </summary>
+        public string ConferenceSid { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -129,6 +133,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (CallSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallSid", CallSid.ToString()));
+            }
+
+            if (ConferenceSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ConferenceSid", ConferenceSid.ToString()));
             }
 
             if (PageSize != null)

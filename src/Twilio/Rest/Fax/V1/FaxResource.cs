@@ -352,6 +352,7 @@ namespace Twilio.Rest.Fax.V1
         /// <param name="sipAuthUsername"> Username for SIP authentication </param>
         /// <param name="sipAuthPassword"> Password for SIP authentication </param>
         /// <param name="storeMedia"> Whether or not to store media </param>
+        /// <param name="ttl"> How many minutes to attempt a fax </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fax </returns> 
         public static FaxResource Create(string to, 
@@ -362,9 +363,10 @@ namespace Twilio.Rest.Fax.V1
                                          string sipAuthUsername = null, 
                                          string sipAuthPassword = null, 
                                          bool? storeMedia = null, 
+                                         int? ttl = null, 
                                          ITwilioRestClient client = null)
         {
-            var options = new CreateFaxOptions(to, mediaUrl){Quality = quality, StatusCallback = statusCallback, From = from, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, StoreMedia = storeMedia};
+            var options = new CreateFaxOptions(to, mediaUrl){Quality = quality, StatusCallback = statusCallback, From = from, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, StoreMedia = storeMedia, Ttl = ttl};
             return Create(options, client);
         }
 
@@ -380,6 +382,7 @@ namespace Twilio.Rest.Fax.V1
         /// <param name="sipAuthUsername"> Username for SIP authentication </param>
         /// <param name="sipAuthPassword"> Password for SIP authentication </param>
         /// <param name="storeMedia"> Whether or not to store media </param>
+        /// <param name="ttl"> How many minutes to attempt a fax </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fax </returns> 
         public static async System.Threading.Tasks.Task<FaxResource> CreateAsync(string to, 
@@ -390,9 +393,10 @@ namespace Twilio.Rest.Fax.V1
                                                                                  string sipAuthUsername = null, 
                                                                                  string sipAuthPassword = null, 
                                                                                  bool? storeMedia = null, 
+                                                                                 int? ttl = null, 
                                                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateFaxOptions(to, mediaUrl){Quality = quality, StatusCallback = statusCallback, From = from, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, StoreMedia = storeMedia};
+            var options = new CreateFaxOptions(to, mediaUrl){Quality = quality, StatusCallback = statusCallback, From = from, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, StoreMedia = storeMedia, Ttl = ttl};
             return await CreateAsync(options, client);
         }
         #endif

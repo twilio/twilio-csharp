@@ -120,6 +120,14 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// Verification Document Sid
         /// </summary>
         public string VerificationDocumentSid { get; set; }
+        /// <summary>
+        /// The extension
+        /// </summary>
+        public string Extension { get; set; }
+        /// <summary>
+        /// The call_delay
+        /// </summary>
+        public int? CallDelay { get; set; }
 
         /// <summary>
         /// Construct a new UpdateHostedNumberOrderOptions
@@ -175,6 +183,16 @@ namespace Twilio.Rest.Preview.HostedNumbers
             if (VerificationDocumentSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("VerificationDocumentSid", VerificationDocumentSid.ToString()));
+            }
+
+            if (Extension != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Extension", Extension));
+            }
+
+            if (CallDelay != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallDelay", CallDelay.Value.ToString()));
             }
 
             return p;

@@ -248,6 +248,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="dateCreated"> Filter by date created </param>
         /// <param name="dateCreatedAfter"> Filter by date created </param>
         /// <param name="callSid"> Filter by call_sid </param>
+        /// <param name="conferenceSid"> The conference_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -257,11 +258,12 @@ namespace Twilio.Rest.Api.V2010.Account
                                                           DateTime? dateCreated = null, 
                                                           DateTime? dateCreatedAfter = null, 
                                                           string callSid = null, 
+                                                          string conferenceSid = null, 
                                                           int? pageSize = null, 
                                                           long? limit = null, 
                                                           ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions(){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions(){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, ConferenceSid = conferenceSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -274,6 +276,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="dateCreated"> Filter by date created </param>
         /// <param name="dateCreatedAfter"> Filter by date created </param>
         /// <param name="callSid"> Filter by call_sid </param>
+        /// <param name="conferenceSid"> The conference_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -283,11 +286,12 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                                   DateTime? dateCreated = null, 
                                                                                                   DateTime? dateCreatedAfter = null, 
                                                                                                   string callSid = null, 
+                                                                                                  string conferenceSid = null, 
                                                                                                   int? pageSize = null, 
                                                                                                   long? limit = null, 
                                                                                                   ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions(){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions(){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, CallSid = callSid, ConferenceSid = conferenceSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -384,6 +388,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
+        /// <summary>
+        /// The unique id for the conference associated with the recording, if a conference recording.
+        /// </summary>
+        [JsonProperty("conference_sid")]
+        public string ConferenceSid { get; private set; }
         /// <summary>
         /// The date this resource was created
         /// </summary>

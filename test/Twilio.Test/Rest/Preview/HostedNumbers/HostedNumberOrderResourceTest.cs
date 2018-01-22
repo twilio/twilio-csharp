@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": \"AD11111111111111111111111111111111\",\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [\"aaa@twilio.com\",\"bbb@twilio.com\"],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": \"test@twilio.com\",\"friendly_name\": \"friendly_name\",\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": \"PX11111111111111111111111111111111\",\"status\": \"received\",\"unique_name\": \"foobar\",\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 0,\"verification_type\": \"phone-call\",\"verification_document_sid\": null}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": \"AD11111111111111111111111111111111\",\"call_delay\": 15,\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [\"aaa@twilio.com\",\"bbb@twilio.com\"],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": \"test@twilio.com\",\"extension\": \"5105\",\"failure_reason\": \"\",\"friendly_name\": \"friendly_name\",\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": \"PX11111111111111111111111111111111\",\"status\": \"received\",\"unique_name\": \"foobar\",\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 0,\"verification_call_sids\": [\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\"],\"verification_code\": \"8794\",\"verification_document_sid\": null,\"verification_type\": \"phone-call\"}"
                                      ));
 
             var response = HostedNumberOrderResource.Fetch("HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -121,7 +121,7 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": \"AD11111111111111111111111111111111\",\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [\"test1@twilio.com\",\"test2@twilio.com\"],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": \"test+hosted@twilio.com\",\"friendly_name\": \"new friendly name\",\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": \"PX11111111111111111111111111111111\",\"status\": \"pending-loa\",\"unique_name\": \"new unique name\",\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 1,\"verification_type\": \"phone-call\",\"verification_document_sid\": null}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": \"AD11111111111111111111111111111111\",\"call_delay\": 15,\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [\"test1@twilio.com\",\"test2@twilio.com\"],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": \"test+hosted@twilio.com\",\"extension\": \"1234\",\"failure_reason\": \"\",\"friendly_name\": \"new friendly name\",\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": \"PX11111111111111111111111111111111\",\"status\": \"pending-loa\",\"unique_name\": \"new unique name\",\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 1,\"verification_call_sids\": [\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\"],\"verification_code\": \"8794\",\"verification_document_sid\": null,\"verification_type\": \"phone-call\"}"
                                      ));
 
             var response = HostedNumberOrderResource.Update("HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
@@ -172,7 +172,7 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"meta\": {\"first_page_url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders?PageSize=50&Page=0\",\"key\": \"items\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders?PageSize=50&Page=0\"},\"items\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": \"AD11111111111111111111111111111111\",\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [\"aaa@twilio.com\",\"bbb@twilio.com\"],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": \"test@twilio.com\",\"friendly_name\": \"friendly_name\",\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": \"PX11111111111111111111111111111111\",\"status\": \"received\",\"unique_name\": \"foobar\",\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 0,\"verification_type\": \"phone-call\",\"verification_document_sid\": null}]}"
+                                         "{\"meta\": {\"first_page_url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders?PageSize=50&Page=0\",\"key\": \"items\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders?PageSize=50&Page=0\"},\"items\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": \"AD11111111111111111111111111111111\",\"call_delay\": 15,\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [\"aaa@twilio.com\",\"bbb@twilio.com\"],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": \"test@twilio.com\",\"extension\": \"1234\",\"failure_reason\": \"\",\"friendly_name\": \"friendly_name\",\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": \"PX11111111111111111111111111111111\",\"status\": \"received\",\"unique_name\": \"foobar\",\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 0,\"verification_call_sids\": [\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\"],\"verification_code\": \"8794\",\"verification_document_sid\": null,\"verification_type\": \"phone-call\"}]}"
                                      ));
 
             var response = HostedNumberOrderResource.Read(client: twilioRestClient);
@@ -189,13 +189,13 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
                 "/HostedNumbers/HostedNumberOrders",
                 ""
             );
-            request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
+            request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+15017122661")));
             request.AddPostParam("SmsCapability", Serialize(true));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+987654321"), true, client: twilioRestClient);
+                HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+15017122661"), true, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -210,10 +210,10 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": \"AD11111111111111111111111111111111\",\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": \"test@twilio.com\",\"friendly_name\": null,\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": null,\"status\": \"received\",\"unique_name\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 0,\"verification_type\": \"phone-call\",\"verification_document_sid\": null}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": \"AD11111111111111111111111111111111\",\"call_delay\": 0,\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": \"test@twilio.com\",\"extension\": null,\"failure_reason\": \"\",\"friendly_name\": null,\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": null,\"status\": \"received\",\"unique_name\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 0,\"verification_call_sids\": null,\"verification_code\": null,\"verification_document_sid\": null,\"verification_type\": \"phone-call\"}"
                                      ));
 
-            var response = HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+987654321"), true, client: twilioRestClient);
+            var response = HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+15017122661"), true, client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -225,10 +225,10 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": null,\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": null,\"friendly_name\": null,\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": null,\"status\": \"received\",\"unique_name\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 0,\"verification_type\": \"phone-call\",\"verification_document_sid\": null}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": null,\"call_delay\": 0,\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": null,\"extension\": null,\"failure_reason\": \"\",\"friendly_name\": null,\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": null,\"status\": \"received\",\"unique_name\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 0,\"verification_call_sids\": null,\"verification_code\": null,\"verification_document_sid\": null,\"verification_type\": \"phone-call\"}"
                                      ));
 
-            var response = HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+987654321"), true, client: twilioRestClient);
+            var response = HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+15017122661"), true, client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -240,10 +240,10 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": null,\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": null,\"friendly_name\": null,\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": null,\"status\": \"received\",\"unique_name\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 0,\"verification_type\": \"phone-bill\",\"verification_document_sid\": \"RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address_sid\": null,\"call_delay\": 0,\"capabilities\": {\"sms\": true,\"voice\": false},\"cc_emails\": [],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": null,\"extension\": null,\"failure_reason\": \"\",\"friendly_name\": null,\"incoming_phone_number_sid\": \"PN11111111111111111111111111111111\",\"phone_number\": \"+14153608311\",\"sid\": \"HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_document_sid\": null,\"status\": \"received\",\"unique_name\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/HostedNumberOrders/HRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_attempts\": 0,\"verification_call_sids\": null,\"verification_code\": null,\"verification_document_sid\": \"RIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"verification_type\": \"phone-bill\"}"
                                      ));
 
-            var response = HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+987654321"), true, client: twilioRestClient);
+            var response = HostedNumberOrderResource.Create(new Twilio.Types.PhoneNumber("+15017122661"), true, client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

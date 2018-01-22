@@ -147,8 +147,8 @@ namespace Twilio.Tests.TwiML
 
             elem.Sms(
                 "message",
-                new Twilio.Types.PhoneNumber("+123456789"),
-                new Twilio.Types.PhoneNumber("+987654321"),
+                new Twilio.Types.PhoneNumber("+15558675310"),
+                new Twilio.Types.PhoneNumber("+15017122661"),
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
                 new Uri("https://example.com")
@@ -170,7 +170,7 @@ namespace Twilio.Tests.TwiML
                 "  <Redirect method=\"GET\">https://example.com</Redirect>" + Environment.NewLine +
                 "  <Reject reason=\"rejected\"></Reject>" + Environment.NewLine +
                 "  <Say voice=\"man\" loop=\"1\" language=\"da-DK\">message</Say>" + Environment.NewLine +
-                "  <Sms to=\"+123456789\" from=\"+987654321\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>" + Environment.NewLine +
+                "  <Sms to=\"+15558675310\" from=\"+15017122661\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()
             );

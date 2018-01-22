@@ -397,6 +397,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
         /// <summary>
+        /// The conference_sid
+        /// </summary>
+        [JsonProperty("conference_sid")]
+        public string ConferenceSid { get; private set; }
+        /// <summary>
         /// The date_created
         /// </summary>
         [JsonProperty("date_created")]

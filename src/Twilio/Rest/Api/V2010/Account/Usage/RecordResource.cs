@@ -151,6 +151,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly CategoryEnum PhonenumbersSetups = new CategoryEnum("phonenumbers-setups");
             public static readonly CategoryEnum PhonenumbersTollfree = new CategoryEnum("phonenumbers-tollfree");
             public static readonly CategoryEnum Premiumsupport = new CategoryEnum("premiumsupport");
+            public static readonly CategoryEnum Proxy = new CategoryEnum("proxy");
             public static readonly CategoryEnum Pv = new CategoryEnum("pv");
             public static readonly CategoryEnum PvRoomParticipants = new CategoryEnum("pv-room-participants");
             public static readonly CategoryEnum PvRoomParticipantsAu1 = new CategoryEnum("pv-room-participants-au1");
@@ -183,6 +184,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly CategoryEnum SmsOutboundLongcode = new CategoryEnum("sms-outbound-longcode");
             public static readonly CategoryEnum SmsOutboundShortcode = new CategoryEnum("sms-outbound-shortcode");
             public static readonly CategoryEnum SmsMessagesFeatures = new CategoryEnum("sms-messages-features");
+            public static readonly CategoryEnum SmsMessagesFeaturesSenderid = new CategoryEnum("sms-messages-features-senderid");
             public static readonly CategoryEnum SpeechRecognition = new CategoryEnum("speech-recognition");
             public static readonly CategoryEnum Sync = new CategoryEnum("sync");
             public static readonly CategoryEnum SyncActions = new CategoryEnum("sync-actions");

@@ -30,13 +30,13 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                 "/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OutgoingCallerIds.json",
                 ""
             );
-            request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+987654321")));
+            request.AddPostParam("PhoneNumber", Serialize(new Twilio.Types.PhoneNumber("+15017122661")));
             twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ValidationRequestResource.Create(new Twilio.Types.PhoneNumber("+987654321"), client: twilioRestClient);
+                ValidationRequestResource.Create(new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -54,7 +54,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"phone_number\": \"+18001234567\",\"validation_code\": 100}"
                                      ));
 
-            var response = ValidationRequestResource.Create(new Twilio.Types.PhoneNumber("+987654321"), client: twilioRestClient);
+            var response = ValidationRequestResource.Create(new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

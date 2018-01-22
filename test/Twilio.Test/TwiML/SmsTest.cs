@@ -31,15 +31,15 @@ namespace Twilio.Tests.TwiML
         {
             var elem = new Sms(
                 "message",
-                new Twilio.Types.PhoneNumber("+123456789"),
-                new Twilio.Types.PhoneNumber("+987654321"),
+                new Twilio.Types.PhoneNumber("+15558675310"),
+                new Twilio.Types.PhoneNumber("+15017122661"),
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
                 new Uri("https://example.com")
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Sms to=\"+123456789\" from=\"+987654321\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>",
+                "<Sms to=\"+15558675310\" from=\"+15017122661\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>",
                 elem.ToString()
             );
         }
