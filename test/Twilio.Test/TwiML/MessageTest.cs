@@ -34,11 +34,12 @@ namespace Twilio.Tests.TwiML
                 "to",
                 "from",
                 new Uri("https://example.com"),
-                Twilio.Http.HttpMethod.Get
+                Twilio.Http.HttpMethod.Get,
+                new Uri("https://example.com")
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Message to=\"to\" from=\"from\" action=\"https://example.com\" method=\"GET\">body</Message>",
+                "<Message to=\"to\" from=\"from\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">body</Message>",
                 elem.ToString()
             );
         }

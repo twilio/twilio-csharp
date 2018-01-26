@@ -253,6 +253,10 @@ namespace Twilio.Rest.Chat.V2
         /// The post_webhook_retry_count
         /// </summary>
         public int? PostWebhookRetryCount { get; set; }
+        /// <summary>
+        /// The notifications.log_enabled
+        /// </summary>
+        public bool? NotificationsLogEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -418,6 +422,11 @@ namespace Twilio.Rest.Chat.V2
             if (PostWebhookRetryCount != null)
             {
                 p.Add(new KeyValuePair<string, string>("PostWebhookRetryCount", PostWebhookRetryCount.Value.ToString()));
+            }
+
+            if (NotificationsLogEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Notifications.LogEnabled", NotificationsLogEnabled.Value.ToString().ToLower()));
             }
 
             return p;

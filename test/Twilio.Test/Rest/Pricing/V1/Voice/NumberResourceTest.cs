@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Pricing.V1.Voice
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Pricing,
-                "/v1/Voice/Numbers/+987654321",
+                "/v1/Voice/Numbers/+15017122661",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                NumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321"), client: twilioRestClient);
+                NumberResource.Fetch(new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.Voice
                                          "{\"country\": \"United States\",\"inbound_call_price\": {\"base_price\": null,\"current_price\": null,\"number_type\": null},\"iso_country\": \"US\",\"number\": \"+987654321\",\"outbound_call_price\": {\"base_price\": \"0.015\",\"current_price\": \"0.015\"},\"price_unit\": \"USD\",\"url\": \"https://pricing.twilio.com/v1/Voice/Numbers/+987654321\"}"
                                      ));
 
-            var response = NumberResource.Fetch(new Twilio.Types.PhoneNumber("+987654321"), client: twilioRestClient);
+            var response = NumberResource.Fetch(new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

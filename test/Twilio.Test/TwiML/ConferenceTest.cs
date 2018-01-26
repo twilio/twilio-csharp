@@ -47,11 +47,12 @@ namespace Twilio.Tests.TwiML
                 Twilio.Http.HttpMethod.Get,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
+                Promoter.ListOfOne(Conference.RecordingEventEnum.Started),
                 new Uri("https://example.com")
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Conference muted=\"true\" beep=\"true\" startConferenceOnEnter=\"true\" endConferenceOnExit=\"true\" waitUrl=\"https://example.com\" waitMethod=\"GET\" maxParticipants=\"1\" record=\"do-not-record\" region=\"us1\" whisper=\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" trim=\"trim-silence\" statusCallbackEvent=\"start\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" eventCallbackUrl=\"https://example.com\">name</Conference>",
+                "<Conference muted=\"true\" beep=\"true\" startConferenceOnEnter=\"true\" endConferenceOnExit=\"true\" waitUrl=\"https://example.com\" waitMethod=\"GET\" maxParticipants=\"1\" record=\"do-not-record\" region=\"us1\" whisper=\"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" trim=\"trim-silence\" statusCallbackEvent=\"start\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"started\" eventCallbackUrl=\"https://example.com\">name</Conference>",
                 elem.ToString()
             );
         }

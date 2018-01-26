@@ -119,9 +119,11 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         /// <param name="body"> TaskRouter task attributes, the body of the TwiML Element. Also accepts stringified object
         ///            </param>
-        public Enqueue Task(string body = null)
+        /// <param name="priority"> Task priority </param>
+        /// <param name="timeout"> Timeout associated with task </param>
+        public Enqueue Task(string body = null, int? priority = null, int? timeout = null)
         {
-            var newChild = new Task(body);
+            var newChild = new Task(body, priority, timeout);
             this.Append(newChild);
             return this;
         }

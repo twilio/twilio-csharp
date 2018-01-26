@@ -72,10 +72,11 @@ namespace Twilio.Tests.TwiML
                 true,
                 1,
                 "caller_id",
-                Dial.TrimEnum.TrimSilence,
+                Dial.RecordEnum.DoNotRecord,
                 Dial.TrimEnum.TrimSilence,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
+                Promoter.ListOfOne(Dial.RecordingEventEnum.InProgress),
                 true,
                 Dial.RingToneEnum.At
             );
@@ -146,8 +147,8 @@ namespace Twilio.Tests.TwiML
 
             elem.Sms(
                 "message",
-                new Twilio.Types.PhoneNumber("+123456789"),
-                new Twilio.Types.PhoneNumber("+987654321"),
+                new Twilio.Types.PhoneNumber("+15558675310"),
+                new Twilio.Types.PhoneNumber("+15017122661"),
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
                 new Uri("https://example.com")
@@ -156,7 +157,7 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
-                "  <Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"trim-silence\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" answerOnBridge=\"true\" ringTone=\"at\">number</Dial>" + Environment.NewLine +
+                "  <Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" answerOnBridge=\"true\" ringTone=\"at\">number</Dial>" + Environment.NewLine +
                 "  <Echo></Echo>" + Environment.NewLine +
                 "  <Enqueue action=\"https://example.com\" method=\"GET\" waitUrl=\"https://example.com\" waitUrlMethod=\"GET\" workflowSid=\"workflow_sid\">name</Enqueue>" + Environment.NewLine +
                 "  <Gather input=\"dtmf\" action=\"https://example.com\" method=\"GET\" timeout=\"1\" speechTimeout=\"speech_timeout\" maxSpeechTime=\"1\" profanityFilter=\"true\" finishOnKey=\"finish_on_key\" numDigits=\"1\" partialResultCallback=\"https://example.com\" partialResultCallbackMethod=\"GET\" language=\"af-ZA\" hints=\"hints\" bargeIn=\"true\"></Gather>" + Environment.NewLine +
@@ -169,7 +170,7 @@ namespace Twilio.Tests.TwiML
                 "  <Redirect method=\"GET\">https://example.com</Redirect>" + Environment.NewLine +
                 "  <Reject reason=\"rejected\"></Reject>" + Environment.NewLine +
                 "  <Say voice=\"man\" loop=\"1\" language=\"da-DK\">message</Say>" + Environment.NewLine +
-                "  <Sms to=\"+123456789\" from=\"+987654321\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>" + Environment.NewLine +
+                "  <Sms to=\"+15558675310\" from=\"+15017122661\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()
             );

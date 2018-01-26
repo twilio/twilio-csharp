@@ -30,7 +30,7 @@ namespace Twilio.Tests.TwiML
         public void TestElementWithParams()
         {
             var elem = new Number(
-                new Twilio.Types.PhoneNumber("+987654321"),
+                new Twilio.Types.PhoneNumber("+15017122661"),
                 "send_digits",
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
@@ -40,7 +40,7 @@ namespace Twilio.Tests.TwiML
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Number sendDigits=\"send_digits\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">+987654321</Number>",
+                "<Number sendDigits=\"send_digits\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">+15017122661</Number>",
                 elem.ToString()
             );
         }

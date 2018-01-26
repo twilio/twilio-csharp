@@ -21,6 +21,23 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
     public class RecordingResource : Resource 
     {
+        public sealed class StatusEnum : StringEnum 
+        {
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
+            public static implicit operator StatusEnum(string value)
+            {
+                return new StatusEnum(value);
+            }
+
+            public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
+            public static readonly StatusEnum Paused = new StatusEnum("paused");
+            public static readonly StatusEnum Stopped = new StatusEnum("stopped");
+            public static readonly StatusEnum Processing = new StatusEnum("processing");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
+            public static readonly StatusEnum Failed = new StatusEnum("failed");
+        }
+
         public sealed class SourceEnum : StringEnum 
         {
             private SourceEnum(string value) : base(value) {}
@@ -35,20 +52,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             public static readonly SourceEnum Outboundapi = new SourceEnum("OutboundAPI");
             public static readonly SourceEnum Trunking = new SourceEnum("Trunking");
             public static readonly SourceEnum Recordverb = new SourceEnum("RecordVerb");
-        }
-
-        public sealed class StatusEnum : StringEnum 
-        {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
-
-            public static readonly StatusEnum Processing = new StatusEnum("processing");
-            public static readonly StatusEnum Completed = new StatusEnum("completed");
-            public static readonly StatusEnum Failed = new StatusEnum("failed");
+            public static readonly SourceEnum Startcallrecordingapi = new SourceEnum("StartCallRecordingAPI");
+            public static readonly SourceEnum Startconferencerecordingapi = new SourceEnum("StartConferenceRecordingAPI");
         }
 
         private static Request BuildFetchRequest(FetchRecordingOptions options, ITwilioRestClient client)
@@ -392,6 +397,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
         /// <summary>
+        /// The conference_sid
+        /// </summary>
+        [JsonProperty("conference_sid")]
+        public string ConferenceSid { get; private set; }
+        /// <summary>
         /// The date_created
         /// </summary>
         [JsonProperty("date_created")]
@@ -427,10 +437,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         [JsonProperty("encryption_details")]
         public object EncryptionDetails { get; private set; }
         /// <summary>
-        /// The error_code
+        /// The price_unit
         /// </summary>
-        [JsonProperty("error_code")]
-        public int? ErrorCode { get; private set; }
+        [JsonProperty("price_unit")]
+        public string PriceUnit { get; private set; }
         /// <summary>
         /// The status
         /// </summary>
@@ -438,21 +448,21 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.StatusEnum Status { get; private set; }
         /// <summary>
+        /// The channels
+        /// </summary>
+        [JsonProperty("channels")]
+        public int? Channels { get; private set; }
+        /// <summary>
         /// The source
         /// </summary>
         [JsonProperty("source")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.SourceEnum Source { get; private set; }
         /// <summary>
-        /// The channels
+        /// The error_code
         /// </summary>
-        [JsonProperty("channels")]
-        public int? Channels { get; private set; }
-        /// <summary>
-        /// The price_unit
-        /// </summary>
-        [JsonProperty("price_unit")]
-        public string PriceUnit { get; private set; }
+        [JsonProperty("error_code")]
+        public int? ErrorCode { get; private set; }
 
         private RecordingResource()
         {

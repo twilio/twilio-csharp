@@ -112,6 +112,22 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// A verification code.
         /// </summary>
         public string VerificationCode { get; set; }
+        /// <summary>
+        /// Verification Type.
+        /// </summary>
+        public HostedNumberOrderResource.VerificationTypeEnum VerificationType { get; set; }
+        /// <summary>
+        /// Verification Document Sid
+        /// </summary>
+        public string VerificationDocumentSid { get; set; }
+        /// <summary>
+        /// The extension
+        /// </summary>
+        public string Extension { get; set; }
+        /// <summary>
+        /// The call_delay
+        /// </summary>
+        public int? CallDelay { get; set; }
 
         /// <summary>
         /// Construct a new UpdateHostedNumberOrderOptions
@@ -157,6 +173,26 @@ namespace Twilio.Rest.Preview.HostedNumbers
             if (VerificationCode != null)
             {
                 p.Add(new KeyValuePair<string, string>("VerificationCode", VerificationCode));
+            }
+
+            if (VerificationType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerificationType", VerificationType.ToString()));
+            }
+
+            if (VerificationDocumentSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerificationDocumentSid", VerificationDocumentSid.ToString()));
+            }
+
+            if (Extension != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Extension", Extension));
+            }
+
+            if (CallDelay != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallDelay", CallDelay.Value.ToString()));
             }
 
             return p;
@@ -300,6 +336,14 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// Email.
         /// </summary>
         public string Email { get; set; }
+        /// <summary>
+        /// Verification Type.
+        /// </summary>
+        public HostedNumberOrderResource.VerificationTypeEnum VerificationType { get; set; }
+        /// <summary>
+        /// Verification Document Sid
+        /// </summary>
+        public string VerificationDocumentSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateHostedNumberOrderOptions
@@ -392,6 +436,16 @@ namespace Twilio.Rest.Preview.HostedNumbers
             if (Email != null)
             {
                 p.Add(new KeyValuePair<string, string>("Email", Email));
+            }
+
+            if (VerificationType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerificationType", VerificationType.ToString()));
+            }
+
+            if (VerificationDocumentSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerificationDocumentSid", VerificationDocumentSid.ToString()));
             }
 
             return p;

@@ -43,13 +43,15 @@ namespace Twilio.TwiML
         /// <param name="from"> Phone Number to send Message from. Also accepts stringified Types.PhoneNumber </param>
         /// <param name="action"> Action URL </param>
         /// <param name="method"> Action URL Method </param>
+        /// <param name="statusCallback"> Status callback URL. Deprecated in favor of action. </param>
         public MessagingResponse Message(string body = null, 
                                          string to = null, 
                                          string from = null, 
                                          Uri action = null, 
-                                         Twilio.Http.HttpMethod method = null)
+                                         Twilio.Http.HttpMethod method = null, 
+                                         Uri statusCallback = null)
         {
-            var newChild = new Message(body, to, from, action, method);
+            var newChild = new Message(body, to, from, action, method, statusCallback);
             this.Append(newChild);
             return this;
         }

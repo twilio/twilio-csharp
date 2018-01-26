@@ -58,7 +58,7 @@ namespace Twilio.Jwt.Client
                 }
 
                 var queryString = String.Join("&", queryArgs.ToArray());
-                return $"{Scope}?{queryString}";
+                return Scope + "?" + queryString;
             }
         }
 

@@ -403,11 +403,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// The links
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
-        /// <summary>
         /// The url
         /// </summary>
         [JsonProperty("url")]

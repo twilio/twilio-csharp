@@ -3,7 +3,7 @@ solution: Twilio.sln
 dist: trusty
 sudo: required
 mono: none
-dotnet: 1.0.0
+dotnet: 1.1.5
 
 install:
   - dotnet restore

@@ -95,6 +95,23 @@ namespace Twilio.TwiML.Voice
             public static readonly TrimEnum DoNotTrim = new TrimEnum("do-not-trim");
         }
 
+        public sealed class RecordingEventEnum : StringEnum 
+        {
+            private RecordingEventEnum(string value) : base(value) {}
+            public RecordingEventEnum() {}
+            public static implicit operator RecordingEventEnum(string value)
+            {
+                return new RecordingEventEnum(value);
+            }
+
+            public static readonly RecordingEventEnum Started = new RecordingEventEnum("started");
+            public static readonly RecordingEventEnum Stopped = new RecordingEventEnum("stopped");
+            public static readonly RecordingEventEnum Paused = new RecordingEventEnum("paused");
+            public static readonly RecordingEventEnum Resumed = new RecordingEventEnum("resumed");
+            public static readonly RecordingEventEnum Completed = new RecordingEventEnum("completed");
+            public static readonly RecordingEventEnum Failed = new RecordingEventEnum("failed");
+        }
+
         /// <summary>
         /// Conference name
         /// </summary>
@@ -164,6 +181,10 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
         /// <summary>
+        /// Recording status callback events
+        /// </summary>
+        public List<Conference.RecordingEventEnum> RecordingStatusCallbackEvent { get; set; }
+        /// <summary>
         /// Event callback URL
         /// </summary>
         public Uri EventCallbackUrl { get; set; }
@@ -188,6 +209,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="statusCallbackMethod"> Status callback URL method </param>
         /// <param name="recordingStatusCallback"> Recording status callback URL </param>
         /// <param name="recordingStatusCallbackMethod"> Recording status callback URL method </param>
+        /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="eventCallbackUrl"> Event callback URL </param>
         public Conference(string name = null, 
                           bool? muted = null, 
@@ -206,6 +228,7 @@ namespace Twilio.TwiML.Voice
                           Twilio.Http.HttpMethod statusCallbackMethod = null, 
                           Uri recordingStatusCallback = null, 
                           Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
+                          List<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null, 
                           Uri eventCallbackUrl = null) : base("Conference")
         {
             this.Name = name;
@@ -225,6 +248,7 @@ namespace Twilio.TwiML.Voice
             this.StatusCallbackMethod = statusCallbackMethod;
             this.RecordingStatusCallback = recordingStatusCallback;
             this.RecordingStatusCallbackMethod = recordingStatusCallbackMethod;
+            this.RecordingStatusCallbackEvent = recordingStatusCallbackEvent;
             this.EventCallbackUrl = eventCallbackUrl;
         }
 
@@ -305,6 +329,10 @@ namespace Twilio.TwiML.Voice
             if (this.RecordingStatusCallbackMethod != null)
             {
                 attributes.Add(new XAttribute("recordingStatusCallbackMethod", this.RecordingStatusCallbackMethod.ToString()));
+            }
+            if (this.RecordingStatusCallbackEvent != null)
+            {
+                attributes.Add(new XAttribute("recordingStatusCallbackEvent", String.Join(" ", this.RecordingStatusCallbackEvent.Select(e => e.ToString()).ToArray())));
             }
             if (this.EventCallbackUrl != null)
             {
