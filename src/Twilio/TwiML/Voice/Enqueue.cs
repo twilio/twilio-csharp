@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using Twilio.Converters;
 
 namespace Twilio.TwiML.Voice 
 {
@@ -82,7 +83,7 @@ namespace Twilio.TwiML.Voice
             var attributes = new List<XAttribute>();
             if (this.Action != null)
             {
-                attributes.Add(new XAttribute("action", this.Action.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("action", Serializers.Url(this.Action)));
             }
             if (this.Method != null)
             {
@@ -90,7 +91,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.WaitUrl != null)
             {
-                attributes.Add(new XAttribute("waitUrl", this.WaitUrl.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("waitUrl", Serializers.Url(this.WaitUrl)));
             }
             if (this.WaitUrlMethod != null)
             {

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using Twilio.Converters;
 
 namespace Twilio.TwiML.Fax 
 {
@@ -45,7 +46,7 @@ namespace Twilio.TwiML.Fax
             var attributes = new List<XAttribute>();
             if (this.Action != null)
             {
-                attributes.Add(new XAttribute("action", this.Action.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("action", Serializers.Url(this.Action)));
             }
             if (this.Method != null)
             {

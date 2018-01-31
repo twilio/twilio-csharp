@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using Twilio.Converters;
 using Twilio.TwiML.Voice;
 
 namespace Twilio.TwiML 

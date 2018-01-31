@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using Twilio.Converters;
 using Twilio.Types;
 
 namespace Twilio.TwiML.Voice 
@@ -236,7 +237,7 @@ namespace Twilio.TwiML.Voice
             var attributes = new List<XAttribute>();
             if (this.Action != null)
             {
-                attributes.Add(new XAttribute("action", this.Action.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("action", Serializers.Url(this.Action)));
             }
             if (this.Method != null)
             {
@@ -268,7 +269,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.RecordingStatusCallback != null)
             {
-                attributes.Add(new XAttribute("recordingStatusCallback", this.RecordingStatusCallback.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("recordingStatusCallback", Serializers.Url(this.RecordingStatusCallback)));
             }
             if (this.RecordingStatusCallbackMethod != null)
             {

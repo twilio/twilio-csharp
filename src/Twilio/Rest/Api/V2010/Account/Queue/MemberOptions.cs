@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
             var p = new List<KeyValuePair<string, string>>();
             if (Url != null)
             {
-                p.Add(new KeyValuePair<string, string>("Url", Url.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("Url", Serializers.Url(Url)));
             }
 
             if (Method != null)

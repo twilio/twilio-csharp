@@ -381,12 +381,12 @@ namespace Twilio.Rest.IpMessaging.V2
 
             if (PreWebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("PreWebhookUrl", PreWebhookUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("PreWebhookUrl", Serializers.Url(PreWebhookUrl)));
             }
 
             if (PostWebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("PostWebhookUrl", PostWebhookUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("PostWebhookUrl", Serializers.Url(PostWebhookUrl)));
             }
 
             if (WebhookMethod != null)

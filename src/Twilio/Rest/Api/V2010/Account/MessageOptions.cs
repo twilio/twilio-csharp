@@ -124,12 +124,12 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (MediaUrl != null)
             {
-                p.AddRange(MediaUrl.Select(prop => new KeyValuePair<string, string>("MediaUrl", prop.AbsoluteUri.TrimEnd('/'))));
+                p.AddRange(MediaUrl.Select(prop => new KeyValuePair<string, string>("MediaUrl", Serializers.Url(prop))));
             }
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
             }
 
             if (ApplicationSid != null)

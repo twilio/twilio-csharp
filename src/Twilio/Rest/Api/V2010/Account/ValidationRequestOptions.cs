@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
             }
 
             if (StatusCallbackMethod != null)

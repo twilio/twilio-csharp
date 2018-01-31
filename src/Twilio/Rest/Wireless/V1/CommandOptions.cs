@@ -156,7 +156,7 @@ namespace Twilio.Rest.Wireless.V1
 
             if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
             }
 
             if (CommandMode != null)

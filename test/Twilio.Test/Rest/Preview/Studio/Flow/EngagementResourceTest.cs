@@ -129,42 +129,6 @@ namespace Twilio.Tests.Rest.Preview.Studio.Flow
             var response = EngagementResource.Create("FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new Twilio.Types.PhoneNumber("+15017122661"), new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
             Assert.NotNull(response);
         }
-
-        [Test]
-        public void TestDeleteRequest()
-        {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            var request = new Request(
-                HttpMethod.Delete,
-                Twilio.Rest.Domain.Preview,
-                "/Studio/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Engagements/FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                ""
-            );
-            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
-
-            try
-            {
-                EngagementResource.Delete("FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
-                Assert.Fail("Expected TwilioException to be thrown for 500");
-            }
-            catch (ApiException) {}
-            twilioRestClient.Received().Request(request);
-        }
-
-        [Test]
-        public void TestDeleteResponse()
-        {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(
-                                         System.Net.HttpStatusCode.NoContent,
-                                         "null"
-                                     ));
-
-            var response = EngagementResource.Delete("FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "FNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
-            Assert.NotNull(response);
-        }
     }
 
 }

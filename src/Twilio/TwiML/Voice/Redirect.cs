@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using Twilio.Converters;
 
 namespace Twilio.TwiML.Voice 
 {
@@ -42,7 +43,7 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         protected override string GetElementBody()
         {
-            return this.Url != null ? this.Url.AbsoluteUri.TrimEnd('/') : string.Empty;
+            return this.Url != null ? Serializers.Url(this.Url) : string.Empty;
         }
 
         /// <summary>

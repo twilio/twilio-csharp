@@ -169,7 +169,7 @@ namespace Twilio.Rest.Fax.V1
 
             if (MediaUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("MediaUrl", MediaUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("MediaUrl", Serializers.Url(MediaUrl)));
             }
 
             if (Quality != null)
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Fax.V1
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
             }
 
             if (From != null)

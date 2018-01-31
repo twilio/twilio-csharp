@@ -124,7 +124,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             var p = new List<KeyValuePair<string, string>>();
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
             }
 
             if (UniqueName != null)

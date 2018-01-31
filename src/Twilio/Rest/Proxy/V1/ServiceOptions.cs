@@ -127,7 +127,7 @@ namespace Twilio.Rest.Proxy.V1
 
             if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
             }
 
             if (GeoMatchLevel != null)
@@ -142,12 +142,12 @@ namespace Twilio.Rest.Proxy.V1
 
             if (InterceptCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("InterceptCallbackUrl", InterceptCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("InterceptCallbackUrl", Serializers.Url(InterceptCallbackUrl)));
             }
 
             if (OutOfSessionCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("OutOfSessionCallbackUrl", OutOfSessionCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("OutOfSessionCallbackUrl", Serializers.Url(OutOfSessionCallbackUrl)));
             }
 
             return p;
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Proxy.V1
 
             if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
             }
 
             if (GeoMatchLevel != null)
@@ -267,12 +267,12 @@ namespace Twilio.Rest.Proxy.V1
 
             if (InterceptCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("InterceptCallbackUrl", InterceptCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("InterceptCallbackUrl", Serializers.Url(InterceptCallbackUrl)));
             }
 
             if (OutOfSessionCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("OutOfSessionCallbackUrl", OutOfSessionCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("OutOfSessionCallbackUrl", Serializers.Url(OutOfSessionCallbackUrl)));
             }
 
             return p;

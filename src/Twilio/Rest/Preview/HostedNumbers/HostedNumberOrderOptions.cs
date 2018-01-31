@@ -395,7 +395,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (SmsUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("SmsUrl", Serializers.Url(SmsUrl)));
             }
 
             if (SmsMethod != null)
@@ -405,7 +405,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (SmsFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", Serializers.Url(SmsFallbackUrl)));
             }
 
             if (SmsFallbackMethod != null)
@@ -415,7 +415,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (StatusCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallbackUrl", StatusCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("StatusCallbackUrl", Serializers.Url(StatusCallbackUrl)));
             }
 
             if (StatusCallbackMethod != null)

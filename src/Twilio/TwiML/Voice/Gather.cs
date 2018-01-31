@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using Twilio.Converters;
 using Twilio.Types;
 
 namespace Twilio.TwiML.Voice 
@@ -250,7 +251,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.Action != null)
             {
-                attributes.Add(new XAttribute("action", this.Action.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("action", Serializers.Url(this.Action)));
             }
             if (this.Method != null)
             {
@@ -282,7 +283,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.PartialResultCallback != null)
             {
-                attributes.Add(new XAttribute("partialResultCallback", this.PartialResultCallback.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("partialResultCallback", Serializers.Url(this.PartialResultCallback)));
             }
             if (this.PartialResultCallbackMethod != null)
             {

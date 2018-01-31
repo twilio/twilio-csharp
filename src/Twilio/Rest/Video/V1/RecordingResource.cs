@@ -449,6 +449,11 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("grouping_sids")]
         public object GroupingSids { get; private set; }
         /// <summary>
+        /// The track_name
+        /// </summary>
+        [JsonProperty("track_name")]
+        public string TrackName { get; private set; }
+        /// <summary>
         /// The links
         /// </summary>
         [JsonProperty("links")]

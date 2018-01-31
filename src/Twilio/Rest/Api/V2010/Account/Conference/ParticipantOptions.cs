@@ -122,7 +122,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (HoldUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("HoldUrl", HoldUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("HoldUrl", Serializers.Url(HoldUrl)));
             }
 
             if (HoldMethod != null)
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (AnnounceUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("AnnounceUrl", AnnounceUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("AnnounceUrl", Serializers.Url(AnnounceUrl)));
             }
 
             if (AnnounceMethod != null)
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
             }
 
             if (StatusCallbackMethod != null)
@@ -358,7 +358,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (WaitUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WaitUrl", WaitUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("WaitUrl", Serializers.Url(WaitUrl)));
             }
 
             if (WaitMethod != null)
@@ -388,7 +388,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (ConferenceStatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConferenceStatusCallback", ConferenceStatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("ConferenceStatusCallback", Serializers.Url(ConferenceStatusCallback)));
             }
 
             if (ConferenceStatusCallbackMethod != null)
@@ -408,7 +408,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (RecordingStatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("RecordingStatusCallback", RecordingStatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("RecordingStatusCallback", Serializers.Url(RecordingStatusCallback)));
             }
 
             if (RecordingStatusCallbackMethod != null)
@@ -433,7 +433,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (ConferenceRecordingStatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConferenceRecordingStatusCallback", ConferenceRecordingStatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("ConferenceRecordingStatusCallback", Serializers.Url(ConferenceRecordingStatusCallback)));
             }
 
             if (ConferenceRecordingStatusCallbackMethod != null)

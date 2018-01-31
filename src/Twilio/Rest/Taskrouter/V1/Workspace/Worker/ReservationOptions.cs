@@ -380,7 +380,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (DequeueStatusCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("DequeueStatusCallbackUrl", DequeueStatusCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("DequeueStatusCallbackUrl", Serializers.Url(DequeueStatusCallbackUrl)));
             }
 
             if (CallFrom != null)
@@ -405,12 +405,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (CallUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallUrl", CallUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("CallUrl", Serializers.Url(CallUrl)));
             }
 
             if (CallStatusCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallStatusCallbackUrl", CallStatusCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("CallStatusCallbackUrl", Serializers.Url(CallStatusCallbackUrl)));
             }
 
             if (CallAccept != null)
@@ -430,7 +430,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (RedirectUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("RedirectUrl", RedirectUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("RedirectUrl", Serializers.Url(RedirectUrl)));
             }
 
             if (To != null)
@@ -445,7 +445,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", StatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
             }
 
             if (StatusCallbackMethod != null)
@@ -490,7 +490,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (WaitUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WaitUrl", WaitUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("WaitUrl", Serializers.Url(WaitUrl)));
             }
 
             if (WaitMethod != null)
@@ -510,7 +510,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (ConferenceStatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConferenceStatusCallback", ConferenceStatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("ConferenceStatusCallback", Serializers.Url(ConferenceStatusCallback)));
             }
 
             if (ConferenceStatusCallbackMethod != null)
@@ -540,7 +540,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (RecordingStatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("RecordingStatusCallback", RecordingStatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("RecordingStatusCallback", Serializers.Url(RecordingStatusCallback)));
             }
 
             if (RecordingStatusCallbackMethod != null)
@@ -550,7 +550,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (ConferenceRecordingStatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConferenceRecordingStatusCallback", ConferenceRecordingStatusCallback.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("ConferenceRecordingStatusCallback", Serializers.Url(ConferenceRecordingStatusCallback)));
             }
 
             if (ConferenceRecordingStatusCallbackMethod != null)

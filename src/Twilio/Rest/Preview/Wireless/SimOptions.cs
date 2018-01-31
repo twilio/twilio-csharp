@@ -216,7 +216,7 @@ namespace Twilio.Rest.Preview.Wireless
 
             if (CallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallbackUrl", CallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
             }
 
             if (FriendlyName != null)
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Preview.Wireless
 
             if (CommandsCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("CommandsCallbackUrl", CommandsCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("CommandsCallbackUrl", Serializers.Url(CommandsCallbackUrl)));
             }
 
             if (SmsFallbackMethod != null)
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Preview.Wireless
 
             if (SmsFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", SmsFallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("SmsFallbackUrl", Serializers.Url(SmsFallbackUrl)));
             }
 
             if (SmsMethod != null)
@@ -261,7 +261,7 @@ namespace Twilio.Rest.Preview.Wireless
 
             if (SmsUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("SmsUrl", SmsUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("SmsUrl", Serializers.Url(SmsUrl)));
             }
 
             if (VoiceFallbackMethod != null)
@@ -271,7 +271,7 @@ namespace Twilio.Rest.Preview.Wireless
 
             if (VoiceFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", Serializers.Url(VoiceFallbackUrl)));
             }
 
             if (VoiceMethod != null)
@@ -281,7 +281,7 @@ namespace Twilio.Rest.Preview.Wireless
 
             if (VoiceUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
             }
 
             return p;

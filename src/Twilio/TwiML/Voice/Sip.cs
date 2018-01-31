@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using Twilio.Converters;
 using Twilio.Types;
 
 namespace Twilio.TwiML.Voice 
@@ -102,7 +103,7 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         protected override string GetElementBody()
         {
-            return this.SipUrl != null ? this.SipUrl.AbsoluteUri.TrimEnd('/') : string.Empty;
+            return this.SipUrl != null ? Serializers.Url(this.SipUrl) : string.Empty;
         }
 
         /// <summary>
@@ -121,7 +122,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.Url != null)
             {
-                attributes.Add(new XAttribute("url", this.Url.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("url", Serializers.Url(this.Url)));
             }
             if (this.Method != null)
             {
@@ -133,7 +134,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.StatusCallback != null)
             {
-                attributes.Add(new XAttribute("statusCallback", this.StatusCallback.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("statusCallback", Serializers.Url(this.StatusCallback)));
             }
             if (this.StatusCallbackMethod != null)
             {

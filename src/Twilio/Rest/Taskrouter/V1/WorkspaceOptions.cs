@@ -100,7 +100,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
             if (EventCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("EventCallbackUrl", EventCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("EventCallbackUrl", Serializers.Url(EventCallbackUrl)));
             }
 
             if (EventsFilter != null)
@@ -214,7 +214,7 @@ namespace Twilio.Rest.Taskrouter.V1
 
             if (EventCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("EventCallbackUrl", EventCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("EventCallbackUrl", Serializers.Url(EventCallbackUrl)));
             }
 
             if (EventsFilter != null)

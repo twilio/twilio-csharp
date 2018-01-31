@@ -118,7 +118,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             if (VoiceUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
             }
 
             if (VoiceMethod != null)
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             if (VoiceFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", Serializers.Url(VoiceFallbackUrl)));
             }
 
             if (VoiceFallbackMethod != null)
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             if (VoiceStatusCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", VoiceStatusCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", Serializers.Url(VoiceStatusCallbackUrl)));
             }
 
             if (VoiceStatusCallbackMethod != null)
@@ -270,7 +270,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             if (VoiceFallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", VoiceFallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("VoiceFallbackUrl", Serializers.Url(VoiceFallbackUrl)));
             }
 
             if (VoiceMethod != null)
@@ -285,12 +285,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
             if (VoiceStatusCallbackUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", VoiceStatusCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("VoiceStatusCallbackUrl", Serializers.Url(VoiceStatusCallbackUrl)));
             }
 
             if (VoiceUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("VoiceUrl", VoiceUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
             }
 
             if (SipRegistration != null)

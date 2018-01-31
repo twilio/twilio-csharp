@@ -149,42 +149,4 @@ namespace Twilio.Rest.Preview.Studio.Flow
         }
     }
 
-    /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
-    /// Delete a specific Engagement.
-    /// </summary>
-    public class DeleteEngagementOptions : IOptions<EngagementResource> 
-    {
-        /// <summary>
-        /// Flow Sid.
-        /// </summary>
-        public string PathFlowSid { get; }
-        /// <summary>
-        /// A string that uniquely identifies this Engagement.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteEngagementOptions
-        /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Engagement. </param>
-        public DeleteEngagementOptions(string pathFlowSid, string pathSid)
-        {
-            PathFlowSid = pathFlowSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-    }
-
 }

@@ -90,7 +90,7 @@ namespace Twilio.Rest.Preview.BulkExports
 
             if (WebhookUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("WebhookUrl", WebhookUrl.AbsoluteUri.TrimEnd('/')));
+                p.Add(new KeyValuePair<string, string>("WebhookUrl", Serializers.Url(WebhookUrl)));
             }
 
             if (WebhookMethod != null)

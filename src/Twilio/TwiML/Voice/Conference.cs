@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using Twilio.Converters;
 using Twilio.Types;
 
 namespace Twilio.TwiML.Voice 
@@ -284,7 +285,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.WaitUrl != null)
             {
-                attributes.Add(new XAttribute("waitUrl", this.WaitUrl.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("waitUrl", Serializers.Url(this.WaitUrl)));
             }
             if (this.WaitMethod != null)
             {
@@ -316,7 +317,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.StatusCallback != null)
             {
-                attributes.Add(new XAttribute("statusCallback", this.StatusCallback.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("statusCallback", Serializers.Url(this.StatusCallback)));
             }
             if (this.StatusCallbackMethod != null)
             {
@@ -324,7 +325,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.RecordingStatusCallback != null)
             {
-                attributes.Add(new XAttribute("recordingStatusCallback", this.RecordingStatusCallback.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("recordingStatusCallback", Serializers.Url(this.RecordingStatusCallback)));
             }
             if (this.RecordingStatusCallbackMethod != null)
             {
@@ -336,7 +337,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.EventCallbackUrl != null)
             {
-                attributes.Add(new XAttribute("eventCallbackUrl", this.EventCallbackUrl.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("eventCallbackUrl", Serializers.Url(this.EventCallbackUrl)));
             }
             return attributes;
         }

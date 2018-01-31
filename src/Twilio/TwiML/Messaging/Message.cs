@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using Twilio.Converters;
 
 namespace Twilio.TwiML.Messaging 
 {
@@ -90,7 +91,7 @@ namespace Twilio.TwiML.Messaging
             }
             if (this.Action != null)
             {
-                attributes.Add(new XAttribute("action", this.Action.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("action", Serializers.Url(this.Action)));
             }
             if (this.Method != null)
             {
@@ -98,7 +99,7 @@ namespace Twilio.TwiML.Messaging
             }
             if (this.StatusCallback != null)
             {
-                attributes.Add(new XAttribute("statusCallback", this.StatusCallback.AbsoluteUri.TrimEnd('/')));
+                attributes.Add(new XAttribute("statusCallback", Serializers.Url(this.StatusCallback)));
             }
             return attributes;
         }

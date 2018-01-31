@@ -186,6 +186,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum SmsMessagesFeatures = new CategoryEnum("sms-messages-features");
             public static readonly CategoryEnum SmsMessagesFeaturesSenderid = new CategoryEnum("sms-messages-features-senderid");
             public static readonly CategoryEnum SpeechRecognition = new CategoryEnum("speech-recognition");
+            public static readonly CategoryEnum StudioEngagements = new CategoryEnum("studio-engagements");
             public static readonly CategoryEnum Sync = new CategoryEnum("sync");
             public static readonly CategoryEnum SyncActions = new CategoryEnum("sync-actions");
             public static readonly CategoryEnum SyncEndpointHours = new CategoryEnum("sync-endpoint-hours");
