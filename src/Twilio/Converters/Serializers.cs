@@ -31,5 +31,21 @@ namespace Twilio.Converters
 
             return input.Value.ToString("yyyy-MM-ddTHH:mm:ssZ");
         }
+
+        public static string Url(Uri input) 
+        {
+            if (input == null) 
+            {
+                return null;
+            }
+
+            string originalString = input.OriginalString;
+            if (input is Types.EmptyUri && Types.EmptyUri.Uri.Equals(originalString))
+            {
+                return string.Empty;
+            }
+
+            return originalString;
+        }
     }
 }
