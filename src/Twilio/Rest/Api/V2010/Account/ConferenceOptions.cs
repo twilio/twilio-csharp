@@ -162,6 +162,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The status
         /// </summary>
         public ConferenceResource.UpdateStatusEnum Status { get; set; }
+        /// <summary>
+        /// The announce_url
+        /// </summary>
+        public Uri AnnounceUrl { get; set; }
+        /// <summary>
+        /// The announce_method
+        /// </summary>
+        public Twilio.Http.HttpMethod AnnounceMethod { get; set; }
 
         /// <summary>
         /// Construct a new UpdateConferenceOptions
@@ -181,6 +189,16 @@ namespace Twilio.Rest.Api.V2010.Account
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            if (AnnounceUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AnnounceUrl", Serializers.Url(AnnounceUrl)));
+            }
+
+            if (AnnounceMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AnnounceMethod", AnnounceMethod.ToString()));
             }
 
             return p;

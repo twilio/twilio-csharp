@@ -334,14 +334,18 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="status"> The status </param>
+        /// <param name="announceUrl"> The announce_url </param>
+        /// <param name="announceMethod"> The announce_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conference </returns> 
         public static ConferenceResource Update(string pathSid, 
                                                 string pathAccountSid = null, 
                                                 ConferenceResource.UpdateStatusEnum status = null, 
+                                                Uri announceUrl = null, 
+                                                Twilio.Http.HttpMethod announceMethod = null, 
                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateConferenceOptions(pathSid){PathAccountSid = pathAccountSid, Status = status};
+            var options = new UpdateConferenceOptions(pathSid){PathAccountSid = pathAccountSid, Status = status, AnnounceUrl = announceUrl, AnnounceMethod = announceMethod};
             return Update(options, client);
         }
 
@@ -352,14 +356,18 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="status"> The status </param>
+        /// <param name="announceUrl"> The announce_url </param>
+        /// <param name="announceMethod"> The announce_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns> 
         public static async System.Threading.Tasks.Task<ConferenceResource> UpdateAsync(string pathSid, 
                                                                                         string pathAccountSid = null, 
                                                                                         ConferenceResource.UpdateStatusEnum status = null, 
+                                                                                        Uri announceUrl = null, 
+                                                                                        Twilio.Http.HttpMethod announceMethod = null, 
                                                                                         ITwilioRestClient client = null)
         {
-            var options = new UpdateConferenceOptions(pathSid){PathAccountSid = pathAccountSid, Status = status};
+            var options = new UpdateConferenceOptions(pathSid){PathAccountSid = pathAccountSid, Status = status, AnnounceUrl = announceUrl, AnnounceMethod = announceMethod};
             return await UpdateAsync(options, client);
         }
         #endif

@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2018-02-09] Version 5.9.6
+---------------------------
+**Api**
+- Add `AnnounceUrl` and `AnnounceMethod` params for conference announce
+
+**Chat**
+- Add support to looking up user channels by identity in v1
+
+
 [2018-01-30] Version 5.9.5
 ---------------------------
 **Api**
