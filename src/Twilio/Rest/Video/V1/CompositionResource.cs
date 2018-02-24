@@ -65,9 +65,10 @@ namespace Twilio.Rest.Video.V1
                 return new VideoLayoutEnum(value);
             }
 
-            public static readonly VideoLayoutEnum Grid = new VideoLayoutEnum("GRID");
-            public static readonly VideoLayoutEnum Single = new VideoLayoutEnum("SINGLE");
-            public static readonly VideoLayoutEnum Pip = new VideoLayoutEnum("PIP");
+            public static readonly VideoLayoutEnum Grid = new VideoLayoutEnum("grid");
+            public static readonly VideoLayoutEnum Single = new VideoLayoutEnum("single");
+            public static readonly VideoLayoutEnum Pip = new VideoLayoutEnum("pip");
+            public static readonly VideoLayoutEnum Sequence = new VideoLayoutEnum("sequence");
         }
 
         private static Request BuildFetchRequest(FetchCompositionOptions options, ITwilioRestClient client)
@@ -402,6 +403,8 @@ namespace Twilio.Rest.Video.V1
         /// <param name="desiredMaxDuration"> The desired_max_duration </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <param name="trim"> The trim </param>
+        /// <param name="reuse"> The reuse </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Composition </returns> 
         public static CompositionResource Create(List<string> audioSources = null, 
@@ -413,9 +416,11 @@ namespace Twilio.Rest.Video.V1
                                                  int? desiredMaxDuration = null, 
                                                  Uri statusCallback = null, 
                                                  Twilio.Http.HttpMethod statusCallbackMethod = null, 
+                                                 bool? trim = null, 
+                                                 bool? reuse = null, 
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateCompositionOptions(){AudioSources = audioSources, VideoSources = videoSources, VideoLayout = videoLayout, Resolution = resolution, Format = format, DesiredBitrate = desiredBitrate, DesiredMaxDuration = desiredMaxDuration, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new CreateCompositionOptions(){AudioSources = audioSources, VideoSources = videoSources, VideoLayout = videoLayout, Resolution = resolution, Format = format, DesiredBitrate = desiredBitrate, DesiredMaxDuration = desiredMaxDuration, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim, Reuse = reuse};
             return Create(options, client);
         }
 
@@ -432,6 +437,8 @@ namespace Twilio.Rest.Video.V1
         /// <param name="desiredMaxDuration"> The desired_max_duration </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <param name="trim"> The trim </param>
+        /// <param name="reuse"> The reuse </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns> 
         public static async System.Threading.Tasks.Task<CompositionResource> CreateAsync(List<string> audioSources = null, 
@@ -443,9 +450,11 @@ namespace Twilio.Rest.Video.V1
                                                                                          int? desiredMaxDuration = null, 
                                                                                          Uri statusCallback = null, 
                                                                                          Twilio.Http.HttpMethod statusCallbackMethod = null, 
+                                                                                         bool? trim = null, 
+                                                                                         bool? reuse = null, 
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateCompositionOptions(){AudioSources = audioSources, VideoSources = videoSources, VideoLayout = videoLayout, Resolution = resolution, Format = format, DesiredBitrate = desiredBitrate, DesiredMaxDuration = desiredMaxDuration, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new CreateCompositionOptions(){AudioSources = audioSources, VideoSources = videoSources, VideoLayout = videoLayout, Resolution = resolution, Format = format, DesiredBitrate = desiredBitrate, DesiredMaxDuration = desiredMaxDuration, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim, Reuse = reuse};
             return await CreateAsync(options, client);
         }
         #endif

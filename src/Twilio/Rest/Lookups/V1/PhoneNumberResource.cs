@@ -164,6 +164,11 @@ namespace Twilio.Rest.Lookups.V1
         [JsonProperty("carrier")]
         public Dictionary<string, string> Carrier { get; private set; }
         /// <summary>
+        /// The fraud
+        /// </summary>
+        [JsonProperty("fraud")]
+        public Dictionary<string, string> Fraud { get; private set; }
+        /// <summary>
         /// The add_ons
         /// </summary>
         [JsonProperty("add_ons")]

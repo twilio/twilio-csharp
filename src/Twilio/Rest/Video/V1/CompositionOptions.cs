@@ -171,6 +171,14 @@ namespace Twilio.Rest.Video.V1
         /// The status_callback_method
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+        /// <summary>
+        /// The trim
+        /// </summary>
+        public bool? Trim { get; set; }
+        /// <summary>
+        /// The reuse
+        /// </summary>
+        public bool? Reuse { get; set; }
 
         /// <summary>
         /// Construct a new CreateCompositionOptions
@@ -230,6 +238,16 @@ namespace Twilio.Rest.Video.V1
             if (StatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
+            }
+
+            if (Trim != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Trim", Trim.Value.ToString().ToLower()));
+            }
+
+            if (Reuse != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Reuse", Reuse.Value.ToString().ToLower()));
             }
 
             return p;

@@ -317,7 +317,14 @@ namespace Twilio.TwiML.Voice
                            Uri statusCallback = null, 
                            Twilio.Http.HttpMethod statusCallbackMethod = null)
         {
-            var newChild = new Client(name, url, method, statusCallbackEvent, statusCallback, statusCallbackMethod);
+            var newChild = new Client(
+                name,
+                url,
+                method,
+                statusCallbackEvent,
+                statusCallback,
+                statusCallbackMethod
+            );
             this.Append(newChild);
             return this;
         }

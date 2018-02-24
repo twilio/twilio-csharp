@@ -1,6 +1,21 @@
 twilio-csharp Changelog
 =======================
 
+[2018-02-23] Version 5.9.7
+---------------------------
+**Api**
+- Add `trim` param to Outbound Calls API
+
+**Lookups**
+- Add support for `fraud` lookup type
+
+**Numbers**
+- Initial Release
+
+**Video**
+- [composer] Add `SEQUENCE` value to available layouts, and `trim` and `reuse` params.
+
+
 [2018-02-09] Version 5.9.6
 ---------------------------
 **Api**
