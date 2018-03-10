@@ -1,6 +1,19 @@
 twilio-csharp Changelog
 =======================
 
+[2018-03-09] Version 5.9.8
+---------------------------
+**Api**
+- Add `caller_id` param to Outbound Calls API
+- Release `trim` recording Outbound Calls API functionality in helper libraries
+
+**Video**
+- [composer] Add `room_sid` to Composition resource.
+
+**Twiml**
+- Adds support for passing in multiple input type enums when setting `input` on `Gather`
+
+
 [2018-02-23] Version 5.9.7
 ---------------------------
 **Api**

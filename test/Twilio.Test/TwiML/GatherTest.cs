@@ -30,7 +30,7 @@ namespace Twilio.Tests.TwiML
         public void TestElementWithParams()
         {
             var elem = new Gather(
-                Gather.InputEnum.Dtmf,
+                Promoter.ListOfOne(Gather.InputEnum.Dtmf),
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
                 1,

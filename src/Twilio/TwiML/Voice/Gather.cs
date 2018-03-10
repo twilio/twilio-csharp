@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
@@ -136,7 +137,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Input type Twilio should accept
         /// </summary>
-        public Gather.InputEnum Input { get; set; }
+        public List<Gather.InputEnum> Input { get; set; }
         /// <summary>
         /// Action URL
         /// </summary>
@@ -208,7 +209,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="language"> Language to use </param>
         /// <param name="hints"> Speech recognition hints </param>
         /// <param name="bargeIn"> Stop playing media upon speech </param>
-        public Gather(Gather.InputEnum input = null, 
+        public Gather(List<Gather.InputEnum> input = null, 
                       Uri action = null, 
                       Twilio.Http.HttpMethod method = null, 
                       int? timeout = null, 
@@ -247,7 +248,7 @@ namespace Twilio.TwiML.Voice
             var attributes = new List<XAttribute>();
             if (this.Input != null)
             {
-                attributes.Add(new XAttribute("input", this.Input.ToString()));
+                attributes.Add(new XAttribute("input", String.Join(" ", this.Input.Select(e => e.ToString()).ToArray())));
             }
             if (this.Action != null)
             {

@@ -173,7 +173,7 @@ namespace Twilio.TwiML
         /// <param name="language"> Language to use </param>
         /// <param name="hints"> Speech recognition hints </param>
         /// <param name="bargeIn"> Stop playing media upon speech </param>
-        public VoiceResponse Gather(Gather.InputEnum input = null, 
+        public VoiceResponse Gather(List<Gather.InputEnum> input = null, 
                                     Uri action = null, 
                                     Twilio.Http.HttpMethod method = null, 
                                     int? timeout = null, 

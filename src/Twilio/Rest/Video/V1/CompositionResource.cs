@@ -188,6 +188,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="status"> The status </param>
         /// <param name="dateCreatedAfter"> The date_created_after </param>
         /// <param name="dateCreatedBefore"> The date_created_before </param>
+        /// <param name="roomSid"> The room_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -195,11 +196,12 @@ namespace Twilio.Rest.Video.V1
         public static ResourceSet<CompositionResource> Read(CompositionResource.StatusEnum status = null, 
                                                             DateTime? dateCreatedAfter = null, 
                                                             DateTime? dateCreatedBefore = null, 
+                                                            string roomSid = null, 
                                                             int? pageSize = null, 
                                                             long? limit = null, 
                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadCompositionOptions(){Status = status, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
+            var options = new ReadCompositionOptions(){Status = status, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, RoomSid = roomSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -210,6 +212,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="status"> The status </param>
         /// <param name="dateCreatedAfter"> The date_created_after </param>
         /// <param name="dateCreatedBefore"> The date_created_before </param>
+        /// <param name="roomSid"> The room_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -217,11 +220,12 @@ namespace Twilio.Rest.Video.V1
         public static async System.Threading.Tasks.Task<ResourceSet<CompositionResource>> ReadAsync(CompositionResource.StatusEnum status = null, 
                                                                                                     DateTime? dateCreatedAfter = null, 
                                                                                                     DateTime? dateCreatedBefore = null, 
+                                                                                                    string roomSid = null, 
                                                                                                     int? pageSize = null, 
                                                                                                     long? limit = null, 
                                                                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadCompositionOptions(){Status = status, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
+            var options = new ReadCompositionOptions(){Status = status, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, RoomSid = roomSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -555,6 +559,11 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The room_sid
+        /// </summary>
+        [JsonProperty("room_sid")]
+        public string RoomSid { get; private set; }
         /// <summary>
         /// The links
         /// </summary>

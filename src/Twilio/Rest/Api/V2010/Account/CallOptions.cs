@@ -110,6 +110,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The recording_status_callback_event
         /// </summary>
         public List<string> RecordingStatusCallbackEvent { get; set; }
+        /// <summary>
+        /// Set this parameter to control trimming of silence on the recording.
+        /// </summary>
+        public string Trim { get; set; }
+        /// <summary>
+        /// The phone number, SIP address or Client identifier that made this Call. Phone numbers are in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`.
+        /// </summary>
+        public string CallerId { get; set; }
 
         /// <summary>
         /// Construct a new CreateCallOptions
@@ -238,6 +246,16 @@ namespace Twilio.Rest.Api.V2010.Account
             if (RecordingStatusCallbackEvent != null)
             {
                 p.AddRange(RecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("RecordingStatusCallbackEvent", prop)));
+            }
+
+            if (Trim != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Trim", Trim));
+            }
+
+            if (CallerId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallerId", CallerId));
             }
 
             return p;

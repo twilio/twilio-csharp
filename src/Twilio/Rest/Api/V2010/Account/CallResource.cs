@@ -134,6 +134,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
         /// <param name="machineDetectionTimeout"> Number of miliseconds to wait for machine detection </param>
         /// <param name="recordingStatusCallbackEvent"> The recording_status_callback_event </param>
+        /// <param name="trim"> Set this parameter to control trimming of silence on the recording. </param>
+        /// <param name="callerId"> The phone number, SIP address or Client identifier that made this Call. Phone numbers are
+        ///                in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns> 
         public static CallResource Create(IEndpoint to, 
@@ -159,9 +162,11 @@ namespace Twilio.Rest.Api.V2010.Account
                                           string machineDetection = null, 
                                           int? machineDetectionTimeout = null, 
                                           List<string> recordingStatusCallbackEvent = null, 
+                                          string trim = null, 
+                                          string callerId = null, 
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId};
             return Create(options, client);
         }
 
@@ -192,6 +197,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
         /// <param name="machineDetectionTimeout"> Number of miliseconds to wait for machine detection </param>
         /// <param name="recordingStatusCallbackEvent"> The recording_status_callback_event </param>
+        /// <param name="trim"> Set this parameter to control trimming of silence on the recording. </param>
+        /// <param name="callerId"> The phone number, SIP address or Client identifier that made this Call. Phone numbers are
+        ///                in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns> 
         public static async System.Threading.Tasks.Task<CallResource> CreateAsync(IEndpoint to, 
@@ -217,9 +225,11 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   string machineDetection = null, 
                                                                                   int? machineDetectionTimeout = null, 
                                                                                   List<string> recordingStatusCallbackEvent = null, 
+                                                                                  string trim = null, 
+                                                                                  string callerId = null, 
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId};
             return await CreateAsync(options, client);
         }
         #endif

@@ -64,6 +64,10 @@ namespace Twilio.Rest.Video.V1
         /// The date_created_before
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
+        /// <summary>
+        /// The room_sid
+        /// </summary>
+        public string RoomSid { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -84,6 +88,11 @@ namespace Twilio.Rest.Video.V1
             if (DateCreatedBefore != null)
             {
                 p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
+            }
+
+            if (RoomSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RoomSid", RoomSid.ToString()));
             }
 
             if (PageSize != null)
