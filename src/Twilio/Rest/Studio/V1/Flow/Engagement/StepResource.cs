@@ -314,6 +314,11 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
 
         private StepResource()
         {

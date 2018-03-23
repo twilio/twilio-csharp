@@ -369,16 +369,16 @@ namespace Twilio.Rest.Studio.V1.Flow
         [JsonProperty("contact_channel_address")]
         public string ContactChannelAddress { get; private set; }
         /// <summary>
+        /// The context
+        /// </summary>
+        [JsonProperty("context")]
+        public object Context { get; private set; }
+        /// <summary>
         /// The status
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public EngagementResource.StatusEnum Status { get; private set; }
-        /// <summary>
-        /// The context
-        /// </summary>
-        [JsonProperty("context")]
-        public object Context { get; private set; }
         /// <summary>
         /// The date_created
         /// </summary>

@@ -530,6 +530,16 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The build_duration
+        /// </summary>
+        [JsonProperty("build_duration")]
+        public int? BuildDuration { get; private set; }
+        /// <summary>
+        /// The error_code
+        /// </summary>
+        [JsonProperty("error_code")]
+        public int? ErrorCode { get; private set; }
 
         private ModelBuildResource()
         {

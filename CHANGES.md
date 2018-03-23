@@ -1,6 +1,18 @@
 twilio-csharp Changelog
 =======================
 
+[2018-03-22] Version 5.10.0
+----------------------------
+**Lookups**
+- Disable support for `fraud` lookups *(breaking change)*
+
+**Preview**
+- Add `BuildDuration` and `ErrorCode` to Understand ModelBuild
+
+**Studio**
+- Add new /Context endpoint for step and engagement resources.
+
+
 [2018-03-09] Version 5.9.8
 ---------------------------
 **Api**
