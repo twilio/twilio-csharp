@@ -8,6 +8,11 @@ namespace Twilio.Jwt.AccessToken
     public class VoiceGrant : IGrant
     {
         /// <summary>
+        /// Whether incoming connections are allowed (JS Client)
+        /// </summary>
+        public bool IncomingAllow { get; set; }
+
+        /// <summary>
         /// Outgoing application SID
         /// </summary>
         public string OutgoingApplicationSid { get; set; }
@@ -50,6 +55,12 @@ namespace Twilio.Jwt.AccessToken
             get
             {
                 var payload = new Dictionary<string, object>();
+                if (IncomingAllow == true)
+                {
+                    var incoming = new Dictionary<string, object> { { "allow", true } };
+                    payload.Add("incoming", incoming);
+                }
+
                 if (OutgoingApplicationSid != null)
                 {
                     var outgoing = new Dictionary<string, object> { { "application_sid", OutgoingApplicationSid } };
