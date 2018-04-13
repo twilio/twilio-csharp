@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace.TaskQueue
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Taskrouter,
-                "/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/RealTimeStatistics",
+                "/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/TaskQueues/WQXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/RealTimeStatistics",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                TaskQueueRealTimeStatisticsResource.Fetch("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+                TaskQueueRealTimeStatisticsResource.Fetch("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "WQXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -45,14 +45,14 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace.TaskQueue
         public void TestFetchResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
                                          "{\"longest_task_waiting_age\": 100,\"task_queue_sid\": \"WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"tasks_by_status\": {\"reserved\": 0,\"pending\": 0,\"assigned\": 0,\"wrapping\": 0},\"total_eligible_workers\": 100,\"activity_statistics\": [{\"friendly_name\": \"Idle\",\"workers\": 0,\"sid\": \"WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},{\"friendly_name\": \"Busy\",\"workers\": 9,\"sid\": \"WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},{\"friendly_name\": \"Offline\",\"workers\": 6,\"sid\": \"WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},{\"friendly_name\": \"Reserved\",\"workers\": 0,\"sid\": \"WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"tasks_by_priority\": {},\"total_tasks\": 100,\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"workspace_sid\": \"WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"total_available_workers\": 100,\"url\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskQueues/WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/RealTimeStatistics\"}"
                                      ));
 
-            var response = TaskQueueRealTimeStatisticsResource.Fetch("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+            var response = TaskQueueRealTimeStatisticsResource.Fetch("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "WQXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

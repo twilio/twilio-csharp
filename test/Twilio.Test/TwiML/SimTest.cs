@@ -29,10 +29,10 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new Sim("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            var elem = new Sim("DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Sim>DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Sim>",
+                "<Sim>DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</Sim>",
                 elem.ToString()
             );
         }

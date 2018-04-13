@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace.InstalledAddOn
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Preview,
-                "/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions/XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "/marketplace/InstalledAddOns/XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Extensions/XFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                InstalledAddOnExtensionResource.Fetch("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+                InstalledAddOnExtensionResource.Fetch("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "XFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -45,14 +45,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace.InstalledAddOn
         public void TestFetchResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
                                          "{\"sid\": \"XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"installed_add_on_sid\": \"XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"Incoming Voice Call\",\"product_name\": \"Programmable Voice\",\"unique_name\": \"voice-incoming\",\"enabled\": true,\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions/XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = InstalledAddOnExtensionResource.Fetch("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+            var response = InstalledAddOnExtensionResource.Fetch("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "XFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -63,7 +63,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace.InstalledAddOn
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Preview,
-                "/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions/XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "/marketplace/InstalledAddOns/XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Extensions/XFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             request.AddPostParam("Enabled", Serialize(true));
@@ -71,7 +71,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace.InstalledAddOn
 
             try
             {
-                InstalledAddOnExtensionResource.Update("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", true, client: twilioRestClient);
+                InstalledAddOnExtensionResource.Update("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "XFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", true, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -82,14 +82,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace.InstalledAddOn
         public void TestUpdateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
                                          "{\"sid\": \"XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"installed_add_on_sid\": \"XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"Incoming Voice Call\",\"product_name\": \"Programmable Voice\",\"unique_name\": \"voice-incoming\",\"enabled\": false,\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions/XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = InstalledAddOnExtensionResource.Update("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", true, client: twilioRestClient);
+            var response = InstalledAddOnExtensionResource.Update("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "XFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", true, client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -100,14 +100,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace.InstalledAddOn
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Preview,
-                "/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions",
+                "/marketplace/InstalledAddOns/XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Extensions",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                InstalledAddOnExtensionResource.Read("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+                InstalledAddOnExtensionResource.Read("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -118,14 +118,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace.InstalledAddOn
         public void TestReadFullResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
                                          "{\"extensions\": [{\"sid\": \"XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"installed_add_on_sid\": \"XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"Incoming Voice Call\",\"product_name\": \"Programmable Voice\",\"unique_name\": \"voice-incoming\",\"enabled\": true,\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions/XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"extensions\"}}"
                                      ));
 
-            var response = InstalledAddOnExtensionResource.Read("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+            var response = InstalledAddOnExtensionResource.Read("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -133,14 +133,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace.InstalledAddOn
         public void TestReadEmptyResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
                                          "{\"extensions\": [],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"extensions\"}}"
                                      ));
 
-            var response = InstalledAddOnExtensionResource.Read("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+            var response = InstalledAddOnExtensionResource.Read("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

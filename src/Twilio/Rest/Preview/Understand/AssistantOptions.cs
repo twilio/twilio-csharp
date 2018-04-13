@@ -8,34 +8,28 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand.Service 
+namespace Twilio.Rest.Preview.Understand 
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchFieldTypeOptions
+    /// FetchAssistantOptions
     /// </summary>
-    public class FetchFieldTypeOptions : IOptions<FieldTypeResource> 
+    public class FetchAssistantOptions : IOptions<AssistantResource> 
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
-        /// Construct a new FetchFieldTypeOptions
+        /// Construct a new FetchAssistantOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public FetchFieldTypeOptions(string pathServiceSid, string pathSid)
+        public FetchAssistantOptions(string pathSid)
         {
-            PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
 
@@ -53,24 +47,10 @@ namespace Twilio.Rest.Preview.Understand.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// ReadFieldTypeOptions
+    /// ReadAssistantOptions
     /// </summary>
-    public class ReadFieldTypeOptions : ReadOptions<FieldTypeResource> 
+    public class ReadAssistantOptions : ReadOptions<AssistantResource> 
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-
-        /// <summary>
-        /// Construct a new ReadFieldTypeOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        public ReadFieldTypeOptions(string pathServiceSid)
-        {
-            PathServiceSid = pathServiceSid;
-        }
-
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -90,33 +70,38 @@ namespace Twilio.Rest.Preview.Understand.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// CreateFieldTypeOptions
+    /// CreateAssistantOptions
     /// </summary>
-    public class CreateFieldTypeOptions : IOptions<FieldTypeResource> 
+    public class CreateAssistantOptions : IOptions<AssistantResource> 
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique_name
-        /// </summary>
-        public string UniqueName { get; }
         /// <summary>
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
-
         /// <summary>
-        /// Construct a new CreateFieldTypeOptions
+        /// The log_queries
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        public CreateFieldTypeOptions(string pathServiceSid, string uniqueName)
-        {
-            PathServiceSid = pathServiceSid;
-            UniqueName = uniqueName;
-        }
+        public bool? LogQueries { get; set; }
+        /// <summary>
+        /// The ttl
+        /// </summary>
+        public int? Ttl { get; set; }
+        /// <summary>
+        /// The unique_name
+        /// </summary>
+        public string UniqueName { get; set; }
+        /// <summary>
+        /// The response_url
+        /// </summary>
+        public Uri ResponseUrl { get; set; }
+        /// <summary>
+        /// The callback_url
+        /// </summary>
+        public Uri CallbackUrl { get; set; }
+        /// <summary>
+        /// The callback_events
+        /// </summary>
+        public string CallbackEvents { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -124,14 +109,39 @@ namespace Twilio.Rest.Preview.Understand.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (LogQueries != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LogQueries", LogQueries.Value.ToString().ToLower()));
+            }
+
+            if (Ttl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
+            }
+
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
 
-            if (FriendlyName != null)
+            if (ResponseUrl != null)
             {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+                p.Add(new KeyValuePair<string, string>("ResponseUrl", Serializers.Url(ResponseUrl)));
+            }
+
+            if (CallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
+            }
+
+            if (CallbackEvents != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallbackEvents", CallbackEvents));
             }
 
             return p;
@@ -142,14 +152,10 @@ namespace Twilio.Rest.Preview.Understand.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// UpdateFieldTypeOptions
+    /// UpdateAssistantOptions
     /// </summary>
-    public class UpdateFieldTypeOptions : IOptions<FieldTypeResource> 
+    public class UpdateAssistantOptions : IOptions<AssistantResource> 
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
@@ -159,18 +165,36 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
+        /// The log_queries
+        /// </summary>
+        public bool? LogQueries { get; set; }
+        /// <summary>
+        /// The ttl
+        /// </summary>
+        public int? Ttl { get; set; }
+        /// <summary>
         /// The unique_name
         /// </summary>
         public string UniqueName { get; set; }
+        /// <summary>
+        /// The response_url
+        /// </summary>
+        public Uri ResponseUrl { get; set; }
+        /// <summary>
+        /// The callback_url
+        /// </summary>
+        public Uri CallbackUrl { get; set; }
+        /// <summary>
+        /// The callback_events
+        /// </summary>
+        public string CallbackEvents { get; set; }
 
         /// <summary>
-        /// Construct a new UpdateFieldTypeOptions
+        /// Construct a new UpdateAssistantOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public UpdateFieldTypeOptions(string pathServiceSid, string pathSid)
+        public UpdateAssistantOptions(string pathSid)
         {
-            PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
 
@@ -185,9 +209,34 @@ namespace Twilio.Rest.Preview.Understand.Service
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
 
+            if (LogQueries != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LogQueries", LogQueries.Value.ToString().ToLower()));
+            }
+
+            if (Ttl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
+            }
+
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+            }
+
+            if (ResponseUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ResponseUrl", Serializers.Url(ResponseUrl)));
+            }
+
+            if (CallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
+            }
+
+            if (CallbackEvents != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallbackEvents", CallbackEvents));
             }
 
             return p;
@@ -198,27 +247,21 @@ namespace Twilio.Rest.Preview.Understand.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// DeleteFieldTypeOptions
+    /// DeleteAssistantOptions
     /// </summary>
-    public class DeleteFieldTypeOptions : IOptions<FieldTypeResource> 
+    public class DeleteAssistantOptions : IOptions<AssistantResource> 
     {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
-        /// Construct a new DeleteFieldTypeOptions
+        /// Construct a new DeleteAssistantOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public DeleteFieldTypeOptions(string pathServiceSid, string pathSid)
+        public DeleteAssistantOptions(string pathSid)
         {
-            PathServiceSid = pathServiceSid;
             PathSid = pathSid;
         }
 

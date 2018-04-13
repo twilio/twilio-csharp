@@ -27,7 +27,7 @@ namespace Twilio.Tests.Rest.Sync.V1.Service.SyncStream
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Sync,
-                "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Streams/TOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages",
+                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Streams/TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages",
                 ""
             );
             request.AddPostParam("Data", Serialize("{}"));
@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Sync.V1.Service.SyncStream
 
             try
             {
-                StreamMessageResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "TOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "{}", client: twilioRestClient);
+                StreamMessageResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "{}", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -46,14 +46,14 @@ namespace Twilio.Tests.Rest.Sync.V1.Service.SyncStream
         public void TestCreateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
                                          "{\"sid\": \"TZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"data\": {}}"
                                      ));
 
-            var response = StreamMessageResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "TOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "{}", client: twilioRestClient);
+            var response = StreamMessageResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "{}", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

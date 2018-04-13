@@ -6,7 +6,7 @@
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
 /// 
-/// IntentResource
+/// SampleResource
 /// </summary>
 
 using Newtonsoft.Json;
@@ -18,17 +18,17 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Understand.Service 
+namespace Twilio.Rest.Preview.Understand.Assistant.Intent 
 {
 
-    public class IntentResource : Resource 
+    public class SampleResource : Resource 
     {
-        private static Request BuildFetchRequest(FetchIntentOptions options, ITwilioRestClient client)
+        private static Request BuildFetchRequest(FetchSampleOptions options, ITwilioRestClient client)
         {
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Intents/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Intents/" + options.PathIntentSid + "/Samples/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -37,10 +37,10 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="options"> Fetch Intent parameters </param>
+        /// <param name="options"> Fetch Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Intent </returns> 
-        public static IntentResource Fetch(FetchIntentOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of Sample </returns> 
+        public static SampleResource Fetch(FetchSampleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -51,10 +51,10 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="options"> Fetch Intent parameters </param>
+        /// <param name="options"> Fetch Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Intent </returns> 
-        public static async System.Threading.Tasks.Task<IntentResource> FetchAsync(FetchIntentOptions options, 
+        /// <returns> Task that resolves to A single instance of Sample </returns> 
+        public static async System.Threading.Tasks.Task<SampleResource> FetchAsync(FetchSampleOptions options, 
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -66,13 +66,17 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Intent </returns> 
-        public static IntentResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        /// <returns> A single instance of Sample </returns> 
+        public static SampleResource Fetch(string pathAssistantSid, 
+                                           string pathIntentSid, 
+                                           string pathSid, 
+                                           ITwilioRestClient client = null)
         {
-            var options = new FetchIntentOptions(pathServiceSid, pathSid);
+            var options = new FetchSampleOptions(pathAssistantSid, pathIntentSid, pathSid);
             return Fetch(options, client);
         }
 
@@ -80,25 +84,27 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Intent </returns> 
-        public static async System.Threading.Tasks.Task<IntentResource> FetchAsync(string pathServiceSid, 
+        /// <returns> Task that resolves to A single instance of Sample </returns> 
+        public static async System.Threading.Tasks.Task<SampleResource> FetchAsync(string pathAssistantSid, 
+                                                                                   string pathIntentSid, 
                                                                                    string pathSid, 
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new FetchIntentOptions(pathServiceSid, pathSid);
+            var options = new FetchSampleOptions(pathAssistantSid, pathIntentSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
 
-        private static Request BuildReadRequest(ReadIntentOptions options, ITwilioRestClient client)
+        private static Request BuildReadRequest(ReadSampleOptions options, ITwilioRestClient client)
         {
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Intents",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Intents/" + options.PathIntentSid + "/Samples",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -107,50 +113,54 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="options"> Read Intent parameters </param>
+        /// <param name="options"> Read Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Intent </returns> 
-        public static ResourceSet<IntentResource> Read(ReadIntentOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of Sample </returns> 
+        public static ResourceSet<SampleResource> Read(ReadSampleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
 
-            var page = Page<IntentResource>.FromJson("intents", response.Content);
-            return new ResourceSet<IntentResource>(page, options, client);
+            var page = Page<SampleResource>.FromJson("samples", response.Content);
+            return new ResourceSet<SampleResource>(page, options, client);
         }
 
         #if !NET35
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="options"> Read Intent parameters </param>
+        /// <param name="options"> Read Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Intent </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<IntentResource>> ReadAsync(ReadIntentOptions options, 
+        /// <returns> Task that resolves to A single instance of Sample </returns> 
+        public static async System.Threading.Tasks.Task<ResourceSet<SampleResource>> ReadAsync(ReadSampleOptions options, 
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
 
-            var page = Page<IntentResource>.FromJson("intents", response.Content);
-            return new ResourceSet<IntentResource>(page, options, client);
+            var page = Page<SampleResource>.FromJson("samples", response.Content);
+            return new ResourceSet<SampleResource>(page, options, client);
         }
         #endif
 
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathIntentSid"> The intent_sid </param>
+        /// <param name="language"> The language </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Intent </returns> 
-        public static ResourceSet<IntentResource> Read(string pathServiceSid, 
+        /// <returns> A single instance of Sample </returns> 
+        public static ResourceSet<SampleResource> Read(string pathAssistantSid, 
+                                                       string pathIntentSid, 
+                                                       string language = null, 
                                                        int? pageSize = null, 
                                                        long? limit = null, 
                                                        ITwilioRestClient client = null)
         {
-            var options = new ReadIntentOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadSampleOptions(pathAssistantSid, pathIntentSid){Language = language, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -158,17 +168,21 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathIntentSid"> The intent_sid </param>
+        /// <param name="language"> The language </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Intent </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<IntentResource>> ReadAsync(string pathServiceSid, 
+        /// <returns> Task that resolves to A single instance of Sample </returns> 
+        public static async System.Threading.Tasks.Task<ResourceSet<SampleResource>> ReadAsync(string pathAssistantSid, 
+                                                                                               string pathIntentSid, 
+                                                                                               string language = null, 
                                                                                                int? pageSize = null, 
                                                                                                long? limit = null, 
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new ReadIntentOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadSampleOptions(pathAssistantSid, pathIntentSid){Language = language, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -179,7 +193,7 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns> 
-        public static Page<IntentResource> GetPage(string targetUrl, ITwilioRestClient client)
+        public static Page<SampleResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
 
@@ -189,7 +203,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             );
 
             var response = client.Request(request);
-            return Page<IntentResource>.FromJson("intents", response.Content);
+            return Page<SampleResource>.FromJson("samples", response.Content);
         }
 
         /// <summary>
@@ -198,7 +212,7 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns> 
-        public static Page<IntentResource> NextPage(Page<IntentResource> page, ITwilioRestClient client)
+        public static Page<SampleResource> NextPage(Page<SampleResource> page, ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -209,7 +223,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             );
 
             var response = client.Request(request);
-            return Page<IntentResource>.FromJson("intents", response.Content);
+            return Page<SampleResource>.FromJson("samples", response.Content);
         }
 
         /// <summary>
@@ -218,7 +232,7 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns> 
-        public static Page<IntentResource> PreviousPage(Page<IntentResource> page, ITwilioRestClient client)
+        public static Page<SampleResource> PreviousPage(Page<SampleResource> page, ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -229,15 +243,15 @@ namespace Twilio.Rest.Preview.Understand.Service
             );
 
             var response = client.Request(request);
-            return Page<IntentResource>.FromJson("intents", response.Content);
+            return Page<SampleResource>.FromJson("samples", response.Content);
         }
 
-        private static Request BuildCreateRequest(CreateIntentOptions options, ITwilioRestClient client)
+        private static Request BuildCreateRequest(CreateSampleOptions options, ITwilioRestClient client)
         {
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Intents",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Intents/" + options.PathIntentSid + "/Samples",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -246,10 +260,10 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="options"> Create Intent parameters </param>
+        /// <param name="options"> Create Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Intent </returns> 
-        public static IntentResource Create(CreateIntentOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of Sample </returns> 
+        public static SampleResource Create(CreateSampleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildCreateRequest(options, client));
@@ -260,10 +274,10 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="options"> Create Intent parameters </param>
+        /// <param name="options"> Create Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Intent </returns> 
-        public static async System.Threading.Tasks.Task<IntentResource> CreateAsync(CreateIntentOptions options, 
+        /// <returns> Task that resolves to A single instance of Sample </returns> 
+        public static async System.Threading.Tasks.Task<SampleResource> CreateAsync(CreateSampleOptions options, 
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -275,17 +289,21 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathIntentSid"> The intent_sid </param>
+        /// <param name="language"> The language </param>
+        /// <param name="taggedText"> The tagged_text </param>
+        /// <param name="sourceChannel"> The source_channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Intent </returns> 
-        public static IntentResource Create(string pathServiceSid, 
-                                            string uniqueName, 
-                                            string friendlyName = null, 
+        /// <returns> A single instance of Sample </returns> 
+        public static SampleResource Create(string pathAssistantSid, 
+                                            string pathIntentSid, 
+                                            string language, 
+                                            string taggedText, 
+                                            string sourceChannel = null, 
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateIntentOptions(pathServiceSid, uniqueName){FriendlyName = friendlyName};
+            var options = new CreateSampleOptions(pathAssistantSid, pathIntentSid, language, taggedText){SourceChannel = sourceChannel};
             return Create(options, client);
         }
 
@@ -293,27 +311,31 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathIntentSid"> The intent_sid </param>
+        /// <param name="language"> The language </param>
+        /// <param name="taggedText"> The tagged_text </param>
+        /// <param name="sourceChannel"> The source_channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Intent </returns> 
-        public static async System.Threading.Tasks.Task<IntentResource> CreateAsync(string pathServiceSid, 
-                                                                                    string uniqueName, 
-                                                                                    string friendlyName = null, 
+        /// <returns> Task that resolves to A single instance of Sample </returns> 
+        public static async System.Threading.Tasks.Task<SampleResource> CreateAsync(string pathAssistantSid, 
+                                                                                    string pathIntentSid, 
+                                                                                    string language, 
+                                                                                    string taggedText, 
+                                                                                    string sourceChannel = null, 
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateIntentOptions(pathServiceSid, uniqueName){FriendlyName = friendlyName};
+            var options = new CreateSampleOptions(pathAssistantSid, pathIntentSid, language, taggedText){SourceChannel = sourceChannel};
             return await CreateAsync(options, client);
         }
         #endif
 
-        private static Request BuildUpdateRequest(UpdateIntentOptions options, ITwilioRestClient client)
+        private static Request BuildUpdateRequest(UpdateSampleOptions options, ITwilioRestClient client)
         {
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Intents/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Intents/" + options.PathIntentSid + "/Samples/" + options.PathSid + "",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -322,10 +344,10 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="options"> Update Intent parameters </param>
+        /// <param name="options"> Update Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Intent </returns> 
-        public static IntentResource Update(UpdateIntentOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of Sample </returns> 
+        public static SampleResource Update(UpdateSampleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildUpdateRequest(options, client));
@@ -336,10 +358,10 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="options"> Update Intent parameters </param>
+        /// <param name="options"> Update Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Intent </returns> 
-        public static async System.Threading.Tasks.Task<IntentResource> UpdateAsync(UpdateIntentOptions options, 
+        /// <returns> Task that resolves to A single instance of Sample </returns> 
+        public static async System.Threading.Tasks.Task<SampleResource> UpdateAsync(UpdateSampleOptions options, 
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -351,19 +373,23 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="language"> The language </param>
+        /// <param name="taggedText"> The tagged_text </param>
+        /// <param name="sourceChannel"> The source_channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Intent </returns> 
-        public static IntentResource Update(string pathServiceSid, 
+        /// <returns> A single instance of Sample </returns> 
+        public static SampleResource Update(string pathAssistantSid, 
+                                            string pathIntentSid, 
                                             string pathSid, 
-                                            string friendlyName = null, 
-                                            string uniqueName = null, 
+                                            string language = null, 
+                                            string taggedText = null, 
+                                            string sourceChannel = null, 
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateIntentOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName};
+            var options = new UpdateSampleOptions(pathAssistantSid, pathIntentSid, pathSid){Language = language, TaggedText = taggedText, SourceChannel = sourceChannel};
             return Update(options, client);
         }
 
@@ -371,29 +397,33 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="language"> The language </param>
+        /// <param name="taggedText"> The tagged_text </param>
+        /// <param name="sourceChannel"> The source_channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Intent </returns> 
-        public static async System.Threading.Tasks.Task<IntentResource> UpdateAsync(string pathServiceSid, 
+        /// <returns> Task that resolves to A single instance of Sample </returns> 
+        public static async System.Threading.Tasks.Task<SampleResource> UpdateAsync(string pathAssistantSid, 
+                                                                                    string pathIntentSid, 
                                                                                     string pathSid, 
-                                                                                    string friendlyName = null, 
-                                                                                    string uniqueName = null, 
+                                                                                    string language = null, 
+                                                                                    string taggedText = null, 
+                                                                                    string sourceChannel = null, 
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new UpdateIntentOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName};
+            var options = new UpdateSampleOptions(pathAssistantSid, pathIntentSid, pathSid){Language = language, TaggedText = taggedText, SourceChannel = sourceChannel};
             return await UpdateAsync(options, client);
         }
         #endif
 
-        private static Request BuildDeleteRequest(DeleteIntentOptions options, ITwilioRestClient client)
+        private static Request BuildDeleteRequest(DeleteSampleOptions options, ITwilioRestClient client)
         {
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Intents/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Intents/" + options.PathIntentSid + "/Samples/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -402,10 +432,10 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="options"> Delete Intent parameters </param>
+        /// <param name="options"> Delete Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Intent </returns> 
-        public static bool Delete(DeleteIntentOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of Sample </returns> 
+        public static bool Delete(DeleteSampleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildDeleteRequest(options, client));
@@ -416,10 +446,10 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="options"> Delete Intent parameters </param>
+        /// <param name="options"> Delete Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Intent </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteIntentOptions options, 
+        /// <returns> Task that resolves to A single instance of Sample </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSampleOptions options, 
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -431,13 +461,17 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Intent </returns> 
-        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        /// <returns> A single instance of Sample </returns> 
+        public static bool Delete(string pathAssistantSid, 
+                                  string pathIntentSid, 
+                                  string pathSid, 
+                                  ITwilioRestClient client = null)
         {
-            var options = new DeleteIntentOptions(pathServiceSid, pathSid);
+            var options = new DeleteSampleOptions(pathAssistantSid, pathIntentSid, pathSid);
             return Delete(options, client);
         }
 
@@ -445,30 +479,32 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Intent </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+        /// <returns> Task that resolves to A single instance of Sample </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
+                                                                          string pathIntentSid, 
                                                                           string pathSid, 
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteIntentOptions(pathServiceSid, pathSid);
+            var options = new DeleteSampleOptions(pathAssistantSid, pathIntentSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif
 
         /// <summary>
-        /// Converts a JSON string into a IntentResource object
+        /// Converts a JSON string into a SampleResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> IntentResource object represented by the provided JSON </returns> 
-        public static IntentResource FromJson(string json)
+        /// <returns> SampleResource object represented by the provided JSON </returns> 
+        public static SampleResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime
             try
             {
-                return JsonConvert.DeserializeObject<IntentResource>(json);
+                return JsonConvert.DeserializeObject<SampleResource>(json);
             }
             catch (JsonException e)
             {
@@ -492,37 +528,42 @@ namespace Twilio.Rest.Preview.Understand.Service
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// The intent_sid
         /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
+        [JsonProperty("intent_sid")]
+        public string IntentSid { get; private set; }
         /// <summary>
-        /// The links
+        /// The language
         /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
+        [JsonProperty("language")]
+        public string Language { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
+        [JsonProperty("assistant_sid")]
+        public string AssistantSid { get; private set; }
         /// <summary>
         /// The sid
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique_name
+        /// The tagged_text
         /// </summary>
-        [JsonProperty("unique_name")]
-        public string UniqueName { get; private set; }
+        [JsonProperty("tagged_text")]
+        public string TaggedText { get; private set; }
         /// <summary>
         /// The url
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The source_channel
+        /// </summary>
+        [JsonProperty("source_channel")]
+        public string SourceChannel { get; private set; }
 
-        private IntentResource()
+        private SampleResource()
         {
 
         }

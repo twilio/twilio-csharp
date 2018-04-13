@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand.Service 
+namespace Twilio.Rest.Preview.Understand.Assistant 
 {
 
     /// <summary>
@@ -20,9 +20,9 @@ namespace Twilio.Rest.Preview.Understand.Service
     public class FetchQueryOptions : IOptions<QueryResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
@@ -31,11 +31,11 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// Construct a new FetchQueryOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public FetchQueryOptions(string pathServiceSid, string pathSid)
+        public FetchQueryOptions(string pathAssistantSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathSid = pathSid;
         }
 
@@ -58,9 +58,9 @@ namespace Twilio.Rest.Preview.Understand.Service
     public class ReadQueryOptions : ReadOptions<QueryResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The language
         /// </summary>
@@ -77,10 +77,10 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// Construct a new ReadQueryOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        public ReadQueryOptions(string pathServiceSid)
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        public ReadQueryOptions(string pathAssistantSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
         }
 
         /// <summary>
@@ -122,9 +122,9 @@ namespace Twilio.Rest.Preview.Understand.Service
     public class CreateQueryOptions : IOptions<QueryResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The language
         /// </summary>
@@ -134,9 +134,9 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// </summary>
         public string Query { get; }
         /// <summary>
-        /// The intent
+        /// The intents
         /// </summary>
-        public string Intent { get; set; }
+        public string Intents { get; set; }
         /// <summary>
         /// The model_build
         /// </summary>
@@ -145,20 +145,16 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// The field
         /// </summary>
         public string Field { get; set; }
-        /// <summary>
-        /// The named_entity
-        /// </summary>
-        public string NamedEntity { get; set; }
 
         /// <summary>
         /// Construct a new CreateQueryOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="language"> The language </param>
         /// <param name="query"> The query </param>
-        public CreateQueryOptions(string pathServiceSid, string language, string query)
+        public CreateQueryOptions(string pathAssistantSid, string language, string query)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             Language = language;
             Query = query;
         }
@@ -179,9 +175,9 @@ namespace Twilio.Rest.Preview.Understand.Service
                 p.Add(new KeyValuePair<string, string>("Query", Query));
             }
 
-            if (Intent != null)
+            if (Intents != null)
             {
-                p.Add(new KeyValuePair<string, string>("Intent", Intent.ToString()));
+                p.Add(new KeyValuePair<string, string>("Intents", Intents));
             }
 
             if (ModelBuild != null)
@@ -191,12 +187,7 @@ namespace Twilio.Rest.Preview.Understand.Service
 
             if (Field != null)
             {
-                p.Add(new KeyValuePair<string, string>("Field", Field.ToString()));
-            }
-
-            if (NamedEntity != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NamedEntity", NamedEntity.ToString()));
+                p.Add(new KeyValuePair<string, string>("Field", Field));
             }
 
             return p;
@@ -212,9 +203,9 @@ namespace Twilio.Rest.Preview.Understand.Service
     public class UpdateQueryOptions : IOptions<QueryResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
@@ -231,11 +222,11 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// Construct a new UpdateQueryOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public UpdateQueryOptions(string pathServiceSid, string pathSid)
+        public UpdateQueryOptions(string pathAssistantSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathSid = pathSid;
         }
 
@@ -268,9 +259,9 @@ namespace Twilio.Rest.Preview.Understand.Service
     public class DeleteQueryOptions : IOptions<QueryResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
@@ -279,11 +270,11 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// Construct a new DeleteQueryOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public DeleteQueryOptions(string pathServiceSid, string pathSid)
+        public DeleteQueryOptions(string pathAssistantSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathSid = pathSid;
         }
 

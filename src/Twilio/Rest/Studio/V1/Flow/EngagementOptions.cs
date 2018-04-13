@@ -106,7 +106,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <summary>
         /// The parameters
         /// </summary>
-        public string Parameters { get; set; }
+        public object Parameters { get; set; }
 
         /// <summary>
         /// Construct a new CreateEngagementOptions
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Studio.V1.Flow
 
             if (Parameters != null)
             {
-                p.Add(new KeyValuePair<string, string>("Parameters", Parameters));
+                p.Add(new KeyValuePair<string, string>("Parameters", Serializers.JsonObject(Parameters)));
             }
 
             return p;

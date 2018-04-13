@@ -27,7 +27,7 @@ namespace Twilio.Tests.Rest.Preview.AccSecurity.Service
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Preview,
-                "/Verification/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Verifications",
+                "/Verification/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications",
                 ""
             );
             request.AddPostParam("To", Serialize("To"));
@@ -36,7 +36,7 @@ namespace Twilio.Tests.Rest.Preview.AccSecurity.Service
 
             try
             {
-                VerificationResource.Create("VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "To", "Channel", client: twilioRestClient);
+                VerificationResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "To", "Channel", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -47,14 +47,14 @@ namespace Twilio.Tests.Rest.Preview.AccSecurity.Service
         public void TestCreateVerificationResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
                                          "{\"sid\": \"VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"to\": \"+14159373912\",\"channel\": \"sms\",\"status\": \"pending\",\"valid\": null,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\"}"
                                      ));
 
-            var response = VerificationResource.Create("VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "To", "Channel", client: twilioRestClient);
+            var response = VerificationResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "To", "Channel", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

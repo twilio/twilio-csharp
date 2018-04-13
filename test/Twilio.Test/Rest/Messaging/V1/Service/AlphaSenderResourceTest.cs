@@ -27,7 +27,7 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Messaging,
-                "/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AlphaSenders",
+                "/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AlphaSenders",
                 ""
             );
             request.AddPostParam("AlphaSender", Serialize("AlphaSender"));
@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
 
             try
             {
-                AlphaSenderResource.Create("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "AlphaSender", client: twilioRestClient);
+                AlphaSenderResource.Create("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "AlphaSender", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -46,14 +46,14 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
         public void TestCreateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
                                          "{\"sid\": \"AIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:12:31Z\",\"date_updated\": \"2015-07-30T20:12:33Z\",\"alpha_sender\": \"Twilio\",\"capabilities\": [],\"url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AlphaSenders/AIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = AlphaSenderResource.Create("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "AlphaSender", client: twilioRestClient);
+            var response = AlphaSenderResource.Create("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "AlphaSender", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -64,14 +64,14 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Messaging,
-                "/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AlphaSenders",
+                "/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AlphaSenders",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                AlphaSenderResource.Read("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+                AlphaSenderResource.Read("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -82,14 +82,14 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
         public void TestReadFullResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
                                          "{\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AlphaSenders?PageSize=50&Page=0\",\"previous_page_url\": null,\"next_page_url\": null,\"key\": \"alpha_senders\",\"url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AlphaSenders?PageSize=50&Page=0\"},\"alpha_senders\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"AIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:12:31Z\",\"date_updated\": \"2015-07-30T20:12:33Z\",\"alpha_sender\": \"Twilio\",\"capabilities\": [],\"url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AlphaSenders/AIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"
                                      ));
 
-            var response = AlphaSenderResource.Read("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+            var response = AlphaSenderResource.Read("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -100,14 +100,14 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Messaging,
-                "/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AlphaSenders/AIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AlphaSenders/AIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                AlphaSenderResource.Fetch("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "AIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+                AlphaSenderResource.Fetch("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "AIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -118,14 +118,14 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
         public void TestFetchResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
                                          "{\"sid\": \"AIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:12:31Z\",\"date_updated\": \"2015-07-30T20:12:33Z\",\"alpha_sender\": \"Twilio\",\"capabilities\": [],\"url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AlphaSenders/AIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = AlphaSenderResource.Fetch("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "AIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+            var response = AlphaSenderResource.Fetch("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "AIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -136,14 +136,14 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
             var request = new Request(
                 HttpMethod.Delete,
                 Twilio.Rest.Domain.Messaging,
-                "/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AlphaSenders/AIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AlphaSenders/AIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                AlphaSenderResource.Delete("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "AIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+                AlphaSenderResource.Delete("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "AIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -154,14 +154,14 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
         public void TestDeleteResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.NoContent,
                                          "null"
                                      ));
 
-            var response = AlphaSenderResource.Delete("MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "AIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+            var response = AlphaSenderResource.Delete("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "AIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

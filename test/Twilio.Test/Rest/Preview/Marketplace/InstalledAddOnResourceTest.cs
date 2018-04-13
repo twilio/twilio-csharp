@@ -30,13 +30,13 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
                 "/marketplace/InstalledAddOns",
                 ""
             );
-            request.AddPostParam("AvailableAddOnSid", Serialize("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
+            request.AddPostParam("AvailableAddOnSid", Serialize("XBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
             request.AddPostParam("AcceptTermsOfService", Serialize(true));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                InstalledAddOnResource.Create("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", true, client: twilioRestClient);
+                InstalledAddOnResource.Create("XBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", true, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -47,14 +47,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
         public void TestCreateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
                                          "{\"sid\": \"XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"VoiceBase High Accuracy Transcription\",\"description\": \"Automatic Transcription and Keyword Extract...\",\"configuration\": {\"bad_words\": true},\"unique_name\": \"voicebase_high_accuracy_transcription_1\",\"date_created\": \"2016-04-07T23:52:28Z\",\"date_updated\": \"2016-04-07T23:52:28Z\",\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"extensions\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions\",\"available_add_on\": \"https://preview.twilio.com/marketplace/AvailableAddOns/XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}"
                                      ));
 
-            var response = InstalledAddOnResource.Create("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", true, client: twilioRestClient);
+            var response = InstalledAddOnResource.Create("XBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", true, client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -65,14 +65,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
             var request = new Request(
                 HttpMethod.Delete,
                 Twilio.Rest.Domain.Preview,
-                "/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "/marketplace/InstalledAddOns/XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                InstalledAddOnResource.Delete("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+                InstalledAddOnResource.Delete("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -83,14 +83,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
         public void TestDeleteResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.NoContent,
                                          "null"
                                      ));
 
-            var response = InstalledAddOnResource.Delete("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+            var response = InstalledAddOnResource.Delete("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -101,14 +101,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Preview,
-                "/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "/marketplace/InstalledAddOns/XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                InstalledAddOnResource.Fetch("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+                InstalledAddOnResource.Fetch("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -119,14 +119,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
         public void TestFetchResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
                                          "{\"sid\": \"XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"VoiceBase High Accuracy Transcription\",\"description\": \"Automatic Transcription and Keyword Extract...\",\"configuration\": {\"bad_words\": true},\"unique_name\": \"voicebase_high_accuracy_transcription\",\"date_created\": \"2016-04-07T23:52:28Z\",\"date_updated\": \"2016-04-07T23:52:28Z\",\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"extensions\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions\",\"available_add_on\": \"https://preview.twilio.com/marketplace/AvailableAddOns/XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}"
                                      ));
 
-            var response = InstalledAddOnResource.Fetch("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+            var response = InstalledAddOnResource.Fetch("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -137,14 +137,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Preview,
-                "/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "/marketplace/InstalledAddOns/XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                InstalledAddOnResource.Update("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+                InstalledAddOnResource.Update("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -155,14 +155,14 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
         public void TestUpdateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
                                          "{\"sid\": \"XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"VoiceBase High Accuracy Transcription\",\"description\": \"Automatic Transcription and Keyword Extract...\",\"configuration\": {\"bad_words\": true},\"unique_name\": \"voicebase_high_accuracy_transcription_2\",\"date_created\": \"2016-04-07T23:52:28Z\",\"date_updated\": \"2016-04-07T23:52:28Z\",\"url\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"extensions\": \"https://preview.twilio.com/marketplace/InstalledAddOns/XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Extensions\",\"available_add_on\": \"https://preview.twilio.com/marketplace/AvailableAddOns/XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}"
                                      ));
 
-            var response = InstalledAddOnResource.Update("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+            var response = InstalledAddOnResource.Update("XEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -191,7 +191,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
         public void TestReadFullResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
@@ -206,7 +206,7 @@ namespace Twilio.Tests.Rest.Preview.Marketplace
         public void TestReadEmptyResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,

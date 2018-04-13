@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand.Service.Intent 
+namespace Twilio.Rest.Preview.Understand.Assistant.Intent 
 {
 
     /// <summary>
@@ -20,9 +20,9 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
     public class FetchSampleOptions : IOptions<SampleResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The intent_sid
         /// </summary>
@@ -35,12 +35,12 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// Construct a new FetchSampleOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public FetchSampleOptions(string pathServiceSid, string pathIntentSid, string pathSid)
+        public FetchSampleOptions(string pathAssistantSid, string pathIntentSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathIntentSid = pathIntentSid;
             PathSid = pathSid;
         }
@@ -64,9 +64,9 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
     public class ReadSampleOptions : ReadOptions<SampleResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The intent_sid
         /// </summary>
@@ -79,11 +79,11 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// Construct a new ReadSampleOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
-        public ReadSampleOptions(string pathServiceSid, string pathIntentSid)
+        public ReadSampleOptions(string pathAssistantSid, string pathIntentSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathIntentSid = pathIntentSid;
         }
 
@@ -116,9 +116,9 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
     public class CreateSampleOptions : IOptions<SampleResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The intent_sid
         /// </summary>
@@ -131,17 +131,21 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// The tagged_text
         /// </summary>
         public string TaggedText { get; }
+        /// <summary>
+        /// The source_channel
+        /// </summary>
+        public string SourceChannel { get; set; }
 
         /// <summary>
         /// Construct a new CreateSampleOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="language"> The language </param>
         /// <param name="taggedText"> The tagged_text </param>
-        public CreateSampleOptions(string pathServiceSid, string pathIntentSid, string language, string taggedText)
+        public CreateSampleOptions(string pathAssistantSid, string pathIntentSid, string language, string taggedText)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathIntentSid = pathIntentSid;
             Language = language;
             TaggedText = taggedText;
@@ -163,6 +167,11 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
                 p.Add(new KeyValuePair<string, string>("TaggedText", TaggedText));
             }
 
+            if (SourceChannel != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SourceChannel", SourceChannel));
+            }
+
             return p;
         }
     }
@@ -176,9 +185,9 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
     public class UpdateSampleOptions : IOptions<SampleResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The intent_sid
         /// </summary>
@@ -195,16 +204,20 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// The tagged_text
         /// </summary>
         public string TaggedText { get; set; }
+        /// <summary>
+        /// The source_channel
+        /// </summary>
+        public string SourceChannel { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSampleOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public UpdateSampleOptions(string pathServiceSid, string pathIntentSid, string pathSid)
+        public UpdateSampleOptions(string pathAssistantSid, string pathIntentSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathIntentSid = pathIntentSid;
             PathSid = pathSid;
         }
@@ -225,6 +238,11 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
                 p.Add(new KeyValuePair<string, string>("TaggedText", TaggedText));
             }
 
+            if (SourceChannel != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SourceChannel", SourceChannel));
+            }
+
             return p;
         }
     }
@@ -238,9 +256,9 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
     public class DeleteSampleOptions : IOptions<SampleResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The intent_sid
         /// </summary>
@@ -253,12 +271,12 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// Construct a new DeleteSampleOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public DeleteSampleOptions(string pathServiceSid, string pathIntentSid, string pathSid)
+        public DeleteSampleOptions(string pathAssistantSid, string pathIntentSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathIntentSid = pathIntentSid;
             PathSid = pathSid;
         }

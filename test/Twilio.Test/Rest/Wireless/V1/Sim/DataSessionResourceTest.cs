@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Wireless.V1.Sim
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Wireless,
-                "/v1/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/DataSessions",
+                "/v1/Sims/DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/DataSessions",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                DataSessionResource.Read("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+                DataSessionResource.Read("DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -45,14 +45,14 @@ namespace Twilio.Tests.Rest.Wireless.V1.Sim
         public void TestFetchResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
                                          "{\"data_sessions\": [{\"sid\": \"WNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sim_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"radio_link\": \"LTE\",\"operator_mcc\": \"\",\"operator_mnc\": \"\",\"operator_country\": \"\",\"operator_name\": \"\",\"cell_id\": \"\",\"cell_location_estimate\": {},\"packets_uploaded\": 0,\"packets_downloaded\": 0,\"last_updated\": \"2015-07-30T20:00:00Z\",\"start\": \"2015-07-30T20:00:00Z\",\"end\": null},{\"sid\": \"WNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sim_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"radio_link\": \"3G\",\"operator_mcc\": \"\",\"operator_mnc\": \"\",\"operator_country\": \"\",\"operator_name\": \"\",\"cell_id\": \"\",\"cell_location_estimate\": {},\"packets_uploaded\": 0,\"packets_downloaded\": 0,\"last_updated\": \"2015-07-30T20:00:00Z\",\"start\": \"2015-07-30T20:00:00Z\",\"end\": \"2015-07-30T20:00:00Z\"}],\"meta\": {\"first_page_url\": \"https://wireless.twilio.com/v1/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/DataSessions?PageSize=50&Page=0\",\"key\": \"data_sessions\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://wireless.twilio.com/v1/Sims/DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/DataSessions?PageSize=50&Page=0\"}}"
                                      ));
 
-            var response = DataSessionResource.Read("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", client: twilioRestClient);
+            var response = DataSessionResource.Read("DEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

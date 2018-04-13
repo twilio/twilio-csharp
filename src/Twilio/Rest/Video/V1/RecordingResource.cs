@@ -414,7 +414,7 @@ namespace Twilio.Rest.Video.V1
         /// The size
         /// </summary>
         [JsonProperty("size")]
-        public int? Size { get; private set; }
+        public long? Size { get; private set; }
         /// <summary>
         /// The url
         /// </summary>

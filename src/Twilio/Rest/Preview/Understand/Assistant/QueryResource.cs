@@ -18,7 +18,7 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Understand.Service 
+namespace Twilio.Rest.Preview.Understand.Assistant 
 {
 
     public class QueryResource : Resource 
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Queries/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Queries/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -66,13 +66,13 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
-        public static QueryResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static QueryResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchQueryOptions(pathServiceSid, pathSid);
+            var options = new FetchQueryOptions(pathAssistantSid, pathSid);
             return Fetch(options, client);
         }
 
@@ -80,15 +80,15 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
-        public static async System.Threading.Tasks.Task<QueryResource> FetchAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<QueryResource> FetchAsync(string pathAssistantSid, 
                                                                                   string pathSid, 
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new FetchQueryOptions(pathServiceSid, pathSid);
+            var options = new FetchQueryOptions(pathAssistantSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Queries",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Queries",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="language"> The language </param>
         /// <param name="modelBuild"> The model_build </param>
         /// <param name="status"> The status </param>
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
-        public static ResourceSet<QueryResource> Read(string pathServiceSid, 
+        public static ResourceSet<QueryResource> Read(string pathAssistantSid, 
                                                       string language = null, 
                                                       string modelBuild = null, 
                                                       string status = null, 
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Preview.Understand.Service
                                                       long? limit = null, 
                                                       ITwilioRestClient client = null)
         {
-            var options = new ReadQueryOptions(pathServiceSid){Language = language, ModelBuild = modelBuild, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadQueryOptions(pathAssistantSid){Language = language, ModelBuild = modelBuild, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="language"> The language </param>
         /// <param name="modelBuild"> The model_build </param>
         /// <param name="status"> The status </param>
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<QueryResource>> ReadAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<ResourceSet<QueryResource>> ReadAsync(string pathAssistantSid, 
                                                                                               string language = null, 
                                                                                               string modelBuild = null, 
                                                                                               string status = null, 
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Preview.Understand.Service
                                                                                               long? limit = null, 
                                                                                               ITwilioRestClient client = null)
         {
-            var options = new ReadQueryOptions(pathServiceSid){Language = language, ModelBuild = modelBuild, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadQueryOptions(pathAssistantSid){Language = language, ModelBuild = modelBuild, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -249,7 +249,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Queries",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Queries",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -287,25 +287,23 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="language"> The language </param>
         /// <param name="query"> The query </param>
-        /// <param name="intent"> The intent </param>
+        /// <param name="intents"> The intents </param>
         /// <param name="modelBuild"> The model_build </param>
         /// <param name="field"> The field </param>
-        /// <param name="namedEntity"> The named_entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
-        public static QueryResource Create(string pathServiceSid, 
+        public static QueryResource Create(string pathAssistantSid, 
                                            string language, 
                                            string query, 
-                                           string intent = null, 
+                                           string intents = null, 
                                            string modelBuild = null, 
                                            string field = null, 
-                                           string namedEntity = null, 
                                            ITwilioRestClient client = null)
         {
-            var options = new CreateQueryOptions(pathServiceSid, language, query){Intent = intent, ModelBuild = modelBuild, Field = field, NamedEntity = namedEntity};
+            var options = new CreateQueryOptions(pathAssistantSid, language, query){Intents = intents, ModelBuild = modelBuild, Field = field};
             return Create(options, client);
         }
 
@@ -313,25 +311,23 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="language"> The language </param>
         /// <param name="query"> The query </param>
-        /// <param name="intent"> The intent </param>
+        /// <param name="intents"> The intents </param>
         /// <param name="modelBuild"> The model_build </param>
         /// <param name="field"> The field </param>
-        /// <param name="namedEntity"> The named_entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
-        public static async System.Threading.Tasks.Task<QueryResource> CreateAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<QueryResource> CreateAsync(string pathAssistantSid, 
                                                                                    string language, 
                                                                                    string query, 
-                                                                                   string intent = null, 
+                                                                                   string intents = null, 
                                                                                    string modelBuild = null, 
                                                                                    string field = null, 
-                                                                                   string namedEntity = null, 
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateQueryOptions(pathServiceSid, language, query){Intent = intent, ModelBuild = modelBuild, Field = field, NamedEntity = namedEntity};
+            var options = new CreateQueryOptions(pathAssistantSid, language, query){Intents = intents, ModelBuild = modelBuild, Field = field};
             return await CreateAsync(options, client);
         }
         #endif
@@ -341,7 +337,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Queries/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Queries/" + options.PathSid + "",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -379,19 +375,19 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="sampleSid"> The sample_sid </param>
         /// <param name="status"> The status </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
-        public static QueryResource Update(string pathServiceSid, 
+        public static QueryResource Update(string pathAssistantSid, 
                                            string pathSid, 
                                            string sampleSid = null, 
                                            string status = null, 
                                            ITwilioRestClient client = null)
         {
-            var options = new UpdateQueryOptions(pathServiceSid, pathSid){SampleSid = sampleSid, Status = status};
+            var options = new UpdateQueryOptions(pathAssistantSid, pathSid){SampleSid = sampleSid, Status = status};
             return Update(options, client);
         }
 
@@ -399,19 +395,19 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="sampleSid"> The sample_sid </param>
         /// <param name="status"> The status </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
-        public static async System.Threading.Tasks.Task<QueryResource> UpdateAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<QueryResource> UpdateAsync(string pathAssistantSid, 
                                                                                    string pathSid, 
                                                                                    string sampleSid = null, 
                                                                                    string status = null, 
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new UpdateQueryOptions(pathServiceSid, pathSid){SampleSid = sampleSid, Status = status};
+            var options = new UpdateQueryOptions(pathAssistantSid, pathSid){SampleSid = sampleSid, Status = status};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -421,7 +417,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Queries/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Queries/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -459,13 +455,13 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
-        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static bool Delete(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteQueryOptions(pathServiceSid, pathSid);
+            var options = new DeleteQueryOptions(pathAssistantSid, pathSid);
             return Delete(options, client);
         }
 
@@ -473,15 +469,15 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
                                                                           string pathSid, 
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteQueryOptions(pathServiceSid, pathSid);
+            var options = new DeleteQueryOptions(pathAssistantSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif
@@ -545,10 +541,10 @@ namespace Twilio.Rest.Preview.Understand.Service
         [JsonProperty("sample_sid")]
         public string SampleSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
+        [JsonProperty("assistant_sid")]
+        public string AssistantSid { get; private set; }
         /// <summary>
         /// The sid
         /// </summary>
@@ -564,6 +560,11 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The source_channel
+        /// </summary>
+        [JsonProperty("source_channel")]
+        public string SourceChannel { get; private set; }
 
         private QueryResource()
         {

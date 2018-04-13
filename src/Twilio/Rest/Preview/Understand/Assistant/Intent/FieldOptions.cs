@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand.Service.Intent 
+namespace Twilio.Rest.Preview.Understand.Assistant.Intent 
 {
 
     /// <summary>
@@ -20,9 +20,9 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
     public class FetchFieldOptions : IOptions<FieldResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The intent_sid
         /// </summary>
@@ -35,12 +35,12 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// Construct a new FetchFieldOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public FetchFieldOptions(string pathServiceSid, string pathIntentSid, string pathSid)
+        public FetchFieldOptions(string pathAssistantSid, string pathIntentSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathIntentSid = pathIntentSid;
             PathSid = pathSid;
         }
@@ -64,9 +64,9 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
     public class ReadFieldOptions : ReadOptions<FieldResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The intent_sid
         /// </summary>
@@ -75,11 +75,11 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// Construct a new ReadFieldOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
-        public ReadFieldOptions(string pathServiceSid, string pathIntentSid)
+        public ReadFieldOptions(string pathAssistantSid, string pathIntentSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathIntentSid = pathIntentSid;
         }
 
@@ -107,9 +107,9 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
     public class CreateFieldOptions : IOptions<FieldResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The intent_sid
         /// </summary>
@@ -126,13 +126,13 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// Construct a new CreateFieldOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="fieldType"> The field_type </param>
         /// <param name="uniqueName"> The unique_name </param>
-        public CreateFieldOptions(string pathServiceSid, string pathIntentSid, string fieldType, string uniqueName)
+        public CreateFieldOptions(string pathAssistantSid, string pathIntentSid, string fieldType, string uniqueName)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathIntentSid = pathIntentSid;
             FieldType = fieldType;
             UniqueName = uniqueName;
@@ -167,9 +167,9 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
     public class DeleteFieldOptions : IOptions<FieldResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The intent_sid
         /// </summary>
@@ -182,12 +182,12 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// Construct a new DeleteFieldOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public DeleteFieldOptions(string pathServiceSid, string pathIntentSid, string pathSid)
+        public DeleteFieldOptions(string pathAssistantSid, string pathIntentSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathIntentSid = pathIntentSid;
             PathSid = pathSid;
         }

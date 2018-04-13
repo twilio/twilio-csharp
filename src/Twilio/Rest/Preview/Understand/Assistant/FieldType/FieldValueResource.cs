@@ -18,7 +18,7 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Understand.Service.FieldType 
+namespace Twilio.Rest.Preview.Understand.Assistant.FieldType 
 {
 
     public class FieldValueResource : Resource 
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -66,17 +66,17 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldValue </returns> 
-        public static FieldValueResource Fetch(string pathServiceSid, 
+        public static FieldValueResource Fetch(string pathAssistantSid, 
                                                string pathFieldTypeSid, 
                                                string pathSid, 
                                                ITwilioRestClient client = null)
         {
-            var options = new FetchFieldValueOptions(pathServiceSid, pathFieldTypeSid, pathSid);
+            var options = new FetchFieldValueOptions(pathAssistantSid, pathFieldTypeSid, pathSid);
             return Fetch(options, client);
         }
 
@@ -84,17 +84,17 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldValue </returns> 
-        public static async System.Threading.Tasks.Task<FieldValueResource> FetchAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<FieldValueResource> FetchAsync(string pathAssistantSid, 
                                                                                        string pathFieldTypeSid, 
                                                                                        string pathSid, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new FetchFieldValueOptions(pathServiceSid, pathFieldTypeSid, pathSid);
+            var options = new FetchFieldValueOptions(pathAssistantSid, pathFieldTypeSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues",
+                "/understand/Assistants/" + options.PathAssistantSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -146,21 +146,21 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
         /// <param name="language"> The language </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldValue </returns> 
-        public static ResourceSet<FieldValueResource> Read(string pathServiceSid, 
+        public static ResourceSet<FieldValueResource> Read(string pathAssistantSid, 
                                                            string pathFieldTypeSid, 
                                                            string language = null, 
                                                            int? pageSize = null, 
                                                            long? limit = null, 
                                                            ITwilioRestClient client = null)
         {
-            var options = new ReadFieldValueOptions(pathServiceSid, pathFieldTypeSid){Language = language, PageSize = pageSize, Limit = limit};
+            var options = new ReadFieldValueOptions(pathAssistantSid, pathFieldTypeSid){Language = language, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -168,21 +168,21 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
         /// <param name="language"> The language </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldValue </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FieldValueResource>> ReadAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<ResourceSet<FieldValueResource>> ReadAsync(string pathAssistantSid, 
                                                                                                    string pathFieldTypeSid, 
                                                                                                    string language = null, 
                                                                                                    int? pageSize = null, 
                                                                                                    long? limit = null, 
                                                                                                    ITwilioRestClient client = null)
         {
-            var options = new ReadFieldValueOptions(pathServiceSid, pathFieldTypeSid){Language = language, PageSize = pageSize, Limit = limit};
+            var options = new ReadFieldValueOptions(pathAssistantSid, pathFieldTypeSid){Language = language, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues",
+                "/understand/Assistants/" + options.PathAssistantSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -289,19 +289,21 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
         /// <param name="language"> The language </param>
         /// <param name="value"> The value </param>
+        /// <param name="synonymOf"> The synonym_of </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldValue </returns> 
-        public static FieldValueResource Create(string pathServiceSid, 
+        public static FieldValueResource Create(string pathAssistantSid, 
                                                 string pathFieldTypeSid, 
                                                 string language, 
                                                 string value, 
+                                                string synonymOf = null, 
                                                 ITwilioRestClient client = null)
         {
-            var options = new CreateFieldValueOptions(pathServiceSid, pathFieldTypeSid, language, value);
+            var options = new CreateFieldValueOptions(pathAssistantSid, pathFieldTypeSid, language, value){SynonymOf = synonymOf};
             return Create(options, client);
         }
 
@@ -309,19 +311,21 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
         /// <param name="language"> The language </param>
         /// <param name="value"> The value </param>
+        /// <param name="synonymOf"> The synonym_of </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldValue </returns> 
-        public static async System.Threading.Tasks.Task<FieldValueResource> CreateAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<FieldValueResource> CreateAsync(string pathAssistantSid, 
                                                                                         string pathFieldTypeSid, 
                                                                                         string language, 
                                                                                         string value, 
+                                                                                        string synonymOf = null, 
                                                                                         ITwilioRestClient client = null)
         {
-            var options = new CreateFieldValueOptions(pathServiceSid, pathFieldTypeSid, language, value);
+            var options = new CreateFieldValueOptions(pathAssistantSid, pathFieldTypeSid, language, value){SynonymOf = synonymOf};
             return await CreateAsync(options, client);
         }
         #endif
@@ -331,7 +335,7 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -369,17 +373,17 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldValue </returns> 
-        public static bool Delete(string pathServiceSid, 
+        public static bool Delete(string pathAssistantSid, 
                                   string pathFieldTypeSid, 
                                   string pathSid, 
                                   ITwilioRestClient client = null)
         {
-            var options = new DeleteFieldValueOptions(pathServiceSid, pathFieldTypeSid, pathSid);
+            var options = new DeleteFieldValueOptions(pathAssistantSid, pathFieldTypeSid, pathSid);
             return Delete(options, client);
         }
 
@@ -387,17 +391,17 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldValue </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
                                                                           string pathFieldTypeSid, 
                                                                           string pathSid, 
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteFieldValueOptions(pathServiceSid, pathFieldTypeSid, pathSid);
+            var options = new DeleteFieldValueOptions(pathAssistantSid, pathFieldTypeSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif
@@ -446,10 +450,10 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         [JsonProperty("language")]
         public string Language { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
+        [JsonProperty("assistant_sid")]
+        public string AssistantSid { get; private set; }
         /// <summary>
         /// The sid
         /// </summary>
@@ -465,6 +469,11 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The synonym_of
+        /// </summary>
+        [JsonProperty("synonym_of")]
+        public string SynonymOf { get; private set; }
 
         private FieldValueResource()
         {

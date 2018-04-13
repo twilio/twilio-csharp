@@ -27,7 +27,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service.User
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Notify,
-                "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SegmentMemberships",
+                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SegmentMemberships",
                 ""
             );
             request.AddPostParam("Segment", Serialize("Segment"));
@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service.User
 
             try
             {
-                SegmentMembershipResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Segment", client: twilioRestClient);
+                SegmentMembershipResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Segment", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -46,14 +46,14 @@ namespace Twilio.Tests.Rest.Notify.V1.Service.User
         public void TestCreateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"identity\",\"segment\": \"segment\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/identity/SegmentMemberships/segment\"}"
                                      ));
 
-            var response = SegmentMembershipResource.Create("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Segment", client: twilioRestClient);
+            var response = SegmentMembershipResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Segment", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -64,14 +64,14 @@ namespace Twilio.Tests.Rest.Notify.V1.Service.User
             var request = new Request(
                 HttpMethod.Delete,
                 Twilio.Rest.Domain.Notify,
-                "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SegmentMemberships/PathSegment",
+                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SegmentMemberships/PathSegment",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                SegmentMembershipResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PathSegment", client: twilioRestClient);
+                SegmentMembershipResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathSegment", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -82,14 +82,14 @@ namespace Twilio.Tests.Rest.Notify.V1.Service.User
         public void TestDeleteResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.NoContent,
                                          "null"
                                      ));
 
-            var response = SegmentMembershipResource.Delete("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PathSegment", client: twilioRestClient);
+            var response = SegmentMembershipResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathSegment", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -100,14 +100,14 @@ namespace Twilio.Tests.Rest.Notify.V1.Service.User
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Notify,
-                "/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SegmentMemberships/PathSegment",
+                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users/NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SegmentMemberships/PathSegment",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                SegmentMembershipResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PathSegment", client: twilioRestClient);
+                SegmentMembershipResource.Fetch("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathSegment", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -118,14 +118,14 @@ namespace Twilio.Tests.Rest.Notify.V1.Service.User
         public void TestFetchResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"identity\",\"segment\": \"segment\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/identity/SegmentMemberships/segment\"}"
                                      ));
 
-            var response = SegmentMembershipResource.Fetch("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "NUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "PathSegment", client: twilioRestClient);
+            var response = SegmentMembershipResource.Fetch("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "NUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathSegment", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

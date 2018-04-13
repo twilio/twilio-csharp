@@ -18,7 +18,7 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Understand.Service.Intent 
+namespace Twilio.Rest.Preview.Understand.Assistant.Intent 
 {
 
     public class FieldResource : Resource 
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Intents/" + options.PathIntentSid + "/Fields/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Intents/" + options.PathIntentSid + "/Fields/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -66,17 +66,17 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Field </returns> 
-        public static FieldResource Fetch(string pathServiceSid, 
+        public static FieldResource Fetch(string pathAssistantSid, 
                                           string pathIntentSid, 
                                           string pathSid, 
                                           ITwilioRestClient client = null)
         {
-            var options = new FetchFieldOptions(pathServiceSid, pathIntentSid, pathSid);
+            var options = new FetchFieldOptions(pathAssistantSid, pathIntentSid, pathSid);
             return Fetch(options, client);
         }
 
@@ -84,17 +84,17 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Field </returns> 
-        public static async System.Threading.Tasks.Task<FieldResource> FetchAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<FieldResource> FetchAsync(string pathAssistantSid, 
                                                                                   string pathIntentSid, 
                                                                                   string pathSid, 
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new FetchFieldOptions(pathServiceSid, pathIntentSid, pathSid);
+            var options = new FetchFieldOptions(pathAssistantSid, pathIntentSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Intents/" + options.PathIntentSid + "/Fields",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Intents/" + options.PathIntentSid + "/Fields",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -146,19 +146,19 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Field </returns> 
-        public static ResourceSet<FieldResource> Read(string pathServiceSid, 
+        public static ResourceSet<FieldResource> Read(string pathAssistantSid, 
                                                       string pathIntentSid, 
                                                       int? pageSize = null, 
                                                       long? limit = null, 
                                                       ITwilioRestClient client = null)
         {
-            var options = new ReadFieldOptions(pathServiceSid, pathIntentSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadFieldOptions(pathAssistantSid, pathIntentSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -166,19 +166,19 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Field </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FieldResource>> ReadAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<ResourceSet<FieldResource>> ReadAsync(string pathAssistantSid, 
                                                                                               string pathIntentSid, 
                                                                                               int? pageSize = null, 
                                                                                               long? limit = null, 
                                                                                               ITwilioRestClient client = null)
         {
-            var options = new ReadFieldOptions(pathServiceSid, pathIntentSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadFieldOptions(pathAssistantSid, pathIntentSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Intents/" + options.PathIntentSid + "/Fields",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Intents/" + options.PathIntentSid + "/Fields",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -285,19 +285,19 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="fieldType"> The field_type </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Field </returns> 
-        public static FieldResource Create(string pathServiceSid, 
+        public static FieldResource Create(string pathAssistantSid, 
                                            string pathIntentSid, 
                                            string fieldType, 
                                            string uniqueName, 
                                            ITwilioRestClient client = null)
         {
-            var options = new CreateFieldOptions(pathServiceSid, pathIntentSid, fieldType, uniqueName);
+            var options = new CreateFieldOptions(pathAssistantSid, pathIntentSid, fieldType, uniqueName);
             return Create(options, client);
         }
 
@@ -305,19 +305,19 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="fieldType"> The field_type </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Field </returns> 
-        public static async System.Threading.Tasks.Task<FieldResource> CreateAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<FieldResource> CreateAsync(string pathAssistantSid, 
                                                                                    string pathIntentSid, 
                                                                                    string fieldType, 
                                                                                    string uniqueName, 
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateFieldOptions(pathServiceSid, pathIntentSid, fieldType, uniqueName);
+            var options = new CreateFieldOptions(pathAssistantSid, pathIntentSid, fieldType, uniqueName);
             return await CreateAsync(options, client);
         }
         #endif
@@ -327,7 +327,7 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/Intents/" + options.PathIntentSid + "/Fields/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/Intents/" + options.PathIntentSid + "/Fields/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -365,17 +365,17 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Field </returns> 
-        public static bool Delete(string pathServiceSid, 
+        public static bool Delete(string pathAssistantSid, 
                                   string pathIntentSid, 
                                   string pathSid, 
                                   ITwilioRestClient client = null)
         {
-            var options = new DeleteFieldOptions(pathServiceSid, pathIntentSid, pathSid);
+            var options = new DeleteFieldOptions(pathAssistantSid, pathIntentSid, pathSid);
             return Delete(options, client);
         }
 
@@ -383,17 +383,17 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Field </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
                                                                           string pathIntentSid, 
                                                                           string pathSid, 
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteFieldOptions(pathServiceSid, pathIntentSid, pathSid);
+            var options = new DeleteFieldOptions(pathAssistantSid, pathIntentSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif
@@ -442,10 +442,10 @@ namespace Twilio.Rest.Preview.Understand.Service.Intent
         [JsonProperty("intent_sid")]
         public string IntentSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
+        [JsonProperty("assistant_sid")]
+        public string AssistantSid { get; private set; }
         /// <summary>
         /// The sid
         /// </summary>

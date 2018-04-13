@@ -8,28 +8,34 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand 
+namespace Twilio.Rest.Preview.Understand.Assistant 
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchServiceOptions
+    /// FetchModelBuildOptions
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource> 
+    public class FetchModelBuildOptions : IOptions<ModelBuildResource> 
     {
+        /// <summary>
+        /// The assistant_sid
+        /// </summary>
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
-        /// Construct a new FetchServiceOptions
+        /// Construct a new FetchModelBuildOptions
         /// </summary>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public FetchServiceOptions(string pathSid)
+        public FetchModelBuildOptions(string pathAssistantSid, string pathSid)
         {
+            PathAssistantSid = pathAssistantSid;
             PathSid = pathSid;
         }
 
@@ -47,10 +53,24 @@ namespace Twilio.Rest.Preview.Understand
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// ReadServiceOptions
+    /// ReadModelBuildOptions
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource> 
+    public class ReadModelBuildOptions : ReadOptions<ModelBuildResource> 
     {
+        /// <summary>
+        /// The assistant_sid
+        /// </summary>
+        public string PathAssistantSid { get; }
+
+        /// <summary>
+        /// Construct a new ReadModelBuildOptions
+        /// </summary>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        public ReadModelBuildOptions(string pathAssistantSid)
+        {
+            PathAssistantSid = pathAssistantSid;
+        }
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -70,26 +90,31 @@ namespace Twilio.Rest.Preview.Understand
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// CreateServiceOptions
+    /// CreateModelBuildOptions
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource> 
+    public class CreateModelBuildOptions : IOptions<ModelBuildResource> 
     {
         /// <summary>
-        /// The friendly_name
+        /// The assistant_sid
         /// </summary>
-        public string FriendlyName { get; set; }
+        public string PathAssistantSid { get; }
         /// <summary>
-        /// The log_queries
+        /// The status_callback
         /// </summary>
-        public bool? LogQueries { get; set; }
-        /// <summary>
-        /// The ttl
-        /// </summary>
-        public int? Ttl { get; set; }
+        public Uri StatusCallback { get; set; }
         /// <summary>
         /// The unique_name
         /// </summary>
         public string UniqueName { get; set; }
+
+        /// <summary>
+        /// Construct a new CreateModelBuildOptions
+        /// </summary>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        public CreateModelBuildOptions(string pathAssistantSid)
+        {
+            PathAssistantSid = pathAssistantSid;
+        }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -97,19 +122,9 @@ namespace Twilio.Rest.Preview.Understand
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
+            if (StatusCallback != null)
             {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (LogQueries != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LogQueries", LogQueries.Value.ToString().ToLower()));
-            }
-
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
             }
 
             if (UniqueName != null)
@@ -125,37 +140,31 @@ namespace Twilio.Rest.Preview.Understand
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// UpdateServiceOptions
+    /// UpdateModelBuildOptions
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource> 
+    public class UpdateModelBuildOptions : IOptions<ModelBuildResource> 
     {
+        /// <summary>
+        /// The assistant_sid
+        /// </summary>
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The log_queries
-        /// </summary>
-        public bool? LogQueries { get; set; }
-        /// <summary>
-        /// The ttl
-        /// </summary>
-        public int? Ttl { get; set; }
         /// <summary>
         /// The unique_name
         /// </summary>
         public string UniqueName { get; set; }
 
         /// <summary>
-        /// Construct a new UpdateServiceOptions
+        /// Construct a new UpdateModelBuildOptions
         /// </summary>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public UpdateServiceOptions(string pathSid)
+        public UpdateModelBuildOptions(string pathAssistantSid, string pathSid)
         {
+            PathAssistantSid = pathAssistantSid;
             PathSid = pathSid;
         }
 
@@ -165,21 +174,6 @@ namespace Twilio.Rest.Preview.Understand
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (LogQueries != null)
-            {
-                p.Add(new KeyValuePair<string, string>("LogQueries", LogQueries.Value.ToString().ToLower()));
-            }
-
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
-            }
-
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
@@ -193,21 +187,27 @@ namespace Twilio.Rest.Preview.Understand
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// DeleteServiceOptions
+    /// DeleteModelBuildOptions
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource> 
+    public class DeleteModelBuildOptions : IOptions<ModelBuildResource> 
     {
+        /// <summary>
+        /// The assistant_sid
+        /// </summary>
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
-        /// Construct a new DeleteServiceOptions
+        /// Construct a new DeleteModelBuildOptions
         /// </summary>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public DeleteServiceOptions(string pathSid)
+        public DeleteModelBuildOptions(string pathAssistantSid, string pathSid)
         {
+            PathAssistantSid = pathAssistantSid;
             PathSid = pathSid;
         }
 

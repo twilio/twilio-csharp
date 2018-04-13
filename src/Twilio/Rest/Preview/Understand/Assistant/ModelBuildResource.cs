@@ -19,7 +19,7 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Preview.Understand.Service 
+namespace Twilio.Rest.Preview.Understand.Assistant 
 {
 
     public class ModelBuildResource : Resource 
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/ModelBuilds/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/ModelBuilds/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -83,13 +83,13 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModelBuild </returns> 
-        public static ModelBuildResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static ModelBuildResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchModelBuildOptions(pathServiceSid, pathSid);
+            var options = new FetchModelBuildOptions(pathAssistantSid, pathSid);
             return Fetch(options, client);
         }
 
@@ -97,15 +97,15 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<ModelBuildResource> FetchAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<ModelBuildResource> FetchAsync(string pathAssistantSid, 
                                                                                        string pathSid, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new FetchModelBuildOptions(pathServiceSid, pathSid);
+            var options = new FetchModelBuildOptions(pathAssistantSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/ModelBuilds",
+                "/understand/Assistants/" + options.PathAssistantSid + "/ModelBuilds",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -157,17 +157,17 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModelBuild </returns> 
-        public static ResourceSet<ModelBuildResource> Read(string pathServiceSid, 
+        public static ResourceSet<ModelBuildResource> Read(string pathAssistantSid, 
                                                            int? pageSize = null, 
                                                            long? limit = null, 
                                                            ITwilioRestClient client = null)
         {
-            var options = new ReadModelBuildOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadModelBuildOptions(pathAssistantSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -175,17 +175,17 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ModelBuildResource>> ReadAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<ResourceSet<ModelBuildResource>> ReadAsync(string pathAssistantSid, 
                                                                                                    int? pageSize = null, 
                                                                                                    long? limit = null, 
                                                                                                    ITwilioRestClient client = null)
         {
-            var options = new ReadModelBuildOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadModelBuildOptions(pathAssistantSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/ModelBuilds",
+                "/understand/Assistants/" + options.PathAssistantSid + "/ModelBuilds",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -292,17 +292,17 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModelBuild </returns> 
-        public static ModelBuildResource Create(string pathServiceSid, 
+        public static ModelBuildResource Create(string pathAssistantSid, 
                                                 Uri statusCallback = null, 
                                                 string uniqueName = null, 
                                                 ITwilioRestClient client = null)
         {
-            var options = new CreateModelBuildOptions(pathServiceSid){StatusCallback = statusCallback, UniqueName = uniqueName};
+            var options = new CreateModelBuildOptions(pathAssistantSid){StatusCallback = statusCallback, UniqueName = uniqueName};
             return Create(options, client);
         }
 
@@ -310,17 +310,17 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<ModelBuildResource> CreateAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<ModelBuildResource> CreateAsync(string pathAssistantSid, 
                                                                                         Uri statusCallback = null, 
                                                                                         string uniqueName = null, 
                                                                                         ITwilioRestClient client = null)
         {
-            var options = new CreateModelBuildOptions(pathServiceSid){StatusCallback = statusCallback, UniqueName = uniqueName};
+            var options = new CreateModelBuildOptions(pathAssistantSid){StatusCallback = statusCallback, UniqueName = uniqueName};
             return await CreateAsync(options, client);
         }
         #endif
@@ -330,7 +330,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/ModelBuilds/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/ModelBuilds/" + options.PathSid + "",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -368,17 +368,17 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModelBuild </returns> 
-        public static ModelBuildResource Update(string pathServiceSid, 
+        public static ModelBuildResource Update(string pathAssistantSid, 
                                                 string pathSid, 
                                                 string uniqueName = null, 
                                                 ITwilioRestClient client = null)
         {
-            var options = new UpdateModelBuildOptions(pathServiceSid, pathSid){UniqueName = uniqueName};
+            var options = new UpdateModelBuildOptions(pathAssistantSid, pathSid){UniqueName = uniqueName};
             return Update(options, client);
         }
 
@@ -386,17 +386,17 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<ModelBuildResource> UpdateAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<ModelBuildResource> UpdateAsync(string pathAssistantSid, 
                                                                                         string pathSid, 
                                                                                         string uniqueName = null, 
                                                                                         ITwilioRestClient client = null)
         {
-            var options = new UpdateModelBuildOptions(pathServiceSid, pathSid){UniqueName = uniqueName};
+            var options = new UpdateModelBuildOptions(pathAssistantSid, pathSid){UniqueName = uniqueName};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -406,7 +406,7 @@ namespace Twilio.Rest.Preview.Understand.Service
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
-                "/understand/Services/" + options.PathServiceSid + "/ModelBuilds/" + options.PathSid + "",
+                "/understand/Assistants/" + options.PathAssistantSid + "/ModelBuilds/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
@@ -444,13 +444,13 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModelBuild </returns> 
-        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static bool Delete(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteModelBuildOptions(pathServiceSid, pathSid);
+            var options = new DeleteModelBuildOptions(pathAssistantSid, pathSid);
             return Delete(options, client);
         }
 
@@ -458,15 +458,15 @@ namespace Twilio.Rest.Preview.Understand.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
                                                                           string pathSid, 
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteModelBuildOptions(pathServiceSid, pathSid);
+            var options = new DeleteModelBuildOptions(pathAssistantSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif
@@ -505,10 +505,10 @@ namespace Twilio.Rest.Preview.Understand.Service
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        [JsonProperty("service_sid")]
-        public string ServiceSid { get; private set; }
+        [JsonProperty("assistant_sid")]
+        public string AssistantSid { get; private set; }
         /// <summary>
         /// The sid
         /// </summary>

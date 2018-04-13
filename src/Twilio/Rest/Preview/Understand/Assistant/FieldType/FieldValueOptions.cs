@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand.Service.FieldType 
+namespace Twilio.Rest.Preview.Understand.Assistant.FieldType 
 {
 
     /// <summary>
@@ -20,9 +20,9 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
     public class FetchFieldValueOptions : IOptions<FieldValueResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The field_type_sid
         /// </summary>
@@ -35,12 +35,12 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// <summary>
         /// Construct a new FetchFieldValueOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public FetchFieldValueOptions(string pathServiceSid, string pathFieldTypeSid, string pathSid)
+        public FetchFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathFieldTypeSid = pathFieldTypeSid;
             PathSid = pathSid;
         }
@@ -64,9 +64,9 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
     public class ReadFieldValueOptions : ReadOptions<FieldValueResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The field_type_sid
         /// </summary>
@@ -79,11 +79,11 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// <summary>
         /// Construct a new ReadFieldValueOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        public ReadFieldValueOptions(string pathServiceSid, string pathFieldTypeSid)
+        public ReadFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathFieldTypeSid = pathFieldTypeSid;
         }
 
@@ -116,9 +116,9 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
     public class CreateFieldValueOptions : IOptions<FieldValueResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The field_type_sid
         /// </summary>
@@ -131,17 +131,21 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// The value
         /// </summary>
         public string Value { get; }
+        /// <summary>
+        /// The synonym_of
+        /// </summary>
+        public string SynonymOf { get; set; }
 
         /// <summary>
         /// Construct a new CreateFieldValueOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
         /// <param name="language"> The language </param>
         /// <param name="value"> The value </param>
-        public CreateFieldValueOptions(string pathServiceSid, string pathFieldTypeSid, string language, string value)
+        public CreateFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string language, string value)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathFieldTypeSid = pathFieldTypeSid;
             Language = language;
             Value = value;
@@ -163,6 +167,11 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
                 p.Add(new KeyValuePair<string, string>("Value", Value));
             }
 
+            if (SynonymOf != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SynonymOf", SynonymOf.ToString()));
+            }
+
             return p;
         }
     }
@@ -176,9 +185,9 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
     public class DeleteFieldValueOptions : IOptions<FieldValueResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The field_type_sid
         /// </summary>
@@ -191,12 +200,12 @@ namespace Twilio.Rest.Preview.Understand.Service.FieldType
         /// <summary>
         /// Construct a new DeleteFieldValueOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public DeleteFieldValueOptions(string pathServiceSid, string pathFieldTypeSid, string pathSid)
+        public DeleteFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathFieldTypeSid = pathFieldTypeSid;
             PathSid = pathSid;
         }

@@ -297,7 +297,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         public static EngagementResource Create(string pathFlowSid, 
                                                 Types.PhoneNumber to, 
                                                 Types.PhoneNumber from, 
-                                                string parameters = null, 
+                                                object parameters = null, 
                                                 ITwilioRestClient client = null)
         {
             var options = new CreateEngagementOptions(pathFlowSid, to, from){Parameters = parameters};
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         public static async System.Threading.Tasks.Task<EngagementResource> CreateAsync(string pathFlowSid, 
                                                                                         Types.PhoneNumber to, 
                                                                                         Types.PhoneNumber from, 
-                                                                                        string parameters = null, 
+                                                                                        object parameters = null, 
                                                                                         ITwilioRestClient client = null)
         {
             var options = new CreateEngagementOptions(pathFlowSid, to, from){Parameters = parameters};

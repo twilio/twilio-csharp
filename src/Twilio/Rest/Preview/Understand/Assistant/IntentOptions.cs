@@ -8,34 +8,34 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand.Service 
+namespace Twilio.Rest.Preview.Understand.Assistant 
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchModelBuildOptions
+    /// FetchIntentOptions
     /// </summary>
-    public class FetchModelBuildOptions : IOptions<ModelBuildResource> 
+    public class FetchIntentOptions : IOptions<IntentResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
-        /// Construct a new FetchModelBuildOptions
+        /// Construct a new FetchIntentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public FetchModelBuildOptions(string pathServiceSid, string pathSid)
+        public FetchIntentOptions(string pathAssistantSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathSid = pathSid;
         }
 
@@ -53,22 +53,22 @@ namespace Twilio.Rest.Preview.Understand.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// ReadModelBuildOptions
+    /// ReadIntentOptions
     /// </summary>
-    public class ReadModelBuildOptions : ReadOptions<ModelBuildResource> 
+    public class ReadIntentOptions : ReadOptions<IntentResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
 
         /// <summary>
-        /// Construct a new ReadModelBuildOptions
+        /// Construct a new ReadIntentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        public ReadModelBuildOptions(string pathServiceSid)
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        public ReadIntentOptions(string pathAssistantSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
         }
 
         /// <summary>
@@ -90,30 +90,32 @@ namespace Twilio.Rest.Preview.Understand.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// CreateModelBuildOptions
+    /// CreateIntentOptions
     /// </summary>
-    public class CreateModelBuildOptions : IOptions<ModelBuildResource> 
+    public class CreateIntentOptions : IOptions<IntentResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The status_callback
-        /// </summary>
-        public Uri StatusCallback { get; set; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The unique_name
         /// </summary>
-        public string UniqueName { get; set; }
+        public string UniqueName { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Construct a new CreateModelBuildOptions
+        /// Construct a new CreateIntentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        public CreateModelBuildOptions(string pathServiceSid)
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="uniqueName"> The unique_name </param>
+        public CreateIntentOptions(string pathAssistantSid, string uniqueName)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
+            UniqueName = uniqueName;
         }
 
         /// <summary>
@@ -122,14 +124,14 @@ namespace Twilio.Rest.Preview.Understand.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (StatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("StatusCallback", Serializers.Url(StatusCallback)));
-            }
-
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+            }
+
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
 
             return p;
@@ -140,31 +142,35 @@ namespace Twilio.Rest.Preview.Understand.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// UpdateModelBuildOptions
+    /// UpdateIntentOptions
     /// </summary>
-    public class UpdateModelBuildOptions : IOptions<ModelBuildResource> 
+    public class UpdateIntentOptions : IOptions<IntentResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The friendly_name
+        /// </summary>
+        public string FriendlyName { get; set; }
         /// <summary>
         /// The unique_name
         /// </summary>
         public string UniqueName { get; set; }
 
         /// <summary>
-        /// Construct a new UpdateModelBuildOptions
+        /// Construct a new UpdateIntentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public UpdateModelBuildOptions(string pathServiceSid, string pathSid)
+        public UpdateIntentOptions(string pathAssistantSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathSid = pathSid;
         }
 
@@ -174,6 +180,11 @@ namespace Twilio.Rest.Preview.Understand.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
@@ -187,27 +198,27 @@ namespace Twilio.Rest.Preview.Understand.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// DeleteModelBuildOptions
+    /// DeleteIntentOptions
     /// </summary>
-    public class DeleteModelBuildOptions : IOptions<ModelBuildResource> 
+    public class DeleteIntentOptions : IOptions<IntentResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The assistant_sid
         /// </summary>
-        public string PathServiceSid { get; }
+        public string PathAssistantSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
-        /// Construct a new DeleteModelBuildOptions
+        /// Construct a new DeleteIntentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
-        public DeleteModelBuildOptions(string pathServiceSid, string pathSid)
+        public DeleteIntentOptions(string pathAssistantSid, string pathSid)
         {
-            PathServiceSid = pathServiceSid;
+            PathAssistantSid = pathAssistantSid;
             PathSid = pathSid;
         }
 
