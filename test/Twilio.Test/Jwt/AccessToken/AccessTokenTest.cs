@@ -133,6 +133,7 @@ namespace Twilio.Tests.Jwt.AccessToken
                 {
                     new VoiceGrant
                     {
+                        IncomingAllow = true,
                         OutgoingApplicationSid = "AP123",
                         OutgoingApplicationParams = new Dictionary<string, string> { { "foo", "bar" } }
                     }
@@ -154,6 +155,9 @@ namespace Twilio.Tests.Jwt.AccessToken
             Assert.AreEqual(1, decodedGrants.Count);
 
             var decodedPvg = decodedGrants["voice"];
+            var incoming = ToDict(decodedPvg.ToString())["incoming"];
+            Assert.AreEqual(true, ToDict(incoming)["allow"]);
+
             var outgoing = ToDict(decodedPvg.ToString())["outgoing"];
             Assert.AreEqual("AP123", ToDict(outgoing)["application_sid"]);
 
