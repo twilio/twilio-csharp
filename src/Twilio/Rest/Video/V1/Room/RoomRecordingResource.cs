@@ -352,7 +352,12 @@ namespace Twilio.Rest.Video.V1.Room
         /// The size
         /// </summary>
         [JsonProperty("size")]
-        public int? Size { get; private set; }
+        public long? Size { get; private set; }
+        /// <summary>
+        /// The url
+        /// </summary>
+        [JsonProperty("url")]
+        public Uri Url { get; private set; }
         /// <summary>
         /// The type
         /// </summary>
@@ -382,15 +387,15 @@ namespace Twilio.Rest.Video.V1.Room
         [JsonProperty("grouping_sids")]
         public object GroupingSids { get; private set; }
         /// <summary>
+        /// The track_name
+        /// </summary>
+        [JsonProperty("track_name")]
+        public string TrackName { get; private set; }
+        /// <summary>
         /// The room_sid
         /// </summary>
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
-        /// <summary>
-        /// The url
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
         /// <summary>
         /// The links
         /// </summary>

@@ -308,9 +308,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// read
         /// </summary>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="category"> The category </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
+        /// <param name="category"> Only include usage of this usage category. </param>
+        /// <param name="startDate"> Only include usage that has occurred on or after this date. </param>
+        /// <param name="endDate"> Only include usage that has occurred on or before this date. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -332,9 +332,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// read
         /// </summary>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="category"> The category </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
+        /// <param name="category"> Only include usage of this usage category. </param>
+        /// <param name="startDate"> Only include usage that has occurred on or after this date. </param>
+        /// <param name="endDate"> Only include usage that has occurred on or before this date. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -430,7 +430,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         }
 
         /// <summary>
-        /// The account_sid
+        /// The Account that accrued the usage.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
@@ -440,63 +440,63 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// The category
+        /// The category of usage.
         /// </summary>
         [JsonProperty("category")]
         [JsonConverter(typeof(StringEnumConverter))]
         public AllTimeResource.CategoryEnum Category { get; private set; }
         /// <summary>
-        /// The count
+        /// The number of usage events.
         /// </summary>
         [JsonProperty("count")]
         public string Count { get; private set; }
         /// <summary>
-        /// The count_unit
+        /// The units in which Count is measured.
         /// </summary>
         [JsonProperty("count_unit")]
         public string CountUnit { get; private set; }
         /// <summary>
-        /// The description
+        /// A human-readable description of the usage category.
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// The end_date
+        /// The last date for which usage is included in this UsageRecord, formatted as YYYY-MM-DD.
         /// </summary>
         [JsonProperty("end_date")]
         public DateTime? EndDate { get; private set; }
         /// <summary>
-        /// The price
+        /// The total price of the usage, in the currency associated with the account.
         /// </summary>
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
         /// <summary>
-        /// The price_unit
+        /// The currency in which Price is measured, in ISO 4127 format.
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// The start_date
+        /// The first date for which usage is included in this UsageRecord, formatted as YYYY-MM-DD.
         /// </summary>
         [JsonProperty("start_date")]
         public DateTime? StartDate { get; private set; }
         /// <summary>
-        /// The subresource_uris
+        /// Subresource Uris for this UsageRecord.
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
         /// <summary>
-        /// The uri
+        /// The URI that returns only this UsageRecord, relative to https://api.
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// The usage
+        /// The amount of billed usage.
         /// </summary>
         [JsonProperty("usage")]
         public string Usage { get; private set; }
         /// <summary>
-        /// The usage_unit
+        /// The units in which Usage is measured.
         /// </summary>
         [JsonProperty("usage_unit")]
         public string UsageUnit { get; private set; }

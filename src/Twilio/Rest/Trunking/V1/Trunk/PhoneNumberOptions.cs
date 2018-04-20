@@ -91,7 +91,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The phone_number_sid
+        /// The SID of the Incoming Phone Number that you want to associate with this trunk.
         /// </summary>
         public string PhoneNumberSid { get; }
 
@@ -99,7 +99,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Construct a new CreatePhoneNumberOptions
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="phoneNumberSid"> The phone_number_sid </param>
+        /// <param name="phoneNumberSid"> The SID of the Incoming Phone Number that you want to associate with this trunk.
+        ///                      </param>
         public CreatePhoneNumberOptions(string pathTrunkSid, string phoneNumberSid)
         {
             PathTrunkSid = pathTrunkSid;

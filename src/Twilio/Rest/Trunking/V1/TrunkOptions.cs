@@ -75,27 +75,27 @@ namespace Twilio.Rest.Trunking.V1
     public class CreateTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
-        /// The friendly_name
+        /// A human-readable name for the Trunk.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The domain_name
+        /// The unique address you reserve on Twilio to which you route your SIP traffic.
         /// </summary>
         public string DomainName { get; set; }
         /// <summary>
-        /// The disaster_recovery_url
+        /// The HTTP URL that Twilio will request if an error occurs while sending SIP traffic towards your configured Origination URL.
         /// </summary>
         public Uri DisasterRecoveryUrl { get; set; }
         /// <summary>
-        /// The disaster_recovery_method
+        /// The HTTP method Twilio will use when requesting the DisasterRecoveryUrl.
         /// </summary>
         public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; set; }
         /// <summary>
-        /// The recording
+        /// The recording settings for this trunk.
         /// </summary>
         public string Recording { get; set; }
         /// <summary>
-        /// The secure
+        /// The Secure Trunking  settings for this trunk.
         /// </summary>
         public bool? Secure { get; set; }
 
@@ -169,27 +169,27 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable name for the Trunk.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The domain_name
+        /// The unique address you reserve on Twilio to which you route your SIP traffic.
         /// </summary>
         public string DomainName { get; set; }
         /// <summary>
-        /// The disaster_recovery_url
+        /// The HTTP URL that Twilio will request if an error occurs while sending SIP traffic towards your configured Origination URL.
         /// </summary>
         public Uri DisasterRecoveryUrl { get; set; }
         /// <summary>
-        /// The disaster_recovery_method
+        /// The HTTP method Twilio will use when requesting the DisasterRecoveryUrl.
         /// </summary>
         public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; set; }
         /// <summary>
-        /// The recording
+        /// The recording settings for this trunk.
         /// </summary>
         public string Recording { get; set; }
         /// <summary>
-        /// The secure
+        /// The Secure Trunking  settings for this trunk.
         /// </summary>
         public bool? Secure { get; set; }
 

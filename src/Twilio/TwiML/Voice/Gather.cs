@@ -31,7 +31,6 @@ namespace Twilio.TwiML.Voice
 
             public static readonly InputEnum Dtmf = new InputEnum("dtmf");
             public static readonly InputEnum Speech = new InputEnum("speech");
-            public static readonly InputEnum DtmfSpeech = new InputEnum("dtmf_speech");
         }
 
         public sealed class LanguageEnum : StringEnum 

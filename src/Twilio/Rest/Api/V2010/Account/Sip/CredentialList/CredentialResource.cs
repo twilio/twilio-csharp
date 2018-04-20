@@ -207,8 +207,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// create
         /// </summary>
         /// <param name="pathCredentialListSid"> The credential_list_sid </param>
-        /// <param name="username"> The username </param>
-        /// <param name="password"> The password </param>
+        /// <param name="username"> The username for this credential. </param>
+        /// <param name="password"> The password will not be returned in the response. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns> 
@@ -227,8 +227,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// create
         /// </summary>
         /// <param name="pathCredentialListSid"> The credential_list_sid </param>
-        /// <param name="username"> The username </param>
-        /// <param name="password"> The password </param>
+        /// <param name="username"> The username for this credential. </param>
+        /// <param name="password"> The password will not be returned in the response. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns> 
@@ -494,12 +494,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that responsible for this resource.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
@@ -509,22 +509,22 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         [JsonProperty("credential_list_sid")]
         public string CredentialListSid { get; private set; }
         /// <summary>
-        /// The username
+        /// The username for this credential.
         /// </summary>
         [JsonProperty("username")]
         public string Username { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created, given as GMT in RFC 2822 format.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated, given as GMT in RFC 2822 format.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The uri
+        /// The URI for this resource, relative to https://api.
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }

@@ -91,23 +91,23 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The weight
+        /// Weight is used to determine the share of load when more than one URI has the same priority.
         /// </summary>
         public int? Weight { get; }
         /// <summary>
-        /// The priority
+        /// Priority ranks the importance of the URI.
         /// </summary>
         public int? Priority { get; }
         /// <summary>
-        /// The enabled
+        /// A boolean value indicating whether the URL is enabled or disabled.
         /// </summary>
         public bool? Enabled { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable descriptive text, up to 64 characters long.
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// The sip_url
+        /// The SIP address you want Twilio to route your Origination calls to.
         /// </summary>
         public Uri SipUrl { get; }
 
@@ -115,11 +115,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Construct a new CreateOriginationUrlOptions
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="weight"> The weight </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="enabled"> The enabled </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="sipUrl"> The sip_url </param>
+        /// <param name="weight"> Weight is used to determine the share of load when more than one URI has the same priority.
+        ///              </param>
+        /// <param name="priority"> Priority ranks the importance of the URI. </param>
+        /// <param name="enabled"> A boolean value indicating whether the URL is enabled or disabled. </param>
+        /// <param name="friendlyName"> A human readable descriptive text, up to 64 characters long. </param>
+        /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to. </param>
         public CreateOriginationUrlOptions(string pathTrunkSid, 
                                            int? weight, 
                                            int? priority, 
@@ -218,23 +219,23 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The weight
+        /// Weight is used to determine the share of load when more than one URI has the same priority.
         /// </summary>
         public int? Weight { get; set; }
         /// <summary>
-        /// The priority
+        /// Priority ranks the importance of the URI.
         /// </summary>
         public int? Priority { get; set; }
         /// <summary>
-        /// The enabled
+        /// A boolean value indicating whether the URL is enabled or disabled.
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable descriptive text, up to 64 characters long.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The sip_url
+        /// The SIP address you want Twilio to route your Origination calls to.
         /// </summary>
         public Uri SipUrl { get; set; }
 

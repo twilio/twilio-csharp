@@ -78,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         public Uri VoiceStatusCallbackUrl { get; set; }
         /// <summary>
-        /// The voice_status_callback_method
+        /// The HTTP method Twilio will use to make requests to the StatusCallback URL.
         /// </summary>
         public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
         /// <summary>

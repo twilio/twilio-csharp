@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.PhoneNumber
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"countries\": [{\"country\": \"Austria\",\"iso_country\": \"AT\",\"url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries/AT\"}],\"meta\": {\"first_page_url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries?PageSize=1&Page=0\",\"key\": \"countries\",\"next_page_url\": null,\"page\": 0,\"page_size\": 1,\"previous_page_url\": null,\"url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries?PageSize=1&Page=0\"}}"
+                                         "{\"countries\": [{\"country\": \"Austria\",\"iso_country\": \"AT\",\"url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries/AT\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"countries\"}}"
                                      ));
 
             var response = CountryResource.Read(client: twilioRestClient);
@@ -64,7 +64,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.PhoneNumber
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"countries\": [],\"meta\": {\"first_page_url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries?PageSize=1&Page=0\",\"key\": \"countries\",\"next_page_url\": null,\"page\": 0,\"page_size\": 1,\"previous_page_url\": null,\"url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries?PageSize=1&Page=0\"}}"
+                                         "{\"countries\": [],\"meta\": {\"first_page_url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries?PageSize=50&Page=0\",\"key\": \"countries\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries?PageSize=50&Page=0\"}}"
                                      ));
 
             var response = CountryResource.Read(client: twilioRestClient);
@@ -100,7 +100,7 @@ namespace Twilio.Tests.Rest.Pricing.V1.PhoneNumber
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"country\": \"Estonia\",\"iso_country\": \"EE\",\"phone_number_prices\": [{\"base_price\": 3.0,\"current_price\": 3.0,\"type\": \"mobile\"},{\"base_price\": 1.0,\"current_price\": 1.0,\"type\": \"national\"}],\"price_unit\": \"usd\",\"url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries/US\"}"
+                                         "{\"country\": \"United States\",\"iso_country\": \"US\",\"phone_number_prices\": [{\"number_type\": \"local\",\"base_price\": \"1.00\",\"current_price\": \"1.00\"},{\"number_type\": \"toll free\",\"base_price\": \"2.00\",\"current_price\": \"2.00\"}],\"price_unit\": \"USD\",\"url\": \"https://pricing.twilio.com/v1/PhoneNumbers/Countries/US\"}"
                                      ));
 
             var response = CountryResource.Fetch("US", client: twilioRestClient);

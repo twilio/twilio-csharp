@@ -220,7 +220,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// create
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="phoneNumberSid"> The phone_number_sid </param>
+        /// <param name="phoneNumberSid"> The SID of the Incoming Phone Number that you want to associate with this trunk.
+        ///                      </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
         public static PhoneNumberResource Create(string pathTrunkSid, string phoneNumberSid, ITwilioRestClient client = null)
@@ -234,7 +235,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// create
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="phoneNumberSid"> The phone_number_sid </param>
+        /// <param name="phoneNumberSid"> The SID of the Incoming Phone Number that you want to associate with this trunk.
+        ///                      </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(string pathTrunkSid, 

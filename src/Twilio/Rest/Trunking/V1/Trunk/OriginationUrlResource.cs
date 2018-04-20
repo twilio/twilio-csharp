@@ -204,11 +204,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// create
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="weight"> The weight </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="enabled"> The enabled </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="sipUrl"> The sip_url </param>
+        /// <param name="weight"> Weight is used to determine the share of load when more than one URI has the same priority.
+        ///              </param>
+        /// <param name="priority"> Priority ranks the importance of the URI. </param>
+        /// <param name="enabled"> A boolean value indicating whether the URL is enabled or disabled. </param>
+        /// <param name="friendlyName"> A human readable descriptive text, up to 64 characters long. </param>
+        /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of OriginationUrl </returns> 
         public static OriginationUrlResource Create(string pathTrunkSid, 
@@ -228,11 +229,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// create
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="weight"> The weight </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="enabled"> The enabled </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="sipUrl"> The sip_url </param>
+        /// <param name="weight"> Weight is used to determine the share of load when more than one URI has the same priority.
+        ///              </param>
+        /// <param name="priority"> Priority ranks the importance of the URI. </param>
+        /// <param name="enabled"> A boolean value indicating whether the URL is enabled or disabled. </param>
+        /// <param name="friendlyName"> A human readable descriptive text, up to 64 characters long. </param>
+        /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OriginationUrl </returns> 
         public static async System.Threading.Tasks.Task<OriginationUrlResource> CreateAsync(string pathTrunkSid, 
@@ -433,11 +435,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="weight"> The weight </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="enabled"> The enabled </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="sipUrl"> The sip_url </param>
+        /// <param name="weight"> Weight is used to determine the share of load when more than one URI has the same priority.
+        ///              </param>
+        /// <param name="priority"> Priority ranks the importance of the URI. </param>
+        /// <param name="enabled"> A boolean value indicating whether the URL is enabled or disabled. </param>
+        /// <param name="friendlyName"> A human readable descriptive text, up to 64 characters long. </param>
+        /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of OriginationUrl </returns> 
         public static OriginationUrlResource Update(string pathTrunkSid, 
@@ -459,11 +462,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="weight"> The weight </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="enabled"> The enabled </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="sipUrl"> The sip_url </param>
+        /// <param name="weight"> Weight is used to determine the share of load when more than one URI has the same priority.
+        ///              </param>
+        /// <param name="priority"> Priority ranks the importance of the URI. </param>
+        /// <param name="enabled"> A boolean value indicating whether the URL is enabled or disabled. </param>
+        /// <param name="friendlyName"> A human readable descriptive text, up to 64 characters long. </param>
+        /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of OriginationUrl </returns> 
         public static async System.Threading.Tasks.Task<OriginationUrlResource> UpdateAsync(string pathTrunkSid, 
@@ -499,57 +503,57 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account that owns this Origination URL.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies the Origination URL in this Twilio Trunk.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The trunk_sid
+        /// The unique ID of the Trunk that owns this Origination URL.
         /// </summary>
         [JsonProperty("trunk_sid")]
         public string TrunkSid { get; private set; }
         /// <summary>
-        /// The weight
+        /// Weight is used to determine the share of load when more than one URI has the same priority.
         /// </summary>
         [JsonProperty("weight")]
         public int? Weight { get; private set; }
         /// <summary>
-        /// The enabled
+        /// A boolean value indicating whether the URL is enabled or disabled.
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
         /// <summary>
-        /// The sip_url
+        /// The SIP address you want Twilio to route your Origination calls to.
         /// </summary>
         [JsonProperty("sip_url")]
         public Uri SipUrl { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable descriptive text, up to 64 characters long.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The priority
+        /// Priority ranks the importance of the URI.
         /// </summary>
         [JsonProperty("priority")]
         public int? Priority { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this Activity was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this Activity was updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL for this resource, relative to https://trunking.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

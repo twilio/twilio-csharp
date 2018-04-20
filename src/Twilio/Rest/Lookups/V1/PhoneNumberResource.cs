@@ -79,9 +79,9 @@ namespace Twilio.Rest.Lookups.V1
         /// fetch
         /// </summary>
         /// <param name="pathPhoneNumber"> The phone_number </param>
-        /// <param name="countryCode"> The country_code </param>
-        /// <param name="type"> The type </param>
-        /// <param name="addOns"> The add_ons </param>
+        /// <param name="countryCode"> Optional ISO country code of the phone number. </param>
+        /// <param name="type"> Indicates the type of information you would like returned with your request. </param>
+        /// <param name="addOns"> Indicates the particular Add-on you would like to use to get more information. </param>
         /// <param name="addOnsData"> The add_ons_data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
@@ -101,9 +101,9 @@ namespace Twilio.Rest.Lookups.V1
         /// fetch
         /// </summary>
         /// <param name="pathPhoneNumber"> The phone_number </param>
-        /// <param name="countryCode"> The country_code </param>
-        /// <param name="type"> The type </param>
-        /// <param name="addOns"> The add_ons </param>
+        /// <param name="countryCode"> Optional ISO country code of the phone number. </param>
+        /// <param name="type"> Indicates the type of information you would like returned with your request. </param>
+        /// <param name="addOns"> Indicates the particular Add-on you would like to use to get more information. </param>
         /// <param name="addOnsData"> The add_ons_data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
@@ -138,23 +138,23 @@ namespace Twilio.Rest.Lookups.V1
         }
 
         /// <summary>
-        /// The caller_name
+        /// String indicating the name of the owner of the phone number.
         /// </summary>
         [JsonProperty("caller_name")]
         public Dictionary<string, string> CallerName { get; private set; }
         /// <summary>
-        /// The country_code
+        /// The ISO country code for the phone number.
         /// </summary>
         [JsonProperty("country_code")]
         public string CountryCode { get; private set; }
         /// <summary>
-        /// The phone_number
+        /// The phone number, in E.
         /// </summary>
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
         /// <summary>
-        /// The national_format
+        /// The phone number, in national format.
         /// </summary>
         [JsonProperty("national_format")]
         public string NationalFormat { get; private set; }
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Lookups.V1
         [JsonProperty("carrier")]
         public Dictionary<string, string> Carrier { get; private set; }
         /// <summary>
-        /// The add_ons
+        /// Results of any Add-ons you have specified using the AddOn parameter in the request, as a JSON dictionary.
         /// </summary>
         [JsonProperty("add_ons")]
         public object AddOns { get; private set; }

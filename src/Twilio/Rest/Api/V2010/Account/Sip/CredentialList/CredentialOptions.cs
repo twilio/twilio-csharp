@@ -63,11 +63,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// </summary>
         public string PathCredentialListSid { get; }
         /// <summary>
-        /// The username
+        /// The username for this credential.
         /// </summary>
         public string Username { get; }
         /// <summary>
-        /// The password
+        /// The password will not be returned in the response.
         /// </summary>
         public string Password { get; }
 
@@ -75,8 +75,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// Construct a new CreateCredentialOptions
         /// </summary>
         /// <param name="pathCredentialListSid"> The credential_list_sid </param>
-        /// <param name="username"> The username </param>
-        /// <param name="password"> The password </param>
+        /// <param name="username"> The username for this credential. </param>
+        /// <param name="password"> The password will not be returned in the response. </param>
         public CreateCredentialOptions(string pathCredentialListSid, string username, string password)
         {
             PathCredentialListSid = pathCredentialListSid;

@@ -21,15 +21,15 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The category
+        /// Only include usage of this usage category.
         /// </summary>
         public LastMonthResource.CategoryEnum Category { get; set; }
         /// <summary>
-        /// The start_date
+        /// Only include usage that has occurred on or after this date.
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// The end_date
+        /// Only include usage that has occurred on or before this date.
         /// </summary>
         public DateTime? EndDate { get; set; }
 

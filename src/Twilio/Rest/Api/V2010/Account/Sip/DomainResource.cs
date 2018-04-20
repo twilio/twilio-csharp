@@ -211,7 +211,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="voiceFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
         /// <param name="voiceFallbackMethod"> HTTP method used with voice_fallback_url </param>
         /// <param name="voiceStatusCallbackUrl"> URL that Twilio will request with status updates </param>
-        /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
+        /// <param name="voiceStatusCallbackMethod"> The HTTP method Twilio will use to make requests to the StatusCallback
+        ///                                 URL. </param>
         /// <param name="sipRegistration"> The sip_registration </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Domain </returns> 
@@ -245,7 +246,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="voiceFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
         /// <param name="voiceFallbackMethod"> HTTP method used with voice_fallback_url </param>
         /// <param name="voiceStatusCallbackUrl"> URL that Twilio will request with status updates </param>
-        /// <param name="voiceStatusCallbackMethod"> The voice_status_callback_method </param>
+        /// <param name="voiceStatusCallbackMethod"> The HTTP method Twilio will use to make requests to the StatusCallback
+        ///                                 URL. </param>
         /// <param name="sipRegistration"> The sip_registration </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Domain </returns> 
@@ -596,7 +598,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
         /// <summary>
-        /// The voice_status_callback_method
+        /// The HTTP method Twilio will use to make requests to the StatusCallback URL.
         /// </summary>
         [JsonProperty("voice_status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]

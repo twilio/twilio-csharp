@@ -196,12 +196,14 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="domainName"> The domain_name </param>
-        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
-        /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
-        /// <param name="recording"> The recording </param>
-        /// <param name="secure"> The secure </param>
+        /// <param name="friendlyName"> A human-readable name for the Trunk. </param>
+        /// <param name="domainName"> The unique address you reserve on Twilio to which you route your SIP traffic. </param>
+        /// <param name="disasterRecoveryUrl"> The HTTP URL that Twilio will request if an error occurs while sending SIP
+        ///                           traffic towards your configured Origination URL. </param>
+        /// <param name="disasterRecoveryMethod"> The HTTP method Twilio will use when requesting the DisasterRecoveryUrl.
+        ///                              </param>
+        /// <param name="recording"> The recording settings for this trunk. </param>
+        /// <param name="secure"> The Secure Trunking  settings for this trunk. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
         public static TrunkResource Create(string friendlyName = null, 
@@ -220,12 +222,14 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="domainName"> The domain_name </param>
-        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
-        /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
-        /// <param name="recording"> The recording </param>
-        /// <param name="secure"> The secure </param>
+        /// <param name="friendlyName"> A human-readable name for the Trunk. </param>
+        /// <param name="domainName"> The unique address you reserve on Twilio to which you route your SIP traffic. </param>
+        /// <param name="disasterRecoveryUrl"> The HTTP URL that Twilio will request if an error occurs while sending SIP
+        ///                           traffic towards your configured Origination URL. </param>
+        /// <param name="disasterRecoveryMethod"> The HTTP method Twilio will use when requesting the DisasterRecoveryUrl.
+        ///                              </param>
+        /// <param name="recording"> The recording settings for this trunk. </param>
+        /// <param name="secure"> The Secure Trunking  settings for this trunk. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
         public static async System.Threading.Tasks.Task<TrunkResource> CreateAsync(string friendlyName = null, 
@@ -420,12 +424,14 @@ namespace Twilio.Rest.Trunking.V1
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="domainName"> The domain_name </param>
-        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
-        /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
-        /// <param name="recording"> The recording </param>
-        /// <param name="secure"> The secure </param>
+        /// <param name="friendlyName"> A human-readable name for the Trunk. </param>
+        /// <param name="domainName"> The unique address you reserve on Twilio to which you route your SIP traffic. </param>
+        /// <param name="disasterRecoveryUrl"> The HTTP URL that Twilio will request if an error occurs while sending SIP
+        ///                           traffic towards your configured Origination URL. </param>
+        /// <param name="disasterRecoveryMethod"> The HTTP method Twilio will use when requesting the DisasterRecoveryUrl.
+        ///                              </param>
+        /// <param name="recording"> The recording settings for this trunk. </param>
+        /// <param name="secure"> The Secure Trunking  settings for this trunk. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
         public static TrunkResource Update(string pathSid, 
@@ -446,12 +452,14 @@ namespace Twilio.Rest.Trunking.V1
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="domainName"> The domain_name </param>
-        /// <param name="disasterRecoveryUrl"> The disaster_recovery_url </param>
-        /// <param name="disasterRecoveryMethod"> The disaster_recovery_method </param>
-        /// <param name="recording"> The recording </param>
-        /// <param name="secure"> The secure </param>
+        /// <param name="friendlyName"> A human-readable name for the Trunk. </param>
+        /// <param name="domainName"> The unique address you reserve on Twilio to which you route your SIP traffic. </param>
+        /// <param name="disasterRecoveryUrl"> The HTTP URL that Twilio will request if an error occurs while sending SIP
+        ///                           traffic towards your configured Origination URL. </param>
+        /// <param name="disasterRecoveryMethod"> The HTTP method Twilio will use when requesting the DisasterRecoveryUrl.
+        ///                              </param>
+        /// <param name="recording"> The recording settings for this trunk. </param>
+        /// <param name="secure"> The Secure Trunking  settings for this trunk. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
         public static async System.Threading.Tasks.Task<TrunkResource> UpdateAsync(string pathSid, 
@@ -487,43 +495,43 @@ namespace Twilio.Rest.Trunking.V1
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account that owns this Trunk.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The domain_name
+        /// The unique address you reserve on Twilio to which you route your SIP traffic.
         /// </summary>
         [JsonProperty("domain_name")]
         public string DomainName { get; private set; }
         /// <summary>
-        /// The disaster_recovery_method
+        /// The HTTP method Twilio will use when requesting the DisasterRecoveryUrl.
         /// </summary>
         [JsonProperty("disaster_recovery_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; private set; }
         /// <summary>
-        /// The disaster_recovery_url
+        /// The HTTP URL that Twilio will request if an error occurs while sending SIP traffic towards your configured Origination URL.
         /// </summary>
         [JsonProperty("disaster_recovery_url")]
         public Uri DisasterRecoveryUrl { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable name for the Trunk.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The secure
+        /// The Secure Trunking  settings for this trunk.
         /// </summary>
         [JsonProperty("secure")]
         public bool? Secure { get; private set; }
         /// <summary>
-        /// The recording
+        /// The recording settings for this trunk.
         /// </summary>
         [JsonProperty("recording")]
         public object Recording { get; private set; }
         /// <summary>
-        /// The auth_type
+        /// The types of authentication you have mapped to your domain.
         /// </summary>
         [JsonProperty("auth_type")]
         public string AuthType { get; private set; }
@@ -533,22 +541,22 @@ namespace Twilio.Rest.Trunking.V1
         [JsonProperty("auth_type_set")]
         public List<string> AuthTypeSet { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this Activity was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this Activity was updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies the SIP Trunk in Twilio.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL for this resource, relative to https://trunking.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

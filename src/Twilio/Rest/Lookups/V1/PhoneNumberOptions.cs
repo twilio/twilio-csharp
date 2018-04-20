@@ -22,15 +22,15 @@ namespace Twilio.Rest.Lookups.V1
         /// </summary>
         public Types.PhoneNumber PathPhoneNumber { get; }
         /// <summary>
-        /// The country_code
+        /// Optional ISO country code of the phone number.
         /// </summary>
         public string CountryCode { get; set; }
         /// <summary>
-        /// The type
+        /// Indicates the type of information you would like returned with your request.
         /// </summary>
         public List<string> Type { get; set; }
         /// <summary>
-        /// The add_ons
+        /// Indicates the particular Add-on you would like to use to get more information.
         /// </summary>
         public List<string> AddOns { get; set; }
         /// <summary>
