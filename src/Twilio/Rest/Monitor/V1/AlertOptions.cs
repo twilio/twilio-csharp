@@ -75,15 +75,15 @@ namespace Twilio.Rest.Monitor.V1
     public class ReadAlertOptions : ReadOptions<AlertResource> 
     {
         /// <summary>
-        /// The log_level
+        /// Only show alerts for this log-level.
         /// </summary>
         public string LogLevel { get; set; }
         /// <summary>
-        /// The start_date
+        /// Only show Alerts on or after this date.
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// The end_date
+        /// Only show Alerts on or before this date.
         /// </summary>
         public DateTime? EndDate { get; set; }
 

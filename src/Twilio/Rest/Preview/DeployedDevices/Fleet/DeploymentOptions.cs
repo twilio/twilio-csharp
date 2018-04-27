@@ -15,7 +15,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchDeploymentOptions
+    /// Fetch information about a specific Deployment in the Fleet.
     /// </summary>
     public class FetchDeploymentOptions : IOptions<DeploymentResource> 
     {

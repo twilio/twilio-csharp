@@ -120,7 +120,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
-        /// <param name="reservationStatus"> The reservation_status </param>
+        /// <param name="reservationStatus"> Filter by a worker’s reservation status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
-        /// <param name="reservationStatus"> The reservation_status </param>
+        /// <param name="reservationStatus"> Filter by a worker’s reservation status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -340,22 +340,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="reservationStatus"> The reservation_status </param>
-        /// <param name="workerActivitySid"> The worker_activity_sid </param>
-        /// <param name="instruction"> The instruction </param>
-        /// <param name="dequeuePostWorkActivitySid"> The dequeue_post_work_activity_sid </param>
-        /// <param name="dequeueFrom"> The dequeue_from </param>
+        /// <param name="reservationStatus"> Yes </param>
+        /// <param name="workerActivitySid"> No </param>
+        /// <param name="instruction"> Yes </param>
+        /// <param name="dequeuePostWorkActivitySid"> No </param>
+        /// <param name="dequeueFrom"> Yes </param>
         /// <param name="dequeueRecord"> The dequeue_record </param>
         /// <param name="dequeueTimeout"> The dequeue_timeout </param>
         /// <param name="dequeueTo"> The dequeue_to </param>
         /// <param name="dequeueStatusCallbackUrl"> The dequeue_status_callback_url </param>
-        /// <param name="callFrom"> The call_from </param>
+        /// <param name="callFrom"> Yes </param>
         /// <param name="callRecord"> The call_record </param>
         /// <param name="callTimeout"> The call_timeout </param>
         /// <param name="callTo"> The call_to </param>
-        /// <param name="callUrl"> The call_url </param>
-        /// <param name="callStatusCallbackUrl"> The call_status_callback_url </param>
-        /// <param name="callAccept"> The call_accept </param>
+        /// <param name="callUrl"> Yes </param>
+        /// <param name="callStatusCallbackUrl"> No </param>
+        /// <param name="callAccept"> No </param>
         /// <param name="redirectCallSid"> The redirect_call_sid </param>
         /// <param name="redirectAccept"> The redirect_accept </param>
         /// <param name="redirectUrl"> The redirect_url </param>
@@ -456,22 +456,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="reservationStatus"> The reservation_status </param>
-        /// <param name="workerActivitySid"> The worker_activity_sid </param>
-        /// <param name="instruction"> The instruction </param>
-        /// <param name="dequeuePostWorkActivitySid"> The dequeue_post_work_activity_sid </param>
-        /// <param name="dequeueFrom"> The dequeue_from </param>
+        /// <param name="reservationStatus"> Yes </param>
+        /// <param name="workerActivitySid"> No </param>
+        /// <param name="instruction"> Yes </param>
+        /// <param name="dequeuePostWorkActivitySid"> No </param>
+        /// <param name="dequeueFrom"> Yes </param>
         /// <param name="dequeueRecord"> The dequeue_record </param>
         /// <param name="dequeueTimeout"> The dequeue_timeout </param>
         /// <param name="dequeueTo"> The dequeue_to </param>
         /// <param name="dequeueStatusCallbackUrl"> The dequeue_status_callback_url </param>
-        /// <param name="callFrom"> The call_from </param>
+        /// <param name="callFrom"> Yes </param>
         /// <param name="callRecord"> The call_record </param>
         /// <param name="callTimeout"> The call_timeout </param>
         /// <param name="callTo"> The call_to </param>
-        /// <param name="callUrl"> The call_url </param>
-        /// <param name="callStatusCallbackUrl"> The call_status_callback_url </param>
-        /// <param name="callAccept"> The call_accept </param>
+        /// <param name="callUrl"> Yes </param>
+        /// <param name="callStatusCallbackUrl"> No </param>
+        /// <param name="callAccept"> No </param>
         /// <param name="redirectCallSid"> The redirect_call_sid </param>
         /// <param name="redirectAccept"> The redirect_accept </param>
         /// <param name="redirectUrl"> The redirect_url </param>
@@ -600,7 +600,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The reservation_status
+        /// Filter by a worker’s reservation status
         /// </summary>
         [JsonProperty("reservation_status")]
         [JsonConverter(typeof(StringEnumConverter))]

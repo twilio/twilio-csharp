@@ -56,11 +56,11 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// The status
+        /// Only show Participants with the given Status.
         /// </summary>
         public ParticipantResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// The identity
+        /// Only show Participants that connected to the Room using the provided Identity.
         /// </summary>
         public string Identity { get; set; }
         /// <summary>
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The status
+        /// Set to disconnected to remove participant.
         /// </summary>
         public ParticipantResource.StatusEnum Status { get; set; }
 

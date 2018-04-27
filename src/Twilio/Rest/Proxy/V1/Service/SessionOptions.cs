@@ -61,7 +61,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A unique, developer assigned name of this Session.
+        /// The unique_name
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The date this Session was expiry
+        /// The date this Session should expire
         /// </summary>
         public DateTime? DateExpiry { get; set; }
         /// <summary>
@@ -131,11 +131,11 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public SessionResource.ModeEnum Mode { get; set; }
         /// <summary>
-        /// The Status of this Session
+        /// Session status
         /// </summary>
         public SessionResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// A list of phone numbers to add to this Session.
+        /// The participants
         /// </summary>
         public List<object> Participants { get; set; }
 
@@ -242,11 +242,11 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A unique, developer assigned name of this Session.
+        /// The unique_name
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The date this Session was expiry
+        /// The date this Session should ge expired
         /// </summary>
         public DateTime? DateExpiry { get; set; }
         /// <summary>
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// The Mode of this Session
+        /// The mode
         /// </summary>
         public SessionResource.ModeEnum Mode { get; set; }
         /// <summary>
@@ -262,7 +262,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public SessionResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// A list of phone numbers to add to this Session.
+        /// The participants
         /// </summary>
         public List<object> Participants { get; set; }
 

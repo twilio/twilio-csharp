@@ -120,7 +120,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskSid"> The task_sid </param>
-        /// <param name="reservationStatus"> The reservation_status </param>
+        /// <param name="reservationStatus"> Returns the list of reservations for a task with a specified ReservationStatus
+        ///                         </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -142,7 +143,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskSid"> The task_sid </param>
-        /// <param name="reservationStatus"> The reservation_status </param>
+        /// <param name="reservationStatus"> Returns the list of reservations for a task with a specified ReservationStatus
+        ///                         </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -340,31 +342,31 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskSid"> The task_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="reservationStatus"> The reservation_status </param>
-        /// <param name="workerActivitySid"> The worker_activity_sid </param>
-        /// <param name="instruction"> The instruction </param>
-        /// <param name="dequeuePostWorkActivitySid"> The dequeue_post_work_activity_sid </param>
-        /// <param name="dequeueFrom"> The dequeue_from </param>
-        /// <param name="dequeueRecord"> The dequeue_record </param>
-        /// <param name="dequeueTimeout"> The dequeue_timeout </param>
-        /// <param name="dequeueTo"> The dequeue_to </param>
-        /// <param name="dequeueStatusCallbackUrl"> The dequeue_status_callback_url </param>
-        /// <param name="callFrom"> The call_from </param>
-        /// <param name="callRecord"> The call_record </param>
-        /// <param name="callTimeout"> The call_timeout </param>
-        /// <param name="callTo"> The call_to </param>
-        /// <param name="callUrl"> The call_url </param>
-        /// <param name="callStatusCallbackUrl"> The call_status_callback_url </param>
-        /// <param name="callAccept"> The call_accept </param>
-        /// <param name="redirectCallSid"> The redirect_call_sid </param>
-        /// <param name="redirectAccept"> The redirect_accept </param>
-        /// <param name="redirectUrl"> The redirect_url </param>
-        /// <param name="to"> The to </param>
-        /// <param name="from"> The from </param>
+        /// <param name="reservationStatus"> Yes </param>
+        /// <param name="workerActivitySid"> No </param>
+        /// <param name="instruction"> Yes </param>
+        /// <param name="dequeuePostWorkActivitySid"> No </param>
+        /// <param name="dequeueFrom"> Yes </param>
+        /// <param name="dequeueRecord"> No </param>
+        /// <param name="dequeueTimeout"> No </param>
+        /// <param name="dequeueTo"> No </param>
+        /// <param name="dequeueStatusCallbackUrl"> No </param>
+        /// <param name="callFrom"> Yes </param>
+        /// <param name="callRecord"> No </param>
+        /// <param name="callTimeout"> No </param>
+        /// <param name="callTo"> No </param>
+        /// <param name="callUrl"> Yes </param>
+        /// <param name="callStatusCallbackUrl"> No </param>
+        /// <param name="callAccept"> No </param>
+        /// <param name="redirectCallSid"> Yes </param>
+        /// <param name="redirectAccept"> No </param>
+        /// <param name="redirectUrl"> Yes </param>
+        /// <param name="to"> No </param>
+        /// <param name="from"> No </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="statusCallbackEvent"> The status_callback_event </param>
-        /// <param name="timeout"> The timeout </param>
+        /// <param name="timeout"> No </param>
         /// <param name="record"> The record </param>
         /// <param name="muted"> The muted </param>
         /// <param name="beep"> The beep </param>
@@ -387,8 +389,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="region"> The region </param>
         /// <param name="sipAuthUsername"> The sip_auth_username </param>
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
-        /// <param name="dequeueStatusCallbackEvent"> The dequeue_status_callback_event </param>
-        /// <param name="postWorkActivitySid"> The post_work_activity_sid </param>
+        /// <param name="dequeueStatusCallbackEvent"> No </param>
+        /// <param name="postWorkActivitySid"> No </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Reservation </returns> 
         public static ReservationResource Update(string pathWorkspaceSid, 
@@ -456,31 +458,31 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskSid"> The task_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="reservationStatus"> The reservation_status </param>
-        /// <param name="workerActivitySid"> The worker_activity_sid </param>
-        /// <param name="instruction"> The instruction </param>
-        /// <param name="dequeuePostWorkActivitySid"> The dequeue_post_work_activity_sid </param>
-        /// <param name="dequeueFrom"> The dequeue_from </param>
-        /// <param name="dequeueRecord"> The dequeue_record </param>
-        /// <param name="dequeueTimeout"> The dequeue_timeout </param>
-        /// <param name="dequeueTo"> The dequeue_to </param>
-        /// <param name="dequeueStatusCallbackUrl"> The dequeue_status_callback_url </param>
-        /// <param name="callFrom"> The call_from </param>
-        /// <param name="callRecord"> The call_record </param>
-        /// <param name="callTimeout"> The call_timeout </param>
-        /// <param name="callTo"> The call_to </param>
-        /// <param name="callUrl"> The call_url </param>
-        /// <param name="callStatusCallbackUrl"> The call_status_callback_url </param>
-        /// <param name="callAccept"> The call_accept </param>
-        /// <param name="redirectCallSid"> The redirect_call_sid </param>
-        /// <param name="redirectAccept"> The redirect_accept </param>
-        /// <param name="redirectUrl"> The redirect_url </param>
-        /// <param name="to"> The to </param>
-        /// <param name="from"> The from </param>
+        /// <param name="reservationStatus"> Yes </param>
+        /// <param name="workerActivitySid"> No </param>
+        /// <param name="instruction"> Yes </param>
+        /// <param name="dequeuePostWorkActivitySid"> No </param>
+        /// <param name="dequeueFrom"> Yes </param>
+        /// <param name="dequeueRecord"> No </param>
+        /// <param name="dequeueTimeout"> No </param>
+        /// <param name="dequeueTo"> No </param>
+        /// <param name="dequeueStatusCallbackUrl"> No </param>
+        /// <param name="callFrom"> Yes </param>
+        /// <param name="callRecord"> No </param>
+        /// <param name="callTimeout"> No </param>
+        /// <param name="callTo"> No </param>
+        /// <param name="callUrl"> Yes </param>
+        /// <param name="callStatusCallbackUrl"> No </param>
+        /// <param name="callAccept"> No </param>
+        /// <param name="redirectCallSid"> Yes </param>
+        /// <param name="redirectAccept"> No </param>
+        /// <param name="redirectUrl"> Yes </param>
+        /// <param name="to"> No </param>
+        /// <param name="from"> No </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="statusCallbackEvent"> The status_callback_event </param>
-        /// <param name="timeout"> The timeout </param>
+        /// <param name="timeout"> No </param>
         /// <param name="record"> The record </param>
         /// <param name="muted"> The muted </param>
         /// <param name="beep"> The beep </param>
@@ -503,8 +505,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="region"> The region </param>
         /// <param name="sipAuthUsername"> The sip_auth_username </param>
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
-        /// <param name="dequeueStatusCallbackEvent"> The dequeue_status_callback_event </param>
-        /// <param name="postWorkActivitySid"> The post_work_activity_sid </param>
+        /// <param name="dequeueStatusCallbackEvent"> No </param>
+        /// <param name="postWorkActivitySid"> No </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns> 
         public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(string pathWorkspaceSid, 
@@ -585,7 +587,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         }
 
         /// <summary>
-        /// The account_sid
+        /// The ID of the Account that owns this Task
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
@@ -600,33 +602,33 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The reservation_status
+        /// The current status of the reservation.
         /// </summary>
         [JsonProperty("reservation_status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ReservationResource.StatusEnum ReservationStatus { get; private set; }
         /// <summary>
-        /// The sid
+        /// The unique ID of this Reservation.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The task_sid
+        /// The ID of the reserved Task
         /// </summary>
         [JsonProperty("task_sid")]
         public string TaskSid { get; private set; }
         /// <summary>
-        /// The worker_name
+        /// Human readable description of the Worker that is reserved
         /// </summary>
         [JsonProperty("worker_name")]
         public string WorkerName { get; private set; }
         /// <summary>
-        /// The worker_sid
+        /// The ID of the reserved Worker
         /// </summary>
         [JsonProperty("worker_sid")]
         public string WorkerSid { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The ID of the Workspace that this task is contained within.
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }

@@ -21,23 +21,23 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The minutes
+        /// Filter cumulative statistics by up to ‘x’ minutes in the past.
         /// </summary>
         public int? Minutes { get; set; }
         /// <summary>
-        /// The start_date
+        /// Filter cumulative statistics by a start date.
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// The end_date
+        /// Filter cumulative statistics by a end date.
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// The task_queue_sid
+        /// Filter the real-time and cumulative statistics based on Workers tied to a particular queue
         /// </summary>
         public string TaskQueueSid { get; set; }
         /// <summary>
-        /// The task_queue_name
+        /// Filter the real-time and cumulative statistics based on Workers tied to a particular queue
         /// </summary>
         public string TaskQueueName { get; set; }
         /// <summary>
@@ -45,7 +45,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The task_channel
+        /// Filter cumulative statistics by TaskChannel.
         /// </summary>
         public string TaskChannel { get; set; }
 

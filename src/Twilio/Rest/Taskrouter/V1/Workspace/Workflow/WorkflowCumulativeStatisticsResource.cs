@@ -66,11 +66,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkflowSid"> The workflow_sid </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="taskChannel"> The task_channel </param>
-        /// <param name="splitByWaitTime"> The split_by_wait_time </param>
+        /// <param name="endDate"> Filter cumulative statistics by an end date. </param>
+        /// <param name="minutes"> Filter cumulative statistics by up to ‘x’ minutes in the past. </param>
+        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
+        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
+        /// <param name="splitByWaitTime"> A comma separated values for viewing splits of tasks canceled and accepted above the
+        ///                       given threshold in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkflowCumulativeStatistics </returns> 
         public static WorkflowCumulativeStatisticsResource Fetch(string pathWorkspaceSid, 
@@ -92,11 +93,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkflowSid"> The workflow_sid </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="taskChannel"> The task_channel </param>
-        /// <param name="splitByWaitTime"> The split_by_wait_time </param>
+        /// <param name="endDate"> Filter cumulative statistics by an end date. </param>
+        /// <param name="minutes"> Filter cumulative statistics by up to ‘x’ minutes in the past. </param>
+        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
+        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
+        /// <param name="splitByWaitTime"> A comma separated values for viewing splits of tasks canceled and accepted above the
+        ///                       given threshold in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkflowCumulativeStatistics </returns> 
         public static async System.Threading.Tasks.Task<WorkflowCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid, 
@@ -137,7 +139,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The avg_task_acceptance_time
+        /// The average time from Task creation to acceptance
         /// </summary>
         [JsonProperty("avg_task_acceptance_time")]
         public int? AvgTaskAcceptanceTime { get; private set; }
@@ -152,77 +154,77 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
         /// <summary>
-        /// The reservations_created
+        /// The total number of Reservations that were created for Workers
         /// </summary>
         [JsonProperty("reservations_created")]
         public int? ReservationsCreated { get; private set; }
         /// <summary>
-        /// The reservations_accepted
+        /// The total number of Reservations accepted by Workers
         /// </summary>
         [JsonProperty("reservations_accepted")]
         public int? ReservationsAccepted { get; private set; }
         /// <summary>
-        /// The reservations_rejected
+        /// The total number of Reservations that were rejected
         /// </summary>
         [JsonProperty("reservations_rejected")]
         public int? ReservationsRejected { get; private set; }
         /// <summary>
-        /// The reservations_timed_out
+        /// The total number of Reservations that were timed out
         /// </summary>
         [JsonProperty("reservations_timed_out")]
         public int? ReservationsTimedOut { get; private set; }
         /// <summary>
-        /// The reservations_canceled
+        /// The total number of Reservations that were canceled
         /// </summary>
         [JsonProperty("reservations_canceled")]
         public int? ReservationsCanceled { get; private set; }
         /// <summary>
-        /// The reservations_rescinded
+        /// The total number of Reservations that were rescinded
         /// </summary>
         [JsonProperty("reservations_rescinded")]
         public int? ReservationsRescinded { get; private set; }
         /// <summary>
-        /// The split_by_wait_time
+        /// The splits of the tasks canceled and accepted based on the provided SplitByWaitTime parameter.
         /// </summary>
         [JsonProperty("split_by_wait_time")]
         public object SplitByWaitTime { get; private set; }
         /// <summary>
-        /// The wait_duration_until_accepted
+        /// The wait duration stats for tasks that were accepted.
         /// </summary>
         [JsonProperty("wait_duration_until_accepted")]
         public object WaitDurationUntilAccepted { get; private set; }
         /// <summary>
-        /// The wait_duration_until_canceled
+        /// The wait duration stats for tasks that were canceled.
         /// </summary>
         [JsonProperty("wait_duration_until_canceled")]
         public object WaitDurationUntilCanceled { get; private set; }
         /// <summary>
-        /// The tasks_canceled
+        /// The total number of Tasks that were canceled
         /// </summary>
         [JsonProperty("tasks_canceled")]
         public int? TasksCanceled { get; private set; }
         /// <summary>
-        /// The tasks_completed
+        /// The total number of Tasks that were completed
         /// </summary>
         [JsonProperty("tasks_completed")]
         public int? TasksCompleted { get; private set; }
         /// <summary>
-        /// The tasks_entered
+        /// The total number of Tasks that entered this Workflow
         /// </summary>
         [JsonProperty("tasks_entered")]
         public int? TasksEntered { get; private set; }
         /// <summary>
-        /// The tasks_deleted
+        /// The total number of Tasks that were deleted
         /// </summary>
         [JsonProperty("tasks_deleted")]
         public int? TasksDeleted { get; private set; }
         /// <summary>
-        /// The tasks_moved
+        /// The total number of Tasks that were moved from one queue to another
         /// </summary>
         [JsonProperty("tasks_moved")]
         public int? TasksMoved { get; private set; }
         /// <summary>
-        /// The tasks_timed_out_in_workflow
+        /// The total number of Tasks that were timed out of their Workflows
         /// </summary>
         [JsonProperty("tasks_timed_out_in_workflow")]
         public int? TasksTimedOutInWorkflow { get; private set; }

@@ -286,8 +286,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="capacity"> The capacity </param>
-        /// <param name="available"> The available </param>
+        /// <param name="capacity"> The total number of Tasks worker should handle for this TaskChannel type. </param>
+        /// <param name="available"> Toggle the availability of the WorkerChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerChannel </returns> 
         public static WorkerChannelResource Update(string pathWorkspaceSid, 
@@ -308,8 +308,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="capacity"> The capacity </param>
-        /// <param name="available"> The available </param>
+        /// <param name="capacity"> The total number of Tasks worker should handle for this TaskChannel type. </param>
+        /// <param name="available"> Toggle the availability of the WorkerChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerChannel </returns> 
         public static async System.Threading.Tasks.Task<WorkerChannelResource> UpdateAsync(string pathWorkspaceSid, 
@@ -343,62 +343,62 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account that owns this WorkerChannel.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The assigned_tasks
+        /// The total number of tasks assigned to Worker for this TaskChannel type.
         /// </summary>
         [JsonProperty("assigned_tasks")]
         public int? AssignedTasks { get; private set; }
         /// <summary>
-        /// The available
+        /// Boolean value indicating whether the worker should receive Tasks of this TaskChannel type.
         /// </summary>
         [JsonProperty("available")]
         public bool? Available { get; private set; }
         /// <summary>
-        /// The available_capacity_percentage
+        /// The current available capacity between 0 to 100 for this TaskChannel.
         /// </summary>
         [JsonProperty("available_capacity_percentage")]
         public int? AvailableCapacityPercentage { get; private set; }
         /// <summary>
-        /// The configured_capacity
+        /// The current configured capacity for the WorkerChannel.
         /// </summary>
         [JsonProperty("configured_capacity")]
         public int? ConfiguredCapacity { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this Activity was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this Activity was updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The sid
+        /// The unique ID for this WorkerChannel.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The task_channel_sid
+        /// The unique ID of the TaskChannel.
         /// </summary>
         [JsonProperty("task_channel_sid")]
         public string TaskChannelSid { get; private set; }
         /// <summary>
-        /// The task_channel_unique_name
+        /// The unique name of TaskChannel, such as 'voice', 'sms', etc.
         /// </summary>
         [JsonProperty("task_channel_unique_name")]
         public string TaskChannelUniqueName { get; private set; }
         /// <summary>
-        /// The worker_sid
+        /// The unique ID of the Worker that this WorkerChannel belongs to.
         /// </summary>
         [JsonProperty("worker_sid")]
         public string WorkerSid { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The unique ID of the Workspace that this WorkerChannel belongs to.
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }

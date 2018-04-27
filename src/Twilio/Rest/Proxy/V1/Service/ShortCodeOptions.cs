@@ -56,7 +56,7 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Delete a specific Short Code.
+    /// Delete a specific Short Code from a Service.
     /// </summary>
     public class DeleteShortCodeOptions : IOptions<ShortCodeResource> 
     {

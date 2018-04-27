@@ -80,19 +80,23 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="inboundRequestUrl"> The inbound_request_url </param>
-        /// <param name="inboundMethod"> The inbound_method </param>
-        /// <param name="fallbackUrl"> The fallback_url </param>
-        /// <param name="fallbackMethod"> The fallback_method </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="stickySender"> The sticky_sender </param>
-        /// <param name="mmsConverter"> The mms_converter </param>
-        /// <param name="smartEncoding"> The smart_encoding </param>
+        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters. </param>
+        /// <param name="inboundRequestUrl"> A webhook request is made to the Inbound Request URL when a message is received by
+        ///                         any phone number or shortcode associated to your Messaging Service. </param>
+        /// <param name="inboundMethod"> The HTTP method used when making requests to the Inbound Request URL. </param>
+        /// <param name="fallbackUrl"> A request is made to the Fallback URL if an error occurs with retrieving or executing
+        ///                   the TwiML from you Inbound Request URL. </param>
+        /// <param name="fallbackMethod"> The HTTP method used when requesting the Fallback URL. </param>
+        /// <param name="statusCallback"> A webhook request is made to the Status Callback to pass status updates about your
+        ///                      messages. </param>
+        /// <param name="stickySender"> Configuration to enable or disable Sticky Sender on your Service Instance. </param>
+        /// <param name="mmsConverter"> Configuration to enable or disable MMS Converter on your Service Instance. </param>
+        /// <param name="smartEncoding"> Configuration to enable or disable Smart Encoding. </param>
         /// <param name="scanMessageContent"> The scan_message_content </param>
-        /// <param name="fallbackToLongCode"> The fallback_to_long_code </param>
-        /// <param name="areaCodeGeomatch"> The area_code_geomatch </param>
-        /// <param name="validityPeriod"> The validity_period </param>
+        /// <param name="fallbackToLongCode"> Configuration to enable or disable Fallback to Long Code. </param>
+        /// <param name="areaCodeGeomatch"> Configuration to enable or disable Area Code Geomatch. </param>
+        /// <param name="validityPeriod"> Configuration to set the validity period of all messages sent from your Service, in
+        ///                      seconds. </param>
         /// <param name="synchronousValidation"> The synchronous_validation </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
@@ -120,19 +124,23 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="inboundRequestUrl"> The inbound_request_url </param>
-        /// <param name="inboundMethod"> The inbound_method </param>
-        /// <param name="fallbackUrl"> The fallback_url </param>
-        /// <param name="fallbackMethod"> The fallback_method </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="stickySender"> The sticky_sender </param>
-        /// <param name="mmsConverter"> The mms_converter </param>
-        /// <param name="smartEncoding"> The smart_encoding </param>
+        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters. </param>
+        /// <param name="inboundRequestUrl"> A webhook request is made to the Inbound Request URL when a message is received by
+        ///                         any phone number or shortcode associated to your Messaging Service. </param>
+        /// <param name="inboundMethod"> The HTTP method used when making requests to the Inbound Request URL. </param>
+        /// <param name="fallbackUrl"> A request is made to the Fallback URL if an error occurs with retrieving or executing
+        ///                   the TwiML from you Inbound Request URL. </param>
+        /// <param name="fallbackMethod"> The HTTP method used when requesting the Fallback URL. </param>
+        /// <param name="statusCallback"> A webhook request is made to the Status Callback to pass status updates about your
+        ///                      messages. </param>
+        /// <param name="stickySender"> Configuration to enable or disable Sticky Sender on your Service Instance. </param>
+        /// <param name="mmsConverter"> Configuration to enable or disable MMS Converter on your Service Instance. </param>
+        /// <param name="smartEncoding"> Configuration to enable or disable Smart Encoding. </param>
         /// <param name="scanMessageContent"> The scan_message_content </param>
-        /// <param name="fallbackToLongCode"> The fallback_to_long_code </param>
-        /// <param name="areaCodeGeomatch"> The area_code_geomatch </param>
-        /// <param name="validityPeriod"> The validity_period </param>
+        /// <param name="fallbackToLongCode"> Configuration to enable or disable Fallback to Long Code. </param>
+        /// <param name="areaCodeGeomatch"> Configuration to enable or disable Area Code Geomatch. </param>
+        /// <param name="validityPeriod"> Configuration to set the validity period of all messages sent from your Service, in
+        ///                      seconds. </param>
         /// <param name="synchronousValidation"> The synchronous_validation </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
@@ -568,69 +576,69 @@ namespace Twilio.Rest.Messaging.V1
         }
 
         /// <summary>
-        /// The sid
+        /// Unique 34 character ID of the Service.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Unique 34 character ID of the Account that created this Service.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable descriptive text for this resource, up to 64 characters.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The inbound_request_url
+        /// The URL Twilio will make a webhook request to when a message is received by any phone number or short code in your Service.
         /// </summary>
         [JsonProperty("inbound_request_url")]
         public Uri InboundRequestUrl { get; private set; }
         /// <summary>
-        /// The inbound_method
+        /// The HTTP method Twilio will use when making requests to the Inbound Request URL.
         /// </summary>
         [JsonProperty("inbound_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod InboundMethod { get; private set; }
         /// <summary>
-        /// The fallback_url
+        /// The URL that Twilio will request if an error occurs when retrieving or executing the TwiML from your Inbound Request URL.
         /// </summary>
         [JsonProperty("fallback_url")]
         public Uri FallbackUrl { get; private set; }
         /// <summary>
-        /// The fallback_method
+        /// The HTTP method Twilio will use when making requests to the Fallback URL.
         /// </summary>
         [JsonProperty("fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod FallbackMethod { get; private set; }
         /// <summary>
-        /// The status_callback
+        /// The URL Twilio will make a webhook request to when passing you status updates about the delivery of your messages.
         /// </summary>
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
         /// <summary>
-        /// The sticky_sender
+        /// Configuration to enable or disable Sticky Sender on your Service instance.
         /// </summary>
         [JsonProperty("sticky_sender")]
         public bool? StickySender { get; private set; }
         /// <summary>
-        /// The mms_converter
+        /// Configuration to enable or disable MMS Converter for messages sent through your Service instance.
         /// </summary>
         [JsonProperty("mms_converter")]
         public bool? MmsConverter { get; private set; }
         /// <summary>
-        /// The smart_encoding
+        /// Configuration to enable or disable Smart Encoding for messages sent through your Service instance.
         /// </summary>
         [JsonProperty("smart_encoding")]
         public bool? SmartEncoding { get; private set; }
@@ -641,12 +649,12 @@ namespace Twilio.Rest.Messaging.V1
         [JsonConverter(typeof(StringEnumConverter))]
         public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; private set; }
         /// <summary>
-        /// The fallback_to_long_code
+        /// Configuration to enable or disable Fallback to Long Code for messages sent through your Service instance.
         /// </summary>
         [JsonProperty("fallback_to_long_code")]
         public bool? FallbackToLongCode { get; private set; }
         /// <summary>
-        /// The area_code_geomatch
+        /// Configuration to enable or disable Area Code Geomatch on your Service Instance.
         /// </summary>
         [JsonProperty("area_code_geomatch")]
         public bool? AreaCodeGeomatch { get; private set; }
@@ -656,7 +664,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("synchronous_validation")]
         public bool? SynchronousValidation { get; private set; }
         /// <summary>
-        /// The validity_period
+        /// The number of seconds all messages sent from your Service are valid for.
         /// </summary>
         [JsonProperty("validity_period")]
         public int? ValidityPeriod { get; private set; }

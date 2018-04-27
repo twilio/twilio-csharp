@@ -159,7 +159,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The status
+        /// Specifying completed will end the conference and kick all participants
         /// </summary>
         public ConferenceResource.UpdateStatusEnum Status { get; set; }
         /// <summary>

@@ -65,10 +65,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// fetch
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="endDate"> Filter cumulative statistics by a end date. </param>
+        /// <param name="minutes"> Filter cumulative statistics by up to ‘x’ minutes in the past. </param>
+        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
+        /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkersCumulativeStatistics </returns> 
         public static WorkersCumulativeStatisticsResource Fetch(string pathWorkspaceSid, 
@@ -87,10 +87,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// fetch
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="endDate"> Filter cumulative statistics by a end date. </param>
+        /// <param name="minutes"> Filter cumulative statistics by up to ‘x’ minutes in the past. </param>
+        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
+        /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkersCumulativeStatistics </returns> 
         public static async System.Threading.Tasks.Task<WorkersCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid, 
@@ -139,37 +139,37 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
         /// <summary>
-        /// The activity_durations
+        /// The minimum, average, maximum and total time Workers spent in each Activity
         /// </summary>
         [JsonProperty("activity_durations")]
         public List<object> ActivityDurations { get; private set; }
         /// <summary>
-        /// The reservations_created
+        /// The total number of Reservations that were created
         /// </summary>
         [JsonProperty("reservations_created")]
         public int? ReservationsCreated { get; private set; }
         /// <summary>
-        /// The reservations_accepted
+        /// The total number of Reservations that were accepted
         /// </summary>
         [JsonProperty("reservations_accepted")]
         public int? ReservationsAccepted { get; private set; }
         /// <summary>
-        /// The reservations_rejected
+        /// The total number of Reservations that were rejected
         /// </summary>
         [JsonProperty("reservations_rejected")]
         public int? ReservationsRejected { get; private set; }
         /// <summary>
-        /// The reservations_timed_out
+        /// The total number of Reservations that were timed out
         /// </summary>
         [JsonProperty("reservations_timed_out")]
         public int? ReservationsTimedOut { get; private set; }
         /// <summary>
-        /// The reservations_canceled
+        /// The total number of Reservations that were canceled
         /// </summary>
         [JsonProperty("reservations_canceled")]
         public int? ReservationsCanceled { get; private set; }
         /// <summary>
-        /// The reservations_rescinded
+        /// The total number of Reservations that were rescinded
         /// </summary>
         [JsonProperty("reservations_rescinded")]
         public int? ReservationsRescinded { get; private set; }

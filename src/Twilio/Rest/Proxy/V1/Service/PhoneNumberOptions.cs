@@ -63,7 +63,7 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Delete a specific Phone Number.
+    /// Delete a specific Phone Number from the Service.
     /// </summary>
     public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource> 
     {

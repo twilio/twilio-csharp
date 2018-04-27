@@ -110,11 +110,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The capacity
+        /// The total number of Tasks worker should handle for this TaskChannel type.
         /// </summary>
         public int? Capacity { get; set; }
         /// <summary>
-        /// The available
+        /// Toggle the availability of the WorkerChannel.
         /// </summary>
         public bool? Available { get; set; }
 

@@ -105,7 +105,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// Delete a specific Short Code.
+        /// Delete a specific Short Code from a Service.
         /// </summary>
         /// <param name="options"> Delete ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Delete a specific Short Code.
+        /// Delete a specific Short Code from a Service.
         /// </summary>
         /// <param name="options"> Delete ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         #endif
 
         /// <summary>
-        /// Delete a specific Short Code.
+        /// Delete a specific Short Code from a Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Delete a specific Short Code.
+        /// Delete a specific Short Code from a Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
@@ -406,7 +406,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The date this Short Code was created
+        /// The date this Short Code was added to the service
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
@@ -426,7 +426,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
         /// <summary>
-        /// Nested resource URLs.
+        /// A list of capabilities.
         /// </summary>
         [JsonProperty("capabilities")]
         public PhoneNumberCapabilities Capabilities { get; private set; }

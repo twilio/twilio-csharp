@@ -70,7 +70,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// read
         /// </summary>
         /// <param name="pathCountryCode"> The country_code </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The 34 character string that uniquely identifies your account. </param>
         /// <param name="areaCode"> The area_code </param>
         /// <param name="contains"> The contains </param>
         /// <param name="smsEnabled"> The sms_enabled </param>
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// read
         /// </summary>
         /// <param name="pathCountryCode"> The country_code </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The 34 character string that uniquely identifies your account. </param>
         /// <param name="areaCode"> The area_code </param>
         /// <param name="contains"> The contains </param>
         /// <param name="smsEnabled"> The sms_enabled </param>

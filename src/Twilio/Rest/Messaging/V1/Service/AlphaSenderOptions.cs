@@ -23,7 +23,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The alpha_sender
+        /// An Alphanumeric Sender ID string, up to 11 characters.
         /// </summary>
         public string AlphaSender { get; }
 
@@ -31,7 +31,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// Construct a new CreateAlphaSenderOptions
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="alphaSender"> The alpha_sender </param>
+        /// <param name="alphaSender"> An Alphanumeric Sender ID string, up to 11 characters. </param>
         public CreateAlphaSenderOptions(string pathServiceSid, string alphaSender)
         {
             PathServiceSid = pathServiceSid;

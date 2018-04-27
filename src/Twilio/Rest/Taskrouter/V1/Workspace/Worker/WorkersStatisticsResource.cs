@@ -64,13 +64,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// fetch
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
-        /// <param name="taskQueueName"> The task_queue_name </param>
+        /// <param name="minutes"> Filter cumulative statistics by up to ‘x’ minutes in the past. </param>
+        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
+        /// <param name="endDate"> Filter cumulative statistics by a end date. </param>
+        /// <param name="taskQueueSid"> Filter the real-time and cumulative statistics based on Workers tied to a particular
+        ///                    queue </param>
+        /// <param name="taskQueueName"> Filter the real-time and cumulative statistics based on Workers tied to a particular
+        ///                     queue </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkersStatistics </returns> 
         public static WorkersStatisticsResource Fetch(string pathWorkspaceSid, 
@@ -92,13 +94,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// fetch
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
-        /// <param name="taskQueueName"> The task_queue_name </param>
+        /// <param name="minutes"> Filter cumulative statistics by up to ‘x’ minutes in the past. </param>
+        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
+        /// <param name="endDate"> Filter cumulative statistics by a end date. </param>
+        /// <param name="taskQueueSid"> Filter the real-time and cumulative statistics based on Workers tied to a particular
+        ///                    queue </param>
+        /// <param name="taskQueueName"> Filter the real-time and cumulative statistics based on Workers tied to a particular
+        ///                     queue </param>
         /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkersStatistics </returns> 
         public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(string pathWorkspaceSid, 

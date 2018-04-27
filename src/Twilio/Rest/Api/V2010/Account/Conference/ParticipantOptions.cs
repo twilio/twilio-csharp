@@ -73,15 +73,15 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public bool? Muted { get; set; }
         /// <summary>
-        /// The hold
+        /// Specifying true will hold the participant, while false will un-hold.
         /// </summary>
         public bool? Hold { get; set; }
         /// <summary>
-        /// The hold_url
+        /// The 'HoldUrl' attribute lets you specify a URL for music that plays when a participant is held.
         /// </summary>
         public Uri HoldUrl { get; set; }
         /// <summary>
-        /// The hold_method
+        /// Specify GET or POST, defaults to GET
         /// </summary>
         public Twilio.Http.HttpMethod HoldMethod { get; set; }
         /// <summary>
@@ -158,115 +158,115 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The from
+        /// number, client id
         /// </summary>
         public Types.PhoneNumber From { get; }
         /// <summary>
-        /// The to
+        /// number, client id, sip address
         /// </summary>
         public Types.PhoneNumber To { get; }
         /// <summary>
-        /// The status_callback
+        /// absolute url
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The status_callback_method
+        /// GET, POST
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// The status_callback_event
+        /// initiated, ringing, answered, completed
         /// </summary>
         public List<string> StatusCallbackEvent { get; set; }
         /// <summary>
-        /// The timeout
+        /// 5-600
         /// </summary>
         public int? Timeout { get; set; }
         /// <summary>
-        /// The record
+        /// true, false
         /// </summary>
         public bool? Record { get; set; }
         /// <summary>
-        /// The muted
+        /// true, false
         /// </summary>
         public bool? Muted { get; set; }
         /// <summary>
-        /// The beep
+        /// true, false, onEnter, onExit
         /// </summary>
         public string Beep { get; set; }
         /// <summary>
-        /// The start_conference_on_enter
+        /// true, false
         /// </summary>
         public bool? StartConferenceOnEnter { get; set; }
         /// <summary>
-        /// The end_conference_on_exit
+        /// true, false
         /// </summary>
         public bool? EndConferenceOnExit { get; set; }
         /// <summary>
-        /// The wait_url
+        /// absolute url
         /// </summary>
         public Uri WaitUrl { get; set; }
         /// <summary>
-        /// The wait_method
+        /// GET, POST
         /// </summary>
         public Twilio.Http.HttpMethod WaitMethod { get; set; }
         /// <summary>
-        /// The early_media
+        /// true, false
         /// </summary>
         public bool? EarlyMedia { get; set; }
         /// <summary>
-        /// The max_participants
+        /// 2-10
         /// </summary>
         public int? MaxParticipants { get; set; }
         /// <summary>
-        /// The conference_record
+        /// true, false, record-from-start, do-not-record
         /// </summary>
         public string ConferenceRecord { get; set; }
         /// <summary>
-        /// The conference_trim
+        /// trim-silence or do-not-trim
         /// </summary>
         public string ConferenceTrim { get; set; }
         /// <summary>
-        /// The conference_status_callback
+        /// absolute url
         /// </summary>
         public Uri ConferenceStatusCallback { get; set; }
         /// <summary>
-        /// The conference_status_callback_method
+        /// GET, POST
         /// </summary>
         public Twilio.Http.HttpMethod ConferenceStatusCallbackMethod { get; set; }
         /// <summary>
-        /// The conference_status_callback_event
+        /// start end join leave mute hold speaker
         /// </summary>
         public List<string> ConferenceStatusCallbackEvent { get; set; }
         /// <summary>
-        /// The recording_channels
+        /// mono, dual
         /// </summary>
         public string RecordingChannels { get; set; }
         /// <summary>
-        /// The recording_status_callback
+        /// absolute url
         /// </summary>
         public Uri RecordingStatusCallback { get; set; }
         /// <summary>
-        /// The recording_status_callback_method
+        /// GET, POST
         /// </summary>
         public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
         /// <summary>
-        /// The sip_auth_username
+        /// sip username
         /// </summary>
         public string SipAuthUsername { get; set; }
         /// <summary>
-        /// The sip_auth_password
+        /// sip password
         /// </summary>
         public string SipAuthPassword { get; set; }
         /// <summary>
-        /// The region
+        /// us1, ie1, de1, sg1, br1, au1, jp1
         /// </summary>
         public string Region { get; set; }
         /// <summary>
-        /// The conference_recording_status_callback
+        /// absolute url
         /// </summary>
         public Uri ConferenceRecordingStatusCallback { get; set; }
         /// <summary>
-        /// The conference_recording_status_callback_method
+        /// GET, POST
         /// </summary>
         public Twilio.Http.HttpMethod ConferenceRecordingStatusCallbackMethod { get; set; }
         /// <summary>
@@ -282,8 +282,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new CreateParticipantOptions
         /// </summary>
         /// <param name="pathConferenceSid"> The conference_sid </param>
-        /// <param name="from"> The from </param>
-        /// <param name="to"> The to </param>
+        /// <param name="from"> number, client id </param>
+        /// <param name="to"> number, client id, sip address </param>
         public CreateParticipantOptions(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
         {
             PathConferenceSid = pathConferenceSid;
@@ -512,7 +512,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public bool? Muted { get; set; }
         /// <summary>
-        /// The hold
+        /// Only show participants that are held or unheld.
         /// </summary>
         public bool? Hold { get; set; }
 

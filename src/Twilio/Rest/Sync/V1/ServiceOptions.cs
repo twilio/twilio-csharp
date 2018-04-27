@@ -81,19 +81,19 @@ namespace Twilio.Rest.Sync.V1
     public class CreateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// The friendly_name
+        /// Human-readable name for this service instance
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The webhook_url
+        /// A URL that will receive event updates when objects are manipulated.
         /// </summary>
         public Uri WebhookUrl { get; set; }
         /// <summary>
-        /// The reachability_webhooks_enabled
+        /// true or false - controls whether this instance fires webhooks when client endpoints connect to Sync
         /// </summary>
         public bool? ReachabilityWebhooksEnabled { get; set; }
         /// <summary>
-        /// The acl_enabled
+        /// true or false - determines whether token identities must be granted access to Sync objects via the Permissions API in this Service.
         /// </summary>
         public bool? AclEnabled { get; set; }
 
@@ -161,19 +161,19 @@ namespace Twilio.Rest.Sync.V1
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The webhook_url
+        /// A URL that will receive event updates when objects are manipulated.
         /// </summary>
         public Uri WebhookUrl { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// Human-readable name for this service instance
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The reachability_webhooks_enabled
+        /// True or false - controls whether this instance fires webhooks when client endpoints connect to Sync
         /// </summary>
         public bool? ReachabilityWebhooksEnabled { get; set; }
         /// <summary>
-        /// The acl_enabled
+        /// true or false - determines whether token identities must be granted access to Sync objects via the Permissions API in this Service.
         /// </summary>
         public bool? AclEnabled { get; set; }
 

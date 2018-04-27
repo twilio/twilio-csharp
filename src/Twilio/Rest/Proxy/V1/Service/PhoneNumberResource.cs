@@ -111,7 +111,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// Delete a specific Phone Number.
+        /// Delete a specific Phone Number from the Service.
         /// </summary>
         /// <param name="options"> Delete PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Delete a specific Phone Number.
+        /// Delete a specific Phone Number from the Service.
         /// </summary>
         /// <param name="options"> Delete PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         #endif
 
         /// <summary>
-        /// Delete a specific Phone Number.
+        /// Delete a specific Phone Number from the Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Delete a specific Phone Number.
+        /// Delete a specific Phone Number from the Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
@@ -412,7 +412,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The date this Phone Number was created
+        /// The date this Phone Number was added to the service
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }

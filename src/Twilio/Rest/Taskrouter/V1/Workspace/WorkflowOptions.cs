@@ -60,23 +60,23 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A string representing a human readable name for this Workflow.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The assignment_callback_url
+        /// A valid URL for the application that will process task assignment events.
         /// </summary>
         public Uri AssignmentCallbackUrl { get; set; }
         /// <summary>
-        /// The fallback_assignment_callback_url
+        /// If the request to the AssignmentCallbackUrl fails, the assignment callback will be made to this URL.
         /// </summary>
         public Uri FallbackAssignmentCallbackUrl { get; set; }
         /// <summary>
-        /// The configuration
+        /// JSON document configuring the rules for this Workflow.
         /// </summary>
         public string Configuration { get; set; }
         /// <summary>
-        /// The task_reservation_timeout
+        /// An integer value controlling how long in seconds TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker.
         /// </summary>
         public int? TaskReservationTimeout { get; set; }
 
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// Human readable description of this Workflow
         /// </summary>
         public string FriendlyName { get; set; }
 
@@ -214,23 +214,23 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A string representing a human readable name for this Workflow.
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// The configuration
+        /// JSON document configuring the rules for this Workflow.
         /// </summary>
         public string Configuration { get; }
         /// <summary>
-        /// The assignment_callback_url
+        /// A valid URL for the application that will process task assignment events.
         /// </summary>
         public Uri AssignmentCallbackUrl { get; set; }
         /// <summary>
-        /// The fallback_assignment_callback_url
+        /// If the request to the AssignmentCallbackUrl fails, the assignment callback will be made to this URL.
         /// </summary>
         public Uri FallbackAssignmentCallbackUrl { get; set; }
         /// <summary>
-        /// The task_reservation_timeout
+        /// An integer value controlling how long in seconds TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker.
         /// </summary>
         public int? TaskReservationTimeout { get; set; }
 
@@ -238,8 +238,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new CreateWorkflowOptions
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="configuration"> The configuration </param>
+        /// <param name="friendlyName"> A string representing a human readable name for this Workflow. </param>
+        /// <param name="configuration"> JSON document configuring the rules for this Workflow. </param>
         public CreateWorkflowOptions(string pathWorkspaceSid, string friendlyName, string configuration)
         {
             PathWorkspaceSid = pathWorkspaceSid;

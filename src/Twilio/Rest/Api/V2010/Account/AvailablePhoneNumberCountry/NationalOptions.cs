@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
     public class ReadNationalOptions : ReadOptions<NationalResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The 34 character string that uniquely identifies your account.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>

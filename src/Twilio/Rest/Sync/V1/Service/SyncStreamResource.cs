@@ -65,7 +65,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch a specific Stream.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
         /// <param name="pathSid"> Stream SID or unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncStream </returns> 
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch a specific Stream.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
         /// <param name="pathSid"> Stream SID or unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns> 
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Delete a specific Stream.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
         /// <param name="pathSid"> Stream SID or unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncStream </returns> 
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Delete a specific Stream.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
         /// <param name="pathSid"> Stream SID or unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns> 
@@ -361,7 +361,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Retrieve a list of all Streams in a Service Instance.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -379,7 +379,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Retrieve a list of all Streams in a Service Instance.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>

@@ -76,7 +76,7 @@ namespace Twilio.Rest.Proxy.V1
         /// </summary>
         public string UniqueName { get; }
         /// <summary>
-        /// Default TTL for a Session, in seconds.
+        /// Default TTL for Sessions in Service, in seconds.
         /// </summary>
         public int? DefaultTtl { get; set; }
         /// <summary>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Proxy.V1
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// Whether to find proxy numbers in the same areacode.
+        /// Whether to limit proxy numbers in the same areacode.
         /// </summary>
         public ServiceResource.GeoMatchLevelEnum GeoMatchLevel { get; set; }
         /// <summary>
@@ -201,7 +201,7 @@ namespace Twilio.Rest.Proxy.V1
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// Default TTL for a Session, in seconds.
+        /// Default TTL for Sessions in Service, in seconds.
         /// </summary>
         public int? DefaultTtl { get; set; }
         /// <summary>

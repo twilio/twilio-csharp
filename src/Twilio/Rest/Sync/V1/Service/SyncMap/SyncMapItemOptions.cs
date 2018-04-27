@@ -121,7 +121,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// </summary>
         public object Data { get; }
         /// <summary>
-        /// The ttl
+        /// Time-to-live of this Map in seconds, defaults to no expiration.
         /// </summary>
         public int? Ttl { get; set; }
 
@@ -254,11 +254,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// </summary>
         public string PathKey { get; }
         /// <summary>
-        /// The data
+        /// Contains an arbitrary JSON object to be stored in this Map Item.
         /// </summary>
         public object Data { get; set; }
         /// <summary>
-        /// The ttl
+        /// New time-to-live of this Map in seconds.
         /// </summary>
         public int? Ttl { get; set; }
 

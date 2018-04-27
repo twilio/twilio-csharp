@@ -79,12 +79,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
+        /// <param name="startDate"> Only include usage that has occurred on or after this date. </param>
+        /// <param name="endDate"> Only include usage that has occurred on or before this date. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="includeSubaccounts"> The include_subaccounts </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <param name="includeSubaccounts"> true to include feedback entries for the master account and all subaccounts.
+        ///                          </param>
+        /// <param name="statusCallback"> The URL that Twilio will request when the Feedback Summary is completed. </param>
+        /// <param name="statusCallbackMethod"> The HTTP method Twilio will use to make requests to the StatusCallback URL.
+        ///                            </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FeedbackSummary </returns> 
         public static FeedbackSummaryResource Create(DateTime? startDate, 
@@ -103,12 +105,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
+        /// <param name="startDate"> Only include usage that has occurred on or after this date. </param>
+        /// <param name="endDate"> Only include usage that has occurred on or before this date. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="includeSubaccounts"> The include_subaccounts </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <param name="includeSubaccounts"> true to include feedback entries for the master account and all subaccounts.
+        ///                          </param>
+        /// <param name="statusCallback"> The URL that Twilio will request when the Feedback Summary is completed. </param>
+        /// <param name="statusCallbackMethod"> The HTTP method Twilio will use to make requests to the StatusCallback URL.
+        ///                            </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<FeedbackSummaryResource> CreateAsync(DateTime? startDate, 

@@ -206,9 +206,9 @@ namespace Twilio.Rest.Sync.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="data"> The data </param>
-        /// <param name="ttl"> The ttl </param>
+        /// <param name="uniqueName"> Human-readable name for this document </param>
+        /// <param name="data"> JSON data to be stored in this document </param>
+        /// <param name="ttl"> Time-to-live of this Document in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns> 
         public static DocumentResource Create(string pathServiceSid, 
@@ -226,9 +226,9 @@ namespace Twilio.Rest.Sync.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="data"> The data </param>
-        /// <param name="ttl"> The ttl </param>
+        /// <param name="uniqueName"> Human-readable name for this document </param>
+        /// <param name="data"> JSON data to be stored in this document </param>
+        /// <param name="ttl"> Time-to-live of this Document in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
         public static async System.Threading.Tasks.Task<DocumentResource> CreateAsync(string pathServiceSid, 
@@ -426,8 +426,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="data"> The data </param>
-        /// <param name="ttl"> The ttl </param>
+        /// <param name="data"> Contains an arbitrary JSON object to be stored in this Document. </param>
+        /// <param name="ttl"> New time-to-live of this Document in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns> 
         public static DocumentResource Update(string pathServiceSid, 
@@ -446,8 +446,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="data"> The data </param>
-        /// <param name="ttl"> The ttl </param>
+        /// <param name="data"> Contains an arbitrary JSON object to be stored in this Document. </param>
+        /// <param name="ttl"> New time-to-live of this Document in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns> 
         public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(string pathServiceSid, 
@@ -480,62 +480,62 @@ namespace Twilio.Rest.Sync.V1.Service
         }
 
         /// <summary>
-        /// The sid
+        /// The unique 34-character SID identifier of the Document.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique_name
+        /// The unique and addressable name of this Document.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique SID identifier of the Twilio Account.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The unique SID identifier of the Service Instance that hosts this Document.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL for this Document.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// A dictionary of URL links to nested resources of this Document.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// The revision
+        /// Contains the current revision of this Document, represented by a string identifier.
         /// </summary>
         [JsonProperty("revision")]
         public string Revision { get; private set; }
         /// <summary>
-        /// The data
+        /// Contains arbitrary user-defined, schema-less data that this Document stores, represented by a JSON object, up to 16KB.
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }
         /// <summary>
-        /// The date_expires
+        /// Contains the date this Document expires and gets deleted automatically.
         /// </summary>
         [JsonProperty("date_expires")]
         public DateTime? DateExpires { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this Document was created, given in UTC ISO 8601 format.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// Specifies the date this Document was last updated, given in UTC ISO 8601 format.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The created_by
+        /// The identity of the Document creator.
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }

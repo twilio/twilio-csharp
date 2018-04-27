@@ -120,20 +120,24 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="fallbackUrl"> Fallback URL in case of error </param>
         /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
         /// <param name="statusCallback"> Status Callback URL </param>
-        /// <param name="statusCallbackEvent"> The status_callback_event </param>
+        /// <param name="statusCallbackEvent"> The call progress events that Twilio will send webhooks on. </param>
         /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
         /// <param name="sendDigits"> Digits to send </param>
         /// <param name="ifMachine"> Action to take if a machine has answered the call </param>
         /// <param name="timeout"> Number of seconds to wait for an answer </param>
         /// <param name="record"> Whether or not to record the Call </param>
-        /// <param name="recordingChannels"> The recording_channels </param>
-        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
-        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
+        /// <param name="recordingChannels"> mono or dualSet this parameter to specify the number of channels in the final
+        ///                         recording. </param>
+        /// <param name="recordingStatusCallback"> A URL that Twilio will send a webhook request to when the recording is
+        ///                               available for access. </param>
+        /// <param name="recordingStatusCallbackMethod"> The HTTP method Twilio should use when requesting the above URL.
+        ///                                     </param>
         /// <param name="sipAuthUsername"> The sip_auth_username </param>
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
         /// <param name="machineDetectionTimeout"> Number of miliseconds to wait for machine detection </param>
-        /// <param name="recordingStatusCallbackEvent"> The recording_status_callback_event </param>
+        /// <param name="recordingStatusCallbackEvent"> The recording status changes that Twilio will send webhooks on to the
+        ///                                    URL specified in RecordingStatusCallback. </param>
         /// <param name="trim"> Set this parameter to control trimming of silence on the recording. </param>
         /// <param name="callerId"> The phone number, SIP address or Client identifier that made this Call. Phone numbers are
         ///                in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`. </param>
@@ -183,20 +187,24 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="fallbackUrl"> Fallback URL in case of error </param>
         /// <param name="fallbackMethod"> HTTP Method to use with FallbackUrl </param>
         /// <param name="statusCallback"> Status Callback URL </param>
-        /// <param name="statusCallbackEvent"> The status_callback_event </param>
+        /// <param name="statusCallbackEvent"> The call progress events that Twilio will send webhooks on. </param>
         /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
         /// <param name="sendDigits"> Digits to send </param>
         /// <param name="ifMachine"> Action to take if a machine has answered the call </param>
         /// <param name="timeout"> Number of seconds to wait for an answer </param>
         /// <param name="record"> Whether or not to record the Call </param>
-        /// <param name="recordingChannels"> The recording_channels </param>
-        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
-        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
+        /// <param name="recordingChannels"> mono or dualSet this parameter to specify the number of channels in the final
+        ///                         recording. </param>
+        /// <param name="recordingStatusCallback"> A URL that Twilio will send a webhook request to when the recording is
+        ///                               available for access. </param>
+        /// <param name="recordingStatusCallbackMethod"> The HTTP method Twilio should use when requesting the above URL.
+        ///                                     </param>
         /// <param name="sipAuthUsername"> The sip_auth_username </param>
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
         /// <param name="machineDetectionTimeout"> Number of miliseconds to wait for machine detection </param>
-        /// <param name="recordingStatusCallbackEvent"> The recording_status_callback_event </param>
+        /// <param name="recordingStatusCallbackEvent"> The recording status changes that Twilio will send webhooks on to the
+        ///                                    URL specified in RecordingStatusCallback. </param>
         /// <param name="trim"> Set this parameter to control trimming of silence on the recording. </param>
         /// <param name="callerId"> The phone number, SIP address or Client identifier that made this Call. Phone numbers are
         ///                in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`. </param>
@@ -246,7 +254,8 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
+        /// Delete a call record from your account. Once the record is deleted, it will no longer appear in the API and Account
+        /// Portal logs.
         /// </summary>
         /// <param name="options"> Delete Call parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -260,7 +269,8 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
+        /// Delete a call record from your account. Once the record is deleted, it will no longer appear in the API and Account
+        /// Portal logs.
         /// </summary>
         /// <param name="options"> Delete Call parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -275,7 +285,8 @@ namespace Twilio.Rest.Api.V2010.Account
         #endif
 
         /// <summary>
-        /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
+        /// Delete a call record from your account. Once the record is deleted, it will no longer appear in the API and Account
+        /// Portal logs.
         /// </summary>
         /// <param name="pathSid"> Call Sid that uniquely identifies the Call to delete </param>
         /// <param name="pathAccountSid"> The account_sid </param>
@@ -289,7 +300,8 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
+        /// Delete a call record from your account. Once the record is deleted, it will no longer appear in the API and Account
+        /// Portal logs.
         /// </summary>
         /// <param name="pathSid"> Call Sid that uniquely identifies the Call to delete </param>
         /// <param name="pathAccountSid"> The account_sid </param>
@@ -712,7 +724,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("direction")]
         public string Direction { get; private set; }
         /// <summary>
-        /// The duration
+        /// The length of the call in seconds.
         /// </summary>
         [JsonProperty("duration")]
         public string Duration { get; private set; }
@@ -772,7 +784,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
         /// <summary>
-        /// The status
+        /// A string representing the status of the call.
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]

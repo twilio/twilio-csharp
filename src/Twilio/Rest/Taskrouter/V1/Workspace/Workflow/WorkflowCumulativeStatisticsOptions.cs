@@ -25,23 +25,23 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// </summary>
         public string PathWorkflowSid { get; }
         /// <summary>
-        /// The end_date
+        /// Filter cumulative statistics by an end date.
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// The minutes
+        /// Filter cumulative statistics by up to ‘x’ minutes in the past.
         /// </summary>
         public int? Minutes { get; set; }
         /// <summary>
-        /// The start_date
+        /// Filter cumulative statistics by a start date.
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// The task_channel
+        /// Filter real-time and cumulative statistics by TaskChannel.
         /// </summary>
         public string TaskChannel { get; set; }
         /// <summary>
-        /// The split_by_wait_time
+        /// A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds.
         /// </summary>
         public string SplitByWaitTime { get; set; }
 

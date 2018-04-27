@@ -81,7 +81,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         }
 
         /// <summary>
-        /// Fetch a specific Interaction.
+        /// Retrieve a list of Interactions for a given Session
         /// </summary>
         /// <param name="options"> Fetch Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
         #if !NET35
         /// <summary>
-        /// Fetch a specific Interaction.
+        /// Retrieve a list of Interactions for a given Session
         /// </summary>
         /// <param name="options"> Fetch Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         #endif
 
         /// <summary>
-        /// Fetch a specific Interaction.
+        /// Retrieve a list of Interactions for a given Session
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
         #if !NET35
         /// <summary>
-        /// Fetch a specific Interaction.
+        /// Retrieve a list of Interactions for a given Session
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
@@ -194,8 +194,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="inboundParticipantStatus"> The Inbound Participant Status of this Interaction </param>
-        /// <param name="outboundParticipantStatus"> The Outbound Participant Status of this Interaction </param>
+        /// <param name="inboundParticipantStatus"> The inbound_participant_status </param>
+        /// <param name="outboundParticipantStatus"> The outbound_participant_status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -218,8 +218,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="inboundParticipantStatus"> The Inbound Participant Status of this Interaction </param>
-        /// <param name="outboundParticipantStatus"> The Outbound Participant Status of this Interaction </param>
+        /// <param name="inboundParticipantStatus"> The inbound_participant_status </param>
+        /// <param name="outboundParticipantStatus"> The outbound_participant_status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -443,7 +443,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         [JsonProperty("inbound_resource_type")]
         public string InboundResourceType { get; private set; }
         /// <summary>
-        /// The URL of the Twilio resource.
+        /// The URL of the Twilio inbound resource.
         /// </summary>
         [JsonProperty("inbound_resource_url")]
         public Uri InboundResourceUrl { get; private set; }
@@ -469,7 +469,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         [JsonProperty("outbound_resource_type")]
         public string OutboundResourceType { get; private set; }
         /// <summary>
-        /// The URL of the Twilio resource.
+        /// The URL of the Twilio outbound resource.
         /// </summary>
         [JsonProperty("outbound_resource_url")]
         public Uri OutboundResourceUrl { get; private set; }

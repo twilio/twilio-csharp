@@ -65,10 +65,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="minutes"> Filter cumulative statistics by up to ‘x’ minutes in the past. </param>
+        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
+        /// <param name="endDate"> Filter cumulative statistics by a end date. </param>
+        /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerStatistics </returns> 
         public static WorkerStatisticsResource Fetch(string pathWorkspaceSid, 
@@ -89,10 +89,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="minutes"> Filter cumulative statistics by up to ‘x’ minutes in the past. </param>
+        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
+        /// <param name="endDate"> Filter cumulative statistics by a end date. </param>
+        /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerStatistics </returns> 
         public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(string pathWorkspaceSid, 

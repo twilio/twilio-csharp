@@ -23,7 +23,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The phone_number_sid
+        /// Phone Number SID for the Phone Number being added to the Service.
         /// </summary>
         public string PhoneNumberSid { get; }
 
@@ -31,7 +31,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// Construct a new CreatePhoneNumberOptions
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="phoneNumberSid"> The phone_number_sid </param>
+        /// <param name="phoneNumberSid"> Phone Number SID for the Phone Number being added to the Service. </param>
         public CreatePhoneNumberOptions(string pathServiceSid, string phoneNumberSid)
         {
             PathServiceSid = pathServiceSid;

@@ -21,19 +21,19 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The beta
+        /// Include phone numbers new to the Twilio platform.
         /// </summary>
         public bool? Beta { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// Only show the incoming phone number resources with friendly names that exactly match this name.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The phone_number
+        /// Only show the incoming phone number resources that match this pattern.
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; set; }
         /// <summary>
-        /// The origin
+        /// Include phone numbers based on the origin, by default, phone numbers of all origin are included.
         /// </summary>
         public string Origin { get; set; }
 
@@ -82,67 +82,67 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The phone_number
+        /// The phone number you want to purchase.
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; }
         /// <summary>
-        /// The api_version
+        /// The Twilio REST API version to use for incoming calls made to this number.
         /// </summary>
         public string ApiVersion { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable description of the new incoming phone number.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The sms_application_sid
+        /// The 34 character sid of the application Twilio should use to handle SMSs sent to the new number.
         /// </summary>
         public string SmsApplicationSid { get; set; }
         /// <summary>
-        /// The sms_fallback_method
+        /// The HTTP method that should be used to request the SmsFallbackUrl.
         /// </summary>
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
         /// <summary>
-        /// The sms_fallback_url
+        /// A URL that Twilio will request if an error occurs requesting or executing the TwiML defined by SmsUrl.
         /// </summary>
         public Uri SmsFallbackUrl { get; set; }
         /// <summary>
-        /// The sms_method
+        /// The HTTP method that should be used to request the SmsUrl.
         /// </summary>
         public Twilio.Http.HttpMethod SmsMethod { get; set; }
         /// <summary>
-        /// The sms_url
+        /// The URL that Twilio should request when somebody sends an SMS to the phone number.
         /// </summary>
         public Uri SmsUrl { get; set; }
         /// <summary>
-        /// The status_callback
+        /// The URL that Twilio will request to pass status parameters to your application.
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The status_callback_method
+        /// The HTTP method Twilio will use to make requests to the StatusCallback URL.
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// The voice_application_sid
+        /// The 34 character sid of the application Twilio should use to handle phone calls to the new number.
         /// </summary>
         public string VoiceApplicationSid { get; set; }
         /// <summary>
-        /// The voice_caller_id_lookup
+        /// Do a lookup of a caller's name from the CNAM database and post it to your app.
         /// </summary>
         public bool? VoiceCallerIdLookup { get; set; }
         /// <summary>
-        /// The voice_fallback_method
+        /// The HTTP method that should be used to request the VoiceFallbackUrl.
         /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
         /// <summary>
-        /// The voice_fallback_url
+        /// A URL that Twilio will request if an error occurs requesting or executing the TwiML at Url.
         /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
         /// <summary>
-        /// The voice_method
+        /// The HTTP method that should be used to request the VoiceUrl.
         /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         /// <summary>
-        /// The voice_url
+        /// The URL that Twilio should request when somebody dials the new phone number.
         /// </summary>
         public Uri VoiceUrl { get; set; }
         /// <summary>
@@ -150,14 +150,14 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         public string IdentitySid { get; set; }
         /// <summary>
-        /// The address_sid
+        /// The 34 character sid of the address Twilio should associate with the number.
         /// </summary>
         public string AddressSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateTollFreeOptions
         /// </summary>
-        /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="phoneNumber"> The phone number you want to purchase. </param>
         public CreateTollFreeOptions(Types.PhoneNumber phoneNumber)
         {
             PhoneNumber = phoneNumber;

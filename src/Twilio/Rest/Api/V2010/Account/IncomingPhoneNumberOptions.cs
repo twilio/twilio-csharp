@@ -330,7 +330,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; set; }
         /// <summary>
-        /// The origin
+        /// Include phone numbers based on the origin, by default, phone numbers of all origin are included.
         /// </summary>
         public string Origin { get; set; }
 

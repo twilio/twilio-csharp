@@ -244,7 +244,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="data"> The data </param>
-        /// <param name="ttl"> The ttl </param>
+        /// <param name="ttl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListItem </returns> 
         public static SyncListItemResource Create(string pathServiceSid, 
@@ -264,7 +264,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="data"> The data </param>
-        /// <param name="ttl"> The ttl </param>
+        /// <param name="ttl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(string pathServiceSid, 
@@ -328,8 +328,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="order"> The order </param>
-        /// <param name="from"> The from </param>
+        /// <param name="order"> A string; asc or desc </param>
+        /// <param name="from"> An integer representing Item index offset. </param>
         /// <param name="bounds"> The bounds </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -354,8 +354,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="order"> The order </param>
-        /// <param name="from"> The from </param>
+        /// <param name="order"> A string; asc or desc </param>
+        /// <param name="from"> An integer representing Item index offset. </param>
         /// <param name="bounds"> The bounds </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -537,57 +537,57 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         }
 
         /// <summary>
-        /// The index
+        /// Contains the numeric index of this List Item.
         /// </summary>
         [JsonProperty("index")]
         public int? Index { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique SID identifier of the Twilio Account.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The unique SID identifier of the Service Instance that hosts this List object.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The list_sid
+        /// The unique 34-character SID identifier of the List containing this Item.
         /// </summary>
         [JsonProperty("list_sid")]
         public string ListSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL for this item.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The revision
+        /// Contains the current revision of this item, represented by a string identifier.
         /// </summary>
         [JsonProperty("revision")]
         public string Revision { get; private set; }
         /// <summary>
-        /// The data
+        /// Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a JSON object, up to 16KB.
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }
         /// <summary>
-        /// The date_expires
+        /// Contains the date this item expires and gets deleted automatically.
         /// </summary>
         [JsonProperty("date_expires")]
         public DateTime? DateExpires { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this item was created, given in UTC ISO 8601 format.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// Specifies the date this item was last updated, given in UTC ISO 8601 format.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The created_by
+        /// The identity of this item's creator.
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }

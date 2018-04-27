@@ -21,34 +21,34 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The phone_number
+        /// The phone number to verify.
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable description for the new caller ID with maximum length 64 characters.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The call_delay
+        /// The number of seconds, between 0 and 60, to delay before initiating the verification call.
         /// </summary>
         public int? CallDelay { get; set; }
         /// <summary>
-        /// The extension
+        /// Digits to dial after connecting the verification call.
         /// </summary>
         public string Extension { get; set; }
         /// <summary>
-        /// The status_callback
+        /// A URL that Twilio will request when the verification call ends to notify your app if the verification process was successful or not.
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The status_callback_method
+        /// The HTTP method Twilio should use when requesting the above URL.
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
 
         /// <summary>
         /// Construct a new CreateValidationRequestOptions
         /// </summary>
-        /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="phoneNumber"> The phone number to verify. </param>
         public CreateValidationRequestOptions(Types.PhoneNumber phoneNumber)
         {
             PhoneNumber = phoneNumber;

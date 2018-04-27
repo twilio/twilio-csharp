@@ -66,7 +66,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Fetch a specific Sync Document Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Fetch a specific Sync Document Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Delete a specific Sync Document Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Delete a specific Sync Document Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Document.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Document.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>

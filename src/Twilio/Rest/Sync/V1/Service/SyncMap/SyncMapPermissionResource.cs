@@ -65,7 +65,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Fetch a specific Sync Map Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Fetch a specific Sync Map Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Delete a specific Sync Map Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Delete a specific Sync Map Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -222,7 +222,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Map.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -242,7 +242,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Map.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>

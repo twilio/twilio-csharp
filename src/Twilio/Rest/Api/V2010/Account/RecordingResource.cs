@@ -451,7 +451,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// The encryption_details
+        /// Details for how to decrypt the recording.
         /// </summary>
         [JsonProperty("encryption_details")]
         public object EncryptionDetails { get; private set; }

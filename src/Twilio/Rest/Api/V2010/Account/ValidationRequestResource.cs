@@ -64,13 +64,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="phoneNumber"> The phone number to verify. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="callDelay"> The call_delay </param>
-        /// <param name="extension"> The extension </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <param name="friendlyName"> A human readable description for the new caller ID with maximum length 64 characters.
+        ///                    </param>
+        /// <param name="callDelay"> The number of seconds, between 0 and 60, to delay before initiating the verification call.
+        ///                 </param>
+        /// <param name="extension"> Digits to dial after connecting the verification call. </param>
+        /// <param name="statusCallback"> A URL that Twilio will request when the verification call ends to notify your app if
+        ///                      the verification process was successful or not. </param>
+        /// <param name="statusCallbackMethod"> The HTTP method Twilio should use when requesting the above URL. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ValidationRequest </returns> 
         public static ValidationRequestResource Create(Types.PhoneNumber phoneNumber, 
@@ -90,13 +93,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="phoneNumber"> The phone number to verify. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="callDelay"> The call_delay </param>
-        /// <param name="extension"> The extension </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
+        /// <param name="friendlyName"> A human readable description for the new caller ID with maximum length 64 characters.
+        ///                    </param>
+        /// <param name="callDelay"> The number of seconds, between 0 and 60, to delay before initiating the verification call.
+        ///                 </param>
+        /// <param name="extension"> Digits to dial after connecting the verification call. </param>
+        /// <param name="statusCallback"> A URL that Twilio will request when the verification call ends to notify your app if
+        ///                      the verification process was successful or not. </param>
+        /// <param name="statusCallbackMethod"> The HTTP method Twilio should use when requesting the above URL. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ValidationRequest </returns> 
         public static async System.Threading.Tasks.Task<ValidationRequestResource> CreateAsync(Types.PhoneNumber phoneNumber, 
@@ -132,28 +138,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account responsible for this Caller Id.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The phone_number
+        /// The incoming phone number.
         /// </summary>
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable descriptive text for this resource, up to 64 characters long.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The validation_code
+        /// The 6 digit validation code that must be entered via the phone to validate this phone number for Caller ID.
         /// </summary>
         [JsonProperty("validation_code")]
         public int? ValidationCode { get; private set; }
         /// <summary>
-        /// The call_sid
+        /// The unique id of the Call created for this validation attempt.
         /// </summary>
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }

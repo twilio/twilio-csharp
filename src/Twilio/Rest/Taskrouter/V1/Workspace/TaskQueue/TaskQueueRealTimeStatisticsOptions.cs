@@ -25,7 +25,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         public string PathTaskQueueSid { get; }
         /// <summary>
-        /// The task_channel
+        /// Filter real-time and cumulative statistics by TaskChannel.
         /// </summary>
         public string TaskChannel { get; set; }
 

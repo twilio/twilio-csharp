@@ -26,7 +26,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// </summary>
         public string PathTaskSid { get; }
         /// <summary>
-        /// The reservation_status
+        /// Returns the list of reservations for a task with a specified ReservationStatus
         /// </summary>
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
 
@@ -120,87 +120,87 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The reservation_status
+        /// Yes
         /// </summary>
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
         /// <summary>
-        /// The worker_activity_sid
+        /// No
         /// </summary>
         public string WorkerActivitySid { get; set; }
         /// <summary>
-        /// The instruction
+        /// Yes
         /// </summary>
         public string Instruction { get; set; }
         /// <summary>
-        /// The dequeue_post_work_activity_sid
+        /// No
         /// </summary>
         public string DequeuePostWorkActivitySid { get; set; }
         /// <summary>
-        /// The dequeue_from
+        /// Yes
         /// </summary>
         public string DequeueFrom { get; set; }
         /// <summary>
-        /// The dequeue_record
+        /// No
         /// </summary>
         public string DequeueRecord { get; set; }
         /// <summary>
-        /// The dequeue_timeout
+        /// No
         /// </summary>
         public int? DequeueTimeout { get; set; }
         /// <summary>
-        /// The dequeue_to
+        /// No
         /// </summary>
         public string DequeueTo { get; set; }
         /// <summary>
-        /// The dequeue_status_callback_url
+        /// No
         /// </summary>
         public Uri DequeueStatusCallbackUrl { get; set; }
         /// <summary>
-        /// The call_from
+        /// Yes
         /// </summary>
         public string CallFrom { get; set; }
         /// <summary>
-        /// The call_record
+        /// No
         /// </summary>
         public string CallRecord { get; set; }
         /// <summary>
-        /// The call_timeout
+        /// No
         /// </summary>
         public int? CallTimeout { get; set; }
         /// <summary>
-        /// The call_to
+        /// No
         /// </summary>
         public string CallTo { get; set; }
         /// <summary>
-        /// The call_url
+        /// Yes
         /// </summary>
         public Uri CallUrl { get; set; }
         /// <summary>
-        /// The call_status_callback_url
+        /// No
         /// </summary>
         public Uri CallStatusCallbackUrl { get; set; }
         /// <summary>
-        /// The call_accept
+        /// No
         /// </summary>
         public bool? CallAccept { get; set; }
         /// <summary>
-        /// The redirect_call_sid
+        /// Yes
         /// </summary>
         public string RedirectCallSid { get; set; }
         /// <summary>
-        /// The redirect_accept
+        /// No
         /// </summary>
         public bool? RedirectAccept { get; set; }
         /// <summary>
-        /// The redirect_url
+        /// Yes
         /// </summary>
         public Uri RedirectUrl { get; set; }
         /// <summary>
-        /// The to
+        /// No
         /// </summary>
         public string To { get; set; }
         /// <summary>
-        /// The from
+        /// No
         /// </summary>
         public string From { get; set; }
         /// <summary>
@@ -216,7 +216,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// </summary>
         public List<ReservationResource.CallStatusEnum> StatusCallbackEvent { get; set; }
         /// <summary>
-        /// The timeout
+        /// No
         /// </summary>
         public int? Timeout { get; set; }
         /// <summary>
@@ -308,11 +308,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// </summary>
         public string SipAuthPassword { get; set; }
         /// <summary>
-        /// The dequeue_status_callback_event
+        /// No
         /// </summary>
         public List<string> DequeueStatusCallbackEvent { get; set; }
         /// <summary>
-        /// The post_work_activity_sid
+        /// No
         /// </summary>
         public string PostWorkActivitySid { get; set; }
 

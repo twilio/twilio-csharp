@@ -138,14 +138,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// read
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="eventType"> The event_type </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="reservationSid"> The reservation_sid </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
+        /// <param name="endDate"> Filter events by an end date. </param>
+        /// <param name="eventType"> Filter events by those of a certain event type </param>
+        /// <param name="minutes"> Filter events by up to ‘x’ minutes in the past. </param>
+        /// <param name="reservationSid"> Filter events by those pertaining to a particular reservation </param>
+        /// <param name="startDate"> Filter events by a start date. </param>
+        /// <param name="taskQueueSid"> Filter events by those pertaining to a particular queue </param>
+        /// <param name="taskSid"> Filter events by those pertaining to a particular task </param>
+        /// <param name="workerSid"> Filter events by those pertaining to a particular worker </param>
         /// <param name="workflowSid"> The workflow_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -174,14 +174,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// read
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="eventType"> The event_type </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="reservationSid"> The reservation_sid </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
-        /// <param name="taskSid"> The task_sid </param>
-        /// <param name="workerSid"> The worker_sid </param>
+        /// <param name="endDate"> Filter events by an end date. </param>
+        /// <param name="eventType"> Filter events by those of a certain event type </param>
+        /// <param name="minutes"> Filter events by up to ‘x’ minutes in the past. </param>
+        /// <param name="reservationSid"> Filter events by those pertaining to a particular reservation </param>
+        /// <param name="startDate"> Filter events by a start date. </param>
+        /// <param name="taskQueueSid"> Filter events by those pertaining to a particular queue </param>
+        /// <param name="taskSid"> Filter events by those pertaining to a particular task </param>
+        /// <param name="workerSid"> Filter events by those pertaining to a particular worker </param>
         /// <param name="workflowSid"> The workflow_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -284,7 +284,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
         /// <summary>
-        /// The account_sid
+        /// The account owning this event
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
@@ -304,32 +304,32 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("actor_url")]
         public Uri ActorUrl { get; private set; }
         /// <summary>
-        /// The description
+        /// A description of the event
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// The event_data
+        /// Data about this specific event.
         /// </summary>
         [JsonProperty("event_data")]
         public Dictionary<string, string> EventData { get; private set; }
         /// <summary>
-        /// The event_date
+        /// The time this event was sent
         /// </summary>
         [JsonProperty("event_date")]
         public DateTime? EventDate { get; private set; }
         /// <summary>
-        /// The event_type
+        /// An identifier for this event
         /// </summary>
         [JsonProperty("event_type")]
         public string EventType { get; private set; }
         /// <summary>
-        /// The resource_sid
+        /// The sid of the object this event is most relevant to
         /// </summary>
         [JsonProperty("resource_sid")]
         public string ResourceSid { get; private set; }
         /// <summary>
-        /// The resource_type
+        /// The type of object this event is most relevant to
         /// </summary>
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }

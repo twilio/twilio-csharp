@@ -21,31 +21,31 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The customer_name
+        /// Your name or business name, or that of your customer.
         /// </summary>
         public string CustomerName { get; }
         /// <summary>
-        /// The street
+        /// The number and street address where you or your customer is located.
         /// </summary>
         public string Street { get; }
         /// <summary>
-        /// The city
+        /// The city in which you or your customer is located.
         /// </summary>
         public string City { get; }
         /// <summary>
-        /// The region
+        /// The state or region in which you or your customer is located.
         /// </summary>
         public string Region { get; }
         /// <summary>
-        /// The postal_code
+        /// The postal code in which you or your customer is located.
         /// </summary>
         public string PostalCode { get; }
         /// <summary>
-        /// The iso_country
+        /// The ISO country code of your or your customer's address.
         /// </summary>
         public string IsoCountry { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable description of the new address.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
@@ -53,19 +53,19 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public bool? EmergencyEnabled { get; set; }
         /// <summary>
-        /// The auto_correct_address
+        /// If you don't set a value for this parameter, or if you set it to true, then the system will, if necessary, auto-correct the address you provide.
         /// </summary>
         public bool? AutoCorrectAddress { get; set; }
 
         /// <summary>
         /// Construct a new CreateAddressOptions
         /// </summary>
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="street"> The street </param>
-        /// <param name="city"> The city </param>
-        /// <param name="region"> The region </param>
-        /// <param name="postalCode"> The postal_code </param>
-        /// <param name="isoCountry"> The iso_country </param>
+        /// <param name="customerName"> Your name or business name, or that of your customer. </param>
+        /// <param name="street"> The number and street address where you or your customer is located. </param>
+        /// <param name="city"> The city in which you or your customer is located. </param>
+        /// <param name="region"> The state or region in which you or your customer is located. </param>
+        /// <param name="postalCode"> The postal code in which you or your customer is located. </param>
+        /// <param name="isoCountry"> The ISO country code of your or your customer's address. </param>
         public CreateAddressOptions(string customerName, 
                                     string street, 
                                     string city, 
@@ -216,27 +216,27 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable description of the address.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The customer_name
+        /// Your name or business name, or that of your customer.
         /// </summary>
         public string CustomerName { get; set; }
         /// <summary>
-        /// The street
+        /// The number and street address where you or your customer is located.
         /// </summary>
         public string Street { get; set; }
         /// <summary>
-        /// The city
+        /// The city in which you or your customer is located.
         /// </summary>
         public string City { get; set; }
         /// <summary>
-        /// The region
+        /// The state or region in which you or your customer is located.
         /// </summary>
         public string Region { get; set; }
         /// <summary>
-        /// The postal_code
+        /// The postal code in which you or your customer is located.
         /// </summary>
         public string PostalCode { get; set; }
         /// <summary>
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public bool? EmergencyEnabled { get; set; }
         /// <summary>
-        /// The auto_correct_address
+        /// If you don't set a value for this parameter, or if you set it to true, then the system will, if necessary, auto-correct the address you provide.
         /// </summary>
         public bool? AutoCorrectAddress { get; set; }
 
@@ -317,15 +317,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The customer_name
+        /// Only return the Address resources with customer names that exactly match this name.
         /// </summary>
         public string CustomerName { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// Only return the Address resources with friendly names that exactly match this name.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The iso_country
+        /// Only return the Address resources in this country.
         /// </summary>
         public string IsoCountry { get; set; }
 

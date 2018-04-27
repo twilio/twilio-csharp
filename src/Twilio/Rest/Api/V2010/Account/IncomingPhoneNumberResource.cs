@@ -418,7 +418,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="beta"> Include new phone numbers </param>
         /// <param name="friendlyName"> Filter by friendly name </param>
         /// <param name="phoneNumber"> Filter by incoming phone number </param>
-        /// <param name="origin"> The origin </param>
+        /// <param name="origin"> Include phone numbers based on the origin, by default, phone numbers of all origin are
+        ///              included. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -444,7 +445,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="beta"> Include new phone numbers </param>
         /// <param name="friendlyName"> Filter by friendly name </param>
         /// <param name="phoneNumber"> Filter by incoming phone number </param>
-        /// <param name="origin"> The origin </param>
+        /// <param name="origin"> Include phone numbers based on the origin, by default, phone numbers of all origin are
+        ///              included. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -757,7 +759,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
         /// <summary>
-        /// The origin
+        /// Twilio owned phone numbers are marked as twilio while hosted phone numbers are marked as hosted.
         /// </summary>
         [JsonProperty("origin")]
         public string Origin { get; private set; }

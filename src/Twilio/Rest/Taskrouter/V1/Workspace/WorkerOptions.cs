@@ -21,31 +21,31 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The activity_name
+        /// Filter by workers that are in a particular Activity by Friendly Name
         /// </summary>
         public string ActivityName { get; set; }
         /// <summary>
-        /// The activity_sid
+        /// Filter by workers that are in a particular Activity by SID
         /// </summary>
         public string ActivitySid { get; set; }
         /// <summary>
-        /// The available
+        /// Filter by workers that are available or unavailable.
         /// </summary>
         public string Available { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// Filter by a worker’s friendly name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The target_workers_expression
+        /// Filter by workers that would match an expression on a TaskQueue.
         /// </summary>
         public string TargetWorkersExpression { get; set; }
         /// <summary>
-        /// The task_queue_name
+        /// Filter by workers that are eligible for a TaskQueue by Friendly Name
         /// </summary>
         public string TaskQueueName { get; set; }
         /// <summary>
-        /// The task_queue_sid
+        /// Filter by workers that are eligible for a TaskQueue by SID
         /// </summary>
         public string TaskQueueSid { get; set; }
 
@@ -118,15 +118,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// String representing user-friendly name for the Worker.
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// The activity_sid
+        /// A valid Activity describing the worker's initial state.
         /// </summary>
         public string ActivitySid { get; set; }
         /// <summary>
-        /// The attributes
+        /// JSON object describing this worker.
         /// </summary>
         public string Attributes { get; set; }
 
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new CreateWorkerOptions
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> String representing user-friendly name for the Worker. </param>
         public CreateWorkerOptions(string pathWorkspaceSid, string friendlyName)
         {
             PathWorkspaceSid = pathWorkspaceSid;

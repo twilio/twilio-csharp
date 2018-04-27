@@ -60,7 +60,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable name for the Activity, such as 'on-call', 'break', 'email', etc.
         /// </summary>
         public string FriendlyName { get; set; }
 
@@ -135,11 +135,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// Filter by an Activity's friendly name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The available
+        /// Filter by activities that are available or unavailable.
         /// </summary>
         public string Available { get; set; }
 
@@ -187,11 +187,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable name for the Activity, such as 'On Call', 'Break', 'Email', etc.
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// The available
+        /// Boolean value indicating whether the worker should be eligible to receive a Task when they occupy this Activity.
         /// </summary>
         public bool? Available { get; set; }
 
@@ -199,7 +199,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Construct a new CreateActivityOptions
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> A human-readable name for the Activity, such as 'On Call', 'Break', 'Email', etc.
+        ///                    </param>
         public CreateActivityOptions(string pathWorkspaceSid, string friendlyName)
         {
             PathWorkspaceSid = pathWorkspaceSid;

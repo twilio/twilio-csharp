@@ -19,7 +19,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
     public class FetchDocumentPermissionOptions : IOptions<DocumentPermissionResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sync Service Instance SID or unique name.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Construct a new FetchDocumentPermissionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         public FetchDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity)
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
     public class DeleteDocumentPermissionOptions : IOptions<DocumentPermissionResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sync Service Instance SID or unique name.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Construct a new DeleteDocumentPermissionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         public DeleteDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid, string pathIdentity)
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
     public class ReadDocumentPermissionOptions : ReadOptions<DocumentPermissionResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sync Service Instance SID or unique name.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Construct a new ReadDocumentPermissionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         public ReadDocumentPermissionOptions(string pathServiceSid, string pathDocumentSid)
         {

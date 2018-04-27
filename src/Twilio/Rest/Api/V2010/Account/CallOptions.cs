@@ -55,7 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The status_callback_event
+        /// The call progress events that Twilio will send webhooks on.
         /// </summary>
         public List<string> StatusCallbackEvent { get; set; }
         /// <summary>
@@ -79,15 +79,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public bool? Record { get; set; }
         /// <summary>
-        /// The recording_channels
+        /// mono or dualSet this parameter to specify the number of channels in the final recording.
         /// </summary>
         public string RecordingChannels { get; set; }
         /// <summary>
-        /// The recording_status_callback
+        /// A URL that Twilio will send a webhook request to when the recording is available for access.
         /// </summary>
         public string RecordingStatusCallback { get; set; }
         /// <summary>
-        /// The recording_status_callback_method
+        /// The HTTP method Twilio should use when requesting the above URL.
         /// </summary>
         public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
         /// <summary>
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public int? MachineDetectionTimeout { get; set; }
         /// <summary>
-        /// The recording_status_callback_event
+        /// The recording status changes that Twilio will send webhooks on to the URL specified in RecordingStatusCallback.
         /// </summary>
         public List<string> RecordingStatusCallbackEvent { get; set; }
         /// <summary>
@@ -263,7 +263,8 @@ namespace Twilio.Rest.Api.V2010.Account
     }
 
     /// <summary>
-    /// Once the record is deleted, it will no longer appear in the API and Account Portal logs.
+    /// Delete a call record from your account. Once the record is deleted, it will no longer appear in the API and Account
+    /// Portal logs.
     /// </summary>
     public class DeleteCallOptions : IOptions<CallResource> 
     {

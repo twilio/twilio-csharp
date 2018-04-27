@@ -243,8 +243,9 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="verificationCode"> A verification code. </param>
         /// <param name="verificationType"> Verification Type. </param>
         /// <param name="verificationDocumentSid"> Verification Document Sid </param>
-        /// <param name="extension"> The extension </param>
-        /// <param name="callDelay"> The call_delay </param>
+        /// <param name="extension"> Digits to dial after connecting the verification call. </param>
+        /// <param name="callDelay"> The number of seconds, between 0 and 60, to delay before initiating the verification call.
+        ///                 </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HostedNumberOrder </returns> 
         public static HostedNumberOrderResource Update(string pathSid, 
@@ -277,8 +278,9 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="verificationCode"> A verification code. </param>
         /// <param name="verificationType"> Verification Type. </param>
         /// <param name="verificationDocumentSid"> Verification Document Sid </param>
-        /// <param name="extension"> The extension </param>
-        /// <param name="callDelay"> The call_delay </param>
+        /// <param name="extension"> Digits to dial after connecting the verification call. </param>
+        /// <param name="callDelay"> The number of seconds, between 0 and 60, to delay before initiating the verification call.
+        ///                 </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HostedNumberOrder </returns> 
         public static async System.Threading.Tasks.Task<HostedNumberOrderResource> UpdateAsync(string pathSid, 

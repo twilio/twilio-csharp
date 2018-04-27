@@ -68,13 +68,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// read
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="activityName"> The activity_name </param>
-        /// <param name="activitySid"> The activity_sid </param>
-        /// <param name="available"> The available </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="targetWorkersExpression"> The target_workers_expression </param>
-        /// <param name="taskQueueName"> The task_queue_name </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
+        /// <param name="activityName"> Filter by workers that are in a particular Activity by Friendly Name </param>
+        /// <param name="activitySid"> Filter by workers that are in a particular Activity by SID </param>
+        /// <param name="available"> Filter by workers that are available or unavailable. </param>
+        /// <param name="friendlyName"> Filter by a worker’s friendly name </param>
+        /// <param name="targetWorkersExpression"> Filter by workers that would match an expression on a TaskQueue. </param>
+        /// <param name="taskQueueName"> Filter by workers that are eligible for a TaskQueue by Friendly Name </param>
+        /// <param name="taskQueueSid"> Filter by workers that are eligible for a TaskQueue by SID </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -100,13 +100,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// read
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="activityName"> The activity_name </param>
-        /// <param name="activitySid"> The activity_sid </param>
-        /// <param name="available"> The available </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="targetWorkersExpression"> The target_workers_expression </param>
-        /// <param name="taskQueueName"> The task_queue_name </param>
-        /// <param name="taskQueueSid"> The task_queue_sid </param>
+        /// <param name="activityName"> Filter by workers that are in a particular Activity by Friendly Name </param>
+        /// <param name="activitySid"> Filter by workers that are in a particular Activity by SID </param>
+        /// <param name="available"> Filter by workers that are available or unavailable. </param>
+        /// <param name="friendlyName"> Filter by a worker’s friendly name </param>
+        /// <param name="targetWorkersExpression"> Filter by workers that would match an expression on a TaskQueue. </param>
+        /// <param name="taskQueueName"> Filter by workers that are eligible for a TaskQueue by Friendly Name </param>
+        /// <param name="taskQueueSid"> Filter by workers that are eligible for a TaskQueue by SID </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -231,9 +231,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// create
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="activitySid"> The activity_sid </param>
-        /// <param name="attributes"> The attributes </param>
+        /// <param name="friendlyName"> String representing user-friendly name for the Worker. </param>
+        /// <param name="activitySid"> A valid Activity describing the worker's initial state. </param>
+        /// <param name="attributes"> JSON object describing this worker. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Worker </returns> 
         public static WorkerResource Create(string pathWorkspaceSid, 
@@ -251,9 +251,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// create
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="activitySid"> The activity_sid </param>
-        /// <param name="attributes"> The attributes </param>
+        /// <param name="friendlyName"> String representing user-friendly name for the Worker. </param>
+        /// <param name="activitySid"> A valid Activity describing the worker's initial state. </param>
+        /// <param name="attributes"> JSON object describing this worker. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Worker </returns> 
         public static async System.Threading.Tasks.Task<WorkerResource> CreateAsync(string pathWorkspaceSid, 
@@ -510,57 +510,57 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
         /// <summary>
-        /// The account_sid
+        /// The ID of the account that owns this worker
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The activity_name
+        /// Filter by workers that are in a particular Activity by Friendly Name
         /// </summary>
         [JsonProperty("activity_name")]
         public string ActivityName { get; private set; }
         /// <summary>
-        /// The activity_sid
+        /// Filter by workers that are in a particular Activity by SID
         /// </summary>
         [JsonProperty("activity_sid")]
         public string ActivitySid { get; private set; }
         /// <summary>
-        /// The attributes
+        /// JSON object describing this worker.
         /// </summary>
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
         /// <summary>
-        /// The available
+        /// Filter by workers that are available or unavailable.
         /// </summary>
         [JsonProperty("available")]
         public bool? Available { get; private set; }
         /// <summary>
-        /// The date_created
+        /// DateTime this worker was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_status_changed
+        /// DateTime of the last change to the Worker's activity.
         /// </summary>
         [JsonProperty("date_status_changed")]
         public DateTime? DateStatusChanged { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// DateTime of the last update
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// Filter by a worker’s friendly name
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The sid
+        /// The unique ID of the worker
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The ID of the Workflow this worker is associated with
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }

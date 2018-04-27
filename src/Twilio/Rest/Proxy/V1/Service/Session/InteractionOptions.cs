@@ -14,7 +14,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Fetch a specific Interaction.
+    /// Retrieve a list of Interactions for a given Session
     /// </summary>
     public class FetchInteractionOptions : IOptions<InteractionResource> 
     {
@@ -70,11 +70,11 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// The Inbound Participant Status of this Interaction
+        /// The inbound_participant_status
         /// </summary>
         public InteractionResource.ResourceStatusEnum InboundParticipantStatus { get; set; }
         /// <summary>
-        /// The Outbound Participant Status of this Interaction
+        /// The outbound_participant_status
         /// </summary>
         public InteractionResource.ResourceStatusEnum OutboundParticipantStatus { get; set; }
 

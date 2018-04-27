@@ -66,7 +66,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="phoneNumberSid"> The phone_number_sid </param>
+        /// <param name="phoneNumberSid"> Phone Number SID for the Phone Number being added to the Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
         public static PhoneNumberResource Create(string pathServiceSid, 
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="phoneNumberSid"> The phone_number_sid </param>
+        /// <param name="phoneNumberSid"> Phone Number SID for the Phone Number being added to the Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(string pathServiceSid, 
@@ -392,48 +392,48 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
 
         /// <summary>
-        /// The sid
+        /// The 34 character unique sid of the Phone Number.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The 34 character unique sid of the Account.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The 34 character unique sid of the Service.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The phone_number
+        /// The E.
         /// </summary>
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
         /// <summary>
-        /// The country_code
+        /// The 2 character ISO Country Code of the number.
         /// </summary>
         [JsonProperty("country_code")]
         public string CountryCode { get; private set; }
         /// <summary>
-        /// The capabilities
+        /// Any array of values that indicate whether the number can receive calls or messages.
         /// </summary>
         [JsonProperty("capabilities")]
         public List<string> Capabilities { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL for this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

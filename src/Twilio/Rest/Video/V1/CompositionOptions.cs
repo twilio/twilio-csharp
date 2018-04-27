@@ -145,17 +145,21 @@ namespace Twilio.Rest.Video.V1
     public class CreateCompositionOptions : IOptions<CompositionResource> 
     {
         /// <summary>
+        /// The room_sid
+        /// </summary>
+        public string RoomSid { get; set; }
+        /// <summary>
+        /// The video_layout
+        /// </summary>
+        public object VideoLayout { get; set; }
+        /// <summary>
         /// The audio_sources
         /// </summary>
         public List<string> AudioSources { get; set; }
         /// <summary>
-        /// The video_sources
+        /// The audio_sources_excluded
         /// </summary>
-        public List<string> VideoSources { get; set; }
-        /// <summary>
-        /// The video_layout
-        /// </summary>
-        public CompositionResource.VideoLayoutEnum VideoLayout { get; set; }
+        public List<string> AudioSourcesExcluded { get; set; }
         /// <summary>
         /// The resolution
         /// </summary>
@@ -164,14 +168,6 @@ namespace Twilio.Rest.Video.V1
         /// The format
         /// </summary>
         public CompositionResource.FormatEnum Format { get; set; }
-        /// <summary>
-        /// The desired_bitrate
-        /// </summary>
-        public int? DesiredBitrate { get; set; }
-        /// <summary>
-        /// The desired_max_duration
-        /// </summary>
-        public int? DesiredMaxDuration { get; set; }
         /// <summary>
         /// The status_callback
         /// </summary>
@@ -184,10 +180,6 @@ namespace Twilio.Rest.Video.V1
         /// The trim
         /// </summary>
         public bool? Trim { get; set; }
-        /// <summary>
-        /// The reuse
-        /// </summary>
-        public bool? Reuse { get; set; }
 
         /// <summary>
         /// Construct a new CreateCompositionOptions
@@ -195,7 +187,7 @@ namespace Twilio.Rest.Video.V1
         public CreateCompositionOptions()
         {
             AudioSources = new List<string>();
-            VideoSources = new List<string>();
+            AudioSourcesExcluded = new List<string>();
         }
 
         /// <summary>
@@ -204,19 +196,24 @@ namespace Twilio.Rest.Video.V1
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (RoomSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RoomSid", RoomSid.ToString()));
+            }
+
+            if (VideoLayout != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VideoLayout", Serializers.JsonObject(VideoLayout)));
+            }
+
             if (AudioSources != null)
             {
                 p.AddRange(AudioSources.Select(prop => new KeyValuePair<string, string>("AudioSources", prop.ToString())));
             }
 
-            if (VideoSources != null)
+            if (AudioSourcesExcluded != null)
             {
-                p.AddRange(VideoSources.Select(prop => new KeyValuePair<string, string>("VideoSources", prop.ToString())));
-            }
-
-            if (VideoLayout != null)
-            {
-                p.Add(new KeyValuePair<string, string>("VideoLayout", VideoLayout.ToString()));
+                p.AddRange(AudioSourcesExcluded.Select(prop => new KeyValuePair<string, string>("AudioSourcesExcluded", prop)));
             }
 
             if (Resolution != null)
@@ -227,16 +224,6 @@ namespace Twilio.Rest.Video.V1
             if (Format != null)
             {
                 p.Add(new KeyValuePair<string, string>("Format", Format.ToString()));
-            }
-
-            if (DesiredBitrate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DesiredBitrate", DesiredBitrate.Value.ToString()));
-            }
-
-            if (DesiredMaxDuration != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DesiredMaxDuration", DesiredMaxDuration.Value.ToString()));
             }
 
             if (StatusCallback != null)
@@ -252,11 +239,6 @@ namespace Twilio.Rest.Video.V1
             if (Trim != null)
             {
                 p.Add(new KeyValuePair<string, string>("Trim", Trim.Value.ToString().ToLower()));
-            }
-
-            if (Reuse != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Reuse", Reuse.Value.ToString().ToLower()));
             }
 
             return p;

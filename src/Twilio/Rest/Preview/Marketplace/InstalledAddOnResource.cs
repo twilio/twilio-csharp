@@ -512,7 +512,7 @@ namespace Twilio.Rest.Preview.Marketplace
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// A dictionary of URLs for related resource.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

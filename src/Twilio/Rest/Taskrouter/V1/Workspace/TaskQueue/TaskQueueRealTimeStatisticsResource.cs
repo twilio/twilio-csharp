@@ -66,7 +66,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
-        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueueRealTimeStatistics </returns> 
         public static TaskQueueRealTimeStatisticsResource Fetch(string pathWorkspaceSid, 
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
-        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueueRealTimeStatistics </returns> 
         public static async System.Threading.Tasks.Task<TaskQueueRealTimeStatisticsResource> FetchAsync(string pathWorkspaceSid, 
@@ -121,12 +121,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The activity_statistics
+        /// The current Worker status count breakdown by Activity
         /// </summary>
         [JsonProperty("activity_statistics")]
         public List<object> ActivityStatistics { get; private set; }
         /// <summary>
-        /// The longest_task_waiting_age
+        /// The age of the longest waiting Task
         /// </summary>
         [JsonProperty("longest_task_waiting_age")]
         public int? LongestTaskWaitingAge { get; private set; }
@@ -136,27 +136,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         [JsonProperty("task_queue_sid")]
         public string TaskQueueSid { get; private set; }
         /// <summary>
-        /// The tasks_by_priority
+        /// The Tasks broken down by priority
         /// </summary>
         [JsonProperty("tasks_by_priority")]
         public object TasksByPriority { get; private set; }
         /// <summary>
-        /// The tasks_by_status
+        /// The Tasks broken down by status
         /// </summary>
         [JsonProperty("tasks_by_status")]
         public object TasksByStatus { get; private set; }
         /// <summary>
-        /// The total_available_workers
+        /// The total number of Workers available for Tasks in this TaskQueue
         /// </summary>
         [JsonProperty("total_available_workers")]
         public int? TotalAvailableWorkers { get; private set; }
         /// <summary>
-        /// The total_eligible_workers
+        /// The total number of Workers eligible for Tasks in this TaskQueue, irrespective of Activity state.
         /// </summary>
         [JsonProperty("total_eligible_workers")]
         public int? TotalEligibleWorkers { get; private set; }
         /// <summary>
-        /// The total_tasks
+        /// The total number of Tasks
         /// </summary>
         [JsonProperty("total_tasks")]
         public int? TotalTasks { get; private set; }

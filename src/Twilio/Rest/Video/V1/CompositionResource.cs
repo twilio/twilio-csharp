@@ -56,21 +56,6 @@ namespace Twilio.Rest.Video.V1
             public static readonly FormatEnum Webm = new FormatEnum("webm");
         }
 
-        public sealed class VideoLayoutEnum : StringEnum 
-        {
-            private VideoLayoutEnum(string value) : base(value) {}
-            public VideoLayoutEnum() {}
-            public static implicit operator VideoLayoutEnum(string value)
-            {
-                return new VideoLayoutEnum(value);
-            }
-
-            public static readonly VideoLayoutEnum Grid = new VideoLayoutEnum("grid");
-            public static readonly VideoLayoutEnum Single = new VideoLayoutEnum("single");
-            public static readonly VideoLayoutEnum Pip = new VideoLayoutEnum("pip");
-            public static readonly VideoLayoutEnum Sequence = new VideoLayoutEnum("sequence");
-        }
-
         private static Request BuildFetchRequest(FetchCompositionOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -398,33 +383,29 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="audioSources"> The audio_sources </param>
-        /// <param name="videoSources"> The video_sources </param>
+        /// <param name="roomSid"> The room_sid </param>
         /// <param name="videoLayout"> The video_layout </param>
+        /// <param name="audioSources"> The audio_sources </param>
+        /// <param name="audioSourcesExcluded"> The audio_sources_excluded </param>
         /// <param name="resolution"> The resolution </param>
         /// <param name="format"> The format </param>
-        /// <param name="desiredBitrate"> The desired_bitrate </param>
-        /// <param name="desiredMaxDuration"> The desired_max_duration </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="trim"> The trim </param>
-        /// <param name="reuse"> The reuse </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Composition </returns> 
-        public static CompositionResource Create(List<string> audioSources = null, 
-                                                 List<string> videoSources = null, 
-                                                 CompositionResource.VideoLayoutEnum videoLayout = null, 
+        public static CompositionResource Create(string roomSid = null, 
+                                                 object videoLayout = null, 
+                                                 List<string> audioSources = null, 
+                                                 List<string> audioSourcesExcluded = null, 
                                                  string resolution = null, 
                                                  CompositionResource.FormatEnum format = null, 
-                                                 int? desiredBitrate = null, 
-                                                 int? desiredMaxDuration = null, 
                                                  Uri statusCallback = null, 
                                                  Twilio.Http.HttpMethod statusCallbackMethod = null, 
                                                  bool? trim = null, 
-                                                 bool? reuse = null, 
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateCompositionOptions(){AudioSources = audioSources, VideoSources = videoSources, VideoLayout = videoLayout, Resolution = resolution, Format = format, DesiredBitrate = desiredBitrate, DesiredMaxDuration = desiredMaxDuration, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim, Reuse = reuse};
+            var options = new CreateCompositionOptions(){RoomSid = roomSid, VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim};
             return Create(options, client);
         }
 
@@ -432,33 +413,29 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="audioSources"> The audio_sources </param>
-        /// <param name="videoSources"> The video_sources </param>
+        /// <param name="roomSid"> The room_sid </param>
         /// <param name="videoLayout"> The video_layout </param>
+        /// <param name="audioSources"> The audio_sources </param>
+        /// <param name="audioSourcesExcluded"> The audio_sources_excluded </param>
         /// <param name="resolution"> The resolution </param>
         /// <param name="format"> The format </param>
-        /// <param name="desiredBitrate"> The desired_bitrate </param>
-        /// <param name="desiredMaxDuration"> The desired_max_duration </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="trim"> The trim </param>
-        /// <param name="reuse"> The reuse </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns> 
-        public static async System.Threading.Tasks.Task<CompositionResource> CreateAsync(List<string> audioSources = null, 
-                                                                                         List<string> videoSources = null, 
-                                                                                         CompositionResource.VideoLayoutEnum videoLayout = null, 
+        public static async System.Threading.Tasks.Task<CompositionResource> CreateAsync(string roomSid = null, 
+                                                                                         object videoLayout = null, 
+                                                                                         List<string> audioSources = null, 
+                                                                                         List<string> audioSourcesExcluded = null, 
                                                                                          string resolution = null, 
                                                                                          CompositionResource.FormatEnum format = null, 
-                                                                                         int? desiredBitrate = null, 
-                                                                                         int? desiredMaxDuration = null, 
                                                                                          Uri statusCallback = null, 
                                                                                          Twilio.Http.HttpMethod statusCallbackMethod = null, 
                                                                                          bool? trim = null, 
-                                                                                         bool? reuse = null, 
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateCompositionOptions(){AudioSources = audioSources, VideoSources = videoSources, VideoLayout = videoLayout, Resolution = resolution, Format = format, DesiredBitrate = desiredBitrate, DesiredMaxDuration = desiredMaxDuration, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim, Reuse = reuse};
+            var options = new CreateCompositionOptions(){RoomSid = roomSid, VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim};
             return await CreateAsync(options, client);
         }
         #endif
@@ -513,26 +490,35 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
+        /// The room_sid
+        /// </summary>
+        [JsonProperty("room_sid")]
+        public string RoomSid { get; private set; }
+        /// <summary>
         /// The audio_sources
         /// </summary>
         [JsonProperty("audio_sources")]
         public List<string> AudioSources { get; private set; }
         /// <summary>
-        /// The video_sources
+        /// The audio_sources_excluded
         /// </summary>
-        [JsonProperty("video_sources")]
-        public List<string> VideoSources { get; private set; }
+        [JsonProperty("audio_sources_excluded")]
+        public List<string> AudioSourcesExcluded { get; private set; }
         /// <summary>
         /// The video_layout
         /// </summary>
         [JsonProperty("video_layout")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public CompositionResource.VideoLayoutEnum VideoLayout { get; private set; }
+        public object VideoLayout { get; private set; }
         /// <summary>
         /// The resolution
         /// </summary>
         [JsonProperty("resolution")]
         public string Resolution { get; private set; }
+        /// <summary>
+        /// The trim
+        /// </summary>
+        [JsonProperty("trim")]
+        public bool? Trim { get; private set; }
         /// <summary>
         /// The format
         /// </summary>
@@ -548,7 +534,7 @@ namespace Twilio.Rest.Video.V1
         /// The size
         /// </summary>
         [JsonProperty("size")]
-        public int? Size { get; private set; }
+        public long? Size { get; private set; }
         /// <summary>
         /// The duration
         /// </summary>
@@ -559,11 +545,6 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-        /// <summary>
-        /// The room_sid
-        /// </summary>
-        [JsonProperty("room_sid")]
-        public string RoomSid { get; private set; }
         /// <summary>
         /// The links
         /// </summary>

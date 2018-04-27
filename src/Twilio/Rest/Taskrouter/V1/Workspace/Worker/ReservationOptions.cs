@@ -26,7 +26,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         public string PathWorkerSid { get; }
         /// <summary>
-        /// The reservation_status
+        /// Filter by a worker’s reservation status
         /// </summary>
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
 
@@ -120,23 +120,23 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The reservation_status
+        /// Yes
         /// </summary>
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
         /// <summary>
-        /// The worker_activity_sid
+        /// No
         /// </summary>
         public string WorkerActivitySid { get; set; }
         /// <summary>
-        /// The instruction
+        /// Yes
         /// </summary>
         public string Instruction { get; set; }
         /// <summary>
-        /// The dequeue_post_work_activity_sid
+        /// No
         /// </summary>
         public string DequeuePostWorkActivitySid { get; set; }
         /// <summary>
-        /// The dequeue_from
+        /// Yes
         /// </summary>
         public string DequeueFrom { get; set; }
         /// <summary>
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         public Uri DequeueStatusCallbackUrl { get; set; }
         /// <summary>
-        /// The call_from
+        /// Yes
         /// </summary>
         public string CallFrom { get; set; }
         /// <summary>
@@ -172,15 +172,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         public string CallTo { get; set; }
         /// <summary>
-        /// The call_url
+        /// Yes
         /// </summary>
         public Uri CallUrl { get; set; }
         /// <summary>
-        /// The call_status_callback_url
+        /// No
         /// </summary>
         public Uri CallStatusCallbackUrl { get; set; }
         /// <summary>
-        /// The call_accept
+        /// No
         /// </summary>
         public bool? CallAccept { get; set; }
         /// <summary>

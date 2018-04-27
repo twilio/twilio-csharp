@@ -97,11 +97,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique_name
+        /// Human-readable name for this list
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The ttl
+        /// Time-to-live of this List in seconds, defaults to no expiration.
         /// </summary>
         public int? Ttl { get; set; }
 

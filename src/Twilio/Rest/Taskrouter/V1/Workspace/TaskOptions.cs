@@ -61,19 +61,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The attributes
+        /// The user-defined JSON data describing the custom attributes of this task.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The assignment_status
+        /// A 'pending' or 'reserved' Task may be canceled by posting AssignmentStatus='canceled'.
         /// </summary>
         public TaskResource.StatusEnum AssignmentStatus { get; set; }
         /// <summary>
-        /// The reason
+        /// This is only required if the Task is canceled or completed.
         /// </summary>
         public string Reason { get; set; }
         /// <summary>
-        /// The priority
+        /// Override priority for the Task.
         /// </summary>
         public int? Priority { get; set; }
         /// <summary>
@@ -172,35 +172,35 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The priority
+        /// Retrieve the list of all Tasks in the workspace with the specified priority.
         /// </summary>
         public int? Priority { get; set; }
         /// <summary>
-        /// The assignment_status
+        /// Returns the list of all Tasks in the workspace with the specified AssignmentStatus.
         /// </summary>
         public List<string> AssignmentStatus { get; set; }
         /// <summary>
-        /// The workflow_sid
+        /// Returns the list of Tasks that are being controlled by the Workflow with the specified Sid value.
         /// </summary>
         public string WorkflowSid { get; set; }
         /// <summary>
-        /// The workflow_name
+        /// Returns the list of Tasks that are being controlled by the Workflow with the specified FriendlyName value.
         /// </summary>
         public string WorkflowName { get; set; }
         /// <summary>
-        /// The task_queue_sid
+        /// Returns the list of Tasks that are currently waiting in the TaskQueue identified by the Sid specified.
         /// </summary>
         public string TaskQueueSid { get; set; }
         /// <summary>
-        /// The task_queue_name
+        /// Returns the list of Tasks that are currently waiting in the TaskQueue identified by the FriendlyName specified.
         /// </summary>
         public string TaskQueueName { get; set; }
         /// <summary>
-        /// The evaluate_task_attributes
+        /// Provide a task attributes expression, and this will return tasks which match the attributes.
         /// </summary>
         public string EvaluateTaskAttributes { get; set; }
         /// <summary>
-        /// The ordering
+        /// Use this parameter to control the order of the Tasks returned.
         /// </summary>
         public string Ordering { get; set; }
         /// <summary>
@@ -288,23 +288,23 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The timeout
+        /// The amount of time in seconds the task is allowed to live up to a maximum of 2 weeks.
         /// </summary>
         public int? Timeout { get; set; }
         /// <summary>
-        /// The priority
+        /// Override priority for the Task.
         /// </summary>
         public int? Priority { get; set; }
         /// <summary>
-        /// The task_channel
+        /// When MultiTasking is enabled specify the type of the task by passing either TaskChannel Unique Name or Task Channel Sid.
         /// </summary>
         public string TaskChannel { get; set; }
         /// <summary>
-        /// The workflow_sid
+        /// The WorkflowSid for the Workflow that you would like to handle routing for this Task.
         /// </summary>
         public string WorkflowSid { get; set; }
         /// <summary>
-        /// The attributes
+        /// Url-encoded JSON string describing the attributes of this task.
         /// </summary>
         public string Attributes { get; set; }
 

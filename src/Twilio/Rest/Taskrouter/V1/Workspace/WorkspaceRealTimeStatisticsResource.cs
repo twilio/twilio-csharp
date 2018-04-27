@@ -65,7 +65,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// fetch
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkspaceRealTimeStatistics </returns> 
         public static WorkspaceRealTimeStatisticsResource Fetch(string pathWorkspaceSid, 
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// fetch
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkspaceRealTimeStatistics </returns> 
         public static async System.Threading.Tasks.Task<WorkspaceRealTimeStatisticsResource> FetchAsync(string pathWorkspaceSid, 
@@ -117,12 +117,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The activity_statistics
+        /// A breakdown of Workers by Activity
         /// </summary>
         [JsonProperty("activity_statistics")]
         public List<object> ActivityStatistics { get; private set; }
         /// <summary>
-        /// The longest_task_waiting_age
+        /// The age of the longest waiting Task
         /// </summary>
         [JsonProperty("longest_task_waiting_age")]
         public int? LongestTaskWaitingAge { get; private set; }
@@ -132,17 +132,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("tasks_by_priority")]
         public object TasksByPriority { get; private set; }
         /// <summary>
-        /// The tasks_by_status
+        /// The Tasks broken down by status
         /// </summary>
         [JsonProperty("tasks_by_status")]
         public object TasksByStatus { get; private set; }
         /// <summary>
-        /// The total_tasks
+        /// The total number of Tasks
         /// </summary>
         [JsonProperty("total_tasks")]
         public int? TotalTasks { get; private set; }
         /// <summary>
-        /// The total_workers
+        /// The total number of Workers in the workspace
         /// </summary>
         [JsonProperty("total_workers")]
         public int? TotalWorkers { get; private set; }

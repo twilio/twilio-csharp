@@ -15,24 +15,25 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Create a new Message to a Participant
+    /// Create a new message Interaction to send directly from your system to one Participant.  The `inbound` properties for
+    /// this Interaction will always be empty.
     /// </summary>
     public class CreateMessageInteractionOptions : IOptions<MessageInteractionResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// Service Sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Session Sid.
+        /// Session Sid
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// Participant Sid.
+        /// Participant Sid
         /// </summary>
         public string PathParticipantSid { get; }
         /// <summary>
-        /// The body
+        /// Message body
         /// </summary>
         public string Body { get; set; }
         /// <summary>
@@ -43,9 +44,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <summary>
         /// Construct a new CreateMessageInteractionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathParticipantSid"> Participant Sid. </param>
+        /// <param name="pathServiceSid"> Service Sid </param>
+        /// <param name="pathSessionSid"> Session Sid </param>
+        /// <param name="pathParticipantSid"> Participant Sid </param>
         public CreateMessageInteractionOptions(string pathServiceSid, string pathSessionSid, string pathParticipantSid)
         {
             PathServiceSid = pathServiceSid;
@@ -77,34 +78,34 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Fetch a specific Message Interaction.
+    /// FetchMessageInteractionOptions
     /// </summary>
     public class FetchMessageInteractionOptions : IOptions<MessageInteractionResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Session Sid.
+        /// The session_sid
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// Participant Sid.
+        /// The participant_sid
         /// </summary>
         public string PathParticipantSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Message Interaction.
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchMessageInteractionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathParticipantSid"> Participant Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Message Interaction. </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSessionSid"> The session_sid </param>
+        /// <param name="pathParticipantSid"> The participant_sid </param>
+        /// <param name="pathSid"> The sid </param>
         public FetchMessageInteractionOptions(string pathServiceSid, 
                                               string pathSessionSid, 
                                               string pathParticipantSid, 
@@ -129,29 +130,29 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Retrieve a list of all Message to a Participant.
+    /// ReadMessageInteractionOptions
     /// </summary>
     public class ReadMessageInteractionOptions : ReadOptions<MessageInteractionResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Session Sid.
+        /// The session_sid
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// Participant Sid.
+        /// The participant_sid
         /// </summary>
         public string PathParticipantSid { get; }
 
         /// <summary>
         /// Construct a new ReadMessageInteractionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathParticipantSid"> Participant Sid. </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSessionSid"> The session_sid </param>
+        /// <param name="pathParticipantSid"> The participant_sid </param>
         public ReadMessageInteractionOptions(string pathServiceSid, string pathSessionSid, string pathParticipantSid)
         {
             PathServiceSid = pathServiceSid;

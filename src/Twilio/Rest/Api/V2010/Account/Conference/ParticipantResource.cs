@@ -161,9 +161,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="muted"> Indicates if the participant should be muted </param>
-        /// <param name="hold"> The hold </param>
-        /// <param name="holdUrl"> The hold_url </param>
-        /// <param name="holdMethod"> The hold_method </param>
+        /// <param name="hold"> Specifying true will hold the participant, while false will un-hold. </param>
+        /// <param name="holdUrl"> The 'HoldUrl' attribute lets you specify a URL for music that plays when a participant is
+        ///               held. </param>
+        /// <param name="holdMethod"> Specify GET or POST, defaults to GET </param>
         /// <param name="announceUrl"> The announce_url </param>
         /// <param name="announceMethod"> The announce_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -191,9 +192,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="muted"> Indicates if the participant should be muted </param>
-        /// <param name="hold"> The hold </param>
-        /// <param name="holdUrl"> The hold_url </param>
-        /// <param name="holdMethod"> The hold_method </param>
+        /// <param name="hold"> Specifying true will hold the participant, while false will un-hold. </param>
+        /// <param name="holdUrl"> The 'HoldUrl' attribute lets you specify a URL for music that plays when a participant is
+        ///               held. </param>
+        /// <param name="holdMethod"> Specify GET or POST, defaults to GET </param>
         /// <param name="announceUrl"> The announce_url </param>
         /// <param name="announceMethod"> The announce_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -258,35 +260,35 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// create
         /// </summary>
         /// <param name="pathConferenceSid"> The conference_sid </param>
-        /// <param name="from"> The from </param>
-        /// <param name="to"> The to </param>
+        /// <param name="from"> number, client id </param>
+        /// <param name="to"> number, client id, sip address </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        /// <param name="statusCallbackEvent"> The status_callback_event </param>
-        /// <param name="timeout"> The timeout </param>
-        /// <param name="record"> The record </param>
-        /// <param name="muted"> The muted </param>
-        /// <param name="beep"> The beep </param>
-        /// <param name="startConferenceOnEnter"> The start_conference_on_enter </param>
-        /// <param name="endConferenceOnExit"> The end_conference_on_exit </param>
-        /// <param name="waitUrl"> The wait_url </param>
-        /// <param name="waitMethod"> The wait_method </param>
-        /// <param name="earlyMedia"> The early_media </param>
-        /// <param name="maxParticipants"> The max_participants </param>
-        /// <param name="conferenceRecord"> The conference_record </param>
-        /// <param name="conferenceTrim"> The conference_trim </param>
-        /// <param name="conferenceStatusCallback"> The conference_status_callback </param>
-        /// <param name="conferenceStatusCallbackMethod"> The conference_status_callback_method </param>
-        /// <param name="conferenceStatusCallbackEvent"> The conference_status_callback_event </param>
-        /// <param name="recordingChannels"> The recording_channels </param>
-        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
-        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
-        /// <param name="sipAuthUsername"> The sip_auth_username </param>
-        /// <param name="sipAuthPassword"> The sip_auth_password </param>
-        /// <param name="region"> The region </param>
-        /// <param name="conferenceRecordingStatusCallback"> The conference_recording_status_callback </param>
-        /// <param name="conferenceRecordingStatusCallbackMethod"> The conference_recording_status_callback_method </param>
+        /// <param name="statusCallback"> absolute url </param>
+        /// <param name="statusCallbackMethod"> GET, POST </param>
+        /// <param name="statusCallbackEvent"> initiated, ringing, answered, completed </param>
+        /// <param name="timeout"> 5-600 </param>
+        /// <param name="record"> true, false </param>
+        /// <param name="muted"> true, false </param>
+        /// <param name="beep"> true, false, onEnter, onExit </param>
+        /// <param name="startConferenceOnEnter"> true, false </param>
+        /// <param name="endConferenceOnExit"> true, false </param>
+        /// <param name="waitUrl"> absolute url </param>
+        /// <param name="waitMethod"> GET, POST </param>
+        /// <param name="earlyMedia"> true, false </param>
+        /// <param name="maxParticipants"> 2-10 </param>
+        /// <param name="conferenceRecord"> true, false, record-from-start, do-not-record </param>
+        /// <param name="conferenceTrim"> trim-silence or do-not-trim </param>
+        /// <param name="conferenceStatusCallback"> absolute url </param>
+        /// <param name="conferenceStatusCallbackMethod"> GET, POST </param>
+        /// <param name="conferenceStatusCallbackEvent"> start end join leave mute hold speaker </param>
+        /// <param name="recordingChannels"> mono, dual </param>
+        /// <param name="recordingStatusCallback"> absolute url </param>
+        /// <param name="recordingStatusCallbackMethod"> GET, POST </param>
+        /// <param name="sipAuthUsername"> sip username </param>
+        /// <param name="sipAuthPassword"> sip password </param>
+        /// <param name="region"> us1, ie1, de1, sg1, br1, au1, jp1 </param>
+        /// <param name="conferenceRecordingStatusCallback"> absolute url </param>
+        /// <param name="conferenceRecordingStatusCallbackMethod"> GET, POST </param>
         /// <param name="recordingStatusCallbackEvent"> The recording_status_callback_event </param>
         /// <param name="conferenceRecordingStatusCallbackEvent"> The conference_recording_status_callback_event </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -334,35 +336,35 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// create
         /// </summary>
         /// <param name="pathConferenceSid"> The conference_sid </param>
-        /// <param name="from"> The from </param>
-        /// <param name="to"> The to </param>
+        /// <param name="from"> number, client id </param>
+        /// <param name="to"> number, client id, sip address </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        /// <param name="statusCallbackEvent"> The status_callback_event </param>
-        /// <param name="timeout"> The timeout </param>
-        /// <param name="record"> The record </param>
-        /// <param name="muted"> The muted </param>
-        /// <param name="beep"> The beep </param>
-        /// <param name="startConferenceOnEnter"> The start_conference_on_enter </param>
-        /// <param name="endConferenceOnExit"> The end_conference_on_exit </param>
-        /// <param name="waitUrl"> The wait_url </param>
-        /// <param name="waitMethod"> The wait_method </param>
-        /// <param name="earlyMedia"> The early_media </param>
-        /// <param name="maxParticipants"> The max_participants </param>
-        /// <param name="conferenceRecord"> The conference_record </param>
-        /// <param name="conferenceTrim"> The conference_trim </param>
-        /// <param name="conferenceStatusCallback"> The conference_status_callback </param>
-        /// <param name="conferenceStatusCallbackMethod"> The conference_status_callback_method </param>
-        /// <param name="conferenceStatusCallbackEvent"> The conference_status_callback_event </param>
-        /// <param name="recordingChannels"> The recording_channels </param>
-        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
-        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
-        /// <param name="sipAuthUsername"> The sip_auth_username </param>
-        /// <param name="sipAuthPassword"> The sip_auth_password </param>
-        /// <param name="region"> The region </param>
-        /// <param name="conferenceRecordingStatusCallback"> The conference_recording_status_callback </param>
-        /// <param name="conferenceRecordingStatusCallbackMethod"> The conference_recording_status_callback_method </param>
+        /// <param name="statusCallback"> absolute url </param>
+        /// <param name="statusCallbackMethod"> GET, POST </param>
+        /// <param name="statusCallbackEvent"> initiated, ringing, answered, completed </param>
+        /// <param name="timeout"> 5-600 </param>
+        /// <param name="record"> true, false </param>
+        /// <param name="muted"> true, false </param>
+        /// <param name="beep"> true, false, onEnter, onExit </param>
+        /// <param name="startConferenceOnEnter"> true, false </param>
+        /// <param name="endConferenceOnExit"> true, false </param>
+        /// <param name="waitUrl"> absolute url </param>
+        /// <param name="waitMethod"> GET, POST </param>
+        /// <param name="earlyMedia"> true, false </param>
+        /// <param name="maxParticipants"> 2-10 </param>
+        /// <param name="conferenceRecord"> true, false, record-from-start, do-not-record </param>
+        /// <param name="conferenceTrim"> trim-silence or do-not-trim </param>
+        /// <param name="conferenceStatusCallback"> absolute url </param>
+        /// <param name="conferenceStatusCallbackMethod"> GET, POST </param>
+        /// <param name="conferenceStatusCallbackEvent"> start end join leave mute hold speaker </param>
+        /// <param name="recordingChannels"> mono, dual </param>
+        /// <param name="recordingStatusCallback"> absolute url </param>
+        /// <param name="recordingStatusCallbackMethod"> GET, POST </param>
+        /// <param name="sipAuthUsername"> sip username </param>
+        /// <param name="sipAuthPassword"> sip password </param>
+        /// <param name="region"> us1, ie1, de1, sg1, br1, au1, jp1 </param>
+        /// <param name="conferenceRecordingStatusCallback"> absolute url </param>
+        /// <param name="conferenceRecordingStatusCallbackMethod"> GET, POST </param>
         /// <param name="recordingStatusCallbackEvent"> The recording_status_callback_event </param>
         /// <param name="conferenceRecordingStatusCallbackEvent"> The conference_recording_status_callback_event </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -532,7 +534,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="muted"> Filter by muted participants </param>
-        /// <param name="hold"> The hold </param>
+        /// <param name="hold"> Only show participants that are held or unheld. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -556,7 +558,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="muted"> Filter by muted participants </param>
-        /// <param name="hold"> The hold </param>
+        /// <param name="hold"> Only show participants that are held or unheld. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -687,7 +689,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         [JsonProperty("muted")]
         public bool? Muted { get; private set; }
         /// <summary>
-        /// The hold
+        /// true if this participant is currently held.
         /// </summary>
         [JsonProperty("hold")]
         public bool? Hold { get; private set; }

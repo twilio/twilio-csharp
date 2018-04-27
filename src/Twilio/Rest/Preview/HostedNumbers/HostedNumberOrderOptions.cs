@@ -121,11 +121,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// </summary>
         public string VerificationDocumentSid { get; set; }
         /// <summary>
-        /// The extension
+        /// Digits to dial after connecting the verification call.
         /// </summary>
         public string Extension { get; set; }
         /// <summary>
-        /// The call_delay
+        /// The number of seconds, between 0 and 60, to delay before initiating the verification call.
         /// </summary>
         public int? CallDelay { get; set; }
 

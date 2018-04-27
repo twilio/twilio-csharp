@@ -149,12 +149,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="targetWorkers"> The target_workers </param>
-        /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
-        /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
-        /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
-        /// <param name="taskOrder"> The task_order </param>
+        /// <param name="friendlyName"> Human readable description of this TaskQueue </param>
+        /// <param name="targetWorkers"> A string describing the Worker selection criteria for any Tasks that enter this
+        ///                     TaskQueue. </param>
+        /// <param name="reservationActivitySid"> ActivitySID that will be assigned to Workers when they are reserved for a
+        ///                              task from this TaskQueue. </param>
+        /// <param name="assignmentActivitySid"> ActivitySID that will be assigned to Workers when they are assigned a task
+        ///                             from this TaskQueue. </param>
+        /// <param name="maxReservedWorkers"> The maximum amount of workers to create reservations for the assignment of a task
+        ///                          while in this queue. </param>
+        /// <param name="taskOrder"> TaskOrder will determine which order the Tasks will be assigned to Workers. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueue </returns> 
         public static TaskQueueResource Update(string pathWorkspaceSid, 
@@ -177,12 +181,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="targetWorkers"> The target_workers </param>
-        /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
-        /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
-        /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
-        /// <param name="taskOrder"> The task_order </param>
+        /// <param name="friendlyName"> Human readable description of this TaskQueue </param>
+        /// <param name="targetWorkers"> A string describing the Worker selection criteria for any Tasks that enter this
+        ///                     TaskQueue. </param>
+        /// <param name="reservationActivitySid"> ActivitySID that will be assigned to Workers when they are reserved for a
+        ///                              task from this TaskQueue. </param>
+        /// <param name="assignmentActivitySid"> ActivitySID that will be assigned to Workers when they are assigned a task
+        ///                             from this TaskQueue. </param>
+        /// <param name="maxReservedWorkers"> The maximum amount of workers to create reservations for the assignment of a task
+        ///                          while in this queue. </param>
+        /// <param name="taskOrder"> TaskOrder will determine which order the Tasks will be assigned to Workers. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueue </returns> 
         public static async System.Threading.Tasks.Task<TaskQueueResource> UpdateAsync(string pathWorkspaceSid, 
@@ -248,8 +256,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// read
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="evaluateWorkerAttributes"> The evaluate_worker_attributes </param>
+        /// <param name="friendlyName"> Filter by a human readable description of a TaskQueue </param>
+        /// <param name="evaluateWorkerAttributes"> Provide a Worker attributes expression, and this will return the list of
+        ///                                TaskQueues that would distribute tasks to a worker with these attributes. </param>
         /// <param name="workerSid"> The worker_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -272,8 +281,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// read
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="evaluateWorkerAttributes"> The evaluate_worker_attributes </param>
+        /// <param name="friendlyName"> Filter by a human readable description of a TaskQueue </param>
+        /// <param name="evaluateWorkerAttributes"> Provide a Worker attributes expression, and this will return the list of
+        ///                                TaskQueues that would distribute tasks to a worker with these attributes. </param>
         /// <param name="workerSid"> The worker_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -395,12 +405,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// create
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
-        /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
-        /// <param name="targetWorkers"> The target_workers </param>
-        /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
-        /// <param name="taskOrder"> The task_order </param>
+        /// <param name="friendlyName"> Human readable description of this TaskQueue </param>
+        /// <param name="reservationActivitySid"> ActivitySID to assign workers once a task is reserved for them </param>
+        /// <param name="assignmentActivitySid"> ActivitySID to assign workers once a task is assigned for them </param>
+        /// <param name="targetWorkers"> A string describing the Worker selection criteria for any Tasks that enter this
+        ///                     TaskQueue. </param>
+        /// <param name="maxReservedWorkers"> The maximum amount of workers to create reservations for the assignment of a task
+        ///                          while in this queue. </param>
+        /// <param name="taskOrder"> TaskOrder will determine which order the Tasks will be assigned to Workers. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueue </returns> 
         public static TaskQueueResource Create(string pathWorkspaceSid, 
@@ -421,12 +433,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// create
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="reservationActivitySid"> The reservation_activity_sid </param>
-        /// <param name="assignmentActivitySid"> The assignment_activity_sid </param>
-        /// <param name="targetWorkers"> The target_workers </param>
-        /// <param name="maxReservedWorkers"> The max_reserved_workers </param>
-        /// <param name="taskOrder"> The task_order </param>
+        /// <param name="friendlyName"> Human readable description of this TaskQueue </param>
+        /// <param name="reservationActivitySid"> ActivitySID to assign workers once a task is reserved for them </param>
+        /// <param name="assignmentActivitySid"> ActivitySID to assign workers once a task is assigned for them </param>
+        /// <param name="targetWorkers"> A string describing the Worker selection criteria for any Tasks that enter this
+        ///                     TaskQueue. </param>
+        /// <param name="maxReservedWorkers"> The maximum amount of workers to create reservations for the assignment of a task
+        ///                          while in this queue. </param>
+        /// <param name="taskOrder"> TaskOrder will determine which order the Tasks will be assigned to Workers. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueue </returns> 
         public static async System.Threading.Tasks.Task<TaskQueueResource> CreateAsync(string pathWorkspaceSid, 
@@ -532,12 +546,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
         /// <summary>
-        /// The account_sid
+        /// The ID of the Account that owns this TaskQueue
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The assignment_activity_sid
+        /// ActivitySID to assign workers once a task is assigned for them
         /// </summary>
         [JsonProperty("assignment_activity_sid")]
         public string AssignmentActivitySid { get; private set; }
@@ -557,17 +571,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// Filter by a human readable description of a TaskQueue
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The max_reserved_workers
+        /// The maximum amount of workers to create reservations for the assignment of a task while in this queue.
         /// </summary>
         [JsonProperty("max_reserved_workers")]
         public int? MaxReservedWorkers { get; private set; }
         /// <summary>
-        /// The reservation_activity_sid
+        /// ActivitySID to assign workers once a task is reserved for them
         /// </summary>
         [JsonProperty("reservation_activity_sid")]
         public string ReservationActivitySid { get; private set; }
@@ -577,17 +591,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("reservation_activity_name")]
         public string ReservationActivityName { get; private set; }
         /// <summary>
-        /// The sid
+        /// The unique ID of the TaskQueue
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The target_workers
+        /// A string describing the Worker selection criteria for any Tasks that enter this TaskQueue.
         /// </summary>
         [JsonProperty("target_workers")]
         public string TargetWorkers { get; private set; }
         /// <summary>
-        /// The task_order
+        /// TaskOrder will determine which order the Tasks will be assigned to Workers.
         /// </summary>
         [JsonProperty("task_order")]
         [JsonConverter(typeof(StringEnumConverter))]
@@ -598,7 +612,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The ID of the Workspace that owns this TaskQueue
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }

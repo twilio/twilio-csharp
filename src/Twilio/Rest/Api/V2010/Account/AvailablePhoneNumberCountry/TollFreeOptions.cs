@@ -25,75 +25,75 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         public string PathCountryCode { get; }
         /// <summary>
-        /// The area_code
+        /// Find phone numbers in the specified area code.
         /// </summary>
         public int? AreaCode { get; set; }
         /// <summary>
-        /// The contains
+        /// A pattern on which to match phone numbers.
         /// </summary>
         public string Contains { get; set; }
         /// <summary>
-        /// The sms_enabled
+        /// This indicates whether the phone numbers can receive text messages.
         /// </summary>
         public bool? SmsEnabled { get; set; }
         /// <summary>
-        /// The mms_enabled
+        /// This indicates whether the phone numbers can receive MMS messages.
         /// </summary>
         public bool? MmsEnabled { get; set; }
         /// <summary>
-        /// The voice_enabled
+        /// This indicates whether the phone numbers can receive calls.
         /// </summary>
         public bool? VoiceEnabled { get; set; }
         /// <summary>
-        /// The exclude_all_address_required
+        /// Indicates whether the response includes phone numbers which require any Address.
         /// </summary>
         public bool? ExcludeAllAddressRequired { get; set; }
         /// <summary>
-        /// The exclude_local_address_required
+        /// Indicates whether the response includes phone numbers which require a local Address.
         /// </summary>
         public bool? ExcludeLocalAddressRequired { get; set; }
         /// <summary>
-        /// The exclude_foreign_address_required
+        /// Indicates whether the response includes phone numbers which require a foreign Address.
         /// </summary>
         public bool? ExcludeForeignAddressRequired { get; set; }
         /// <summary>
-        /// The beta
+        /// Include phone numbers new to the Twilio platform.
         /// </summary>
         public bool? Beta { get; set; }
         /// <summary>
-        /// The near_number
+        /// Given a phone number, find a geographically close number within Distance miles.
         /// </summary>
         public Types.PhoneNumber NearNumber { get; set; }
         /// <summary>
-        /// The near_lat_long
+        /// Given a latitude/longitude pair lat,long find geographically close numbers within Distance miles.
         /// </summary>
         public string NearLatLong { get; set; }
         /// <summary>
-        /// The distance
+        /// Specifies the search radius for a Near- query in miles.
         /// </summary>
         public int? Distance { get; set; }
         /// <summary>
-        /// The in_postal_code
+        /// Limit results to a particular postal code.
         /// </summary>
         public string InPostalCode { get; set; }
         /// <summary>
-        /// The in_region
+        /// Limit results to a particular region.
         /// </summary>
         public string InRegion { get; set; }
         /// <summary>
-        /// The in_rate_center
+        /// Limit results to a specific rate center, or given a phone number search within the same rate center as that number.
         /// </summary>
         public string InRateCenter { get; set; }
         /// <summary>
-        /// The in_lata
+        /// Limit results to a specific Local access and transport area.
         /// </summary>
         public string InLata { get; set; }
         /// <summary>
-        /// The in_locality
+        /// Limit results to a particular locality.
         /// </summary>
         public string InLocality { get; set; }
         /// <summary>
-        /// The fax_enabled
+        /// This indicates whether the phone numbers can receive faxes.
         /// </summary>
         public bool? FaxEnabled { get; set; }
 

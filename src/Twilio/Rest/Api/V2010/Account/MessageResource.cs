@@ -128,14 +128,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="from"> The phone number that initiated the message </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="body"> The body </param>
-        /// <param name="mediaUrl"> The media_url </param>
+        /// <param name="messagingServiceSid"> The 34 character unique id of the Messaging Service you want to associate with
+        ///                           this Message. </param>
+        /// <param name="body"> The text of the message you want to send, limited to 1600 characters. </param>
+        /// <param name="mediaUrl"> The URL of the media you wish to send out with the message. </param>
         /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
         /// <param name="applicationSid"> The application to use for callbacks </param>
-        /// <param name="maxPrice"> The max_price </param>
-        /// <param name="provideFeedback"> The provide_feedback </param>
-        /// <param name="validityPeriod"> The validity_period </param>
+        /// <param name="maxPrice"> The total maximum price up to the fourth decimal in US dollars acceptable for the message
+        ///                to be delivered. </param>
+        /// <param name="provideFeedback"> Set this value to true if you are sending messages that have a trackable user action
+        ///                       and you intend to confirm delivery of the message using the Message Feedback API. </param>
+        /// <param name="validityPeriod"> The number of seconds that the message can remain in a Twilio queue. </param>
         /// <param name="maxRate"> The max_rate </param>
         /// <param name="forceDelivery"> The force_delivery </param>
         /// <param name="providerSid"> The provider_sid </param>
@@ -174,14 +177,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="to"> The phone number to receive the message </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="from"> The phone number that initiated the message </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="body"> The body </param>
-        /// <param name="mediaUrl"> The media_url </param>
+        /// <param name="messagingServiceSid"> The 34 character unique id of the Messaging Service you want to associate with
+        ///                           this Message. </param>
+        /// <param name="body"> The text of the message you want to send, limited to 1600 characters. </param>
+        /// <param name="mediaUrl"> The URL of the media you wish to send out with the message. </param>
         /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
         /// <param name="applicationSid"> The application to use for callbacks </param>
-        /// <param name="maxPrice"> The max_price </param>
-        /// <param name="provideFeedback"> The provide_feedback </param>
-        /// <param name="validityPeriod"> The validity_period </param>
+        /// <param name="maxPrice"> The total maximum price up to the fourth decimal in US dollars acceptable for the message
+        ///                to be delivered. </param>
+        /// <param name="provideFeedback"> Set this value to true if you are sending messages that have a trackable user action
+        ///                       and you intend to confirm delivery of the message using the Message Feedback API. </param>
+        /// <param name="validityPeriod"> The number of seconds that the message can remain in a Twilio queue. </param>
         /// <param name="maxRate"> The max_rate </param>
         /// <param name="forceDelivery"> The force_delivery </param>
         /// <param name="providerSid"> The provider_sid </param>
@@ -557,7 +563,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
         /// </summary>
         /// <param name="pathSid"> The message to redact </param>
-        /// <param name="body"> The body </param>
+        /// <param name="body"> The text of the message you want to send, limited to 1600 characters. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
@@ -575,7 +581,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
         /// </summary>
         /// <param name="pathSid"> The message to redact </param>
-        /// <param name="body"> The body </param>
+        /// <param name="body"> The text of the message you want to send, limited to 1600 characters. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
@@ -660,7 +666,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber From { get; private set; }
         /// <summary>
-        /// The messaging_service_sid
+        /// The unique id of the Messaging Service used with the message.
         /// </summary>
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }

@@ -117,7 +117,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// </summary>
         public object Data { get; }
         /// <summary>
-        /// The ttl
+        /// Time-to-live of this item in seconds, defaults to no expiration.
         /// </summary>
         public int? Ttl { get; set; }
 
@@ -170,11 +170,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// </summary>
         public string PathListSid { get; }
         /// <summary>
-        /// The order
+        /// A string; asc or desc
         /// </summary>
         public SyncListItemResource.QueryResultOrderEnum Order { get; set; }
         /// <summary>
-        /// The from
+        /// An integer representing Item index offset.
         /// </summary>
         public string From { get; set; }
         /// <summary>

@@ -21,31 +21,31 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The start_date
+        /// Only include usage that has occurred on or after this date.
         /// </summary>
         public DateTime? StartDate { get; }
         /// <summary>
-        /// The end_date
+        /// Only include usage that has occurred on or before this date.
         /// </summary>
         public DateTime? EndDate { get; }
         /// <summary>
-        /// The include_subaccounts
+        /// true to include feedback entries for the master account and all subaccounts.
         /// </summary>
         public bool? IncludeSubaccounts { get; set; }
         /// <summary>
-        /// The status_callback
+        /// The URL that Twilio will request when the Feedback Summary is completed.
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The status_callback_method
+        /// The HTTP method Twilio will use to make requests to the StatusCallback URL.
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
 
         /// <summary>
         /// Construct a new CreateFeedbackSummaryOptions
         /// </summary>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
+        /// <param name="startDate"> Only include usage that has occurred on or after this date. </param>
+        /// <param name="endDate"> Only include usage that has occurred on or before this date. </param>
         public CreateFeedbackSummaryOptions(DateTime? startDate, DateTime? endDate)
         {
             StartDate = startDate;

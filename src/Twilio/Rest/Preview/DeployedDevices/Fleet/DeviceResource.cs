@@ -35,7 +35,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch information about a specific Device in the Fleet.
         /// </summary>
         /// <param name="options"> Fetch Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch information about a specific Device in the Fleet.
         /// </summary>
         /// <param name="options"> Fetch Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch information about a specific Device in the Fleet.
         /// </summary>
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Device. </param>
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch information about a specific Device in the Fleet.
         /// </summary>
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Device. </param>

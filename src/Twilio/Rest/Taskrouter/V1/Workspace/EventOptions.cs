@@ -56,35 +56,35 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The end_date
+        /// Filter events by an end date.
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// The event_type
+        /// Filter events by those of a certain event type
         /// </summary>
         public string EventType { get; set; }
         /// <summary>
-        /// The minutes
+        /// Filter events by up to ‘x’ minutes in the past.
         /// </summary>
         public int? Minutes { get; set; }
         /// <summary>
-        /// The reservation_sid
+        /// Filter events by those pertaining to a particular reservation
         /// </summary>
         public string ReservationSid { get; set; }
         /// <summary>
-        /// The start_date
+        /// Filter events by a start date.
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// The task_queue_sid
+        /// Filter events by those pertaining to a particular queue
         /// </summary>
         public string TaskQueueSid { get; set; }
         /// <summary>
-        /// The task_sid
+        /// Filter events by those pertaining to a particular task
         /// </summary>
         public string TaskSid { get; set; }
         /// <summary>
-        /// The worker_sid
+        /// Filter events by those pertaining to a particular worker
         /// </summary>
         public string WorkerSid { get; set; }
         /// <summary>

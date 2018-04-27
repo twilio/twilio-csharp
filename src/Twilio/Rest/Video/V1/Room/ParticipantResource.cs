@@ -152,8 +152,8 @@ namespace Twilio.Rest.Video.V1.Room
         /// read
         /// </summary>
         /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="status"> The status </param>
-        /// <param name="identity"> The identity </param>
+        /// <param name="status"> Only show Participants with the given Status. </param>
+        /// <param name="identity"> Only show Participants that connected to the Room using the provided Identity. </param>
         /// <param name="dateCreatedAfter"> The date_created_after </param>
         /// <param name="dateCreatedBefore"> The date_created_before </param>
         /// <param name="pageSize"> Page size </param>
@@ -178,8 +178,8 @@ namespace Twilio.Rest.Video.V1.Room
         /// read
         /// </summary>
         /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="status"> The status </param>
-        /// <param name="identity"> The identity </param>
+        /// <param name="status"> Only show Participants with the given Status. </param>
+        /// <param name="identity"> Only show Participants that connected to the Room using the provided Identity. </param>
         /// <param name="dateCreatedAfter"> The date_created_after </param>
         /// <param name="dateCreatedBefore"> The date_created_before </param>
         /// <param name="pageSize"> Page size </param>
@@ -304,7 +304,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         /// <param name="pathRoomSid"> The room_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="status"> The status </param>
+        /// <param name="status"> Set to disconnected to remove participant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
         public static ParticipantResource Update(string pathRoomSid, 
@@ -322,7 +322,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         /// <param name="pathRoomSid"> The room_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="status"> The status </param>
+        /// <param name="status"> Set to disconnected to remove participant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathRoomSid, 
@@ -354,58 +354,58 @@ namespace Twilio.Rest.Video.V1.Room
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The room_sid
+        /// A system-generated 34-character string that uniquely identifies.
         /// </summary>
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account associated with this Room.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The status
+        /// A string representing the status of the Participant.
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ParticipantResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The identity
+        /// The unique name identifier that is assigned to this Participant.
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created, given as a UTC ISO 8601 Timestamp.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated, given as a UTC ISO 8601 Timestamp.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The start_time
+        /// The time of Participant connected to the Room, given as a UTC ISO 8601 Timestamp.
         /// </summary>
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
         /// <summary>
-        /// The end_time
+        /// The time of Participant disconnected from the Room, given as a UTC ISO 8601 Timestamp.
         /// </summary>
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
         /// <summary>
-        /// The duration
+        /// Duration of time in seconds this Participant was connected.
         /// </summary>
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL for this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

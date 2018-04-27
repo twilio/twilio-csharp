@@ -171,7 +171,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// Retrieve a list of all Sessions for this Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="uniqueName"> A unique, developer assigned name of this Session. </param>
+        /// <param name="uniqueName"> The unique_name </param>
         /// <param name="status"> The Status of this Session </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// Retrieve a list of all Sessions for this Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="uniqueName"> A unique, developer assigned name of this Session. </param>
+        /// <param name="uniqueName"> The unique_name </param>
         /// <param name="status"> The Status of this Session </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -315,11 +315,11 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="uniqueName"> A unique, developer assigned name of this Session. </param>
-        /// <param name="dateExpiry"> The date this Session was expiry </param>
+        /// <param name="dateExpiry"> The date this Session should expire </param>
         /// <param name="ttl"> TTL for a Session, in seconds. </param>
         /// <param name="mode"> The Mode of this Session </param>
-        /// <param name="status"> The Status of this Session </param>
-        /// <param name="participants"> A list of phone numbers to add to this Session. </param>
+        /// <param name="status"> Session status </param>
+        /// <param name="participants"> The participants </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns> 
         public static SessionResource Create(string pathServiceSid, 
@@ -341,11 +341,11 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="uniqueName"> A unique, developer assigned name of this Session. </param>
-        /// <param name="dateExpiry"> The date this Session was expiry </param>
+        /// <param name="dateExpiry"> The date this Session should expire </param>
         /// <param name="ttl"> TTL for a Session, in seconds. </param>
         /// <param name="mode"> The Mode of this Session </param>
-        /// <param name="status"> The Status of this Session </param>
-        /// <param name="participants"> A list of phone numbers to add to this Session. </param>
+        /// <param name="status"> Session status </param>
+        /// <param name="participants"> The participants </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns> 
         public static async System.Threading.Tasks.Task<SessionResource> CreateAsync(string pathServiceSid, 
@@ -477,12 +477,12 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
-        /// <param name="uniqueName"> A unique, developer assigned name of this Session. </param>
-        /// <param name="dateExpiry"> The date this Session was expiry </param>
+        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="dateExpiry"> The date this Session should ge expired </param>
         /// <param name="ttl"> TTL for a Session, in seconds. </param>
-        /// <param name="mode"> The Mode of this Session </param>
+        /// <param name="mode"> The mode </param>
         /// <param name="status"> The Status of this Session </param>
-        /// <param name="participants"> A list of phone numbers to add to this Session. </param>
+        /// <param name="participants"> The participants </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns> 
         public static SessionResource Update(string pathServiceSid, 
@@ -505,12 +505,12 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
-        /// <param name="uniqueName"> A unique, developer assigned name of this Session. </param>
-        /// <param name="dateExpiry"> The date this Session was expiry </param>
+        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="dateExpiry"> The date this Session should ge expired </param>
         /// <param name="ttl"> TTL for a Session, in seconds. </param>
-        /// <param name="mode"> The Mode of this Session </param>
+        /// <param name="mode"> The mode </param>
         /// <param name="status"> The Status of this Session </param>
-        /// <param name="participants"> A list of phone numbers to add to this Session. </param>
+        /// <param name="participants"> The participants </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns> 
         public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(string pathServiceSid, 

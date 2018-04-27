@@ -19,39 +19,39 @@ namespace Twilio.Rest.Messaging.V1
     public class CreateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// The friendly_name
+        /// A human readable descriptive text for this resource, up to 64 characters.
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// The inbound_request_url
+        /// A webhook request is made to the Inbound Request URL when a message is received by any phone number or shortcode associated to your Messaging Service.
         /// </summary>
         public Uri InboundRequestUrl { get; set; }
         /// <summary>
-        /// The inbound_method
+        /// The HTTP method used when making requests to the Inbound Request URL.
         /// </summary>
         public Twilio.Http.HttpMethod InboundMethod { get; set; }
         /// <summary>
-        /// The fallback_url
+        /// A request is made to the Fallback URL if an error occurs with retrieving or executing the TwiML from you Inbound Request URL.
         /// </summary>
         public Uri FallbackUrl { get; set; }
         /// <summary>
-        /// The fallback_method
+        /// The HTTP method used when requesting the Fallback URL.
         /// </summary>
         public Twilio.Http.HttpMethod FallbackMethod { get; set; }
         /// <summary>
-        /// The status_callback
+        /// A webhook request is made to the Status Callback to pass status updates about your messages.
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The sticky_sender
+        /// Configuration to enable or disable Sticky Sender on your Service Instance.
         /// </summary>
         public bool? StickySender { get; set; }
         /// <summary>
-        /// The mms_converter
+        /// Configuration to enable or disable MMS Converter on your Service Instance.
         /// </summary>
         public bool? MmsConverter { get; set; }
         /// <summary>
-        /// The smart_encoding
+        /// Configuration to enable or disable Smart Encoding.
         /// </summary>
         public bool? SmartEncoding { get; set; }
         /// <summary>
@@ -59,15 +59,15 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
         /// <summary>
-        /// The fallback_to_long_code
+        /// Configuration to enable or disable Fallback to Long Code.
         /// </summary>
         public bool? FallbackToLongCode { get; set; }
         /// <summary>
-        /// The area_code_geomatch
+        /// Configuration to enable or disable Area Code Geomatch.
         /// </summary>
         public bool? AreaCodeGeomatch { get; set; }
         /// <summary>
-        /// The validity_period
+        /// Configuration to set the validity period of all messages sent from your Service, in seconds.
         /// </summary>
         public int? ValidityPeriod { get; set; }
         /// <summary>
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// Construct a new CreateServiceOptions
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters. </param>
         public CreateServiceOptions(string friendlyName)
         {
             FriendlyName = friendlyName;

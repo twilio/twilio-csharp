@@ -129,11 +129,11 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The proxy phone number for this Participant.
+        /// The proxy phone number to use for this Participant.
         /// </summary>
         public string ProxyIdentifier { get; set; }
         /// <summary>
-        /// Proxy Identifier Sid.
+        /// The proxy_identifier_sid
         /// </summary>
         public string ProxyIdentifierSid { get; set; }
 
@@ -183,7 +183,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Delete a specific Participant.
+    /// Delete a specific Participant. This is a soft-delete.  The participant remains associated with the session and
+    /// cannot be re-added.  Participants are only permanently deleted when the session is deleted.
     /// </summary>
     public class DeleteParticipantOptions : IOptions<ParticipantResource> 
     {
@@ -226,45 +227,45 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Update a specific Participant.
+    /// UpdateParticipantOptions
     /// </summary>
     public class UpdateParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Session Sid.
+        /// The session_sid
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Participant.
+        /// The sid
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The phone number of this Participant.
+        /// The identifier
         /// </summary>
         public string Identifier { get; set; }
         /// <summary>
-        /// A human readable description of this resource.
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The proxy phone number for this Participant.
+        /// The proxy_identifier
         /// </summary>
         public string ProxyIdentifier { get; set; }
         /// <summary>
-        /// Proxy Identifier Sid.
+        /// The proxy_identifier_sid
         /// </summary>
         public string ProxyIdentifierSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateParticipantOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Participant. </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSessionSid"> The session_sid </param>
+        /// <param name="pathSid"> The sid </param>
         public UpdateParticipantOptions(string pathServiceSid, string pathSessionSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

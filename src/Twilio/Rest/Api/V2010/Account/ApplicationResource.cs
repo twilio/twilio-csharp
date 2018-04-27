@@ -63,7 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a new application within your account
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> A human readable description of the application </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="apiVersion"> The API version to use </param>
         /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a new application within your account
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> A human readable description of the application </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="apiVersion"> The API version to use </param>
         /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>

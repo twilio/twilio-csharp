@@ -381,7 +381,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("company_name")]
         public string CompanyName { get; private set; }
         /// <summary>
-        /// HTTP method Twilio WIll use making requests to the url
+        /// HTTP method Twilio will use making requests to the url
         /// </summary>
         [JsonProperty("deauthorize_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]

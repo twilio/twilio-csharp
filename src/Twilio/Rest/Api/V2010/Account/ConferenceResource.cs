@@ -333,7 +333,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="status"> The status </param>
+        /// <param name="status"> Specifying completed will end the conference and kick all participants </param>
         /// <param name="announceUrl"> The announce_url </param>
         /// <param name="announceMethod"> The announce_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -355,7 +355,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="status"> The status </param>
+        /// <param name="status"> Specifying completed will end the conference and kick all participants </param>
         /// <param name="announceUrl"> The announce_url </param>
         /// <param name="announceMethod"> The announce_method </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -416,7 +416,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The region
+        /// A string representing the Twilio Region where the conference was mixed.
         /// </summary>
         [JsonProperty("region")]
         public string Region { get; private set; }

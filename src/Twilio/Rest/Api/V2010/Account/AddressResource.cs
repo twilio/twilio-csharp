@@ -63,16 +63,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="street"> The street </param>
-        /// <param name="city"> The city </param>
-        /// <param name="region"> The region </param>
-        /// <param name="postalCode"> The postal_code </param>
-        /// <param name="isoCountry"> The iso_country </param>
+        /// <param name="customerName"> Your name or business name, or that of your customer. </param>
+        /// <param name="street"> The number and street address where you or your customer is located. </param>
+        /// <param name="city"> The city in which you or your customer is located. </param>
+        /// <param name="region"> The state or region in which you or your customer is located. </param>
+        /// <param name="postalCode"> The postal code in which you or your customer is located. </param>
+        /// <param name="isoCountry"> The ISO country code of your or your customer's address. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> A human-readable description of the new address. </param>
         /// <param name="emergencyEnabled"> The emergency_enabled </param>
-        /// <param name="autoCorrectAddress"> The auto_correct_address </param>
+        /// <param name="autoCorrectAddress"> If you don't set a value for this parameter, or if you set it to true, then the
+        ///                          system will, if necessary, auto-correct the address you provide. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns> 
         public static AddressResource Create(string customerName, 
@@ -95,16 +96,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="street"> The street </param>
-        /// <param name="city"> The city </param>
-        /// <param name="region"> The region </param>
-        /// <param name="postalCode"> The postal_code </param>
-        /// <param name="isoCountry"> The iso_country </param>
+        /// <param name="customerName"> Your name or business name, or that of your customer. </param>
+        /// <param name="street"> The number and street address where you or your customer is located. </param>
+        /// <param name="city"> The city in which you or your customer is located. </param>
+        /// <param name="region"> The state or region in which you or your customer is located. </param>
+        /// <param name="postalCode"> The postal code in which you or your customer is located. </param>
+        /// <param name="isoCountry"> The ISO country code of your or your customer's address. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> A human-readable description of the new address. </param>
         /// <param name="emergencyEnabled"> The emergency_enabled </param>
-        /// <param name="autoCorrectAddress"> The auto_correct_address </param>
+        /// <param name="autoCorrectAddress"> If you don't set a value for this parameter, or if you set it to true, then the
+        ///                          system will, if necessary, auto-correct the address you provide. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns> 
         public static async System.Threading.Tasks.Task<AddressResource> CreateAsync(string customerName, 
@@ -309,14 +311,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="street"> The street </param>
-        /// <param name="city"> The city </param>
-        /// <param name="region"> The region </param>
-        /// <param name="postalCode"> The postal_code </param>
+        /// <param name="friendlyName"> A human-readable description of the address. </param>
+        /// <param name="customerName"> Your name or business name, or that of your customer. </param>
+        /// <param name="street"> The number and street address where you or your customer is located. </param>
+        /// <param name="city"> The city in which you or your customer is located. </param>
+        /// <param name="region"> The state or region in which you or your customer is located. </param>
+        /// <param name="postalCode"> The postal code in which you or your customer is located. </param>
         /// <param name="emergencyEnabled"> The emergency_enabled </param>
-        /// <param name="autoCorrectAddress"> The auto_correct_address </param>
+        /// <param name="autoCorrectAddress"> If you don't set a value for this parameter, or if you set it to true, then the
+        ///                          system will, if necessary, auto-correct the address you provide. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Address </returns> 
         public static AddressResource Update(string pathSid, 
@@ -341,14 +344,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="street"> The street </param>
-        /// <param name="city"> The city </param>
-        /// <param name="region"> The region </param>
-        /// <param name="postalCode"> The postal_code </param>
+        /// <param name="friendlyName"> A human-readable description of the address. </param>
+        /// <param name="customerName"> Your name or business name, or that of your customer. </param>
+        /// <param name="street"> The number and street address where you or your customer is located. </param>
+        /// <param name="city"> The city in which you or your customer is located. </param>
+        /// <param name="region"> The state or region in which you or your customer is located. </param>
+        /// <param name="postalCode"> The postal code in which you or your customer is located. </param>
         /// <param name="emergencyEnabled"> The emergency_enabled </param>
-        /// <param name="autoCorrectAddress"> The auto_correct_address </param>
+        /// <param name="autoCorrectAddress"> If you don't set a value for this parameter, or if you set it to true, then the
+        ///                          system will, if necessary, auto-correct the address you provide. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Address </returns> 
         public static async System.Threading.Tasks.Task<AddressResource> UpdateAsync(string pathSid, 
@@ -416,9 +420,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// read
         /// </summary>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="isoCountry"> The iso_country </param>
+        /// <param name="customerName"> Only return the Address resources with customer names that exactly match this name.
+        ///                    </param>
+        /// <param name="friendlyName"> Only return the Address resources with friendly names that exactly match this name.
+        ///                    </param>
+        /// <param name="isoCountry"> Only return the Address resources in this country. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -440,9 +446,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// read
         /// </summary>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="customerName"> The customer_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="isoCountry"> The iso_country </param>
+        /// <param name="customerName"> Only return the Address resources with customer names that exactly match this name.
+        ///                    </param>
+        /// <param name="friendlyName"> Only return the Address resources with friendly names that exactly match this name.
+        ///                    </param>
+        /// <param name="isoCountry"> Only return the Address resources in this country. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -538,17 +546,17 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account responsible for this address.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The city
+        /// The city in which you or your customer is located.
         /// </summary>
         [JsonProperty("city")]
         public string City { get; private set; }
         /// <summary>
-        /// The customer_name
+        /// Your name or business name, or that of your customer.
         /// </summary>
         [JsonProperty("customer_name")]
         public string CustomerName { get; private set; }
@@ -563,47 +571,47 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable description of the address.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The iso_country
+        /// The ISO country code of your or your customer's address.
         /// </summary>
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
         /// <summary>
-        /// The postal_code
+        /// The postal code in which you or your customer is located.
         /// </summary>
         [JsonProperty("postal_code")]
         public string PostalCode { get; private set; }
         /// <summary>
-        /// The region
+        /// The state or region in which you or your customer is located.
         /// </summary>
         [JsonProperty("region")]
         public string Region { get; private set; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this address.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The street
+        /// The number and street address where you or your customer is located.
         /// </summary>
         [JsonProperty("street")]
         public string Street { get; private set; }
         /// <summary>
-        /// The uri
+        /// The URI for this resource, relative to https://api.
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// The emergency_enabled
+        /// This is a value that indicates if emergency calling has been enabled on this number.
         /// </summary>
         [JsonProperty("emergency_enabled")]
         public bool? EmergencyEnabled { get; private set; }
         /// <summary>
-        /// The validated
+        /// In some countries, addresses are validated to comply with local regulation.
         /// </summary>
         [JsonProperty("validated")]
         public bool? Validated { get; private set; }

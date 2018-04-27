@@ -66,11 +66,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="taskChannel"> The task_channel </param>
-        /// <param name="splitByWaitTime"> The split_by_wait_time </param>
+        /// <param name="endDate"> Filter cumulative statistics by an end date. </param>
+        /// <param name="minutes"> Filter cumulative statistics by up to ‘x’ minutes in the past. </param>
+        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
+        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
+        /// <param name="splitByWaitTime"> A comma separated values for viewing splits of tasks canceled and accepted above the
+        ///                       given threshold in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueueStatistics </returns> 
         public static TaskQueueStatisticsResource Fetch(string pathWorkspaceSid, 
@@ -92,11 +93,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="minutes"> The minutes </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="taskChannel"> The task_channel </param>
-        /// <param name="splitByWaitTime"> The split_by_wait_time </param>
+        /// <param name="endDate"> Filter cumulative statistics by an end date. </param>
+        /// <param name="minutes"> Filter cumulative statistics by up to ‘x’ minutes in the past. </param>
+        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
+        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
+        /// <param name="splitByWaitTime"> A comma separated values for viewing splits of tasks canceled and accepted above the
+        ///                       given threshold in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueueStatistics </returns> 
         public static async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(string pathWorkspaceSid, 

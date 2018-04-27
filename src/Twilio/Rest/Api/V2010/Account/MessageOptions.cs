@@ -30,15 +30,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Types.PhoneNumber From { get; set; }
         /// <summary>
-        /// The messaging_service_sid
+        /// The 34 character unique id of the Messaging Service you want to associate with this Message.
         /// </summary>
         public string MessagingServiceSid { get; set; }
         /// <summary>
-        /// The body
+        /// The text of the message you want to send, limited to 1600 characters.
         /// </summary>
         public string Body { get; set; }
         /// <summary>
-        /// The media_url
+        /// The URL of the media you wish to send out with the message.
         /// </summary>
         public List<Uri> MediaUrl { get; set; }
         /// <summary>
@@ -50,15 +50,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string ApplicationSid { get; set; }
         /// <summary>
-        /// The max_price
+        /// The total maximum price up to the fourth decimal in US dollars acceptable for the message to be delivered.
         /// </summary>
         public decimal? MaxPrice { get; set; }
         /// <summary>
-        /// The provide_feedback
+        /// Set this value to true if you are sending messages that have a trackable user action and you intend to confirm delivery of the message using the Message Feedback API.
         /// </summary>
         public bool? ProvideFeedback { get; set; }
         /// <summary>
-        /// The validity_period
+        /// The number of seconds that the message can remain in a Twilio queue.
         /// </summary>
         public int? ValidityPeriod { get; set; }
         /// <summary>
@@ -338,7 +338,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The body
+        /// The text of the message you want to send, limited to 1600 characters.
         /// </summary>
         public string Body { get; }
 
@@ -346,7 +346,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Construct a new UpdateMessageOptions
         /// </summary>
         /// <param name="pathSid"> The message to redact </param>
-        /// <param name="body"> The body </param>
+        /// <param name="body"> The text of the message you want to send, limited to 1600 characters. </param>
         public UpdateMessageOptions(string pathSid, string body)
         {
             PathSid = pathSid;

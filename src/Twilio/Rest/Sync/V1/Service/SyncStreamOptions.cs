@@ -19,7 +19,7 @@ namespace Twilio.Rest.Sync.V1.Service
     public class FetchSyncStreamOptions : IOptions<SyncStreamResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Instance SID or unique name.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new FetchSyncStreamOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
         /// <param name="pathSid"> Stream SID or unique name. </param>
         public FetchSyncStreamOptions(string pathServiceSid, string pathSid)
         {
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Sync.V1.Service
     public class DeleteSyncStreamOptions : IOptions<SyncStreamResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Instance SID or unique name.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Construct a new DeleteSyncStreamOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
         /// <param name="pathSid"> Stream SID or unique name. </param>
         public DeleteSyncStreamOptions(string pathServiceSid, string pathSid)
         {
@@ -188,14 +188,14 @@ namespace Twilio.Rest.Sync.V1.Service
     public class ReadSyncStreamOptions : ReadOptions<SyncStreamResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Instance SID or unique name.
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadSyncStreamOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
         public ReadSyncStreamOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;

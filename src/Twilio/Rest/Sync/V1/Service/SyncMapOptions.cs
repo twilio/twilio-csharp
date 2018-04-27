@@ -97,11 +97,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique_name
+        /// Human-readable name for this map
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The ttl
+        /// Time-to-live of this Map in seconds, defaults to no expiration.
         /// </summary>
         public int? Ttl { get; set; }
 
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The ttl
+        /// New time-to-live of this Map in seconds.
         /// </summary>
         public int? Ttl { get; set; }
 

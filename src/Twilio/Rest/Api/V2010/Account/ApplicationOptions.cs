@@ -21,7 +21,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable description of the application
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new CreateApplicationOptions
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> A human readable description of the application </param>
         public CreateApplicationOptions(string friendlyName)
         {
             FriendlyName = friendlyName;

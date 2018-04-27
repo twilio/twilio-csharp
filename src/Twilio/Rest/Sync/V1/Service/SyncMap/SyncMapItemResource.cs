@@ -245,7 +245,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="key"> The key </param>
         /// <param name="data"> The data </param>
-        /// <param name="ttl"> The ttl </param>
+        /// <param name="ttl"> Time-to-live of this Map in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
         public static SyncMapItemResource Create(string pathServiceSid, 
@@ -267,7 +267,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="key"> The key </param>
         /// <param name="data"> The data </param>
-        /// <param name="ttl"> The ttl </param>
+        /// <param name="ttl"> Time-to-live of this Map in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
         public static async System.Threading.Tasks.Task<SyncMapItemResource> CreateAsync(string pathServiceSid, 
@@ -483,8 +483,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
-        /// <param name="data"> The data </param>
-        /// <param name="ttl"> The ttl </param>
+        /// <param name="data"> Contains an arbitrary JSON object to be stored in this Map Item. </param>
+        /// <param name="ttl"> New time-to-live of this Map in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
         public static SyncMapItemResource Update(string pathServiceSid, 
@@ -505,8 +505,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
-        /// <param name="data"> The data </param>
-        /// <param name="ttl"> The ttl </param>
+        /// <param name="data"> Contains an arbitrary JSON object to be stored in this Map Item. </param>
+        /// <param name="ttl"> New time-to-live of this Map in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
         public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(string pathServiceSid, 
@@ -540,57 +540,57 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         }
 
         /// <summary>
-        /// The key
+        /// The unique user-defined key of this Map Item.
         /// </summary>
         [JsonProperty("key")]
         public string Key { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique SID identifier of the Twilio Account.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The unique SID identifier of the Service Instance that hosts this Map object.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The map_sid
+        /// The unique 34-character SID identifier of the Map containing this Item.
         /// </summary>
         [JsonProperty("map_sid")]
         public string MapSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL for this Map.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The revision
+        /// Contains the current revision of this Map, represented by a string identifier.
         /// </summary>
         [JsonProperty("revision")]
         public string Revision { get; private set; }
         /// <summary>
-        /// The data
+        /// Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a JSON object, up to 16KB.
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }
         /// <summary>
-        /// The date_expires
+        /// Contains the date this Map expires and gets deleted automatically.
         /// </summary>
         [JsonProperty("date_expires")]
         public DateTime? DateExpires { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this Map was created, given in UTC ISO 8601 format.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// Specifies the date this Map was last updated, given in UTC ISO 8601 format.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The created_by
+        /// The identity of the Map creator.
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }

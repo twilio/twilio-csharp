@@ -50,31 +50,31 @@ namespace Twilio.Rest.Taskrouter.V1
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The default_activity_sid
+        /// The ID of the Activity that will be used when new Workers are created in this Workspace.
         /// </summary>
         public string DefaultActivitySid { get; set; }
         /// <summary>
-        /// The event_callback_url
+        /// The Workspace will publish events to this URL.
         /// </summary>
         public Uri EventCallbackUrl { get; set; }
         /// <summary>
-        /// The events_filter
+        /// Use this parameter to receive webhooks on EventCallbackUrl for specific events on a workspace.
         /// </summary>
         public string EventsFilter { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// Human readable description of this workspace
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The multi_task_enabled
+        /// Enable or Disable Multitasking by passing either true or False with the POST request.
         /// </summary>
         public bool? MultiTaskEnabled { get; set; }
         /// <summary>
-        /// The timeout_activity_sid
+        /// The ID of the Activity that will be assigned to a Worker when a Task reservation times out without a response.
         /// </summary>
         public string TimeoutActivitySid { get; set; }
         /// <summary>
-        /// The prioritize_queue_order
+        /// Use this parameter to configure whether to prioritize LIFO or FIFO when workers are receiving Tasks from combination of LIFO and FIFO TaskQueues.
         /// </summary>
         public WorkspaceResource.QueueOrderEnum PrioritizeQueueOrder { get; set; }
 
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Taskrouter.V1
     public class ReadWorkspaceOptions : ReadOptions<WorkspaceResource> 
     {
         /// <summary>
-        /// The friendly_name
+        /// Filter by a workspace’s friendly name.
         /// </summary>
         public string FriendlyName { get; set; }
 
@@ -168,34 +168,34 @@ namespace Twilio.Rest.Taskrouter.V1
     public class CreateWorkspaceOptions : IOptions<WorkspaceResource> 
     {
         /// <summary>
-        /// The friendly_name
+        /// Human readable description of this workspace
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// The event_callback_url
+        /// If provided, the Workspace will publish events to this URL.
         /// </summary>
         public Uri EventCallbackUrl { get; set; }
         /// <summary>
-        /// The events_filter
+        /// Use this parameter to receive webhooks on EventCallbackUrl for specific events on a workspace.
         /// </summary>
         public string EventsFilter { get; set; }
         /// <summary>
-        /// The multi_task_enabled
+        /// Multi tasking allows workers to handle multiple tasks simultaneously.
         /// </summary>
         public bool? MultiTaskEnabled { get; set; }
         /// <summary>
-        /// The template
+        /// One of the available template names.
         /// </summary>
         public string Template { get; set; }
         /// <summary>
-        /// The prioritize_queue_order
+        /// Use this parameter to configure whether to prioritize LIFO or FIFO when workers are receiving Tasks from combination of LIFO and FIFO TaskQueues.
         /// </summary>
         public WorkspaceResource.QueueOrderEnum PrioritizeQueueOrder { get; set; }
 
         /// <summary>
         /// Construct a new CreateWorkspaceOptions
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Human readable description of this workspace </param>
         public CreateWorkspaceOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
