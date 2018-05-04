@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2018-05-04] Version 5.12.1
+----------------------------
+**Wireless**
+- Updated `maturity` to `ga` for all wireless apis
+
+
 [2018-04-27] Version 5.12.0
 ----------------------------
 **Video**

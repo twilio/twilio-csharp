@@ -65,15 +65,18 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
-        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
-        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
-        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
-        /// <param name="fcmCredentialSid"> The fcm_credential_sid </param>
-        /// <param name="defaultFcmNotificationProtocolVersion"> The default_fcm_notification_protocol_version </param>
+        /// <param name="friendlyName"> Human-readable name for this service instance </param>
+        /// <param name="apnCredentialSid"> The SID of the Credential to be used for APN Bindings. </param>
+        /// <param name="gcmCredentialSid"> The SID of the Credential to be used for GCM Bindings. </param>
+        /// <param name="messagingServiceSid"> The SID of the Messaging Service to be used for SMS Bindings. </param>
+        /// <param name="facebookMessengerPageId"> The Page ID to be used to send for Facebook Messenger Bindings. </param>
+        /// <param name="defaultApnNotificationProtocolVersion"> The version of the protocol to be used for sending APNS
+        ///                                             notifications. </param>
+        /// <param name="defaultGcmNotificationProtocolVersion"> The version of the protocol to be used for sending GCM
+        ///                                             notifications. </param>
+        /// <param name="fcmCredentialSid"> The SID of the Credential to be used for FCM Bindings. </param>
+        /// <param name="defaultFcmNotificationProtocolVersion"> The version of the protocol to be used for sending FCM
+        ///                                             notifications. </param>
         /// <param name="logEnabled"> The log_enabled </param>
         /// <param name="alexaSkillId"> The alexa_skill_id </param>
         /// <param name="defaultAlexaNotificationProtocolVersion"> The default_alexa_notification_protocol_version </param>
@@ -101,15 +104,18 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
-        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
-        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
-        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
-        /// <param name="fcmCredentialSid"> The fcm_credential_sid </param>
-        /// <param name="defaultFcmNotificationProtocolVersion"> The default_fcm_notification_protocol_version </param>
+        /// <param name="friendlyName"> Human-readable name for this service instance </param>
+        /// <param name="apnCredentialSid"> The SID of the Credential to be used for APN Bindings. </param>
+        /// <param name="gcmCredentialSid"> The SID of the Credential to be used for GCM Bindings. </param>
+        /// <param name="messagingServiceSid"> The SID of the Messaging Service to be used for SMS Bindings. </param>
+        /// <param name="facebookMessengerPageId"> The Page ID to be used to send for Facebook Messenger Bindings. </param>
+        /// <param name="defaultApnNotificationProtocolVersion"> The version of the protocol to be used for sending APNS
+        ///                                             notifications. </param>
+        /// <param name="defaultGcmNotificationProtocolVersion"> The version of the protocol to be used for sending GCM
+        ///                                             notifications. </param>
+        /// <param name="fcmCredentialSid"> The SID of the Credential to be used for FCM Bindings. </param>
+        /// <param name="defaultFcmNotificationProtocolVersion"> The version of the protocol to be used for sending FCM
+        ///                                             notifications. </param>
         /// <param name="logEnabled"> The log_enabled </param>
         /// <param name="alexaSkillId"> The alexa_skill_id </param>
         /// <param name="defaultAlexaNotificationProtocolVersion"> The default_alexa_notification_protocol_version </param>
@@ -314,7 +320,7 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Filter services by FriendlyName </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -332,7 +338,7 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Filter services by FriendlyName </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -450,15 +456,18 @@ namespace Twilio.Rest.Notify.V1
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
-        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
-        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
-        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
-        /// <param name="fcmCredentialSid"> The fcm_credential_sid </param>
-        /// <param name="defaultFcmNotificationProtocolVersion"> The default_fcm_notification_protocol_version </param>
+        /// <param name="friendlyName"> Human-readable name for this service instance </param>
+        /// <param name="apnCredentialSid"> The SID of the default Credential to be used for APN Bindings </param>
+        /// <param name="gcmCredentialSid"> The SID of the default Credential to be used for GCM Bindings </param>
+        /// <param name="messagingServiceSid"> The SID of the Messaging Service to be used for SMS Bindings. </param>
+        /// <param name="facebookMessengerPageId"> The Page ID to be used to send for Facebook Messenger Bindings. </param>
+        /// <param name="defaultApnNotificationProtocolVersion"> The version of the protocol to be used for sending APNS
+        ///                                             notifications. </param>
+        /// <param name="defaultGcmNotificationProtocolVersion"> The version of the protocol to be used for sending GCM
+        ///                                             notifications. </param>
+        /// <param name="fcmCredentialSid"> The SID of the default Credential to be used for FCM Bindings </param>
+        /// <param name="defaultFcmNotificationProtocolVersion"> The version of the protocol to be used for sending FCM
+        ///                                             notifications. </param>
         /// <param name="logEnabled"> The log_enabled </param>
         /// <param name="alexaSkillId"> The alexa_skill_id </param>
         /// <param name="defaultAlexaNotificationProtocolVersion"> The default_alexa_notification_protocol_version </param>
@@ -488,15 +497,18 @@ namespace Twilio.Rest.Notify.V1
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="apnCredentialSid"> The apn_credential_sid </param>
-        /// <param name="gcmCredentialSid"> The gcm_credential_sid </param>
-        /// <param name="messagingServiceSid"> The messaging_service_sid </param>
-        /// <param name="facebookMessengerPageId"> The facebook_messenger_page_id </param>
-        /// <param name="defaultApnNotificationProtocolVersion"> The default_apn_notification_protocol_version </param>
-        /// <param name="defaultGcmNotificationProtocolVersion"> The default_gcm_notification_protocol_version </param>
-        /// <param name="fcmCredentialSid"> The fcm_credential_sid </param>
-        /// <param name="defaultFcmNotificationProtocolVersion"> The default_fcm_notification_protocol_version </param>
+        /// <param name="friendlyName"> Human-readable name for this service instance </param>
+        /// <param name="apnCredentialSid"> The SID of the default Credential to be used for APN Bindings </param>
+        /// <param name="gcmCredentialSid"> The SID of the default Credential to be used for GCM Bindings </param>
+        /// <param name="messagingServiceSid"> The SID of the Messaging Service to be used for SMS Bindings. </param>
+        /// <param name="facebookMessengerPageId"> The Page ID to be used to send for Facebook Messenger Bindings. </param>
+        /// <param name="defaultApnNotificationProtocolVersion"> The version of the protocol to be used for sending APNS
+        ///                                             notifications. </param>
+        /// <param name="defaultGcmNotificationProtocolVersion"> The version of the protocol to be used for sending GCM
+        ///                                             notifications. </param>
+        /// <param name="fcmCredentialSid"> The SID of the default Credential to be used for FCM Bindings </param>
+        /// <param name="defaultFcmNotificationProtocolVersion"> The version of the protocol to be used for sending FCM
+        ///                                             notifications. </param>
         /// <param name="logEnabled"> The log_enabled </param>
         /// <param name="alexaSkillId"> The alexa_skill_id </param>
         /// <param name="defaultAlexaNotificationProtocolVersion"> The default_alexa_notification_protocol_version </param>
@@ -551,7 +563,7 @@ namespace Twilio.Rest.Notify.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// Human-readable name for this service instance
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
@@ -566,42 +578,42 @@ namespace Twilio.Rest.Notify.V1
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The apn_credential_sid
+        /// The SID of the Credential to be used for APN Bindings.
         /// </summary>
         [JsonProperty("apn_credential_sid")]
         public string ApnCredentialSid { get; private set; }
         /// <summary>
-        /// The gcm_credential_sid
+        /// The SID of the Credential to be used for GCM Bindings.
         /// </summary>
         [JsonProperty("gcm_credential_sid")]
         public string GcmCredentialSid { get; private set; }
         /// <summary>
-        /// The fcm_credential_sid
+        /// The SID of the Credential to be used for FCM Bindings.
         /// </summary>
         [JsonProperty("fcm_credential_sid")]
         public string FcmCredentialSid { get; private set; }
         /// <summary>
-        /// The messaging_service_sid
+        /// The SID of the Messaging Service to be used for SMS Bindings.
         /// </summary>
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
         /// <summary>
-        /// The facebook_messenger_page_id
+        /// The Page ID to be used to send for Facebook Messenger Bindings.
         /// </summary>
         [JsonProperty("facebook_messenger_page_id")]
         public string FacebookMessengerPageId { get; private set; }
         /// <summary>
-        /// The default_apn_notification_protocol_version
+        /// The version of the protocol to be used for sending APNS notifications.
         /// </summary>
         [JsonProperty("default_apn_notification_protocol_version")]
         public string DefaultApnNotificationProtocolVersion { get; private set; }
         /// <summary>
-        /// The default_gcm_notification_protocol_version
+        /// The version of the protocol to be used for sending GCM notifications.
         /// </summary>
         [JsonProperty("default_gcm_notification_protocol_version")]
         public string DefaultGcmNotificationProtocolVersion { get; private set; }
         /// <summary>
-        /// The default_fcm_notification_protocol_version
+        /// The version of the protocol to be used for sending FCM notifications.
         /// </summary>
         [JsonProperty("default_fcm_notification_protocol_version")]
         public string DefaultFcmNotificationProtocolVersion { get; private set; }

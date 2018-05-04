@@ -13,8 +13,6 @@ namespace Twilio.Rest.Wireless.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// ReadRatePlanOptions
     /// </summary>
     public class ReadRatePlanOptions : ReadOptions<RatePlanResource> 
@@ -35,8 +33,6 @@ namespace Twilio.Rest.Wireless.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// FetchRatePlanOptions
     /// </summary>
     public class FetchRatePlanOptions : IOptions<RatePlanResource> 
@@ -66,8 +62,6 @@ namespace Twilio.Rest.Wireless.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// CreateRatePlanOptions
     /// </summary>
     public class CreateRatePlanOptions : IOptions<RatePlanResource> 
@@ -191,8 +185,6 @@ namespace Twilio.Rest.Wireless.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// UpdateRatePlanOptions
     /// </summary>
     public class UpdateRatePlanOptions : IOptions<RatePlanResource> 
@@ -240,8 +232,6 @@ namespace Twilio.Rest.Wireless.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// DeleteRatePlanOptions
     /// </summary>
     public class DeleteRatePlanOptions : IOptions<RatePlanResource> 

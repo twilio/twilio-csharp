@@ -215,13 +215,15 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="type"> The type </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="certificate"> The certificate </param>
-        /// <param name="privateKey"> The private_key </param>
-        /// <param name="sandbox"> The sandbox </param>
-        /// <param name="apiKey"> The api_key </param>
-        /// <param name="secret"> The secret </param>
+        /// <param name="type"> Credential type, one of "gcm", "fcm", or "apn" </param>
+        /// <param name="friendlyName"> Friendly name for stored credential </param>
+        /// <param name="certificate"> [APN only] URL encoded representation of the certificate. </param>
+        /// <param name="privateKey"> [APN only] URL encoded representation of the private key. </param>
+        /// <param name="sandbox"> [APN only] use this credential for sending to production or sandbox APNs </param>
+        /// <param name="apiKey"> [GCM only] This is the "Server key" of your project from Firebase console under Settings /
+        ///              Cloud messaging. </param>
+        /// <param name="secret"> [FCM only] This is the "Server key" of your project from Firebase console under Settings /
+        ///              Cloud messaging. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns> 
         public static CredentialResource Create(CredentialResource.PushServiceEnum type, 
@@ -241,13 +243,15 @@ namespace Twilio.Rest.Notify.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="type"> The type </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="certificate"> The certificate </param>
-        /// <param name="privateKey"> The private_key </param>
-        /// <param name="sandbox"> The sandbox </param>
-        /// <param name="apiKey"> The api_key </param>
-        /// <param name="secret"> The secret </param>
+        /// <param name="type"> Credential type, one of "gcm", "fcm", or "apn" </param>
+        /// <param name="friendlyName"> Friendly name for stored credential </param>
+        /// <param name="certificate"> [APN only] URL encoded representation of the certificate. </param>
+        /// <param name="privateKey"> [APN only] URL encoded representation of the private key. </param>
+        /// <param name="sandbox"> [APN only] use this credential for sending to production or sandbox APNs </param>
+        /// <param name="apiKey"> [GCM only] This is the "Server key" of your project from Firebase console under Settings /
+        ///              Cloud messaging. </param>
+        /// <param name="secret"> [FCM only] This is the "Server key" of your project from Firebase console under Settings /
+        ///              Cloud messaging. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns> 
         public static async System.Threading.Tasks.Task<CredentialResource> CreateAsync(CredentialResource.PushServiceEnum type, 
@@ -375,12 +379,14 @@ namespace Twilio.Rest.Notify.V1
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="certificate"> The certificate </param>
-        /// <param name="privateKey"> The private_key </param>
-        /// <param name="sandbox"> The sandbox </param>
-        /// <param name="apiKey"> The api_key </param>
-        /// <param name="secret"> The secret </param>
+        /// <param name="friendlyName"> Friendly name for stored credential </param>
+        /// <param name="certificate"> [APN only] URL encoded representation of the certificate. </param>
+        /// <param name="privateKey"> [APN only] URL encoded representation of the private key. </param>
+        /// <param name="sandbox"> [APN only] use this credential for sending to production or sandbox APNs </param>
+        /// <param name="apiKey"> [GCM only] This is the "Server key" of your project from Firebase console under Settings /
+        ///              Cloud messaging. </param>
+        /// <param name="secret"> [FCM only] This is the "Server key" of your project from Firebase console under Settings /
+        ///              Cloud messaging. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns> 
         public static CredentialResource Update(string pathSid, 
@@ -401,12 +407,14 @@ namespace Twilio.Rest.Notify.V1
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="certificate"> The certificate </param>
-        /// <param name="privateKey"> The private_key </param>
-        /// <param name="sandbox"> The sandbox </param>
-        /// <param name="apiKey"> The api_key </param>
-        /// <param name="secret"> The secret </param>
+        /// <param name="friendlyName"> Friendly name for stored credential </param>
+        /// <param name="certificate"> [APN only] URL encoded representation of the certificate. </param>
+        /// <param name="privateKey"> [APN only] URL encoded representation of the private key. </param>
+        /// <param name="sandbox"> [APN only] use this credential for sending to production or sandbox APNs </param>
+        /// <param name="apiKey"> [GCM only] This is the "Server key" of your project from Firebase console under Settings /
+        ///              Cloud messaging. </param>
+        /// <param name="secret"> [FCM only] This is the "Server key" of your project from Firebase console under Settings /
+        ///              Cloud messaging. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns> 
         public static async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(string pathSid, 
@@ -518,18 +526,18 @@ namespace Twilio.Rest.Notify.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// Friendly name for stored credential
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The type
+        /// Credential type, one of "gcm", "fcm", or "apn"
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CredentialResource.PushServiceEnum Type { get; private set; }
         /// <summary>
-        /// The sandbox
+        /// [APN only] use this credential for sending to production or sandbox APNs
         /// </summary>
         [JsonProperty("sandbox")]
         public string Sandbox { get; private set; }

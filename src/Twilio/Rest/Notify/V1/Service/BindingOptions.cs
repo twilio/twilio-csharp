@@ -98,31 +98,31 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The identity
+        /// The Identity to which this Binding belongs to.
         /// </summary>
         public string Identity { get; }
         /// <summary>
-        /// The binding_type
+        /// The type of the Binding.
         /// </summary>
         public BindingResource.BindingTypeEnum BindingType { get; }
         /// <summary>
-        /// The address
+        /// The address specific to the channel.
         /// </summary>
         public string Address { get; }
         /// <summary>
-        /// The tag
+        /// The list of tags associated with this Binding.
         /// </summary>
         public List<string> Tag { get; set; }
         /// <summary>
-        /// The notification_protocol_version
+        /// The version of the protocol used to send the notification.
         /// </summary>
         public string NotificationProtocolVersion { get; set; }
         /// <summary>
-        /// The credential_sid
+        /// The unique identifier of the Credential resource to be used to send notifications to this Binding.
         /// </summary>
         public string CredentialSid { get; set; }
         /// <summary>
-        /// The endpoint
+        /// DEPRECATED*
         /// </summary>
         public string Endpoint { get; set; }
 
@@ -130,9 +130,9 @@ namespace Twilio.Rest.Notify.V1.Service
         /// Construct a new CreateBindingOptions
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="bindingType"> The binding_type </param>
-        /// <param name="address"> The address </param>
+        /// <param name="identity"> The Identity to which this Binding belongs to. </param>
+        /// <param name="bindingType"> The type of the Binding. </param>
+        /// <param name="address"> The address specific to the channel. </param>
         public CreateBindingOptions(string pathServiceSid, 
                                     string identity, 
                                     BindingResource.BindingTypeEnum bindingType, 
@@ -202,19 +202,19 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The start_date
+        /// Only list Bindings created on or after the given date.
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// The end_date
+        /// Only list Bindings created on or before the given date.
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// The identity
+        /// Only list Bindings that have any of the specified Identities.
         /// </summary>
         public List<string> Identity { get; set; }
         /// <summary>
-        /// The tag
+        /// Only list Bindings that have all of the specified Tags.
         /// </summary>
         public List<string> Tag { get; set; }
 

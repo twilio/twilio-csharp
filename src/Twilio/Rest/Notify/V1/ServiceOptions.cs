@@ -19,39 +19,39 @@ namespace Twilio.Rest.Notify.V1
     public class CreateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// The friendly_name
+        /// Human-readable name for this service instance
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The apn_credential_sid
+        /// The SID of the Credential to be used for APN Bindings.
         /// </summary>
         public string ApnCredentialSid { get; set; }
         /// <summary>
-        /// The gcm_credential_sid
+        /// The SID of the Credential to be used for GCM Bindings.
         /// </summary>
         public string GcmCredentialSid { get; set; }
         /// <summary>
-        /// The messaging_service_sid
+        /// The SID of the Messaging Service to be used for SMS Bindings.
         /// </summary>
         public string MessagingServiceSid { get; set; }
         /// <summary>
-        /// The facebook_messenger_page_id
+        /// The Page ID to be used to send for Facebook Messenger Bindings.
         /// </summary>
         public string FacebookMessengerPageId { get; set; }
         /// <summary>
-        /// The default_apn_notification_protocol_version
+        /// The version of the protocol to be used for sending APNS notifications.
         /// </summary>
         public string DefaultApnNotificationProtocolVersion { get; set; }
         /// <summary>
-        /// The default_gcm_notification_protocol_version
+        /// The version of the protocol to be used for sending GCM notifications.
         /// </summary>
         public string DefaultGcmNotificationProtocolVersion { get; set; }
         /// <summary>
-        /// The fcm_credential_sid
+        /// The SID of the Credential to be used for FCM Bindings.
         /// </summary>
         public string FcmCredentialSid { get; set; }
         /// <summary>
-        /// The default_fcm_notification_protocol_version
+        /// The version of the protocol to be used for sending FCM notifications.
         /// </summary>
         public string DefaultFcmNotificationProtocolVersion { get; set; }
         /// <summary>
@@ -207,7 +207,7 @@ namespace Twilio.Rest.Notify.V1
     public class ReadServiceOptions : ReadOptions<ServiceResource> 
     {
         /// <summary>
-        /// The friendly_name
+        /// Filter services by FriendlyName
         /// </summary>
         public string FriendlyName { get; set; }
 
@@ -243,39 +243,39 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// Human-readable name for this service instance
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The apn_credential_sid
+        /// The SID of the default Credential to be used for APN Bindings
         /// </summary>
         public string ApnCredentialSid { get; set; }
         /// <summary>
-        /// The gcm_credential_sid
+        /// The SID of the default Credential to be used for GCM Bindings
         /// </summary>
         public string GcmCredentialSid { get; set; }
         /// <summary>
-        /// The messaging_service_sid
+        /// The SID of the Messaging Service to be used for SMS Bindings.
         /// </summary>
         public string MessagingServiceSid { get; set; }
         /// <summary>
-        /// The facebook_messenger_page_id
+        /// The Page ID to be used to send for Facebook Messenger Bindings.
         /// </summary>
         public string FacebookMessengerPageId { get; set; }
         /// <summary>
-        /// The default_apn_notification_protocol_version
+        /// The version of the protocol to be used for sending APNS notifications.
         /// </summary>
         public string DefaultApnNotificationProtocolVersion { get; set; }
         /// <summary>
-        /// The default_gcm_notification_protocol_version
+        /// The version of the protocol to be used for sending GCM notifications.
         /// </summary>
         public string DefaultGcmNotificationProtocolVersion { get; set; }
         /// <summary>
-        /// The fcm_credential_sid
+        /// The SID of the default Credential to be used for FCM Bindings
         /// </summary>
         public string FcmCredentialSid { get; set; }
         /// <summary>
-        /// The default_fcm_notification_protocol_version
+        /// The version of the protocol to be used for sending FCM notifications.
         /// </summary>
         public string DefaultFcmNotificationProtocolVersion { get; set; }
         /// <summary>

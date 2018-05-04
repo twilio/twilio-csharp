@@ -224,13 +224,14 @@ namespace Twilio.Rest.Notify.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="bindingType"> The binding_type </param>
-        /// <param name="address"> The address </param>
-        /// <param name="tag"> The tag </param>
-        /// <param name="notificationProtocolVersion"> The notification_protocol_version </param>
-        /// <param name="credentialSid"> The credential_sid </param>
-        /// <param name="endpoint"> The endpoint </param>
+        /// <param name="identity"> The Identity to which this Binding belongs to. </param>
+        /// <param name="bindingType"> The type of the Binding. </param>
+        /// <param name="address"> The address specific to the channel. </param>
+        /// <param name="tag"> The list of tags associated with this Binding. </param>
+        /// <param name="notificationProtocolVersion"> The version of the protocol used to send the notification. </param>
+        /// <param name="credentialSid"> The unique identifier of the Credential resource to be used to send notifications to
+        ///                     this Binding. </param>
+        /// <param name="endpoint"> DEPRECATED* </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns> 
         public static BindingResource Create(string pathServiceSid, 
@@ -252,13 +253,14 @@ namespace Twilio.Rest.Notify.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="bindingType"> The binding_type </param>
-        /// <param name="address"> The address </param>
-        /// <param name="tag"> The tag </param>
-        /// <param name="notificationProtocolVersion"> The notification_protocol_version </param>
-        /// <param name="credentialSid"> The credential_sid </param>
-        /// <param name="endpoint"> The endpoint </param>
+        /// <param name="identity"> The Identity to which this Binding belongs to. </param>
+        /// <param name="bindingType"> The type of the Binding. </param>
+        /// <param name="address"> The address specific to the channel. </param>
+        /// <param name="tag"> The list of tags associated with this Binding. </param>
+        /// <param name="notificationProtocolVersion"> The version of the protocol used to send the notification. </param>
+        /// <param name="credentialSid"> The unique identifier of the Credential resource to be used to send notifications to
+        ///                     this Binding. </param>
+        /// <param name="endpoint"> DEPRECATED* </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns> 
         public static async System.Threading.Tasks.Task<BindingResource> CreateAsync(string pathServiceSid, 
@@ -324,10 +326,10 @@ namespace Twilio.Rest.Notify.V1.Service
         /// read
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="tag"> The tag </param>
+        /// <param name="startDate"> Only list Bindings created on or after the given date. </param>
+        /// <param name="endDate"> Only list Bindings created on or before the given date. </param>
+        /// <param name="identity"> Only list Bindings that have any of the specified Identities. </param>
+        /// <param name="tag"> Only list Bindings that have all of the specified Tags. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -350,10 +352,10 @@ namespace Twilio.Rest.Notify.V1.Service
         /// read
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="startDate"> The start_date </param>
-        /// <param name="endDate"> The end_date </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="tag"> The tag </param>
+        /// <param name="startDate"> Only list Bindings created on or after the given date. </param>
+        /// <param name="endDate"> Only list Bindings created on or before the given date. </param>
+        /// <param name="identity"> Only list Bindings that have any of the specified Identities. </param>
+        /// <param name="tag"> Only list Bindings that have all of the specified Tags. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -465,7 +467,7 @@ namespace Twilio.Rest.Notify.V1.Service
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The credential_sid
+        /// The unique identifier of the Credential resource to be used to send notifications to this Binding.
         /// </summary>
         [JsonProperty("credential_sid")]
         public string CredentialSid { get; private set; }
@@ -480,32 +482,32 @@ namespace Twilio.Rest.Notify.V1.Service
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The notification_protocol_version
+        /// The version of the protocol used to send the notification.
         /// </summary>
         [JsonProperty("notification_protocol_version")]
         public string NotificationProtocolVersion { get; private set; }
         /// <summary>
-        /// The endpoint
+        /// DEPRECATED*
         /// </summary>
         [JsonProperty("endpoint")]
         public string Endpoint { get; private set; }
         /// <summary>
-        /// The identity
+        /// The Identity to which this Binding belongs to.
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// The binding_type
+        /// The type of the Binding.
         /// </summary>
         [JsonProperty("binding_type")]
         public string BindingType { get; private set; }
         /// <summary>
-        /// The address
+        /// The address specific to the channel.
         /// </summary>
         [JsonProperty("address")]
         public string Address { get; private set; }
         /// <summary>
-        /// The tags
+        /// The list of tags associated with this Binding.
         /// </summary>
         [JsonProperty("tags")]
         public List<string> Tags { get; private set; }

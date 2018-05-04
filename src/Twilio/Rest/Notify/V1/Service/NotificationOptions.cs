@@ -24,59 +24,59 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The identity
+        /// Delivery will be attempted only to Bindings with an Identity in this list.
         /// </summary>
         public List<string> Identity { get; set; }
         /// <summary>
-        /// The tag
+        /// Delivery will be attempted only to Bindings that have all of the Tags in this list.
         /// </summary>
         public List<string> Tag { get; set; }
         /// <summary>
-        /// The body
+        /// Indicates the notification body text.
         /// </summary>
         public string Body { get; set; }
         /// <summary>
-        /// The priority
+        /// Two priorities defined: low and high.
         /// </summary>
         public NotificationResource.PriorityEnum Priority { get; set; }
         /// <summary>
-        /// The ttl
+        /// This parameter specifies how long the notification is valid.
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// The title
+        /// Indicates the notification title.
         /// </summary>
         public string Title { get; set; }
         /// <summary>
-        /// The sound
+        /// Indicates a sound to be played.
         /// </summary>
         public string Sound { get; set; }
         /// <summary>
-        /// The action
+        /// Specifies the actions to be displayed for the notification.
         /// </summary>
         public string Action { get; set; }
         /// <summary>
-        /// The data
+        /// This parameter specifies the custom key-value pairs of the notification’s payload.
         /// </summary>
         public object Data { get; set; }
         /// <summary>
-        /// The apn
+        /// APNS specific payload that overrides corresponding attributes in a generic payload for Bindings with the apn BindingType.
         /// </summary>
         public object Apn { get; set; }
         /// <summary>
-        /// The gcm
+        /// GCM specific payload that overrides corresponding attributes in generic payload for Bindings with gcm BindingType.
         /// </summary>
         public object Gcm { get; set; }
         /// <summary>
-        /// The sms
+        /// SMS specific payload that overrides corresponding attributes in generic payload for Bindings with sms BindingType.
         /// </summary>
         public object Sms { get; set; }
         /// <summary>
-        /// The facebook_messenger
+        /// Messenger specific payload that overrides corresponding attributes in generic payload for Bindings with facebook-messenger BindingType.
         /// </summary>
         public object FacebookMessenger { get; set; }
         /// <summary>
-        /// The fcm
+        /// FCM specific payload that overrides corresponding attributes in generic payload for Bindings with fcm BindingType.
         /// </summary>
         public object Fcm { get; set; }
         /// <summary>
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         public object Alexa { get; set; }
         /// <summary>
-        /// The to_binding
+        /// The destination address in a JSON object.
         /// </summary>
         public List<string> ToBinding { get; set; }
 

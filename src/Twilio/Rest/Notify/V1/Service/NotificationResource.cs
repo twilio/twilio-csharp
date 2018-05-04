@@ -80,23 +80,28 @@ namespace Twilio.Rest.Notify.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="tag"> The tag </param>
-        /// <param name="body"> The body </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="ttl"> The ttl </param>
-        /// <param name="title"> The title </param>
-        /// <param name="sound"> The sound </param>
-        /// <param name="action"> The action </param>
-        /// <param name="data"> The data </param>
-        /// <param name="apn"> The apn </param>
-        /// <param name="gcm"> The gcm </param>
-        /// <param name="sms"> The sms </param>
-        /// <param name="facebookMessenger"> The facebook_messenger </param>
-        /// <param name="fcm"> The fcm </param>
+        /// <param name="identity"> Delivery will be attempted only to Bindings with an Identity in this list. </param>
+        /// <param name="tag"> Delivery will be attempted only to Bindings that have all of the Tags in this list. </param>
+        /// <param name="body"> Indicates the notification body text. </param>
+        /// <param name="priority"> Two priorities defined: low and high. </param>
+        /// <param name="ttl"> This parameter specifies how long the notification is valid. </param>
+        /// <param name="title"> Indicates the notification title. </param>
+        /// <param name="sound"> Indicates a sound to be played. </param>
+        /// <param name="action"> Specifies the actions to be displayed for the notification. </param>
+        /// <param name="data"> This parameter specifies the custom key-value pairs of the notification’s payload. </param>
+        /// <param name="apn"> APNS specific payload that overrides corresponding attributes in a generic payload for Bindings
+        ///           with the apn BindingType. </param>
+        /// <param name="gcm"> GCM specific payload that overrides corresponding attributes in generic payload for Bindings
+        ///           with gcm BindingType. </param>
+        /// <param name="sms"> SMS specific payload that overrides corresponding attributes in generic payload for Bindings
+        ///           with sms BindingType. </param>
+        /// <param name="facebookMessenger"> Messenger specific payload that overrides corresponding attributes in generic
+        ///                         payload for Bindings with facebook-messenger BindingType. </param>
+        /// <param name="fcm"> FCM specific payload that overrides corresponding attributes in generic payload for Bindings
+        ///           with fcm BindingType. </param>
         /// <param name="segment"> The segment </param>
         /// <param name="alexa"> The alexa </param>
-        /// <param name="toBinding"> The to_binding </param>
+        /// <param name="toBinding"> The destination address in a JSON object. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Notification </returns> 
         public static NotificationResource Create(string pathServiceSid, 
@@ -128,23 +133,28 @@ namespace Twilio.Rest.Notify.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="tag"> The tag </param>
-        /// <param name="body"> The body </param>
-        /// <param name="priority"> The priority </param>
-        /// <param name="ttl"> The ttl </param>
-        /// <param name="title"> The title </param>
-        /// <param name="sound"> The sound </param>
-        /// <param name="action"> The action </param>
-        /// <param name="data"> The data </param>
-        /// <param name="apn"> The apn </param>
-        /// <param name="gcm"> The gcm </param>
-        /// <param name="sms"> The sms </param>
-        /// <param name="facebookMessenger"> The facebook_messenger </param>
-        /// <param name="fcm"> The fcm </param>
+        /// <param name="identity"> Delivery will be attempted only to Bindings with an Identity in this list. </param>
+        /// <param name="tag"> Delivery will be attempted only to Bindings that have all of the Tags in this list. </param>
+        /// <param name="body"> Indicates the notification body text. </param>
+        /// <param name="priority"> Two priorities defined: low and high. </param>
+        /// <param name="ttl"> This parameter specifies how long the notification is valid. </param>
+        /// <param name="title"> Indicates the notification title. </param>
+        /// <param name="sound"> Indicates a sound to be played. </param>
+        /// <param name="action"> Specifies the actions to be displayed for the notification. </param>
+        /// <param name="data"> This parameter specifies the custom key-value pairs of the notification’s payload. </param>
+        /// <param name="apn"> APNS specific payload that overrides corresponding attributes in a generic payload for Bindings
+        ///           with the apn BindingType. </param>
+        /// <param name="gcm"> GCM specific payload that overrides corresponding attributes in generic payload for Bindings
+        ///           with gcm BindingType. </param>
+        /// <param name="sms"> SMS specific payload that overrides corresponding attributes in generic payload for Bindings
+        ///           with sms BindingType. </param>
+        /// <param name="facebookMessenger"> Messenger specific payload that overrides corresponding attributes in generic
+        ///                         payload for Bindings with facebook-messenger BindingType. </param>
+        /// <param name="fcm"> FCM specific payload that overrides corresponding attributes in generic payload for Bindings
+        ///           with fcm BindingType. </param>
         /// <param name="segment"> The segment </param>
         /// <param name="alexa"> The alexa </param>
-        /// <param name="toBinding"> The to_binding </param>
+        /// <param name="toBinding"> The destination address in a JSON object. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns> 
         public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string pathServiceSid, 
@@ -211,12 +221,12 @@ namespace Twilio.Rest.Notify.V1.Service
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The identities
+        /// List of Identities.
         /// </summary>
         [JsonProperty("identities")]
         public List<string> Identities { get; private set; }
         /// <summary>
-        /// The tags
+        /// List of Tags
         /// </summary>
         [JsonProperty("tags")]
         public List<string> Tags { get; private set; }
@@ -226,63 +236,63 @@ namespace Twilio.Rest.Notify.V1.Service
         [JsonProperty("segments")]
         public List<string> Segments { get; private set; }
         /// <summary>
-        /// The priority
+        /// Two priorities defined: low and high.
         /// </summary>
         [JsonProperty("priority")]
         [JsonConverter(typeof(StringEnumConverter))]
         public NotificationResource.PriorityEnum Priority { get; private set; }
         /// <summary>
-        /// The ttl
+        /// This parameter specifies how long the notification is valid.
         /// </summary>
         [JsonProperty("ttl")]
         public int? Ttl { get; private set; }
         /// <summary>
-        /// The title
+        /// Indicates the notification title.
         /// </summary>
         [JsonProperty("title")]
         public string Title { get; private set; }
         /// <summary>
-        /// The body
+        /// Indicates the notification body text.
         /// </summary>
         [JsonProperty("body")]
         public string Body { get; private set; }
         /// <summary>
-        /// The sound
+        /// Indicates a sound to be played.
         /// </summary>
         [JsonProperty("sound")]
         public string Sound { get; private set; }
         /// <summary>
-        /// The action
+        /// Specifies the actions to be displayed for the notification.
         /// </summary>
         [JsonProperty("action")]
         public string Action { get; private set; }
         /// <summary>
-        /// The data
+        /// This parameter specifies the custom key-value pairs of the notification’s payload.
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }
         /// <summary>
-        /// The apn
+        /// APNS specific payload that overrides corresponding attributes in a generic payload for Bindings with the apn BindingType.
         /// </summary>
         [JsonProperty("apn")]
         public object Apn { get; private set; }
         /// <summary>
-        /// The gcm
+        /// GCM specific payload that overrides corresponding attributes in generic payload for Bindings with gcm BindingType.
         /// </summary>
         [JsonProperty("gcm")]
         public object Gcm { get; private set; }
         /// <summary>
-        /// The fcm
+        /// FCM specific payload that overrides corresponding attributes in generic payload for Bindings with fcm BindingType.
         /// </summary>
         [JsonProperty("fcm")]
         public object Fcm { get; private set; }
         /// <summary>
-        /// The sms
+        /// SMS specific payload that overrides corresponding attributes in generic payload for Bindings with sms BindingType.
         /// </summary>
         [JsonProperty("sms")]
         public object Sms { get; private set; }
         /// <summary>
-        /// The facebook_messenger
+        /// Messenger specific payload that overrides corresponding attributes in generic payload for Bindings with facebook-messenger BindingType.
         /// </summary>
         [JsonProperty("facebook_messenger")]
         public object FacebookMessenger { get; private set; }

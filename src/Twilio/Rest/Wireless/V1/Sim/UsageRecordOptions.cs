@@ -12,8 +12,6 @@ namespace Twilio.Rest.Wireless.V1.Sim
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// ReadUsageRecordOptions
     /// </summary>
     public class ReadUsageRecordOptions : ReadOptions<UsageRecordResource> 

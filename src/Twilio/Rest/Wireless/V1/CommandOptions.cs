@@ -12,8 +12,6 @@ namespace Twilio.Rest.Wireless.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// FetchCommandOptions
     /// </summary>
     public class FetchCommandOptions : IOptions<CommandResource> 
@@ -43,8 +41,6 @@ namespace Twilio.Rest.Wireless.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// ReadCommandOptions
     /// </summary>
     public class ReadCommandOptions : ReadOptions<CommandResource> 
@@ -93,8 +89,6 @@ namespace Twilio.Rest.Wireless.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// CreateCommandOptions
     /// </summary>
     public class CreateCommandOptions : IOptions<CommandResource> 
