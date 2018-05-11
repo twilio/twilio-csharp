@@ -32,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
 
         /// <summary>
-        /// Retrieve a list of Credentials belonging to the account used to make the request
+        /// Get All Credential Lists
         /// </summary>
         /// <param name="options"> Read CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of Credentials belonging to the account used to make the request
+        /// Get All Credential Lists
         /// </summary>
         /// <param name="options"> Read CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         #endif
 
         /// <summary>
-        /// Retrieve a list of Credentials belonging to the account used to make the request
+        /// Get All Credential Lists
         /// </summary>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of Credentials belonging to the account used to make the request
+        /// Get All Credential Lists
         /// </summary>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
 
         /// <summary>
-        /// Add a Credential to the list
+        /// Create a Credential List
         /// </summary>
         /// <param name="options"> Create CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -186,7 +186,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
         #if !NET35
         /// <summary>
-        /// Add a Credential to the list
+        /// Create a Credential List
         /// </summary>
         /// <param name="options"> Create CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -201,9 +201,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         #endif
 
         /// <summary>
-        /// Add a Credential to the list
+        /// Create a Credential List
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Human readable descriptive text </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialList </returns> 
@@ -217,9 +217,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
         #if !NET35
         /// <summary>
-        /// Add a Credential to the list
+        /// Create a Credential List
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Human readable descriptive text </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
 
         /// <summary>
-        /// Retrieve a specific Credential in a list
+        /// Get a Credential List
         /// </summary>
         /// <param name="options"> Fetch CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Credential in a list
+        /// Get a Credential List
         /// </summary>
         /// <param name="options"> Fetch CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -273,9 +273,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         #endif
 
         /// <summary>
-        /// Retrieve a specific Credential in a list
+        /// Get a Credential List
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique credential Sid </param>
+        /// <param name="pathSid"> Fetch by unique credential list Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialList </returns> 
@@ -289,9 +289,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Credential in a list
+        /// Get a Credential List
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique credential Sid </param>
+        /// <param name="pathSid"> Fetch by unique credential list Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
@@ -316,7 +316,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
 
         /// <summary>
-        /// Change the password of a Credential record
+        /// Update a Credential List
         /// </summary>
         /// <param name="options"> Update CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -330,7 +330,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
         #if !NET35
         /// <summary>
-        /// Change the password of a Credential record
+        /// Update a Credential List
         /// </summary>
         /// <param name="options"> Update CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -345,10 +345,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         #endif
 
         /// <summary>
-        /// Change the password of a Credential record
+        /// Update a Credential List
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Human readable descriptive text </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialList </returns> 
@@ -363,10 +363,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
         #if !NET35
         /// <summary>
-        /// Change the password of a Credential record
+        /// Update a Credential List
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Human readable descriptive text </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
@@ -392,7 +392,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
 
         /// <summary>
-        /// Remove a credential from a CredentialList
+        /// Delete a Credential List
         /// </summary>
         /// <param name="options"> Delete CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -406,7 +406,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
         #if !NET35
         /// <summary>
-        /// Remove a credential from a CredentialList
+        /// Delete a Credential List
         /// </summary>
         /// <param name="options"> Delete CredentialList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -421,9 +421,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         #endif
 
         /// <summary>
-        /// Remove a credential from a CredentialList
+        /// Delete a Credential List
         /// </summary>
-        /// <param name="pathSid"> Delete by unique credential Sid </param>
+        /// <param name="pathSid"> Delete by unique credential list Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialList </returns> 
@@ -435,9 +435,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
         #if !NET35
         /// <summary>
-        /// Remove a credential from a CredentialList
+        /// Delete a Credential List
         /// </summary>
-        /// <param name="pathSid"> Delete by unique credential Sid </param>
+        /// <param name="pathSid"> Delete by unique credential list Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
@@ -484,7 +484,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// Human readable descriptive text
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }

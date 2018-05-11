@@ -99,11 +99,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
         /// </summary>
         public string UniqueName { get; }
         /// <summary>
-        /// The friendly_name
+        /// A user-provided string that identifies this resource. It is non-unique and can up to 255 characters long.
         /// </summary>
         public string FriendlyName { get; set; }
 
@@ -111,7 +111,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// Construct a new CreateFieldTypeOptions
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  sid. Unique up to 64 characters long. </param>
         public CreateFieldTypeOptions(string pathAssistantSid, string uniqueName)
         {
             PathAssistantSid = pathAssistantSid;
@@ -155,11 +156,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A user-provided string that identifies this resource. It is non-unique and can up to 255 characters long.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
         /// </summary>
         public string UniqueName { get; set; }
 

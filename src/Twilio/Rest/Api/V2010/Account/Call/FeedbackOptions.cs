@@ -13,7 +13,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
     /// <summary>
-    /// CreateFeedbackOptions
+    /// Create a feedback entry for a call
     /// </summary>
     public class CreateFeedbackOptions : IOptions<FeedbackResource> 
     {
@@ -26,11 +26,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// The quality_score
+        /// An integer from 1 to 5
         /// </summary>
         public int? QualityScore { get; }
         /// <summary>
-        /// The issue
+        /// Issues experienced during the call
         /// </summary>
         public List<FeedbackResource.IssuesEnum> Issue { get; set; }
 
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Construct a new CreateFeedbackOptions
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="qualityScore"> The quality_score </param>
+        /// <param name="qualityScore"> An integer from 1 to 5 </param>
         public CreateFeedbackOptions(string pathCallSid, int? qualityScore)
         {
             PathCallSid = pathCallSid;
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     }
 
     /// <summary>
-    /// Create or update a feedback entry for a call
+    /// Update a feedback entry for a call
     /// </summary>
     public class UpdateFeedbackOptions : IOptions<FeedbackResource> 
     {

@@ -23,7 +23,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The short_code_sid
+        /// ShortCodeSid for the Shortcode being added to the Service.
         /// </summary>
         public string ShortCodeSid { get; }
 
@@ -31,7 +31,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// Construct a new CreateShortCodeOptions
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="shortCodeSid"> The short_code_sid </param>
+        /// <param name="shortCodeSid"> ShortCodeSid for the Shortcode being added to the Service. </param>
         public CreateShortCodeOptions(string pathServiceSid, string shortCodeSid)
         {
             PathServiceSid = pathServiceSid;

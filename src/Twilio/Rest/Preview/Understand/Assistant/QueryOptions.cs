@@ -62,15 +62,15 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The language
+        /// An ISO language-country string of the sample.
         /// </summary>
         public string Language { get; set; }
         /// <summary>
-        /// The model_build
+        /// The Model Build Sid or unique name of the Model Build to be queried.
         /// </summary>
         public string ModelBuild { get; set; }
         /// <summary>
-        /// The status
+        /// A string that described the query status. The values can be: to_review, reviewed, discarded
         /// </summary>
         public string Status { get; set; }
 
@@ -126,23 +126,23 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The language
+        /// An ISO language-country string of the sample.
         /// </summary>
         public string Language { get; }
         /// <summary>
-        /// The query
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. It can be up to 2048 characters long.
         /// </summary>
         public string Query { get; }
         /// <summary>
-        /// The intents
+        /// Constraints the query to a set of intents. Useful when you need to constrain the paths the user can take. Intents should be comma separated intent-unique-name-1, intent-unique-name-2
         /// </summary>
         public string Intents { get; set; }
         /// <summary>
-        /// The model_build
+        /// The Model Build Sid or unique name of the Model Build to be queried.
         /// </summary>
         public string ModelBuild { get; set; }
         /// <summary>
-        /// The field
+        /// Constraints the query to a given Field with an intent. Useful when you know the Field you are expecting. It accepts one field in the format intent-unique-name-1:field-unique-name
         /// </summary>
         public string Field { get; set; }
 
@@ -150,8 +150,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// Construct a new CreateQueryOptions
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="query"> The query </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
+        /// <param name="query"> A user-provided string that uniquely identifies this resource as an alternative to the sid. It
+        ///             can be up to 2048 characters long. </param>
         public CreateQueryOptions(string pathAssistantSid, string language, string query)
         {
             PathAssistantSid = pathAssistantSid;
@@ -215,7 +216,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         public string SampleSid { get; set; }
         /// <summary>
-        /// The status
+        /// A string that described the query status. The values can be: to_review, reviewed, discarded
         /// </summary>
         public string Status { get; set; }
 

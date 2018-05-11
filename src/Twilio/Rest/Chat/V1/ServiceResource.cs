@@ -196,7 +196,7 @@ namespace Twilio.Rest.Chat.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Human-readable name for this service instance </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Create(string friendlyName, ITwilioRestClient client = null)
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Chat.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Human-readable name for this service instance </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName, 
@@ -399,14 +399,18 @@ namespace Twilio.Rest.Chat.V1
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Human-readable name for this service instance </param>
         /// <param name="defaultServiceRoleSid"> The default_service_role_sid </param>
-        /// <param name="defaultChannelRoleSid"> The default_channel_role_sid </param>
-        /// <param name="defaultChannelCreatorRoleSid"> The default_channel_creator_role_sid </param>
-        /// <param name="readStatusEnabled"> The read_status_enabled </param>
-        /// <param name="reachabilityEnabled"> The reachability_enabled </param>
-        /// <param name="typingIndicatorTimeout"> The typing_indicator_timeout </param>
-        /// <param name="consumptionReportInterval"> The consumption_report_interval </param>
+        /// <param name="defaultChannelRoleSid"> Channel role assigned on channel join </param>
+        /// <param name="defaultChannelCreatorRoleSid"> Channel role assigned to creator of channel when joining for first time
+        ///                                    </param>
+        /// <param name="readStatusEnabled"> true if the member read status feature is enabled, false if not. </param>
+        /// <param name="reachabilityEnabled"> true if the reachability feature should be enabled. </param>
+        /// <param name="typingIndicatorTimeout"> ISO 8601 duration indicating the timeout after "started typing" event when
+        ///                              client should assume that user is not typing anymore even if no "ended typing" message
+        ///                              received </param>
+        /// <param name="consumptionReportInterval"> ISO 8601 duration indicating the interval between consumption reports sent
+        ///                                 from client endpoints. </param>
         /// <param name="notificationsNewMessageEnabled"> The notifications.new_message.enabled </param>
         /// <param name="notificationsNewMessageTemplate"> The notifications.new_message.template </param>
         /// <param name="notificationsAddedToChannelEnabled"> The notifications.added_to_channel.enabled </param>
@@ -415,10 +419,10 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="notificationsRemovedFromChannelTemplate"> The notifications.removed_from_channel.template </param>
         /// <param name="notificationsInvitedToChannelEnabled"> The notifications.invited_to_channel.enabled </param>
         /// <param name="notificationsInvitedToChannelTemplate"> The notifications.invited_to_channel.template </param>
-        /// <param name="preWebhookUrl"> The pre_webhook_url </param>
-        /// <param name="postWebhookUrl"> The post_webhook_url </param>
-        /// <param name="webhookMethod"> The webhook_method </param>
-        /// <param name="webhookFilters"> The webhook_filters </param>
+        /// <param name="preWebhookUrl"> The webhook URL for PRE-Event webhooks. </param>
+        /// <param name="postWebhookUrl"> The webhook URL for POST-Event webhooks. </param>
+        /// <param name="webhookMethod"> The webhook request format to use. </param>
+        /// <param name="webhookFilters"> The list of WebHook events that are enabled for this Service instance. </param>
         /// <param name="webhooksOnMessageSendUrl"> The webhooks.on_message_send.url </param>
         /// <param name="webhooksOnMessageSendMethod"> The webhooks.on_message_send.method </param>
         /// <param name="webhooksOnMessageSendFormat"> The webhooks.on_message_send.format </param>
@@ -553,14 +557,18 @@ namespace Twilio.Rest.Chat.V1
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Human-readable name for this service instance </param>
         /// <param name="defaultServiceRoleSid"> The default_service_role_sid </param>
-        /// <param name="defaultChannelRoleSid"> The default_channel_role_sid </param>
-        /// <param name="defaultChannelCreatorRoleSid"> The default_channel_creator_role_sid </param>
-        /// <param name="readStatusEnabled"> The read_status_enabled </param>
-        /// <param name="reachabilityEnabled"> The reachability_enabled </param>
-        /// <param name="typingIndicatorTimeout"> The typing_indicator_timeout </param>
-        /// <param name="consumptionReportInterval"> The consumption_report_interval </param>
+        /// <param name="defaultChannelRoleSid"> Channel role assigned on channel join </param>
+        /// <param name="defaultChannelCreatorRoleSid"> Channel role assigned to creator of channel when joining for first time
+        ///                                    </param>
+        /// <param name="readStatusEnabled"> true if the member read status feature is enabled, false if not. </param>
+        /// <param name="reachabilityEnabled"> true if the reachability feature should be enabled. </param>
+        /// <param name="typingIndicatorTimeout"> ISO 8601 duration indicating the timeout after "started typing" event when
+        ///                              client should assume that user is not typing anymore even if no "ended typing" message
+        ///                              received </param>
+        /// <param name="consumptionReportInterval"> ISO 8601 duration indicating the interval between consumption reports sent
+        ///                                 from client endpoints. </param>
         /// <param name="notificationsNewMessageEnabled"> The notifications.new_message.enabled </param>
         /// <param name="notificationsNewMessageTemplate"> The notifications.new_message.template </param>
         /// <param name="notificationsAddedToChannelEnabled"> The notifications.added_to_channel.enabled </param>
@@ -569,10 +577,10 @@ namespace Twilio.Rest.Chat.V1
         /// <param name="notificationsRemovedFromChannelTemplate"> The notifications.removed_from_channel.template </param>
         /// <param name="notificationsInvitedToChannelEnabled"> The notifications.invited_to_channel.enabled </param>
         /// <param name="notificationsInvitedToChannelTemplate"> The notifications.invited_to_channel.template </param>
-        /// <param name="preWebhookUrl"> The pre_webhook_url </param>
-        /// <param name="postWebhookUrl"> The post_webhook_url </param>
-        /// <param name="webhookMethod"> The webhook_method </param>
-        /// <param name="webhookFilters"> The webhook_filters </param>
+        /// <param name="preWebhookUrl"> The webhook URL for PRE-Event webhooks. </param>
+        /// <param name="postWebhookUrl"> The webhook URL for POST-Event webhooks. </param>
+        /// <param name="webhookMethod"> The webhook request format to use. </param>
+        /// <param name="webhookFilters"> The list of WebHook events that are enabled for this Service instance. </param>
         /// <param name="webhooksOnMessageSendUrl"> The webhooks.on_message_send.url </param>
         /// <param name="webhooksOnMessageSendMethod"> The webhooks.on_message_send.method </param>
         /// <param name="webhooksOnMessageSendFormat"> The webhooks.on_message_send.format </param>
@@ -722,62 +730,62 @@ namespace Twilio.Rest.Chat.V1
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account responsible for this service.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// The human-readable name of this service.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The default_service_role_sid
+        /// The service role assigned to users when they are added to the service.
         /// </summary>
         [JsonProperty("default_service_role_sid")]
         public string DefaultServiceRoleSid { get; private set; }
         /// <summary>
-        /// The default_channel_role_sid
+        /// The channel role assigned to users when they are added to a channel.
         /// </summary>
         [JsonProperty("default_channel_role_sid")]
         public string DefaultChannelRoleSid { get; private set; }
         /// <summary>
-        /// The default_channel_creator_role_sid
+        /// The channel role assigned to a channel creator when joining a new channel.
         /// </summary>
         [JsonProperty("default_channel_creator_role_sid")]
         public string DefaultChannelCreatorRoleSid { get; private set; }
         /// <summary>
-        /// The read_status_enabled
+        /// Enable the Message Constumption Horizon feature.
         /// </summary>
         [JsonProperty("read_status_enabled")]
         public bool? ReadStatusEnabled { get; private set; }
         /// <summary>
-        /// The reachability_enabled
+        /// Indicates whether the  the Reachability feature is enabled for this Service instance.
         /// </summary>
         [JsonProperty("reachability_enabled")]
         public bool? ReachabilityEnabled { get; private set; }
         /// <summary>
-        /// The typing_indicator_timeout
+        /// The amount of time after a "started typing" event when clients should assume that user is no longer typing, even if no "ended typing" message was received.
         /// </summary>
         [JsonProperty("typing_indicator_timeout")]
         public int? TypingIndicatorTimeout { get; private set; }
         /// <summary>
-        /// The consumption_report_interval
+        /// The interval between consumption reports submission batches from client endpoints.
         /// </summary>
         [JsonProperty("consumption_report_interval")]
         public int? ConsumptionReportInterval { get; private set; }
@@ -792,37 +800,37 @@ namespace Twilio.Rest.Chat.V1
         [JsonProperty("webhooks")]
         public object Webhooks { get; private set; }
         /// <summary>
-        /// The pre_webhook_url
+        /// The webhook URL for PRE-Event webhooks.
         /// </summary>
         [JsonProperty("pre_webhook_url")]
         public string PreWebhookUrl { get; private set; }
         /// <summary>
-        /// The post_webhook_url
+        /// The webhook URL for POST-Event webhooks.
         /// </summary>
         [JsonProperty("post_webhook_url")]
         public string PostWebhookUrl { get; private set; }
         /// <summary>
-        /// The webhook_method
+        /// The webhook request format to use.
         /// </summary>
         [JsonProperty("webhook_method")]
         public string WebhookMethod { get; private set; }
         /// <summary>
-        /// The webhook_filters
+        /// The list of WebHook events that are enabled for this Service instance.
         /// </summary>
         [JsonProperty("webhook_filters")]
         public List<string> WebhookFilters { get; private set; }
         /// <summary>
-        /// The notifications
+        /// Notification configuration for the Service instance.
         /// </summary>
         [JsonProperty("notifications")]
         public object Notifications { get; private set; }
         /// <summary>
-        /// The url
+        /// An absolute URL for this service.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// URLs to access the Channels, Roles, and Users for this service.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

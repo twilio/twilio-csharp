@@ -90,7 +90,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Returns a single Recording Instance resource identified by a RecordingSid.
         /// </summary>
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Returns a single Recording Instance resource identified by a RecordingSid.
         /// </summary>
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -119,9 +119,9 @@ namespace Twilio.Rest.Video.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Returns a single Recording Instance resource identified by a RecordingSid.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The Recording Sid that uniquely identifies the Recording to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
         public static RecordingResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -132,9 +132,9 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Returns a single Recording Instance resource identified by a RecordingSid.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The Recording Sid that uniquely identifies the Recording to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string pathSid, 
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// read
+        /// List of all Track Recordings.
         /// </summary>
         /// <param name="options"> Read Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// List of all Track Recordings.
         /// </summary>
         /// <param name="options"> Read Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -190,13 +190,13 @@ namespace Twilio.Rest.Video.V1
         #endif
 
         /// <summary>
-        /// read
+        /// List of all Track Recordings.
         /// </summary>
-        /// <param name="status"> The status </param>
-        /// <param name="sourceSid"> The source_sid </param>
-        /// <param name="groupingSid"> The grouping_sid </param>
-        /// <param name="dateCreatedAfter"> The date_created_after </param>
-        /// <param name="dateCreatedBefore"> The date_created_before </param>
+        /// <param name="status"> Only show Recordings with the given status. </param>
+        /// <param name="sourceSid"> Only show the Recordings with the given source Sid. </param>
+        /// <param name="groupingSid"> Only show Recordings that have this GroupingSid. </param>
+        /// <param name="dateCreatedAfter"> Only show Recordings that started on or after this ISO8601 date-time. </param>
+        /// <param name="dateCreatedBefore"> Only show Recordings that started before this this ISO8601 date-time. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -216,13 +216,13 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// List of all Track Recordings.
         /// </summary>
-        /// <param name="status"> The status </param>
-        /// <param name="sourceSid"> The source_sid </param>
-        /// <param name="groupingSid"> The grouping_sid </param>
-        /// <param name="dateCreatedAfter"> The date_created_after </param>
-        /// <param name="dateCreatedBefore"> The date_created_before </param>
+        /// <param name="status"> Only show Recordings with the given status. </param>
+        /// <param name="sourceSid"> Only show the Recordings with the given source Sid. </param>
+        /// <param name="groupingSid"> Only show Recordings that have this GroupingSid. </param>
+        /// <param name="dateCreatedAfter"> Only show Recordings that started on or after this ISO8601 date-time. </param>
+        /// <param name="dateCreatedBefore"> Only show Recordings that started before this this ISO8601 date-time. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -312,7 +312,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// delete
+        /// Delete a Recording Instance resource identified by a RecordingSid.
         /// </summary>
         /// <param name="options"> Delete Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -326,7 +326,7 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a Recording Instance resource identified by a RecordingSid.
         /// </summary>
         /// <param name="options"> Delete Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -341,9 +341,9 @@ namespace Twilio.Rest.Video.V1
         #endif
 
         /// <summary>
-        /// delete
+        /// Delete a Recording Instance resource identified by a RecordingSid.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The Recording Sid that uniquely identifies the Recording to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -354,9 +354,9 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a Recording Instance resource identified by a RecordingSid.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The Recording Sid that uniquely identifies the Recording to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -385,71 +385,71 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// The account_sid
+        /// Twilio Account SID.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The status
+        /// The status of the Recording.
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The date_created
+        /// Date when the media recording began writing.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The sid
+        /// A 34-character string that uniquely identifies this Recording.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The source_sid
+        /// A 34-character string that uniquely identifies the source of this Recording.
         /// </summary>
         [JsonProperty("source_sid")]
         public string SourceSid { get; private set; }
         /// <summary>
-        /// The size
+        /// Size of the recorded track, in bytes.
         /// </summary>
         [JsonProperty("size")]
         public long? Size { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL for this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The type
+        /// Indicates the media type for this recording.
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.TypeEnum Type { get; private set; }
         /// <summary>
-        /// The duration
+        /// Duration of the Recording in seconds.
         /// </summary>
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
         /// <summary>
-        /// The container_format
+        /// The file format for this Recording.
         /// </summary>
         [JsonProperty("container_format")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.FormatEnum ContainerFormat { get; private set; }
         /// <summary>
-        /// The codec
+        /// The codec used to encode the track.
         /// </summary>
         [JsonProperty("codec")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.CodecEnum Codec { get; private set; }
         /// <summary>
-        /// The grouping_sids
+        /// A list of Sids related to this Recording.
         /// </summary>
         [JsonProperty("grouping_sids")]
         public object GroupingSids { get; private set; }
         /// <summary>
-        /// The track_name
+        /// The name that was given to the source track of this recording.
         /// </summary>
         [JsonProperty("track_name")]
         public string TrackName { get; private set; }

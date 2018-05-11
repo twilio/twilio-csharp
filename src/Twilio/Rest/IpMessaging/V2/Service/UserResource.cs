@@ -204,10 +204,12 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="roleSid"> The role_sid </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="identity"> A unique string that identifies the user within this service - often a username or email
+        ///                address. </param>
+        /// <param name="roleSid"> The unique id of the Role assigned to this user. </param>
+        /// <param name="attributes"> An optional string used to contain any metadata or other information for the User.
+        ///                  </param>
+        /// <param name="friendlyName"> An optional human readable string representing the user. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
         public static UserResource Create(string pathServiceSid, 
@@ -226,10 +228,12 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="roleSid"> The role_sid </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="identity"> A unique string that identifies the user within this service - often a username or email
+        ///                address. </param>
+        /// <param name="roleSid"> The unique id of the Role assigned to this user. </param>
+        /// <param name="attributes"> An optional string used to contain any metadata or other information for the User.
+        ///                  </param>
+        /// <param name="friendlyName"> An optional human readable string representing the user. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
         public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string pathServiceSid, 
@@ -428,9 +432,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="roleSid"> The role_sid </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="roleSid"> The unique id of the [Role][role] assigned to this user. </param>
+        /// <param name="attributes"> An optional string used to contain any metadata or other information for the User.
+        ///                  </param>
+        /// <param name="friendlyName"> An optional human readable string representing the user. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
         public static UserResource Update(string pathServiceSid, 
@@ -450,9 +455,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="roleSid"> The role_sid </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="roleSid"> The unique id of the [Role][role] assigned to this user. </param>
+        /// <param name="attributes"> An optional string used to contain any metadata or other information for the User.
+        ///                  </param>
+        /// <param name="friendlyName"> An optional human readable string representing the user. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
         public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(string pathServiceSid, 
@@ -486,62 +492,62 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account responsible for this user.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The unique id of the Service this user belongs to.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The attributes
+        /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// The human-readable name of this user.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The role_sid
+        /// The unique id of the [Role][role] assigned to this user.
         /// </summary>
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }
         /// <summary>
-        /// The identity
+        /// A unique string that identifies the user within this service - often a username or email address.
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// The is_online
+        /// Indicates whether the User is actively connected to the Service instance and online.
         /// </summary>
         [JsonProperty("is_online")]
         public bool? IsOnline { get; private set; }
         /// <summary>
-        /// The is_notifiable
+        /// Indicates whether the User has a potentially valid Push Notification registration  for the Service instance.
         /// </summary>
         [JsonProperty("is_notifiable")]
         public bool? IsNotifiable { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created in ISO 8601 format.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated in ISO 8601 format.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The joined_channels_count
+        /// The number of Channels this User is a Member of.
         /// </summary>
         [JsonProperty("joined_channels_count")]
         public int? JoinedChannelsCount { get; private set; }
@@ -551,7 +557,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// The url
+        /// An absolute URL for this user.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -259,7 +259,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="order"> The order </param>
+        /// <param name="order"> Optional. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -281,7 +281,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="order"> The order </param>
+        /// <param name="order"> Optional. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -479,11 +479,14 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="body"> The body </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
-        /// <param name="lastUpdatedBy"> The last_updated_by </param>
+        /// <param name="body"> The optional message body string. </param>
+        /// <param name="attributes"> The optional attributes metadata field you can use to store any data you wish. </param>
+        /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Message should be set as being
+        ///                   created. </param>
+        /// <param name="dateUpdated"> The optional ISO8601 time specifying the datetime the Message should be set as having
+        ///                   been last updated. </param>
+        /// <param name="lastUpdatedBy"> Optional field to specify the Identity of the User that last updated the Message
+        ///                     </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
         public static MessageResource Update(string pathServiceSid, 
@@ -507,11 +510,14 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="body"> The body </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
-        /// <param name="lastUpdatedBy"> The last_updated_by </param>
+        /// <param name="body"> The optional message body string. </param>
+        /// <param name="attributes"> The optional attributes metadata field you can use to store any data you wish. </param>
+        /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Message should be set as being
+        ///                   created. </param>
+        /// <param name="dateUpdated"> The optional ISO8601 time specifying the datetime the Message should be set as having
+        ///                   been last updated. </param>
+        /// <param name="lastUpdatedBy"> Optional field to specify the Identity of the User that last updated the Message
+        ///                     </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathServiceSid, 
@@ -548,27 +554,27 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account responsible for this message.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The attributes
+        /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The unique id of the Service this message belongs to.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The to
+        /// The unique id of the Channel this message was sent to.
         /// </summary>
         [JsonProperty("to")]
         public string To { get; private set; }
@@ -578,52 +584,52 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The last_updated_by
+        /// Optional field to specify the Identity of the User that last updated the Message
         /// </summary>
         [JsonProperty("last_updated_by")]
         public string LastUpdatedBy { get; private set; }
         /// <summary>
-        /// The was_edited
+        /// true if the message has been updated since it was created.
         /// </summary>
         [JsonProperty("was_edited")]
         public bool? WasEdited { get; private set; }
         /// <summary>
-        /// The from
+        /// The identity of the message's author.
         /// </summary>
         [JsonProperty("from")]
         public string From { get; private set; }
         /// <summary>
-        /// The body
+        /// Optional — the contents of the message.
         /// </summary>
         [JsonProperty("body")]
         public string Body { get; private set; }
         /// <summary>
-        /// The index
+        /// The index of the message within the Channel
         /// </summary>
         [JsonProperty("index")]
         public int? Index { get; private set; }
         /// <summary>
-        /// The type
+        /// Message type.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; private set; }
         /// <summary>
-        /// The media
+        /// Optional — if a Media resource instance is attached to the Message, this will contain the Media object for the attached Media.
         /// </summary>
         [JsonProperty("media")]
         public object Media { get; private set; }
         /// <summary>
-        /// The url
+        /// An absolute URL for this message.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

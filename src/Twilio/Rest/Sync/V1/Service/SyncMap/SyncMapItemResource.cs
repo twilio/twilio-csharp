@@ -243,8 +243,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="key"> The key </param>
-        /// <param name="data"> The data </param>
+        /// <param name="key"> The unique user-defined key of this Map Item. </param>
+        /// <param name="data"> Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a
+        ///            JSON object, up to 16KB. </param>
         /// <param name="ttl"> Time-to-live of this Map in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
@@ -265,8 +266,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="key"> The key </param>
-        /// <param name="data"> The data </param>
+        /// <param name="key"> The unique user-defined key of this Map Item. </param>
+        /// <param name="data"> Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a
+        ///            JSON object, up to 16KB. </param>
         /// <param name="ttl"> Time-to-live of this Map in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
@@ -331,8 +333,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="order"> The order </param>
-        /// <param name="from"> The from </param>
+        /// <param name="order"> A string; asc or desc. Map Items are ordered lexicographically by Item key. </param>
+        /// <param name="from"> The Item key offset (including the specified key). </param>
         /// <param name="bounds"> The bounds </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -357,8 +359,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="order"> The order </param>
-        /// <param name="from"> The from </param>
+        /// <param name="order"> A string; asc or desc. Map Items are ordered lexicographically by Item key. </param>
+        /// <param name="from"> The Item key offset (including the specified key). </param>
         /// <param name="bounds"> The bounds </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>

@@ -242,12 +242,12 @@ namespace Twilio.Rest.Pricing.V1.Voice
         }
 
         /// <summary>
-        /// The country
+        /// Name of the country
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; private set; }
         /// <summary>
-        /// The iso_country
+        /// The ISO country code
         /// </summary>
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
@@ -262,7 +262,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         [JsonProperty("inbound_call_prices")]
         public List<InboundCallPrice> InboundCallPrices { get; private set; }
         /// <summary>
-        /// The price_unit
+        /// The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy).
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }

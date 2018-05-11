@@ -37,38 +37,38 @@ namespace Twilio.Rest.Chat.V2
     public class CreateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
-        /// The type
+        /// Credential type, one of "gcm", "fcm", or "apn"
         /// </summary>
         public CredentialResource.PushServiceEnum Type { get; }
         /// <summary>
-        /// The friendly_name
+        /// Friendly name for stored credential
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The certificate
+        /// [APN only] URL encoded representation of the certificate, e.
         /// </summary>
         public string Certificate { get; set; }
         /// <summary>
-        /// The private_key
+        /// [APN only] URL encoded representation of the private key, e.
         /// </summary>
         public string PrivateKey { get; set; }
         /// <summary>
-        /// The sandbox
+        /// [APN only] use this credential for sending to production or sandbox APNs
         /// </summary>
         public bool? Sandbox { get; set; }
         /// <summary>
-        /// The api_key
+        /// [GCM only] This is the "API key" for project from Google Developer console for your GCM Service application credential
         /// </summary>
         public string ApiKey { get; set; }
         /// <summary>
-        /// The secret
+        /// [FCM only] This is the "Server key" of your project from Firebase console under Settings / Cloud messaging.
         /// </summary>
         public string Secret { get; set; }
 
         /// <summary>
         /// Construct a new CreateCredentialOptions
         /// </summary>
-        /// <param name="type"> The type </param>
+        /// <param name="type"> Credential type, one of "gcm", "fcm", or "apn" </param>
         public CreateCredentialOptions(CredentialResource.PushServiceEnum type)
         {
             Type = type;
@@ -158,27 +158,27 @@ namespace Twilio.Rest.Chat.V2
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// Friendly name for stored credential
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The certificate
+        /// [APN only] URL encoded representation of the certificate, e.
         /// </summary>
         public string Certificate { get; set; }
         /// <summary>
-        /// The private_key
+        /// [APN only] URL encoded representation of the private key, e.
         /// </summary>
         public string PrivateKey { get; set; }
         /// <summary>
-        /// The sandbox
+        /// [APN only] use this credential for sending to production or sandbox APNs
         /// </summary>
         public bool? Sandbox { get; set; }
         /// <summary>
-        /// The api_key
+        /// [GCM only] This is the "API key" for project from Google Developer console for your GCM Service application credential
         /// </summary>
         public string ApiKey { get; set; }
         /// <summary>
-        /// The secret
+        /// [FCM only] This is the "Server key" of your project from Firebase console under Settings / Cloud messaging.
         /// </summary>
         public string Secret { get; set; }
 

@@ -150,7 +150,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The ttl
+        /// Time-to-live of this List in seconds, defaults to no expiration.
         /// </summary>
         public int? Ttl { get; set; }
 

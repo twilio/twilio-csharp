@@ -21,6 +21,20 @@ namespace Twilio.Rest.Api.V2010
 
     public class AccountResource : Resource 
     {
+        public sealed class StatusEnum : StringEnum 
+        {
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
+            public static implicit operator StatusEnum(string value)
+            {
+                return new StatusEnum(value);
+            }
+
+            public static readonly StatusEnum Active = new StatusEnum("active");
+            public static readonly StatusEnum Suspended = new StatusEnum("suspended");
+            public static readonly StatusEnum Closed = new StatusEnum("closed");
+        }
+
         public sealed class TypeEnum : StringEnum 
         {
             private TypeEnum(string value) : base(value) {}
@@ -222,7 +236,7 @@ namespace Twilio.Rest.Api.V2010
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Account </returns> 
         public static ResourceSet<AccountResource> Read(string friendlyName = null, 
-                                                        string status = null, 
+                                                        AccountResource.StatusEnum status = null, 
                                                         int? pageSize = null, 
                                                         long? limit = null, 
                                                         ITwilioRestClient client = null)
@@ -242,7 +256,7 @@ namespace Twilio.Rest.Api.V2010
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Account </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<AccountResource>> ReadAsync(string friendlyName = null, 
-                                                                                                string status = null, 
+                                                                                                AccountResource.StatusEnum status = null, 
                                                                                                 int? pageSize = null, 
                                                                                                 long? limit = null, 
                                                                                                 ITwilioRestClient client = null)
@@ -361,7 +375,7 @@ namespace Twilio.Rest.Api.V2010
         /// <returns> A single instance of Account </returns> 
         public static AccountResource Update(string pathSid = null, 
                                              string friendlyName = null, 
-                                             string status = null, 
+                                             AccountResource.StatusEnum status = null, 
                                              ITwilioRestClient client = null)
         {
             var options = new UpdateAccountOptions(){PathSid = pathSid, FriendlyName = friendlyName, Status = status};
@@ -379,7 +393,7 @@ namespace Twilio.Rest.Api.V2010
         /// <returns> Task that resolves to A single instance of Account </returns> 
         public static async System.Threading.Tasks.Task<AccountResource> UpdateAsync(string pathSid = null, 
                                                                                      string friendlyName = null, 
-                                                                                     string status = null, 
+                                                                                     AccountResource.StatusEnum status = null, 
                                                                                      ITwilioRestClient client = null)
         {
             var options = new UpdateAccountOptions(){PathSid = pathSid, FriendlyName = friendlyName, Status = status};
@@ -439,7 +453,8 @@ namespace Twilio.Rest.Api.V2010
         /// The status of this account
         /// </summary>
         [JsonProperty("status")]
-        public string Status { get; private set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AccountResource.StatusEnum Status { get; private set; }
         /// <summary>
         /// Account Instance Subresources
         /// </summary>

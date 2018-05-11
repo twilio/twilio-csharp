@@ -92,19 +92,19 @@ namespace Twilio.Rest.Chat.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable name for the Channel.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The unique_name
+        /// A unique, addressable name for the Channel.
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The attributes
+        /// An optional metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The type
+        /// The visibility of the channel - public or private.
         /// </summary>
         public ChannelResource.ChannelTypeEnum Type { get; set; }
 
@@ -205,15 +205,15 @@ namespace Twilio.Rest.Chat.V1.Service
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable name for the Channel.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The unique_name
+        /// A unique, addressable name for the Channel.
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The attributes
+        /// An optional metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
 

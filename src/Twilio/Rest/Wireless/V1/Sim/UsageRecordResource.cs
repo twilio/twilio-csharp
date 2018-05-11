@@ -83,9 +83,9 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// read
         /// </summary>
         /// <param name="pathSimSid"> The sim_sid </param>
-        /// <param name="end"> The end </param>
-        /// <param name="start"> The start </param>
-        /// <param name="granularity"> The granularity </param>
+        /// <param name="end"> Only include usage that has occurred on or before this date. </param>
+        /// <param name="start"> Only include usage that has occurred on or after this date. </param>
+        /// <param name="granularity"> The time-based grouping that results are aggregated by. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -107,9 +107,9 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// read
         /// </summary>
         /// <param name="pathSimSid"> The sim_sid </param>
-        /// <param name="end"> The end </param>
-        /// <param name="start"> The start </param>
-        /// <param name="granularity"> The granularity </param>
+        /// <param name="end"> Only include usage that has occurred on or before this date. </param>
+        /// <param name="start"> Only include usage that has occurred on or after this date. </param>
+        /// <param name="granularity"> The time-based grouping that results are aggregated by. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -205,27 +205,27 @@ namespace Twilio.Rest.Wireless.V1.Sim
         }
 
         /// <summary>
-        /// The sim_sid
+        /// The unique id of the SIM resource that this Usage Record is for.
         /// </summary>
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that the SIM belongs to.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The period
+        /// The time period for which usage is reported.
         /// </summary>
         [JsonProperty("period")]
         public object Period { get; private set; }
         /// <summary>
-        /// The commands
+        /// An object representing the Commands usage for the SIM over the period.
         /// </summary>
         [JsonProperty("commands")]
         public object Commands { get; private set; }
         /// <summary>
-        /// The data
+        /// An object representing the Data usage for the SIM over the period.
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }

@@ -139,7 +139,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         [JsonProperty("message_sid")]
         public string MessageSid { get; private set; }
         /// <summary>
-        /// The outcome
+        /// unconfirmed or confirmed. If ProvideFeedback=true in the initial HTTP POST, this value will default to unconfirmed. Make an HTTP POST to update this value to confirmed after the message arrives.
         /// </summary>
         [JsonProperty("outcome")]
         [JsonConverter(typeof(StringEnumConverter))]

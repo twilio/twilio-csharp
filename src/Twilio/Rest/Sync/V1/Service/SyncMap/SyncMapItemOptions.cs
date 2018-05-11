@@ -113,11 +113,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// </summary>
         public string PathMapSid { get; }
         /// <summary>
-        /// The key
+        /// The unique user-defined key of this Map Item.
         /// </summary>
         public string Key { get; }
         /// <summary>
-        /// The data
+        /// Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a JSON object, up to 16KB.
         /// </summary>
         public object Data { get; }
         /// <summary>
@@ -130,8 +130,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="key"> The key </param>
-        /// <param name="data"> The data </param>
+        /// <param name="key"> The unique user-defined key of this Map Item. </param>
+        /// <param name="data"> Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a
+        ///            JSON object, up to 16KB. </param>
         public CreateSyncMapItemOptions(string pathServiceSid, string pathMapSid, string key, object data)
         {
             PathServiceSid = pathServiceSid;
@@ -181,11 +182,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// </summary>
         public string PathMapSid { get; }
         /// <summary>
-        /// The order
+        /// A string; asc or desc. Map Items are ordered lexicographically by Item key.
         /// </summary>
         public SyncMapItemResource.QueryResultOrderEnum Order { get; set; }
         /// <summary>
-        /// The from
+        /// The Item key offset (including the specified key).
         /// </summary>
         public string From { get; set; }
         /// <summary>

@@ -365,7 +365,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <param name="pathCredentialListSid"> The credential_list_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="password"> The password </param>
+        /// <param name="password"> The password will not be returned in the response. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns> 
         public static CredentialResource Update(string pathCredentialListSid, 
@@ -385,7 +385,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <param name="pathCredentialListSid"> The credential_list_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="password"> The password </param>
+        /// <param name="password"> The password will not be returned in the response. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns> 
         public static async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(string pathCredentialListSid, 

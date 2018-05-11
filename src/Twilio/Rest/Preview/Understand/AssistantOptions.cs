@@ -75,11 +75,11 @@ namespace Twilio.Rest.Preview.Understand
     public class CreateAssistantOptions : IOptions<AssistantResource> 
     {
         /// <summary>
-        /// The friendly_name
+        /// A text description for the Assistant. It is non-unique and can up to 255 characters long.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The log_queries
+        /// A boolean that specifies whether queries should be logged for 30 days further training. If false, no queries will be stored, if true, queries will be stored for 30 days and deleted thereafter. Defaults to true if no value is provided.
         /// </summary>
         public bool? LogQueries { get; set; }
         /// <summary>
@@ -87,11 +87,11 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The response_url
+        /// The webhook URL called to fetch the response to an incoming communication expressed in Assistant TwiML.
         /// </summary>
         public Uri ResponseUrl { get; set; }
         /// <summary>
@@ -161,11 +161,11 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A text description for the Assistant. It is non-unique and can up to 255 characters long.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The log_queries
+        /// A boolean that specifies whether queries should be logged for 30 days further training. If false, no queries will be stored, if true, queries will be stored for 30 days and deleted thereafter. Defaults to true if no value is provided.
         /// </summary>
         public bool? LogQueries { get; set; }
         /// <summary>
@@ -173,11 +173,11 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The response_url
+        /// The webhook URL called to fetch the response to an incoming communication expressed in Assistant TwiML.
         /// </summary>
         public Uri ResponseUrl { get; set; }
         /// <summary>

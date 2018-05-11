@@ -72,7 +72,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         /// </summary>
         public string PathFieldTypeSid { get; }
         /// <summary>
-        /// The language
+        /// An ISO language-country string of the value. For example: en-US
         /// </summary>
         public string Language { get; set; }
 
@@ -124,11 +124,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         /// </summary>
         public string PathFieldTypeSid { get; }
         /// <summary>
-        /// The language
+        /// An ISO language-country string of the value.
         /// </summary>
         public string Language { get; }
         /// <summary>
-        /// The value
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
         /// </summary>
         public string Value { get; }
         /// <summary>
@@ -141,8 +141,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="value"> The value </param>
+        /// <param name="language"> An ISO language-country string of the value. </param>
+        /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid.
+        ///             Unique up to 64 characters long. </param>
         public CreateFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string language, string value)
         {
             PathAssistantSid = pathAssistantSid;

@@ -396,7 +396,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         [JsonProperty("reference_sid")]
         public string ReferenceSid { get; private set; }
         /// <summary>
-        /// The subresource_uris
+        /// A dictionary of URIs for related resources
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }

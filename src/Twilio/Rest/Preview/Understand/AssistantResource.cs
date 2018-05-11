@@ -268,11 +268,16 @@ namespace Twilio.Rest.Preview.Understand
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="logQueries"> The log_queries </param>
+        /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can up to 255 characters
+        ///                    long. </param>
+        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
+        ///                  If false, no queries will be stored, if true, queries will be stored for 30 days and deleted
+        ///                  thereafter. Defaults to true if no value is provided. </param>
         /// <param name="ttl"> The ttl </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="responseUrl"> The response_url </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  sid. Unique up to 64 characters long. </param>
+        /// <param name="responseUrl"> The webhook URL called to fetch the response to an incoming communication expressed in
+        ///                   Assistant TwiML. </param>
         /// <param name="callbackUrl"> The callback_url </param>
         /// <param name="callbackEvents"> The callback_events </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -294,11 +299,16 @@ namespace Twilio.Rest.Preview.Understand
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="logQueries"> The log_queries </param>
+        /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can up to 255 characters
+        ///                    long. </param>
+        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
+        ///                  If false, no queries will be stored, if true, queries will be stored for 30 days and deleted
+        ///                  thereafter. Defaults to true if no value is provided. </param>
         /// <param name="ttl"> The ttl </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="responseUrl"> The response_url </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  sid. Unique up to 64 characters long. </param>
+        /// <param name="responseUrl"> The webhook URL called to fetch the response to an incoming communication expressed in
+        ///                   Assistant TwiML. </param>
         /// <param name="callbackUrl"> The callback_url </param>
         /// <param name="callbackEvents"> The callback_events </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -361,11 +371,16 @@ namespace Twilio.Rest.Preview.Understand
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="logQueries"> The log_queries </param>
+        /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can up to 255 characters
+        ///                    long. </param>
+        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
+        ///                  If false, no queries will be stored, if true, queries will be stored for 30 days and deleted
+        ///                  thereafter. Defaults to true if no value is provided. </param>
         /// <param name="ttl"> The ttl </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="responseUrl"> The response_url </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  sid. Unique up to 64 characters long. </param>
+        /// <param name="responseUrl"> The webhook URL called to fetch the response to an incoming communication expressed in
+        ///                   Assistant TwiML. </param>
         /// <param name="callbackUrl"> The callback_url </param>
         /// <param name="callbackEvents"> The callback_events </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -389,11 +404,16 @@ namespace Twilio.Rest.Preview.Understand
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="logQueries"> The log_queries </param>
+        /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can up to 255 characters
+        ///                    long. </param>
+        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
+        ///                  If false, no queries will be stored, if true, queries will be stored for 30 days and deleted
+        ///                  thereafter. Defaults to true if no value is provided. </param>
         /// <param name="ttl"> The ttl </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="responseUrl"> The response_url </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  sid. Unique up to 64 characters long. </param>
+        /// <param name="responseUrl"> The webhook URL called to fetch the response to an incoming communication expressed in
+        ///                   Assistant TwiML. </param>
         /// <param name="callbackUrl"> The callback_url </param>
         /// <param name="callbackEvents"> The callback_events </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -498,27 +518,27 @@ namespace Twilio.Rest.Preview.Understand
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account that created this Assistant.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A text description for the Assistant. It is non-unique and can up to 255 characters long.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The latest_model_build_sid
+        /// The unique ID (Sid) of the latest model build. Null if no model has been built.
         /// </summary>
         [JsonProperty("latest_model_build_sid")]
         public string LatestModelBuildSid { get; private set; }
@@ -528,12 +548,12 @@ namespace Twilio.Rest.Preview.Understand
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// The log_queries
+        /// A boolean that specifies whether queries should be logged for 30 days further training. If false, no queries will be stored, if true, queries will be stored for 30 days and deleted thereafter.
         /// </summary>
         [JsonProperty("log_queries")]
         public bool? LogQueries { get; private set; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
@@ -543,7 +563,7 @@ namespace Twilio.Rest.Preview.Understand
         [JsonProperty("ttl")]
         public int? Ttl { get; private set; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. You can use the unique name in the URL path. Unique up to 64 characters long.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
@@ -553,7 +573,7 @@ namespace Twilio.Rest.Preview.Understand
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The response_url
+        /// The webhook URL called to fetch the response to an incoming communication expressed in Assistant TwiML.
         /// </summary>
         [JsonProperty("response_url")]
         public Uri ResponseUrl { get; private set; }

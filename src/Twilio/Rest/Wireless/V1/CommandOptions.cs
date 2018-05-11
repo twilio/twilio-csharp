@@ -46,15 +46,15 @@ namespace Twilio.Rest.Wireless.V1
     public class ReadCommandOptions : ReadOptions<CommandResource> 
     {
         /// <summary>
-        /// The sim
+        /// Only return Commands to or from this SIM.
         /// </summary>
         public string Sim { get; set; }
         /// <summary>
-        /// The status
+        /// Only return Commands with this status value.
         /// </summary>
         public CommandResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// The direction
+        /// Only return Commands with this direction value.
         /// </summary>
         public CommandResource.DirectionEnum Direction { get; set; }
 
@@ -94,34 +94,34 @@ namespace Twilio.Rest.Wireless.V1
     public class CreateCommandOptions : IOptions<CommandResource> 
     {
         /// <summary>
-        /// The command
+        /// The message body of the Command or a Base64 encoded byte string in binary mode.
         /// </summary>
         public string Command { get; }
         /// <summary>
-        /// The sim
+        /// The Sid or UniqueName of the SIM to send the Command to.
         /// </summary>
         public string Sim { get; set; }
         /// <summary>
-        /// The callback_method
+        /// The HTTP method Twilio will use when making a request to the callback URL.
         /// </summary>
         public Twilio.Http.HttpMethod CallbackMethod { get; set; }
         /// <summary>
-        /// The callback_url
+        /// Twilio will make a request to this URL when the Command has finished sending.
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// The command_mode
+        /// A string representing which mode to send the SMS message using.
         /// </summary>
         public CommandResource.CommandModeEnum CommandMode { get; set; }
         /// <summary>
-        /// The include_sid
+        /// When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.
         /// </summary>
         public string IncludeSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateCommandOptions
         /// </summary>
-        /// <param name="command"> The command </param>
+        /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode. </param>
         public CreateCommandOptions(string command)
         {
             Command = command;

@@ -177,9 +177,9 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="sim"> The sim </param>
-        /// <param name="status"> The status </param>
-        /// <param name="direction"> The direction </param>
+        /// <param name="sim"> Only return Commands to or from this SIM. </param>
+        /// <param name="status"> Only return Commands with this status value. </param>
+        /// <param name="direction"> Only return Commands with this direction value. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -199,9 +199,9 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="sim"> The sim </param>
-        /// <param name="status"> The status </param>
-        /// <param name="direction"> The direction </param>
+        /// <param name="sim"> Only return Commands to or from this SIM. </param>
+        /// <param name="status"> Only return Commands with this status value. </param>
+        /// <param name="direction"> Only return Commands with this direction value. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -320,12 +320,14 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="command"> The command </param>
-        /// <param name="sim"> The sim </param>
-        /// <param name="callbackMethod"> The callback_method </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="commandMode"> The command_mode </param>
-        /// <param name="includeSid"> The include_sid </param>
+        /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode. </param>
+        /// <param name="sim"> The Sid or UniqueName of the SIM to send the Command to. </param>
+        /// <param name="callbackMethod"> The HTTP method Twilio will use when making a request to the callback URL. </param>
+        /// <param name="callbackUrl"> Twilio will make a request to this URL when the Command has finished sending. </param>
+        /// <param name="commandMode"> A string representing which mode to send the SMS message using. </param>
+        /// <param name="includeSid"> When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of
+        ///                  the Command in the message body, which could be used to ensure that the device does not process the
+        ///                  same Command more than once. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Command </returns> 
         public static CommandResource Create(string command, 
@@ -344,12 +346,14 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="command"> The command </param>
-        /// <param name="sim"> The sim </param>
-        /// <param name="callbackMethod"> The callback_method </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="commandMode"> The command_mode </param>
-        /// <param name="includeSid"> The include_sid </param>
+        /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode. </param>
+        /// <param name="sim"> The Sid or UniqueName of the SIM to send the Command to. </param>
+        /// <param name="callbackMethod"> The HTTP method Twilio will use when making a request to the callback URL. </param>
+        /// <param name="callbackUrl"> Twilio will make a request to this URL when the Command has finished sending. </param>
+        /// <param name="commandMode"> A string representing which mode to send the SMS message using. </param>
+        /// <param name="includeSid"> When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of
+        ///                  the Command in the message body, which could be used to ensure that the device does not process the
+        ///                  same Command more than once. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns> 
         public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(string command, 
@@ -384,55 +388,55 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that this Command belongs to.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The sim_sid
+        /// The unique ID of the SIM that this Command was sent to or from.
         /// </summary>
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
         /// <summary>
-        /// The command
+        /// The message being sent to or from the SIM.
         /// </summary>
         [JsonProperty("command")]
         public string Command { get; private set; }
         /// <summary>
-        /// The command_mode
+        /// A string representing which mode the SMS was sent or received using.
         /// </summary>
         [JsonProperty("command_mode")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CommandResource.CommandModeEnum CommandMode { get; private set; }
         /// <summary>
-        /// The status
+        /// A string representing the status of the Command.
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CommandResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The direction
+        /// The direction of the Command.
         /// </summary>
         [JsonProperty("direction")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CommandResource.DirectionEnum Direction { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created, given as GMT in ISO 8601 format.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated, given as GMT in ISO 8601 format.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL for this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

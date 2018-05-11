@@ -103,7 +103,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. For example: v0.1
         /// </summary>
         public string UniqueName { get; set; }
 
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long. For example: v0.1
         /// </summary>
         public string UniqueName { get; set; }
 

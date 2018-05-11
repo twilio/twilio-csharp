@@ -161,7 +161,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The password
+        /// The password will not be returned in the response.
         /// </summary>
         public string Password { get; set; }
 

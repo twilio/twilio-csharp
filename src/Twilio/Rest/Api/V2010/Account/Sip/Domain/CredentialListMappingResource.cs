@@ -415,32 +415,32 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that responsible for this resource.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created, given as GMT in RFC 2822 format.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated, given as GMT in RFC 2822 format.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable descriptive text for this resource, up to 64 characters long.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The uri
+        /// The URI for this resource, relative to https://api.twilio.com
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }

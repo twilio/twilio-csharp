@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2018-05-11] Version 5.13.0
+----------------------------
+**Chat**
+- Add Channel Webhooks resource
+
+**Monitor**
+- Update event filtering to support date/time **(breaking change)**
+
+
 [2018-05-04] Version 5.12.1
 ----------------------------
 **Wireless**

@@ -287,8 +287,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
-        /// <param name="fieldType"> The field_type </param>
-        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="fieldType"> The unique name or sid of the FieldType </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Field </returns> 
         public static FieldResource Create(string pathAssistantSid, 
@@ -307,8 +308,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
-        /// <param name="fieldType"> The field_type </param>
-        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="fieldType"> The unique name or sid of the FieldType </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Field </returns> 
         public static async System.Threading.Tasks.Task<FieldResource> CreateAsync(string pathAssistantSid, 
@@ -417,42 +419,42 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account that created this Field.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The field_type
+        /// The Field Type of this field. Can be the Field Type unique_name or the Field Type sid.
         /// </summary>
         [JsonProperty("field_type")]
         public string FieldType { get; private set; }
         /// <summary>
-        /// The intent_sid
+        /// The unique ID of the Intent associated with this Field.
         /// </summary>
         [JsonProperty("intent_sid")]
         public string IntentSid { get; private set; }
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }

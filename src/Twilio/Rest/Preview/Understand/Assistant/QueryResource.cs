@@ -141,9 +141,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// read
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="modelBuild"> The model_build </param>
-        /// <param name="status"> The status </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
+        /// <param name="modelBuild"> The Model Build Sid or unique name of the Model Build to be queried. </param>
+        /// <param name="status"> A string that described the query status. The values can be: to_review, reviewed, discarded
+        ///              </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -165,9 +166,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// read
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="modelBuild"> The model_build </param>
-        /// <param name="status"> The status </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
+        /// <param name="modelBuild"> The Model Build Sid or unique name of the Model Build to be queried. </param>
+        /// <param name="status"> A string that described the query status. The values can be: to_review, reviewed, discarded
+        ///              </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -288,11 +290,14 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// create
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="query"> The query </param>
-        /// <param name="intents"> The intents </param>
-        /// <param name="modelBuild"> The model_build </param>
-        /// <param name="field"> The field </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
+        /// <param name="query"> A user-provided string that uniquely identifies this resource as an alternative to the sid. It
+        ///             can be up to 2048 characters long. </param>
+        /// <param name="intents"> Constraints the query to a set of intents. Useful when you need to constrain the paths the
+        ///               user can take. Intents should be comma separated intent-unique-name-1, intent-unique-name-2 </param>
+        /// <param name="modelBuild"> The Model Build Sid or unique name of the Model Build to be queried. </param>
+        /// <param name="field"> Constraints the query to a given Field with an intent. Useful when you know the Field you are
+        ///             expecting. It accepts one field in the format intent-unique-name-1:field-unique-name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
         public static QueryResource Create(string pathAssistantSid, 
@@ -312,11 +317,14 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// create
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="query"> The query </param>
-        /// <param name="intents"> The intents </param>
-        /// <param name="modelBuild"> The model_build </param>
-        /// <param name="field"> The field </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
+        /// <param name="query"> A user-provided string that uniquely identifies this resource as an alternative to the sid. It
+        ///             can be up to 2048 characters long. </param>
+        /// <param name="intents"> Constraints the query to a set of intents. Useful when you need to constrain the paths the
+        ///               user can take. Intents should be comma separated intent-unique-name-1, intent-unique-name-2 </param>
+        /// <param name="modelBuild"> The Model Build Sid or unique name of the Model Build to be queried. </param>
+        /// <param name="field"> Constraints the query to a given Field with an intent. Useful when you know the Field you are
+        ///             expecting. It accepts one field in the format intent-unique-name-1:field-unique-name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
         public static async System.Threading.Tasks.Task<QueryResource> CreateAsync(string pathAssistantSid, 
@@ -378,7 +386,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="sampleSid"> The sample_sid </param>
-        /// <param name="status"> The status </param>
+        /// <param name="status"> A string that described the query status. The values can be: to_review, reviewed, discarded
+        ///              </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
         public static QueryResource Update(string pathAssistantSid, 
@@ -398,7 +407,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="sampleSid"> The sample_sid </param>
-        /// <param name="status"> The status </param>
+        /// <param name="status"> A string that described the query status. The values can be: to_review, reviewed, discarded
+        ///              </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
         public static async System.Threading.Tasks.Task<QueryResource> UpdateAsync(string pathAssistantSid, 
@@ -501,32 +511,32 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account that created this Query.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The results
+        /// The natural language analysis results which include the Intent recognized, the confidence score and a list of identified Fields.
         /// </summary>
         [JsonProperty("results")]
         public object Results { get; private set; }
         /// <summary>
-        /// The language
+        /// An ISO language-country string of the sample.
         /// </summary>
         [JsonProperty("language")]
         public string Language { get; private set; }
         /// <summary>
-        /// The model_build_sid
+        /// The unique ID of the Model Build queried.
         /// </summary>
         [JsonProperty("model_build_sid")]
         public string ModelBuildSid { get; private set; }
@@ -536,22 +546,22 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         [JsonProperty("query")]
         public string Query { get; private set; }
         /// <summary>
-        /// The sample_sid
+        /// An optional reference to the Sample created from this query.
         /// </summary>
         [JsonProperty("sample_sid")]
         public string SampleSid { get; private set; }
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The status
+        /// A string that described the query status. The values can be: to_review, reviewed, discarded
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }

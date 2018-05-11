@@ -67,11 +67,11 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The identity
+        /// A unique string identifier for this User in this Service.
         /// </summary>
         public string Identity { get; }
         /// <summary>
-        /// The role_sid
+        /// The Role assigned to this member.
         /// </summary>
         public string RoleSid { get; set; }
 
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="identity"> The identity </param>
+        /// <param name="identity"> A unique string identifier for this User in this Service. </param>
         public CreateInviteOptions(string pathServiceSid, string pathChannelSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The identity
+        /// A unique string identifier for this User in this Service.
         /// </summary>
         public List<string> Identity { get; set; }
 

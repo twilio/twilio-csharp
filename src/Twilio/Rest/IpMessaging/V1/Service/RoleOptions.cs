@@ -92,15 +92,15 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// The human-readable name of this role.
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// The type
+        /// What kind of role this is.
         /// </summary>
         public RoleResource.RoleTypeEnum Type { get; }
         /// <summary>
-        /// The permission
+        /// A permission this role should have.
         /// </summary>
         public List<string> Permission { get; }
 
@@ -108,9 +108,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// Construct a new CreateRoleOptions
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="type"> The type </param>
-        /// <param name="permission"> The permission </param>
+        /// <param name="friendlyName"> The human-readable name of this role. </param>
+        /// <param name="type"> What kind of role this is. </param>
+        /// <param name="permission"> A permission this role should have. </param>
         public CreateRoleOptions(string pathServiceSid, 
                                  string friendlyName, 
                                  RoleResource.RoleTypeEnum type, 
@@ -195,7 +195,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The permission
+        /// A permission this role should have.
         /// </summary>
         public List<string> Permission { get; }
 
@@ -204,7 +204,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="permission"> The permission </param>
+        /// <param name="permission"> A permission this role should have. </param>
         public UpdateRoleOptions(string pathServiceSid, string pathSid, List<string> permission)
         {
             PathServiceSid = pathServiceSid;

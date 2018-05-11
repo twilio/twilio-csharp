@@ -76,14 +76,14 @@ namespace Twilio.Rest.IpMessaging.V1
     public class CreateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// The friendly_name
+        /// Human-readable name for this service instance
         /// </summary>
         public string FriendlyName { get; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Human-readable name for this service instance </param>
         public CreateServiceOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
@@ -134,7 +134,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// Human-readable name for this service instance
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
@@ -142,27 +142,27 @@ namespace Twilio.Rest.IpMessaging.V1
         /// </summary>
         public string DefaultServiceRoleSid { get; set; }
         /// <summary>
-        /// The default_channel_role_sid
+        /// Channel role assigned on channel join
         /// </summary>
         public string DefaultChannelRoleSid { get; set; }
         /// <summary>
-        /// The default_channel_creator_role_sid
+        /// Channel role assigned to creator of channel when joining for first time
         /// </summary>
         public string DefaultChannelCreatorRoleSid { get; set; }
         /// <summary>
-        /// The read_status_enabled
+        /// true if the member read status feature is enabled, false if not.
         /// </summary>
         public bool? ReadStatusEnabled { get; set; }
         /// <summary>
-        /// The reachability_enabled
+        /// true if the reachability feature should be enabled.
         /// </summary>
         public bool? ReachabilityEnabled { get; set; }
         /// <summary>
-        /// The typing_indicator_timeout
+        /// ISO 8601 duration indicating the timeout after "started typing" event when client should assume that user is not typing anymore even if no "ended typing" message received
         /// </summary>
         public int? TypingIndicatorTimeout { get; set; }
         /// <summary>
-        /// The consumption_report_interval
+        /// ISO 8601 duration indicating the interval between consumption reports sent from client endpoints.
         /// </summary>
         public int? ConsumptionReportInterval { get; set; }
         /// <summary>
@@ -198,19 +198,19 @@ namespace Twilio.Rest.IpMessaging.V1
         /// </summary>
         public string NotificationsInvitedToChannelTemplate { get; set; }
         /// <summary>
-        /// The pre_webhook_url
+        /// The webhook URL for PRE-Event webhooks.
         /// </summary>
         public Uri PreWebhookUrl { get; set; }
         /// <summary>
-        /// The post_webhook_url
+        /// The webhook URL for POST-Event webhooks.
         /// </summary>
         public Uri PostWebhookUrl { get; set; }
         /// <summary>
-        /// The webhook_method
+        /// The webhook request format to use.
         /// </summary>
         public Twilio.Http.HttpMethod WebhookMethod { get; set; }
         /// <summary>
-        /// The webhook_filters
+        /// The list of WebHook events that are enabled for this Service instance.
         /// </summary>
         public List<string> WebhookFilters { get; set; }
         /// <summary>

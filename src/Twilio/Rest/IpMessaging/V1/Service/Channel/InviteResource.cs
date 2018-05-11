@@ -141,8 +141,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="roleSid"> The role_sid </param>
+        /// <param name="identity"> A unique string identifier for this User in this Service. </param>
+        /// <param name="roleSid"> The Role assigned to this member. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Invite </returns> 
         public static InviteResource Create(string pathServiceSid, 
@@ -161,8 +161,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="roleSid"> The role_sid </param>
+        /// <param name="identity"> A unique string identifier for this User in this Service. </param>
+        /// <param name="roleSid"> The Role assigned to this member. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns> 
         public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(string pathServiceSid, 
@@ -225,7 +225,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="identity"> The identity </param>
+        /// <param name="identity"> A unique string identifier for this User in this Service. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -247,7 +247,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="identity"> The identity </param>
+        /// <param name="identity"> A unique string identifier for this User in this Service. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -418,42 +418,42 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account[/console] responsible for this member.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The channel_sid
+        /// The unique id of the Channel for this member.
         /// </summary>
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The unique id of the Service this member belongs to.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The identity
+        /// A unique string identifier for this User in this Service.
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The role_sid
+        /// The Role assigned to this member.
         /// </summary>
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }
@@ -463,7 +463,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }
         /// <summary>
-        /// The url
+        /// An absolute URL for this member.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

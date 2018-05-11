@@ -283,7 +283,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="ttl"> The ttl </param>
+        /// <param name="ttl"> Time-to-live of this List in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncList </returns> 
         public static SyncListResource Update(string pathServiceSid, 
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="ttl"> The ttl </param>
+        /// <param name="ttl"> Time-to-live of this List in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncList </returns> 
         public static async System.Threading.Tasks.Task<SyncListResource> UpdateAsync(string pathServiceSid, 

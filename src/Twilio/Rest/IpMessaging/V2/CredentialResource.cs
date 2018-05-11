@@ -213,13 +213,15 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="type"> The type </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="certificate"> The certificate </param>
-        /// <param name="privateKey"> The private_key </param>
-        /// <param name="sandbox"> The sandbox </param>
-        /// <param name="apiKey"> The api_key </param>
-        /// <param name="secret"> The secret </param>
+        /// <param name="type"> Credential type, one of "gcm", "fcm", or "apn" </param>
+        /// <param name="friendlyName"> Friendly name for stored credential </param>
+        /// <param name="certificate"> [APN only] URL encoded representation of the certificate, e. </param>
+        /// <param name="privateKey"> [APN only] URL encoded representation of the private key, e. </param>
+        /// <param name="sandbox"> [APN only] use this credential for sending to production or sandbox APNs </param>
+        /// <param name="apiKey"> [GCM only] This is the "API key" for project from Google Developer console for your GCM
+        ///              Service application credential </param>
+        /// <param name="secret"> [FCM only] This is the "Server key" of your project from Firebase console under Settings /
+        ///              Cloud messaging. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns> 
         public static CredentialResource Create(CredentialResource.PushServiceEnum type, 
@@ -239,13 +241,15 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="type"> The type </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="certificate"> The certificate </param>
-        /// <param name="privateKey"> The private_key </param>
-        /// <param name="sandbox"> The sandbox </param>
-        /// <param name="apiKey"> The api_key </param>
-        /// <param name="secret"> The secret </param>
+        /// <param name="type"> Credential type, one of "gcm", "fcm", or "apn" </param>
+        /// <param name="friendlyName"> Friendly name for stored credential </param>
+        /// <param name="certificate"> [APN only] URL encoded representation of the certificate, e. </param>
+        /// <param name="privateKey"> [APN only] URL encoded representation of the private key, e. </param>
+        /// <param name="sandbox"> [APN only] use this credential for sending to production or sandbox APNs </param>
+        /// <param name="apiKey"> [GCM only] This is the "API key" for project from Google Developer console for your GCM
+        ///              Service application credential </param>
+        /// <param name="secret"> [FCM only] This is the "Server key" of your project from Firebase console under Settings /
+        ///              Cloud messaging. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns> 
         public static async System.Threading.Tasks.Task<CredentialResource> CreateAsync(CredentialResource.PushServiceEnum type, 
@@ -373,12 +377,14 @@ namespace Twilio.Rest.IpMessaging.V2
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="certificate"> The certificate </param>
-        /// <param name="privateKey"> The private_key </param>
-        /// <param name="sandbox"> The sandbox </param>
-        /// <param name="apiKey"> The api_key </param>
-        /// <param name="secret"> The secret </param>
+        /// <param name="friendlyName"> Friendly name for stored credential </param>
+        /// <param name="certificate"> [APN only] URL encoded representation of the certificate, e. </param>
+        /// <param name="privateKey"> [APN only] URL encoded representation of the private key, e. </param>
+        /// <param name="sandbox"> [APN only] use this credential for sending to production or sandbox APNs </param>
+        /// <param name="apiKey"> [GCM only] This is the "API key" for project from Google Developer console for your GCM
+        ///              Service application credential </param>
+        /// <param name="secret"> [FCM only] This is the "Server key" of your project from Firebase console under Settings /
+        ///              Cloud messaging. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns> 
         public static CredentialResource Update(string pathSid, 
@@ -399,12 +405,14 @@ namespace Twilio.Rest.IpMessaging.V2
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="certificate"> The certificate </param>
-        /// <param name="privateKey"> The private_key </param>
-        /// <param name="sandbox"> The sandbox </param>
-        /// <param name="apiKey"> The api_key </param>
-        /// <param name="secret"> The secret </param>
+        /// <param name="friendlyName"> Friendly name for stored credential </param>
+        /// <param name="certificate"> [APN only] URL encoded representation of the certificate, e. </param>
+        /// <param name="privateKey"> [APN only] URL encoded representation of the private key, e. </param>
+        /// <param name="sandbox"> [APN only] use this credential for sending to production or sandbox APNs </param>
+        /// <param name="apiKey"> [GCM only] This is the "API key" for project from Google Developer console for your GCM
+        ///              Service application credential </param>
+        /// <param name="secret"> [FCM only] This is the "Server key" of your project from Firebase console under Settings /
+        ///              Cloud messaging. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns> 
         public static async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(string pathSid, 
@@ -506,43 +514,43 @@ namespace Twilio.Rest.IpMessaging.V2
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account responsible for this resource.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// The human-readable name of this resource.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The type
+        /// Indicates which push notifications service this credential is for - either gcm, fcm, or apn
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CredentialResource.PushServiceEnum Type { get; private set; }
         /// <summary>
-        /// The sandbox
+        /// [APN only] true when this resource should use the sandbox APN service.
         /// </summary>
         [JsonProperty("sandbox")]
         public string Sandbox { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// An absolute URL for this credential resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

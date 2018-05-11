@@ -242,22 +242,22 @@ namespace Twilio.Rest.Pricing.V1.PhoneNumber
         }
 
         /// <summary>
-        /// The country
+        /// Name of the country
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; private set; }
         /// <summary>
-        /// The iso_country
+        /// The ISO country code of this number
         /// </summary>
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
         /// <summary>
-        /// The phone_number_prices
+        /// List of PhoneNumberPrices records
         /// </summary>
         [JsonProperty("phone_number_prices")]
         public List<PhoneNumberPrice> PhoneNumberPrices { get; private set; }
         /// <summary>
-        /// The price_unit
+        /// The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy).
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }

@@ -113,7 +113,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// </summary>
         public string PathListSid { get; }
         /// <summary>
-        /// The data
+        /// Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a JSON object, up to 16KB.
         /// </summary>
         public object Data { get; }
         /// <summary>
@@ -126,7 +126,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="data"> The data </param>
+        /// <param name="data"> Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a
+        ///            JSON object, up to 16KB. </param>
         public CreateSyncListItemOptions(string pathServiceSid, string pathListSid, object data)
         {
             PathServiceSid = pathServiceSid;
@@ -243,11 +244,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// </summary>
         public int? PathIndex { get; }
         /// <summary>
-        /// The data
+        /// Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a JSON object, up to 16KB.
         /// </summary>
         public object Data { get; set; }
         /// <summary>
-        /// The ttl
+        /// Time-to-live of this item in seconds, defaults to no expiration.
         /// </summary>
         public int? Ttl { get; set; }
 

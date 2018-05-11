@@ -154,9 +154,9 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="status"> The status </param>
-        /// <param name="iccid"> The iccid </param>
-        /// <param name="ratePlan"> The rate_plan </param>
+        /// <param name="status"> Only return Sims with this status. </param>
+        /// <param name="iccid"> Return Sims with this Iccid. </param>
+        /// <param name="ratePlan"> Only return Sims with this Rate Plan. </param>
         /// <param name="eId"> The e_id </param>
         /// <param name="simRegistrationCode"> The sim_registration_code </param>
         /// <param name="pageSize"> Page size </param>
@@ -180,9 +180,9 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="status"> The status </param>
-        /// <param name="iccid"> The iccid </param>
-        /// <param name="ratePlan"> The rate_plan </param>
+        /// <param name="status"> Only return Sims with this status. </param>
+        /// <param name="iccid"> Return Sims with this Iccid. </param>
+        /// <param name="ratePlan"> Only return Sims with this Rate Plan. </param>
         /// <param name="eId"> The e_id </param>
         /// <param name="simRegistrationCode"> The sim_registration_code </param>
         /// <param name="pageSize"> Page size </param>
@@ -306,22 +306,27 @@ namespace Twilio.Rest.Wireless.V1
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="callbackMethod"> The callback_method </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="ratePlan"> The rate_plan </param>
-        /// <param name="status"> The status </param>
-        /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
-        /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
-        /// <param name="smsFallbackMethod"> The sms_fallback_method </param>
-        /// <param name="smsFallbackUrl"> The sms_fallback_url </param>
-        /// <param name="smsMethod"> The sms_method </param>
-        /// <param name="smsUrl"> The sms_url </param>
-        /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
-        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
-        /// <param name="voiceMethod"> The voice_method </param>
-        /// <param name="voiceUrl"> The voice_url </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  Sid. </param>
+        /// <param name="callbackMethod"> The HTTP method Twilio will use when making a request to the callback URL. </param>
+        /// <param name="callbackUrl"> Twilio will make a request to this URL when the Sim has finished updating. </param>
+        /// <param name="friendlyName"> A user-provided string that identifies this resource. </param>
+        /// <param name="ratePlan"> The Sid or UniqueName of the RatePlan that this Sim should use. </param>
+        /// <param name="status"> A string representing the status of the Sim. </param>
+        /// <param name="commandsCallbackMethod"> A string representing the HTTP method to use when making a request to
+        ///                              CommandsCallbackUrl. </param>
+        /// <param name="commandsCallbackUrl"> The URL that will receive a webhook when this Sim originates a Command. </param>
+        /// <param name="smsFallbackMethod"> The HTTP method Twilio will use when requesting the sms_fallback_url. </param>
+        /// <param name="smsFallbackUrl"> The URL that Twilio will request if an error occurs retrieving or executing the TwiML
+        ///                      requested by sms_url. </param>
+        /// <param name="smsMethod"> The HTTP method Twilio will use when requesting the above Url. </param>
+        /// <param name="smsUrl"> The URL Twilio will request when the SIM-connected device sends an SMS message that is not a
+        ///              Command. </param>
+        /// <param name="voiceFallbackMethod"> The HTTP method Twilio will use when requesting the voice_fallback_url. </param>
+        /// <param name="voiceFallbackUrl"> The URL that Twilio will request if an error occurs retrieving or executing the
+        ///                        TwiML requested by voice_url. </param>
+        /// <param name="voiceMethod"> The HTTP method Twilio will use when requesting the above Url. </param>
+        /// <param name="voiceUrl"> The URL Twilio will request when the SIM-connected device makes a call. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sim </returns> 
         public static SimResource Update(string pathSid, 
@@ -352,22 +357,27 @@ namespace Twilio.Rest.Wireless.V1
         /// update
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="callbackMethod"> The callback_method </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="ratePlan"> The rate_plan </param>
-        /// <param name="status"> The status </param>
-        /// <param name="commandsCallbackMethod"> The commands_callback_method </param>
-        /// <param name="commandsCallbackUrl"> The commands_callback_url </param>
-        /// <param name="smsFallbackMethod"> The sms_fallback_method </param>
-        /// <param name="smsFallbackUrl"> The sms_fallback_url </param>
-        /// <param name="smsMethod"> The sms_method </param>
-        /// <param name="smsUrl"> The sms_url </param>
-        /// <param name="voiceFallbackMethod"> The voice_fallback_method </param>
-        /// <param name="voiceFallbackUrl"> The voice_fallback_url </param>
-        /// <param name="voiceMethod"> The voice_method </param>
-        /// <param name="voiceUrl"> The voice_url </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  Sid. </param>
+        /// <param name="callbackMethod"> The HTTP method Twilio will use when making a request to the callback URL. </param>
+        /// <param name="callbackUrl"> Twilio will make a request to this URL when the Sim has finished updating. </param>
+        /// <param name="friendlyName"> A user-provided string that identifies this resource. </param>
+        /// <param name="ratePlan"> The Sid or UniqueName of the RatePlan that this Sim should use. </param>
+        /// <param name="status"> A string representing the status of the Sim. </param>
+        /// <param name="commandsCallbackMethod"> A string representing the HTTP method to use when making a request to
+        ///                              CommandsCallbackUrl. </param>
+        /// <param name="commandsCallbackUrl"> The URL that will receive a webhook when this Sim originates a Command. </param>
+        /// <param name="smsFallbackMethod"> The HTTP method Twilio will use when requesting the sms_fallback_url. </param>
+        /// <param name="smsFallbackUrl"> The URL that Twilio will request if an error occurs retrieving or executing the TwiML
+        ///                      requested by sms_url. </param>
+        /// <param name="smsMethod"> The HTTP method Twilio will use when requesting the above Url. </param>
+        /// <param name="smsUrl"> The URL Twilio will request when the SIM-connected device sends an SMS message that is not a
+        ///              Command. </param>
+        /// <param name="voiceFallbackMethod"> The HTTP method Twilio will use when requesting the voice_fallback_url. </param>
+        /// <param name="voiceFallbackUrl"> The URL that Twilio will request if an error occurs retrieving or executing the
+        ///                        TwiML requested by voice_url. </param>
+        /// <param name="voiceMethod"> The HTTP method Twilio will use when requesting the above Url. </param>
+        /// <param name="voiceUrl"> The URL Twilio will request when the SIM-connected device makes a call. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns> 
         public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(string pathSid, 
@@ -413,32 +423,32 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that this Sim belongs to.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The rate_plan_sid
+        /// The unique ID of the Rate Plan configured for this Sim.
         /// </summary>
         [JsonProperty("rate_plan_sid")]
         public string RatePlanSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A user-provided string that identifies this resource.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The iccid
+        /// The ICCID associated with the SIM.
         /// </summary>
         [JsonProperty("iccid")]
         public string Iccid { get; private set; }
@@ -448,83 +458,83 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("e_id")]
         public string EId { get; private set; }
         /// <summary>
-        /// The status
+        /// A string representing the status of the Sim.
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public SimResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The commands_callback_url
+        /// The URL that will receive a webhook when this Sim originates a machine-to-machine Command.
         /// </summary>
         [JsonProperty("commands_callback_url")]
         public Uri CommandsCallbackUrl { get; private set; }
         /// <summary>
-        /// The commands_callback_method
+        /// A string representing the HTTP method to use when making a request to commands_callback_url.
         /// </summary>
         [JsonProperty("commands_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod CommandsCallbackMethod { get; private set; }
         /// <summary>
-        /// The sms_fallback_method
+        /// The HTTP method Twilio will use when requesting the sms_fallback_url.
         /// </summary>
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
         /// <summary>
-        /// The sms_fallback_url
+        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by sms_url.
         /// </summary>
         [JsonProperty("sms_fallback_url")]
         public Uri SmsFallbackUrl { get; private set; }
         /// <summary>
-        /// The sms_method
+        /// The HTTP method Twilio will use when requesting the above Url.
         /// </summary>
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsMethod { get; private set; }
         /// <summary>
-        /// The sms_url
+        /// The URL Twilio will request when the SIM-connected device send an SMS that is not a Command.
         /// </summary>
         [JsonProperty("sms_url")]
         public Uri SmsUrl { get; private set; }
         /// <summary>
-        /// The voice_fallback_method
+        /// The HTTP method Twilio will use when requesting the voice_fallback_url.
         /// </summary>
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
         /// <summary>
-        /// The voice_fallback_url
+        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by voice_url.
         /// </summary>
         [JsonProperty("voice_fallback_url")]
         public Uri VoiceFallbackUrl { get; private set; }
         /// <summary>
-        /// The voice_method
+        /// The HTTP method Twilio will use when requesting the above Url.
         /// </summary>
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
         /// <summary>
-        /// The voice_url
+        /// The URL Twilio will request when the SIM-connected device makes a call.
         /// </summary>
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created, given as GMT in ISO 8601 format.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated, given as GMT in ISO 8601 format.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL for this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// Each Sim instance resource supports a few subresources, listed here for convenience.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

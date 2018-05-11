@@ -280,7 +280,7 @@ namespace Twilio.Rest.Monitor.V1
         [JsonProperty("actor_type")]
         public string ActorType { get; private set; }
         /// <summary>
-        /// The description
+        /// A human-readable description of the event.  May be null.
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
@@ -310,12 +310,12 @@ namespace Twilio.Rest.Monitor.V1
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this event.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The source
+        /// The originating system or interface that caused the event.  web for events caused by user action in the Twilio Console.  api for events caused through a request to the REST API.  twilio for events caused by an automated or internal Twilio system.
         /// </summary>
         [JsonProperty("source")]
         public string Source { get; private set; }

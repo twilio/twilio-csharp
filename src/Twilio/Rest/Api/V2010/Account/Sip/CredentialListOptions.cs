@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 {
 
     /// <summary>
-    /// Retrieve a list of Credentials belonging to the account used to make the request
+    /// Get All Credential Lists
     /// </summary>
     public class ReadCredentialListOptions : ReadOptions<CredentialListResource> 
     {
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     }
 
     /// <summary>
-    /// Add a Credential to the list
+    /// Create a Credential List
     /// </summary>
     public class CreateCredentialListOptions : IOptions<CredentialListResource> 
     {
@@ -46,14 +46,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// Human readable descriptive text
         /// </summary>
         public string FriendlyName { get; }
 
         /// <summary>
         /// Construct a new CreateCredentialListOptions
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Human readable descriptive text </param>
         public CreateCredentialListOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     }
 
     /// <summary>
-    /// Retrieve a specific Credential in a list
+    /// Get a Credential List
     /// </summary>
     public class FetchCredentialListOptions : IOptions<CredentialListResource> 
     {
@@ -84,14 +84,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique credential Sid
+        /// Fetch by unique credential list Sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCredentialListOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique credential Sid </param>
+        /// <param name="pathSid"> Fetch by unique credential list Sid </param>
         public FetchCredentialListOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     }
 
     /// <summary>
-    /// Change the password of a Credential record
+    /// Update a Credential List
     /// </summary>
     public class UpdateCredentialListOptions : IOptions<CredentialListResource> 
     {
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// Human readable descriptive text
         /// </summary>
         public string FriendlyName { get; }
 
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Construct a new UpdateCredentialListOptions
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> Human readable descriptive text </param>
         public UpdateCredentialListOptions(string pathSid, string friendlyName)
         {
             PathSid = pathSid;
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     }
 
     /// <summary>
-    /// Remove a credential from a CredentialList
+    /// Delete a Credential List
     /// </summary>
     public class DeleteCredentialListOptions : IOptions<CredentialListResource> 
     {
@@ -161,14 +161,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Delete by unique credential Sid
+        /// Delete by unique credential list Sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteCredentialListOptions
         /// </summary>
-        /// <param name="pathSid"> Delete by unique credential Sid </param>
+        /// <param name="pathSid"> Delete by unique credential list Sid </param>
         public DeleteCredentialListOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -91,19 +91,19 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The identity
+        /// A unique string that identifies the user within this service - often a username or email address.
         /// </summary>
         public string Identity { get; }
         /// <summary>
-        /// The role_sid
+        /// The unique id of the Role assigned to this user.
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
-        /// The attributes
+        /// An optional string used to contain any metadata or other information for the User.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// An optional human readable string representing the user.
         /// </summary>
         public string FriendlyName { get; set; }
 
@@ -111,7 +111,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// Construct a new CreateUserOptions
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
+        /// <param name="identity"> A unique string that identifies the user within this service - often a username or email
+        ///                address. </param>
         public CreateUserOptions(string pathServiceSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -196,15 +197,15 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The role_sid
+        /// The unique id of the [Role][role] assigned to this user.
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
-        /// The attributes
+        /// An optional string used to contain any metadata or other information for the User.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// An optional human readable string representing the user.
         /// </summary>
         public string FriendlyName { get; set; }
 

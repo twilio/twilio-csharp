@@ -253,23 +253,23 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The role_sid
+        /// The role to be assigned to this member.
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
-        /// The last_consumed_message_index
+        /// Optional field used to specify the last consumed Message index for the Channel for this Member.
         /// </summary>
         public int? LastConsumedMessageIndex { get; set; }
         /// <summary>
-        /// The last_consumption_timestamp
+        /// Optional ISO8601 time indicating the last datetime the Member consumed a Message in the Channel.
         /// </summary>
         public DateTime? LastConsumptionTimestamp { get; set; }
         /// <summary>
-        /// The date_created
+        /// The optional ISO8601 time specifying the datetime the Members should be set as being created.
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The date_updated
+        /// The optional ISO8601 time specifying the datetime the Member should be set as having been last updated.
         /// </summary>
         public DateTime? DateUpdated { get; set; }
 

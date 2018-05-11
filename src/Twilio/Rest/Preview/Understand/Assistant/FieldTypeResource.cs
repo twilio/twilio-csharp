@@ -276,8 +276,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// create
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  sid. Unique up to 64 characters long. </param>
+        /// <param name="friendlyName"> A user-provided string that identifies this resource. It is non-unique and can up to
+        ///                    255 characters long. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldType </returns> 
         public static FieldTypeResource Create(string pathAssistantSid, 
@@ -294,8 +296,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// create
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  sid. Unique up to 64 characters long. </param>
+        /// <param name="friendlyName"> A user-provided string that identifies this resource. It is non-unique and can up to
+        ///                    255 characters long. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldType </returns> 
         public static async System.Threading.Tasks.Task<FieldTypeResource> CreateAsync(string pathAssistantSid, 
@@ -353,8 +357,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="friendlyName"> A user-provided string that identifies this resource. It is non-unique and can up to
+        ///                    255 characters long. </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldType </returns> 
         public static FieldTypeResource Update(string pathAssistantSid, 
@@ -373,8 +379,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="friendlyName"> A user-provided string that identifies this resource. It is non-unique and can up to
+        ///                    255 characters long. </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldType </returns> 
         public static async System.Threading.Tasks.Task<FieldTypeResource> UpdateAsync(string pathAssistantSid, 
@@ -477,22 +485,22 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account that created this Field Type.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A user-provided string that identifies this resource. It is non-unique and can up to 255 characters long.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
@@ -502,17 +510,17 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }

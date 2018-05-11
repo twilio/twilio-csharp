@@ -72,7 +72,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         public string PathIntentSid { get; }
         /// <summary>
-        /// The language
+        /// An ISO language-country string of the sample.
         /// </summary>
         public string Language { get; set; }
 
@@ -124,15 +124,15 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         public string PathIntentSid { get; }
         /// <summary>
-        /// The language
+        /// An ISO language-country string of the sample.
         /// </summary>
         public string Language { get; }
         /// <summary>
-        /// The tagged_text
+        /// The text example of how end-users may express this intent. The sample may contain Field tag blocks.
         /// </summary>
         public string TaggedText { get; }
         /// <summary>
-        /// The source_channel
+        /// The communication channel the sample was captured. It can be: voice, sms, chat, alexa, google-assistant, or slack. If not included the value will be null
         /// </summary>
         public string SourceChannel { get; set; }
 
@@ -141,8 +141,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="taggedText"> The tagged_text </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
+        /// <param name="taggedText"> The text example of how end-users may express this intent. The sample may contain Field
+        ///                  tag blocks. </param>
         public CreateSampleOptions(string pathAssistantSid, string pathIntentSid, string language, string taggedText)
         {
             PathAssistantSid = pathAssistantSid;
@@ -197,15 +198,15 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The language
+        /// An ISO language-country string of the sample.
         /// </summary>
         public string Language { get; set; }
         /// <summary>
-        /// The tagged_text
+        /// The text example of how end-users may express this intent. The sample may contain Field tag blocks.
         /// </summary>
         public string TaggedText { get; set; }
         /// <summary>
-        /// The source_channel
+        /// The communication channel the sample was captured. It can be: voice, sms, chat, alexa, google-assistant, or slack. If not included the value will be null
         /// </summary>
         public string SourceChannel { get; set; }
 

@@ -164,7 +164,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The order
+        /// Optional.
         /// </summary>
         public MessageResource.OrderTypeEnum Order { get; set; }
 
@@ -258,23 +258,23 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The body
+        /// The optional message body string.
         /// </summary>
         public string Body { get; set; }
         /// <summary>
-        /// The attributes
+        /// The optional attributes metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The date_created
+        /// The optional ISO8601 time specifying the datetime the Message should be set as being created.
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The date_updated
+        /// The optional ISO8601 time specifying the datetime the Message should be set as having been last updated.
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// The last_updated_by
+        /// Optional field to specify the Identity of the User that last updated the Message
         /// </summary>
         public string LastUpdatedBy { get; set; }
 

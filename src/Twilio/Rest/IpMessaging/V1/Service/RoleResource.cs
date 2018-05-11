@@ -218,9 +218,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="type"> The type </param>
-        /// <param name="permission"> The permission </param>
+        /// <param name="friendlyName"> The human-readable name of this role. </param>
+        /// <param name="type"> What kind of role this is. </param>
+        /// <param name="permission"> A permission this role should have. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns> 
         public static RoleResource Create(string pathServiceSid, 
@@ -238,9 +238,9 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="type"> The type </param>
-        /// <param name="permission"> The permission </param>
+        /// <param name="friendlyName"> The human-readable name of this role. </param>
+        /// <param name="type"> What kind of role this is. </param>
+        /// <param name="permission"> A permission this role should have. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns> 
         public static async System.Threading.Tasks.Task<RoleResource> CreateAsync(string pathServiceSid, 
@@ -438,7 +438,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="permission"> The permission </param>
+        /// <param name="permission"> A permission this role should have. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns> 
         public static RoleResource Update(string pathServiceSid, 
@@ -456,7 +456,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="permission"> The permission </param>
+        /// <param name="permission"> A permission this role should have. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns> 
         public static async System.Threading.Tasks.Task<RoleResource> UpdateAsync(string pathServiceSid, 
@@ -488,48 +488,48 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account responsible for this role.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The unique id of the Service this role belongs to.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// The human-readable name of this role.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The type
+        /// What kind of role this is.
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoleResource.RoleTypeEnum Type { get; private set; }
         /// <summary>
-        /// The permissions
+        /// A JSON array of the permissions this role has.
         /// </summary>
         [JsonProperty("permissions")]
         public List<string> Permissions { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created in ISO 8601 format.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated in ISO 8601 format.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// An absolute URL for this role.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

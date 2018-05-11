@@ -224,11 +224,11 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The body
+        /// The new message body string.
         /// </summary>
         public string Body { get; set; }
         /// <summary>
-        /// The attributes
+        /// The new attributes metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
 

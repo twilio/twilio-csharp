@@ -148,7 +148,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
-        /// <param name="language"> The language </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
-        /// <param name="language"> The language </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -291,9 +291,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="taggedText"> The tagged_text </param>
-        /// <param name="sourceChannel"> The source_channel </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
+        /// <param name="taggedText"> The text example of how end-users may express this intent. The sample may contain Field
+        ///                  tag blocks. </param>
+        /// <param name="sourceChannel"> The communication channel the sample was captured. It can be: voice, sms, chat, alexa,
+        ///                     google-assistant, or slack. If not included the value will be null </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sample </returns> 
         public static SampleResource Create(string pathAssistantSid, 
@@ -313,9 +315,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="taggedText"> The tagged_text </param>
-        /// <param name="sourceChannel"> The source_channel </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
+        /// <param name="taggedText"> The text example of how end-users may express this intent. The sample may contain Field
+        ///                  tag blocks. </param>
+        /// <param name="sourceChannel"> The communication channel the sample was captured. It can be: voice, sms, chat, alexa,
+        ///                     google-assistant, or slack. If not included the value will be null </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sample </returns> 
         public static async System.Threading.Tasks.Task<SampleResource> CreateAsync(string pathAssistantSid, 
@@ -376,9 +380,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="taggedText"> The tagged_text </param>
-        /// <param name="sourceChannel"> The source_channel </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
+        /// <param name="taggedText"> The text example of how end-users may express this intent. The sample may contain Field
+        ///                  tag blocks. </param>
+        /// <param name="sourceChannel"> The communication channel the sample was captured. It can be: voice, sms, chat, alexa,
+        ///                     google-assistant, or slack. If not included the value will be null </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sample </returns> 
         public static SampleResource Update(string pathAssistantSid, 
@@ -400,9 +406,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="taggedText"> The tagged_text </param>
-        /// <param name="sourceChannel"> The source_channel </param>
+        /// <param name="language"> An ISO language-country string of the sample. </param>
+        /// <param name="taggedText"> The text example of how end-users may express this intent. The sample may contain Field
+        ///                  tag blocks. </param>
+        /// <param name="sourceChannel"> The communication channel the sample was captured. It can be: voice, sms, chat, alexa,
+        ///                     google-assistant, or slack. If not included the value will be null </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sample </returns> 
         public static async System.Threading.Tasks.Task<SampleResource> UpdateAsync(string pathAssistantSid, 
@@ -513,42 +521,42 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account that created this Sample.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The intent_sid
+        /// The unique ID of the Intent associated with this Sample.
         /// </summary>
         [JsonProperty("intent_sid")]
         public string IntentSid { get; private set; }
         /// <summary>
-        /// The language
+        /// An ISO language-country string of the sample.
         /// </summary>
         [JsonProperty("language")]
         public string Language { get; private set; }
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The tagged_text
+        /// The text example of how end-users may express this intent. The sample may contain Field tag blocks.
         /// </summary>
         [JsonProperty("tagged_text")]
         public string TaggedText { get; private set; }
@@ -558,7 +566,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The source_channel
+        /// The communication channel the sample was captured. It can be: voice, sms, chat, alexa, google-assistant, or slack. If not included the value will be null
         /// </summary>
         [JsonProperty("source_channel")]
         public string SourceChannel { get; private set; }

@@ -46,15 +46,15 @@ namespace Twilio.Rest.Wireless.V1
     public class ReadSimOptions : ReadOptions<SimResource> 
     {
         /// <summary>
-        /// The status
+        /// Only return Sims with this status.
         /// </summary>
         public SimResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// The iccid
+        /// Return Sims with this Iccid.
         /// </summary>
         public string Iccid { get; set; }
         /// <summary>
-        /// The rate_plan
+        /// Only return Sims with this Rate Plan.
         /// </summary>
         public string RatePlan { get; set; }
         /// <summary>
@@ -116,67 +116,67 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the Sid.
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The callback_method
+        /// The HTTP method Twilio will use when making a request to the callback URL.
         /// </summary>
         public Twilio.Http.HttpMethod CallbackMethod { get; set; }
         /// <summary>
-        /// The callback_url
+        /// Twilio will make a request to this URL when the Sim has finished updating.
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// A user-provided string that identifies this resource.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The rate_plan
+        /// The Sid or UniqueName of the RatePlan that this Sim should use.
         /// </summary>
         public string RatePlan { get; set; }
         /// <summary>
-        /// The status
+        /// A string representing the status of the Sim.
         /// </summary>
         public SimResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// The commands_callback_method
+        /// A string representing the HTTP method to use when making a request to CommandsCallbackUrl.
         /// </summary>
         public Twilio.Http.HttpMethod CommandsCallbackMethod { get; set; }
         /// <summary>
-        /// The commands_callback_url
+        /// The URL that will receive a webhook when this Sim originates a Command.
         /// </summary>
         public Uri CommandsCallbackUrl { get; set; }
         /// <summary>
-        /// The sms_fallback_method
+        /// The HTTP method Twilio will use when requesting the sms_fallback_url.
         /// </summary>
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
         /// <summary>
-        /// The sms_fallback_url
+        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by sms_url.
         /// </summary>
         public Uri SmsFallbackUrl { get; set; }
         /// <summary>
-        /// The sms_method
+        /// The HTTP method Twilio will use when requesting the above Url.
         /// </summary>
         public Twilio.Http.HttpMethod SmsMethod { get; set; }
         /// <summary>
-        /// The sms_url
+        /// The URL Twilio will request when the SIM-connected device sends an SMS message that is not a Command.
         /// </summary>
         public Uri SmsUrl { get; set; }
         /// <summary>
-        /// The voice_fallback_method
+        /// The HTTP method Twilio will use when requesting the voice_fallback_url.
         /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
         /// <summary>
-        /// The voice_fallback_url
+        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by voice_url.
         /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
         /// <summary>
-        /// The voice_method
+        /// The HTTP method Twilio will use when requesting the above Url.
         /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         /// <summary>
-        /// The voice_url
+        /// The URL Twilio will request when the SIM-connected device makes a call.
         /// </summary>
         public Uri VoiceUrl { get; set; }
 

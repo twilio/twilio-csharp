@@ -21,15 +21,15 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// </summary>
         public string PathSimSid { get; }
         /// <summary>
-        /// The end
+        /// Only include usage that has occurred on or before this date.
         /// </summary>
         public DateTime? End { get; set; }
         /// <summary>
-        /// The start
+        /// Only include usage that has occurred on or after this date.
         /// </summary>
         public DateTime? Start { get; set; }
         /// <summary>
-        /// The granularity
+        /// The time-based grouping that results are aggregated by.
         /// </summary>
         public UsageRecordResource.GranularityEnum Granularity { get; set; }
 

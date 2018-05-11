@@ -92,31 +92,31 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable name for the Channel.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The unique_name
+        /// A unique, addressable name for the Channel.
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The attributes
+        /// An optional metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The type
+        /// The visibility of the channel - public or private.
         /// </summary>
         public ChannelResource.ChannelTypeEnum Type { get; set; }
         /// <summary>
-        /// The date_created
+        /// The optional ISO8601 time specifying the datetime the Channel should be set as being created.
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The date_updated
+        /// The optional ISO8601 time specifying the datetime the Channel should be set as having been last updated.
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// The created_by
+        /// Optional field to specify the Identity of the User that created the Channel.
         /// </summary>
         public string CreatedBy { get; set; }
 
@@ -232,27 +232,27 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable name for the Channel.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The unique_name
+        /// A unique, addressable name for the Channel.
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The attributes
+        /// An optional metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The date_created
+        /// The optional ISO8601 time specifying the datetime the Channel should be set as being created.
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The date_updated
+        /// The optional ISO8601 time specifying the datetime the Channel should be set as having been last updated.
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// The created_by
+        /// Optional field to specify the Identity of the User that created the Channel.
         /// </summary>
         public string CreatedBy { get; set; }
 

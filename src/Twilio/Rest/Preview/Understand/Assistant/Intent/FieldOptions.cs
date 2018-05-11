@@ -115,11 +115,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         public string PathIntentSid { get; }
         /// <summary>
-        /// The field_type
+        /// The unique name or sid of the FieldType
         /// </summary>
         public string FieldType { get; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
         /// </summary>
         public string UniqueName { get; }
 
@@ -128,8 +128,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
-        /// <param name="fieldType"> The field_type </param>
-        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="fieldType"> The unique name or sid of the FieldType </param>
+        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
+        ///                  sid. Unique up to 64 characters long. </param>
         public CreateFieldOptions(string pathAssistantSid, string pathIntentSid, string fieldType, string uniqueName)
         {
             PathAssistantSid = pathAssistantSid;

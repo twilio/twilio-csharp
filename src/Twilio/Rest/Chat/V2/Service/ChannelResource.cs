@@ -218,13 +218,15 @@ namespace Twilio.Rest.Chat.V2.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="type"> The type </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
-        /// <param name="createdBy"> The created_by </param>
+        /// <param name="friendlyName"> A human-readable name for the Channel. </param>
+        /// <param name="uniqueName"> A unique, addressable name for the Channel. </param>
+        /// <param name="attributes"> An optional metadata field you can use to store any data you wish. </param>
+        /// <param name="type"> The visibility of the channel - public or private. </param>
+        /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Channel should be set as being
+        ///                   created. </param>
+        /// <param name="dateUpdated"> The optional ISO8601 time specifying the datetime the Channel should be set as having
+        ///                   been last updated. </param>
+        /// <param name="createdBy"> Optional field to specify the Identity of the User that created the Channel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns> 
         public static ChannelResource Create(string pathServiceSid, 
@@ -246,13 +248,15 @@ namespace Twilio.Rest.Chat.V2.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="type"> The type </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
-        /// <param name="createdBy"> The created_by </param>
+        /// <param name="friendlyName"> A human-readable name for the Channel. </param>
+        /// <param name="uniqueName"> A unique, addressable name for the Channel. </param>
+        /// <param name="attributes"> An optional metadata field you can use to store any data you wish. </param>
+        /// <param name="type"> The visibility of the channel - public or private. </param>
+        /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Channel should be set as being
+        ///                   created. </param>
+        /// <param name="dateUpdated"> The optional ISO8601 time specifying the datetime the Channel should be set as having
+        ///                   been last updated. </param>
+        /// <param name="createdBy"> Optional field to specify the Identity of the User that created the Channel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<ChannelResource> CreateAsync(string pathServiceSid, 
@@ -458,12 +462,14 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
-        /// <param name="createdBy"> The created_by </param>
+        /// <param name="friendlyName"> A human-readable name for the Channel. </param>
+        /// <param name="uniqueName"> A unique, addressable name for the Channel. </param>
+        /// <param name="attributes"> An optional metadata field you can use to store any data you wish. </param>
+        /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Channel should be set as being
+        ///                   created. </param>
+        /// <param name="dateUpdated"> The optional ISO8601 time specifying the datetime the Channel should be set as having
+        ///                   been last updated. </param>
+        /// <param name="createdBy"> Optional field to specify the Identity of the User that created the Channel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns> 
         public static ChannelResource Update(string pathServiceSid, 
@@ -486,12 +492,14 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
-        /// <param name="createdBy"> The created_by </param>
+        /// <param name="friendlyName"> A human-readable name for the Channel. </param>
+        /// <param name="uniqueName"> A unique, addressable name for the Channel. </param>
+        /// <param name="attributes"> An optional metadata field you can use to store any data you wish. </param>
+        /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Channel should be set as being
+        ///                   created. </param>
+        /// <param name="dateUpdated"> The optional ISO8601 time specifying the datetime the Channel should be set as having
+        ///                   been last updated. </param>
+        /// <param name="createdBy"> Optional field to specify the Identity of the User that created the Channel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<ChannelResource> UpdateAsync(string pathServiceSid, 
@@ -528,73 +536,73 @@ namespace Twilio.Rest.Chat.V2.Service
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account responsible for this channel.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The unique id of the Service this channel belongs to.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// The human-readable name of this channel.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The unique_name
+        /// The unique, addressable name of this channel.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The attributes
+        /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
         /// <summary>
-        /// The type
+        /// The visibility of this channel - either public or private
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ChannelResource.ChannelTypeEnum Type { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The created_by
+        /// Identity of the channel's creator.
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }
         /// <summary>
-        /// The members_count
+        /// The number of Members in the Channel
         /// </summary>
         [JsonProperty("members_count")]
         public int? MembersCount { get; private set; }
         /// <summary>
-        /// The messages_count
+        /// The number of Messages in the Channel
         /// </summary>
         [JsonProperty("messages_count")]
         public int? MessagesCount { get; private set; }
         /// <summary>
-        /// The url
+        /// An absolute URL for this channel.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// Absolute URLs to access the Members, Messages , Invites and, if it exists the last Message for this Channel.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Status to filter on
         /// </summary>
-        public string Status { get; set; }
+        public AccountResource.StatusEnum Status { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010
 
             if (Status != null)
             {
-                p.Add(new KeyValuePair<string, string>("Status", Status));
+                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
 
             if (PageSize != null)
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Status to update the Account with
         /// </summary>
-        public string Status { get; set; }
+        public AccountResource.StatusEnum Status { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Api.V2010
 
             if (Status != null)
             {
-                p.Add(new KeyValuePair<string, string>("Status", Status));
+                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
             }
 
             return p;

@@ -64,8 +64,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// create
         /// </summary>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A descriptive string for this resource, chosen by your application, up to 64 characters
-        ///                    long. </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NewKey </returns> 
         public static NewKeyResource Create(string pathAccountSid = null, 
@@ -81,8 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// create
         /// </summary>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A descriptive string for this resource, chosen by your application, up to 64 characters
-        ///                    long. </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NewKey </returns> 
         public static async System.Threading.Tasks.Task<NewKeyResource> CreateAsync(string pathAccountSid = null, 
@@ -113,27 +111,27 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// A 34 character string that uniquely identifies this API Key.
+        /// The sid
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A descriptive string for this resource, chosen by your application, up to 64 characters long.
+        /// The friendly_name
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The date-time this API Key was created, given as a RFC 2822 Timestamp.
+        /// The date_created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date-time this API Key was most recently updated, given as a  RFC 2822 Timestamp.
+        /// The date_updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The secret your application uses to sign Access Tokens and to authenticate to the REST API.
+        /// The secret
         /// </summary>
         [JsonProperty("secret")]
         public string Secret { get; private set; }

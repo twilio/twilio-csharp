@@ -66,7 +66,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="shortCodeSid"> The short_code_sid </param>
+        /// <param name="shortCodeSid"> ShortCodeSid for the Shortcode being added to the Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns> 
         public static ShortCodeResource Create(string pathServiceSid, string shortCodeSid, ITwilioRestClient client = null)
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="shortCodeSid"> The short_code_sid </param>
+        /// <param name="shortCodeSid"> ShortCodeSid for the Shortcode being added to the Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
         public static async System.Threading.Tasks.Task<ShortCodeResource> CreateAsync(string pathServiceSid, 
@@ -390,42 +390,42 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
 
         /// <summary>
-        /// The sid
+        /// The 34 character unique sid of the Short Code
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The 34 character unique sid of the Account.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The 34 character unique sid of the Service.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// he date that this resource was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The short_code
+        /// The E.164 format of the short code.
         /// </summary>
         [JsonProperty("short_code")]
         public string ShortCode { get; private set; }
         /// <summary>
-        /// The country_code
+        /// The 2 character ISO Country Code of the number.
         /// </summary>
         [JsonProperty("country_code")]
         public string CountryCode { get; private set; }
         /// <summary>
-        /// The capabilities
+        /// Any array of values that indicate whether the number can receive calls or messages.
         /// </summary>
         [JsonProperty("capabilities")]
         public List<object> Capabilities { get; private set; }

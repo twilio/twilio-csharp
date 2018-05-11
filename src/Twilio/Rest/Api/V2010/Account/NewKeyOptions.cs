@@ -21,7 +21,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// A descriptive string for this resource, chosen by your application, up to 64 characters long.
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
 

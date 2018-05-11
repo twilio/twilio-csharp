@@ -148,7 +148,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="language"> The language </param>
+        /// <param name="language"> An ISO language-country string of the value. For example: en-US </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="language"> The language </param>
+        /// <param name="language"> An ISO language-country string of the value. For example: en-US </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -291,8 +291,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="value"> The value </param>
+        /// <param name="language"> An ISO language-country string of the value. </param>
+        /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid.
+        ///             Unique up to 64 characters long. </param>
         /// <param name="synonymOf"> The synonym_of </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldValue </returns> 
@@ -313,8 +314,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="language"> The language </param>
-        /// <param name="value"> The value </param>
+        /// <param name="language"> An ISO language-country string of the value. </param>
+        /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid.
+        ///             Unique up to 64 characters long. </param>
         /// <param name="synonymOf"> The synonym_of </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldValue </returns> 
@@ -425,37 +427,37 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account that created this Field Value.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The field_type_sid
+        /// The unique ID of the Field Type associated with this Field Value.
         /// </summary>
         [JsonProperty("field_type_sid")]
         public string FieldTypeSid { get; private set; }
         /// <summary>
-        /// The language
+        /// An ISO language-country string of the value.
         /// </summary>
         [JsonProperty("language")]
         public string Language { get; private set; }
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }

@@ -242,27 +242,27 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         }
 
         /// <summary>
-        /// The country
+        /// Name of the country
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; private set; }
         /// <summary>
-        /// The iso_country
+        /// The ISO country code
         /// </summary>
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
         /// <summary>
-        /// The outbound_sms_prices
+        /// List of OutboundSMSPrice records
         /// </summary>
         [JsonProperty("outbound_sms_prices")]
         public List<OutboundSmsPrice> OutboundSmsPrices { get; private set; }
         /// <summary>
-        /// The inbound_sms_prices
+        /// List of InboundPrice records
         /// </summary>
         [JsonProperty("inbound_sms_prices")]
         public List<InboundSmsPrice> InboundSmsPrices { get; private set; }
         /// <summary>
-        /// The price_unit
+        /// The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy).
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }

@@ -52,7 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// create
+        /// Create a feedback entry for a call
         /// </summary>
         /// <param name="options"> Create Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a feedback entry for a call
         /// </summary>
         /// <param name="options"> Create Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -81,12 +81,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         #endif
 
         /// <summary>
-        /// create
+        /// Create a feedback entry for a call
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="qualityScore"> The quality_score </param>
+        /// <param name="qualityScore"> An integer from 1 to 5 </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="issue"> The issue </param>
+        /// <param name="issue"> Issues experienced during the call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Feedback </returns> 
         public static FeedbackResource Create(string pathCallSid, 
@@ -101,12 +101,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a feedback entry for a call
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="qualityScore"> The quality_score </param>
+        /// <param name="qualityScore"> An integer from 1 to 5 </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="issue"> The issue </param>
+        /// <param name="issue"> Issues experienced during the call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns> 
         public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string pathCallSid, 
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// Create or update a feedback entry for a call
+        /// Update a feedback entry for a call
         /// </summary>
         /// <param name="options"> Update Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// Create or update a feedback entry for a call
+        /// Update a feedback entry for a call
         /// </summary>
         /// <param name="options"> Update Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -233,7 +233,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         #endif
 
         /// <summary>
-        /// Create or update a feedback entry for a call
+        /// Update a feedback entry for a call
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="qualityScore"> An integer from 1 to 5 </param>
@@ -253,7 +253,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// Create or update a feedback entry for a call
+        /// Update a feedback entry for a call
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="qualityScore"> An integer from 1 to 5 </param>

@@ -67,35 +67,35 @@ namespace Twilio.Rest.Wireless.V1
     public class CreateRatePlanOptions : IOptions<RatePlanResource> 
     {
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the Sid.
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// A user-provided string that identifies this resource.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The data_enabled
+        /// Defines whether SIMs are capable of using GPRS/3G/LTE data connectivity.
         /// </summary>
         public bool? DataEnabled { get; set; }
         /// <summary>
-        /// The data_limit
+        /// Network-enforced limit specifying the total Megabytes of data usage allowed during one month on the home network.
         /// </summary>
         public int? DataLimit { get; set; }
         /// <summary>
-        /// The data_metering
+        /// The model by which to meter data usage, in accordance with the two available data metering models.
         /// </summary>
         public string DataMetering { get; set; }
         /// <summary>
-        /// The messaging_enabled
+        /// Defines whether SIMs are capable of making and sending and receiving SMS messages via either Commands or Programmable SMS APIs.
         /// </summary>
         public bool? MessagingEnabled { get; set; }
         /// <summary>
-        /// The voice_enabled
+        /// Defines whether SIMs are capable of making and receiving voice calls.
         /// </summary>
         public bool? VoiceEnabled { get; set; }
         /// <summary>
-        /// The national_roaming_enabled
+        /// Defines whether SIMs can roam onto other networks in the SIM's home country.
         /// </summary>
         public bool? NationalRoamingEnabled { get; set; }
         /// <summary>
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         public List<string> InternationalRoaming { get; set; }
         /// <summary>
-        /// The national_roaming_data_limit
+        /// Network-enforced limit specifying the total Megabytes of national roaming data usage allowed during one month.
         /// </summary>
         public int? NationalRoamingDataLimit { get; set; }
         /// <summary>
@@ -194,11 +194,11 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The unique_name
+        /// A user-provided string that uniquely identifies this resource as an alternative to the Sid.
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// A user-provided string that identifies this resource.
         /// </summary>
         public string FriendlyName { get; set; }
 
