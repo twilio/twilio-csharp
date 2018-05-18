@@ -153,6 +153,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum Premiumsupport = new CategoryEnum("premiumsupport");
             public static readonly CategoryEnum Proxy = new CategoryEnum("proxy");
             public static readonly CategoryEnum Pv = new CategoryEnum("pv");
+            public static readonly CategoryEnum PvCompositionMediaDownloaded = new CategoryEnum("pv-composition-media-downloaded");
+            public static readonly CategoryEnum PvCompositionMediaEncrypted = new CategoryEnum("pv-composition-media-encrypted");
+            public static readonly CategoryEnum PvCompositionMediaStored = new CategoryEnum("pv-composition-media-stored");
+            public static readonly CategoryEnum PvCompositionMinutes = new CategoryEnum("pv-composition-minutes");
+            public static readonly CategoryEnum PvRecordingCompositions = new CategoryEnum("pv-recording-compositions");
             public static readonly CategoryEnum PvRoomParticipants = new CategoryEnum("pv-room-participants");
             public static readonly CategoryEnum PvRoomParticipantsAu1 = new CategoryEnum("pv-room-participants-au1");
             public static readonly CategoryEnum PvRoomParticipantsBr1 = new CategoryEnum("pv-room-participants-br1");
@@ -311,6 +316,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="category"> Only include usage of this usage category. </param>
         /// <param name="startDate"> Only include usage that has occurred on or after this date. </param>
         /// <param name="endDate"> Only include usage that has occurred on or before this date. </param>
+        /// <param name="includeSubaccounts"> The include_subaccounts </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -319,11 +325,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                                                         AllTimeResource.CategoryEnum category = null, 
                                                         DateTime? startDate = null, 
                                                         DateTime? endDate = null, 
+                                                        bool? includeSubaccounts = null, 
                                                         int? pageSize = null, 
                                                         long? limit = null, 
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadAllTimeOptions(){PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadAllTimeOptions(){PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, IncludeSubaccounts = includeSubaccounts, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -335,6 +342,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="category"> Only include usage of this usage category. </param>
         /// <param name="startDate"> Only include usage that has occurred on or after this date. </param>
         /// <param name="endDate"> Only include usage that has occurred on or before this date. </param>
+        /// <param name="includeSubaccounts"> The include_subaccounts </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -343,11 +351,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
                                                                                                 AllTimeResource.CategoryEnum category = null, 
                                                                                                 DateTime? startDate = null, 
                                                                                                 DateTime? endDate = null, 
+                                                                                                bool? includeSubaccounts = null, 
                                                                                                 int? pageSize = null, 
                                                                                                 long? limit = null, 
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadAllTimeOptions(){PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
+            var options = new ReadAllTimeOptions(){PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, IncludeSubaccounts = includeSubaccounts, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

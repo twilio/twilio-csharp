@@ -12,29 +12,29 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 {
 
     /// <summary>
-    /// FetchPublishedTrackOptions
+    /// Returns a single Track resource represented by `TrackNameOrSid`.
     /// </summary>
     public class FetchPublishedTrackOptions : IOptions<PublishedTrackResource> 
     {
         /// <summary>
-        /// The room_sid
+        /// Unique Room identifier where this Track is published.
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// The participant_sid
+        /// Unique Participant identifier that publishes this Track.
         /// </summary>
         public string PathParticipantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchPublishedTrackOptions
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathParticipantSid"> The participant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathRoomSid"> Unique Room identifier where this Track is published. </param>
+        /// <param name="pathParticipantSid"> Unique Participant identifier that publishes this Track. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchPublishedTrackOptions(string pathRoomSid, string pathParticipantSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
@@ -53,24 +53,25 @@ namespace Twilio.Rest.Video.V1.Room.Participant
     }
 
     /// <summary>
-    /// ReadPublishedTrackOptions
+    /// Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list
+    /// resource.
     /// </summary>
     public class ReadPublishedTrackOptions : ReadOptions<PublishedTrackResource> 
     {
         /// <summary>
-        /// The room_sid
+        /// Unique Room identifier where this Track is published.
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// The participant_sid
+        /// Unique Participant identifier that publishes this Track.
         /// </summary>
         public string PathParticipantSid { get; }
 
         /// <summary>
         /// Construct a new ReadPublishedTrackOptions
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathParticipantSid"> The participant_sid </param>
+        /// <param name="pathRoomSid"> Unique Room identifier where this Track is published. </param>
+        /// <param name="pathParticipantSid"> Unique Participant identifier that publishes this Track. </param>
         public ReadPublishedTrackOptions(string pathRoomSid, string pathParticipantSid)
         {
             PathRoomSid = pathRoomSid;

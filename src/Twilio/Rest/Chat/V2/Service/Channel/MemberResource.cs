@@ -141,12 +141,23 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="roleSid"> The role_sid </param>
-        /// <param name="lastConsumedMessageIndex"> The last_consumed_message_index </param>
-        /// <param name="lastConsumptionTimestamp"> The last_consumption_timestamp </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
+        ///                more details. (📇 PII MTL: 120 days) </param>
+        /// <param name="roleSid"> The role to be assigned to this member. Defaults to the roles specified on the Service.
+        ///               </param>
+        /// <param name="lastConsumedMessageIndex"> Field used to specify the last consumed Message index for the Channel for
+        ///                                this Member.  Should only be used when recreating a Member from a backup/separate
+        ///                                source. </param>
+        /// <param name="lastConsumptionTimestamp"> ISO8601 time indicating the last datetime the Member consumed a Message in
+        ///                                the Channel.  Should only be used when recreating a Member from a backup/separate
+        ///                                source </param>
+        /// <param name="dateCreated"> The ISO8601 time specifying the datetime the Members should be set as being created. 
+        ///                   Will be set to the current time by the Chat service if not specified.  Note that this should only
+        ///                   be used in cases where a Member is being recreated from a backup/separate source </param>
+        /// <param name="dateUpdated"> The ISO8601 time specifying the datetime the Member should be set as having been last
+        ///                   updated.  Will be set to the null by the Chat service if not specified.  Note that this should
+        ///                   only be used in cases where a Member is being recreated from a backup/separate source  and where a
+        ///                   Member was previously updated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
         public static MemberResource Create(string pathServiceSid, 
@@ -169,12 +180,23 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="roleSid"> The role_sid </param>
-        /// <param name="lastConsumedMessageIndex"> The last_consumed_message_index </param>
-        /// <param name="lastConsumptionTimestamp"> The last_consumption_timestamp </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
+        ///                more details. (📇 PII MTL: 120 days) </param>
+        /// <param name="roleSid"> The role to be assigned to this member. Defaults to the roles specified on the Service.
+        ///               </param>
+        /// <param name="lastConsumedMessageIndex"> Field used to specify the last consumed Message index for the Channel for
+        ///                                this Member.  Should only be used when recreating a Member from a backup/separate
+        ///                                source. </param>
+        /// <param name="lastConsumptionTimestamp"> ISO8601 time indicating the last datetime the Member consumed a Message in
+        ///                                the Channel.  Should only be used when recreating a Member from a backup/separate
+        ///                                source </param>
+        /// <param name="dateCreated"> The ISO8601 time specifying the datetime the Members should be set as being created. 
+        ///                   Will be set to the current time by the Chat service if not specified.  Note that this should only
+        ///                   be used in cases where a Member is being recreated from a backup/separate source </param>
+        /// <param name="dateUpdated"> The ISO8601 time specifying the datetime the Member should be set as having been last
+        ///                   updated.  Will be set to the null by the Chat service if not specified.  Note that this should
+        ///                   only be used in cases where a Member is being recreated from a backup/separate source  and where a
+        ///                   Member was previously updated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
         public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(string pathServiceSid, 
@@ -241,7 +263,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="identity"> The identity </param>
+        /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
+        ///                more details. (📇 PII MTL: 120 days) </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -263,7 +286,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="identity"> The identity </param>
+        /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
+        ///                more details. (📇 PII MTL: 120 days) </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -462,14 +486,14 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="roleSid"> The role to be assigned to this member. </param>
-        /// <param name="lastConsumedMessageIndex"> Optional field used to specify the last consumed Message index for the
-        ///                                Channel for this Member. </param>
-        /// <param name="lastConsumptionTimestamp"> Optional ISO8601 time indicating the last datetime the Member consumed a
-        ///                                Message in the Channel. </param>
-        /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Members should be set as being
-        ///                   created. </param>
-        /// <param name="dateUpdated"> The optional ISO8601 time specifying the datetime the Member should be set as having
-        ///                   been last updated. </param>
+        /// <param name="lastConsumedMessageIndex"> Field used to specify the last consumed Message index for the Channel for
+        ///                                this Member. </param>
+        /// <param name="lastConsumptionTimestamp"> ISO8601 time indicating the last datetime the Member consumed a Message in
+        ///                                the Channel. </param>
+        /// <param name="dateCreated"> The ISO8601 time specifying the datetime the Members should be set as being created.
+        ///                   </param>
+        /// <param name="dateUpdated"> The ISO8601 time specifying the datetime the Member should be set as having been last
+        ///                   updated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
         public static MemberResource Update(string pathServiceSid, 
@@ -494,14 +518,14 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="roleSid"> The role to be assigned to this member. </param>
-        /// <param name="lastConsumedMessageIndex"> Optional field used to specify the last consumed Message index for the
-        ///                                Channel for this Member. </param>
-        /// <param name="lastConsumptionTimestamp"> Optional ISO8601 time indicating the last datetime the Member consumed a
-        ///                                Message in the Channel. </param>
-        /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Members should be set as being
-        ///                   created. </param>
-        /// <param name="dateUpdated"> The optional ISO8601 time specifying the datetime the Member should be set as having
-        ///                   been last updated. </param>
+        /// <param name="lastConsumedMessageIndex"> Field used to specify the last consumed Message index for the Channel for
+        ///                                this Member. </param>
+        /// <param name="lastConsumptionTimestamp"> ISO8601 time indicating the last datetime the Member consumed a Message in
+        ///                                the Channel. </param>
+        /// <param name="dateCreated"> The ISO8601 time specifying the datetime the Members should be set as being created.
+        ///                   </param>
+        /// <param name="dateUpdated"> The ISO8601 time specifying the datetime the Member should be set as having been last
+        ///                   updated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
         public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string pathServiceSid, 

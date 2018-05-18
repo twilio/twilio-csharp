@@ -16,19 +16,19 @@ namespace Twilio.Rest.Video.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchCompositionOptions
+    /// Returns a single Composition Instance resource identified by a CompositionSid.
     /// </summary>
     public class FetchCompositionOptions : IOptions<CompositionResource> 
     {
         /// <summary>
-        /// The sid
+        /// The Composition Sid that uniquely identifies the Composition to fetch.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCompositionOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The Composition Sid that uniquely identifies the Composition to fetch. </param>
         public FetchCompositionOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -48,20 +48,20 @@ namespace Twilio.Rest.Video.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// ReadCompositionOptions
+    /// List of all Recording Compositions.
     /// </summary>
     public class ReadCompositionOptions : ReadOptions<CompositionResource> 
     {
         /// <summary>
-        /// The status
+        /// Only show Compositions with the given status.
         /// </summary>
         public CompositionResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// The date_created_after
+        /// Only show Compositions that started on or after this ISO8601 date-time.
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// The date_created_before
+        /// Only show Compositions that started before this this ISO8601 date-time.
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
@@ -108,19 +108,20 @@ namespace Twilio.Rest.Video.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// DeleteCompositionOptions
+    /// Delete a Recording Composition Instance resource identified by a `CompositionSid`.
     /// </summary>
     public class DeleteCompositionOptions : IOptions<CompositionResource> 
     {
         /// <summary>
-        /// The sid
+        /// The Recording Composition Sid that uniquely identifies the Recording Composition to delete.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteCompositionOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The Recording Composition Sid that uniquely identifies the Recording Composition to delete.
+        ///               </param>
         public DeleteCompositionOptions(string pathSid)
         {
             PathSid = pathSid;

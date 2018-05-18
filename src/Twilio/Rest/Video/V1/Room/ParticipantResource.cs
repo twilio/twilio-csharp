@@ -154,8 +154,10 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pathRoomSid"> The room_sid </param>
         /// <param name="status"> Only show Participants with the given Status. </param>
         /// <param name="identity"> Only show Participants that connected to the Room using the provided Identity. </param>
-        /// <param name="dateCreatedAfter"> The date_created_after </param>
-        /// <param name="dateCreatedBefore"> The date_created_before </param>
+        /// <param name="dateCreatedAfter"> Only show Participants that started after this date, given as an UTC ISO 8601
+        ///                        Timestamp. </param>
+        /// <param name="dateCreatedBefore"> Only show Participants that started before this date, given as an UTC ISO 8601
+        ///                         Timestamp. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -180,8 +182,10 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pathRoomSid"> The room_sid </param>
         /// <param name="status"> Only show Participants with the given Status. </param>
         /// <param name="identity"> Only show Participants that connected to the Room using the provided Identity. </param>
-        /// <param name="dateCreatedAfter"> The date_created_after </param>
-        /// <param name="dateCreatedBefore"> The date_created_before </param>
+        /// <param name="dateCreatedAfter"> Only show Participants that started after this date, given as an UTC ISO 8601
+        ///                        Timestamp. </param>
+        /// <param name="dateCreatedBefore"> Only show Participants that started before this date, given as an UTC ISO 8601
+        ///                         Timestamp. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>

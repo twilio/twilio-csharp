@@ -47,7 +47,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         }
 
         /// <summary>
-        /// read
+        /// List all Channels for a given User.
         /// </summary>
         /// <param name="options"> Read UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,7 +63,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
 
         #if !NET35
         /// <summary>
-        /// read
+        /// List all Channels for a given User.
         /// </summary>
         /// <param name="options"> Read UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -80,10 +80,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         #endif
 
         /// <summary>
-        /// read
+        /// List all Channels for a given User.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
+        /// <param name="pathUserSid"> The unique id of a User. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -100,10 +100,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
 
         #if !NET35
         /// <summary>
-        /// read
+        /// List all Channels for a given User.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
+        /// <param name="pathUserSid"> The unique id of a User. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -197,38 +197,38 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account responsible for this channel.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The unique id of the Service this channel belongs to.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The channel_sid
+        /// The unique id of a Channel.
         /// </summary>
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
         /// <summary>
-        /// The member_sid
+        /// The unique id of this User as a Member in this Channel.
         /// </summary>
         [JsonProperty("member_sid")]
         public string MemberSid { get; private set; }
         /// <summary>
-        /// The status
+        /// The status of the User on this Channel.
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public UserChannelResource.ChannelStatusEnum Status { get; private set; }
         /// <summary>
-        /// The last_consumed_message_index
+        /// The index of the last read Message in this Channel for this User.
         /// </summary>
         [JsonProperty("last_consumed_message_index")]
         public int? LastConsumedMessageIndex { get; private set; }
         /// <summary>
-        /// The unread_messages_count
+        /// The count of unread Messages in this Channel for this User.
         /// </summary>
         [JsonProperty("unread_messages_count")]
         public int? UnreadMessagesCount { get; private set; }

@@ -67,27 +67,27 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The identity
+        /// A unique string identifier for this User in this Service. See the access tokens docs for more details. (📇 PII MTL: 120 days)
         /// </summary>
         public string Identity { get; }
         /// <summary>
-        /// The role_sid
+        /// The role to be assigned to this member. Defaults to the roles specified on the Service.
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
-        /// The last_consumed_message_index
+        /// Field used to specify the last consumed Message index for the Channel for this Member.  Should only be used when recreating a Member from a backup/separate source.
         /// </summary>
         public int? LastConsumedMessageIndex { get; set; }
         /// <summary>
-        /// The last_consumption_timestamp
+        /// ISO8601 time indicating the last datetime the Member consumed a Message in the Channel.  Should only be used when recreating a Member from a backup/separate source
         /// </summary>
         public DateTime? LastConsumptionTimestamp { get; set; }
         /// <summary>
-        /// The date_created
+        /// The ISO8601 time specifying the datetime the Members should be set as being created.  Will be set to the current time by the Chat service if not specified.  Note that this should only be used in cases where a Member is being recreated from a backup/separate source
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The date_updated
+        /// The ISO8601 time specifying the datetime the Member should be set as having been last updated.  Will be set to the null by the Chat service if not specified.  Note that this should only be used in cases where a Member is being recreated from a backup/separate source  and where a Member was previously updated.
         /// </summary>
         public DateTime? DateUpdated { get; set; }
 
@@ -96,7 +96,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="identity"> The identity </param>
+        /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
+        ///                more details. (📇 PII MTL: 120 days) </param>
         public CreateMemberOptions(string pathServiceSid, string pathChannelSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -158,7 +159,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The identity
+        /// A unique string identifier for this User in this Service. See the access tokens docs for more details. (📇 PII MTL: 120 days)
         /// </summary>
         public List<string> Identity { get; set; }
 
@@ -257,19 +258,19 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
-        /// Optional field used to specify the last consumed Message index for the Channel for this Member.
+        /// Field used to specify the last consumed Message index for the Channel for this Member.
         /// </summary>
         public int? LastConsumedMessageIndex { get; set; }
         /// <summary>
-        /// Optional ISO8601 time indicating the last datetime the Member consumed a Message in the Channel.
+        /// ISO8601 time indicating the last datetime the Member consumed a Message in the Channel.
         /// </summary>
         public DateTime? LastConsumptionTimestamp { get; set; }
         /// <summary>
-        /// The optional ISO8601 time specifying the datetime the Members should be set as being created.
+        /// The ISO8601 time specifying the datetime the Members should be set as being created.
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The optional ISO8601 time specifying the datetime the Member should be set as having been last updated.
+        /// The ISO8601 time specifying the datetime the Member should be set as having been last updated.
         /// </summary>
         public DateTime? DateUpdated { get; set; }
 

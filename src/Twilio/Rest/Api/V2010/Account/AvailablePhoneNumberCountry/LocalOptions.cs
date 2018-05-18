@@ -61,35 +61,35 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         public bool? Beta { get; set; }
         /// <summary>
-        /// Given a phone number, find a geographically close number within Distance miles.
+        /// Given a phone number, find a geographically close number within Distance miles. (US/Canada only)
         /// </summary>
         public Types.PhoneNumber NearNumber { get; set; }
         /// <summary>
-        /// Given a latitude/longitude pair lat,long find geographically close numbers within Distance miles.
+        /// Given a latitude/longitude pair lat,long find geographically close numbers within Distance miles. (US/Canada only)
         /// </summary>
         public string NearLatLong { get; set; }
         /// <summary>
-        /// Specifies the search radius for a Near- query in miles.
+        /// Specifies the search radius for a Near- query in miles. (US/Canada only)
         /// </summary>
         public int? Distance { get; set; }
         /// <summary>
-        /// Limit results to a particular postal code.
+        /// Limit results to a particular postal code. (US/Canada only)
         /// </summary>
         public string InPostalCode { get; set; }
         /// <summary>
-        /// Limit results to a particular region.
+        /// Limit results to a particular region. (US/Canada only)
         /// </summary>
         public string InRegion { get; set; }
         /// <summary>
-        /// Limit results to a specific rate center, or given a phone number search within the same rate center as that number.
+        /// Limit results to a specific rate center, or given a phone number search within the same rate center as that number. (US/Canada only)
         /// </summary>
         public string InRateCenter { get; set; }
         /// <summary>
-        /// Limit results to a specific Local access and transport area.
+        /// Limit results to a specific Local access and transport area. (US/Canada only)
         /// </summary>
         public string InLata { get; set; }
         /// <summary>
-        /// Limit results to a particular locality.
+        /// Limit results to a particular locality. (US/Canada only)
         /// </summary>
         public string InLocality { get; set; }
         /// <summary>

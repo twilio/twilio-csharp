@@ -32,6 +32,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// Only include usage that has occurred on or before this date.
         /// </summary>
         public DateTime? EndDate { get; set; }
+        /// <summary>
+        /// The include_subaccounts
+        /// </summary>
+        public bool? IncludeSubaccounts { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -52,6 +56,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             if (EndDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("EndDate", EndDate.Value.ToString("yyyy-MM-dd")));
+            }
+
+            if (IncludeSubaccounts != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IncludeSubaccounts", IncludeSubaccounts.Value.ToString().ToLower()));
             }
 
             if (PageSize != null)

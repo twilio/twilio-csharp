@@ -47,7 +47,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     }
 
     /// <summary>
-    /// DeleteIpAccessControlListOptions
+    /// Remove an associated IP Access Control List from a Trunk
     /// </summary>
     public class DeleteIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     }
 
     /// <summary>
-    /// CreateIpAccessControlListOptions
+    /// Associate an IP Access Control List with a Trunk
     /// </summary>
     public class CreateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The ip_access_control_list_sid
+        /// The SID of the IP Access Control List that you want to associate with this trunk.
         /// </summary>
         public string IpAccessControlListSid { get; }
 
@@ -99,7 +99,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Construct a new CreateIpAccessControlListOptions
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="ipAccessControlListSid"> The SID of the IP Access Control List that you want to associate with this
+        ///                              trunk. </param>
         public CreateIpAccessControlListOptions(string pathTrunkSid, string ipAccessControlListSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -122,7 +123,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     }
 
     /// <summary>
-    /// ReadIpAccessControlListOptions
+    /// List all IP Access Control Lists for a Trunk
     /// </summary>
     public class ReadIpAccessControlListOptions : ReadOptions<IpAccessControlListResource> 
     {

@@ -66,31 +66,31 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The from
+        /// The identity of the message's author. Defaults to system if not specified.
         /// </summary>
         public string From { get; set; }
         /// <summary>
-        /// The attributes
+        /// The attributes metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The date_created
+        /// The ISO8601 time specifying the datetime the Message should be set as being created.
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The date_updated
+        /// The ISO8601 time specifying the datetime the Message should be set as having been last updated.
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// The last_updated_by
+        /// Specify the Identity of the User that last updated the Message
         /// </summary>
         public string LastUpdatedBy { get; set; }
         /// <summary>
-        /// The body
+        /// The message body string.
         /// </summary>
         public string Body { get; set; }
         /// <summary>
-        /// The media_sid
+        ///  The Media Sid to be attached to this Message.
         /// </summary>
         public string MediaSid { get; set; }
 
@@ -164,7 +164,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// Optional.
+        /// Specifies sorting order for messages list, possible values are: `asc` or `desc`.
         /// </summary>
         public MessageResource.OrderTypeEnum Order { get; set; }
 
@@ -258,23 +258,23 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The optional message body string.
+        /// The message body string.
         /// </summary>
         public string Body { get; set; }
         /// <summary>
-        /// The optional attributes metadata field you can use to store any data you wish.
+        /// The attributes metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The optional ISO8601 time specifying the datetime the Message should be set as being created.
+        /// The ISO8601 time specifying the datetime the Message should be set as being created.
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The optional ISO8601 time specifying the datetime the Message should be set as having been last updated.
+        /// The ISO8601 time specifying the datetime the Message should be set as having been last updated.
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// Optional field to specify the Identity of the User that last updated the Message
+        /// Specify the Identity of the User that last updated the Message
         /// </summary>
         public string LastUpdatedBy { get; set; }
 

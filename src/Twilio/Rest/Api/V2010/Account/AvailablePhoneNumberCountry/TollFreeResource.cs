@@ -82,15 +82,16 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="excludeForeignAddressRequired"> Indicates whether the response includes phone numbers which require a
         ///                                     foreign Address. </param>
         /// <param name="beta"> Include phone numbers new to the Twilio platform. </param>
-        /// <param name="nearNumber"> Given a phone number, find a geographically close number within Distance miles. </param>
+        /// <param name="nearNumber"> Given a phone number, find a geographically close number within Distance miles.
+        ///                  (US/Canada only) </param>
         /// <param name="nearLatLong"> Given a latitude/longitude pair lat,long find geographically close numbers within
-        ///                   Distance miles. </param>
-        /// <param name="distance"> Specifies the search radius for a Near- query in miles. </param>
-        /// <param name="inPostalCode"> Limit results to a particular postal code. </param>
-        /// <param name="inRegion"> Limit results to a particular region. </param>
+        ///                   Distance miles. (US/Canada only) </param>
+        /// <param name="distance"> Specifies the search radius for a Near- query in miles. (US/Canada only) </param>
+        /// <param name="inPostalCode"> Limit results to a particular postal code. (US/Canada only) </param>
+        /// <param name="inRegion"> Limit results to a particular region. (US/Canada only) </param>
         /// <param name="inRateCenter"> Limit results to a specific rate center, or given a phone number search within the same
-        ///                    rate center as that number. </param>
-        /// <param name="inLata"> Limit results to a specific Local access and transport area. </param>
+        ///                    rate center as that number. (US/Canada only) </param>
+        /// <param name="inLata"> Limit results to a specific Local access and transport area. (US/Canada only) </param>
         /// <param name="inLocality"> Limit results to a particular locality. </param>
         /// <param name="faxEnabled"> This indicates whether the phone numbers can receive faxes. </param>
         /// <param name="pageSize"> Page size </param>
@@ -143,15 +144,16 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="excludeForeignAddressRequired"> Indicates whether the response includes phone numbers which require a
         ///                                     foreign Address. </param>
         /// <param name="beta"> Include phone numbers new to the Twilio platform. </param>
-        /// <param name="nearNumber"> Given a phone number, find a geographically close number within Distance miles. </param>
+        /// <param name="nearNumber"> Given a phone number, find a geographically close number within Distance miles.
+        ///                  (US/Canada only) </param>
         /// <param name="nearLatLong"> Given a latitude/longitude pair lat,long find geographically close numbers within
-        ///                   Distance miles. </param>
-        /// <param name="distance"> Specifies the search radius for a Near- query in miles. </param>
-        /// <param name="inPostalCode"> Limit results to a particular postal code. </param>
-        /// <param name="inRegion"> Limit results to a particular region. </param>
+        ///                   Distance miles. (US/Canada only) </param>
+        /// <param name="distance"> Specifies the search radius for a Near- query in miles. (US/Canada only) </param>
+        /// <param name="inPostalCode"> Limit results to a particular postal code. (US/Canada only) </param>
+        /// <param name="inRegion"> Limit results to a particular region. (US/Canada only) </param>
         /// <param name="inRateCenter"> Limit results to a specific rate center, or given a phone number search within the same
-        ///                    rate center as that number. </param>
-        /// <param name="inLata"> Limit results to a specific Local access and transport area. </param>
+        ///                    rate center as that number. (US/Canada only) </param>
+        /// <param name="inLata"> Limit results to a specific Local access and transport area. (US/Canada only) </param>
         /// <param name="inLocality"> Limit results to a particular locality. </param>
         /// <param name="faxEnabled"> This indicates whether the phone numbers can receive faxes. </param>
         /// <param name="pageSize"> Page size </param>

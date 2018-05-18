@@ -66,8 +66,9 @@ namespace Twilio.Rest.Notify.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="segment"> The segment </param>
+        /// <param name="identity"> The identifier of the User, defined by your application. </param>
+        /// <param name="segment"> The list of segments this User belongs to. Segments can be used to select recipients of a
+        ///               notification. Maximum 20 Segments per User allowed. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
         public static UserResource Create(string pathServiceSid, 
@@ -84,8 +85,9 @@ namespace Twilio.Rest.Notify.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="segment"> The segment </param>
+        /// <param name="identity"> The identifier of the User, defined by your application. </param>
+        /// <param name="segment"> The list of segments this User belongs to. Segments can be used to select recipients of a
+        ///               notification. Maximum 20 Segments per User allowed. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
         public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string pathServiceSid, 
@@ -286,8 +288,9 @@ namespace Twilio.Rest.Notify.V1.Service
         /// read
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="segment"> The segment </param>
+        /// <param name="identity"> The identifier of the User, defined by your application. </param>
+        /// <param name="segment"> The list of segments this User belongs to. Segments can be used to select recipients of a
+        ///               notification. Maximum 20 Segments per User allowed. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -308,8 +311,9 @@ namespace Twilio.Rest.Notify.V1.Service
         /// read
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
-        /// <param name="segment"> The segment </param>
+        /// <param name="identity"> The identifier of the User, defined by your application. </param>
+        /// <param name="segment"> The list of segments this User belongs to. Segments can be used to select recipients of a
+        ///               notification. Maximum 20 Segments per User allowed. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -419,7 +423,7 @@ namespace Twilio.Rest.Notify.V1.Service
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The identity
+        /// The identifier of the User, defined by your application.
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }

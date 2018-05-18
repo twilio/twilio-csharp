@@ -155,13 +155,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="from"> The from </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
-        /// <param name="lastUpdatedBy"> The last_updated_by </param>
-        /// <param name="body"> The body </param>
-        /// <param name="mediaSid"> The media_sid </param>
+        /// <param name="from"> The identity of the message's author. Defaults to system if not specified. </param>
+        /// <param name="attributes"> The attributes metadata field you can use to store any data you wish. </param>
+        /// <param name="dateCreated"> The ISO8601 time specifying the datetime the Message should be set as being created.
+        ///                   </param>
+        /// <param name="dateUpdated"> The ISO8601 time specifying the datetime the Message should be set as having been last
+        ///                   updated. </param>
+        /// <param name="lastUpdatedBy"> Specify the Identity of the User that last updated the Message </param>
+        /// <param name="body"> The message body string. </param>
+        /// <param name="mediaSid">  The Media Sid to be attached to this Message. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
         public static MessageResource Create(string pathServiceSid, 
@@ -185,13 +187,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="from"> The from </param>
-        /// <param name="attributes"> The attributes </param>
-        /// <param name="dateCreated"> The date_created </param>
-        /// <param name="dateUpdated"> The date_updated </param>
-        /// <param name="lastUpdatedBy"> The last_updated_by </param>
-        /// <param name="body"> The body </param>
-        /// <param name="mediaSid"> The media_sid </param>
+        /// <param name="from"> The identity of the message's author. Defaults to system if not specified. </param>
+        /// <param name="attributes"> The attributes metadata field you can use to store any data you wish. </param>
+        /// <param name="dateCreated"> The ISO8601 time specifying the datetime the Message should be set as being created.
+        ///                   </param>
+        /// <param name="dateUpdated"> The ISO8601 time specifying the datetime the Message should be set as having been last
+        ///                   updated. </param>
+        /// <param name="lastUpdatedBy"> Specify the Identity of the User that last updated the Message </param>
+        /// <param name="body"> The message body string. </param>
+        /// <param name="mediaSid">  The Media Sid to be attached to this Message. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(string pathServiceSid, 
@@ -259,7 +263,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="order"> Optional. </param>
+        /// <param name="order"> Specifies sorting order for messages list, possible values are: `asc` or `desc`. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -281,7 +285,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="order"> Optional. </param>
+        /// <param name="order"> Specifies sorting order for messages list, possible values are: `asc` or `desc`. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -479,14 +483,13 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="body"> The optional message body string. </param>
-        /// <param name="attributes"> The optional attributes metadata field you can use to store any data you wish. </param>
-        /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Message should be set as being
-        ///                   created. </param>
-        /// <param name="dateUpdated"> The optional ISO8601 time specifying the datetime the Message should be set as having
-        ///                   been last updated. </param>
-        /// <param name="lastUpdatedBy"> Optional field to specify the Identity of the User that last updated the Message
-        ///                     </param>
+        /// <param name="body"> The message body string. </param>
+        /// <param name="attributes"> The attributes metadata field you can use to store any data you wish. </param>
+        /// <param name="dateCreated"> The ISO8601 time specifying the datetime the Message should be set as being created.
+        ///                   </param>
+        /// <param name="dateUpdated"> The ISO8601 time specifying the datetime the Message should be set as having been last
+        ///                   updated. </param>
+        /// <param name="lastUpdatedBy"> Specify the Identity of the User that last updated the Message </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
         public static MessageResource Update(string pathServiceSid, 
@@ -510,14 +513,13 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="body"> The optional message body string. </param>
-        /// <param name="attributes"> The optional attributes metadata field you can use to store any data you wish. </param>
-        /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Message should be set as being
-        ///                   created. </param>
-        /// <param name="dateUpdated"> The optional ISO8601 time specifying the datetime the Message should be set as having
-        ///                   been last updated. </param>
-        /// <param name="lastUpdatedBy"> Optional field to specify the Identity of the User that last updated the Message
-        ///                     </param>
+        /// <param name="body"> The message body string. </param>
+        /// <param name="attributes"> The attributes metadata field you can use to store any data you wish. </param>
+        /// <param name="dateCreated"> The ISO8601 time specifying the datetime the Message should be set as being created.
+        ///                   </param>
+        /// <param name="dateUpdated"> The ISO8601 time specifying the datetime the Message should be set as having been last
+        ///                   updated. </param>
+        /// <param name="lastUpdatedBy"> Specify the Identity of the User that last updated the Message </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathServiceSid, 
@@ -564,7 +566,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// An optional string metadata field you can use to store any data you wish.
+        /// A string metadata field you can use to store any data you wish.
         /// </summary>
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
@@ -594,7 +596,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Optional field to specify the Identity of the User that last updated the Message
+        /// Field to specify the Identity of the User that last updated the Message
         /// </summary>
         [JsonProperty("last_updated_by")]
         public string LastUpdatedBy { get; private set; }
@@ -609,7 +611,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         [JsonProperty("from")]
         public string From { get; private set; }
         /// <summary>
-        /// Optional — the contents of the message.
+        /// The contents of the message.
         /// </summary>
         [JsonProperty("body")]
         public string Body { get; private set; }
@@ -624,7 +626,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         [JsonProperty("type")]
         public string Type { get; private set; }
         /// <summary>
-        /// Optional — if a Media resource instance is attached to the Message, this will contain the Media object for the attached Media.
+        /// If a Media resource instance is attached to the Message, this will contain the Media object for the attached Media.
         /// </summary>
         [JsonProperty("media")]
         public object Media { get; private set; }

@@ -135,7 +135,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> A descriptive string for this resource, chosen by your application, up to 64 characters
+        ///                    long. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Key </returns> 
         public static KeyResource Update(string pathSid, 
@@ -153,7 +154,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="friendlyName"> A descriptive string for this resource, chosen by your application, up to 64 characters
+        ///                    long. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Key </returns> 
         public static async System.Threading.Tasks.Task<KeyResource> UpdateAsync(string pathSid, 

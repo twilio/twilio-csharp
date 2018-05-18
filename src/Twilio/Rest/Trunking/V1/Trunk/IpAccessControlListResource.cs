@@ -103,7 +103,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
 
         /// <summary>
-        /// delete
+        /// Remove an associated IP Access Control List from a Trunk
         /// </summary>
         /// <param name="options"> Delete IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove an associated IP Access Control List from a Trunk
         /// </summary>
         /// <param name="options"> Delete IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove an associated IP Access Control List from a Trunk
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pathSid"> The sid </param>
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove an associated IP Access Control List from a Trunk
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pathSid"> The sid </param>
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
 
         /// <summary>
-        /// create
+        /// Associate an IP Access Control List with a Trunk
         /// </summary>
         /// <param name="options"> Create IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Associate an IP Access Control List with a Trunk
         /// </summary>
         /// <param name="options"> Create IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -203,10 +203,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         #endif
 
         /// <summary>
-        /// create
+        /// Associate an IP Access Control List with a Trunk
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="ipAccessControlListSid"> The SID of the IP Access Control List that you want to associate with this
+        ///                              trunk. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlList </returns> 
         public static IpAccessControlListResource Create(string pathTrunkSid, 
@@ -219,10 +220,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Associate an IP Access Control List with a Trunk
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="ipAccessControlListSid"> The SID of the IP Access Control List that you want to associate with this
+        ///                              trunk. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns> 
         public static async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(string pathTrunkSid, 
@@ -246,7 +248,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
 
         /// <summary>
-        /// read
+        /// List all IP Access Control Lists for a Trunk
         /// </summary>
         /// <param name="options"> Read IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -263,7 +265,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
         #if !NET35
         /// <summary>
-        /// read
+        /// List all IP Access Control Lists for a Trunk
         /// </summary>
         /// <param name="options"> Read IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -280,7 +282,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         #endif
 
         /// <summary>
-        /// read
+        /// List all IP Access Control Lists for a Trunk
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pageSize"> Page size </param>
@@ -298,7 +300,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
 
         #if !NET35
         /// <summary>
-        /// read
+        /// List all IP Access Control Lists for a Trunk
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
         /// <param name="pageSize"> Page size </param>
@@ -395,32 +397,32 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The trunk_sid
+        /// The unique sid that identifies the associated Trunk
         /// </summary>
         [JsonProperty("trunk_sid")]
         public string TrunkSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable description of this resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

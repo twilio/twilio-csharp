@@ -24,11 +24,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The identity
+        /// The identifier of the User, defined by your application.
         /// </summary>
         public string Identity { get; }
         /// <summary>
-        /// The segment
+        /// The list of segments this User belongs to. Segments can be used to select recipients of a notification. Maximum 20 Segments per User allowed.
         /// </summary>
         public List<string> Segment { get; set; }
 
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// Construct a new CreateUserOptions
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The identity </param>
+        /// <param name="identity"> The identifier of the User, defined by your application. </param>
         public CreateUserOptions(string pathServiceSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -150,11 +150,11 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The identity
+        /// The identifier of the User, defined by your application.
         /// </summary>
         public List<string> Identity { get; set; }
         /// <summary>
-        /// The segment
+        /// The list of segments this User belongs to. Segments can be used to select recipients of a notification. Maximum 20 Segments per User allowed.
         /// </summary>
         public string Segment { get; set; }
 

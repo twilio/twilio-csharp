@@ -91,7 +91,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The credential_list_sid
+        /// The SID of the Credential List that you want to associate with this trunk. Once associated, Twilio will start authenticating access to the trunk against this list.
         /// </summary>
         public string CredentialListSid { get; }
 
@@ -99,7 +99,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Construct a new CreateCredentialListOptions
         /// </summary>
         /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="credentialListSid"> The credential_list_sid </param>
+        /// <param name="credentialListSid"> The SID of the Credential List that you want to associate with this trunk. Once
+        ///                         associated, Twilio will start authenticating access to the trunk against this list. </param>
         public CreateCredentialListOptions(string pathTrunkSid, string credentialListSid)
         {
             PathTrunkSid = pathTrunkSid;

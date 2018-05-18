@@ -64,11 +64,11 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         public string Identity { get; set; }
         /// <summary>
-        /// The date_created_after
+        /// Only show Participants that started after this date, given as an UTC ISO 8601 Timestamp.
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// The date_created_before
+        /// Only show Participants that started before this date, given as an UTC ISO 8601 Timestamp.
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
 

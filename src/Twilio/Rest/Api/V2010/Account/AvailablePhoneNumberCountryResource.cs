@@ -269,7 +269,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("uri")]
         public Uri Uri { get; private set; }
         /// <summary>
-        /// The beta
+        /// True if new to Twilio platform.
         /// </summary>
         [JsonProperty("beta")]
         public bool? Beta { get; private set; }
