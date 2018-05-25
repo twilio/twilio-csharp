@@ -146,4 +146,41 @@ namespace Twilio.Rest.Studio.V1.Flow
         }
     }
 
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    /// 
+    /// DeleteEngagementOptions
+    /// </summary>
+    public class DeleteEngagementOptions : IOptions<EngagementResource> 
+    {
+        /// <summary>
+        /// The flow_sid
+        /// </summary>
+        public string PathFlowSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteEngagementOptions
+        /// </summary>
+        /// <param name="pathFlowSid"> The flow_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteEngagementOptions(string pathFlowSid, string pathSid)
+        {
+            PathFlowSid = pathFlowSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }

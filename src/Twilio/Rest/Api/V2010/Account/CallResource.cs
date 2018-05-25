@@ -123,7 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackEvent"> The call progress events that Twilio will send webhooks on. </param>
         /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
         /// <param name="sendDigits"> Digits to send </param>
-        /// <param name="ifMachine"> Action to take if a machine has answered the call </param>
+        /// <param name="ifMachine"> The if_machine </param>
         /// <param name="timeout"> Number of seconds to wait for an answer </param>
         /// <param name="record"> Whether or not to record the Call </param>
         /// <param name="recordingChannels"> mono or dualSet this parameter to specify the number of channels in the final
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackEvent"> The call progress events that Twilio will send webhooks on. </param>
         /// <param name="statusCallbackMethod"> HTTP Method to use with StatusCallback </param>
         /// <param name="sendDigits"> Digits to send </param>
-        /// <param name="ifMachine"> Action to take if a machine has answered the call </param>
+        /// <param name="ifMachine"> The if_machine </param>
         /// <param name="timeout"> Number of seconds to wait for an answer </param>
         /// <param name="record"> Whether or not to record the Call </param>
         /// <param name="recordingChannels"> mono or dualSet this parameter to specify the number of channels in the final

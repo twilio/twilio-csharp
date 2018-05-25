@@ -146,39 +146,39 @@ namespace Twilio.Rest.Video.V1
     public class CreateCompositionOptions : IOptions<CompositionResource> 
     {
         /// <summary>
-        /// The room_sid
+        /// Twilio Room SID.
         /// </summary>
         public string RoomSid { get; set; }
         /// <summary>
-        /// The video_layout
+        /// The JSON video layout description.
         /// </summary>
         public object VideoLayout { get; set; }
         /// <summary>
-        /// The audio_sources
+        /// A list of audio sources related to this Composition.
         /// </summary>
         public List<string> AudioSources { get; set; }
         /// <summary>
-        /// The audio_sources_excluded
+        /// A list of audio sources excluded related to this Composition.
         /// </summary>
         public List<string> AudioSourcesExcluded { get; set; }
         /// <summary>
-        /// The resolution
+        /// Pixel resolution of the composed video.
         /// </summary>
         public string Resolution { get; set; }
         /// <summary>
-        /// The format
+        /// ontainer format of the Composition media file. Any of the following: `mp4`, `webm`.
         /// </summary>
         public CompositionResource.FormatEnum Format { get; set; }
         /// <summary>
-        /// The status_callback
+        /// A URL that Twilio sends asynchronous webhook requests to on every composition event.
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The status_callback_method
+        /// HTTP method Twilio should use when requesting the above URL.
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// The trim
+        /// Boolean flag for clipping intervals that have no media.
         /// </summary>
         public bool? Trim { get; set; }
 

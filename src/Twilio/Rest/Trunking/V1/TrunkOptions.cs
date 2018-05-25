@@ -93,11 +93,15 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// The recording settings for this trunk.
         /// </summary>
-        public string Recording { get; set; }
+        public TrunkResource.RecordingSettingEnum Recording { get; set; }
         /// <summary>
         /// The Secure Trunking  settings for this trunk.
         /// </summary>
         public bool? Secure { get; set; }
+        /// <summary>
+        /// The cnam_lookup_enabled
+        /// </summary>
+        public bool? CnamLookupEnabled { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -127,12 +131,17 @@ namespace Twilio.Rest.Trunking.V1
 
             if (Recording != null)
             {
-                p.Add(new KeyValuePair<string, string>("Recording", Recording));
+                p.Add(new KeyValuePair<string, string>("Recording", Recording.ToString()));
             }
 
             if (Secure != null)
             {
                 p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString().ToLower()));
+            }
+
+            if (CnamLookupEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CnamLookupEnabled", CnamLookupEnabled.Value.ToString().ToLower()));
             }
 
             return p;
@@ -187,11 +196,15 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// The recording settings for this trunk.
         /// </summary>
-        public string Recording { get; set; }
+        public TrunkResource.RecordingSettingEnum Recording { get; set; }
         /// <summary>
         /// The Secure Trunking  settings for this trunk.
         /// </summary>
         public bool? Secure { get; set; }
+        /// <summary>
+        /// The cnam_lookup_enabled
+        /// </summary>
+        public bool? CnamLookupEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateTrunkOptions
@@ -230,12 +243,17 @@ namespace Twilio.Rest.Trunking.V1
 
             if (Recording != null)
             {
-                p.Add(new KeyValuePair<string, string>("Recording", Recording));
+                p.Add(new KeyValuePair<string, string>("Recording", Recording.ToString()));
             }
 
             if (Secure != null)
             {
                 p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString().ToLower()));
+            }
+
+            if (CnamLookupEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CnamLookupEnabled", CnamLookupEnabled.Value.ToString().ToLower()));
             }
 
             return p;

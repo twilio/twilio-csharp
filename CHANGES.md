@@ -1,6 +1,16 @@
 twilio-csharp Changelog
 =======================
 
+[2018-05-25] Version 5.13.2
+----------------------------
+**Studio**
+- Add endpoint to delete engagements
+
+**Trunking**
+- Added cnam_lookup_enabled parameter to Trunk resource.
+- Added case-insensitivity for recording parameter to Trunk resource.
+
+
 [2018-05-18] Version 5.13.1
 ----------------------------
 **Api**

@@ -325,6 +325,76 @@ namespace Twilio.Rest.Studio.V1.Flow
         }
         #endif
 
+        private static Request BuildDeleteRequest(DeleteEngagementOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Studio,
+                "/v1/Flows/" + options.PathFlowSid + "/Engagements/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="options"> Delete Engagement parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Engagement </returns> 
+        public static bool Delete(DeleteEngagementOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="options"> Delete Engagement parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Engagement </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteEngagementOptions options, 
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="pathFlowSid"> The flow_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Engagement </returns> 
+        public static bool Delete(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteEngagementOptions(pathFlowSid, pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="pathFlowSid"> The flow_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Engagement </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFlowSid, 
+                                                                          string pathSid, 
+                                                                          ITwilioRestClient client = null)
+        {
+            var options = new DeleteEngagementOptions(pathFlowSid, pathSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a EngagementResource object
         /// </summary>

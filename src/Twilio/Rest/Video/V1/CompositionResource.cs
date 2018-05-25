@@ -381,15 +381,16 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="roomSid"> The room_sid </param>
-        /// <param name="videoLayout"> The video_layout </param>
-        /// <param name="audioSources"> The audio_sources </param>
-        /// <param name="audioSourcesExcluded"> The audio_sources_excluded </param>
-        /// <param name="resolution"> The resolution </param>
-        /// <param name="format"> The format </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        /// <param name="trim"> The trim </param>
+        /// <param name="roomSid"> Twilio Room SID. </param>
+        /// <param name="videoLayout"> The JSON video layout description. </param>
+        /// <param name="audioSources"> A list of audio sources related to this Composition. </param>
+        /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition. </param>
+        /// <param name="resolution"> Pixel resolution of the composed video. </param>
+        /// <param name="format"> ontainer format of the Composition media file. Any of the following: `mp4`, `webm`. </param>
+        /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every composition event.
+        ///                      </param>
+        /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
+        /// <param name="trim"> Boolean flag for clipping intervals that have no media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Composition </returns> 
         public static CompositionResource Create(string roomSid = null, 
@@ -411,15 +412,16 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="roomSid"> The room_sid </param>
-        /// <param name="videoLayout"> The video_layout </param>
-        /// <param name="audioSources"> The audio_sources </param>
-        /// <param name="audioSourcesExcluded"> The audio_sources_excluded </param>
-        /// <param name="resolution"> The resolution </param>
-        /// <param name="format"> The format </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        /// <param name="trim"> The trim </param>
+        /// <param name="roomSid"> Twilio Room SID. </param>
+        /// <param name="videoLayout"> The JSON video layout description. </param>
+        /// <param name="audioSources"> A list of audio sources related to this Composition. </param>
+        /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition. </param>
+        /// <param name="resolution"> Pixel resolution of the composed video. </param>
+        /// <param name="format"> ontainer format of the Composition media file. Any of the following: `mp4`, `webm`. </param>
+        /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every composition event.
+        ///                      </param>
+        /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
+        /// <param name="trim"> Boolean flag for clipping intervals that have no media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns> 
         public static async System.Threading.Tasks.Task<CompositionResource> CreateAsync(string roomSid = null, 

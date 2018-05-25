@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string SendDigits { get; set; }
         /// <summary>
-        /// Action to take if a machine has answered the call
+        /// The if_machine
         /// </summary>
         public string IfMachine { get; set; }
         /// <summary>

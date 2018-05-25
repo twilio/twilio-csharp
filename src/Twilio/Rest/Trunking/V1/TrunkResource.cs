@@ -14,12 +14,27 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Trunking.V1 
 {
 
     public class TrunkResource : Resource 
     {
+        public sealed class RecordingSettingEnum : StringEnum 
+        {
+            private RecordingSettingEnum(string value) : base(value) {}
+            public RecordingSettingEnum() {}
+            public static implicit operator RecordingSettingEnum(string value)
+            {
+                return new RecordingSettingEnum(value);
+            }
+
+            public static readonly RecordingSettingEnum DoNotRecord = new RecordingSettingEnum("do-not-record");
+            public static readonly RecordingSettingEnum RecordFromRinging = new RecordingSettingEnum("record-from-ringing");
+            public static readonly RecordingSettingEnum RecordFromAnswer = new RecordingSettingEnum("record-from-answer");
+        }
+
         private static Request BuildFetchRequest(FetchTrunkOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -204,17 +219,19 @@ namespace Twilio.Rest.Trunking.V1
         ///                              </param>
         /// <param name="recording"> The recording settings for this trunk. </param>
         /// <param name="secure"> The Secure Trunking  settings for this trunk. </param>
+        /// <param name="cnamLookupEnabled"> The cnam_lookup_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
         public static TrunkResource Create(string friendlyName = null, 
                                            string domainName = null, 
                                            Uri disasterRecoveryUrl = null, 
                                            Twilio.Http.HttpMethod disasterRecoveryMethod = null, 
-                                           string recording = null, 
+                                           TrunkResource.RecordingSettingEnum recording = null, 
                                            bool? secure = null, 
+                                           bool? cnamLookupEnabled = null, 
                                            ITwilioRestClient client = null)
         {
-            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure};
+            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
             return Create(options, client);
         }
 
@@ -230,17 +247,19 @@ namespace Twilio.Rest.Trunking.V1
         ///                              </param>
         /// <param name="recording"> The recording settings for this trunk. </param>
         /// <param name="secure"> The Secure Trunking  settings for this trunk. </param>
+        /// <param name="cnamLookupEnabled"> The cnam_lookup_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
         public static async System.Threading.Tasks.Task<TrunkResource> CreateAsync(string friendlyName = null, 
                                                                                    string domainName = null, 
                                                                                    Uri disasterRecoveryUrl = null, 
                                                                                    Twilio.Http.HttpMethod disasterRecoveryMethod = null, 
-                                                                                   string recording = null, 
+                                                                                   TrunkResource.RecordingSettingEnum recording = null, 
                                                                                    bool? secure = null, 
+                                                                                   bool? cnamLookupEnabled = null, 
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure};
+            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -432,6 +451,7 @@ namespace Twilio.Rest.Trunking.V1
         ///                              </param>
         /// <param name="recording"> The recording settings for this trunk. </param>
         /// <param name="secure"> The Secure Trunking  settings for this trunk. </param>
+        /// <param name="cnamLookupEnabled"> The cnam_lookup_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
         public static TrunkResource Update(string pathSid, 
@@ -439,11 +459,12 @@ namespace Twilio.Rest.Trunking.V1
                                            string domainName = null, 
                                            Uri disasterRecoveryUrl = null, 
                                            Twilio.Http.HttpMethod disasterRecoveryMethod = null, 
-                                           string recording = null, 
+                                           TrunkResource.RecordingSettingEnum recording = null, 
                                            bool? secure = null, 
+                                           bool? cnamLookupEnabled = null, 
                                            ITwilioRestClient client = null)
         {
-            var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure};
+            var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
             return Update(options, client);
         }
 
@@ -460,6 +481,7 @@ namespace Twilio.Rest.Trunking.V1
         ///                              </param>
         /// <param name="recording"> The recording settings for this trunk. </param>
         /// <param name="secure"> The Secure Trunking  settings for this trunk. </param>
+        /// <param name="cnamLookupEnabled"> The cnam_lookup_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
         public static async System.Threading.Tasks.Task<TrunkResource> UpdateAsync(string pathSid, 
@@ -467,11 +489,12 @@ namespace Twilio.Rest.Trunking.V1
                                                                                    string domainName = null, 
                                                                                    Uri disasterRecoveryUrl = null, 
                                                                                    Twilio.Http.HttpMethod disasterRecoveryMethod = null, 
-                                                                                   string recording = null, 
+                                                                                   TrunkResource.RecordingSettingEnum recording = null, 
                                                                                    bool? secure = null, 
+                                                                                   bool? cnamLookupEnabled = null, 
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure};
+            var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -530,6 +553,11 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         [JsonProperty("recording")]
         public object Recording { get; private set; }
+        /// <summary>
+        /// The cnam_lookup_enabled
+        /// </summary>
+        [JsonProperty("cnam_lookup_enabled")]
+        public bool? CnamLookupEnabled { get; private set; }
         /// <summary>
         /// The types of authentication you have mapped to your domain.
         /// </summary>
