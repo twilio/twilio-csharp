@@ -26,7 +26,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// </summary>
         public string PathUserSid { get; }
         /// <summary>
-        /// The binding_type
+        /// The push technology used for the bindings returned.
         /// </summary>
         public List<UserBindingResource.BindingTypeEnum> BindingType { get; set; }
 

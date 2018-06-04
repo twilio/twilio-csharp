@@ -132,7 +132,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         /// </summary>
         public string Value { get; }
         /// <summary>
-        /// The synonym_of
+        /// A value that indicates this field value is a synonym of. Empty if the value is not a synonym.
         /// </summary>
         public string SynonymOf { get; set; }
 

@@ -294,7 +294,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         /// <param name="language"> An ISO language-country string of the value. </param>
         /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid.
         ///             Unique up to 64 characters long. </param>
-        /// <param name="synonymOf"> The synonym_of </param>
+        /// <param name="synonymOf"> A value that indicates this field value is a synonym of. Empty if the value is not a
+        ///                 synonym. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldValue </returns> 
         public static FieldValueResource Create(string pathAssistantSid, 
@@ -317,7 +318,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         /// <param name="language"> An ISO language-country string of the value. </param>
         /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid.
         ///             Unique up to 64 characters long. </param>
-        /// <param name="synonymOf"> The synonym_of </param>
+        /// <param name="synonymOf"> A value that indicates this field value is a synonym of. Empty if the value is not a
+        ///                 synonym. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldValue </returns> 
         public static async System.Threading.Tasks.Task<FieldValueResource> CreateAsync(string pathAssistantSid, 
@@ -462,7 +464,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The value
+        /// The Field Value itself.
         /// </summary>
         [JsonProperty("value")]
         public string Value { get; private set; }
@@ -472,7 +474,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The synonym_of
+        /// A value that indicates this field value is a synonym of. Empty if the value is not a synonym.
         /// </summary>
         [JsonProperty("synonym_of")]
         public string SynonymOf { get; private set; }

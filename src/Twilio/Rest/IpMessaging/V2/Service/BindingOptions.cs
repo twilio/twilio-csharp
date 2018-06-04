@@ -22,7 +22,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The binding_type
+        /// The push technology used for the bindings returned.
         /// </summary>
         public List<BindingResource.BindingTypeEnum> BindingType { get; set; }
         /// <summary>

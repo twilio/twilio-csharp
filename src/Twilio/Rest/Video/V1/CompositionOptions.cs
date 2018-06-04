@@ -65,7 +65,7 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
-        /// The room_sid
+        /// Only show Compositions with the given Room SID.
         /// </summary>
         public string RoomSid { get; set; }
 
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         public string Resolution { get; set; }
         /// <summary>
-        /// ontainer format of the Composition media file. Any of the following: `mp4`, `webm`.
+        /// Container format of the Composition media file. Any of the following: `mp4`, `webm`.
         /// </summary>
         public CompositionResource.FormatEnum Format { get; set; }
         /// <summary>

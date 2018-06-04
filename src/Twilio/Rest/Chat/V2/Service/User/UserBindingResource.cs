@@ -84,7 +84,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathUserSid"> The user_sid </param>
-        /// <param name="bindingType"> The binding_type </param>
+        /// <param name="bindingType"> The push technology used for the bindings returned. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathUserSid"> The user_sid </param>
-        /// <param name="bindingType"> The binding_type </param>
+        /// <param name="bindingType"> The push technology used for the bindings returned. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -350,63 +350,63 @@ namespace Twilio.Rest.Chat.V2.Service.User
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account responsible for this binding.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The unique id of the Service this binding belongs to.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this resource was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The endpoint
+        /// The unique endpoint identifier for this Binding.
         /// </summary>
         [JsonProperty("endpoint")]
         public string Endpoint { get; private set; }
         /// <summary>
-        /// The identity
+        /// A unique string identifier for the Binding for this User in this Service.
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// The user_sid
+        /// The unique id of the User for this binding.
         /// </summary>
         [JsonProperty("user_sid")]
         public string UserSid { get; private set; }
         /// <summary>
-        /// The credential_sid
+        /// The unique id of the Credential for this binding.
         /// </summary>
         [JsonProperty("credential_sid")]
         public string CredentialSid { get; private set; }
         /// <summary>
-        /// The binding_type
+        /// The push technology to use for this binding.
         /// </summary>
         [JsonProperty("binding_type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public UserBindingResource.BindingTypeEnum BindingType { get; private set; }
         /// <summary>
-        /// The message_types
+        /// List of message types for this binding.
         /// </summary>
         [JsonProperty("message_types")]
         public List<string> MessageTypes { get; private set; }
         /// <summary>
-        /// The url
+        /// An absolute URL for this binding.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

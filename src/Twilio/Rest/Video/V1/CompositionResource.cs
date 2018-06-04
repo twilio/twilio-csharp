@@ -169,7 +169,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="status"> Only show Compositions with the given status. </param>
         /// <param name="dateCreatedAfter"> Only show Compositions that started on or after this ISO8601 date-time. </param>
         /// <param name="dateCreatedBefore"> Only show Compositions that started before this this ISO8601 date-time. </param>
-        /// <param name="roomSid"> The room_sid </param>
+        /// <param name="roomSid"> Only show Compositions with the given Room SID. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="status"> Only show Compositions with the given status. </param>
         /// <param name="dateCreatedAfter"> Only show Compositions that started on or after this ISO8601 date-time. </param>
         /// <param name="dateCreatedBefore"> Only show Compositions that started before this this ISO8601 date-time. </param>
-        /// <param name="roomSid"> The room_sid </param>
+        /// <param name="roomSid"> Only show Compositions with the given Room SID. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -386,7 +386,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="audioSources"> A list of audio sources related to this Composition. </param>
         /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition. </param>
         /// <param name="resolution"> Pixel resolution of the composed video. </param>
-        /// <param name="format"> ontainer format of the Composition media file. Any of the following: `mp4`, `webm`. </param>
+        /// <param name="format"> Container format of the Composition media file. Any of the following: `mp4`, `webm`. </param>
         /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every composition event.
         ///                      </param>
         /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
@@ -417,7 +417,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="audioSources"> A list of audio sources related to this Composition. </param>
         /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition. </param>
         /// <param name="resolution"> Pixel resolution of the composed video. </param>
-        /// <param name="format"> ontainer format of the Composition media file. Any of the following: `mp4`, `webm`. </param>
+        /// <param name="format"> Container format of the Composition media file. Any of the following: `mp4`, `webm`. </param>
         /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every composition event.
         ///                      </param>
         /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
