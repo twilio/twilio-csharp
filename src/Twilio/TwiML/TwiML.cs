@@ -63,6 +63,12 @@ namespace Twilio.TwiML
             return this;
         }
 
+        public TwiML AddText(string text)
+        {
+            this.Children.Add(new Text(text));
+            return this;
+        }
+
         /// <summary>
         /// Append a child TwiML element to this element returning the newly created element.
         /// </summary>
@@ -101,14 +107,9 @@ namespace Twilio.TwiML
         /// <summary>
         /// Generate XElement from TwiML object
         /// </summary>
-        protected XElement ToXml()
+        protected virtual XNode ToXml()
         {
-            if (!string.IsNullOrEmpty(this.GetElementBody()) && this.Children.Count != 0)
-            {
-                throw new TwilioException("TwiML Element cannot have both body and children elements");
-            }
-
-            var elem = new XElement(this.TagName, this.GetElementBody() ?? string.Empty);
+            var elem = new XElement(this.TagName, this.GetElementBody());
 
             this.GetElementAttributes().ForEach(attr => elem.Add(attr));
             this.Options.ForEach(e => elem.Add(new XAttribute(e.Key, e.Value)));
