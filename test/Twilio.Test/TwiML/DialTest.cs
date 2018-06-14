@@ -146,6 +146,20 @@ namespace Twilio.Tests.TwiML
                 elem.ToString()
             );
         }
+
+        [Test]
+        public void TestElementWithTextNode()
+        {
+            var elem = new Dial();
+
+            elem.AddText("Here is the content");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Dial>Here is the content</Dial>",
+                elem.ToString()
+            );
+        }
     }
 
 }

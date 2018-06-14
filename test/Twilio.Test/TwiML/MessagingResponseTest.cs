@@ -91,7 +91,7 @@ namespace Twilio.Tests.TwiML
             var elem = new MessagingResponse();
 
             elem.AddText("Here is the content");
-            
+
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>Here is the content</Response>",
@@ -99,4 +99,5 @@ namespace Twilio.Tests.TwiML
             );
         }
     }
+
 }

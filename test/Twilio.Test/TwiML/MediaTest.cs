@@ -50,6 +50,20 @@ namespace Twilio.Tests.TwiML
                 elem.ToString()
             );
         }
+
+        [Test]
+        public void TestElementWithTextNode()
+        {
+            var elem = new Media();
+
+            elem.AddText("Here is the content");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Media>Here is the content</Media>",
+                elem.ToString()
+            );
+        }
     }
 
 }
