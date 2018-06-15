@@ -70,6 +70,20 @@ namespace Twilio.Tests.TwiML
                 elem.ToString()
             );
         }
+
+        [Test]
+        public void TestElementWithTextNode()
+        {
+            var elem = new Conference();
+
+            elem.AddText("Here is the content");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Conference>Here is the content</Conference>",
+                elem.ToString()
+            );
+        }
     }
 
 }
