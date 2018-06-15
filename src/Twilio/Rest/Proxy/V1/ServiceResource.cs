@@ -299,7 +299,8 @@ namespace Twilio.Rest.Proxy.V1
         /// <param name="uniqueName"> The human-readable string that uniquely identifies this Service. </param>
         /// <param name="defaultTtl"> Default TTL for Sessions in Service, in seconds. </param>
         /// <param name="callbackUrl"> URL Twilio will send callbacks to </param>
-        /// <param name="geoMatchLevel"> Whether to limit proxy numbers in the same areacode. </param>
+        /// <param name="geoMatchLevel"> Whether proxy number selected must be in the same area code as the participant
+        ///                     identifier. </param>
         /// <param name="numberSelectionBehavior"> What behavior to use when choosing a proxy number. </param>
         /// <param name="interceptCallbackUrl"> A URL for Twilio call before each Interaction. </param>
         /// <param name="outOfSessionCallbackUrl"> A URL for Twilio call when a new Interaction has no Session. </param>
@@ -325,7 +326,8 @@ namespace Twilio.Rest.Proxy.V1
         /// <param name="uniqueName"> The human-readable string that uniquely identifies this Service. </param>
         /// <param name="defaultTtl"> Default TTL for Sessions in Service, in seconds. </param>
         /// <param name="callbackUrl"> URL Twilio will send callbacks to </param>
-        /// <param name="geoMatchLevel"> Whether to limit proxy numbers in the same areacode. </param>
+        /// <param name="geoMatchLevel"> Whether proxy number selected must be in the same area code as the participant
+        ///                     identifier. </param>
         /// <param name="numberSelectionBehavior"> What behavior to use when choosing a proxy number. </param>
         /// <param name="interceptCallbackUrl"> A URL for Twilio call before each Interaction. </param>
         /// <param name="outOfSessionCallbackUrl"> A URL for Twilio call when a new Interaction has no Session. </param>
@@ -458,7 +460,8 @@ namespace Twilio.Rest.Proxy.V1
         /// <param name="uniqueName"> A human readable description of this resource. </param>
         /// <param name="defaultTtl"> Default TTL for Sessions in Service, in seconds. </param>
         /// <param name="callbackUrl"> URL Twilio will send callbacks to </param>
-        /// <param name="geoMatchLevel"> Whether to find proxy numbers in the same areacode. </param>
+        /// <param name="geoMatchLevel"> Whether proxy number selected must be in the same area code as the participant
+        ///                     identifier. </param>
         /// <param name="numberSelectionBehavior"> What behavior to use when choosing a proxy number. </param>
         /// <param name="interceptCallbackUrl"> A URL for Twilio call before each Interaction. </param>
         /// <param name="outOfSessionCallbackUrl"> A URL for Twilio call when a new Interaction has no Session. </param>
@@ -486,7 +489,8 @@ namespace Twilio.Rest.Proxy.V1
         /// <param name="uniqueName"> A human readable description of this resource. </param>
         /// <param name="defaultTtl"> Default TTL for Sessions in Service, in seconds. </param>
         /// <param name="callbackUrl"> URL Twilio will send callbacks to </param>
-        /// <param name="geoMatchLevel"> Whether to find proxy numbers in the same areacode. </param>
+        /// <param name="geoMatchLevel"> Whether proxy number selected must be in the same area code as the participant
+        ///                     identifier. </param>
         /// <param name="numberSelectionBehavior"> What behavior to use when choosing a proxy number. </param>
         /// <param name="interceptCallbackUrl"> A URL for Twilio call before each Interaction. </param>
         /// <param name="outOfSessionCallbackUrl"> A URL for Twilio call when a new Interaction has no Session. </param>
@@ -557,7 +561,7 @@ namespace Twilio.Rest.Proxy.V1
         [JsonConverter(typeof(StringEnumConverter))]
         public ServiceResource.NumberSelectionBehaviorEnum NumberSelectionBehavior { get; private set; }
         /// <summary>
-        /// Whether to limit proxy numbers in the same areacode.
+        /// Whether proxy number selected must be in the same area code as the participant identifier.
         /// </summary>
         [JsonProperty("geo_match_level")]
         [JsonConverter(typeof(StringEnumConverter))]
@@ -578,7 +582,7 @@ namespace Twilio.Rest.Proxy.V1
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Service was updated
+        /// The date this Service was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

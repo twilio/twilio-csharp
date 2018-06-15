@@ -14,7 +14,7 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Add a Phone Number to the Service's Proxy Number Pool.
+    /// Add a Phone Number to a Service's Proxy Number Pool.
     /// </summary>
     public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Delete a specific Phone Number from the Service.
+    /// Delete a specific Phone Number from a Service.
     /// </summary>
     public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for this Service.
+    /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
     /// </summary>
     public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource> 
     {

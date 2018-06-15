@@ -111,7 +111,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
         /// </summary>
-        /// <param name="to"> Phone number, SIP address or client identifier to call </param>
+        /// <param name="to"> Phone number, SIP address, or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="url"> Url from which to fetch TwiML </param>
@@ -130,8 +130,8 @@ namespace Twilio.Rest.Api.V2010.Account
         ///                         recording. </param>
         /// <param name="recordingStatusCallback"> A URL that Twilio will send a webhook request to when the recording is
         ///                               available for access. </param>
-        /// <param name="recordingStatusCallbackMethod"> The HTTP method Twilio should use when requesting the above URL.
-        ///                                     </param>
+        /// <param name="recordingStatusCallbackMethod"> The HTTP method Twilio should use when requesting the
+        ///                                     `RecordingStatusCallback` URL. </param>
         /// <param name="sipAuthUsername"> The sip_auth_username </param>
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
@@ -139,8 +139,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="recordingStatusCallbackEvent"> The recording status changes that Twilio will send webhooks on to the
         ///                                    URL specified in RecordingStatusCallback. </param>
         /// <param name="trim"> Set this parameter to control trimming of silence on the recording. </param>
-        /// <param name="callerId"> The phone number, SIP address or Client identifier that made this Call. Phone numbers are
-        ///                in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`. </param>
+        /// <param name="callerId"> The phone number, SIP address, or Client identifier that made this Call. Phone numbers are
+        ///                in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns> 
         public static CallResource Create(IEndpoint to, 
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
         /// </summary>
-        /// <param name="to"> Phone number, SIP address or client identifier to call </param>
+        /// <param name="to"> Phone number, SIP address, or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="url"> Url from which to fetch TwiML </param>
@@ -197,8 +197,8 @@ namespace Twilio.Rest.Api.V2010.Account
         ///                         recording. </param>
         /// <param name="recordingStatusCallback"> A URL that Twilio will send a webhook request to when the recording is
         ///                               available for access. </param>
-        /// <param name="recordingStatusCallbackMethod"> The HTTP method Twilio should use when requesting the above URL.
-        ///                                     </param>
+        /// <param name="recordingStatusCallbackMethod"> The HTTP method Twilio should use when requesting the
+        ///                                     `RecordingStatusCallback` URL. </param>
         /// <param name="sipAuthUsername"> The sip_auth_username </param>
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
         /// <param name="machineDetection"> Enable machine detection or end of greeting detection </param>
@@ -206,8 +206,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="recordingStatusCallbackEvent"> The recording status changes that Twilio will send webhooks on to the
         ///                                    URL specified in RecordingStatusCallback. </param>
         /// <param name="trim"> Set this parameter to control trimming of silence on the recording. </param>
-        /// <param name="callerId"> The phone number, SIP address or Client identifier that made this Call. Phone numbers are
-        ///                in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`. </param>
+        /// <param name="callerId"> The phone number, SIP address, or Client identifier that made this Call. Phone numbers are
+        ///                in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns> 
         public static async System.Threading.Tasks.Task<CallResource> CreateAsync(IEndpoint to, 
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// Delete a call record from your account. Once the record is deleted, it will no longer appear in the API and Account
+        /// Delete a Call record from your account. Once the record is deleted, it will no longer appear in the API and Account
         /// Portal logs.
         /// </summary>
         /// <param name="options"> Delete Call parameters </param>
@@ -269,7 +269,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Delete a call record from your account. Once the record is deleted, it will no longer appear in the API and Account
+        /// Delete a Call record from your account. Once the record is deleted, it will no longer appear in the API and Account
         /// Portal logs.
         /// </summary>
         /// <param name="options"> Delete Call parameters </param>
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Api.V2010.Account
         #endif
 
         /// <summary>
-        /// Delete a call record from your account. Once the record is deleted, it will no longer appear in the API and Account
+        /// Delete a Call record from your account. Once the record is deleted, it will no longer appear in the API and Account
         /// Portal logs.
         /// </summary>
         /// <param name="pathSid"> Call Sid that uniquely identifies the Call to delete </param>
@@ -300,7 +300,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Delete a call record from your account. Once the record is deleted, it will no longer appear in the API and Account
+        /// Delete a Call record from your account. Once the record is deleted, it will no longer appear in the API and Account
         /// Portal logs.
         /// </summary>
         /// <param name="pathSid"> Call Sid that uniquely identifies the Call to delete </param>
@@ -694,17 +694,17 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("annotation")]
         public string Annotation { get; private set; }
         /// <summary>
-        /// If this call was initiated with answering machine detection, either `human` or `machine`. Empty otherwise.
+        /// Either `human` or `machine` if this Call was initiated with answering machine detection. Empty otherwise.
         /// </summary>
         [JsonProperty("answered_by")]
         public string AnsweredBy { get; private set; }
         /// <summary>
-        /// The API Version the Call was created through
+        /// The API Version used to create the Call
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// If this call was an incoming call to a phone number with Caller ID Lookup enabled, the caller's name. Empty otherwise.
+        /// The caller's name if this Call was an incoming call to a phone number with Caller ID Lookup enabled. Empty otherwise.
         /// </summary>
         [JsonProperty("caller_name")]
         public string CallerName { get; private set; }
@@ -719,12 +719,12 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// A string describing the direction of the call. `inbound` for inbound calls, `outbound-api` for calls initiated via the REST API or `outbound-dial` for calls initiated by a `Dial` verb.
+        /// A string describing the direction of the Call. `inbound` for inbound calls, `outbound-api` for calls initiated via the REST API or `outbound-dial` for calls initiated by a `Dial` verb.
         /// </summary>
         [JsonProperty("direction")]
         public string Direction { get; private set; }
         /// <summary>
-        /// The length of the call in seconds.
+        /// The length of the Call in seconds.
         /// </summary>
         [JsonProperty("duration")]
         public string Duration { get; private set; }
@@ -734,12 +734,12 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
         /// <summary>
-        /// If this Call was an incoming call forwarded from another number, the forwarding phone number (depends on carrier supporting forwarding). Empty otherwise.
+        /// The forwarding phone number if this Call was an incoming call forwarded from another number (depends on carrier supporting forwarding). Empty otherwise.
         /// </summary>
         [JsonProperty("forwarded_from")]
         public string ForwardedFrom { get; private set; }
         /// <summary>
-        /// The phone number, SIP address or Client identifier that made this Call. Phone numbers are in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
+        /// The phone number, SIP address or Client identifier that made this Call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
         /// </summary>
         [JsonProperty("from")]
         public string From { get; private set; }
@@ -749,22 +749,22 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("from_formatted")]
         public string FromFormatted { get; private set; }
         /// <summary>
-        /// A 34 character Group Sid associated with this Call. Empty if no Group is associated with the Call.
+        /// A 34-character Group Sid associated with this Call. Empty if no Group is associated with the Call.
         /// </summary>
         [JsonProperty("group_sid")]
         public string GroupSid { get; private set; }
         /// <summary>
-        /// A 34 character string that uniquely identifies the Call that created this leg.
+        /// A 34-character string that uniquely identifies the Call that created this leg.
         /// </summary>
         [JsonProperty("parent_call_sid")]
         public string ParentCallSid { get; private set; }
         /// <summary>
-        /// If the call was inbound, this is the Sid of the IncomingPhoneNumber that received the call. If the call was outbound, it is the Sid of the OutgoingCallerId from which the call was placed.
+        /// If the call was inbound, this is the Sid of the `IncomingPhoneNumber` that received the call. If the call was outbound, it is the Sid of the `OutgoingCallerId` from which the call was placed.
         /// </summary>
         [JsonProperty("phone_number_sid")]
         public string PhoneNumberSid { get; private set; }
         /// <summary>
-        /// The charge for this call, in the currency associated with the account. Populated after the call is completed. May not be immediately available.
+        /// The charge for this Call, in the currency associated with the account. Populated after the call is completed. May not be immediately available.
         /// </summary>
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
@@ -774,7 +774,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// A 34-character string that uniquely identifies the Call resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
@@ -784,7 +784,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
         /// <summary>
-        /// A string representing the status of the call.
+        /// A string representing the status of the Call.
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
@@ -795,7 +795,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
         /// <summary>
-        /// The phone number, SIP address or Client identifier that received this Call. Phone numbers are in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
+        /// The phone number, SIP address or Client identifier that received this Call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
         /// </summary>
         [JsonProperty("to")]
         public string To { get; private set; }

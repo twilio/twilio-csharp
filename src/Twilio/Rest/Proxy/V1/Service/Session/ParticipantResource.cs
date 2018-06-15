@@ -345,8 +345,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         }
 
         /// <summary>
-        /// Delete a specific Participant. This is a soft-delete.  The participant remains associated with the session and
-        /// cannot be re-added.  Participants are only permanently deleted when the session is deleted.
+        /// Delete a specific Participant. This is a soft-delete. The participant remains associated with the session and cannot
+        /// be re-added. Participants are only permanently deleted when the
+        /// [Session](https://www.twilio.com/docs/proxy/api/session) is deleted.
         /// </summary>
         /// <param name="options"> Delete Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -360,8 +361,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
         #if !NET35
         /// <summary>
-        /// Delete a specific Participant. This is a soft-delete.  The participant remains associated with the session and
-        /// cannot be re-added.  Participants are only permanently deleted when the session is deleted.
+        /// Delete a specific Participant. This is a soft-delete. The participant remains associated with the session and cannot
+        /// be re-added. Participants are only permanently deleted when the
+        /// [Session](https://www.twilio.com/docs/proxy/api/session) is deleted.
         /// </summary>
         /// <param name="options"> Delete Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -376,8 +378,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         #endif
 
         /// <summary>
-        /// Delete a specific Participant. This is a soft-delete.  The participant remains associated with the session and
-        /// cannot be re-added.  Participants are only permanently deleted when the session is deleted.
+        /// Delete a specific Participant. This is a soft-delete. The participant remains associated with the session and cannot
+        /// be re-added. Participants are only permanently deleted when the
+        /// [Session](https://www.twilio.com/docs/proxy/api/session) is deleted.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
@@ -395,8 +398,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
         #if !NET35
         /// <summary>
-        /// Delete a specific Participant. This is a soft-delete.  The participant remains associated with the session and
-        /// cannot be re-added.  Participants are only permanently deleted when the session is deleted.
+        /// Delete a specific Participant. This is a soft-delete. The participant remains associated with the session and cannot
+        /// be re-added. Participants are only permanently deleted when the
+        /// [Session](https://www.twilio.com/docs/proxy/api/session) is deleted.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
@@ -574,7 +578,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Participant was updated
+        /// The date this Participant was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

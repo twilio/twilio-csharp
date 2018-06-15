@@ -81,7 +81,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         }
 
         /// <summary>
-        /// Retrieve a list of Interactions for a given Session
+        /// Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).
         /// </summary>
         /// <param name="options"> Fetch Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of Interactions for a given Session
+        /// Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).
         /// </summary>
         /// <param name="options"> Fetch Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         #endif
 
         /// <summary>
-        /// Retrieve a list of Interactions for a given Session
+        /// Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of Interactions for a given Session
+        /// Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
@@ -479,7 +479,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Interaction was updated
+        /// The date this Interaction was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

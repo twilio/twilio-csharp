@@ -81,8 +81,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         }
 
         /// <summary>
-        /// Create a new message Interaction to send directly from your system to one Participant.  The `inbound` properties for
-        /// this Interaction will always be empty.
+        /// Create a new message Interaction to send directly from your system to one
+        /// [Participant](https://www.twilio.com/docs/proxy/api/participants).  The `inbound` properties for this Interaction
+        /// will always be empty.
         /// </summary>
         /// <param name="options"> Create MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -97,8 +98,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
 
         #if !NET35
         /// <summary>
-        /// Create a new message Interaction to send directly from your system to one Participant.  The `inbound` properties for
-        /// this Interaction will always be empty.
+        /// Create a new message Interaction to send directly from your system to one
+        /// [Participant](https://www.twilio.com/docs/proxy/api/participants).  The `inbound` properties for this Interaction
+        /// will always be empty.
         /// </summary>
         /// <param name="options"> Create MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -113,8 +115,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         #endif
 
         /// <summary>
-        /// Create a new message Interaction to send directly from your system to one Participant.  The `inbound` properties for
-        /// this Interaction will always be empty.
+        /// Create a new message Interaction to send directly from your system to one
+        /// [Participant](https://www.twilio.com/docs/proxy/api/participants).  The `inbound` properties for this Interaction
+        /// will always be empty.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid </param>
         /// <param name="pathSessionSid"> Session Sid </param>
@@ -136,8 +139,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
 
         #if !NET35
         /// <summary>
-        /// Create a new message Interaction to send directly from your system to one Participant.  The `inbound` properties for
-        /// this Interaction will always be empty.
+        /// Create a new message Interaction to send directly from your system to one
+        /// [Participant](https://www.twilio.com/docs/proxy/api/participants).  The `inbound` properties for this Interaction
+        /// will always be empty.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid </param>
         /// <param name="pathSessionSid"> Session Sid </param>
@@ -444,28 +448,28 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         [JsonProperty("participant_sid")]
         public string ParticipantSid { get; private set; }
         /// <summary>
-        /// Inbound Participant Sid.
+        /// Always empty for Message Interactions.
         /// </summary>
         [JsonProperty("inbound_participant_sid")]
         public string InboundParticipantSid { get; private set; }
         /// <summary>
-        /// Inbound message resource Sid.
+        /// Always empty for Message Interactions.
         /// </summary>
         [JsonProperty("inbound_resource_sid")]
         public string InboundResourceSid { get; private set; }
         /// <summary>
-        /// The Inbound Resource Status of this Message Interaction
+        /// Always empty for Message Interactions.
         /// </summary>
         [JsonProperty("inbound_resource_status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public MessageInteractionResource.ResourceStatusEnum InboundResourceStatus { get; private set; }
         /// <summary>
-        /// Message
+        /// Always empty for Message Interactions.
         /// </summary>
         [JsonProperty("inbound_resource_type")]
         public string InboundResourceType { get; private set; }
         /// <summary>
-        /// The URL of the Twilio message resource.
+        /// Always empty for Message Interactions.
         /// </summary>
         [JsonProperty("inbound_resource_url")]
         public Uri InboundResourceUrl { get; private set; }
@@ -501,7 +505,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Message Interaction was updated
+        /// The date this Message Interaction was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

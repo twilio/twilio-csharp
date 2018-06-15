@@ -246,7 +246,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The date this Session should ge expired
+        /// The date this Session should expire
         /// </summary>
         public DateTime? DateExpiry { get; set; }
         /// <summary>

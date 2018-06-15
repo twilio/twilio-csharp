@@ -15,8 +15,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Create a new message Interaction to send directly from your system to one Participant.  The `inbound` properties for
-    /// this Interaction will always be empty.
+    /// Create a new message Interaction to send directly from your system to one
+    /// [Participant](https://www.twilio.com/docs/proxy/api/participants).  The `inbound` properties for this Interaction
+    /// will always be empty.
     /// </summary>
     public class CreateMessageInteractionOptions : IOptions<MessageInteractionResource> 
     {

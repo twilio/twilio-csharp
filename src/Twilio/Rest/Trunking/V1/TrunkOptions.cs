@@ -99,7 +99,7 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         public bool? Secure { get; set; }
         /// <summary>
-        /// The cnam_lookup_enabled
+        /// The Caller ID Name (CNAM) lookup setting for this trunk.
         /// </summary>
         public bool? CnamLookupEnabled { get; set; }
 
@@ -202,7 +202,7 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         public bool? Secure { get; set; }
         /// <summary>
-        /// The cnam_lookup_enabled
+        /// The Caller ID Name (CNAM) lookup setting for this trunk.
         /// </summary>
         public bool? CnamLookupEnabled { get; set; }
 

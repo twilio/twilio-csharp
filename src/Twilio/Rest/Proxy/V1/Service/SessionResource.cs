@@ -478,7 +478,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
         /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="dateExpiry"> The date this Session should ge expired </param>
+        /// <param name="dateExpiry"> The date this Session should expire </param>
         /// <param name="ttl"> TTL for a Session, in seconds. </param>
         /// <param name="mode"> The mode </param>
         /// <param name="status"> The Status of this Session </param>
@@ -506,7 +506,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
         /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="dateExpiry"> The date this Session should ge expired </param>
+        /// <param name="dateExpiry"> The date this Session should expire </param>
         /// <param name="ttl"> TTL for a Session, in seconds. </param>
         /// <param name="mode"> The mode </param>
         /// <param name="status"> The Status of this Session </param>
@@ -572,17 +572,17 @@ namespace Twilio.Rest.Proxy.V1.Service
         [JsonProperty("date_ended")]
         public DateTime? DateEnded { get; private set; }
         /// <summary>
-        /// The date this Session was interaction
+        /// The date this Session last had an interaction
         /// </summary>
         [JsonProperty("date_last_interaction")]
         public DateTime? DateLastInteraction { get; private set; }
         /// <summary>
-        /// The date this Session was expiry
+        /// The date this Session should expire
         /// </summary>
         [JsonProperty("date_expiry")]
         public DateTime? DateExpiry { get; private set; }
         /// <summary>
-        /// A unique, developer assigned name of this Session.
+        /// A unique, developer assigned identifier for this Session.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
@@ -614,7 +614,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Session was updated
+        /// The date this Session was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

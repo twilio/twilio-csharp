@@ -14,7 +14,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Retrieve a list of Interactions for a given Session
+    /// Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).
     /// </summary>
     public class FetchInteractionOptions : IOptions<InteractionResource> 
     {

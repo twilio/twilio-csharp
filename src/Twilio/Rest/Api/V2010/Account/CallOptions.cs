@@ -23,7 +23,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Phone number, SIP address or client identifier to call
+        /// Phone number, SIP address, or client identifier to call
         /// </summary>
         public IEndpoint To { get; }
         /// <summary>
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string RecordingStatusCallback { get; set; }
         /// <summary>
-        /// The HTTP method Twilio should use when requesting the above URL.
+        /// The HTTP method Twilio should use when requesting the `RecordingStatusCallback` URL.
         /// </summary>
         public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
         /// <summary>
@@ -115,14 +115,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string Trim { get; set; }
         /// <summary>
-        /// The phone number, SIP address or Client identifier that made this Call. Phone numbers are in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`.
+        /// The phone number, SIP address, or Client identifier that made this Call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`.
         /// </summary>
         public string CallerId { get; set; }
 
         /// <summary>
         /// Construct a new CreateCallOptions
         /// </summary>
-        /// <param name="to"> Phone number, SIP address or client identifier to call </param>
+        /// <param name="to"> Phone number, SIP address, or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
         public CreateCallOptions(IEndpoint to, Types.PhoneNumber from)
         {
@@ -263,7 +263,7 @@ namespace Twilio.Rest.Api.V2010.Account
     }
 
     /// <summary>
-    /// Delete a call record from your account. Once the record is deleted, it will no longer appear in the API and Account
+    /// Delete a Call record from your account. Once the record is deleted, it will no longer appear in the API and Account
     /// Portal logs.
     /// </summary>
     public class DeleteCallOptions : IOptions<CallResource> 

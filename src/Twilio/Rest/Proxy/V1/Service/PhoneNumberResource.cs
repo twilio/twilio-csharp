@@ -35,7 +35,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// Add a Phone Number to the Service's Proxy Number Pool.
+        /// Add a Phone Number to a Service's Proxy Number Pool.
         /// </summary>
         /// <param name="options"> Create PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Add a Phone Number to the Service's Proxy Number Pool.
+        /// Add a Phone Number to a Service's Proxy Number Pool.
         /// </summary>
         /// <param name="options"> Create PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         #endif
 
         /// <summary>
-        /// Add a Phone Number to the Service's Proxy Number Pool.
+        /// Add a Phone Number to a Service's Proxy Number Pool.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="sid"> A string that uniquely identifies this Phone Number. </param>
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Add a Phone Number to the Service's Proxy Number Pool.
+        /// Add a Phone Number to a Service's Proxy Number Pool.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="sid"> A string that uniquely identifies this Phone Number. </param>
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// Delete a specific Phone Number from the Service.
+        /// Delete a specific Phone Number from a Service.
         /// </summary>
         /// <param name="options"> Delete PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Delete a specific Phone Number from the Service.
+        /// Delete a specific Phone Number from a Service.
         /// </summary>
         /// <param name="options"> Delete PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         #endif
 
         /// <summary>
-        /// Delete a specific Phone Number from the Service.
+        /// Delete a specific Phone Number from a Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Delete a specific Phone Number from the Service.
+        /// Delete a specific Phone Number from a Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for this Service.
+        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
         /// </summary>
         /// <param name="options"> Read PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for this Service.
+        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
         /// </summary>
         /// <param name="options"> Read PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -214,7 +214,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         #endif
 
         /// <summary>
-        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for this Service.
+        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pageSize"> Page size </param>
@@ -232,7 +232,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for this Service.
+        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pageSize"> Page size </param>

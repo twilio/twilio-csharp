@@ -183,8 +183,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Delete a specific Participant. This is a soft-delete.  The participant remains associated with the session and
-    /// cannot be re-added.  Participants are only permanently deleted when the session is deleted.
+    /// Delete a specific Participant. This is a soft-delete. The participant remains associated with the session and cannot
+    /// be re-added. Participants are only permanently deleted when the
+    /// [Session](https://www.twilio.com/docs/proxy/api/session) is deleted.
     /// </summary>
     public class DeleteParticipantOptions : IOptions<ParticipantResource> 
     {

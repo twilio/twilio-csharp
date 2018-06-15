@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2018-06-15] Version 5.13.4
+----------------------------
+**Library**
+- PR #425: Add AddText method to TwiML classes. Thanks to @ekarson!
+
+**Twiml**
+- Add methods to helper libraries to inject arbitrary text under a TwiML node
+
+
 [2018-06-04] Version 5.13.3
 ----------------------------
 **Chat**

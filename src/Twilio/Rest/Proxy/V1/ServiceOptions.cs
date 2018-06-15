@@ -84,7 +84,7 @@ namespace Twilio.Rest.Proxy.V1
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// Whether to limit proxy numbers in the same areacode.
+        /// Whether proxy number selected must be in the same area code as the participant identifier.
         /// </summary>
         public ServiceResource.GeoMatchLevelEnum GeoMatchLevel { get; set; }
         /// <summary>
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Proxy.V1
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// Whether to find proxy numbers in the same areacode.
+        /// Whether proxy number selected must be in the same area code as the participant identifier.
         /// </summary>
         public ServiceResource.GeoMatchLevelEnum GeoMatchLevel { get; set; }
         /// <summary>

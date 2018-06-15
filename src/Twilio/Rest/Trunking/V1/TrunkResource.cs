@@ -219,7 +219,7 @@ namespace Twilio.Rest.Trunking.V1
         ///                              </param>
         /// <param name="recording"> The recording settings for this trunk. </param>
         /// <param name="secure"> The Secure Trunking  settings for this trunk. </param>
-        /// <param name="cnamLookupEnabled"> The cnam_lookup_enabled </param>
+        /// <param name="cnamLookupEnabled"> The Caller ID Name (CNAM) lookup setting for this trunk. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
         public static TrunkResource Create(string friendlyName = null, 
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Trunking.V1
         ///                              </param>
         /// <param name="recording"> The recording settings for this trunk. </param>
         /// <param name="secure"> The Secure Trunking  settings for this trunk. </param>
-        /// <param name="cnamLookupEnabled"> The cnam_lookup_enabled </param>
+        /// <param name="cnamLookupEnabled"> The Caller ID Name (CNAM) lookup setting for this trunk. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
         public static async System.Threading.Tasks.Task<TrunkResource> CreateAsync(string friendlyName = null, 
@@ -451,7 +451,7 @@ namespace Twilio.Rest.Trunking.V1
         ///                              </param>
         /// <param name="recording"> The recording settings for this trunk. </param>
         /// <param name="secure"> The Secure Trunking  settings for this trunk. </param>
-        /// <param name="cnamLookupEnabled"> The cnam_lookup_enabled </param>
+        /// <param name="cnamLookupEnabled"> The Caller ID Name (CNAM) lookup setting for this trunk. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
         public static TrunkResource Update(string pathSid, 
@@ -481,7 +481,7 @@ namespace Twilio.Rest.Trunking.V1
         ///                              </param>
         /// <param name="recording"> The recording settings for this trunk. </param>
         /// <param name="secure"> The Secure Trunking  settings for this trunk. </param>
-        /// <param name="cnamLookupEnabled"> The cnam_lookup_enabled </param>
+        /// <param name="cnamLookupEnabled"> The Caller ID Name (CNAM) lookup setting for this trunk. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
         public static async System.Threading.Tasks.Task<TrunkResource> UpdateAsync(string pathSid, 
@@ -554,7 +554,7 @@ namespace Twilio.Rest.Trunking.V1
         [JsonProperty("recording")]
         public object Recording { get; private set; }
         /// <summary>
-        /// The cnam_lookup_enabled
+        /// The Caller ID Name (CNAM) lookup setting for this trunk.
         /// </summary>
         [JsonProperty("cnam_lookup_enabled")]
         public bool? CnamLookupEnabled { get; private set; }
