@@ -78,6 +78,15 @@ namespace Twilio.TwiML
             this.Children.Add(childElem);
             return childElem;
         }
+        
+        /// <summary>
+        /// Add generic node child to TwiML object
+        /// </summary>
+        /// <param name="tagName"> TwiML tag name </param>
+        public TwiML AddChild(string tagName)
+        {
+            return this.Nest(new GenericNode(tagName));
+        }
 
         /// <summary>
         /// Add freeform key-value attributes to the generated xml
@@ -131,6 +140,16 @@ namespace Twilio.TwiML
             var writer = new Utf8StringWriter();
             document.Save(writer, formattingOptions);
             return writer.GetStringBuilder().ToString();
+        }
+    }
+
+    /// <summary>
+    /// Class for GenericNode object
+    /// </summary>
+    public class GenericNode : TwiML
+    {
+        public GenericNode(string tagName) : base(tagName)
+        {
         }
     }
 
