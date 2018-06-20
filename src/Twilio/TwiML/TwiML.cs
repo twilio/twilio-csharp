@@ -80,7 +80,7 @@ namespace Twilio.TwiML
         }
         
         /// <summary>
-        /// Add generic node child to TwiML object
+        /// Add a generic child TwiML object
         /// </summary>
         /// <param name="tagName"> TwiML tag name </param>
         public TwiML AddChild(string tagName)
