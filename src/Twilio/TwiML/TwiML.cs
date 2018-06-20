@@ -11,7 +11,7 @@ namespace Twilio.TwiML
     /// <summary>
     /// Base class for all TwiML Objects.
     /// </summary>
-    public abstract class TwiML 
+    public class TwiML 
     {
         /// <summary>
         /// Tag name
@@ -77,6 +77,15 @@ namespace Twilio.TwiML
         {
             this.Children.Add(childElem);
             return childElem;
+        }
+        
+        /// <summary>
+        /// Add a generic child TwiML object
+        /// </summary>
+        /// <param name="tagName"> TwiML tag name </param>
+        public TwiML AddChild(string tagName)
+        {
+            return this.Nest(new TwiML(tagName));
         }
 
         /// <summary>
