@@ -11,7 +11,7 @@ namespace Twilio.TwiML
     /// <summary>
     /// Base class for all TwiML Objects.
     /// </summary>
-    public abstract class TwiML 
+    public class TwiML 
     {
         /// <summary>
         /// Tag name
@@ -85,7 +85,7 @@ namespace Twilio.TwiML
         /// <param name="tagName"> TwiML tag name </param>
         public TwiML AddChild(string tagName)
         {
-            return this.Nest(new GenericNode(tagName));
+            return this.Nest(new TwiML(tagName));
         }
 
         /// <summary>
@@ -140,16 +140,6 @@ namespace Twilio.TwiML
             var writer = new Utf8StringWriter();
             document.Save(writer, formattingOptions);
             return writer.GetStringBuilder().ToString();
-        }
-    }
-
-    /// <summary>
-    /// Class for GenericNode object
-    /// </summary>
-    public class GenericNode : TwiML
-    {
-        public GenericNode(string tagName) : base(tagName)
-        {
         }
     }
 
