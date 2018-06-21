@@ -142,7 +142,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
-        ///                more details. (📇 PII MTL: 120 days) </param>
+        ///                more details. </param>
         /// <param name="roleSid"> The role to be assigned to this member. Defaults to the roles specified on the Service.
         ///               </param>
         /// <param name="lastConsumedMessageIndex"> Field used to specify the last consumed Message index for the Channel for
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
-        ///                more details. (📇 PII MTL: 120 days) </param>
+        ///                more details. </param>
         /// <param name="roleSid"> The role to be assigned to this member. Defaults to the roles specified on the Service.
         ///               </param>
         /// <param name="lastConsumedMessageIndex"> Field used to specify the last consumed Message index for the Channel for
@@ -264,7 +264,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
-        ///                more details. (📇 PII MTL: 120 days) </param>
+        ///                more details. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -287,7 +287,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
-        ///                more details. (📇 PII MTL: 120 days) </param>
+        ///                more details. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>

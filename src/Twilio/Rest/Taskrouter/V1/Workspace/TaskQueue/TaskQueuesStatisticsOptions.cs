@@ -25,11 +25,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// Filter the TaskQueue stats based on a TaskQueue’s name
+        /// Filter the TaskQueue stats based on a TaskQueue's name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by up to ‘x’ minutes in the past.
+        /// Filter cumulative statistics by up to 'x' minutes in the past.
         /// </summary>
         public int? Minutes { get; set; }
         /// <summary>

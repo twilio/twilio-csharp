@@ -60,6 +60,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum ConversationsParticipantEvents = new CategoryEnum("conversations-participant-events");
             public static readonly CategoryEnum ConversationsParticipants = new CategoryEnum("conversations-participants");
             public static readonly CategoryEnum Cps = new CategoryEnum("cps");
+            public static readonly CategoryEnum FraudLookups = new CategoryEnum("fraud-lookups");
             public static readonly CategoryEnum GroupRooms = new CategoryEnum("group-rooms");
             public static readonly CategoryEnum GroupRoomsDataTrack = new CategoryEnum("group-rooms-data-track");
             public static readonly CategoryEnum GroupRoomsEncryptedMediaRecorded = new CategoryEnum("group-rooms-encrypted-media-recorded");

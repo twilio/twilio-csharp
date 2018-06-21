@@ -140,7 +140,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="endDate"> Filter events by an end date. </param>
         /// <param name="eventType"> Filter events by those of a certain event type </param>
-        /// <param name="minutes"> Filter events by up to ‘x’ minutes in the past. </param>
+        /// <param name="minutes"> Filter events by up to 'x' minutes in the past. </param>
         /// <param name="reservationSid"> Filter events by those pertaining to a particular reservation </param>
         /// <param name="startDate"> Filter events by a start date. </param>
         /// <param name="taskQueueSid"> Filter events by those pertaining to a particular queue </param>
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="endDate"> Filter events by an end date. </param>
         /// <param name="eventType"> Filter events by those of a certain event type </param>
-        /// <param name="minutes"> Filter events by up to ‘x’ minutes in the past. </param>
+        /// <param name="minutes"> Filter events by up to 'x' minutes in the past. </param>
         /// <param name="reservationSid"> Filter events by those pertaining to a particular reservation </param>
         /// <param name="startDate"> Filter events by a start date. </param>
         /// <param name="taskQueueSid"> Filter events by those pertaining to a particular queue </param>

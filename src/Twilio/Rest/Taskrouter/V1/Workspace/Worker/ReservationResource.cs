@@ -120,7 +120,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
-        /// <param name="reservationStatus"> Filter by a worker’s reservation status </param>
+        /// <param name="reservationStatus"> Filter by a worker's reservation status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathWorkerSid"> The worker_sid </param>
-        /// <param name="reservationStatus"> Filter by a worker’s reservation status </param>
+        /// <param name="reservationStatus"> Filter by a worker's reservation status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -600,7 +600,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Filter by a worker’s reservation status
+        /// Filter by a worker's reservation status
         /// </summary>
         [JsonProperty("reservation_status")]
         [JsonConverter(typeof(StringEnumConverter))]

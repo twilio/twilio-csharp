@@ -254,7 +254,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="friendlyName"> Filter by a workspace’s friendly name. </param>
+        /// <param name="friendlyName"> Filter by a workspace's friendly name. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -272,7 +272,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="friendlyName"> Filter by a workspace’s friendly name. </param>
+        /// <param name="friendlyName"> Filter by a workspace's friendly name. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -558,7 +558,7 @@ namespace Twilio.Rest.Taskrouter.V1
         [JsonProperty("events_filter")]
         public string EventsFilter { get; private set; }
         /// <summary>
-        /// Filter by a workspace’s friendly name.
+        /// Filter by a workspace's friendly name.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }

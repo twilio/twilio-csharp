@@ -67,7 +67,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// A unique string identifier for this User in this Service. See the access tokens docs for more details. (📇 PII MTL: 120 days)
+        /// A unique string identifier for this User in this Service. See the access tokens docs for more details.
         /// </summary>
         public string Identity { get; }
         /// <summary>
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
-        ///                more details. (📇 PII MTL: 120 days) </param>
+        ///                more details. </param>
         public CreateMemberOptions(string pathServiceSid, string pathChannelSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// A unique string identifier for this User in this Service. See the access tokens docs for more details. (📇 PII MTL: 120 days)
+        /// A unique string identifier for this User in this Service. See the access tokens docs for more details.
         /// </summary>
         public List<string> Identity { get; set; }
 

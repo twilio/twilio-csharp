@@ -26,7 +26,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         public string PathWorkerSid { get; }
         /// <summary>
-        /// Filter by a worker’s reservation status
+        /// Filter by a worker's reservation status
         /// </summary>
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
 

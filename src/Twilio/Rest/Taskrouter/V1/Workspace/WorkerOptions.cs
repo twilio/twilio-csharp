@@ -33,7 +33,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string Available { get; set; }
         /// <summary>
-        /// Filter by a worker’s friendly name
+        /// Filter by a worker's friendly name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>

@@ -56,7 +56,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         public string Action { get; set; }
         /// <summary>
-        /// This parameter specifies the custom key-value pairs of the notification’s payload.
+        /// This parameter specifies the custom key-value pairs of the notification's payload.
         /// </summary>
         public object Data { get; set; }
         /// <summary>

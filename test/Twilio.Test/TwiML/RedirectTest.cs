@@ -6,7 +6,7 @@
 using NUnit.Framework;
 using System;
 using Twilio.Converters;
-using Twilio.TwiML.Messaging;
+using Twilio.TwiML.Voice;
 
 namespace Twilio.Tests.TwiML 
 {
@@ -61,6 +61,21 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Redirect>Here is the content</Redirect>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestAllowGenericChildNodes()
+        {
+            var elem = new Redirect();
+            elem.AddChild("generic-tag").AddText("Content").SetOption("tag", true);
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Redirect>" + Environment.NewLine +
+                "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "</Redirect>",
                 elem.ToString()
             );
         }

@@ -71,7 +71,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="activityName"> Filter by workers that are in a particular Activity by Friendly Name </param>
         /// <param name="activitySid"> Filter by workers that are in a particular Activity by SID </param>
         /// <param name="available"> Filter by workers that are available or unavailable. </param>
-        /// <param name="friendlyName"> Filter by a worker’s friendly name </param>
+        /// <param name="friendlyName"> Filter by a worker's friendly name </param>
         /// <param name="targetWorkersExpression"> Filter by workers that would match an expression on a TaskQueue. </param>
         /// <param name="taskQueueName"> Filter by workers that are eligible for a TaskQueue by Friendly Name </param>
         /// <param name="taskQueueSid"> Filter by workers that are eligible for a TaskQueue by SID </param>
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="activityName"> Filter by workers that are in a particular Activity by Friendly Name </param>
         /// <param name="activitySid"> Filter by workers that are in a particular Activity by SID </param>
         /// <param name="available"> Filter by workers that are available or unavailable. </param>
-        /// <param name="friendlyName"> Filter by a worker’s friendly name </param>
+        /// <param name="friendlyName"> Filter by a worker's friendly name </param>
         /// <param name="targetWorkersExpression"> Filter by workers that would match an expression on a TaskQueue. </param>
         /// <param name="taskQueueName"> Filter by workers that are eligible for a TaskQueue by Friendly Name </param>
         /// <param name="taskQueueSid"> Filter by workers that are eligible for a TaskQueue by SID </param>
@@ -550,7 +550,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Filter by a worker’s friendly name
+        /// Filter by a worker's friendly name
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }

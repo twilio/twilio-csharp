@@ -88,7 +88,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="title"> Indicates the notification title. </param>
         /// <param name="sound"> Indicates a sound to be played. </param>
         /// <param name="action"> Specifies the actions to be displayed for the notification. </param>
-        /// <param name="data"> This parameter specifies the custom key-value pairs of the notification’s payload. </param>
+        /// <param name="data"> This parameter specifies the custom key-value pairs of the notification's payload. </param>
         /// <param name="apn"> APNS specific payload that overrides corresponding attributes in a generic payload for Bindings
         ///           with the apn BindingType. </param>
         /// <param name="gcm"> GCM specific payload that overrides corresponding attributes in generic payload for Bindings
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="title"> Indicates the notification title. </param>
         /// <param name="sound"> Indicates a sound to be played. </param>
         /// <param name="action"> Specifies the actions to be displayed for the notification. </param>
-        /// <param name="data"> This parameter specifies the custom key-value pairs of the notification’s payload. </param>
+        /// <param name="data"> This parameter specifies the custom key-value pairs of the notification's payload. </param>
         /// <param name="apn"> APNS specific payload that overrides corresponding attributes in a generic payload for Bindings
         ///           with the apn BindingType. </param>
         /// <param name="gcm"> GCM specific payload that overrides corresponding attributes in generic payload for Bindings
@@ -267,7 +267,7 @@ namespace Twilio.Rest.Notify.V1.Service
         [JsonProperty("action")]
         public string Action { get; private set; }
         /// <summary>
-        /// This parameter specifies the custom key-value pairs of the notification’s payload.
+        /// This parameter specifies the custom key-value pairs of the notification's payload.
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }

@@ -64,7 +64,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string EventType { get; set; }
         /// <summary>
-        /// Filter events by up to ‘x’ minutes in the past.
+        /// Filter events by up to 'x' minutes in the past.
         /// </summary>
         public int? Minutes { get; set; }
         /// <summary>

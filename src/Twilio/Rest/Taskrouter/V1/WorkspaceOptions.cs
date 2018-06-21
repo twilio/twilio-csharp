@@ -138,7 +138,7 @@ namespace Twilio.Rest.Taskrouter.V1
     public class ReadWorkspaceOptions : ReadOptions<WorkspaceResource> 
     {
         /// <summary>
-        /// Filter by a workspace’s friendly name.
+        /// Filter by a workspace's friendly name.
         /// </summary>
         public string FriendlyName { get; set; }
 

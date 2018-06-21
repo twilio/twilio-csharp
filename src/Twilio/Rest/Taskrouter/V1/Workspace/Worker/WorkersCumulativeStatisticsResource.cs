@@ -66,7 +66,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="endDate"> Filter cumulative statistics by a end date. </param>
-        /// <param name="minutes"> Filter cumulative statistics by up to ‘x’ minutes in the past. </param>
+        /// <param name="minutes"> Filter cumulative statistics by up to 'x' minutes in the past. </param>
         /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
         /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="endDate"> Filter cumulative statistics by a end date. </param>
-        /// <param name="minutes"> Filter cumulative statistics by up to ‘x’ minutes in the past. </param>
+        /// <param name="minutes"> Filter cumulative statistics by up to 'x' minutes in the past. </param>
         /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
         /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>

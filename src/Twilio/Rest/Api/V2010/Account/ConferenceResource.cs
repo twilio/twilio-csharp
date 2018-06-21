@@ -334,8 +334,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="status"> Specifying completed will end the conference and kick all participants </param>
-        /// <param name="announceUrl"> The announce_url </param>
-        /// <param name="announceMethod"> The announce_method </param>
+        /// <param name="announceUrl"> The 'AnnounceUrl' attribute lets you specify a URL for announcing something into a
+        ///                   conference. </param>
+        /// <param name="announceMethod"> Specify GET or POST, defaults to POST </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conference </returns> 
         public static ConferenceResource Update(string pathSid, 
@@ -356,8 +357,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="status"> Specifying completed will end the conference and kick all participants </param>
-        /// <param name="announceUrl"> The announce_url </param>
-        /// <param name="announceMethod"> The announce_method </param>
+        /// <param name="announceUrl"> The 'AnnounceUrl' attribute lets you specify a URL for announcing something into a
+        ///                   conference. </param>
+        /// <param name="announceMethod"> Specify GET or POST, defaults to POST </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns> 
         public static async System.Threading.Tasks.Task<ConferenceResource> UpdateAsync(string pathSid, 

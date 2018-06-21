@@ -1,6 +1,19 @@
 twilio-csharp Changelog
 =======================
 
+[2018-06-21] Version 5.13.5
+----------------------------
+**Library**
+- PR #426: Allow adding TwiML children with generic tag names. Thanks to @yannieyip!
+
+**Api**
+- Add Fraud Lookups category to usage records
+
+**Video**
+- Allow user to set `ContentDisposition` when obtaining media URLs for Room Recordings and Compositions
+- Add Composition Settings resource
+
+
 [2018-06-15] Version 5.13.4
 ----------------------------
 **Library**

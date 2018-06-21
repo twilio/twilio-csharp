@@ -165,8 +165,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="holdUrl"> The 'HoldUrl' attribute lets you specify a URL for music that plays when a participant is
         ///               held. </param>
         /// <param name="holdMethod"> Specify GET or POST, defaults to GET </param>
-        /// <param name="announceUrl"> The announce_url </param>
-        /// <param name="announceMethod"> The announce_method </param>
+        /// <param name="announceUrl"> The 'AnnounceUrl' attribute lets you specify a URL for announcing something to the
+        ///                   participant. </param>
+        /// <param name="announceMethod"> Specify GET or POST, defaults to POST </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
         public static ParticipantResource Update(string pathConferenceSid, 
@@ -196,8 +197,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="holdUrl"> The 'HoldUrl' attribute lets you specify a URL for music that plays when a participant is
         ///               held. </param>
         /// <param name="holdMethod"> Specify GET or POST, defaults to GET </param>
-        /// <param name="announceUrl"> The announce_url </param>
-        /// <param name="announceMethod"> The announce_method </param>
+        /// <param name="announceUrl"> The 'AnnounceUrl' attribute lets you specify a URL for announcing something to the
+        ///                   participant. </param>
+        /// <param name="announceMethod"> Specify GET or POST, defaults to POST </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConferenceSid, 

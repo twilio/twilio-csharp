@@ -76,6 +76,21 @@ namespace Twilio.Tests.TwiML
                 elem.ToString()
             );
         }
+
+        [Test]
+        public void TestAllowGenericChildNodes()
+        {
+            var elem = new Record();
+            elem.AddChild("generic-tag").AddText("Content").SetOption("tag", true);
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Record>" + Environment.NewLine +
+                "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "</Record>",
+                elem.ToString()
+            );
+        }
     }
 
 }

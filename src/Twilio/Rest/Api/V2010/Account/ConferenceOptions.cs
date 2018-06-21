@@ -163,11 +163,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public ConferenceResource.UpdateStatusEnum Status { get; set; }
         /// <summary>
-        /// The announce_url
+        /// The 'AnnounceUrl' attribute lets you specify a URL for announcing something into a conference.
         /// </summary>
         public Uri AnnounceUrl { get; set; }
         /// <summary>
-        /// The announce_method
+        /// Specify GET or POST, defaults to POST
         /// </summary>
         public Twilio.Http.HttpMethod AnnounceMethod { get; set; }
 

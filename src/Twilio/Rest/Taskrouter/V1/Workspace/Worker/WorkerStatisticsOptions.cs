@@ -25,7 +25,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         public string PathWorkerSid { get; }
         /// <summary>
-        /// Filter cumulative statistics by up to ‘x’ minutes in the past.
+        /// Filter cumulative statistics by up to 'x' minutes in the past.
         /// </summary>
         public int? Minutes { get; set; }
         /// <summary>
