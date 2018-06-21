@@ -87,6 +87,54 @@ namespace Twilio.Tests.TwiML
                 elem.ToString()
             );
         }
+
+        [Test]
+        public void TestAllowGenericChildNodes()
+        {
+            var elem = new Enqueue();
+            elem.AddChild("generic-tag").AddText("Content").SetOption("tag", true);
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Enqueue>" + Environment.NewLine +
+                "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "</Enqueue>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestAllowGenericChildrenOfChildNodes()
+        {
+            var elem = new Enqueue();
+            var child = new Task();
+            elem.Nest(child).AddChild("generic-tag").SetOption("tag", true).AddText("Content");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Enqueue>" + Environment.NewLine +
+                "  <Task>" + Environment.NewLine +
+                "    <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "  </Task>" + Environment.NewLine +
+                "</Enqueue>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestMixedContent()
+        {
+            var elem = new Enqueue();
+            elem.AddText("before")
+                .AddChild("Child").AddText("content");
+            elem.AddText("after");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Enqueue>before<Child>content</Child>after</Enqueue>",
+                elem.ToString()
+            );
+        }
     }
 
 }
