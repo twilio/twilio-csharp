@@ -102,7 +102,7 @@ package which is compatible with this version of the library.
 The alpha version is no longer necessary. All Twilio products are available in the main-line library.
 
 ## Docker Image
-The `Dockerfile` present in this repository and its respective `twilio/twilio-csharp` Docker image are used by Twilio for testing purposes only.
+The `Dockerfile` present in this repository and its respective `twilio/twilio-csharp` Docker image are currently used by Twilio for testing purposes only.
 
 ## Getting help
 
