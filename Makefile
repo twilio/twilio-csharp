@@ -24,9 +24,9 @@ API_DEFINITIONS_SHA=$(shell git log --oneline | grep Regenerated | head -n1 | cu
 docker-build:
 	docker build -t twilio/twilio-csharp .
 	docker tag twilio/twilio-csharp twilio/twilio-csharp:${TRAVIS_TAG}
-	docker tag twilio/twilio-csharp twilio/twilio-csharp:${API_DEFINITIONS_SHA}
+	docker tag twilio/twilio-csharp twilio/twilio-csharp:apidefs-${API_DEFINITIONS_SHA}
 
 docker-push:
 	docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
 	docker push twilio/twilio-csharp:${TRAVIS_TAG}
-	docker push twilio/twilio-csharp:${API_DEFINITIONS_TAG}
+	docker push twilio/twilio-csharp:apidefs-${API_DEFINITIONS_TAG}
