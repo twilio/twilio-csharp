@@ -64,6 +64,36 @@ namespace Twilio.Tests.TwiML
                 elem.ToString()
             );
         }
+
+        [Test]
+        public void TestAllowGenericChildNodes()
+        {
+            var elem = new Media();
+            elem.AddChild("generic-tag").AddText("Content").SetOption("tag", true);
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Media>" + Environment.NewLine +
+                "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "</Media>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestMixedContent()
+        {
+            var elem = new Media();
+            elem.AddText("before")
+                .AddChild("Child").AddText("content");
+            elem.AddText("after");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Media>before<Child>content</Child>after</Media>",
+                elem.ToString()
+            );
+        }
     }
 
 }
