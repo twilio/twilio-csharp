@@ -111,7 +111,7 @@ namespace Twilio.Clients
             }
             return ProcessResponse(response);
         }
-        
+
         private static HttpClient DefaultClient()
         {
             return new SystemNetHttpClient();
@@ -142,7 +142,7 @@ namespace Twilio.Clients
                 restException = RestException.FromJson(response.Content);
             }
             catch (JsonReaderException) { /* Allow null check below to handle */ }
-            
+
             if (restException == null)
             {
                 throw new ApiException("Api Error: " + response.StatusCode + " - " + (response.Content ?? "[no content]"));
@@ -155,6 +155,40 @@ namespace Twilio.Clients
                 restException.MoreInfo
             );
         }
+
+        public static void ValidateSslCertificate()
+        {
+            ValidateSslCertificate(DefaultClient());
+        }
+
+        public static void ValidateSslCertificate(HttpClient testClient)
+        {
+            Request request = new Request("GET", "api", ":8443/", null);
+
+            try
+            {
+                Response response = testClient.MakeRequest(request);
+
+                if (!response.StatusCode.Equals(HttpStatusCode.OK))
+                {
+                    throw new CertificateValidationException(
+                        "Unexpected response from certificate endpoint",
+                        request,
+                        response
+                    );
+                }
+            }
+            catch (CertificateValidationException e) {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw new CertificateValidationException(
+                    "Connection to api.twilio.com:8443 failed",
+                    e,
+                    request
+                );
+            }
+        }
     }
 }
-

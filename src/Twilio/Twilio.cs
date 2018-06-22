@@ -133,6 +133,14 @@ namespace Twilio
         {
             _restClient = null;
         }
+
+        /// <summary>
+        /// Validates that the Twilio Client can connect to api.twilio.com with
+        /// a new SSL certificate posted at api.twilio.com:8443
+        /// </summary>
+        public static void ValidateSslCertificate()
+        {
+            TwilioRestClient.ValidateSslCertificate();
+        }
     }
 }
-
