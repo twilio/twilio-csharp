@@ -38,6 +38,13 @@ namespace Twilio.Tests.Security
         }
 
         [Test]
+        public void TestValidateFailsWhenIncorrect()
+        {
+            const string signature = "NOTRSOYDt4T1cUTdK1PDd93/VVr8B8=";
+            Assert.IsFalse(validator.Validate(url, parameters, signature), "Request should have failed validation but didn't");
+        }
+
+        [Test]
         public void TestValidateCollection()
         {
             const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
@@ -47,7 +54,7 @@ namespace Twilio.Tests.Security
         [Test]
         public void TestValidateBody()
         {
-            Assert.IsTrue(validator.ValidateBody(body, bodySignature));
+            Assert.IsTrue(validator.ValidateBody(body, bodySignature), "Request body validation failed");
         }
 
         [Test]
@@ -55,7 +62,13 @@ namespace Twilio.Tests.Security
         {
             parameters.Add("bodySHA256", bodySignature);
 
-            Assert.IsTrue(validator.Validate(url, parameters, body, "lhN9sMASXtkij921mMLP/O8yo04="));
+            Assert.IsTrue(validator.Validate(url, parameters, body, "lhN9sMASXtkij921mMLP/O8yo04="), "Request signature or body validation failed");
+        }
+
+        [Test]
+        public void TestValidateWithBodyWithoutSignature()
+        {
+            Assert.IsFalse(validator.Validate(url, parameters, body, "RSOYDt4T1cUTdK1PDd93/VVr8B8="), "Request signature or body validation failed");
         }
     }
 }
