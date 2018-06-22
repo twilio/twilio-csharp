@@ -12,6 +12,7 @@ namespace Twilio.Security
     public class RequestValidator
     {
         private readonly HMACSHA1 _hmac;
+        private readonly SHA256 _sha;
 
         /// <summary>
         /// Create a new RequestValidator
@@ -20,6 +21,7 @@ namespace Twilio.Security
         public RequestValidator(string secret)
         {
             _hmac = new HMACSHA1(Encoding.UTF8.GetBytes(secret));
+            _sha = SHA256.Create();
         }
 
         /// <summary>
@@ -31,8 +33,7 @@ namespace Twilio.Security
         /// <returns>true if the signature matches the result; false otherwise</returns>
         public bool Validate(string url, NameValueCollection parameters, string expected)
         {
-            var signature = GetValidationSignature(url, ToDictionary(parameters));
-            return SecureCompare(signature, expected);
+            return Validate(url, ToDictionary(parameters), expected);
         }
 
         /// <summary>
@@ -46,6 +47,22 @@ namespace Twilio.Security
         {
             var signature = GetValidationSignature(url, parameters);
             return SecureCompare(signature, expected);
+        }
+
+        public bool Validate(string url, NameValueCollection parameters, string body, string expected)
+        {
+            return Validate(url, ToDictionary(parameters), body, expected);
+        }
+
+        public bool Validate(string url, IDictionary<string, string> parameters, string body, string expected)
+        {
+            return Validate(url, parameters, expected) && ValidateBody(body, parameters["bodySHA256"]);
+        }
+
+        public bool ValidateBody(string rawBody, string expected)
+        {
+            var signature = _sha.ComputeHash(Encoding.UTF8.GetBytes(rawBody));
+            return SecureCompare(Convert.ToBase64String(signature), expected);
         }
 
         private static IDictionary<string, string> ToDictionary(NameValueCollection col)
