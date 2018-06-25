@@ -111,7 +111,7 @@ namespace Twilio.Clients
             }
             return ProcessResponse(response);
         }
-        
+
         private static HttpClient DefaultClient()
         {
             return new SystemNetHttpClient();
@@ -142,7 +142,7 @@ namespace Twilio.Clients
                 restException = RestException.FromJson(response.Content);
             }
             catch (JsonReaderException) { /* Allow null check below to handle */ }
-            
+
             if (restException == null)
             {
                 throw new ApiException("Api Error: " + response.StatusCode + " - " + (response.Content ?? "[no content]"));
@@ -155,6 +155,52 @@ namespace Twilio.Clients
                 restException.MoreInfo
             );
         }
+
+        /// <summary>
+        /// Test that this application can use updated SSL certificates on
+        /// api.twilio.com:8443. It's a bit easier to call this method from
+        /// TwilioClient.ValidateSslCertificate().
+        /// </summary>
+        public static void ValidateSslCertificate()
+        {
+            ValidateSslCertificate(DefaultClient());
+        }
+
+        /// <summary>
+        /// Test that this application can use updated SSL certificates on
+        /// api.twilio.com:8443. Generally, you'll want to use the version of this
+        /// function that takes no parameters unless you have a reason not to.
+        /// </summary>
+        ///
+        /// <param name="client">HTTP Client to use for testing the request</param>
+        public static void ValidateSslCertificate(HttpClient client)
+        {
+            Request request = new Request("GET", "api", ":8443/", null);
+
+            try
+            {
+                Response response = client.MakeRequest(request);
+
+                if (!response.StatusCode.Equals(HttpStatusCode.OK))
+                {
+                    throw new CertificateValidationException(
+                        "Unexpected response from certificate endpoint",
+                        request,
+                        response
+                    );
+                }
+            }
+            catch (CertificateValidationException e) {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw new CertificateValidationException(
+                    "Connection to api.twilio.com:8443 failed",
+                    e,
+                    request
+                );
+            }
+        }
     }
 }
-
