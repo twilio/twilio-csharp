@@ -38,7 +38,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// </summary>
         public string Body { get; set; }
         /// <summary>
-        /// The media_url
+        /// Not supported in beta
         /// </summary>
         public List<Uri> MediaUrl { get; set; }
 

@@ -197,7 +197,7 @@ namespace Twilio.Rest.Proxy.V1
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human readable description of this resource.
+        /// A human-readable description of this resource.
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>

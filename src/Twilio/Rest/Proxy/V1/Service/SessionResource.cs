@@ -477,7 +477,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
-        /// <param name="uniqueName"> The unique_name </param>
         /// <param name="dateExpiry"> The date this Session should expire </param>
         /// <param name="ttl"> TTL for a Session, in seconds. </param>
         /// <param name="mode"> The mode </param>
@@ -487,7 +486,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <returns> A single instance of Session </returns> 
         public static SessionResource Update(string pathServiceSid, 
                                              string pathSid, 
-                                             string uniqueName = null, 
                                              DateTime? dateExpiry = null, 
                                              int? ttl = null, 
                                              SessionResource.ModeEnum mode = null, 
@@ -495,7 +493,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                                              List<object> participants = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateSessionOptions(pathServiceSid, pathSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants};
+            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants};
             return Update(options, client);
         }
 
@@ -505,7 +503,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
-        /// <param name="uniqueName"> The unique_name </param>
         /// <param name="dateExpiry"> The date this Session should expire </param>
         /// <param name="ttl"> TTL for a Session, in seconds. </param>
         /// <param name="mode"> The mode </param>
@@ -515,7 +512,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <returns> Task that resolves to A single instance of Session </returns> 
         public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(string pathServiceSid, 
                                                                                      string pathSid, 
-                                                                                     string uniqueName = null, 
                                                                                      DateTime? dateExpiry = null, 
                                                                                      int? ttl = null, 
                                                                                      SessionResource.ModeEnum mode = null, 
@@ -523,7 +519,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                                                      List<object> participants = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateSessionOptions(pathServiceSid, pathSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants};
+            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants};
             return await UpdateAsync(options, client);
         }
         #endif

@@ -457,7 +457,7 @@ namespace Twilio.Rest.Proxy.V1
         /// Update a specific Service.
         /// </summary>
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
-        /// <param name="uniqueName"> A human readable description of this resource. </param>
+        /// <param name="uniqueName"> A human-readable description of this resource. </param>
         /// <param name="defaultTtl"> Default TTL for Sessions in Service, in seconds. </param>
         /// <param name="callbackUrl"> URL Twilio will send callbacks to </param>
         /// <param name="geoMatchLevel"> Whether proxy number selected must be in the same area code as the participant
@@ -486,7 +486,7 @@ namespace Twilio.Rest.Proxy.V1
         /// Update a specific Service.
         /// </summary>
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
-        /// <param name="uniqueName"> A human readable description of this resource. </param>
+        /// <param name="uniqueName"> A human-readable description of this resource. </param>
         /// <param name="defaultTtl"> Default TTL for Sessions in Service, in seconds. </param>
         /// <param name="callbackUrl"> URL Twilio will send callbacks to </param>
         /// <param name="geoMatchLevel"> Whether proxy number selected must be in the same area code as the participant
@@ -535,7 +535,7 @@ namespace Twilio.Rest.Proxy.V1
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A human readable description of this resource.
+        /// A human-readable description of this resource.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }

@@ -1,6 +1,13 @@
 twilio-csharp Changelog
 =======================
 
+[2018-06-29] Version 5.13.6
+----------------------------
+**Library**
+- PR #430: Add helper method for testing if new SSL cert can be consumed. Thanks to @cjcodes!
+- PR #428: Add a method for validating request body. Thanks to @cjcodes!
+
+
 [2018-06-21] Version 5.13.5
 ----------------------------
 **Library**

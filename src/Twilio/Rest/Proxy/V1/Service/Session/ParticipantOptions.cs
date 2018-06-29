@@ -125,7 +125,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         public string Identifier { get; }
         /// <summary>
-        /// A human readable description of this resource.
+        /// A human-readable description of this resource.
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
@@ -221,85 +221,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-    }
-
-    /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
-    /// UpdateParticipantOptions
-    /// </summary>
-    public class UpdateParticipantOptions : IOptions<ParticipantResource> 
-    {
-        /// <summary>
-        /// The service_sid
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The session_sid
-        /// </summary>
-        public string PathSessionSid { get; }
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// The identifier
-        /// </summary>
-        public string Identifier { get; set; }
-        /// <summary>
-        /// The friendly_name
-        /// </summary>
-        public string FriendlyName { get; set; }
-        /// <summary>
-        /// The proxy_identifier
-        /// </summary>
-        public string ProxyIdentifier { get; set; }
-        /// <summary>
-        /// The proxy_identifier_sid
-        /// </summary>
-        public string ProxyIdentifierSid { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateParticipantOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSessionSid"> The session_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        public UpdateParticipantOptions(string pathServiceSid, string pathSessionSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSessionSid = pathSessionSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (Identifier != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identifier", Identifier));
-            }
-
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (ProxyIdentifier != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ProxyIdentifier", ProxyIdentifier));
-            }
-
-            if (ProxyIdentifierSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ProxyIdentifierSid", ProxyIdentifierSid.ToString()));
-            }
-
             return p;
         }
     }

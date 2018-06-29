@@ -123,7 +123,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="pathSessionSid"> Session Sid </param>
         /// <param name="pathParticipantSid"> Participant Sid </param>
         /// <param name="body"> Message body </param>
-        /// <param name="mediaUrl"> The media_url </param>
+        /// <param name="mediaUrl"> Not supported in beta </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of MessageInteraction </returns> 
         public static MessageInteractionResource Create(string pathServiceSid, 
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="pathSessionSid"> Session Sid </param>
         /// <param name="pathParticipantSid"> Participant Sid </param>
         /// <param name="body"> Message body </param>
-        /// <param name="mediaUrl"> The media_url </param>
+        /// <param name="mediaUrl"> Not supported in beta </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessageInteraction </returns> 
         public static async System.Threading.Tasks.Task<MessageInteractionResource> CreateAsync(string pathServiceSid, 

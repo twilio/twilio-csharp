@@ -79,6 +79,21 @@ namespace Twilio.Tests.TwiML
                 elem.ToString()
             );
         }
+
+        [Test]
+        public void TestMixedContent()
+        {
+            var elem = new Receive();
+            elem.AddText("before")
+                .AddChild("Child").AddText("content");
+            elem.AddText("after");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Receive>before<Child>content</Child>after</Receive>",
+                elem.ToString()
+            );
+        }
     }
 
 }

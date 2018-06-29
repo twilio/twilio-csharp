@@ -67,8 +67,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// Add a Phone Number to a Service's Proxy Number Pool.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="sid"> A string that uniquely identifies this Phone Number. </param>
-        /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="sid"> Phone Number Sid of Twilio Number to assign to your Proxy Service </param>
+        /// <param name="phoneNumber"> Twilio Number to assign to your Proxy Service </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
         public static PhoneNumberResource Create(string pathServiceSid, 
@@ -85,8 +85,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// Add a Phone Number to a Service's Proxy Number Pool.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="sid"> A string that uniquely identifies this Phone Number. </param>
-        /// <param name="phoneNumber"> The phone_number </param>
+        /// <param name="sid"> Phone Number Sid of Twilio Number to assign to your Proxy Service </param>
+        /// <param name="phoneNumber"> Twilio Number to assign to your Proxy Service </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(string pathServiceSid, 
@@ -428,7 +428,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
         /// <summary>
-        /// A human readable description of this resource.
+        /// A human-readable description of this resource.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }

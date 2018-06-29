@@ -23,11 +23,11 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Phone Number.
+        /// Phone Number Sid of Twilio Number to assign to your Proxy Service
         /// </summary>
         public string Sid { get; set; }
         /// <summary>
-        /// The phone_number
+        /// Twilio Number to assign to your Proxy Service
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; set; }
 

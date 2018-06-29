@@ -242,10 +242,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The unique_name
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
         /// The date this Session should expire
         /// </summary>
         public DateTime? DateExpiry { get; set; }
@@ -284,11 +280,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
             if (DateExpiry != null)
             {
                 p.Add(new KeyValuePair<string, string>("DateExpiry", Serializers.DateTimeIso8601(DateExpiry)));
