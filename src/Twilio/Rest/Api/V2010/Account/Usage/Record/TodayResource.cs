@@ -221,8 +221,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum TwilioInterconnect = new CategoryEnum("twilio-interconnect");
             public static readonly CategoryEnum VideoRecordings = new CategoryEnum("video-recordings");
             public static readonly CategoryEnum VoiceInsights = new CategoryEnum("voice-insights");
-            public static readonly CategoryEnum VoiceInsightsAudioTrace = new CategoryEnum("voice-insights-audio-trace");
-            public static readonly CategoryEnum VoiceInsightsCarrierCalls = new CategoryEnum("voice-insights-carrier-calls");
+            public static readonly CategoryEnum VoiceInsightsClientInsightsOnDemandMinute = new CategoryEnum("voice-insights-client-insights-on-demand-minute");
+            public static readonly CategoryEnum VoiceInsightsPtsnInsightsOnDemandMinute = new CategoryEnum("voice-insights-ptsn-insights-on-demand-minute");
+            public static readonly CategoryEnum VoiceInsightsSipInterfaceInsightsOnDemandMinute = new CategoryEnum("voice-insights-sip-interface-insights-on-demand-minute");
+            public static readonly CategoryEnum VoiceInsightsSipTrunkingInsightsOnDemandMinute = new CategoryEnum("voice-insights-sip-trunking-insights-on-demand-minute");
             public static readonly CategoryEnum Wireless = new CategoryEnum("wireless");
             public static readonly CategoryEnum WirelessOrders = new CategoryEnum("wireless-orders");
             public static readonly CategoryEnum WirelessOrdersArtwork = new CategoryEnum("wireless-orders-artwork");

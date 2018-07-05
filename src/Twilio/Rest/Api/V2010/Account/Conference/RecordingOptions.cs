@@ -5,100 +5,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Call 
+namespace Twilio.Rest.Api.V2010.Account.Conference 
 {
-
-    /// <summary>
-    /// Create a recording for the call
-    /// </summary>
-    public class CreateRecordingOptions : IOptions<RecordingResource> 
-    {
-        /// <summary>
-        /// The account_sid
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The call_sid
-        /// </summary>
-        public string PathCallSid { get; }
-        /// <summary>
-        /// The recording_status_callback_event
-        /// </summary>
-        public List<string> RecordingStatusCallbackEvent { get; set; }
-        /// <summary>
-        /// The recording_status_callback
-        /// </summary>
-        public Uri RecordingStatusCallback { get; set; }
-        /// <summary>
-        /// The recording_status_callback_method
-        /// </summary>
-        public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
-        /// <summary>
-        /// Whether to trim the silence in the recording
-        /// </summary>
-        public string Trim { get; set; }
-        /// <summary>
-        /// The recording_channels
-        /// </summary>
-        public string RecordingChannels { get; set; }
-        /// <summary>
-        /// Whether to play beeps for recording status changes
-        /// </summary>
-        public bool? PlayBeep { get; set; }
-
-        /// <summary>
-        /// Construct a new CreateRecordingOptions
-        /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        public CreateRecordingOptions(string pathCallSid)
-        {
-            PathCallSid = pathCallSid;
-            RecordingStatusCallbackEvent = new List<string>();
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (RecordingStatusCallbackEvent != null)
-            {
-                p.AddRange(RecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("RecordingStatusCallbackEvent", prop)));
-            }
-
-            if (RecordingStatusCallback != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RecordingStatusCallback", Serializers.Url(RecordingStatusCallback)));
-            }
-
-            if (RecordingStatusCallbackMethod != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RecordingStatusCallbackMethod", RecordingStatusCallbackMethod.ToString()));
-            }
-
-            if (Trim != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Trim", Trim));
-            }
-
-            if (RecordingChannels != null)
-            {
-                p.Add(new KeyValuePair<string, string>("RecordingChannels", RecordingChannels));
-            }
-
-            if (PlayBeep != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PlayBeep", PlayBeep.Value.ToString().ToLower()));
-            }
-
-            return p;
-        }
-    }
 
     /// <summary>
     /// Changes the status of the recording to paused, stopped, or in-progress
@@ -110,9 +21,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The call_sid
+        /// The conference_sid
         /// </summary>
-        public string PathCallSid { get; }
+        public string PathConferenceSid { get; }
         /// <summary>
         /// The sid
         /// </summary>
@@ -125,12 +36,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new UpdateRecordingOptions
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathConferenceSid"> The conference_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="status"> The status to change the recording to. </param>
-        public UpdateRecordingOptions(string pathCallSid, string pathSid, RecordingResource.StatusEnum status)
+        public UpdateRecordingOptions(string pathConferenceSid, string pathSid, RecordingResource.StatusEnum status)
         {
-            PathCallSid = pathCallSid;
+            PathConferenceSid = pathConferenceSid;
             PathSid = pathSid;
             Status = status;
         }
@@ -160,9 +71,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique call Sid for the recording
+        /// Fetch by unique conference Sid for the recording
         /// </summary>
-        public string PathCallSid { get; }
+        public string PathConferenceSid { get; }
         /// <summary>
         /// Fetch by unique recording Sid
         /// </summary>
@@ -171,11 +82,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new FetchRecordingOptions
         /// </summary>
-        /// <param name="pathCallSid"> Fetch by unique call Sid for the recording </param>
+        /// <param name="pathConferenceSid"> Fetch by unique conference Sid for the recording </param>
         /// <param name="pathSid"> Fetch by unique recording Sid </param>
-        public FetchRecordingOptions(string pathCallSid, string pathSid)
+        public FetchRecordingOptions(string pathConferenceSid, string pathSid)
         {
-            PathCallSid = pathCallSid;
+            PathConferenceSid = pathConferenceSid;
             PathSid = pathSid;
         }
 
@@ -199,9 +110,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Delete by unique call Sid for the recording
+        /// Fetch by unique conference Sid for the recording
         /// </summary>
-        public string PathCallSid { get; }
+        public string PathConferenceSid { get; }
         /// <summary>
         /// Delete by unique recording Sid
         /// </summary>
@@ -210,11 +121,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new DeleteRecordingOptions
         /// </summary>
-        /// <param name="pathCallSid"> Delete by unique call Sid for the recording </param>
+        /// <param name="pathConferenceSid"> Fetch by unique conference Sid for the recording </param>
         /// <param name="pathSid"> Delete by unique recording Sid </param>
-        public DeleteRecordingOptions(string pathCallSid, string pathSid)
+        public DeleteRecordingOptions(string pathConferenceSid, string pathSid)
         {
-            PathCallSid = pathCallSid;
+            PathConferenceSid = pathConferenceSid;
             PathSid = pathSid;
         }
 
@@ -238,9 +149,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The call_sid
+        /// The conference_sid
         /// </summary>
-        public string PathCallSid { get; }
+        public string PathConferenceSid { get; }
         /// <summary>
         /// Filter by date created
         /// </summary>
@@ -257,10 +168,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new ReadRecordingOptions
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        public ReadRecordingOptions(string pathCallSid)
+        /// <param name="pathConferenceSid"> The conference_sid </param>
+        public ReadRecordingOptions(string pathConferenceSid)
         {
-            PathCallSid = pathCallSid;
+            PathConferenceSid = pathConferenceSid;
         }
 
         /// <summary>

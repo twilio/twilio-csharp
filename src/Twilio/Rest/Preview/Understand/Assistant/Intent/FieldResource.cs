@@ -287,7 +287,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
-        /// <param name="fieldType"> The unique name or sid of the FieldType </param>
+        /// <param name="fieldType"> The unique name or sid of the FieldType. It can be any Built-in Field Type or the
+        ///                 unique_name or sid of a custom Field Type. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -308,7 +309,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathIntentSid"> The intent_sid </param>
-        /// <param name="fieldType"> The unique name or sid of the FieldType </param>
+        /// <param name="fieldType"> The unique name or sid of the FieldType. It can be any Built-in Field Type or the
+        ///                 unique_name or sid of a custom Field Type. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -434,7 +436,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The Field Type of this field. Can be the Field Type unique_name or the Field Type sid.
+        /// The Field Type of this field. It can be any Built-in Field Type or unique_name or the Field Type sid of a custom Field Type.
         /// </summary>
         [JsonProperty("field_type")]
         public string FieldType { get; private set; }

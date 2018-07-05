@@ -21,6 +21,81 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Call
     public class RecordingTest : TwilioTest 
     {
         [Test]
+        public void TestCreateRequest()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            var request = new Request(
+                HttpMethod.Post,
+                Twilio.Rest.Domain.Api,
+                "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Recordings.json",
+                ""
+            );
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
+
+            try
+            {
+                RecordingResource.Create("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            }
+            catch (ApiException) {}
+            twilioRestClient.Received().Request(request);
+        }
+
+        [Test]
+        public void TestCreateResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"conference_sid\": null,\"channels\": 2,\"date_created\": \"Fri, 14 Oct 2016 21:56:34 +0000\",\"date_updated\": \"Fri, 14 Oct 2016 21:56:34 +0000\",\"start_time\": \"Fri, 14 Oct 2016 21:56:34 +0000\",\"end_time\": null,\"price\": null,\"price_unit\": null,\"duration\": \"-1\",\"sid\": \"REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"source\": \"StartCallRecordingAPI\",\"status\": \"in-progress\",\"error_code\": null,\"encryption_details\": null,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
+                                     ));
+
+            var response = RecordingResource.Create("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestUpdateRequest()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            var request = new Request(
+                HttpMethod.Post,
+                Twilio.Rest.Domain.Api,
+                "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Recordings/REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json",
+                ""
+            );
+            request.AddPostParam("Status", Serialize(RecordingResource.StatusEnum.InProgress));
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
+
+            try
+            {
+                RecordingResource.Update("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", RecordingResource.StatusEnum.InProgress, client: twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            }
+            catch (ApiException) {}
+            twilioRestClient.Received().Request(request);
+        }
+
+        [Test]
+        public void TestUpdateResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"conference_sid\": null,\"channels\": 2,\"date_created\": \"Fri, 14 Oct 2016 21:56:34 +0000\",\"date_updated\": \"Fri, 14 Oct 2016 21:56:34 +0000\",\"start_time\": \"Fri, 14 Oct 2016 21:56:34 +0000\",\"end_time\": null,\"price\": null,\"price_unit\": null,\"duration\": \"-1\",\"sid\": \"REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"source\": \"StartCallRecordingAPI\",\"status\": \"paused\",\"error_code\": null,\"encryption_details\": null,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Calls/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recordings/REaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
+                                     ));
+
+            var response = RecordingResource.Update("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "REXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", RecordingResource.StatusEnum.InProgress, client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
         public void TestFetchRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();

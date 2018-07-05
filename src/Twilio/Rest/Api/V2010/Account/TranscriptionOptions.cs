@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
-    /// Fetch and instance of a Transcription
+    /// Fetch an instance of a Transcription
     /// </summary>
     public class FetchTranscriptionOptions : IOptions<TranscriptionResource> 
     {
@@ -21,14 +21,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique transcription Sid
+        /// Fetch by unique transcription SID
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchTranscriptionOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique transcription Sid </param>
+        /// <param name="pathSid"> Fetch by unique transcription SID </param>
         public FetchTranscriptionOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -54,14 +54,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Delete by unique transcription Sid
+        /// Delete by unique transcription SID
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteTranscriptionOptions
         /// </summary>
-        /// <param name="pathSid"> Delete by unique transcription Sid </param>
+        /// <param name="pathSid"> Delete by unique transcription SID </param>
         public DeleteTranscriptionOptions(string pathSid)
         {
             PathSid = pathSid;

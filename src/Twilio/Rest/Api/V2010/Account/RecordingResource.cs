@@ -404,6 +404,11 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
+        /// The start time of the recording, given in RFC 2822 format.
+        /// </summary>
+        [JsonProperty("start_time")]
+        public DateTime? StartTime { get; private set; }
+        /// <summary>
         /// The length of the recording, in seconds.
         /// </summary>
         [JsonProperty("duration")]

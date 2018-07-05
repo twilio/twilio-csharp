@@ -143,8 +143,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="language"> An ISO language-country string of the sample. </param>
         /// <param name="modelBuild"> The Model Build Sid or unique name of the Model Build to be queried. </param>
-        /// <param name="status"> A string that described the query status. The values can be: to_review, reviewed, discarded
-        ///              </param>
+        /// <param name="status"> A string that described the query status. The values can be: pending_review, reviewed,
+        ///              discarded </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -168,8 +168,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="language"> An ISO language-country string of the sample. </param>
         /// <param name="modelBuild"> The Model Build Sid or unique name of the Model Build to be queried. </param>
-        /// <param name="status"> A string that described the query status. The values can be: to_review, reviewed, discarded
-        ///              </param>
+        /// <param name="status"> A string that described the query status. The values can be: pending_review, reviewed,
+        ///              discarded </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -386,8 +386,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="sampleSid"> The sample_sid </param>
-        /// <param name="status"> A string that described the query status. The values can be: to_review, reviewed, discarded
-        ///              </param>
+        /// <param name="status"> A string that described the query status. The values can be: pending_review, reviewed,
+        ///              discarded </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
         public static QueryResource Update(string pathAssistantSid, 
@@ -407,8 +407,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="sampleSid"> The sample_sid </param>
-        /// <param name="status"> A string that described the query status. The values can be: to_review, reviewed, discarded
-        ///              </param>
+        /// <param name="status"> A string that described the query status. The values can be: pending_review, reviewed,
+        ///              discarded </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
         public static async System.Threading.Tasks.Task<QueryResource> UpdateAsync(string pathAssistantSid, 
@@ -541,7 +541,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         [JsonProperty("model_build_sid")]
         public string ModelBuildSid { get; private set; }
         /// <summary>
-        /// The query
+        /// The end-user's natural language input.
         /// </summary>
         [JsonProperty("query")]
         public string Query { get; private set; }
@@ -561,7 +561,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A string that described the query status. The values can be: to_review, reviewed, discarded
+        /// A string that described the query status. The values can be: pending_review, reviewed, discarded
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }
@@ -571,7 +571,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The source_channel
+        /// The communication channel where this end-user input came from
         /// </summary>
         [JsonProperty("source_channel")]
         public string SourceChannel { get; private set; }

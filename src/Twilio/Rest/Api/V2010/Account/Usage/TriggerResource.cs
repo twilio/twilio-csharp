@@ -221,8 +221,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum TwilioInterconnect = new UsageCategoryEnum("twilio-interconnect");
             public static readonly UsageCategoryEnum VideoRecordings = new UsageCategoryEnum("video-recordings");
             public static readonly UsageCategoryEnum VoiceInsights = new UsageCategoryEnum("voice-insights");
-            public static readonly UsageCategoryEnum VoiceInsightsAudioTrace = new UsageCategoryEnum("voice-insights-audio-trace");
-            public static readonly UsageCategoryEnum VoiceInsightsCarrierCalls = new UsageCategoryEnum("voice-insights-carrier-calls");
+            public static readonly UsageCategoryEnum VoiceInsightsClientInsightsOnDemandMinute = new UsageCategoryEnum("voice-insights-client-insights-on-demand-minute");
+            public static readonly UsageCategoryEnum VoiceInsightsPtsnInsightsOnDemandMinute = new UsageCategoryEnum("voice-insights-ptsn-insights-on-demand-minute");
+            public static readonly UsageCategoryEnum VoiceInsightsSipInterfaceInsightsOnDemandMinute = new UsageCategoryEnum("voice-insights-sip-interface-insights-on-demand-minute");
+            public static readonly UsageCategoryEnum VoiceInsightsSipTrunkingInsightsOnDemandMinute = new UsageCategoryEnum("voice-insights-sip-trunking-insights-on-demand-minute");
             public static readonly UsageCategoryEnum Wireless = new UsageCategoryEnum("wireless");
             public static readonly UsageCategoryEnum WirelessOrders = new UsageCategoryEnum("wireless-orders");
             public static readonly UsageCategoryEnum WirelessOrdersArtwork = new UsageCategoryEnum("wireless-orders-artwork");

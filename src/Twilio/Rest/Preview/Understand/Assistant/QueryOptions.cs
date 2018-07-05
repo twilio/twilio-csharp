@@ -70,7 +70,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         public string ModelBuild { get; set; }
         /// <summary>
-        /// A string that described the query status. The values can be: to_review, reviewed, discarded
+        /// A string that described the query status. The values can be: pending_review, reviewed, discarded
         /// </summary>
         public string Status { get; set; }
 
@@ -216,7 +216,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         public string SampleSid { get; set; }
         /// <summary>
-        /// A string that described the query status. The values can be: to_review, reviewed, discarded
+        /// A string that described the query status. The values can be: pending_review, reviewed, discarded
         /// </summary>
         public string Status { get; set; }
 

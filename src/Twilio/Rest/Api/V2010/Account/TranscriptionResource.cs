@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// Fetch and instance of a Transcription
+        /// Fetch an instance of a Transcription
         /// </summary>
         /// <param name="options"> Fetch Transcription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -61,7 +61,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Fetch and instance of a Transcription
+        /// Fetch an instance of a Transcription
         /// </summary>
         /// <param name="options"> Fetch Transcription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -76,9 +76,9 @@ namespace Twilio.Rest.Api.V2010.Account
         #endif
 
         /// <summary>
-        /// Fetch and instance of a Transcription
+        /// Fetch an instance of a Transcription
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique transcription Sid </param>
+        /// <param name="pathSid"> Fetch by unique transcription SID </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcription </returns> 
@@ -92,9 +92,9 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Fetch and instance of a Transcription
+        /// Fetch an instance of a Transcription
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique transcription Sid </param>
+        /// <param name="pathSid"> Fetch by unique transcription SID </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns> 
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete a transcription from the account used to make the request
         /// </summary>
-        /// <param name="pathSid"> Delete by unique transcription Sid </param>
+        /// <param name="pathSid"> Delete by unique transcription SID </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcription </returns> 
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete a transcription from the account used to make the request
         /// </summary>
-        /// <param name="pathSid"> Delete by unique transcription Sid </param>
+        /// <param name="pathSid"> Delete by unique transcription SID </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns> 
