@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using NUnit.Framework;
 using Twilio.Security;
 
@@ -8,67 +7,68 @@ namespace Twilio.Tests.Security
     [TestFixture]
     public class RequestValidatorTest
     {
-        private readonly string url = "https://mycompany.com/myapp.php?foo=1&bar=2";
-        private readonly string body = "{\"property\": \"value\", \"boolean\": true}";
-        private readonly string bodySignature = "Ch/3Y02as7ldtcmi3+lBbkFQKyg6gMfPGWMmMvluZiA=";
-        private NameValueCollection parameters = new NameValueCollection();
-        private RequestValidator validator = new RequestValidator("12345");
+        private const string Url = "https://mycompany.com/myapp.php?foo=1&bar=2";
+        private const string Body = "{\"property\": \"value\", \"boolean\": true}";
+        private const string BodyHash = "Ch/3Y02as7ldtcmi3+lBbkFQKyg6gMfPGWMmMvluZiA=";
+        private const string BodyHashEncoded = "Ch/3Y02as7ldtcmi3%2BlBbkFQKyg6gMfPGWMmMvluZiA%3D";
+        private readonly NameValueCollection _parameters = new NameValueCollection();
+        private readonly RequestValidator _validator = new RequestValidator("12345");
 
         public RequestValidatorTest()
         {
             // Intentionally out of alphabetical order
-            parameters.Add("CallSid", "CA1234567890ABCDE");
-            parameters.Add("From", "+14158675309");
-            parameters.Add("Digits", "1234");
-            parameters.Add("To", "+18005551212");
-            parameters.Add("Caller", "+14158675309");
+            _parameters.Add("CallSid", "CA1234567890ABCDE");
+            _parameters.Add("From", "+14158675309");
+            _parameters.Add("Digits", "1234");
+            _parameters.Add("To", "+18005551212");
+            _parameters.Add("Caller", "+14158675309");
         }
 
         [Test]
         public void TestValidateDictionary()
         {
-            var dict = new Dictionary<string, string>();
-            foreach (var k in parameters.AllKeys)
-            {
-                dict.Add(k, parameters[k]);
-            }
-
             const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
-            Assert.IsTrue(validator.Validate(url, parameters, signature), "Request does not match provided signature");
+            Assert.IsTrue(_validator.Validate(Url, _parameters, signature), "Request does not match provided signature");
         }
 
         [Test]
         public void TestValidateFailsWhenIncorrect()
         {
             const string signature = "NOTRSOYDt4T1cUTdK1PDd93/VVr8B8=";
-            Assert.IsFalse(validator.Validate(url, parameters, signature), "Request should have failed validation but didn't");
+            Assert.IsFalse(_validator.Validate(Url, _parameters, signature), "Request should have failed validation but didn't");
         }
 
         [Test]
         public void TestValidateCollection()
         {
             const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
-            Assert.IsTrue(validator.Validate(url, parameters, signature), "Request does not match provided signature");
+            Assert.IsTrue(_validator.Validate(Url, _parameters, signature), "Request does not match provided signature");
         }
 
         [Test]
         public void TestValidateBody()
         {
-            Assert.IsTrue(validator.ValidateBody(body, bodySignature), "Request body validation failed");
+            Assert.IsTrue(_validator.ValidateBody(Body, BodyHash), "Request body validation failed");
         }
 
         [Test]
         public void TestValidateWithBody()
         {
-            parameters.Add("bodySHA256", bodySignature);
+            const string url = Url + "&bodySHA256=" + BodyHashEncoded;
+            Assert.IsTrue(_validator.Validate(url, Body, "afcFvPLPYT8mg/JyIVkdnqQKa2s="), "Request signature or body validation failed");
+        }
 
-            Assert.IsTrue(validator.Validate(url, parameters, body, "lhN9sMASXtkij921mMLP/O8yo04="), "Request signature or body validation failed");
+        [Test]
+        public void TestValidateWithOnlyHash()
+        {
+            const string url = "https://mycompany.com/myapp.php?bodySHA256=" + BodyHashEncoded;
+            Assert.IsTrue(_validator.Validate(url, Body, "DXnNFCj8DJ/hZmiSg4UzaDHw5Og="), "Request signature or body validation failed");
         }
 
         [Test]
         public void TestValidateWithBodyWithoutSignature()
         {
-            Assert.IsFalse(validator.Validate(url, parameters, body, "RSOYDt4T1cUTdK1PDd93/VVr8B8="), "Request signature or body validation failed");
+            Assert.IsFalse(_validator.Validate(Url, Body, "RSOYDt4T1cUTdK1PDd93/VVr8B8="), "Request signature or body validation failed");
         }
     }
 }
