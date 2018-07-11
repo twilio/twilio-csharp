@@ -70,6 +70,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// The ip_address
         /// </summary>
         public string IpAddress { get; }
+        /// <summary>
+        /// The cidr_prefix_length
+        /// </summary>
+        public int? CidrPrefixLength { get; set; }
 
         /// <summary>
         /// Construct a new CreateIpAddressOptions
@@ -98,6 +102,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             if (IpAddress != null)
             {
                 p.Add(new KeyValuePair<string, string>("IpAddress", IpAddress));
+            }
+
+            if (CidrPrefixLength != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CidrPrefixLength", CidrPrefixLength.Value.ToString()));
             }
 
             return p;
@@ -168,6 +177,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The cidr_prefix_length
+        /// </summary>
+        public int? CidrPrefixLength { get; set; }
 
         /// <summary>
         /// Construct a new UpdateIpAddressOptions
@@ -194,6 +207,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (CidrPrefixLength != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CidrPrefixLength", CidrPrefixLength.Value.ToString()));
             }
 
             return p;

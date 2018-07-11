@@ -116,4 +116,39 @@ namespace Twilio.Rest.Video.V1.Room
         }
     }
 
+    /// <summary>
+    /// DeleteRoomRecordingOptions
+    /// </summary>
+    public class DeleteRoomRecordingOptions : IOptions<RoomRecordingResource> 
+    {
+        /// <summary>
+        /// The room_sid
+        /// </summary>
+        public string PathRoomSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteRoomRecordingOptions
+        /// </summary>
+        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteRoomRecordingOptions(string pathRoomSid, string pathSid)
+        {
+            PathRoomSid = pathRoomSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }

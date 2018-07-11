@@ -158,6 +158,8 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="email"> Email. </param>
         /// <param name="ccEmails"> A list of emails. </param>
         /// <param name="status"> The Status of this AuthorizationDocument. </param>
+        /// <param name="contactTitle"> Title of signee of this Authorization Document. </param>
+        /// <param name="contactPhoneNumber"> Authorization Document's signee's phone number. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthorizationDocument </returns> 
         public static AuthorizationDocumentResource Update(string pathSid, 
@@ -166,9 +168,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                            string email = null, 
                                                            List<string> ccEmails = null, 
                                                            AuthorizationDocumentResource.StatusEnum status = null, 
+                                                           string contactTitle = null, 
+                                                           string contactPhoneNumber = null, 
                                                            ITwilioRestClient client = null)
         {
-            var options = new UpdateAuthorizationDocumentOptions(pathSid){HostedNumberOrderSids = hostedNumberOrderSids, AddressSid = addressSid, Email = email, CcEmails = ccEmails, Status = status};
+            var options = new UpdateAuthorizationDocumentOptions(pathSid){HostedNumberOrderSids = hostedNumberOrderSids, AddressSid = addressSid, Email = email, CcEmails = ccEmails, Status = status, ContactTitle = contactTitle, ContactPhoneNumber = contactPhoneNumber};
             return Update(options, client);
         }
 
@@ -182,6 +186,8 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="email"> Email. </param>
         /// <param name="ccEmails"> A list of emails. </param>
         /// <param name="status"> The Status of this AuthorizationDocument. </param>
+        /// <param name="contactTitle"> Title of signee of this Authorization Document. </param>
+        /// <param name="contactPhoneNumber"> Authorization Document's signee's phone number. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns> 
         public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> UpdateAsync(string pathSid, 
@@ -190,9 +196,11 @@ namespace Twilio.Rest.Preview.HostedNumbers
                                                                                                    string email = null, 
                                                                                                    List<string> ccEmails = null, 
                                                                                                    AuthorizationDocumentResource.StatusEnum status = null, 
+                                                                                                   string contactTitle = null, 
+                                                                                                   string contactPhoneNumber = null, 
                                                                                                    ITwilioRestClient client = null)
         {
-            var options = new UpdateAuthorizationDocumentOptions(pathSid){HostedNumberOrderSids = hostedNumberOrderSids, AddressSid = addressSid, Email = email, CcEmails = ccEmails, Status = status};
+            var options = new UpdateAuthorizationDocumentOptions(pathSid){HostedNumberOrderSids = hostedNumberOrderSids, AddressSid = addressSid, Email = email, CcEmails = ccEmails, Status = status, ContactTitle = contactTitle, ContactPhoneNumber = contactPhoneNumber};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -390,16 +398,20 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids. </param>
         /// <param name="addressSid"> Address sid. </param>
         /// <param name="email"> Email. </param>
+        /// <param name="contactTitle"> Title of signee of this Authorization Document. </param>
+        /// <param name="contactPhoneNumber"> Authorization Document's signee's phone number. </param>
         /// <param name="ccEmails"> A list of emails. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthorizationDocument </returns> 
         public static AuthorizationDocumentResource Create(List<string> hostedNumberOrderSids, 
                                                            string addressSid, 
                                                            string email, 
+                                                           string contactTitle, 
+                                                           string contactPhoneNumber, 
                                                            List<string> ccEmails = null, 
                                                            ITwilioRestClient client = null)
         {
-            var options = new CreateAuthorizationDocumentOptions(hostedNumberOrderSids, addressSid, email){CcEmails = ccEmails};
+            var options = new CreateAuthorizationDocumentOptions(hostedNumberOrderSids, addressSid, email, contactTitle, contactPhoneNumber){CcEmails = ccEmails};
             return Create(options, client);
         }
 
@@ -410,16 +422,20 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids. </param>
         /// <param name="addressSid"> Address sid. </param>
         /// <param name="email"> Email. </param>
+        /// <param name="contactTitle"> Title of signee of this Authorization Document. </param>
+        /// <param name="contactPhoneNumber"> Authorization Document's signee's phone number. </param>
         /// <param name="ccEmails"> A list of emails. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizationDocument </returns> 
         public static async System.Threading.Tasks.Task<AuthorizationDocumentResource> CreateAsync(List<string> hostedNumberOrderSids, 
                                                                                                    string addressSid, 
                                                                                                    string email, 
+                                                                                                   string contactTitle, 
+                                                                                                   string contactPhoneNumber, 
                                                                                                    List<string> ccEmails = null, 
                                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateAuthorizationDocumentOptions(hostedNumberOrderSids, addressSid, email){CcEmails = ccEmails};
+            var options = new CreateAuthorizationDocumentOptions(hostedNumberOrderSids, addressSid, email, contactTitle, contactPhoneNumber){CcEmails = ccEmails};
             return await CreateAsync(options, client);
         }
         #endif

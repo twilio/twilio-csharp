@@ -76,6 +76,14 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// The Status of this AuthorizationDocument.
         /// </summary>
         public AuthorizationDocumentResource.StatusEnum Status { get; set; }
+        /// <summary>
+        /// Title of signee of this Authorization Document.
+        /// </summary>
+        public string ContactTitle { get; set; }
+        /// <summary>
+        /// Authorization Document's signee's phone number.
+        /// </summary>
+        public string ContactPhoneNumber { get; set; }
 
         /// <summary>
         /// Construct a new UpdateAuthorizationDocumentOptions
@@ -117,6 +125,16 @@ namespace Twilio.Rest.Preview.HostedNumbers
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            if (ContactTitle != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContactTitle", ContactTitle));
+            }
+
+            if (ContactPhoneNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContactPhoneNumber", ContactPhoneNumber));
             }
 
             return p;
@@ -186,6 +204,14 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// </summary>
         public string Email { get; }
         /// <summary>
+        /// Title of signee of this Authorization Document.
+        /// </summary>
+        public string ContactTitle { get; }
+        /// <summary>
+        /// Authorization Document's signee's phone number.
+        /// </summary>
+        public string ContactPhoneNumber { get; }
+        /// <summary>
         /// A list of emails.
         /// </summary>
         public List<string> CcEmails { get; set; }
@@ -196,11 +222,19 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="hostedNumberOrderSids"> A list of HostedNumberOrder sids. </param>
         /// <param name="addressSid"> Address sid. </param>
         /// <param name="email"> Email. </param>
-        public CreateAuthorizationDocumentOptions(List<string> hostedNumberOrderSids, string addressSid, string email)
+        /// <param name="contactTitle"> Title of signee of this Authorization Document. </param>
+        /// <param name="contactPhoneNumber"> Authorization Document's signee's phone number. </param>
+        public CreateAuthorizationDocumentOptions(List<string> hostedNumberOrderSids, 
+                                                  string addressSid, 
+                                                  string email, 
+                                                  string contactTitle, 
+                                                  string contactPhoneNumber)
         {
             HostedNumberOrderSids = hostedNumberOrderSids;
             AddressSid = addressSid;
             Email = email;
+            ContactTitle = contactTitle;
+            ContactPhoneNumber = contactPhoneNumber;
             CcEmails = new List<string>();
         }
 
@@ -223,6 +257,16 @@ namespace Twilio.Rest.Preview.HostedNumbers
             if (Email != null)
             {
                 p.Add(new KeyValuePair<string, string>("Email", Email));
+            }
+
+            if (ContactTitle != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContactTitle", ContactTitle));
+            }
+
+            if (ContactPhoneNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContactPhoneNumber", ContactPhoneNumber));
             }
 
             if (CcEmails != null)

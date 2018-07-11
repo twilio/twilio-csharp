@@ -304,6 +304,76 @@ namespace Twilio.Rest.Video.V1.Room
             return Page<RoomRecordingResource>.FromJson("recordings", response.Content);
         }
 
+        private static Request BuildDeleteRequest(DeleteRoomRecordingOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Video,
+                "/v1/Rooms/" + options.PathRoomSid + "/Recordings/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="options"> Delete RoomRecording parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RoomRecording </returns> 
+        public static bool Delete(DeleteRoomRecordingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="options"> Delete RoomRecording parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RoomRecording </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRoomRecordingOptions options, 
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of RoomRecording </returns> 
+        public static bool Delete(string pathRoomSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteRoomRecordingOptions(pathRoomSid, pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of RoomRecording </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathRoomSid, 
+                                                                          string pathSid, 
+                                                                          ITwilioRestClient client = null)
+        {
+            var options = new DeleteRoomRecordingOptions(pathRoomSid, pathSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a RoomRecordingResource object
         /// </summary>

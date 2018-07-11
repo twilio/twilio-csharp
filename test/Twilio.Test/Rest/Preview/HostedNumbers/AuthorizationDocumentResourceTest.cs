@@ -156,11 +156,13 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
             request.AddPostParam("HostedNumberOrderSids", Serialize("HostedNumberOrderSids"));
             request.AddPostParam("AddressSid", Serialize("ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
             request.AddPostParam("Email", Serialize("Email"));
+            request.AddPostParam("ContactTitle", Serialize("ContactTitle"));
+            request.AddPostParam("ContactPhoneNumber", Serialize("ContactPhoneNumber"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                AuthorizationDocumentResource.Create(Promoter.ListOfOne("HostedNumberOrderSids"), "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Email", client: twilioRestClient);
+                AuthorizationDocumentResource.Create(Promoter.ListOfOne("HostedNumberOrderSids"), "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Email", "ContactTitle", "ContactPhoneNumber", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -178,7 +180,7 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
                                          "{\"address_sid\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"cc_emails\": [\"test1@twilio.com\",\"test2@twilio.com\"],\"date_created\": \"2017-03-28T20:06:39Z\",\"date_updated\": \"2017-03-28T20:06:39Z\",\"email\": \"test+hosted@twilio.com\",\"links\": {\"dependent_hosted_number_orders\": \"https://preview.twilio.com/HostedNumbers/AuthorizationDocuments/PXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/DependentHostedNumberOrders\"},\"sid\": \"PXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"signing\",\"url\": \"https://preview.twilio.com/HostedNumbers/AuthorizationDocuments/PXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = AuthorizationDocumentResource.Create(Promoter.ListOfOne("HostedNumberOrderSids"), "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Email", client: twilioRestClient);
+            var response = AuthorizationDocumentResource.Create(Promoter.ListOfOne("HostedNumberOrderSids"), "ADXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Email", "ContactTitle", "ContactPhoneNumber", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

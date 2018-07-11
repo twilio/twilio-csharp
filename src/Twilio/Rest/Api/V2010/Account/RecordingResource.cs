@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of a recording
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique recording Sid </param>
+        /// <param name="pathSid"> Fetch by unique recording SID </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of a recording
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique recording Sid </param>
+        /// <param name="pathSid"> Fetch by unique recording SID </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete a recording from your account
         /// </summary>
-        /// <param name="pathSid"> Delete by unique recording Sid </param>
+        /// <param name="pathSid"> Delete by unique recording SID </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete a recording from your account
         /// </summary>
-        /// <param name="pathSid"> Delete by unique recording Sid </param>
+        /// <param name="pathSid"> Delete by unique recording SID </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
@@ -374,7 +374,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The unique SID that identifies this account
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
@@ -384,12 +384,12 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// The unique id for the call leg that corresponds to the recording.
+        /// The unique ID for the call leg that corresponds to the recording.
         /// </summary>
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
         /// <summary>
-        /// The unique id for the conference associated with the recording, if a conference recording.
+        /// The unique ID for the conference associated with the recording.
         /// </summary>
         [JsonProperty("conference_sid")]
         public string ConferenceSid { get; private set; }
@@ -404,12 +404,12 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The start time of the recording, given in RFC 2822 format.
+        /// The start time of the recording, in RFC 2822 format.
         /// </summary>
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
         /// <summary>
-        /// The length of the recording, in seconds.
+        /// The length of the recording in seconds.
         /// </summary>
         [JsonProperty("duration")]
         public string Duration { get; private set; }

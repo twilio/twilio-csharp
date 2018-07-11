@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The call_sid
+        /// Fetch by unique participant Call SID
         /// </summary>
         public string PathCallSid { get; }
 
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new FetchParticipantOptions
         /// </summary>
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathCallSid"> Fetch by unique participant Call SID </param>
         public FetchParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
             PathConferenceSid = pathConferenceSid;
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The call_sid
+        /// Update a participant by their Call SID
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new UpdateParticipantOptions
         /// </summary>
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathCallSid"> Update a participant by their Call SID </param>
         public UpdateParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
             PathConferenceSid = pathConferenceSid;
@@ -158,115 +158,115 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// number, client id
+        /// The `from` phone number used to invite a participant.
         /// </summary>
         public Types.PhoneNumber From { get; }
         /// <summary>
-        /// number, client id, sip address
+        /// The number, client id, or sip address of the new participant.
         /// </summary>
         public Types.PhoneNumber To { get; }
         /// <summary>
-        /// absolute url
+        /// URL for conference event callback.
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// GET, POST
+        /// Method Twilio should use to reach the status callback URL.
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// initiated, ringing, answered, completed
+        /// Set state change events that will trigger a callback.
         /// </summary>
         public List<string> StatusCallbackEvent { get; set; }
         /// <summary>
-        /// 5-600
+        /// Number of seconds Twilio will wait for an answer.
         /// </summary>
         public int? Timeout { get; set; }
         /// <summary>
-        /// true, false
+        /// Record the agent and their conferences.
         /// </summary>
         public bool? Record { get; set; }
         /// <summary>
-        /// true, false
+        /// Mute the agent.
         /// </summary>
         public bool? Muted { get; set; }
         /// <summary>
-        /// true, false, onEnter, onExit
+        /// Play a beep when the participant joins the conference.
         /// </summary>
         public string Beep { get; set; }
         /// <summary>
-        /// true, false
+        /// Begin the conference when the participant joins.
         /// </summary>
         public bool? StartConferenceOnEnter { get; set; }
         /// <summary>
-        /// true, false
+        /// End the conference when the participant leaves.
         /// </summary>
         public bool? EndConferenceOnExit { get; set; }
         /// <summary>
-        /// absolute url
+        /// URL that hosts pre-conference hold music
         /// </summary>
         public Uri WaitUrl { get; set; }
         /// <summary>
-        /// GET, POST
+        /// The method Twilio should use to request `WaitUrl`.
         /// </summary>
         public Twilio.Http.HttpMethod WaitMethod { get; set; }
         /// <summary>
-        /// true, false
+        /// Agents can hear the state of the outbound call.
         /// </summary>
         public bool? EarlyMedia { get; set; }
         /// <summary>
-        /// 2-10
+        /// Maximum number of agent conference participants.
         /// </summary>
         public int? MaxParticipants { get; set; }
         /// <summary>
-        /// true, false, record-from-start, do-not-record
+        /// Record the conference.
         /// </summary>
         public string ConferenceRecord { get; set; }
         /// <summary>
-        /// trim-silence or do-not-trim
+        /// Trim silence from audio files.
         /// </summary>
         public string ConferenceTrim { get; set; }
         /// <summary>
-        /// absolute url
+        /// Callback URL for conference events.
         /// </summary>
         public Uri ConferenceStatusCallback { get; set; }
         /// <summary>
-        /// GET, POST
+        /// HTTP method for requesting `ConferenceStatusCallback` URL.
         /// </summary>
         public Twilio.Http.HttpMethod ConferenceStatusCallbackMethod { get; set; }
         /// <summary>
-        /// start end join leave mute hold speaker
+        /// Set which conference state changes should webhook to the `ConferenceStatusCallback`
         /// </summary>
         public List<string> ConferenceStatusCallbackEvent { get; set; }
         /// <summary>
-        /// mono, dual
+        /// Specify `mono` or `dual` recording channels.
         /// </summary>
         public string RecordingChannels { get; set; }
         /// <summary>
-        /// absolute url
+        /// The absolute URL for Twilio's webhook with recording status information.
         /// </summary>
         public Uri RecordingStatusCallback { get; set; }
         /// <summary>
-        /// GET, POST
+        /// HTTP method for `RecordingStatusCallback`
         /// </summary>
         public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
         /// <summary>
-        /// sip username
+        /// SIP username used for authenticating.
         /// </summary>
         public string SipAuthUsername { get; set; }
         /// <summary>
-        /// sip password
+        /// SIP password for authentication.
         /// </summary>
         public string SipAuthPassword { get; set; }
         /// <summary>
-        /// us1, ie1, de1, sg1, br1, au1, jp1
+        /// The region where Twilio should mix the conference audio.
         /// </summary>
         public string Region { get; set; }
         /// <summary>
-        /// absolute url
+        /// Conference recording callback URL.
         /// </summary>
         public Uri ConferenceRecordingStatusCallback { get; set; }
         /// <summary>
-        /// GET, POST
+        /// Method Twilio should use to request the `ConferenceRecordingStatusCallback` URL.
         /// </summary>
         public Twilio.Http.HttpMethod ConferenceRecordingStatusCallbackMethod { get; set; }
         /// <summary>
@@ -282,8 +282,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new CreateParticipantOptions
         /// </summary>
         /// <param name="pathConferenceSid"> The conference_sid </param>
-        /// <param name="from"> number, client id </param>
-        /// <param name="to"> number, client id, sip address </param>
+        /// <param name="from"> The `from` phone number used to invite a participant. </param>
+        /// <param name="to"> The number, client id, or sip address of the new participant. </param>
         public CreateParticipantOptions(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
         {
             PathConferenceSid = pathConferenceSid;
@@ -469,7 +469,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The call_sid
+        /// Delete by unique participant Call Sid
         /// </summary>
         public string PathCallSid { get; }
 
@@ -477,7 +477,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new DeleteParticipantOptions
         /// </summary>
         /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathCallSid"> Delete by unique participant Call Sid </param>
         public DeleteParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
             PathConferenceSid = pathConferenceSid;

@@ -210,15 +210,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="ipAddress"> The ip_address </param>
         /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="cidrPrefixLength"> The cidr_prefix_length </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAddress </returns> 
         public static IpAddressResource Create(string pathIpAccessControlListSid, 
                                                string friendlyName, 
                                                string ipAddress, 
                                                string pathAccountSid = null, 
+                                               int? cidrPrefixLength = null, 
                                                ITwilioRestClient client = null)
         {
-            var options = new CreateIpAddressOptions(pathIpAccessControlListSid, friendlyName, ipAddress){PathAccountSid = pathAccountSid};
+            var options = new CreateIpAddressOptions(pathIpAccessControlListSid, friendlyName, ipAddress){PathAccountSid = pathAccountSid, CidrPrefixLength = cidrPrefixLength};
             return Create(options, client);
         }
 
@@ -230,15 +232,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="ipAddress"> The ip_address </param>
         /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="cidrPrefixLength"> The cidr_prefix_length </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAddress </returns> 
         public static async System.Threading.Tasks.Task<IpAddressResource> CreateAsync(string pathIpAccessControlListSid, 
                                                                                        string friendlyName, 
                                                                                        string ipAddress, 
                                                                                        string pathAccountSid = null, 
+                                                                                       int? cidrPrefixLength = null, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateIpAddressOptions(pathIpAccessControlListSid, friendlyName, ipAddress){PathAccountSid = pathAccountSid};
+            var options = new CreateIpAddressOptions(pathIpAccessControlListSid, friendlyName, ipAddress){PathAccountSid = pathAccountSid, CidrPrefixLength = cidrPrefixLength};
             return await CreateAsync(options, client);
         }
         #endif
@@ -367,6 +371,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="ipAddress"> The ip_address </param>
         /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="cidrPrefixLength"> The cidr_prefix_length </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAddress </returns> 
         public static IpAddressResource Update(string pathIpAccessControlListSid, 
@@ -374,9 +379,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
                                                string pathAccountSid = null, 
                                                string ipAddress = null, 
                                                string friendlyName = null, 
+                                               int? cidrPrefixLength = null, 
                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateIpAddressOptions(pathIpAccessControlListSid, pathSid){PathAccountSid = pathAccountSid, IpAddress = ipAddress, FriendlyName = friendlyName};
+            var options = new UpdateIpAddressOptions(pathIpAccessControlListSid, pathSid){PathAccountSid = pathAccountSid, IpAddress = ipAddress, FriendlyName = friendlyName, CidrPrefixLength = cidrPrefixLength};
             return Update(options, client);
         }
 
@@ -389,6 +395,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="ipAddress"> The ip_address </param>
         /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="cidrPrefixLength"> The cidr_prefix_length </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAddress </returns> 
         public static async System.Threading.Tasks.Task<IpAddressResource> UpdateAsync(string pathIpAccessControlListSid, 
@@ -396,9 +403,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
                                                                                        string pathAccountSid = null, 
                                                                                        string ipAddress = null, 
                                                                                        string friendlyName = null, 
+                                                                                       int? cidrPrefixLength = null, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateIpAddressOptions(pathIpAccessControlListSid, pathSid){PathAccountSid = pathAccountSid, IpAddress = ipAddress, FriendlyName = friendlyName};
+            var options = new UpdateIpAddressOptions(pathIpAccessControlListSid, pathSid){PathAccountSid = pathAccountSid, IpAddress = ipAddress, FriendlyName = friendlyName, CidrPrefixLength = cidrPrefixLength};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -517,6 +525,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         /// </summary>
         [JsonProperty("ip_address")]
         public string IpAddress { get; private set; }
+        /// <summary>
+        /// An integer representing the length of the CIDR prefix to use with this IP address when accepting traffic. By default the entire IP address is used.
+        /// </summary>
+        [JsonProperty("cidr_prefix_length")]
+        public int? CidrPrefixLength { get; private set; }
         /// <summary>
         /// The ip_access_control_list_sid
         /// </summary>
