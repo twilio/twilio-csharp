@@ -25,8 +25,10 @@ docker-build:
 	docker build -t twilio/twilio-csharp .
 	docker tag twilio/twilio-csharp twilio/twilio-csharp:${TRAVIS_TAG}
 	docker tag twilio/twilio-csharp twilio/twilio-csharp:apidefs-${API_DEFINITIONS_SHA}
+	docker tag twilio/twilio-csharp twilio/twilio-csharp:latest
 
 docker-push:
 	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 	docker push twilio/twilio-csharp:${TRAVIS_TAG}
 	docker push twilio/twilio-csharp:apidefs-${API_DEFINITIONS_SHA}
+	docker push twilio/twilio-csharp:latest
