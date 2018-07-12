@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.6.0" />
     <PackageReference Include="NSubstitute" Version="2.0.0-rc" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
     <PackageReference Include="NUnitLite" Version="3.6.0" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">

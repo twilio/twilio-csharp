@@ -49,14 +49,20 @@ namespace Twilio.Security
             return SecureCompare(signature, expected);
         }
 
-        public bool Validate(string url, NameValueCollection parameters, string body, string expected)
+        public bool Validate(string url, string body, string expected)
         {
-            return Validate(url, ToDictionary(parameters), body, expected);
-        }
+            var paramString = new Uri(url).Query.TrimStart('?');
+            var bodyHash = "";
+            foreach (var param in paramString.Split('&'))
+            {
+                var split = param.Split('=');
+                if (split[0] == "bodySHA256")
+                {
+                    bodyHash = Uri.UnescapeDataString(split[1]);
+                }
+            }
 
-        public bool Validate(string url, IDictionary<string, string> parameters, string body, string expected)
-        {
-            return Validate(url, parameters, expected) && ValidateBody(body, parameters["bodySHA256"]);
+            return Validate(url, new Dictionary<string, string>(), expected) && ValidateBody(body, bodyHash);
         }
 
         public bool ValidateBody(string rawBody, string expected)
