@@ -67,6 +67,24 @@ namespace Twilio.Tests.TwiML
         }
 
         [Test]
+        public void TestNestElement()
+        {
+            var elem = new Gather();
+            var child = new Say();
+            elem.Nest(child).SsmlBreak();
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Gather>" + Environment.NewLine +
+                "  <Say>" + Environment.NewLine +
+                "    <break></break>" + Environment.NewLine +
+                "  </Say>" + Environment.NewLine +
+                "</Gather>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
         public void TestElementWithChildren()
         {
             var elem = new Gather();

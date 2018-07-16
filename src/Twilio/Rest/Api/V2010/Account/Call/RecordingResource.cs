@@ -106,7 +106,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
         /// <param name="trim"> Whether to trim the silence in the recording </param>
         /// <param name="recordingChannels"> The recording_channels </param>
-        /// <param name="playBeep"> Whether to play beeps for recording status changes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
         public static RecordingResource Create(string pathCallSid, 
@@ -116,10 +115,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
                                                string trim = null, 
                                                string recordingChannels = null, 
-                                               bool? playBeep = null, 
                                                ITwilioRestClient client = null)
         {
-            var options = new CreateRecordingOptions(pathCallSid){PathAccountSid = pathAccountSid, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, Trim = trim, RecordingChannels = recordingChannels, PlayBeep = playBeep};
+            var options = new CreateRecordingOptions(pathCallSid){PathAccountSid = pathAccountSid, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, Trim = trim, RecordingChannels = recordingChannels};
             return Create(options, client);
         }
 
@@ -134,7 +132,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
         /// <param name="trim"> Whether to trim the silence in the recording </param>
         /// <param name="recordingChannels"> The recording_channels </param>
-        /// <param name="playBeep"> Whether to play beeps for recording status changes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<RecordingResource> CreateAsync(string pathCallSid, 
@@ -144,10 +141,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                                                                                        Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
                                                                                        string trim = null, 
                                                                                        string recordingChannels = null, 
-                                                                                       bool? playBeep = null, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateRecordingOptions(pathCallSid){PathAccountSid = pathAccountSid, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, Trim = trim, RecordingChannels = recordingChannels, PlayBeep = playBeep};
+            var options = new CreateRecordingOptions(pathCallSid){PathAccountSid = pathAccountSid, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, Trim = trim, RecordingChannels = recordingChannels};
             return await CreateAsync(options, client);
         }
         #endif

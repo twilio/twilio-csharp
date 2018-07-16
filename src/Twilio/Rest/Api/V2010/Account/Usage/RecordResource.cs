@@ -315,11 +315,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The Account that accrued the usage </param>
         /// <param name="category"> Only include usage of a given category </param>
         /// <param name="startDate"> Filter by start date </param>
         /// <param name="endDate"> Filter by end date </param>
-        /// <param name="includeSubaccounts"> The include_subaccounts </param>
+        /// <param name="includeSubaccounts"> Include usage from the master account and all subaccounts </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -341,11 +341,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The Account that accrued the usage </param>
         /// <param name="category"> Only include usage of a given category </param>
         /// <param name="startDate"> Filter by start date </param>
         /// <param name="endDate"> Filter by end date </param>
-        /// <param name="includeSubaccounts"> The include_subaccounts </param>
+        /// <param name="includeSubaccounts"> Include usage from the master account and all subaccounts </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>

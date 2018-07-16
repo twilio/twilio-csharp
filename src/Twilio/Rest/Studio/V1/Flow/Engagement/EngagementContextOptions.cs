@@ -14,24 +14,24 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// FetchEngagementContextOptions
+    /// Retrieve the most recent context for an Engagement.
     /// </summary>
     public class FetchEngagementContextOptions : IOptions<EngagementContextResource> 
     {
         /// <summary>
-        /// The flow_sid
+        /// Flow Sid.
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// The engagement_sid
+        /// Engagement Sid.
         /// </summary>
         public string PathEngagementSid { get; }
 
         /// <summary>
         /// Construct a new FetchEngagementContextOptions
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathEngagementSid"> The engagement_sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathEngagementSid"> Engagement Sid. </param>
         public FetchEngagementContextOptions(string pathFlowSid, string pathEngagementSid)
         {
             PathFlowSid = pathFlowSid;

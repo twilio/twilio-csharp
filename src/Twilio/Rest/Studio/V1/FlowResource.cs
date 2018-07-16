@@ -48,7 +48,7 @@ namespace Twilio.Rest.Studio.V1
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Flows.
         /// </summary>
         /// <param name="options"> Read Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Studio.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Flows.
         /// </summary>
         /// <param name="options"> Read Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Studio.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Flows.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Studio.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Flows.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Studio.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Flow.
         /// </summary>
         /// <param name="options"> Fetch Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Studio.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Flow.
         /// </summary>
         /// <param name="options"> Fetch Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -212,9 +212,9 @@ namespace Twilio.Rest.Studio.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Flow.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Flow </returns> 
         public static FlowResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -225,9 +225,9 @@ namespace Twilio.Rest.Studio.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Flow.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns> 
         public static async System.Threading.Tasks.Task<FlowResource> FetchAsync(string pathSid, 
@@ -250,7 +250,7 @@ namespace Twilio.Rest.Studio.V1
         }
 
         /// <summary>
-        /// delete
+        /// Delete a specific Flow.
         /// </summary>
         /// <param name="options"> Delete Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -264,7 +264,7 @@ namespace Twilio.Rest.Studio.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a specific Flow.
         /// </summary>
         /// <param name="options"> Delete Flow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -279,9 +279,9 @@ namespace Twilio.Rest.Studio.V1
         #endif
 
         /// <summary>
-        /// delete
+        /// Delete a specific Flow.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Flow </returns> 
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -292,9 +292,9 @@ namespace Twilio.Rest.Studio.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a specific Flow.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -323,48 +323,48 @@ namespace Twilio.Rest.Studio.V1
         }
 
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this Flow.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account Sid.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable description of this resource.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The status
+        /// The Status of this Flow
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FlowResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The version
+        /// The latest version number of this Flow's definition.
         /// </summary>
         [JsonProperty("version")]
         public int? Version { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this Flow was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this Flow was updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// Nested resource URLs.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

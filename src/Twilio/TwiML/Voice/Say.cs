@@ -29,6 +29,58 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum Man = new VoiceEnum("man");
             public static readonly VoiceEnum Woman = new VoiceEnum("woman");
             public static readonly VoiceEnum Alice = new VoiceEnum("alice");
+            public static readonly VoiceEnum PollyGeraint = new VoiceEnum("Polly.Geraint");
+            public static readonly VoiceEnum PollyGwyneth = new VoiceEnum("Polly.Gwyneth");
+            public static readonly VoiceEnum PollyMads = new VoiceEnum("Polly.Mads");
+            public static readonly VoiceEnum PollyNaja = new VoiceEnum("Polly.Naja");
+            public static readonly VoiceEnum PollyHans = new VoiceEnum("Polly.Hans");
+            public static readonly VoiceEnum PollyMarlene = new VoiceEnum("Polly.Marlene");
+            public static readonly VoiceEnum PollyNicole = new VoiceEnum("Polly.Nicole");
+            public static readonly VoiceEnum PollyRussell = new VoiceEnum("Polly.Russell");
+            public static readonly VoiceEnum PollyAmy = new VoiceEnum("Polly.Amy");
+            public static readonly VoiceEnum PollyBrian = new VoiceEnum("Polly.Brian");
+            public static readonly VoiceEnum PollyEmma = new VoiceEnum("Polly.Emma");
+            public static readonly VoiceEnum PollyRaveena = new VoiceEnum("Polly.Raveena");
+            public static readonly VoiceEnum PollyIvy = new VoiceEnum("Polly.Ivy");
+            public static readonly VoiceEnum PollyJoanna = new VoiceEnum("Polly.Joanna");
+            public static readonly VoiceEnum PollyJoey = new VoiceEnum("Polly.Joey");
+            public static readonly VoiceEnum PollyJustin = new VoiceEnum("Polly.Justin");
+            public static readonly VoiceEnum PollyKendra = new VoiceEnum("Polly.Kendra");
+            public static readonly VoiceEnum PollyKimberly = new VoiceEnum("Polly.Kimberly");
+            public static readonly VoiceEnum PollyMatthew = new VoiceEnum("Polly.Matthew");
+            public static readonly VoiceEnum PollySalli = new VoiceEnum("Polly.Salli");
+            public static readonly VoiceEnum PollyConchita = new VoiceEnum("Polly.Conchita");
+            public static readonly VoiceEnum PollyEnrique = new VoiceEnum("Polly.Enrique");
+            public static readonly VoiceEnum PollyMiguel = new VoiceEnum("Polly.Miguel");
+            public static readonly VoiceEnum PollyPenelope = new VoiceEnum("Polly.Penelope");
+            public static readonly VoiceEnum PollyChantal = new VoiceEnum("Polly.Chantal");
+            public static readonly VoiceEnum PollyCeline = new VoiceEnum("Polly.Celine");
+            public static readonly VoiceEnum PollyMathieu = new VoiceEnum("Polly.Mathieu");
+            public static readonly VoiceEnum PollyDora = new VoiceEnum("Polly.Dora");
+            public static readonly VoiceEnum PollyKarl = new VoiceEnum("Polly.Karl");
+            public static readonly VoiceEnum PollyCarla = new VoiceEnum("Polly.Carla");
+            public static readonly VoiceEnum PollyGiorgio = new VoiceEnum("Polly.Giorgio");
+            public static readonly VoiceEnum PollyMizuki = new VoiceEnum("Polly.Mizuki");
+            public static readonly VoiceEnum PollyLiv = new VoiceEnum("Polly.Liv");
+            public static readonly VoiceEnum PollyLotte = new VoiceEnum("Polly.Lotte");
+            public static readonly VoiceEnum PollyRuben = new VoiceEnum("Polly.Ruben");
+            public static readonly VoiceEnum PollyEwa = new VoiceEnum("Polly.Ewa");
+            public static readonly VoiceEnum PollyJacek = new VoiceEnum("Polly.Jacek");
+            public static readonly VoiceEnum PollyJan = new VoiceEnum("Polly.Jan");
+            public static readonly VoiceEnum PollyMaja = new VoiceEnum("Polly.Maja");
+            public static readonly VoiceEnum PollyRicardo = new VoiceEnum("Polly.Ricardo");
+            public static readonly VoiceEnum PollyVitoria = new VoiceEnum("Polly.Vitoria");
+            public static readonly VoiceEnum PollyCristiano = new VoiceEnum("Polly.Cristiano");
+            public static readonly VoiceEnum PollyInes = new VoiceEnum("Polly.Ines");
+            public static readonly VoiceEnum PollyCarmen = new VoiceEnum("Polly.Carmen");
+            public static readonly VoiceEnum PollyMaxim = new VoiceEnum("Polly.Maxim");
+            public static readonly VoiceEnum PollyTatyana = new VoiceEnum("Polly.Tatyana");
+            public static readonly VoiceEnum PollyAstrid = new VoiceEnum("Polly.Astrid");
+            public static readonly VoiceEnum PollyFiliz = new VoiceEnum("Polly.Filiz");
+            public static readonly VoiceEnum PollyVicki = new VoiceEnum("Polly.Vicki");
+            public static readonly VoiceEnum PollyTakumi = new VoiceEnum("Polly.Takumi");
+            public static readonly VoiceEnum PollySeoyeon = new VoiceEnum("Polly.Seoyeon");
+            public static readonly VoiceEnum PollyAditi = new VoiceEnum("Polly.Aditi");
         }
 
         public sealed class LanguageEnum : StringEnum 
@@ -130,6 +182,222 @@ namespace Twilio.TwiML.Voice
                 attributes.Add(new XAttribute("language", this.Language.ToString()));
             }
             return attributes;
+        }
+
+        /// <summary>
+        /// Append a <Break/> element as a child of this element
+        /// </summary>
+        /// <param name="ssmlBreak"> A SsmlBreak instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Say SsmlBreak(SsmlBreak ssmlBreak)
+        {
+            this.Append(ssmlBreak);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Break/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="strength"> Set a pause based on strength </param>
+        /// <param name="time"> Set a pause to a specific length of time in seconds or milliseconds, available values:
+        ///            [number]s, [number]ms </param>
+        public Say SsmlBreak(SsmlBreak.StrengthEnum strength = null, string time = null)
+        {
+            var newChild = new SsmlBreak(strength, time);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Emphasis/> element as a child of this element
+        /// </summary>
+        /// <param name="ssmlEmphasis"> A SsmlEmphasis instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Say SsmlEmphasis(SsmlEmphasis ssmlEmphasis)
+        {
+            this.Append(ssmlEmphasis);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Emphasis/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="words"> Words to emphasize, the body of the TwiML Element. </param>
+        /// <param name="level"> Specify the degree of emphasis </param>
+        public Say SsmlEmphasis(string words = null, SsmlEmphasis.LevelEnum level = null)
+        {
+            var newChild = new SsmlEmphasis(words, level);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <P/> element as a child of this element
+        /// </summary>
+        /// <param name="ssmlP"> A SsmlP instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Say SsmlP(SsmlP ssmlP)
+        {
+            this.Append(ssmlP);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <P/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="words"> Words to speak, the body of the TwiML Element. </param>
+        public Say SsmlP(string words = null)
+        {
+            var newChild = new SsmlP(words);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Phoneme/> element as a child of this element
+        /// </summary>
+        /// <param name="ssmlPhoneme"> A SsmlPhoneme instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Say SsmlPhoneme(SsmlPhoneme ssmlPhoneme)
+        {
+            this.Append(ssmlPhoneme);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Phoneme/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="words"> Words to speak, the body of the TwiML Element. </param>
+        /// <param name="alphabet"> Specify the phonetic alphabet </param>
+        /// <param name="ph"> Specifiy the phonetic symbols for pronunciation </param>
+        public Say SsmlPhoneme(string words = null, SsmlPhoneme.AlphabetEnum alphabet = null, string ph = null)
+        {
+            var newChild = new SsmlPhoneme(words, alphabet, ph);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Prosody/> element as a child of this element
+        /// </summary>
+        /// <param name="ssmlProsody"> A SsmlProsody instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Say SsmlProsody(SsmlProsody ssmlProsody)
+        {
+            this.Append(ssmlProsody);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Prosody/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="words"> Words to speak, the body of the TwiML Element. </param>
+        /// <param name="volume"> Specify the volume, available values: default, silent, x-soft, soft, medium, loud, x-loud,
+        ///              +ndB, -ndB </param>
+        /// <param name="rate"> Specify the rate, available values: x-slow, slow, medium, fast, x-fast, n% </param>
+        /// <param name="pitch"> Specify the pitch, available values: default, x-low, low, medium, high, x-high, +n%, -n%
+        ///             </param>
+        public Say SsmlProsody(string words = null, string volume = null, string rate = null, string pitch = null)
+        {
+            var newChild = new SsmlProsody(words, volume, rate, pitch);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <S/> element as a child of this element
+        /// </summary>
+        /// <param name="ssmlS"> A SsmlS instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Say SsmlS(SsmlS ssmlS)
+        {
+            this.Append(ssmlS);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <S/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="words"> Words to speak, the body of the TwiML Element. </param>
+        public Say SsmlS(string words = null)
+        {
+            var newChild = new SsmlS(words);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Say-As/> element as a child of this element
+        /// </summary>
+        /// <param name="ssmlSayAs"> A SsmlSayAs instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Say SsmlSayAs(SsmlSayAs ssmlSayAs)
+        {
+            this.Append(ssmlSayAs);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Say-As/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="words"> Words to be interpreted, the body of the TwiML Element. </param>
+        /// <param name="interpret-As"> Specify the type of words are spoken </param>
+        /// <param name="role"> Specify the format of the date when interpret-as is set to date </param>
+        public Say SsmlSayAs(string words = null, 
+                             SsmlSayAs.InterpretAsEnum interpretAs = null, 
+                             SsmlSayAs.RoleEnum role = null)
+        {
+            var newChild = new SsmlSayAs(words, interpretAs, role);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Sub/> element as a child of this element
+        /// </summary>
+        /// <param name="ssmlSub"> A SsmlSub instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Say SsmlSub(SsmlSub ssmlSub)
+        {
+            this.Append(ssmlSub);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Sub/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="words"> Words to be substituted, the body of the TwiML Element. </param>
+        /// <param name="alias"> Substitute a different word (or pronunciation) for selected text such as an acronym or
+        ///             abbreviation </param>
+        public Say SsmlSub(string words = null, string alias = null)
+        {
+            var newChild = new SsmlSub(words, alias);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <W/> element as a child of this element
+        /// </summary>
+        /// <param name="ssmlW"> A SsmlW instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Say SsmlW(SsmlW ssmlW)
+        {
+            this.Append(ssmlW);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <W/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="words"> Words to speak, the body of the TwiML Element. </param>
+        /// <param name="role"> Customize the pronunciation of words by specifying the word’s part of speech or alternate
+        ///            meaning </param>
+        public Say SsmlW(string words = null, string role = null)
+        {
+            var newChild = new SsmlW(words, role);
+            this.Append(newChild);
+            return this;
         }
 
         /// <summary>

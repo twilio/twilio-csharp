@@ -14,7 +14,7 @@ namespace Twilio.Rest.Studio.V1
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// ReadFlowOptions
+    /// Retrieve a list of all Flows.
     /// </summary>
     public class ReadFlowOptions : ReadOptions<FlowResource> 
     {
@@ -36,19 +36,19 @@ namespace Twilio.Rest.Studio.V1
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// FetchFlowOptions
+    /// Retrieve a specific Flow.
     /// </summary>
     public class FetchFlowOptions : IOptions<FlowResource> 
     {
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this Flow.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFlowOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Flow. </param>
         public FetchFlowOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -67,19 +67,19 @@ namespace Twilio.Rest.Studio.V1
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// DeleteFlowOptions
+    /// Delete a specific Flow.
     /// </summary>
     public class DeleteFlowOptions : IOptions<FlowResource> 
     {
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this Flow.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteFlowOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Flow. </param>
         public DeleteFlowOptions(string pathSid)
         {
             PathSid = pathSid;

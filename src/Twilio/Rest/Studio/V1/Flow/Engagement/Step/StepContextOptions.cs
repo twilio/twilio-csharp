@@ -14,29 +14,29 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// FetchStepContextOptions
+    /// Retrieve the context for an Engagement Step.
     /// </summary>
     public class FetchStepContextOptions : IOptions<StepContextResource> 
     {
         /// <summary>
-        /// The flow_sid
+        /// Flow Sid.
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// The engagement_sid
+        /// Engagement Sid.
         /// </summary>
         public string PathEngagementSid { get; }
         /// <summary>
-        /// The step_sid
+        /// Step Sid.
         /// </summary>
         public string PathStepSid { get; }
 
         /// <summary>
         /// Construct a new FetchStepContextOptions
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathEngagementSid"> The engagement_sid </param>
-        /// <param name="pathStepSid"> The step_sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathEngagementSid"> Engagement Sid. </param>
+        /// <param name="pathStepSid"> Step Sid. </param>
         public FetchStepContextOptions(string pathFlowSid, string pathEngagementSid, string pathStepSid)
         {
             PathFlowSid = pathFlowSid;

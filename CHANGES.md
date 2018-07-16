@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2018-07-16] Version 5.14.0
+----------------------------
+**Library**
+- PR #433: POST doesn't receive params and body for body validation. Thanks to @cjcodes!
+
+**Twiml**
+- Add support for SSML on Say verb, the message body is changed to be optional **(breaking change)**
+
+
 [2018-07-11] Version 5.13.8
 ----------------------------
 **Api**

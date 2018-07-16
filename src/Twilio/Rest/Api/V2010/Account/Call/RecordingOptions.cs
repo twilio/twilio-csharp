@@ -45,10 +45,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The recording_channels
         /// </summary>
         public string RecordingChannels { get; set; }
-        /// <summary>
-        /// Whether to play beeps for recording status changes
-        /// </summary>
-        public bool? PlayBeep { get; set; }
 
         /// <summary>
         /// Construct a new CreateRecordingOptions
@@ -89,11 +85,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             if (RecordingChannels != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingChannels", RecordingChannels));
-            }
-
-            if (PlayBeep != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PlayBeep", PlayBeep.Value.ToString().ToLower()));
             }
 
             return p;

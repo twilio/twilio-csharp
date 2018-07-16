@@ -14,24 +14,24 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// ReadStepOptions
+    /// Retrieve a list of all Steps for an Engagement.
     /// </summary>
     public class ReadStepOptions : ReadOptions<StepResource> 
     {
         /// <summary>
-        /// The flow_sid
+        /// Flow Sid.
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// The engagement_sid
+        /// Engagement Sid.
         /// </summary>
         public string PathEngagementSid { get; }
 
         /// <summary>
         /// Construct a new ReadStepOptions
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathEngagementSid"> The engagement_sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathEngagementSid"> Engagement Sid. </param>
         public ReadStepOptions(string pathFlowSid, string pathEngagementSid)
         {
             PathFlowSid = pathFlowSid;
@@ -56,29 +56,29 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// FetchStepOptions
+    /// Retrieve a Step.
     /// </summary>
     public class FetchStepOptions : IOptions<StepResource> 
     {
         /// <summary>
-        /// The flow_sid
+        /// Flow Sid.
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// The engagement_sid
+        /// Engagement Sid.
         /// </summary>
         public string PathEngagementSid { get; }
         /// <summary>
-        /// The sid
+        /// Step Sid.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchStepOptions
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathEngagementSid"> The engagement_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathEngagementSid"> Engagement Sid. </param>
+        /// <param name="pathSid"> Step Sid. </param>
         public FetchStepOptions(string pathFlowSid, string pathEngagementSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;

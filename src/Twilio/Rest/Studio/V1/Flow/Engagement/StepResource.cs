@@ -34,7 +34,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Steps for an Engagement.
         /// </summary>
         /// <param name="options"> Read Step parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Steps for an Engagement.
         /// </summary>
         /// <param name="options"> Read Step parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -67,10 +67,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Steps for an Engagement.
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathEngagementSid"> The engagement_sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathEngagementSid"> Engagement Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -87,10 +87,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Steps for an Engagement.
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathEngagementSid"> The engagement_sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathEngagementSid"> Engagement Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         }
 
         /// <summary>
-        /// fetch
+        /// Retrieve a Step.
         /// </summary>
         /// <param name="options"> Fetch Step parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a Step.
         /// </summary>
         /// <param name="options"> Fetch Step parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -206,11 +206,11 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         #endif
 
         /// <summary>
-        /// fetch
+        /// Retrieve a Step.
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathEngagementSid"> The engagement_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathEngagementSid"> Engagement Sid. </param>
+        /// <param name="pathSid"> Step Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Step </returns> 
         public static StepResource Fetch(string pathFlowSid, 
@@ -224,11 +224,11 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a Step.
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathEngagementSid"> The engagement_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathEngagementSid"> Engagement Sid. </param>
+        /// <param name="pathSid"> Step Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Step </returns> 
         public static async System.Threading.Tasks.Task<StepResource> FetchAsync(string pathFlowSid, 
@@ -260,27 +260,27 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         }
 
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this Step.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account Sid.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The flow_sid
+        /// Flow Sid.
         /// </summary>
         [JsonProperty("flow_sid")]
         public string FlowSid { get; private set; }
         /// <summary>
-        /// The engagement_sid
+        /// Engagement Sid.
         /// </summary>
         [JsonProperty("engagement_sid")]
         public string EngagementSid { get; private set; }
         /// <summary>
-        /// The name
+        /// The event that caused the flow to transition to this Step.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; private set; }
@@ -290,27 +290,27 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         [JsonProperty("context")]
         public object Context { get; private set; }
         /// <summary>
-        /// The transitioned_from
+        /// The Widget that preceded the Widget for this Step.
         /// </summary>
         [JsonProperty("transitioned_from")]
         public string TransitionedFrom { get; private set; }
         /// <summary>
-        /// The transitioned_to
+        /// The Widget that will follow the Widget for this Step.
         /// </summary>
         [JsonProperty("transitioned_to")]
         public string TransitionedTo { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this Step was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this Step was updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

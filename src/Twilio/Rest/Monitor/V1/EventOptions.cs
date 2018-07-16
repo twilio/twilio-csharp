@@ -17,14 +17,14 @@ namespace Twilio.Rest.Monitor.V1
     public class FetchEventOptions : IOptions<EventResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this event.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchEventOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this event. </param>
         public FetchEventOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -41,32 +41,32 @@ namespace Twilio.Rest.Monitor.V1
     }
 
     /// <summary>
-    /// ReadEventOptions
+    /// Returns a list of Events in this account, sorted by event-date.
     /// </summary>
     public class ReadEventOptions : ReadOptions<EventResource> 
     {
         /// <summary>
-        /// The actor_sid
+        /// Only include Events initiated by this Actor
         /// </summary>
         public string ActorSid { get; set; }
         /// <summary>
-        /// The event_type
+        /// Only include Events of this EventType
         /// </summary>
         public string EventType { get; set; }
         /// <summary>
-        /// The resource_sid
+        /// Only include Events referring to this resource
         /// </summary>
         public string ResourceSid { get; set; }
         /// <summary>
-        /// The source_ip_address
+        /// Only include Events that originated from this IP address
         /// </summary>
         public string SourceIpAddress { get; set; }
         /// <summary>
-        /// The start_date
+        /// Only show events on or after this date
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// The end_date
+        /// Only show events on or before this date
         /// </summary>
         public DateTime? EndDate { get; set; }
 

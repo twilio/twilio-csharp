@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     public class ReadRecordOptions : ReadOptions<RecordResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The Account that accrued the usage
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -33,7 +33,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// The include_subaccounts
+        /// Include usage from the master account and all subaccounts
         /// </summary>
         public bool? IncludeSubaccounts { get; set; }
 

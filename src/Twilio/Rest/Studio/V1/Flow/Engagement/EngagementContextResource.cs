@@ -34,7 +34,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         }
 
         /// <summary>
-        /// fetch
+        /// Retrieve the most recent context for an Engagement.
         /// </summary>
         /// <param name="options"> Fetch EngagementContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve the most recent context for an Engagement.
         /// </summary>
         /// <param name="options"> Fetch EngagementContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,10 +63,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         #endif
 
         /// <summary>
-        /// fetch
+        /// Retrieve the most recent context for an Engagement.
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathEngagementSid"> The engagement_sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathEngagementSid"> Engagement Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of EngagementContext </returns> 
         public static EngagementContextResource Fetch(string pathFlowSid, 
@@ -79,10 +79,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve the most recent context for an Engagement.
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathEngagementSid"> The engagement_sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathEngagementSid"> Engagement Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EngagementContext </returns> 
         public static async System.Threading.Tasks.Task<EngagementContextResource> FetchAsync(string pathFlowSid, 
@@ -113,27 +113,27 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         }
 
         /// <summary>
-        /// The account_sid
+        /// Account Sid.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The context
+        /// Flow state.
         /// </summary>
         [JsonProperty("context")]
         public object Context { get; private set; }
         /// <summary>
-        /// The engagement_sid
+        /// Engagement Sid.
         /// </summary>
         [JsonProperty("engagement_sid")]
         public string EngagementSid { get; private set; }
         /// <summary>
-        /// The flow_sid
+        /// Flow Sid.
         /// </summary>
         [JsonProperty("flow_sid")]
         public string FlowSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

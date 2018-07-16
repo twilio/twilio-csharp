@@ -52,6 +52,46 @@ namespace Twilio.Tests.TwiML
         }
 
         [Test]
+        public void TestElementWithChildren()
+        {
+            var elem = new Say();
+
+            elem.SsmlBreak(SsmlBreak.StrengthEnum.None, "time");
+
+            elem.SsmlEmphasis("words", SsmlEmphasis.LevelEnum.Strong);
+
+            elem.SsmlP("words");
+
+            elem.SsmlPhoneme("words", SsmlPhoneme.AlphabetEnum.Ipa, "ph");
+
+            elem.SsmlProsody("words", "volume", "rate", "pitch");
+
+            elem.SsmlS("words");
+
+            elem.SsmlSayAs("words", SsmlSayAs.InterpretAsEnum.Character, SsmlSayAs.RoleEnum.Mdy);
+
+            elem.SsmlSub("words", "alias");
+
+            elem.SsmlW("words", "role");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Say>" + Environment.NewLine +
+                "  <break strength=\"none\" time=\"time\"></break>" + Environment.NewLine +
+                "  <emphasis level=\"strong\">words</emphasis>" + Environment.NewLine +
+                "  <p>words</p>" + Environment.NewLine +
+                "  <phoneme alphabet=\"ipa\" ph=\"ph\">words</phoneme>" + Environment.NewLine +
+                "  <prosody volume=\"volume\" rate=\"rate\" pitch=\"pitch\">words</prosody>" + Environment.NewLine +
+                "  <s>words</s>" + Environment.NewLine +
+                "  <say-as interpret-as=\"character\" role=\"mdy\">words</say-as>" + Environment.NewLine +
+                "  <sub alias=\"alias\">words</sub>" + Environment.NewLine +
+                "  <w role=\"role\">words</w>" + Environment.NewLine +
+                "</Say>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
         public void TestElementWithTextNode()
         {
             var elem = new Say();
@@ -75,6 +115,24 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Say>" + Environment.NewLine +
                 "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "</Say>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestAllowGenericChildrenOfChildNodes()
+        {
+            var elem = new Say();
+            var child = new SsmlBreak();
+            elem.Nest(child).AddChild("generic-tag").SetOption("tag", true).AddText("Content");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Say>" + Environment.NewLine +
+                "  <break>" + Environment.NewLine +
+                "    <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "  </break>" + Environment.NewLine +
                 "</Say>",
                 elem.ToString()
             );
