@@ -5,13 +5,13 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Exceptions;
 
-namespace Twilio.TwiML 
+namespace Twilio.TwiML
 {
 
     /// <summary>
     /// Base class for all TwiML Objects.
     /// </summary>
-    public class TwiML 
+    public class TwiML
     {
         /// <summary>
         /// Tag name
@@ -78,7 +78,7 @@ namespace Twilio.TwiML
             this.Children.Add(childElem);
             return childElem;
         }
-        
+
         /// <summary>
         /// Add a generic child TwiML object
         /// </summary>
@@ -121,7 +121,20 @@ namespace Twilio.TwiML
             var elem = new XElement(this.TagName, this.GetElementBody());
 
             this.GetElementAttributes().ForEach(attr => elem.Add(attr));
-            this.Options.ForEach(e => elem.Add(new XAttribute(e.Key, e.Value)));
+
+            this.Options.ForEach(e =>
+            {
+                if (e.Key.StartsWith("xml:"))
+                {
+                    var attribute = new XAttribute(XNamespace.Xml + e.Key.Substring(4), e.Value);
+                    elem.Add(attribute);
+                }
+                else
+                {
+                    elem.Add(new XAttribute(e.Key, e.Value));
+                }
+            });
+
             this.Children.ForEach(child => elem.Add(child.ToXml()));
 
             return elem;
@@ -146,7 +159,7 @@ namespace Twilio.TwiML
     /// <summary>
     /// StringWriter which overrides default encoding to use UTF8.
     /// </summary>
-    public class Utf8StringWriter : StringWriter 
+    public class Utf8StringWriter : StringWriter
     {
         public override Encoding Encoding => Encoding.UTF8;
     }
