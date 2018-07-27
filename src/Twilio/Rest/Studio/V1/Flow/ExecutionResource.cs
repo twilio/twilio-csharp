@@ -48,7 +48,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Executions for the Flow.
         /// </summary>
         /// <param name="options"> Read Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Studio.V1.Flow
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Executions for the Flow.
         /// </summary>
         /// <param name="options"> Read Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -81,9 +81,9 @@ namespace Twilio.Rest.Studio.V1.Flow
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Executions for the Flow.
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -99,9 +99,9 @@ namespace Twilio.Rest.Studio.V1.Flow
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Executions for the Flow.
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -187,7 +187,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         }
 
         /// <summary>
-        /// fetch
+        /// Retrieve an Execution
         /// </summary>
         /// <param name="options"> Fetch Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -201,7 +201,7 @@ namespace Twilio.Rest.Studio.V1.Flow
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve an Execution
         /// </summary>
         /// <param name="options"> Fetch Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -216,10 +216,10 @@ namespace Twilio.Rest.Studio.V1.Flow
         #endif
 
         /// <summary>
-        /// fetch
+        /// Retrieve an Execution
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathSid"> Execution Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Execution </returns> 
         public static ExecutionResource Fetch(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
@@ -230,10 +230,10 @@ namespace Twilio.Rest.Studio.V1.Flow
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve an Execution
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathSid"> Execution Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns> 
         public static async System.Threading.Tasks.Task<ExecutionResource> FetchAsync(string pathFlowSid, 
@@ -257,7 +257,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         }
 
         /// <summary>
-        /// create
+        /// Triggers a new Execution for the Flow
         /// </summary>
         /// <param name="options"> Create Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -271,7 +271,7 @@ namespace Twilio.Rest.Studio.V1.Flow
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Triggers a new Execution for the Flow
         /// </summary>
         /// <param name="options"> Create Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -286,12 +286,14 @@ namespace Twilio.Rest.Studio.V1.Flow
         #endif
 
         /// <summary>
-        /// create
+        /// Triggers a new Execution for the Flow
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="to"> The to </param>
-        /// <param name="from"> The from </param>
-        /// <param name="parameters"> The parameters </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="to"> The Contact phone number to start a Studio Flow Execution. </param>
+        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Execution.
+        ///            </param>
+        /// <param name="parameters"> JSON data that will be added to your flow's context and can accessed as variables inside
+        ///                  your flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Execution </returns> 
         public static ExecutionResource Create(string pathFlowSid, 
@@ -306,12 +308,14 @@ namespace Twilio.Rest.Studio.V1.Flow
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Triggers a new Execution for the Flow
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="to"> The to </param>
-        /// <param name="from"> The from </param>
-        /// <param name="parameters"> The parameters </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="to"> The Contact phone number to start a Studio Flow Execution. </param>
+        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Execution.
+        ///            </param>
+        /// <param name="parameters"> JSON data that will be added to your flow's context and can accessed as variables inside
+        ///                  your flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns> 
         public static async System.Threading.Tasks.Task<ExecutionResource> CreateAsync(string pathFlowSid, 
@@ -337,7 +341,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         }
 
         /// <summary>
-        /// delete
+        /// Delete this Execution and all Steps relating to it.
         /// </summary>
         /// <param name="options"> Delete Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -351,7 +355,7 @@ namespace Twilio.Rest.Studio.V1.Flow
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete this Execution and all Steps relating to it.
         /// </summary>
         /// <param name="options"> Delete Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -366,10 +370,10 @@ namespace Twilio.Rest.Studio.V1.Flow
         #endif
 
         /// <summary>
-        /// delete
+        /// Delete this Execution and all Steps relating to it.
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathSid"> Execution Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Execution </returns> 
         public static bool Delete(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
@@ -380,10 +384,10 @@ namespace Twilio.Rest.Studio.V1.Flow
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete this Execution and all Steps relating to it.
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathSid"> Execution Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFlowSid, 
@@ -414,58 +418,58 @@ namespace Twilio.Rest.Studio.V1.Flow
         }
 
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this Execution.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account Sid.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The flow_sid
+        /// Flow Sid.
         /// </summary>
         [JsonProperty("flow_sid")]
         public string FlowSid { get; private set; }
         /// <summary>
-        /// The contact_sid
+        /// Contact Sid.
         /// </summary>
         [JsonProperty("contact_sid")]
         public string ContactSid { get; private set; }
         /// <summary>
-        /// The contact_channel_address
+        /// The phone number, SIP address or Client identifier that triggered this Execution.
         /// </summary>
         [JsonProperty("contact_channel_address")]
         public string ContactChannelAddress { get; private set; }
         /// <summary>
-        /// The context
+        /// Flow state.
         /// </summary>
         [JsonProperty("context")]
         public object Context { get; private set; }
         /// <summary>
-        /// The status
+        /// The Status of this Execution
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ExecutionResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this Execution was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this Execution was updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// Nested resource URLs.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

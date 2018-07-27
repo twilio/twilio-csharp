@@ -372,6 +372,82 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
         #endif
 
+        private static Request BuildUpdateRequest(UpdateShortCodeOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Proxy,
+                "/v1/Services/" + options.PathServiceSid + "/ShortCodes/" + options.PathSid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Update a specific Short Code.
+        /// </summary>
+        /// <param name="options"> Update ShortCode parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ShortCode </returns> 
+        public static ShortCodeResource Update(UpdateShortCodeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Update a specific Short Code.
+        /// </summary>
+        /// <param name="options"> Update ShortCode parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of ShortCode </returns> 
+        public static async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(UpdateShortCodeOptions options, 
+                                                                                       ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// Update a specific Short Code.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
+        /// <param name="isReserved"> Reserve for manual assignment to participants only. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ShortCode </returns> 
+        public static ShortCodeResource Update(string pathServiceSid, 
+                                               string pathSid, 
+                                               bool? isReserved = null, 
+                                               ITwilioRestClient client = null)
+        {
+            var options = new UpdateShortCodeOptions(pathServiceSid, pathSid){IsReserved = isReserved};
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Update a specific Short Code.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
+        /// <param name="isReserved"> Reserve for manual assignment to participants only. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of ShortCode </returns> 
+        public static async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(string pathServiceSid, 
+                                                                                       string pathSid, 
+                                                                                       bool? isReserved = null, 
+                                                                                       ITwilioRestClient client = null)
+        {
+            var options = new UpdateShortCodeOptions(pathServiceSid, pathSid){IsReserved = isReserved};
+            return await UpdateAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a ShortCodeResource object
         /// </summary>
@@ -435,6 +511,11 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// Reserve for manual assignment to participants only.
+        /// </summary>
+        [JsonProperty("is_reserved")]
+        public bool? IsReserved { get; private set; }
 
         private ShortCodeResource()
         {

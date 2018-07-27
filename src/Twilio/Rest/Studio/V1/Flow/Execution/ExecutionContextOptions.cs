@@ -14,24 +14,24 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// FetchExecutionContextOptions
+    /// Retrieve the most recent context for an Execution.
     /// </summary>
     public class FetchExecutionContextOptions : IOptions<ExecutionContextResource> 
     {
         /// <summary>
-        /// The flow_sid
+        /// Flow Sid.
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// The execution_sid
+        /// Execution Sid.
         /// </summary>
         public string PathExecutionSid { get; }
 
         /// <summary>
         /// Construct a new FetchExecutionContextOptions
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathExecutionSid"> The execution_sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathExecutionSid"> Execution Sid. </param>
         public FetchExecutionContextOptions(string pathFlowSid, string pathExecutionSid)
         {
             PathFlowSid = pathFlowSid;

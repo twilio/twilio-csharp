@@ -83,10 +83,6 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         public bool? LogQueries { get; set; }
         /// <summary>
-        /// The ttl
-        /// </summary>
-        public int? Ttl { get; set; }
-        /// <summary>
         /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
         /// </summary>
         public string UniqueName { get; set; }
@@ -117,11 +113,6 @@ namespace Twilio.Rest.Preview.Understand
             if (LogQueries != null)
             {
                 p.Add(new KeyValuePair<string, string>("LogQueries", LogQueries.Value.ToString().ToLower()));
-            }
-
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
 
             if (UniqueName != null)
@@ -169,10 +160,6 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         public bool? LogQueries { get; set; }
         /// <summary>
-        /// The ttl
-        /// </summary>
-        public int? Ttl { get; set; }
-        /// <summary>
         /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
         /// </summary>
         public string UniqueName { get; set; }
@@ -212,11 +199,6 @@ namespace Twilio.Rest.Preview.Understand
             if (LogQueries != null)
             {
                 p.Add(new KeyValuePair<string, string>("LogQueries", LogQueries.Value.ToString().ToLower()));
-            }
-
-            if (Ttl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
             }
 
             if (UniqueName != null)

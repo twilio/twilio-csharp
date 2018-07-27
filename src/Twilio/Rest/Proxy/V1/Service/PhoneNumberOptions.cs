@@ -30,6 +30,10 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// Twilio Number to assign to your Proxy Service
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; set; }
+        /// <summary>
+        /// Reserve for manual assignment to participants only.
+        /// </summary>
+        public bool? IsReserved { get; set; }
 
         /// <summary>
         /// Construct a new CreatePhoneNumberOptions
@@ -54,6 +58,11 @@ namespace Twilio.Rest.Proxy.V1.Service
             if (PhoneNumber != null)
             {
                 p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber.ToString()));
+            }
+
+            if (IsReserved != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsReserved", IsReserved.Value.ToString().ToLower()));
             }
 
             return p;
@@ -166,6 +175,52 @@ namespace Twilio.Rest.Proxy.V1.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    /// 
+    /// Update a specific Proxy Number.
+    /// </summary>
+    public class UpdatePhoneNumberOptions : IOptions<PhoneNumberResource> 
+    {
+        /// <summary>
+        /// Service Sid.
+        /// </summary>
+        public string PathServiceSid { get; }
+        /// <summary>
+        /// A string that uniquely identifies this Phone Number.
+        /// </summary>
+        public string PathSid { get; }
+        /// <summary>
+        /// Reserve for manual assignment to participants only.
+        /// </summary>
+        public bool? IsReserved { get; set; }
+
+        /// <summary>
+        /// Construct a new UpdatePhoneNumberOptions
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
+        public UpdatePhoneNumberOptions(string pathServiceSid, string pathSid)
+        {
+            PathServiceSid = pathServiceSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (IsReserved != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsReserved", IsReserved.Value.ToString().ToLower()));
+            }
+
             return p;
         }
     }

@@ -273,7 +273,6 @@ namespace Twilio.Rest.Preview.Understand
         /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
         ///                  If false, no queries will be stored, if true, queries will be stored for 30 days and deleted
         ///                  thereafter. Defaults to true if no value is provided. </param>
-        /// <param name="ttl"> The ttl </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="responseUrl"> The webhook URL called to fetch the response to an incoming communication expressed in
@@ -284,14 +283,13 @@ namespace Twilio.Rest.Preview.Understand
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Create(string friendlyName = null, 
                                                bool? logQueries = null, 
-                                               int? ttl = null, 
                                                string uniqueName = null, 
                                                Uri responseUrl = null, 
                                                Uri callbackUrl = null, 
                                                string callbackEvents = null, 
                                                ITwilioRestClient client = null)
         {
-            var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, Ttl = ttl, UniqueName = uniqueName, ResponseUrl = responseUrl, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents};
+            var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, ResponseUrl = responseUrl, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents};
             return Create(options, client);
         }
 
@@ -304,7 +302,6 @@ namespace Twilio.Rest.Preview.Understand
         /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
         ///                  If false, no queries will be stored, if true, queries will be stored for 30 days and deleted
         ///                  thereafter. Defaults to true if no value is provided. </param>
-        /// <param name="ttl"> The ttl </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="responseUrl"> The webhook URL called to fetch the response to an incoming communication expressed in
@@ -315,14 +312,13 @@ namespace Twilio.Rest.Preview.Understand
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(string friendlyName = null, 
                                                                                        bool? logQueries = null, 
-                                                                                       int? ttl = null, 
                                                                                        string uniqueName = null, 
                                                                                        Uri responseUrl = null, 
                                                                                        Uri callbackUrl = null, 
                                                                                        string callbackEvents = null, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, Ttl = ttl, UniqueName = uniqueName, ResponseUrl = responseUrl, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents};
+            var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, ResponseUrl = responseUrl, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents};
             return await CreateAsync(options, client);
         }
         #endif
@@ -376,7 +372,6 @@ namespace Twilio.Rest.Preview.Understand
         /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
         ///                  If false, no queries will be stored, if true, queries will be stored for 30 days and deleted
         ///                  thereafter. Defaults to true if no value is provided. </param>
-        /// <param name="ttl"> The ttl </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="responseUrl"> The webhook URL called to fetch the response to an incoming communication expressed in
@@ -388,14 +383,13 @@ namespace Twilio.Rest.Preview.Understand
         public static AssistantResource Update(string pathSid, 
                                                string friendlyName = null, 
                                                bool? logQueries = null, 
-                                               int? ttl = null, 
                                                string uniqueName = null, 
                                                Uri responseUrl = null, 
                                                Uri callbackUrl = null, 
                                                string callbackEvents = null, 
                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, Ttl = ttl, UniqueName = uniqueName, ResponseUrl = responseUrl, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents};
+            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, ResponseUrl = responseUrl, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents};
             return Update(options, client);
         }
 
@@ -409,7 +403,6 @@ namespace Twilio.Rest.Preview.Understand
         /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
         ///                  If false, no queries will be stored, if true, queries will be stored for 30 days and deleted
         ///                  thereafter. Defaults to true if no value is provided. </param>
-        /// <param name="ttl"> The ttl </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="responseUrl"> The webhook URL called to fetch the response to an incoming communication expressed in
@@ -421,14 +414,13 @@ namespace Twilio.Rest.Preview.Understand
         public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(string pathSid, 
                                                                                        string friendlyName = null, 
                                                                                        bool? logQueries = null, 
-                                                                                       int? ttl = null, 
                                                                                        string uniqueName = null, 
                                                                                        Uri responseUrl = null, 
                                                                                        Uri callbackUrl = null, 
                                                                                        string callbackEvents = null, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, Ttl = ttl, UniqueName = uniqueName, ResponseUrl = responseUrl, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents};
+            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, ResponseUrl = responseUrl, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -557,11 +549,6 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
-        /// <summary>
-        /// The ttl
-        /// </summary>
-        [JsonProperty("ttl")]
-        public int? Ttl { get; private set; }
         /// <summary>
         /// A user-provided string that uniquely identifies this resource as an alternative to the sid. You can use the unique name in the URL path. Unique up to 64 characters long.
         /// </summary>

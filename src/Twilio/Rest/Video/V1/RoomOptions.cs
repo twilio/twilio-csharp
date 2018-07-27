@@ -18,14 +18,14 @@ namespace Twilio.Rest.Video.V1
     public class FetchRoomOptions : IOptions<RoomResource> 
     {
         /// <summary>
-        /// The sid
+        /// The Room Sid or name that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchRoomOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The Room Sid or name that uniquely identifies this resource. </param>
         public FetchRoomOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         public bool? EnableTurn { get; set; }
         /// <summary>
-        /// Type of room, either peer-to-peer or group.
+        /// Type of room, either peer-to-peer, group-small or group.
         /// </summary>
         public RoomResource.RoomTypeEnum Type { get; set; }
         /// <summary>
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Video.V1
     public class UpdateRoomOptions : IOptions<RoomResource> 
     {
         /// <summary>
-        /// The sid
+        /// The Room Sid or name that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -220,7 +220,7 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// Construct a new UpdateRoomOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The Room Sid or name that uniquely identifies this resource. </param>
         /// <param name="status"> Set to completed to end the Room. </param>
         public UpdateRoomOptions(string pathSid, RoomResource.RoomStatusEnum status)
         {

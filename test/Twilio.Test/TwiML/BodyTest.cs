@@ -8,11 +8,11 @@ using System;
 using Twilio.Converters;
 using Twilio.TwiML.Messaging;
 
-namespace Twilio.Tests.TwiML
+namespace Twilio.Tests.TwiML 
 {
 
     [TestFixture]
-    public class BodyTest : TwilioTest
+    public class BodyTest : TwilioTest 
     {
         [Test]
         public void TestEmptyElement()
@@ -91,19 +91,6 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Body>before<Child>content</Child>after</Body>",
-                elem.ToString()
-            );
-        }
-
-        [Test]
-        public void TestXmlNamespace()
-        {
-            var elem = new Body();
-            elem.SetOption("xml:lang", "en-US");
-
-            Assert.AreEqual(
-                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Body xml:lang=\"en-US\"></Body>",
                 elem.ToString()
             );
         }

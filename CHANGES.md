@@ -1,6 +1,27 @@
 twilio-csharp Changelog
 =======================
 
+[2018-07-26] Version 5.14.1
+----------------------------
+**Library**
+- PR #435: Add support for xml: namespaced properties. Thanks to @cjcodes!
+
+**Api**
+- Add support for sip domains to map credential lists for registrations
+
+**Preview**
+- Remove `ttl` from Assistants
+
+**Proxy**
+- Enable setting a proxy number as reserved
+
+**Video**
+- Add `group-small` room type
+
+**Twiml**
+- Add support for SSML lang tag on Say verb
+
+
 [2018-07-16] Version 5.14.0
 ----------------------------
 **Library**

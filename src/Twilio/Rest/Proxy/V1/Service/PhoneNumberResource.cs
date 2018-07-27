@@ -69,14 +69,16 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="sid"> Phone Number Sid of Twilio Number to assign to your Proxy Service </param>
         /// <param name="phoneNumber"> Twilio Number to assign to your Proxy Service </param>
+        /// <param name="isReserved"> Reserve for manual assignment to participants only. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
         public static PhoneNumberResource Create(string pathServiceSid, 
                                                  string sid = null, 
                                                  Types.PhoneNumber phoneNumber = null, 
+                                                 bool? isReserved = null, 
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreatePhoneNumberOptions(pathServiceSid){Sid = sid, PhoneNumber = phoneNumber};
+            var options = new CreatePhoneNumberOptions(pathServiceSid){Sid = sid, PhoneNumber = phoneNumber, IsReserved = isReserved};
             return Create(options, client);
         }
 
@@ -87,14 +89,16 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="sid"> Phone Number Sid of Twilio Number to assign to your Proxy Service </param>
         /// <param name="phoneNumber"> Twilio Number to assign to your Proxy Service </param>
+        /// <param name="isReserved"> Reserve for manual assignment to participants only. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(string pathServiceSid, 
                                                                                          string sid = null, 
                                                                                          Types.PhoneNumber phoneNumber = null, 
+                                                                                         bool? isReserved = null, 
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreatePhoneNumberOptions(pathServiceSid){Sid = sid, PhoneNumber = phoneNumber};
+            var options = new CreatePhoneNumberOptions(pathServiceSid){Sid = sid, PhoneNumber = phoneNumber, IsReserved = isReserved};
             return await CreateAsync(options, client);
         }
         #endif
@@ -378,6 +382,82 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
         #endif
 
+        private static Request BuildUpdateRequest(UpdatePhoneNumberOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Proxy,
+                "/v1/Services/" + options.PathServiceSid + "/PhoneNumbers/" + options.PathSid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Update a specific Proxy Number.
+        /// </summary>
+        /// <param name="options"> Update PhoneNumber parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of PhoneNumber </returns> 
+        public static PhoneNumberResource Update(UpdatePhoneNumberOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Update a specific Proxy Number.
+        /// </summary>
+        /// <param name="options"> Update PhoneNumber parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> UpdateAsync(UpdatePhoneNumberOptions options, 
+                                                                                         ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// Update a specific Proxy Number.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
+        /// <param name="isReserved"> Reserve for manual assignment to participants only. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of PhoneNumber </returns> 
+        public static PhoneNumberResource Update(string pathServiceSid, 
+                                                 string pathSid, 
+                                                 bool? isReserved = null, 
+                                                 ITwilioRestClient client = null)
+        {
+            var options = new UpdatePhoneNumberOptions(pathServiceSid, pathSid){IsReserved = isReserved};
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Update a specific Proxy Number.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
+        /// <param name="isReserved"> Reserve for manual assignment to participants only. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> UpdateAsync(string pathServiceSid, 
+                                                                                         string pathSid, 
+                                                                                         bool? isReserved = null, 
+                                                                                         ITwilioRestClient client = null)
+        {
+            var options = new UpdatePhoneNumberOptions(pathServiceSid, pathSid){IsReserved = isReserved};
+            return await UpdateAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a PhoneNumberResource object
         /// </summary>
@@ -447,6 +527,11 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// Reserve for manual assignment to participants only.
+        /// </summary>
+        [JsonProperty("is_reserved")]
+        public bool? IsReserved { get; private set; }
 
         private PhoneNumberResource()
         {

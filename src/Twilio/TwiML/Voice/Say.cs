@@ -232,6 +232,29 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Append a <Lang/> element as a child of this element
+        /// </summary>
+        /// <param name="ssmlLang"> A SsmlLang instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Say SsmlLang(SsmlLang ssmlLang)
+        {
+            this.Append(ssmlLang);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Lang/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="words"> Words to speak, the body of the TwiML Element. </param>
+        /// <param name="xml:Lang"> Specify the language </param>
+        public Say SsmlLang(string words = null, SsmlLang.XmlLangEnum xmlLang = null)
+        {
+            var newChild = new SsmlLang(words, xmlLang);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
         /// Append a <P/> element as a child of this element
         /// </summary>
         /// <param name="ssmlP"> A SsmlP instance. </param>

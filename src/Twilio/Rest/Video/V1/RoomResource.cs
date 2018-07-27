@@ -46,6 +46,7 @@ namespace Twilio.Rest.Video.V1
 
             public static readonly RoomTypeEnum PeerToPeer = new RoomTypeEnum("peer-to-peer");
             public static readonly RoomTypeEnum Group = new RoomTypeEnum("group");
+            public static readonly RoomTypeEnum GroupSmall = new RoomTypeEnum("group-small");
         }
 
         public sealed class VideoCodecEnum : StringEnum 
@@ -104,7 +105,7 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The Room Sid or name that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns> 
         public static RoomResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -117,7 +118,7 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The Room Sid or name that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns> 
         public static async System.Threading.Tasks.Task<RoomResource> FetchAsync(string pathSid, 
@@ -172,7 +173,7 @@ namespace Twilio.Rest.Video.V1
         /// create
         /// </summary>
         /// <param name="enableTurn"> Use Twilio Network Traversal for TURN service. </param>
-        /// <param name="type"> Type of room, either peer-to-peer or group. </param>
+        /// <param name="type"> Type of room, either peer-to-peer, group-small or group. </param>
         /// <param name="uniqueName"> Name of the Room. </param>
         /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every room event. </param>
         /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
@@ -202,7 +203,7 @@ namespace Twilio.Rest.Video.V1
         /// create
         /// </summary>
         /// <param name="enableTurn"> Use Twilio Network Traversal for TURN service. </param>
-        /// <param name="type"> Type of room, either peer-to-peer or group. </param>
+        /// <param name="type"> Type of room, either peer-to-peer, group-small or group. </param>
         /// <param name="uniqueName"> Name of the Room. </param>
         /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every room event. </param>
         /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
@@ -422,7 +423,7 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The Room Sid or name that uniquely identifies this resource. </param>
         /// <param name="status"> Set to completed to end the Room. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns> 
@@ -438,7 +439,7 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The Room Sid or name that uniquely identifies this resource. </param>
         /// <param name="status"> Set to completed to end the Room. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns> 
@@ -527,7 +528,7 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
         /// <summary>
-        /// Type of Room, either peer-to-peer or group.
+        /// Type of Room, either peer-to-peer, group-small or group.
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]

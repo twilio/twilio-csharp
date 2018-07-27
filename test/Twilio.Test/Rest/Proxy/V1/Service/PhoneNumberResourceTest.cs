@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Proxy.V1.Service
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"phone_number\": \"+987654321\",\"friendly_name\": \"Friendly Name\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"phone_number\": \"+987654321\",\"friendly_name\": \"Friendly Name\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_reserved\": false}"
                                      ));
 
             var response = PhoneNumberResource.Create("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -121,7 +121,7 @@ namespace Twilio.Tests.Rest.Proxy.V1.Service
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers?PageSize=50&Page=0\",\"previous_page_url\": null,\"next_page_url\": null,\"key\": \"phone_numbers\",\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers?PageSize=50&Page=0\"},\"phone_numbers\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"phone_number\": \"+987654321\",\"friendly_name\": \"Friendly Name\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"
+                                         "{\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers?PageSize=50&Page=0\",\"previous_page_url\": null,\"next_page_url\": null,\"key\": \"phone_numbers\",\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers?PageSize=50&Page=0\"},\"phone_numbers\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"phone_number\": \"+987654321\",\"friendly_name\": \"Friendly Name\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_reserved\": false}]}"
                                      ));
 
             var response = PhoneNumberResource.Read("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -157,10 +157,46 @@ namespace Twilio.Tests.Rest.Proxy.V1.Service
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"phone_number\": \"12345\",\"friendly_name\": \"Friendly Name\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"phone_number\": \"12345\",\"friendly_name\": \"Friendly Name\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_reserved\": false}"
                                      ));
 
             var response = PhoneNumberResource.Fetch("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestUpdateRequest()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            var request = new Request(
+                HttpMethod.Post,
+                Twilio.Rest.Domain.Proxy,
+                "/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/PhoneNumbers/PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                ""
+            );
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
+
+            try
+            {
+                PhoneNumberResource.Update("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            }
+            catch (ApiException) {}
+            twilioRestClient.Received().Request(request);
+        }
+
+        [Test]
+        public void TestUpdateResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"phone_number\": \"12345\",\"friendly_name\": \"Friendly Name\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers/PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_reserved\": true}"
+                                     ));
+
+            var response = PhoneNumberResource.Update("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

@@ -12,16 +12,16 @@ namespace Twilio.Tests.TwiML
 {
 
     [TestFixture]
-    public class RedirectTest : TwilioTest 
+    public class SsmlLangTest : TwilioTest 
     {
         [Test]
         public void TestEmptyElement()
         {
-            var elem = new Redirect();
+            var elem = new SsmlLang();
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Redirect></Redirect>",
+                "<lang></lang>",
                 elem.ToString()
             );
         }
@@ -29,10 +29,10 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new Redirect(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
+            var elem = new SsmlLang("words", SsmlLang.XmlLangEnum.DaDk);
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Redirect method=\"GET\">https://example.com</Redirect>",
+                "<lang xml:lang=\"da-DK\">words</lang>",
                 elem.ToString()
             );
         }
@@ -40,13 +40,13 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithExtraAttributes()
         {
-            var elem = new Redirect();
+            var elem = new SsmlLang();
             elem.SetOption("newParam1", "value");
             elem.SetOption("newParam2", 1);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Redirect newParam1=\"value\" newParam2=\"1\"></Redirect>",
+                "<lang newParam1=\"value\" newParam2=\"1\"></lang>",
                 elem.ToString()
             );
         }
@@ -54,13 +54,13 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithTextNode()
         {
-            var elem = new Redirect();
+            var elem = new SsmlLang();
 
             elem.AddText("Here is the content");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Redirect>Here is the content</Redirect>",
+                "<lang>Here is the content</lang>",
                 elem.ToString()
             );
         }
@@ -68,14 +68,14 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestAllowGenericChildNodes()
         {
-            var elem = new Redirect();
+            var elem = new SsmlLang();
             elem.AddChild("generic-tag").AddText("Content").SetOption("tag", true);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Redirect>" + Environment.NewLine +
+                "<lang>" + Environment.NewLine +
                 "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
-                "</Redirect>",
+                "</lang>",
                 elem.ToString()
             );
         }
@@ -83,14 +83,14 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestMixedContent()
         {
-            var elem = new Redirect();
+            var elem = new SsmlLang();
             elem.AddText("before")
                 .AddChild("Child").AddText("content");
             elem.AddText("after");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Redirect>before<Child>content</Child>after</Redirect>",
+                "<lang>before<Child>content</Child>after</lang>",
                 elem.ToString()
             );
         }

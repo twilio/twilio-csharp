@@ -163,4 +163,50 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
     }
 
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    /// 
+    /// Update a specific Short Code.
+    /// </summary>
+    public class UpdateShortCodeOptions : IOptions<ShortCodeResource> 
+    {
+        /// <summary>
+        /// Service Sid.
+        /// </summary>
+        public string PathServiceSid { get; }
+        /// <summary>
+        /// A string that uniquely identifies this Short Code.
+        /// </summary>
+        public string PathSid { get; }
+        /// <summary>
+        /// Reserve for manual assignment to participants only.
+        /// </summary>
+        public bool? IsReserved { get; set; }
+
+        /// <summary>
+        /// Construct a new UpdateShortCodeOptions
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
+        public UpdateShortCodeOptions(string pathServiceSid, string pathSid)
+        {
+            PathServiceSid = pathServiceSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (IsReserved != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsReserved", IsReserved.Value.ToString().ToLower()));
+            }
+
+            return p;
+        }
+    }
+
 }

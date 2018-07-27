@@ -14,19 +14,19 @@ namespace Twilio.Rest.Studio.V1.Flow
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// ReadExecutionOptions
+    /// Retrieve a list of all Executions for the Flow.
     /// </summary>
     public class ReadExecutionOptions : ReadOptions<ExecutionResource> 
     {
         /// <summary>
-        /// The flow_sid
+        /// Flow Sid.
         /// </summary>
         public string PathFlowSid { get; }
 
         /// <summary>
         /// Construct a new ReadExecutionOptions
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
         public ReadExecutionOptions(string pathFlowSid)
         {
             PathFlowSid = pathFlowSid;
@@ -50,24 +50,24 @@ namespace Twilio.Rest.Studio.V1.Flow
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// FetchExecutionOptions
+    /// Retrieve an Execution
     /// </summary>
     public class FetchExecutionOptions : IOptions<ExecutionResource> 
     {
         /// <summary>
-        /// The flow_sid
+        /// Flow Sid.
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// The sid
+        /// Execution Sid.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchExecutionOptions
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathSid"> Execution Sid. </param>
         public FetchExecutionOptions(string pathFlowSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;
@@ -87,33 +87,34 @@ namespace Twilio.Rest.Studio.V1.Flow
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// CreateExecutionOptions
+    /// Triggers a new Execution for the Flow
     /// </summary>
     public class CreateExecutionOptions : IOptions<ExecutionResource> 
     {
         /// <summary>
-        /// The flow_sid
+        /// Flow Sid.
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// The to
+        /// The Contact phone number to start a Studio Flow Execution.
         /// </summary>
         public Types.PhoneNumber To { get; }
         /// <summary>
-        /// The from
+        /// The Twilio phone number to send messages or initiate calls from during the Flow Execution.
         /// </summary>
         public Types.PhoneNumber From { get; }
         /// <summary>
-        /// The parameters
+        /// JSON data that will be added to your flow's context and can accessed as variables inside your flow.
         /// </summary>
         public object Parameters { get; set; }
 
         /// <summary>
         /// Construct a new CreateExecutionOptions
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="to"> The to </param>
-        /// <param name="from"> The from </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="to"> The Contact phone number to start a Studio Flow Execution. </param>
+        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Execution.
+        ///            </param>
         public CreateExecutionOptions(string pathFlowSid, Types.PhoneNumber to, Types.PhoneNumber from)
         {
             PathFlowSid = pathFlowSid;
@@ -149,24 +150,24 @@ namespace Twilio.Rest.Studio.V1.Flow
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// DeleteExecutionOptions
+    /// Delete this Execution and all Steps relating to it.
     /// </summary>
     public class DeleteExecutionOptions : IOptions<ExecutionResource> 
     {
         /// <summary>
-        /// The flow_sid
+        /// Flow Sid.
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// The sid
+        /// Execution Sid.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteExecutionOptions
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathSid"> Execution Sid. </param>
         public DeleteExecutionOptions(string pathFlowSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;

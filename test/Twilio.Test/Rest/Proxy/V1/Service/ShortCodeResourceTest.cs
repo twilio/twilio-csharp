@@ -50,7 +50,7 @@ namespace Twilio.Tests.Rest.Proxy.V1.Service
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"sid\": \"SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"short_code\": \"12345\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"sid\": \"SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"short_code\": \"12345\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_reserved\": false}"
                                      ));
 
             var response = ShortCodeResource.Create("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -122,7 +122,7 @@ namespace Twilio.Tests.Rest.Proxy.V1.Service
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes?PageSize=50&Page=0\",\"previous_page_url\": null,\"next_page_url\": null,\"key\": \"short_codes\",\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes?PageSize=50&Page=0\"},\"short_codes\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"short_code\": \"12345\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"
+                                         "{\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes?PageSize=50&Page=0\",\"previous_page_url\": null,\"next_page_url\": null,\"key\": \"short_codes\",\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes?PageSize=50&Page=0\"},\"short_codes\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"short_code\": \"12345\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_reserved\": false}]}"
                                      ));
 
             var response = ShortCodeResource.Read("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -158,10 +158,46 @@ namespace Twilio.Tests.Rest.Proxy.V1.Service
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"sid\": \"SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"short_code\": \"12345\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"sid\": \"SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"short_code\": \"12345\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_reserved\": false}"
                                      ));
 
             var response = ShortCodeResource.Fetch("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestUpdateRequest()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            var request = new Request(
+                HttpMethod.Post,
+                Twilio.Rest.Domain.Proxy,
+                "/v1/Services/KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/ShortCodes/SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                ""
+            );
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
+
+            try
+            {
+                ShortCodeResource.Update("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            }
+            catch (ApiException) {}
+            twilioRestClient.Received().Request(request);
+        }
+
+        [Test]
+        public void TestUpdateResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"sid\": \"SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"short_code\": \"12345\",\"iso_country\": \"US\",\"capabilities\": {\"sms_outbound\": true,\"voice_inbound\": false},\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes/SCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_reserved\": true}"
+                                     ));
+
+            var response = ShortCodeResource.Update("KSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "SCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }
