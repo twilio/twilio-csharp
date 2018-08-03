@@ -120,87 +120,87 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Yes
+        /// New reservation status
         /// </summary>
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
         /// <summary>
-        /// No
+        /// New worker activity sid if rejecting a reservation
         /// </summary>
         public string WorkerActivitySid { get; set; }
         /// <summary>
-        /// Yes
+        /// Assignment instruction for reservation
         /// </summary>
         public string Instruction { get; set; }
         /// <summary>
-        /// No
+        /// New worker activity sid after executing a Dequeue instruction
         /// </summary>
         public string DequeuePostWorkActivitySid { get; set; }
         /// <summary>
-        /// Yes
+        /// Caller ID for the call to the worker when executing a Dequeue instruction
         /// </summary>
         public string DequeueFrom { get; set; }
         /// <summary>
-        /// No
+        /// Attribute to record both legs of a call when executing a Dequeue instruction
         /// </summary>
         public string DequeueRecord { get; set; }
         /// <summary>
-        /// No
+        /// Timeout for call when executing a Dequeue instruction
         /// </summary>
         public int? DequeueTimeout { get; set; }
         /// <summary>
-        /// No
+        /// Contact URI of the worker when executing a Dequeue instruction
         /// </summary>
         public string DequeueTo { get; set; }
         /// <summary>
-        /// No
+        /// Callback URL for completed call event when executing a Dequeue instruction
         /// </summary>
         public Uri DequeueStatusCallbackUrl { get; set; }
         /// <summary>
-        /// Yes
+        /// Caller ID for the outbound call when executing a Call instruction
         /// </summary>
         public string CallFrom { get; set; }
         /// <summary>
-        /// No
+        /// Attribute to record both legs of a call when executing a Call instruction
         /// </summary>
         public string CallRecord { get; set; }
         /// <summary>
-        /// No
+        /// Timeout for call when executing a Call instruction
         /// </summary>
         public int? CallTimeout { get; set; }
         /// <summary>
-        /// No
+        /// Contact URI of the worker when executing a Call instruction
         /// </summary>
         public string CallTo { get; set; }
         /// <summary>
-        /// Yes
+        /// TwiML URI executed on answering the worker's leg as a result of the Call instruction
         /// </summary>
         public Uri CallUrl { get; set; }
         /// <summary>
-        /// No
+        /// Callback URL for completed call event when executing a Call instruction
         /// </summary>
         public Uri CallStatusCallbackUrl { get; set; }
         /// <summary>
-        /// No
+        /// Flag to determine if reservation should be accepted when executing a Call instruction
         /// </summary>
         public bool? CallAccept { get; set; }
         /// <summary>
-        /// Yes
+        /// Call sid of the call parked in the queue when executing a Redirect instruction
         /// </summary>
         public string RedirectCallSid { get; set; }
         /// <summary>
-        /// No
+        /// Flag to determine if reservation should be accepted when executing a Redirect instruction
         /// </summary>
         public bool? RedirectAccept { get; set; }
         /// <summary>
-        /// Yes
+        /// TwiML URI to redirect the call to when executing the Redirect instruction
         /// </summary>
         public Uri RedirectUrl { get; set; }
         /// <summary>
-        /// No
+        /// Contact URI of the worker when executing a Conference instruction
         /// </summary>
         public string To { get; set; }
         /// <summary>
-        /// No
+        /// Caller ID for the call to the worker when executing a Conference instruction
         /// </summary>
         public string From { get; set; }
         /// <summary>
@@ -216,7 +216,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// </summary>
         public List<ReservationResource.CallStatusEnum> StatusCallbackEvent { get; set; }
         /// <summary>
-        /// No
+        /// Timeout for call when executing a Conference instruction
         /// </summary>
         public int? Timeout { get; set; }
         /// <summary>
@@ -308,13 +308,21 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// </summary>
         public string SipAuthPassword { get; set; }
         /// <summary>
-        /// No
+        /// Call progress events sent via webhooks as a result of a Dequeue instruction
         /// </summary>
         public List<string> DequeueStatusCallbackEvent { get; set; }
         /// <summary>
-        /// No
+        /// New worker activity sid after executing a Conference instruction
         /// </summary>
         public string PostWorkActivitySid { get; set; }
+        /// <summary>
+        /// Supervisor mode when executing the Supervise instruction
+        /// </summary>
+        public ReservationResource.SupervisorModeEnum SupervisorMode { get; set; }
+        /// <summary>
+        /// Supervisor sid/uri when executing the Supervise instruction
+        /// </summary>
+        public string Supervisor { get; set; }
 
         /// <summary>
         /// Construct a new UpdateReservationOptions
@@ -581,6 +589,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             if (PostWorkActivitySid != null)
             {
                 p.Add(new KeyValuePair<string, string>("PostWorkActivitySid", PostWorkActivitySid.ToString()));
+            }
+
+            if (SupervisorMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SupervisorMode", SupervisorMode.ToString()));
+            }
+
+            if (Supervisor != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Supervisor", Supervisor));
             }
 
             return p;

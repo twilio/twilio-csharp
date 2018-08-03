@@ -17,19 +17,19 @@ namespace Twilio.Rest.Chat.V2.Service
     public class FetchUserOptions : IOptions<UserResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sid of the Service this user belongs to.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// Key that uniquely defines the user to fetch.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the user to fetch. </param>
         public FetchUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -52,19 +52,19 @@ namespace Twilio.Rest.Chat.V2.Service
     public class DeleteUserOptions : IOptions<UserResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sid of the Service this user belongs to.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// Key that uniquely defines the user to delete.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the user to delete. </param>
         public DeleteUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Chat.V2.Service
     public class CreateUserOptions : IOptions<UserResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sid of the Service this user belongs to.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// Construct a new CreateUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
         /// <param name="identity"> A unique string that identifies the user within this service - often a username or email
         ///                address. </param>
         public CreateUserOptions(string pathServiceSid, string identity)
@@ -155,14 +155,14 @@ namespace Twilio.Rest.Chat.V2.Service
     public class ReadUserOptions : ReadOptions<UserResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sid of the Service this user belongs to.
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
         public ReadUserOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -189,11 +189,11 @@ namespace Twilio.Rest.Chat.V2.Service
     public class UpdateUserOptions : IOptions<UserResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sid of the Service this user belongs to.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// Key that uniquely defines the user to update.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -212,8 +212,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// Construct a new UpdateUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the user to update. </param>
         public UpdateUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

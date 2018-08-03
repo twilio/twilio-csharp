@@ -34,6 +34,19 @@ namespace Twilio.Rest.IpMessaging.V2.Service
             public static readonly ChannelTypeEnum Private = new ChannelTypeEnum("private");
         }
 
+        public sealed class WebhookEnabledTypeEnum : StringEnum 
+        {
+            private WebhookEnabledTypeEnum(string value) : base(value) {}
+            public WebhookEnabledTypeEnum() {}
+            public static implicit operator WebhookEnabledTypeEnum(string value)
+            {
+                return new WebhookEnabledTypeEnum(value);
+            }
+
+            public static readonly WebhookEnabledTypeEnum True = new WebhookEnabledTypeEnum("true");
+            public static readonly WebhookEnabledTypeEnum False = new WebhookEnabledTypeEnum("false");
+        }
+
         private static Request BuildFetchRequest(FetchChannelOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -77,8 +90,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this channel belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the channel to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns> 
         public static ChannelResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -91,8 +104,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this channel belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the channel to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<ChannelResource> FetchAsync(string pathServiceSid, 
@@ -147,8 +160,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this channel belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the channel to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns> 
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -161,8 +174,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this channel belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the channel to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
@@ -217,7 +230,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this channel belongs to. </param>
         /// <param name="friendlyName"> A human-readable name for the Channel. </param>
         /// <param name="uniqueName"> A unique, addressable name for the Channel. </param>
         /// <param name="attributes"> An optional metadata field you can use to store any data you wish. </param>
@@ -247,7 +260,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this channel belongs to. </param>
         /// <param name="friendlyName"> A human-readable name for the Channel. </param>
         /// <param name="uniqueName"> A unique, addressable name for the Channel. </param>
         /// <param name="attributes"> An optional metadata field you can use to store any data you wish. </param>
@@ -321,8 +334,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="type"> The type </param>
+        /// <param name="pathServiceSid"> Sid of the Service this channel belongs to. </param>
+        /// <param name="type"> The visibility of the channel - public or private. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -341,8 +354,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="type"> The type </param>
+        /// <param name="pathServiceSid"> Sid of the Service this channel belongs to. </param>
+        /// <param name="type"> The visibility of the channel - public or private. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -460,8 +473,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this channel belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the channel to fetch. </param>
         /// <param name="friendlyName"> A human-readable name for the Channel. </param>
         /// <param name="uniqueName"> A unique, addressable name for the Channel. </param>
         /// <param name="attributes"> An optional metadata field you can use to store any data you wish. </param>
@@ -490,8 +503,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this channel belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the channel to fetch. </param>
         /// <param name="friendlyName"> A human-readable name for the Channel. </param>
         /// <param name="uniqueName"> A unique, addressable name for the Channel. </param>
         /// <param name="attributes"> An optional metadata field you can use to store any data you wish. </param>

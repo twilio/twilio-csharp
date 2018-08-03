@@ -18,24 +18,24 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class FetchMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sid of the Service this member belongs to.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The channel_sid
+        /// Key that uniquely defines the channel this member belongs to.
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The sid
+        /// Key that uniquely defines the member to fetch.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the member to fetch. </param>
         public FetchMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -59,11 +59,11 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class CreateMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sid of the Service this member belongs to.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The channel_sid
+        /// Key that uniquely defines the channel this member belongs to.
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
@@ -94,8 +94,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// Construct a new CreateMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
         /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
         ///                more details. </param>
         public CreateMemberOptions(string pathServiceSid, string pathChannelSid, string identity)
@@ -151,11 +151,11 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class ReadMemberOptions : ReadOptions<MemberResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sid of the Service this member belongs to.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The channel_sid
+        /// Key that uniquely defines the channel this member belongs to.
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
@@ -166,8 +166,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// Construct a new ReadMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
         public ReadMemberOptions(string pathServiceSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -201,24 +201,24 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class DeleteMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sid of the Service this member belongs to.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The channel_sid
+        /// Key that uniquely defines the channel this member belongs to.
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The sid
+        /// Key that uniquely defines the member to delete.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the member to delete. </param>
         public DeleteMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -242,15 +242,15 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class UpdateMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Sid of the Service this member belongs to.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The channel_sid
+        /// Key that uniquely defines the channel this member belongs to.
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The sid
+        /// Key that uniquely defines the member to update.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -277,9 +277,9 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// Construct a new UpdateMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the member to update. </param>
         public UpdateMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

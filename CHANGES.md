@@ -1,6 +1,22 @@
 twilio-csharp Changelog
 =======================
 
+[2018-08-03] Version 5.15.0
+----------------------------
+**Library**
+- PR #434: Tag and push Docker latest image when deploying with TravisCI. Thanks to @jonatasbaldin!
+
+**Chat**
+- Make message From field updatable
+- Add REST API webhooks
+
+**Notify**
+- Removing deprecated `segments`, `users`, `segment_memberships`, `user_bindings` classes from helper libraries. **(breaking change)**
+
+**Twiml**
+- Add `Connect` and `Room` for Programmable Video Rooms
+
+
 [2018-07-26] Version 5.14.1
 ----------------------------
 **Library**

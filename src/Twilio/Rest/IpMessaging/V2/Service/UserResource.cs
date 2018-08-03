@@ -14,12 +14,26 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.IpMessaging.V2.Service 
 {
 
     public class UserResource : Resource 
     {
+        public sealed class WebhookEnabledTypeEnum : StringEnum 
+        {
+            private WebhookEnabledTypeEnum(string value) : base(value) {}
+            public WebhookEnabledTypeEnum() {}
+            public static implicit operator WebhookEnabledTypeEnum(string value)
+            {
+                return new WebhookEnabledTypeEnum(value);
+            }
+
+            public static readonly WebhookEnabledTypeEnum True = new WebhookEnabledTypeEnum("true");
+            public static readonly WebhookEnabledTypeEnum False = new WebhookEnabledTypeEnum("false");
+        }
+
         private static Request BuildFetchRequest(FetchUserOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -63,8 +77,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the user to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
         public static UserResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -77,8 +91,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the user to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
         public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string pathServiceSid, 
@@ -133,8 +147,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the user to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns> 
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -147,8 +161,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the user to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
@@ -203,7 +217,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
         /// <param name="identity"> A unique string that identifies the user within this service - often a username or email
         ///                address. </param>
         /// <param name="roleSid"> The unique id of the Role assigned to this user. </param>
@@ -227,7 +241,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
         /// <param name="identity"> A unique string that identifies the user within this service - often a username or email
         ///                address. </param>
         /// <param name="roleSid"> The unique id of the Role assigned to this user. </param>
@@ -295,7 +309,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -313,7 +327,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -430,8 +444,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the user to update. </param>
         /// <param name="roleSid"> The unique id of the [Role][role] assigned to this user. </param>
         /// <param name="attributes"> An optional string used to contain any metadata or other information for the User.
         ///                  </param>
@@ -453,8 +467,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this user belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the user to update. </param>
         /// <param name="roleSid"> The unique id of the [Role][role] assigned to this user. </param>
         /// <param name="attributes"> An optional string used to contain any metadata or other information for the User.
         ///                  </param>

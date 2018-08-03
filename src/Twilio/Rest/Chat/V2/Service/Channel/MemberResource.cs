@@ -14,12 +14,26 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Chat.V2.Service.Channel 
 {
 
     public class MemberResource : Resource 
     {
+        public sealed class WebhookEnabledTypeEnum : StringEnum 
+        {
+            private WebhookEnabledTypeEnum(string value) : base(value) {}
+            public WebhookEnabledTypeEnum() {}
+            public static implicit operator WebhookEnabledTypeEnum(string value)
+            {
+                return new WebhookEnabledTypeEnum(value);
+            }
+
+            public static readonly WebhookEnabledTypeEnum True = new WebhookEnabledTypeEnum("true");
+            public static readonly WebhookEnabledTypeEnum False = new WebhookEnabledTypeEnum("false");
+        }
+
         private static Request BuildFetchRequest(FetchMemberOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -63,9 +77,9 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the member to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
         public static MemberResource Fetch(string pathServiceSid, 
@@ -81,9 +95,9 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the member to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
         public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(string pathServiceSid, 
@@ -139,8 +153,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
         /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
         ///                more details. </param>
         /// <param name="roleSid"> The role to be assigned to this member. Defaults to the roles specified on the Service.
@@ -178,8 +192,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
         /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
         ///                more details. </param>
         /// <param name="roleSid"> The role to be assigned to this member. Defaults to the roles specified on the Service.
@@ -261,8 +275,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
         /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
         ///                more details. </param>
         /// <param name="pageSize"> Page size </param>
@@ -284,8 +298,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
         /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
         ///                more details. </param>
         /// <param name="pageSize"> Page size </param>
@@ -406,9 +420,9 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the member to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
         public static bool Delete(string pathServiceSid, 
@@ -424,9 +438,9 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the member to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
@@ -482,9 +496,9 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the member to update. </param>
         /// <param name="roleSid"> The role to be assigned to this member. </param>
         /// <param name="lastConsumedMessageIndex"> Field used to specify the last consumed Message index for the Channel for
         ///                                this Member. </param>
@@ -514,9 +528,9 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
+        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
+        /// <param name="pathSid"> Key that uniquely defines the member to update. </param>
         /// <param name="roleSid"> The role to be assigned to this member. </param>
         /// <param name="lastConsumedMessageIndex"> Field used to specify the last consumed Message index for the Channel for
         ///                                this Member. </param>

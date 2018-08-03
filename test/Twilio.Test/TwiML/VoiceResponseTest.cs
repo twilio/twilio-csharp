@@ -45,15 +45,15 @@ namespace Twilio.Tests.TwiML
         public void TestNestElement()
         {
             var elem = new VoiceResponse();
-            var child = new Dial();
-            elem.Nest(child).Client();
+            var child = new Connect();
+            elem.Nest(child).Room();
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
-                "  <Dial>" + Environment.NewLine +
-                "    <Client></Client>" + Environment.NewLine +
-                "  </Dial>" + Environment.NewLine +
+                "  <Connect>" + Environment.NewLine +
+                "    <Room></Room>" + Environment.NewLine +
+                "  </Connect>" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()
             );
@@ -63,6 +63,8 @@ namespace Twilio.Tests.TwiML
         public void TestElementWithChildren()
         {
             var elem = new VoiceResponse();
+
+            elem.Connect(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
 
             elem.Dial(
                 "number",
@@ -157,6 +159,7 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
+                "  <Connect action=\"https://example.com\" method=\"GET\"></Connect>" + Environment.NewLine +
                 "  <Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" answerOnBridge=\"true\" ringTone=\"at\">number</Dial>" + Environment.NewLine +
                 "  <Echo></Echo>" + Environment.NewLine +
                 "  <Enqueue action=\"https://example.com\" method=\"GET\" waitUrl=\"https://example.com\" waitUrlMethod=\"GET\" workflowSid=\"workflow_sid\">name</Enqueue>" + Environment.NewLine +
@@ -209,15 +212,15 @@ namespace Twilio.Tests.TwiML
         public void TestAllowGenericChildrenOfChildNodes()
         {
             var elem = new VoiceResponse();
-            var child = new Dial();
+            var child = new Connect();
             elem.Nest(child).AddChild("generic-tag").SetOption("tag", true).AddText("Content");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
-                "  <Dial>" + Environment.NewLine +
+                "  <Connect>" + Environment.NewLine +
                 "    <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
-                "  </Dial>" + Environment.NewLine +
+                "  </Connect>" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()
             );

@@ -27,6 +27,29 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
+        /// Append a <Connect/> element as a child of this element
+        /// </summary>
+        /// <param name="connect"> A Connect instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public VoiceResponse Connect(Connect connect)
+        {
+            this.Append(connect);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Connect/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="action"> Action URL </param>
+        /// <param name="method"> Action URL method </param>
+        public VoiceResponse Connect(Uri action = null, Twilio.Http.HttpMethod method = null)
+        {
+            var newChild = new Connect(action, method);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
         /// Append a <Dial/> element as a child of this element
         /// </summary>
         /// <param name="dial"> A Dial instance. </param>

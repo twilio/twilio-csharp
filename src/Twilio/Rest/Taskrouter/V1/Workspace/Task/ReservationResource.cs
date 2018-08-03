@@ -71,6 +71,20 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
             public static readonly ConferenceEventEnum Speaker = new ConferenceEventEnum("speaker");
         }
 
+        public sealed class SupervisorModeEnum : StringEnum 
+        {
+            private SupervisorModeEnum(string value) : base(value) {}
+            public SupervisorModeEnum() {}
+            public static implicit operator SupervisorModeEnum(string value)
+            {
+                return new SupervisorModeEnum(value);
+            }
+
+            public static readonly SupervisorModeEnum Monitor = new SupervisorModeEnum("monitor");
+            public static readonly SupervisorModeEnum Whisper = new SupervisorModeEnum("whisper");
+            public static readonly SupervisorModeEnum Barge = new SupervisorModeEnum("barge");
+        }
+
         private static Request BuildReadRequest(ReadReservationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -342,31 +356,36 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskSid"> The task_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="reservationStatus"> Yes </param>
-        /// <param name="workerActivitySid"> No </param>
-        /// <param name="instruction"> Yes </param>
-        /// <param name="dequeuePostWorkActivitySid"> No </param>
-        /// <param name="dequeueFrom"> Yes </param>
-        /// <param name="dequeueRecord"> No </param>
-        /// <param name="dequeueTimeout"> No </param>
-        /// <param name="dequeueTo"> No </param>
-        /// <param name="dequeueStatusCallbackUrl"> No </param>
-        /// <param name="callFrom"> Yes </param>
-        /// <param name="callRecord"> No </param>
-        /// <param name="callTimeout"> No </param>
-        /// <param name="callTo"> No </param>
-        /// <param name="callUrl"> Yes </param>
-        /// <param name="callStatusCallbackUrl"> No </param>
-        /// <param name="callAccept"> No </param>
-        /// <param name="redirectCallSid"> Yes </param>
-        /// <param name="redirectAccept"> No </param>
-        /// <param name="redirectUrl"> Yes </param>
-        /// <param name="to"> No </param>
-        /// <param name="from"> No </param>
+        /// <param name="reservationStatus"> New reservation status </param>
+        /// <param name="workerActivitySid"> New worker activity sid if rejecting a reservation </param>
+        /// <param name="instruction"> Assignment instruction for reservation </param>
+        /// <param name="dequeuePostWorkActivitySid"> New worker activity sid after executing a Dequeue instruction </param>
+        /// <param name="dequeueFrom"> Caller ID for the call to the worker when executing a Dequeue instruction </param>
+        /// <param name="dequeueRecord"> Attribute to record both legs of a call when executing a Dequeue instruction </param>
+        /// <param name="dequeueTimeout"> Timeout for call when executing a Dequeue instruction </param>
+        /// <param name="dequeueTo"> Contact URI of the worker when executing a Dequeue instruction </param>
+        /// <param name="dequeueStatusCallbackUrl"> Callback URL for completed call event when executing a Dequeue instruction
+        ///                                </param>
+        /// <param name="callFrom"> Caller ID for the outbound call when executing a Call instruction </param>
+        /// <param name="callRecord"> Attribute to record both legs of a call when executing a Call instruction </param>
+        /// <param name="callTimeout"> Timeout for call when executing a Call instruction </param>
+        /// <param name="callTo"> Contact URI of the worker when executing a Call instruction </param>
+        /// <param name="callUrl"> TwiML URI executed on answering the worker's leg as a result of the Call instruction </param>
+        /// <param name="callStatusCallbackUrl"> Callback URL for completed call event when executing a Call instruction
+        ///                             </param>
+        /// <param name="callAccept"> Flag to determine if reservation should be accepted when executing a Call instruction
+        ///                  </param>
+        /// <param name="redirectCallSid"> Call sid of the call parked in the queue when executing a Redirect instruction
+        ///                       </param>
+        /// <param name="redirectAccept"> Flag to determine if reservation should be accepted when executing a Redirect
+        ///                      instruction </param>
+        /// <param name="redirectUrl"> TwiML URI to redirect the call to when executing the Redirect instruction </param>
+        /// <param name="to"> Contact URI of the worker when executing a Conference instruction </param>
+        /// <param name="from"> Caller ID for the call to the worker when executing a Conference instruction </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="statusCallbackEvent"> The status_callback_event </param>
-        /// <param name="timeout"> No </param>
+        /// <param name="timeout"> Timeout for call when executing a Conference instruction </param>
         /// <param name="record"> The record </param>
         /// <param name="muted"> The muted </param>
         /// <param name="beep"> The beep </param>
@@ -389,8 +408,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="region"> The region </param>
         /// <param name="sipAuthUsername"> The sip_auth_username </param>
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
-        /// <param name="dequeueStatusCallbackEvent"> No </param>
-        /// <param name="postWorkActivitySid"> No </param>
+        /// <param name="dequeueStatusCallbackEvent"> Call progress events sent via webhooks as a result of a Dequeue
+        ///                                  instruction </param>
+        /// <param name="postWorkActivitySid"> New worker activity sid after executing a Conference instruction </param>
+        /// <param name="supervisorMode"> Supervisor mode when executing the Supervise instruction </param>
+        /// <param name="supervisor"> Supervisor sid/uri when executing the Supervise instruction </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Reservation </returns> 
         public static ReservationResource Update(string pathWorkspaceSid, 
@@ -445,9 +467,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                                  string sipAuthPassword = null, 
                                                  List<string> dequeueStatusCallbackEvent = null, 
                                                  string postWorkActivitySid = null, 
+                                                 ReservationResource.SupervisorModeEnum supervisorMode = null, 
+                                                 string supervisor = null, 
                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid};
+            var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, SupervisorMode = supervisorMode, Supervisor = supervisor};
             return Update(options, client);
         }
 
@@ -458,31 +482,36 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathTaskSid"> The task_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="reservationStatus"> Yes </param>
-        /// <param name="workerActivitySid"> No </param>
-        /// <param name="instruction"> Yes </param>
-        /// <param name="dequeuePostWorkActivitySid"> No </param>
-        /// <param name="dequeueFrom"> Yes </param>
-        /// <param name="dequeueRecord"> No </param>
-        /// <param name="dequeueTimeout"> No </param>
-        /// <param name="dequeueTo"> No </param>
-        /// <param name="dequeueStatusCallbackUrl"> No </param>
-        /// <param name="callFrom"> Yes </param>
-        /// <param name="callRecord"> No </param>
-        /// <param name="callTimeout"> No </param>
-        /// <param name="callTo"> No </param>
-        /// <param name="callUrl"> Yes </param>
-        /// <param name="callStatusCallbackUrl"> No </param>
-        /// <param name="callAccept"> No </param>
-        /// <param name="redirectCallSid"> Yes </param>
-        /// <param name="redirectAccept"> No </param>
-        /// <param name="redirectUrl"> Yes </param>
-        /// <param name="to"> No </param>
-        /// <param name="from"> No </param>
+        /// <param name="reservationStatus"> New reservation status </param>
+        /// <param name="workerActivitySid"> New worker activity sid if rejecting a reservation </param>
+        /// <param name="instruction"> Assignment instruction for reservation </param>
+        /// <param name="dequeuePostWorkActivitySid"> New worker activity sid after executing a Dequeue instruction </param>
+        /// <param name="dequeueFrom"> Caller ID for the call to the worker when executing a Dequeue instruction </param>
+        /// <param name="dequeueRecord"> Attribute to record both legs of a call when executing a Dequeue instruction </param>
+        /// <param name="dequeueTimeout"> Timeout for call when executing a Dequeue instruction </param>
+        /// <param name="dequeueTo"> Contact URI of the worker when executing a Dequeue instruction </param>
+        /// <param name="dequeueStatusCallbackUrl"> Callback URL for completed call event when executing a Dequeue instruction
+        ///                                </param>
+        /// <param name="callFrom"> Caller ID for the outbound call when executing a Call instruction </param>
+        /// <param name="callRecord"> Attribute to record both legs of a call when executing a Call instruction </param>
+        /// <param name="callTimeout"> Timeout for call when executing a Call instruction </param>
+        /// <param name="callTo"> Contact URI of the worker when executing a Call instruction </param>
+        /// <param name="callUrl"> TwiML URI executed on answering the worker's leg as a result of the Call instruction </param>
+        /// <param name="callStatusCallbackUrl"> Callback URL for completed call event when executing a Call instruction
+        ///                             </param>
+        /// <param name="callAccept"> Flag to determine if reservation should be accepted when executing a Call instruction
+        ///                  </param>
+        /// <param name="redirectCallSid"> Call sid of the call parked in the queue when executing a Redirect instruction
+        ///                       </param>
+        /// <param name="redirectAccept"> Flag to determine if reservation should be accepted when executing a Redirect
+        ///                      instruction </param>
+        /// <param name="redirectUrl"> TwiML URI to redirect the call to when executing the Redirect instruction </param>
+        /// <param name="to"> Contact URI of the worker when executing a Conference instruction </param>
+        /// <param name="from"> Caller ID for the call to the worker when executing a Conference instruction </param>
         /// <param name="statusCallback"> The status_callback </param>
         /// <param name="statusCallbackMethod"> The status_callback_method </param>
         /// <param name="statusCallbackEvent"> The status_callback_event </param>
-        /// <param name="timeout"> No </param>
+        /// <param name="timeout"> Timeout for call when executing a Conference instruction </param>
         /// <param name="record"> The record </param>
         /// <param name="muted"> The muted </param>
         /// <param name="beep"> The beep </param>
@@ -505,8 +534,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <param name="region"> The region </param>
         /// <param name="sipAuthUsername"> The sip_auth_username </param>
         /// <param name="sipAuthPassword"> The sip_auth_password </param>
-        /// <param name="dequeueStatusCallbackEvent"> No </param>
-        /// <param name="postWorkActivitySid"> No </param>
+        /// <param name="dequeueStatusCallbackEvent"> Call progress events sent via webhooks as a result of a Dequeue
+        ///                                  instruction </param>
+        /// <param name="postWorkActivitySid"> New worker activity sid after executing a Conference instruction </param>
+        /// <param name="supervisorMode"> Supervisor mode when executing the Supervise instruction </param>
+        /// <param name="supervisor"> Supervisor sid/uri when executing the Supervise instruction </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns> 
         public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(string pathWorkspaceSid, 
@@ -561,9 +593,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
                                                                                          string sipAuthPassword = null, 
                                                                                          List<string> dequeueStatusCallbackEvent = null, 
                                                                                          string postWorkActivitySid = null, 
+                                                                                         ReservationResource.SupervisorModeEnum supervisorMode = null, 
+                                                                                         string supervisor = null, 
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid};
+            var options = new UpdateReservationOptions(pathWorkspaceSid, pathTaskSid, pathSid){ReservationStatus = reservationStatus, WorkerActivitySid = workerActivitySid, Instruction = instruction, DequeuePostWorkActivitySid = dequeuePostWorkActivitySid, DequeueFrom = dequeueFrom, DequeueRecord = dequeueRecord, DequeueTimeout = dequeueTimeout, DequeueTo = dequeueTo, DequeueStatusCallbackUrl = dequeueStatusCallbackUrl, CallFrom = callFrom, CallRecord = callRecord, CallTimeout = callTimeout, CallTo = callTo, CallUrl = callUrl, CallStatusCallbackUrl = callStatusCallbackUrl, CallAccept = callAccept, RedirectCallSid = redirectCallSid, RedirectAccept = redirectAccept, RedirectUrl = redirectUrl, To = to, From = from, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, Region = region, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, DequeueStatusCallbackEvent = dequeueStatusCallbackEvent, PostWorkActivitySid = postWorkActivitySid, SupervisorMode = supervisorMode, Supervisor = supervisor};
             return await UpdateAsync(options, client);
         }
         #endif
