@@ -25,6 +25,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="[9.0.1,)" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.4' ">
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.1.2" />
