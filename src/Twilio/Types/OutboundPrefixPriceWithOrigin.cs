@@ -46,7 +46,7 @@ namespace Twilio.Types
         /// <param name="friendlyName">Prefix friendly name</param>
         /// <param name="basePrice">Base price of prefix</param>
         /// <param name="currentPrice">Current price of prefix</param>
-        public OutboundPrefixPrice (
+        public OutboundPrefixPriceWithOrigin (
             List<string> destinationPrefixes,
             List<string> originationPrefixes,
             string friendlyName,
