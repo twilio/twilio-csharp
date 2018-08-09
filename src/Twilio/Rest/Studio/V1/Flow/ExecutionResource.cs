@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
 /// ExecutionResource
 /// </summary>
 
@@ -443,7 +441,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         [JsonProperty("contact_channel_address")]
         public string ContactChannelAddress { get; private set; }
         /// <summary>
-        /// Flow state.
+        /// The context
         /// </summary>
         [JsonProperty("context")]
         public object Context { get; private set; }

@@ -12,8 +12,6 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// Retrieve the most recent context for an Engagement.
     /// </summary>
     public class FetchEngagementContextOptions : IOptions<EngagementContextResource> 

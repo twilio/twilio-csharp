@@ -12,8 +12,6 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// Retrieve the context for an Engagement Step.
     /// </summary>
     public class FetchStepContextOptions : IOptions<StepContextResource> 

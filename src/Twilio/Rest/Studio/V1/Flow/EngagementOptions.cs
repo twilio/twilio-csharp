@@ -12,8 +12,6 @@ namespace Twilio.Rest.Studio.V1.Flow
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// Retrieve a list of all Engagements for the Flow.
     /// </summary>
     public class ReadEngagementOptions : ReadOptions<EngagementResource> 
@@ -48,8 +46,6 @@ namespace Twilio.Rest.Studio.V1.Flow
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// Retrieve an Engagement
     /// </summary>
     public class FetchEngagementOptions : IOptions<EngagementResource> 
@@ -85,8 +81,6 @@ namespace Twilio.Rest.Studio.V1.Flow
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// Triggers a new Engagement for the Flow
     /// </summary>
     public class CreateEngagementOptions : IOptions<EngagementResource> 
@@ -148,8 +142,6 @@ namespace Twilio.Rest.Studio.V1.Flow
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// Delete this Engagement and all Steps relating to it.
     /// </summary>
     public class DeleteEngagementOptions : IOptions<EngagementResource> 

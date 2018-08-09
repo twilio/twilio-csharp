@@ -12,8 +12,6 @@ namespace Twilio.Rest.Studio.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// Retrieve a list of all Flows.
     /// </summary>
     public class ReadFlowOptions : ReadOptions<FlowResource> 
@@ -34,8 +32,6 @@ namespace Twilio.Rest.Studio.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// Retrieve a specific Flow.
     /// </summary>
     public class FetchFlowOptions : IOptions<FlowResource> 
@@ -65,8 +61,6 @@ namespace Twilio.Rest.Studio.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
     /// Delete a specific Flow.
     /// </summary>
     public class DeleteFlowOptions : IOptions<FlowResource> 
