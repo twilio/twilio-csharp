@@ -153,6 +153,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum PhonenumbersTollfree = new UsageCategoryEnum("phonenumbers-tollfree");
             public static readonly UsageCategoryEnum Premiumsupport = new UsageCategoryEnum("premiumsupport");
             public static readonly UsageCategoryEnum Proxy = new UsageCategoryEnum("proxy");
+            public static readonly UsageCategoryEnum ProxyActiveSessions = new UsageCategoryEnum("proxy-active-sessions");
             public static readonly UsageCategoryEnum Pv = new UsageCategoryEnum("pv");
             public static readonly UsageCategoryEnum PvCompositionMediaDownloaded = new UsageCategoryEnum("pv-composition-media-downloaded");
             public static readonly UsageCategoryEnum PvCompositionMediaEncrypted = new UsageCategoryEnum("pv-composition-media-encrypted");

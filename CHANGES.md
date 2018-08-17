@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2018-08-17] Version 5.16.1
+----------------------------
+**Api**
+- Add Proxy Active Sessions category to usage records
+
+
 [2018-08-17] Version 5.16.0
 ----------------------------
 **Library**
