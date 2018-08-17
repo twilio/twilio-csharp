@@ -87,10 +87,6 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The webhook URL called to fetch the response to an incoming communication expressed in Assistant TwiML.
-        /// </summary>
-        public Uri ResponseUrl { get; set; }
-        /// <summary>
         /// The callback_url
         /// </summary>
         public Uri CallbackUrl { get; set; }
@@ -98,6 +94,14 @@ namespace Twilio.Rest.Preview.Understand
         /// The callback_events
         /// </summary>
         public string CallbackEvents { get; set; }
+        /// <summary>
+        /// The fallback_actions
+        /// </summary>
+        public object FallbackActions { get; set; }
+        /// <summary>
+        /// The initiation_actions
+        /// </summary>
+        public object InitiationActions { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -120,11 +124,6 @@ namespace Twilio.Rest.Preview.Understand
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
 
-            if (ResponseUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ResponseUrl", Serializers.Url(ResponseUrl)));
-            }
-
             if (CallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
@@ -133,6 +132,16 @@ namespace Twilio.Rest.Preview.Understand
             if (CallbackEvents != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackEvents", CallbackEvents));
+            }
+
+            if (FallbackActions != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FallbackActions", Serializers.JsonObject(FallbackActions)));
+            }
+
+            if (InitiationActions != null)
+            {
+                p.Add(new KeyValuePair<string, string>("InitiationActions", Serializers.JsonObject(InitiationActions)));
             }
 
             return p;
@@ -164,10 +173,6 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The webhook URL called to fetch the response to an incoming communication expressed in Assistant TwiML.
-        /// </summary>
-        public Uri ResponseUrl { get; set; }
-        /// <summary>
         /// The callback_url
         /// </summary>
         public Uri CallbackUrl { get; set; }
@@ -175,6 +180,14 @@ namespace Twilio.Rest.Preview.Understand
         /// The callback_events
         /// </summary>
         public string CallbackEvents { get; set; }
+        /// <summary>
+        /// The fallback_actions
+        /// </summary>
+        public object FallbackActions { get; set; }
+        /// <summary>
+        /// The initiation_actions
+        /// </summary>
+        public object InitiationActions { get; set; }
 
         /// <summary>
         /// Construct a new UpdateAssistantOptions
@@ -206,11 +219,6 @@ namespace Twilio.Rest.Preview.Understand
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
 
-            if (ResponseUrl != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ResponseUrl", Serializers.Url(ResponseUrl)));
-            }
-
             if (CallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
@@ -219,6 +227,16 @@ namespace Twilio.Rest.Preview.Understand
             if (CallbackEvents != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackEvents", CallbackEvents));
+            }
+
+            if (FallbackActions != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FallbackActions", Serializers.JsonObject(FallbackActions)));
+            }
+
+            if (InitiationActions != null)
+            {
+                p.Add(new KeyValuePair<string, string>("InitiationActions", Serializers.JsonObject(InitiationActions)));
             }
 
             return p;

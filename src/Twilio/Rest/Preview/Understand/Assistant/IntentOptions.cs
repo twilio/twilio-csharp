@@ -106,6 +106,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// A user-provided string that identifies this resource. It is non-unique and can up to 255 characters long.
         /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The actions
+        /// </summary>
+        public object Actions { get; set; }
 
         /// <summary>
         /// Construct a new CreateIntentOptions
@@ -133,6 +137,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (Actions != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Actions", Serializers.JsonObject(Actions)));
             }
 
             return p;
@@ -163,6 +172,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
         /// </summary>
         public string UniqueName { get; set; }
+        /// <summary>
+        /// The actions
+        /// </summary>
+        public object Actions { get; set; }
 
         /// <summary>
         /// Construct a new UpdateIntentOptions
@@ -189,6 +202,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+            }
+
+            if (Actions != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Actions", Serializers.JsonObject(Actions)));
             }
 
             return p;

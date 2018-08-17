@@ -620,7 +620,7 @@ namespace Twilio.Rest.IpMessaging.V2
         [JsonProperty("default_channel_creator_role_sid")]
         public string DefaultChannelCreatorRoleSid { get; private set; }
         /// <summary>
-        /// Enable the Message Constumption Horizon feature.
+        /// Enable the Message Consumption Horizon feature.
         /// </summary>
         [JsonProperty("read_status_enabled")]
         public bool? ReadStatusEnabled { get; private set; }

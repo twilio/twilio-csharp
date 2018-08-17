@@ -280,14 +280,16 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="friendlyName"> A user-provided string that identifies this resource. It is non-unique and can up to
         ///                    255 characters long. </param>
+        /// <param name="actions"> The actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Intent </returns> 
         public static IntentResource Create(string pathAssistantSid, 
                                             string uniqueName, 
                                             string friendlyName = null, 
+                                            object actions = null, 
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateIntentOptions(pathAssistantSid, uniqueName){FriendlyName = friendlyName};
+            var options = new CreateIntentOptions(pathAssistantSid, uniqueName){FriendlyName = friendlyName, Actions = actions};
             return Create(options, client);
         }
 
@@ -300,14 +302,16 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="friendlyName"> A user-provided string that identifies this resource. It is non-unique and can up to
         ///                    255 characters long. </param>
+        /// <param name="actions"> The actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Intent </returns> 
         public static async System.Threading.Tasks.Task<IntentResource> CreateAsync(string pathAssistantSid, 
                                                                                     string uniqueName, 
                                                                                     string friendlyName = null, 
+                                                                                    object actions = null, 
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateIntentOptions(pathAssistantSid, uniqueName){FriendlyName = friendlyName};
+            var options = new CreateIntentOptions(pathAssistantSid, uniqueName){FriendlyName = friendlyName, Actions = actions};
             return await CreateAsync(options, client);
         }
         #endif
@@ -361,15 +365,17 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         ///                    255 characters long. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
+        /// <param name="actions"> The actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Intent </returns> 
         public static IntentResource Update(string pathAssistantSid, 
                                             string pathSid, 
                                             string friendlyName = null, 
                                             string uniqueName = null, 
+                                            object actions = null, 
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateIntentOptions(pathAssistantSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName};
+            var options = new UpdateIntentOptions(pathAssistantSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Actions = actions};
             return Update(options, client);
         }
 
@@ -383,15 +389,17 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         ///                    255 characters long. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
+        /// <param name="actions"> The actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Intent </returns> 
         public static async System.Threading.Tasks.Task<IntentResource> UpdateAsync(string pathAssistantSid, 
                                                                                     string pathSid, 
                                                                                     string friendlyName = null, 
                                                                                     string uniqueName = null, 
+                                                                                    object actions = null, 
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new UpdateIntentOptions(pathAssistantSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName};
+            var options = new UpdateIntentOptions(pathAssistantSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Actions = actions};
             return await UpdateAsync(options, client);
         }
         #endif

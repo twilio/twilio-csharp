@@ -536,12 +536,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
 
         /// <summary>
-        /// The unique id of the account that sent the message
+        /// The unique id of the account that sent the call
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The Twilio API version used to process the message
+        /// The Twilio API version used to process the call
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }

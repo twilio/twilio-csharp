@@ -1,6 +1,18 @@
 twilio-csharp Changelog
 =======================
 
+[2018-08-17] Version 5.16.0
+----------------------------
+**Library**
+- PR #441: add OutboundPrefixPriceWithOrigin class. Thanks to @jbonner89!
+
+**Preview**
+- Add `Actions` endpoints and remove `ResponseUrl` from assistants on the Understand api
+
+**Pricing**
+- add voice_country resource (v2)
+
+
 [2018-08-09] Version 5.15.1
 ----------------------------
 **Library**

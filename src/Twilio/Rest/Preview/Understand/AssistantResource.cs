@@ -275,21 +275,22 @@ namespace Twilio.Rest.Preview.Understand
         ///                  thereafter. Defaults to true if no value is provided. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="responseUrl"> The webhook URL called to fetch the response to an incoming communication expressed in
-        ///                   Assistant TwiML. </param>
         /// <param name="callbackUrl"> The callback_url </param>
         /// <param name="callbackEvents"> The callback_events </param>
+        /// <param name="fallbackActions"> The fallback_actions </param>
+        /// <param name="initiationActions"> The initiation_actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Create(string friendlyName = null, 
                                                bool? logQueries = null, 
                                                string uniqueName = null, 
-                                               Uri responseUrl = null, 
                                                Uri callbackUrl = null, 
                                                string callbackEvents = null, 
+                                               object fallbackActions = null, 
+                                               object initiationActions = null, 
                                                ITwilioRestClient client = null)
         {
-            var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, ResponseUrl = responseUrl, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents};
+            var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions};
             return Create(options, client);
         }
 
@@ -304,21 +305,22 @@ namespace Twilio.Rest.Preview.Understand
         ///                  thereafter. Defaults to true if no value is provided. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="responseUrl"> The webhook URL called to fetch the response to an incoming communication expressed in
-        ///                   Assistant TwiML. </param>
         /// <param name="callbackUrl"> The callback_url </param>
         /// <param name="callbackEvents"> The callback_events </param>
+        /// <param name="fallbackActions"> The fallback_actions </param>
+        /// <param name="initiationActions"> The initiation_actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(string friendlyName = null, 
                                                                                        bool? logQueries = null, 
                                                                                        string uniqueName = null, 
-                                                                                       Uri responseUrl = null, 
                                                                                        Uri callbackUrl = null, 
                                                                                        string callbackEvents = null, 
+                                                                                       object fallbackActions = null, 
+                                                                                       object initiationActions = null, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, ResponseUrl = responseUrl, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents};
+            var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions};
             return await CreateAsync(options, client);
         }
         #endif
@@ -374,22 +376,23 @@ namespace Twilio.Rest.Preview.Understand
         ///                  thereafter. Defaults to true if no value is provided. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="responseUrl"> The webhook URL called to fetch the response to an incoming communication expressed in
-        ///                   Assistant TwiML. </param>
         /// <param name="callbackUrl"> The callback_url </param>
         /// <param name="callbackEvents"> The callback_events </param>
+        /// <param name="fallbackActions"> The fallback_actions </param>
+        /// <param name="initiationActions"> The initiation_actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Update(string pathSid, 
                                                string friendlyName = null, 
                                                bool? logQueries = null, 
                                                string uniqueName = null, 
-                                               Uri responseUrl = null, 
                                                Uri callbackUrl = null, 
                                                string callbackEvents = null, 
+                                               object fallbackActions = null, 
+                                               object initiationActions = null, 
                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, ResponseUrl = responseUrl, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents};
+            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions};
             return Update(options, client);
         }
 
@@ -405,22 +408,23 @@ namespace Twilio.Rest.Preview.Understand
         ///                  thereafter. Defaults to true if no value is provided. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="responseUrl"> The webhook URL called to fetch the response to an incoming communication expressed in
-        ///                   Assistant TwiML. </param>
         /// <param name="callbackUrl"> The callback_url </param>
         /// <param name="callbackEvents"> The callback_events </param>
+        /// <param name="fallbackActions"> The fallback_actions </param>
+        /// <param name="initiationActions"> The initiation_actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(string pathSid, 
                                                                                        string friendlyName = null, 
                                                                                        bool? logQueries = null, 
                                                                                        string uniqueName = null, 
-                                                                                       Uri responseUrl = null, 
                                                                                        Uri callbackUrl = null, 
                                                                                        string callbackEvents = null, 
+                                                                                       object fallbackActions = null, 
+                                                                                       object initiationActions = null, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, ResponseUrl = responseUrl, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents};
+            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -559,11 +563,6 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-        /// <summary>
-        /// The webhook URL called to fetch the response to an incoming communication expressed in Assistant TwiML.
-        /// </summary>
-        [JsonProperty("response_url")]
-        public Uri ResponseUrl { get; private set; }
         /// <summary>
         /// The callback_url
         /// </summary>
