@@ -25,7 +25,7 @@ namespace Twilio.Types
         /// </summary>
         /// <returns></returns>
         [JsonProperty("origination_prefixes")]
-        public List<string> OriginationPrefixes
+        public List<string> OriginationPrefixes { get; }
 
         /// <summary>
         /// Create a new OutboundCallPriceWithOrigin
