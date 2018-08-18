@@ -33,7 +33,7 @@ namespace Twilio.Types
         /// <param name="basePrice">Base price of call</param>
         /// <param name="currentPrice">Current price of call</param>
         /// <param name="originationPrefixes">List of origination prefixes of call</param>
-        public OutboundCallPricesWithOrigin (double basePrice, double currentPrice, List<string> originationPrefixes) {
+        public OutboundCallPriceWithOrigin (double basePrice, double currentPrice, List<string> originationPrefixes) {
             BasePrice = basePrice;
             CurrentPrice = currentPrice;
             OriginationPrefixes = originationPrefixes;
