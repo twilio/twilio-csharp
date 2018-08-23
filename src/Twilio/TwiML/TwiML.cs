@@ -25,6 +25,10 @@ namespace Twilio.TwiML
         /// Additional tag attributes to set on the generated xml
         /// </summary>
         private List<KeyValuePair<string,string>> Options { get; }
+        /// <summary>
+        /// Attribute names to be transformed on the generated xml
+        /// </summary>
+        private Dictionary<string, string> AttributeNameMapper = new Dictionary<string, string> { { "for_", "for" } };
 
         /// <summary>
         /// Base constructor to create any TwiML instance.
@@ -120,7 +124,18 @@ namespace Twilio.TwiML
         {
             var elem = new XElement(this.TagName, this.GetElementBody());
 
-            this.GetElementAttributes().ForEach(attr => elem.Add(attr));
+            this.GetElementAttributes().ForEach(attr =>
+            {
+                string transformedAttr = attr.Name.LocalName;
+                if (AttributeNameMapper.TryGetValue(attr.Name.LocalName, out transformedAttr))
+                {
+                    elem.Add(new XAttribute(transformedAttr, attr.Value));
+                }
+                else
+                {
+                    elem.Add(attr);
+                }
+            });
 
             this.Options.ForEach(e =>
             {
