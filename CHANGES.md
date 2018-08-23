@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2018-08-23] Version 5.16.2
+----------------------------
+**Library**
+- PR #443: BPIPE-260. Thanks to @jbonner89!
+
+**Chat**
+- Add User Channel instance resource
+
+
 [2018-08-17] Version 5.16.1
 ----------------------------
 **Api**

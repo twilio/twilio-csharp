@@ -35,6 +35,19 @@ namespace Twilio.Rest.Chat.V2.Service.User
             public static readonly ChannelStatusEnum NotParticipating = new ChannelStatusEnum("not_participating");
         }
 
+        public sealed class NotificationLevelEnum : StringEnum 
+        {
+            private NotificationLevelEnum(string value) : base(value) {}
+            public NotificationLevelEnum() {}
+            public static implicit operator NotificationLevelEnum(string value)
+            {
+                return new NotificationLevelEnum(value);
+            }
+
+            public static readonly NotificationLevelEnum Default = new NotificationLevelEnum("default");
+            public static readonly NotificationLevelEnum Muted = new NotificationLevelEnum("muted");
+        }
+
         private static Request BuildReadRequest(ReadUserChannelOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -178,6 +191,162 @@ namespace Twilio.Rest.Chat.V2.Service.User
             return Page<UserChannelResource>.FromJson("channels", response.Content);
         }
 
+        private static Request BuildFetchRequest(FetchUserChannelOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Chat,
+                "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// fetch
+        /// </summary>
+        /// <param name="options"> Fetch UserChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of UserChannel </returns> 
+        public static UserChannelResource Fetch(FetchUserChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// fetch
+        /// </summary>
+        /// <param name="options"> Fetch UserChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of UserChannel </returns> 
+        public static async System.Threading.Tasks.Task<UserChannelResource> FetchAsync(FetchUserChannelOptions options, 
+                                                                                        ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// fetch
+        /// </summary>
+        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
+        /// <param name="pathUserSid"> The unique id of a User. </param>
+        /// <param name="pathChannelSid"> The unique id of a Channel. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of UserChannel </returns> 
+        public static UserChannelResource Fetch(string pathServiceSid, 
+                                                string pathUserSid, 
+                                                string pathChannelSid, 
+                                                ITwilioRestClient client = null)
+        {
+            var options = new FetchUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid);
+            return Fetch(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// fetch
+        /// </summary>
+        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
+        /// <param name="pathUserSid"> The unique id of a User. </param>
+        /// <param name="pathChannelSid"> The unique id of a Channel. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of UserChannel </returns> 
+        public static async System.Threading.Tasks.Task<UserChannelResource> FetchAsync(string pathServiceSid, 
+                                                                                        string pathUserSid, 
+                                                                                        string pathChannelSid, 
+                                                                                        ITwilioRestClient client = null)
+        {
+            var options = new FetchUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid);
+            return await FetchAsync(options, client);
+        }
+        #endif
+
+        private static Request BuildUpdateRequest(UpdateUserChannelOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Chat,
+                "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="options"> Update UserChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of UserChannel </returns> 
+        public static UserChannelResource Update(UpdateUserChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="options"> Update UserChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of UserChannel </returns> 
+        public static async System.Threading.Tasks.Task<UserChannelResource> UpdateAsync(UpdateUserChannelOptions options, 
+                                                                                         ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
+        /// <param name="pathUserSid"> The unique id of a User. </param>
+        /// <param name="pathChannelSid"> The unique id of a Channel. </param>
+        /// <param name="notificationLevel"> Push notification level to be assigned to Channel of the User. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of UserChannel </returns> 
+        public static UserChannelResource Update(string pathServiceSid, 
+                                                 string pathUserSid, 
+                                                 string pathChannelSid, 
+                                                 UserChannelResource.NotificationLevelEnum notificationLevel, 
+                                                 ITwilioRestClient client = null)
+        {
+            var options = new UpdateUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid, notificationLevel);
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
+        /// <param name="pathUserSid"> The unique id of a User. </param>
+        /// <param name="pathChannelSid"> The unique id of a Channel. </param>
+        /// <param name="notificationLevel"> Push notification level to be assigned to Channel of the User. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of UserChannel </returns> 
+        public static async System.Threading.Tasks.Task<UserChannelResource> UpdateAsync(string pathServiceSid, 
+                                                                                         string pathUserSid, 
+                                                                                         string pathChannelSid, 
+                                                                                         UserChannelResource.NotificationLevelEnum notificationLevel, 
+                                                                                         ITwilioRestClient client = null)
+        {
+            var options = new UpdateUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid, notificationLevel);
+            return await UpdateAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a UserChannelResource object
         /// </summary>
@@ -212,6 +381,11 @@ namespace Twilio.Rest.Chat.V2.Service.User
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
         /// <summary>
+        /// The unique id of the User this Channel belongs to.
+        /// </summary>
+        [JsonProperty("user_sid")]
+        public string UserSid { get; private set; }
+        /// <summary>
         /// The unique id of this User as a Member in this Channel.
         /// </summary>
         [JsonProperty("member_sid")]
@@ -237,6 +411,17 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
+        /// <summary>
+        /// An absolute URL for this User Channel.
+        /// </summary>
+        [JsonProperty("url")]
+        public Uri Url { get; private set; }
+        /// <summary>
+        /// The notification level of the User for this Channel.
+        /// </summary>
+        [JsonProperty("notification_level")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public UserChannelResource.NotificationLevelEnum NotificationLevel { get; private set; }
 
         private UserChannelResource()
         {

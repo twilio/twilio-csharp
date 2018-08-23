@@ -6,7 +6,7 @@
 using NUnit.Framework;
 using System;
 using Twilio.Converters;
-using Twilio.TwiML.Voice;
+using Twilio.TwiML.Messaging;
 
 namespace Twilio.Tests.TwiML 
 {
