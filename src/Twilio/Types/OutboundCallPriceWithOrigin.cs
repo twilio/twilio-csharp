@@ -18,7 +18,7 @@ namespace Twilio.Types
         /// Current price of outbound call
         /// </summary>
         /// <returns></returns>
-        [JsonProperty("base_price")]
+        [JsonProperty("current_price")]
         public double? CurrentPrice { get; }
 
         /// <summary>
