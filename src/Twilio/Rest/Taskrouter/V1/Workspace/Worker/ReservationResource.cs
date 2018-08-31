@@ -36,6 +36,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             public static readonly StatusEnum Timeout = new StatusEnum("timeout");
             public static readonly StatusEnum Canceled = new StatusEnum("canceled");
             public static readonly StatusEnum Rescinded = new StatusEnum("rescinded");
+            public static readonly StatusEnum Wrapping = new StatusEnum("wrapping");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
         }
 
         public sealed class CallStatusEnum : StringEnum 

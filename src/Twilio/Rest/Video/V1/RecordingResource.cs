@@ -454,6 +454,11 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("track_name")]
         public string TrackName { get; private set; }
         /// <summary>
+        /// Offset in miliseconds for this track.
+        /// </summary>
+        [JsonProperty("offset")]
+        public long? Offset { get; private set; }
+        /// <summary>
         /// The links
         /// </summary>
         [JsonProperty("links")]

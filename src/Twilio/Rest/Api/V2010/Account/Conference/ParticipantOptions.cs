@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     public class FetchParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     public class UpdateParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -150,11 +150,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     public class CreateParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The conference_sid
+        /// The string that uniquely identifies this conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
@@ -270,18 +270,22 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public Twilio.Http.HttpMethod ConferenceRecordingStatusCallbackMethod { get; set; }
         /// <summary>
-        /// The recording_status_callback_event
+        /// Set which recording state changes should webhook to the `RecordingStatusCallback`
         /// </summary>
         public List<string> RecordingStatusCallbackEvent { get; set; }
         /// <summary>
-        /// The conference_recording_status_callback_event
+        /// Set which conference recording state changes should webhook to the `ConferenceRecordingStatusCallback`
         /// </summary>
         public List<string> ConferenceRecordingStatusCallbackEvent { get; set; }
+        /// <summary>
+        /// The string that uniquely identifies the participant that is being `coached`
+        /// </summary>
+        public string CallSidToCoach { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
         /// </summary>
-        /// <param name="pathConferenceSid"> The conference_sid </param>
+        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
         /// <param name="from"> The `from` phone number used to invite a participant. </param>
         /// <param name="to"> The number, client id, or sip address of the new participant. </param>
         public CreateParticipantOptions(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
@@ -451,6 +455,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                 p.AddRange(ConferenceRecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceRecordingStatusCallbackEvent", prop)));
             }
 
+            if (CallSidToCoach != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallSidToCoach", CallSidToCoach.ToString()));
+            }
+
             return p;
         }
     }
@@ -461,7 +470,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     public class DeleteParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -500,7 +509,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     public class ReadParticipantOptions : ReadOptions<ParticipantResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>

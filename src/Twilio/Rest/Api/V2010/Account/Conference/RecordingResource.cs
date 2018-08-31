@@ -68,7 +68,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
 
         /// <summary>
-        /// Changes the status of the recording to paused, stopped, or in-progress
+        /// Changes the status of the recording to paused, stopped, or in-progress. Note: To use `Twilio.CURRENT`, pass it as
+        /// recording sid.
         /// </summary>
         /// <param name="options"> Update Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -82,7 +83,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
         #if !NET35
         /// <summary>
-        /// Changes the status of the recording to paused, stopped, or in-progress
+        /// Changes the status of the recording to paused, stopped, or in-progress. Note: To use `Twilio.CURRENT`, pass it as
+        /// recording sid.
         /// </summary>
         /// <param name="options"> Update Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -97,10 +99,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         #endif
 
         /// <summary>
-        /// Changes the status of the recording to paused, stopped, or in-progress
+        /// Changes the status of the recording to paused, stopped, or in-progress. Note: To use `Twilio.CURRENT`, pass it as
+        /// recording sid.
         /// </summary>
         /// <param name="pathConferenceSid"> The conference_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The recording sid (or use 'Twilio.CURRENT' instead of recording sid to reference current
+        ///               active recording for update.) </param>
         /// <param name="status"> The status to change the recording to. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -117,10 +121,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
         #if !NET35
         /// <summary>
-        /// Changes the status of the recording to paused, stopped, or in-progress
+        /// Changes the status of the recording to paused, stopped, or in-progress. Note: To use `Twilio.CURRENT`, pass it as
+        /// recording sid.
         /// </summary>
         /// <param name="pathConferenceSid"> The conference_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The recording sid (or use 'Twilio.CURRENT' instead of recording sid to reference current
+        ///               active recording for update.) </param>
         /// <param name="status"> The status to change the recording to. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>

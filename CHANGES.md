@@ -1,6 +1,19 @@
 twilio-csharp Changelog
 =======================
 
+[2018-08-31] Version 5.16.3
+----------------------------
+**Library**
+- PR #446: fix typo. Thanks to @jbonner89!
+
+**Api**
+- Add `call_sid_to_coach` parameter to participant create request
+- Add `voice_receive_mode` param to IncomingPhoneNumbers create
+
+**Video**
+- [Recordings] Expose `offset` property in resource
+
+
 [2018-08-23] Version 5.16.2
 ----------------------------
 **Library**

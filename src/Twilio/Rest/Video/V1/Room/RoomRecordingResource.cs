@@ -462,6 +462,11 @@ namespace Twilio.Rest.Video.V1.Room
         [JsonProperty("track_name")]
         public string TrackName { get; private set; }
         /// <summary>
+        /// The offset
+        /// </summary>
+        [JsonProperty("offset")]
+        public long? Offset { get; private set; }
+        /// <summary>
         /// The room_sid
         /// </summary>
         [JsonProperty("room_sid")]

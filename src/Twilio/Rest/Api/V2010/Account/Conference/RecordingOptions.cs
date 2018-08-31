@@ -12,7 +12,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 {
 
     /// <summary>
-    /// Changes the status of the recording to paused, stopped, or in-progress
+    /// Changes the status of the recording to paused, stopped, or in-progress. Note: To use `Twilio.CURRENT`, pass it as
+    /// recording sid.
     /// </summary>
     public class UpdateRecordingOptions : IOptions<RecordingResource> 
     {
@@ -25,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The sid
+        /// The recording sid (or use 'Twilio.CURRENT' instead of recording sid to reference current active recording for update.)
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -37,7 +38,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new UpdateRecordingOptions
         /// </summary>
         /// <param name="pathConferenceSid"> The conference_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The recording sid (or use 'Twilio.CURRENT' instead of recording sid to reference current
+        ///               active recording for update.) </param>
         /// <param name="status"> The status to change the recording to. </param>
         public UpdateRecordingOptions(string pathConferenceSid, string pathSid, RecordingResource.StatusEnum status)
         {

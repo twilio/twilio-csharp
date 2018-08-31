@@ -21,7 +21,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -89,11 +89,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Uri VoiceUrl { get; set; }
         /// <summary>
-        /// The emergency_status
+        /// Status determining whether the number is enabled for emergency calling
         /// </summary>
         public IncomingPhoneNumberResource.EmergencyStatusEnum EmergencyStatus { get; set; }
         /// <summary>
-        /// The emergency_address_sid
+        /// EmergencyAddress configuration to leverage emergency calling
         /// </summary>
         public string EmergencyAddressSid { get; set; }
         /// <summary>
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string TrunkSid { get; set; }
         /// <summary>
-        /// The voice_receive_mode
+        /// Incoming call type: `fax` or `voice`
         /// </summary>
         public IncomingPhoneNumberResource.VoiceReceiveModeEnum VoiceReceiveMode { get; set; }
         /// <summary>
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new UpdateIncomingPhoneNumberOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this resource </param>
         public UpdateIncomingPhoneNumberOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -248,7 +248,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -281,7 +281,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadIncomingPhoneNumberOptions : ReadOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -375,7 +375,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class CreateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -447,11 +447,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Uri VoiceUrl { get; set; }
         /// <summary>
-        /// The emergency_status
+        /// Status determining whether the number is enabled for emergency calling
         /// </summary>
         public IncomingPhoneNumberResource.EmergencyStatusEnum EmergencyStatus { get; set; }
         /// <summary>
-        /// The emergency_address_sid
+        /// EmergencyAddress configuration to leverage emergency calling
         /// </summary>
         public string EmergencyAddressSid { get; set; }
         /// <summary>
@@ -466,6 +466,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Unique string that identifies the address associated with number
         /// </summary>
         public string AddressSid { get; set; }
+        /// <summary>
+        /// Incoming call type: `fax` or `voice`
+        /// </summary>
+        public IncomingPhoneNumberResource.VoiceReceiveModeEnum VoiceReceiveMode { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -581,6 +585,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (AddressSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
+            }
+
+            if (VoiceReceiveMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VoiceReceiveMode", VoiceReceiveMode.ToString()));
             }
 
             return p;
