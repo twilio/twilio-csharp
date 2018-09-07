@@ -277,8 +277,10 @@ namespace Twilio.Rest.Preview.Understand
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="callbackUrl"> The callback_url </param>
         /// <param name="callbackEvents"> The callback_events </param>
-        /// <param name="fallbackActions"> The fallback_actions </param>
-        /// <param name="initiationActions"> The initiation_actions </param>
+        /// <param name="fallbackActions"> The JSON actions to be executed when the user's input is not recognized as matching
+        ///                       any Intent. </param>
+        /// <param name="initiationActions"> The JSON actions to be executed on inbound phone calls when the Assistant has to
+        ///                         say something first. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Create(string friendlyName = null, 
@@ -307,8 +309,10 @@ namespace Twilio.Rest.Preview.Understand
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="callbackUrl"> The callback_url </param>
         /// <param name="callbackEvents"> The callback_events </param>
-        /// <param name="fallbackActions"> The fallback_actions </param>
-        /// <param name="initiationActions"> The initiation_actions </param>
+        /// <param name="fallbackActions"> The JSON actions to be executed when the user's input is not recognized as matching
+        ///                       any Intent. </param>
+        /// <param name="initiationActions"> The JSON actions to be executed on inbound phone calls when the Assistant has to
+        ///                         say something first. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(string friendlyName = null, 
@@ -378,8 +382,10 @@ namespace Twilio.Rest.Preview.Understand
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="callbackUrl"> The callback_url </param>
         /// <param name="callbackEvents"> The callback_events </param>
-        /// <param name="fallbackActions"> The fallback_actions </param>
-        /// <param name="initiationActions"> The initiation_actions </param>
+        /// <param name="fallbackActions"> The JSON actions to be executed when the user's input is not recognized as matching
+        ///                       any Intent. </param>
+        /// <param name="initiationActions"> The JSON actions to be executed on inbound phone calls when the Assistant has to
+        ///                         say something first. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Update(string pathSid, 
@@ -410,8 +416,10 @@ namespace Twilio.Rest.Preview.Understand
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="callbackUrl"> The callback_url </param>
         /// <param name="callbackEvents"> The callback_events </param>
-        /// <param name="fallbackActions"> The fallback_actions </param>
-        /// <param name="initiationActions"> The initiation_actions </param>
+        /// <param name="fallbackActions"> The JSON actions to be executed when the user's input is not recognized as matching
+        ///                       any Intent. </param>
+        /// <param name="initiationActions"> The JSON actions to be executed on inbound phone calls when the Assistant has to
+        ///                         say something first. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(string pathSid, 

@@ -15,24 +15,24 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchIntentActionsOptions
+    /// Returns JSON actions for this Intent.
     /// </summary>
     public class FetchIntentActionsOptions : IOptions<IntentActionsResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The intent_sid
+        /// The unique ID of the Intent.
         /// </summary>
         public string PathIntentSid { get; }
 
         /// <summary>
         /// Construct a new FetchIntentActionsOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathIntentSid"> The intent_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathIntentSid"> The unique ID of the Intent. </param>
         public FetchIntentActionsOptions(string pathAssistantSid, string pathIntentSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -53,28 +53,28 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// UpdateIntentActionsOptions
+    /// Updates the actions of an Intent identified by {IntentSid} or {IntentUniqueName}.
     /// </summary>
     public class UpdateIntentActionsOptions : IOptions<IntentActionsResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The intent_sid
+        /// The unique ID of the Intent.
         /// </summary>
         public string PathIntentSid { get; }
         /// <summary>
-        /// The actions
+        /// The JSON actions that instruct the Assistant how to perform this task.
         /// </summary>
         public object Actions { get; set; }
 
         /// <summary>
         /// Construct a new UpdateIntentActionsOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathIntentSid"> The intent_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathIntentSid"> The unique ID of the Intent. </param>
         public UpdateIntentActionsOptions(string pathAssistantSid, string pathIntentSid)
         {
             PathAssistantSid = pathAssistantSid;

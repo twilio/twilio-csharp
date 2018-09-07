@@ -95,11 +95,11 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         public string CallbackEvents { get; set; }
         /// <summary>
-        /// The fallback_actions
+        /// The JSON actions to be executed when the user's input is not recognized as matching any Intent.
         /// </summary>
         public object FallbackActions { get; set; }
         /// <summary>
-        /// The initiation_actions
+        /// The JSON actions to be executed on inbound phone calls when the Assistant has to say something first.
         /// </summary>
         public object InitiationActions { get; set; }
 
@@ -181,11 +181,11 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         public string CallbackEvents { get; set; }
         /// <summary>
-        /// The fallback_actions
+        /// The JSON actions to be executed when the user's input is not recognized as matching any Intent.
         /// </summary>
         public object FallbackActions { get; set; }
         /// <summary>
-        /// The initiation_actions
+        /// The JSON actions to be executed on inbound phone calls when the Assistant has to say something first.
         /// </summary>
         public object InitiationActions { get; set; }
 

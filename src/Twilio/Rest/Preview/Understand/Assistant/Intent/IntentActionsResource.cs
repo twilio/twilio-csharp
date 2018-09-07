@@ -35,7 +35,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         }
 
         /// <summary>
-        /// fetch
+        /// Returns JSON actions for this Intent.
         /// </summary>
         /// <param name="options"> Fetch IntentActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Returns JSON actions for this Intent.
         /// </summary>
         /// <param name="options"> Fetch IntentActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,10 +64,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         #endif
 
         /// <summary>
-        /// fetch
+        /// Returns JSON actions for this Intent.
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathIntentSid"> The intent_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathIntentSid"> The unique ID of the Intent. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IntentActions </returns> 
         public static IntentActionsResource Fetch(string pathAssistantSid, 
@@ -80,10 +80,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Returns JSON actions for this Intent.
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathIntentSid"> The intent_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathIntentSid"> The unique ID of the Intent. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IntentActions </returns> 
         public static async System.Threading.Tasks.Task<IntentActionsResource> FetchAsync(string pathAssistantSid, 
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         }
 
         /// <summary>
-        /// update
+        /// Updates the actions of an Intent identified by {IntentSid} or {IntentUniqueName}.
         /// </summary>
         /// <param name="options"> Update IntentActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Updates the actions of an Intent identified by {IntentSid} or {IntentUniqueName}.
         /// </summary>
         /// <param name="options"> Update IntentActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -136,11 +136,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         #endif
 
         /// <summary>
-        /// update
+        /// Updates the actions of an Intent identified by {IntentSid} or {IntentUniqueName}.
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathIntentSid"> The intent_sid </param>
-        /// <param name="actions"> The actions </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathIntentSid"> The unique ID of the Intent. </param>
+        /// <param name="actions"> The JSON actions that instruct the Assistant how to perform this task. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IntentActions </returns> 
         public static IntentActionsResource Update(string pathAssistantSid, 
@@ -154,11 +154,11 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Updates the actions of an Intent identified by {IntentSid} or {IntentUniqueName}.
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathIntentSid"> The intent_sid </param>
-        /// <param name="actions"> The actions </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathIntentSid"> The unique ID of the Intent. </param>
+        /// <param name="actions"> The JSON actions that instruct the Assistant how to perform this task. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IntentActions </returns> 
         public static async System.Threading.Tasks.Task<IntentActionsResource> UpdateAsync(string pathAssistantSid, 
@@ -190,17 +190,17 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Intent
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account that created this Field.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// The intent_sid
+        /// The unique ID of the Intent.
         /// </summary>
         [JsonProperty("intent_sid")]
         public string IntentSid { get; private set; }

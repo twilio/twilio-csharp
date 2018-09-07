@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2018-09-07] Version 5.16.4
+----------------------------
+**Library**
+- PR #444: VCORE-3651 Add support for *for* attribute in twiml element. Thanks to @nmahure!
+
+
 [2018-08-31] Version 5.16.3
 ----------------------------
 **Library**
