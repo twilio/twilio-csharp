@@ -3,8 +3,7 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-/// currently do not have developer preview access, please contact help@twilio.com.
+/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
 /// 
 /// VerificationCheckResource
 /// </summary>
@@ -19,7 +18,7 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Preview.AccSecurity.Service 
+namespace Twilio.Rest.Verify.V1.Service 
 {
 
     public class VerificationCheckResource : Resource 
@@ -41,8 +40,8 @@ namespace Twilio.Rest.Preview.AccSecurity.Service
         {
             return new Request(
                 HttpMethod.Post,
-                Rest.Domain.Preview,
-                "/Verification/Services/" + options.PathServiceSid + "/VerificationCheck",
+                Rest.Domain.Verify,
+                "/v1/Services/" + options.PathServiceSid + "/VerificationCheck",
                 client.Region,
                 postParams: options.GetParams()
             );
@@ -81,7 +80,7 @@ namespace Twilio.Rest.Preview.AccSecurity.Service
         /// <summary>
         /// challenge a specific Verification Check.
         /// </summary>
-        /// <param name="pathServiceSid"> A string that uniquely identifies the Service. </param>
+        /// <param name="pathServiceSid"> The SID of the Verify Service to be used to check a verification. </param>
         /// <param name="code"> The verification string </param>
         /// <param name="to"> To phonenumber </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -99,7 +98,7 @@ namespace Twilio.Rest.Preview.AccSecurity.Service
         /// <summary>
         /// challenge a specific Verification Check.
         /// </summary>
-        /// <param name="pathServiceSid"> A string that uniquely identifies the Service. </param>
+        /// <param name="pathServiceSid"> The SID of the Verify Service to be used to check a verification. </param>
         /// <param name="code"> The verification string </param>
         /// <param name="to"> To phonenumber </param>
         /// <param name="client"> Client to make requests to Twilio </param>

@@ -26,20 +26,24 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The recording sid (or use 'Twilio.CURRENT' instead of recording sid to reference current active recording for update.)
+        /// The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference current active recording)
         /// </summary>
         public string PathSid { get; }
         /// <summary>
         /// The status to change the recording to.
         /// </summary>
         public RecordingResource.StatusEnum Status { get; }
+        /// <summary>
+        /// Whether to record or not during the pause period.
+        /// </summary>
+        public string PauseBehavior { get; set; }
 
         /// <summary>
         /// Construct a new UpdateRecordingOptions
         /// </summary>
         /// <param name="pathConferenceSid"> The conference_sid </param>
-        /// <param name="pathSid"> The recording sid (or use 'Twilio.CURRENT' instead of recording sid to reference current
-        ///               active recording for update.) </param>
+        /// <param name="pathSid"> The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference
+        ///               current active recording) </param>
         /// <param name="status"> The status to change the recording to. </param>
         public UpdateRecordingOptions(string pathConferenceSid, string pathSid, RecordingResource.StatusEnum status)
         {
@@ -57,6 +61,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            if (PauseBehavior != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PauseBehavior", PauseBehavior));
             }
 
             return p;

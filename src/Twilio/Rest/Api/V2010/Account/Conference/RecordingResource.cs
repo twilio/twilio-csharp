@@ -103,19 +103,21 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// recording sid.
         /// </summary>
         /// <param name="pathConferenceSid"> The conference_sid </param>
-        /// <param name="pathSid"> The recording sid (or use 'Twilio.CURRENT' instead of recording sid to reference current
-        ///               active recording for update.) </param>
+        /// <param name="pathSid"> The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference
+        ///               current active recording) </param>
         /// <param name="status"> The status to change the recording to. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pauseBehavior"> Whether to record or not during the pause period. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
         public static RecordingResource Update(string pathConferenceSid, 
                                                string pathSid, 
                                                RecordingResource.StatusEnum status, 
                                                string pathAccountSid = null, 
+                                               string pauseBehavior = null, 
                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateRecordingOptions(pathConferenceSid, pathSid, status){PathAccountSid = pathAccountSid};
+            var options = new UpdateRecordingOptions(pathConferenceSid, pathSid, status){PathAccountSid = pathAccountSid, PauseBehavior = pauseBehavior};
             return Update(options, client);
         }
 
@@ -125,19 +127,21 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// recording sid.
         /// </summary>
         /// <param name="pathConferenceSid"> The conference_sid </param>
-        /// <param name="pathSid"> The recording sid (or use 'Twilio.CURRENT' instead of recording sid to reference current
-        ///               active recording for update.) </param>
+        /// <param name="pathSid"> The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference
+        ///               current active recording) </param>
         /// <param name="status"> The status to change the recording to. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pauseBehavior"> Whether to record or not during the pause period. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<RecordingResource> UpdateAsync(string pathConferenceSid, 
                                                                                        string pathSid, 
                                                                                        RecordingResource.StatusEnum status, 
                                                                                        string pathAccountSid = null, 
+                                                                                       string pauseBehavior = null, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateRecordingOptions(pathConferenceSid, pathSid, status){PathAccountSid = pathAccountSid};
+            var options = new UpdateRecordingOptions(pathConferenceSid, pathSid, status){PathAccountSid = pathAccountSid, PauseBehavior = pauseBehavior};
             return await UpdateAsync(options, client);
         }
         #endif

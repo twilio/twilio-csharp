@@ -101,11 +101,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="recordingStatusCallbackEvent"> The recording_status_callback_event </param>
-        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
-        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
+        /// <param name="recordingStatusCallbackEvent"> The recording status changes that should generate a callback </param>
+        /// <param name="recordingStatusCallback"> The callback URL for recording actions </param>
+        /// <param name="recordingStatusCallbackMethod"> The HTTP method Twilio should use when making a request to the
+        ///                                     RecordingStatusCallback URL </param>
         /// <param name="trim"> Whether to trim the silence in the recording </param>
-        /// <param name="recordingChannels"> The recording_channels </param>
+        /// <param name="recordingChannels"> The number of channels that the output recording will be configured with </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
         public static RecordingResource Create(string pathCallSid, 
@@ -127,11 +128,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="recordingStatusCallbackEvent"> The recording_status_callback_event </param>
-        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
-        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
+        /// <param name="recordingStatusCallbackEvent"> The recording status changes that should generate a callback </param>
+        /// <param name="recordingStatusCallback"> The callback URL for recording actions </param>
+        /// <param name="recordingStatusCallbackMethod"> The HTTP method Twilio should use when making a request to the
+        ///                                     RecordingStatusCallback URL </param>
         /// <param name="trim"> Whether to trim the silence in the recording </param>
-        /// <param name="recordingChannels"> The recording_channels </param>
+        /// <param name="recordingChannels"> The number of channels that the output recording will be configured with </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<RecordingResource> CreateAsync(string pathCallSid, 
@@ -195,19 +197,21 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// recording sid to reference current active recording.
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="pathSid"> The recording sid (or use 'Twilio.CURRENT' instead of recording sid to reference current
-        ///               active recording for update.) </param>
+        /// <param name="pathSid"> The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference
+        ///               current active recording) </param>
         /// <param name="status"> The status to change the recording to. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pauseBehavior"> Whether to record or not during the pause period. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
         public static RecordingResource Update(string pathCallSid, 
                                                string pathSid, 
                                                RecordingResource.StatusEnum status, 
                                                string pathAccountSid = null, 
+                                               string pauseBehavior = null, 
                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateRecordingOptions(pathCallSid, pathSid, status){PathAccountSid = pathAccountSid};
+            var options = new UpdateRecordingOptions(pathCallSid, pathSid, status){PathAccountSid = pathAccountSid, PauseBehavior = pauseBehavior};
             return Update(options, client);
         }
 
@@ -217,19 +221,21 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// recording sid to reference current active recording.
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="pathSid"> The recording sid (or use 'Twilio.CURRENT' instead of recording sid to reference current
-        ///               active recording for update.) </param>
+        /// <param name="pathSid"> The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference
+        ///               current active recording) </param>
         /// <param name="status"> The status to change the recording to. </param>
         /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pauseBehavior"> Whether to record or not during the pause period. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<RecordingResource> UpdateAsync(string pathCallSid, 
                                                                                        string pathSid, 
                                                                                        RecordingResource.StatusEnum status, 
                                                                                        string pathAccountSid = null, 
+                                                                                       string pauseBehavior = null, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateRecordingOptions(pathCallSid, pathSid, status){PathAccountSid = pathAccountSid};
+            var options = new UpdateRecordingOptions(pathCallSid, pathSid, status){PathAccountSid = pathAccountSid, PauseBehavior = pauseBehavior};
             return await UpdateAsync(options, client);
         }
         #endif

@@ -8,19 +8,18 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.AccSecurity.Service 
+namespace Twilio.Rest.Verify.V1.Service 
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
     /// challenge a specific Verification Check.
     /// </summary>
     public class CreateVerificationCheckOptions : IOptions<VerificationCheckResource> 
     {
         /// <summary>
-        /// A string that uniquely identifies the Service.
+        /// The SID of the Verify Service to be used to check a verification.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -35,7 +34,7 @@ namespace Twilio.Rest.Preview.AccSecurity.Service
         /// <summary>
         /// Construct a new CreateVerificationCheckOptions
         /// </summary>
-        /// <param name="pathServiceSid"> A string that uniquely identifies the Service. </param>
+        /// <param name="pathServiceSid"> The SID of the Verify Service to be used to check a verification. </param>
         /// <param name="code"> The verification string </param>
         public CreateVerificationCheckOptions(string pathServiceSid, string code)
         {

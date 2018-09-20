@@ -35,6 +35,7 @@ namespace Twilio.Rest
         public static readonly Domain Wireless = new Domain("wireless");
         public static readonly Domain Sync = new Domain("sync");
         public static readonly Domain Studio = new Domain("studio");
+        public static readonly Domain Verify = new Domain("verify");
     }
 
 }

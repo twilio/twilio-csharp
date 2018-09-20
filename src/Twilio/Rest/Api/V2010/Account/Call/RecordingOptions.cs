@@ -26,15 +26,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// The recording_status_callback_event
+        /// The recording status changes that should generate a callback
         /// </summary>
         public List<string> RecordingStatusCallbackEvent { get; set; }
         /// <summary>
-        /// The recording_status_callback
+        /// The callback URL for recording actions
         /// </summary>
         public Uri RecordingStatusCallback { get; set; }
         /// <summary>
-        /// The recording_status_callback_method
+        /// The HTTP method Twilio should use when making a request to the RecordingStatusCallback URL
         /// </summary>
         public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
         /// <summary>
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public string Trim { get; set; }
         /// <summary>
-        /// The recording_channels
+        /// The number of channels that the output recording will be configured with
         /// </summary>
         public string RecordingChannels { get; set; }
 
@@ -106,20 +106,24 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// The recording sid (or use 'Twilio.CURRENT' instead of recording sid to reference current active recording for update.)
+        /// The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference current active recording)
         /// </summary>
         public string PathSid { get; }
         /// <summary>
         /// The status to change the recording to.
         /// </summary>
         public RecordingResource.StatusEnum Status { get; }
+        /// <summary>
+        /// Whether to record or not during the pause period.
+        /// </summary>
+        public string PauseBehavior { get; set; }
 
         /// <summary>
         /// Construct a new UpdateRecordingOptions
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="pathSid"> The recording sid (or use 'Twilio.CURRENT' instead of recording sid to reference current
-        ///               active recording for update.) </param>
+        /// <param name="pathSid"> The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference
+        ///               current active recording) </param>
         /// <param name="status"> The status to change the recording to. </param>
         public UpdateRecordingOptions(string pathCallSid, string pathSid, RecordingResource.StatusEnum status)
         {
@@ -137,6 +141,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            if (PauseBehavior != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PauseBehavior", PauseBehavior));
             }
 
             return p;
