@@ -38,17 +38,17 @@ try {
     msbuild .\src\Twilio\Twilio.csproj /t:restore /p:TargetFramework=netstandard1.4 /verbosity:minimal
     if ($lastExitCode -ne 0) { exit $lastExitCode }
 
-    msbuild .\test\Twilio.Test\Twilio.Test.csproj /t:restore /p:TargetFramework=netcoreapp1.1 /verbosity:minimal
+    msbuild .\test\Twilio.Test\Twilio.Test.csproj /t:restore /p:TargetFramework=netcoreapp2.0 /verbosity:minimal
     if ($lastExitCode -ne 0) { exit $lastExitCode }
 
     msbuild .\src\Twilio\Twilio.csproj /p:TargetFramework=netstandard1.4 /p:Configuration=Release /verbosity:minimal
     if ($lastExitCode -ne 0) { exit $lastExitCode }
 
-    msbuild .\test\Twilio.Test\Twilio.Test.csproj /p:TargetFramework=netcoreapp1.1 /p:Configuration=Release /verbosity:minimal
+    msbuild .\test\Twilio.Test\Twilio.Test.csproj /p:TargetFramework=netcoreapp2.0 /p:Configuration=Release /verbosity:minimal
     if ($lastExitCode -ne 0) { exit $lastExitCode }
 
     Header "Testing on .NET Standard 1.4"
-    dotnet run --framework netcoreapp1.1 --project .\test\Twilio.Test\Twilio.Test.csproj
+    dotnet run --framework netcoreapp2.0 --project .\test\Twilio.Test\Twilio.Test.csproj
     if ($lastExitCode -ne 0) { exit $lastExitCode }
 
     # Create the NuGet Package
