@@ -48,7 +48,7 @@ try {
     if ($lastExitCode -ne 0) { exit $lastExitCode }
 
     Header "Testing on .NET Standard 1.4"
-    dotnet run --framework netcoreapp1.1 --project .\test\Twilio.Test\Twilio.Test.csproj
+    dotnet run --framework netcoreapp2.0 --project .\test\Twilio.Test\Twilio.Test.csproj
     if ($lastExitCode -ne 0) { exit $lastExitCode }
 
     # Create the NuGet Package
