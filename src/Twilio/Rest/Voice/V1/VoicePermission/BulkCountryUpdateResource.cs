@@ -18,7 +18,7 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Permissions.VoicePermission 
+namespace Twilio.Rest.Voice.V1.VoicePermission 
 {
 
     public class BulkCountryUpdateResource : Resource 
@@ -27,15 +27,16 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
         {
             return new Request(
                 HttpMethod.Post,
-                Rest.Domain.Preview,
-                "/permissions/VoicePermissions/BulkCountryUpdates",
+                Rest.Domain.Voice,
+                "/v1/DialingPermissions/BulkCountryUpdates",
                 client.Region,
                 postParams: options.GetParams()
             );
         }
 
         /// <summary>
-        /// Create a bulk update request to update voice permissions for the given set of countries
+        /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
+        /// corresponding [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
         /// <param name="options"> Create BulkCountryUpdate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -50,7 +51,8 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
 
         #if !NET35
         /// <summary>
-        /// Create a bulk update request to update voice permissions for the given set of countries
+        /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
+        /// corresponding [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
         /// <param name="options"> Create BulkCountryUpdate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -65,9 +67,10 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
         #endif
 
         /// <summary>
-        /// Create a bulk update request to update voice permissions for the given set of countries
+        /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
+        /// corresponding [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
-        /// <param name="updateRequest"> Json list of update objects </param>
+        /// <param name="updateRequest"> URL encoded JSON array of update objects </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BulkCountryUpdate </returns> 
         public static BulkCountryUpdateResource Create(string updateRequest, ITwilioRestClient client = null)
@@ -78,9 +81,10 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
 
         #if !NET35
         /// <summary>
-        /// Create a bulk update request to update voice permissions for the given set of countries
+        /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
+        /// corresponding [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
-        /// <param name="updateRequest"> Json list of update objects </param>
+        /// <param name="updateRequest"> URL encoded JSON array of update objects </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BulkCountryUpdate </returns> 
         public static async System.Threading.Tasks.Task<BulkCountryUpdateResource> CreateAsync(string updateRequest, 
@@ -110,7 +114,7 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
         }
 
         /// <summary>
-        /// The number of countries successfully updated
+        /// The number of countries updated
         /// </summary>
         [JsonProperty("update_count")]
         public int? UpdateCount { get; private set; }

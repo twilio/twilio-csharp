@@ -18,7 +18,7 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Permissions.VoicePermission.Country 
+namespace Twilio.Rest.Voice.V1.VoicePermission.Country 
 {
 
     public class HighriskSpecialPrefixResource : Resource 
@@ -27,15 +27,16 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission.Country
         {
             return new Request(
                 HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/permissions/VoicePermissions/Countries/" + options.PathParentIsoCode + "/HighRiskSpecialPrefixes",
+                Rest.Domain.Voice,
+                "/v1/DialingPermissions/Countries/" + options.PathIsoCode + "/HighRiskSpecialPrefixes",
                 client.Region,
                 queryParams: options.GetParams()
             );
         }
 
         /// <summary>
-        /// Get all prefixes in the category, High Risk, Special for given country
+        /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
+        /// code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
         /// <param name="options"> Read HighriskSpecialPrefix parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -52,7 +53,8 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission.Country
 
         #if !NET35
         /// <summary>
-        /// Get all prefixes in the category, High Risk, Special for given country
+        /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
+        /// code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
         /// <param name="options"> Read HighriskSpecialPrefix parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -69,37 +71,39 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission.Country
         #endif
 
         /// <summary>
-        /// Get all prefixes in the category, High Risk, Special for given country
+        /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
+        /// code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
-        /// <param name="pathParentIsoCode"> The ISO country code </param>
+        /// <param name="pathIsoCode"> The ISO country code </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of HighriskSpecialPrefix </returns> 
-        public static ResourceSet<HighriskSpecialPrefixResource> Read(string pathParentIsoCode, 
+        public static ResourceSet<HighriskSpecialPrefixResource> Read(string pathIsoCode, 
                                                                       int? pageSize = null, 
                                                                       long? limit = null, 
                                                                       ITwilioRestClient client = null)
         {
-            var options = new ReadHighriskSpecialPrefixOptions(pathParentIsoCode){PageSize = pageSize, Limit = limit};
+            var options = new ReadHighriskSpecialPrefixOptions(pathIsoCode){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary>
-        /// Get all prefixes in the category, High Risk, Special for given country
+        /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
+        /// code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
-        /// <param name="pathParentIsoCode"> The ISO country code </param>
+        /// <param name="pathIsoCode"> The ISO country code </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of HighriskSpecialPrefix </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<HighriskSpecialPrefixResource>> ReadAsync(string pathParentIsoCode, 
+        public static async System.Threading.Tasks.Task<ResourceSet<HighriskSpecialPrefixResource>> ReadAsync(string pathIsoCode, 
                                                                                                               int? pageSize = null, 
                                                                                                               long? limit = null, 
                                                                                                               ITwilioRestClient client = null)
         {
-            var options = new ReadHighriskSpecialPrefixOptions(pathParentIsoCode){PageSize = pageSize, Limit = limit};
+            var options = new ReadHighriskSpecialPrefixOptions(pathIsoCode){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -135,7 +139,7 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission.Country
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.Preview,
+                    Rest.Domain.Voice,
                     client.Region
                 )
             );
@@ -156,7 +160,7 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission.Country
             var request = new Request(
                 HttpMethod.Get,
                 page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
+                    Rest.Domain.Voice,
                     client.Region
                 )
             );
@@ -184,7 +188,7 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission.Country
         }
 
         /// <summary>
-        /// prefix string of phone number
+        /// A prefix that includes the E.164 assigned country code
         /// </summary>
         [JsonProperty("prefix")]
         public string Prefix { get; private set; }

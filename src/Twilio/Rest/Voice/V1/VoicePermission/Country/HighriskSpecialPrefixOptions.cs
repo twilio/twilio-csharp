@@ -8,29 +8,30 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Permissions.VoicePermission.Country 
+namespace Twilio.Rest.Voice.V1.VoicePermission.Country 
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// Get all prefixes in the category, High Risk, Special for given country
+    /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
+    /// code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
     /// </summary>
     public class ReadHighriskSpecialPrefixOptions : ReadOptions<HighriskSpecialPrefixResource> 
     {
         /// <summary>
         /// The ISO country code
         /// </summary>
-        public string PathParentIsoCode { get; }
+        public string PathIsoCode { get; }
 
         /// <summary>
         /// Construct a new ReadHighriskSpecialPrefixOptions
         /// </summary>
-        /// <param name="pathParentIsoCode"> The ISO country code </param>
-        public ReadHighriskSpecialPrefixOptions(string pathParentIsoCode)
+        /// <param name="pathIsoCode"> The ISO country code </param>
+        public ReadHighriskSpecialPrefixOptions(string pathIsoCode)
         {
-            PathParentIsoCode = pathParentIsoCode;
+            PathIsoCode = pathIsoCode;
         }
 
         /// <summary>

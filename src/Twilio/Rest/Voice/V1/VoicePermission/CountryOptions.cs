@@ -8,14 +8,14 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Permissions.VoicePermission 
+namespace Twilio.Rest.Voice.V1.VoicePermission 
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// Retrieve permissions to dial to a country given an ISO country code
+    /// Retrieve voice dialing country permissions identified by the given ISO country code
     /// </summary>
     public class FetchCountryOptions : IOptions<CountryResource> 
     {
@@ -47,16 +47,16 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// Retrieve all permissions to dial to countries identified by ISO country codes
+    /// Retrieve all voice dialing country permissions for this account
     /// </summary>
     public class ReadCountryOptions : ReadOptions<CountryResource> 
     {
         /// <summary>
-        /// The ISO country code
+        /// Filter to retrieve the country permissions by specifying the ISO country code
         /// </summary>
         public string IsoCode { get; set; }
         /// <summary>
-        /// Filter the results by specified continent
+        /// Filter to retrieve the country permissions by specifying the continent
         /// </summary>
         public string Continent { get; set; }
         /// <summary>
@@ -64,15 +64,15 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
         /// </summary>
         public string CountryCode { get; set; }
         /// <summary>
-        /// Filter the results by specified  low risk special status
+        /// Filter to retrieve the country permissions with dialing to low-risk numbers enabled set to true / false
         /// </summary>
         public bool? LowRiskNumbersEnabled { get; set; }
         /// <summary>
-        /// Filter the results by specified the status of high risk special
+        /// Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled set to true / false
         /// </summary>
         public bool? HighRiskSpecialNumbersEnabled { get; set; }
         /// <summary>
-        /// Filter the results by specified the status of high risk tollfraud special
+        /// Filter to retrieve the country permissions with dialing to high-risk toll fraud numbers enabled set to true / false
         /// </summary>
         public bool? HighRiskTollfraudNumbersEnabled { get; set; }
 

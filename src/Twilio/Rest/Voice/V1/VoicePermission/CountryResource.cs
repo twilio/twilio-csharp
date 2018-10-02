@@ -18,7 +18,7 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Permissions.VoicePermission 
+namespace Twilio.Rest.Voice.V1.VoicePermission 
 {
 
     public class CountryResource : Resource 
@@ -27,15 +27,15 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
         {
             return new Request(
                 HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/permissions/VoicePermissions/Countries/" + options.PathIsoCode + "",
+                Rest.Domain.Voice,
+                "/v1/DialingPermissions/Countries/" + options.PathIsoCode + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
         }
 
         /// <summary>
-        /// Retrieve permissions to dial to a country given an ISO country code
+        /// Retrieve voice dialing country permissions identified by the given ISO country code
         /// </summary>
         /// <param name="options"> Fetch Country parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
 
         #if !NET35
         /// <summary>
-        /// Retrieve permissions to dial to a country given an ISO country code
+        /// Retrieve voice dialing country permissions identified by the given ISO country code
         /// </summary>
         /// <param name="options"> Fetch Country parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
         #endif
 
         /// <summary>
-        /// Retrieve permissions to dial to a country given an ISO country code
+        /// Retrieve voice dialing country permissions identified by the given ISO country code
         /// </summary>
         /// <param name="pathIsoCode"> The ISO country code </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
 
         #if !NET35
         /// <summary>
-        /// Retrieve permissions to dial to a country given an ISO country code
+        /// Retrieve voice dialing country permissions identified by the given ISO country code
         /// </summary>
         /// <param name="pathIsoCode"> The ISO country code </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -94,15 +94,15 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
         {
             return new Request(
                 HttpMethod.Get,
-                Rest.Domain.Preview,
-                "/permissions/VoicePermissions/Countries",
+                Rest.Domain.Voice,
+                "/v1/DialingPermissions/Countries",
                 client.Region,
                 queryParams: options.GetParams()
             );
         }
 
         /// <summary>
-        /// Retrieve all permissions to dial to countries identified by ISO country codes
+        /// Retrieve all voice dialing country permissions for this account
         /// </summary>
         /// <param name="options"> Read Country parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
 
         #if !NET35
         /// <summary>
-        /// Retrieve all permissions to dial to countries identified by ISO country codes
+        /// Retrieve all voice dialing country permissions for this account
         /// </summary>
         /// <param name="options"> Read Country parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -135,16 +135,17 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
         #endif
 
         /// <summary>
-        /// Retrieve all permissions to dial to countries identified by ISO country codes
+        /// Retrieve all voice dialing country permissions for this account
         /// </summary>
-        /// <param name="isoCode"> The ISO country code </param>
-        /// <param name="continent"> Filter the results by specified continent </param>
+        /// <param name="isoCode"> Filter to retrieve the country permissions by specifying the ISO country code </param>
+        /// <param name="continent"> Filter to retrieve the country permissions by specifying the continent </param>
         /// <param name="countryCode"> country codes </param>
-        /// <param name="lowRiskNumbersEnabled"> Filter the results by specified  low risk special status </param>
-        /// <param name="highRiskSpecialNumbersEnabled"> Filter the results by specified the status of high risk special
-        ///                                     </param>
-        /// <param name="highRiskTollfraudNumbersEnabled"> Filter the results by specified the status of high risk tollfraud
-        ///                                       special </param>
+        /// <param name="lowRiskNumbersEnabled"> Filter to retrieve the country permissions with dialing to low-risk numbers
+        ///                             enabled set to true / false </param>
+        /// <param name="highRiskSpecialNumbersEnabled"> Filter to retrieve the country permissions with dialing to high-risk
+        ///                                     special service numbers enabled set to true / false </param>
+        /// <param name="highRiskTollfraudNumbersEnabled"> Filter to retrieve the country permissions with dialing to high-risk
+        ///                                       toll fraud numbers enabled set to true / false </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -165,16 +166,17 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
 
         #if !NET35
         /// <summary>
-        /// Retrieve all permissions to dial to countries identified by ISO country codes
+        /// Retrieve all voice dialing country permissions for this account
         /// </summary>
-        /// <param name="isoCode"> The ISO country code </param>
-        /// <param name="continent"> Filter the results by specified continent </param>
+        /// <param name="isoCode"> Filter to retrieve the country permissions by specifying the ISO country code </param>
+        /// <param name="continent"> Filter to retrieve the country permissions by specifying the continent </param>
         /// <param name="countryCode"> country codes </param>
-        /// <param name="lowRiskNumbersEnabled"> Filter the results by specified  low risk special status </param>
-        /// <param name="highRiskSpecialNumbersEnabled"> Filter the results by specified the status of high risk special
-        ///                                     </param>
-        /// <param name="highRiskTollfraudNumbersEnabled"> Filter the results by specified the status of high risk tollfraud
-        ///                                       special </param>
+        /// <param name="lowRiskNumbersEnabled"> Filter to retrieve the country permissions with dialing to low-risk numbers
+        ///                             enabled set to true / false </param>
+        /// <param name="highRiskSpecialNumbersEnabled"> Filter to retrieve the country permissions with dialing to high-risk
+        ///                                     special service numbers enabled set to true / false </param>
+        /// <param name="highRiskTollfraudNumbersEnabled"> Filter to retrieve the country permissions with dialing to high-risk
+        ///                                       toll fraud numbers enabled set to true / false </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -224,7 +226,7 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
             var request = new Request(
                 HttpMethod.Get,
                 page.GetNextPageUrl(
-                    Rest.Domain.Preview,
+                    Rest.Domain.Voice,
                     client.Region
                 )
             );
@@ -244,7 +246,7 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
             var request = new Request(
                 HttpMethod.Get,
                 page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
+                    Rest.Domain.Voice,
                     client.Region
                 )
             );
@@ -287,27 +289,27 @@ namespace Twilio.Rest.Preview.Permissions.VoicePermission
         [JsonProperty("continent")]
         public string Continent { get; private set; }
         /// <summary>
-        /// The list of country codes
+        /// The E.164 assigned country codes(s)
         /// </summary>
         [JsonProperty("country_codes")]
         public List<string> CountryCodes { get; private set; }
         /// <summary>
-        /// True, if low risk numbers are enabled, else false
+        /// true, if dialing to low-risk numbers is enabled, else false
         /// </summary>
         [JsonProperty("low_risk_numbers_enabled")]
         public bool? LowRiskNumbersEnabled { get; private set; }
         /// <summary>
-        /// True, if high risk special numbers are enabled, else false
+        /// true, if dialing to high-risk special services numbers is enabled, else false. This group of prefixes, are number ranges allocated by the corresponding country. They consist of number types such as premium numbers, special services, shared cost and others
         /// </summary>
         [JsonProperty("high_risk_special_numbers_enabled")]
         public bool? HighRiskSpecialNumbersEnabled { get; private set; }
         /// <summary>
-        /// True, if high risk tollfraud numbers are enabled, else false
+        /// true, if dialing to high-risk toll fraud numbers is enabled, else false. This group of prefixes are narrow number ranges that have a high-risk of international revenue sharing fraud (IRSF) attacks also called toll fraud. The group of prefixes is formed through integration with anti-fraud databases and verified by analyzing calls on the Twilio Super Network. This group of prefixes are not available for download and are updated frequently
         /// </summary>
         [JsonProperty("high_risk_tollfraud_numbers_enabled")]
         public bool? HighRiskTollfraudNumbersEnabled { get; private set; }
         /// <summary>
-        /// The URL for this resource.
+        /// The URL for this resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

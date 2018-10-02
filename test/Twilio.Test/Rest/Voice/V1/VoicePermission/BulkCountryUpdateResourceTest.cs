@@ -12,9 +12,9 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Preview.Permissions.VoicePermission;
+using Twilio.Rest.Voice.V1.VoicePermission;
 
-namespace Twilio.Tests.Rest.Preview.Permissions.VoicePermission 
+namespace Twilio.Tests.Rest.Voice.V1.VoicePermission 
 {
 
     [TestFixture]
@@ -26,8 +26,8 @@ namespace Twilio.Tests.Rest.Preview.Permissions.VoicePermission
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Post,
-                Twilio.Rest.Domain.Preview,
-                "/permissions/VoicePermissions/BulkCountryUpdates",
+                Twilio.Rest.Domain.Voice,
+                "/v1/DialingPermissions/BulkCountryUpdates",
                 ""
             );
             request.AddPostParam("UpdateRequest", Serialize("UpdateRequest"));

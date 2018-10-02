@@ -12,9 +12,9 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Preview.Permissions.VoicePermission.Country;
+using Twilio.Rest.Voice.V1.VoicePermission.Country;
 
-namespace Twilio.Tests.Rest.Preview.Permissions.VoicePermission.Country 
+namespace Twilio.Tests.Rest.Voice.V1.VoicePermission.Country 
 {
 
     [TestFixture]
@@ -26,8 +26,8 @@ namespace Twilio.Tests.Rest.Preview.Permissions.VoicePermission.Country
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Get,
-                Twilio.Rest.Domain.Preview,
-                "/permissions/VoicePermissions/Countries/US/HighRiskSpecialPrefixes",
+                Twilio.Rest.Domain.Voice,
+                "/v1/DialingPermissions/Countries/US/HighRiskSpecialPrefixes",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Preview.Permissions.VoicePermission.Country
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"content\": [{\"prefix\": \"+37181\"},{\"prefix\": \"+3719000\"}],\"meta\": {\"first_page_url\": \"https://preview.twilio.com/permissions/VoicePermissions/Countries/LV/HighRiskSpecialPrefixes?PageSize=50&Page=0\",\"key\": \"content\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/permissions/VoicePermissions/Countries/LV/HighRiskSpecialPrefixes?PageSize=50&Page=0\"}}"
+                                         "{\"content\": [{\"prefix\": \"+37181\"},{\"prefix\": \"+3719000\"}],\"meta\": {\"first_page_url\": \"https://voice.twilio.com/v1/DialingPermissions/Countries/LV/HighRiskSpecialPrefixes?PageSize=50&Page=0\",\"key\": \"content\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://voice.twilio.com/v1/DialingPermissions/Countries/LV/HighRiskSpecialPrefixes?PageSize=50&Page=0\"}}"
                                      ));
 
             var response = HighriskSpecialPrefixResource.Read("US", client: twilioRestClient);

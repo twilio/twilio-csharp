@@ -9,7 +9,6 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
-using Twilio.TwiML.Video;
 
 namespace Twilio.TwiML.Voice 
 {
@@ -71,9 +70,10 @@ namespace Twilio.TwiML.Voice
         /// Create a new <Room/> element and append it as a child of this element.
         /// </summary>
         /// <param name="name"> Room name, the body of the TwiML Element. </param>
-        public Connect Room(string name = null)
+        /// <param name="participantidentity"> Participant identity when connecting to the Room </param>
+        public Connect Room(string name = null, string participantidentity = null)
         {
-            var newChild = new Room(name);
+            var newChild = new Room(name, participantidentity);
             this.Append(newChild);
             return this;
         }

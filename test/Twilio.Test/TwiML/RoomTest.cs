@@ -6,7 +6,7 @@
 using NUnit.Framework;
 using System;
 using Twilio.Converters;
-using Twilio.TwiML.Video;
+using Twilio.TwiML.Voice;
 
 namespace Twilio.Tests.TwiML 
 {
@@ -29,10 +29,10 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new Room("name");
+            var elem = new Room("name", "participantIdentity");
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Room>name</Room>",
+                "<Room participantidentity=\"participantIdentity\">name</Room>",
                 elem.ToString()
             );
         }

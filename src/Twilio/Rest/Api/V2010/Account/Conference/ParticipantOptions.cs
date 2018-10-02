@@ -277,10 +277,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Set which conference recording state changes should webhook to the `ConferenceRecordingStatusCallback`
         /// </summary>
         public List<string> ConferenceRecordingStatusCallbackEvent { get; set; }
-        /// <summary>
-        /// The string that uniquely identifies the participant that is being `coached`
-        /// </summary>
-        public string CallSidToCoach { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -453,11 +449,6 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (ConferenceRecordingStatusCallbackEvent != null)
             {
                 p.AddRange(ConferenceRecordingStatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("ConferenceRecordingStatusCallbackEvent", prop)));
-            }
-
-            if (CallSidToCoach != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CallSidToCoach", CallSidToCoach.ToString()));
             }
 
             return p;

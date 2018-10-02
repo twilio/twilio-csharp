@@ -12,13 +12,13 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Preview.Permissions.VoicePermission;
+using Twilio.Rest.Voice.V1.VoicePermission;
 
-namespace Twilio.Tests.Rest.Preview.Permissions.VoicePermission 
+namespace Twilio.Tests.Rest.Voice.V1.VoicePermission 
 {
 
     [TestFixture]
-    public class SettingsTest : TwilioTest 
+    public class CountryTest : TwilioTest 
     {
         [Test]
         public void TestFetchRequest()
@@ -26,15 +26,15 @@ namespace Twilio.Tests.Rest.Preview.Permissions.VoicePermission
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Get,
-                Twilio.Rest.Domain.Preview,
-                "/permissions/VoicePermissions/Settings",
+                Twilio.Rest.Domain.Voice,
+                "/v1/DialingPermissions/Countries/US",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                SettingsResource.Fetch(client: twilioRestClient);
+                CountryResource.Fetch("US", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,28 +49,28 @@ namespace Twilio.Tests.Rest.Preview.Permissions.VoicePermission
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"inheritance\": true,\"url\": \"https://preview.twilio.com/permissions/VoicePermissions/Settings\"}"
+                                         "{\"iso_code\": \"US\",\"name\": \"United States/Canada\",\"country_codes\": [\"+1\"],\"continent\": \"NORTH_AMERICA\",\"low_risk_numbers_enabled\": false,\"high_risk_special_numbers_enabled\": false,\"high_risk_tollfraud_numbers_enabled\": false,\"url\": \"https://voice.twilio.com/v1/DialingPermissions/Countries/US\",\"links\": {\"highrisk_special_prefixes\": \"https://voice.twilio.com/v1/DialingPermissions/Countries/US/HighRiskSpecialPrefixes\"}}"
                                      ));
 
-            var response = SettingsResource.Fetch(client: twilioRestClient);
+            var response = CountryResource.Fetch("US", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
         [Test]
-        public void TestUpdateRequest()
+        public void TestReadRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
-                HttpMethod.Post,
-                Twilio.Rest.Domain.Preview,
-                "/permissions/VoicePermissions/Settings",
+                HttpMethod.Get,
+                Twilio.Rest.Domain.Voice,
+                "/v1/DialingPermissions/Countries",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                SettingsResource.Update(client: twilioRestClient);
+                CountryResource.Read(client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -78,17 +78,17 @@ namespace Twilio.Tests.Rest.Preview.Permissions.VoicePermission
         }
 
         [Test]
-        public void TestUpdateResponse()
+        public void TestReadUsResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"inheritance\": true,\"url\": \"https://preview.twilio.com/permissions/VoicePermissions/Settings\"}"
+                                         "{\"content\": [{\"iso_code\": \"US\",\"name\": \"United States/Canada\",\"country_codes\": [\"+1\"],\"continent\": \"NORTH_AMERICA\",\"low_risk_numbers_enabled\": false,\"high_risk_special_numbers_enabled\": false,\"high_risk_tollfraud_numbers_enabled\": false,\"url\": \"https://voice.twilio.com/v1/DialingPermissions/Countries/US\",\"links\": {\"highrisk_special_prefixes\": \"https://voice.twilio.com/v1/DialingPermissions/Countries/US/HighRiskSpecialPrefixes\"}}],\"meta\": {\"first_page_url\": \"https://voice.twilio.com/v1/DialingPermissions/Countries?PageSize=50&Page=0\",\"key\": \"content\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://voice.twilio.com/v1/DialingPermissions/Countries?PageSize=50&Page=0\"}}"
                                      ));
 
-            var response = SettingsResource.Update(client: twilioRestClient);
+            var response = CountryResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

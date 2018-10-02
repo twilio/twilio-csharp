@@ -1,6 +1,32 @@
 twilio-csharp Changelog
 =======================
 
+[2018-10-02] Version 5.18.0
+----------------------------
+**Library**
+- PR #449: Update Makefile to run tests on netcoreapp2.0. Thanks to @yannieyip!
+- PR #448: Bump .NET Core version for Travis CI. Thanks to @dprothero!
+- PR #447: Bump Newtonsoft.Json to 10.0.1 to try to fix #431. Thanks to @dprothero!
+
+**Api**
+- Set `call_sid_to_coach` parameter in participant to be `preview`
+
+**Preview**
+- Renamed response headers for Challenge and Factors Signatures
+- Supported `totp` in Authy preview endpoints
+- Allowed `latest` in Authy Challenges endpoints
+
+**Video**
+- [Composer] Add Composition Hook resources
+
+**Voice**
+- changed path param name from parent_iso_code to iso_code for highrisk_special_prefixes api **(breaking change)**
+- added geo permissions public api
+
+**Twiml**
+- Add `participantIdentity` to `Room`
+
+
 [2018-09-20] Version 5.17.0
 ----------------------------
 **Preview**
