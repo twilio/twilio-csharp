@@ -10,8 +10,8 @@ install:
 test:
 	dotnet restore
 	dotnet build --framework netstandard1.4 src/Twilio/Twilio.csproj
-	dotnet build --framework netcoreapp1.1 test/Twilio.Test/Twilio.Test.csproj
-	dotnet run --framework netcoreapp1.1 --project test/Twilio.Test/Twilio.Test.csproj
+	dotnet build --framework netcoreapp2.0 test/Twilio.Test/Twilio.Test.csproj
+	dotnet run --framework netcoreapp2.0 --project test/Twilio.Test/Twilio.Test.csproj
 
 release: test
 	dotnet build -c Release
