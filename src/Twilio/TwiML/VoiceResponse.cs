@@ -196,6 +196,7 @@ namespace Twilio.TwiML
         /// <param name="language"> Language to use </param>
         /// <param name="hints"> Speech recognition hints </param>
         /// <param name="bargeIn"> Stop playing media upon speech </param>
+        /// <param name="debug"> Allow debug for gather </param>
         public VoiceResponse Gather(List<Gather.InputEnum> input = null, 
                                     Uri action = null, 
                                     Twilio.Http.HttpMethod method = null, 
@@ -209,7 +210,8 @@ namespace Twilio.TwiML
                                     Twilio.Http.HttpMethod partialResultCallbackMethod = null, 
                                     Gather.LanguageEnum language = null, 
                                     string hints = null, 
-                                    bool? bargeIn = null)
+                                    bool? bargeIn = null, 
+                                    bool? debug = null)
         {
             var newChild = new Gather(
                 input,
@@ -225,7 +227,8 @@ namespace Twilio.TwiML
                 partialResultCallbackMethod,
                 language,
                 hints,
-                bargeIn
+                bargeIn,
+                debug
             );
             this.Append(newChild);
             return this;

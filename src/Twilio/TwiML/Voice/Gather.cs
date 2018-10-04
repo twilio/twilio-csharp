@@ -189,6 +189,10 @@ namespace Twilio.TwiML.Voice
         /// Stop playing media upon speech
         /// </summary>
         public bool? BargeIn { get; set; }
+        /// <summary>
+        /// Allow debug for gather
+        /// </summary>
+        public bool? Debug { get; set; }
 
         /// <summary>
         /// Create a new Gather
@@ -208,6 +212,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="language"> Language to use </param>
         /// <param name="hints"> Speech recognition hints </param>
         /// <param name="bargeIn"> Stop playing media upon speech </param>
+        /// <param name="debug"> Allow debug for gather </param>
         public Gather(List<Gather.InputEnum> input = null, 
                       Uri action = null, 
                       Twilio.Http.HttpMethod method = null, 
@@ -221,7 +226,8 @@ namespace Twilio.TwiML.Voice
                       Twilio.Http.HttpMethod partialResultCallbackMethod = null, 
                       Gather.LanguageEnum language = null, 
                       string hints = null, 
-                      bool? bargeIn = null) : base("Gather")
+                      bool? bargeIn = null, 
+                      bool? debug = null) : base("Gather")
         {
             this.Input = input;
             this.Action = action;
@@ -237,6 +243,7 @@ namespace Twilio.TwiML.Voice
             this.Language = language;
             this.Hints = hints;
             this.BargeIn = bargeIn;
+            this.Debug = debug;
         }
 
         /// <summary>
@@ -300,6 +307,10 @@ namespace Twilio.TwiML.Voice
             if (this.BargeIn != null)
             {
                 attributes.Add(new XAttribute("bargeIn", this.BargeIn.Value.ToString().ToLower()));
+            }
+            if (this.Debug != null)
+            {
+                attributes.Add(new XAttribute("debug", this.Debug.Value.ToString().ToLower()));
             }
             return attributes;
         }

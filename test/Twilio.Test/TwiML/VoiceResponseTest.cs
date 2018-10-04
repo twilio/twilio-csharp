@@ -108,6 +108,7 @@ namespace Twilio.Tests.TwiML
                 Twilio.Http.HttpMethod.Get,
                 Gather.LanguageEnum.AfZa,
                 "hints",
+                true,
                 true
             );
 
@@ -163,7 +164,7 @@ namespace Twilio.Tests.TwiML
                 "  <Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" answerOnBridge=\"true\" ringTone=\"at\">number</Dial>" + Environment.NewLine +
                 "  <Echo></Echo>" + Environment.NewLine +
                 "  <Enqueue action=\"https://example.com\" method=\"GET\" waitUrl=\"https://example.com\" waitUrlMethod=\"GET\" workflowSid=\"workflow_sid\">name</Enqueue>" + Environment.NewLine +
-                "  <Gather input=\"dtmf\" action=\"https://example.com\" method=\"GET\" timeout=\"1\" speechTimeout=\"speech_timeout\" maxSpeechTime=\"1\" profanityFilter=\"true\" finishOnKey=\"finish_on_key\" numDigits=\"1\" partialResultCallback=\"https://example.com\" partialResultCallbackMethod=\"GET\" language=\"af-ZA\" hints=\"hints\" bargeIn=\"true\"></Gather>" + Environment.NewLine +
+                "  <Gather input=\"dtmf\" action=\"https://example.com\" method=\"GET\" timeout=\"1\" speechTimeout=\"speech_timeout\" maxSpeechTime=\"1\" profanityFilter=\"true\" finishOnKey=\"finish_on_key\" numDigits=\"1\" partialResultCallback=\"https://example.com\" partialResultCallbackMethod=\"GET\" language=\"af-ZA\" hints=\"hints\" bargeIn=\"true\" debug=\"true\"></Gather>" + Environment.NewLine +
                 "  <Hangup></Hangup>" + Environment.NewLine +
                 "  <Leave></Leave>" + Environment.NewLine +
                 "  <Pause length=\"1\"></Pause>" + Environment.NewLine +
