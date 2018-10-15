@@ -38,7 +38,7 @@ namespace Twilio.TwiML.Voice
             var attributes = new List<XAttribute>();
             if (this.Length != null)
             {
-                attributes.Add(new XAttribute("length", this.Length.Value.ToString()));
+                attributes.Add(new XAttribute("length", this.Length.ToString()));
             }
             return attributes;
         }

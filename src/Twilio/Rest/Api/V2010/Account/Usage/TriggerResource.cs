@@ -47,6 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum CallsInboundMobile = new UsageCategoryEnum("calls-inbound-mobile");
             public static readonly UsageCategoryEnum CallsInboundTollfree = new UsageCategoryEnum("calls-inbound-tollfree");
             public static readonly UsageCategoryEnum CallsOutbound = new UsageCategoryEnum("calls-outbound");
+            public static readonly UsageCategoryEnum CallsPayVerbTransactions = new UsageCategoryEnum("calls-pay-verb-transactions");
             public static readonly UsageCategoryEnum CallsRecordings = new UsageCategoryEnum("calls-recordings");
             public static readonly UsageCategoryEnum CallsSip = new UsageCategoryEnum("calls-sip");
             public static readonly UsageCategoryEnum CallsSipInbound = new UsageCategoryEnum("calls-sip-inbound");

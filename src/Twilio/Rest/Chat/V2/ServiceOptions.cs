@@ -306,12 +306,12 @@ namespace Twilio.Rest.Chat.V2
 
             if (TypingIndicatorTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("TypingIndicatorTimeout", TypingIndicatorTimeout.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("TypingIndicatorTimeout", TypingIndicatorTimeout.ToString()));
             }
 
             if (ConsumptionReportInterval != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConsumptionReportInterval", ConsumptionReportInterval.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ConsumptionReportInterval", ConsumptionReportInterval.ToString()));
             }
 
             if (NotificationsNewMessageEnabled != null)
@@ -401,12 +401,12 @@ namespace Twilio.Rest.Chat.V2
 
             if (LimitsChannelMembers != null)
             {
-                p.Add(new KeyValuePair<string, string>("Limits.ChannelMembers", LimitsChannelMembers.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Limits.ChannelMembers", LimitsChannelMembers.ToString()));
             }
 
             if (LimitsUserChannels != null)
             {
-                p.Add(new KeyValuePair<string, string>("Limits.UserChannels", LimitsUserChannels.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Limits.UserChannels", LimitsUserChannels.ToString()));
             }
 
             if (MediaCompatibilityMessage != null)
@@ -416,12 +416,12 @@ namespace Twilio.Rest.Chat.V2
 
             if (PreWebhookRetryCount != null)
             {
-                p.Add(new KeyValuePair<string, string>("PreWebhookRetryCount", PreWebhookRetryCount.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("PreWebhookRetryCount", PreWebhookRetryCount.ToString()));
             }
 
             if (PostWebhookRetryCount != null)
             {
-                p.Add(new KeyValuePair<string, string>("PostWebhookRetryCount", PostWebhookRetryCount.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("PostWebhookRetryCount", PostWebhookRetryCount.ToString()));
             }
 
             if (NotificationsLogEnabled != null)

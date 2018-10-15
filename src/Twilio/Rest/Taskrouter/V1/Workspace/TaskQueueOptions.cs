@@ -123,7 +123,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
             if (MaxReservedWorkers != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxReservedWorkers", MaxReservedWorkers.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxReservedWorkers", MaxReservedWorkers.ToString()));
             }
 
             if (TaskOrder != null)
@@ -259,7 +259,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
             if (MaxReservedWorkers != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxReservedWorkers", MaxReservedWorkers.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxReservedWorkers", MaxReservedWorkers.ToString()));
             }
 
             if (TaskOrder != null)

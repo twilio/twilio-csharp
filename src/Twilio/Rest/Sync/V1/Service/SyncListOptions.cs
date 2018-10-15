@@ -127,7 +127,7 @@ namespace Twilio.Rest.Sync.V1.Service
 
             if (Ttl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
             }
 
             return p;
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Sync.V1.Service
             var p = new List<KeyValuePair<string, string>>();
             if (Ttl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
             }
 
             return p;

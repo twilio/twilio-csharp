@@ -142,7 +142,7 @@ namespace Twilio.Rest.Wireless.V1
 
             if (DataLimit != null)
             {
-                p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.ToString()));
             }
 
             if (DataMetering != null)
@@ -172,12 +172,12 @@ namespace Twilio.Rest.Wireless.V1
 
             if (NationalRoamingDataLimit != null)
             {
-                p.Add(new KeyValuePair<string, string>("NationalRoamingDataLimit", NationalRoamingDataLimit.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("NationalRoamingDataLimit", NationalRoamingDataLimit.ToString()));
             }
 
             if (InternationalRoamingDataLimit != null)
             {
-                p.Add(new KeyValuePair<string, string>("InternationalRoamingDataLimit", InternationalRoamingDataLimit.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("InternationalRoamingDataLimit", InternationalRoamingDataLimit.ToString()));
             }
 
             return p;

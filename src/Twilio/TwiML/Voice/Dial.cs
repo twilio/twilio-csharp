@@ -245,7 +245,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.Timeout != null)
             {
-                attributes.Add(new XAttribute("timeout", this.Timeout.Value.ToString()));
+                attributes.Add(new XAttribute("timeout", this.Timeout.ToString()));
             }
             if (this.HangupOnStar != null)
             {
@@ -253,7 +253,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.TimeLimit != null)
             {
-                attributes.Add(new XAttribute("timeLimit", this.TimeLimit.Value.ToString()));
+                attributes.Add(new XAttribute("timeLimit", this.TimeLimit.ToString()));
             }
             if (this.CallerId != null)
             {

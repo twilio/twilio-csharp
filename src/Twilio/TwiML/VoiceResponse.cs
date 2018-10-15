@@ -512,6 +512,104 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
+        /// Append a <Pay/> element as a child of this element
+        /// </summary>
+        /// <param name="pay"> A Pay instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public VoiceResponse Pay(Pay pay)
+        {
+            this.Append(pay);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Pay/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="input"> Input type Twilio should accept </param>
+        /// <param name="action"> Action URL </param>
+        /// <param name="statusCallback"> Status callback URL </param>
+        /// <param name="statusCallbackMethod"> Status callback method </param>
+        /// <param name="timeout"> Time to wait to gather input </param>
+        /// <param name="maxAttempts"> Maximum number of allowed retries when gathering input </param>
+        /// <param name="securityCode"> Prompt for security code </param>
+        /// <param name="postalCode"> Prompt for postal code and it should be true/false or default postal code </param>
+        /// <param name="paymentConnector"> Unique name for payment connector </param>
+        /// <param name="tokenType"> Type of token </param>
+        /// <param name="chargeAmount"> Amount to process. If value is greater than 0 then make the payment else create a
+        ///                    payment token </param>
+        /// <param name="currency"> Currency of the amount attribute </param>
+        /// <param name="credentialSid"> SID for API keys to communicate with payment provider </param>
+        /// <param name="description"> Details regarding the payment </param>
+        /// <param name="validCardTypes"> Comma separated accepted card types </param>
+        /// <param name="language"> Language to use </param>
+        public VoiceResponse Pay(Pay.InputEnum input = null, 
+                                 Uri action = null, 
+                                 Uri statusCallback = null, 
+                                 Pay.StatusCallbackMethodEnum statusCallbackMethod = null, 
+                                 int? timeout = null, 
+                                 int? maxAttempts = null, 
+                                 bool? securityCode = null, 
+                                 string postalCode = null, 
+                                 string paymentConnector = null, 
+                                 Pay.TokenTypeEnum tokenType = null, 
+                                 string chargeAmount = null, 
+                                 Pay.CurrencyEnum currency = null, 
+                                 string credentialSid = null, 
+                                 string description = null, 
+                                 List<Pay.ValidCardTypesEnum> validCardTypes = null, 
+                                 Pay.LanguageEnum language = null)
+        {
+            var newChild = new Pay(
+                input,
+                action,
+                statusCallback,
+                statusCallbackMethod,
+                timeout,
+                maxAttempts,
+                securityCode,
+                postalCode,
+                paymentConnector,
+                tokenType,
+                chargeAmount,
+                currency,
+                credentialSid,
+                description,
+                validCardTypes,
+                language
+            );
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Prompt/> element as a child of this element
+        /// </summary>
+        /// <param name="prompt"> A Prompt instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public VoiceResponse Prompt(Prompt prompt)
+        {
+            this.Append(prompt);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Prompt/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="for_"> Name of the credit card data element </param>
+        /// <param name="errorType"> Type of error </param>
+        /// <param name="cardType"> Type of the credit card </param>
+        /// <param name="attempt"> Current attempt count </param>
+        public VoiceResponse Prompt(Prompt.ForEnum for_ = null, 
+                                    List<Prompt.ErrorTypeEnum> errorType = null, 
+                                    List<Prompt.CardTypeEnum> cardType = null, 
+                                    List<int> attempt = null)
+        {
+            var newChild = new Prompt(for_, errorType, cardType, attempt);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

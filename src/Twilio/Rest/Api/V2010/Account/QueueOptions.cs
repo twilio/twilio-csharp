@@ -88,7 +88,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (MaxSize != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxSize", MaxSize.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxSize", MaxSize.ToString()));
             }
 
             return p;
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (MaxSize != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxSize", MaxSize.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxSize", MaxSize.ToString()));
             }
 
             return p;

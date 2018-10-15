@@ -188,7 +188,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
 
             if (ConfigurationRetryCount != null)
             {
-                p.Add(new KeyValuePair<string, string>("Configuration.RetryCount", ConfigurationRetryCount.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Configuration.RetryCount", ConfigurationRetryCount.ToString()));
             }
 
             return p;
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
 
             if (ConfigurationRetryCount != null)
             {
-                p.Add(new KeyValuePair<string, string>("Configuration.RetryCount", ConfigurationRetryCount.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Configuration.RetryCount", ConfigurationRetryCount.ToString()));
             }
 
             return p;

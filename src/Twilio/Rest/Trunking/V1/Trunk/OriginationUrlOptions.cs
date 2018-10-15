@@ -144,12 +144,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var p = new List<KeyValuePair<string, string>>();
             if (Weight != null)
             {
-                p.Add(new KeyValuePair<string, string>("Weight", Weight.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Weight", Weight.ToString()));
             }
 
             if (Priority != null)
             {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
             }
 
             if (Enabled != null)
@@ -258,12 +258,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
             var p = new List<KeyValuePair<string, string>>();
             if (Weight != null)
             {
-                p.Add(new KeyValuePair<string, string>("Weight", Weight.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Weight", Weight.ToString()));
             }
 
             if (Priority != null)
             {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
             }
 
             if (Enabled != null)

@@ -462,12 +462,12 @@ namespace Twilio.Rest.Chat.V1
 
             if (TypingIndicatorTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("TypingIndicatorTimeout", TypingIndicatorTimeout.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("TypingIndicatorTimeout", TypingIndicatorTimeout.ToString()));
             }
 
             if (ConsumptionReportInterval != null)
             {
-                p.Add(new KeyValuePair<string, string>("ConsumptionReportInterval", ConsumptionReportInterval.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ConsumptionReportInterval", ConsumptionReportInterval.ToString()));
             }
 
             if (NotificationsNewMessageEnabled != null)
@@ -772,12 +772,12 @@ namespace Twilio.Rest.Chat.V1
 
             if (LimitsChannelMembers != null)
             {
-                p.Add(new KeyValuePair<string, string>("Limits.ChannelMembers", LimitsChannelMembers.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Limits.ChannelMembers", LimitsChannelMembers.ToString()));
             }
 
             if (LimitsUserChannels != null)
             {
-                p.Add(new KeyValuePair<string, string>("Limits.UserChannels", LimitsUserChannels.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Limits.UserChannels", LimitsUserChannels.ToString()));
             }
 
             return p;

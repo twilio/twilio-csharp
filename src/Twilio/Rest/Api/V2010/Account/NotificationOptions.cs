@@ -111,7 +111,7 @@ namespace Twilio.Rest.Api.V2010.Account
             var p = new List<KeyValuePair<string, string>>();
             if (Log != null)
             {
-                p.Add(new KeyValuePair<string, string>("Log", Log.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Log", Log.ToString()));
             }
 
             if (MessageDate != null)

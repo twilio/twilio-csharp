@@ -114,7 +114,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
             var p = new List<KeyValuePair<string, string>>();
             if (AreaCode != null)
             {
-                p.Add(new KeyValuePair<string, string>("AreaCode", AreaCode.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("AreaCode", AreaCode.ToString()));
             }
 
             if (Contains != null)
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
 
             if (Distance != null)
             {
-                p.Add(new KeyValuePair<string, string>("Distance", Distance.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Distance", Distance.ToString()));
             }
 
             if (InPostalCode != null)

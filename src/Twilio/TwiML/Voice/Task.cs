@@ -59,11 +59,11 @@ namespace Twilio.TwiML.Voice
             var attributes = new List<XAttribute>();
             if (this.Priority != null)
             {
-                attributes.Add(new XAttribute("priority", this.Priority.Value.ToString()));
+                attributes.Add(new XAttribute("priority", this.Priority.ToString()));
             }
             if (this.Timeout != null)
             {
-                attributes.Add(new XAttribute("timeout", this.Timeout.Value.ToString()));
+                attributes.Add(new XAttribute("timeout", this.Timeout.ToString()));
             }
             return attributes;
         }

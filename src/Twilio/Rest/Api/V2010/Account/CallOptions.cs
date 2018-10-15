@@ -200,7 +200,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (Timeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.ToString()));
             }
 
             if (Record != null)
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (MachineDetectionTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("MachineDetectionTimeout", MachineDetectionTimeout.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MachineDetectionTimeout", MachineDetectionTimeout.ToString()));
             }
 
             if (RecordingStatusCallbackEvent != null)

@@ -328,7 +328,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (Timeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.ToString()));
             }
 
             if (Record != null)
@@ -373,7 +373,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
             if (MaxParticipants != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxParticipants", MaxParticipants.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxParticipants", MaxParticipants.ToString()));
             }
 
             if (ConferenceRecord != null)

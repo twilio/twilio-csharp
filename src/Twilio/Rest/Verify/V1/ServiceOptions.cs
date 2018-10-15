@@ -53,7 +53,7 @@ namespace Twilio.Rest.Verify.V1
 
             if (CodeLength != null)
             {
-                p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.ToString()));
             }
 
             if (LookupEnabled != null)
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Verify.V1
 
             if (CodeLength != null)
             {
-                p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.ToString()));
             }
 
             if (LookupEnabled != null)

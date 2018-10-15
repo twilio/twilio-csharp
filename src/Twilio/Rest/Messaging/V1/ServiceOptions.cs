@@ -152,7 +152,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (ValidityPeriod != null)
             {
-                p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.ToString()));
             }
 
             if (SynchronousValidation != null)
@@ -309,7 +309,7 @@ namespace Twilio.Rest.Messaging.V1
 
             if (ValidityPeriod != null)
             {
-                p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.ToString()));
             }
 
             if (SynchronousValidation != null)

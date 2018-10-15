@@ -115,7 +115,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
             if (Priority != null)
             {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
             }
 
             if (TaskChannel != null)
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var p = new List<KeyValuePair<string, string>>();
             if (Priority != null)
             {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
             }
 
             if (AssignmentStatus != null)
@@ -325,12 +325,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             var p = new List<KeyValuePair<string, string>>();
             if (Timeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.ToString()));
             }
 
             if (Priority != null)
             {
-                p.Add(new KeyValuePair<string, string>("Priority", Priority.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Priority", Priority.ToString()));
             }
 
             if (TaskChannel != null)

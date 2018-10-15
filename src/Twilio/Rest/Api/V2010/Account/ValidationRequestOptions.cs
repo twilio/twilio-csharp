@@ -72,7 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (CallDelay != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallDelay", CallDelay.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("CallDelay", CallDelay.ToString()));
             }
 
             if (Extension != null)

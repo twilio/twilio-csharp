@@ -132,7 +132,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.Timeout != null)
             {
-                attributes.Add(new XAttribute("timeout", this.Timeout.Value.ToString()));
+                attributes.Add(new XAttribute("timeout", this.Timeout.ToString()));
             }
             if (this.FinishOnKey != null)
             {
@@ -140,7 +140,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.MaxLength != null)
             {
-                attributes.Add(new XAttribute("maxLength", this.MaxLength.Value.ToString()));
+                attributes.Add(new XAttribute("maxLength", this.MaxLength.ToString()));
             }
             if (this.PlayBeep != null)
             {

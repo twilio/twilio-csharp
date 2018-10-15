@@ -149,7 +149,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (ValidityPeriod != null)
             {
-                p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.ToString()));
             }
 
             if (MaxRate != null)

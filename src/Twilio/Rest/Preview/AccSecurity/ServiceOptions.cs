@@ -50,7 +50,7 @@ namespace Twilio.Rest.Preview.AccSecurity
 
             if (CodeLength != null)
             {
-                p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.ToString()));
             }
 
             return p;
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Preview.AccSecurity
 
             if (CodeLength != null)
             {
-                p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.ToString()));
             }
 
             return p;

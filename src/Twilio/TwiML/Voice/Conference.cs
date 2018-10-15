@@ -293,7 +293,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.MaxParticipants != null)
             {
-                attributes.Add(new XAttribute("maxParticipants", this.MaxParticipants.Value.ToString()));
+                attributes.Add(new XAttribute("maxParticipants", this.MaxParticipants.ToString()));
             }
             if (this.Record != null)
             {

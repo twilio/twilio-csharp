@@ -47,6 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum CallsInboundMobile = new CategoryEnum("calls-inbound-mobile");
             public static readonly CategoryEnum CallsInboundTollfree = new CategoryEnum("calls-inbound-tollfree");
             public static readonly CategoryEnum CallsOutbound = new CategoryEnum("calls-outbound");
+            public static readonly CategoryEnum CallsPayVerbTransactions = new CategoryEnum("calls-pay-verb-transactions");
             public static readonly CategoryEnum CallsRecordings = new CategoryEnum("calls-recordings");
             public static readonly CategoryEnum CallsSip = new CategoryEnum("calls-sip");
             public static readonly CategoryEnum CallsSipInbound = new CategoryEnum("calls-sip-inbound");

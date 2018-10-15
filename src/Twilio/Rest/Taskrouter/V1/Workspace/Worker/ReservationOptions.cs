@@ -370,7 +370,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (DequeueTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("DequeueTimeout", DequeueTimeout.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("DequeueTimeout", DequeueTimeout.ToString()));
             }
 
             if (DequeueTo != null)
@@ -395,7 +395,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (CallTimeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallTimeout", CallTimeout.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("CallTimeout", CallTimeout.ToString()));
             }
 
             if (CallTo != null)
@@ -460,7 +460,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (Timeout != null)
             {
-                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Timeout", Timeout.ToString()));
             }
 
             if (Record != null)
@@ -505,7 +505,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 
             if (MaxParticipants != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxParticipants", MaxParticipants.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxParticipants", MaxParticipants.ToString()));
             }
 
             if (ConferenceStatusCallback != null)

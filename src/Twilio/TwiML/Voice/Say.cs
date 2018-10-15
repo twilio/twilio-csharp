@@ -175,7 +175,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.Loop != null)
             {
-                attributes.Add(new XAttribute("loop", this.Loop.Value.ToString()));
+                attributes.Add(new XAttribute("loop", this.Loop.ToString()));
             }
             if (this.Language != null)
             {

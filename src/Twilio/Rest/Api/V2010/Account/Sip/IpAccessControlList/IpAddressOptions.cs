@@ -106,7 +106,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
             if (CidrPrefixLength != null)
             {
-                p.Add(new KeyValuePair<string, string>("CidrPrefixLength", CidrPrefixLength.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("CidrPrefixLength", CidrPrefixLength.ToString()));
             }
 
             return p;
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
             if (CidrPrefixLength != null)
             {
-                p.Add(new KeyValuePair<string, string>("CidrPrefixLength", CidrPrefixLength.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("CidrPrefixLength", CidrPrefixLength.ToString()));
             }
 
             return p;

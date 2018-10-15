@@ -63,7 +63,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
 
             if (Minutes != null)
             {
-                p.Add(new KeyValuePair<string, string>("Minutes", Minutes.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Minutes", Minutes.ToString()));
             }
 
             if (StartDate != null)

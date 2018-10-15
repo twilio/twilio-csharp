@@ -60,7 +60,7 @@ namespace Twilio.TwiML.Voice
             var attributes = new List<XAttribute>();
             if (this.Loop != null)
             {
-                attributes.Add(new XAttribute("loop", this.Loop.Value.ToString()));
+                attributes.Add(new XAttribute("loop", this.Loop.ToString()));
             }
             if (this.Digits != null)
             {

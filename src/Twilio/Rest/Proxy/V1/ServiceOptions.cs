@@ -122,7 +122,7 @@ namespace Twilio.Rest.Proxy.V1
 
             if (DefaultTtl != null)
             {
-                p.Add(new KeyValuePair<string, string>("DefaultTtl", DefaultTtl.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("DefaultTtl", DefaultTtl.ToString()));
             }
 
             if (CallbackUrl != null)
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Proxy.V1
 
             if (DefaultTtl != null)
             {
-                p.Add(new KeyValuePair<string, string>("DefaultTtl", DefaultTtl.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("DefaultTtl", DefaultTtl.ToString()));
             }
 
             if (CallbackUrl != null)

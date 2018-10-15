@@ -204,7 +204,7 @@ namespace Twilio.Rest.Fax.V1
 
             if (Ttl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
             }
 
             return p;

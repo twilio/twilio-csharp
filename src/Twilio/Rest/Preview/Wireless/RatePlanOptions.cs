@@ -147,7 +147,7 @@ namespace Twilio.Rest.Preview.Wireless
 
             if (DataLimit != null)
             {
-                p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.ToString()));
             }
 
             if (DataMetering != null)

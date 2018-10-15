@@ -124,7 +124,7 @@ namespace Twilio.Rest.Video.V1
 
             if (MaxParticipants != null)
             {
-                p.Add(new KeyValuePair<string, string>("MaxParticipants", MaxParticipants.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("MaxParticipants", MaxParticipants.ToString()));
             }
 
             if (RecordParticipantsOnConnect != null)

@@ -266,7 +266,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.Timeout != null)
             {
-                attributes.Add(new XAttribute("timeout", this.Timeout.Value.ToString()));
+                attributes.Add(new XAttribute("timeout", this.Timeout.ToString()));
             }
             if (this.SpeechTimeout != null)
             {
@@ -274,7 +274,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.MaxSpeechTime != null)
             {
-                attributes.Add(new XAttribute("maxSpeechTime", this.MaxSpeechTime.Value.ToString()));
+                attributes.Add(new XAttribute("maxSpeechTime", this.MaxSpeechTime.ToString()));
             }
             if (this.ProfanityFilter != null)
             {
@@ -286,7 +286,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.NumDigits != null)
             {
-                attributes.Add(new XAttribute("numDigits", this.NumDigits.Value.ToString()));
+                attributes.Add(new XAttribute("numDigits", this.NumDigits.ToString()));
             }
             if (this.PartialResultCallback != null)
             {

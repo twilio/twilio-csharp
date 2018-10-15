@@ -192,7 +192,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
 
             if (CallDelay != null)
             {
-                p.Add(new KeyValuePair<string, string>("CallDelay", CallDelay.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("CallDelay", CallDelay.ToString()));
             }
 
             return p;

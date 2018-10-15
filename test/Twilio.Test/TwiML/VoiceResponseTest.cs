@@ -157,6 +157,32 @@ namespace Twilio.Tests.TwiML
                 new Uri("https://example.com")
             );
 
+            elem.Pay(
+                Pay.InputEnum.Dtmf,
+                new Uri("https://example.com"),
+                new Uri("https://example.com"),
+                Pay.StatusCallbackMethodEnum.Get,
+                1,
+                1,
+                true,
+                "postal_code",
+                "payment_connector",
+                Pay.TokenTypeEnum.OneTime,
+                "charge_amount",
+                Pay.CurrencyEnum.Usd,
+                "credential_sid",
+                "description",
+                Promoter.ListOfOne(Pay.ValidCardTypesEnum.Visa),
+                Pay.LanguageEnum.DeDe
+            );
+
+            elem.Prompt(
+                Prompt.ForEnum.PaymentCardNumber,
+                Promoter.ListOfOne(Prompt.ErrorTypeEnum.Timeout),
+                Promoter.ListOfOne(Prompt.CardTypeEnum.Visa),
+                Promoter.ListOfOne(1)
+            );
+
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
@@ -175,6 +201,8 @@ namespace Twilio.Tests.TwiML
                 "  <Reject reason=\"rejected\"></Reject>" + Environment.NewLine +
                 "  <Say voice=\"man\" loop=\"1\" language=\"da-DK\">message</Say>" + Environment.NewLine +
                 "  <Sms to=\"+15558675310\" from=\"+15017122661\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>" + Environment.NewLine +
+                "  <Pay input=\"dtmf\" action=\"https://example.com\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" paymentConnector=\"payment_connector\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"usd\" credentialSid=\"credential_sid\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>" + Environment.NewLine +
+                "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\"></Prompt>" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()
             );

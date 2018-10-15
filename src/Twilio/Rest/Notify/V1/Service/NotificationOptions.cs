@@ -133,7 +133,7 @@ namespace Twilio.Rest.Notify.V1.Service
 
             if (Ttl != null)
             {
-                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
             }
 
             if (Title != null)
