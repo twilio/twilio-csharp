@@ -66,8 +66,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
         public static QueryResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
@@ -80,8 +80,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
         public static async System.Threading.Tasks.Task<QueryResource> FetchAsync(string pathAssistantSid, 
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
         /// <param name="language"> An ISO language-country string of the sample. </param>
         /// <param name="modelBuild"> The Model Build Sid or unique name of the Model Build to be queried. </param>
         /// <param name="status"> A string that described the query status. The values can be: pending_review, reviewed,
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
         /// <param name="language"> An ISO language-country string of the sample. </param>
         /// <param name="modelBuild"> The Model Build Sid or unique name of the Model Build to be queried. </param>
         /// <param name="status"> A string that described the query status. The values can be: pending_review, reviewed,
@@ -289,26 +289,26 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
         /// <param name="language"> An ISO language-country string of the sample. </param>
         /// <param name="query"> A user-provided string that uniquely identifies this resource as an alternative to the sid. It
         ///             can be up to 2048 characters long. </param>
-        /// <param name="intents"> Constraints the query to a set of intents. Useful when you need to constrain the paths the
-        ///               user can take. Intents should be comma separated intent-unique-name-1, intent-unique-name-2 </param>
+        /// <param name="tasks"> Constraints the query to a set of tasks. Useful when you need to constrain the paths the user
+        ///             can take. Tasks should be comma separated task-unique-name-1, task-unique-name-2 </param>
         /// <param name="modelBuild"> The Model Build Sid or unique name of the Model Build to be queried. </param>
-        /// <param name="field"> Constraints the query to a given Field with an intent. Useful when you know the Field you are
-        ///             expecting. It accepts one field in the format intent-unique-name-1:field-unique-name </param>
+        /// <param name="field"> Constraints the query to a given Field with an task. Useful when you know the Field you are
+        ///             expecting. It accepts one field in the format task-unique-name-1:field-unique-name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
         public static QueryResource Create(string pathAssistantSid, 
                                            string language, 
                                            string query, 
-                                           string intents = null, 
+                                           string tasks = null, 
                                            string modelBuild = null, 
                                            string field = null, 
                                            ITwilioRestClient client = null)
         {
-            var options = new CreateQueryOptions(pathAssistantSid, language, query){Intents = intents, ModelBuild = modelBuild, Field = field};
+            var options = new CreateQueryOptions(pathAssistantSid, language, query){Tasks = tasks, ModelBuild = modelBuild, Field = field};
             return Create(options, client);
         }
 
@@ -316,26 +316,26 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
         /// <param name="language"> An ISO language-country string of the sample. </param>
         /// <param name="query"> A user-provided string that uniquely identifies this resource as an alternative to the sid. It
         ///             can be up to 2048 characters long. </param>
-        /// <param name="intents"> Constraints the query to a set of intents. Useful when you need to constrain the paths the
-        ///               user can take. Intents should be comma separated intent-unique-name-1, intent-unique-name-2 </param>
+        /// <param name="tasks"> Constraints the query to a set of tasks. Useful when you need to constrain the paths the user
+        ///             can take. Tasks should be comma separated task-unique-name-1, task-unique-name-2 </param>
         /// <param name="modelBuild"> The Model Build Sid or unique name of the Model Build to be queried. </param>
-        /// <param name="field"> Constraints the query to a given Field with an intent. Useful when you know the Field you are
-        ///             expecting. It accepts one field in the format intent-unique-name-1:field-unique-name </param>
+        /// <param name="field"> Constraints the query to a given Field with an task. Useful when you know the Field you are
+        ///             expecting. It accepts one field in the format task-unique-name-1:field-unique-name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
         public static async System.Threading.Tasks.Task<QueryResource> CreateAsync(string pathAssistantSid, 
                                                                                    string language, 
                                                                                    string query, 
-                                                                                   string intents = null, 
+                                                                                   string tasks = null, 
                                                                                    string modelBuild = null, 
                                                                                    string field = null, 
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateQueryOptions(pathAssistantSid, language, query){Intents = intents, ModelBuild = modelBuild, Field = field};
+            var options = new CreateQueryOptions(pathAssistantSid, language, query){Tasks = tasks, ModelBuild = modelBuild, Field = field};
             return await CreateAsync(options, client);
         }
         #endif
@@ -383,9 +383,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="sampleSid"> The sample_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="sampleSid"> An optional reference to the Sample created from this query. </param>
         /// <param name="status"> A string that described the query status. The values can be: pending_review, reviewed,
         ///              discarded </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -404,9 +404,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="sampleSid"> The sample_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="sampleSid"> An optional reference to the Sample created from this query. </param>
         /// <param name="status"> A string that described the query status. The values can be: pending_review, reviewed,
         ///              discarded </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -465,8 +465,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
         public static bool Delete(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
@@ -479,8 +479,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
@@ -526,7 +526,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The natural language analysis results which include the Intent recognized, the confidence score and a list of identified Fields.
+        /// The natural language analysis results which include the Task recognized, the confidence score and a list of identified Fields.
         /// </summary>
         [JsonProperty("results")]
         public object Results { get; private set; }

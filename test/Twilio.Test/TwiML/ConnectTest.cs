@@ -58,10 +58,13 @@ namespace Twilio.Tests.TwiML
 
             elem.Room("name", "participantIdentity");
 
+            elem.Autopilot("name");
+
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Connect>" + Environment.NewLine +
                 "  <Room participantidentity=\"participantIdentity\">name</Room>" + Environment.NewLine +
+                "  <Autopilot>name</Autopilot>" + Environment.NewLine +
                 "</Connect>",
                 elem.ToString()
             );

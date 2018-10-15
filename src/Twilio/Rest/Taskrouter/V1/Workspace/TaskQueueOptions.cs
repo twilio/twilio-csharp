@@ -210,14 +210,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// ActivitySID to assign workers once a task is reserved for them
-        /// </summary>
-        public string ReservationActivitySid { get; }
-        /// <summary>
-        /// ActivitySID to assign workers once a task is assigned for them
-        /// </summary>
-        public string AssignmentActivitySid { get; }
-        /// <summary>
         /// A string describing the Worker selection criteria for any Tasks that enter this TaskQueue.
         /// </summary>
         public string TargetWorkers { get; set; }
@@ -229,23 +221,24 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// TaskOrder will determine which order the Tasks will be assigned to Workers.
         /// </summary>
         public TaskQueueResource.TaskOrderEnum TaskOrder { get; set; }
+        /// <summary>
+        /// ActivitySID to assign workers once a task is reserved for them
+        /// </summary>
+        public string ReservationActivitySid { get; set; }
+        /// <summary>
+        /// ActivitySID to assign workers once a task is assigned for them
+        /// </summary>
+        public string AssignmentActivitySid { get; set; }
 
         /// <summary>
         /// Construct a new CreateTaskQueueOptions
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> Human readable description of this TaskQueue </param>
-        /// <param name="reservationActivitySid"> ActivitySID to assign workers once a task is reserved for them </param>
-        /// <param name="assignmentActivitySid"> ActivitySID to assign workers once a task is assigned for them </param>
-        public CreateTaskQueueOptions(string pathWorkspaceSid, 
-                                      string friendlyName, 
-                                      string reservationActivitySid, 
-                                      string assignmentActivitySid)
+        public CreateTaskQueueOptions(string pathWorkspaceSid, string friendlyName)
         {
             PathWorkspaceSid = pathWorkspaceSid;
             FriendlyName = friendlyName;
-            ReservationActivitySid = reservationActivitySid;
-            AssignmentActivitySid = assignmentActivitySid;
         }
 
         /// <summary>
@@ -257,16 +250,6 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
-            if (ReservationActivitySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ReservationActivitySid", ReservationActivitySid.ToString()));
-            }
-
-            if (AssignmentActivitySid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AssignmentActivitySid", AssignmentActivitySid.ToString()));
             }
 
             if (TargetWorkers != null)
@@ -282,6 +265,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (TaskOrder != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskOrder", TaskOrder.ToString()));
+            }
+
+            if (ReservationActivitySid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ReservationActivitySid", ReservationActivitySid.ToString()));
+            }
+
+            if (AssignmentActivitySid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AssignmentActivitySid", AssignmentActivitySid.ToString()));
             }
 
             return p;

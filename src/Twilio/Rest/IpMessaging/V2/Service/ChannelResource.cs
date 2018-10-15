@@ -233,7 +233,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="pathServiceSid"> Sid of the Service this channel belongs to. </param>
         /// <param name="friendlyName"> A human-readable name for the Channel. </param>
         /// <param name="uniqueName"> A unique, addressable name for the Channel. </param>
-        /// <param name="attributes"> An optional metadata field you can use to store any data you wish. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="type"> The visibility of the channel - public or private. </param>
         /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Channel should be set as being
         ///                   created. </param>
@@ -263,7 +263,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="pathServiceSid"> Sid of the Service this channel belongs to. </param>
         /// <param name="friendlyName"> A human-readable name for the Channel. </param>
         /// <param name="uniqueName"> A unique, addressable name for the Channel. </param>
-        /// <param name="attributes"> An optional metadata field you can use to store any data you wish. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="type"> The visibility of the channel - public or private. </param>
         /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Channel should be set as being
         ///                   created. </param>
@@ -477,7 +477,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="pathSid"> Key that uniquely defines the channel to fetch. </param>
         /// <param name="friendlyName"> A human-readable name for the Channel. </param>
         /// <param name="uniqueName"> A unique, addressable name for the Channel. </param>
-        /// <param name="attributes"> An optional metadata field you can use to store any data you wish. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Channel should be set as being
         ///                   created. </param>
         /// <param name="dateUpdated"> The optional ISO8601 time specifying the datetime the Channel should be set as having
@@ -507,7 +507,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="pathSid"> Key that uniquely defines the channel to fetch. </param>
         /// <param name="friendlyName"> A human-readable name for the Channel. </param>
         /// <param name="uniqueName"> A unique, addressable name for the Channel. </param>
-        /// <param name="attributes"> An optional metadata field you can use to store any data you wish. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="dateCreated"> The optional ISO8601 time specifying the datetime the Channel should be set as being
         ///                   created. </param>
         /// <param name="dateUpdated"> The optional ISO8601 time specifying the datetime the Channel should be set as having

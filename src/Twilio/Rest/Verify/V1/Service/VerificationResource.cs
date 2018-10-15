@@ -83,15 +83,17 @@ namespace Twilio.Rest.Verify.V1.Service
         /// <param name="to"> To phonenumber </param>
         /// <param name="channel"> sms or call </param>
         /// <param name="customMessage"> A custom message for this verification </param>
+        /// <param name="sendDigits"> Digits to send when a phone call is started </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns> 
         public static VerificationResource Create(string pathServiceSid, 
                                                   string to, 
                                                   string channel, 
                                                   string customMessage = null, 
+                                                  string sendDigits = null, 
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits};
             return Create(options, client);
         }
 
@@ -103,15 +105,17 @@ namespace Twilio.Rest.Verify.V1.Service
         /// <param name="to"> To phonenumber </param>
         /// <param name="channel"> sms or call </param>
         /// <param name="customMessage"> A custom message for this verification </param>
+        /// <param name="sendDigits"> Digits to send when a phone call is started </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns> 
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid, 
                                                                                           string to, 
                                                                                           string channel, 
                                                                                           string customMessage = null, 
+                                                                                          string sendDigits = null, 
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits};
             return await CreateAsync(options, client);
         }
         #endif

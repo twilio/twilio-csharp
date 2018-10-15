@@ -304,13 +304,13 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Create a new <Client/> element and append it as a child of this element.
         /// </summary>
-        /// <param name="name"> Client name, the body of the TwiML Element. </param>
+        /// <param name="identity"> Client identity, the body of the TwiML Element. </param>
         /// <param name="url"> Client URL </param>
         /// <param name="method"> Client URL Method </param>
         /// <param name="statusCallbackEvent"> Events to trigger status callback </param>
         /// <param name="statusCallback"> Status Callback URL </param>
         /// <param name="statusCallbackMethod"> Status Callback URL Method </param>
-        public Dial Client(string name = null, 
+        public Dial Client(string identity = null, 
                            Uri url = null, 
                            Twilio.Http.HttpMethod method = null, 
                            List<Client.EventEnum> statusCallbackEvent = null, 
@@ -318,7 +318,7 @@ namespace Twilio.TwiML.Voice
                            Twilio.Http.HttpMethod statusCallbackMethod = null)
         {
             var newChild = new Client(
-                name,
+                identity,
                 url,
                 method,
                 statusCallbackEvent,

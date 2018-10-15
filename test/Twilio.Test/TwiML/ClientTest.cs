@@ -30,7 +30,7 @@ namespace Twilio.Tests.TwiML
         public void TestElementWithParams()
         {
             var elem = new Client(
-                "name",
+                "identity",
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
                 Promoter.ListOfOne(Client.EventEnum.Initiated),
@@ -39,7 +39,7 @@ namespace Twilio.Tests.TwiML
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Client url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">name</Client>",
+                "<Client url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">identity</Client>",
                 elem.ToString()
             );
         }
@@ -54,6 +54,25 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Client newParam1=\"value\" newParam2=\"1\"></Client>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestElementWithChildren()
+        {
+            var elem = new Client();
+
+            elem.Identity("client_identity");
+
+            elem.Parameter("name", "value");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Client>" + Environment.NewLine +
+                "  <Identity>client_identity</Identity>" + Environment.NewLine +
+                "  <Parameter name=\"name\" value=\"value\"></Parameter>" + Environment.NewLine +
+                "</Client>",
                 elem.ToString()
             );
         }
@@ -82,6 +101,24 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Client>" + Environment.NewLine +
                 "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "</Client>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestAllowGenericChildrenOfChildNodes()
+        {
+            var elem = new Client();
+            var child = new Identity();
+            elem.Nest(child).AddChild("generic-tag").SetOption("tag", true).AddText("Content");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Client>" + Environment.NewLine +
+                "  <Identity>" + Environment.NewLine +
+                "    <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "  </Identity>" + Environment.NewLine +
                 "</Client>",
                 elem.ToString()
             );

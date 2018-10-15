@@ -406,25 +406,25 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> Human readable description of this TaskQueue </param>
-        /// <param name="reservationActivitySid"> ActivitySID to assign workers once a task is reserved for them </param>
-        /// <param name="assignmentActivitySid"> ActivitySID to assign workers once a task is assigned for them </param>
         /// <param name="targetWorkers"> A string describing the Worker selection criteria for any Tasks that enter this
         ///                     TaskQueue. </param>
         /// <param name="maxReservedWorkers"> The maximum amount of workers to create reservations for the assignment of a task
         ///                          while in this queue. </param>
         /// <param name="taskOrder"> TaskOrder will determine which order the Tasks will be assigned to Workers. </param>
+        /// <param name="reservationActivitySid"> ActivitySID to assign workers once a task is reserved for them </param>
+        /// <param name="assignmentActivitySid"> ActivitySID to assign workers once a task is assigned for them </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueue </returns> 
         public static TaskQueueResource Create(string pathWorkspaceSid, 
                                                string friendlyName, 
-                                               string reservationActivitySid, 
-                                               string assignmentActivitySid, 
                                                string targetWorkers = null, 
                                                int? maxReservedWorkers = null, 
                                                TaskQueueResource.TaskOrderEnum taskOrder = null, 
+                                               string reservationActivitySid = null, 
+                                               string assignmentActivitySid = null, 
                                                ITwilioRestClient client = null)
         {
-            var options = new CreateTaskQueueOptions(pathWorkspaceSid, friendlyName, reservationActivitySid, assignmentActivitySid){TargetWorkers = targetWorkers, MaxReservedWorkers = maxReservedWorkers, TaskOrder = taskOrder};
+            var options = new CreateTaskQueueOptions(pathWorkspaceSid, friendlyName){TargetWorkers = targetWorkers, MaxReservedWorkers = maxReservedWorkers, TaskOrder = taskOrder, ReservationActivitySid = reservationActivitySid, AssignmentActivitySid = assignmentActivitySid};
             return Create(options, client);
         }
 
@@ -434,25 +434,25 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="friendlyName"> Human readable description of this TaskQueue </param>
-        /// <param name="reservationActivitySid"> ActivitySID to assign workers once a task is reserved for them </param>
-        /// <param name="assignmentActivitySid"> ActivitySID to assign workers once a task is assigned for them </param>
         /// <param name="targetWorkers"> A string describing the Worker selection criteria for any Tasks that enter this
         ///                     TaskQueue. </param>
         /// <param name="maxReservedWorkers"> The maximum amount of workers to create reservations for the assignment of a task
         ///                          while in this queue. </param>
         /// <param name="taskOrder"> TaskOrder will determine which order the Tasks will be assigned to Workers. </param>
+        /// <param name="reservationActivitySid"> ActivitySID to assign workers once a task is reserved for them </param>
+        /// <param name="assignmentActivitySid"> ActivitySID to assign workers once a task is assigned for them </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueue </returns> 
         public static async System.Threading.Tasks.Task<TaskQueueResource> CreateAsync(string pathWorkspaceSid, 
                                                                                        string friendlyName, 
-                                                                                       string reservationActivitySid, 
-                                                                                       string assignmentActivitySid, 
                                                                                        string targetWorkers = null, 
                                                                                        int? maxReservedWorkers = null, 
                                                                                        TaskQueueResource.TaskOrderEnum taskOrder = null, 
+                                                                                       string reservationActivitySid = null, 
+                                                                                       string assignmentActivitySid = null, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateTaskQueueOptions(pathWorkspaceSid, friendlyName, reservationActivitySid, assignmentActivitySid){TargetWorkers = targetWorkers, MaxReservedWorkers = maxReservedWorkers, TaskOrder = taskOrder};
+            var options = new CreateTaskQueueOptions(pathWorkspaceSid, friendlyName){TargetWorkers = targetWorkers, MaxReservedWorkers = maxReservedWorkers, TaskOrder = taskOrder, ReservationActivitySid = reservationActivitySid, AssignmentActivitySid = assignmentActivitySid};
             return await CreateAsync(options, client);
         }
         #endif

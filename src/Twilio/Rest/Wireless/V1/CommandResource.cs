@@ -63,6 +63,19 @@ namespace Twilio.Rest.Wireless.V1
             public static readonly CommandModeEnum Binary = new CommandModeEnum("binary");
         }
 
+        public sealed class TransportEnum : StringEnum 
+        {
+            private TransportEnum(string value) : base(value) {}
+            public TransportEnum() {}
+            public static implicit operator TransportEnum(string value)
+            {
+                return new TransportEnum(value);
+            }
+
+            public static readonly TransportEnum Sms = new TransportEnum("sms");
+            public static readonly TransportEnum Ip = new TransportEnum("ip");
+        }
+
         private static Request BuildFetchRequest(FetchCommandOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -180,6 +193,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="sim"> Only return Commands to or from this SIM. </param>
         /// <param name="status"> Only return Commands with this status value. </param>
         /// <param name="direction"> Only return Commands with this direction value. </param>
+        /// <param name="transport"> The transport </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -187,11 +201,12 @@ namespace Twilio.Rest.Wireless.V1
         public static ResourceSet<CommandResource> Read(string sim = null, 
                                                         CommandResource.StatusEnum status = null, 
                                                         CommandResource.DirectionEnum direction = null, 
+                                                        CommandResource.TransportEnum transport = null, 
                                                         int? pageSize = null, 
                                                         long? limit = null, 
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadCommandOptions(){Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
+            var options = new ReadCommandOptions(){Sim = sim, Status = status, Direction = direction, Transport = transport, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -202,6 +217,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="sim"> Only return Commands to or from this SIM. </param>
         /// <param name="status"> Only return Commands with this status value. </param>
         /// <param name="direction"> Only return Commands with this direction value. </param>
+        /// <param name="transport"> The transport </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -209,11 +225,12 @@ namespace Twilio.Rest.Wireless.V1
         public static async System.Threading.Tasks.Task<ResourceSet<CommandResource>> ReadAsync(string sim = null, 
                                                                                                 CommandResource.StatusEnum status = null, 
                                                                                                 CommandResource.DirectionEnum direction = null, 
+                                                                                                CommandResource.TransportEnum transport = null, 
                                                                                                 int? pageSize = null, 
                                                                                                 long? limit = null, 
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadCommandOptions(){Sim = sim, Status = status, Direction = direction, PageSize = pageSize, Limit = limit};
+            var options = new ReadCommandOptions(){Sim = sim, Status = status, Direction = direction, Transport = transport, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -328,6 +345,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="includeSid"> When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of
         ///                  the Command in the message body, which could be used to ensure that the device does not process the
         ///                  same Command more than once. </param>
+        /// <param name="deliveryReceiptRequested"> The delivery_receipt_requested </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Command </returns> 
         public static CommandResource Create(string command, 
@@ -336,9 +354,10 @@ namespace Twilio.Rest.Wireless.V1
                                              Uri callbackUrl = null, 
                                              CommandResource.CommandModeEnum commandMode = null, 
                                              string includeSid = null, 
+                                             bool? deliveryReceiptRequested = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateCommandOptions(command){Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid};
+            var options = new CreateCommandOptions(command){Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid, DeliveryReceiptRequested = deliveryReceiptRequested};
             return Create(options, client);
         }
 
@@ -354,6 +373,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="includeSid"> When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of
         ///                  the Command in the message body, which could be used to ensure that the device does not process the
         ///                  same Command more than once. </param>
+        /// <param name="deliveryReceiptRequested"> The delivery_receipt_requested </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns> 
         public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(string command, 
@@ -362,9 +382,10 @@ namespace Twilio.Rest.Wireless.V1
                                                                                      Uri callbackUrl = null, 
                                                                                      CommandResource.CommandModeEnum commandMode = null, 
                                                                                      string includeSid = null, 
+                                                                                     bool? deliveryReceiptRequested = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateCommandOptions(command){Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid};
+            var options = new CreateCommandOptions(command){Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid, DeliveryReceiptRequested = deliveryReceiptRequested};
             return await CreateAsync(options, client);
         }
         #endif
@@ -413,6 +434,17 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("command_mode")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CommandResource.CommandModeEnum CommandMode { get; private set; }
+        /// <summary>
+        /// The transport
+        /// </summary>
+        [JsonProperty("transport")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public CommandResource.TransportEnum Transport { get; private set; }
+        /// <summary>
+        /// The delivery_receipt_requested
+        /// </summary>
+        [JsonProperty("delivery_receipt_requested")]
+        public bool? DeliveryReceiptRequested { get; private set; }
         /// <summary>
         /// A string representing the status of the Command.
         /// </summary>

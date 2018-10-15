@@ -36,9 +36,9 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Client name
+        /// Client identity
         /// </summary>
-        public string Name { get; set; }
+        public string IdentityAttribute { get; set; }
         /// <summary>
         /// Client URL
         /// </summary>
@@ -63,20 +63,20 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Create a new Client
         /// </summary>
-        /// <param name="name"> Client name, the body of the TwiML Element. </param>
+        /// <param name="identity"> Client identity, the body of the TwiML Element. </param>
         /// <param name="url"> Client URL </param>
         /// <param name="method"> Client URL Method </param>
         /// <param name="statusCallbackEvent"> Events to trigger status callback </param>
         /// <param name="statusCallback"> Status Callback URL </param>
         /// <param name="statusCallbackMethod"> Status Callback URL Method </param>
-        public Client(string name = null, 
+        public Client(string identity = null, 
                       Uri url = null, 
                       Twilio.Http.HttpMethod method = null, 
                       List<Client.EventEnum> statusCallbackEvent = null, 
                       Uri statusCallback = null, 
                       Twilio.Http.HttpMethod statusCallbackMethod = null) : base("Client")
         {
-            this.Name = name;
+            this.IdentityAttribute = identity;
             this.Url = url;
             this.Method = method;
             this.StatusCallbackEvent = statusCallbackEvent;
@@ -89,7 +89,7 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         protected override string GetElementBody()
         {
-            return this.Name != null ? this.Name : string.Empty;
+            return this.IdentityAttribute != null ? this.IdentityAttribute : string.Empty;
         }
 
         /// <summary>
@@ -119,6 +119,51 @@ namespace Twilio.TwiML.Voice
                 attributes.Add(new XAttribute("statusCallbackMethod", this.StatusCallbackMethod.ToString()));
             }
             return attributes;
+        }
+
+        /// <summary>
+        /// Append a <Identity/> element as a child of this element
+        /// </summary>
+        /// <param name="identity"> A Identity instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Client Identity(Identity identity)
+        {
+            this.Append(identity);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Identity/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="clientIdentity"> Identity of the client to dial, the body of the TwiML Element. </param>
+        public Client Identity(string clientIdentity = null)
+        {
+            var newChild = new Identity(clientIdentity);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Parameter/> element as a child of this element
+        /// </summary>
+        /// <param name="parameter"> A Parameter instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Client Parameter(Parameter parameter)
+        {
+            this.Append(parameter);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Parameter/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="name"> The name of the custom parameter </param>
+        /// <param name="value"> The value of the custom parameter </param>
+        public Client Parameter(string name = null, string value = null)
+        {
+            var newChild = new Parameter(name, value);
+            this.Append(newChild);
+            return this;
         }
 
         /// <summary>

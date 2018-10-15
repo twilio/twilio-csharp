@@ -100,7 +100,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// An optional metadata field you can use to store any data you wish.
+        /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
@@ -240,7 +240,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// An optional metadata field you can use to store any data you wish.
+        /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>

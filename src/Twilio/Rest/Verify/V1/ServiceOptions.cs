@@ -26,6 +26,10 @@ namespace Twilio.Rest.Verify.V1
         /// Length of verification code. Valid values are 4-10
         /// </summary>
         public int? CodeLength { get; set; }
+        /// <summary>
+        /// Indicates whether or not to perform a lookup with each verification started
+        /// </summary>
+        public bool? LookupEnabled { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -52,6 +56,11 @@ namespace Twilio.Rest.Verify.V1
                 p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.Value.ToString()));
             }
 
+            if (LookupEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LookupEnabled", LookupEnabled.Value.ToString().ToLower()));
+            }
+
             return p;
         }
     }
@@ -73,6 +82,37 @@ namespace Twilio.Rest.Verify.V1
         /// </summary>
         /// <param name="pathSid"> Verification Service Instance SID. </param>
         public FetchServiceOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    /// 
+    /// Delete a specific Verification Service Instance.
+    /// </summary>
+    public class DeleteServiceOptions : IOptions<ServiceResource> 
+    {
+        /// <summary>
+        /// Verification Service Instance SID.
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteServiceOptions
+        /// </summary>
+        /// <param name="pathSid"> Verification Service Instance SID. </param>
+        public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
         }
@@ -128,6 +168,10 @@ namespace Twilio.Rest.Verify.V1
         /// Length of verification code. Valid values are 4-10
         /// </summary>
         public int? CodeLength { get; set; }
+        /// <summary>
+        /// Indicates whether or not to perform a lookup with each verification started
+        /// </summary>
+        public bool? LookupEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -152,6 +196,11 @@ namespace Twilio.Rest.Verify.V1
             if (CodeLength != null)
             {
                 p.Add(new KeyValuePair<string, string>("CodeLength", CodeLength.Value.ToString()));
+            }
+
+            if (LookupEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LookupEnabled", LookupEnabled.Value.ToString().ToLower()));
             }
 
             return p;

@@ -67,12 +67,30 @@ namespace Twilio.Tests.TwiML
         }
 
         [Test]
+        public void TestNestElement()
+        {
+            var elem = new Dial();
+            var child = new Client();
+            elem.Nest(child).Identity();
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Dial>" + Environment.NewLine +
+                "  <Client>" + Environment.NewLine +
+                "    <Identity></Identity>" + Environment.NewLine +
+                "  </Client>" + Environment.NewLine +
+                "</Dial>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
         public void TestElementWithChildren()
         {
             var elem = new Dial();
 
             elem.Client(
-                "name",
+                "identity",
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
                 Promoter.ListOfOne(Client.EventEnum.Initiated),
@@ -136,7 +154,7 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Dial>" + Environment.NewLine +
-                "  <Client url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">name</Client>" + Environment.NewLine +
+                "  <Client url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">identity</Client>" + Environment.NewLine +
                 "  <Conference muted=\"true\" beep=\"true\" startConferenceOnEnter=\"true\" endConferenceOnExit=\"true\" waitUrl=\"https://example.com\" waitMethod=\"GET\" maxParticipants=\"1\" record=\"do-not-record\" region=\"us1\" whisper=\"CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\" trim=\"trim-silence\" statusCallbackEvent=\"start\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"started\" eventCallbackUrl=\"https://example.com\">name</Conference>" + Environment.NewLine +
                 "  <Number sendDigits=\"send_digits\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">+15017122661</Number>" + Environment.NewLine +
                 "  <Queue url=\"https://example.com\" method=\"GET\" reservationSid=\"reservation_sid\" postWorkActivitySid=\"post_work_activity_sid\">name</Queue>" + Environment.NewLine +

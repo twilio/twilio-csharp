@@ -20,14 +20,14 @@ namespace Twilio.Rest.Preview.Understand
     public class FetchAssistantOptions : IOptions<AssistantResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAssistantOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchAssistantOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -87,21 +87,25 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The callback_url
+        /// A user-provided URL to send event callbacks to.
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// The callback_events
+        /// Space-separated list of callback events that will trigger callbacks.
         /// </summary>
         public string CallbackEvents { get; set; }
         /// <summary>
-        /// The JSON actions to be executed when the user's input is not recognized as matching any Intent.
+        /// The JSON actions to be executed when the user's input is not recognized as matching any Task.
         /// </summary>
         public object FallbackActions { get; set; }
         /// <summary>
         /// The JSON actions to be executed on inbound phone calls when the Assistant has to say something first.
         /// </summary>
         public object InitiationActions { get; set; }
+        /// <summary>
+        /// The JSON object that holds the style sheet for the assistant
+        /// </summary>
+        public object StyleSheet { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -144,6 +148,11 @@ namespace Twilio.Rest.Preview.Understand
                 p.Add(new KeyValuePair<string, string>("InitiationActions", Serializers.JsonObject(InitiationActions)));
             }
 
+            if (StyleSheet != null)
+            {
+                p.Add(new KeyValuePair<string, string>("StyleSheet", Serializers.JsonObject(StyleSheet)));
+            }
+
             return p;
         }
     }
@@ -157,7 +166,7 @@ namespace Twilio.Rest.Preview.Understand
     public class UpdateAssistantOptions : IOptions<AssistantResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -173,26 +182,30 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The callback_url
+        /// A user-provided URL to send event callbacks to.
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// The callback_events
+        /// Space-separated list of callback events that will trigger callbacks.
         /// </summary>
         public string CallbackEvents { get; set; }
         /// <summary>
-        /// The JSON actions to be executed when the user's input is not recognized as matching any Intent.
+        /// The JSON actions to be executed when the user's input is not recognized as matching any Task.
         /// </summary>
         public object FallbackActions { get; set; }
         /// <summary>
         /// The JSON actions to be executed on inbound phone calls when the Assistant has to say something first.
         /// </summary>
         public object InitiationActions { get; set; }
+        /// <summary>
+        /// The JSON object that holds the style sheet for the assistant
+        /// </summary>
+        public object StyleSheet { get; set; }
 
         /// <summary>
         /// Construct a new UpdateAssistantOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateAssistantOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -239,6 +252,11 @@ namespace Twilio.Rest.Preview.Understand
                 p.Add(new KeyValuePair<string, string>("InitiationActions", Serializers.JsonObject(InitiationActions)));
             }
 
+            if (StyleSheet != null)
+            {
+                p.Add(new KeyValuePair<string, string>("StyleSheet", Serializers.JsonObject(StyleSheet)));
+            }
+
             return p;
         }
     }
@@ -252,14 +270,14 @@ namespace Twilio.Rest.Preview.Understand
     public class DeleteAssistantOptions : IOptions<AssistantResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteAssistantOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteAssistantOptions(string pathSid)
         {
             PathSid = pathSid;

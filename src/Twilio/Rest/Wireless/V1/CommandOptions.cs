@@ -57,6 +57,10 @@ namespace Twilio.Rest.Wireless.V1
         /// Only return Commands with this direction value.
         /// </summary>
         public CommandResource.DirectionEnum Direction { get; set; }
+        /// <summary>
+        /// The transport
+        /// </summary>
+        public CommandResource.TransportEnum Transport { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -77,6 +81,11 @@ namespace Twilio.Rest.Wireless.V1
             if (Direction != null)
             {
                 p.Add(new KeyValuePair<string, string>("Direction", Direction.ToString()));
+            }
+
+            if (Transport != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Transport", Transport.ToString()));
             }
 
             if (PageSize != null)
@@ -117,6 +126,10 @@ namespace Twilio.Rest.Wireless.V1
         /// When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.
         /// </summary>
         public string IncludeSid { get; set; }
+        /// <summary>
+        /// The delivery_receipt_requested
+        /// </summary>
+        public bool? DeliveryReceiptRequested { get; set; }
 
         /// <summary>
         /// Construct a new CreateCommandOptions
@@ -161,6 +174,11 @@ namespace Twilio.Rest.Wireless.V1
             if (IncludeSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("IncludeSid", IncludeSid));
+            }
+
+            if (DeliveryReceiptRequested != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DeliveryReceiptRequested", DeliveryReceiptRequested.Value.ToString().ToLower()));
             }
 
             return p;

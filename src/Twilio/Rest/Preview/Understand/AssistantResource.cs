@@ -66,7 +66,7 @@ namespace Twilio.Rest.Preview.Understand
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Preview.Understand
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(string pathSid, 
@@ -275,12 +275,13 @@ namespace Twilio.Rest.Preview.Understand
         ///                  thereafter. Defaults to true if no value is provided. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="callbackEvents"> The callback_events </param>
+        /// <param name="callbackUrl"> A user-provided URL to send event callbacks to. </param>
+        /// <param name="callbackEvents"> Space-separated list of callback events that will trigger callbacks. </param>
         /// <param name="fallbackActions"> The JSON actions to be executed when the user's input is not recognized as matching
-        ///                       any Intent. </param>
+        ///                       any Task. </param>
         /// <param name="initiationActions"> The JSON actions to be executed on inbound phone calls when the Assistant has to
         ///                         say something first. </param>
+        /// <param name="styleSheet"> The JSON object that holds the style sheet for the assistant </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Create(string friendlyName = null, 
@@ -290,9 +291,10 @@ namespace Twilio.Rest.Preview.Understand
                                                string callbackEvents = null, 
                                                object fallbackActions = null, 
                                                object initiationActions = null, 
+                                               object styleSheet = null, 
                                                ITwilioRestClient client = null)
         {
-            var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions};
+            var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions, StyleSheet = styleSheet};
             return Create(options, client);
         }
 
@@ -307,12 +309,13 @@ namespace Twilio.Rest.Preview.Understand
         ///                  thereafter. Defaults to true if no value is provided. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="callbackEvents"> The callback_events </param>
+        /// <param name="callbackUrl"> A user-provided URL to send event callbacks to. </param>
+        /// <param name="callbackEvents"> Space-separated list of callback events that will trigger callbacks. </param>
         /// <param name="fallbackActions"> The JSON actions to be executed when the user's input is not recognized as matching
-        ///                       any Intent. </param>
+        ///                       any Task. </param>
         /// <param name="initiationActions"> The JSON actions to be executed on inbound phone calls when the Assistant has to
         ///                         say something first. </param>
+        /// <param name="styleSheet"> The JSON object that holds the style sheet for the assistant </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(string friendlyName = null, 
@@ -322,9 +325,10 @@ namespace Twilio.Rest.Preview.Understand
                                                                                        string callbackEvents = null, 
                                                                                        object fallbackActions = null, 
                                                                                        object initiationActions = null, 
+                                                                                       object styleSheet = null, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions};
+            var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions, StyleSheet = styleSheet};
             return await CreateAsync(options, client);
         }
         #endif
@@ -372,7 +376,7 @@ namespace Twilio.Rest.Preview.Understand
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can up to 255 characters
         ///                    long. </param>
         /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
@@ -380,12 +384,13 @@ namespace Twilio.Rest.Preview.Understand
         ///                  thereafter. Defaults to true if no value is provided. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="callbackEvents"> The callback_events </param>
+        /// <param name="callbackUrl"> A user-provided URL to send event callbacks to. </param>
+        /// <param name="callbackEvents"> Space-separated list of callback events that will trigger callbacks. </param>
         /// <param name="fallbackActions"> The JSON actions to be executed when the user's input is not recognized as matching
-        ///                       any Intent. </param>
+        ///                       any Task. </param>
         /// <param name="initiationActions"> The JSON actions to be executed on inbound phone calls when the Assistant has to
         ///                         say something first. </param>
+        /// <param name="styleSheet"> The JSON object that holds the style sheet for the assistant </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Update(string pathSid, 
@@ -396,9 +401,10 @@ namespace Twilio.Rest.Preview.Understand
                                                string callbackEvents = null, 
                                                object fallbackActions = null, 
                                                object initiationActions = null, 
+                                               object styleSheet = null, 
                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions};
+            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions, StyleSheet = styleSheet};
             return Update(options, client);
         }
 
@@ -406,7 +412,7 @@ namespace Twilio.Rest.Preview.Understand
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can up to 255 characters
         ///                    long. </param>
         /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
@@ -414,12 +420,13 @@ namespace Twilio.Rest.Preview.Understand
         ///                  thereafter. Defaults to true if no value is provided. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="callbackEvents"> The callback_events </param>
+        /// <param name="callbackUrl"> A user-provided URL to send event callbacks to. </param>
+        /// <param name="callbackEvents"> Space-separated list of callback events that will trigger callbacks. </param>
         /// <param name="fallbackActions"> The JSON actions to be executed when the user's input is not recognized as matching
-        ///                       any Intent. </param>
+        ///                       any Task. </param>
         /// <param name="initiationActions"> The JSON actions to be executed on inbound phone calls when the Assistant has to
         ///                         say something first. </param>
+        /// <param name="styleSheet"> The JSON object that holds the style sheet for the assistant </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(string pathSid, 
@@ -430,9 +437,10 @@ namespace Twilio.Rest.Preview.Understand
                                                                                        string callbackEvents = null, 
                                                                                        object fallbackActions = null, 
                                                                                        object initiationActions = null, 
+                                                                                       object styleSheet = null, 
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions};
+            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions, StyleSheet = styleSheet};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -480,7 +488,7 @@ namespace Twilio.Rest.Preview.Understand
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -493,7 +501,7 @@ namespace Twilio.Rest.Preview.Understand
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -572,12 +580,12 @@ namespace Twilio.Rest.Preview.Understand
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The callback_url
+        /// A user-provided URL to send event callbacks to.
         /// </summary>
         [JsonProperty("callback_url")]
         public Uri CallbackUrl { get; private set; }
         /// <summary>
-        /// The callback_events
+        /// Space-separated list of callback events that will trigger callbacks.
         /// </summary>
         [JsonProperty("callback_events")]
         public string CallbackEvents { get; private set; }

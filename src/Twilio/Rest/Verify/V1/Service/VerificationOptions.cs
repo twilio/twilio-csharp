@@ -34,6 +34,10 @@ namespace Twilio.Rest.Verify.V1.Service
         /// A custom message for this verification
         /// </summary>
         public string CustomMessage { get; set; }
+        /// <summary>
+        /// Digits to send when a phone call is started
+        /// </summary>
+        public string SendDigits { get; set; }
 
         /// <summary>
         /// Construct a new CreateVerificationOptions
@@ -67,6 +71,11 @@ namespace Twilio.Rest.Verify.V1.Service
             if (CustomMessage != null)
             {
                 p.Add(new KeyValuePair<string, string>("CustomMessage", CustomMessage));
+            }
+
+            if (SendDigits != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SendDigits", SendDigits));
             }
 
             return p;

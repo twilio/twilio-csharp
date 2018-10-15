@@ -67,11 +67,15 @@ namespace Twilio.Rest.Verify.V1
         /// </summary>
         /// <param name="friendlyName"> Friendly name of the service </param>
         /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
+        /// <param name="lookupEnabled"> Indicates whether or not to perform a lookup with each verification started </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Create(string friendlyName, int? codeLength = null, ITwilioRestClient client = null)
+        public static ServiceResource Create(string friendlyName, 
+                                             int? codeLength = null, 
+                                             bool? lookupEnabled = null, 
+                                             ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength};
+            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled};
             return Create(options, client);
         }
 
@@ -81,13 +85,15 @@ namespace Twilio.Rest.Verify.V1
         /// </summary>
         /// <param name="friendlyName"> Friendly name of the service </param>
         /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
+        /// <param name="lookupEnabled"> Indicates whether or not to perform a lookup with each verification started </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName, 
                                                                                      int? codeLength = null, 
+                                                                                     bool? lookupEnabled = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength};
+            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -156,6 +162,72 @@ namespace Twilio.Rest.Verify.V1
         {
             var options = new FetchServiceOptions(pathSid);
             return await FetchAsync(options, client);
+        }
+        #endif
+
+        private static Request BuildDeleteRequest(DeleteServiceOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Verify,
+                "/v1/Services/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Delete a specific Verification Service Instance.
+        /// </summary>
+        /// <param name="options"> Delete Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns> 
+        public static bool Delete(DeleteServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a specific Verification Service Instance.
+        /// </summary>
+        /// <param name="options"> Delete Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options, 
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Delete a specific Verification Service Instance.
+        /// </summary>
+        /// <param name="pathSid"> Verification Service Instance SID. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns> 
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteServiceOptions(pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a specific Verification Service Instance.
+        /// </summary>
+        /// <param name="pathSid"> Verification Service Instance SID. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteServiceOptions(pathSid);
+            return await DeleteAsync(options, client);
         }
         #endif
 
@@ -340,14 +412,16 @@ namespace Twilio.Rest.Verify.V1
         /// <param name="pathSid"> Service Sid. </param>
         /// <param name="friendlyName"> Friendly name of the service </param>
         /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
+        /// <param name="lookupEnabled"> Indicates whether or not to perform a lookup with each verification started </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Update(string pathSid, 
                                              string friendlyName = null, 
                                              int? codeLength = null, 
+                                             bool? lookupEnabled = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled};
             return Update(options, client);
         }
 
@@ -358,14 +432,16 @@ namespace Twilio.Rest.Verify.V1
         /// <param name="pathSid"> Service Sid. </param>
         /// <param name="friendlyName"> Friendly name of the service </param>
         /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
+        /// <param name="lookupEnabled"> Indicates whether or not to perform a lookup with each verification started </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, 
                                                                                      string friendlyName = null, 
                                                                                      int? codeLength = null, 
+                                                                                     bool? lookupEnabled = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -408,6 +484,11 @@ namespace Twilio.Rest.Verify.V1
         /// </summary>
         [JsonProperty("code_length")]
         public int? CodeLength { get; private set; }
+        /// <summary>
+        /// Indicates whether or not to perform a lookup with each verification started
+        /// </summary>
+        [JsonProperty("lookup_enabled")]
+        public bool? LookupEnabled { get; private set; }
         /// <summary>
         /// The date this Service was created
         /// </summary>

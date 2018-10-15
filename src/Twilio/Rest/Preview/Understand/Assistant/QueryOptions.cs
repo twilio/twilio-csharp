@@ -20,19 +20,19 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     public class FetchQueryOptions : IOptions<QueryResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchQueryOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchQueryOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     public class ReadQueryOptions : ReadOptions<QueryResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <summary>
         /// Construct a new ReadQueryOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
         public ReadQueryOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     public class CreateQueryOptions : IOptions<QueryResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
@@ -134,22 +134,22 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         public string Query { get; }
         /// <summary>
-        /// Constraints the query to a set of intents. Useful when you need to constrain the paths the user can take. Intents should be comma separated intent-unique-name-1, intent-unique-name-2
+        /// Constraints the query to a set of tasks. Useful when you need to constrain the paths the user can take. Tasks should be comma separated task-unique-name-1, task-unique-name-2
         /// </summary>
-        public string Intents { get; set; }
+        public string Tasks { get; set; }
         /// <summary>
         /// The Model Build Sid or unique name of the Model Build to be queried.
         /// </summary>
         public string ModelBuild { get; set; }
         /// <summary>
-        /// Constraints the query to a given Field with an intent. Useful when you know the Field you are expecting. It accepts one field in the format intent-unique-name-1:field-unique-name
+        /// Constraints the query to a given Field with an task. Useful when you know the Field you are expecting. It accepts one field in the format task-unique-name-1:field-unique-name
         /// </summary>
         public string Field { get; set; }
 
         /// <summary>
         /// Construct a new CreateQueryOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
         /// <param name="language"> An ISO language-country string of the sample. </param>
         /// <param name="query"> A user-provided string that uniquely identifies this resource as an alternative to the sid. It
         ///             can be up to 2048 characters long. </param>
@@ -176,9 +176,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
                 p.Add(new KeyValuePair<string, string>("Query", Query));
             }
 
-            if (Intents != null)
+            if (Tasks != null)
             {
-                p.Add(new KeyValuePair<string, string>("Intents", Intents));
+                p.Add(new KeyValuePair<string, string>("Tasks", Tasks));
             }
 
             if (ModelBuild != null)
@@ -204,15 +204,15 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     public class UpdateQueryOptions : IOptions<QueryResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The sample_sid
+        /// An optional reference to the Sample created from this query.
         /// </summary>
         public string SampleSid { get; set; }
         /// <summary>
@@ -223,8 +223,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <summary>
         /// Construct a new UpdateQueryOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateQueryOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -260,19 +260,19 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     public class DeleteQueryOptions : IOptions<QueryResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteQueryOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteQueryOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
