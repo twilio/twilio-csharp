@@ -32,6 +32,25 @@ try {
     .\test\Twilio.Test\bin\Release\net451\win7-x86\Twilio.Test.exe
     if ($lastExitCode -ne 0) { exit $lastExitCode }
 
+    # .NET Standard 1.4 Target & Tests
+
+    Header "Building for .NET Standard 1.4"
+    msbuild .\src\Twilio\Twilio.csproj /t:restore /p:TargetFramework=netstandard1.4 /verbosity:minimal
+    if ($lastExitCode -ne 0) { exit $lastExitCode }
+
+    msbuild .\test\Twilio.Test\Twilio.Test.csproj /t:restore /p:TargetFramework=netcoreapp2.0 /verbosity:minimal
+    if ($lastExitCode -ne 0) { exit $lastExitCode }
+
+    msbuild .\src\Twilio\Twilio.csproj /p:TargetFramework=netstandard1.4 /p:Configuration=Release /verbosity:minimal
+    if ($lastExitCode -ne 0) { exit $lastExitCode }
+
+    msbuild .\test\Twilio.Test\Twilio.Test.csproj /p:TargetFramework=netcoreapp2.0 /p:Configuration=Release /verbosity:minimal
+    if ($lastExitCode -ne 0) { exit $lastExitCode }
+
+    Header "Testing on .NET Standard 1.4"
+    dotnet run --framework netcoreapp2.0 --project .\test\Twilio.Test\Twilio.Test.csproj
+    if ($lastExitCode -ne 0) { exit $lastExitCode }
+
     # .NET Standard 2.0 Target & Tests
 
     Header "Building for .NET Standard 2.0"
