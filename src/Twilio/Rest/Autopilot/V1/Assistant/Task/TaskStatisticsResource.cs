@@ -66,8 +66,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathTaskSid"> The task_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskStatistics </returns> 
         public static TaskStatisticsResource Fetch(string pathAssistantSid, 
@@ -82,8 +82,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathTaskSid"> The task_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskStatistics </returns> 
         public static async System.Threading.Tasks.Task<TaskStatisticsResource> FetchAsync(string pathAssistantSid, 
@@ -114,12 +114,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         }
 
         /// <summary>
-        /// The unique ID of the Account that created this Field.
+        /// The unique ID of the Account that created this resource.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique ID of the parent Assistant.
+        /// The unique ID of the Assistant.
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }

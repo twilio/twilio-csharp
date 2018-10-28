@@ -66,7 +66,7 @@ namespace Twilio.Rest.Autopilot.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Autopilot.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(string pathSid, 
@@ -270,15 +270,17 @@ namespace Twilio.Rest.Autopilot.V1
         /// </summary>
         /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can be up to 255 characters
         ///                    long. </param>
-        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
-        ///                  If false, no queries will be stored, if true, queries will be stored for 30 days and deleted
-        ///                  thereafter. Defaults to true if no value is provided. </param>
+        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days past training. If
+        ///                  `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted
+        ///                  thereafter. Defaults to `true` if no value is provided. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="callbackEvents"> The callback_events </param>
-        /// <param name="styleSheet"> A JSON object that defines the assistant style sheet </param>
-        /// <param name="defaults"> A JSON object that defines the assistant's default tasks for various scenarios </param>
+        /// <param name="callbackEvents"> A space-separated list of callback events that will trigger callbacks </param>
+        /// <param name="styleSheet"> A JSON object that defines the assistant [style
+        ///                  sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet) </param>
+        /// <param name="defaults"> A JSON object that defines the assistant's [default
+        ///                tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Create(string friendlyName = null, 
@@ -300,15 +302,17 @@ namespace Twilio.Rest.Autopilot.V1
         /// </summary>
         /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can be up to 255 characters
         ///                    long. </param>
-        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
-        ///                  If false, no queries will be stored, if true, queries will be stored for 30 days and deleted
-        ///                  thereafter. Defaults to true if no value is provided. </param>
+        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days past training. If
+        ///                  `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted
+        ///                  thereafter. Defaults to `true` if no value is provided. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="callbackEvents"> The callback_events </param>
-        /// <param name="styleSheet"> A JSON object that defines the assistant style sheet </param>
-        /// <param name="defaults"> A JSON object that defines the assistant's default tasks for various scenarios </param>
+        /// <param name="callbackEvents"> A space-separated list of callback events that will trigger callbacks </param>
+        /// <param name="styleSheet"> A JSON object that defines the assistant [style
+        ///                  sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet) </param>
+        /// <param name="defaults"> A JSON object that defines the assistant's [default
+        ///                tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(string friendlyName = null, 
@@ -371,15 +375,17 @@ namespace Twilio.Rest.Autopilot.V1
         /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can be up to 255 characters
         ///                    long. </param>
-        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
-        ///                  If false, no queries will be stored, if true, queries will be stored for 30 days and deleted
-        ///                  thereafter. Defaults to true if no value is provided. </param>
+        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days past training. If
+        ///                  `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted
+        ///                  thereafter. Defaults to `true` if no value is provided. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="callbackEvents"> The callback_events </param>
-        /// <param name="styleSheet"> A JSON object that defines the assistant style sheet </param>
-        /// <param name="defaults"> A JSON object that defines the assistant's default tasks for various scenarios </param>
+        /// <param name="callbackEvents"> A space-separated list of callback events that will trigger callbacks </param>
+        /// <param name="styleSheet"> A JSON object that defines the assistant [style
+        ///                  sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet) </param>
+        /// <param name="defaults"> A JSON object that defines the assistant's [default
+        ///                tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Update(string pathSid, 
@@ -403,15 +409,17 @@ namespace Twilio.Rest.Autopilot.V1
         /// <param name="pathSid"> The sid </param>
         /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can be up to 255 characters
         ///                    long. </param>
-        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days further training.
-        ///                  If false, no queries will be stored, if true, queries will be stored for 30 days and deleted
-        ///                  thereafter. Defaults to true if no value is provided. </param>
+        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days past training. If
+        ///                  `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted
+        ///                  thereafter. Defaults to `true` if no value is provided. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
         /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="callbackEvents"> The callback_events </param>
-        /// <param name="styleSheet"> A JSON object that defines the assistant style sheet </param>
-        /// <param name="defaults"> A JSON object that defines the assistant's default tasks for various scenarios </param>
+        /// <param name="callbackEvents"> A space-separated list of callback events that will trigger callbacks </param>
+        /// <param name="styleSheet"> A JSON object that defines the assistant [style
+        ///                  sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet) </param>
+        /// <param name="defaults"> A JSON object that defines the assistant's [default
+        ///                tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(string pathSid, 
@@ -472,7 +480,7 @@ namespace Twilio.Rest.Autopilot.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -485,7 +493,7 @@ namespace Twilio.Rest.Autopilot.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -534,7 +542,7 @@ namespace Twilio.Rest.Autopilot.V1
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The unique ID (Sid) of the latest model build. Null if no model has been built.
+        /// The latest_model_build_sid
         /// </summary>
         [JsonProperty("latest_model_build_sid")]
         public string LatestModelBuildSid { get; private set; }
@@ -544,17 +552,17 @@ namespace Twilio.Rest.Autopilot.V1
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// A boolean that specifies whether queries should be logged for 30 days further training. If false, no queries will be stored, if true, queries will be stored for 30 days and deleted thereafter.
+        /// A boolean that specifies whether queries should be logged for 30 days past training. If `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted thereafter.
         /// </summary>
         [JsonProperty("log_queries")]
         public bool? LogQueries { get; private set; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// A 34-character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. You can use the unique name in the URL path. Unique up to 64 characters long.
+        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }

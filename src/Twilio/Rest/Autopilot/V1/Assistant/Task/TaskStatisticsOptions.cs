@@ -20,19 +20,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
     public class FetchTaskStatisticsOptions : IOptions<TaskStatisticsResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The task_sid
+        /// The unique ID of the Task associated with this Field.
         /// </summary>
         public string PathTaskSid { get; }
 
         /// <summary>
         /// Construct a new FetchTaskStatisticsOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathTaskSid"> The task_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
         public FetchTaskStatisticsOptions(string pathAssistantSid, string pathTaskSid)
         {
             PathAssistantSid = pathAssistantSid;

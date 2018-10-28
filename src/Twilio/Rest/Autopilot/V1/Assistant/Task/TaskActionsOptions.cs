@@ -66,7 +66,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// </summary>
         public string PathTaskSid { get; }
         /// <summary>
-        /// The JSON actions that instruct the Assistant how to perform this task.
+        /// The JSON [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant how to perform this task.
         /// </summary>
         public object Actions { get; set; }
 

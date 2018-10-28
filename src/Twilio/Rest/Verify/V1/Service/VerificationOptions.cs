@@ -38,6 +38,10 @@ namespace Twilio.Rest.Verify.V1.Service
         /// Digits to send when a phone call is started
         /// </summary>
         public string SendDigits { get; set; }
+        /// <summary>
+        /// Locale used in the sms or call.
+        /// </summary>
+        public string Locale { get; set; }
 
         /// <summary>
         /// Construct a new CreateVerificationOptions
@@ -76,6 +80,11 @@ namespace Twilio.Rest.Verify.V1.Service
             if (SendDigits != null)
             {
                 p.Add(new KeyValuePair<string, string>("SendDigits", SendDigits));
+            }
+
+            if (Locale != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Locale", Locale));
             }
 
             return p;

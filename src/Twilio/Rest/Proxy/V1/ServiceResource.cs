@@ -304,6 +304,7 @@ namespace Twilio.Rest.Proxy.V1
         /// <param name="numberSelectionBehavior"> What behavior to use when choosing a proxy number. </param>
         /// <param name="interceptCallbackUrl"> A URL for Twilio call before each Interaction. </param>
         /// <param name="outOfSessionCallbackUrl"> A URL for Twilio call when a new Interaction has no Session. </param>
+        /// <param name="chatInstanceSid"> The Chat Service Instance sid managed by Proxy Service </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Create(string uniqueName, 
@@ -313,9 +314,10 @@ namespace Twilio.Rest.Proxy.V1
                                              ServiceResource.NumberSelectionBehaviorEnum numberSelectionBehavior = null, 
                                              Uri interceptCallbackUrl = null, 
                                              Uri outOfSessionCallbackUrl = null, 
+                                             string chatInstanceSid = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(uniqueName){DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl};
+            var options = new CreateServiceOptions(uniqueName){DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl, ChatInstanceSid = chatInstanceSid};
             return Create(options, client);
         }
 
@@ -331,6 +333,7 @@ namespace Twilio.Rest.Proxy.V1
         /// <param name="numberSelectionBehavior"> What behavior to use when choosing a proxy number. </param>
         /// <param name="interceptCallbackUrl"> A URL for Twilio call before each Interaction. </param>
         /// <param name="outOfSessionCallbackUrl"> A URL for Twilio call when a new Interaction has no Session. </param>
+        /// <param name="chatInstanceSid"> The Chat Service Instance sid managed by Proxy Service </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string uniqueName, 
@@ -340,9 +343,10 @@ namespace Twilio.Rest.Proxy.V1
                                                                                      ServiceResource.NumberSelectionBehaviorEnum numberSelectionBehavior = null, 
                                                                                      Uri interceptCallbackUrl = null, 
                                                                                      Uri outOfSessionCallbackUrl = null, 
+                                                                                     string chatInstanceSid = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(uniqueName){DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl};
+            var options = new CreateServiceOptions(uniqueName){DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl, ChatInstanceSid = chatInstanceSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -465,6 +469,7 @@ namespace Twilio.Rest.Proxy.V1
         /// <param name="numberSelectionBehavior"> What behavior to use when choosing a proxy number. </param>
         /// <param name="interceptCallbackUrl"> A URL for Twilio call before each Interaction. </param>
         /// <param name="outOfSessionCallbackUrl"> A URL for Twilio call when a new Interaction has no Session. </param>
+        /// <param name="chatInstanceSid"> The Chat Service Instance sid managed by Proxy Service </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Update(string pathSid, 
@@ -475,9 +480,10 @@ namespace Twilio.Rest.Proxy.V1
                                              ServiceResource.NumberSelectionBehaviorEnum numberSelectionBehavior = null, 
                                              Uri interceptCallbackUrl = null, 
                                              Uri outOfSessionCallbackUrl = null, 
+                                             string chatInstanceSid = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){UniqueName = uniqueName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl};
+            var options = new UpdateServiceOptions(pathSid){UniqueName = uniqueName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl, ChatInstanceSid = chatInstanceSid};
             return Update(options, client);
         }
 
@@ -494,6 +500,7 @@ namespace Twilio.Rest.Proxy.V1
         /// <param name="numberSelectionBehavior"> What behavior to use when choosing a proxy number. </param>
         /// <param name="interceptCallbackUrl"> A URL for Twilio call before each Interaction. </param>
         /// <param name="outOfSessionCallbackUrl"> A URL for Twilio call when a new Interaction has no Session. </param>
+        /// <param name="chatInstanceSid"> The Chat Service Instance sid managed by Proxy Service </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, 
@@ -504,9 +511,10 @@ namespace Twilio.Rest.Proxy.V1
                                                                                      ServiceResource.NumberSelectionBehaviorEnum numberSelectionBehavior = null, 
                                                                                      Uri interceptCallbackUrl = null, 
                                                                                      Uri outOfSessionCallbackUrl = null, 
+                                                                                     string chatInstanceSid = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){UniqueName = uniqueName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl};
+            var options = new UpdateServiceOptions(pathSid){UniqueName = uniqueName, DefaultTtl = defaultTtl, CallbackUrl = callbackUrl, GeoMatchLevel = geoMatchLevel, NumberSelectionBehavior = numberSelectionBehavior, InterceptCallbackUrl = interceptCallbackUrl, OutOfSessionCallbackUrl = outOfSessionCallbackUrl, ChatInstanceSid = chatInstanceSid};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -544,6 +552,11 @@ namespace Twilio.Rest.Proxy.V1
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
+        /// <summary>
+        /// The Chat Service Instance sid managed by Proxy Service
+        /// </summary>
+        [JsonProperty("chat_instance_sid")]
+        public string ChatInstanceSid { get; private set; }
         /// <summary>
         /// URL Twilio will send callbacks to
         /// </summary>

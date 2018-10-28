@@ -101,7 +101,7 @@ namespace Twilio.Rest.Api.V2010
     public class UpdateAccountOptions : IOptions<AccountResource> 
     {
         /// <summary>
-        /// The sid
+        /// Update by unique Account Sid
         /// </summary>
         public string PathSid { get; set; }
         /// <summary>

@@ -20,19 +20,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class FetchFieldTypeOptions : IOptions<FieldTypeResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34-character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFieldTypeOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         public FetchFieldTypeOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -58,14 +58,14 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class ReadFieldTypeOptions : ReadOptions<FieldTypeResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
 
         /// <summary>
         /// Construct a new ReadFieldTypeOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
         public ReadFieldTypeOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class CreateFieldTypeOptions : IOptions<FieldTypeResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// Construct a new CreateFieldTypeOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
         public CreateFieldTypeOptions(string pathAssistantSid, string uniqueName)
@@ -148,11 +148,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class UpdateFieldTypeOptions : IOptions<FieldTypeResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34-character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -167,8 +167,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// Construct a new UpdateFieldTypeOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         public UpdateFieldTypeOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -204,19 +204,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class DeleteFieldTypeOptions : IOptions<FieldTypeResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34-character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteFieldTypeOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         public DeleteFieldTypeOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

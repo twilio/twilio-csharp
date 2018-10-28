@@ -20,14 +20,14 @@ namespace Twilio.Rest.Autopilot.V1
     public class FetchAssistantOptions : IOptions<AssistantResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34-character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAssistantOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         public FetchAssistantOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Autopilot.V1
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// A boolean that specifies whether queries should be logged for 30 days further training. If false, no queries will be stored, if true, queries will be stored for 30 days and deleted thereafter. Defaults to true if no value is provided.
+        /// A boolean that specifies whether queries should be logged for 30 days past training. If `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted thereafter. Defaults to `true` if no value is provided.
         /// </summary>
         public bool? LogQueries { get; set; }
         /// <summary>
@@ -91,15 +91,15 @@ namespace Twilio.Rest.Autopilot.V1
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// The callback_events
+        /// A space-separated list of callback events that will trigger callbacks
         /// </summary>
         public string CallbackEvents { get; set; }
         /// <summary>
-        /// A JSON object that defines the assistant style sheet
+        /// A JSON object that defines the assistant [style sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet)
         /// </summary>
         public object StyleSheet { get; set; }
         /// <summary>
-        /// A JSON object that defines the assistant's default tasks for various scenarios
+        /// A JSON object that defines the assistant's [default tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios
         /// </summary>
         public object Defaults { get; set; }
 
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Autopilot.V1
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// A boolean that specifies whether queries should be logged for 30 days further training. If false, no queries will be stored, if true, queries will be stored for 30 days and deleted thereafter. Defaults to true if no value is provided.
+        /// A boolean that specifies whether queries should be logged for 30 days past training. If `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted thereafter. Defaults to `true` if no value is provided.
         /// </summary>
         public bool? LogQueries { get; set; }
         /// <summary>
@@ -177,15 +177,15 @@ namespace Twilio.Rest.Autopilot.V1
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// The callback_events
+        /// A space-separated list of callback events that will trigger callbacks
         /// </summary>
         public string CallbackEvents { get; set; }
         /// <summary>
-        /// A JSON object that defines the assistant style sheet
+        /// A JSON object that defines the assistant [style sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet)
         /// </summary>
         public object StyleSheet { get; set; }
         /// <summary>
-        /// A JSON object that defines the assistant's default tasks for various scenarios
+        /// A JSON object that defines the assistant's [default tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios
         /// </summary>
         public object Defaults { get; set; }
 
@@ -252,14 +252,14 @@ namespace Twilio.Rest.Autopilot.V1
     public class DeleteAssistantOptions : IOptions<AssistantResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34-character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteAssistantOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         public DeleteAssistantOptions(string pathSid)
         {
             PathSid = pathSid;

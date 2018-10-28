@@ -368,7 +368,7 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Update by unique Account Sid </param>
         /// <param name="friendlyName"> FriendlyName to update </param>
         /// <param name="status"> Status to update the Account with </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -386,7 +386,7 @@ namespace Twilio.Rest.Api.V2010
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Update by unique Account Sid </param>
         /// <param name="friendlyName"> FriendlyName to update </param>
         /// <param name="status"> Status to update the Account with </param>
         /// <param name="client"> Client to make requests to Twilio </param>

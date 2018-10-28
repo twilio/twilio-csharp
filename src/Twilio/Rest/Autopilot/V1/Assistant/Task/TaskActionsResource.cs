@@ -138,7 +138,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// </summary>
         /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
         /// <param name="pathTaskSid"> The unique ID of the Task. </param>
-        /// <param name="actions"> The JSON actions that instruct the Assistant how to perform this task. </param>
+        /// <param name="actions"> The JSON [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the
+        ///               Assistant how to perform this task. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskActions </returns> 
         public static TaskActionsResource Update(string pathAssistantSid, 
@@ -156,7 +157,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// </summary>
         /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
         /// <param name="pathTaskSid"> The unique ID of the Task. </param>
-        /// <param name="actions"> The JSON actions that instruct the Assistant how to perform this task. </param>
+        /// <param name="actions"> The JSON [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the
+        ///               Assistant how to perform this task. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskActions </returns> 
         public static async System.Threading.Tasks.Task<TaskActionsResource> UpdateAsync(string pathAssistantSid, 
@@ -208,7 +210,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The data
+        /// The JSON [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant how to perform this task.
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }

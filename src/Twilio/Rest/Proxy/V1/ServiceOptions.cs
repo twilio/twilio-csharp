@@ -99,6 +99,10 @@ namespace Twilio.Rest.Proxy.V1
         /// A URL for Twilio call when a new Interaction has no Session.
         /// </summary>
         public Uri OutOfSessionCallbackUrl { get; set; }
+        /// <summary>
+        /// The Chat Service Instance sid managed by Proxy Service
+        /// </summary>
+        public string ChatInstanceSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -148,6 +152,11 @@ namespace Twilio.Rest.Proxy.V1
             if (OutOfSessionCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("OutOfSessionCallbackUrl", Serializers.Url(OutOfSessionCallbackUrl)));
+            }
+
+            if (ChatInstanceSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ChatInstanceSid", ChatInstanceSid.ToString()));
             }
 
             return p;
@@ -224,6 +233,10 @@ namespace Twilio.Rest.Proxy.V1
         /// A URL for Twilio call when a new Interaction has no Session.
         /// </summary>
         public Uri OutOfSessionCallbackUrl { get; set; }
+        /// <summary>
+        /// The Chat Service Instance sid managed by Proxy Service
+        /// </summary>
+        public string ChatInstanceSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -273,6 +286,11 @@ namespace Twilio.Rest.Proxy.V1
             if (OutOfSessionCallbackUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("OutOfSessionCallbackUrl", Serializers.Url(OutOfSessionCallbackUrl)));
+            }
+
+            if (ChatInstanceSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ChatInstanceSid", ChatInstanceSid.ToString()));
             }
 
             return p;

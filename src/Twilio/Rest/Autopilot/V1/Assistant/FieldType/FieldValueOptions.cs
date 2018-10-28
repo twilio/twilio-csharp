@@ -20,24 +20,24 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
     public class FetchFieldValueOptions : IOptions<FieldValueResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The field_type_sid
+        /// The unique ID of the Field Type associated with this Field Value
         /// </summary>
         public string PathFieldTypeSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFieldValueOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource </param>
         public FetchFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -64,11 +64,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
     public class ReadFieldValueOptions : ReadOptions<FieldValueResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The field_type_sid
+        /// The unique ID of the Field Type associated with this Field Value
         /// </summary>
         public string PathFieldTypeSid { get; }
         /// <summary>
@@ -79,8 +79,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// Construct a new ReadFieldValueOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
         public ReadFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -116,11 +116,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
     public class CreateFieldValueOptions : IOptions<FieldValueResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The field_type_sid
+        /// The unique ID of the Field Type associated with this Field Value
         /// </summary>
         public string PathFieldTypeSid { get; }
         /// <summary>
@@ -139,8 +139,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// Construct a new CreateFieldValueOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
         /// <param name="language"> An ISO language-country string that specifies the language used for this field value. For
         ///                example: en-US </param>
         /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid.
@@ -187,24 +187,24 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
     public class DeleteFieldValueOptions : IOptions<FieldValueResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The field_type_sid
+        /// The unique ID of the Field Type associated with this Field Value
         /// </summary>
         public string PathFieldTypeSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteFieldValueOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource </param>
         public DeleteFieldValueOptions(string pathAssistantSid, string pathFieldTypeSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

@@ -20,19 +20,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class FetchModelBuildOptions : IOptions<ModelBuildResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34-character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchModelBuildOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         public FetchModelBuildOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -58,14 +58,14 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class ReadModelBuildOptions : ReadOptions<ModelBuildResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
 
         /// <summary>
         /// Construct a new ReadModelBuildOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
         public ReadModelBuildOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class CreateModelBuildOptions : IOptions<ModelBuildResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// Construct a new CreateModelBuildOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
         public CreateModelBuildOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -145,11 +145,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class UpdateModelBuildOptions : IOptions<ModelBuildResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34-character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -160,8 +160,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// Construct a new UpdateModelBuildOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         public UpdateModelBuildOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -192,19 +192,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class DeleteModelBuildOptions : IOptions<ModelBuildResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the parent Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34-character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteModelBuildOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         public DeleteModelBuildOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

@@ -20,19 +20,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class FetchTaskOptions : IOptions<TaskResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34-character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchTaskOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         public FetchTaskOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -58,14 +58,14 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class ReadTaskOptions : ReadOptions<TaskResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
 
         /// <summary>
         /// Construct a new ReadTaskOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
         public ReadTaskOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class CreateTaskOptions : IOptions<TaskResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
@@ -107,18 +107,18 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The actions
+        /// A user-provided JSON object encoded as a string to specify the actions for this task. It is optional and non-unique.
         /// </summary>
         public object Actions { get; set; }
         /// <summary>
-        /// The actions_url
+        /// User-provided HTTP endpoint where the assistant can fetch actions.
         /// </summary>
         public Uri ActionsUrl { get; set; }
 
         /// <summary>
         /// Construct a new CreateTaskOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  sid. Unique up to 64 characters long. </param>
         public CreateTaskOptions(string pathAssistantSid, string uniqueName)
@@ -166,11 +166,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class UpdateTaskOptions : IOptions<TaskResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34-character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -182,19 +182,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The actions
+        /// A user-provided JSON object encoded as a string to specify the actions for this task. It is optional and non-unique.
         /// </summary>
         public object Actions { get; set; }
         /// <summary>
-        /// The actions_url
+        /// User-provided HTTP endpoint where the assistant can fetch actions.
         /// </summary>
         public Uri ActionsUrl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateTaskOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         public UpdateTaskOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -240,19 +240,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class DeleteTaskOptions : IOptions<TaskResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The unique ID of the Assistant.
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34-character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteTaskOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
         public DeleteTaskOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

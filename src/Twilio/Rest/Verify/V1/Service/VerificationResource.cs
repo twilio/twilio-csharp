@@ -84,6 +84,7 @@ namespace Twilio.Rest.Verify.V1.Service
         /// <param name="channel"> sms or call </param>
         /// <param name="customMessage"> A custom message for this verification </param>
         /// <param name="sendDigits"> Digits to send when a phone call is started </param>
+        /// <param name="locale"> Locale used in the sms or call. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns> 
         public static VerificationResource Create(string pathServiceSid, 
@@ -91,9 +92,10 @@ namespace Twilio.Rest.Verify.V1.Service
                                                   string channel, 
                                                   string customMessage = null, 
                                                   string sendDigits = null, 
+                                                  string locale = null, 
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale};
             return Create(options, client);
         }
 
@@ -106,6 +108,7 @@ namespace Twilio.Rest.Verify.V1.Service
         /// <param name="channel"> sms or call </param>
         /// <param name="customMessage"> A custom message for this verification </param>
         /// <param name="sendDigits"> Digits to send when a phone call is started </param>
+        /// <param name="locale"> Locale used in the sms or call. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns> 
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid, 
@@ -113,9 +116,10 @@ namespace Twilio.Rest.Verify.V1.Service
                                                                                           string channel, 
                                                                                           string customMessage = null, 
                                                                                           string sendDigits = null, 
+                                                                                          string locale = null, 
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale};
             return await CreateAsync(options, client);
         }
         #endif

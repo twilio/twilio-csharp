@@ -66,9 +66,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldValue </returns> 
         public static FieldValueResource Fetch(string pathAssistantSid, 
@@ -84,9 +84,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldValue </returns> 
         public static async System.Threading.Tasks.Task<FieldValueResource> FetchAsync(string pathAssistantSid, 
@@ -146,8 +146,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
         /// <param name="language"> An ISO language-country string that specifies the language used for this field value. For
         ///                example: en-US </param>
         /// <param name="pageSize"> Page size </param>
@@ -169,8 +169,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
         /// <param name="language"> An ISO language-country string that specifies the language used for this field value. For
         ///                example: en-US </param>
         /// <param name="pageSize"> Page size </param>
@@ -291,8 +291,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
         /// <param name="language"> An ISO language-country string that specifies the language used for this field value. For
         ///                example: en-US </param>
         /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid.
@@ -315,8 +315,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
         /// <param name="language"> An ISO language-country string that specifies the language used for this field value. For
         ///                example: en-US </param>
         /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid.
@@ -379,9 +379,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldValue </returns> 
         public static bool Delete(string pathAssistantSid, 
@@ -397,9 +397,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathFieldTypeSid"> The field_type_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldValue </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 

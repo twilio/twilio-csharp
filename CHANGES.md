@@ -1,6 +1,24 @@
 twilio-csharp Changelog
 =======================
 
+[2018-10-28] Version 5.21.0
+----------------------------
+**Library**
+- PR #450: Updates target to netstandard 2.0. Thanks to @emagers!
+
+**Api**
+- Add new Balance resource:
+    - url: '/v1/Accounts/{account sid}/Balance'
+    - supported methods: GET
+    - returns the balance of the account
+
+**Proxy**
+- Add chat_instance_sid to Service
+
+**Verify**
+- Add `Locale` optional parameter on Verification creation.
+
+
 [2018-10-15] Version 5.20.1
 ----------------------------
 **Api**
