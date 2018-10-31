@@ -13,7 +13,14 @@
         /// <param name="client">Client name</param>
         public Client(string client)
         {
-            _client = client;
+            if (client.StartsWith("client:"))
+            {
+                _client = client;
+            }
+            else
+            {
+                _client = "client:" + client;
+            }
         }
 
         /// <summary>
