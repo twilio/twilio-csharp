@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2018-11-16] Version 5.22.0
+----------------------------
+**Messaging**
+- Session API
+
+**Twiml**
+- Change `master-card` to `mastercard` as `cardType` for `Pay` and `Prompt`, remove attribute `credential_sid` from `Pay` **(breaking change)**
+
+
 [2018-10-28] Version 5.21.0
 ----------------------------
 **Library**

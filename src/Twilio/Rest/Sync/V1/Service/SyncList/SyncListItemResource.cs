@@ -245,16 +245,20 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="data"> Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a
         ///            JSON object, up to 16KB. </param>
-        /// <param name="ttl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
+        /// <param name="ttl"> Alias for item_ttl </param>
+        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
+        /// <param name="collectionTtl"> Time-to-live of this item's parent List in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListItem </returns> 
         public static SyncListItemResource Create(string pathServiceSid, 
                                                   string pathListSid, 
                                                   object data, 
                                                   int? ttl = null, 
+                                                  int? itemTtl = null, 
+                                                  int? collectionTtl = null, 
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateSyncListItemOptions(pathServiceSid, pathListSid, data){Ttl = ttl};
+            var options = new CreateSyncListItemOptions(pathServiceSid, pathListSid, data){Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl};
             return Create(options, client);
         }
 
@@ -266,16 +270,20 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathListSid"> The list_sid </param>
         /// <param name="data"> Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a
         ///            JSON object, up to 16KB. </param>
-        /// <param name="ttl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
+        /// <param name="ttl"> Alias for item_ttl </param>
+        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
+        /// <param name="collectionTtl"> Time-to-live of this item's parent List in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(string pathServiceSid, 
                                                                                           string pathListSid, 
                                                                                           object data, 
                                                                                           int? ttl = null, 
+                                                                                          int? itemTtl = null, 
+                                                                                          int? collectionTtl = null, 
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateSyncListItemOptions(pathServiceSid, pathListSid, data){Ttl = ttl};
+            var options = new CreateSyncListItemOptions(pathServiceSid, pathListSid, data){Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl};
             return await CreateAsync(options, client);
         }
         #endif
@@ -484,7 +492,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathIndex"> The index </param>
         /// <param name="data"> Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a
         ///            JSON object, up to 16KB. </param>
-        /// <param name="ttl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
+        /// <param name="ttl"> Alias for item_ttl </param>
+        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
+        /// <param name="collectionTtl"> Time-to-live of this item's parent List in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListItem </returns> 
         public static SyncListItemResource Update(string pathServiceSid, 
@@ -492,9 +502,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                                                   int? pathIndex, 
                                                   object data = null, 
                                                   int? ttl = null, 
+                                                  int? itemTtl = null, 
+                                                  int? collectionTtl = null, 
                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){Data = data, Ttl = ttl};
+            var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl};
             return Update(options, client);
         }
 
@@ -507,7 +519,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathIndex"> The index </param>
         /// <param name="data"> Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a
         ///            JSON object, up to 16KB. </param>
-        /// <param name="ttl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
+        /// <param name="ttl"> Alias for item_ttl </param>
+        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
+        /// <param name="collectionTtl"> Time-to-live of this item's parent List in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns> 
         public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(string pathServiceSid, 
@@ -515,9 +529,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                                                                                           int? pathIndex, 
                                                                                           object data = null, 
                                                                                           int? ttl = null, 
+                                                                                          int? itemTtl = null, 
+                                                                                          int? collectionTtl = null, 
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){Data = data, Ttl = ttl};
+            var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl};
             return await UpdateAsync(options, client);
         }
         #endif

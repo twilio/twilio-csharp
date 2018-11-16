@@ -42,14 +42,13 @@ namespace Twilio.Tests.TwiML
                 Pay.TokenTypeEnum.OneTime,
                 "charge_amount",
                 Pay.CurrencyEnum.Usd,
-                "credential_sid",
                 "description",
                 Promoter.ListOfOne(Pay.ValidCardTypesEnum.Visa),
                 Pay.LanguageEnum.DeDe
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Pay input=\"dtmf\" action=\"https://example.com\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" paymentConnector=\"payment_connector\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"usd\" credentialSid=\"credential_sid\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>",
+                "<Pay input=\"dtmf\" action=\"https://example.com\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" paymentConnector=\"payment_connector\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"usd\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>",
                 elem.ToString()
             );
         }

@@ -82,7 +82,7 @@ namespace Twilio.TwiML.Voice
             }
 
             public static readonly ValidCardTypesEnum Visa = new ValidCardTypesEnum("visa");
-            public static readonly ValidCardTypesEnum MasterCard = new ValidCardTypesEnum("master-card");
+            public static readonly ValidCardTypesEnum Mastercard = new ValidCardTypesEnum("mastercard");
             public static readonly ValidCardTypesEnum Amex = new ValidCardTypesEnum("amex");
             public static readonly ValidCardTypesEnum Maestro = new ValidCardTypesEnum("maestro");
             public static readonly ValidCardTypesEnum Discover = new ValidCardTypesEnum("discover");
@@ -167,10 +167,6 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         public Pay.CurrencyEnum Currency { get; set; }
         /// <summary>
-        /// SID for API keys to communicate with payment provider
-        /// </summary>
-        public string CredentialSid { get; set; }
-        /// <summary>
         /// Details regarding the payment
         /// </summary>
         public string Description { get; set; }
@@ -199,7 +195,6 @@ namespace Twilio.TwiML.Voice
         /// <param name="chargeAmount"> Amount to process. If value is greater than 0 then make the payment else create a
         ///                    payment token </param>
         /// <param name="currency"> Currency of the amount attribute </param>
-        /// <param name="credentialSid"> SID for API keys to communicate with payment provider </param>
         /// <param name="description"> Details regarding the payment </param>
         /// <param name="validCardTypes"> Comma separated accepted card types </param>
         /// <param name="language"> Language to use </param>
@@ -215,7 +210,6 @@ namespace Twilio.TwiML.Voice
                    Pay.TokenTypeEnum tokenType = null, 
                    string chargeAmount = null, 
                    Pay.CurrencyEnum currency = null, 
-                   string credentialSid = null, 
                    string description = null, 
                    List<Pay.ValidCardTypesEnum> validCardTypes = null, 
                    Pay.LanguageEnum language = null) : base("Pay")
@@ -232,7 +226,6 @@ namespace Twilio.TwiML.Voice
             this.TokenType = tokenType;
             this.ChargeAmount = chargeAmount;
             this.Currency = currency;
-            this.CredentialSid = credentialSid;
             this.Description = description;
             this.ValidCardTypes = validCardTypes;
             this.Language = language;
@@ -291,10 +284,6 @@ namespace Twilio.TwiML.Voice
             if (this.Currency != null)
             {
                 attributes.Add(new XAttribute("currency", this.Currency.ToString()));
-            }
-            if (this.CredentialSid != null)
-            {
-                attributes.Add(new XAttribute("credentialSid", this.CredentialSid));
             }
             if (this.Description != null)
             {

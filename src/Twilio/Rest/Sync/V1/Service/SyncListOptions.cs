@@ -101,9 +101,13 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// Time-to-live of this List in seconds, defaults to no expiration.
+        /// Alias for collection_ttl
         /// </summary>
         public int? Ttl { get; set; }
+        /// <summary>
+        /// Time-to-live of this List in seconds, defaults to no expiration.
+        /// </summary>
+        public int? CollectionTtl { get; set; }
 
         /// <summary>
         /// Construct a new CreateSyncListOptions
@@ -130,6 +134,11 @@ namespace Twilio.Rest.Sync.V1.Service
                 p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
             }
 
+            if (CollectionTtl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CollectionTtl", CollectionTtl.ToString()));
+            }
+
             return p;
         }
     }
@@ -150,9 +159,13 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Time-to-live of this List in seconds, defaults to no expiration.
+        /// Alias for collection_ttl
         /// </summary>
         public int? Ttl { get; set; }
+        /// <summary>
+        /// Time-to-live of this List in seconds, defaults to no expiration.
+        /// </summary>
+        public int? CollectionTtl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSyncListOptions
@@ -174,6 +187,11 @@ namespace Twilio.Rest.Sync.V1.Service
             if (Ttl != null)
             {
                 p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+            }
+
+            if (CollectionTtl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CollectionTtl", CollectionTtl.ToString()));
             }
 
             return p;

@@ -246,7 +246,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="key"> The unique user-defined key of this Map Item. </param>
         /// <param name="data"> Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a
         ///            JSON object, up to 16KB. </param>
-        /// <param name="ttl"> Time-to-live of this Map in seconds, defaults to no expiration. </param>
+        /// <param name="ttl"> Alias for item_ttl </param>
+        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
+        /// <param name="collectionTtl"> Time-to-live of this item's parent Map in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
         public static SyncMapItemResource Create(string pathServiceSid, 
@@ -254,9 +256,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
                                                  string key, 
                                                  object data, 
                                                  int? ttl = null, 
+                                                 int? itemTtl = null, 
+                                                 int? collectionTtl = null, 
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateSyncMapItemOptions(pathServiceSid, pathMapSid, key, data){Ttl = ttl};
+            var options = new CreateSyncMapItemOptions(pathServiceSid, pathMapSid, key, data){Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl};
             return Create(options, client);
         }
 
@@ -269,7 +273,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="key"> The unique user-defined key of this Map Item. </param>
         /// <param name="data"> Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a
         ///            JSON object, up to 16KB. </param>
-        /// <param name="ttl"> Time-to-live of this Map in seconds, defaults to no expiration. </param>
+        /// <param name="ttl"> Alias for item_ttl </param>
+        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
+        /// <param name="collectionTtl"> Time-to-live of this item's parent Map in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
         public static async System.Threading.Tasks.Task<SyncMapItemResource> CreateAsync(string pathServiceSid, 
@@ -277,9 +283,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
                                                                                          string key, 
                                                                                          object data, 
                                                                                          int? ttl = null, 
+                                                                                         int? itemTtl = null, 
+                                                                                         int? collectionTtl = null, 
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateSyncMapItemOptions(pathServiceSid, pathMapSid, key, data){Ttl = ttl};
+            var options = new CreateSyncMapItemOptions(pathServiceSid, pathMapSid, key, data){Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl};
             return await CreateAsync(options, client);
         }
         #endif
@@ -486,7 +494,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
         /// <param name="data"> Contains an arbitrary JSON object to be stored in this Map Item. </param>
-        /// <param name="ttl"> New time-to-live of this Map in seconds. </param>
+        /// <param name="ttl"> Alias for item_ttl </param>
+        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
+        /// <param name="collectionTtl"> Time-to-live of this item's parent Map in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns> 
         public static SyncMapItemResource Update(string pathServiceSid, 
@@ -494,9 +504,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
                                                  string pathKey, 
                                                  object data = null, 
                                                  int? ttl = null, 
+                                                 int? itemTtl = null, 
+                                                 int? collectionTtl = null, 
                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){Data = data, Ttl = ttl};
+            var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl};
             return Update(options, client);
         }
 
@@ -508,7 +520,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="pathMapSid"> The map_sid </param>
         /// <param name="pathKey"> The key </param>
         /// <param name="data"> Contains an arbitrary JSON object to be stored in this Map Item. </param>
-        /// <param name="ttl"> New time-to-live of this Map in seconds. </param>
+        /// <param name="ttl"> Alias for item_ttl </param>
+        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
+        /// <param name="collectionTtl"> Time-to-live of this item's parent Map in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns> 
         public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(string pathServiceSid, 
@@ -516,9 +530,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
                                                                                          string pathKey, 
                                                                                          object data = null, 
                                                                                          int? ttl = null, 
+                                                                                         int? itemTtl = null, 
+                                                                                         int? collectionTtl = null, 
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){Data = data, Ttl = ttl};
+            var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl};
             return await UpdateAsync(options, client);
         }
         #endif

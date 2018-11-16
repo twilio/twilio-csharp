@@ -121,9 +121,17 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// </summary>
         public object Data { get; }
         /// <summary>
-        /// Time-to-live of this Map in seconds, defaults to no expiration.
+        /// Alias for item_ttl
         /// </summary>
         public int? Ttl { get; set; }
+        /// <summary>
+        /// Time-to-live of this item in seconds, defaults to no expiration.
+        /// </summary>
+        public int? ItemTtl { get; set; }
+        /// <summary>
+        /// Time-to-live of this item's parent Map in seconds, defaults to no expiration.
+        /// </summary>
+        public int? CollectionTtl { get; set; }
 
         /// <summary>
         /// Construct a new CreateSyncMapItemOptions
@@ -160,6 +168,16 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             if (Ttl != null)
             {
                 p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+            }
+
+            if (ItemTtl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ItemTtl", ItemTtl.ToString()));
+            }
+
+            if (CollectionTtl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CollectionTtl", CollectionTtl.ToString()));
             }
 
             return p;
@@ -259,9 +277,17 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// </summary>
         public object Data { get; set; }
         /// <summary>
-        /// New time-to-live of this Map in seconds.
+        /// Alias for item_ttl
         /// </summary>
         public int? Ttl { get; set; }
+        /// <summary>
+        /// Time-to-live of this item in seconds, defaults to no expiration.
+        /// </summary>
+        public int? ItemTtl { get; set; }
+        /// <summary>
+        /// Time-to-live of this item's parent Map in seconds, defaults to no expiration.
+        /// </summary>
+        public int? CollectionTtl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSyncMapItemOptions
@@ -290,6 +316,16 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             if (Ttl != null)
             {
                 p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+            }
+
+            if (ItemTtl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ItemTtl", ItemTtl.ToString()));
+            }
+
+            if (CollectionTtl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CollectionTtl", CollectionTtl.ToString()));
             }
 
             return p;

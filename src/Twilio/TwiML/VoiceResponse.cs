@@ -538,7 +538,6 @@ namespace Twilio.TwiML
         /// <param name="chargeAmount"> Amount to process. If value is greater than 0 then make the payment else create a
         ///                    payment token </param>
         /// <param name="currency"> Currency of the amount attribute </param>
-        /// <param name="credentialSid"> SID for API keys to communicate with payment provider </param>
         /// <param name="description"> Details regarding the payment </param>
         /// <param name="validCardTypes"> Comma separated accepted card types </param>
         /// <param name="language"> Language to use </param>
@@ -554,7 +553,6 @@ namespace Twilio.TwiML
                                  Pay.TokenTypeEnum tokenType = null, 
                                  string chargeAmount = null, 
                                  Pay.CurrencyEnum currency = null, 
-                                 string credentialSid = null, 
                                  string description = null, 
                                  List<Pay.ValidCardTypesEnum> validCardTypes = null, 
                                  Pay.LanguageEnum language = null)
@@ -572,7 +570,6 @@ namespace Twilio.TwiML
                 tokenType,
                 chargeAmount,
                 currency,
-                credentialSid,
                 description,
                 validCardTypes,
                 language

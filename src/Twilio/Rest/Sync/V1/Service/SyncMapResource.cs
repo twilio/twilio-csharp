@@ -207,15 +207,17 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="uniqueName"> Human-readable name for this map </param>
-        /// <param name="ttl"> Time-to-live of this Map in seconds, defaults to no expiration. </param>
+        /// <param name="ttl"> Alias for collection_ttl </param>
+        /// <param name="collectionTtl"> Time-to-live of this Map in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMap </returns> 
         public static SyncMapResource Create(string pathServiceSid, 
                                              string uniqueName = null, 
                                              int? ttl = null, 
+                                             int? collectionTtl = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateSyncMapOptions(pathServiceSid){UniqueName = uniqueName, Ttl = ttl};
+            var options = new CreateSyncMapOptions(pathServiceSid){UniqueName = uniqueName, Ttl = ttl, CollectionTtl = collectionTtl};
             return Create(options, client);
         }
 
@@ -225,15 +227,17 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="uniqueName"> Human-readable name for this map </param>
-        /// <param name="ttl"> Time-to-live of this Map in seconds, defaults to no expiration. </param>
+        /// <param name="ttl"> Alias for collection_ttl </param>
+        /// <param name="collectionTtl"> Time-to-live of this Map in seconds, defaults to no expiration. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMap </returns> 
         public static async System.Threading.Tasks.Task<SyncMapResource> CreateAsync(string pathServiceSid, 
                                                                                      string uniqueName = null, 
                                                                                      int? ttl = null, 
+                                                                                     int? collectionTtl = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateSyncMapOptions(pathServiceSid){UniqueName = uniqueName, Ttl = ttl};
+            var options = new CreateSyncMapOptions(pathServiceSid){UniqueName = uniqueName, Ttl = ttl, CollectionTtl = collectionTtl};
             return await CreateAsync(options, client);
         }
         #endif
@@ -283,15 +287,17 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="ttl"> New time-to-live of this Map in seconds. </param>
+        /// <param name="ttl"> Alias for collection_ttl </param>
+        /// <param name="collectionTtl"> New time-to-live of this Map in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMap </returns> 
         public static SyncMapResource Update(string pathServiceSid, 
                                              string pathSid, 
                                              int? ttl = null, 
+                                             int? collectionTtl = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateSyncMapOptions(pathServiceSid, pathSid){Ttl = ttl};
+            var options = new UpdateSyncMapOptions(pathServiceSid, pathSid){Ttl = ttl, CollectionTtl = collectionTtl};
             return Update(options, client);
         }
 
@@ -301,15 +307,17 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="ttl"> New time-to-live of this Map in seconds. </param>
+        /// <param name="ttl"> Alias for collection_ttl </param>
+        /// <param name="collectionTtl"> New time-to-live of this Map in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMap </returns> 
         public static async System.Threading.Tasks.Task<SyncMapResource> UpdateAsync(string pathServiceSid, 
                                                                                      string pathSid, 
                                                                                      int? ttl = null, 
+                                                                                     int? collectionTtl = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateSyncMapOptions(pathServiceSid, pathSid){Ttl = ttl};
+            var options = new UpdateSyncMapOptions(pathServiceSid, pathSid){Ttl = ttl, CollectionTtl = collectionTtl};
             return await UpdateAsync(options, client);
         }
         #endif

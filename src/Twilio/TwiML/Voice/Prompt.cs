@@ -63,7 +63,7 @@ namespace Twilio.TwiML.Voice
             }
 
             public static readonly CardTypeEnum Visa = new CardTypeEnum("visa");
-            public static readonly CardTypeEnum MasterCard = new CardTypeEnum("master-card");
+            public static readonly CardTypeEnum Mastercard = new CardTypeEnum("mastercard");
             public static readonly CardTypeEnum Amex = new CardTypeEnum("amex");
             public static readonly CardTypeEnum Maestro = new CardTypeEnum("maestro");
             public static readonly CardTypeEnum Discover = new CardTypeEnum("discover");

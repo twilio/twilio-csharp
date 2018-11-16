@@ -117,9 +117,17 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// </summary>
         public object Data { get; }
         /// <summary>
-        /// Time-to-live of this item in seconds, defaults to no expiration.
+        /// Alias for item_ttl
         /// </summary>
         public int? Ttl { get; set; }
+        /// <summary>
+        /// Time-to-live of this item in seconds, defaults to no expiration.
+        /// </summary>
+        public int? ItemTtl { get; set; }
+        /// <summary>
+        /// Time-to-live of this item's parent List in seconds, defaults to no expiration.
+        /// </summary>
+        public int? CollectionTtl { get; set; }
 
         /// <summary>
         /// Construct a new CreateSyncListItemOptions
@@ -149,6 +157,16 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
             if (Ttl != null)
             {
                 p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+            }
+
+            if (ItemTtl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ItemTtl", ItemTtl.ToString()));
+            }
+
+            if (CollectionTtl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CollectionTtl", CollectionTtl.ToString()));
             }
 
             return p;
@@ -248,9 +266,17 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// </summary>
         public object Data { get; set; }
         /// <summary>
-        /// Time-to-live of this item in seconds, defaults to no expiration.
+        /// Alias for item_ttl
         /// </summary>
         public int? Ttl { get; set; }
+        /// <summary>
+        /// Time-to-live of this item in seconds, defaults to no expiration.
+        /// </summary>
+        public int? ItemTtl { get; set; }
+        /// <summary>
+        /// Time-to-live of this item's parent List in seconds, defaults to no expiration.
+        /// </summary>
+        public int? CollectionTtl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSyncListItemOptions
@@ -279,6 +305,16 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
             if (Ttl != null)
             {
                 p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
+            }
+
+            if (ItemTtl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ItemTtl", ItemTtl.ToString()));
+            }
+
+            if (CollectionTtl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CollectionTtl", CollectionTtl.ToString()));
             }
 
             return p;
