@@ -24,17 +24,31 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
 
     public class FactorResource : Resource 
     {
-        public sealed class FactorStatusEnum : StringEnum 
+        public sealed class FactorStatusesEnum : StringEnum 
         {
-            private FactorStatusEnum(string value) : base(value) {}
-            public FactorStatusEnum() {}
-            public static implicit operator FactorStatusEnum(string value)
+            private FactorStatusesEnum(string value) : base(value) {}
+            public FactorStatusesEnum() {}
+            public static implicit operator FactorStatusesEnum(string value)
             {
-                return new FactorStatusEnum(value);
+                return new FactorStatusesEnum(value);
             }
 
-            public static readonly FactorStatusEnum Unverified = new FactorStatusEnum("unverified");
-            public static readonly FactorStatusEnum Verified = new FactorStatusEnum("verified");
+            public static readonly FactorStatusesEnum Unverified = new FactorStatusesEnum("unverified");
+            public static readonly FactorStatusesEnum Verified = new FactorStatusesEnum("verified");
+        }
+
+        public sealed class FactorTypesEnum : StringEnum 
+        {
+            private FactorTypesEnum(string value) : base(value) {}
+            public FactorTypesEnum() {}
+            public static implicit operator FactorTypesEnum(string value)
+            {
+                return new FactorTypesEnum(value);
+            }
+
+            public static readonly FactorTypesEnum AppPush = new FactorTypesEnum("app-push");
+            public static readonly FactorTypesEnum Sms = new FactorTypesEnum("sms");
+            public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
         }
 
         private static Request BuildCreateRequest(CreateFactorOptions options, ITwilioRestClient client)
@@ -83,20 +97,18 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="binding"> A unique binding for this Factor </param>
-        /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
-        /// <param name="config"> Factor configuration </param>
+        /// <param name="type"> The Type of this Factor </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns> 
         public static FactorResource Create(string pathServiceSid, 
                                             string pathIdentity, 
                                             string binding, 
-                                            string factorType, 
                                             string friendlyName, 
-                                            string config = null, 
+                                            FactorResource.FactorTypesEnum type, 
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, factorType, friendlyName){Config = config};
+            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, type);
             return Create(options, client);
         }
 
@@ -107,20 +119,18 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="binding"> A unique binding for this Factor </param>
-        /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
-        /// <param name="config"> Factor configuration </param>
+        /// <param name="type"> The Type of this Factor </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns> 
         public static async System.Threading.Tasks.Task<FactorResource> CreateAsync(string pathServiceSid, 
                                                                                     string pathIdentity, 
                                                                                     string binding, 
-                                                                                    string factorType, 
                                                                                     string friendlyName, 
-                                                                                    string config = null, 
+                                                                                    FactorResource.FactorTypesEnum type, 
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, factorType, friendlyName){Config = config};
+            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, type);
             return await CreateAsync(options, client);
         }
         #endif
@@ -563,12 +573,13 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public FactorResource.FactorStatusEnum Status { get; private set; }
+        public FactorResource.FactorStatusesEnum Status { get; private set; }
         /// <summary>
         /// The Type of this Factor
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; private set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public FactorResource.FactorTypesEnum Type { get; private set; }
         /// <summary>
         /// The URL of this resource.
         /// </summary>

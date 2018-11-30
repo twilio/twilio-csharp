@@ -172,6 +172,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         ///                   updated.  Will be set to the null by the Chat service if not specified.  Note that this should
         ///                   only be used in cases where a Member is being recreated from a backup/separate source  and where a
         ///                   Member was previously updated. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
         public static MemberResource Create(string pathServiceSid, 
@@ -182,9 +183,10 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
                                             DateTime? lastConsumptionTimestamp = null, 
                                             DateTime? dateCreated = null, 
                                             DateTime? dateUpdated = null, 
+                                            string attributes = null, 
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated};
+            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
             return Create(options, client);
         }
 
@@ -211,6 +213,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         ///                   updated.  Will be set to the null by the Chat service if not specified.  Note that this should
         ///                   only be used in cases where a Member is being recreated from a backup/separate source  and where a
         ///                   Member was previously updated. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
         public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(string pathServiceSid, 
@@ -221,9 +224,10 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
                                                                                     DateTime? lastConsumptionTimestamp = null, 
                                                                                     DateTime? dateCreated = null, 
                                                                                     DateTime? dateUpdated = null, 
+                                                                                    string attributes = null, 
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated};
+            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
             return await CreateAsync(options, client);
         }
         #endif
@@ -508,6 +512,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         ///                   </param>
         /// <param name="dateUpdated"> The ISO8601 time specifying the datetime the Member should be set as having been last
         ///                   updated. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
         public static MemberResource Update(string pathServiceSid, 
@@ -518,9 +523,10 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
                                             DateTime? lastConsumptionTimestamp = null, 
                                             DateTime? dateCreated = null, 
                                             DateTime? dateUpdated = null, 
+                                            string attributes = null, 
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated};
+            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
             return Update(options, client);
         }
 
@@ -540,6 +546,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         ///                   </param>
         /// <param name="dateUpdated"> The ISO8601 time specifying the datetime the Member should be set as having been last
         ///                   updated. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
         public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string pathServiceSid, 
@@ -550,9 +557,10 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
                                                                                     DateTime? lastConsumptionTimestamp = null, 
                                                                                     DateTime? dateCreated = null, 
                                                                                     DateTime? dateUpdated = null, 
+                                                                                    string attributes = null, 
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated};
+            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -630,6 +638,11 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// An optional string metadata field you can use to store any data you wish.
+        /// </summary>
+        [JsonProperty("attributes")]
+        public string Attributes { get; private set; }
 
         private MemberResource()
         {

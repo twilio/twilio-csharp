@@ -145,6 +145,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="contentRetention"> The content_retention </param>
         /// <param name="addressRetention"> The address_retention </param>
         /// <param name="smartEncoded"> The smart_encoded </param>
+        /// <param name="interactiveData"> JSON string representing interactive data message. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
         public static MessageResource Create(Types.PhoneNumber to, 
@@ -164,9 +165,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                              MessageResource.ContentRetentionEnum contentRetention = null, 
                                              MessageResource.AddressRetentionEnum addressRetention = null, 
                                              bool? smartEncoded = null, 
+                                             string interactiveData = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, MaxRate = maxRate, ForceDelivery = forceDelivery, ProviderSid = providerSid, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, MaxRate = maxRate, ForceDelivery = forceDelivery, ProviderSid = providerSid, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, InteractiveData = interactiveData};
             return Create(options, client);
         }
 
@@ -194,6 +196,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="contentRetention"> The content_retention </param>
         /// <param name="addressRetention"> The address_retention </param>
         /// <param name="smartEncoded"> The smart_encoded </param>
+        /// <param name="interactiveData"> JSON string representing interactive data message. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(Types.PhoneNumber to, 
@@ -213,9 +216,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                      MessageResource.ContentRetentionEnum contentRetention = null, 
                                                                                      MessageResource.AddressRetentionEnum addressRetention = null, 
                                                                                      bool? smartEncoded = null, 
+                                                                                     string interactiveData = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, MaxRate = maxRate, ForceDelivery = forceDelivery, ProviderSid = providerSid, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, MaxRate = maxRate, ForceDelivery = forceDelivery, ProviderSid = providerSid, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, InteractiveData = interactiveData};
             return await CreateAsync(options, client);
         }
         #endif

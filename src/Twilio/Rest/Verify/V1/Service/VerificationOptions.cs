@@ -42,6 +42,10 @@ namespace Twilio.Rest.Verify.V1.Service
         /// Locale used in the sms or call.
         /// </summary>
         public string Locale { get; set; }
+        /// <summary>
+        /// A pre-generated code
+        /// </summary>
+        public string CustomCode { get; set; }
 
         /// <summary>
         /// Construct a new CreateVerificationOptions
@@ -85,6 +89,11 @@ namespace Twilio.Rest.Verify.V1.Service
             if (Locale != null)
             {
                 p.Add(new KeyValuePair<string, string>("Locale", Locale));
+            }
+
+            if (CustomCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CustomCode", CustomCode));
             }
 
             return p;

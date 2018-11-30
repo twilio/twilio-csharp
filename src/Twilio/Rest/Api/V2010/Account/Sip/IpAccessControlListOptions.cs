@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 {
 
     /// <summary>
-    /// Retrieve a list of ip-access-control-lists belonging to the account used to make the request
+    /// Retrieve a list of IpAccessControlLists that belong to the account used to make the request
     /// </summary>
     public class ReadIpAccessControlListOptions : ReadOptions<IpAccessControlListResource> 
     {
@@ -84,14 +84,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique ip-access-control-list Sid
+        /// Fetch by unique IpAccessControlList Sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchIpAccessControlListOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique ip-access-control-list Sid </param>
+        /// <param name="pathSid"> Fetch by unique IpAccessControlList Sid </param>
         public FetchIpAccessControlListOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -161,14 +161,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Delete by unique ip-access-control-list Sid
+        /// Delete by unique IpAccessControlList Sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteIpAccessControlListOptions
         /// </summary>
-        /// <param name="pathSid"> Delete by unique ip-access-control-list Sid </param>
+        /// <param name="pathSid"> Delete by unique IpAccessControlList Sid </param>
         public DeleteIpAccessControlListOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -90,6 +90,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// The ISO8601 time specifying the datetime the Member should be set as having been last updated.  Will be set to the null by the Chat service if not specified.  Note that this should only be used in cases where a Member is being recreated from a backup/separate source  and where a Member was previously updated.
         /// </summary>
         public DateTime? DateUpdated { get; set; }
+        /// <summary>
+        /// An optional string metadata field you can use to store any data you wish.
+        /// </summary>
+        public string Attributes { get; set; }
 
         /// <summary>
         /// Construct a new CreateMemberOptions
@@ -139,6 +143,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
             if (DateUpdated != null)
             {
                 p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
+            }
+
+            if (Attributes != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
 
             return p;
@@ -273,6 +282,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// The ISO8601 time specifying the datetime the Member should be set as having been last updated.
         /// </summary>
         public DateTime? DateUpdated { get; set; }
+        /// <summary>
+        /// An optional string metadata field you can use to store any data you wish.
+        /// </summary>
+        public string Attributes { get; set; }
 
         /// <summary>
         /// Construct a new UpdateMemberOptions
@@ -316,6 +329,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
             if (DateUpdated != null)
             {
                 p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
+            }
+
+            if (Attributes != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
 
             return p;

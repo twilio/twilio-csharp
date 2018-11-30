@@ -24,33 +24,47 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
 
     public class ChallengeResource : Resource 
     {
-        public sealed class ChallengeStatusEnum : StringEnum 
+        public sealed class ChallengeStatusesEnum : StringEnum 
         {
-            private ChallengeStatusEnum(string value) : base(value) {}
-            public ChallengeStatusEnum() {}
-            public static implicit operator ChallengeStatusEnum(string value)
+            private ChallengeStatusesEnum(string value) : base(value) {}
+            public ChallengeStatusesEnum() {}
+            public static implicit operator ChallengeStatusesEnum(string value)
             {
-                return new ChallengeStatusEnum(value);
+                return new ChallengeStatusesEnum(value);
             }
 
-            public static readonly ChallengeStatusEnum Pending = new ChallengeStatusEnum("pending");
-            public static readonly ChallengeStatusEnum Expired = new ChallengeStatusEnum("expired");
-            public static readonly ChallengeStatusEnum Approved = new ChallengeStatusEnum("approved");
-            public static readonly ChallengeStatusEnum Denied = new ChallengeStatusEnum("denied");
+            public static readonly ChallengeStatusesEnum Pending = new ChallengeStatusesEnum("pending");
+            public static readonly ChallengeStatusesEnum Expired = new ChallengeStatusesEnum("expired");
+            public static readonly ChallengeStatusesEnum Approved = new ChallengeStatusesEnum("approved");
+            public static readonly ChallengeStatusesEnum Denied = new ChallengeStatusesEnum("denied");
         }
 
-        public sealed class ChallengeReasonEnum : StringEnum 
+        public sealed class ChallengeReasonsEnum : StringEnum 
         {
-            private ChallengeReasonEnum(string value) : base(value) {}
-            public ChallengeReasonEnum() {}
-            public static implicit operator ChallengeReasonEnum(string value)
+            private ChallengeReasonsEnum(string value) : base(value) {}
+            public ChallengeReasonsEnum() {}
+            public static implicit operator ChallengeReasonsEnum(string value)
             {
-                return new ChallengeReasonEnum(value);
+                return new ChallengeReasonsEnum(value);
             }
 
-            public static readonly ChallengeReasonEnum None = new ChallengeReasonEnum("none");
-            public static readonly ChallengeReasonEnum NotNeeded = new ChallengeReasonEnum("not_needed");
-            public static readonly ChallengeReasonEnum NotRequested = new ChallengeReasonEnum("not_requested");
+            public static readonly ChallengeReasonsEnum None = new ChallengeReasonsEnum("none");
+            public static readonly ChallengeReasonsEnum NotNeeded = new ChallengeReasonsEnum("not_needed");
+            public static readonly ChallengeReasonsEnum NotRequested = new ChallengeReasonsEnum("not_requested");
+        }
+
+        public sealed class FactorTypesEnum : StringEnum 
+        {
+            private FactorTypesEnum(string value) : base(value) {}
+            public FactorTypesEnum() {}
+            public static implicit operator FactorTypesEnum(string value)
+            {
+                return new FactorTypesEnum(value);
+            }
+
+            public static readonly FactorTypesEnum AppPush = new FactorTypesEnum("app-push");
+            public static readonly FactorTypesEnum Sms = new FactorTypesEnum("sms");
+            public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
         }
 
         private static Request BuildCreateRequest(CreateChallengeOptions options, ITwilioRestClient client)
@@ -454,22 +468,17 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         [JsonProperty("expiration_date")]
         public DateTime? ExpirationDate { get; private set; }
         /// <summary>
-        /// Verification Sid.
-        /// </summary>
-        [JsonProperty("verification_sid")]
-        public string VerificationSid { get; private set; }
-        /// <summary>
         /// The Status of this Challenge
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ChallengeResource.ChallengeStatusEnum Status { get; private set; }
+        public ChallengeResource.ChallengeStatusesEnum Status { get; private set; }
         /// <summary>
         /// The Reason of this Challenge `status`
         /// </summary>
-        [JsonProperty("reason")]
+        [JsonProperty("responded_reason")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ChallengeResource.ChallengeReasonEnum Reason { get; private set; }
+        public ChallengeResource.ChallengeReasonsEnum RespondedReason { get; private set; }
         /// <summary>
         /// Public details provided to contextualize the Challenge
         /// </summary>
@@ -481,10 +490,11 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         [JsonProperty("hidden_details")]
         public string HiddenDetails { get; private set; }
         /// <summary>
-        /// The Factor Type of this Challenge
+        /// The Type of this Challenge
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; private set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ChallengeResource.FactorTypesEnum Type { get; private set; }
         /// <summary>
         /// The URL of this resource.
         /// </summary>

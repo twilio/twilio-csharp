@@ -34,7 +34,7 @@ namespace Twilio.Tests.Rest.Authy.V1
 
             try
             {
-                FormResource.Fetch(FormResource.FormTypeEnum.FormAppPush, client: twilioRestClient);
+                FormResource.Fetch(FormResource.FormTypesEnum.FormAppPush, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,10 +49,10 @@ namespace Twilio.Tests.Rest.Authy.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"form_type\": \"form-sms\",\"forms\": {\"create_factor\": {},\"verify_factor\": {},\"create_challenge\": {}},\"form_meta\": {},\"url\": \"https://authy.twilio.com/v1/Forms/form-sms\"}"
+                                         "{\"type\": \"form-sms\",\"forms\": {\"create_factor\": {},\"verify_factor\": {},\"create_challenge\": {}},\"form_meta\": {},\"url\": \"https://authy.twilio.com/v1/Forms/form-sms\"}"
                                      ));
 
-            var response = FormResource.Fetch(FormResource.FormTypeEnum.FormAppPush, client: twilioRestClient);
+            var response = FormResource.Fetch(FormResource.FormTypesEnum.FormAppPush, client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

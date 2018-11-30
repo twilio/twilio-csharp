@@ -31,13 +31,13 @@ namespace Twilio.Tests.Rest.Authy.V1.Service.Entity
                 ""
             );
             request.AddPostParam("Binding", Serialize("Binding"));
-            request.AddPostParam("FactorType", Serialize("FactorType"));
             request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
+            request.AddPostParam("Type", Serialize(FactorResource.FactorTypesEnum.AppPush));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                FactorResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "Binding", "FactorType", "FriendlyName", client: twilioRestClient);
+                FactorResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "Binding", "FriendlyName", FactorResource.FactorTypesEnum.AppPush, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -55,7 +55,7 @@ namespace Twilio.Tests.Rest.Authy.V1.Service.Entity
                                          "{\"sid\": \"YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"entity_sid\": \"YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"ff483d1ff591898a9942916050d2ca3f\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"status\": \"unverified\",\"type\": \"sms\",\"url\": \"https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"challenges\": \"https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges\"}}"
                                      ));
 
-            var response = FactorResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "Binding", "FactorType", "FriendlyName", client: twilioRestClient);
+            var response = FactorResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "Binding", "FriendlyName", FactorResource.FactorTypesEnum.AppPush, client: twilioRestClient);
             Assert.NotNull(response);
         }
 

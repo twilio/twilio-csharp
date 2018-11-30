@@ -85,6 +85,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The smart_encoded
         /// </summary>
         public bool? SmartEncoded { get; set; }
+        /// <summary>
+        /// JSON string representing interactive data message.
+        /// </summary>
+        public string InteractiveData { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -180,6 +184,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (SmartEncoded != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmartEncoded", SmartEncoded.Value.ToString().ToLower()));
+            }
+
+            if (InteractiveData != null)
+            {
+                p.Add(new KeyValuePair<string, string>("InteractiveData", InteractiveData));
             }
 
             return p;

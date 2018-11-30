@@ -24,18 +24,18 @@ namespace Twilio.Rest.Authy.V1
 
     public class FormResource : Resource 
     {
-        public sealed class FormTypeEnum : StringEnum 
+        public sealed class FormTypesEnum : StringEnum 
         {
-            private FormTypeEnum(string value) : base(value) {}
-            public FormTypeEnum() {}
-            public static implicit operator FormTypeEnum(string value)
+            private FormTypesEnum(string value) : base(value) {}
+            public FormTypesEnum() {}
+            public static implicit operator FormTypesEnum(string value)
             {
-                return new FormTypeEnum(value);
+                return new FormTypesEnum(value);
             }
 
-            public static readonly FormTypeEnum FormAppPush = new FormTypeEnum("form-app-push");
-            public static readonly FormTypeEnum FormSms = new FormTypeEnum("form-sms");
-            public static readonly FormTypeEnum FormTotp = new FormTypeEnum("form-totp");
+            public static readonly FormTypesEnum FormAppPush = new FormTypesEnum("form-app-push");
+            public static readonly FormTypesEnum FormSms = new FormTypesEnum("form-sms");
+            public static readonly FormTypesEnum FormTotp = new FormTypesEnum("form-totp");
         }
 
         private static Request BuildFetchRequest(FetchFormOptions options, ITwilioRestClient client)
@@ -43,14 +43,14 @@ namespace Twilio.Rest.Authy.V1
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Authy,
-                "/v1/Forms/" + options.PathFormType + "",
+                "/v1/Forms/" + options.PathType + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
         }
 
         /// <summary>
-        /// Fetch the forms for a specific form type.
+        /// Fetch the forms for a specific type.
         /// </summary>
         /// <param name="options"> Fetch Form parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Authy.V1
 
         #if !NET35
         /// <summary>
-        /// Fetch the forms for a specific form type.
+        /// Fetch the forms for a specific type.
         /// </summary>
         /// <param name="options"> Fetch Form parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -79,28 +79,28 @@ namespace Twilio.Rest.Authy.V1
         #endif
 
         /// <summary>
-        /// Fetch the forms for a specific form type.
+        /// Fetch the forms for a specific type.
         /// </summary>
-        /// <param name="pathFormType"> The Form Type of this Form </param>
+        /// <param name="pathType"> The Type of this Form </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Form </returns> 
-        public static FormResource Fetch(FormResource.FormTypeEnum pathFormType, ITwilioRestClient client = null)
+        public static FormResource Fetch(FormResource.FormTypesEnum pathType, ITwilioRestClient client = null)
         {
-            var options = new FetchFormOptions(pathFormType);
+            var options = new FetchFormOptions(pathType);
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary>
-        /// Fetch the forms for a specific form type.
+        /// Fetch the forms for a specific type.
         /// </summary>
-        /// <param name="pathFormType"> The Form Type of this Form </param>
+        /// <param name="pathType"> The Type of this Form </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Form </returns> 
-        public static async System.Threading.Tasks.Task<FormResource> FetchAsync(FormResource.FormTypeEnum pathFormType, 
+        public static async System.Threading.Tasks.Task<FormResource> FetchAsync(FormResource.FormTypesEnum pathType, 
                                                                                  ITwilioRestClient client = null)
         {
-            var options = new FetchFormOptions(pathFormType);
+            var options = new FetchFormOptions(pathType);
             return await FetchAsync(options, client);
         }
         #endif
@@ -124,23 +124,23 @@ namespace Twilio.Rest.Authy.V1
         }
 
         /// <summary>
-        /// The Form Type of this Form
+        /// The Type of this Form
         /// </summary>
-        [JsonProperty("form_type")]
+        [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public FormResource.FormTypeEnum FormType { get; private set; }
+        public FormResource.FormTypesEnum Type { get; private set; }
         /// <summary>
-        /// Object that contains the available forms for this form type.
+        /// Object that contains the available forms for this type.
         /// </summary>
         [JsonProperty("forms")]
         public object Forms { get; private set; }
         /// <summary>
-        /// Additional information for the available forms for this form type.
+        /// Additional information for the available forms for this type.
         /// </summary>
         [JsonProperty("form_meta")]
         public object FormMeta { get; private set; }
         /// <summary>
-        /// The URL to access the forms for this form type.
+        /// The URL to access the forms for this type.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

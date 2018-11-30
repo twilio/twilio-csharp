@@ -32,17 +32,13 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         public string Binding { get; }
         /// <summary>
-        /// The Type of this Factor
-        /// </summary>
-        public string FactorType { get; }
-        /// <summary>
         /// The friendly name of this Factor
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// Factor configuration
+        /// The Type of this Factor
         /// </summary>
-        public string Config { get; set; }
+        public FactorResource.FactorTypesEnum Type { get; }
 
         /// <summary>
         /// Construct a new CreateFactorOptions
@@ -50,19 +46,19 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="binding"> A unique binding for this Factor </param>
-        /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
+        /// <param name="type"> The Type of this Factor </param>
         public CreateFactorOptions(string pathServiceSid, 
                                    string pathIdentity, 
                                    string binding, 
-                                   string factorType, 
-                                   string friendlyName)
+                                   string friendlyName, 
+                                   FactorResource.FactorTypesEnum type)
         {
             PathServiceSid = pathServiceSid;
             PathIdentity = pathIdentity;
             Binding = binding;
-            FactorType = factorType;
             FriendlyName = friendlyName;
+            Type = type;
         }
 
         /// <summary>
@@ -76,19 +72,14 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
                 p.Add(new KeyValuePair<string, string>("Binding", Binding));
             }
 
-            if (FactorType != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FactorType", FactorType));
-            }
-
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
 
-            if (Config != null)
+            if (Type != null)
             {
-                p.Add(new KeyValuePair<string, string>("Config", Config));
+                p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
             }
 
             return p;

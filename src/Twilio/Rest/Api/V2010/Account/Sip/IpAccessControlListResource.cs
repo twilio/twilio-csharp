@@ -32,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         }
 
         /// <summary>
-        /// Retrieve a list of ip-access-control-lists belonging to the account used to make the request
+        /// Retrieve a list of IpAccessControlLists that belong to the account used to make the request
         /// </summary>
         /// <param name="options"> Read IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of ip-access-control-lists belonging to the account used to make the request
+        /// Retrieve a list of IpAccessControlLists that belong to the account used to make the request
         /// </summary>
         /// <param name="options"> Read IpAccessControlList parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         #endif
 
         /// <summary>
-        /// Retrieve a list of ip-access-control-lists belonging to the account used to make the request
+        /// Retrieve a list of IpAccessControlLists that belong to the account used to make the request
         /// </summary>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of ip-access-control-lists belonging to the account used to make the request
+        /// Retrieve a list of IpAccessControlLists that belong to the account used to make the request
         /// </summary>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="pageSize"> Page size </param>
@@ -279,7 +279,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Fetch a specific instance of an IpAccessControlList
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique ip-access-control-list Sid </param>
+        /// <param name="pathSid"> Fetch by unique IpAccessControlList Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlList </returns> 
@@ -295,7 +295,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Fetch a specific instance of an IpAccessControlList
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique ip-access-control-list Sid </param>
+        /// <param name="pathSid"> Fetch by unique IpAccessControlList Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns> 
@@ -428,7 +428,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Delete an IpAccessControlList from the requested account
         /// </summary>
-        /// <param name="pathSid"> Delete by unique ip-access-control-list Sid </param>
+        /// <param name="pathSid"> Delete by unique IpAccessControlList Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlList </returns> 
@@ -442,7 +442,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Delete an IpAccessControlList from the requested account
         /// </summary>
-        /// <param name="pathSid"> Delete by unique ip-access-control-list Sid </param>
+        /// <param name="pathSid"> Delete by unique IpAccessControlList Sid </param>
         /// <param name="pathAccountSid"> The account_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns> 
