@@ -375,6 +375,7 @@ namespace Twilio.TwiML
         /// <param name="trim"> Trim the recording </param>
         /// <param name="recordingStatusCallback"> Status callback URL </param>
         /// <param name="recordingStatusCallbackMethod"> Status callback URL method </param>
+        /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="transcribe"> Transcribe the recording </param>
         /// <param name="transcribeCallback"> Transcribe callback URL </param>
         public VoiceResponse Record(Uri action = null, 
@@ -386,6 +387,7 @@ namespace Twilio.TwiML
                                     Record.TrimEnum trim = null, 
                                     Uri recordingStatusCallback = null, 
                                     Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
+                                    List<Record.RecordingEventEnum> recordingStatusCallbackEvent = null, 
                                     bool? transcribe = null, 
                                     Uri transcribeCallback = null)
         {
@@ -399,6 +401,7 @@ namespace Twilio.TwiML
                 trim,
                 recordingStatusCallback,
                 recordingStatusCallbackMethod,
+                recordingStatusCallbackEvent,
                 transcribe,
                 transcribeCallback
             );
@@ -552,7 +555,7 @@ namespace Twilio.TwiML
                                  string paymentConnector = null, 
                                  Pay.TokenTypeEnum tokenType = null, 
                                  string chargeAmount = null, 
-                                 Pay.CurrencyEnum currency = null, 
+                                 string currency = null, 
                                  string description = null, 
                                  List<Pay.ValidCardTypesEnum> validCardTypes = null, 
                                  Pay.LanguageEnum language = null)

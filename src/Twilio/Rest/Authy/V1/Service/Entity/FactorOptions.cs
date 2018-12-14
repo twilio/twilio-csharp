@@ -38,7 +38,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <summary>
         /// The Type of this Factor
         /// </summary>
-        public FactorResource.FactorTypesEnum Type { get; }
+        public FactorResource.FactorTypesEnum FactorType { get; }
 
         /// <summary>
         /// Construct a new CreateFactorOptions
@@ -47,18 +47,18 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="binding"> A unique binding for this Factor </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
-        /// <param name="type"> The Type of this Factor </param>
+        /// <param name="factorType"> The Type of this Factor </param>
         public CreateFactorOptions(string pathServiceSid, 
                                    string pathIdentity, 
                                    string binding, 
                                    string friendlyName, 
-                                   FactorResource.FactorTypesEnum type)
+                                   FactorResource.FactorTypesEnum factorType)
         {
             PathServiceSid = pathServiceSid;
             PathIdentity = pathIdentity;
             Binding = binding;
             FriendlyName = friendlyName;
-            Type = type;
+            FactorType = factorType;
         }
 
         /// <summary>
@@ -77,9 +77,9 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
 
-            if (Type != null)
+            if (FactorType != null)
             {
-                p.Add(new KeyValuePair<string, string>("Type", Type.ToString()));
+                p.Add(new KeyValuePair<string, string>("FactorType", FactorType.ToString()));
             }
 
             return p;

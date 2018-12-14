@@ -13,20 +13,20 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
     /// <summary>
-    /// Create a feedback entry for a call
+    /// Create a Feedback resource for a call
     /// </summary>
     public class CreateFeedbackOptions : IOptions<FeedbackResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The call_sid
+        /// The call sid that uniquely identifies the call
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// An integer from 1 to 5
+        /// The call quality expressed as an integer from 1 to 5
         /// </summary>
         public int? QualityScore { get; }
         /// <summary>
@@ -37,8 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new CreateFeedbackOptions
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="qualityScore"> An integer from 1 to 5 </param>
+        /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
+        /// <param name="qualityScore"> The call quality expressed as an integer from 1 to 5 </param>
         public CreateFeedbackOptions(string pathCallSid, int? qualityScore)
         {
             PathCallSid = pathCallSid;
@@ -67,12 +67,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     }
 
     /// <summary>
-    /// Fetch an instance of a feedback entry for a call
+    /// Fetch a Feedback resource from a call
     /// </summary>
     public class FetchFeedbackOptions : IOptions<FeedbackResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -100,20 +100,20 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     }
 
     /// <summary>
-    /// Update a feedback entry for a call
+    /// Update a Feedback resource for a call
     /// </summary>
     public class UpdateFeedbackOptions : IOptions<FeedbackResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The call_sid
+        /// The call sid that uniquely identifies the call
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// An integer from 1 to 5
+        /// The call quality expressed as an integer from 1 to 5
         /// </summary>
         public int? QualityScore { get; }
         /// <summary>
@@ -124,8 +124,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new UpdateFeedbackOptions
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="qualityScore"> An integer from 1 to 5 </param>
+        /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
+        /// <param name="qualityScore"> The call quality expressed as an integer from 1 to 5 </param>
         public UpdateFeedbackOptions(string pathCallSid, int? qualityScore)
         {
             PathCallSid = pathCallSid;

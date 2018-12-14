@@ -39,12 +39,13 @@ namespace Twilio.Tests.TwiML
                 Record.TrimEnum.TrimSilence,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
+                Promoter.ListOfOne(Record.RecordingEventEnum.InProgress),
                 true,
                 new Uri("https://example.com")
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Record action=\"https://example.com\" method=\"GET\" timeout=\"1\" finishOnKey=\"finish_on_key\" maxLength=\"1\" playBeep=\"true\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" transcribe=\"true\" transcribeCallback=\"https://example.com\"></Record>",
+                "<Record action=\"https://example.com\" method=\"GET\" timeout=\"1\" finishOnKey=\"finish_on_key\" maxLength=\"1\" playBeep=\"true\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" transcribe=\"true\" transcribeCallback=\"https://example.com\"></Record>",
                 elem.ToString()
             );
         }

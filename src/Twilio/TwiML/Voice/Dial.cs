@@ -60,7 +60,7 @@ namespace Twilio.TwiML.Voice
 
             public static readonly RecordingEventEnum InProgress = new RecordingEventEnum("in-progress");
             public static readonly RecordingEventEnum Completed = new RecordingEventEnum("completed");
-            public static readonly RecordingEventEnum Failed = new RecordingEventEnum("failed");
+            public static readonly RecordingEventEnum Absent = new RecordingEventEnum("absent");
         }
 
         public sealed class RingToneEnum : StringEnum 

@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Retrieve a list of IpAccessControlLists that belong to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Retrieve a list of IpAccessControlLists that belong to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -207,7 +207,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Create a new IpAccessControlList resource
         /// </summary>
         /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlList </returns> 
         public static IpAccessControlListResource Create(string friendlyName, 
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Create a new IpAccessControlList resource
         /// </summary>
         /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns> 
         public static async System.Threading.Tasks.Task<IpAccessControlListResource> CreateAsync(string friendlyName, 
@@ -279,8 +279,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Fetch a specific instance of an IpAccessControlList
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique IpAccessControlList Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> A string that identifies the resource to fetch </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlList </returns> 
         public static IpAccessControlListResource Fetch(string pathSid, 
@@ -295,8 +295,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Fetch a specific instance of an IpAccessControlList
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique IpAccessControlList Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> A string that identifies the resource to fetch </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns> 
         public static async System.Threading.Tasks.Task<IpAccessControlListResource> FetchAsync(string pathSid, 
@@ -352,9 +352,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Rename an IpAccessControlList
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that identifies the resource to update </param>
         /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlList </returns> 
         public static IpAccessControlListResource Update(string pathSid, 
@@ -370,9 +370,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Rename an IpAccessControlList
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that identifies the resource to update </param>
         /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns> 
         public static async System.Threading.Tasks.Task<IpAccessControlListResource> UpdateAsync(string pathSid, 
@@ -428,8 +428,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Delete an IpAccessControlList from the requested account
         /// </summary>
-        /// <param name="pathSid"> Delete by unique IpAccessControlList Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> A string that identifies the resource to delete </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlList </returns> 
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -442,8 +442,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Delete an IpAccessControlList from the requested account
         /// </summary>
-        /// <param name="pathSid"> Delete by unique IpAccessControlList Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> A string that identifies the resource to delete </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlList </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
@@ -499,7 +499,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The subresource_uris
+        /// The IP addresses associated with this resource.
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }

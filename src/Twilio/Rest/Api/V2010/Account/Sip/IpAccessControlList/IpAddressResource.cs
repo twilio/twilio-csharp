@@ -32,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         }
 
         /// <summary>
-        /// read
+        /// Read multiple IpAddress resources.
         /// </summary>
         /// <param name="options"> Read IpAddress parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Read multiple IpAddress resources.
         /// </summary>
         /// <param name="options"> Read IpAddress parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -65,10 +65,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         #endif
 
         /// <summary>
-        /// read
+        /// Read multiple IpAddress resources.
         /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
+        ///                                  read </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -85,10 +86,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Read multiple IpAddress resources.
         /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
+        ///                                  read </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -175,7 +177,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         }
 
         /// <summary>
-        /// create
+        /// Create a new IpAddress resource.
         /// </summary>
         /// <param name="options"> Create IpAddress parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -189,7 +191,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new IpAddress resource.
         /// </summary>
         /// <param name="options"> Create IpAddress parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -204,13 +206,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new IpAddress resource.
         /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="ipAddress"> The ip_address </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="cidrPrefixLength"> The cidr_prefix_length </param>
+        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid with which to associate the created IpAddress
+        ///                                  resource </param>
+        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters long. </param>
+        /// <param name="ipAddress"> An IP address in dotted decimal notation from which you want to accept traffic. Any SIP
+        ///                 requests from this IP address will be allowed by Twilio. IPv4 only supported today. </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="cidrPrefixLength"> An integer representing the length of the CIDR prefix to use with this IP address
+        ///                        when accepting traffic. By default the entire IP address is used. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAddress </returns> 
         public static IpAddressResource Create(string pathIpAccessControlListSid, 
@@ -226,13 +231,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new IpAddress resource.
         /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="ipAddress"> The ip_address </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="cidrPrefixLength"> The cidr_prefix_length </param>
+        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid with which to associate the created IpAddress
+        ///                                  resource </param>
+        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters long. </param>
+        /// <param name="ipAddress"> An IP address in dotted decimal notation from which you want to accept traffic. Any SIP
+        ///                 requests from this IP address will be allowed by Twilio. IPv4 only supported today. </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="cidrPrefixLength"> An integer representing the length of the CIDR prefix to use with this IP address
+        ///                        when accepting traffic. By default the entire IP address is used. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAddress </returns> 
         public static async System.Threading.Tasks.Task<IpAddressResource> CreateAsync(string pathIpAccessControlListSid, 
@@ -259,7 +267,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         }
 
         /// <summary>
-        /// fetch
+        /// Read one IpAddress resource.
         /// </summary>
         /// <param name="options"> Fetch IpAddress parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -273,7 +281,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Read one IpAddress resource.
         /// </summary>
         /// <param name="options"> Fetch IpAddress parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -288,11 +296,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         #endif
 
         /// <summary>
-        /// fetch
+        /// Read one IpAddress resource.
         /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
+        ///                                  fetch </param>
+        /// <param name="pathSid"> A string that identifies the IpAddress resource to fetch </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAddress </returns> 
         public static IpAddressResource Fetch(string pathIpAccessControlListSid, 
@@ -306,11 +315,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Read one IpAddress resource.
         /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
+        ///                                  fetch </param>
+        /// <param name="pathSid"> A string that identifies the IpAddress resource to fetch </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAddress </returns> 
         public static async System.Threading.Tasks.Task<IpAddressResource> FetchAsync(string pathIpAccessControlListSid, 
@@ -335,7 +345,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         }
 
         /// <summary>
-        /// update
+        /// Update an IpAddress resource.
         /// </summary>
         /// <param name="options"> Update IpAddress parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -349,7 +359,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an IpAddress resource.
         /// </summary>
         /// <param name="options"> Update IpAddress parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -364,14 +374,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         #endif
 
         /// <summary>
-        /// update
+        /// Update an IpAddress resource.
         /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="ipAddress"> The ip_address </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="cidrPrefixLength"> The cidr_prefix_length </param>
+        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
+        ///                                  update </param>
+        /// <param name="pathSid"> A string that identifies the IpAddress resource to update </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="ipAddress"> An IP address in dotted decimal notation from which you want to accept traffic. Any SIP
+        ///                 requests from this IP address will be allowed by Twilio. IPv4 only supported today. </param>
+        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters long. </param>
+        /// <param name="cidrPrefixLength"> An integer representing the length of the CIDR prefix to use with this IP address
+        ///                        when accepting traffic. By default the entire IP address is used. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAddress </returns> 
         public static IpAddressResource Update(string pathIpAccessControlListSid, 
@@ -388,14 +401,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an IpAddress resource.
         /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="ipAddress"> The ip_address </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="cidrPrefixLength"> The cidr_prefix_length </param>
+        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
+        ///                                  update </param>
+        /// <param name="pathSid"> A string that identifies the IpAddress resource to update </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="ipAddress"> An IP address in dotted decimal notation from which you want to accept traffic. Any SIP
+        ///                 requests from this IP address will be allowed by Twilio. IPv4 only supported today. </param>
+        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters long. </param>
+        /// <param name="cidrPrefixLength"> An integer representing the length of the CIDR prefix to use with this IP address
+        ///                        when accepting traffic. By default the entire IP address is used. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAddress </returns> 
         public static async System.Threading.Tasks.Task<IpAddressResource> UpdateAsync(string pathIpAccessControlListSid, 
@@ -423,7 +439,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         }
 
         /// <summary>
-        /// delete
+        /// Delete an IpAddress resource.
         /// </summary>
         /// <param name="options"> Delete IpAddress parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -437,7 +453,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete an IpAddress resource.
         /// </summary>
         /// <param name="options"> Delete IpAddress parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -452,11 +468,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         #endif
 
         /// <summary>
-        /// delete
+        /// Delete an IpAddress resource.
         /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
+        ///                                  delete </param>
+        /// <param name="pathSid"> A string that identifies the resource to delete </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAddress </returns> 
         public static bool Delete(string pathIpAccessControlListSid, 
@@ -470,11 +487,12 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete an IpAddress resource.
         /// </summary>
-        /// <param name="pathIpAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathIpAccessControlListSid"> The IpAccessControlList Sid that identifies the IpAddress resources to
+        ///                                  delete </param>
+        /// <param name="pathSid"> A string that identifies the resource to delete </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAddress </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathIpAccessControlListSid, 
@@ -511,7 +529,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique id of the Account that responsible for this resource.
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
@@ -531,7 +549,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
         [JsonProperty("cidr_prefix_length")]
         public int? CidrPrefixLength { get; private set; }
         /// <summary>
-        /// The ip_access_control_list_sid
+        /// The unique id of the IpAccessControlList resource that includes this resource.
         /// </summary>
         [JsonProperty("ip_access_control_list_sid")]
         public string IpAccessControlListSid { get; private set; }

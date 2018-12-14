@@ -48,7 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// create
+        /// Create a FeedbackSummary resource for a call
         /// </summary>
         /// <param name="options"> Create FeedbackSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a FeedbackSummary resource for a call
         /// </summary>
         /// <param name="options"> Create FeedbackSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -77,16 +77,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         #endif
 
         /// <summary>
-        /// create
+        /// Create a FeedbackSummary resource for a call
         /// </summary>
-        /// <param name="startDate"> Only include usage that has occurred on or after this date. </param>
-        /// <param name="endDate"> Only include usage that has occurred on or before this date. </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="includeSubaccounts"> true to include feedback entries for the master account and all subaccounts.
-        ///                          </param>
-        /// <param name="statusCallback"> The URL that Twilio will request when the Feedback Summary is completed. </param>
-        /// <param name="statusCallbackMethod"> The HTTP method Twilio will use to make requests to the StatusCallback URL.
-        ///                            </param>
+        /// <param name="startDate"> Only include feedback given on or after this date </param>
+        /// <param name="endDate"> Only include feedback given on or before this date </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="includeSubaccounts"> `true` includes feedback from the specified account and its subaccounts </param>
+        /// <param name="statusCallback"> The URL that we will request when the feedback summary is complete </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we use to make requests to the StatusCallback URL </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FeedbackSummary </returns> 
         public static FeedbackSummaryResource Create(DateTime? startDate, 
@@ -103,16 +101,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a FeedbackSummary resource for a call
         /// </summary>
-        /// <param name="startDate"> Only include usage that has occurred on or after this date. </param>
-        /// <param name="endDate"> Only include usage that has occurred on or before this date. </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="includeSubaccounts"> true to include feedback entries for the master account and all subaccounts.
-        ///                          </param>
-        /// <param name="statusCallback"> The URL that Twilio will request when the Feedback Summary is completed. </param>
-        /// <param name="statusCallbackMethod"> The HTTP method Twilio will use to make requests to the StatusCallback URL.
-        ///                            </param>
+        /// <param name="startDate"> Only include feedback given on or after this date </param>
+        /// <param name="endDate"> Only include feedback given on or before this date </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="includeSubaccounts"> `true` includes feedback from the specified account and its subaccounts </param>
+        /// <param name="statusCallback"> The URL that we will request when the feedback summary is complete </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we use to make requests to the StatusCallback URL </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<FeedbackSummaryResource> CreateAsync(DateTime? startDate, 
@@ -140,7 +136,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a FeedbackSummary resource from a call
         /// </summary>
         /// <param name="options"> Fetch FeedbackSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -154,7 +150,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a FeedbackSummary resource from a call
         /// </summary>
         /// <param name="options"> Fetch FeedbackSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -169,10 +165,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a FeedbackSummary resource from a call
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this feedback summary resource </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FeedbackSummary </returns> 
         public static FeedbackSummaryResource Fetch(string pathSid, 
@@ -185,10 +181,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a FeedbackSummary resource from a call
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this feedback summary resource </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<FeedbackSummaryResource> FetchAsync(string pathSid, 
@@ -212,7 +208,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// delete
+        /// Delete a FeedbackSummary resource from a call
         /// </summary>
         /// <param name="options"> Delete FeedbackSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -226,7 +222,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a FeedbackSummary resource from a call
         /// </summary>
         /// <param name="options"> Delete FeedbackSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -241,10 +237,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         #endif
 
         /// <summary>
-        /// delete
+        /// Delete a FeedbackSummary resource from a call
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this feedback summary resource </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FeedbackSummary </returns> 
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -255,10 +251,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a FeedbackSummary resource from a call
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this feedback summary resource </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FeedbackSummary </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
@@ -289,72 +285,72 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The call_count
+        /// The total number of calls
         /// </summary>
         [JsonProperty("call_count")]
         public int? CallCount { get; private set; }
         /// <summary>
-        /// The call_feedback_count
+        /// The total number of calls with a feedback entry
         /// </summary>
         [JsonProperty("call_feedback_count")]
         public int? CallFeedbackCount { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The end_date
+        /// The latest feedback entry date in the summary
         /// </summary>
         [JsonProperty("end_date")]
         public DateTime? EndDate { get; private set; }
         /// <summary>
-        /// The include_subaccounts
+        /// Whether the feedback summary includes subaccounts
         /// </summary>
         [JsonProperty("include_subaccounts")]
         public bool? IncludeSubaccounts { get; private set; }
         /// <summary>
-        /// The issues
+        /// Issues experienced during the call
         /// </summary>
         [JsonProperty("issues")]
         public List<FeedbackIssue> Issues { get; private set; }
         /// <summary>
-        /// The quality_score_average
+        /// The average QualityScore of the feedback entries
         /// </summary>
         [JsonProperty("quality_score_average")]
         public decimal? QualityScoreAverage { get; private set; }
         /// <summary>
-        /// The quality_score_median
+        /// The median QualityScore of the feedback entries
         /// </summary>
         [JsonProperty("quality_score_median")]
         public decimal? QualityScoreMedian { get; private set; }
         /// <summary>
-        /// The quality_score_standard_deviation
+        /// The standard deviation of the quality scores
         /// </summary>
         [JsonProperty("quality_score_standard_deviation")]
         public decimal? QualityScoreStandardDeviation { get; private set; }
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this feedback entry
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The start_date
+        /// The earliest feedback entry date in the summary
         /// </summary>
         [JsonProperty("start_date")]
         public DateTime? StartDate { get; private set; }
         /// <summary>
-        /// The status
+        /// The status of the feedback summary
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]

@@ -88,7 +88,7 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a Command instance from your account.
         /// </summary>
         /// <param name="options"> Fetch Command parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a Command instance from your account.
         /// </summary>
         /// <param name="options"> Fetch Command parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -117,9 +117,9 @@ namespace Twilio.Rest.Wireless.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a Command instance from your account.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Command </returns> 
         public static CommandResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -130,9 +130,9 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a Command instance from your account.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns> 
         public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(string pathSid, 
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of Commands from your account.
         /// </summary>
         /// <param name="options"> Read Command parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of Commands from your account.
         /// </summary>
         /// <param name="options"> Read Command parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -188,12 +188,12 @@ namespace Twilio.Rest.Wireless.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of Commands from your account.
         /// </summary>
         /// <param name="sim"> Only return Commands to or from this SIM. </param>
         /// <param name="status"> Only return Commands with this status value. </param>
         /// <param name="direction"> Only return Commands with this direction value. </param>
-        /// <param name="transport"> The transport </param>
+        /// <param name="transport"> Only return Commands with this transport value. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -212,12 +212,12 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of Commands from your account.
         /// </summary>
         /// <param name="sim"> Only return Commands to or from this SIM. </param>
         /// <param name="status"> Only return Commands with this status value. </param>
         /// <param name="direction"> Only return Commands with this direction value. </param>
-        /// <param name="transport"> The transport </param>
+        /// <param name="transport"> Only return Commands with this transport value. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -306,7 +306,7 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// create
+        /// Send a Command to a Sim.
         /// </summary>
         /// <param name="options"> Create Command parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -320,7 +320,7 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Send a Command to a Sim.
         /// </summary>
         /// <param name="options"> Create Command parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -335,7 +335,7 @@ namespace Twilio.Rest.Wireless.V1
         #endif
 
         /// <summary>
-        /// create
+        /// Send a Command to a Sim.
         /// </summary>
         /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode. </param>
         /// <param name="sim"> The Sid or UniqueName of the SIM to send the Command to. </param>
@@ -345,7 +345,8 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="includeSid"> When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of
         ///                  the Command in the message body, which could be used to ensure that the device does not process the
         ///                  same Command more than once. </param>
-        /// <param name="deliveryReceiptRequested"> The delivery_receipt_requested </param>
+        /// <param name="deliveryReceiptRequested"> A boolean representing whether to request delivery receipt from the
+        ///                                recipient. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Command </returns> 
         public static CommandResource Create(string command, 
@@ -363,7 +364,7 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Send a Command to a Sim.
         /// </summary>
         /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode. </param>
         /// <param name="sim"> The Sid or UniqueName of the SIM to send the Command to. </param>
@@ -373,7 +374,8 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="includeSid"> When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of
         ///                  the Command in the message body, which could be used to ensure that the device does not process the
         ///                  same Command more than once. </param>
-        /// <param name="deliveryReceiptRequested"> The delivery_receipt_requested </param>
+        /// <param name="deliveryReceiptRequested"> A boolean representing whether to request delivery receipt from the
+        ///                                recipient. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns> 
         public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(string command, 
@@ -387,6 +389,72 @@ namespace Twilio.Rest.Wireless.V1
         {
             var options = new CreateCommandOptions(command){Sim = sim, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, CommandMode = commandMode, IncludeSid = includeSid, DeliveryReceiptRequested = deliveryReceiptRequested};
             return await CreateAsync(options, client);
+        }
+        #endif
+
+        private static Request BuildDeleteRequest(DeleteCommandOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Wireless,
+                "/v1/Commands/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Delete a Command instance from your account.
+        /// </summary>
+        /// <param name="options"> Delete Command parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Command </returns> 
+        public static bool Delete(DeleteCommandOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a Command instance from your account.
+        /// </summary>
+        /// <param name="options"> Delete Command parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Command </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCommandOptions options, 
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Delete a Command instance from your account.
+        /// </summary>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Command </returns> 
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCommandOptions(pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a Command instance from your account.
+        /// </summary>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Command </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteCommandOptions(pathSid);
+            return await DeleteAsync(options, client);
         }
         #endif
 

@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class ReadCredentialListOptions : ReadOptions<CredentialListResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
 
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class CreateCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class FetchCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -113,11 +113,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class UpdateCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// Update by unique credential list Sid
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Construct a new UpdateCredentialListOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Update by unique credential list Sid </param>
         /// <param name="friendlyName"> Human readable descriptive text </param>
         public UpdateCredentialListOptions(string pathSid, string friendlyName)
         {
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class DeleteCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>

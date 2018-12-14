@@ -18,11 +18,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class CreateRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The call_sid
+        /// Create by unique call Sid for the recording
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new CreateRecordingOptions
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathCallSid"> Create by unique call Sid for the recording </param>
         public CreateRecordingOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;
@@ -98,11 +98,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class UpdateRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The call_sid
+        /// Fetch by unique call Sid for the recording
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new UpdateRecordingOptions
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathCallSid"> Fetch by unique call Sid for the recording </param>
         /// <param name="pathSid"> The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference
         ///               current active recording) </param>
         /// <param name="status"> The status to change the recording to. </param>
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class FetchRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class DeleteRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -236,11 +236,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class ReadRecordingOptions : ReadOptions<RecordingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The call_sid
+        /// Read by unique call Sid for the recording
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
@@ -259,7 +259,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new ReadRecordingOptions
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathCallSid"> Read by unique call Sid for the recording </param>
         public ReadRecordingOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;

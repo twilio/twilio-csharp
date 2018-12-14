@@ -20,6 +20,14 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// Flow Sid.
         /// </summary>
         public string PathFlowSid { get; }
+        /// <summary>
+        /// Only show Executions that started on or after this ISO8601 date-time.
+        /// </summary>
+        public DateTime? DateCreatedFrom { get; set; }
+        /// <summary>
+        /// Only show Executions that started before this this ISO8601 date-time.
+        /// </summary>
+        public DateTime? DateCreatedTo { get; set; }
 
         /// <summary>
         /// Construct a new ReadExecutionOptions
@@ -36,6 +44,16 @@ namespace Twilio.Rest.Studio.V1.Flow
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (DateCreatedFrom != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateCreatedFrom", Serializers.DateTimeIso8601(DateCreatedFrom)));
+            }
+
+            if (DateCreatedTo != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DateCreatedTo", Serializers.DateTimeIso8601(DateCreatedTo)));
+            }
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

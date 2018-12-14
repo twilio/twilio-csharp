@@ -138,6 +138,7 @@ namespace Twilio.Tests.TwiML
                 Record.TrimEnum.TrimSilence,
                 new Uri("https://example.com"),
                 Twilio.Http.HttpMethod.Get,
+                Promoter.ListOfOne(Record.RecordingEventEnum.InProgress),
                 true,
                 new Uri("https://example.com")
             );
@@ -169,7 +170,7 @@ namespace Twilio.Tests.TwiML
                 "payment_connector",
                 Pay.TokenTypeEnum.OneTime,
                 "charge_amount",
-                Pay.CurrencyEnum.Usd,
+                "currency",
                 "description",
                 Promoter.ListOfOne(Pay.ValidCardTypesEnum.Visa),
                 Pay.LanguageEnum.DeDe
@@ -195,12 +196,12 @@ namespace Twilio.Tests.TwiML
                 "  <Pause length=\"1\"></Pause>" + Environment.NewLine +
                 "  <Play loop=\"1\" digits=\"digits\">https://example.com</Play>" + Environment.NewLine +
                 "  <Queue url=\"https://example.com\" method=\"GET\" reservationSid=\"reservation_sid\" postWorkActivitySid=\"post_work_activity_sid\">name</Queue>" + Environment.NewLine +
-                "  <Record action=\"https://example.com\" method=\"GET\" timeout=\"1\" finishOnKey=\"finish_on_key\" maxLength=\"1\" playBeep=\"true\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" transcribe=\"true\" transcribeCallback=\"https://example.com\"></Record>" + Environment.NewLine +
+                "  <Record action=\"https://example.com\" method=\"GET\" timeout=\"1\" finishOnKey=\"finish_on_key\" maxLength=\"1\" playBeep=\"true\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" transcribe=\"true\" transcribeCallback=\"https://example.com\"></Record>" + Environment.NewLine +
                 "  <Redirect method=\"GET\">https://example.com</Redirect>" + Environment.NewLine +
                 "  <Reject reason=\"rejected\"></Reject>" + Environment.NewLine +
                 "  <Say voice=\"man\" loop=\"1\" language=\"da-DK\">message</Say>" + Environment.NewLine +
                 "  <Sms to=\"+15558675310\" from=\"+15017122661\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>" + Environment.NewLine +
-                "  <Pay input=\"dtmf\" action=\"https://example.com\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" paymentConnector=\"payment_connector\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"usd\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>" + Environment.NewLine +
+                "  <Pay input=\"dtmf\" action=\"https://example.com\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" paymentConnector=\"payment_connector\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"currency\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>" + Environment.NewLine +
                 "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\"></Prompt>" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()

@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Authy.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"type\": \"form-sms\",\"forms\": {\"create_factor\": {},\"verify_factor\": {},\"create_challenge\": {}},\"form_meta\": {},\"url\": \"https://authy.twilio.com/v1/Forms/form-sms\"}"
+                                         "{\"form_type\": \"form-sms\",\"forms\": {\"create_factor\": {},\"verify_factor\": {},\"create_challenge\": {}},\"form_meta\": {},\"url\": \"https://authy.twilio.com/v1/Forms/form-sms\"}"
                                      ));
 
             var response = FormResource.Fetch(FormResource.FormTypesEnum.FormAppPush, client: twilioRestClient);

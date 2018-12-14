@@ -15,22 +15,22 @@ namespace Twilio.Rest.Authy.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// Fetch the forms for a specific type.
+    /// Fetch the forms for a specific Form Type.
     /// </summary>
     public class FetchFormOptions : IOptions<FormResource> 
     {
         /// <summary>
         /// The Type of this Form
         /// </summary>
-        public FormResource.FormTypesEnum PathType { get; }
+        public FormResource.FormTypesEnum PathFormType { get; }
 
         /// <summary>
         /// Construct a new FetchFormOptions
         /// </summary>
-        /// <param name="pathType"> The Type of this Form </param>
-        public FetchFormOptions(FormResource.FormTypesEnum pathType)
+        /// <param name="pathFormType"> The Type of this Form </param>
+        public FetchFormOptions(FormResource.FormTypesEnum pathFormType)
         {
-            PathType = pathType;
+            PathFormType = pathFormType;
         }
 
         /// <summary>

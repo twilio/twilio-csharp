@@ -82,16 +82,20 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// Retrieve a list of all Executions for the Flow.
         /// </summary>
         /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="dateCreatedFrom"> Only show Executions that started on or after this ISO8601 date-time. </param>
+        /// <param name="dateCreatedTo"> Only show Executions that started before this this ISO8601 date-time. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Execution </returns> 
         public static ResourceSet<ExecutionResource> Read(string pathFlowSid, 
+                                                          DateTime? dateCreatedFrom = null, 
+                                                          DateTime? dateCreatedTo = null, 
                                                           int? pageSize = null, 
                                                           long? limit = null, 
                                                           ITwilioRestClient client = null)
         {
-            var options = new ReadExecutionOptions(pathFlowSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadExecutionOptions(pathFlowSid){DateCreatedFrom = dateCreatedFrom, DateCreatedTo = dateCreatedTo, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -100,16 +104,20 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// Retrieve a list of all Executions for the Flow.
         /// </summary>
         /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="dateCreatedFrom"> Only show Executions that started on or after this ISO8601 date-time. </param>
+        /// <param name="dateCreatedTo"> Only show Executions that started before this this ISO8601 date-time. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<ExecutionResource>> ReadAsync(string pathFlowSid, 
+                                                                                                  DateTime? dateCreatedFrom = null, 
+                                                                                                  DateTime? dateCreatedTo = null, 
                                                                                                   int? pageSize = null, 
                                                                                                   long? limit = null, 
                                                                                                   ITwilioRestClient client = null)
         {
-            var options = new ReadExecutionOptions(pathFlowSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadExecutionOptions(pathFlowSid){DateCreatedFrom = dateCreatedFrom, DateCreatedTo = dateCreatedTo, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

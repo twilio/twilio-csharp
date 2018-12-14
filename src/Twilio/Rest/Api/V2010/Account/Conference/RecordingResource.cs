@@ -35,7 +35,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             public static readonly StatusEnum Stopped = new StatusEnum("stopped");
             public static readonly StatusEnum Processing = new StatusEnum("processing");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
-            public static readonly StatusEnum Failed = new StatusEnum("failed");
+            public static readonly StatusEnum Absent = new StatusEnum("absent");
         }
 
         public sealed class SourceEnum : StringEnum 
@@ -544,7 +544,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.SourceEnum Source { get; private set; }
         /// <summary>
-        /// More information about the recording failure, if Status is failed.
+        /// More information about why the recording is missing, if Status is `absent`.
         /// </summary>
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }

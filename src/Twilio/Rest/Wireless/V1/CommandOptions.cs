@@ -12,19 +12,19 @@ namespace Twilio.Rest.Wireless.V1
 {
 
     /// <summary>
-    /// FetchCommandOptions
+    /// Fetch a Command instance from your account.
     /// </summary>
     public class FetchCommandOptions : IOptions<CommandResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCommandOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchCommandOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Wireless.V1
     }
 
     /// <summary>
-    /// ReadCommandOptions
+    /// Retrieve a list of Commands from your account.
     /// </summary>
     public class ReadCommandOptions : ReadOptions<CommandResource> 
     {
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         public CommandResource.DirectionEnum Direction { get; set; }
         /// <summary>
-        /// The transport
+        /// Only return Commands with this transport value.
         /// </summary>
         public CommandResource.TransportEnum Transport { get; set; }
 
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Wireless.V1
     }
 
     /// <summary>
-    /// CreateCommandOptions
+    /// Send a Command to a Sim.
     /// </summary>
     public class CreateCommandOptions : IOptions<CommandResource> 
     {
@@ -127,7 +127,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         public string IncludeSid { get; set; }
         /// <summary>
-        /// The delivery_receipt_requested
+        /// A boolean representing whether to request delivery receipt from the recipient.
         /// </summary>
         public bool? DeliveryReceiptRequested { get; set; }
 
@@ -181,6 +181,35 @@ namespace Twilio.Rest.Wireless.V1
                 p.Add(new KeyValuePair<string, string>("DeliveryReceiptRequested", DeliveryReceiptRequested.Value.ToString().ToLower()));
             }
 
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// Delete a Command instance from your account.
+    /// </summary>
+    public class DeleteCommandOptions : IOptions<CommandResource> 
+    {
+        /// <summary>
+        /// A 34 character string that uniquely identifies this resource.
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteCommandOptions
+        /// </summary>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        public DeleteCommandOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
             return p;
         }
     }

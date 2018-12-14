@@ -32,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
 
         /// <summary>
-        /// create
+        /// Create a CredentialListMapping resource for an account.
         /// </summary>
         /// <param name="options"> Create CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a CredentialListMapping resource for an account.
         /// </summary>
         /// <param name="options"> Create CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -62,11 +62,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         #endif
 
         /// <summary>
-        /// create
+        /// Create a CredentialListMapping resource for an account.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that identifies the SIP Domain for which the CredentialList resource will be
+        ///                     mapped </param>
+        /// <param name="credentialListSid"> A string that identifies the CredentialList resource to map to the SIP domain
+        ///                         </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialListMapping </returns> 
         public static CredentialListMappingResource Create(string pathDomainSid, 
@@ -80,11 +82,13 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a CredentialListMapping resource for an account.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="credentialListSid"> The credential_list_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that identifies the SIP Domain for which the CredentialList resource will be
+        ///                     mapped </param>
+        /// <param name="credentialListSid"> A string that identifies the CredentialList resource to map to the SIP domain
+        ///                         </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
         public static async System.Threading.Tasks.Task<CredentialListMappingResource> CreateAsync(string pathDomainSid, 
@@ -109,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
 
         /// <summary>
-        /// read
+        /// Read multiple CredentialListMapping resources from an account.
         /// </summary>
         /// <param name="options"> Read CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -126,7 +130,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Read multiple CredentialListMapping resources from an account.
         /// </summary>
         /// <param name="options"> Read CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -143,10 +147,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         #endif
 
         /// <summary>
-        /// read
+        /// Read multiple CredentialListMapping resources from an account.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that identifies the SIP Domain that includes the resource to read </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -163,10 +167,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Read multiple CredentialListMapping resources from an account.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that identifies the SIP Domain that includes the resource to read </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -255,7 +259,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a single CredentialListMapping resource from an account.
         /// </summary>
         /// <param name="options"> Fetch CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -270,7 +274,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a single CredentialListMapping resource from an account.
         /// </summary>
         /// <param name="options"> Fetch CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -285,11 +289,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a single CredentialListMapping resource from an account.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that identifies the SIP Domain that includes the resource to fetch </param>
+        /// <param name="pathSid"> A string that identifies the resource to fetch </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialListMapping </returns> 
         public static CredentialListMappingResource Fetch(string pathDomainSid, 
@@ -303,11 +307,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a single CredentialListMapping resource from an account.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that identifies the SIP Domain that includes the resource to fetch </param>
+        /// <param name="pathSid"> A string that identifies the resource to fetch </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
         public static async System.Threading.Tasks.Task<CredentialListMappingResource> FetchAsync(string pathDomainSid, 
@@ -332,7 +336,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
 
         /// <summary>
-        /// delete
+        /// Delete a CredentialListMapping resource from an account.
         /// </summary>
         /// <param name="options"> Delete CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -346,7 +350,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a CredentialListMapping resource from an account.
         /// </summary>
         /// <param name="options"> Delete CredentialListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -361,11 +365,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         #endif
 
         /// <summary>
-        /// delete
+        /// Delete a CredentialListMapping resource from an account.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that identifies the SIP Domain that includes the resource to delete </param>
+        /// <param name="pathSid"> A string that identifies the resource to delete </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialListMapping </returns> 
         public static bool Delete(string pathDomainSid, 
@@ -379,11 +383,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a CredentialListMapping resource from an account.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that identifies the SIP Domain that includes the resource to delete </param>
+        /// <param name="pathSid"> A string that identifies the resource to delete </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialListMapping </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, 
@@ -415,7 +419,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
 
         /// <summary>
-        /// The unique id of the Account that responsible for this resource.
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
@@ -445,7 +449,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// The subresource_uris
+        /// The credentials associated with this resource.
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }

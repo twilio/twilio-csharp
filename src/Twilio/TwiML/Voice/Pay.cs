@@ -58,20 +58,6 @@ namespace Twilio.TwiML.Voice
             public static readonly TokenTypeEnum Reusable = new TokenTypeEnum("reusable");
         }
 
-        public sealed class CurrencyEnum : StringEnum 
-        {
-            private CurrencyEnum(string value) : base(value) {}
-            public CurrencyEnum() {}
-            public static implicit operator CurrencyEnum(string value)
-            {
-                return new CurrencyEnum(value);
-            }
-
-            public static readonly CurrencyEnum Usd = new CurrencyEnum("usd");
-            public static readonly CurrencyEnum Eur = new CurrencyEnum("eur");
-            public static readonly CurrencyEnum Gbp = new CurrencyEnum("gbp");
-        }
-
         public sealed class ValidCardTypesEnum : StringEnum 
         {
             private ValidCardTypesEnum(string value) : base(value) {}
@@ -165,7 +151,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Currency of the amount attribute
         /// </summary>
-        public Pay.CurrencyEnum Currency { get; set; }
+        public string Currency { get; set; }
         /// <summary>
         /// Details regarding the payment
         /// </summary>
@@ -209,7 +195,7 @@ namespace Twilio.TwiML.Voice
                    string paymentConnector = null, 
                    Pay.TokenTypeEnum tokenType = null, 
                    string chargeAmount = null, 
-                   Pay.CurrencyEnum currency = null, 
+                   string currency = null, 
                    string description = null, 
                    List<Pay.ValidCardTypesEnum> validCardTypes = null, 
                    Pay.LanguageEnum language = null) : base("Pay")
@@ -283,7 +269,7 @@ namespace Twilio.TwiML.Voice
             }
             if (this.Currency != null)
             {
-                attributes.Add(new XAttribute("currency", this.Currency.ToString()));
+                attributes.Add(new XAttribute("currency", this.Currency));
             }
             if (this.Description != null)
             {

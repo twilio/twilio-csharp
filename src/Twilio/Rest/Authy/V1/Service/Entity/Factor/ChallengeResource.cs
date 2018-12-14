@@ -490,11 +490,11 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         [JsonProperty("hidden_details")]
         public string HiddenDetails { get; private set; }
         /// <summary>
-        /// The Type of this Challenge
+        /// The Factor Type of this Challenge
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("factor_type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ChallengeResource.FactorTypesEnum Type { get; private set; }
+        public ChallengeResource.FactorTypesEnum FactorType { get; private set; }
         /// <summary>
         /// The URL of this resource.
         /// </summary>

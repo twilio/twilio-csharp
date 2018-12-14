@@ -229,6 +229,228 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             return Page<TaskChannelResource>.FromJson("channels", response.Content);
         }
 
+        private static Request BuildUpdateRequest(UpdateTaskChannelOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/TaskChannels/" + options.PathSid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="options"> Update TaskChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TaskChannel </returns> 
+        public static TaskChannelResource Update(UpdateTaskChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="options"> Update TaskChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
+        public static async System.Threading.Tasks.Task<TaskChannelResource> UpdateAsync(UpdateTaskChannelOptions options, 
+                                                                                         ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="friendlyName"> Toggle the FriendlyName for the TaskChannel </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TaskChannel </returns> 
+        public static TaskChannelResource Update(string pathWorkspaceSid, 
+                                                 string pathSid, 
+                                                 string friendlyName = null, 
+                                                 ITwilioRestClient client = null)
+        {
+            var options = new UpdateTaskChannelOptions(pathWorkspaceSid, pathSid){FriendlyName = friendlyName};
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="friendlyName"> Toggle the FriendlyName for the TaskChannel </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
+        public static async System.Threading.Tasks.Task<TaskChannelResource> UpdateAsync(string pathWorkspaceSid, 
+                                                                                         string pathSid, 
+                                                                                         string friendlyName = null, 
+                                                                                         ITwilioRestClient client = null)
+        {
+            var options = new UpdateTaskChannelOptions(pathWorkspaceSid, pathSid){FriendlyName = friendlyName};
+            return await UpdateAsync(options, client);
+        }
+        #endif
+
+        private static Request BuildDeleteRequest(DeleteTaskChannelOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/TaskChannels/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="options"> Delete TaskChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TaskChannel </returns> 
+        public static bool Delete(DeleteTaskChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="options"> Delete TaskChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTaskChannelOptions options, 
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TaskChannel </returns> 
+        public static bool Delete(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteTaskChannelOptions(pathWorkspaceSid, pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid, 
+                                                                          string pathSid, 
+                                                                          ITwilioRestClient client = null)
+        {
+            var options = new DeleteTaskChannelOptions(pathWorkspaceSid, pathSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
+        private static Request BuildCreateRequest(CreateTaskChannelOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Taskrouter,
+                "/v1/Workspaces/" + options.PathWorkspaceSid + "/TaskChannels",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// create
+        /// </summary>
+        /// <param name="options"> Create TaskChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TaskChannel </returns> 
+        public static TaskChannelResource Create(CreateTaskChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// create
+        /// </summary>
+        /// <param name="options"> Create TaskChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
+        public static async System.Threading.Tasks.Task<TaskChannelResource> CreateAsync(CreateTaskChannelOptions options, 
+                                                                                         ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// create
+        /// </summary>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> String representing user-friendly name for the TaskChannel </param>
+        /// <param name="uniqueName"> String representing unique name for the TaskChannel </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of TaskChannel </returns> 
+        public static TaskChannelResource Create(string pathWorkspaceSid, 
+                                                 string friendlyName, 
+                                                 string uniqueName, 
+                                                 ITwilioRestClient client = null)
+        {
+            var options = new CreateTaskChannelOptions(pathWorkspaceSid, friendlyName, uniqueName);
+            return Create(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// create
+        /// </summary>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> String representing user-friendly name for the TaskChannel </param>
+        /// <param name="uniqueName"> String representing unique name for the TaskChannel </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of TaskChannel </returns> 
+        public static async System.Threading.Tasks.Task<TaskChannelResource> CreateAsync(string pathWorkspaceSid, 
+                                                                                         string friendlyName, 
+                                                                                         string uniqueName, 
+                                                                                         ITwilioRestClient client = null)
+        {
+            var options = new CreateTaskChannelOptions(pathWorkspaceSid, friendlyName, uniqueName);
+            return await CreateAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a TaskChannelResource object
         /// </summary>
@@ -248,37 +470,37 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique ID of the Account that owns this TaskChannel.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this TaskChannel was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this TaskChannel was updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// The friendly name of this TaskChannel
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The sid
+        /// The unique ID for this TaskChannel.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique_name
+        /// The unique name of TaskChannel, such as 'voice', 'sms', etc.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The unique ID of the Workspace that this TaskChannel belongs to.
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
@@ -287,6 +509,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
 
         private TaskChannelResource()
         {

@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadRecordingOptions : ReadOptions<RecordingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string CallSid { get; set; }
         /// <summary>
-        /// The conference_sid
+        /// The unique ID for the conference associated with the recording.
         /// </summary>
         public string ConferenceSid { get; set; }
 

@@ -80,4 +80,134 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
     }
 
+    /// <summary>
+    /// UpdateTaskChannelOptions
+    /// </summary>
+    public class UpdateTaskChannelOptions : IOptions<TaskChannelResource> 
+    {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
+        public string PathWorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
+        public string PathSid { get; }
+        /// <summary>
+        /// Toggle the FriendlyName for the TaskChannel
+        /// </summary>
+        public string FriendlyName { get; set; }
+
+        /// <summary>
+        /// Construct a new UpdateTaskChannelOptions
+        /// </summary>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public UpdateTaskChannelOptions(string pathWorkspaceSid, string pathSid)
+        {
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// DeleteTaskChannelOptions
+    /// </summary>
+    public class DeleteTaskChannelOptions : IOptions<TaskChannelResource> 
+    {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
+        public string PathWorkspaceSid { get; }
+        /// <summary>
+        /// The sid
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteTaskChannelOptions
+        /// </summary>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        public DeleteTaskChannelOptions(string pathWorkspaceSid, string pathSid)
+        {
+            PathWorkspaceSid = pathWorkspaceSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// CreateTaskChannelOptions
+    /// </summary>
+    public class CreateTaskChannelOptions : IOptions<TaskChannelResource> 
+    {
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
+        public string PathWorkspaceSid { get; }
+        /// <summary>
+        /// String representing user-friendly name for the TaskChannel
+        /// </summary>
+        public string FriendlyName { get; }
+        /// <summary>
+        /// String representing unique name for the TaskChannel
+        /// </summary>
+        public string UniqueName { get; }
+
+        /// <summary>
+        /// Construct a new CreateTaskChannelOptions
+        /// </summary>
+        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="friendlyName"> String representing user-friendly name for the TaskChannel </param>
+        /// <param name="uniqueName"> String representing unique name for the TaskChannel </param>
+        public CreateTaskChannelOptions(string pathWorkspaceSid, string friendlyName, string uniqueName)
+        {
+            PathWorkspaceSid = pathWorkspaceSid;
+            FriendlyName = friendlyName;
+            UniqueName = uniqueName;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (UniqueName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+            }
+
+            return p;
+        }
+    }
+
 }

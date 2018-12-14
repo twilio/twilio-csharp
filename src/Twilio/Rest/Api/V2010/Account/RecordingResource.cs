@@ -35,7 +35,7 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly StatusEnum Stopped = new StatusEnum("stopped");
             public static readonly StatusEnum Processing = new StatusEnum("processing");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
-            public static readonly StatusEnum Failed = new StatusEnum("failed");
+            public static readonly StatusEnum Absent = new StatusEnum("absent");
         }
 
         public sealed class SourceEnum : StringEnum 
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch an instance of a recording
         /// </summary>
         /// <param name="pathSid"> Fetch by unique recording SID </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
         public static RecordingResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Fetch an instance of a recording
         /// </summary>
         /// <param name="pathSid"> Fetch by unique recording SID </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string pathSid, 
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Delete a recording from your account
         /// </summary>
         /// <param name="pathSid"> Delete by unique recording SID </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Delete a recording from your account
         /// </summary>
         /// <param name="pathSid"> Delete by unique recording SID </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
@@ -243,12 +243,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of recordings belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="dateCreatedBefore"> Filter by date created </param>
         /// <param name="dateCreated"> Filter by date created </param>
         /// <param name="dateCreatedAfter"> Filter by date created </param>
         /// <param name="callSid"> Filter by call_sid </param>
-        /// <param name="conferenceSid"> The conference_sid </param>
+        /// <param name="conferenceSid"> The unique ID for the conference associated with the recording. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -271,12 +271,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of recordings belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="dateCreatedBefore"> Filter by date created </param>
         /// <param name="dateCreated"> Filter by date created </param>
         /// <param name="dateCreatedAfter"> Filter by date created </param>
         /// <param name="callSid"> Filter by call_sid </param>
-        /// <param name="conferenceSid"> The conference_sid </param>
+        /// <param name="conferenceSid"> The unique ID for the conference associated with the recording. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -446,7 +446,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.SourceEnum Source { get; private set; }
         /// <summary>
-        /// More information about the recording failure, if Status is failed.
+        /// More information about why the recording is missing, if Status is `absent`.
         /// </summary>
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }
@@ -461,7 +461,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("encryption_details")]
         public object EncryptionDetails { get; private set; }
         /// <summary>
-        /// The subresource_uris
+        /// A dictionary of URIs for related resources
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }

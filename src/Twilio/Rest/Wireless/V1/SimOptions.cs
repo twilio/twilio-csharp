@@ -12,19 +12,19 @@ namespace Twilio.Rest.Wireless.V1
 {
 
     /// <summary>
-    /// FetchSimOptions
+    /// Fetch a Sim instance from your account.
     /// </summary>
     public class FetchSimOptions : IOptions<SimResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchSimOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchSimOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Wireless.V1
     }
 
     /// <summary>
-    /// ReadSimOptions
+    /// Retrieve a list of Sims from your account.
     /// </summary>
     public class ReadSimOptions : ReadOptions<SimResource> 
     {
@@ -58,11 +58,11 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         public string RatePlan { get; set; }
         /// <summary>
-        /// The e_id
+        /// Only return Sims with this EID.
         /// </summary>
         public string EId { get; set; }
         /// <summary>
-        /// The sim_registration_code
+        /// Only return Sims with this registration code.
         /// </summary>
         public string SimRegistrationCode { get; set; }
 
@@ -107,12 +107,12 @@ namespace Twilio.Rest.Wireless.V1
     }
 
     /// <summary>
-    /// UpdateSimOptions
+    /// Updates the given properties of a Sim instance from your account.
     /// </summary>
     public class UpdateSimOptions : IOptions<SimResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Construct a new UpdateSimOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateSimOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -275,6 +275,35 @@ namespace Twilio.Rest.Wireless.V1
                 p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
             }
 
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// Delete a Sim instance from your account.
+    /// </summary>
+    public class DeleteSimOptions : IOptions<SimResource> 
+    {
+        /// <summary>
+        /// A 34 character string that uniquely identifies this resource.
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteSimOptions
+        /// </summary>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        public DeleteSimOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
             return p;
         }
     }

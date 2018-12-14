@@ -52,7 +52,7 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a Sim instance from your account.
         /// </summary>
         /// <param name="options"> Fetch Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a Sim instance from your account.
         /// </summary>
         /// <param name="options"> Fetch Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -81,9 +81,9 @@ namespace Twilio.Rest.Wireless.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a Sim instance from your account.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sim </returns> 
         public static SimResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -94,9 +94,9 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a Sim instance from your account.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns> 
         public static async System.Threading.Tasks.Task<SimResource> FetchAsync(string pathSid, 
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of Sims from your account.
         /// </summary>
         /// <param name="options"> Read Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of Sims from your account.
         /// </summary>
         /// <param name="options"> Read Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -152,13 +152,13 @@ namespace Twilio.Rest.Wireless.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of Sims from your account.
         /// </summary>
         /// <param name="status"> Only return Sims with this status. </param>
         /// <param name="iccid"> Return Sims with this Iccid. </param>
         /// <param name="ratePlan"> Only return Sims with this Rate Plan. </param>
-        /// <param name="eId"> The e_id </param>
-        /// <param name="simRegistrationCode"> The sim_registration_code </param>
+        /// <param name="eId"> Only return Sims with this EID. </param>
+        /// <param name="simRegistrationCode"> Only return Sims with this registration code. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -178,13 +178,13 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of Sims from your account.
         /// </summary>
         /// <param name="status"> Only return Sims with this status. </param>
         /// <param name="iccid"> Return Sims with this Iccid. </param>
         /// <param name="ratePlan"> Only return Sims with this Rate Plan. </param>
-        /// <param name="eId"> The e_id </param>
-        /// <param name="simRegistrationCode"> The sim_registration_code </param>
+        /// <param name="eId"> Only return Sims with this EID. </param>
+        /// <param name="simRegistrationCode"> Only return Sims with this registration code. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -274,7 +274,7 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// update
+        /// Updates the given properties of a Sim instance from your account.
         /// </summary>
         /// <param name="options"> Update Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -288,7 +288,7 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Updates the given properties of a Sim instance from your account.
         /// </summary>
         /// <param name="options"> Update Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -303,9 +303,9 @@ namespace Twilio.Rest.Wireless.V1
         #endif
 
         /// <summary>
-        /// update
+        /// Updates the given properties of a Sim instance from your account.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  Sid. </param>
         /// <param name="callbackMethod"> The HTTP method Twilio will use when making a request to the callback URL. </param>
@@ -354,9 +354,9 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Updates the given properties of a Sim instance from your account.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  Sid. </param>
         /// <param name="callbackMethod"> The HTTP method Twilio will use when making a request to the callback URL. </param>
@@ -401,6 +401,72 @@ namespace Twilio.Rest.Wireless.V1
         {
             var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl};
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        private static Request BuildDeleteRequest(DeleteSimOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Wireless,
+                "/v1/Sims/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Delete a Sim instance from your account.
+        /// </summary>
+        /// <param name="options"> Delete Sim parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Sim </returns> 
+        public static bool Delete(DeleteSimOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a Sim instance from your account.
+        /// </summary>
+        /// <param name="options"> Delete Sim parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Sim </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSimOptions options, 
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Delete a Sim instance from your account.
+        /// </summary>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Sim </returns> 
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSimOptions(pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a Sim instance from your account.
+        /// </summary>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Sim </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSimOptions(pathSid);
+            return await DeleteAsync(options, client);
         }
         #endif
 

@@ -65,7 +65,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The Status of this Session
+        /// The status
         /// </summary>
         public SessionResource.StatusEnum Status { get; set; }
 

@@ -12,28 +12,28 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 {
 
     /// <summary>
-    /// FetchIpAccessControlListMappingOptions
+    /// Fetch an IpAccessControlListMapping resource.
     /// </summary>
     public class FetchIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The domain_sid
+        /// A string that uniquely identifies the SIP Domain
         /// </summary>
         public string PathDomainSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies the resource to fetch.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchIpAccessControlListMappingOptions
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to fetch. </param>
         public FetchIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
         {
             PathDomainSid = pathDomainSid;
@@ -51,28 +51,28 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
     }
 
     /// <summary>
-    /// CreateIpAccessControlListMappingOptions
+    /// Create a new IpAccessControlListMapping resource.
     /// </summary>
     public class CreateIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The domain_sid
+        /// A string that uniquely identifies the SIP Domain
         /// </summary>
         public string PathDomainSid { get; }
         /// <summary>
-        /// The ip_access_control_list_sid
+        /// The unique id of the IP access control list to map to the SIP domain
         /// </summary>
         public string IpAccessControlListSid { get; }
 
         /// <summary>
         /// Construct a new CreateIpAccessControlListMappingOptions
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
+        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+        /// <param name="ipAccessControlListSid"> The unique id of the IP access control list to map to the SIP domain </param>
         public CreateIpAccessControlListMappingOptions(string pathDomainSid, string ipAccessControlListSid)
         {
             PathDomainSid = pathDomainSid;
@@ -95,23 +95,23 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
     }
 
     /// <summary>
-    /// ReadIpAccessControlListMappingOptions
+    /// Retrieve a list of IpAccessControlListMapping resources.
     /// </summary>
     public class ReadIpAccessControlListMappingOptions : ReadOptions<IpAccessControlListMappingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The domain_sid
+        /// A string that uniquely identifies the SIP Domain
         /// </summary>
         public string PathDomainSid { get; }
 
         /// <summary>
         /// Construct a new ReadIpAccessControlListMappingOptions
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
+        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
         public ReadIpAccessControlListMappingOptions(string pathDomainSid)
         {
             PathDomainSid = pathDomainSid;
@@ -133,28 +133,28 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
     }
 
     /// <summary>
-    /// DeleteIpAccessControlListMappingOptions
+    /// Delete an IpAccessControlListMapping resource.
     /// </summary>
     public class DeleteIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The domain_sid
+        /// A string that uniquely identifies the SIP Domain
         /// </summary>
         public string PathDomainSid { get; }
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies the resource to delete.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteIpAccessControlListMappingOptions
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to delete. </param>
         public DeleteIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
         {
             PathDomainSid = pathDomainSid;

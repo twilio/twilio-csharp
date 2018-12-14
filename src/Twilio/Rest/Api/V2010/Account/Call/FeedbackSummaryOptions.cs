@@ -12,40 +12,40 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
     /// <summary>
-    /// CreateFeedbackSummaryOptions
+    /// Create a FeedbackSummary resource for a call
     /// </summary>
     public class CreateFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Only include usage that has occurred on or after this date.
+        /// Only include feedback given on or after this date
         /// </summary>
         public DateTime? StartDate { get; }
         /// <summary>
-        /// Only include usage that has occurred on or before this date.
+        /// Only include feedback given on or before this date
         /// </summary>
         public DateTime? EndDate { get; }
         /// <summary>
-        /// true to include feedback entries for the master account and all subaccounts.
+        /// `true` includes feedback from the specified account and its subaccounts
         /// </summary>
         public bool? IncludeSubaccounts { get; set; }
         /// <summary>
-        /// The URL that Twilio will request when the Feedback Summary is completed.
+        /// The URL that we will request when the feedback summary is complete
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The HTTP method Twilio will use to make requests to the StatusCallback URL.
+        /// The HTTP method we use to make requests to the StatusCallback URL
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
 
         /// <summary>
         /// Construct a new CreateFeedbackSummaryOptions
         /// </summary>
-        /// <param name="startDate"> Only include usage that has occurred on or after this date. </param>
-        /// <param name="endDate"> Only include usage that has occurred on or before this date. </param>
+        /// <param name="startDate"> Only include feedback given on or after this date </param>
+        /// <param name="endDate"> Only include feedback given on or before this date </param>
         public CreateFeedbackSummaryOptions(DateTime? startDate, DateTime? endDate)
         {
             StartDate = startDate;
@@ -88,23 +88,23 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     }
 
     /// <summary>
-    /// FetchFeedbackSummaryOptions
+    /// Fetch a FeedbackSummary resource from a call
     /// </summary>
     public class FetchFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this feedback summary resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFeedbackSummaryOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this feedback summary resource </param>
         public FetchFeedbackSummaryOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -121,23 +121,23 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     }
 
     /// <summary>
-    /// DeleteFeedbackSummaryOptions
+    /// Delete a FeedbackSummary resource from a call
     /// </summary>
     public class DeleteFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this feedback summary resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteFeedbackSummaryOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this feedback summary resource </param>
         public DeleteFeedbackSummaryOptions(string pathSid)
         {
             PathSid = pathSid;

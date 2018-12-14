@@ -12,23 +12,24 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 {
 
     /// <summary>
-    /// ReadCredentialOptions
+    /// Retrieve a list of credentials.
     /// </summary>
     public class ReadCredentialOptions : ReadOptions<CredentialResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The credential_list_sid
+        /// The unique id that identifies the credential list that contains the desired credentials
         /// </summary>
         public string PathCredentialListSid { get; }
 
         /// <summary>
         /// Construct a new ReadCredentialOptions
         /// </summary>
-        /// <param name="pathCredentialListSid"> The credential_list_sid </param>
+        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired
+        ///                             credentials </param>
         public ReadCredentialOptions(string pathCredentialListSid)
         {
             PathCredentialListSid = pathCredentialListSid;
@@ -50,16 +51,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
     }
 
     /// <summary>
-    /// CreateCredentialOptions
+    /// Create a new credential resource.
     /// </summary>
     public class CreateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The credential_list_sid
+        /// The unique id that identifies the credential list to include the created credential
         /// </summary>
         public string PathCredentialListSid { get; }
         /// <summary>
@@ -74,7 +75,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
         /// <summary>
         /// Construct a new CreateCredentialOptions
         /// </summary>
-        /// <param name="pathCredentialListSid"> The credential_list_sid </param>
+        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list to include the created
+        ///                             credential </param>
         /// <param name="username"> The username for this credential. </param>
         /// <param name="password"> The password will not be returned in the response. </param>
         public CreateCredentialOptions(string pathCredentialListSid, string username, string password)
@@ -105,28 +107,29 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
     }
 
     /// <summary>
-    /// FetchCredentialOptions
+    /// Fetch a single credential.
     /// </summary>
     public class FetchCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The credential_list_sid
+        /// The unique id that identifies the credential list that contains the desired credential
         /// </summary>
         public string PathCredentialListSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique id that identifies the resource to fetch.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCredentialOptions
         /// </summary>
-        /// <param name="pathCredentialListSid"> The credential_list_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired
+        ///                             credential </param>
+        /// <param name="pathSid"> The unique id that identifies the resource to fetch. </param>
         public FetchCredentialOptions(string pathCredentialListSid, string pathSid)
         {
             PathCredentialListSid = pathCredentialListSid;
@@ -144,32 +147,33 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
     }
 
     /// <summary>
-    /// UpdateCredentialOptions
+    /// Update a credential resource.
     /// </summary>
     public class UpdateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The credential_list_sid
+        /// The unique id that identifies the credential list that includes this credential
         /// </summary>
         public string PathCredentialListSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique id that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The password will not be returned in the response.
+        /// The password will not be returned in the response
         /// </summary>
         public string Password { get; set; }
 
         /// <summary>
         /// Construct a new UpdateCredentialOptions
         /// </summary>
-        /// <param name="pathCredentialListSid"> The credential_list_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that includes this
+        ///                             credential </param>
+        /// <param name="pathSid"> The unique id that identifies the resource to update </param>
         public UpdateCredentialOptions(string pathCredentialListSid, string pathSid)
         {
             PathCredentialListSid = pathCredentialListSid;
@@ -192,28 +196,29 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
     }
 
     /// <summary>
-    /// DeleteCredentialOptions
+    /// Delete a credential resource.
     /// </summary>
     public class DeleteCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The credential_list_sid
+        /// The unique id that identifies the credential list that contains the desired credentials
         /// </summary>
         public string PathCredentialListSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique id that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteCredentialOptions
         /// </summary>
-        /// <param name="pathCredentialListSid"> The credential_list_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathCredentialListSid"> The unique id that identifies the credential list that contains the desired
+        ///                             credentials </param>
+        /// <param name="pathSid"> The unique id that identifies the resource to delete </param>
         public DeleteCredentialOptions(string pathCredentialListSid, string pathSid)
         {
             PathCredentialListSid = pathCredentialListSid;

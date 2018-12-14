@@ -172,7 +172,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="status"> The Status of this Session </param>
+        /// <param name="status"> The status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -194,7 +194,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="status"> The Status of this Session </param>
+        /// <param name="status"> The status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>

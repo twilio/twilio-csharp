@@ -52,7 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// Create a feedback entry for a call
+        /// Create a Feedback resource for a call
         /// </summary>
         /// <param name="options"> Create Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// Create a feedback entry for a call
+        /// Create a Feedback resource for a call
         /// </summary>
         /// <param name="options"> Create Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -81,11 +81,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         #endif
 
         /// <summary>
-        /// Create a feedback entry for a call
+        /// Create a Feedback resource for a call
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="qualityScore"> An integer from 1 to 5 </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
+        /// <param name="qualityScore"> The call quality expressed as an integer from 1 to 5 </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="issue"> Issues experienced during the call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Feedback </returns> 
@@ -101,11 +101,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// Create a feedback entry for a call
+        /// Create a Feedback resource for a call
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="qualityScore"> An integer from 1 to 5 </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
+        /// <param name="qualityScore"> The call quality expressed as an integer from 1 to 5 </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="issue"> Issues experienced during the call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns> 
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// Fetch an instance of a feedback entry for a call
+        /// Fetch a Feedback resource from a call
         /// </summary>
         /// <param name="options"> Fetch Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// Fetch an instance of a feedback entry for a call
+        /// Fetch a Feedback resource from a call
         /// </summary>
         /// <param name="options"> Fetch Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -161,10 +161,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         #endif
 
         /// <summary>
-        /// Fetch an instance of a feedback entry for a call
+        /// Fetch a Feedback resource from a call
         /// </summary>
         /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Feedback </returns> 
         public static FeedbackResource Fetch(string pathCallSid, 
@@ -177,10 +177,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// Fetch an instance of a feedback entry for a call
+        /// Fetch a Feedback resource from a call
         /// </summary>
         /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns> 
         public static async System.Threading.Tasks.Task<FeedbackResource> FetchAsync(string pathCallSid, 
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// Update a feedback entry for a call
+        /// Update a Feedback resource for a call
         /// </summary>
         /// <param name="options"> Update Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// Update a feedback entry for a call
+        /// Update a Feedback resource for a call
         /// </summary>
         /// <param name="options"> Update Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -233,11 +233,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         #endif
 
         /// <summary>
-        /// Update a feedback entry for a call
+        /// Update a Feedback resource for a call
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="qualityScore"> An integer from 1 to 5 </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
+        /// <param name="qualityScore"> The call quality expressed as an integer from 1 to 5 </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="issue"> Issues experienced during the call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Feedback </returns> 
@@ -253,11 +253,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// Update a feedback entry for a call
+        /// Update a Feedback resource for a call
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="qualityScore"> An integer from 1 to 5 </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
+        /// <param name="qualityScore"> The call quality expressed as an integer from 1 to 5 </param>
+        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
         /// <param name="issue"> Issues experienced during the call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns> 
@@ -291,22 +291,22 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The issues
+        /// Issues experienced during the call
         /// </summary>
         [JsonProperty("issues")]
         [JsonConverter(typeof(StringEnumConverter))]
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         [JsonProperty("quality_score")]
         public int? QualityScore { get; private set; }
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this feedback resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }

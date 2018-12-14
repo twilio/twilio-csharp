@@ -30,6 +30,18 @@ namespace Twilio.Rest.Verify.V1
         /// Indicates whether or not to perform a lookup with each verification started
         /// </summary>
         public bool? LookupEnabled { get; set; }
+        /// <summary>
+        /// Indicates whether or not to ignore SMS verifications for landlines
+        /// </summary>
+        public bool? SkipSmsToLandlines { get; set; }
+        /// <summary>
+        /// Indicates whether or not to require a random number input to deliver the verify code via phone calls
+        /// </summary>
+        public bool? DtmfInputRequired { get; set; }
+        /// <summary>
+        /// Alternative to be used as Service friendly name in phone calls
+        /// </summary>
+        public string TtsName { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -59,6 +71,21 @@ namespace Twilio.Rest.Verify.V1
             if (LookupEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("LookupEnabled", LookupEnabled.Value.ToString().ToLower()));
+            }
+
+            if (SkipSmsToLandlines != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SkipSmsToLandlines", SkipSmsToLandlines.Value.ToString().ToLower()));
+            }
+
+            if (DtmfInputRequired != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DtmfInputRequired", DtmfInputRequired.Value.ToString().ToLower()));
+            }
+
+            if (TtsName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TtsName", TtsName));
             }
 
             return p;
@@ -172,6 +199,18 @@ namespace Twilio.Rest.Verify.V1
         /// Indicates whether or not to perform a lookup with each verification started
         /// </summary>
         public bool? LookupEnabled { get; set; }
+        /// <summary>
+        /// Indicates whether or not to ignore SMS verifications for landlines
+        /// </summary>
+        public bool? SkipSmsToLandlines { get; set; }
+        /// <summary>
+        /// Indicates whether or not to require a random number input to deliver the verify code via phone calls
+        /// </summary>
+        public bool? DtmfInputRequired { get; set; }
+        /// <summary>
+        /// Alternative to be used as Service friendly name in phone calls
+        /// </summary>
+        public string TtsName { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -201,6 +240,21 @@ namespace Twilio.Rest.Verify.V1
             if (LookupEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("LookupEnabled", LookupEnabled.Value.ToString().ToLower()));
+            }
+
+            if (SkipSmsToLandlines != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SkipSmsToLandlines", SkipSmsToLandlines.Value.ToString().ToLower()));
+            }
+
+            if (DtmfInputRequired != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DtmfInputRequired", DtmfInputRequired.Value.ToString().ToLower()));
+            }
+
+            if (TtsName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TtsName", TtsName));
             }
 
             return p;

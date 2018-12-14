@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class ReadIpAccessControlListOptions : ReadOptions<IpAccessControlListResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
 
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class CreateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -80,18 +80,18 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class FetchIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique IpAccessControlList Sid
+        /// A string that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchIpAccessControlListOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique IpAccessControlList Sid </param>
+        /// <param name="pathSid"> A string that identifies the resource to fetch </param>
         public FetchIpAccessControlListOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -113,11 +113,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class UpdateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// A string that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Construct a new UpdateIpAccessControlListOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that identifies the resource to update </param>
         /// <param name="friendlyName"> A human readable description of this resource </param>
         public UpdateIpAccessControlListOptions(string pathSid, string friendlyName)
         {
@@ -157,18 +157,18 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class DeleteIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The unique sid that identifies this account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Delete by unique IpAccessControlList Sid
+        /// A string that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteIpAccessControlListOptions
         /// </summary>
-        /// <param name="pathSid"> Delete by unique IpAccessControlList Sid </param>
+        /// <param name="pathSid"> A string that identifies the resource to delete </param>
         public DeleteIpAccessControlListOptions(string pathSid)
         {
             PathSid = pathSid;

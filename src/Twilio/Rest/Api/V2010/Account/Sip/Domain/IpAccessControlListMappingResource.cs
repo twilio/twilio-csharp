@@ -32,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch an IpAccessControlListMapping resource.
         /// </summary>
         /// <param name="options"> Fetch IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch an IpAccessControlListMapping resource.
         /// </summary>
         /// <param name="options"> Fetch IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -62,11 +62,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch an IpAccessControlListMapping resource.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to fetch. </param>
+        /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlListMapping </returns> 
         public static IpAccessControlListMappingResource Fetch(string pathDomainSid, 
@@ -80,11 +80,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch an IpAccessControlListMapping resource.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to fetch. </param>
+        /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
         public static async System.Threading.Tasks.Task<IpAccessControlListMappingResource> FetchAsync(string pathDomainSid, 
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
 
         /// <summary>
-        /// create
+        /// Create a new IpAccessControlListMapping resource.
         /// </summary>
         /// <param name="options"> Create IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new IpAccessControlListMapping resource.
         /// </summary>
         /// <param name="options"> Create IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -139,11 +139,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new IpAccessControlListMapping resource.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+        /// <param name="ipAccessControlListSid"> The unique id of the IP access control list to map to the SIP domain </param>
+        /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlListMapping </returns> 
         public static IpAccessControlListMappingResource Create(string pathDomainSid, 
@@ -157,11 +157,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new IpAccessControlListMapping resource.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="ipAccessControlListSid"> The ip_access_control_list_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+        /// <param name="ipAccessControlListSid"> The unique id of the IP access control list to map to the SIP domain </param>
+        /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
         public static async System.Threading.Tasks.Task<IpAccessControlListMappingResource> CreateAsync(string pathDomainSid, 
@@ -186,7 +186,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of IpAccessControlListMapping resources.
         /// </summary>
         /// <param name="options"> Read IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of IpAccessControlListMapping resources.
         /// </summary>
         /// <param name="options"> Read IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -220,10 +220,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of IpAccessControlListMapping resources.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+        /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -240,10 +240,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of IpAccessControlListMapping resources.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+        /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -332,7 +332,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
 
         /// <summary>
-        /// delete
+        /// Delete an IpAccessControlListMapping resource.
         /// </summary>
         /// <param name="options"> Delete IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -346,7 +346,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete an IpAccessControlListMapping resource.
         /// </summary>
         /// <param name="options"> Delete IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -361,11 +361,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         #endif
 
         /// <summary>
-        /// delete
+        /// Delete an IpAccessControlListMapping resource.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to delete. </param>
+        /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IpAccessControlListMapping </returns> 
         public static bool Delete(string pathDomainSid, 
@@ -379,11 +379,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete an IpAccessControlListMapping resource.
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> A string that uniquely identifies the SIP Domain </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to delete. </param>
+        /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, 
@@ -415,7 +415,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         }
 
         /// <summary>
-        /// The unique id of the Account that responsible for this resource.
+        /// The unique id of the Account that is responsible for this resource.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
@@ -445,7 +445,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// The subresource_uris
+        /// The list of IP addresses associated with this domain.
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }

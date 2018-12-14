@@ -68,14 +68,21 @@ namespace Twilio.Rest.Verify.V1
         /// <param name="friendlyName"> Friendly name of the service </param>
         /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
         /// <param name="lookupEnabled"> Indicates whether or not to perform a lookup with each verification started </param>
+        /// <param name="skipSmsToLandlines"> Indicates whether or not to ignore SMS verifications for landlines </param>
+        /// <param name="dtmfInputRequired"> Indicates whether or not to require a random number input to deliver the verify
+        ///                         code via phone calls </param>
+        /// <param name="ttsName"> Alternative to be used as Service friendly name in phone calls </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Create(string friendlyName, 
                                              int? codeLength = null, 
                                              bool? lookupEnabled = null, 
+                                             bool? skipSmsToLandlines = null, 
+                                             bool? dtmfInputRequired = null, 
+                                             string ttsName = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled};
+            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName};
             return Create(options, client);
         }
 
@@ -86,14 +93,21 @@ namespace Twilio.Rest.Verify.V1
         /// <param name="friendlyName"> Friendly name of the service </param>
         /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
         /// <param name="lookupEnabled"> Indicates whether or not to perform a lookup with each verification started </param>
+        /// <param name="skipSmsToLandlines"> Indicates whether or not to ignore SMS verifications for landlines </param>
+        /// <param name="dtmfInputRequired"> Indicates whether or not to require a random number input to deliver the verify
+        ///                         code via phone calls </param>
+        /// <param name="ttsName"> Alternative to be used as Service friendly name in phone calls </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName, 
                                                                                      int? codeLength = null, 
                                                                                      bool? lookupEnabled = null, 
+                                                                                     bool? skipSmsToLandlines = null, 
+                                                                                     bool? dtmfInputRequired = null, 
+                                                                                     string ttsName = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled};
+            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName};
             return await CreateAsync(options, client);
         }
         #endif
@@ -413,15 +427,22 @@ namespace Twilio.Rest.Verify.V1
         /// <param name="friendlyName"> Friendly name of the service </param>
         /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
         /// <param name="lookupEnabled"> Indicates whether or not to perform a lookup with each verification started </param>
+        /// <param name="skipSmsToLandlines"> Indicates whether or not to ignore SMS verifications for landlines </param>
+        /// <param name="dtmfInputRequired"> Indicates whether or not to require a random number input to deliver the verify
+        ///                         code via phone calls </param>
+        /// <param name="ttsName"> Alternative to be used as Service friendly name in phone calls </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Update(string pathSid, 
                                              string friendlyName = null, 
                                              int? codeLength = null, 
                                              bool? lookupEnabled = null, 
+                                             bool? skipSmsToLandlines = null, 
+                                             bool? dtmfInputRequired = null, 
+                                             string ttsName = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName};
             return Update(options, client);
         }
 
@@ -433,15 +454,22 @@ namespace Twilio.Rest.Verify.V1
         /// <param name="friendlyName"> Friendly name of the service </param>
         /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
         /// <param name="lookupEnabled"> Indicates whether or not to perform a lookup with each verification started </param>
+        /// <param name="skipSmsToLandlines"> Indicates whether or not to ignore SMS verifications for landlines </param>
+        /// <param name="dtmfInputRequired"> Indicates whether or not to require a random number input to deliver the verify
+        ///                         code via phone calls </param>
+        /// <param name="ttsName"> Alternative to be used as Service friendly name in phone calls </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, 
                                                                                      string friendlyName = null, 
                                                                                      int? codeLength = null, 
                                                                                      bool? lookupEnabled = null, 
+                                                                                     bool? skipSmsToLandlines = null, 
+                                                                                     bool? dtmfInputRequired = null, 
+                                                                                     string ttsName = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -489,6 +517,21 @@ namespace Twilio.Rest.Verify.V1
         /// </summary>
         [JsonProperty("lookup_enabled")]
         public bool? LookupEnabled { get; private set; }
+        /// <summary>
+        /// Indicates whether or not to ignore SMS verifications for landlines
+        /// </summary>
+        [JsonProperty("skip_sms_to_landlines")]
+        public bool? SkipSmsToLandlines { get; private set; }
+        /// <summary>
+        /// Indicates whether or not to require a random number input to deliver the verify code via phone calls
+        /// </summary>
+        [JsonProperty("dtmf_input_required")]
+        public bool? DtmfInputRequired { get; private set; }
+        /// <summary>
+        /// Alternative to be used as Service friendly name in phone calls
+        /// </summary>
+        [JsonProperty("tts_name")]
+        public string TtsName { get; private set; }
         /// <summary>
         /// The date this Service was created
         /// </summary>

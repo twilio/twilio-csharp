@@ -315,6 +315,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// The post_work_activity_sid
         /// </summary>
         public string PostWorkActivitySid { get; set; }
+        /// <summary>
+        /// The end_conference_on_customer_exit
+        /// </summary>
+        public bool? EndConferenceOnCustomerExit { get; set; }
+        /// <summary>
+        /// The beep_on_customer_entrance
+        /// </summary>
+        public bool? BeepOnCustomerEntrance { get; set; }
 
         /// <summary>
         /// Construct a new UpdateReservationOptions
@@ -581,6 +589,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             if (PostWorkActivitySid != null)
             {
                 p.Add(new KeyValuePair<string, string>("PostWorkActivitySid", PostWorkActivitySid.ToString()));
+            }
+
+            if (EndConferenceOnCustomerExit != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EndConferenceOnCustomerExit", EndConferenceOnCustomerExit.Value.ToString().ToLower()));
+            }
+
+            if (BeepOnCustomerEntrance != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BeepOnCustomerEntrance", BeepOnCustomerEntrance.Value.ToString().ToLower()));
             }
 
             return p;
