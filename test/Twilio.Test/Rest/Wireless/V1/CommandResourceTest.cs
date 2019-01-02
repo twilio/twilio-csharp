@@ -147,12 +147,12 @@ namespace Twilio.Tests.Rest.Wireless.V1
                 "/v1/Commands",
                 ""
             );
-            request.AddPostParam("Command", Serialize("Command"));
+            request.AddPostParam("Command", Serialize("command"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                CommandResource.Create("Command", client: twilioRestClient);
+                CommandResource.Create("command", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -170,7 +170,7 @@ namespace Twilio.Tests.Rest.Wireless.V1
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"command\": \"command\",\"command_mode\": \"text\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"delivery_receipt_requested\": true,\"sim_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"direction\": \"from_sim\",\"sid\": \"DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"queued\",\"transport\": \"sms\",\"url\": \"https://wireless.twilio.com/v1/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = CommandResource.Create("Command", client: twilioRestClient);
+            var response = CommandResource.Create("command", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -185,7 +185,7 @@ namespace Twilio.Tests.Rest.Wireless.V1
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"command\": \"command\",\"command_mode\": \"binary\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"delivery_receipt_requested\": true,\"direction\": \"to_sim\",\"sid\": \"DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sim_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"queued\",\"transport\": \"ip\",\"url\": \"https://wireless.twilio.com/v1/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = CommandResource.Create("Command", client: twilioRestClient);
+            var response = CommandResource.Create("command", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

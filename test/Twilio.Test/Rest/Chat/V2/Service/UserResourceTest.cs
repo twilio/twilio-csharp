@@ -102,12 +102,12 @@ namespace Twilio.Tests.Rest.Chat.V2.Service
                 "/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Users",
                 ""
             );
-            request.AddPostParam("Identity", Serialize("Identity"));
+            request.AddPostParam("Identity", Serialize("identity"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                UserResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Identity", client: twilioRestClient);
+                UserResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -125,7 +125,7 @@ namespace Twilio.Tests.Rest.Chat.V2.Service
                                          "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"jing\",\"attributes\": null,\"is_online\": true,\"is_notifiable\": null,\"friendly_name\": null,\"joined_channels_count\": 0,\"date_created\": \"2016-03-24T21:05:19Z\",\"date_updated\": \"2016-03-24T21:05:19Z\",\"links\": {\"user_channels\": \"https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels\",\"user_bindings\": \"https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings\"},\"url\": \"https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = UserResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Identity", client: twilioRestClient);
+            var response = UserResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

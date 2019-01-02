@@ -117,13 +117,13 @@ namespace Twilio.Tests.Rest.Preview.Understand.Assistant.FieldType
                 "/understand/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/FieldTypes/UBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/FieldValues",
                 ""
             );
-            request.AddPostParam("Language", Serialize("Language"));
-            request.AddPostParam("Value", Serialize("Value"));
+            request.AddPostParam("Language", Serialize("language"));
+            request.AddPostParam("Value", Serialize("value"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                FieldValueResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Language", "Value", client: twilioRestClient);
+                FieldValueResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "language", "value", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -141,7 +141,7 @@ namespace Twilio.Tests.Rest.Preview.Understand.Assistant.FieldType
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/understand/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/FieldTypes/UBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/FieldValues/UCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"field_type_sid\": \"UBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"language\": \"language\",\"assistant_sid\": \"UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"value\": \"value\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"date_created\": \"2015-07-30T20:00:00Z\",\"sid\": \"UCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"synonym_of\": \"UCbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}"
                                      ));
 
-            var response = FieldValueResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Language", "Value", client: twilioRestClient);
+            var response = FieldValueResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "language", "value", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

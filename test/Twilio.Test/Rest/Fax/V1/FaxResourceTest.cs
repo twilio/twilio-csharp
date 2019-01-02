@@ -117,13 +117,13 @@ namespace Twilio.Tests.Rest.Fax.V1
                 "/v1/Faxes",
                 ""
             );
-            request.AddPostParam("To", Serialize("To"));
+            request.AddPostParam("To", Serialize("to"));
             request.AddPostParam("MediaUrl", Serialize(new Uri("https://example.com")));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                FaxResource.Create("To", new Uri("https://example.com"), client: twilioRestClient);
+                FaxResource.Create("to", new Uri("https://example.com"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -141,7 +141,7 @@ namespace Twilio.Tests.Rest.Fax.V1
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"v1\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"direction\": \"outbound\",\"from\": \"+14155551234\",\"media_url\": null,\"media_sid\": null,\"num_pages\": null,\"price\": null,\"price_unit\": null,\"quality\": \"superfine\",\"sid\": \"FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"queued\",\"to\": \"+14155554321\",\"duration\": null,\"links\": {\"media\": \"https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media\"},\"url\": \"https://fax.twilio.com/v1/Faxes/FXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = FaxResource.Create("To", new Uri("https://example.com"), client: twilioRestClient);
+            var response = FaxResource.Create("to", new Uri("https://example.com"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 

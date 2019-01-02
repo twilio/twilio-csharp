@@ -117,12 +117,12 @@ namespace Twilio.Tests.Rest.Preview.Wireless
                 "/wireless/Commands",
                 ""
             );
-            request.AddPostParam("Command", Serialize("Command"));
+            request.AddPostParam("Command", Serialize("command"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                CommandResource.Create("Command", client: twilioRestClient);
+                CommandResource.Create("command", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -140,7 +140,7 @@ namespace Twilio.Tests.Rest.Preview.Wireless
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"command\": \"command\",\"command_mode\": \"command_mode\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"device_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sim_sid\": \"DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"direction\": \"direction\",\"sid\": \"DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"status\",\"url\": \"https://preview.twilio.com/wireless/Commands/DCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = CommandResource.Create("Command", client: twilioRestClient);
+            var response = CommandResource.Create("command", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

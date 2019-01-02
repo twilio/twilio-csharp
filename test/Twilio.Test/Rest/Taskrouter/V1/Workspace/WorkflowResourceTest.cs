@@ -189,13 +189,13 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                 "/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Workflows",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
-            request.AddPostParam("Configuration", Serialize("Configuration"));
+            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("Configuration", Serialize("configuration"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                WorkflowResource.Create("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "FriendlyName", "Configuration", client: twilioRestClient);
+                WorkflowResource.Create("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", "configuration", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -213,7 +213,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"assignment_callback_url\": \"http://example.com\",\"configuration\": \"task-routing:\\\\n- filter: \\\\n- 1 == 1\\\\ntarget:\\\\n- queue: WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\\\nset-priority: 0\\\\n\",\"date_created\": \"2014-05-14T10:50:02Z\",\"date_updated\": \"2014-05-14T23:26:06Z\",\"document_content_type\": \"application/json\",\"fallback_assignment_callback_url\": null,\"friendly_name\": \"Default Fifo Workflow\",\"sid\": \"WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"task_reservation_timeout\": 120,\"url\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"workspace_sid\": \"WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"statistics\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Statistics\",\"real_time_statistics\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/RealTimeStatistics\",\"cumulative_statistics\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Workflows/WFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CumulativeStatistics\"}}"
                                      ));
 
-            var response = WorkflowResource.Create("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "FriendlyName", "Configuration", client: twilioRestClient);
+            var response = WorkflowResource.Create("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", "configuration", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

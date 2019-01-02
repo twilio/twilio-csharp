@@ -102,12 +102,12 @@ namespace Twilio.Tests.Rest.Proxy.V1
                 "/v1/Services",
                 ""
             );
-            request.AddPostParam("UniqueName", Serialize("UniqueName"));
+            request.AddPostParam("UniqueName", Serialize("uniqueName"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ServiceResource.Create("UniqueName", client: twilioRestClient);
+                ServiceResource.Create("uniqueName", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -125,7 +125,7 @@ namespace Twilio.Tests.Rest.Proxy.V1
                                          "{\"sid\": \"KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"chat_instance_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"default_ttl\": 3600,\"callback_url\": \"http://www.example.com\",\"geo_match_level\": \"country\",\"number_selection_behavior\": \"prefer_sticky\",\"intercept_callback_url\": \"http://www.example.com\",\"out_of_session_callback_url\": \"http://www.example.com\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"sessions\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Sessions\",\"phone_numbers\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers\",\"short_codes\": \"https://proxy.twilio.com/v1/Services/KSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes\"}}"
                                      ));
 
-            var response = ServiceResource.Create("UniqueName", client: twilioRestClient);
+            var response = ServiceResource.Create("uniqueName", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

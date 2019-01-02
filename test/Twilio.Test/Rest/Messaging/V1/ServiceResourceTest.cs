@@ -30,12 +30,12 @@ namespace Twilio.Tests.Rest.Messaging.V1
                 "/v1/Services",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ServiceResource.Create("FriendlyName", client: twilioRestClient);
+                ServiceResource.Create("friendlyName", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -53,7 +53,7 @@ namespace Twilio.Tests.Rest.Messaging.V1
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:12:31Z\",\"date_updated\": \"2015-07-30T20:12:33Z\",\"friendly_name\": \"My Service!\",\"inbound_request_url\": \"https://www.example.com/\",\"inbound_method\": \"POST\",\"fallback_url\": \"https://www.example.com\",\"fallback_method\": \"GET\",\"status_callback\": \"https://www.example.com\",\"sticky_sender\": true,\"smart_encoding\": false,\"mms_converter\": true,\"fallback_to_long_code\": true,\"scan_message_content\": \"inherit\",\"area_code_geomatch\": true,\"validity_period\": 600,\"synchronous_validation\": true,\"links\": {\"phone_numbers\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/PhoneNumbers\",\"short_codes\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/ShortCodes\",\"alpha_senders\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/AlphaSenders\",\"messages\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages\",\"broadcasts\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Broadcasts\"},\"url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = ServiceResource.Create("FriendlyName", client: twilioRestClient);
+            var response = ServiceResource.Create("friendlyName", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

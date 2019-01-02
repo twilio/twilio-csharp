@@ -102,14 +102,14 @@ namespace Twilio.Tests.Rest.IpMessaging.V2.Service
                 "/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Roles",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
             request.AddPostParam("Type", Serialize(RoleResource.RoleTypeEnum.Channel));
-            request.AddPostParam("Permission", Serialize("Permission"));
+            request.AddPostParam("Permission", Serialize("permission"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                RoleResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "FriendlyName", RoleResource.RoleTypeEnum.Channel, Promoter.ListOfOne("Permission"), client: twilioRestClient);
+                RoleResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", RoleResource.RoleTypeEnum.Channel, Promoter.ListOfOne("permission"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -127,7 +127,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V2.Service
                                          "{\"sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"channel user\",\"type\": \"channel\",\"permissions\": [\"sendMessage\",\"leaveChannel\",\"editOwnMessage\",\"deleteOwnMessage\"],\"date_created\": \"2016-03-03T19:47:15Z\",\"date_updated\": \"2016-03-03T19:47:15Z\",\"url\": \"https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = RoleResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "FriendlyName", RoleResource.RoleTypeEnum.Channel, Promoter.ListOfOne("Permission"), client: twilioRestClient);
+            var response = RoleResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", RoleResource.RoleTypeEnum.Channel, Promoter.ListOfOne("permission"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -192,12 +192,12 @@ namespace Twilio.Tests.Rest.IpMessaging.V2.Service
                 "/v2/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Roles/RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
-            request.AddPostParam("Permission", Serialize("Permission"));
+            request.AddPostParam("Permission", Serialize("permission"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                RoleResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", Promoter.ListOfOne("Permission"), client: twilioRestClient);
+                RoleResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", Promoter.ListOfOne("permission"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -215,7 +215,7 @@ namespace Twilio.Tests.Rest.IpMessaging.V2.Service
                                          "{\"sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"channel user\",\"type\": \"channel\",\"permissions\": [\"sendMessage\",\"leaveChannel\",\"editOwnMessage\",\"deleteOwnMessage\"],\"date_created\": \"2016-03-03T19:47:15Z\",\"date_updated\": \"2016-03-03T19:47:15Z\",\"url\": \"https://chat.twilio.com/v2/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Roles/RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = RoleResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", Promoter.ListOfOne("Permission"), client: twilioRestClient);
+            var response = RoleResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "RLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", Promoter.ListOfOne("permission"), client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

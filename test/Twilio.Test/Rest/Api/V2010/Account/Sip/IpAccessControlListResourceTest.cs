@@ -82,13 +82,13 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip
                 "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/IpAccessControlLists.json",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                IpAccessControlListResource.Create("FriendlyName", client: twilioRestClient);
+                IpAccessControlListResource.Create("friendlyName", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -106,7 +106,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 17 Jul 2015 21:25:15 +0000\",\"date_updated\": \"Fri, 17 Jul 2015 21:25:15 +0000\",\"friendly_name\": \"aaaa\",\"sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"subresource_uris\": {\"ip_addresses\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses.json\"},\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
-            var response = IpAccessControlListResource.Create("FriendlyName", client: twilioRestClient);
+            var response = IpAccessControlListResource.Create("friendlyName", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -157,13 +157,13 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip
                 "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/IpAccessControlLists/ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                IpAccessControlListResource.Update("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "FriendlyName", client: twilioRestClient);
+                IpAccessControlListResource.Update("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -181,7 +181,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 17 Jul 2015 21:25:15 +0000\",\"date_updated\": \"Fri, 17 Jul 2015 21:25:15 +0000\",\"friendly_name\": \"aaaa\",\"sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"subresource_uris\": {\"ip_addresses\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses.json\"},\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
-            var response = IpAccessControlListResource.Update("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "FriendlyName", client: twilioRestClient);
+            var response = IpAccessControlListResource.Update("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

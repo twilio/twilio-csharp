@@ -117,13 +117,13 @@ namespace Twilio.Tests.Rest.Preview.Understand.Assistant
                 "/understand/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Queries",
                 ""
             );
-            request.AddPostParam("Language", Serialize("Language"));
-            request.AddPostParam("Query", Serialize("Query"));
+            request.AddPostParam("Language", Serialize("language"));
+            request.AddPostParam("Query", Serialize("query"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                QueryResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Language", "Query", client: twilioRestClient);
+                QueryResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "language", "query", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -141,7 +141,7 @@ namespace Twilio.Tests.Rest.Preview.Understand.Assistant
                                          "{\"language\": \"language\",\"date_created\": \"2015-07-30T20:00:00Z\",\"model_build_sid\": \"UGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"query\": \"query\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"status\": \"status\",\"sample_sid\": \"UFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"assistant_sid\": \"UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"results\": {\"task\": {\"name\": \"name\",\"task_sid\": \"UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"confidence\": 0.9},\"entities\": [{\"name\": \"name\",\"value\": \"value\",\"type\": \"type\"}]},\"url\": \"https://preview.twilio.com/understand/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queries/UHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"UHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"source_channel\": \"voice\"}"
                                      ));
 
-            var response = QueryResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Language", "Query", client: twilioRestClient);
+            var response = QueryResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "language", "query", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

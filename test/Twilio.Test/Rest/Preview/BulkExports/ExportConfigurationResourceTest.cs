@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Preview.BulkExports
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Preview,
-                "/BulkExports/Exports/PathResourceType/Configuration",
+                "/BulkExports/Exports/pathResourceType/Configuration",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ExportConfigurationResource.Fetch("PathResourceType", client: twilioRestClient);
+                ExportConfigurationResource.Fetch("pathResourceType", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Preview.BulkExports
                                          "{\"url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Configuration\",\"enabled\": true,\"webhook_url\": \"\",\"webhook_method\": \"\",\"resource_type\": \"Calls\"}"
                                      ));
 
-            var response = ExportConfigurationResource.Fetch("PathResourceType", client: twilioRestClient);
+            var response = ExportConfigurationResource.Fetch("pathResourceType", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -63,14 +63,14 @@ namespace Twilio.Tests.Rest.Preview.BulkExports
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Preview,
-                "/BulkExports/Exports/PathResourceType/Configuration",
+                "/BulkExports/Exports/pathResourceType/Configuration",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ExportConfigurationResource.Update("PathResourceType", client: twilioRestClient);
+                ExportConfigurationResource.Update("pathResourceType", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -88,7 +88,7 @@ namespace Twilio.Tests.Rest.Preview.BulkExports
                                          "{\"url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Configuration\",\"enabled\": true,\"webhook_url\": \"\",\"resource_type\": \"Calls\",\"webhook_method\": \"\"}"
                                      ));
 
-            var response = ExportConfigurationResource.Update("PathResourceType", client: twilioRestClient);
+            var response = ExportConfigurationResource.Update("pathResourceType", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

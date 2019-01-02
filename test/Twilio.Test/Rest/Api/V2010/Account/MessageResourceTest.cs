@@ -30,13 +30,13 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                 "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages.json",
                 ""
             );
-            request.AddPostParam("To", Serialize(new Twilio.Types.PhoneNumber("+15017122661")));
+            request.AddPostParam("To", Serialize(new Twilio.Types.PhoneNumber("+15558675310")));
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                MessageResource.Create(new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
+                MessageResource.Create(new Twilio.Types.PhoneNumber("+15558675310"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -54,7 +54,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"body\": \"Hello! \\ud83d\\udc4d\",\"date_created\": \"Thu, 30 Jul 2015 20:12:31 +0000\",\"date_sent\": \"Thu, 30 Jul 2015 20:12:33 +0000\",\"date_updated\": \"Thu, 30 Jul 2015 20:12:33 +0000\",\"direction\": \"outbound-api\",\"error_code\": null,\"error_message\": null,\"from\": \"+14155552345\",\"messaging_service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"num_media\": \"0\",\"num_segments\": \"1\",\"price\": \"-0.00750\",\"price_unit\": \"USD\",\"sid\": \"SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"sent\",\"subresource_uris\": {\"media\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media.json\"},\"to\": \"+14155552345\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
-            var response = MessageResource.Create(new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
+            var response = MessageResource.Create(new Twilio.Types.PhoneNumber("+15558675310"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -194,13 +194,13 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                 "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages/MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json",
                 ""
             );
-            request.AddPostParam("Body", Serialize("Body"));
+            request.AddPostParam("Body", Serialize("body"));
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                MessageResource.Update("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Body", client: twilioRestClient);
+                MessageResource.Update("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "body", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -218,7 +218,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"body\": \"Hello! \\ud83d\\udc4d\",\"date_created\": \"Thu, 30 Jul 2015 20:12:31 +0000\",\"date_sent\": \"Thu, 30 Jul 2015 20:12:33 +0000\",\"date_updated\": \"Thu, 30 Jul 2015 20:12:33 +0000\",\"direction\": \"outbound-api\",\"error_code\": null,\"error_message\": null,\"from\": \"+14155552345\",\"messaging_service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"num_media\": \"0\",\"num_segments\": \"1\",\"price\": \"-0.00750\",\"price_unit\": \"USD\",\"sid\": \"SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"sent\",\"subresource_uris\": {\"media\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media.json\"},\"to\": \"+14155552345\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
-            var response = MessageResource.Update("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Body", client: twilioRestClient);
+            var response = MessageResource.Update("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "body", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

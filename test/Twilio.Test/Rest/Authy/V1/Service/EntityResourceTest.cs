@@ -30,12 +30,12 @@ namespace Twilio.Tests.Rest.Authy.V1.Service
                 "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities",
                 ""
             );
-            request.AddPostParam("Identity", Serialize("Identity"));
+            request.AddPostParam("Identity", Serialize("identity"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                EntityResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Identity", client: twilioRestClient);
+                EntityResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -53,7 +53,7 @@ namespace Twilio.Tests.Rest.Authy.V1.Service
                                          "{\"sid\": \"YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"ff483d1ff591898a9942916050d2ca3f\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f\",\"links\": {\"factors\": \"https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors\"}}"
                                      ));
 
-            var response = EntityResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Identity", client: twilioRestClient);
+            var response = EntityResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -64,14 +64,14 @@ namespace Twilio.Tests.Rest.Authy.V1.Service
             var request = new Request(
                 HttpMethod.Delete,
                 Twilio.Rest.Domain.Authy,
-                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/PathIdentity",
+                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/pathIdentity",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                EntityResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", client: twilioRestClient);
+                EntityResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -89,7 +89,7 @@ namespace Twilio.Tests.Rest.Authy.V1.Service
                                          "null"
                                      ));
 
-            var response = EntityResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", client: twilioRestClient);
+            var response = EntityResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -100,14 +100,14 @@ namespace Twilio.Tests.Rest.Authy.V1.Service
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Authy,
-                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/PathIdentity",
+                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/pathIdentity",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                EntityResource.Fetch("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", client: twilioRestClient);
+                EntityResource.Fetch("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -125,7 +125,7 @@ namespace Twilio.Tests.Rest.Authy.V1.Service
                                          "{\"sid\": \"YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"ff483d1ff591898a9942916050d2ca3f\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f\",\"links\": {\"factors\": \"https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors\"}}"
                                      ));
 
-            var response = EntityResource.Fetch("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", client: twilioRestClient);
+            var response = EntityResource.Fetch("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

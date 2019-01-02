@@ -12,13 +12,13 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Preview.BulkExports;
+using Twilio.Rest.Insights.V1;
 
-namespace Twilio.Tests.Rest.Preview.BulkExports 
+namespace Twilio.Tests.Rest.Insights.V1 
 {
 
     [TestFixture]
-    public class ExportTest : TwilioTest 
+    public class CallSummaryTest : TwilioTest 
     {
         [Test]
         public void TestFetchRequest()
@@ -26,15 +26,15 @@ namespace Twilio.Tests.Rest.Preview.BulkExports
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Get,
-                Twilio.Rest.Domain.Preview,
-                "/BulkExports/Exports/pathResourceType",
+                Twilio.Rest.Domain.Insights,
+                "/v1/Voice/CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Summary",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ExportResource.Fetch("pathResourceType", client: twilioRestClient);
+                CallSummaryResource.Fetch("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,10 +49,10 @@ namespace Twilio.Tests.Rest.Preview.BulkExports
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"resource_type\": \"Calls\",\"url\": \"https://preview.twilio.com/BulkExports/Exports/Calls\",\"links\": {\"days\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days\"}}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_type\": \"carrier\",\"call_state\": \"ringing\",\"processing_state\": \"complete\",\"direction\": \"inbound\",\"disconnected_by\": \"callee\",\"start_time\": \"2015-07-30T20:00:00Z\",\"end_time\": \"2015-07-30T20:00:00Z\",\"duration\": 100,\"connect_duration\": 99,\"from\": {},\"to\": {},\"carrier_edge\": {},\"client_edge\": {},\"sip_edge\": {},\"tags\": [\"tags\"],\"url\": \"https://insights.twilio.com/v1/Voice/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Summary\"}"
                                      ));
 
-            var response = ExportResource.Fetch("pathResourceType", client: twilioRestClient);
+            var response = CallSummaryResource.Fetch("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

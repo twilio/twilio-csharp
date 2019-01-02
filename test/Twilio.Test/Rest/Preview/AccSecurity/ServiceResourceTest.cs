@@ -30,12 +30,12 @@ namespace Twilio.Tests.Rest.Preview.AccSecurity
                 "/Verification/Services",
                 ""
             );
-            request.AddPostParam("Name", Serialize("Name"));
+            request.AddPostParam("Name", Serialize("name"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ServiceResource.Create("Name", client: twilioRestClient);
+                ServiceResource.Create("name", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -53,7 +53,7 @@ namespace Twilio.Tests.Rest.Preview.AccSecurity
                                          "{\"sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"name\": \"name\",\"code_length\": 4,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://preview.twilio.com/Verification/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"verification_checks\": \"https://preview.twilio.com/Verification/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/VerificationCheck\",\"verifications\": \"https://preview.twilio.com/Verification/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Verifications\"}}"
                                      ));
 
-            var response = ServiceResource.Create("Name", client: twilioRestClient);
+            var response = ServiceResource.Create("name", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

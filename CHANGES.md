@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2019-01-02] Version 5.24.1
+----------------------------
+**Library**
+- PR #459: Remove unused dependency Microsoft.IdentityModel.Logging. Thanks to @yannieyip!
+
+**Insights**
+- Initial revision.
+
+
 [2018-12-14] Version 5.24.0
 ----------------------------
 **Authy**

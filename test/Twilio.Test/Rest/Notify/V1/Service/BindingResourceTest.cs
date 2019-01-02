@@ -102,14 +102,14 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
                 "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Bindings",
                 ""
             );
-            request.AddPostParam("Identity", Serialize("Identity"));
+            request.AddPostParam("Identity", Serialize("identity"));
             request.AddPostParam("BindingType", Serialize(BindingResource.BindingTypeEnum.Apn));
-            request.AddPostParam("Address", Serialize("Address"));
+            request.AddPostParam("Address", Serialize("address"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                BindingResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Identity", BindingResource.BindingTypeEnum.Apn, "Address", client: twilioRestClient);
+                BindingResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", BindingResource.BindingTypeEnum.Apn, "address", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -127,7 +127,7 @@ namespace Twilio.Tests.Rest.Notify.V1.Service
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"address\": \"a7c658f4111ec4ff5a1a647f9d0edd819025b9f20522d2fae897049f32873e73\",\"binding_type\": \"apn\",\"credential_sid\": null,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"endpoint\": \"26607274\",\"identity\": \"24987039\",\"notification_protocol_version\": \"3\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"tags\": [\"26607274\"],\"links\": {\"user\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Users/24987039\"},\"url\": \"https://notify.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Bindings/BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = BindingResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Identity", BindingResource.BindingTypeEnum.Apn, "Address", client: twilioRestClient);
+            var response = BindingResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", BindingResource.BindingTypeEnum.Apn, "address", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

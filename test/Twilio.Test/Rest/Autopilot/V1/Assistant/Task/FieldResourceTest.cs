@@ -117,13 +117,13 @@ namespace Twilio.Tests.Rest.Autopilot.V1.Assistant.Task
                 "/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Tasks/UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Fields",
                 ""
             );
-            request.AddPostParam("FieldType", Serialize("FieldType"));
-            request.AddPostParam("UniqueName", Serialize("UniqueName"));
+            request.AddPostParam("FieldType", Serialize("fieldType"));
+            request.AddPostParam("UniqueName", Serialize("uniqueName"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                FieldResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "FieldType", "UniqueName", client: twilioRestClient);
+                FieldResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "fieldType", "uniqueName", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -141,7 +141,7 @@ namespace Twilio.Tests.Rest.Autopilot.V1.Assistant.Task
                                          "{\"url\": \"https://autopilot.twilio.com/v1/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Fields/UEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"assistant_sid\": \"UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"task_sid\": \"UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"sid\": \"UEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"field_type\": \"field_type\"}"
                                      ));
 
-            var response = FieldResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "FieldType", "UniqueName", client: twilioRestClient);
+            var response = FieldResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "fieldType", "uniqueName", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Authy.V1.Service.Entity.Factor
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Authy,
-                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/PathIdentity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Challenges",
+                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/pathIdentity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Challenges",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ChallengeResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                ChallengeResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Authy.V1.Service.Entity.Factor
                                          "{\"sid\": \"YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"entity_sid\": \"YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"ff483d1ff591898a9942916050d2ca3f\",\"factor_sid\": \"YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"date_responded\": \"2015-07-30T20:00:00Z\",\"expiration_date\": \"2015-07-30T20:00:00Z\",\"status\": \"pending\",\"responded_reason\": \"none\",\"details\": \"Hi! Mr. John Doe, would you like to sign up?\",\"hidden_details\": \"Hidden details about the sign up\",\"factor_type\": \"sms\",\"url\": \"https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = ChallengeResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = ChallengeResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -63,14 +63,14 @@ namespace Twilio.Tests.Rest.Authy.V1.Service.Entity.Factor
             var request = new Request(
                 HttpMethod.Delete,
                 Twilio.Rest.Domain.Authy,
-                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/PathIdentity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Challenges/PathSid",
+                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/pathIdentity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Challenges/pathSid",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ChallengeResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathSid", client: twilioRestClient);
+                ChallengeResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathSid", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -88,7 +88,7 @@ namespace Twilio.Tests.Rest.Authy.V1.Service.Entity.Factor
                                          "null"
                                      ));
 
-            var response = ChallengeResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathSid", client: twilioRestClient);
+            var response = ChallengeResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathSid", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -99,14 +99,14 @@ namespace Twilio.Tests.Rest.Authy.V1.Service.Entity.Factor
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Authy,
-                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/PathIdentity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Challenges/PathSid",
+                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/pathIdentity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Challenges/pathSid",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ChallengeResource.Fetch("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathSid", client: twilioRestClient);
+                ChallengeResource.Fetch("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathSid", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -124,7 +124,7 @@ namespace Twilio.Tests.Rest.Authy.V1.Service.Entity.Factor
                                          "{\"sid\": \"YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"entity_sid\": \"YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"ff483d1ff591898a9942916050d2ca3f\",\"factor_sid\": \"YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"date_responded\": \"2015-07-30T20:00:00Z\",\"expiration_date\": \"2015-07-30T20:00:00Z\",\"status\": \"pending\",\"responded_reason\": \"none\",\"details\": \"details\",\"hidden_details\": \"hidden_details\",\"factor_type\": \"sms\",\"url\": \"https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = ChallengeResource.Fetch("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathSid", client: twilioRestClient);
+            var response = ChallengeResource.Fetch("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathSid", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -139,7 +139,7 @@ namespace Twilio.Tests.Rest.Authy.V1.Service.Entity.Factor
                                          "{\"sid\": \"YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"entity_sid\": \"YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"ff483d1ff591898a9942916050d2ca3f\",\"factor_sid\": \"YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"date_responded\": \"2015-07-30T20:00:00Z\",\"expiration_date\": \"2015-07-30T20:00:00Z\",\"status\": \"pending\",\"responded_reason\": \"none\",\"details\": \"details\",\"hidden_details\": \"hidden_details\",\"factor_type\": \"sms\",\"url\": \"https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = ChallengeResource.Fetch("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathSid", client: twilioRestClient);
+            var response = ChallengeResource.Fetch("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathSid", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -150,14 +150,14 @@ namespace Twilio.Tests.Rest.Authy.V1.Service.Entity.Factor
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Authy,
-                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/PathIdentity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Challenges/PathSid",
+                "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/pathIdentity/Factors/YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Challenges/pathSid",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ChallengeResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathSid", client: twilioRestClient);
+                ChallengeResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathSid", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -175,7 +175,7 @@ namespace Twilio.Tests.Rest.Authy.V1.Service.Entity.Factor
                                          "{\"sid\": \"YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"entity_sid\": \"YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"ff483d1ff591898a9942916050d2ca3f\",\"factor_sid\": \"YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"date_responded\": \"2015-07-30T20:00:00Z\",\"expiration_date\": \"2015-07-30T20:00:00Z\",\"status\": \"approved\",\"responded_reason\": \"none\",\"details\": \"Hi! Mr. John Doe, would you like to sign up?\",\"hidden_details\": \"Hidden details about the sign up\",\"factor_type\": \"sms\",\"url\": \"https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = ChallengeResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathSid", client: twilioRestClient);
+            var response = ChallengeResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathSid", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -190,7 +190,7 @@ namespace Twilio.Tests.Rest.Authy.V1.Service.Entity.Factor
                                          "{\"sid\": \"YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"entity_sid\": \"YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"ff483d1ff591898a9942916050d2ca3f\",\"factor_sid\": \"YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"date_responded\": \"2015-07-30T20:00:00Z\",\"expiration_date\": \"2015-07-30T20:00:00Z\",\"status\": \"approved\",\"responded_reason\": \"none\",\"details\": \"Hi! Mr. John Doe, would you like to sign up?\",\"hidden_details\": \"Hidden details about the sign up\",\"factor_type\": \"sms\",\"url\": \"https://authy.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors/YFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Challenges/YCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = ChallengeResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PathSid", client: twilioRestClient);
+            var response = ChallengeResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathIdentity", "YFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathSid", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

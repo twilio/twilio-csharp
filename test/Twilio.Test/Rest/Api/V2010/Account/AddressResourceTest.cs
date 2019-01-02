@@ -30,18 +30,18 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                 "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Addresses.json",
                 ""
             );
-            request.AddPostParam("CustomerName", Serialize("CustomerName"));
-            request.AddPostParam("Street", Serialize("Street"));
-            request.AddPostParam("City", Serialize("City"));
-            request.AddPostParam("Region", Serialize("Region"));
-            request.AddPostParam("PostalCode", Serialize("PostalCode"));
+            request.AddPostParam("CustomerName", Serialize("customerName"));
+            request.AddPostParam("Street", Serialize("street"));
+            request.AddPostParam("City", Serialize("city"));
+            request.AddPostParam("Region", Serialize("region"));
+            request.AddPostParam("PostalCode", Serialize("postalCode"));
             request.AddPostParam("IsoCountry", Serialize("US"));
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                AddressResource.Create("CustomerName", "Street", "City", "Region", "PostalCode", "US", client: twilioRestClient);
+                AddressResource.Create("customerName", "street", "city", "region", "postalCode", "US", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -59,7 +59,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"city\": \"SF\",\"customer_name\": \"name\",\"date_created\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"date_updated\": \"Tue, 18 Aug 2015 17:07:30 +0000\",\"emergency_enabled\": false,\"friendly_name\": null,\"iso_country\": \"US\",\"postal_code\": \"94019\",\"region\": \"CA\",\"sid\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"street\": \"4th\",\"validated\": false,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Addresses/ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
-            var response = AddressResource.Create("CustomerName", "Street", "City", "Region", "PostalCode", "US", client: twilioRestClient);
+            var response = AddressResource.Create("customerName", "street", "city", "region", "postalCode", "US", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

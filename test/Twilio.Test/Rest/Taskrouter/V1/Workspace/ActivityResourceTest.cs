@@ -189,12 +189,12 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                 "/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Activities",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ActivityResource.Create("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "FriendlyName", client: twilioRestClient);
+                ActivityResource.Create("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -212,7 +212,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"available\": true,\"date_created\": \"2014-05-14T10:50:02Z\",\"date_updated\": \"2014-05-14T23:26:06Z\",\"friendly_name\": \"New Activity\",\"sid\": \"WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Activities/WAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"workspace_sid\": \"WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = ActivityResource.Create("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "FriendlyName", client: twilioRestClient);
+            var response = ActivityResource.Create("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

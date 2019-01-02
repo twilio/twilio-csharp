@@ -82,14 +82,14 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.CredentialList
                 "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Credentials.json",
                 ""
             );
-            request.AddPostParam("Username", Serialize("Username"));
-            request.AddPostParam("Password", Serialize("Password"));
+            request.AddPostParam("Username", Serialize("username"));
+            request.AddPostParam("Password", Serialize("password"));
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                CredentialResource.Create("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Username", "Password", client: twilioRestClient);
+                CredentialResource.Create("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "username", "password", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -107,7 +107,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.CredentialList
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"credential_list_sid\": \"CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Wed, 19 Aug 2015 19:48:45 +0000\",\"date_updated\": \"Wed, 19 Aug 2015 19:48:45 +0000\",\"sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Credentials/CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\",\"username\": \"1440013725.28\"}"
                                      ));
 
-            var response = CredentialResource.Create("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Username", "Password", client: twilioRestClient);
+            var response = CredentialResource.Create("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "username", "password", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

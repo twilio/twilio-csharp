@@ -32,7 +32,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
 
         /// <summary>
-        /// read
+        /// Retrieves a collection of AWS Credentials belonging to the account used to make the request
         /// </summary>
         /// <param name="options"> Read Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieves a collection of AWS Credentials belonging to the account used to make the request
         /// </summary>
         /// <param name="options"> Read Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieves a collection of AWS Credentials belonging to the account used to make the request
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieves a collection of AWS Credentials belonging to the account used to make the request
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
 
         /// <summary>
-        /// create
+        /// Create a new AWS Credential
         /// </summary>
         /// <param name="options"> Create Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new AWS Credential
         /// </summary>
         /// <param name="options"> Create Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -196,11 +196,12 @@ namespace Twilio.Rest.Accounts.V1.Credential
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new AWS Credential
         /// </summary>
-        /// <param name="credentials"> The credentials </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="credentials"> String containing AWS access credentials with format
+        ///                   <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY> </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <param name="accountSid"> The Subaccount this Credential should be associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Aws </returns> 
         public static AwsResource Create(string credentials, 
@@ -214,11 +215,12 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new AWS Credential
         /// </summary>
-        /// <param name="credentials"> The credentials </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="accountSid"> The account_sid </param>
+        /// <param name="credentials"> String containing AWS access credentials with format
+        ///                   <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY> </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <param name="accountSid"> The Subaccount this Credential should be associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns> 
         public static async System.Threading.Tasks.Task<AwsResource> CreateAsync(string credentials, 
@@ -243,7 +245,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch the AWS credentials specified by the provided Credential Sid
         /// </summary>
         /// <param name="options"> Fetch Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -257,7 +259,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch the AWS credentials specified by the provided Credential Sid
         /// </summary>
         /// <param name="options"> Fetch Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -272,9 +274,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch the AWS credentials specified by the provided Credential Sid
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Aws </returns> 
         public static AwsResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -285,9 +287,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch the AWS credentials specified by the provided Credential Sid
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns> 
         public static async System.Threading.Tasks.Task<AwsResource> FetchAsync(string pathSid, 
@@ -310,7 +312,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
 
         /// <summary>
-        /// update
+        /// Modify the properties of a given Account
         /// </summary>
         /// <param name="options"> Update Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -324,7 +326,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Modify the properties of a given Account
         /// </summary>
         /// <param name="options"> Update Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -339,10 +341,10 @@ namespace Twilio.Rest.Accounts.V1.Credential
         #endif
 
         /// <summary>
-        /// update
+        /// Modify the properties of a given Account
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Aws </returns> 
         public static AwsResource Update(string pathSid, string friendlyName = null, ITwilioRestClient client = null)
@@ -353,10 +355,10 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Modify the properties of a given Account
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
+        /// <param name="friendlyName"> A human readable description of this resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns> 
         public static async System.Threading.Tasks.Task<AwsResource> UpdateAsync(string pathSid, 
@@ -380,7 +382,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
 
         /// <summary>
-        /// delete
+        /// Delete a Credential from your account
         /// </summary>
         /// <param name="options"> Delete Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -394,7 +396,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a Credential from your account
         /// </summary>
         /// <param name="options"> Delete Aws parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -409,9 +411,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
         #endif
 
         /// <summary>
-        /// delete
+        /// Delete a Credential from your account
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Aws </returns> 
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -422,9 +424,9 @@ namespace Twilio.Rest.Accounts.V1.Credential
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a Credential from your account
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Aws </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -453,32 +455,32 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// AccountSid the Credential resource belongs to
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable description of this resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URI for this resource, relative to `https://accounts.twilio.com`
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

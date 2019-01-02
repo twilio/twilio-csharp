@@ -30,12 +30,12 @@ namespace Twilio.Tests.Rest.Verify.V1
                 "/v1/Services",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ServiceResource.Create("FriendlyName", client: twilioRestClient);
+                ServiceResource.Create("friendlyName", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -53,7 +53,7 @@ namespace Twilio.Tests.Rest.Verify.V1
                                          "{\"sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"name\",\"code_length\": 4,\"lookup_enabled\": false,\"skip_sms_to_landlines\": false,\"dtmf_input_required\": false,\"tts_name\": \"name\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://verify.twilio.com/v1/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"verification_checks\": \"https://verify.twilio.com/v1/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/VerificationCheck\",\"verifications\": \"https://verify.twilio.com/v1/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Verifications\"}}"
                                      ));
 
-            var response = ServiceResource.Create("FriendlyName", client: twilioRestClient);
+            var response = ServiceResource.Create("friendlyName", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

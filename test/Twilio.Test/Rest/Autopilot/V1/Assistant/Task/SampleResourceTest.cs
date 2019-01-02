@@ -117,13 +117,13 @@ namespace Twilio.Tests.Rest.Autopilot.V1.Assistant.Task
                 "/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Tasks/UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Samples",
                 ""
             );
-            request.AddPostParam("Language", Serialize("Language"));
-            request.AddPostParam("TaggedText", Serialize("TaggedText"));
+            request.AddPostParam("Language", Serialize("language"));
+            request.AddPostParam("TaggedText", Serialize("taggedText"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                SampleResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Language", "TaggedText", client: twilioRestClient);
+                SampleResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "language", "taggedText", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -141,7 +141,7 @@ namespace Twilio.Tests.Rest.Autopilot.V1.Assistant.Task
                                          "{\"url\": \"https://autopilot.twilio.com/v1/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Samples/UFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"task_sid\": \"UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"UFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"assistant_sid\": \"UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"language\": \"language\",\"tagged_text\": \"tagged_text\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"source_channel\": \"alexa\"}"
                                      ));
 
-            var response = SampleResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "Language", "TaggedText", client: twilioRestClient);
+            var response = SampleResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "language", "taggedText", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

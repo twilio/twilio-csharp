@@ -117,12 +117,12 @@ namespace Twilio.Tests.Rest.Autopilot.V1.Assistant
                 "/v1/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Tasks",
                 ""
             );
-            request.AddPostParam("UniqueName", Serialize("UniqueName"));
+            request.AddPostParam("UniqueName", Serialize("uniqueName"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                TaskResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UniqueName", client: twilioRestClient);
+                TaskResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "uniqueName", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -140,7 +140,7 @@ namespace Twilio.Tests.Rest.Autopilot.V1.Assistant
                                          "{\"unique_name\": \"unique_name\",\"links\": {\"fields\": \"https://autopilot.twilio.com/v1/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Fields\",\"samples\": \"https://autopilot.twilio.com/v1/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Samples\",\"task_actions\": \"https://autopilot.twilio.com/v1/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Actions\",\"statistics\": \"https://autopilot.twilio.com/v1/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Statistics\"},\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"url\": \"https://autopilot.twilio.com/v1/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Tasks/UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"UDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"assistant_sid\": \"UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"actions_url\": \"https://example.com/actions_url\"}"
                                      ));
 
-            var response = TaskResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "UniqueName", client: twilioRestClient);
+            var response = TaskResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "uniqueName", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

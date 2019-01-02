@@ -12,7 +12,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
 {
 
     /// <summary>
-    /// ReadAwsOptions
+    /// Retrieves a collection of AWS Credentials belonging to the account used to make the request
     /// </summary>
     public class ReadAwsOptions : ReadOptions<AwsResource> 
     {
@@ -32,27 +32,28 @@ namespace Twilio.Rest.Accounts.V1.Credential
     }
 
     /// <summary>
-    /// CreateAwsOptions
+    /// Create a new AWS Credential
     /// </summary>
     public class CreateAwsOptions : IOptions<AwsResource> 
     {
         /// <summary>
-        /// The credentials
+        /// String containing AWS access credentials with format <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>
         /// </summary>
         public string Credentials { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable description of this resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The account_sid
+        /// The Subaccount this Credential should be associated with.
         /// </summary>
         public string AccountSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateAwsOptions
         /// </summary>
-        /// <param name="credentials"> The credentials </param>
+        /// <param name="credentials"> String containing AWS access credentials with format
+        ///                   <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY> </param>
         public CreateAwsOptions(string credentials)
         {
             Credentials = credentials;
@@ -84,19 +85,19 @@ namespace Twilio.Rest.Accounts.V1.Credential
     }
 
     /// <summary>
-    /// FetchAwsOptions
+    /// Fetch the AWS credentials specified by the provided Credential Sid
     /// </summary>
     public class FetchAwsOptions : IOptions<AwsResource> 
     {
         /// <summary>
-        /// The sid
+        /// Fetch by unique Credential Sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAwsOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
         public FetchAwsOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -113,23 +114,23 @@ namespace Twilio.Rest.Accounts.V1.Credential
     }
 
     /// <summary>
-    /// UpdateAwsOptions
+    /// Modify the properties of a given Account
     /// </summary>
     public class UpdateAwsOptions : IOptions<AwsResource> 
     {
         /// <summary>
-        /// The sid
+        /// Fetch by unique Credential Sid
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human readable description of this resource
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new UpdateAwsOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
         public UpdateAwsOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -151,19 +152,19 @@ namespace Twilio.Rest.Accounts.V1.Credential
     }
 
     /// <summary>
-    /// DeleteAwsOptions
+    /// Delete a Credential from your account
     /// </summary>
     public class DeleteAwsOptions : IOptions<AwsResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteAwsOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteAwsOptions(string pathSid)
         {
             PathSid = pathSid;

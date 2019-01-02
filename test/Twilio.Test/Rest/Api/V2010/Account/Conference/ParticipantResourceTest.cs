@@ -120,13 +120,13 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
                 ""
             );
             request.AddPostParam("From", Serialize(new Twilio.Types.PhoneNumber("+15017122661")));
-            request.AddPostParam("To", Serialize(new Twilio.Types.PhoneNumber("+15017122661")));
+            request.AddPostParam("To", Serialize(new Twilio.Types.PhoneNumber("+15558675310")));
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ParticipantResource.Create("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Twilio.Types.PhoneNumber("+15017122661"), new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
+                ParticipantResource.Create("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Twilio.Types.PhoneNumber("+15017122661"), new Twilio.Types.PhoneNumber("+15558675310"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -144,7 +144,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"conference_sid\": \"CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"date_updated\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"end_conference_on_exit\": false,\"muted\": false,\"hold\": false,\"status\": \"complete\",\"start_conference_on_enter\": true,\"coaching\": false,\"call_sid_to_coach\": null,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
-            var response = ParticipantResource.Create("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Twilio.Types.PhoneNumber("+15017122661"), new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
+            var response = ParticipantResource.Create("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Twilio.Types.PhoneNumber("+15017122661"), new Twilio.Types.PhoneNumber("+15558675310"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -159,7 +159,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"conference_sid\": \"CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"date_updated\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"end_conference_on_exit\": false,\"muted\": false,\"hold\": false,\"status\": \"complete\",\"start_conference_on_enter\": true,\"coaching\": false,\"call_sid_to_coach\": null,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
-            var response = ParticipantResource.Create("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Twilio.Types.PhoneNumber("+15017122661"), new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
+            var response = ParticipantResource.Create("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Twilio.Types.PhoneNumber("+15017122661"), new Twilio.Types.PhoneNumber("+15558675310"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -174,7 +174,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"conference_sid\": \"CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"date_updated\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"end_conference_on_exit\": false,\"muted\": false,\"hold\": false,\"status\": \"queued\",\"start_conference_on_enter\": true,\"coaching\": false,\"call_sid_to_coach\": null,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
-            var response = ParticipantResource.Create("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Twilio.Types.PhoneNumber("+15017122661"), new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
+            var response = ParticipantResource.Create("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Twilio.Types.PhoneNumber("+15017122661"), new Twilio.Types.PhoneNumber("+15558675310"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 

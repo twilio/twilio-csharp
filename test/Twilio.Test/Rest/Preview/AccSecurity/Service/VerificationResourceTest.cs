@@ -30,13 +30,13 @@ namespace Twilio.Tests.Rest.Preview.AccSecurity.Service
                 "/Verification/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications",
                 ""
             );
-            request.AddPostParam("To", Serialize("To"));
-            request.AddPostParam("Channel", Serialize("Channel"));
+            request.AddPostParam("To", Serialize("to"));
+            request.AddPostParam("Channel", Serialize("channel"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                VerificationResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "To", "Channel", client: twilioRestClient);
+                VerificationResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "to", "channel", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -54,7 +54,7 @@ namespace Twilio.Tests.Rest.Preview.AccSecurity.Service
                                          "{\"sid\": \"VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"to\": \"+14159373912\",\"channel\": \"sms\",\"status\": \"pending\",\"valid\": null,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\"}"
                                      ));
 
-            var response = VerificationResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "To", "Channel", client: twilioRestClient);
+            var response = VerificationResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "to", "channel", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

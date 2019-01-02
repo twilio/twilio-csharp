@@ -234,13 +234,13 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                 "/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/TaskChannels",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
-            request.AddPostParam("UniqueName", Serialize("UniqueName"));
+            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("UniqueName", Serialize("uniqueName"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                TaskChannelResource.Create("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "FriendlyName", "UniqueName", client: twilioRestClient);
+                TaskChannelResource.Create("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", "uniqueName", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -258,7 +258,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"workspace_sid\": \"WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"Outbound Voice\",\"unique_name\": \"ovoice\",\"date_created\": \"2016-04-14T17:35:54Z\",\"date_updated\": \"2016-04-14T17:35:54Z\",\"url\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TaskChannels/TCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"workspace\": \"https://taskrouter.twilio.com/v1/Workspaces/WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}"
                                      ));
 
-            var response = TaskChannelResource.Create("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "FriendlyName", "UniqueName", client: twilioRestClient);
+            var response = TaskChannelResource.Create("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", "uniqueName", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

@@ -105,13 +105,13 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             request.AddPostParam("Weight", Serialize(1));
             request.AddPostParam("Priority", Serialize(1));
             request.AddPostParam("Enabled", Serialize(true));
-            request.AddPostParam("FriendlyName", Serialize("FriendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
             request.AddPostParam("SipUrl", Serialize(new Uri("https://example.com")));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                OriginationUrlResource.Create("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 1, 1, true, "FriendlyName", new Uri("https://example.com"), client: twilioRestClient);
+                OriginationUrlResource.Create("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 1, 1, true, "friendlyName", new Uri("https://example.com"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -129,7 +129,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
                                          "{\"weight\": 1,\"date_updated\": \"2018-05-07T20:50:58Z\",\"enabled\": true,\"friendly_name\": \"friendly_name\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"priority\": 1,\"sip_url\": \"sip://sip-box.com:1234\",\"sid\": \"OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2018-05-07T20:50:58Z\",\"trunk_sid\": \"TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/OriginationUrls/OUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = OriginationUrlResource.Create("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 1, 1, true, "FriendlyName", new Uri("https://example.com"), client: twilioRestClient);
+            var response = OriginationUrlResource.Create("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 1, 1, true, "friendlyName", new Uri("https://example.com"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 
