@@ -78,7 +78,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the SIP Trunk in Twilio. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
         public static TrunkResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the SIP Trunk in Twilio. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
         public static async System.Threading.Tasks.Task<TrunkResource> FetchAsync(string pathSid, 
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the SIP Trunk in Twilio. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Trunk </returns> 
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the SIP Trunk in Twilio. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Trunk </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -442,7 +442,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the SIP Trunk in Twilio. </param>
         /// <param name="friendlyName"> A human-readable name for the Trunk. </param>
         /// <param name="domainName"> The unique address you reserve on Twilio to which you route your SIP traffic. </param>
         /// <param name="disasterRecoveryUrl"> The HTTP URL that Twilio will request if an error occurs while sending SIP
@@ -472,7 +472,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the SIP Trunk in Twilio. </param>
         /// <param name="friendlyName"> A human-readable name for the Trunk. </param>
         /// <param name="domainName"> The unique address you reserve on Twilio to which you route your SIP traffic. </param>
         /// <param name="disasterRecoveryUrl"> The HTTP URL that Twilio will request if an error occurs while sending SIP

@@ -60,19 +60,19 @@ namespace Twilio.Rest.Voice.V1.VoicePermission
         /// </summary>
         public string Continent { get; set; }
         /// <summary>
-        /// country codes
+        /// Country code filter
         /// </summary>
         public string CountryCode { get; set; }
         /// <summary>
-        /// Filter to retrieve the country permissions with dialing to low-risk numbers enabled set to true / false
+        /// Filter to retrieve the country permissions with dialing to low-risk numbers enabled
         /// </summary>
         public bool? LowRiskNumbersEnabled { get; set; }
         /// <summary>
-        /// Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled set to true / false
+        /// Filter to retrieve the country permissions with dialing to high-risk special service numbers enabled
         /// </summary>
         public bool? HighRiskSpecialNumbersEnabled { get; set; }
         /// <summary>
-        /// Filter to retrieve the country permissions with dialing to high-risk toll fraud numbers enabled set to true / false
+        /// Filter to retrieve the country permissions with dialing to high-risk toll fraud numbers enabled
         /// </summary>
         public bool? HighRiskTollfraudNumbersEnabled { get; set; }
 

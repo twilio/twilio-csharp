@@ -17,18 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchQueueOptions : IOptions<QueueResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique queue Sid
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchQueueOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique queue Sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public FetchQueueOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -50,26 +50,26 @@ namespace Twilio.Rest.Api.V2010.Account
     public class UpdateQueueOptions : IOptions<QueueResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human readable description of the queue
+        /// A string to describe this resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The max number of members allowed in the queue
+        /// The max number of calls allowed in the queue
         /// </summary>
         public int? MaxSize { get; set; }
 
         /// <summary>
         /// Construct a new UpdateQueueOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public UpdateQueueOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -101,18 +101,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteQueueOptions : IOptions<QueueResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Delete by unique queue Sid
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteQueueOptions
         /// </summary>
-        /// <param name="pathSid"> Delete by unique queue Sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public DeleteQueueOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadQueueOptions : ReadOptions<QueueResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to read
         /// </summary>
         public string PathAccountSid { get; set; }
 
@@ -159,11 +159,11 @@ namespace Twilio.Rest.Api.V2010.Account
     public class CreateQueueOptions : IOptions<QueueResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// A user-provided string that identifies this queue.
+        /// A string to describe this resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Construct a new CreateQueueOptions
         /// </summary>
-        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
+        /// <param name="friendlyName"> A string to describe this resource </param>
         public CreateQueueOptions(string friendlyName)
         {
             FriendlyName = friendlyName;

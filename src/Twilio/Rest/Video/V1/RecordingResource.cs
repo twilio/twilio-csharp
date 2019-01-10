@@ -195,8 +195,10 @@ namespace Twilio.Rest.Video.V1
         /// <param name="status"> Only show Recordings with the given status. </param>
         /// <param name="sourceSid"> Only show the Recordings with the given source Sid. </param>
         /// <param name="groupingSid"> Only show Recordings that have this GroupingSid. </param>
-        /// <param name="dateCreatedAfter"> Only show Recordings that started on or after this ISO8601 date-time. </param>
-        /// <param name="dateCreatedBefore"> Only show Recordings that started before this this ISO8601 date-time. </param>
+        /// <param name="dateCreatedAfter"> Only show Recordings that started on or after this ISO8601 date-time with timezone.
+        ///                        </param>
+        /// <param name="dateCreatedBefore"> Only show Recordings that started before this ISO8601 date-time with timezone.
+        ///                         </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -221,8 +223,10 @@ namespace Twilio.Rest.Video.V1
         /// <param name="status"> Only show Recordings with the given status. </param>
         /// <param name="sourceSid"> Only show the Recordings with the given source Sid. </param>
         /// <param name="groupingSid"> Only show Recordings that have this GroupingSid. </param>
-        /// <param name="dateCreatedAfter"> Only show Recordings that started on or after this ISO8601 date-time. </param>
-        /// <param name="dateCreatedBefore"> Only show Recordings that started before this this ISO8601 date-time. </param>
+        /// <param name="dateCreatedAfter"> Only show Recordings that started on or after this ISO8601 date-time with timezone.
+        ///                        </param>
+        /// <param name="dateCreatedBefore"> Only show Recordings that started before this ISO8601 date-time with timezone.
+        ///                         </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -454,7 +458,7 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("track_name")]
         public string TrackName { get; private set; }
         /// <summary>
-        /// Offset in miliseconds for this track.
+        /// Offset in milliseconds for this track.
         /// </summary>
         [JsonProperty("offset")]
         public long? Offset { get; private set; }

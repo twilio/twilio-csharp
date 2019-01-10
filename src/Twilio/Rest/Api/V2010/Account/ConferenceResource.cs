@@ -90,8 +90,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of a conference
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique conference Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conference </returns> 
         public static ConferenceResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -104,8 +104,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of a conference
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique conference Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns> 
         public static async System.Threading.Tasks.Task<ConferenceResource> FetchAsync(string pathSid, 
@@ -164,15 +164,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of conferences belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="dateCreatedBefore"> Filter by date created </param>
-        /// <param name="dateCreated"> Filter by date created </param>
-        /// <param name="dateCreatedAfter"> Filter by date created </param>
-        /// <param name="dateUpdatedBefore"> Filter by date updated </param>
-        /// <param name="dateUpdated"> Filter by date updated </param>
-        /// <param name="dateUpdatedAfter"> Filter by date updated </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <param name="status"> The status of the conference </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
+        /// <param name="dateCreatedBefore"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreated"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreatedAfter"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateUpdatedBefore"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateUpdated"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateUpdatedAfter"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="friendlyName"> The string that identifies the Conference resources to read </param>
+        /// <param name="status"> The status of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -198,15 +198,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of conferences belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="dateCreatedBefore"> Filter by date created </param>
-        /// <param name="dateCreated"> Filter by date created </param>
-        /// <param name="dateCreatedAfter"> Filter by date created </param>
-        /// <param name="dateUpdatedBefore"> Filter by date updated </param>
-        /// <param name="dateUpdated"> Filter by date updated </param>
-        /// <param name="dateUpdatedAfter"> Filter by date updated </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <param name="status"> The status of the conference </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
+        /// <param name="dateCreatedBefore"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreated"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreatedAfter"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateUpdatedBefore"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateUpdated"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateUpdatedAfter"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="friendlyName"> The string that identifies the Conference resources to read </param>
+        /// <param name="status"> The status of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -331,12 +331,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="status"> Specifying completed will end the conference and kick all participants </param>
-        /// <param name="announceUrl"> The 'AnnounceUrl' attribute lets you specify a URL for announcing something into a
-        ///                   conference. </param>
-        /// <param name="announceMethod"> Specify GET or POST, defaults to POST </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
+        /// <param name="status"> The new status of the resource </param>
+        /// <param name="announceUrl"> The URL we should call to announce something into the conference </param>
+        /// <param name="announceMethod"> he HTTP method used to call announce_url </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conference </returns> 
         public static ConferenceResource Update(string pathSid, 
@@ -354,12 +353,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="status"> Specifying completed will end the conference and kick all participants </param>
-        /// <param name="announceUrl"> The 'AnnounceUrl' attribute lets you specify a URL for announcing something into a
-        ///                   conference. </param>
-        /// <param name="announceMethod"> Specify GET or POST, defaults to POST </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
+        /// <param name="status"> The new status of the resource </param>
+        /// <param name="announceUrl"> The URL we should call to announce something into the conference </param>
+        /// <param name="announceMethod"> he HTTP method used to call announce_url </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conference </returns> 
         public static async System.Threading.Tasks.Task<ConferenceResource> UpdateAsync(string pathSid, 
@@ -393,53 +391,53 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created this resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date this resource was created
+        /// The RFC 2822 date and time in GMT that this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this resource was last updated
+        /// The RFC 2822 date and time in GMT that this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The api_version
+        /// The API version used to create this conference
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// A human readable description of this resource
+        /// A string that you assigned to describe this conference room
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// A string representing the Twilio Region where the conference was mixed.
+        /// A string that represents the Twilio Region where the conference was mixed
         /// </summary>
         [JsonProperty("region")]
         public string Region { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies this conference
+        /// The unique string that identifies this resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The status of the conference
+        /// The status of this conference
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ConferenceResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The URI for this resource
+        /// The URI of this resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// The subresource_uris
+        /// A list of related resources identified by their relative URIs
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }

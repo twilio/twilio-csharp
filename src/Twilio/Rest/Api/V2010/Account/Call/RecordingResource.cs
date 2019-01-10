@@ -99,12 +99,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Create a recording for the call
         /// </summary>
-        /// <param name="pathCallSid"> Create by unique call Sid for the recording </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathCallSid"> The SID of the Call to associate this resource with </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="recordingStatusCallbackEvent"> The recording status changes that should generate a callback </param>
-        /// <param name="recordingStatusCallback"> The callback URL for recording actions </param>
-        /// <param name="recordingStatusCallbackMethod"> The HTTP method Twilio should use when making a request to the
-        ///                                     RecordingStatusCallback URL </param>
+        /// <param name="recordingStatusCallback"> The callback URL on each selected recording event </param>
+        /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when calling the
+        ///                                     recording_status_callback URL </param>
         /// <param name="trim"> Whether to trim the silence in the recording </param>
         /// <param name="recordingChannels"> The number of channels that the output recording will be configured with </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -126,12 +126,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Create a recording for the call
         /// </summary>
-        /// <param name="pathCallSid"> Create by unique call Sid for the recording </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathCallSid"> The SID of the Call to associate this resource with </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="recordingStatusCallbackEvent"> The recording status changes that should generate a callback </param>
-        /// <param name="recordingStatusCallback"> The callback URL for recording actions </param>
-        /// <param name="recordingStatusCallbackMethod"> The HTTP method Twilio should use when making a request to the
-        ///                                     RecordingStatusCallback URL </param>
+        /// <param name="recordingStatusCallback"> The callback URL on each selected recording event </param>
+        /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when calling the
+        ///                                     recording_status_callback URL </param>
         /// <param name="trim"> Whether to trim the silence in the recording </param>
         /// <param name="recordingChannels"> The number of channels that the output recording will be configured with </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// Changes the status of the recording to paused, stopped, or in-progress. Note: Pass ‘Twilio.CURRENT’ instead of
+        /// Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of
         /// recording sid to reference current active recording.
         /// </summary>
         /// <param name="options"> Update Recording parameters </param>
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// Changes the status of the recording to paused, stopped, or in-progress. Note: Pass ‘Twilio.CURRENT’ instead of
+        /// Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of
         /// recording sid to reference current active recording.
         /// </summary>
         /// <param name="options"> Update Recording parameters </param>
@@ -193,14 +193,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         #endif
 
         /// <summary>
-        /// Changes the status of the recording to paused, stopped, or in-progress. Note: Pass ‘Twilio.CURRENT’ instead of
+        /// Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of
         /// recording sid to reference current active recording.
         /// </summary>
-        /// <param name="pathCallSid"> Fetch by unique call Sid for the recording </param>
-        /// <param name="pathSid"> The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference
-        ///               current active recording) </param>
-        /// <param name="status"> The status to change the recording to. </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to update </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="status"> The new status of the recording </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
         /// <param name="pauseBehavior"> Whether to record or not during the pause period. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
@@ -217,14 +216,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 
         #if !NET35
         /// <summary>
-        /// Changes the status of the recording to paused, stopped, or in-progress. Note: Pass ‘Twilio.CURRENT’ instead of
+        /// Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of
         /// recording sid to reference current active recording.
         /// </summary>
-        /// <param name="pathCallSid"> Fetch by unique call Sid for the recording </param>
-        /// <param name="pathSid"> The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference
-        ///               current active recording) </param>
-        /// <param name="status"> The status to change the recording to. </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to update </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="status"> The new status of the recording </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
         /// <param name="pauseBehavior"> Whether to record or not during the pause period. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
@@ -283,9 +281,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Fetch an instance of a recording for a call
         /// </summary>
-        /// <param name="pathCallSid"> Fetch by unique call Sid for the recording </param>
-        /// <param name="pathSid"> Fetch by unique recording Sid </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
         public static RecordingResource Fetch(string pathCallSid, 
@@ -301,9 +299,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Fetch an instance of a recording for a call
         /// </summary>
-        /// <param name="pathCallSid"> Fetch by unique call Sid for the recording </param>
-        /// <param name="pathSid"> Fetch by unique recording Sid </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string pathCallSid, 
@@ -359,9 +357,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Delete a recording from your account
         /// </summary>
-        /// <param name="pathCallSid"> Delete by unique call Sid for the recording </param>
-        /// <param name="pathSid"> Delete by unique recording Sid </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to delete </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
         public static bool Delete(string pathCallSid, 
@@ -377,9 +375,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Delete a recording from your account
         /// </summary>
-        /// <param name="pathCallSid"> Delete by unique call Sid for the recording </param>
-        /// <param name="pathSid"> Delete by unique recording Sid </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to delete </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCallSid, 
@@ -439,11 +437,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Retrieve a list of recordings belonging to the call used to make the request
         /// </summary>
-        /// <param name="pathCallSid"> Read by unique call Sid for the recording </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
-        /// <param name="dateCreatedBefore"> Filter by date created </param>
-        /// <param name="dateCreated"> Filter by date created </param>
-        /// <param name="dateCreatedAfter"> Filter by date created </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to read </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
+        /// <param name="dateCreatedBefore"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreated"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreatedAfter"> The `YYYY-MM-DD` value of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -465,11 +463,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Retrieve a list of recordings belonging to the call used to make the request
         /// </summary>
-        /// <param name="pathCallSid"> Read by unique call Sid for the recording </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
-        /// <param name="dateCreatedBefore"> Filter by date created </param>
-        /// <param name="dateCreated"> Filter by date created </param>
-        /// <param name="dateCreatedAfter"> Filter by date created </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to read </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
+        /// <param name="dateCreatedBefore"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreated"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreatedAfter"> The `YYYY-MM-DD` value of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -566,47 +564,47 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created this resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The version of the API in use during the recording.
+        /// The API version used to make the recording
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// The unique id for the call leg that corresponds to the recording.
+        /// The SID of the Call this resource is associated with
         /// </summary>
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
         /// <summary>
-        /// The unique id for the conference associated with the recording, if a conference recording.
+        /// The Conference SID that identifies the conference associated with the recording
         /// </summary>
         [JsonProperty("conference_sid")]
         public string ConferenceSid { get; private set; }
         /// <summary>
-        /// The date this resource was created
+        /// The RFC 2822 date and time in GMT that this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this resource was last updated
+        /// The RFC 2822 date and time in GMT that this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The start time of the recording, given in RFC 2822 format.
+        /// The start time of the recording, given in RFC 2822 format
         /// </summary>
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
         /// <summary>
-        /// The length of the recording, in seconds.
+        /// The length of the recording in seconds
         /// </summary>
         [JsonProperty("duration")]
         public string Duration { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies this recording
+        /// The unique string that identifies this resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
@@ -616,39 +614,39 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
         /// <summary>
-        /// The URI for this resource
+        /// The URI of this resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// Details for how to decrypt the recording.
+        /// Details about how to decrypt the recording
         /// </summary>
         [JsonProperty("encryption_details")]
         public object EncryptionDetails { get; private set; }
         /// <summary>
-        /// The currency used in the Price property.
+        /// The currency used in the Price property
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// The status of the recording.
+        /// The status of this recording
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The number of channels in the final recording file as an integer.
+        /// The number of channels in the final recording file as an integer
         /// </summary>
         [JsonProperty("channels")]
         public int? Channels { get; private set; }
         /// <summary>
-        /// The way in which this recording was created.
+        /// How this recording was created
         /// </summary>
         [JsonProperty("source")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.SourceEnum Source { get; private set; }
         /// <summary>
-        /// More information about why the recording is missing, if Status is `absent`.
+        /// More information about why the recording is missing, if status is `absent`
         /// </summary>
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }

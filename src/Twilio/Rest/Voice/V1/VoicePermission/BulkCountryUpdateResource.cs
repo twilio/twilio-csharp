@@ -119,7 +119,7 @@ namespace Twilio.Rest.Voice.V1.VoicePermission
         [JsonProperty("update_count")]
         public int? UpdateCount { get; private set; }
         /// <summary>
-        /// The update_request
+        /// A URL encoded JSON array of update objects
         /// </summary>
         [JsonProperty("update_request")]
         public string UpdateRequest { get; private set; }

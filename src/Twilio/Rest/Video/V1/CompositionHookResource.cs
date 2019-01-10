@@ -153,8 +153,10 @@ namespace Twilio.Rest.Video.V1
         /// List of all Recording Composition Hooks.
         /// </summary>
         /// <param name="enabled"> Only show Composition Hooks enabled or disabled. </param>
-        /// <param name="dateCreatedAfter"> Only show Composition Hooks created on or after this ISO8601 date-time. </param>
-        /// <param name="dateCreatedBefore"> Only show Composition Hooks created before this this ISO8601 date-time. </param>
+        /// <param name="dateCreatedAfter"> Only show Composition Hooks created on or after this ISO8601 date-time with
+        ///                        timezone. </param>
+        /// <param name="dateCreatedBefore"> Only show Composition Hooks created before this ISO8601 date-time with timezone.
+        ///                         </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -175,8 +177,10 @@ namespace Twilio.Rest.Video.V1
         /// List of all Recording Composition Hooks.
         /// </summary>
         /// <param name="enabled"> Only show Composition Hooks enabled or disabled. </param>
-        /// <param name="dateCreatedAfter"> Only show Composition Hooks created on or after this ISO8601 date-time. </param>
-        /// <param name="dateCreatedBefore"> Only show Composition Hooks created before this this ISO8601 date-time. </param>
+        /// <param name="dateCreatedAfter"> Only show Composition Hooks created on or after this ISO8601 date-time with
+        ///                        timezone. </param>
+        /// <param name="dateCreatedBefore"> Only show Composition Hooks created before this ISO8601 date-time with timezone.
+        ///                         </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -365,7 +369,7 @@ namespace Twilio.Rest.Video.V1
         /// create
         /// </summary>
         /// <param name="friendlyName"> Friendly name of the Composition Hook to be shown in the console. </param>
-        /// <param name="enabled"> Boolean flag for activating the Composition Hook. </param>
+        /// <param name="enabled"> Boolean flag indicating if the Composition Hook is active. </param>
         /// <param name="videoLayout"> The JSON video layout description. </param>
         /// <param name="audioSources"> A list of audio sources related to this Composition Hook. </param>
         /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition Hook. </param>
@@ -399,7 +403,7 @@ namespace Twilio.Rest.Video.V1
         /// create
         /// </summary>
         /// <param name="friendlyName"> Friendly name of the Composition Hook to be shown in the console. </param>
-        /// <param name="enabled"> Boolean flag for activating the Composition Hook. </param>
+        /// <param name="enabled"> Boolean flag indicating if the Composition Hook is active. </param>
         /// <param name="videoLayout"> The JSON video layout description. </param>
         /// <param name="audioSources"> A list of audio sources related to this Composition Hook. </param>
         /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition Hook. </param>
@@ -472,9 +476,10 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this Composition Hook. </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies the Composition Hook to update, specified as
+        ///               a path parameter. </param>
         /// <param name="friendlyName"> Friendly name of the Composition Hook to be shown in the console. </param>
-        /// <param name="enabled"> Boolean flag for activating the Composition Hook. </param>
+        /// <param name="enabled"> Boolean flag indicating if the Composition Hook is active. </param>
         /// <param name="videoLayout"> The JSON video layout description. </param>
         /// <param name="audioSources"> A list of audio sources related to this Composition Hook. </param>
         /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition Hook. </param>
@@ -508,9 +513,10 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this Composition Hook. </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies the Composition Hook to update, specified as
+        ///               a path parameter. </param>
         /// <param name="friendlyName"> Friendly name of the Composition Hook to be shown in the console. </param>
-        /// <param name="enabled"> Boolean flag for activating the Composition Hook. </param>
+        /// <param name="enabled"> Boolean flag indicating if the Composition Hook is active. </param>
         /// <param name="videoLayout"> The JSON video layout description. </param>
         /// <param name="audioSources"> A list of audio sources related to this Composition Hook. </param>
         /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition Hook. </param>
@@ -570,7 +576,7 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// Boolean flag for activating the Composition Hook.
+        /// Boolean flag indicating if the Composition Hook is active.
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
@@ -621,12 +627,12 @@ namespace Twilio.Rest.Video.V1
         [JsonConverter(typeof(StringEnumConverter))]
         public CompositionHookResource.FormatEnum Format { get; private set; }
         /// <summary>
-        /// The status_callback
+        /// A URL that Twilio sends asynchronous webhook requests to on every composition event.
         /// </summary>
         [JsonProperty("status_callback")]
         public string StatusCallback { get; private set; }
         /// <summary>
-        /// The status_callback_method
+        /// HTTP method Twilio should use when requesting the above URL.
         /// </summary>
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]

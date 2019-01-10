@@ -139,13 +139,13 @@ namespace Twilio.Rest.Voice.V1.VoicePermission
         /// </summary>
         /// <param name="isoCode"> Filter to retrieve the country permissions by specifying the ISO country code </param>
         /// <param name="continent"> Filter to retrieve the country permissions by specifying the continent </param>
-        /// <param name="countryCode"> country codes </param>
+        /// <param name="countryCode"> Country code filter </param>
         /// <param name="lowRiskNumbersEnabled"> Filter to retrieve the country permissions with dialing to low-risk numbers
-        ///                             enabled set to true / false </param>
+        ///                             enabled </param>
         /// <param name="highRiskSpecialNumbersEnabled"> Filter to retrieve the country permissions with dialing to high-risk
-        ///                                     special service numbers enabled set to true / false </param>
+        ///                                     special service numbers enabled </param>
         /// <param name="highRiskTollfraudNumbersEnabled"> Filter to retrieve the country permissions with dialing to high-risk
-        ///                                       toll fraud numbers enabled set to true / false </param>
+        ///                                       toll fraud numbers enabled </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -170,13 +170,13 @@ namespace Twilio.Rest.Voice.V1.VoicePermission
         /// </summary>
         /// <param name="isoCode"> Filter to retrieve the country permissions by specifying the ISO country code </param>
         /// <param name="continent"> Filter to retrieve the country permissions by specifying the continent </param>
-        /// <param name="countryCode"> country codes </param>
+        /// <param name="countryCode"> Country code filter </param>
         /// <param name="lowRiskNumbersEnabled"> Filter to retrieve the country permissions with dialing to low-risk numbers
-        ///                             enabled set to true / false </param>
+        ///                             enabled </param>
         /// <param name="highRiskSpecialNumbersEnabled"> Filter to retrieve the country permissions with dialing to high-risk
-        ///                                     special service numbers enabled set to true / false </param>
+        ///                                     special service numbers enabled </param>
         /// <param name="highRiskTollfraudNumbersEnabled"> Filter to retrieve the country permissions with dialing to high-risk
-        ///                                       toll fraud numbers enabled set to true / false </param>
+        ///                                       toll fraud numbers enabled </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -294,27 +294,27 @@ namespace Twilio.Rest.Voice.V1.VoicePermission
         [JsonProperty("country_codes")]
         public List<string> CountryCodes { get; private set; }
         /// <summary>
-        /// true, if dialing to low-risk numbers is enabled, else false
+        /// `true`, if dialing to low-risk numbers is enabled, else `false`
         /// </summary>
         [JsonProperty("low_risk_numbers_enabled")]
         public bool? LowRiskNumbersEnabled { get; private set; }
         /// <summary>
-        /// true, if dialing to high-risk special services numbers is enabled, else false. This group of prefixes, are number ranges allocated by the corresponding country. They consist of number types such as premium numbers, special services, shared cost and others
+        /// `true`, if dialing to high-risk special services numbers is enabled, else `false`
         /// </summary>
         [JsonProperty("high_risk_special_numbers_enabled")]
         public bool? HighRiskSpecialNumbersEnabled { get; private set; }
         /// <summary>
-        /// true, if dialing to high-risk toll fraud numbers is enabled, else false. This group of prefixes are narrow number ranges that have a high-risk of international revenue sharing fraud (IRSF) attacks also called toll fraud. The group of prefixes is formed through integration with anti-fraud databases and verified by analyzing calls on the Twilio Super Network. This group of prefixes are not available for download and are updated frequently
+        /// `true`, if dialing to high-risk toll fraud numbers is enabled, else `false`
         /// </summary>
         [JsonProperty("high_risk_tollfraud_numbers_enabled")]
         public bool? HighRiskTollfraudNumbersEnabled { get; private set; }
         /// <summary>
-        /// The URL for this resource
+        /// The absolute URL of this resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// A list of URLs related to this resource
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

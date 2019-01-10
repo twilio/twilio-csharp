@@ -69,10 +69,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// Session Sid.
         /// </summary>
         public string PathSessionSid { get; }
-        /// <summary>
-        /// The identifier
-        /// </summary>
-        public string Identifier { get; set; }
 
         /// <summary>
         /// Construct a new ReadParticipantOptions
@@ -91,11 +87,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Identifier != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Identifier", Identifier));
-            }
-
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

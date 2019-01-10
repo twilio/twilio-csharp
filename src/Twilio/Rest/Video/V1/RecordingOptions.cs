@@ -59,11 +59,11 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         public List<string> GroupingSid { get; set; }
         /// <summary>
-        /// Only show Recordings that started on or after this ISO8601 date-time.
+        /// Only show Recordings that started on or after this ISO8601 date-time with timezone.
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// Only show Recordings that started before this this ISO8601 date-time.
+        /// Only show Recordings that started before this ISO8601 date-time with timezone.
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
 

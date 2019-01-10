@@ -194,21 +194,17 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="inboundParticipantStatus"> The inbound_participant_status </param>
-        /// <param name="outboundParticipantStatus"> The outbound_participant_status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Interaction </returns> 
         public static ResourceSet<InteractionResource> Read(string pathServiceSid, 
                                                             string pathSessionSid, 
-                                                            InteractionResource.ResourceStatusEnum inboundParticipantStatus = null, 
-                                                            InteractionResource.ResourceStatusEnum outboundParticipantStatus = null, 
                                                             int? pageSize = null, 
                                                             long? limit = null, 
                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadInteractionOptions(pathServiceSid, pathSessionSid){InboundParticipantStatus = inboundParticipantStatus, OutboundParticipantStatus = outboundParticipantStatus, PageSize = pageSize, Limit = limit};
+            var options = new ReadInteractionOptions(pathServiceSid, pathSessionSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -218,21 +214,17 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="inboundParticipantStatus"> The inbound_participant_status </param>
-        /// <param name="outboundParticipantStatus"> The outbound_participant_status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Interaction </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<InteractionResource>> ReadAsync(string pathServiceSid, 
                                                                                                     string pathSessionSid, 
-                                                                                                    InteractionResource.ResourceStatusEnum inboundParticipantStatus = null, 
-                                                                                                    InteractionResource.ResourceStatusEnum outboundParticipantStatus = null, 
                                                                                                     int? pageSize = null, 
                                                                                                     long? limit = null, 
                                                                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadInteractionOptions(pathServiceSid, pathSessionSid){InboundParticipantStatus = inboundParticipantStatus, OutboundParticipantStatus = outboundParticipantStatus, PageSize = pageSize, Limit = limit};
+            var options = new ReadInteractionOptions(pathServiceSid, pathSessionSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

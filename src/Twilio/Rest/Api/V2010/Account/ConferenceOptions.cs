@@ -17,18 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchConferenceOptions : IOptions<ConferenceResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique conference Sid
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchConferenceOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique conference Sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public FetchConferenceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -50,39 +50,39 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadConferenceOptions : ReadOptions<ConferenceResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Filter by date created
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
-        /// Filter by date created
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// Filter by date created
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// Filter by date updated
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateUpdatedBefore { get; set; }
         /// <summary>
-        /// Filter by date updated
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// Filter by date updated
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateUpdatedAfter { get; set; }
         /// <summary>
-        /// Filter by friendly name
+        /// The string that identifies the Conference resources to read
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The status of the conference
+        /// The status of the resources to read
         /// </summary>
         public ConferenceResource.StatusEnum Status { get; set; }
 
@@ -151,30 +151,30 @@ namespace Twilio.Rest.Api.V2010.Account
     public class UpdateConferenceOptions : IOptions<ConferenceResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Specifying completed will end the conference and kick all participants
+        /// The new status of the resource
         /// </summary>
         public ConferenceResource.UpdateStatusEnum Status { get; set; }
         /// <summary>
-        /// The 'AnnounceUrl' attribute lets you specify a URL for announcing something into a conference.
+        /// The URL we should call to announce something into the conference
         /// </summary>
         public Uri AnnounceUrl { get; set; }
         /// <summary>
-        /// Specify GET or POST, defaults to POST
+        /// he HTTP method used to call announce_url
         /// </summary>
         public Twilio.Http.HttpMethod AnnounceMethod { get; set; }
 
         /// <summary>
         /// Construct a new UpdateConferenceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public UpdateConferenceOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -1,6 +1,16 @@
 twilio-csharp Changelog
 =======================
 
+[2019-01-10] Version 5.25.0
+----------------------------
+**Chat**
+- Mark Member attributes as PII
+
+**Proxy**
+- Remove unsupported query parameters **(breaking change)**
+- Remove invalid session statuses in doc
+
+
 [2019-01-02] Version 5.24.1
 ----------------------------
 **Library**

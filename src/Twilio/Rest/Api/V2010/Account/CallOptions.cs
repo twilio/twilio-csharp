@@ -19,7 +19,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class CreateCallOptions : IOptions<CallResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -31,11 +31,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Types.PhoneNumber From { get; }
         /// <summary>
-        /// Url from which to fetch TwiML
+        /// The absolute URL that returns TwiML for this call
         /// </summary>
         public Uri Url { get; set; }
         /// <summary>
-        /// ApplicationSid that configures from where to fetch TwiML
+        /// The SID of the Application resource that will handle the call
         /// </summary>
         public string ApplicationSid { get; set; }
         /// <summary>
@@ -47,27 +47,27 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Uri FallbackUrl { get; set; }
         /// <summary>
-        /// HTTP Method to use with FallbackUrl
+        /// HTTP Method to use with fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod FallbackMethod { get; set; }
         /// <summary>
-        /// Status Callback URL
+        /// The URL we should call to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The call progress events that Twilio will send webhooks on.
+        /// The call progress events that we send to the `status_callback` URL.
         /// </summary>
         public List<string> StatusCallbackEvent { get; set; }
         /// <summary>
-        /// HTTP Method to use with StatusCallback
+        /// HTTP Method to use with status_callback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// Digits to send
+        /// The digits to dial after connecting to the number
         /// </summary>
         public string SendDigits { get; set; }
         /// <summary>
-        /// The if_machine
+        /// The action to take if an answering machine is detected
         /// </summary>
         public string IfMachine { get; set; }
         /// <summary>
@@ -75,27 +75,27 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public int? Timeout { get; set; }
         /// <summary>
-        /// Whether or not to record the Call
+        /// Whether or not to record the call
         /// </summary>
         public bool? Record { get; set; }
         /// <summary>
-        /// mono or dualSet this parameter to specify the number of channels in the final recording.
+        /// The number of channels in the final recording
         /// </summary>
         public string RecordingChannels { get; set; }
         /// <summary>
-        /// A URL that Twilio will send a webhook request to when the recording is available for access.
+        /// The URL that we call when the recording is available to be accessed
         /// </summary>
         public string RecordingStatusCallback { get; set; }
         /// <summary>
-        /// The HTTP method Twilio should use when requesting the `RecordingStatusCallback` URL.
+        /// The HTTP method we should use when calling the `recording_status_callback` URL
         /// </summary>
         public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
         /// <summary>
-        /// The sip_auth_username
+        /// The username used to authenticate the caller making a SIP call
         /// </summary>
         public string SipAuthUsername { get; set; }
         /// <summary>
-        /// The sip_auth_password
+        /// The password required to authenticate the user account specified in `sip_auth_username`.
         /// </summary>
         public string SipAuthPassword { get; set; }
         /// <summary>
@@ -103,11 +103,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string MachineDetection { get; set; }
         /// <summary>
-        /// Number of miliseconds to wait for machine detection
+        /// Number of milliseconds to wait for machine detection
         /// </summary>
         public int? MachineDetectionTimeout { get; set; }
         /// <summary>
-        /// The recording status changes that Twilio will send webhooks on to the URL specified in RecordingStatusCallback.
+        /// The recording status events that will trigger calls to the URL specified in `recording_status_callback`
         /// </summary>
         public List<string> RecordingStatusCallbackEvent { get; set; }
         /// <summary>
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string Trim { get; set; }
         /// <summary>
-        /// The phone number, SIP address, or Client identifier that made this Call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`.
+        /// The phone number, SIP address, or Client identifier that made this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`.
         /// </summary>
         public string CallerId { get; set; }
 
@@ -269,18 +269,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteCallOptions : IOptions<CallResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Call Sid that uniquely identifies the Call to delete
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteCallOptions
         /// </summary>
-        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to delete </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public DeleteCallOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -297,23 +297,23 @@ namespace Twilio.Rest.Api.V2010.Account
     }
 
     /// <summary>
-    /// Fetch the Call specified by the provided Call Sid
+    /// Fetch the call specified by the provided Call SID
     /// </summary>
     public class FetchCallOptions : IOptions<CallResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Call Sid that uniquely identifies the Call to fetch
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCallOptions
         /// </summary>
-        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public FetchCallOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -330,16 +330,16 @@ namespace Twilio.Rest.Api.V2010.Account
     }
 
     /// <summary>
-    /// Retrieves a collection of Calls made to and from your account
+    /// Retrieves a collection of calls made to and from your account
     /// </summary>
     public class ReadCallOptions : ReadOptions<CallResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Phone number or Client identifier to filter `to` on
+        /// Phone number or Client identifier of calls to include
         /// </summary>
         public Types.PhoneNumber To { get; set; }
         /// <summary>
@@ -347,35 +347,35 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Types.PhoneNumber From { get; set; }
         /// <summary>
-        /// Parent Call Sid to filter on
+        /// Parent call SID to filter on
         /// </summary>
         public string ParentCallSid { get; set; }
         /// <summary>
-        /// Status to filter on
+        /// The status of the resources to read
         /// </summary>
         public CallResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// StartTime to filter on
+        /// Only include calls that started on or after this date
         /// </summary>
         public DateTime? StartTimeBefore { get; set; }
         /// <summary>
-        /// StartTime to filter on
+        /// Only include calls that started on or after this date
         /// </summary>
         public DateTime? StartTime { get; set; }
         /// <summary>
-        /// StartTime to filter on
+        /// Only include calls that started on or after this date
         /// </summary>
         public DateTime? StartTimeAfter { get; set; }
         /// <summary>
-        /// EndTime to filter on
+        /// Only include usage that occurred on or before this date
         /// </summary>
         public DateTime? EndTimeBefore { get; set; }
         /// <summary>
-        /// EndTime to filter on
+        /// Only include usage that occurred on or before this date
         /// </summary>
         public DateTime? EndTime { get; set; }
         /// <summary>
-        /// EndTime to filter on
+        /// Only include usage that occurred on or before this date
         /// </summary>
         public DateTime? EndTimeAfter { get; set; }
 
@@ -454,15 +454,15 @@ namespace Twilio.Rest.Api.V2010.Account
     public class UpdateCallOptions : IOptions<CallResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Call Sid that uniquely identifies the Call to update
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// URL that returns TwiML
+        /// The absolute URL that returns TwiML for this call
         /// </summary>
         public Uri Url { get; set; }
         /// <summary>
@@ -470,7 +470,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Twilio.Http.HttpMethod Method { get; set; }
         /// <summary>
-        /// Status to update the Call with
+        /// The new status to update the call with.
         /// </summary>
         public CallResource.UpdateStatusEnum Status { get; set; }
         /// <summary>
@@ -478,22 +478,22 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Uri FallbackUrl { get; set; }
         /// <summary>
-        /// HTTP Method to use with FallbackUrl
+        /// HTTP Method to use with fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod FallbackMethod { get; set; }
         /// <summary>
-        /// Status Callback URL
+        /// The URL we should call to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// HTTP Method to use with StatusCallback
+        /// HTTP Method to use to call status_callback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
 
         /// <summary>
         /// Construct a new UpdateCallOptions
         /// </summary>
-        /// <param name="pathSid"> Call Sid that uniquely identifies the Call to update </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public UpdateCallOptions(string pathSid)
         {
             PathSid = pathSid;

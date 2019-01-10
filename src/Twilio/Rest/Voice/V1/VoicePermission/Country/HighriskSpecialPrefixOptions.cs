@@ -21,14 +21,14 @@ namespace Twilio.Rest.Voice.V1.VoicePermission.Country
     public class ReadHighriskSpecialPrefixOptions : ReadOptions<HighriskSpecialPrefixResource> 
     {
         /// <summary>
-        /// The ISO country code
+        /// The ISO 3166-1 country code
         /// </summary>
         public string PathIsoCode { get; }
 
         /// <summary>
         /// Construct a new ReadHighriskSpecialPrefixOptions
         /// </summary>
-        /// <param name="pathIsoCode"> The ISO country code </param>
+        /// <param name="pathIsoCode"> The ISO 3166-1 country code </param>
         public ReadHighriskSpecialPrefixOptions(string pathIsoCode)
         {
             PathIsoCode = pathIsoCode;

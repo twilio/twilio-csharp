@@ -17,14 +17,14 @@ namespace Twilio.Rest.Trunking.V1
     public class FetchTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies the SIP Trunk in Twilio.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchTrunkOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the SIP Trunk in Twilio. </param>
         public FetchTrunkOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -46,14 +46,14 @@ namespace Twilio.Rest.Trunking.V1
     public class DeleteTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies the SIP Trunk in Twilio.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteTrunkOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the SIP Trunk in Twilio. </param>
         public DeleteTrunkOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Trunking.V1
     public class UpdateTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies the SIP Trunk in Twilio.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <summary>
         /// Construct a new UpdateTrunkOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies the SIP Trunk in Twilio. </param>
         public UpdateTrunkOptions(string pathSid)
         {
             PathSid = pathSid;

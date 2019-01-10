@@ -63,8 +63,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of a queue identified by the QueueSid
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique queue Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Queue </returns> 
         public static QueueResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -77,8 +77,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of a queue identified by the QueueSid
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique queue Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<QueueResource> FetchAsync(string pathSid, 
@@ -133,10 +133,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Update the queue with the new parameters
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A human readable description of the queue </param>
-        /// <param name="maxSize"> The max number of members allowed in the queue </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
+        /// <param name="friendlyName"> A string to describe this resource </param>
+        /// <param name="maxSize"> The max number of calls allowed in the queue </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Queue </returns> 
         public static QueueResource Update(string pathSid, 
@@ -153,10 +153,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Update the queue with the new parameters
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A human readable description of the queue </param>
-        /// <param name="maxSize"> The max number of members allowed in the queue </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
+        /// <param name="friendlyName"> A string to describe this resource </param>
+        /// <param name="maxSize"> The max number of calls allowed in the queue </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<QueueResource> UpdateAsync(string pathSid, 
@@ -213,8 +213,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Remove an empty queue
         /// </summary>
-        /// <param name="pathSid"> Delete by unique queue Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Queue </returns> 
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -227,8 +227,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Remove an empty queue
         /// </summary>
-        /// <param name="pathSid"> Delete by unique queue Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Queue </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
@@ -287,7 +287,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of queues belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of queues belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -422,8 +422,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a queue
         /// </summary>
-        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="friendlyName"> A string to describe this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="maxSize"> The max number of calls allowed in the queue </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Queue </returns> 
@@ -440,8 +440,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a queue
         /// </summary>
-        /// <param name="friendlyName"> A user-provided string that identifies this queue. </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="friendlyName"> A string to describe this resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="maxSize"> The max number of calls allowed in the queue </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Queue </returns> 
@@ -474,7 +474,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created this resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
@@ -484,22 +484,22 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("average_wait_time")]
         public int? AverageWaitTime { get; private set; }
         /// <summary>
-        /// The count of calls currently in the queue.
+        /// The number of calls currently in the queue.
         /// </summary>
         [JsonProperty("current_size")]
         public int? CurrentSize { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The RFC 2822 date and time in GMT that this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The RFC 2822 date and time in GMT that this resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// A user-provided string that identifies this queue.
+        /// A string that you assigned to describe this resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
@@ -509,12 +509,12 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("max_size")]
         public int? MaxSize { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies this queue
+        /// The unique string that identifies this resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The uri
+        /// The URI of this resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }

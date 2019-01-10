@@ -57,11 +57,11 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
-        /// Only show Composition Hooks created on or after this ISO8601 date-time.
+        /// Only show Composition Hooks created on or after this ISO8601 date-time with timezone.
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// Only show Composition Hooks created before this this ISO8601 date-time.
+        /// Only show Composition Hooks created before this ISO8601 date-time with timezone.
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
 
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// Boolean flag for activating the Composition Hook.
+        /// Boolean flag indicating if the Composition Hook is active.
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
@@ -257,7 +257,7 @@ namespace Twilio.Rest.Video.V1
     public class UpdateCompositionHookOptions : IOptions<CompositionHookResource> 
     {
         /// <summary>
-        /// A 34-character string that uniquely identifies this Composition Hook.
+        /// A 34-character string that uniquely identifies the Composition Hook to update, specified as a path parameter.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -265,7 +265,7 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// Boolean flag for activating the Composition Hook.
+        /// Boolean flag indicating if the Composition Hook is active.
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
@@ -304,7 +304,8 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// Construct a new UpdateCompositionHookOptions
         /// </summary>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this Composition Hook. </param>
+        /// <param name="pathSid"> A 34-character string that uniquely identifies the Composition Hook to update, specified as
+        ///               a path parameter. </param>
         /// <param name="friendlyName"> Friendly name of the Composition Hook to be shown in the console. </param>
         public UpdateCompositionHookOptions(string pathSid, string friendlyName)
         {

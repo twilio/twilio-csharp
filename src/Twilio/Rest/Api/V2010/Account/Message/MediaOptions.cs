@@ -17,23 +17,23 @@ namespace Twilio.Rest.Api.V2010.Account.Message
     public class DeleteMediaOptions : IOptions<MediaResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The message_sid
+        /// The SID of the Message resource that this Media resource belongs to
         /// </summary>
         public string PathMessageSid { get; }
         /// <summary>
-        /// Delete by unique media Sid
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteMediaOptions
         /// </summary>
-        /// <param name="pathMessageSid"> The message_sid </param>
-        /// <param name="pathSid"> Delete by unique media Sid </param>
+        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public DeleteMediaOptions(string pathMessageSid, string pathSid)
         {
             PathMessageSid = pathMessageSid;
@@ -56,23 +56,23 @@ namespace Twilio.Rest.Api.V2010.Account.Message
     public class FetchMediaOptions : IOptions<MediaResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The message_sid
+        /// The SID of the Message resource that this Media resource belongs to
         /// </summary>
         public string PathMessageSid { get; }
         /// <summary>
-        /// Fetch by unique media Sid
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchMediaOptions
         /// </summary>
-        /// <param name="pathMessageSid"> The message_sid </param>
-        /// <param name="pathSid"> Fetch by unique media Sid </param>
+        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public FetchMediaOptions(string pathMessageSid, string pathSid)
         {
             PathMessageSid = pathMessageSid;
@@ -95,30 +95,30 @@ namespace Twilio.Rest.Api.V2010.Account.Message
     public class ReadMediaOptions : ReadOptions<MediaResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The message_sid
+        /// The SID of the Message resource that this Media resource belongs to
         /// </summary>
         public string PathMessageSid { get; }
         /// <summary>
-        /// Filter by date created
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
-        /// Filter by date created
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// Filter by date created
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
 
         /// <summary>
         /// Construct a new ReadMediaOptions
         /// </summary>
-        /// <param name="pathMessageSid"> The message_sid </param>
+        /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to </param>
         public ReadMediaOptions(string pathMessageSid)
         {
             PathMessageSid = pathMessageSid;

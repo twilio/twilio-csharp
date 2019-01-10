@@ -167,8 +167,10 @@ namespace Twilio.Rest.Video.V1
         /// List of all Recording Compositions.
         /// </summary>
         /// <param name="status"> Only show Compositions with the given status. </param>
-        /// <param name="dateCreatedAfter"> Only show Compositions that started on or after this ISO8601 date-time. </param>
-        /// <param name="dateCreatedBefore"> Only show Compositions that started before this this ISO8601 date-time. </param>
+        /// <param name="dateCreatedAfter"> Only show Compositions created on or after this ISO8601 date-time with timezone.
+        ///                        </param>
+        /// <param name="dateCreatedBefore"> Only show Compositions created before this ISO8601 date-time with timezone.
+        ///                         </param>
         /// <param name="roomSid"> Only show Compositions with the given Room SID. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -191,8 +193,10 @@ namespace Twilio.Rest.Video.V1
         /// List of all Recording Compositions.
         /// </summary>
         /// <param name="status"> Only show Compositions with the given status. </param>
-        /// <param name="dateCreatedAfter"> Only show Compositions that started on or after this ISO8601 date-time. </param>
-        /// <param name="dateCreatedBefore"> Only show Compositions that started before this this ISO8601 date-time. </param>
+        /// <param name="dateCreatedAfter"> Only show Compositions created on or after this ISO8601 date-time with timezone.
+        ///                        </param>
+        /// <param name="dateCreatedBefore"> Only show Compositions created before this ISO8601 date-time with timezone.
+        ///                         </param>
         /// <param name="roomSid"> Only show Compositions with the given Room SID. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>

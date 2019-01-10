@@ -32,11 +32,11 @@ namespace Twilio.Rest.Proxy.V1.Service
                 return new StatusEnum(value);
             }
 
+            public static readonly StatusEnum Open = new StatusEnum("open");
             public static readonly StatusEnum InProgress = new StatusEnum("in-progress");
             public static readonly StatusEnum Closed = new StatusEnum("closed");
             public static readonly StatusEnum Failed = new StatusEnum("failed");
             public static readonly StatusEnum Unknown = new StatusEnum("unknown");
-            public static readonly StatusEnum Completed = new StatusEnum("completed");
         }
 
         public sealed class ModeEnum : StringEnum 
@@ -171,20 +171,16 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// Retrieve a list of all Sessions for this Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="status"> The status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns> 
         public static ResourceSet<SessionResource> Read(string pathServiceSid, 
-                                                        string uniqueName = null, 
-                                                        SessionResource.StatusEnum status = null, 
                                                         int? pageSize = null, 
                                                         long? limit = null, 
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadSessionOptions(pathServiceSid){UniqueName = uniqueName, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadSessionOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -193,20 +189,16 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// Retrieve a list of all Sessions for this Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="status"> The status </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<SessionResource>> ReadAsync(string pathServiceSid, 
-                                                                                                string uniqueName = null, 
-                                                                                                SessionResource.StatusEnum status = null, 
                                                                                                 int? pageSize = null, 
                                                                                                 long? limit = null, 
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadSessionOptions(pathServiceSid){UniqueName = uniqueName, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadSessionOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

@@ -69,14 +69,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// Session Sid.
         /// </summary>
         public string PathSessionSid { get; }
-        /// <summary>
-        /// The inbound_participant_status
-        /// </summary>
-        public InteractionResource.ResourceStatusEnum InboundParticipantStatus { get; set; }
-        /// <summary>
-        /// The outbound_participant_status
-        /// </summary>
-        public InteractionResource.ResourceStatusEnum OutboundParticipantStatus { get; set; }
 
         /// <summary>
         /// Construct a new ReadInteractionOptions
@@ -95,16 +87,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (InboundParticipantStatus != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InboundParticipantStatus", InboundParticipantStatus.ToString()));
-            }
-
-            if (OutboundParticipantStatus != null)
-            {
-                p.Add(new KeyValuePair<string, string>("OutboundParticipantStatus", OutboundParticipantStatus.ToString()));
-            }
-
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

@@ -60,14 +60,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique_name
-        /// </summary>
-        public string UniqueName { get; set; }
-        /// <summary>
-        /// The status
-        /// </summary>
-        public SessionResource.StatusEnum Status { get; set; }
 
         /// <summary>
         /// Construct a new ReadSessionOptions
@@ -84,16 +76,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (UniqueName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
-            }
-
-            if (Status != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

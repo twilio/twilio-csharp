@@ -147,19 +147,17 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="identifier"> The identifier </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
         public static ResourceSet<ParticipantResource> Read(string pathServiceSid, 
                                                             string pathSessionSid, 
-                                                            string identifier = null, 
                                                             int? pageSize = null, 
                                                             long? limit = null, 
                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadParticipantOptions(pathServiceSid, pathSessionSid){Identifier = identifier, PageSize = pageSize, Limit = limit};
+            var options = new ReadParticipantOptions(pathServiceSid, pathSessionSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -169,19 +167,17 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="identifier"> The identifier </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(string pathServiceSid, 
                                                                                                     string pathSessionSid, 
-                                                                                                    string identifier = null, 
                                                                                                     int? pageSize = null, 
                                                                                                     long? limit = null, 
                                                                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadParticipantOptions(pathServiceSid, pathSessionSid){Identifier = identifier, PageSize = pageSize, Limit = limit};
+            var options = new ReadParticipantOptions(pathServiceSid, pathSessionSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

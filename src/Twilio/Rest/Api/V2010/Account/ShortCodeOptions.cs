@@ -17,18 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchShortCodeOptions : IOptions<ShortCodeResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique short-code Sid
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchShortCodeOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique short-code Sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public FetchShortCodeOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -50,19 +50,19 @@ namespace Twilio.Rest.Api.V2010.Account
     public class UpdateShortCodeOptions : IOptions<ShortCodeResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human readable description of this resource
+        /// A string to describe this resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The API version to use
+        /// The API version to use to start a new TwiML session
         /// </summary>
         public string ApiVersion { get; set; }
         /// <summary>
@@ -78,14 +78,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Uri SmsFallbackUrl { get; set; }
         /// <summary>
-        /// HTTP method Twilio will use with sms fallback url
+        /// HTTP method Twilio will use with sms_fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
 
         /// <summary>
         /// Construct a new UpdateShortCodeOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public UpdateShortCodeOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -137,11 +137,11 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadShortCodeOptions : ReadOptions<ShortCodeResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Filter by friendly name
+        /// The string that identifies the ShortCode resources to read
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>

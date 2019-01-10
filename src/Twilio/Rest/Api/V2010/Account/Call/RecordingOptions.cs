@@ -18,11 +18,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class CreateRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Create by unique call Sid for the recording
+        /// The SID of the Call to associate this resource with
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         public List<string> RecordingStatusCallbackEvent { get; set; }
         /// <summary>
-        /// The callback URL for recording actions
+        /// The callback URL on each selected recording event
         /// </summary>
         public Uri RecordingStatusCallback { get; set; }
         /// <summary>
-        /// The HTTP method Twilio should use when making a request to the RecordingStatusCallback URL
+        /// The HTTP method we should use when calling the recording_status_callback URL
         /// </summary>
         public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new CreateRecordingOptions
         /// </summary>
-        /// <param name="pathCallSid"> Create by unique call Sid for the recording </param>
+        /// <param name="pathCallSid"> The SID of the Call to associate this resource with </param>
         public CreateRecordingOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;
@@ -92,25 +92,25 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     }
 
     /// <summary>
-    /// Changes the status of the recording to paused, stopped, or in-progress. Note: Pass ‘Twilio.CURRENT’ instead of
+    /// Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of
     /// recording sid to reference current active recording.
     /// </summary>
     public class UpdateRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource(s) to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique call Sid for the recording
+        /// The Call SID of the resource(s) to update
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference current active recording)
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The status to change the recording to.
+        /// The new status of the recording
         /// </summary>
         public RecordingResource.StatusEnum Status { get; }
         /// <summary>
@@ -121,10 +121,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// Construct a new UpdateRecordingOptions
         /// </summary>
-        /// <param name="pathCallSid"> Fetch by unique call Sid for the recording </param>
-        /// <param name="pathSid"> The recording sid to update. (or use 'Twilio.CURRENT' instead of recording sid to reference
-        ///               current active recording) </param>
-        /// <param name="status"> The status to change the recording to. </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to update </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="status"> The new status of the recording </param>
         public UpdateRecordingOptions(string pathCallSid, string pathSid, RecordingResource.StatusEnum status)
         {
             PathCallSid = pathCallSid;
@@ -158,23 +157,23 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class FetchRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource(s) to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique call Sid for the recording
+        /// The Call SID of the resource(s) to fetch
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// Fetch by unique recording Sid
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchRecordingOptions
         /// </summary>
-        /// <param name="pathCallSid"> Fetch by unique call Sid for the recording </param>
-        /// <param name="pathSid"> Fetch by unique recording Sid </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public FetchRecordingOptions(string pathCallSid, string pathSid)
         {
             PathCallSid = pathCallSid;
@@ -197,23 +196,23 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class DeleteRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource(s) to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Delete by unique call Sid for the recording
+        /// The Call SID of the resource(s) to delete
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// Delete by unique recording Sid
+        /// The unique string that identifies this resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteRecordingOptions
         /// </summary>
-        /// <param name="pathCallSid"> Delete by unique call Sid for the recording </param>
-        /// <param name="pathSid"> Delete by unique recording Sid </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to delete </param>
+        /// <param name="pathSid"> The unique string that identifies this resource </param>
         public DeleteRecordingOptions(string pathCallSid, string pathSid)
         {
             PathCallSid = pathCallSid;
@@ -236,30 +235,30 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class ReadRecordingOptions : ReadOptions<RecordingResource> 
     {
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource(s) to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Read by unique call Sid for the recording
+        /// The Call SID of the resource(s) to read
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// Filter by date created
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
-        /// Filter by date created
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// Filter by date created
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
 
         /// <summary>
         /// Construct a new ReadRecordingOptions
         /// </summary>
-        /// <param name="pathCallSid"> Read by unique call Sid for the recording </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to read </param>
         public ReadRecordingOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;

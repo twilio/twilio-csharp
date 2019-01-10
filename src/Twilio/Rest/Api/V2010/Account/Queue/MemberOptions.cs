@@ -12,12 +12,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
 {
 
     /// <summary>
-    /// Fetch a specific members of the queue
+    /// Fetch a specific member from the queue
     /// </summary>
     public class FetchMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -25,7 +25,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         public string PathQueueSid { get; }
         /// <summary>
-        /// The call_sid
+        /// The Call SID of the resource(s) to fetch
         /// </summary>
         public string PathCallSid { get; }
 
@@ -33,7 +33,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// Construct a new FetchMemberOptions
         /// </summary>
         /// <param name="pathQueueSid"> The Queue in which to find the members </param>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to fetch </param>
         public FetchMemberOptions(string pathQueueSid, string pathCallSid)
         {
             PathQueueSid = pathQueueSid;
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
     public class UpdateMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -64,15 +64,15 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         public string PathQueueSid { get; }
         /// <summary>
-        /// The call_sid
+        /// The Call SID of the resource(s) to update
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// The url
+        /// The absolute URL of this Queue resource
         /// </summary>
         public Uri Url { get; }
         /// <summary>
-        /// The method
+        /// How to pass the update request data
         /// </summary>
         public Twilio.Http.HttpMethod Method { get; }
 
@@ -80,9 +80,9 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// Construct a new UpdateMemberOptions
         /// </summary>
         /// <param name="pathQueueSid"> The Queue in which to find the members </param>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="url"> The url </param>
-        /// <param name="method"> The method </param>
+        /// <param name="pathCallSid"> The Call SID of the resource(s) to update </param>
+        /// <param name="url"> The absolute URL of this Queue resource </param>
+        /// <param name="method"> How to pass the update request data </param>
         public UpdateMemberOptions(string pathQueueSid, string pathCallSid, Uri url, Twilio.Http.HttpMethod method)
         {
             PathQueueSid = pathQueueSid;
@@ -112,12 +112,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
     }
 
     /// <summary>
-    /// Retrieve a list of members in the queue
+    /// Retrieve the members of the queue
     /// </summary>
     public class ReadMemberOptions : ReadOptions<MemberResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource(s) to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>

@@ -57,11 +57,11 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         public CompositionResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// Only show Compositions that started on or after this ISO8601 date-time.
+        /// Only show Compositions created on or after this ISO8601 date-time with timezone.
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// Only show Compositions that started before this this ISO8601 date-time.
+        /// Only show Compositions created before this ISO8601 date-time with timezone.
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>

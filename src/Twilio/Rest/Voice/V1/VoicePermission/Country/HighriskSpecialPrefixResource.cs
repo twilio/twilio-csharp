@@ -74,7 +74,7 @@ namespace Twilio.Rest.Voice.V1.VoicePermission.Country
         /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
         /// code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
-        /// <param name="pathIsoCode"> The ISO country code </param>
+        /// <param name="pathIsoCode"> The ISO 3166-1 country code </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Voice.V1.VoicePermission.Country
         /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
         /// code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
-        /// <param name="pathIsoCode"> The ISO country code </param>
+        /// <param name="pathIsoCode"> The ISO 3166-1 country code </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
