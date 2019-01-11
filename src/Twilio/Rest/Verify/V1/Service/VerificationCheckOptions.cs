@@ -27,9 +27,13 @@ namespace Twilio.Rest.Verify.V1.Service
         /// </summary>
         public string Code { get; }
         /// <summary>
-        /// To phonenumber
+        /// To phone number
         /// </summary>
         public string To { get; set; }
+        /// <summary>
+        /// A SID that uniquely identifies this Verification Check
+        /// </summary>
+        public string VerificationSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateVerificationCheckOptions
@@ -56,6 +60,11 @@ namespace Twilio.Rest.Verify.V1.Service
             if (To != null)
             {
                 p.Add(new KeyValuePair<string, string>("To", To));
+            }
+
+            if (VerificationSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VerificationSid", VerificationSid.ToString()));
             }
 
             return p;

@@ -82,15 +82,17 @@ namespace Twilio.Rest.Verify.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Verify Service to be used to check a verification. </param>
         /// <param name="code"> The verification string </param>
-        /// <param name="to"> To phonenumber </param>
+        /// <param name="to"> To phone number </param>
+        /// <param name="verificationSid"> A SID that uniquely identifies this Verification Check </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of VerificationCheck </returns> 
         public static VerificationCheckResource Create(string pathServiceSid, 
                                                        string code, 
                                                        string to = null, 
+                                                       string verificationSid = null, 
                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to};
+            var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to, VerificationSid = verificationSid};
             return Create(options, client);
         }
 
@@ -100,15 +102,17 @@ namespace Twilio.Rest.Verify.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Verify Service to be used to check a verification. </param>
         /// <param name="code"> The verification string </param>
-        /// <param name="to"> To phonenumber </param>
+        /// <param name="to"> To phone number </param>
+        /// <param name="verificationSid"> A SID that uniquely identifies this Verification Check </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationCheck </returns> 
         public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(string pathServiceSid, 
                                                                                                string code, 
                                                                                                string to = null, 
+                                                                                               string verificationSid = null, 
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to};
+            var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to, VerificationSid = verificationSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -147,7 +151,7 @@ namespace Twilio.Rest.Verify.V1.Service
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// To phonenumber
+        /// To phone number
         /// </summary>
         [JsonProperty("to")]
         public string To { get; private set; }

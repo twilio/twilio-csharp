@@ -184,6 +184,11 @@ namespace Twilio.Rest.Verify.V1.Service
         [JsonProperty("valid")]
         public bool? Valid { get; private set; }
         /// <summary>
+        /// Info about the phone number
+        /// </summary>
+        [JsonProperty("lookup")]
+        public object Lookup { get; private set; }
+        /// <summary>
         /// The date this Verification was created
         /// </summary>
         [JsonProperty("date_created")]
