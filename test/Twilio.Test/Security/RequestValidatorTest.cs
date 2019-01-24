@@ -9,8 +9,7 @@ namespace Twilio.Tests.Security
     {
         private const string Url = "https://mycompany.com/myapp.php?foo=1&bar=2";
         private const string Body = "{\"property\": \"value\", \"boolean\": true}";
-        private const string BodyHash = "Ch/3Y02as7ldtcmi3+lBbkFQKyg6gMfPGWMmMvluZiA=";
-        private const string BodyHashEncoded = "Ch/3Y02as7ldtcmi3%2BlBbkFQKyg6gMfPGWMmMvluZiA%3D";
+        private const string BodyHash = "0a1ff7634d9ab3b95db5c9a2dfe9416e41502b283a80c7cf19632632f96e6620";
         private readonly NameValueCollection _parameters = new NameValueCollection();
         private readonly RequestValidator _validator = new RequestValidator("12345");
 
@@ -54,15 +53,15 @@ namespace Twilio.Tests.Security
         [Test]
         public void TestValidateWithBody()
         {
-            const string url = Url + "&bodySHA256=" + BodyHashEncoded;
-            Assert.IsTrue(_validator.Validate(url, Body, "afcFvPLPYT8mg/JyIVkdnqQKa2s="), "Request signature or body validation failed");
+            const string url = Url + "&bodySHA256=" + BodyHash;
+            Assert.IsTrue(_validator.Validate(url, Body, "a9nBmqA0ju/hNViExpshrM61xv4="), "Request signature or body validation failed");
         }
 
         [Test]
         public void TestValidateWithOnlyHash()
         {
-            const string url = "https://mycompany.com/myapp.php?bodySHA256=" + BodyHashEncoded;
-            Assert.IsTrue(_validator.Validate(url, Body, "DXnNFCj8DJ/hZmiSg4UzaDHw5Og="), "Request signature or body validation failed");
+            const string url = "https://mycompany.com/myapp.php?bodySHA256=" + BodyHash;
+            Assert.IsTrue(_validator.Validate(url, Body, "y77kIzt2vzLz71DgmJGsen2scGs="), "Request signature or body validation failed");
         }
 
         [Test]
