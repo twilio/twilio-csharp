@@ -68,7 +68,7 @@ namespace Twilio.Security
         public bool ValidateBody(string rawBody, string expected)
         {
             var signature = _sha.ComputeHash(Encoding.UTF8.GetBytes(rawBody));
-            return SecureCompare(Convert.ToBase64String(signature), expected);
+            return SecureCompare(BitConverter.ToString(signature).Replace("-","").ToLower(), expected);
         }
 
         private static IDictionary<string, string> ToDictionary(NameValueCollection col)
