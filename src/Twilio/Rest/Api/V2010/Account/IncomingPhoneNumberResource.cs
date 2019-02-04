@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// Update an incoming-phone-number instance
+        /// Update an incoming-phone-number instance.
         /// </summary>
         /// <param name="options"> Update IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Update an incoming-phone-number instance
+        /// Update an incoming-phone-number instance.
         /// </summary>
         /// <param name="options"> Update IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -104,32 +104,32 @@ namespace Twilio.Rest.Api.V2010.Account
         #endif
 
         /// <summary>
-        /// Update an incoming-phone-number instance
+        /// Update an incoming-phone-number instance.
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this resource </param>
-        /// <param name="pathAccountSid"> The new owner of the phone number </param>
-        /// <param name="accountSid"> The new owner of the phone number </param>
-        /// <param name="apiVersion"> The Twilio REST API version to use </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to update </param>
+        /// <param name="accountSid"> The SID of the Account that created the resource to update </param>
+        /// <param name="apiVersion"> The API version to use for incoming calls made to the phone number </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="smsApplicationSid"> Unique string that identifies the application </param>
-        /// <param name="smsFallbackMethod"> HTTP method used with sms fallback url </param>
-        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
-        /// <param name="smsMethod"> HTTP method to use with sms url </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="statusCallback"> URL Twilio will use to pass status parameters </param>
-        /// <param name="statusCallbackMethod"> HTTP method twilio will use with status callback </param>
-        /// <param name="voiceApplicationSid"> The unique sid of the application to handle this number </param>
-        /// <param name="voiceCallerIdLookup"> Look up the caller's caller-ID </param>
-        /// <param name="voiceFallbackMethod"> HTTP method used with fallback_url </param>
-        /// <param name="voiceFallbackUrl"> URL Twilio will request when an error occurs in TwiML </param>
-        /// <param name="voiceMethod"> HTTP method used with the voice url </param>
-        /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
-        /// <param name="emergencyStatus"> Status determining whether the number is enabled for emergency calling </param>
-        /// <param name="emergencyAddressSid"> EmergencyAddress configuration to leverage emergency calling </param>
-        /// <param name="trunkSid"> Unique string to identify the trunk </param>
-        /// <param name="voiceReceiveMode"> Incoming call type: `fax` or `voice` </param>
+        /// <param name="smsFallbackMethod"> HTTP method used with sms_fallback_url </param>
+        /// <param name="smsFallbackUrl"> The URL we call when an error occurs while executing TwiML </param>
+        /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
+        /// <param name="smsUrl"> The URL we should call when the phone number receives an incoming SMS message </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
+        /// <param name="voiceApplicationSid"> The SID of the application to handle the phone number </param>
+        /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
+        /// <param name="voiceFallbackMethod"> The HTTP method used with fallback_url </param>
+        /// <param name="voiceFallbackUrl"> The URL we will call when an error occurs in TwiML </param>
+        /// <param name="voiceMethod"> The HTTP method used with the voice_url </param>
+        /// <param name="voiceUrl"> The URL we should call when the phone number receives a call </param>
+        /// <param name="emergencyStatus"> Whether the phone number is enabled for emergency calling </param>
+        /// <param name="emergencyAddressSid"> The emergency address configuration to use for emergency calling </param>
+        /// <param name="trunkSid"> SID of the trunk to handle phone calls to the phone number </param>
+        /// <param name="voiceReceiveMode"> Incoming call type: fax or voice </param>
         /// <param name="identitySid"> Unique string that identifies the identity associated with number </param>
-        /// <param name="addressSid"> Unique string that identifies the address associated with number </param>
+        /// <param name="addressSid"> The SID of the Address resource associated with the phone number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
         public static IncomingPhoneNumberResource Update(string pathSid, 
@@ -164,32 +164,32 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Update an incoming-phone-number instance
+        /// Update an incoming-phone-number instance.
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this resource </param>
-        /// <param name="pathAccountSid"> The new owner of the phone number </param>
-        /// <param name="accountSid"> The new owner of the phone number </param>
-        /// <param name="apiVersion"> The Twilio REST API version to use </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to update </param>
+        /// <param name="accountSid"> The SID of the Account that created the resource to update </param>
+        /// <param name="apiVersion"> The API version to use for incoming calls made to the phone number </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="smsApplicationSid"> Unique string that identifies the application </param>
-        /// <param name="smsFallbackMethod"> HTTP method used with sms fallback url </param>
-        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
-        /// <param name="smsMethod"> HTTP method to use with sms url </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="statusCallback"> URL Twilio will use to pass status parameters </param>
-        /// <param name="statusCallbackMethod"> HTTP method twilio will use with status callback </param>
-        /// <param name="voiceApplicationSid"> The unique sid of the application to handle this number </param>
-        /// <param name="voiceCallerIdLookup"> Look up the caller's caller-ID </param>
-        /// <param name="voiceFallbackMethod"> HTTP method used with fallback_url </param>
-        /// <param name="voiceFallbackUrl"> URL Twilio will request when an error occurs in TwiML </param>
-        /// <param name="voiceMethod"> HTTP method used with the voice url </param>
-        /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
-        /// <param name="emergencyStatus"> Status determining whether the number is enabled for emergency calling </param>
-        /// <param name="emergencyAddressSid"> EmergencyAddress configuration to leverage emergency calling </param>
-        /// <param name="trunkSid"> Unique string to identify the trunk </param>
-        /// <param name="voiceReceiveMode"> Incoming call type: `fax` or `voice` </param>
+        /// <param name="smsFallbackMethod"> HTTP method used with sms_fallback_url </param>
+        /// <param name="smsFallbackUrl"> The URL we call when an error occurs while executing TwiML </param>
+        /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
+        /// <param name="smsUrl"> The URL we should call when the phone number receives an incoming SMS message </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
+        /// <param name="voiceApplicationSid"> The SID of the application to handle the phone number </param>
+        /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
+        /// <param name="voiceFallbackMethod"> The HTTP method used with fallback_url </param>
+        /// <param name="voiceFallbackUrl"> The URL we will call when an error occurs in TwiML </param>
+        /// <param name="voiceMethod"> The HTTP method used with the voice_url </param>
+        /// <param name="voiceUrl"> The URL we should call when the phone number receives a call </param>
+        /// <param name="emergencyStatus"> Whether the phone number is enabled for emergency calling </param>
+        /// <param name="emergencyAddressSid"> The emergency address configuration to use for emergency calling </param>
+        /// <param name="trunkSid"> SID of the trunk to handle phone calls to the phone number </param>
+        /// <param name="voiceReceiveMode"> Incoming call type: fax or voice </param>
         /// <param name="identitySid"> Unique string that identifies the identity associated with number </param>
-        /// <param name="addressSid"> Unique string that identifies the address associated with number </param>
+        /// <param name="addressSid"> The SID of the Address resource associated with the phone number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> UpdateAsync(string pathSid, 
@@ -235,7 +235,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// Fetch an incoming-phone-number belonging to the account used to make the request
+        /// Fetch an incoming-phone-number belonging to the account used to make the request.
         /// </summary>
         /// <param name="options"> Fetch IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -250,7 +250,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Fetch an incoming-phone-number belonging to the account used to make the request
+        /// Fetch an incoming-phone-number belonging to the account used to make the request.
         /// </summary>
         /// <param name="options"> Fetch IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -265,10 +265,10 @@ namespace Twilio.Rest.Api.V2010.Account
         #endif
 
         /// <summary>
-        /// Fetch an incoming-phone-number belonging to the account used to make the request
+        /// Fetch an incoming-phone-number belonging to the account used to make the request.
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique incoming-phone-number Sid </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
         public static IncomingPhoneNumberResource Fetch(string pathSid, 
@@ -281,10 +281,10 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Fetch an incoming-phone-number belonging to the account used to make the request
+        /// Fetch an incoming-phone-number belonging to the account used to make the request.
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique incoming-phone-number Sid </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> FetchAsync(string pathSid, 
@@ -308,7 +308,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// Delete a phone-numbers belonging to the account used to make the request
+        /// Delete a phone-numbers belonging to the account used to make the request.
         /// </summary>
         /// <param name="options"> Delete IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -322,7 +322,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Delete a phone-numbers belonging to the account used to make the request
+        /// Delete a phone-numbers belonging to the account used to make the request.
         /// </summary>
         /// <param name="options"> Delete IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -337,10 +337,10 @@ namespace Twilio.Rest.Api.V2010.Account
         #endif
 
         /// <summary>
-        /// Delete a phone-numbers belonging to the account used to make the request
+        /// Delete a phone-numbers belonging to the account used to make the request.
         /// </summary>
-        /// <param name="pathSid"> Delete by unique phone-number Sid </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -351,10 +351,10 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Delete a phone-numbers belonging to the account used to make the request
+        /// Delete a phone-numbers belonging to the account used to make the request.
         /// </summary>
-        /// <param name="pathSid"> Delete by unique phone-number Sid </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
@@ -378,7 +378,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request
+        /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request.
         /// </summary>
         /// <param name="options"> Read IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -395,7 +395,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request
+        /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request.
         /// </summary>
         /// <param name="options"> Read IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -412,13 +412,13 @@ namespace Twilio.Rest.Api.V2010.Account
         #endif
 
         /// <summary>
-        /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request
+        /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request.
         /// </summary>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
-        /// <param name="beta"> Include new phone numbers </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <param name="phoneNumber"> Filter by incoming phone number </param>
-        /// <param name="origin"> Include phone numbers based on the origin, by default, phone numbers of all origin are
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="beta"> Whether to include new phone numbers </param>
+        /// <param name="friendlyName"> A string that identifies the IncomingPhoneNumber resources to read </param>
+        /// <param name="phoneNumber"> The phone numbers of the IncomingPhoneNumber resources to read </param>
+        /// <param name="origin"> Include phone numbers based on their origin. By default, phone numbers of all origin are
         ///              included. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -439,13 +439,13 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request
+        /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request.
         /// </summary>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
-        /// <param name="beta"> Include new phone numbers </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
-        /// <param name="phoneNumber"> Filter by incoming phone number </param>
-        /// <param name="origin"> Include phone numbers based on the origin, by default, phone numbers of all origin are
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="beta"> Whether to include new phone numbers </param>
+        /// <param name="friendlyName"> A string that identifies the IncomingPhoneNumber resources to read </param>
+        /// <param name="phoneNumber"> The phone numbers of the IncomingPhoneNumber resources to read </param>
+        /// <param name="origin"> Include phone numbers based on their origin. By default, phone numbers of all origin are
         ///              included. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -538,7 +538,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// Purchase a phone-number for the account
+        /// Purchase a phone-number for the account.
         /// </summary>
         /// <param name="options"> Create IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -553,7 +553,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Purchase a phone-number for the account
+        /// Purchase a phone-number for the account.
         /// </summary>
         /// <param name="options"> Create IncomingPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -568,32 +568,33 @@ namespace Twilio.Rest.Api.V2010.Account
         #endif
 
         /// <summary>
-        /// Purchase a phone-number for the account
+        /// Purchase a phone-number for the account.
         /// </summary>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
-        /// <param name="phoneNumber"> The phone number </param>
-        /// <param name="areaCode"> The desired area code for the new number </param>
-        /// <param name="apiVersion"> The Twilio Rest API version to use </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="smsApplicationSid"> Unique string that identifies the application </param>
-        /// <param name="smsFallbackMethod"> HTTP method used with sms fallback url </param>
-        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
-        /// <param name="smsMethod"> HTTP method to use with sms url </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="statusCallback"> URL Twilio will use to pass status parameters </param>
-        /// <param name="statusCallbackMethod"> HTTP method twilio will use with status callback </param>
-        /// <param name="voiceApplicationSid"> The unique sid of the application to handle this number </param>
-        /// <param name="voiceCallerIdLookup"> Look up the caller's caller-ID </param>
-        /// <param name="voiceFallbackMethod"> HTTP method used with fallback_url </param>
-        /// <param name="voiceFallbackUrl"> URL Twilio will request when an error occurs in TwiML </param>
-        /// <param name="voiceMethod"> HTTP method used with the voice url </param>
-        /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
-        /// <param name="emergencyStatus"> Status determining whether the number is enabled for emergency calling </param>
-        /// <param name="emergencyAddressSid"> EmergencyAddress configuration to leverage emergency calling </param>
-        /// <param name="trunkSid"> Unique string to identify the trunk </param>
-        /// <param name="identitySid"> Unique string that identifies the identity associated with number </param>
-        /// <param name="addressSid"> Unique string that identifies the address associated with number </param>
-        /// <param name="voiceReceiveMode"> Incoming call type: `fax` or `voice` </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+        /// <param name="phoneNumber"> The phone number to purchase in E.164 format </param>
+        /// <param name="areaCode"> The desired area code for the new phone number </param>
+        /// <param name="apiVersion"> The API version to use for incoming calls made to the new phone number </param>
+        /// <param name="friendlyName"> A string to describe the new phone number </param>
+        /// <param name="smsApplicationSid"> The SID of the application to handle SMS messages </param>
+        /// <param name="smsFallbackMethod"> HTTP method used with sms_fallback_url </param>
+        /// <param name="smsFallbackUrl"> The URL we call when an error occurs while executing TwiML </param>
+        /// <param name="smsMethod"> The HTTP method to use with sms url </param>
+        /// <param name="smsUrl"> The URL we should call when the new phone number receives an incoming SMS message </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> HTTP method we should use to call status_callback </param>
+        /// <param name="voiceApplicationSid"> The SID of the application to handle the new phone number </param>
+        /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
+        /// <param name="voiceFallbackMethod"> The HTTP method used with voice_fallback_url </param>
+        /// <param name="voiceFallbackUrl"> The URL we will call when an error occurs in TwiML </param>
+        /// <param name="voiceMethod"> The HTTP method used with the voice_url </param>
+        /// <param name="voiceUrl"> The URL we should call when the phone number receives a call </param>
+        /// <param name="emergencyStatus"> Status determining whether the new phone number is enabled for emergency calling
+        ///                       </param>
+        /// <param name="emergencyAddressSid"> The emergency address configuration to use for emergency calling </param>
+        /// <param name="trunkSid"> SID of the trunk to handle calls to the new phone number </param>
+        /// <param name="identitySid"> The SID of the Identity resource to associate with the new phone number </param>
+        /// <param name="addressSid"> The SID of the Address resource associated with the phone number </param>
+        /// <param name="voiceReceiveMode"> Incoming call type: fax or voice </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of IncomingPhoneNumber </returns> 
         public static IncomingPhoneNumberResource Create(string pathAccountSid = null, 
@@ -628,32 +629,33 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Purchase a phone-number for the account
+        /// Purchase a phone-number for the account.
         /// </summary>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
-        /// <param name="phoneNumber"> The phone number </param>
-        /// <param name="areaCode"> The desired area code for the new number </param>
-        /// <param name="apiVersion"> The Twilio Rest API version to use </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
-        /// <param name="smsApplicationSid"> Unique string that identifies the application </param>
-        /// <param name="smsFallbackMethod"> HTTP method used with sms fallback url </param>
-        /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
-        /// <param name="smsMethod"> HTTP method to use with sms url </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="statusCallback"> URL Twilio will use to pass status parameters </param>
-        /// <param name="statusCallbackMethod"> HTTP method twilio will use with status callback </param>
-        /// <param name="voiceApplicationSid"> The unique sid of the application to handle this number </param>
-        /// <param name="voiceCallerIdLookup"> Look up the caller's caller-ID </param>
-        /// <param name="voiceFallbackMethod"> HTTP method used with fallback_url </param>
-        /// <param name="voiceFallbackUrl"> URL Twilio will request when an error occurs in TwiML </param>
-        /// <param name="voiceMethod"> HTTP method used with the voice url </param>
-        /// <param name="voiceUrl"> URL Twilio will request when receiving a call </param>
-        /// <param name="emergencyStatus"> Status determining whether the number is enabled for emergency calling </param>
-        /// <param name="emergencyAddressSid"> EmergencyAddress configuration to leverage emergency calling </param>
-        /// <param name="trunkSid"> Unique string to identify the trunk </param>
-        /// <param name="identitySid"> Unique string that identifies the identity associated with number </param>
-        /// <param name="addressSid"> Unique string that identifies the address associated with number </param>
-        /// <param name="voiceReceiveMode"> Incoming call type: `fax` or `voice` </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+        /// <param name="phoneNumber"> The phone number to purchase in E.164 format </param>
+        /// <param name="areaCode"> The desired area code for the new phone number </param>
+        /// <param name="apiVersion"> The API version to use for incoming calls made to the new phone number </param>
+        /// <param name="friendlyName"> A string to describe the new phone number </param>
+        /// <param name="smsApplicationSid"> The SID of the application to handle SMS messages </param>
+        /// <param name="smsFallbackMethod"> HTTP method used with sms_fallback_url </param>
+        /// <param name="smsFallbackUrl"> The URL we call when an error occurs while executing TwiML </param>
+        /// <param name="smsMethod"> The HTTP method to use with sms url </param>
+        /// <param name="smsUrl"> The URL we should call when the new phone number receives an incoming SMS message </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> HTTP method we should use to call status_callback </param>
+        /// <param name="voiceApplicationSid"> The SID of the application to handle the new phone number </param>
+        /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
+        /// <param name="voiceFallbackMethod"> The HTTP method used with voice_fallback_url </param>
+        /// <param name="voiceFallbackUrl"> The URL we will call when an error occurs in TwiML </param>
+        /// <param name="voiceMethod"> The HTTP method used with the voice_url </param>
+        /// <param name="voiceUrl"> The URL we should call when the phone number receives a call </param>
+        /// <param name="emergencyStatus"> Status determining whether the new phone number is enabled for emergency calling
+        ///                       </param>
+        /// <param name="emergencyAddressSid"> The emergency address configuration to use for emergency calling </param>
+        /// <param name="trunkSid"> SID of the trunk to handle calls to the new phone number </param>
+        /// <param name="identitySid"> The SID of the Identity resource to associate with the new phone number </param>
+        /// <param name="addressSid"> The SID of the Address resource associated with the phone number </param>
+        /// <param name="voiceReceiveMode"> Incoming call type: fax or voice </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of IncomingPhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<IncomingPhoneNumberResource> CreateAsync(string pathAccountSid = null, 
@@ -706,28 +708,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Unique string that identifies the address associated with number
+        /// The SID of the Address resource associated with the phone number
         /// </summary>
         [JsonProperty("address_sid")]
         public string AddressSid { get; private set; }
         /// <summary>
-        /// Indicates if the customer requires an address
+        /// Whether the phone number requires an Address registered with Twilio.
         /// </summary>
         [JsonProperty("address_requirements")]
         [JsonConverter(typeof(StringEnumConverter))]
         public IncomingPhoneNumberResource.AddressRequirementEnum AddressRequirements { get; private set; }
         /// <summary>
-        /// The Twilio REST API version to use
+        /// The API version used to start a new TwiML session
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// Indicates if the phone number is a beta number
+        /// Whether the phone number is new to the Twilio platform
         /// </summary>
         [JsonProperty("beta")]
         public bool? Beta { get; private set; }
@@ -737,129 +739,129 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("capabilities")]
         public PhoneNumberCapabilities Capabilities { get; private set; }
         /// <summary>
-        /// The date this resource was created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this resource was last updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// A human readable description of this resouce
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// Unique string that identifies the identity associated with number
+        /// The SID of the Identity resource associated with number
         /// </summary>
         [JsonProperty("identity_sid")]
         public string IdentitySid { get; private set; }
         /// <summary>
-        /// The incoming phone number
+        /// The phone number in E.164 format
         /// </summary>
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
         /// <summary>
-        /// Twilio owned phone numbers are marked as twilio while hosted phone numbers are marked as hosted.
+        /// The phone number's origin. Can be twilio or hosted.
         /// </summary>
         [JsonProperty("origin")]
         public string Origin { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies this resource
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Unique string that identifies the application
+        /// The SID of the application that handles SMS messages sent to the phone number
         /// </summary>
         [JsonProperty("sms_application_sid")]
         public string SmsApplicationSid { get; private set; }
         /// <summary>
-        /// HTTP method used with sms fallback url
+        /// The HTTP method used with sms_fallback_url
         /// </summary>
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
         /// <summary>
-        /// URL Twilio will request if an error occurs in executing TwiML
+        /// The URL that we call when an error occurs while retrieving or executing the TwiML
         /// </summary>
         [JsonProperty("sms_fallback_url")]
         public Uri SmsFallbackUrl { get; private set; }
         /// <summary>
-        /// HTTP method to use with sms url
+        /// The HTTP method to use with sms_url
         /// </summary>
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsMethod { get; private set; }
         /// <summary>
-        /// URL Twilio will request when receiving an SMS
+        /// The URL we call when the phone number receives an incoming SMS message
         /// </summary>
         [JsonProperty("sms_url")]
         public Uri SmsUrl { get; private set; }
         /// <summary>
-        /// URL Twilio will use to pass status parameters
+        /// The URL to send status information to your application
         /// </summary>
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
         /// <summary>
-        /// HTTP method twilio will use with status callback
+        /// The HTTP method we use to call status_callback
         /// </summary>
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
         /// <summary>
-        /// Unique string to identify the trunk
+        /// The SID of the Trunk that handles calls to the phone number
         /// </summary>
         [JsonProperty("trunk_sid")]
         public string TrunkSid { get; private set; }
         /// <summary>
-        /// The URI for this resource
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// The unique sid of the application to handle this number
+        /// The SID of the application that handles calls to the phone number
         /// </summary>
         [JsonProperty("voice_application_sid")]
         public string VoiceApplicationSid { get; private set; }
         /// <summary>
-        /// Look up the caller's caller-ID
+        /// Whether to lookup the caller's name
         /// </summary>
         [JsonProperty("voice_caller_id_lookup")]
         public bool? VoiceCallerIdLookup { get; private set; }
         /// <summary>
-        /// HTTP method used with fallback_url
+        /// The HTTP method used with voice_fallback_url
         /// </summary>
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
         /// <summary>
-        /// URL Twilio will request when an error occurs in TwiML
+        /// The URL we call when an error occurs in TwiML
         /// </summary>
         [JsonProperty("voice_fallback_url")]
         public Uri VoiceFallbackUrl { get; private set; }
         /// <summary>
-        /// HTTP method used with the voice url
+        /// The HTTP method used with the voice_url
         /// </summary>
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
         /// <summary>
-        /// URL Twilio will request when receiving a call
+        /// The URL we call when the phone number receives a call
         /// </summary>
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
         /// <summary>
-        /// The emergency_status
+        /// Whether the phone number is enabled for emergency calling
         /// </summary>
         [JsonProperty("emergency_status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public IncomingPhoneNumberResource.EmergencyStatusEnum EmergencyStatus { get; private set; }
         /// <summary>
-        /// The emergency_address_sid
+        /// The emergency address configuration to use for emergency calling
         /// </summary>
         [JsonProperty("emergency_address_sid")]
         public string EmergencyAddressSid { get; private set; }

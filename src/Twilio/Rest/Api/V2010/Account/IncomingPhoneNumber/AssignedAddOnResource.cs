@@ -65,9 +65,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Fetch an instance of an Add-on installation currently assigned to this Number.
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathSid"> The unique Installed Add-on Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AssignedAddOn </returns> 
         public static AssignedAddOnResource Fetch(string pathResourceSid, 
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Fetch an instance of an Add-on installation currently assigned to this Number.
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathSid"> The unique Installed Add-on Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AssignedAddOn </returns> 
         public static async System.Threading.Tasks.Task<AssignedAddOnResource> FetchAsync(string pathResourceSid, 
@@ -146,8 +146,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Retrieve a list of Add-on installations currently assigned to this Number.
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -166,8 +166,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Retrieve a list of Add-on installations currently assigned to this Number.
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -285,9 +285,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Assign an Add-on installation to the Number specified.
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="installedAddOnSid"> A string that uniquely identifies the Add-on installation </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number to assign the Add-on </param>
+        /// <param name="installedAddOnSid"> The SID that identifies the Add-on installation </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AssignedAddOn </returns> 
         public static AssignedAddOnResource Create(string pathResourceSid, 
@@ -303,9 +303,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Assign an Add-on installation to the Number specified.
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="installedAddOnSid"> A string that uniquely identifies the Add-on installation </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number to assign the Add-on </param>
+        /// <param name="installedAddOnSid"> The SID that identifies the Add-on installation </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AssignedAddOn </returns> 
         public static async System.Threading.Tasks.Task<AssignedAddOnResource> CreateAsync(string pathResourceSid, 
@@ -361,9 +361,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Remove the assignment of an Add-on installation from the Number specified.
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathSid"> The Installed Add-on Sid to remove </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AssignedAddOn </returns> 
         public static bool Delete(string pathResourceSid, 
@@ -379,9 +379,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <summary>
         /// Remove the assignment of an Add-on installation from the Number specified.
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathSid"> The Installed Add-on Sid to remove </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AssignedAddOn </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathResourceSid, 
@@ -413,22 +413,22 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         }
 
         /// <summary>
-        /// A string that uniquely identifies this assigned Add-on installation
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The Account id that has installed this Add-on
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The Phone Number id that has installed this Add-on
+        /// The SID of the Phone Number that installed this Add-on
         /// </summary>
         [JsonProperty("resource_sid")]
         public string ResourceSid { get; private set; }
         /// <summary>
-        /// A description of this Add-on installation
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
@@ -438,32 +438,32 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// The JSON object representing the current configuration
+        /// A JSON string that represents the current configuration
         /// </summary>
         [JsonProperty("configuration")]
         public object Configuration { get; private set; }
         /// <summary>
-        /// The string that uniquely identifies this Add-on installation
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The date this Add-on was installed
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Add-on installation was last updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The uri
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// The subresource_uris
+        /// A list of related resources identified by their relative URIs
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }

@@ -17,23 +17,23 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
     public class ReadDailyOptions : ReadOptions<DailyResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Only include usage of this usage category.
+        /// The usage category of the UsageRecord resources to read
         /// </summary>
         public DailyResource.CategoryEnum Category { get; set; }
         /// <summary>
-        /// Only include usage that has occurred on or after this date.
+        /// Only include usage that has occurred on or after this date
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// Only include usage that has occurred on or before this date.
+        /// Only include usage that occurred on or before this date
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// The include_subaccounts
+        /// Whether to include usage from the master account and all its subaccounts
         /// </summary>
         public bool? IncludeSubaccounts { get; set; }
 

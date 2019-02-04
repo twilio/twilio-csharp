@@ -19,28 +19,28 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
     public class FetchAssignedAddOnExtensionOptions : IOptions<AssignedAddOnExtensionResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The resource_sid
+        /// The SID of the Phone Number to which the Add-on is assigned
         /// </summary>
         public string PathResourceSid { get; }
         /// <summary>
-        /// The assigned_add_on_sid
+        /// The SID that uniquely identifies the assigned Add-on installation
         /// </summary>
         public string PathAssignedAddOnSid { get; }
         /// <summary>
-        /// The unique Extension Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAssignedAddOnExtensionOptions
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathAssignedAddOnSid"> The assigned_add_on_sid </param>
-        /// <param name="pathSid"> The unique Extension Sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned </param>
+        /// <param name="pathAssignedAddOnSid"> The SID that uniquely identifies the assigned Add-on installation </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchAssignedAddOnExtensionOptions(string pathResourceSid, string pathAssignedAddOnSid, string pathSid)
         {
             PathResourceSid = pathResourceSid;
@@ -66,23 +66,23 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
     public class ReadAssignedAddOnExtensionOptions : ReadOptions<AssignedAddOnExtensionResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The resource_sid
+        /// The SID of the Phone Number to which the Add-on is assigned
         /// </summary>
         public string PathResourceSid { get; }
         /// <summary>
-        /// The assigned_add_on_sid
+        /// The SID that uniquely identifies the assigned Add-on installation
         /// </summary>
         public string PathAssignedAddOnSid { get; }
 
         /// <summary>
         /// Construct a new ReadAssignedAddOnExtensionOptions
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathAssignedAddOnSid"> The assigned_add_on_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned </param>
+        /// <param name="pathAssignedAddOnSid"> The SID that uniquely identifies the assigned Add-on installation </param>
         public ReadAssignedAddOnExtensionOptions(string pathResourceSid, string pathAssignedAddOnSid)
         {
             PathResourceSid = pathResourceSid;

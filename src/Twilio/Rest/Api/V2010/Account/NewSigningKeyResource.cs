@@ -32,7 +32,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// create
+        /// Create a new Signing Key for the account making the request.
         /// </summary>
         /// <param name="options"> Create NewSigningKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -46,7 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Signing Key for the account making the request.
         /// </summary>
         /// <param name="options"> Create NewSigningKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -61,10 +61,10 @@ namespace Twilio.Rest.Api.V2010.Account
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new Signing Key for the account making the request.
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will be responsible for the new Key resource </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NewSigningKey </returns> 
         public static NewSigningKeyResource Create(string pathAccountSid = null, 
@@ -77,10 +77,10 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Signing Key for the account making the request.
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will be responsible for the new Key resource </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NewSigningKey </returns> 
         public static async System.Threading.Tasks.Task<NewSigningKeyResource> CreateAsync(string pathAccountSid = null, 
@@ -111,27 +111,27 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The secret
+        /// The secret your application uses to sign Access Tokens and to authenticate to the REST API.
         /// </summary>
         [JsonProperty("secret")]
         public string Secret { get; private set; }

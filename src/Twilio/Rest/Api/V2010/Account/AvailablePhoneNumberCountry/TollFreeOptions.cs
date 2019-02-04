@@ -17,59 +17,59 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
     public class ReadTollFreeOptions : ReadOptions<TollFreeResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account requesting the AvailablePhoneNumber resources
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The country_code
+        /// The ISO Country code of the country from which to read phone numbers
         /// </summary>
         public string PathCountryCode { get; }
         /// <summary>
-        /// Find phone numbers in the specified area code.
+        /// The area code of the phone numbers to read
         /// </summary>
         public int? AreaCode { get; set; }
         /// <summary>
-        /// A pattern on which to match phone numbers.
+        /// The pattern on which to match phone numbers
         /// </summary>
         public string Contains { get; set; }
         /// <summary>
-        /// This indicates whether the phone numbers can receive text messages.
+        /// Whether the phone numbers can receive text messages
         /// </summary>
         public bool? SmsEnabled { get; set; }
         /// <summary>
-        /// This indicates whether the phone numbers can receive MMS messages.
+        /// Whether the phone numbers can receive MMS messages
         /// </summary>
         public bool? MmsEnabled { get; set; }
         /// <summary>
-        /// This indicates whether the phone numbers can receive calls.
+        /// Whether the phone numbers can receive calls.
         /// </summary>
         public bool? VoiceEnabled { get; set; }
         /// <summary>
-        /// Indicates whether the response includes phone numbers which require any Address.
+        /// Whether to exclude phone numbers that require an Address
         /// </summary>
         public bool? ExcludeAllAddressRequired { get; set; }
         /// <summary>
-        /// Indicates whether the response includes phone numbers which require a local Address.
+        /// Whether to exclude phone numbers that require a local address
         /// </summary>
         public bool? ExcludeLocalAddressRequired { get; set; }
         /// <summary>
-        /// Indicates whether the response includes phone numbers which require a foreign Address.
+        /// Whether to exclude phone numbers that require a foreign address
         /// </summary>
         public bool? ExcludeForeignAddressRequired { get; set; }
         /// <summary>
-        /// Include phone numbers new to the Twilio platform.
+        /// Whether to read phone numbers new to the Twilio platform
         /// </summary>
         public bool? Beta { get; set; }
         /// <summary>
-        /// Given a phone number, find a geographically close number within Distance miles. (US/Canada only)
+        /// Given a phone number, find a geographically close number within distance miles. (US/Canada only)
         /// </summary>
         public Types.PhoneNumber NearNumber { get; set; }
         /// <summary>
-        /// Given a latitude/longitude pair lat,long find geographically close numbers within Distance miles. (US/Canada only)
+        /// Given a latitude/longitude pair lat,long find geographically close numbers within distance miles. (US/Canada only)
         /// </summary>
         public string NearLatLong { get; set; }
         /// <summary>
-        /// Specifies the search radius for a Near- query in miles. (US/Canada only)
+        /// The search radius, in miles, for a near_ query. (US/Canada only)
         /// </summary>
         public int? Distance { get; set; }
         /// <summary>
@@ -85,22 +85,22 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         public string InRateCenter { get; set; }
         /// <summary>
-        /// Limit results to a specific Local access and transport area. (US/Canada only)
+        /// Limit results to a specific local access and transport area. (US/Canada only)
         /// </summary>
         public string InLata { get; set; }
         /// <summary>
-        /// Limit results to a particular locality.
+        /// Limit results to a particular locality
         /// </summary>
         public string InLocality { get; set; }
         /// <summary>
-        /// This indicates whether the phone numbers can receive faxes.
+        /// Whether the phone numbers can receive faxes
         /// </summary>
         public bool? FaxEnabled { get; set; }
 
         /// <summary>
         /// Construct a new ReadTollFreeOptions
         /// </summary>
-        /// <param name="pathCountryCode"> The country_code </param>
+        /// <param name="pathCountryCode"> The ISO Country code of the country from which to read phone numbers </param>
         public ReadTollFreeOptions(string pathCountryCode)
         {
             PathCountryCode = pathCountryCode;

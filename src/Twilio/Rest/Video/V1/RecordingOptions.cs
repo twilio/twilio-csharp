@@ -66,6 +66,10 @@ namespace Twilio.Rest.Video.V1
         /// Only show Recordings that started before this ISO8601 date-time with timezone.
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
+        /// <summary>
+        /// Only show Recordings that have this media type.
+        /// </summary>
+        public RecordingResource.TypeEnum MediaType { get; set; }
 
         /// <summary>
         /// Construct a new ReadRecordingOptions
@@ -104,6 +108,11 @@ namespace Twilio.Rest.Video.V1
             if (DateCreatedBefore != null)
             {
                 p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
+            }
+
+            if (MediaType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MediaType", MediaType.ToString()));
             }
 
             if (PageSize != null)

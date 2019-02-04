@@ -68,32 +68,30 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathCountryCode"> The country_code </param>
-        /// <param name="pathAccountSid"> The 34 character string that uniquely identifies your account. </param>
-        /// <param name="areaCode"> Find phone numbers in the specified area code. </param>
-        /// <param name="contains"> A pattern on which to match phone numbers. </param>
-        /// <param name="smsEnabled"> This indicates whether the phone numbers can receive text messages. </param>
-        /// <param name="mmsEnabled"> This indicates whether the phone numbers can receive MMS messages. </param>
-        /// <param name="voiceEnabled"> This indicates whether the phone numbers can receive calls. </param>
-        /// <param name="excludeAllAddressRequired"> Indicates whether the response includes phone numbers which require any
-        ///                                 Address. </param>
-        /// <param name="excludeLocalAddressRequired"> Indicates whether the response includes phone numbers which require a
-        ///                                   local Address. </param>
-        /// <param name="excludeForeignAddressRequired"> Indicates whether the response includes phone numbers which require a
-        ///                                     foreign Address. </param>
-        /// <param name="beta"> Include phone numbers new to the Twilio platform. </param>
-        /// <param name="nearNumber"> Given a phone number, find a geographically close number within Distance miles.
+        /// <param name="pathCountryCode"> The ISO Country code of the country from which to read phone numbers </param>
+        /// <param name="pathAccountSid"> The SID of the Account requesting the AvailablePhoneNumber resources </param>
+        /// <param name="areaCode"> The area code of the phone numbers to read </param>
+        /// <param name="contains"> The pattern on which to match phone numbers </param>
+        /// <param name="smsEnabled"> Whether the phone numbers can receive text messages </param>
+        /// <param name="mmsEnabled"> Whether the phone numbers can receive MMS messages </param>
+        /// <param name="voiceEnabled"> Whether the phone numbers can receive calls. </param>
+        /// <param name="excludeAllAddressRequired"> Whether to exclude phone numbers that require an Address </param>
+        /// <param name="excludeLocalAddressRequired"> Whether to exclude phone numbers that require a local address </param>
+        /// <param name="excludeForeignAddressRequired"> Whether to exclude phone numbers that require a foreign address
+        ///                                     </param>
+        /// <param name="beta"> Whether to read phone numbers new to the Twilio platform </param>
+        /// <param name="nearNumber"> Given a phone number, find a geographically close number within distance miles.
         ///                  (US/Canada only) </param>
         /// <param name="nearLatLong"> Given a latitude/longitude pair lat,long find geographically close numbers within
-        ///                   Distance miles. (US/Canada only) </param>
-        /// <param name="distance"> Specifies the search radius for a Near- query in miles. (US/Canada only) </param>
+        ///                   distance miles. (US/Canada only) </param>
+        /// <param name="distance"> The search radius, in miles, for a near_ query. (US/Canada only) </param>
         /// <param name="inPostalCode"> Limit results to a particular postal code. (US/Canada only) </param>
         /// <param name="inRegion"> Limit results to a particular region. (US/Canada only) </param>
         /// <param name="inRateCenter"> Limit results to a specific rate center, or given a phone number search within the same
         ///                    rate center as that number. (US/Canada only) </param>
-        /// <param name="inLata"> Limit results to a specific Local access and transport area. (US/Canada only) </param>
-        /// <param name="inLocality"> Limit results to a particular locality. (US/Canada only) </param>
-        /// <param name="faxEnabled"> This indicates whether the phone numbers can receive faxes. </param>
+        /// <param name="inLata"> Limit results to a specific local access and transport area. (US/Canada only) </param>
+        /// <param name="inLocality"> Limit results to a particular locality </param>
+        /// <param name="faxEnabled"> Whether the phone numbers can receive faxes </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -130,32 +128,30 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathCountryCode"> The country_code </param>
-        /// <param name="pathAccountSid"> The 34 character string that uniquely identifies your account. </param>
-        /// <param name="areaCode"> Find phone numbers in the specified area code. </param>
-        /// <param name="contains"> A pattern on which to match phone numbers. </param>
-        /// <param name="smsEnabled"> This indicates whether the phone numbers can receive text messages. </param>
-        /// <param name="mmsEnabled"> This indicates whether the phone numbers can receive MMS messages. </param>
-        /// <param name="voiceEnabled"> This indicates whether the phone numbers can receive calls. </param>
-        /// <param name="excludeAllAddressRequired"> Indicates whether the response includes phone numbers which require any
-        ///                                 Address. </param>
-        /// <param name="excludeLocalAddressRequired"> Indicates whether the response includes phone numbers which require a
-        ///                                   local Address. </param>
-        /// <param name="excludeForeignAddressRequired"> Indicates whether the response includes phone numbers which require a
-        ///                                     foreign Address. </param>
-        /// <param name="beta"> Include phone numbers new to the Twilio platform. </param>
-        /// <param name="nearNumber"> Given a phone number, find a geographically close number within Distance miles.
+        /// <param name="pathCountryCode"> The ISO Country code of the country from which to read phone numbers </param>
+        /// <param name="pathAccountSid"> The SID of the Account requesting the AvailablePhoneNumber resources </param>
+        /// <param name="areaCode"> The area code of the phone numbers to read </param>
+        /// <param name="contains"> The pattern on which to match phone numbers </param>
+        /// <param name="smsEnabled"> Whether the phone numbers can receive text messages </param>
+        /// <param name="mmsEnabled"> Whether the phone numbers can receive MMS messages </param>
+        /// <param name="voiceEnabled"> Whether the phone numbers can receive calls. </param>
+        /// <param name="excludeAllAddressRequired"> Whether to exclude phone numbers that require an Address </param>
+        /// <param name="excludeLocalAddressRequired"> Whether to exclude phone numbers that require a local address </param>
+        /// <param name="excludeForeignAddressRequired"> Whether to exclude phone numbers that require a foreign address
+        ///                                     </param>
+        /// <param name="beta"> Whether to read phone numbers new to the Twilio platform </param>
+        /// <param name="nearNumber"> Given a phone number, find a geographically close number within distance miles.
         ///                  (US/Canada only) </param>
         /// <param name="nearLatLong"> Given a latitude/longitude pair lat,long find geographically close numbers within
-        ///                   Distance miles. (US/Canada only) </param>
-        /// <param name="distance"> Specifies the search radius for a Near- query in miles. (US/Canada only) </param>
+        ///                   distance miles. (US/Canada only) </param>
+        /// <param name="distance"> The search radius, in miles, for a near_ query. (US/Canada only) </param>
         /// <param name="inPostalCode"> Limit results to a particular postal code. (US/Canada only) </param>
         /// <param name="inRegion"> Limit results to a particular region. (US/Canada only) </param>
         /// <param name="inRateCenter"> Limit results to a specific rate center, or given a phone number search within the same
         ///                    rate center as that number. (US/Canada only) </param>
-        /// <param name="inLata"> Limit results to a specific Local access and transport area. (US/Canada only) </param>
-        /// <param name="inLocality"> Limit results to a particular locality. (US/Canada only) </param>
-        /// <param name="faxEnabled"> This indicates whether the phone numbers can receive faxes. </param>
+        /// <param name="inLata"> Limit results to a specific local access and transport area. (US/Canada only) </param>
+        /// <param name="inLocality"> Limit results to a particular locality </param>
+        /// <param name="faxEnabled"> Whether the phone numbers can receive faxes </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -267,69 +263,69 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         }
 
         /// <summary>
-        /// A nicely-formatted version of the phone number.
+        /// A formatted version of the phone number
         /// </summary>
         [JsonProperty("friendly_name")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber FriendlyName { get; private set; }
         /// <summary>
-        /// The phone number, in E.
+        /// The phone number in E.164 format
         /// </summary>
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
         /// <summary>
-        /// The LATA of this phone number.
+        /// The LATA of this phone number
         /// </summary>
         [JsonProperty("lata")]
         public string Lata { get; private set; }
         /// <summary>
-        /// The locality/city of this phone number.
+        /// The locality or city of this phone number's location
         /// </summary>
         [JsonProperty("locality")]
         public string Locality { get; private set; }
         /// <summary>
-        /// The rate center of this phone number.
+        /// The rate center of this phone number
         /// </summary>
         [JsonProperty("rate_center")]
         public string RateCenter { get; private set; }
         /// <summary>
-        /// The latitude coordinate of this phone number.
+        /// The latitude of this phone number's location
         /// </summary>
         [JsonProperty("latitude")]
         public decimal? Latitude { get; private set; }
         /// <summary>
-        /// The longitude coordinate of this phone number.
+        /// The longitude of this phone number's location
         /// </summary>
         [JsonProperty("longitude")]
         public decimal? Longitude { get; private set; }
         /// <summary>
-        /// The two-letter state or province abbreviation of this phone number.
+        /// The two-letter state or province abbreviation of this phone number's location
         /// </summary>
         [JsonProperty("region")]
         public string Region { get; private set; }
         /// <summary>
-        /// The postal code of this phone number.
+        /// The postal or ZIP code of this phone number's location
         /// </summary>
         [JsonProperty("postal_code")]
         public string PostalCode { get; private set; }
         /// <summary>
-        /// The ISO country code of this phone number.
+        /// The ISO country code of this phone number
         /// </summary>
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
         /// <summary>
-        /// This indicates whether the phone number requires you or your customer to have an Address registered with Twilio.
+        /// The type of Address resource the phone number requires
         /// </summary>
         [JsonProperty("address_requirements")]
         public string AddressRequirements { get; private set; }
         /// <summary>
-        /// Phone numbers new to the Twilio platform are marked as beta.
+        /// Whether the phone number is new to the Twilio platform
         /// </summary>
         [JsonProperty("beta")]
         public bool? Beta { get; private set; }
         /// <summary>
-        /// This is a set of boolean properties that indicate whether a phone number can receive calls or messages.
+        /// Whether a phone number can receive calls or messages
         /// </summary>
         [JsonProperty("capabilities")]
         public PhoneNumberCapabilities Capabilities { get; private set; }

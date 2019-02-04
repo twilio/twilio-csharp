@@ -17,18 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique outgoing-caller-id Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchOutgoingCallerIdOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique outgoing-caller-id Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchOutgoingCallerIdOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -50,22 +50,22 @@ namespace Twilio.Rest.Api.V2010.Account
     public class UpdateOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Update by unique outgoing-caller-id Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human readable description of the caller ID
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new UpdateOutgoingCallerIdOptions
         /// </summary>
-        /// <param name="pathSid"> Update by unique outgoing-caller-id Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateOutgoingCallerIdOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -92,18 +92,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Delete by unique outgoing-caller-id Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteOutgoingCallerIdOptions
         /// </summary>
-        /// <param name="pathSid"> Delete by unique outgoing-caller-id Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteOutgoingCallerIdOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -125,15 +125,15 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadOutgoingCallerIdOptions : ReadOptions<OutgoingCallerIdResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Filter by phone number
+        /// The phone number of the OutgoingCallerId resources to read
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; set; }
         /// <summary>
-        /// Filter by friendly name
+        /// The string that identifies the OutgoingCallerId resources to read
         /// </summary>
         public string FriendlyName { get; set; }
 

@@ -64,7 +64,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a new token
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="ttl"> The duration in seconds the credentials are valid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Token </returns> 
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a new token
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="ttl"> The duration in seconds the credentials are valid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Token </returns> 
@@ -110,17 +110,17 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date this resource was created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this resource was last updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("ttl")]
         public string Ttl { get; private set; }
         /// <summary>
-        /// The temporary username that uniquely identifies a Token.
+        /// The temporary username that uniquely identifies a Token
         /// </summary>
         [JsonProperty("username")]
         public string Username { get; private set; }

@@ -17,55 +17,55 @@ namespace Twilio.Rest.Api.V2010.Account
     public class CreateAddressOptions : IOptions<AddressResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will be responsible for the new Address resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Your name or business name, or that of your customer.
+        /// The name to associate with the new address
         /// </summary>
         public string CustomerName { get; }
         /// <summary>
-        /// The number and street address where you or your customer is located.
+        /// The number and street address of the new address
         /// </summary>
         public string Street { get; }
         /// <summary>
-        /// The city in which you or your customer is located.
+        /// The city of the new address
         /// </summary>
         public string City { get; }
         /// <summary>
-        /// The state or region in which you or your customer is located.
+        /// The state or region of the new address
         /// </summary>
         public string Region { get; }
         /// <summary>
-        /// The postal code in which you or your customer is located.
+        /// The postal code of the new address
         /// </summary>
         public string PostalCode { get; }
         /// <summary>
-        /// The ISO country code of your or your customer's address.
+        /// The ISO country code of the new address
         /// </summary>
         public string IsoCountry { get; }
         /// <summary>
-        /// A human-readable description of the new address.
+        /// A string to describe the new resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The emergency_enabled
+        /// Whether to enable emergency calling on the new address
         /// </summary>
         public bool? EmergencyEnabled { get; set; }
         /// <summary>
-        /// If you don't set a value for this parameter, or if you set it to true, then the system will, if necessary, auto-correct the address you provide.
+        /// Whether we should automatically correct the address
         /// </summary>
         public bool? AutoCorrectAddress { get; set; }
 
         /// <summary>
         /// Construct a new CreateAddressOptions
         /// </summary>
-        /// <param name="customerName"> Your name or business name, or that of your customer. </param>
-        /// <param name="street"> The number and street address where you or your customer is located. </param>
-        /// <param name="city"> The city in which you or your customer is located. </param>
-        /// <param name="region"> The state or region in which you or your customer is located. </param>
-        /// <param name="postalCode"> The postal code in which you or your customer is located. </param>
-        /// <param name="isoCountry"> The ISO country code of your or your customer's address. </param>
+        /// <param name="customerName"> The name to associate with the new address </param>
+        /// <param name="street"> The number and street address of the new address </param>
+        /// <param name="city"> The city of the new address </param>
+        /// <param name="region"> The state or region of the new address </param>
+        /// <param name="postalCode"> The postal code of the new address </param>
+        /// <param name="isoCountry"> The ISO country code of the new address </param>
         public CreateAddressOptions(string customerName, 
                                     string street, 
                                     string city, 
@@ -142,18 +142,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteAddressOptions : IOptions<AddressResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that is responsible for the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteAddressOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteAddressOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -175,18 +175,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchAddressOptions : IOptions<AddressResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that is responsible for this address
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAddressOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchAddressOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -208,50 +208,50 @@ namespace Twilio.Rest.Api.V2010.Account
     public class UpdateAddressOptions : IOptions<AddressResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that is responsible for the resource to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human-readable description of the address.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Your name or business name, or that of your customer.
+        /// The name to associate with the address
         /// </summary>
         public string CustomerName { get; set; }
         /// <summary>
-        /// The number and street address where you or your customer is located.
+        /// The number and street address of the address
         /// </summary>
         public string Street { get; set; }
         /// <summary>
-        /// The city in which you or your customer is located.
+        /// The city of the address
         /// </summary>
         public string City { get; set; }
         /// <summary>
-        /// The state or region in which you or your customer is located.
+        /// The state or region of the address
         /// </summary>
         public string Region { get; set; }
         /// <summary>
-        /// The postal code in which you or your customer is located.
+        /// The postal code of the address
         /// </summary>
         public string PostalCode { get; set; }
         /// <summary>
-        /// The emergency_enabled
+        /// Whether to enable emergency calling on the address
         /// </summary>
         public bool? EmergencyEnabled { get; set; }
         /// <summary>
-        /// If you don't set a value for this parameter, or if you set it to true, then the system will, if necessary, auto-correct the address you provide.
+        /// Whether we should automatically correct the address
         /// </summary>
         public bool? AutoCorrectAddress { get; set; }
 
         /// <summary>
         /// Construct a new UpdateAddressOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateAddressOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -313,19 +313,19 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadAddressOptions : ReadOptions<AddressResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that is responsible for this address
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Only return the Address resources with customer names that exactly match this name.
+        /// The `customer_name` of the Address resources to read
         /// </summary>
         public string CustomerName { get; set; }
         /// <summary>
-        /// Only return the Address resources with friendly names that exactly match this name.
+        /// The string that identifies the Address resources to read
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Only return the Address resources in this country.
+        /// The ISO country code of the Address resources to read
         /// </summary>
         public string IsoCountry { get; set; }
 

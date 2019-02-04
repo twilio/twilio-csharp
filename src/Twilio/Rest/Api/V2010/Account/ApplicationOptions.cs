@@ -17,74 +17,74 @@ namespace Twilio.Rest.Api.V2010.Account
     public class CreateApplicationOptions : IOptions<ApplicationResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// A human readable description of the application
+        /// A string to describe the new resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// The API version to use
+        /// The API version to use to start a new TwiML session
         /// </summary>
         public string ApiVersion { get; set; }
         /// <summary>
-        /// URL Twilio will make requests to when relieving a call
+        /// The URL to call when the phone number receives a call
         /// </summary>
         public Uri VoiceUrl { get; set; }
         /// <summary>
-        /// HTTP method to use with the URL
+        /// The HTTP method to use with the voice_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         /// <summary>
-        /// Fallback URL
+        /// The URL to call when a TwiML error occurs
         /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
         /// <summary>
-        /// HTTP method to use with the fallback url
+        /// The HTTP method to use with voice_fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
         /// <summary>
-        /// URL to hit with status updates
+        /// The URL to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// HTTP method to use with the status callback
+        /// The HTTP method to use to call status_callback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// True or False
+        /// Whether to lookup the caller's name
         /// </summary>
         public bool? VoiceCallerIdLookup { get; set; }
         /// <summary>
-        /// URL Twilio will request when receiving an SMS
+        /// The URL to call when the phone number receives an incoming SMS message
         /// </summary>
         public Uri SmsUrl { get; set; }
         /// <summary>
-        /// HTTP method to use with sms_url
+        /// The HTTP method to use with sms_url
         /// </summary>
         public Twilio.Http.HttpMethod SmsMethod { get; set; }
         /// <summary>
-        /// Fallback URL if there's an error parsing TwiML
+        /// The URL to call when an error occurs while retrieving or executing the TwiML
         /// </summary>
         public Uri SmsFallbackUrl { get; set; }
         /// <summary>
-        /// HTTP method to use with sms_fallback_method
+        /// The HTTP method to use with sms_fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
         /// <summary>
-        /// URL Twilio with request with status updates
+        /// The URL to send status information to your application
         /// </summary>
         public Uri SmsStatusCallback { get; set; }
         /// <summary>
-        /// URL to make requests to with status updates
+        /// The URL to send message status information to your application
         /// </summary>
         public Uri MessageStatusCallback { get; set; }
 
         /// <summary>
         /// Construct a new CreateApplicationOptions
         /// </summary>
-        /// <param name="friendlyName"> A human readable description of the application </param>
+        /// <param name="friendlyName"> A string to describe the new resource </param>
         public CreateApplicationOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
@@ -181,18 +181,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteApplicationOptions : IOptions<ApplicationResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The application sid to delete
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteApplicationOptions
         /// </summary>
-        /// <param name="pathSid"> The application sid to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteApplicationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -214,18 +214,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchApplicationOptions : IOptions<ApplicationResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique Application Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchApplicationOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Application Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchApplicationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -247,11 +247,11 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadApplicationOptions : ReadOptions<ApplicationResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Filter by friendly name
+        /// The string that identifies the Application resources to read
         /// </summary>
         public string FriendlyName { get; set; }
 
@@ -281,78 +281,78 @@ namespace Twilio.Rest.Api.V2010.Account
     public class UpdateApplicationOptions : IOptions<ApplicationResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Human readable description of this resource
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The API version to use
+        /// The API version to use to start a new TwiML session
         /// </summary>
         public string ApiVersion { get; set; }
         /// <summary>
-        /// URL Twilio will make requests to when relieving a call
+        /// The URL to call when the phone number receives a call
         /// </summary>
         public Uri VoiceUrl { get; set; }
         /// <summary>
-        /// HTTP method to use with the URL
+        /// The HTTP method to use with the voice_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         /// <summary>
-        /// Fallback URL
+        /// The URL to call when a TwiML error occurs
         /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
         /// <summary>
-        /// HTTP method to use with the fallback url
+        /// The HTTP method to use with voice_fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
         /// <summary>
-        /// URL to hit with status updates
+        /// The URL to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// HTTP method to use with the status callback
+        /// The HTTP method to use to call status_callback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// True or False
+        /// Whether to lookup the caller's name
         /// </summary>
         public bool? VoiceCallerIdLookup { get; set; }
         /// <summary>
-        /// URL Twilio will request when receiving an SMS
+        /// The URL to call when the phone number receives an incoming SMS message
         /// </summary>
         public Uri SmsUrl { get; set; }
         /// <summary>
-        /// HTTP method to use with sms_url
+        /// The HTTP method to use with sms_url
         /// </summary>
         public Twilio.Http.HttpMethod SmsMethod { get; set; }
         /// <summary>
-        /// Fallback URL if there's an error parsing TwiML
+        /// The URL to call when an error occurs while retrieving or executing the TwiML
         /// </summary>
         public Uri SmsFallbackUrl { get; set; }
         /// <summary>
-        /// HTTP method to use with sms_fallback_method
+        /// The HTTP method to use with sms_fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
         /// <summary>
-        /// URL Twilio with request with status updates
+        /// The URL to send status information to your application
         /// </summary>
         public Uri SmsStatusCallback { get; set; }
         /// <summary>
-        /// URL to make requests to with status updates
+        /// The URL to send message status information to your application
         /// </summary>
         public Uri MessageStatusCallback { get; set; }
 
         /// <summary>
         /// Construct a new UpdateApplicationOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateApplicationOptions(string pathSid)
         {
             PathSid = pathSid;

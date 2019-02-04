@@ -17,22 +17,22 @@ namespace Twilio.Rest.Api.V2010.Account.Message
     public class CreateFeedbackOptions : IOptions<FeedbackResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The message_sid
+        /// The SID of the Message resource for which the feedback was provided
         /// </summary>
         public string PathMessageSid { get; }
         /// <summary>
-        /// The outcome
+        /// Whether the feedback has arrived
         /// </summary>
         public FeedbackResource.OutcomeEnum Outcome { get; set; }
 
         /// <summary>
         /// Construct a new CreateFeedbackOptions
         /// </summary>
-        /// <param name="pathMessageSid"> The message_sid </param>
+        /// <param name="pathMessageSid"> The SID of the Message resource for which the feedback was provided </param>
         public CreateFeedbackOptions(string pathMessageSid)
         {
             PathMessageSid = pathMessageSid;

@@ -66,10 +66,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         /// <summary>
         /// Fetch an instance of an Extension for the Assigned Add-on.
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathAssignedAddOnSid"> The assigned_add_on_sid </param>
-        /// <param name="pathSid"> The unique Extension Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned </param>
+        /// <param name="pathAssignedAddOnSid"> The SID that uniquely identifies the assigned Add-on installation </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AssignedAddOnExtension </returns> 
         public static AssignedAddOnExtensionResource Fetch(string pathResourceSid, 
@@ -86,10 +86,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         /// <summary>
         /// Fetch an instance of an Extension for the Assigned Add-on.
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathAssignedAddOnSid"> The assigned_add_on_sid </param>
-        /// <param name="pathSid"> The unique Extension Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned </param>
+        /// <param name="pathAssignedAddOnSid"> The SID that uniquely identifies the assigned Add-on installation </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AssignedAddOnExtension </returns> 
         public static async System.Threading.Tasks.Task<AssignedAddOnExtensionResource> FetchAsync(string pathResourceSid, 
@@ -151,9 +151,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         /// <summary>
         /// Retrieve a list of Extensions for the Assigned Add-on.
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathAssignedAddOnSid"> The assigned_add_on_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned </param>
+        /// <param name="pathAssignedAddOnSid"> The SID that uniquely identifies the assigned Add-on installation </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -173,9 +173,9 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         /// <summary>
         /// Retrieve a list of Extensions for the Assigned Add-on.
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathAssignedAddOnSid"> The assigned_add_on_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number to which the Add-on is assigned </param>
+        /// <param name="pathAssignedAddOnSid"> The SID that uniquely identifies the assigned Add-on installation </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -272,47 +272,47 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Extension
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The Account id that has installed this Add-on
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The Phone Number id that has installed this Add-on
+        /// The SID of the Phone Number to which the Add-on is assigned
         /// </summary>
         [JsonProperty("resource_sid")]
         public string ResourceSid { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies the assigned Add-on installation
+        /// The SID that uniquely identifies the assigned Add-on installation
         /// </summary>
         [JsonProperty("assigned_add_on_sid")]
         public string AssignedAddOnSid { get; private set; }
         /// <summary>
-        /// A human-readable description of this Extension
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// A human-readable description of the Extension's Product
+        /// A string that you assigned to describe the Product this Extension is used within
         /// </summary>
         [JsonProperty("product_name")]
         public string ProductName { get; private set; }
         /// <summary>
-        /// The string that uniquely identifies this Extension
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The uri
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// A Boolean indicating if the Extension will be invoked
+        /// Whether the Extension will be invoked
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }

@@ -199,6 +199,7 @@ namespace Twilio.Rest.Video.V1
         ///                        </param>
         /// <param name="dateCreatedBefore"> Only show Recordings that started before this ISO8601 date-time with timezone.
         ///                         </param>
+        /// <param name="mediaType"> Only show Recordings that have this media type. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -208,11 +209,12 @@ namespace Twilio.Rest.Video.V1
                                                           List<string> groupingSid = null, 
                                                           DateTime? dateCreatedAfter = null, 
                                                           DateTime? dateCreatedBefore = null, 
+                                                          RecordingResource.TypeEnum mediaType = null, 
                                                           int? pageSize = null, 
                                                           long? limit = null, 
                                                           ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions(){Status = status, SourceSid = sourceSid, GroupingSid = groupingSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions(){Status = status, SourceSid = sourceSid, GroupingSid = groupingSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, MediaType = mediaType, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -227,6 +229,7 @@ namespace Twilio.Rest.Video.V1
         ///                        </param>
         /// <param name="dateCreatedBefore"> Only show Recordings that started before this ISO8601 date-time with timezone.
         ///                         </param>
+        /// <param name="mediaType"> Only show Recordings that have this media type. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -236,11 +239,12 @@ namespace Twilio.Rest.Video.V1
                                                                                                   List<string> groupingSid = null, 
                                                                                                   DateTime? dateCreatedAfter = null, 
                                                                                                   DateTime? dateCreatedBefore = null, 
+                                                                                                  RecordingResource.TypeEnum mediaType = null, 
                                                                                                   int? pageSize = null, 
                                                                                                   long? limit = null, 
                                                                                                   ITwilioRestClient client = null)
         {
-            var options = new ReadRecordingOptions(){Status = status, SourceSid = sourceSid, GroupingSid = groupingSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
+            var options = new ReadRecordingOptions(){Status = status, SourceSid = sourceSid, GroupingSid = groupingSid, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, MediaType = mediaType, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

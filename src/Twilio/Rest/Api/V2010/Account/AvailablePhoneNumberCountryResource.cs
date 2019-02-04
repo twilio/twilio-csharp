@@ -68,7 +68,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAccountSid"> The 34 character string that uniquely identifies your account. </param>
+        /// <param name="pathAccountSid"> The SID of the Account requesting the available phone number Country resources
+        ///                      </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -86,7 +87,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAccountSid"> The 34 character string that uniquely identifies your account. </param>
+        /// <param name="pathAccountSid"> The SID of the Account requesting the available phone number Country resources
+        ///                      </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -206,8 +208,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathCountryCode"> The country_code </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathCountryCode"> The ISO country code of the country to fetch available phone number information
+        ///                       about </param>
+        /// <param name="pathAccountSid"> The SID of the Account requesting the available phone number Country resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AvailablePhoneNumberCountry </returns> 
         public static AvailablePhoneNumberCountryResource Fetch(string pathCountryCode, 
@@ -222,8 +225,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathCountryCode"> The country_code </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathCountryCode"> The ISO country code of the country to fetch available phone number information
+        ///                       about </param>
+        /// <param name="pathAccountSid"> The SID of the Account requesting the available phone number Country resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AvailablePhoneNumberCountry </returns> 
         public static async System.Threading.Tasks.Task<AvailablePhoneNumberCountryResource> FetchAsync(string pathCountryCode, 
@@ -254,27 +258,27 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The ISO Country code to lookup phone numbers for.
+        /// The ISO-3166-1 country code of the country.
         /// </summary>
         [JsonProperty("country_code")]
         public string CountryCode { get; private set; }
         /// <summary>
-        /// The country
+        /// The name of the country
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; private set; }
         /// <summary>
-        /// The uri
+        /// The URI of the Country resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public Uri Uri { get; private set; }
         /// <summary>
-        /// True if new to Twilio platform.
+        /// Whether all phone numbers available in the country are new to the Twilio platform.
         /// </summary>
         [JsonProperty("beta")]
         public bool? Beta { get; private set; }
         /// <summary>
-        /// The subresource_uris
+        /// A list of related resources identified by their relative URIs
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }

@@ -77,9 +77,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathMessageSid"> The message_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="outcome"> The outcome </param>
+        /// <param name="pathMessageSid"> The SID of the Message resource for which the feedback was provided </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+        /// <param name="outcome"> Whether the feedback has arrived </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Feedback </returns> 
         public static FeedbackResource Create(string pathMessageSid, 
@@ -95,9 +95,9 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathMessageSid"> The message_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="outcome"> The outcome </param>
+        /// <param name="pathMessageSid"> The SID of the Message resource for which the feedback was provided </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+        /// <param name="outcome"> Whether the feedback has arrived </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Feedback </returns> 
         public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string pathMessageSid, 
@@ -129,33 +129,33 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The message_sid
+        /// The SID of the Message resource for which the feedback was provided
         /// </summary>
         [JsonProperty("message_sid")]
         public string MessageSid { get; private set; }
         /// <summary>
-        /// unconfirmed or confirmed. If ProvideFeedback=true in the initial HTTP POST, this value will default to unconfirmed. Make an HTTP POST to update this value to confirmed after the message arrives.
+        /// Whether the feedback has arrived
         /// </summary>
         [JsonProperty("outcome")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FeedbackResource.OutcomeEnum Outcome { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The uri
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }

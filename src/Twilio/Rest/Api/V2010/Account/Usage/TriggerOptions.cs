@@ -17,18 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     public class FetchTriggerOptions : IOptions<TriggerResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique usage-trigger Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchTriggerOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique usage-trigger Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchTriggerOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -50,30 +50,30 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     public class UpdateTriggerOptions : IOptions<TriggerResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// HTTP method to use with callback_url
+        /// The HTTP method to use to call callback_url
         /// </summary>
         public Twilio.Http.HttpMethod CallbackMethod { get; set; }
         /// <summary>
-        /// URL Twilio will request when the trigger fires
+        /// The URL we call when the trigger fires
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// A user-specified, human-readable name for the trigger.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new UpdateTriggerOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateTriggerOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -110,18 +110,18 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     public class DeleteTriggerOptions : IOptions<TriggerResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteTriggerOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteTriggerOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -143,15 +143,15 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     public class CreateTriggerOptions : IOptions<TriggerResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// URL Twilio will request when the trigger fires
+        /// The URL we call when the trigger fires
         /// </summary>
         public Uri CallbackUrl { get; }
         /// <summary>
-        /// the value at which the trigger will fire
+        /// The usage value at which the trigger should fire
         /// </summary>
         public string TriggerValue { get; }
         /// <summary>
@@ -159,27 +159,27 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// </summary>
         public TriggerResource.UsageCategoryEnum UsageCategory { get; }
         /// <summary>
-        /// HTTP method to use with callback_url
+        /// The HTTP method to use to call callback_url
         /// </summary>
         public Twilio.Http.HttpMethod CallbackMethod { get; set; }
         /// <summary>
-        /// A user-specified, human-readable name for the trigger.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// How this trigger recurs
+        /// The frequency of a recurring UsageTrigger
         /// </summary>
         public TriggerResource.RecurringEnum Recurring { get; set; }
         /// <summary>
-        /// The field in the UsageRecord that fires the trigger
+        /// The field in the UsageRecord resource that fires the trigger
         /// </summary>
         public TriggerResource.TriggerFieldEnum TriggerBy { get; set; }
 
         /// <summary>
         /// Construct a new CreateTriggerOptions
         /// </summary>
-        /// <param name="callbackUrl"> URL Twilio will request when the trigger fires </param>
-        /// <param name="triggerValue"> the value at which the trigger will fire </param>
+        /// <param name="callbackUrl"> The URL we call when the trigger fires </param>
+        /// <param name="triggerValue"> The usage value at which the trigger should fire </param>
         /// <param name="usageCategory"> The usage category the trigger watches </param>
         public CreateTriggerOptions(Uri callbackUrl, string triggerValue, TriggerResource.UsageCategoryEnum usageCategory)
         {
@@ -239,19 +239,19 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     public class ReadTriggerOptions : ReadOptions<TriggerResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Filter by recurring
+        /// The frequency of recurring UsageTriggers to read
         /// </summary>
         public TriggerResource.RecurringEnum Recurring { get; set; }
         /// <summary>
-        /// Filter by trigger by
+        /// The trigger field of the UsageTriggers to read
         /// </summary>
         public TriggerResource.TriggerFieldEnum TriggerBy { get; set; }
         /// <summary>
-        /// Filter by Usage Category
+        /// The usage category of the UsageTriggers to read
         /// </summary>
         public TriggerResource.UsageCategoryEnum UsageCategory { get; set; }
 

@@ -18,18 +18,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchConnectAppOptions : IOptions<ConnectAppResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique connect-app Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchConnectAppOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique connect-app Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchConnectAppOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -51,50 +51,50 @@ namespace Twilio.Rest.Api.V2010.Account
     public class UpdateConnectAppOptions : IOptions<ConnectAppResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// URIL Twilio sends requests when users authorize
+        /// The URL to redirect the user to after authorization
         /// </summary>
         public Uri AuthorizeRedirectUrl { get; set; }
         /// <summary>
-        /// The company name set for this Connect App.
+        /// The company name to set for the Connect App
         /// </summary>
         public string CompanyName { get; set; }
         /// <summary>
-        /// HTTP method Twilio WIll use making requests to the url
+        /// The HTTP method to use when calling deauthorize_callback_url
         /// </summary>
         public Twilio.Http.HttpMethod DeauthorizeCallbackMethod { get; set; }
         /// <summary>
-        /// URL Twilio will send a request when a user de-authorizes this app
+        /// The URL to call to de-authorize the Connect App
         /// </summary>
         public Uri DeauthorizeCallbackUrl { get; set; }
         /// <summary>
-        /// A more detailed human readable description
+        /// A description of the Connect App
         /// </summary>
         public string Description { get; set; }
         /// <summary>
-        /// A human readable name for the Connect App.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The URL users can obtain more information
+        /// A public URL where users can obtain more information
         /// </summary>
         public Uri HomepageUrl { get; set; }
         /// <summary>
-        /// The set of permissions that your ConnectApp requests.
+        /// The set of permissions that your ConnectApp will request
         /// </summary>
         public List<ConnectAppResource.PermissionEnum> Permissions { get; set; }
 
         /// <summary>
         /// Construct a new UpdateConnectAppOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateConnectAppOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadConnectAppOptions : ReadOptions<ConnectAppResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
 

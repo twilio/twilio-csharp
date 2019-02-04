@@ -17,18 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchNotificationOptions : IOptions<NotificationResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique notification Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchNotificationOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique notification Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchNotificationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -50,18 +50,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteNotificationOptions : IOptions<NotificationResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Delete by unique notification Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteNotificationOptions
         /// </summary>
-        /// <param name="pathSid"> Delete by unique notification Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteNotificationOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadNotificationOptions : ReadOptions<NotificationResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>

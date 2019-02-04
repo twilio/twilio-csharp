@@ -12,16 +12,16 @@ namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
-    /// CreateNewSigningKeyOptions
+    /// Create a new Signing Key for the account making the request.
     /// </summary>
     public class CreateNewSigningKeyOptions : IOptions<NewSigningKeyResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will be responsible for the new Key resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
 

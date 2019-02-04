@@ -1,6 +1,19 @@
 twilio-csharp Changelog
 =======================
 
+[2019-02-04] Version 5.26.0
+----------------------------
+**Library**
+- PR #464: Switch body validator to use hex instead of base64. Thanks to @cjcodes!
+
+**Video**
+- [Recordings] Add media type filter to list operation
+- [Composer] Filter Composition Hook resources by FriendlyName
+
+**Twiml**
+- Update `language` enum for `Gather` to fix language code for Filipino (Philippines) and include additional supported languages **(breaking change)**
+
+
 [2019-01-11] Version 5.25.1
 ----------------------------
 **Verify**

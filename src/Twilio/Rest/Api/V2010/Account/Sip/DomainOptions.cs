@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class ReadDomainOptions : ReadOptions<DomainResource> 
     {
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
 
@@ -42,7 +42,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class CreateDomainOptions : IOptions<DomainResource> 
     {
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -50,35 +50,35 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         public string DomainName { get; }
         /// <summary>
-        /// A user-specified, human-readable name for the domain.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// URL Twilio will request when receiving a call
+        /// The URL we should call when receiving a call
         /// </summary>
         public Uri VoiceUrl { get; set; }
         /// <summary>
-        /// HTTP method to use with voice_url
+        /// The HTTP method to use with voice_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         /// <summary>
-        /// URL Twilio will request if an error occurs in executing TwiML
+        /// The URL we should call when an error occurs in executing TwiML
         /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
         /// <summary>
-        /// HTTP method used with voice_fallback_url
+        /// The HTTP method to use with voice_fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
         /// <summary>
-        /// URL that Twilio will request with status updates
+        /// The URL that we should call to pass status updates
         /// </summary>
         public Uri VoiceStatusCallbackUrl { get; set; }
         /// <summary>
-        /// The HTTP method Twilio will use to make requests to the StatusCallback URL.
+        /// The HTTP method we should use to call `voice_status_callback_url`
         /// </summary>
         public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
         /// <summary>
-        /// If SIP registration is allowed
+        /// Whether SIP registration is allowed
         /// </summary>
         public bool? SipRegistration { get; set; }
 
@@ -152,18 +152,18 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class FetchDomainOptions : IOptions<DomainResource> 
     {
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique Domain Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchDomainOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Domain Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchDomainOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -185,43 +185,43 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class UpdateDomainOptions : IOptions<DomainResource> 
     {
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique Domain Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A user-specified, human-readable name for the domain.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// HTTP method used with voice_fallback_url
+        /// The HTTP method used with voice_fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
         /// <summary>
-        /// URL Twilio will request if an error occurs in executing TwiML
+        /// The URL we should call when an error occurs in executing TwiML
         /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
         /// <summary>
-        /// HTTP method to use with voice_url
+        /// The HTTP method we should use with voice_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         /// <summary>
-        /// The HTTP method Twilio will use to make requests to the StatusCallback URL.
+        /// The HTTP method we should use to call voice_status_callback_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; set; }
         /// <summary>
-        /// URL that Twilio will request with status updates
+        /// The URL that we should call to pass status updates
         /// </summary>
         public Uri VoiceStatusCallbackUrl { get; set; }
         /// <summary>
-        /// URL Twilio will request when receiving a call
+        /// The URL we should call when receiving a call
         /// </summary>
         public Uri VoiceUrl { get; set; }
         /// <summary>
-        /// If SIP registration is allowed
+        /// Whether SIP registration is allowed
         /// </summary>
         public bool? SipRegistration { get; set; }
         /// <summary>
@@ -232,7 +232,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <summary>
         /// Construct a new UpdateDomainOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Domain Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateDomainOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -299,18 +299,18 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     public class DeleteDomainOptions : IOptions<DomainResource> 
     {
         /// <summary>
-        /// The unique id of the account responsible for this domain
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// A string that uniquely identifies the SIP Domain
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteDomainOptions
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies the SIP Domain </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteDomainOptions(string pathSid)
         {
             PathSid = pathSid;

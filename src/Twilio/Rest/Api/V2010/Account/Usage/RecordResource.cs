@@ -317,11 +317,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The Account that accrued the usage </param>
-        /// <param name="category"> Only include usage of a given category </param>
-        /// <param name="startDate"> Filter by start date </param>
-        /// <param name="endDate"> Filter by end date </param>
-        /// <param name="includeSubaccounts"> Include usage from the master account and all subaccounts </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="category"> The usage category of the UsageRecord resources to read </param>
+        /// <param name="startDate"> Only include usage that has occurred on or after this date </param>
+        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+        /// <param name="includeSubaccounts"> Whether to include usage from the master account and all its subaccounts </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -343,11 +343,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         /// <summary>
         /// Retrieve a list of usage-records belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The Account that accrued the usage </param>
-        /// <param name="category"> Only include usage of a given category </param>
-        /// <param name="startDate"> Filter by start date </param>
-        /// <param name="endDate"> Filter by end date </param>
-        /// <param name="includeSubaccounts"> Include usage from the master account and all subaccounts </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="category"> The usage category of the UsageRecord resources to read </param>
+        /// <param name="startDate"> Only include usage that has occurred on or after this date </param>
+        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+        /// <param name="includeSubaccounts"> Whether to include usage from the master account and all its subaccounts </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -444,12 +444,12 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         }
 
         /// <summary>
-        /// The Account that accrued the usage
+        /// The SID of the Account accrued the usage
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The api_version
+        /// The API version used to create the resource
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
@@ -460,22 +460,22 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordResource.CategoryEnum Category { get; private set; }
         /// <summary>
-        /// The number of usage events (e.g. the number of calls).
+        /// The number of usage events
         /// </summary>
         [JsonProperty("count")]
         public string Count { get; private set; }
         /// <summary>
-        /// The unit in which `Count` is measured
+        /// The units in which count is measured
         /// </summary>
         [JsonProperty("count_unit")]
         public string CountUnit { get; private set; }
         /// <summary>
-        /// A human-readable description of the usage category.
+        /// A plain-language description of the usage category
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// The last date usage is included in this record
+        /// The last date for which usage is included in the UsageRecord
         /// </summary>
         [JsonProperty("end_date")]
         public DateTime? EndDate { get; private set; }
@@ -485,22 +485,22 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
         /// <summary>
-        /// The currency in which `Price` is measured
+        /// The currency in which `price` is measured
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// The first date usage is included in this record
+        /// The first date for which usage is included in this UsageRecord
         /// </summary>
         [JsonProperty("start_date")]
         public DateTime? StartDate { get; private set; }
         /// <summary>
-        /// Subresources Uris for this UsageRecord
+        /// A list of related resources identified by their relative URIs
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
         /// <summary>
-        /// The URI for this resource
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
@@ -510,7 +510,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         [JsonProperty("usage")]
         public string Usage { get; private set; }
         /// <summary>
-        /// The units in which `Usage` is measured
+        /// The units in which usage is measured
         /// </summary>
         [JsonProperty("usage_unit")]
         public string UsageUnit { get; private set; }

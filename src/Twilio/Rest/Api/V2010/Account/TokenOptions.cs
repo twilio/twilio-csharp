@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class CreateTokenOptions : IOptions<TokenResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>

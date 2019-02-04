@@ -19,23 +19,23 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
     public class FetchAssignedAddOnOptions : IOptions<AssignedAddOnResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The resource_sid
+        /// The SID of the Phone Number that installed this Add-on
         /// </summary>
         public string PathResourceSid { get; }
         /// <summary>
-        /// The unique Installed Add-on Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAssignedAddOnOptions
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathSid"> The unique Installed Add-on Sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchAssignedAddOnOptions(string pathResourceSid, string pathSid)
         {
             PathResourceSid = pathResourceSid;
@@ -60,18 +60,18 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
     public class ReadAssignedAddOnOptions : ReadOptions<AssignedAddOnResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The resource_sid
+        /// The SID of the Phone Number that installed this Add-on
         /// </summary>
         public string PathResourceSid { get; }
 
         /// <summary>
         /// Construct a new ReadAssignedAddOnOptions
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
         public ReadAssignedAddOnOptions(string pathResourceSid)
         {
             PathResourceSid = pathResourceSid;
@@ -100,23 +100,23 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
     public class CreateAssignedAddOnOptions : IOptions<AssignedAddOnResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The resource_sid
+        /// The SID of the Phone Number to assign the Add-on
         /// </summary>
         public string PathResourceSid { get; }
         /// <summary>
-        /// A string that uniquely identifies the Add-on installation
+        /// The SID that identifies the Add-on installation
         /// </summary>
         public string InstalledAddOnSid { get; }
 
         /// <summary>
         /// Construct a new CreateAssignedAddOnOptions
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="installedAddOnSid"> A string that uniquely identifies the Add-on installation </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number to assign the Add-on </param>
+        /// <param name="installedAddOnSid"> The SID that identifies the Add-on installation </param>
         public CreateAssignedAddOnOptions(string pathResourceSid, string installedAddOnSid)
         {
             PathResourceSid = pathResourceSid;
@@ -146,23 +146,23 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
     public class DeleteAssignedAddOnOptions : IOptions<AssignedAddOnResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The resource_sid
+        /// The SID of the Phone Number that installed this Add-on
         /// </summary>
         public string PathResourceSid { get; }
         /// <summary>
-        /// The Installed Add-on Sid to remove
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteAssignedAddOnOptions
         /// </summary>
-        /// <param name="pathResourceSid"> The resource_sid </param>
-        /// <param name="pathSid"> The Installed Add-on Sid to remove </param>
+        /// <param name="pathResourceSid"> The SID of the Phone Number that installed this Add-on </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteAssignedAddOnOptions(string pathResourceSid, string pathSid)
         {
             PathResourceSid = pathResourceSid;

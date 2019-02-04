@@ -78,8 +78,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of an authorized-connect-app
         /// </summary>
-        /// <param name="pathConnectAppSid"> The connect_app_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathConnectAppSid"> The SID of the Connect App to fetch </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthorizedConnectApp </returns> 
         public static AuthorizedConnectAppResource Fetch(string pathConnectAppSid, 
@@ -94,8 +94,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of an authorized-connect-app
         /// </summary>
-        /// <param name="pathConnectAppSid"> The connect_app_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathConnectAppSid"> The SID of the Connect App to fetch </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns> 
         public static async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(string pathConnectAppSid, 
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -268,53 +268,53 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The company name set for this Connect App.
+        /// The company name set for the Connect App
         /// </summary>
         [JsonProperty("connect_app_company_name")]
         public string ConnectAppCompanyName { get; private set; }
         /// <summary>
-        /// Human readable description of the app
+        /// A detailed description of the app
         /// </summary>
         [JsonProperty("connect_app_description")]
         public string ConnectAppDescription { get; private set; }
         /// <summary>
-        /// A human readable name for the Connect App.
+        /// The name of the Connect App
         /// </summary>
         [JsonProperty("connect_app_friendly_name")]
         public string ConnectAppFriendlyName { get; private set; }
         /// <summary>
-        /// The public URL for this Connect App.
+        /// The public URL for the Connect App
         /// </summary>
         [JsonProperty("connect_app_homepage_url")]
         public Uri ConnectAppHomepageUrl { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies this app
+        /// The SID that we assigned to the Connect App
         /// </summary>
         [JsonProperty("connect_app_sid")]
         public string ConnectAppSid { get; private set; }
         /// <summary>
-        /// The date this resource was created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this resource was last updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Permissions authorized to this app
+        /// Permissions authorized to the app
         /// </summary>
         [JsonProperty("permissions")]
         [JsonConverter(typeof(StringEnumConverter))]
         public List<AuthorizedConnectAppResource.PermissionEnum> Permissions { get; private set; }
         /// <summary>
-        /// The URI for this resource
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }

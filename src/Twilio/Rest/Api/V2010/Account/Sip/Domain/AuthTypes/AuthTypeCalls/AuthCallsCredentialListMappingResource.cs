@@ -65,9 +65,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <summary>
         /// Create a new credential list mapping resource
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="credentialListSid"> A string that uniquely identifies this credential list resource </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that will contain the new resource </param>
+        /// <param name="credentialListSid"> The SID of the CredentialList resource to map to the SIP domain </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthCallsCredentialListMapping </returns> 
         public static AuthCallsCredentialListMappingResource Create(string pathDomainSid, 
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <summary>
         /// Create a new credential list mapping resource
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="credentialListSid"> A string that uniquely identifies this credential list resource </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that will contain the new resource </param>
+        /// <param name="credentialListSid"> The SID of the CredentialList resource to map to the SIP domain </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthCallsCredentialListMapping </returns> 
         public static async System.Threading.Tasks.Task<AuthCallsCredentialListMappingResource> CreateAsync(string pathDomainSid, 
@@ -146,8 +146,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <summary>
         /// Retrieve a list of credential list mappings belonging to the domain used in the request
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resources to read </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -166,8 +166,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <summary>
         /// Retrieve a list of credential list mappings belonging to the domain used in the request
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resources to read </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -289,9 +289,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <summary>
         /// Fetch a specific instance of a credential list mapping
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> Fetch by unique credential list Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthCallsCredentialListMapping </returns> 
         public static AuthCallsCredentialListMappingResource Fetch(string pathDomainSid, 
@@ -307,9 +307,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <summary>
         /// Fetch a specific instance of a credential list mapping
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> Fetch by unique credential list Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthCallsCredentialListMapping </returns> 
         public static async System.Threading.Tasks.Task<AuthCallsCredentialListMappingResource> FetchAsync(string pathDomainSid, 
@@ -366,9 +366,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <summary>
         /// Delete a credential list mapping from the requested domain
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> Delete by unique credential list Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AuthCallsCredentialListMapping </returns> 
         public static bool Delete(string pathDomainSid, 
@@ -384,9 +384,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         /// <summary>
         /// Delete a credential list mapping from the requested domain
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> Delete by unique credential list Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AuthCallsCredentialListMapping </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, 
@@ -418,27 +418,27 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
         }
 
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date this resource was created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this resource was last updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// A human readable description of this resource
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies this resource
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }

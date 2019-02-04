@@ -17,7 +17,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadAvailablePhoneNumberCountryOptions : ReadOptions<AvailablePhoneNumberCountryResource> 
     {
         /// <summary>
-        /// The 34 character string that uniquely identifies your account.
+        /// The SID of the Account requesting the available phone number Country resources
         /// </summary>
         public string PathAccountSid { get; set; }
 
@@ -42,18 +42,19 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchAvailablePhoneNumberCountryOptions : IOptions<AvailablePhoneNumberCountryResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account requesting the available phone number Country resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The country_code
+        /// The ISO country code of the country to fetch available phone number information about
         /// </summary>
         public string PathCountryCode { get; }
 
         /// <summary>
         /// Construct a new FetchAvailablePhoneNumberCountryOptions
         /// </summary>
-        /// <param name="pathCountryCode"> The country_code </param>
+        /// <param name="pathCountryCode"> The ISO country code of the country to fetch available phone number information
+        ///                       about </param>
         public FetchAvailablePhoneNumberCountryOptions(string pathCountryCode)
         {
             PathCountryCode = pathCountryCode;

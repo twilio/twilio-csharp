@@ -64,6 +64,10 @@ namespace Twilio.Rest.Video.V1
         /// Only show Composition Hooks created before this ISO8601 date-time with timezone.
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
+        /// <summary>
+        /// Only show Composition Hooks with friendly name that match this name.
+        /// </summary>
+        public string FriendlyName { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -84,6 +88,11 @@ namespace Twilio.Rest.Video.V1
             if (DateCreatedBefore != null)
             {
                 p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
+            }
+
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
 
             if (PageSize != null)

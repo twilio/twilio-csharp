@@ -157,6 +157,7 @@ namespace Twilio.Rest.Video.V1
         ///                        timezone. </param>
         /// <param name="dateCreatedBefore"> Only show Composition Hooks created before this ISO8601 date-time with timezone.
         ///                         </param>
+        /// <param name="friendlyName"> Only show Composition Hooks with friendly name that match this name. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -164,11 +165,12 @@ namespace Twilio.Rest.Video.V1
         public static ResourceSet<CompositionHookResource> Read(bool? enabled = null, 
                                                                 DateTime? dateCreatedAfter = null, 
                                                                 DateTime? dateCreatedBefore = null, 
+                                                                string friendlyName = null, 
                                                                 int? pageSize = null, 
                                                                 long? limit = null, 
                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadCompositionHookOptions(){Enabled = enabled, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
+            var options = new ReadCompositionHookOptions(){Enabled = enabled, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -181,6 +183,7 @@ namespace Twilio.Rest.Video.V1
         ///                        timezone. </param>
         /// <param name="dateCreatedBefore"> Only show Composition Hooks created before this ISO8601 date-time with timezone.
         ///                         </param>
+        /// <param name="friendlyName"> Only show Composition Hooks with friendly name that match this name. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -188,11 +191,12 @@ namespace Twilio.Rest.Video.V1
         public static async System.Threading.Tasks.Task<ResourceSet<CompositionHookResource>> ReadAsync(bool? enabled = null, 
                                                                                                         DateTime? dateCreatedAfter = null, 
                                                                                                         DateTime? dateCreatedBefore = null, 
+                                                                                                        string friendlyName = null, 
                                                                                                         int? pageSize = null, 
                                                                                                         long? limit = null, 
                                                                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadCompositionHookOptions(){Enabled = enabled, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
+            var options = new ReadCompositionHookOptions(){Enabled = enabled, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

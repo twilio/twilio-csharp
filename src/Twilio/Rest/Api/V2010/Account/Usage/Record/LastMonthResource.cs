@@ -317,11 +317,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="category"> Only include usage of this usage category. </param>
-        /// <param name="startDate"> Only include usage that has occurred on or after this date. </param>
-        /// <param name="endDate"> Only include usage that has occurred on or before this date. </param>
-        /// <param name="includeSubaccounts"> The include_subaccounts </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="category"> The usage category of the UsageRecord resources to read </param>
+        /// <param name="startDate"> Only include usage that has occurred on or after this date </param>
+        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+        /// <param name="includeSubaccounts"> Whether to include usage from the master account and all its subaccounts </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -343,11 +343,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="category"> Only include usage of this usage category. </param>
-        /// <param name="startDate"> Only include usage that has occurred on or after this date. </param>
-        /// <param name="endDate"> Only include usage that has occurred on or before this date. </param>
-        /// <param name="includeSubaccounts"> The include_subaccounts </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="category"> The usage category of the UsageRecord resources to read </param>
+        /// <param name="startDate"> Only include usage that has occurred on or after this date </param>
+        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+        /// <param name="includeSubaccounts"> Whether to include usage from the master account and all its subaccounts </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -444,73 +444,73 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         }
 
         /// <summary>
-        /// The Account that accrued the usage.
+        /// The SID of the Account accrued the usage
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The api_version
+        /// The API version used to create the resource
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// The category of usage.
+        /// The category of usage
         /// </summary>
         [JsonProperty("category")]
         [JsonConverter(typeof(StringEnumConverter))]
         public LastMonthResource.CategoryEnum Category { get; private set; }
         /// <summary>
-        /// The number of usage events.
+        /// The number of usage events
         /// </summary>
         [JsonProperty("count")]
         public string Count { get; private set; }
         /// <summary>
-        /// The units in which Count is measured.
+        /// The units in which count is measured
         /// </summary>
         [JsonProperty("count_unit")]
         public string CountUnit { get; private set; }
         /// <summary>
-        /// A human-readable description of the usage category.
+        /// A plain-language description of the usage category
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// The last date for which usage is included in this UsageRecord, formatted as YYYY-MM-DD.
+        /// The last date for which usage is included in the UsageRecord
         /// </summary>
         [JsonProperty("end_date")]
         public DateTime? EndDate { get; private set; }
         /// <summary>
-        /// The total price of the usage, in the currency associated with the account.
+        /// The total price of the usage
         /// </summary>
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
         /// <summary>
-        /// The currency in which Price is measured, in ISO 4127 format.
+        /// The currency in which `price` is measured
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// The first date for which usage is included in this UsageRecord, formatted as YYYY-MM-DD.
+        /// The first date for which usage is included in this UsageRecord
         /// </summary>
         [JsonProperty("start_date")]
         public DateTime? StartDate { get; private set; }
         /// <summary>
-        /// Subresource Uris for this UsageRecord.
+        /// A list of related resources identified by their relative URIs
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
         /// <summary>
-        /// The URI that returns only this UsageRecord, relative to https://api.
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// The amount of billed usage.
+        /// The amount of usage
         /// </summary>
         [JsonProperty("usage")]
         public string Usage { get; private set; }
         /// <summary>
-        /// The units in which Usage is measured.
+        /// The units in which usage is measured
         /// </summary>
         [JsonProperty("usage_unit")]
         public string UsageUnit { get; private set; }

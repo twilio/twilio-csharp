@@ -17,23 +17,23 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
     public class CreateAuthCallsIpAccessControlListMappingOptions : IOptions<AuthCallsIpAccessControlListMappingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The domain_sid
+        /// The SID of the SIP domain that will contain the new resource
         /// </summary>
         public string PathDomainSid { get; }
         /// <summary>
-        /// A string that uniquely identifies IP Access Control List
+        /// The SID of the IpAccessControlList resource to map to the SIP domain
         /// </summary>
         public string IpAccessControlListSid { get; }
 
         /// <summary>
         /// Construct a new CreateAuthCallsIpAccessControlListMappingOptions
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="ipAccessControlListSid"> A string that uniquely identifies IP Access Control List </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that will contain the new resource </param>
+        /// <param name="ipAccessControlListSid"> The SID of the IpAccessControlList resource to map to the SIP domain </param>
         public CreateAuthCallsIpAccessControlListMappingOptions(string pathDomainSid, string ipAccessControlListSid)
         {
             PathDomainSid = pathDomainSid;
@@ -61,18 +61,18 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
     public class ReadAuthCallsIpAccessControlListMappingOptions : ReadOptions<AuthCallsIpAccessControlListMappingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The domain_sid
+        /// The SID of the SIP domain that contains the resources to read
         /// </summary>
         public string PathDomainSid { get; }
 
         /// <summary>
         /// Construct a new ReadAuthCallsIpAccessControlListMappingOptions
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resources to read </param>
         public ReadAuthCallsIpAccessControlListMappingOptions(string pathDomainSid)
         {
             PathDomainSid = pathDomainSid;
@@ -99,23 +99,23 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
     public class FetchAuthCallsIpAccessControlListMappingOptions : IOptions<AuthCallsIpAccessControlListMappingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The domain_sid
+        /// The SID of the SIP domain that contains the resource to fetch
         /// </summary>
         public string PathDomainSid { get; }
         /// <summary>
-        /// Fetch by unique IP Access Control List Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAuthCallsIpAccessControlListMappingOptions
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> Fetch by unique IP Access Control List Sid </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchAuthCallsIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
         {
             PathDomainSid = pathDomainSid;
@@ -138,23 +138,23 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
     public class DeleteAuthCallsIpAccessControlListMappingOptions : IOptions<AuthCallsIpAccessControlListMappingResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The domain_sid
+        /// The SID of the SIP domain that contains the resources to delete
         /// </summary>
         public string PathDomainSid { get; }
         /// <summary>
-        /// Delete by unique IP Access Control List Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteAuthCallsIpAccessControlListMappingOptions
         /// </summary>
-        /// <param name="pathDomainSid"> The domain_sid </param>
-        /// <param name="pathSid"> Delete by unique IP Access Control List Sid </param>
+        /// <param name="pathDomainSid"> The SID of the SIP domain that contains the resources to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteAuthCallsIpAccessControlListMappingOptions(string pathDomainSid, string pathSid)
         {
             PathDomainSid = pathDomainSid;

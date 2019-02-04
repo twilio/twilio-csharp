@@ -17,23 +17,23 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
     public class ReadMobileOptions : ReadOptions<MobileResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Include phone numbers new to the Twilio platform.
+        /// Whether to include new phone numbers
         /// </summary>
         public bool? Beta { get; set; }
         /// <summary>
-        /// Only show the incoming phone number resources with friendly names that exactly match this name.
+        /// A string that identifies the resources to read
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Only show the incoming phone number resources that match this pattern.
+        /// The phone numbers of the resources to read
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; set; }
         /// <summary>
-        /// Include phone numbers based on the origin, by default, phone numbers of all origin are included.
+        /// Include phone numbers based on their origin. By default, phone numbers of all origin are included.
         /// </summary>
         public string Origin { get; set; }
 
@@ -78,86 +78,86 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
     public class CreateMobileOptions : IOptions<MobileResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The phone number you want to purchase.
+        /// The phone number to purchase in E.164 format
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; }
         /// <summary>
-        /// The Twilio REST API version to use for incoming calls made to this number.
+        /// The API version to use for incoming calls made to the new phone number
         /// </summary>
         public string ApiVersion { get; set; }
         /// <summary>
-        /// A human readable description of the new incoming phone number.
+        /// A string to describe the new phone number
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The 34 character sid of the application Twilio should use to handle SMSs sent to the new number.
+        /// The SID of the application to handle SMS messages
         /// </summary>
         public string SmsApplicationSid { get; set; }
         /// <summary>
-        /// The HTTP method that should be used to request the SmsFallbackUrl.
+        /// HTTP method used with sms_fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
         /// <summary>
-        /// A URL that Twilio will request if an error occurs requesting or executing the TwiML defined by SmsUrl.
+        /// The URL we call when an error occurs while executing TwiML
         /// </summary>
         public Uri SmsFallbackUrl { get; set; }
         /// <summary>
-        /// The HTTP method that should be used to request the SmsUrl.
+        /// The HTTP method to use with sms url
         /// </summary>
         public Twilio.Http.HttpMethod SmsMethod { get; set; }
         /// <summary>
-        /// The URL that Twilio should request when somebody sends an SMS to the phone number.
+        /// The URL we should call when the new phone number receives an incoming SMS message
         /// </summary>
         public Uri SmsUrl { get; set; }
         /// <summary>
-        /// The URL that Twilio will request to pass status parameters to your application.
+        /// The URL we should call to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The HTTP method Twilio will use to make requests to the StatusCallback URL.
+        /// The HTTP method we should use to call status_callback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// The 34 character sid of the application Twilio should use to handle phone calls to the new number.
+        /// The SID of the application to handle the new phone number
         /// </summary>
         public string VoiceApplicationSid { get; set; }
         /// <summary>
-        /// Do a lookup of a caller's name from the CNAM database and post it to your app.
+        /// Whether to lookup the caller's name
         /// </summary>
         public bool? VoiceCallerIdLookup { get; set; }
         /// <summary>
-        /// The HTTP method that should be used to request the VoiceFallbackUrl.
+        /// The HTTP method used with voice_fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
         /// <summary>
-        /// A URL that Twilio will request if an error occurs requesting or executing the TwiML at Url.
+        /// The URL we will call when an error occurs in TwiML
         /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
         /// <summary>
-        /// The HTTP method that should be used to request the VoiceUrl.
+        /// The HTTP method used with the voice_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         /// <summary>
-        /// The URL that Twilio should request when somebody dials the new phone number.
+        /// The URL we should call when the phone number receives a call
         /// </summary>
         public Uri VoiceUrl { get; set; }
         /// <summary>
-        /// The identity_sid
+        /// The SID of the Identity resource to associate with the new phone number
         /// </summary>
         public string IdentitySid { get; set; }
         /// <summary>
-        /// The 34 character sid of the address Twilio should associate with the number.
+        /// The SID of the Address resource associated with the phone number
         /// </summary>
         public string AddressSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateMobileOptions
         /// </summary>
-        /// <param name="phoneNumber"> The phone number you want to purchase. </param>
+        /// <param name="phoneNumber"> The phone number to purchase in E.164 format </param>
         public CreateMobileOptions(Types.PhoneNumber phoneNumber)
         {
             PhoneNumber = phoneNumber;

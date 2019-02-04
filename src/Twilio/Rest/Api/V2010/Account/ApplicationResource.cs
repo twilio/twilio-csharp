@@ -63,22 +63,22 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a new application within your account
         /// </summary>
-        /// <param name="friendlyName"> A human readable description of the application </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="apiVersion"> The API version to use </param>
-        /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
-        /// <param name="voiceMethod"> HTTP method to use with the URL </param>
-        /// <param name="voiceFallbackUrl"> Fallback URL </param>
-        /// <param name="voiceFallbackMethod"> HTTP method to use with the fallback url </param>
-        /// <param name="statusCallback"> URL to hit with status updates </param>
-        /// <param name="statusCallbackMethod"> HTTP method to use with the status callback </param>
-        /// <param name="voiceCallerIdLookup"> True or False </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="smsMethod"> HTTP method to use with sms_url </param>
-        /// <param name="smsFallbackUrl"> Fallback URL if there's an error parsing TwiML </param>
-        /// <param name="smsFallbackMethod"> HTTP method to use with sms_fallback_method </param>
-        /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
-        /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
+        /// <param name="friendlyName"> A string to describe the new resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+        /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
+        /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
+        /// <param name="voiceMethod"> The HTTP method to use with the voice_url </param>
+        /// <param name="voiceFallbackUrl"> The URL to call when a TwiML error occurs </param>
+        /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
+        /// <param name="statusCallback"> The URL to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method to use to call status_callback </param>
+        /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
+        /// <param name="smsUrl"> The URL to call when the phone number receives an incoming SMS message </param>
+        /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
+        /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
+        /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
+        /// <param name="smsStatusCallback"> The URL to send status information to your application </param>
+        /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns> 
         public static ApplicationResource Create(string friendlyName, 
@@ -107,22 +107,22 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a new application within your account
         /// </summary>
-        /// <param name="friendlyName"> A human readable description of the application </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="apiVersion"> The API version to use </param>
-        /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
-        /// <param name="voiceMethod"> HTTP method to use with the URL </param>
-        /// <param name="voiceFallbackUrl"> Fallback URL </param>
-        /// <param name="voiceFallbackMethod"> HTTP method to use with the fallback url </param>
-        /// <param name="statusCallback"> URL to hit with status updates </param>
-        /// <param name="statusCallbackMethod"> HTTP method to use with the status callback </param>
-        /// <param name="voiceCallerIdLookup"> True or False </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="smsMethod"> HTTP method to use with sms_url </param>
-        /// <param name="smsFallbackUrl"> Fallback URL if there's an error parsing TwiML </param>
-        /// <param name="smsFallbackMethod"> HTTP method to use with sms_fallback_method </param>
-        /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
-        /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
+        /// <param name="friendlyName"> A string to describe the new resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+        /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
+        /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
+        /// <param name="voiceMethod"> The HTTP method to use with the voice_url </param>
+        /// <param name="voiceFallbackUrl"> The URL to call when a TwiML error occurs </param>
+        /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
+        /// <param name="statusCallback"> The URL to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method to use to call status_callback </param>
+        /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
+        /// <param name="smsUrl"> The URL to call when the phone number receives an incoming SMS message </param>
+        /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
+        /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
+        /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
+        /// <param name="smsStatusCallback"> The URL to send status information to your application </param>
+        /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns> 
         public static async System.Threading.Tasks.Task<ApplicationResource> CreateAsync(string friendlyName, 
@@ -191,8 +191,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete the application by the specified application sid
         /// </summary>
-        /// <param name="pathSid"> The application sid to delete </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns> 
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -205,8 +205,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete the application by the specified application sid
         /// </summary>
-        /// <param name="pathSid"> The application sid to delete </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
@@ -261,8 +261,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch the application specified by the provided sid
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Application Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns> 
         public static ApplicationResource Fetch(string pathSid, 
@@ -277,8 +277,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch the application specified by the provided sid
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Application Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns> 
         public static async System.Threading.Tasks.Task<ApplicationResource> FetchAsync(string pathSid, 
@@ -337,8 +337,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of applications representing an application within the requesting account
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="friendlyName"> The string that identifies the Application resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -357,8 +357,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of applications representing an application within the requesting account
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> Filter by friendly name </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="friendlyName"> The string that identifies the Application resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -476,23 +476,23 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Updates the application's properties
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> Human readable description of this resource </param>
-        /// <param name="apiVersion"> The API version to use </param>
-        /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
-        /// <param name="voiceMethod"> HTTP method to use with the URL </param>
-        /// <param name="voiceFallbackUrl"> Fallback URL </param>
-        /// <param name="voiceFallbackMethod"> HTTP method to use with the fallback url </param>
-        /// <param name="statusCallback"> URL to hit with status updates </param>
-        /// <param name="statusCallbackMethod"> HTTP method to use with the status callback </param>
-        /// <param name="voiceCallerIdLookup"> True or False </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="smsMethod"> HTTP method to use with sms_url </param>
-        /// <param name="smsFallbackUrl"> Fallback URL if there's an error parsing TwiML </param>
-        /// <param name="smsFallbackMethod"> HTTP method to use with sms_fallback_method </param>
-        /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
-        /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
+        /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
+        /// <param name="voiceMethod"> The HTTP method to use with the voice_url </param>
+        /// <param name="voiceFallbackUrl"> The URL to call when a TwiML error occurs </param>
+        /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
+        /// <param name="statusCallback"> The URL to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method to use to call status_callback </param>
+        /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
+        /// <param name="smsUrl"> The URL to call when the phone number receives an incoming SMS message </param>
+        /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
+        /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
+        /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
+        /// <param name="smsStatusCallback"> The URL to send status information to your application </param>
+        /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns> 
         public static ApplicationResource Update(string pathSid, 
@@ -522,23 +522,23 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Updates the application's properties
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> Human readable description of this resource </param>
-        /// <param name="apiVersion"> The API version to use </param>
-        /// <param name="voiceUrl"> URL Twilio will make requests to when relieving a call </param>
-        /// <param name="voiceMethod"> HTTP method to use with the URL </param>
-        /// <param name="voiceFallbackUrl"> Fallback URL </param>
-        /// <param name="voiceFallbackMethod"> HTTP method to use with the fallback url </param>
-        /// <param name="statusCallback"> URL to hit with status updates </param>
-        /// <param name="statusCallbackMethod"> HTTP method to use with the status callback </param>
-        /// <param name="voiceCallerIdLookup"> True or False </param>
-        /// <param name="smsUrl"> URL Twilio will request when receiving an SMS </param>
-        /// <param name="smsMethod"> HTTP method to use with sms_url </param>
-        /// <param name="smsFallbackUrl"> Fallback URL if there's an error parsing TwiML </param>
-        /// <param name="smsFallbackMethod"> HTTP method to use with sms_fallback_method </param>
-        /// <param name="smsStatusCallback"> URL Twilio with request with status updates </param>
-        /// <param name="messageStatusCallback"> URL to make requests to with status updates </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
+        /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
+        /// <param name="voiceMethod"> The HTTP method to use with the voice_url </param>
+        /// <param name="voiceFallbackUrl"> The URL to call when a TwiML error occurs </param>
+        /// <param name="voiceFallbackMethod"> The HTTP method to use with voice_fallback_url </param>
+        /// <param name="statusCallback"> The URL to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method to use to call status_callback </param>
+        /// <param name="voiceCallerIdLookup"> Whether to lookup the caller's name </param>
+        /// <param name="smsUrl"> The URL to call when the phone number receives an incoming SMS message </param>
+        /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
+        /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
+        /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
+        /// <param name="smsStatusCallback"> The URL to send status information to your application </param>
+        /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns> 
         public static async System.Threading.Tasks.Task<ApplicationResource> UpdateAsync(string pathSid, 
@@ -584,107 +584,107 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// A string that uniquely identifies this resource
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The API version to use
+        /// The API version used to start a new TwiML session
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// Date this resource was created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// Date this resource was last updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Human readable description of this resource
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// URL to make requests to with status updates
+        /// The URL to send message status information to your application
         /// </summary>
         [JsonProperty("message_status_callback")]
         public Uri MessageStatusCallback { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies this resource
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// HTTP method to use with sms_fallback_method
+        /// The HTTP method used with sms_fallback_url
         /// </summary>
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
         /// <summary>
-        /// Fallback URL if there's an error parsing TwiML
+        /// The URL that we call when an error occurs while retrieving or executing the TwiML
         /// </summary>
         [JsonProperty("sms_fallback_url")]
         public Uri SmsFallbackUrl { get; private set; }
         /// <summary>
-        /// HTTP method to use with sms_url
+        /// The HTTP method to use with sms_url
         /// </summary>
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsMethod { get; private set; }
         /// <summary>
-        /// URL Twilio with request with status updates
+        /// The URL to send status information to your application
         /// </summary>
         [JsonProperty("sms_status_callback")]
         public Uri SmsStatusCallback { get; private set; }
         /// <summary>
-        /// URL Twilio will request when receiving an SMS
+        /// The URL we call when the phone number receives an incoming SMS message
         /// </summary>
         [JsonProperty("sms_url")]
         public Uri SmsUrl { get; private set; }
         /// <summary>
-        /// URL to hit with status updates
+        /// The URL to send status information to your application
         /// </summary>
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
         /// <summary>
-        /// HTTP method to use with the status callback
+        /// The HTTP method we use to call status_callback
         /// </summary>
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
         /// <summary>
-        /// URI for this resource
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// True or False
+        /// Whether to lookup the caller's name
         /// </summary>
         [JsonProperty("voice_caller_id_lookup")]
         public bool? VoiceCallerIdLookup { get; private set; }
         /// <summary>
-        /// HTTP method to use with the fallback url
+        /// The HTTP method used with voice_fallback_url
         /// </summary>
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
         /// <summary>
-        /// Fallback URL
+        /// The URL we call when a TwiML error occurs
         /// </summary>
         [JsonProperty("voice_fallback_url")]
         public Uri VoiceFallbackUrl { get; private set; }
         /// <summary>
-        /// HTTP method to use with the URL
+        /// The HTTP method used with the voice_url
         /// </summary>
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
         /// <summary>
-        /// URL Twilio will make requests to when relieving a call
+        /// The URL we call when the phone number receives a call
         /// </summary>
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }

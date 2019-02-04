@@ -17,18 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchAuthorizedConnectAppOptions : IOptions<AuthorizedConnectAppResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The connect_app_sid
+        /// The SID of the Connect App to fetch
         /// </summary>
         public string PathConnectAppSid { get; }
 
         /// <summary>
         /// Construct a new FetchAuthorizedConnectAppOptions
         /// </summary>
-        /// <param name="pathConnectAppSid"> The connect_app_sid </param>
+        /// <param name="pathConnectAppSid"> The SID of the Connect App to fetch </param>
         public FetchAuthorizedConnectAppOptions(string pathConnectAppSid)
         {
             PathConnectAppSid = pathConnectAppSid;
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadAuthorizedConnectAppOptions : ReadOptions<AuthorizedConnectAppResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
 
