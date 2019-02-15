@@ -34,6 +34,14 @@ namespace Twilio.Rest.Verify.V1.Service
         /// A SID that uniquely identifies this Verification Check
         /// </summary>
         public string VerificationSid { get; set; }
+        /// <summary>
+        /// Amount of the associated PSD2 compliant transaction.
+        /// </summary>
+        public string Amount { get; set; }
+        /// <summary>
+        /// Payee of the associated PSD2 compliant transaction.
+        /// </summary>
+        public string Payee { get; set; }
 
         /// <summary>
         /// Construct a new CreateVerificationCheckOptions
@@ -65,6 +73,16 @@ namespace Twilio.Rest.Verify.V1.Service
             if (VerificationSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("VerificationSid", VerificationSid.ToString()));
+            }
+
+            if (Amount != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Amount", Amount));
+            }
+
+            if (Payee != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Payee", Payee));
             }
 
             return p;

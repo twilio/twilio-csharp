@@ -72,6 +72,7 @@ namespace Twilio.Rest.Verify.V1
         /// <param name="dtmfInputRequired"> Indicates whether or not to require a random number input to deliver the verify
         ///                         code via phone calls </param>
         /// <param name="ttsName"> Alternative to be used as Service friendly name in phone calls </param>
+        /// <param name="psd2Enabled"> Indicates whether PSD2 parameters are enabled or not </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Create(string friendlyName, 
@@ -80,9 +81,10 @@ namespace Twilio.Rest.Verify.V1
                                              bool? skipSmsToLandlines = null, 
                                              bool? dtmfInputRequired = null, 
                                              string ttsName = null, 
+                                             bool? psd2Enabled = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName};
+            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled};
             return Create(options, client);
         }
 
@@ -97,6 +99,7 @@ namespace Twilio.Rest.Verify.V1
         /// <param name="dtmfInputRequired"> Indicates whether or not to require a random number input to deliver the verify
         ///                         code via phone calls </param>
         /// <param name="ttsName"> Alternative to be used as Service friendly name in phone calls </param>
+        /// <param name="psd2Enabled"> Indicates whether PSD2 parameters are enabled or not </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName, 
@@ -105,9 +108,10 @@ namespace Twilio.Rest.Verify.V1
                                                                                      bool? skipSmsToLandlines = null, 
                                                                                      bool? dtmfInputRequired = null, 
                                                                                      string ttsName = null, 
+                                                                                     bool? psd2Enabled = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName};
+            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -431,6 +435,7 @@ namespace Twilio.Rest.Verify.V1
         /// <param name="dtmfInputRequired"> Indicates whether or not to require a random number input to deliver the verify
         ///                         code via phone calls </param>
         /// <param name="ttsName"> Alternative to be used as Service friendly name in phone calls </param>
+        /// <param name="psd2Enabled"> Indicates whether PSD2 parameters are enabled or not </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Update(string pathSid, 
@@ -440,9 +445,10 @@ namespace Twilio.Rest.Verify.V1
                                              bool? skipSmsToLandlines = null, 
                                              bool? dtmfInputRequired = null, 
                                              string ttsName = null, 
+                                             bool? psd2Enabled = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled};
             return Update(options, client);
         }
 
@@ -458,6 +464,7 @@ namespace Twilio.Rest.Verify.V1
         /// <param name="dtmfInputRequired"> Indicates whether or not to require a random number input to deliver the verify
         ///                         code via phone calls </param>
         /// <param name="ttsName"> Alternative to be used as Service friendly name in phone calls </param>
+        /// <param name="psd2Enabled"> Indicates whether PSD2 parameters are enabled or not </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, 
@@ -467,9 +474,10 @@ namespace Twilio.Rest.Verify.V1
                                                                                      bool? skipSmsToLandlines = null, 
                                                                                      bool? dtmfInputRequired = null, 
                                                                                      string ttsName = null, 
+                                                                                     bool? psd2Enabled = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -517,6 +525,11 @@ namespace Twilio.Rest.Verify.V1
         /// </summary>
         [JsonProperty("lookup_enabled")]
         public bool? LookupEnabled { get; private set; }
+        /// <summary>
+        /// Indicates whether PSD2 parameters are enabled or not
+        /// </summary>
+        [JsonProperty("psd2_enabled")]
+        public bool? Psd2Enabled { get; private set; }
         /// <summary>
         /// Indicates whether or not to ignore SMS verifications for landlines
         /// </summary>

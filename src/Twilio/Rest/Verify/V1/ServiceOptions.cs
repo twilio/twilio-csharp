@@ -42,6 +42,10 @@ namespace Twilio.Rest.Verify.V1
         /// Alternative to be used as Service friendly name in phone calls
         /// </summary>
         public string TtsName { get; set; }
+        /// <summary>
+        /// Indicates whether PSD2 parameters are enabled or not
+        /// </summary>
+        public bool? Psd2Enabled { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -86,6 +90,11 @@ namespace Twilio.Rest.Verify.V1
             if (TtsName != null)
             {
                 p.Add(new KeyValuePair<string, string>("TtsName", TtsName));
+            }
+
+            if (Psd2Enabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Psd2Enabled", Psd2Enabled.Value.ToString().ToLower()));
             }
 
             return p;
@@ -211,6 +220,10 @@ namespace Twilio.Rest.Verify.V1
         /// Alternative to be used as Service friendly name in phone calls
         /// </summary>
         public string TtsName { get; set; }
+        /// <summary>
+        /// Indicates whether PSD2 parameters are enabled or not
+        /// </summary>
+        public bool? Psd2Enabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -255,6 +268,11 @@ namespace Twilio.Rest.Verify.V1
             if (TtsName != null)
             {
                 p.Add(new KeyValuePair<string, string>("TtsName", TtsName));
+            }
+
+            if (Psd2Enabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Psd2Enabled", Psd2Enabled.Value.ToString().ToLower()));
             }
 
             return p;

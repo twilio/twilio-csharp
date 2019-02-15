@@ -137,7 +137,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> Filter events by those pertaining to a particular workspace </param>
         /// <param name="endDate"> Filter events by an end date. </param>
         /// <param name="eventType"> Filter events by those of a certain event type </param>
         /// <param name="minutes"> Filter events by up to 'x' minutes in the past. </param>
@@ -146,7 +146,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="taskQueueSid"> Filter events by those pertaining to a particular queue </param>
         /// <param name="taskSid"> Filter events by those pertaining to a particular task </param>
         /// <param name="workerSid"> Filter events by those pertaining to a particular worker </param>
-        /// <param name="workflowSid"> The workflow_sid </param>
+        /// <param name="workflowSid"> Filter events by those pertaining to a particular workflow </param>
+        /// <param name="taskChannel"> Filter events by those pertaining to a particular task channel </param>
+        /// <param name="sid"> Filter events by those pertaining to a particular event </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -161,11 +163,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                       string taskSid = null, 
                                                       string workerSid = null, 
                                                       string workflowSid = null, 
+                                                      string taskChannel = null, 
+                                                      string sid = null, 
                                                       int? pageSize = null, 
                                                       long? limit = null, 
                                                       ITwilioRestClient client = null)
         {
-            var options = new ReadEventOptions(pathWorkspaceSid){EndDate = endDate, EventType = eventType, Minutes = minutes, ReservationSid = reservationSid, StartDate = startDate, TaskQueueSid = taskQueueSid, TaskSid = taskSid, WorkerSid = workerSid, WorkflowSid = workflowSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadEventOptions(pathWorkspaceSid){EndDate = endDate, EventType = eventType, Minutes = minutes, ReservationSid = reservationSid, StartDate = startDate, TaskQueueSid = taskQueueSid, TaskSid = taskSid, WorkerSid = workerSid, WorkflowSid = workflowSid, TaskChannel = taskChannel, Sid = sid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -173,7 +177,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> Filter events by those pertaining to a particular workspace </param>
         /// <param name="endDate"> Filter events by an end date. </param>
         /// <param name="eventType"> Filter events by those of a certain event type </param>
         /// <param name="minutes"> Filter events by up to 'x' minutes in the past. </param>
@@ -182,7 +186,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="taskQueueSid"> Filter events by those pertaining to a particular queue </param>
         /// <param name="taskSid"> Filter events by those pertaining to a particular task </param>
         /// <param name="workerSid"> Filter events by those pertaining to a particular worker </param>
-        /// <param name="workflowSid"> The workflow_sid </param>
+        /// <param name="workflowSid"> Filter events by those pertaining to a particular workflow </param>
+        /// <param name="taskChannel"> Filter events by those pertaining to a particular task channel </param>
+        /// <param name="sid"> Filter events by those pertaining to a particular event </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -197,11 +203,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                               string taskSid = null, 
                                                                                               string workerSid = null, 
                                                                                               string workflowSid = null, 
+                                                                                              string taskChannel = null, 
+                                                                                              string sid = null, 
                                                                                               int? pageSize = null, 
                                                                                               long? limit = null, 
                                                                                               ITwilioRestClient client = null)
         {
-            var options = new ReadEventOptions(pathWorkspaceSid){EndDate = endDate, EventType = eventType, Minutes = minutes, ReservationSid = reservationSid, StartDate = startDate, TaskQueueSid = taskQueueSid, TaskSid = taskSid, WorkerSid = workerSid, WorkflowSid = workflowSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadEventOptions(pathWorkspaceSid){EndDate = endDate, EventType = eventType, Minutes = minutes, ReservationSid = reservationSid, StartDate = startDate, TaskQueueSid = taskQueueSid, TaskSid = taskSid, WorkerSid = workerSid, WorkflowSid = workflowSid, TaskChannel = taskChannel, Sid = sid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -312,12 +320,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Data about this specific event.
         /// </summary>
         [JsonProperty("event_data")]
-        public Dictionary<string, string> EventData { get; private set; }
+        public object EventData { get; private set; }
         /// <summary>
         /// The time this event was sent
         /// </summary>
         [JsonProperty("event_date")]
         public DateTime? EventDate { get; private set; }
+        /// <summary>
+        /// The time this event was sent in ms
+        /// </summary>
+        [JsonProperty("event_date_ms")]
+        public long? EventDateMs { get; private set; }
         /// <summary>
         /// An identifier for this event
         /// </summary>
@@ -358,6 +371,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The workspace_sid
+        /// </summary>
+        [JsonProperty("workspace_sid")]
+        public string WorkspaceSid { get; private set; }
 
         private EventResource()
         {

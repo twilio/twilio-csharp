@@ -84,15 +84,19 @@ namespace Twilio.Rest.Verify.V1.Service
         /// <param name="code"> The verification string </param>
         /// <param name="to"> To phone number </param>
         /// <param name="verificationSid"> A SID that uniquely identifies this Verification Check </param>
+        /// <param name="amount"> Amount of the associated PSD2 compliant transaction. </param>
+        /// <param name="payee"> Payee of the associated PSD2 compliant transaction. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of VerificationCheck </returns> 
         public static VerificationCheckResource Create(string pathServiceSid, 
                                                        string code, 
                                                        string to = null, 
                                                        string verificationSid = null, 
+                                                       string amount = null, 
+                                                       string payee = null, 
                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to, VerificationSid = verificationSid};
+            var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee};
             return Create(options, client);
         }
 
@@ -104,15 +108,19 @@ namespace Twilio.Rest.Verify.V1.Service
         /// <param name="code"> The verification string </param>
         /// <param name="to"> To phone number </param>
         /// <param name="verificationSid"> A SID that uniquely identifies this Verification Check </param>
+        /// <param name="amount"> Amount of the associated PSD2 compliant transaction. </param>
+        /// <param name="payee"> Payee of the associated PSD2 compliant transaction. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationCheck </returns> 
         public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(string pathServiceSid, 
                                                                                                string code, 
                                                                                                string to = null, 
                                                                                                string verificationSid = null, 
+                                                                                               string amount = null, 
+                                                                                               string payee = null, 
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to, VerificationSid = verificationSid};
+            var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee};
             return await CreateAsync(options, client);
         }
         #endif
@@ -171,6 +179,16 @@ namespace Twilio.Rest.Verify.V1.Service
         /// </summary>
         [JsonProperty("valid")]
         public bool? Valid { get; private set; }
+        /// <summary>
+        /// Amount of the associated PSD2 compliant transaction.
+        /// </summary>
+        [JsonProperty("amount")]
+        public string Amount { get; private set; }
+        /// <summary>
+        /// Payee of the associated PSD2 compliant transaction.
+        /// </summary>
+        [JsonProperty("payee")]
+        public string Payee { get; private set; }
         /// <summary>
         /// The date this Verification Check was created
         /// </summary>

@@ -46,6 +46,14 @@ namespace Twilio.Rest.Verify.V1.Service
         /// A pre-generated code
         /// </summary>
         public string CustomCode { get; set; }
+        /// <summary>
+        /// Amount of the associated PSD2 compliant transaction.
+        /// </summary>
+        public string Amount { get; set; }
+        /// <summary>
+        /// Payee of the associated PSD2 compliant transaction.
+        /// </summary>
+        public string Payee { get; set; }
 
         /// <summary>
         /// Construct a new CreateVerificationOptions
@@ -94,6 +102,16 @@ namespace Twilio.Rest.Verify.V1.Service
             if (CustomCode != null)
             {
                 p.Add(new KeyValuePair<string, string>("CustomCode", CustomCode));
+            }
+
+            if (Amount != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Amount", Amount));
+            }
+
+            if (Payee != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Payee", Payee));
             }
 
             return p;

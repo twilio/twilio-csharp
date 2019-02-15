@@ -385,6 +385,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="activitySid"> The activity_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="rejectPendingReservations"> The reject_pending_reservations </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Worker </returns> 
         public static WorkerResource Update(string pathWorkspaceSid, 
@@ -392,9 +393,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                             string activitySid = null, 
                                             string attributes = null, 
                                             string friendlyName = null, 
+                                            bool? rejectPendingReservations = null, 
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName};
+            var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName, RejectPendingReservations = rejectPendingReservations};
             return Update(options, client);
         }
 
@@ -407,6 +409,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="activitySid"> The activity_sid </param>
         /// <param name="attributes"> The attributes </param>
         /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="rejectPendingReservations"> The reject_pending_reservations </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Worker </returns> 
         public static async System.Threading.Tasks.Task<WorkerResource> UpdateAsync(string pathWorkspaceSid, 
@@ -414,9 +417,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                     string activitySid = null, 
                                                                                     string attributes = null, 
                                                                                     string friendlyName = null, 
+                                                                                    bool? rejectPendingReservations = null, 
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName};
+            var options = new UpdateWorkerOptions(pathWorkspaceSid, pathSid){ActivitySid = activitySid, Attributes = attributes, FriendlyName = friendlyName, RejectPendingReservations = rejectPendingReservations};
             return await UpdateAsync(options, client);
         }
         #endif

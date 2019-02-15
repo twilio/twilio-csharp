@@ -86,6 +86,8 @@ namespace Twilio.Rest.Verify.V1.Service
         /// <param name="sendDigits"> Digits to send when a phone call is started </param>
         /// <param name="locale"> Locale used in the sms or call. </param>
         /// <param name="customCode"> A pre-generated code </param>
+        /// <param name="amount"> Amount of the associated PSD2 compliant transaction. </param>
+        /// <param name="payee"> Payee of the associated PSD2 compliant transaction. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns> 
         public static VerificationResource Create(string pathServiceSid, 
@@ -95,9 +97,11 @@ namespace Twilio.Rest.Verify.V1.Service
                                                   string sendDigits = null, 
                                                   string locale = null, 
                                                   string customCode = null, 
+                                                  string amount = null, 
+                                                  string payee = null, 
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee};
             return Create(options, client);
         }
 
@@ -112,6 +116,8 @@ namespace Twilio.Rest.Verify.V1.Service
         /// <param name="sendDigits"> Digits to send when a phone call is started </param>
         /// <param name="locale"> Locale used in the sms or call. </param>
         /// <param name="customCode"> A pre-generated code </param>
+        /// <param name="amount"> Amount of the associated PSD2 compliant transaction. </param>
+        /// <param name="payee"> Payee of the associated PSD2 compliant transaction. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns> 
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid, 
@@ -121,9 +127,11 @@ namespace Twilio.Rest.Verify.V1.Service
                                                                                           string sendDigits = null, 
                                                                                           string locale = null, 
                                                                                           string customCode = null, 
+                                                                                          string amount = null, 
+                                                                                          string payee = null, 
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee};
             return await CreateAsync(options, client);
         }
         #endif
@@ -188,6 +196,16 @@ namespace Twilio.Rest.Verify.V1.Service
         /// </summary>
         [JsonProperty("lookup")]
         public object Lookup { get; private set; }
+        /// <summary>
+        /// Amount of the associated PSD2 compliant transaction.
+        /// </summary>
+        [JsonProperty("amount")]
+        public string Amount { get; private set; }
+        /// <summary>
+        /// Payee of the associated PSD2 compliant transaction.
+        /// </summary>
+        [JsonProperty("payee")]
+        public string Payee { get; private set; }
         /// <summary>
         /// The date this Verification was created
         /// </summary>

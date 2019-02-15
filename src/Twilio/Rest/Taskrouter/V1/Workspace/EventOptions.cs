@@ -52,7 +52,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class ReadEventOptions : ReadOptions<EventResource> 
     {
         /// <summary>
-        /// The workspace_sid
+        /// Filter events by those pertaining to a particular workspace
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
@@ -88,14 +88,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string WorkerSid { get; set; }
         /// <summary>
-        /// The workflow_sid
+        /// Filter events by those pertaining to a particular workflow
         /// </summary>
         public string WorkflowSid { get; set; }
+        /// <summary>
+        /// Filter events by those pertaining to a particular task channel
+        /// </summary>
+        public string TaskChannel { get; set; }
+        /// <summary>
+        /// Filter events by those pertaining to a particular event
+        /// </summary>
+        public string Sid { get; set; }
 
         /// <summary>
         /// Construct a new ReadEventOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> Filter events by those pertaining to a particular workspace </param>
         public ReadEventOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -150,6 +158,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (WorkflowSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("WorkflowSid", WorkflowSid.ToString()));
+            }
+
+            if (TaskChannel != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
+            }
+
+            if (Sid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Sid", Sid.ToString()));
             }
 
             if (PageSize != null)

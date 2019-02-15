@@ -23,6 +23,7 @@ namespace Twilio.Rest
         public static readonly Domain Autopilot = new Domain("autopilot");
         public static readonly Domain Chat = new Domain("chat");
         public static readonly Domain Fax = new Domain("fax");
+        public static readonly Domain FlexApi = new Domain("flex");
         public static readonly Domain IpMessaging = new Domain("chat");
         public static readonly Domain Lookups = new Domain("lookups");
         public static readonly Domain Monitor = new Domain("monitor");

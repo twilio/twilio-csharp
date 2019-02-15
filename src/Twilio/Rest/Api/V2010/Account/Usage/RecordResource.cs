@@ -30,6 +30,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 return new CategoryEnum(value);
             }
 
+            public static readonly CategoryEnum AgentConference = new CategoryEnum("agent-conference");
             public static readonly CategoryEnum AnsweringMachineDetection = new CategoryEnum("answering-machine-detection");
             public static readonly CategoryEnum AuthyAuthentications = new CategoryEnum("authy-authentications");
             public static readonly CategoryEnum AuthyCallsOutbound = new CategoryEnum("authy-calls-outbound");

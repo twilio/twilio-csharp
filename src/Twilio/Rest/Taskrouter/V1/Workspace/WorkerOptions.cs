@@ -226,6 +226,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// The reject_pending_reservations
+        /// </summary>
+        public bool? RejectPendingReservations { get; set; }
 
         /// <summary>
         /// Construct a new UpdateWorkerOptions
@@ -257,6 +261,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (RejectPendingReservations != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RejectPendingReservations", RejectPendingReservations.Value.ToString().ToLower()));
             }
 
             return p;

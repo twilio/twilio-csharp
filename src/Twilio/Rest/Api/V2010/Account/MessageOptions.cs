@@ -89,6 +89,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// JSON string representing interactive data message.
         /// </summary>
         public string InteractiveData { get; set; }
+        /// <summary>
+        /// Boolean representing force opt in for a message.
+        /// </summary>
+        public bool? ForceOptIn { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -189,6 +193,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (InteractiveData != null)
             {
                 p.Add(new KeyValuePair<string, string>("InteractiveData", InteractiveData));
+            }
+
+            if (ForceOptIn != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ForceOptIn", ForceOptIn.Value.ToString().ToLower()));
             }
 
             return p;
