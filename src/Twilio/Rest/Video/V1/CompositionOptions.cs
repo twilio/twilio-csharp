@@ -148,7 +148,7 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// Twilio Room SID.
         /// </summary>
-        public string RoomSid { get; set; }
+        public string RoomSid { get; }
         /// <summary>
         /// The JSON video layout description.
         /// </summary>
@@ -185,8 +185,10 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// Construct a new CreateCompositionOptions
         /// </summary>
-        public CreateCompositionOptions()
+        /// <param name="roomSid"> Twilio Room SID. </param>
+        public CreateCompositionOptions(string roomSid)
         {
+            RoomSid = roomSid;
             AudioSources = new List<string>();
             AudioSourcesExcluded = new List<string>();
         }

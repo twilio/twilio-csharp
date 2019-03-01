@@ -19,14 +19,14 @@ namespace Twilio.Rest.Fax.V1
     public class FetchFaxOptions : IOptions<FaxResource> 
     {
         /// <summary>
-        /// A string that uniquely identifies this fax.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFaxOptions
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this fax. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchFaxOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -50,19 +50,19 @@ namespace Twilio.Rest.Fax.V1
     public class ReadFaxOptions : ReadOptions<FaxResource> 
     {
         /// <summary>
-        /// Include only faxes sent from
+        /// Retrieve only those faxes sent from this phone number
         /// </summary>
         public string From { get; set; }
         /// <summary>
-        /// Include only faxes sent to
+        /// Retrieve only those faxes sent to this phone number
         /// </summary>
         public string To { get; set; }
         /// <summary>
-        /// Include only faxes created on or before
+        /// Retrieve only faxes created on or before this date
         /// </summary>
         public DateTime? DateCreatedOnOrBefore { get; set; }
         /// <summary>
-        /// Include only faxes created after
+        /// Retrieve only faxes created after this date
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
 
@@ -104,16 +104,16 @@ namespace Twilio.Rest.Fax.V1
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Create a new fax to send to a phone number or SIP endpoint
+    /// Create a new fax to send to a phone number or SIP endpoint.
     /// </summary>
     public class CreateFaxOptions : IOptions<FaxResource> 
     {
         /// <summary>
-        /// The phone number or SIP address to send the fax to
+        /// The phone number to receive the fax
         /// </summary>
         public string To { get; }
         /// <summary>
-        /// URL that points to the fax media
+        /// The Twilio-hosted URL of the PDF that contains the fax
         /// </summary>
         public Uri MediaUrl { get; }
         /// <summary>
@@ -121,35 +121,35 @@ namespace Twilio.Rest.Fax.V1
         /// </summary>
         public FaxResource.QualityEnum Quality { get; set; }
         /// <summary>
-        /// URL for fax status callbacks
+        /// The URL we should call to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// Twilio number from which to originate the fax
+        /// The number the fax was sent from
         /// </summary>
         public string From { get; set; }
         /// <summary>
-        /// Username for SIP authentication
+        /// The username for SIP authentication
         /// </summary>
         public string SipAuthUsername { get; set; }
         /// <summary>
-        /// Password for SIP authentication
+        /// The password for SIP authentication
         /// </summary>
         public string SipAuthPassword { get; set; }
         /// <summary>
-        /// Whether or not to store media
+        /// Whether to store a copy of the sent media
         /// </summary>
         public bool? StoreMedia { get; set; }
         /// <summary>
-        /// How many minutes to attempt a fax
+        /// How long in minutes to try to send the fax
         /// </summary>
         public int? Ttl { get; set; }
 
         /// <summary>
         /// Construct a new CreateFaxOptions
         /// </summary>
-        /// <param name="to"> The phone number or SIP address to send the fax to </param>
-        /// <param name="mediaUrl"> URL that points to the fax media </param>
+        /// <param name="to"> The phone number to receive the fax </param>
+        /// <param name="mediaUrl"> The Twilio-hosted URL of the PDF that contains the fax </param>
         public CreateFaxOptions(string to, Uri mediaUrl)
         {
             To = to;
@@ -219,18 +219,18 @@ namespace Twilio.Rest.Fax.V1
     public class UpdateFaxOptions : IOptions<FaxResource> 
     {
         /// <summary>
-        /// A string that uniquely identifies this fax.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The updated status of this fax
+        /// The new status of the resource
         /// </summary>
         public FaxResource.UpdateStatusEnum Status { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFaxOptions
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this fax. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateFaxOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -259,14 +259,14 @@ namespace Twilio.Rest.Fax.V1
     public class DeleteFaxOptions : IOptions<FaxResource> 
     {
         /// <summary>
-        /// A string that uniquely identifies this fax.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteFaxOptions
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this fax. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteFaxOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -37,11 +37,11 @@ namespace Twilio.Rest.Accounts.V1.Credential
     public class CreateAwsOptions : IOptions<AwsResource> 
     {
         /// <summary>
-        /// String containing AWS access credentials with format <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>
+        /// A string that contains the AWS access credentials in the format <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>
         /// </summary>
         public string Credentials { get; }
         /// <summary>
-        /// A human readable description of this resource
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Construct a new CreateAwsOptions
         /// </summary>
-        /// <param name="credentials"> String containing AWS access credentials with format
+        /// <param name="credentials"> A string that contains the AWS access credentials in the format
         ///                   <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY> </param>
         public CreateAwsOptions(string credentials)
         {
@@ -90,14 +90,14 @@ namespace Twilio.Rest.Accounts.V1.Credential
     public class FetchAwsOptions : IOptions<AwsResource> 
     {
         /// <summary>
-        /// Fetch by unique Credential Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAwsOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchAwsOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -119,18 +119,18 @@ namespace Twilio.Rest.Accounts.V1.Credential
     public class UpdateAwsOptions : IOptions<AwsResource> 
     {
         /// <summary>
-        /// Fetch by unique Credential Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human readable description of this resource
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new UpdateAwsOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateAwsOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -157,14 +157,14 @@ namespace Twilio.Rest.Accounts.V1.Credential
     public class DeleteAwsOptions : IOptions<AwsResource> 
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteAwsOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteAwsOptions(string pathSid)
         {
             PathSid = pathSid;

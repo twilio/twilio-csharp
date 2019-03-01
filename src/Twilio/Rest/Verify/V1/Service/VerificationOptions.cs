@@ -118,4 +118,89 @@ namespace Twilio.Rest.Verify.V1.Service
         }
     }
 
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    /// 
+    /// Update a Verification status
+    /// </summary>
+    public class UpdateVerificationOptions : IOptions<VerificationResource> 
+    {
+        /// <summary>
+        /// Service Sid.
+        /// </summary>
+        public string PathServiceSid { get; }
+        /// <summary>
+        /// A string that uniquely identifies this Verification.
+        /// </summary>
+        public string PathSid { get; }
+        /// <summary>
+        /// New status to set for the Verification.
+        /// </summary>
+        public VerificationResource.StatusEnum Status { get; }
+
+        /// <summary>
+        /// Construct a new UpdateVerificationOptions
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Verification. </param>
+        /// <param name="status"> New status to set for the Verification. </param>
+        public UpdateVerificationOptions(string pathServiceSid, string pathSid, VerificationResource.StatusEnum status)
+        {
+            PathServiceSid = pathServiceSid;
+            PathSid = pathSid;
+            Status = status;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    /// 
+    /// Fetch a specific Verification
+    /// </summary>
+    public class FetchVerificationOptions : IOptions<VerificationResource> 
+    {
+        /// <summary>
+        /// Service Sid.
+        /// </summary>
+        public string PathServiceSid { get; }
+        /// <summary>
+        /// A string that uniquely identifies this Verification.
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new FetchVerificationOptions
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Verification. </param>
+        public FetchVerificationOptions(string pathServiceSid, string pathSid)
+        {
+            PathServiceSid = pathServiceSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }

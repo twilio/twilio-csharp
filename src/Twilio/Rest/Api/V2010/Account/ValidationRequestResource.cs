@@ -64,16 +64,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="phoneNumber"> The phone number to verify. </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A human readable description for the new caller ID with maximum length 64 characters.
-        ///                    </param>
-        /// <param name="callDelay"> The number of seconds, between 0 and 60, to delay before initiating the verification call.
-        ///                 </param>
-        /// <param name="extension"> Digits to dial after connecting the verification call. </param>
-        /// <param name="statusCallback"> A URL that Twilio will request when the verification call ends to notify your app if
-        ///                      the verification process was successful or not. </param>
-        /// <param name="statusCallbackMethod"> The HTTP method Twilio should use when requesting the above URL. </param>
+        /// <param name="phoneNumber"> The phone number to verify in E.164 format </param>
+        /// <param name="pathAccountSid"> The SID of the Account responsible for the new Caller ID </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="callDelay"> The number of seconds to delay before initiating the verification call </param>
+        /// <param name="extension"> The digits to dial after connecting the verification call </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ValidationRequest </returns> 
         public static ValidationRequestResource Create(Types.PhoneNumber phoneNumber, 
@@ -93,16 +90,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="phoneNumber"> The phone number to verify. </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="friendlyName"> A human readable description for the new caller ID with maximum length 64 characters.
-        ///                    </param>
-        /// <param name="callDelay"> The number of seconds, between 0 and 60, to delay before initiating the verification call.
-        ///                 </param>
-        /// <param name="extension"> Digits to dial after connecting the verification call. </param>
-        /// <param name="statusCallback"> A URL that Twilio will request when the verification call ends to notify your app if
-        ///                      the verification process was successful or not. </param>
-        /// <param name="statusCallbackMethod"> The HTTP method Twilio should use when requesting the above URL. </param>
+        /// <param name="phoneNumber"> The phone number to verify in E.164 format </param>
+        /// <param name="pathAccountSid"> The SID of the Account responsible for the new Caller ID </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="callDelay"> The number of seconds to delay before initiating the verification call </param>
+        /// <param name="extension"> The digits to dial after connecting the verification call </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ValidationRequest </returns> 
         public static async System.Threading.Tasks.Task<ValidationRequestResource> CreateAsync(Types.PhoneNumber phoneNumber, 
@@ -138,28 +132,28 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The unique ID of the Account responsible for this Caller Id.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The incoming phone number.
+        /// The phone number to verify in E.164 format
         /// </summary>
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
         /// <summary>
-        /// A human readable descriptive text for this resource, up to 64 characters long.
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The 6 digit validation code that must be entered via the phone to validate this phone number for Caller ID.
+        /// The 6 digit validation code that someone must enter to validate the Caller ID  when `phone_number` is called
         /// </summary>
         [JsonProperty("validation_code")]
         public int? ValidationCode { get; private set; }
         /// <summary>
-        /// The unique id of the Call created for this validation attempt.
+        /// The SID of the Call the resource is associated with
         /// </summary>
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }

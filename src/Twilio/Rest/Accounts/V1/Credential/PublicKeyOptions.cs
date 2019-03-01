@@ -37,11 +37,11 @@ namespace Twilio.Rest.Accounts.V1.Credential
     public class CreatePublicKeyOptions : IOptions<PublicKeyResource> 
     {
         /// <summary>
-        /// URL encoded representation of the public key
+        /// A URL encoded representation of the public key
         /// </summary>
         public string PublicKey { get; }
         /// <summary>
-        /// A human readable description of this resource
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Construct a new CreatePublicKeyOptions
         /// </summary>
-        /// <param name="publicKey"> URL encoded representation of the public key </param>
+        /// <param name="publicKey"> A URL encoded representation of the public key </param>
         public CreatePublicKeyOptions(string publicKey)
         {
             PublicKey = publicKey;
@@ -89,14 +89,14 @@ namespace Twilio.Rest.Accounts.V1.Credential
     public class FetchPublicKeyOptions : IOptions<PublicKeyResource> 
     {
         /// <summary>
-        /// Fetch by unique Credential Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchPublicKeyOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchPublicKeyOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -118,18 +118,18 @@ namespace Twilio.Rest.Accounts.V1.Credential
     public class UpdatePublicKeyOptions : IOptions<PublicKeyResource> 
     {
         /// <summary>
-        /// Fetch by unique Credential Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human readable description of this resource
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new UpdatePublicKeyOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdatePublicKeyOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -156,14 +156,14 @@ namespace Twilio.Rest.Accounts.V1.Credential
     public class DeletePublicKeyOptions : IOptions<PublicKeyResource> 
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeletePublicKeyOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeletePublicKeyOptions(string pathSid)
         {
             PathSid = pathSid;

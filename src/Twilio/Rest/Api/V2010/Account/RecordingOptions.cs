@@ -17,18 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique recording SID
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchRecordingOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique recording SID </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchRecordingOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -50,18 +50,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Delete by unique recording SID
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteRecordingOptions
         /// </summary>
-        /// <param name="pathSid"> Delete by unique recording SID </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteRecordingOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -83,27 +83,27 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadRecordingOptions : ReadOptions<RecordingResource> 
     {
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Filter by date created
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
-        /// Filter by date created
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// Filter by date created
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// Filter by call_sid
+        /// The Call SID of the resources to read
         /// </summary>
         public string CallSid { get; set; }
         /// <summary>
-        /// The unique ID for the conference associated with the recording.
+        /// Read by unique Conference SID for the recording
         /// </summary>
         public string ConferenceSid { get; set; }
 

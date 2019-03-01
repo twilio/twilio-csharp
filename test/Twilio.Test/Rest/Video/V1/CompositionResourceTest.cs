@@ -78,6 +78,21 @@ namespace Twilio.Tests.Rest.Video.V1
         }
 
         [Test]
+        public void TestReadEnqueuedResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"compositions\": [],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://video.twilio.com/v1/Compositions?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://video.twilio.com/v1/Compositions?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"compositions\"}}"
+                                     ));
+
+            var response = CompositionResource.Read(client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
         public void TestReadEmptyResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
@@ -153,11 +168,12 @@ namespace Twilio.Tests.Rest.Video.V1
                 "/v1/Compositions",
                 ""
             );
+            request.AddPostParam("RoomSid", Serialize("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                CompositionResource.Create(client: twilioRestClient);
+                CompositionResource.Create("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -175,7 +191,7 @@ namespace Twilio.Tests.Rest.Video.V1
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"processing\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_completed\": null,\"date_deleted\": null,\"sid\": \"CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"room_sid\": \"RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"audio_sources\": [\"RTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"user*\"],\"audio_sources_excluded\": [\"RTbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"],\"video_layout\": {\"custom\": {\"video_sources\": [\"user*\"],\"video_sources_excluded\": [\"RTcaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"],\"reuse\": \"show_oldest\",\"x_pos\": 100,\"y_pos\": 600,\"z_pos\": 10,\"width\": 800,\"height\": 0,\"max_columns\": 0,\"max_rows\": 0,\"cells_excluded\": [2,3]}},\"trim\": true,\"format\": \"mp4\",\"resolution\": \"1920x1080\",\"bitrate\": 0,\"size\": 0,\"duration\": 0,\"media_external_location\": null,\"encryption_key\": null,\"url\": \"https://video.twilio.com/v1/Compositions/CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"media\": \"https://video.twilio.com/v1/Compositions/CJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Media\"}}"
                                      ));
 
-            var response = CompositionResource.Create(client: twilioRestClient);
+            var response = CompositionResource.Create("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

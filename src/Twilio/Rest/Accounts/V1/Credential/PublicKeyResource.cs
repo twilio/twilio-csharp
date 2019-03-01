@@ -198,8 +198,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Create a new Public Key Credential
         /// </summary>
-        /// <param name="publicKey"> URL encoded representation of the public key </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <param name="publicKey"> A URL encoded representation of the public key </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="accountSid"> The Subaccount this Credential should be associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PublicKey </returns> 
@@ -216,8 +216,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Create a new Public Key Credential
         /// </summary>
-        /// <param name="publicKey"> URL encoded representation of the public key </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <param name="publicKey"> A URL encoded representation of the public key </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="accountSid"> The Subaccount this Credential should be associated with. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns> 
@@ -274,7 +274,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Fetch the public key specified by the provided Credential Sid
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PublicKey </returns> 
         public static PublicKeyResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -287,7 +287,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Fetch the public key specified by the provided Credential Sid
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns> 
         public static async System.Threading.Tasks.Task<PublicKeyResource> FetchAsync(string pathSid, 
@@ -341,8 +341,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PublicKey </returns> 
         public static PublicKeyResource Update(string pathSid, string friendlyName = null, ITwilioRestClient client = null)
@@ -355,8 +355,8 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Modify the properties of a given Account
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique Credential Sid </param>
-        /// <param name="friendlyName"> A human readable description of this resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns> 
         public static async System.Threading.Tasks.Task<PublicKeyResource> UpdateAsync(string pathSid, 
@@ -411,7 +411,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Delete a Credential from your account
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PublicKey </returns> 
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -424,7 +424,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
         /// <summary>
         /// Delete a Credential from your account
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublicKey </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -453,27 +453,27 @@ namespace Twilio.Rest.Accounts.V1.Credential
         }
 
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// AccountSid the Credential resource belongs to
+        /// The SID of the Account that created the Credential that the PublicKey resource belongs to
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// A human readable description of this resource
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The date this resource was created
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this resource was last updated
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

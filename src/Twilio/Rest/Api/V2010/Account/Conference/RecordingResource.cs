@@ -103,9 +103,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// recording sid.
         /// </summary>
         /// <param name="pathConferenceSid"> Update by unique Conference SID for the recording </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        /// <param name="status"> The new status of the resource </param>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="status"> The new status of the recording </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to update </param>
         /// <param name="pauseBehavior"> Whether to record during a pause </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
@@ -126,9 +126,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// recording sid.
         /// </summary>
         /// <param name="pathConferenceSid"> Update by unique Conference SID for the recording </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        /// <param name="status"> The new status of the resource </param>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="status"> The new status of the recording </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to update </param>
         /// <param name="pauseBehavior"> Whether to record during a pause </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
@@ -188,8 +188,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Fetch an instance of a recording for a call
         /// </summary>
         /// <param name="pathConferenceSid"> Fetch by unique Conference SID for the recording </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
         public static RecordingResource Fetch(string pathConferenceSid, 
@@ -206,8 +206,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Fetch an instance of a recording for a call
         /// </summary>
         /// <param name="pathConferenceSid"> Fetch by unique Conference SID for the recording </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string pathConferenceSid, 
@@ -264,8 +264,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Delete a recording from your account
         /// </summary>
         /// <param name="pathConferenceSid"> Delete by the recording's conference SID </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns> 
         public static bool Delete(string pathConferenceSid, 
@@ -282,8 +282,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Delete a recording from your account
         /// </summary>
         /// <param name="pathConferenceSid"> Delete by the recording's conference SID </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathConferenceSid, 
@@ -344,12 +344,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Retrieve a list of recordings belonging to the call used to make the request
         /// </summary>
         /// <param name="pathConferenceSid"> Read by unique Conference SID for the recording </param>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
-        /// <param name="dateCreatedBefore"> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read
-        ///                         </param>
-        /// <param name="dateCreated"> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read </param>
-        /// <param name="dateCreatedAfter"> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read
-        ///                        </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="dateCreatedBefore"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreated"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreatedAfter"> The `YYYY-MM-DD` value of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -372,12 +370,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Retrieve a list of recordings belonging to the call used to make the request
         /// </summary>
         /// <param name="pathConferenceSid"> Read by unique Conference SID for the recording </param>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
-        /// <param name="dateCreatedBefore"> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read
-        ///                         </param>
-        /// <param name="dateCreated"> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read </param>
-        /// <param name="dateCreatedAfter"> The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read
-        ///                        </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="dateCreatedBefore"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreated"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreatedAfter"> The `YYYY-MM-DD` value of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -474,7 +470,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
 
         /// <summary>
-        /// The SID of the Account that created this resource
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
@@ -484,7 +480,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// The SID of the Call this resource is associated with
+        /// The SID of the Call the resource is associated with
         /// </summary>
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
@@ -494,12 +490,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         [JsonProperty("conference_sid")]
         public string ConferenceSid { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT that this resource was created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT that this resource was last updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
@@ -509,27 +505,27 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
         /// <summary>
-        /// The length of the recording, in seconds
+        /// The length of the recording in seconds
         /// </summary>
         [JsonProperty("duration")]
         public string Duration { get; private set; }
         /// <summary>
-        /// The unique string that identifies this resource
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The one-time cost of creating this recording
+        /// The one-time cost of creating the recording.
         /// </summary>
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
         /// <summary>
-        /// The currency used in the price property
+        /// The currency used in the price property.
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// The status of this recording
+        /// The status of the recording
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
@@ -540,23 +536,23 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         [JsonProperty("channels")]
         public int? Channels { get; private set; }
         /// <summary>
-        /// How this recording was created
+        /// How the recording was created
         /// </summary>
         [JsonProperty("source")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.SourceEnum Source { get; private set; }
         /// <summary>
-        /// More information about why the recording is missing, if Status is `absent`
+        /// More information about why the recording is missing, if status is `absent`.
         /// </summary>
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }
         /// <summary>
-        /// Details about how to decrypt the recording
+        /// How to decrypt the recording.
         /// </summary>
         [JsonProperty("encryption_details")]
         public object EncryptionDetails { get; private set; }
         /// <summary>
-        /// The URI of this resource, relative to `https://api.twilio.com`
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }

@@ -17,18 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchKeyOptions : IOptions<KeyResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchKeyOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchKeyOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -50,22 +50,22 @@ namespace Twilio.Rest.Api.V2010.Account
     public class UpdateKeyOptions : IOptions<KeyResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A descriptive string for this resource, chosen by your application, up to 64 characters long.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new UpdateKeyOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateKeyOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -92,18 +92,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteKeyOptions : IOptions<KeyResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteKeyOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteKeyOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadKeyOptions : ReadOptions<KeyResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
 

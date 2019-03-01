@@ -19,19 +19,19 @@ namespace Twilio.Rest.Fax.V1.Fax
     public class FetchFaxMediaOptions : IOptions<FaxMediaResource> 
     {
         /// <summary>
-        /// Fax SID
+        /// The SID of the fax with the FaxMedia resource to fetch
         /// </summary>
         public string PathFaxSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this fax media
+        /// The unique string that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFaxMediaOptions
         /// </summary>
-        /// <param name="pathFaxSid"> Fax SID </param>
-        /// <param name="pathSid"> A string that uniquely identifies this fax media </param>
+        /// <param name="pathFaxSid"> The SID of the fax with the FaxMedia resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
         public FetchFaxMediaOptions(string pathFaxSid, string pathSid)
         {
             PathFaxSid = pathFaxSid;
@@ -56,14 +56,14 @@ namespace Twilio.Rest.Fax.V1.Fax
     public class ReadFaxMediaOptions : ReadOptions<FaxMediaResource> 
     {
         /// <summary>
-        /// Fax SID
+        /// The SID of the fax with the FaxMedia resources to read
         /// </summary>
         public string PathFaxSid { get; }
 
         /// <summary>
         /// Construct a new ReadFaxMediaOptions
         /// </summary>
-        /// <param name="pathFaxSid"> Fax SID </param>
+        /// <param name="pathFaxSid"> The SID of the fax with the FaxMedia resources to read </param>
         public ReadFaxMediaOptions(string pathFaxSid)
         {
             PathFaxSid = pathFaxSid;
@@ -92,19 +92,19 @@ namespace Twilio.Rest.Fax.V1.Fax
     public class DeleteFaxMediaOptions : IOptions<FaxMediaResource> 
     {
         /// <summary>
-        /// Fax SID
+        /// The SID of the fax with the FaxMedia resource to delete
         /// </summary>
         public string PathFaxSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this fax media
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteFaxMediaOptions
         /// </summary>
-        /// <param name="pathFaxSid"> Fax SID </param>
-        /// <param name="pathSid"> A string that uniquely identifies this fax media </param>
+        /// <param name="pathFaxSid"> The SID of the fax with the FaxMedia resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteFaxMediaOptions(string pathFaxSid, string pathSid)
         {
             PathFaxSid = pathFaxSid;

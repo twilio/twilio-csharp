@@ -18,7 +18,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     public class UpdateRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The SID of the Account that created the resource(s) to update
+        /// The SID of the Account that created the resource to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -26,11 +26,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The unique string that identifies this resource
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The new status of the resource
+        /// The new status of the recording
         /// </summary>
         public RecordingResource.StatusEnum Status { get; }
         /// <summary>
@@ -42,8 +42,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new UpdateRecordingOptions
         /// </summary>
         /// <param name="pathConferenceSid"> Update by unique Conference SID for the recording </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
-        /// <param name="status"> The new status of the resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="status"> The new status of the recording </param>
         public UpdateRecordingOptions(string pathConferenceSid, string pathSid, RecordingResource.StatusEnum status)
         {
             PathConferenceSid = pathConferenceSid;
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     public class FetchRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The SID of the Account that created the resource(s) to fetch
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The unique string that identifies this resource
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new FetchRecordingOptions
         /// </summary>
         /// <param name="pathConferenceSid"> Fetch by unique Conference SID for the recording </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchRecordingOptions(string pathConferenceSid, string pathSid)
         {
             PathConferenceSid = pathConferenceSid;
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     public class DeleteRecordingOptions : IOptions<RecordingResource> 
     {
         /// <summary>
-        /// The SID of the Account that created the resource(s) to delete
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The unique string that identifies this resource
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new DeleteRecordingOptions
         /// </summary>
         /// <param name="pathConferenceSid"> Delete by the recording's conference SID </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteRecordingOptions(string pathConferenceSid, string pathSid)
         {
             PathConferenceSid = pathConferenceSid;
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     public class ReadRecordingOptions : ReadOptions<RecordingResource> 
     {
         /// <summary>
-        /// The SID of the Account that created the resource(s) to read
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
@@ -163,15 +163,15 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
-        /// The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The `date_created` value, specified as `YYYY-MM-DD`, of the resources to read
+        /// The `YYYY-MM-DD` value of the resources to read
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
 

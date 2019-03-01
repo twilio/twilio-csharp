@@ -17,18 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchTranscriptionOptions : IOptions<TranscriptionResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique transcription SID
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchTranscriptionOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique transcription SID </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchTranscriptionOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -50,18 +50,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteTranscriptionOptions : IOptions<TranscriptionResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Delete by unique transcription SID
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteTranscriptionOptions
         /// </summary>
-        /// <param name="pathSid"> Delete by unique transcription SID </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteTranscriptionOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadTranscriptionOptions : ReadOptions<TranscriptionResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
 

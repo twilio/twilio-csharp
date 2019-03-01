@@ -81,9 +81,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Fetch an instance of a participant
         /// </summary>
-        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="pathCallSid"> Fetch by unique participant Call SID </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathConferenceSid"> The SID of the conference with the participant to fetch </param>
+        /// <param name="pathCallSid"> The Call SID of the resource to fetch </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
         public static ParticipantResource Fetch(string pathConferenceSid, 
@@ -99,9 +99,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Fetch an instance of a participant
         /// </summary>
-        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="pathCallSid"> Fetch by unique participant Call SID </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathConferenceSid"> The SID of the conference with the participant to fetch </param>
+        /// <param name="pathCallSid"> The Call SID of the resource to fetch </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string pathConferenceSid, 
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
 
         /// <summary>
-        /// Update the properties of this participant
+        /// Update the properties of the participant
         /// </summary>
         /// <param name="options"> Update Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
 
         #if !NET35
         /// <summary>
-        /// Update the properties of this participant
+        /// Update the properties of the participant
         /// </summary>
         /// <param name="options"> Update Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -155,19 +155,25 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         #endif
 
         /// <summary>
-        /// Update the properties of this participant
+        /// Update the properties of the participant
         /// </summary>
-        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="pathCallSid"> Update a participant by their Call SID </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
-        /// <param name="muted"> Indicates if the participant should be muted </param>
-        /// <param name="hold"> Specifying true will hold the participant, while false will un-hold. </param>
-        /// <param name="holdUrl"> The 'HoldUrl' attribute lets you specify a URL for music that plays when a participant is
-        ///               held. </param>
-        /// <param name="holdMethod"> Specify GET or POST, defaults to GET </param>
-        /// <param name="announceUrl"> The 'AnnounceUrl' attribute lets you specify a URL for announcing something to the
-        ///                   participant. </param>
-        /// <param name="announceMethod"> Specify GET or POST, defaults to POST </param>
+        /// <param name="pathConferenceSid"> The SID of the conference with the participant to update </param>
+        /// <param name="pathCallSid"> The Call SID of the resources to update </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
+        /// <param name="muted"> Whether the participant should be muted </param>
+        /// <param name="hold"> Whether the participant should be on hold </param>
+        /// <param name="holdUrl"> The URL we call using the `hold_method` for  music that plays when the participant is on
+        ///               hold </param>
+        /// <param name="holdMethod"> The HTTP method we should use to call hold_url </param>
+        /// <param name="announceUrl"> The URL we call using the `announce_method` for an announcement to the participant
+        ///                   </param>
+        /// <param name="announceMethod"> The HTTP method we should use to call announce_url </param>
+        /// <param name="waitUrl"> URL that hosts pre-conference hold music </param>
+        /// <param name="waitMethod"> The HTTP method we should use to call `wait_url` </param>
+        /// <param name="beepOnExit"> Whether to play a notification beep to the conference when the participant exit </param>
+        /// <param name="endConferenceOnExit"> Whether to end the conference when the participant leaves </param>
+        /// <param name="coaching"> Indicates if the participant changed to coach </param>
+        /// <param name="callSidToCoach"> The SID of the participant who is being `coached` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
         public static ParticipantResource Update(string pathConferenceSid, 
@@ -179,27 +185,39 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                  Twilio.Http.HttpMethod holdMethod = null, 
                                                  Uri announceUrl = null, 
                                                  Twilio.Http.HttpMethod announceMethod = null, 
+                                                 Uri waitUrl = null, 
+                                                 Twilio.Http.HttpMethod waitMethod = null, 
+                                                 bool? beepOnExit = null, 
+                                                 bool? endConferenceOnExit = null, 
+                                                 bool? coaching = null, 
+                                                 string callSidToCoach = null, 
                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceMethod = announceMethod};
+            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceMethod = announceMethod, WaitUrl = waitUrl, WaitMethod = waitMethod, BeepOnExit = beepOnExit, EndConferenceOnExit = endConferenceOnExit, Coaching = coaching, CallSidToCoach = callSidToCoach};
             return Update(options, client);
         }
 
         #if !NET35
         /// <summary>
-        /// Update the properties of this participant
+        /// Update the properties of the participant
         /// </summary>
-        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="pathCallSid"> Update a participant by their Call SID </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
-        /// <param name="muted"> Indicates if the participant should be muted </param>
-        /// <param name="hold"> Specifying true will hold the participant, while false will un-hold. </param>
-        /// <param name="holdUrl"> The 'HoldUrl' attribute lets you specify a URL for music that plays when a participant is
-        ///               held. </param>
-        /// <param name="holdMethod"> Specify GET or POST, defaults to GET </param>
-        /// <param name="announceUrl"> The 'AnnounceUrl' attribute lets you specify a URL for announcing something to the
-        ///                   participant. </param>
-        /// <param name="announceMethod"> Specify GET or POST, defaults to POST </param>
+        /// <param name="pathConferenceSid"> The SID of the conference with the participant to update </param>
+        /// <param name="pathCallSid"> The Call SID of the resources to update </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
+        /// <param name="muted"> Whether the participant should be muted </param>
+        /// <param name="hold"> Whether the participant should be on hold </param>
+        /// <param name="holdUrl"> The URL we call using the `hold_method` for  music that plays when the participant is on
+        ///               hold </param>
+        /// <param name="holdMethod"> The HTTP method we should use to call hold_url </param>
+        /// <param name="announceUrl"> The URL we call using the `announce_method` for an announcement to the participant
+        ///                   </param>
+        /// <param name="announceMethod"> The HTTP method we should use to call announce_url </param>
+        /// <param name="waitUrl"> URL that hosts pre-conference hold music </param>
+        /// <param name="waitMethod"> The HTTP method we should use to call `wait_url` </param>
+        /// <param name="beepOnExit"> Whether to play a notification beep to the conference when the participant exit </param>
+        /// <param name="endConferenceOnExit"> Whether to end the conference when the participant leaves </param>
+        /// <param name="coaching"> Indicates if the participant changed to coach </param>
+        /// <param name="callSidToCoach"> The SID of the participant who is being `coached` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConferenceSid, 
@@ -211,9 +229,15 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                                                          Twilio.Http.HttpMethod holdMethod = null, 
                                                                                          Uri announceUrl = null, 
                                                                                          Twilio.Http.HttpMethod announceMethod = null, 
+                                                                                         Uri waitUrl = null, 
+                                                                                         Twilio.Http.HttpMethod waitMethod = null, 
+                                                                                         bool? beepOnExit = null, 
+                                                                                         bool? endConferenceOnExit = null, 
+                                                                                         bool? coaching = null, 
+                                                                                         string callSidToCoach = null, 
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceMethod = announceMethod};
+            var options = new UpdateParticipantOptions(pathConferenceSid, pathCallSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, HoldUrl = holdUrl, HoldMethod = holdMethod, AnnounceUrl = announceUrl, AnnounceMethod = announceMethod, WaitUrl = waitUrl, WaitMethod = waitMethod, BeepOnExit = beepOnExit, EndConferenceOnExit = endConferenceOnExit, Coaching = coaching, CallSidToCoach = callSidToCoach};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -261,43 +285,50 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="from"> The `from` phone number used to invite a participant. </param>
-        /// <param name="to"> The number, client id, or sip address of the new participant. </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
-        /// <param name="statusCallback"> URL for conference event callback. </param>
-        /// <param name="statusCallbackMethod"> Method Twilio should use to reach the status callback URL. </param>
-        /// <param name="statusCallbackEvent"> Set state change events that will trigger a callback. </param>
-        /// <param name="timeout"> Number of seconds Twilio will wait for an answer. </param>
-        /// <param name="record"> Record the agent and their conferences. </param>
-        /// <param name="muted"> Mute the agent. </param>
-        /// <param name="beep"> Play a beep when the participant joins the conference. </param>
-        /// <param name="startConferenceOnEnter"> Begin the conference when the participant joins. </param>
-        /// <param name="endConferenceOnExit"> End the conference when the participant leaves. </param>
+        /// <param name="pathConferenceSid"> The SID of the participant's conference </param>
+        /// <param name="from"> The `from` phone number used to invite a participant </param>
+        /// <param name="to"> The number, client id, or sip address of the new participant </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call `status_callback` </param>
+        /// <param name="statusCallbackEvent"> Set state change events that will trigger a callback </param>
+        /// <param name="timeout"> he number of seconds that we should wait for an answer </param>
+        /// <param name="record"> Whether to record the participant and their conferences </param>
+        /// <param name="muted"> Whether to mute the agent </param>
+        /// <param name="beep"> Whether to play a notification beep to the conference when the participant joins </param>
+        /// <param name="startConferenceOnEnter"> Whether the conference starts when the participant joins the conference
+        ///                              </param>
+        /// <param name="endConferenceOnExit"> Whether to end the conference when the participant leaves </param>
         /// <param name="waitUrl"> URL that hosts pre-conference hold music </param>
-        /// <param name="waitMethod"> The method Twilio should use to request `WaitUrl`. </param>
-        /// <param name="earlyMedia"> Agents can hear the state of the outbound call. </param>
-        /// <param name="maxParticipants"> Maximum number of agent conference participants. </param>
-        /// <param name="conferenceRecord"> Record the conference. </param>
-        /// <param name="conferenceTrim"> Trim silence from audio files. </param>
-        /// <param name="conferenceStatusCallback"> Callback URL for conference events. </param>
-        /// <param name="conferenceStatusCallbackMethod"> HTTP method for requesting `ConferenceStatusCallback` URL. </param>
-        /// <param name="conferenceStatusCallbackEvent"> Set which conference state changes should webhook to the
-        ///                                     `ConferenceStatusCallback` </param>
-        /// <param name="recordingChannels"> Specify `mono` or `dual` recording channels. </param>
-        /// <param name="recordingStatusCallback"> The absolute URL for Twilio's webhook with recording status information.
-        ///                               </param>
-        /// <param name="recordingStatusCallbackMethod"> HTTP method for `RecordingStatusCallback` </param>
-        /// <param name="sipAuthUsername"> SIP username used for authenticating. </param>
-        /// <param name="sipAuthPassword"> SIP password for authentication. </param>
-        /// <param name="region"> The region where Twilio should mix the conference audio. </param>
-        /// <param name="conferenceRecordingStatusCallback"> Conference recording callback URL. </param>
-        /// <param name="conferenceRecordingStatusCallbackMethod"> Method Twilio should use to request the
-        ///                                               `ConferenceRecordingStatusCallback` URL. </param>
-        /// <param name="recordingStatusCallbackEvent"> Set which recording state changes should webhook to the
-        ///                                    `RecordingStatusCallback` </param>
-        /// <param name="conferenceRecordingStatusCallbackEvent"> Set which conference recording state changes should webhook
-        ///                                              to the `ConferenceRecordingStatusCallback` </param>
+        /// <param name="waitMethod"> The HTTP method we should use to call `wait_url` </param>
+        /// <param name="earlyMedia"> Whether agents can hear the state of the outbound call </param>
+        /// <param name="maxParticipants"> The maximum number of agent conference participants </param>
+        /// <param name="conferenceRecord"> Whether to record the conference the participant is joining </param>
+        /// <param name="conferenceTrim"> Whether to trim leading and trailing silence from your recorded conference audio
+        ///                      files </param>
+        /// <param name="conferenceStatusCallback"> The callback URL for conference events </param>
+        /// <param name="conferenceStatusCallbackMethod"> HTTP method for requesting `conference_status_callback` URL </param>
+        /// <param name="conferenceStatusCallbackEvent"> The conference state changes that should generate a call to
+        ///                                     `conference_status_callback` </param>
+        /// <param name="recordingChannels"> Specify `mono` or `dual` recording channels </param>
+        /// <param name="recordingStatusCallback"> The URL that we should call using the `recording_status_callback_method`
+        ///                               when the recording status changes </param>
+        /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when we call `recording_status_callback`
+        ///                                     </param>
+        /// <param name="sipAuthUsername"> The SIP username used for authentication </param>
+        /// <param name="sipAuthPassword"> The SIP password for authentication </param>
+        /// <param name="region"> The region where we should mix the conference audio </param>
+        /// <param name="conferenceRecordingStatusCallback"> The URL we should call using the
+        ///                                         `conference_recording_status_callback_method` when the conference recording
+        ///                                         is available </param>
+        /// <param name="conferenceRecordingStatusCallbackMethod"> The HTTP method we should use to call
+        ///                                               `conference_recording_status_callback` </param>
+        /// <param name="recordingStatusCallbackEvent"> The recording state changes that should generate a call to
+        ///                                    `recording_status_callback` </param>
+        /// <param name="conferenceRecordingStatusCallbackEvent"> The conference recording state changes that should generate a
+        ///                                              call to `conference_recording_status_callback` </param>
+        /// <param name="coaching"> Indicates if the participant changed to coach </param>
+        /// <param name="callSidToCoach"> The SID of the participant who is being `coached` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
         public static ParticipantResource Create(string pathConferenceSid, 
@@ -332,9 +363,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                  Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null, 
                                                  List<string> recordingStatusCallbackEvent = null, 
                                                  List<string> conferenceRecordingStatusCallbackEvent = null, 
+                                                 bool? coaching = null, 
+                                                 string callSidToCoach = null, 
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, ConferenceRecordingStatusCallbackEvent = conferenceRecordingStatusCallbackEvent};
+            var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, ConferenceRecordingStatusCallbackEvent = conferenceRecordingStatusCallbackEvent, Coaching = coaching, CallSidToCoach = callSidToCoach};
             return Create(options, client);
         }
 
@@ -342,43 +375,50 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="from"> The `from` phone number used to invite a participant. </param>
-        /// <param name="to"> The number, client id, or sip address of the new participant. </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
-        /// <param name="statusCallback"> URL for conference event callback. </param>
-        /// <param name="statusCallbackMethod"> Method Twilio should use to reach the status callback URL. </param>
-        /// <param name="statusCallbackEvent"> Set state change events that will trigger a callback. </param>
-        /// <param name="timeout"> Number of seconds Twilio will wait for an answer. </param>
-        /// <param name="record"> Record the agent and their conferences. </param>
-        /// <param name="muted"> Mute the agent. </param>
-        /// <param name="beep"> Play a beep when the participant joins the conference. </param>
-        /// <param name="startConferenceOnEnter"> Begin the conference when the participant joins. </param>
-        /// <param name="endConferenceOnExit"> End the conference when the participant leaves. </param>
+        /// <param name="pathConferenceSid"> The SID of the participant's conference </param>
+        /// <param name="from"> The `from` phone number used to invite a participant </param>
+        /// <param name="to"> The number, client id, or sip address of the new participant </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call `status_callback` </param>
+        /// <param name="statusCallbackEvent"> Set state change events that will trigger a callback </param>
+        /// <param name="timeout"> he number of seconds that we should wait for an answer </param>
+        /// <param name="record"> Whether to record the participant and their conferences </param>
+        /// <param name="muted"> Whether to mute the agent </param>
+        /// <param name="beep"> Whether to play a notification beep to the conference when the participant joins </param>
+        /// <param name="startConferenceOnEnter"> Whether the conference starts when the participant joins the conference
+        ///                              </param>
+        /// <param name="endConferenceOnExit"> Whether to end the conference when the participant leaves </param>
         /// <param name="waitUrl"> URL that hosts pre-conference hold music </param>
-        /// <param name="waitMethod"> The method Twilio should use to request `WaitUrl`. </param>
-        /// <param name="earlyMedia"> Agents can hear the state of the outbound call. </param>
-        /// <param name="maxParticipants"> Maximum number of agent conference participants. </param>
-        /// <param name="conferenceRecord"> Record the conference. </param>
-        /// <param name="conferenceTrim"> Trim silence from audio files. </param>
-        /// <param name="conferenceStatusCallback"> Callback URL for conference events. </param>
-        /// <param name="conferenceStatusCallbackMethod"> HTTP method for requesting `ConferenceStatusCallback` URL. </param>
-        /// <param name="conferenceStatusCallbackEvent"> Set which conference state changes should webhook to the
-        ///                                     `ConferenceStatusCallback` </param>
-        /// <param name="recordingChannels"> Specify `mono` or `dual` recording channels. </param>
-        /// <param name="recordingStatusCallback"> The absolute URL for Twilio's webhook with recording status information.
-        ///                               </param>
-        /// <param name="recordingStatusCallbackMethod"> HTTP method for `RecordingStatusCallback` </param>
-        /// <param name="sipAuthUsername"> SIP username used for authenticating. </param>
-        /// <param name="sipAuthPassword"> SIP password for authentication. </param>
-        /// <param name="region"> The region where Twilio should mix the conference audio. </param>
-        /// <param name="conferenceRecordingStatusCallback"> Conference recording callback URL. </param>
-        /// <param name="conferenceRecordingStatusCallbackMethod"> Method Twilio should use to request the
-        ///                                               `ConferenceRecordingStatusCallback` URL. </param>
-        /// <param name="recordingStatusCallbackEvent"> Set which recording state changes should webhook to the
-        ///                                    `RecordingStatusCallback` </param>
-        /// <param name="conferenceRecordingStatusCallbackEvent"> Set which conference recording state changes should webhook
-        ///                                              to the `ConferenceRecordingStatusCallback` </param>
+        /// <param name="waitMethod"> The HTTP method we should use to call `wait_url` </param>
+        /// <param name="earlyMedia"> Whether agents can hear the state of the outbound call </param>
+        /// <param name="maxParticipants"> The maximum number of agent conference participants </param>
+        /// <param name="conferenceRecord"> Whether to record the conference the participant is joining </param>
+        /// <param name="conferenceTrim"> Whether to trim leading and trailing silence from your recorded conference audio
+        ///                      files </param>
+        /// <param name="conferenceStatusCallback"> The callback URL for conference events </param>
+        /// <param name="conferenceStatusCallbackMethod"> HTTP method for requesting `conference_status_callback` URL </param>
+        /// <param name="conferenceStatusCallbackEvent"> The conference state changes that should generate a call to
+        ///                                     `conference_status_callback` </param>
+        /// <param name="recordingChannels"> Specify `mono` or `dual` recording channels </param>
+        /// <param name="recordingStatusCallback"> The URL that we should call using the `recording_status_callback_method`
+        ///                               when the recording status changes </param>
+        /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when we call `recording_status_callback`
+        ///                                     </param>
+        /// <param name="sipAuthUsername"> The SIP username used for authentication </param>
+        /// <param name="sipAuthPassword"> The SIP password for authentication </param>
+        /// <param name="region"> The region where we should mix the conference audio </param>
+        /// <param name="conferenceRecordingStatusCallback"> The URL we should call using the
+        ///                                         `conference_recording_status_callback_method` when the conference recording
+        ///                                         is available </param>
+        /// <param name="conferenceRecordingStatusCallbackMethod"> The HTTP method we should use to call
+        ///                                               `conference_recording_status_callback` </param>
+        /// <param name="recordingStatusCallbackEvent"> The recording state changes that should generate a call to
+        ///                                    `recording_status_callback` </param>
+        /// <param name="conferenceRecordingStatusCallbackEvent"> The conference recording state changes that should generate a
+        ///                                              call to `conference_recording_status_callback` </param>
+        /// <param name="coaching"> Indicates if the participant changed to coach </param>
+        /// <param name="callSidToCoach"> The SID of the participant who is being `coached` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathConferenceSid, 
@@ -413,9 +453,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                                                          Twilio.Http.HttpMethod conferenceRecordingStatusCallbackMethod = null, 
                                                                                          List<string> recordingStatusCallbackEvent = null, 
                                                                                          List<string> conferenceRecordingStatusCallbackEvent = null, 
+                                                                                         bool? coaching = null, 
+                                                                                         string callSidToCoach = null, 
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, ConferenceRecordingStatusCallbackEvent = conferenceRecordingStatusCallbackEvent};
+            var options = new CreateParticipantOptions(pathConferenceSid, from, to){PathAccountSid = pathAccountSid, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, StatusCallbackEvent = statusCallbackEvent, Timeout = timeout, Record = record, Muted = muted, Beep = beep, StartConferenceOnEnter = startConferenceOnEnter, EndConferenceOnExit = endConferenceOnExit, WaitUrl = waitUrl, WaitMethod = waitMethod, EarlyMedia = earlyMedia, MaxParticipants = maxParticipants, ConferenceRecord = conferenceRecord, ConferenceTrim = conferenceTrim, ConferenceStatusCallback = conferenceStatusCallback, ConferenceStatusCallbackMethod = conferenceStatusCallbackMethod, ConferenceStatusCallbackEvent = conferenceStatusCallbackEvent, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, Region = region, ConferenceRecordingStatusCallback = conferenceRecordingStatusCallback, ConferenceRecordingStatusCallbackMethod = conferenceRecordingStatusCallbackMethod, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, ConferenceRecordingStatusCallbackEvent = conferenceRecordingStatusCallbackEvent, Coaching = coaching, CallSidToCoach = callSidToCoach};
             return await CreateAsync(options, client);
         }
         #endif
@@ -463,9 +505,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Kick a participant from a given conference
         /// </summary>
-        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="pathCallSid"> Delete by unique participant Call Sid </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathConferenceSid"> The SID of the conference with the participants to delete </param>
+        /// <param name="pathCallSid"> The Call SID of the resources to delete </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
         public static bool Delete(string pathConferenceSid, 
@@ -481,9 +523,9 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Kick a participant from a given conference
         /// </summary>
-        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="pathCallSid"> Delete by unique participant Call Sid </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
+        /// <param name="pathConferenceSid"> The SID of the conference with the participants to delete </param>
+        /// <param name="pathCallSid"> The Call SID of the resources to delete </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathConferenceSid, 
@@ -543,10 +585,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Retrieve a list of participants belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
-        /// <param name="muted"> Filter by muted participants </param>
-        /// <param name="hold"> Only show participants that are held or unheld. </param>
+        /// <param name="pathConferenceSid"> The SID of the conference with the participants to read </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="muted"> Whether to return only participants that are muted </param>
+        /// <param name="hold"> Whether to return only participants that are on hold </param>
+        /// <param name="coaching"> Whether to return only participants who are coaching another call </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -555,11 +598,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                             string pathAccountSid = null, 
                                                             bool? muted = null, 
                                                             bool? hold = null, 
+                                                            bool? coaching = null, 
                                                             int? pageSize = null, 
                                                             long? limit = null, 
                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadParticipantOptions(pathConferenceSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, PageSize = pageSize, Limit = limit};
+            var options = new ReadParticipantOptions(pathConferenceSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, Coaching = coaching, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -567,10 +611,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// Retrieve a list of participants belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathConferenceSid"> The string that uniquely identifies this conference </param>
-        /// <param name="pathAccountSid"> The unique sid that identifies this account </param>
-        /// <param name="muted"> Filter by muted participants </param>
-        /// <param name="hold"> Only show participants that are held or unheld. </param>
+        /// <param name="pathConferenceSid"> The SID of the conference with the participants to read </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="muted"> Whether to return only participants that are muted </param>
+        /// <param name="hold"> Whether to return only participants that are on hold </param>
+        /// <param name="coaching"> Whether to return only participants who are coaching another call </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -579,11 +624,12 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                                                                                                     string pathAccountSid = null, 
                                                                                                     bool? muted = null, 
                                                                                                     bool? hold = null, 
+                                                                                                    bool? coaching = null, 
                                                                                                     int? pageSize = null, 
                                                                                                     long? limit = null, 
                                                                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadParticipantOptions(pathConferenceSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, PageSize = pageSize, Limit = limit};
+            var options = new ReadParticipantOptions(pathConferenceSid){PathAccountSid = pathAccountSid, Muted = muted, Hold = hold, Coaching = coaching, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -666,58 +712,68 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         }
 
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies this call
+        /// The SID of the Call the resource is associated with
         /// </summary>
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies this conference
+        /// The SID of the participant who is being `coached`
+        /// </summary>
+        [JsonProperty("call_sid_to_coach")]
+        public string CallSidToCoach { get; private set; }
+        /// <summary>
+        /// Indicates if the participant changed to coach
+        /// </summary>
+        [JsonProperty("coaching")]
+        public bool? Coaching { get; private set; }
+        /// <summary>
+        /// The SID of the conference the participant is in
         /// </summary>
         [JsonProperty("conference_sid")]
         public string ConferenceSid { get; private set; }
         /// <summary>
-        /// The date this resource was created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this resource was last updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Indicates if the endConferenceOnExit was set
+        /// Whether the conference ends when the participant leaves
         /// </summary>
         [JsonProperty("end_conference_on_exit")]
         public bool? EndConferenceOnExit { get; private set; }
         /// <summary>
-        /// Indicates if the participant is muted
+        /// Whether the participant is muted
         /// </summary>
         [JsonProperty("muted")]
         public bool? Muted { get; private set; }
         /// <summary>
-        /// true if this participant is currently held.
+        /// Whether the participant is on hold
         /// </summary>
         [JsonProperty("hold")]
         public bool? Hold { get; private set; }
         /// <summary>
-        /// Indicates if the startConferenceOnEnter attribute was set
+        /// Whether the conference starts when the participant joins the conference
         /// </summary>
         [JsonProperty("start_conference_on_enter")]
         public bool? StartConferenceOnEnter { get; private set; }
         /// <summary>
-        /// The status
+        /// The status of the participant's call in a session
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ParticipantResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The URI for this resource
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }

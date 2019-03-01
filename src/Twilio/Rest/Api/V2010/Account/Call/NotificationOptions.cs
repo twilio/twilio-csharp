@@ -17,23 +17,23 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class FetchNotificationOptions : IOptions<NotificationResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The call_sid
+        /// The Call SID of the resource to fetch
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchNotificationOptions
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathCallSid"> The Call SID of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchNotificationOptions(string pathCallSid, string pathSid)
         {
             PathCallSid = pathCallSid;
@@ -56,23 +56,23 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class DeleteNotificationOptions : IOptions<NotificationResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The call_sid
+        /// The Call SID of the resources to delete
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteNotificationOptions
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathCallSid"> The Call SID of the resources to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteNotificationOptions(string pathCallSid, string pathSid)
         {
             PathCallSid = pathCallSid;
@@ -95,34 +95,34 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     public class ReadNotificationOptions : ReadOptions<NotificationResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The call_sid
+        /// The Call SID of the resources to read
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// The log
+        /// Filter by log level
         /// </summary>
         public int? Log { get; set; }
         /// <summary>
-        /// The message_date
+        /// Filter by date
         /// </summary>
         public DateTime? MessageDateBefore { get; set; }
         /// <summary>
-        /// The message_date
+        /// Filter by date
         /// </summary>
         public DateTime? MessageDate { get; set; }
         /// <summary>
-        /// The message_date
+        /// Filter by date
         /// </summary>
         public DateTime? MessageDateAfter { get; set; }
 
         /// <summary>
         /// Construct a new ReadNotificationOptions
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="pathCallSid"> The Call SID of the resources to read </param>
         public ReadNotificationOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;

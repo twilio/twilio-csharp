@@ -63,9 +63,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathCallSid"> The Call SID of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Notification </returns> 
         public static NotificationResource Fetch(string pathCallSid, 
@@ -81,9 +81,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathCallSid"> The Call SID of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns> 
         public static async System.Threading.Tasks.Task<NotificationResource> FetchAsync(string pathCallSid, 
@@ -139,9 +139,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathCallSid"> The Call SID of the resources to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Notification </returns> 
         public static bool Delete(string pathCallSid, 
@@ -157,9 +157,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathCallSid"> The Call SID of the resources to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCallSid, 
@@ -220,12 +220,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="log"> The log </param>
-        /// <param name="messageDateBefore"> The message_date </param>
-        /// <param name="messageDate"> The message_date </param>
-        /// <param name="messageDateAfter"> The message_date </param>
+        /// <param name="pathCallSid"> The Call SID of the resources to read </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="log"> Filter by log level </param>
+        /// <param name="messageDateBefore"> Filter by date </param>
+        /// <param name="messageDate"> Filter by date </param>
+        /// <param name="messageDateAfter"> Filter by date </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -248,12 +248,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="log"> The log </param>
-        /// <param name="messageDateBefore"> The message_date </param>
-        /// <param name="messageDate"> The message_date </param>
-        /// <param name="messageDateAfter"> The message_date </param>
+        /// <param name="pathCallSid"> The Call SID of the resources to read </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="log"> Filter by log level </param>
+        /// <param name="messageDateBefore"> Filter by date </param>
+        /// <param name="messageDate"> Filter by date </param>
+        /// <param name="messageDateAfter"> Filter by date </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -351,88 +351,88 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The api_version
+        /// The API version used to create the Call Notification resource
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// The call_sid
+        /// The SID of the Call the resource is associated with
         /// </summary>
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The error_code
+        /// A unique error code corresponding to the notification
         /// </summary>
         [JsonProperty("error_code")]
         public string ErrorCode { get; private set; }
         /// <summary>
-        /// The log
+        /// An integer log level
         /// </summary>
         [JsonProperty("log")]
         public string Log { get; private set; }
         /// <summary>
-        /// The message_date
+        /// The date the notification was generated
         /// </summary>
         [JsonProperty("message_date")]
         public DateTime? MessageDate { get; private set; }
         /// <summary>
-        /// The message_text
+        /// The text of the notification
         /// </summary>
         [JsonProperty("message_text")]
         public string MessageText { get; private set; }
         /// <summary>
-        /// The more_info
+        /// A URL for more information about the error code
         /// </summary>
         [JsonProperty("more_info")]
         public Uri MoreInfo { get; private set; }
         /// <summary>
-        /// The request_method
+        /// HTTP method used with the request url
         /// </summary>
         [JsonProperty("request_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod RequestMethod { get; private set; }
         /// <summary>
-        /// The request_url
+        /// URL of the resource that generated the notification
         /// </summary>
         [JsonProperty("request_url")]
         public Uri RequestUrl { get; private set; }
         /// <summary>
-        /// The request_variables
+        /// Twilio-generated HTTP variables sent to the server
         /// </summary>
         [JsonProperty("request_variables")]
         public string RequestVariables { get; private set; }
         /// <summary>
-        /// The response_body
+        /// The HTTP body returned by your server
         /// </summary>
         [JsonProperty("response_body")]
         public string ResponseBody { get; private set; }
         /// <summary>
-        /// The response_headers
+        /// The HTTP headers returned by your server
         /// </summary>
         [JsonProperty("response_headers")]
         public string ResponseHeaders { get; private set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The uri
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }

@@ -36,6 +36,18 @@ namespace Twilio.Rest.Verify.V1.Service
             public static readonly ChannelEnum Call = new ChannelEnum("call");
         }
 
+        public sealed class StatusEnum : StringEnum 
+        {
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
+            public static implicit operator StatusEnum(string value)
+            {
+                return new StatusEnum(value);
+            }
+
+            public static readonly StatusEnum Canceled = new StatusEnum("canceled");
+        }
+
         private static Request BuildCreateRequest(CreateVerificationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -136,6 +148,152 @@ namespace Twilio.Rest.Verify.V1.Service
         }
         #endif
 
+        private static Request BuildUpdateRequest(UpdateVerificationOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Verify,
+                "/v1/Services/" + options.PathServiceSid + "/Verifications/" + options.PathSid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Update a Verification status
+        /// </summary>
+        /// <param name="options"> Update Verification parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Verification </returns> 
+        public static VerificationResource Update(UpdateVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Update a Verification status
+        /// </summary>
+        /// <param name="options"> Update Verification parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Verification </returns> 
+        public static async System.Threading.Tasks.Task<VerificationResource> UpdateAsync(UpdateVerificationOptions options, 
+                                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// Update a Verification status
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Verification. </param>
+        /// <param name="status"> New status to set for the Verification. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Verification </returns> 
+        public static VerificationResource Update(string pathServiceSid, 
+                                                  string pathSid, 
+                                                  VerificationResource.StatusEnum status, 
+                                                  ITwilioRestClient client = null)
+        {
+            var options = new UpdateVerificationOptions(pathServiceSid, pathSid, status);
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Update a Verification status
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Verification. </param>
+        /// <param name="status"> New status to set for the Verification. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Verification </returns> 
+        public static async System.Threading.Tasks.Task<VerificationResource> UpdateAsync(string pathServiceSid, 
+                                                                                          string pathSid, 
+                                                                                          VerificationResource.StatusEnum status, 
+                                                                                          ITwilioRestClient client = null)
+        {
+            var options = new UpdateVerificationOptions(pathServiceSid, pathSid, status);
+            return await UpdateAsync(options, client);
+        }
+        #endif
+
+        private static Request BuildFetchRequest(FetchVerificationOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Verify,
+                "/v1/Services/" + options.PathServiceSid + "/Verifications/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Fetch a specific Verification
+        /// </summary>
+        /// <param name="options"> Fetch Verification parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Verification </returns> 
+        public static VerificationResource Fetch(FetchVerificationOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Fetch a specific Verification
+        /// </summary>
+        /// <param name="options"> Fetch Verification parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Verification </returns> 
+        public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(FetchVerificationOptions options, 
+                                                                                         ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// Fetch a specific Verification
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Verification. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Verification </returns> 
+        public static VerificationResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new FetchVerificationOptions(pathServiceSid, pathSid);
+            return Fetch(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Fetch a specific Verification
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Verification. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Verification </returns> 
+        public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(string pathServiceSid, 
+                                                                                         string pathSid, 
+                                                                                         ITwilioRestClient client = null)
+        {
+            var options = new FetchVerificationOptions(pathServiceSid, pathSid);
+            return await FetchAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a VerificationResource object
         /// </summary>
@@ -216,6 +374,11 @@ namespace Twilio.Rest.Verify.V1.Service
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The URL of this resource.
+        /// </summary>
+        [JsonProperty("url")]
+        public Uri Url { get; private set; }
 
         private VerificationResource()
         {

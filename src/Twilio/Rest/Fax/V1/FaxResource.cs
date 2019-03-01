@@ -126,7 +126,7 @@ namespace Twilio.Rest.Fax.V1
         /// <summary>
         /// Fetch a specific fax.
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this fax. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fax </returns> 
         public static FaxResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Fax.V1
         /// <summary>
         /// Fetch a specific fax.
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this fax. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fax </returns> 
         public static async System.Threading.Tasks.Task<FaxResource> FetchAsync(string pathSid, 
@@ -197,10 +197,10 @@ namespace Twilio.Rest.Fax.V1
         /// <summary>
         /// Retrieve a list of all faxes.
         /// </summary>
-        /// <param name="from"> Include only faxes sent from </param>
-        /// <param name="to"> Include only faxes sent to </param>
-        /// <param name="dateCreatedOnOrBefore"> Include only faxes created on or before </param>
-        /// <param name="dateCreatedAfter"> Include only faxes created after </param>
+        /// <param name="from"> Retrieve only those faxes sent from this phone number </param>
+        /// <param name="to"> Retrieve only those faxes sent to this phone number </param>
+        /// <param name="dateCreatedOnOrBefore"> Retrieve only faxes created on or before this date </param>
+        /// <param name="dateCreatedAfter"> Retrieve only faxes created after this date </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -221,10 +221,10 @@ namespace Twilio.Rest.Fax.V1
         /// <summary>
         /// Retrieve a list of all faxes.
         /// </summary>
-        /// <param name="from"> Include only faxes sent from </param>
-        /// <param name="to"> Include only faxes sent to </param>
-        /// <param name="dateCreatedOnOrBefore"> Include only faxes created on or before </param>
-        /// <param name="dateCreatedAfter"> Include only faxes created after </param>
+        /// <param name="from"> Retrieve only those faxes sent from this phone number </param>
+        /// <param name="to"> Retrieve only those faxes sent to this phone number </param>
+        /// <param name="dateCreatedOnOrBefore"> Retrieve only faxes created on or before this date </param>
+        /// <param name="dateCreatedAfter"> Retrieve only faxes created after this date </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Fax.V1
         }
 
         /// <summary>
-        /// Create a new fax to send to a phone number or SIP endpoint
+        /// Create a new fax to send to a phone number or SIP endpoint.
         /// </summary>
         /// <param name="options"> Create Fax parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -327,7 +327,7 @@ namespace Twilio.Rest.Fax.V1
 
         #if !NET35
         /// <summary>
-        /// Create a new fax to send to a phone number or SIP endpoint
+        /// Create a new fax to send to a phone number or SIP endpoint.
         /// </summary>
         /// <param name="options"> Create Fax parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -342,17 +342,17 @@ namespace Twilio.Rest.Fax.V1
         #endif
 
         /// <summary>
-        /// Create a new fax to send to a phone number or SIP endpoint
+        /// Create a new fax to send to a phone number or SIP endpoint.
         /// </summary>
-        /// <param name="to"> The phone number or SIP address to send the fax to </param>
-        /// <param name="mediaUrl"> URL that points to the fax media </param>
+        /// <param name="to"> The phone number to receive the fax </param>
+        /// <param name="mediaUrl"> The Twilio-hosted URL of the PDF that contains the fax </param>
         /// <param name="quality"> The quality of this fax </param>
-        /// <param name="statusCallback"> URL for fax status callbacks </param>
-        /// <param name="from"> Twilio number from which to originate the fax </param>
-        /// <param name="sipAuthUsername"> Username for SIP authentication </param>
-        /// <param name="sipAuthPassword"> Password for SIP authentication </param>
-        /// <param name="storeMedia"> Whether or not to store media </param>
-        /// <param name="ttl"> How many minutes to attempt a fax </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="from"> The number the fax was sent from </param>
+        /// <param name="sipAuthUsername"> The username for SIP authentication </param>
+        /// <param name="sipAuthPassword"> The password for SIP authentication </param>
+        /// <param name="storeMedia"> Whether to store a copy of the sent media </param>
+        /// <param name="ttl"> How long in minutes to try to send the fax </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fax </returns> 
         public static FaxResource Create(string to, 
@@ -372,17 +372,17 @@ namespace Twilio.Rest.Fax.V1
 
         #if !NET35
         /// <summary>
-        /// Create a new fax to send to a phone number or SIP endpoint
+        /// Create a new fax to send to a phone number or SIP endpoint.
         /// </summary>
-        /// <param name="to"> The phone number or SIP address to send the fax to </param>
-        /// <param name="mediaUrl"> URL that points to the fax media </param>
+        /// <param name="to"> The phone number to receive the fax </param>
+        /// <param name="mediaUrl"> The Twilio-hosted URL of the PDF that contains the fax </param>
         /// <param name="quality"> The quality of this fax </param>
-        /// <param name="statusCallback"> URL for fax status callbacks </param>
-        /// <param name="from"> Twilio number from which to originate the fax </param>
-        /// <param name="sipAuthUsername"> Username for SIP authentication </param>
-        /// <param name="sipAuthPassword"> Password for SIP authentication </param>
-        /// <param name="storeMedia"> Whether or not to store media </param>
-        /// <param name="ttl"> How many minutes to attempt a fax </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="from"> The number the fax was sent from </param>
+        /// <param name="sipAuthUsername"> The username for SIP authentication </param>
+        /// <param name="sipAuthPassword"> The password for SIP authentication </param>
+        /// <param name="storeMedia"> Whether to store a copy of the sent media </param>
+        /// <param name="ttl"> How long in minutes to try to send the fax </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fax </returns> 
         public static async System.Threading.Tasks.Task<FaxResource> CreateAsync(string to, 
@@ -444,8 +444,8 @@ namespace Twilio.Rest.Fax.V1
         /// <summary>
         /// Update a specific fax.
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this fax. </param>
-        /// <param name="status"> The updated status of this fax </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="status"> The new status of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fax </returns> 
         public static FaxResource Update(string pathSid, 
@@ -460,8 +460,8 @@ namespace Twilio.Rest.Fax.V1
         /// <summary>
         /// Update a specific fax.
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this fax. </param>
-        /// <param name="status"> The updated status of this fax </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="status"> The new status of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fax </returns> 
         public static async System.Threading.Tasks.Task<FaxResource> UpdateAsync(string pathSid, 
@@ -516,7 +516,7 @@ namespace Twilio.Rest.Fax.V1
         /// <summary>
         /// Delete a specific fax and its associated media.
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this fax. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fax </returns> 
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -529,7 +529,7 @@ namespace Twilio.Rest.Fax.V1
         /// <summary>
         /// Delete a specific fax and its associated media.
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this fax. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fax </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -558,95 +558,95 @@ namespace Twilio.Rest.Fax.V1
         }
 
         /// <summary>
-        /// A string that uniquely identifies this fax.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Account SID
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The party that sent the fax
+        /// The number the fax was sent from
         /// </summary>
         [JsonProperty("from")]
         public string From { get; private set; }
         /// <summary>
-        /// The party that received the fax
+        /// The phone number that received the fax
         /// </summary>
         [JsonProperty("to")]
         public string To { get; private set; }
         /// <summary>
-        /// The quality of this fax
+        /// The quality of the fax
         /// </summary>
         [JsonProperty("quality")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FaxResource.QualityEnum Quality { get; private set; }
         /// <summary>
-        /// Media SID
+        /// The SID of the FaxMedia resource that is associated with the Fax
         /// </summary>
         [JsonProperty("media_sid")]
         public string MediaSid { get; private set; }
         /// <summary>
-        /// URL pointing to fax media
+        /// The Twilio-hosted URL that can be used to download fax media
         /// </summary>
         [JsonProperty("media_url")]
         public string MediaUrl { get; private set; }
         /// <summary>
-        /// Number of pages
+        /// The number of pages contained in the fax document
         /// </summary>
         [JsonProperty("num_pages")]
         public int? NumPages { get; private set; }
         /// <summary>
-        /// The time taken to transmit the fax
+        /// The time it took to transmit the fax
         /// </summary>
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
         /// <summary>
-        /// The status of this fax
+        /// The status of the fax
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FaxResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The direction of this fax
+        /// The direction of the fax
         /// </summary>
         [JsonProperty("direction")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FaxResource.DirectionEnum Direction { get; private set; }
         /// <summary>
-        /// The API version used
+        /// The API version used to transmit the fax
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// Fax transmission price
+        /// The fax transmission price
         /// </summary>
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
         /// <summary>
-        /// Currency used for billing
+        /// The ISO 4217 currency used for billing
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// The date this fax was created
+        /// The ISO 8601 formatted date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this fax was updated
+        /// The ISO 8601 formatted date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Nested resource URLs
+        /// The URLs of the fax's related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// The URL of this resource
+        /// The absolute URL of the fax resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

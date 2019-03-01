@@ -63,10 +63,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <summary>
         /// Fetch an instance of a result payload
         /// </summary>
-        /// <param name="pathReferenceSid"> The reference_sid </param>
-        /// <param name="pathAddOnResultSid"> The add_on_result_sid </param>
-        /// <param name="pathSid"> Fetch by unique payload Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the
+        ///                        payload to fetch belongs </param>
+        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payload to fetch belongs </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Payload </returns> 
         public static PayloadResource Fetch(string pathReferenceSid, 
@@ -83,10 +84,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <summary>
         /// Fetch an instance of a result payload
         /// </summary>
-        /// <param name="pathReferenceSid"> The reference_sid </param>
-        /// <param name="pathAddOnResultSid"> The add_on_result_sid </param>
-        /// <param name="pathSid"> Fetch by unique payload Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the
+        ///                        payload to fetch belongs </param>
+        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payload to fetch belongs </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payload </returns> 
         public static async System.Threading.Tasks.Task<PayloadResource> FetchAsync(string pathReferenceSid, 
@@ -112,7 +114,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         }
 
         /// <summary>
-        /// Retrieve a list of payloads belonging to the Add-on result
+        /// Retrieve a list of payloads belonging to the AddOnResult
         /// </summary>
         /// <param name="options"> Read Payload parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -128,7 +130,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of payloads belonging to the Add-on result
+        /// Retrieve a list of payloads belonging to the AddOnResult
         /// </summary>
         /// <param name="options"> Read Payload parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -145,11 +147,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         #endif
 
         /// <summary>
-        /// Retrieve a list of payloads belonging to the Add-on result
+        /// Retrieve a list of payloads belonging to the AddOnResult
         /// </summary>
-        /// <param name="pathReferenceSid"> The reference_sid </param>
-        /// <param name="pathAddOnResultSid"> The add_on_result_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the
+        ///                        payloads to read belongs </param>
+        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payloads to read belongs </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -167,11 +170,12 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of payloads belonging to the Add-on result
+        /// Retrieve a list of payloads belonging to the AddOnResult
         /// </summary>
-        /// <param name="pathReferenceSid"> The reference_sid </param>
-        /// <param name="pathAddOnResultSid"> The add_on_result_sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the
+        ///                        payloads to read belongs </param>
+        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payloads to read belongs </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -290,10 +294,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <summary>
         /// Delete a payload from the result along with all associated Data
         /// </summary>
-        /// <param name="pathReferenceSid"> The reference_sid </param>
-        /// <param name="pathAddOnResultSid"> The add_on_result_sid </param>
-        /// <param name="pathSid"> Delete by unique payload Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the
+        ///                        payloads to delete belongs </param>
+        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payloads to delete belongs </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Payload </returns> 
         public static bool Delete(string pathReferenceSid, 
@@ -310,10 +315,11 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         /// <summary>
         /// Delete a payload from the result along with all associated Data
         /// </summary>
-        /// <param name="pathReferenceSid"> The reference_sid </param>
-        /// <param name="pathAddOnResultSid"> The add_on_result_sid </param>
-        /// <param name="pathSid"> Delete by unique payload Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the AddOnResult resource that contains the
+        ///                        payloads to delete belongs </param>
+        /// <param name="pathAddOnResultSid"> The SID of the AddOnResult to which the payloads to delete belongs </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payload </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathReferenceSid, 
@@ -346,57 +352,57 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
         }
 
         /// <summary>
-        /// A string that uniquely identifies this payload
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies the result
+        /// The SID of the AddOnResult to which the payload belongs
         /// </summary>
         [JsonProperty("add_on_result_sid")]
         public string AddOnResultSid { get; private set; }
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// A string that describes the payload.
+        /// The string that describes the payload
         /// </summary>
         [JsonProperty("label")]
         public string Label { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies the Add-on.
+        /// The SID of the Add-on to which the result belongs
         /// </summary>
         [JsonProperty("add_on_sid")]
         public string AddOnSid { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies the Add-on configuration.
+        /// The SID of the Add-on configuration
         /// </summary>
         [JsonProperty("add_on_configuration_sid")]
         public string AddOnConfigurationSid { get; private set; }
         /// <summary>
-        /// The MIME type of the payload.
+        /// The MIME type of the payload
         /// </summary>
         [JsonProperty("content_type")]
         public string ContentType { get; private set; }
         /// <summary>
-        /// The date this resource was created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this resource was last updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies the recording.
+        /// The SID of the recording to which the AddOnResult resource that contains the payload belongs
         /// </summary>
         [JsonProperty("reference_sid")]
         public string ReferenceSid { get; private set; }
         /// <summary>
-        /// A dictionary of URIs for related resources
+        /// A list of related resources identified by their relative URIs
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }

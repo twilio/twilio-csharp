@@ -78,8 +78,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of a Transcription
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique transcription SID </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcription </returns> 
         public static TranscriptionResource Fetch(string pathSid, 
@@ -94,8 +94,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch an instance of a Transcription
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique transcription SID </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns> 
         public static async System.Threading.Tasks.Task<TranscriptionResource> FetchAsync(string pathSid, 
@@ -150,8 +150,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete a transcription from the account used to make the request
         /// </summary>
-        /// <param name="pathSid"> Delete by unique transcription SID </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Transcription </returns> 
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -164,8 +164,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Delete a transcription from the account used to make the request
         /// </summary>
-        /// <param name="pathSid"> Delete by unique transcription SID </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Transcription </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of transcriptions belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of transcriptions belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -336,47 +336,47 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The api_version
+        /// The API version used to create the transcription
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// The date this resource was created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this resource was last updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The duration of the transcribed audio, in seconds.
+        /// The duration of the transcribed audio in seconds.
         /// </summary>
         [JsonProperty("duration")]
         public string Duration { get; private set; }
         /// <summary>
-        /// The charge for this transcription
+        /// The charge for the transcription
         /// </summary>
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
         /// <summary>
-        /// The currency in which Price is measured
+        /// The currency in which price is measured
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// The string that uniquely identifies the recording
+        /// The SID that identifies the transcription's recording
         /// </summary>
         [JsonProperty("recording_sid")]
         public string RecordingSid { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies this transcription
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
@@ -392,12 +392,12 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("transcription_text")]
         public string TranscriptionText { get; private set; }
         /// <summary>
-        /// The type
+        /// The transcription type
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; private set; }
         /// <summary>
-        /// The URI for this resource
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }

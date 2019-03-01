@@ -17,18 +17,18 @@ namespace Twilio.Rest.Api.V2010.Account.Address
     public class ReadDependentPhoneNumberOptions : ReadOptions<DependentPhoneNumberResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The address_sid
+        /// The SID of the Address resource associated with the phone number
         /// </summary>
         public string PathAddressSid { get; }
 
         /// <summary>
         /// Construct a new ReadDependentPhoneNumberOptions
         /// </summary>
-        /// <param name="pathAddressSid"> The address_sid </param>
+        /// <param name="pathAddressSid"> The SID of the Address resource associated with the phone number </param>
         public ReadDependentPhoneNumberOptions(string pathAddressSid)
         {
             PathAddressSid = pathAddressSid;

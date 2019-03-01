@@ -17,38 +17,38 @@ namespace Twilio.Rest.Api.V2010.Account
     public class CreateValidationRequestOptions : IOptions<ValidationRequestResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account responsible for the new Caller ID
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The phone number to verify.
+        /// The phone number to verify in E.164 format
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; }
         /// <summary>
-        /// A human readable description for the new caller ID with maximum length 64 characters.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The number of seconds, between 0 and 60, to delay before initiating the verification call.
+        /// The number of seconds to delay before initiating the verification call
         /// </summary>
         public int? CallDelay { get; set; }
         /// <summary>
-        /// Digits to dial after connecting the verification call.
+        /// The digits to dial after connecting the verification call
         /// </summary>
         public string Extension { get; set; }
         /// <summary>
-        /// A URL that Twilio will request when the verification call ends to notify your app if the verification process was successful or not.
+        /// The URL we should call to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The HTTP method Twilio should use when requesting the above URL.
+        /// The HTTP method we should use to call status_callback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
 
         /// <summary>
         /// Construct a new CreateValidationRequestOptions
         /// </summary>
-        /// <param name="phoneNumber"> The phone number to verify. </param>
+        /// <param name="phoneNumber"> The phone number to verify in E.164 format </param>
         public CreateValidationRequestOptions(Types.PhoneNumber phoneNumber)
         {
             PhoneNumber = phoneNumber;

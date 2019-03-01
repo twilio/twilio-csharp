@@ -18,11 +18,11 @@ namespace Twilio.Rest.Api.V2010.Account
     public class CreateMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that will create the resource
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The phone number to receive the message
+        /// The destination phone number
         /// </summary>
         public Types.PhoneNumber To { get; }
         /// <summary>
@@ -30,19 +30,19 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Types.PhoneNumber From { get; set; }
         /// <summary>
-        /// The 34 character unique id of the Messaging Service you want to associate with this Message.
+        /// The SID of the Messaging Service you want to associate with the message.
         /// </summary>
         public string MessagingServiceSid { get; set; }
         /// <summary>
-        /// The text of the message you want to send, limited to 1600 characters.
+        /// The text of the message you want to send. Can be up to 1,600 characters in length.
         /// </summary>
         public string Body { get; set; }
         /// <summary>
-        /// The URL of the media you wish to send out with the message.
+        /// The URL of the media to send with the message
         /// </summary>
         public List<Uri> MediaUrl { get; set; }
         /// <summary>
-        /// URL Twilio will request when the status changes
+        /// The URL we should call to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
@@ -50,54 +50,34 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string ApplicationSid { get; set; }
         /// <summary>
-        /// The total maximum price up to the fourth decimal in US dollars acceptable for the message to be delivered.
+        /// The total maximum price up to 4 decimal places in US dollars acceptable for the message to be delivered.
         /// </summary>
         public decimal? MaxPrice { get; set; }
         /// <summary>
-        /// Set this value to true if you are sending messages that have a trackable user action and you intend to confirm delivery of the message using the Message Feedback API.
+        /// Whether to confirm delivery of the message
         /// </summary>
         public bool? ProvideFeedback { get; set; }
         /// <summary>
-        /// The number of seconds that the message can remain in a Twilio queue.
+        /// The number of seconds that the message can remain in our outgoing queue.
         /// </summary>
         public int? ValidityPeriod { get; set; }
         /// <summary>
-        /// The max_rate
-        /// </summary>
-        public string MaxRate { get; set; }
-        /// <summary>
-        /// The force_delivery
-        /// </summary>
-        public bool? ForceDelivery { get; set; }
-        /// <summary>
-        /// The provider_sid
-        /// </summary>
-        public string ProviderSid { get; set; }
-        /// <summary>
-        /// The content_retention
-        /// </summary>
-        public MessageResource.ContentRetentionEnum ContentRetention { get; set; }
-        /// <summary>
-        /// The address_retention
-        /// </summary>
-        public MessageResource.AddressRetentionEnum AddressRetention { get; set; }
-        /// <summary>
-        /// The smart_encoded
+        /// Whether to detect Unicode characters that have a similar GSM-7 character and replace them
         /// </summary>
         public bool? SmartEncoded { get; set; }
         /// <summary>
-        /// JSON string representing interactive data message.
+        /// A JSON string that represents an interactive message
         /// </summary>
         public string InteractiveData { get; set; }
         /// <summary>
-        /// Boolean representing force opt in for a message.
+        /// Whether to forcefully whitelist a from:to pair
         /// </summary>
         public bool? ForceOptIn { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
         /// </summary>
-        /// <param name="to"> The phone number to receive the message </param>
+        /// <param name="to"> The destination phone number </param>
         public CreateMessageOptions(Types.PhoneNumber to)
         {
             To = to;
@@ -160,31 +140,6 @@ namespace Twilio.Rest.Api.V2010.Account
                 p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.ToString()));
             }
 
-            if (MaxRate != null)
-            {
-                p.Add(new KeyValuePair<string, string>("MaxRate", MaxRate));
-            }
-
-            if (ForceDelivery != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ForceDelivery", ForceDelivery.Value.ToString().ToLower()));
-            }
-
-            if (ProviderSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ProviderSid", ProviderSid.ToString()));
-            }
-
-            if (ContentRetention != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ContentRetention", ContentRetention.ToString()));
-            }
-
-            if (AddressRetention != null)
-            {
-                p.Add(new KeyValuePair<string, string>("AddressRetention", AddressRetention.ToString()));
-            }
-
             if (SmartEncoded != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmartEncoded", SmartEncoded.Value.ToString().ToLower()));
@@ -210,18 +165,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class DeleteMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The message to delete
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteMessageOptions
         /// </summary>
-        /// <param name="pathSid"> The message to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteMessageOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -243,18 +198,18 @@ namespace Twilio.Rest.Api.V2010.Account
     public class FetchMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Fetch by unique message Sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchMessageOptions
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique message Sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchMessageOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -276,11 +231,11 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadMessageOptions : ReadOptions<MessageResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// Filter by messages to this number
+        /// Filter by messages sent to this number
         /// </summary>
         public Types.PhoneNumber To { get; set; }
         /// <summary>
@@ -348,23 +303,23 @@ namespace Twilio.Rest.Api.V2010.Account
     public class UpdateMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to update
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The message to redact
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The text of the message you want to send, limited to 1600 characters.
+        /// The text of the message you want to send
         /// </summary>
         public string Body { get; }
 
         /// <summary>
         /// Construct a new UpdateMessageOptions
         /// </summary>
-        /// <param name="pathSid"> The message to redact </param>
-        /// <param name="body"> The text of the message you want to send, limited to 1600 characters. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="body"> The text of the message you want to send </param>
         public UpdateMessageOptions(string pathSid, string body)
         {
             PathSid = pathSid;

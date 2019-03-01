@@ -12,28 +12,28 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
 {
 
     /// <summary>
-    /// Fetch an instance of an Add-on result
+    /// Fetch an instance of an AddOnResult
     /// </summary>
     public class FetchAddOnResultOptions : IOptions<AddOnResultResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource to fetch
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The reference_sid
+        /// The SID of the recording to which the result to fetch belongs
         /// </summary>
         public string PathReferenceSid { get; }
         /// <summary>
-        /// Fetch by unique result Sid
+        /// The unique string that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAddOnResultOptions
         /// </summary>
-        /// <param name="pathReferenceSid"> The reference_sid </param>
-        /// <param name="pathSid"> Fetch by unique result Sid </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the result to fetch belongs </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
         public FetchAddOnResultOptions(string pathReferenceSid, string pathSid)
         {
             PathReferenceSid = pathReferenceSid;
@@ -56,18 +56,18 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
     public class ReadAddOnResultOptions : ReadOptions<AddOnResultResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to read
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The reference_sid
+        /// The SID of the recording to which the result to read belongs
         /// </summary>
         public string PathReferenceSid { get; }
 
         /// <summary>
         /// Construct a new ReadAddOnResultOptions
         /// </summary>
-        /// <param name="pathReferenceSid"> The reference_sid </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the result to read belongs </param>
         public ReadAddOnResultOptions(string pathReferenceSid)
         {
             PathReferenceSid = pathReferenceSid;
@@ -94,23 +94,23 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
     public class DeleteAddOnResultOptions : IOptions<AddOnResultResource> 
     {
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resources to delete
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The reference_sid
+        /// The SID of the recording to which the result to delete belongs
         /// </summary>
         public string PathReferenceSid { get; }
         /// <summary>
-        /// Delete by unique result Sid
+        /// The unique string that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteAddOnResultOptions
         /// </summary>
-        /// <param name="pathReferenceSid"> The reference_sid </param>
-        /// <param name="pathSid"> Delete by unique result Sid </param>
+        /// <param name="pathReferenceSid"> The SID of the recording to which the result to delete belongs </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to delete </param>
         public DeleteAddOnResultOptions(string pathReferenceSid, string pathSid)
         {
             PathReferenceSid = pathReferenceSid;

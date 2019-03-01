@@ -33,6 +33,7 @@ namespace Twilio.Rest.Video.V1
                 return new StatusEnum(value);
             }
 
+            public static readonly StatusEnum Enqueued = new StatusEnum("enqueued");
             public static readonly StatusEnum Processing = new StatusEnum("processing");
             public static readonly StatusEnum Completed = new StatusEnum("completed");
             public static readonly StatusEnum Deleted = new StatusEnum("deleted");
@@ -397,7 +398,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="trim"> Boolean flag for clipping intervals that have no media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Composition </returns> 
-        public static CompositionResource Create(string roomSid = null, 
+        public static CompositionResource Create(string roomSid, 
                                                  object videoLayout = null, 
                                                  List<string> audioSources = null, 
                                                  List<string> audioSourcesExcluded = null, 
@@ -408,7 +409,7 @@ namespace Twilio.Rest.Video.V1
                                                  bool? trim = null, 
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateCompositionOptions(){RoomSid = roomSid, VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim};
+            var options = new CreateCompositionOptions(roomSid){VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim};
             return Create(options, client);
         }
 
@@ -428,7 +429,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="trim"> Boolean flag for clipping intervals that have no media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns> 
-        public static async System.Threading.Tasks.Task<CompositionResource> CreateAsync(string roomSid = null, 
+        public static async System.Threading.Tasks.Task<CompositionResource> CreateAsync(string roomSid, 
                                                                                          object videoLayout = null, 
                                                                                          List<string> audioSources = null, 
                                                                                          List<string> audioSourcesExcluded = null, 
@@ -439,7 +440,7 @@ namespace Twilio.Rest.Video.V1
                                                                                          bool? trim = null, 
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateCompositionOptions(){RoomSid = roomSid, VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim};
+            var options = new CreateCompositionOptions(roomSid){VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim};
             return await CreateAsync(options, client);
         }
         #endif

@@ -125,28 +125,22 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Send a message from the account used to make the request
         /// </summary>
-        /// <param name="to"> The phone number to receive the message </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="to"> The destination phone number </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="from"> The phone number that initiated the message </param>
-        /// <param name="messagingServiceSid"> The 34 character unique id of the Messaging Service you want to associate with
-        ///                           this Message. </param>
-        /// <param name="body"> The text of the message you want to send, limited to 1600 characters. </param>
-        /// <param name="mediaUrl"> The URL of the media you wish to send out with the message. </param>
-        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
+        /// <param name="messagingServiceSid"> The SID of the Messaging Service you want to associate with the message. </param>
+        /// <param name="body"> The text of the message you want to send. Can be up to 1,600 characters in length. </param>
+        /// <param name="mediaUrl"> The URL of the media to send with the message </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
         /// <param name="applicationSid"> The application to use for callbacks </param>
-        /// <param name="maxPrice"> The total maximum price up to the fourth decimal in US dollars acceptable for the message
-        ///                to be delivered. </param>
-        /// <param name="provideFeedback"> Set this value to true if you are sending messages that have a trackable user action
-        ///                       and you intend to confirm delivery of the message using the Message Feedback API. </param>
-        /// <param name="validityPeriod"> The number of seconds that the message can remain in a Twilio queue. </param>
-        /// <param name="maxRate"> The max_rate </param>
-        /// <param name="forceDelivery"> The force_delivery </param>
-        /// <param name="providerSid"> The provider_sid </param>
-        /// <param name="contentRetention"> The content_retention </param>
-        /// <param name="addressRetention"> The address_retention </param>
-        /// <param name="smartEncoded"> The smart_encoded </param>
-        /// <param name="interactiveData"> JSON string representing interactive data message. </param>
-        /// <param name="forceOptIn"> Boolean representing force opt in for a message. </param>
+        /// <param name="maxPrice"> The total maximum price up to 4 decimal places in US dollars acceptable for the message to
+        ///                be delivered. </param>
+        /// <param name="provideFeedback"> Whether to confirm delivery of the message </param>
+        /// <param name="validityPeriod"> The number of seconds that the message can remain in our outgoing queue. </param>
+        /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace
+        ///                    them </param>
+        /// <param name="interactiveData"> A JSON string that represents an interactive message </param>
+        /// <param name="forceOptIn"> Whether to forcefully whitelist a from:to pair </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
         public static MessageResource Create(Types.PhoneNumber to, 
@@ -160,17 +154,12 @@ namespace Twilio.Rest.Api.V2010.Account
                                              decimal? maxPrice = null, 
                                              bool? provideFeedback = null, 
                                              int? validityPeriod = null, 
-                                             string maxRate = null, 
-                                             bool? forceDelivery = null, 
-                                             string providerSid = null, 
-                                             MessageResource.ContentRetentionEnum contentRetention = null, 
-                                             MessageResource.AddressRetentionEnum addressRetention = null, 
                                              bool? smartEncoded = null, 
                                              string interactiveData = null, 
                                              bool? forceOptIn = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, MaxRate = maxRate, ForceDelivery = forceDelivery, ProviderSid = providerSid, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, InteractiveData = interactiveData, ForceOptIn = forceOptIn};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, SmartEncoded = smartEncoded, InteractiveData = interactiveData, ForceOptIn = forceOptIn};
             return Create(options, client);
         }
 
@@ -178,28 +167,22 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Send a message from the account used to make the request
         /// </summary>
-        /// <param name="to"> The phone number to receive the message </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="to"> The destination phone number </param>
+        /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="from"> The phone number that initiated the message </param>
-        /// <param name="messagingServiceSid"> The 34 character unique id of the Messaging Service you want to associate with
-        ///                           this Message. </param>
-        /// <param name="body"> The text of the message you want to send, limited to 1600 characters. </param>
-        /// <param name="mediaUrl"> The URL of the media you wish to send out with the message. </param>
-        /// <param name="statusCallback"> URL Twilio will request when the status changes </param>
+        /// <param name="messagingServiceSid"> The SID of the Messaging Service you want to associate with the message. </param>
+        /// <param name="body"> The text of the message you want to send. Can be up to 1,600 characters in length. </param>
+        /// <param name="mediaUrl"> The URL of the media to send with the message </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
         /// <param name="applicationSid"> The application to use for callbacks </param>
-        /// <param name="maxPrice"> The total maximum price up to the fourth decimal in US dollars acceptable for the message
-        ///                to be delivered. </param>
-        /// <param name="provideFeedback"> Set this value to true if you are sending messages that have a trackable user action
-        ///                       and you intend to confirm delivery of the message using the Message Feedback API. </param>
-        /// <param name="validityPeriod"> The number of seconds that the message can remain in a Twilio queue. </param>
-        /// <param name="maxRate"> The max_rate </param>
-        /// <param name="forceDelivery"> The force_delivery </param>
-        /// <param name="providerSid"> The provider_sid </param>
-        /// <param name="contentRetention"> The content_retention </param>
-        /// <param name="addressRetention"> The address_retention </param>
-        /// <param name="smartEncoded"> The smart_encoded </param>
-        /// <param name="interactiveData"> JSON string representing interactive data message. </param>
-        /// <param name="forceOptIn"> Boolean representing force opt in for a message. </param>
+        /// <param name="maxPrice"> The total maximum price up to 4 decimal places in US dollars acceptable for the message to
+        ///                be delivered. </param>
+        /// <param name="provideFeedback"> Whether to confirm delivery of the message </param>
+        /// <param name="validityPeriod"> The number of seconds that the message can remain in our outgoing queue. </param>
+        /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace
+        ///                    them </param>
+        /// <param name="interactiveData"> A JSON string that represents an interactive message </param>
+        /// <param name="forceOptIn"> Whether to forcefully whitelist a from:to pair </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(Types.PhoneNumber to, 
@@ -213,17 +196,12 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                      decimal? maxPrice = null, 
                                                                                      bool? provideFeedback = null, 
                                                                                      int? validityPeriod = null, 
-                                                                                     string maxRate = null, 
-                                                                                     bool? forceDelivery = null, 
-                                                                                     string providerSid = null, 
-                                                                                     MessageResource.ContentRetentionEnum contentRetention = null, 
-                                                                                     MessageResource.AddressRetentionEnum addressRetention = null, 
                                                                                      bool? smartEncoded = null, 
                                                                                      string interactiveData = null, 
                                                                                      bool? forceOptIn = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, MaxRate = maxRate, ForceDelivery = forceDelivery, ProviderSid = providerSid, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, InteractiveData = interactiveData, ForceOptIn = forceOptIn};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, SmartEncoded = smartEncoded, InteractiveData = interactiveData, ForceOptIn = forceOptIn};
             return await CreateAsync(options, client);
         }
         #endif
@@ -271,8 +249,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Deletes a message record from your account
         /// </summary>
-        /// <param name="pathSid"> The message to delete </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -285,8 +263,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Deletes a message record from your account
         /// </summary>
-        /// <param name="pathSid"> The message to delete </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
@@ -341,8 +319,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch a message belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique message Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
         public static MessageResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
@@ -355,8 +333,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch a message belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathSid"> Fetch by unique message Sid </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(string pathSid, 
@@ -415,8 +393,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of messages belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="to"> Filter by messages to this number </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="to"> Filter by messages sent to this number </param>
         /// <param name="from"> Filter by from number </param>
         /// <param name="dateSentBefore"> Filter by date sent </param>
         /// <param name="dateSent"> Filter by date sent </param>
@@ -443,8 +421,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of messages belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The account_sid </param>
-        /// <param name="to"> Filter by messages to this number </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
+        /// <param name="to"> Filter by messages sent to this number </param>
         /// <param name="from"> Filter by from number </param>
         /// <param name="dateSentBefore"> Filter by date sent </param>
         /// <param name="dateSent"> Filter by date sent </param>
@@ -570,9 +548,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
         /// </summary>
-        /// <param name="pathSid"> The message to redact </param>
-        /// <param name="body"> The text of the message you want to send, limited to 1600 characters. </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="body"> The text of the message you want to send </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns> 
         public static MessageResource Update(string pathSid, 
@@ -588,9 +566,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
         /// </summary>
-        /// <param name="pathSid"> The message to redact </param>
-        /// <param name="body"> The text of the message you want to send, limited to 1600 characters. </param>
-        /// <param name="pathAccountSid"> The account_sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="body"> The text of the message you want to send </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns> 
         public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathSid, 
@@ -622,32 +600,32 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The unique sid that identifies this account
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The version of the Twilio API used to process the message.
+        /// The API version used to process the message
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// The text body of the message. Up to 1600 characters long.
+        /// The message text
         /// </summary>
         [JsonProperty("body")]
         public string Body { get; private set; }
         /// <summary>
-        /// The date this resource was created
+        /// The RFC 2822 date and time in GMT that the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this resource was last updated
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The date the message was sent
+        /// The RFC 2822 date and time in GMT when the message was sent
         /// </summary>
         [JsonProperty("date_sent")]
         public DateTime? DateSent { get; private set; }
@@ -663,7 +641,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }
         /// <summary>
-        /// Human readable description of the ErrorCode
+        /// The description of the error_code
         /// </summary>
         [JsonProperty("error_message")]
         public string ErrorMessage { get; private set; }
@@ -674,17 +652,17 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber From { get; private set; }
         /// <summary>
-        /// The unique id of the Messaging Service used with the message.
+        /// The SID of the Messaging Service used with the message.
         /// </summary>
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
         /// <summary>
-        /// Number of media files associated with the message
+        /// The number of media files associated with the message
         /// </summary>
         [JsonProperty("num_media")]
         public string NumMedia { get; private set; }
         /// <summary>
-        /// Indicates number of messages used to delivery the body
+        /// The number of messages used to deliver the message body
         /// </summary>
         [JsonProperty("num_segments")]
         public string NumSegments { get; private set; }
@@ -694,23 +672,23 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("price")]
         public decimal? Price { get; private set; }
         /// <summary>
-        /// The currency in which Price is measured
+        /// The currency in which price is measured
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies this message
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The status of this message
+        /// The status of the message
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public MessageResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The URI for any subresources
+        /// A list of related resources identified by their relative URIs
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
@@ -720,7 +698,7 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("to")]
         public string To { get; private set; }
         /// <summary>
-        /// The URI for this resource
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
