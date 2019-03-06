@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string SendDigits { get; set; }
         /// <summary>
-        /// The action to take if an answering machine is detected
+        /// Deprecated. Action to take if a machine has answered the call
         /// </summary>
         public string IfMachine { get; set; }
         /// <summary>

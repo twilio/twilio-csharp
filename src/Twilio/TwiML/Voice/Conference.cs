@@ -63,6 +63,7 @@ namespace Twilio.TwiML.Voice
             public static readonly RegionEnum Br1 = new RegionEnum("br1");
             public static readonly RegionEnum Au1 = new RegionEnum("au1");
             public static readonly RegionEnum Jp1 = new RegionEnum("jp1");
+            public static readonly RegionEnum De1 = new RegionEnum("de1");
         }
 
         public sealed class EventEnum : StringEnum 
