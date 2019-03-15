@@ -103,7 +103,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string MachineDetection { get; set; }
         /// <summary>
-        /// Number of milliseconds to wait for machine detection
+        /// Number of seconds to wait for machine detection
         /// </summary>
         public int? MachineDetectionTimeout { get; set; }
         /// <summary>
@@ -118,6 +118,18 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The phone number, SIP address, or Client identifier that made this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`.
         /// </summary>
         public string CallerId { get; set; }
+        /// <summary>
+        /// Number of milliseconds for measuring stick for the length of the speech activity
+        /// </summary>
+        public int? MachineDetectionSpeechThreshold { get; set; }
+        /// <summary>
+        /// Number of milliseconds of silence after speech activity
+        /// </summary>
+        public int? MachineDetectionSpeechEndThreshold { get; set; }
+        /// <summary>
+        /// Number of milliseconds of initial silence
+        /// </summary>
+        public int? MachineDetectionSilenceTimeout { get; set; }
 
         /// <summary>
         /// Construct a new CreateCallOptions
@@ -256,6 +268,21 @@ namespace Twilio.Rest.Api.V2010.Account
             if (CallerId != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallerId", CallerId));
+            }
+
+            if (MachineDetectionSpeechThreshold != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MachineDetectionSpeechThreshold", MachineDetectionSpeechThreshold.ToString()));
+            }
+
+            if (MachineDetectionSpeechEndThreshold != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MachineDetectionSpeechEndThreshold", MachineDetectionSpeechEndThreshold.ToString()));
+            }
+
+            if (MachineDetectionSilenceTimeout != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MachineDetectionSilenceTimeout", MachineDetectionSilenceTimeout.ToString()));
             }
 
             return p;

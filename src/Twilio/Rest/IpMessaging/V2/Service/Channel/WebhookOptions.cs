@@ -18,19 +18,19 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     public class ReadWebhookOptions : ReadOptions<WebhookResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to read the resources from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The channel_sid
+        /// The SID of the Channel the resources to read belong to
         /// </summary>
         public string PathChannelSid { get; }
 
         /// <summary>
         /// Construct a new ReadWebhookOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathChannelSid"> The SID of the Channel the resources to read belong to </param>
         public ReadWebhookOptions(string pathServiceSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -58,24 +58,24 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     public class FetchWebhookOptions : IOptions<WebhookResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The channel_sid
+        /// The SID of the Channel the resource to fetch belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchWebhookOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathChannelSid"> The SID of the Channel the resource to fetch belongs to </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchWebhookOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -99,48 +99,48 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     public class CreateWebhookOptions : IOptions<WebhookResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to create the resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The channel_sid
+        /// The SID of the Channel the new resource belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The type
+        /// The type of webhook
         /// </summary>
         public WebhookResource.TypeEnum Type { get; }
         /// <summary>
-        /// The configuration.url
+        /// The URL of the webhook to call
         /// </summary>
         public string ConfigurationUrl { get; set; }
         /// <summary>
-        /// The configuration.method
+        /// The HTTP method used to call `configuration.url`
         /// </summary>
         public WebhookResource.MethodEnum ConfigurationMethod { get; set; }
         /// <summary>
-        /// The configuration.filters
+        /// The events that cause us to call the Channel Webhook
         /// </summary>
         public List<string> ConfigurationFilters { get; set; }
         /// <summary>
-        /// The configuration.triggers
+        /// A string that will cause us to call the webhook when it is found in a message body
         /// </summary>
         public List<string> ConfigurationTriggers { get; set; }
         /// <summary>
-        /// The configuration.flow_sid
+        /// The SID of the Studio Flow to call when an event occurs
         /// </summary>
         public string ConfigurationFlowSid { get; set; }
         /// <summary>
-        /// The configuration.retry_count
+        /// The number of times to retry the webhook if the first attempt fails
         /// </summary>
         public int? ConfigurationRetryCount { get; set; }
 
         /// <summary>
         /// Construct a new CreateWebhookOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="type"> The type </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="pathChannelSid"> The SID of the Channel the new resource belongs to </param>
+        /// <param name="type"> The type of webhook </param>
         public CreateWebhookOptions(string pathServiceSid, string pathChannelSid, WebhookResource.TypeEnum type)
         {
             PathServiceSid = pathServiceSid;
@@ -201,48 +201,48 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     public class UpdateWebhookOptions : IOptions<WebhookResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to update the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The channel_sid
+        /// The SID of the Channel the resource to update belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The configuration.url
+        /// The URL of the webhook to call
         /// </summary>
         public string ConfigurationUrl { get; set; }
         /// <summary>
-        /// The configuration.method
+        /// The HTTP method used to call `configuration.url`
         /// </summary>
         public WebhookResource.MethodEnum ConfigurationMethod { get; set; }
         /// <summary>
-        /// The configuration.filters
+        /// The events that cause us to call the Channel Webhook
         /// </summary>
         public List<string> ConfigurationFilters { get; set; }
         /// <summary>
-        /// The configuration.triggers
+        /// A string that will cause us to call the webhook when it is found in a message body
         /// </summary>
         public List<string> ConfigurationTriggers { get; set; }
         /// <summary>
-        /// The configuration.flow_sid
+        /// The SID of the Studio Flow to call when an event occurs
         /// </summary>
         public string ConfigurationFlowSid { get; set; }
         /// <summary>
-        /// The configuration.retry_count
+        /// The number of times to retry the webhook if the first attempt fails
         /// </summary>
         public int? ConfigurationRetryCount { get; set; }
 
         /// <summary>
         /// Construct a new UpdateWebhookOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathChannelSid"> The SID of the Channel the resource to update belongs to </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateWebhookOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -298,24 +298,24 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     public class DeleteWebhookOptions : IOptions<WebhookResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to delete the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The channel_sid
+        /// The SID of the channel the resource to delete belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteWebhookOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathChannelSid"> The channel_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathChannelSid"> The SID of the channel the resource to delete belongs to </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteWebhookOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

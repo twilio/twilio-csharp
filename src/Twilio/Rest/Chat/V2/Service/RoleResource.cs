@@ -77,8 +77,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns> 
         public static RoleResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -91,8 +91,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns> 
         public static async System.Threading.Tasks.Task<RoleResource> FetchAsync(string pathServiceSid, 
@@ -147,8 +147,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns> 
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -161,8 +161,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
@@ -217,10 +217,10 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="friendlyName"> The human-readable name of this role. </param>
-        /// <param name="type"> What kind of role this is. </param>
-        /// <param name="permission"> A permission this role should have. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="friendlyName"> A string to describe the new resource </param>
+        /// <param name="type"> The type of role </param>
+        /// <param name="permission"> A permission the role should have </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns> 
         public static RoleResource Create(string pathServiceSid, 
@@ -237,10 +237,10 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="friendlyName"> The human-readable name of this role. </param>
-        /// <param name="type"> What kind of role this is. </param>
-        /// <param name="permission"> A permission this role should have. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="friendlyName"> A string to describe the new resource </param>
+        /// <param name="type"> The type of role </param>
+        /// <param name="permission"> A permission the role should have </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns> 
         public static async System.Threading.Tasks.Task<RoleResource> CreateAsync(string pathServiceSid, 
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -319,7 +319,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -436,9 +436,9 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="permission"> A permission this role should have. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="permission"> A permission the role should have </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Role </returns> 
         public static RoleResource Update(string pathServiceSid, 
@@ -454,9 +454,9 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="permission"> A permission this role should have. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="permission"> A permission the role should have </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Role </returns> 
         public static async System.Threading.Tasks.Task<RoleResource> UpdateAsync(string pathServiceSid, 
@@ -488,48 +488,48 @@ namespace Twilio.Rest.Chat.V2.Service
         }
 
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique id of the Account responsible for this role.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique id of the Service this role belongs to.
+        /// The SID of the Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The human-readable name of this role.
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// What kind of role this is.
+        /// The type of role
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoleResource.RoleTypeEnum Type { get; private set; }
         /// <summary>
-        /// A JSON array of the permissions this role has.
+        /// An array of the permissions the role has been granted
         /// </summary>
         [JsonProperty("permissions")]
         public List<string> Permissions { get; private set; }
         /// <summary>
-        /// The date that this resource was created in ISO 8601 format.
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated in ISO 8601 format.
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// An absolute URL for this role.
+        /// The absolute URL of the Role resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

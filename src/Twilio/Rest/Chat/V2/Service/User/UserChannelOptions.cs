@@ -17,19 +17,19 @@ namespace Twilio.Rest.Chat.V2.Service.User
     public class ReadUserChannelOptions : ReadOptions<UserChannelResource> 
     {
         /// <summary>
-        /// The unique id of the Service those channels belong to.
+        /// The SID of the Service to read the resources from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique id of a User.
+        /// The SID of the User to fetch the User Channel resources from
         /// </summary>
         public string PathUserSid { get; }
 
         /// <summary>
         /// Construct a new ReadUserChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
-        /// <param name="pathUserSid"> The unique id of a User. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
         public ReadUserChannelOptions(string pathServiceSid, string pathUserSid)
         {
             PathServiceSid = pathServiceSid;
@@ -57,24 +57,24 @@ namespace Twilio.Rest.Chat.V2.Service.User
     public class FetchUserChannelOptions : IOptions<UserChannelResource> 
     {
         /// <summary>
-        /// The unique id of the Service those channels belong to.
+        /// The SID of the Service to fetch the User Channel resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique id of a User.
+        /// The SID of the User to fetch the User Channel resource from
         /// </summary>
         public string PathUserSid { get; }
         /// <summary>
-        /// The unique id of a Channel.
+        /// The SID of the Channel that has the User Channel to fetch
         /// </summary>
         public string PathChannelSid { get; }
 
         /// <summary>
         /// Construct a new FetchUserChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
-        /// <param name="pathUserSid"> The unique id of a User. </param>
-        /// <param name="pathChannelSid"> The unique id of a Channel. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the User Channel resource from </param>
+        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resource from </param>
+        /// <param name="pathChannelSid"> The SID of the Channel that has the User Channel to fetch </param>
         public FetchUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -98,29 +98,29 @@ namespace Twilio.Rest.Chat.V2.Service.User
     public class UpdateUserChannelOptions : IOptions<UserChannelResource> 
     {
         /// <summary>
-        /// The unique id of the Service those channels belong to.
+        /// The SID of the Service to update the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique id of a User.
+        /// The SID of the User to update the User Channel resource from
         /// </summary>
         public string PathUserSid { get; }
         /// <summary>
-        /// The unique id of a Channel.
+        /// The SID of the Channel with the User Channel resource to update
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// Push notification level to be assigned to Channel of the User.
+        /// The push notification level to assign to the User Channel
         /// </summary>
         public UserChannelResource.NotificationLevelEnum NotificationLevel { get; }
 
         /// <summary>
         /// Construct a new UpdateUserChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
-        /// <param name="pathUserSid"> The unique id of a User. </param>
-        /// <param name="pathChannelSid"> The unique id of a Channel. </param>
-        /// <param name="notificationLevel"> Push notification level to be assigned to Channel of the User. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathUserSid"> The SID of the User to update the User Channel resource from </param>
+        /// <param name="pathChannelSid"> The SID of the Channel with the User Channel resource to update </param>
+        /// <param name="notificationLevel"> The push notification level to assign to the User Channel </param>
         public UpdateUserChannelOptions(string pathServiceSid, 
                                         string pathUserSid, 
                                         string pathChannelSid, 

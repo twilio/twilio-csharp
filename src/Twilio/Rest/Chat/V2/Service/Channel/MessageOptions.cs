@@ -17,24 +17,24 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class FetchMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
-        /// Sid of the Service this message belongs to.
+        /// The SID of the Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Key that uniquely defines the channel this message belongs to.
+        /// The unique ID of the Channel the message to fetch belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// Key that uniquely defines the message to fetch.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchMessageOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sid of the Service this message belongs to. </param>
-        /// <param name="pathChannelSid"> Key that uniquely defines the channel this message belongs to. </param>
-        /// <param name="pathSid"> Key that uniquely defines the message to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathChannelSid"> The unique ID of the Channel the message to fetch belongs to </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchMessageOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -58,47 +58,47 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class CreateMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
-        /// Sid of the Service this message belongs to.
+        /// The SID of the Service to create the resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Key that uniquely defines the channel this message belongs to.
+        /// The unique ID of the channel the new resource belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The identity of the message's author. Defaults to system if not specified.
+        /// The identity of the new message's author
         /// </summary>
         public string From { get; set; }
         /// <summary>
-        /// The attributes metadata field you can use to store any data you wish.
+        /// A valid JSON string that contains application-specific data
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The ISO8601 time specifying the datetime the Message should be set as being created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The ISO8601 time specifying the datetime the Message should be set as having been last updated.
+        /// The ISO 8601 date and time in GMT when the resource was updated
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// Specify the Identity of the User that last updated the Message
+        /// The Identity of the User who last updated the Message
         /// </summary>
         public string LastUpdatedBy { get; set; }
         /// <summary>
-        /// The message body string.
+        /// The message to send to the channel
         /// </summary>
         public string Body { get; set; }
         /// <summary>
-        ///  The Media Sid to be attached to this Message.
+        ///  The Media Sid to be attached to the new Message
         /// </summary>
         public string MediaSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sid of the Service this message belongs to. </param>
-        /// <param name="pathChannelSid"> Key that uniquely defines the channel this message belongs to. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="pathChannelSid"> The unique ID of the channel the new resource belongs to </param>
         public CreateMessageOptions(string pathServiceSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -156,23 +156,23 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class ReadMessageOptions : ReadOptions<MessageResource> 
     {
         /// <summary>
-        /// Sid of the Service this message belongs to.
+        /// The SID of the Service to read the resources from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Key that uniquely defines the channel this message belongs to.
+        /// The unique ID of the Channel the message to read belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// Specifies sorting order for messages list, possible values are: `asc` or `desc`.
+        /// The sort order of the returned messages
         /// </summary>
         public MessageResource.OrderTypeEnum Order { get; set; }
 
         /// <summary>
         /// Construct a new ReadMessageOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sid of the Service this message belongs to. </param>
-        /// <param name="pathChannelSid"> Key that uniquely defines the channel this message belongs to. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathChannelSid"> The unique ID of the Channel the message to read belongs to </param>
         public ReadMessageOptions(string pathServiceSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -205,24 +205,24 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class DeleteMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
-        /// Sid of the Service this message belongs to.
+        /// The SID of the Service to delete the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Key that uniquely defines the channel this message belongs to.
+        /// The unique ID of the channel the message to delete belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// Key that uniquely defines the message to delete.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteMessageOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sid of the Service this message belongs to. </param>
-        /// <param name="pathChannelSid"> Key that uniquely defines the channel this message belongs to. </param>
-        /// <param name="pathSid"> Key that uniquely defines the message to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathChannelSid"> The unique ID of the channel the message to delete belongs to </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteMessageOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -246,48 +246,48 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class UpdateMessageOptions : IOptions<MessageResource> 
     {
         /// <summary>
-        /// Sid of the Service this message belongs to.
+        /// The SID of the Service to update the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Key that uniquely defines the channel this message belongs to.
+        /// The unique ID of the Channel the message belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// Key that uniquely defines the message to update.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The message body string.
+        /// The message to send to the channel
         /// </summary>
         public string Body { get; set; }
         /// <summary>
-        /// The attributes metadata field you can use to store any data you wish.
+        /// A valid JSON string that contains application-specific data
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The ISO8601 time specifying the datetime the Message should be set as being created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The ISO8601 time specifying the datetime the Message should be set as having been last updated.
+        /// The ISO 8601 date and time in GMT when the resource was updated
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// Specify the Identity of the User that last updated the Message
+        /// The Identity of the User who last updated the Message, if applicable
         /// </summary>
         public string LastUpdatedBy { get; set; }
         /// <summary>
-        /// The identity of the message's author.
+        /// The identity of the message's author
         /// </summary>
         public string From { get; set; }
 
         /// <summary>
         /// Construct a new UpdateMessageOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sid of the Service this message belongs to. </param>
-        /// <param name="pathChannelSid"> Key that uniquely defines the channel this message belongs to. </param>
-        /// <param name="pathSid"> Key that uniquely defines the message to update. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathChannelSid"> The unique ID of the Channel the message belongs to </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateMessageOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

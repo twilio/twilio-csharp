@@ -18,23 +18,23 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
     public class ReadUserBindingOptions : ReadOptions<UserBindingResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to read the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The user_sid
+        /// The SID of the User of the User Bindings to read
         /// </summary>
         public string PathUserSid { get; }
         /// <summary>
-        /// The push technology used for the bindings returned.
+        /// The push technology used by the User Binding resources to read
         /// </summary>
         public List<UserBindingResource.BindingTypeEnum> BindingType { get; set; }
 
         /// <summary>
         /// Construct a new ReadUserBindingOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resource from </param>
+        /// <param name="pathUserSid"> The SID of the User of the User Bindings to read </param>
         public ReadUserBindingOptions(string pathServiceSid, string pathUserSid)
         {
             PathServiceSid = pathServiceSid;
@@ -68,24 +68,24 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
     public class FetchUserBindingOptions : IOptions<UserBindingResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The user_sid
+        /// The SID of the User for the binding
         /// </summary>
         public string PathUserSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchUserBindingOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathUserSid"> The user_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathUserSid"> The SID of the User for the binding </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchUserBindingOptions(string pathServiceSid, string pathUserSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -109,24 +109,24 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
     public class DeleteUserBindingOptions : IOptions<UserBindingResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to delete the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The user_sid
+        /// The SID of the User of the User Bindings to delete
         /// </summary>
         public string PathUserSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteUserBindingOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathUserSid"> The user_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathUserSid"> The SID of the User of the User Bindings to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteUserBindingOptions(string pathServiceSid, string pathUserSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

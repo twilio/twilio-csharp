@@ -94,7 +94,6 @@ namespace Twilio.Rest.Verify.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="to"> To phonenumber </param>
         /// <param name="channel"> sms or call </param>
-        /// <param name="customMessage"> A custom message for this verification </param>
         /// <param name="sendDigits"> Digits to send when a phone call is started </param>
         /// <param name="locale"> Locale used in the sms or call. </param>
         /// <param name="customCode"> A pre-generated code </param>
@@ -105,7 +104,6 @@ namespace Twilio.Rest.Verify.V1.Service
         public static VerificationResource Create(string pathServiceSid, 
                                                   string to, 
                                                   string channel, 
-                                                  string customMessage = null, 
                                                   string sendDigits = null, 
                                                   string locale = null, 
                                                   string customCode = null, 
@@ -113,7 +111,7 @@ namespace Twilio.Rest.Verify.V1.Service
                                                   string payee = null, 
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee};
             return Create(options, client);
         }
 
@@ -124,7 +122,6 @@ namespace Twilio.Rest.Verify.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="to"> To phonenumber </param>
         /// <param name="channel"> sms or call </param>
-        /// <param name="customMessage"> A custom message for this verification </param>
         /// <param name="sendDigits"> Digits to send when a phone call is started </param>
         /// <param name="locale"> Locale used in the sms or call. </param>
         /// <param name="customCode"> A pre-generated code </param>
@@ -135,7 +132,6 @@ namespace Twilio.Rest.Verify.V1.Service
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid, 
                                                                                           string to, 
                                                                                           string channel, 
-                                                                                          string customMessage = null, 
                                                                                           string sendDigits = null, 
                                                                                           string locale = null, 
                                                                                           string customCode = null, 
@@ -143,7 +139,7 @@ namespace Twilio.Rest.Verify.V1.Service
                                                                                           string payee = null, 
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee};
             return await CreateAsync(options, client);
         }
         #endif

@@ -18,24 +18,24 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class FetchMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
-        /// Sid of the Service this member belongs to.
+        /// The SID of the Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Key that uniquely defines the channel this member belongs to.
+        /// The unique ID of the channel the member belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// Key that uniquely defines the member to fetch.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
-        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
-        /// <param name="pathSid"> Key that uniquely defines the member to fetch. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -59,49 +59,48 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class CreateMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
-        /// Sid of the Service this member belongs to.
+        /// The SID of the Service to create the resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Key that uniquely defines the channel this member belongs to.
+        /// The unique ID of the channel the new member belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// A unique string identifier for this User in this Service. See the access tokens docs for more details.
+        /// The `identity` value that identifies the new resource's User
         /// </summary>
         public string Identity { get; }
         /// <summary>
-        /// The role to be assigned to this member. Defaults to the roles specified on the Service.
+        /// The SID of the Role to assign to the member
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
-        /// Field used to specify the last consumed Message index for the Channel for this Member.  Should only be used when recreating a Member from a backup/separate source.
+        /// The index of the last Message in the Channel the Member has read
         /// </summary>
         public int? LastConsumedMessageIndex { get; set; }
         /// <summary>
-        /// ISO8601 time indicating the last datetime the Member consumed a Message in the Channel.  Should only be used when recreating a Member from a backup/separate source
+        /// The ISO 8601 based timestamp string representing the date-time of the last Message read event for the Member within the Channel
         /// </summary>
         public DateTime? LastConsumptionTimestamp { get; set; }
         /// <summary>
-        /// The ISO8601 time specifying the datetime the Members should be set as being created.  Will be set to the current time by the Chat service if not specified.  Note that this should only be used in cases where a Member is being recreated from a backup/separate source
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The ISO8601 time specifying the datetime the Member should be set as having been last updated.  Will be set to the null by the Chat service if not specified.  Note that this should only be used in cases where a Member is being recreated from a backup/separate source  and where a Member was previously updated.
+        /// The ISO 8601 date and time in GMT when the resource was updated
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// An optional string metadata field you can use to store any data you wish.
+        /// A valid JSON string that contains application-specific data
         /// </summary>
         public string Attributes { get; set; }
 
         /// <summary>
         /// Construct a new CreateMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
-        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
-        /// <param name="identity"> A unique string identifier for this User in this Service. See the access tokens docs for
-        ///                more details. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="pathChannelSid"> The unique ID of the channel the new member belongs to </param>
+        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
         public CreateMemberOptions(string pathServiceSid, string pathChannelSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -160,23 +159,23 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class ReadMemberOptions : ReadOptions<MemberResource> 
     {
         /// <summary>
-        /// Sid of the Service this member belongs to.
+        /// The SID of the Service to read the resources from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Key that uniquely defines the channel this member belongs to.
+        /// The unique ID of the channel the member belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// A unique string identifier for this User in this Service. See the access tokens docs for more details.
+        /// The `identity` value of the resources to read
         /// </summary>
         public List<string> Identity { get; set; }
 
         /// <summary>
         /// Construct a new ReadMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
-        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
         public ReadMemberOptions(string pathServiceSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -210,24 +209,24 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class DeleteMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
-        /// Sid of the Service this member belongs to.
+        /// The SID of the Service to delete the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Key that uniquely defines the channel this member belongs to.
+        /// The unique ID of the channel the message to delete belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// Key that uniquely defines the member to delete.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
-        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
-        /// <param name="pathSid"> Key that uniquely defines the member to delete. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathChannelSid"> The unique ID of the channel the message to delete belongs to </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -251,48 +250,48 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     public class UpdateMemberOptions : IOptions<MemberResource> 
     {
         /// <summary>
-        /// Sid of the Service this member belongs to.
+        /// The SID of the Service to create the resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Key that uniquely defines the channel this member belongs to.
+        /// The unique ID of the channel the member to update belongs to
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// Key that uniquely defines the member to update.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The role to be assigned to this member.
+        /// The SID of the Role to assign to the member
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
-        /// Field used to specify the last consumed Message index for the Channel for this Member.
+        /// The index of the last consumed Message for the Channel for the Member
         /// </summary>
         public int? LastConsumedMessageIndex { get; set; }
         /// <summary>
-        /// ISO8601 time indicating the last datetime the Member consumed a Message in the Channel.
+        /// The ISO 8601 based timestamp string representing the date-time of the last Message read event for the Member within the Channel
         /// </summary>
         public DateTime? LastConsumptionTimestamp { get; set; }
         /// <summary>
-        /// The ISO8601 time specifying the datetime the Members should be set as being created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The ISO8601 time specifying the datetime the Member should be set as having been last updated.
+        /// The ISO 8601 date and time in GMT when the resource was updated
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// An optional string metadata field you can use to store any data you wish.
+        /// A valid JSON string that contains application-specific data
         /// </summary>
         public string Attributes { get; set; }
 
         /// <summary>
         /// Construct a new UpdateMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sid of the Service this member belongs to. </param>
-        /// <param name="pathChannelSid"> Key that uniquely defines the channel this member belongs to. </param>
-        /// <param name="pathSid"> Key that uniquely defines the member to update. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="pathChannelSid"> The unique ID of the channel the member to update belongs to </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

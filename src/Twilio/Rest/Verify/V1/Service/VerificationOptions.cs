@@ -31,10 +31,6 @@ namespace Twilio.Rest.Verify.V1.Service
         /// </summary>
         public string Channel { get; }
         /// <summary>
-        /// A custom message for this verification
-        /// </summary>
-        public string CustomMessage { get; set; }
-        /// <summary>
         /// Digits to send when a phone call is started
         /// </summary>
         public string SendDigits { get; set; }
@@ -82,11 +78,6 @@ namespace Twilio.Rest.Verify.V1.Service
             if (Channel != null)
             {
                 p.Add(new KeyValuePair<string, string>("Channel", Channel));
-            }
-
-            if (CustomMessage != null)
-            {
-                p.Add(new KeyValuePair<string, string>("CustomMessage", CustomMessage));
             }
 
             if (SendDigits != null)

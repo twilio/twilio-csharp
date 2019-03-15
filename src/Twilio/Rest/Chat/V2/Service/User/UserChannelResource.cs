@@ -95,8 +95,8 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <summary>
         /// List all Channels for a given User.
         /// </summary>
-        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
-        /// <param name="pathUserSid"> The unique id of a User. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -115,8 +115,8 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <summary>
         /// List all Channels for a given User.
         /// </summary>
-        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
-        /// <param name="pathUserSid"> The unique id of a User. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -234,9 +234,9 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
-        /// <param name="pathUserSid"> The unique id of a User. </param>
-        /// <param name="pathChannelSid"> The unique id of a Channel. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the User Channel resource from </param>
+        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resource from </param>
+        /// <param name="pathChannelSid"> The SID of the Channel that has the User Channel to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserChannel </returns> 
         public static UserChannelResource Fetch(string pathServiceSid, 
@@ -252,9 +252,9 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
-        /// <param name="pathUserSid"> The unique id of a User. </param>
-        /// <param name="pathChannelSid"> The unique id of a Channel. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the User Channel resource from </param>
+        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resource from </param>
+        /// <param name="pathChannelSid"> The SID of the Channel that has the User Channel to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns> 
         public static async System.Threading.Tasks.Task<UserChannelResource> FetchAsync(string pathServiceSid, 
@@ -310,10 +310,10 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
-        /// <param name="pathUserSid"> The unique id of a User. </param>
-        /// <param name="pathChannelSid"> The unique id of a Channel. </param>
-        /// <param name="notificationLevel"> Push notification level to be assigned to Channel of the User. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathUserSid"> The SID of the User to update the User Channel resource from </param>
+        /// <param name="pathChannelSid"> The SID of the Channel with the User Channel resource to update </param>
+        /// <param name="notificationLevel"> The push notification level to assign to the User Channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserChannel </returns> 
         public static UserChannelResource Update(string pathServiceSid, 
@@ -330,10 +330,10 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The unique id of the Service those channels belong to. </param>
-        /// <param name="pathUserSid"> The unique id of a User. </param>
-        /// <param name="pathChannelSid"> The unique id of a Channel. </param>
-        /// <param name="notificationLevel"> Push notification level to be assigned to Channel of the User. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathUserSid"> The SID of the User to update the User Channel resource from </param>
+        /// <param name="pathChannelSid"> The SID of the Channel with the User Channel resource to update </param>
+        /// <param name="notificationLevel"> The push notification level to assign to the User Channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns> 
         public static async System.Threading.Tasks.Task<UserChannelResource> UpdateAsync(string pathServiceSid, 
@@ -366,58 +366,58 @@ namespace Twilio.Rest.Chat.V2.Service.User
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this channel.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique id of the Service this channel belongs to.
+        /// The SID of the Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The unique id of a Channel.
+        /// The SID of the Channel the resource belongs to
         /// </summary>
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
         /// <summary>
-        /// The unique id of the User this Channel belongs to.
+        /// The SID of the User the User Channel belongs to
         /// </summary>
         [JsonProperty("user_sid")]
         public string UserSid { get; private set; }
         /// <summary>
-        /// The unique id of this User as a Member in this Channel.
+        /// The SID of the User as a Member in the Channel
         /// </summary>
         [JsonProperty("member_sid")]
         public string MemberSid { get; private set; }
         /// <summary>
-        /// The status of the User on this Channel.
+        /// The status of the User on the Channel
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public UserChannelResource.ChannelStatusEnum Status { get; private set; }
         /// <summary>
-        /// The index of the last read Message in this Channel for this User.
+        /// The index of the last Message in the Channel the Member has read
         /// </summary>
         [JsonProperty("last_consumed_message_index")]
         public int? LastConsumedMessageIndex { get; private set; }
         /// <summary>
-        /// The count of unread Messages in this Channel for this User.
+        /// The number of unread Messages in the Channel for the User
         /// </summary>
         [JsonProperty("unread_messages_count")]
         public int? UnreadMessagesCount { get; private set; }
         /// <summary>
-        /// The links
+        /// Absolute URLs to access the Members, Messages , Invites and, if it exists, the last Message for the Channel
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// An absolute URL for this User Channel.
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The notification level of the User for this Channel.
+        /// The push notification level of the User for the Channel
         /// </summary>
         [JsonProperty("notification_level")]
         [JsonConverter(typeof(StringEnumConverter))]

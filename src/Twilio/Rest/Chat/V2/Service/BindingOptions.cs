@@ -18,22 +18,22 @@ namespace Twilio.Rest.Chat.V2.Service
     public class ReadBindingOptions : ReadOptions<BindingResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to read the resources from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The push technology used for the bindings returned.
+        /// The push technology used by the Binding resources to read
         /// </summary>
         public List<BindingResource.BindingTypeEnum> BindingType { get; set; }
         /// <summary>
-        /// The identity
+        /// The `identity` value of the resources to read
         /// </summary>
         public List<string> Identity { get; set; }
 
         /// <summary>
         /// Construct a new ReadBindingOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         public ReadBindingOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -72,19 +72,19 @@ namespace Twilio.Rest.Chat.V2.Service
     public class FetchBindingOptions : IOptions<BindingResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchBindingOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchBindingOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -107,19 +107,19 @@ namespace Twilio.Rest.Chat.V2.Service
     public class DeleteBindingOptions : IOptions<BindingResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to delete the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteBindingOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteBindingOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
