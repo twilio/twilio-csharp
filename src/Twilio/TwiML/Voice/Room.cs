@@ -8,13 +8,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Room TwiML Noun
     /// </summary>
-    public class Room : TwiML 
+    public class Room : TwiML
     {
         /// <summary>
         /// Room name
@@ -52,7 +52,7 @@ namespace Twilio.TwiML.Voice
             var attributes = new List<XAttribute>();
             if (this.Participantidentity != null)
             {
-                attributes.Add(new XAttribute("participantidentity", this.Participantidentity));
+                attributes.Add(new XAttribute("participantIdentity", this.Participantidentity));
             }
             return attributes;
         }
