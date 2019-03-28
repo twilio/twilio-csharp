@@ -12,30 +12,29 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Voice.V1.VoicePermission;
+using Twilio.Rest.Voice.V1.DialingPermissions.Country;
 
-namespace Twilio.Tests.Rest.Voice.V1.VoicePermission 
+namespace Twilio.Tests.Rest.Voice.V1.DialingPermissions.Country 
 {
 
     [TestFixture]
-    public class BulkCountryUpdateTest : TwilioTest 
+    public class HighriskSpecialPrefixTest : TwilioTest 
     {
         [Test]
-        public void TestCreateRequest()
+        public void TestReadRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
-                HttpMethod.Post,
+                HttpMethod.Get,
                 Twilio.Rest.Domain.Voice,
-                "/v1/DialingPermissions/BulkCountryUpdates",
+                "/v1/DialingPermissions/Countries/US/HighRiskSpecialPrefixes",
                 ""
             );
-            request.AddPostParam("UpdateRequest", Serialize("updateRequest"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                BulkCountryUpdateResource.Create("updateRequest", client: twilioRestClient);
+                HighriskSpecialPrefixResource.Read("US", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -43,17 +42,17 @@ namespace Twilio.Tests.Rest.Voice.V1.VoicePermission
         }
 
         [Test]
-        public void TestCreateResponse()
+        public void TestReadLvResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
-                                         System.Net.HttpStatusCode.Created,
-                                         "{\"update_count\": 1,\"update_request\": \"accepted\"}"
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"content\": [{\"prefix\": \"+37181\"},{\"prefix\": \"+3719000\"}],\"meta\": {\"first_page_url\": \"https://voice.twilio.com/v1/DialingPermissions/Countries/LV/HighRiskSpecialPrefixes?PageSize=50&Page=0\",\"key\": \"content\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://voice.twilio.com/v1/DialingPermissions/Countries/LV/HighRiskSpecialPrefixes?PageSize=50&Page=0\"}}"
                                      ));
 
-            var response = BulkCountryUpdateResource.Create("updateRequest", client: twilioRestClient);
+            var response = HighriskSpecialPrefixResource.Read("US", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

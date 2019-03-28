@@ -134,7 +134,7 @@ namespace Twilio.Rest.Api.V2010.Account
     public class ReadQueueOptions : ReadOptions<QueueResource> 
     {
         /// <summary>
-        /// The SID of the Account that created the resource(s) to read
+        /// The unique id of the Account responsible for creating this Call
         /// </summary>
         public string PathAccountSid { get; set; }
 

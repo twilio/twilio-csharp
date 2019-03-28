@@ -33,7 +33,7 @@ namespace Twilio.Rest.Pricing.V2.Voice
         }
 
         /// <summary>
-        /// Fetch a pricing for a specific destination and, optionally, origination phone number.
+        /// Fetch pricing information for a specific destination and, optionally, origination phone number.
         /// </summary>
         /// <param name="options"> Fetch Number parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Pricing.V2.Voice
 
         #if !NET35
         /// <summary>
-        /// Fetch a pricing for a specific destination and, optionally, origination phone number.
+        /// Fetch pricing information for a specific destination and, optionally, origination phone number.
         /// </summary>
         /// <param name="options"> Fetch Number parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -62,10 +62,10 @@ namespace Twilio.Rest.Pricing.V2.Voice
         #endif
 
         /// <summary>
-        /// Fetch a pricing for a specific destination and, optionally, origination phone number.
+        /// Fetch pricing information for a specific destination and, optionally, origination phone number.
         /// </summary>
-        /// <param name="pathDestinationNumber"> Fetches voice prices for number </param>
-        /// <param name="originationNumber"> The origination_number </param>
+        /// <param name="pathDestinationNumber"> The destination number for which to fetch pricing information </param>
+        /// <param name="originationNumber"> The origination number for which to fetch pricing information </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Number </returns> 
         public static NumberResource Fetch(Types.PhoneNumber pathDestinationNumber, 
@@ -78,10 +78,10 @@ namespace Twilio.Rest.Pricing.V2.Voice
 
         #if !NET35
         /// <summary>
-        /// Fetch a pricing for a specific destination and, optionally, origination phone number.
+        /// Fetch pricing information for a specific destination and, optionally, origination phone number.
         /// </summary>
-        /// <param name="pathDestinationNumber"> Fetches voice prices for number </param>
-        /// <param name="originationNumber"> The origination_number </param>
+        /// <param name="pathDestinationNumber"> The destination number for which to fetch pricing information </param>
+        /// <param name="originationNumber"> The origination number for which to fetch pricing information </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Number </returns> 
         public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(Types.PhoneNumber pathDestinationNumber, 
@@ -112,19 +112,19 @@ namespace Twilio.Rest.Pricing.V2.Voice
         }
 
         /// <summary>
-        /// The destination phone number, in E.164
+        /// The destination phone number, in E.164 format
         /// </summary>
         [JsonProperty("destination_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber DestinationNumber { get; private set; }
         /// <summary>
-        /// The origination phone number, in E.164
+        /// The origination phone number, in E.164 format
         /// </summary>
         [JsonProperty("origination_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber OriginationNumber { get; private set; }
         /// <summary>
-        /// Name of the country
+        /// The name of the country
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; private set; }
@@ -134,22 +134,22 @@ namespace Twilio.Rest.Pricing.V2.Voice
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
         /// <summary>
-        /// List of OutboundCallPriceWithOrigin records
+        /// The list of OutboundCallPriceWithOrigin records
         /// </summary>
         [JsonProperty("outbound_call_prices")]
         public List<OutboundCallPriceWithOrigin> OutboundCallPrices { get; private set; }
         /// <summary>
-        /// List of InboundCallPrice records
+        /// The InboundCallPrice record
         /// </summary>
         [JsonProperty("inbound_call_price")]
         public InboundCallPrice InboundCallPrice { get; private set; }
         /// <summary>
-        /// The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy).
+        /// The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy)
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

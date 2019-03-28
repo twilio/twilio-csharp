@@ -78,11 +78,11 @@ namespace Twilio.Rest.Lookups.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathPhoneNumber"> The phone_number </param>
-        /// <param name="countryCode"> Optional ISO country code of the phone number. </param>
-        /// <param name="type"> Indicates the type of information you would like returned with your request. </param>
-        /// <param name="addOns"> Indicates the particular Add-on you would like to use to get more information. </param>
-        /// <param name="addOnsData"> The add_ons_data </param>
+        /// <param name="pathPhoneNumber"> The phone number to fetch in E.164 format </param>
+        /// <param name="countryCode"> The ISO country code of the phone number </param>
+        /// <param name="type"> The type of information to return </param>
+        /// <param name="addOns"> The unique_name of an Add-on you would like to invoke </param>
+        /// <param name="addOnsData"> Data specific to the add-on you would like to invoke </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
         public static PhoneNumberResource Fetch(Types.PhoneNumber pathPhoneNumber, 
@@ -100,11 +100,11 @@ namespace Twilio.Rest.Lookups.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathPhoneNumber"> The phone_number </param>
-        /// <param name="countryCode"> Optional ISO country code of the phone number. </param>
-        /// <param name="type"> Indicates the type of information you would like returned with your request. </param>
-        /// <param name="addOns"> Indicates the particular Add-on you would like to use to get more information. </param>
-        /// <param name="addOnsData"> The add_ons_data </param>
+        /// <param name="pathPhoneNumber"> The phone number to fetch in E.164 format </param>
+        /// <param name="countryCode"> The ISO country code of the phone number </param>
+        /// <param name="type"> The type of information to return </param>
+        /// <param name="addOns"> The unique_name of an Add-on you would like to invoke </param>
+        /// <param name="addOnsData"> Data specific to the add-on you would like to invoke </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, 
@@ -138,38 +138,38 @@ namespace Twilio.Rest.Lookups.V1
         }
 
         /// <summary>
-        /// String indicating the name of the owner of the phone number.
+        /// The name of the phone number's owner
         /// </summary>
         [JsonProperty("caller_name")]
         public Dictionary<string, string> CallerName { get; private set; }
         /// <summary>
-        /// The ISO country code for the phone number.
+        /// The ISO country code for the phone number
         /// </summary>
         [JsonProperty("country_code")]
         public string CountryCode { get; private set; }
         /// <summary>
-        /// The phone number, in E.
+        /// The phone number in E.164 format
         /// </summary>
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
         /// <summary>
-        /// The phone number, in national format.
+        /// The phone number, in national format
         /// </summary>
         [JsonProperty("national_format")]
         public string NationalFormat { get; private set; }
         /// <summary>
-        /// The carrier
+        /// The telecom company that provides the phone number
         /// </summary>
         [JsonProperty("carrier")]
         public Dictionary<string, string> Carrier { get; private set; }
         /// <summary>
-        /// Results of any Add-ons you have specified using the AddOn parameter in the request, as a JSON dictionary.
+        /// A JSON string with the results of the Add-ons you specified
         /// </summary>
         [JsonProperty("add_ons")]
         public object AddOns { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -18,7 +18,7 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Voice.V1.VoicePermission 
+namespace Twilio.Rest.Voice.V1.DialingPermissions 
 {
 
     public class CountryResource : Resource 

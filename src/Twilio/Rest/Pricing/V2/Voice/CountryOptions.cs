@@ -37,14 +37,14 @@ namespace Twilio.Rest.Pricing.V2.Voice
     public class FetchCountryOptions : IOptions<CountryResource> 
     {
         /// <summary>
-        /// Fetches voice prices for country
+        /// The ISO country code of the pricing information to fetch
         /// </summary>
         public string PathIsoCountry { get; }
 
         /// <summary>
         /// Construct a new FetchCountryOptions
         /// </summary>
-        /// <param name="pathIsoCountry"> Fetches voice prices for country </param>
+        /// <param name="pathIsoCountry"> The ISO country code of the pricing information to fetch </param>
         public FetchCountryOptions(string pathIsoCountry)
         {
             PathIsoCountry = pathIsoCountry;

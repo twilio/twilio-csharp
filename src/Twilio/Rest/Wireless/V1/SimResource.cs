@@ -40,6 +40,18 @@ namespace Twilio.Rest.Wireless.V1
             public static readonly StatusEnum Updating = new StatusEnum("updating");
         }
 
+        public sealed class ResetStatusEnum : StringEnum 
+        {
+            private ResetStatusEnum(string value) : base(value) {}
+            public ResetStatusEnum() {}
+            public static implicit operator ResetStatusEnum(string value)
+            {
+                return new ResetStatusEnum(value);
+            }
+
+            public static readonly ResetStatusEnum Resetting = new ResetStatusEnum("resetting");
+        }
+
         private static Request BuildFetchRequest(FetchSimOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -327,6 +339,7 @@ namespace Twilio.Rest.Wireless.V1
         ///                        TwiML requested by voice_url. </param>
         /// <param name="voiceMethod"> The HTTP method Twilio will use when requesting the above Url. </param>
         /// <param name="voiceUrl"> The URL Twilio will request when the SIM-connected device makes a call. </param>
+        /// <param name="resetStatus"> Initiate a connectivity reset on a Sim. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sim </returns> 
         public static SimResource Update(string pathSid, 
@@ -346,9 +359,10 @@ namespace Twilio.Rest.Wireless.V1
                                          Uri voiceFallbackUrl = null, 
                                          Twilio.Http.HttpMethod voiceMethod = null, 
                                          Uri voiceUrl = null, 
+                                         SimResource.ResetStatusEnum resetStatus = null, 
                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl};
+            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, ResetStatus = resetStatus};
             return Update(options, client);
         }
 
@@ -378,6 +392,7 @@ namespace Twilio.Rest.Wireless.V1
         ///                        TwiML requested by voice_url. </param>
         /// <param name="voiceMethod"> The HTTP method Twilio will use when requesting the above Url. </param>
         /// <param name="voiceUrl"> The URL Twilio will request when the SIM-connected device makes a call. </param>
+        /// <param name="resetStatus"> Initiate a connectivity reset on a Sim. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns> 
         public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(string pathSid, 
@@ -397,9 +412,10 @@ namespace Twilio.Rest.Wireless.V1
                                                                                  Uri voiceFallbackUrl = null, 
                                                                                  Twilio.Http.HttpMethod voiceMethod = null, 
                                                                                  Uri voiceUrl = null, 
+                                                                                 SimResource.ResetStatusEnum resetStatus = null, 
                                                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl};
+            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, ResetStatus = resetStatus};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -529,6 +545,12 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public SimResource.StatusEnum Status { get; private set; }
+        /// <summary>
+        /// A string representing the connectivity reset status of the Sim.
+        /// </summary>
+        [JsonProperty("reset_status")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public SimResource.ResetStatusEnum ResetStatus { get; private set; }
         /// <summary>
         /// The URL that will receive a webhook when this Sim originates a machine-to-machine Command.
         /// </summary>

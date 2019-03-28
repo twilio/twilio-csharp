@@ -62,6 +62,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public int? ValidityPeriod { get; set; }
         /// <summary>
+        /// Reserved
+        /// </summary>
+        public bool? ForceDelivery { get; set; }
+        /// <summary>
         /// Whether to detect Unicode characters that have a similar GSM-7 character and replace them
         /// </summary>
         public bool? SmartEncoded { get; set; }
@@ -138,6 +142,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (ValidityPeriod != null)
             {
                 p.Add(new KeyValuePair<string, string>("ValidityPeriod", ValidityPeriod.ToString()));
+            }
+
+            if (ForceDelivery != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ForceDelivery", ForceDelivery.Value.ToString().ToLower()));
             }
 
             if (SmartEncoded != null)

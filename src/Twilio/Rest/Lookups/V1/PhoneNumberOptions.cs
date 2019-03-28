@@ -18,30 +18,30 @@ namespace Twilio.Rest.Lookups.V1
     public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>
-        /// The phone_number
+        /// The phone number to fetch in E.164 format
         /// </summary>
         public Types.PhoneNumber PathPhoneNumber { get; }
         /// <summary>
-        /// Optional ISO country code of the phone number.
+        /// The ISO country code of the phone number
         /// </summary>
         public string CountryCode { get; set; }
         /// <summary>
-        /// Indicates the type of information you would like returned with your request.
+        /// The type of information to return
         /// </summary>
         public List<string> Type { get; set; }
         /// <summary>
-        /// Indicates the particular Add-on you would like to use to get more information.
+        /// The unique_name of an Add-on you would like to invoke
         /// </summary>
         public List<string> AddOns { get; set; }
         /// <summary>
-        /// The add_ons_data
+        /// Data specific to the add-on you would like to invoke
         /// </summary>
         public Dictionary<string, object> AddOnsData { get; set; }
 
         /// <summary>
         /// Construct a new FetchPhoneNumberOptions
         /// </summary>
-        /// <param name="pathPhoneNumber"> The phone_number </param>
+        /// <param name="pathPhoneNumber"> The phone number to fetch in E.164 format </param>
         public FetchPhoneNumberOptions(Types.PhoneNumber pathPhoneNumber)
         {
             PathPhoneNumber = pathPhoneNumber;

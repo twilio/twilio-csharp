@@ -179,6 +179,10 @@ namespace Twilio.Rest.Wireless.V1
         /// The URL Twilio will request when the SIM-connected device makes a call.
         /// </summary>
         public Uri VoiceUrl { get; set; }
+        /// <summary>
+        /// Initiate a connectivity reset on a Sim.
+        /// </summary>
+        public SimResource.ResetStatusEnum ResetStatus { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSimOptions
@@ -273,6 +277,11 @@ namespace Twilio.Rest.Wireless.V1
             if (VoiceUrl != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceUrl", Serializers.Url(VoiceUrl)));
+            }
+
+            if (ResetStatus != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ResetStatus", ResetStatus.ToString()));
             }
 
             return p;

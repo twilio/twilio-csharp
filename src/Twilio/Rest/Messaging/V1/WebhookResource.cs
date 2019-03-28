@@ -17,12 +17,26 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Messaging.V1 
 {
 
     public class WebhookResource : Resource 
     {
+        public sealed class TargetEnum : StringEnum 
+        {
+            private TargetEnum(string value) : base(value) {}
+            public TargetEnum() {}
+            public static implicit operator TargetEnum(string value)
+            {
+                return new TargetEnum(value);
+            }
+
+            public static readonly TargetEnum Webhook = new TargetEnum("webhook");
+            public static readonly TargetEnum Flex = new TargetEnum("flex");
+        }
+
         private static Request BuildFetchRequest(FetchWebhookOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -136,6 +150,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="postWebhookUrl"> The absolute url the post-event webhook request should be sent to. </param>
         /// <param name="preWebhookRetryCount"> The number of retries in case of pre-event webhook request failures. </param>
         /// <param name="postWebhookRetryCount"> The number of retries in case of post-event webhook request failures. </param>
+        /// <param name="target"> The routing target of the webhook. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Webhook </returns> 
         public static WebhookResource Update(string webhookMethod = null, 
@@ -144,9 +159,10 @@ namespace Twilio.Rest.Messaging.V1
                                              string postWebhookUrl = null, 
                                              int? preWebhookRetryCount = null, 
                                              int? postWebhookRetryCount = null, 
+                                             WebhookResource.TargetEnum target = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateWebhookOptions(){WebhookMethod = webhookMethod, WebhookFilters = webhookFilters, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, PreWebhookRetryCount = preWebhookRetryCount, PostWebhookRetryCount = postWebhookRetryCount};
+            var options = new UpdateWebhookOptions(){WebhookMethod = webhookMethod, WebhookFilters = webhookFilters, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, PreWebhookRetryCount = preWebhookRetryCount, PostWebhookRetryCount = postWebhookRetryCount, Target = target};
             return Update(options, client);
         }
 
@@ -160,6 +176,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="postWebhookUrl"> The absolute url the post-event webhook request should be sent to. </param>
         /// <param name="preWebhookRetryCount"> The number of retries in case of pre-event webhook request failures. </param>
         /// <param name="postWebhookRetryCount"> The number of retries in case of post-event webhook request failures. </param>
+        /// <param name="target"> The routing target of the webhook. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns> 
         public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(string webhookMethod = null, 
@@ -168,9 +185,10 @@ namespace Twilio.Rest.Messaging.V1
                                                                                      string postWebhookUrl = null, 
                                                                                      int? preWebhookRetryCount = null, 
                                                                                      int? postWebhookRetryCount = null, 
+                                                                                     WebhookResource.TargetEnum target = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateWebhookOptions(){WebhookMethod = webhookMethod, WebhookFilters = webhookFilters, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, PreWebhookRetryCount = preWebhookRetryCount, PostWebhookRetryCount = postWebhookRetryCount};
+            var options = new UpdateWebhookOptions(){WebhookMethod = webhookMethod, WebhookFilters = webhookFilters, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, PreWebhookRetryCount = preWebhookRetryCount, PostWebhookRetryCount = postWebhookRetryCount, Target = target};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -233,6 +251,12 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         [JsonProperty("post_webhook_retry_count")]
         public int? PostWebhookRetryCount { get; private set; }
+        /// <summary>
+        /// The routing target of the webhook.
+        /// </summary>
+        [JsonProperty("target")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public WebhookResource.TargetEnum Target { get; private set; }
         /// <summary>
         /// An absolute URL for this webhook.
         /// </summary>

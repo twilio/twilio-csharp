@@ -63,7 +63,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <summary>
         /// Fetch a specific member from the queue
         /// </summary>
-        /// <param name="pathQueueSid"> The Queue in which to find the members </param>
+        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
         /// <param name="pathCallSid"> The Call SID of the resource(s) to fetch </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <summary>
         /// Fetch a specific member from the queue
         /// </summary>
-        /// <param name="pathQueueSid"> The Queue in which to find the members </param>
+        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
         /// <param name="pathCallSid"> The Call SID of the resource(s) to fetch </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -139,9 +139,9 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <summary>
         /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
         /// </summary>
-        /// <param name="pathQueueSid"> The Queue in which to find the members </param>
+        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
         /// <param name="pathCallSid"> The Call SID of the resource(s) to update </param>
-        /// <param name="url"> The absolute URL of this Queue resource </param>
+        /// <param name="url"> The absolute URL of the Queue resource </param>
         /// <param name="method"> How to pass the update request data </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -161,9 +161,9 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <summary>
         /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
         /// </summary>
-        /// <param name="pathQueueSid"> The Queue in which to find the members </param>
+        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
         /// <param name="pathCallSid"> The Call SID of the resource(s) to update </param>
-        /// <param name="url"> The absolute URL of this Queue resource </param>
+        /// <param name="url"> The absolute URL of the Queue resource </param>
         /// <param name="method"> How to pass the update request data </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <summary>
         /// Retrieve the members of the queue
         /// </summary>
-        /// <param name="pathQueueSid"> The Queue in which to find members </param>
+        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <summary>
         /// Retrieve the members of the queue
         /// </summary>
-        /// <param name="pathQueueSid"> The Queue in which to find members </param>
+        /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -342,7 +342,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         }
 
         /// <summary>
-        /// The SID of the Call this resource is associated with
+        /// The SID of the Call the resource is associated with
         /// </summary>
         [JsonProperty("call_sid")]
         public string CallSid { get; private set; }
@@ -357,7 +357,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         [JsonProperty("position")]
         public int? Position { get; private set; }
         /// <summary>
-        /// The URI of this resource, relative to `https://api.twilio.com`
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
@@ -366,6 +366,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         [JsonProperty("wait_time")]
         public int? WaitTime { get; private set; }
+        /// <summary>
+        /// The SID of the Queue the member is in
+        /// </summary>
+        [JsonProperty("queue_sid")]
+        public string QueueSid { get; private set; }
 
         private MemberResource()
         {

@@ -67,10 +67,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string SendDigits { get; set; }
         /// <summary>
-        /// Deprecated. Action to take if a machine has answered the call
-        /// </summary>
-        public string IfMachine { get; set; }
-        /// <summary>
         /// Number of seconds to wait for an answer
         /// </summary>
         public int? Timeout { get; set; }
@@ -203,11 +199,6 @@ namespace Twilio.Rest.Api.V2010.Account
             if (SendDigits != null)
             {
                 p.Add(new KeyValuePair<string, string>("SendDigits", SendDigits));
-            }
-
-            if (IfMachine != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IfMachine", IfMachine));
             }
 
             if (Timeout != null)

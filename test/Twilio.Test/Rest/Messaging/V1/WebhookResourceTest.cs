@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Messaging.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"pre_webhook_url\": \"http://pre.url\",\"post_webhook_url\": \"http://post.url\",\"webhook_method\": \"GET\",\"webhook_filters\": [\"onMessageSend\",\"onSessionAdded\"],\"pre_webhook_retry_count\": 1,\"post_webhook_retry_count\": 2,\"url\": \"https://messaging.twilio.com/v1/Sessions/Webhooks\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"pre_webhook_url\": \"http://pre.url\",\"post_webhook_url\": \"http://post.url\",\"webhook_method\": \"GET\",\"webhook_filters\": [\"onMessageSend\",\"onSessionAdded\"],\"pre_webhook_retry_count\": 1,\"post_webhook_retry_count\": 2,\"target\": \"http\",\"url\": \"https://messaging.twilio.com/v1/Sessions/Webhooks\"}"
                                      ));
 
             var response = WebhookResource.Fetch(client: twilioRestClient);
@@ -85,7 +85,7 @@ namespace Twilio.Tests.Rest.Messaging.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"pre_webhook_url\": \"http://pre.url\",\"post_webhook_url\": \"http://post.url\",\"webhook_method\": \"GET\",\"webhook_filters\": [\"onSessionAdded\"],\"pre_webhook_retry_count\": 1,\"post_webhook_retry_count\": 2,\"url\": \"https://messaging.twilio.com/v1/Sessions/Webhooks\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"pre_webhook_url\": \"http://pre.url\",\"post_webhook_url\": \"http://post.url\",\"webhook_method\": \"GET\",\"webhook_filters\": [\"onSessionAdded\"],\"pre_webhook_retry_count\": 1,\"post_webhook_retry_count\": 2,\"target\": \"flex\",\"url\": \"https://messaging.twilio.com/v1/Sessions/Webhooks\"}"
                                      ));
 
             var response = WebhookResource.Update(client: twilioRestClient);

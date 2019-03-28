@@ -17,14 +17,14 @@ namespace Twilio.Rest.Pricing.V1.Voice
     public class FetchNumberOptions : IOptions<NumberResource> 
     {
         /// <summary>
-        /// The number
+        /// The phone number to fetch
         /// </summary>
         public Types.PhoneNumber PathNumber { get; }
 
         /// <summary>
         /// Construct a new FetchNumberOptions
         /// </summary>
-        /// <param name="pathNumber"> The number </param>
+        /// <param name="pathNumber"> The phone number to fetch </param>
         public FetchNumberOptions(Types.PhoneNumber pathNumber)
         {
             PathNumber = pathNumber;

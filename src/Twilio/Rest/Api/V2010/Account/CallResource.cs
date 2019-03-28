@@ -123,7 +123,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackEvent"> The call progress events that we send to the `status_callback` URL. </param>
         /// <param name="statusCallbackMethod"> HTTP Method to use with status_callback </param>
         /// <param name="sendDigits"> The digits to dial after connecting to the number </param>
-        /// <param name="ifMachine"> Deprecated. Action to take if a machine has answered the call </param>
         /// <param name="timeout"> Number of seconds to wait for an answer </param>
         /// <param name="record"> Whether or not to record the call </param>
         /// <param name="recordingChannels"> The number of channels in the final recording </param>
@@ -158,7 +157,6 @@ namespace Twilio.Rest.Api.V2010.Account
                                           List<string> statusCallbackEvent = null, 
                                           Twilio.Http.HttpMethod statusCallbackMethod = null, 
                                           string sendDigits = null, 
-                                          string ifMachine = null, 
                                           int? timeout = null, 
                                           bool? record = null, 
                                           string recordingChannels = null, 
@@ -176,7 +174,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           int? machineDetectionSilenceTimeout = null, 
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout};
             return Create(options, client);
         }
 
@@ -196,7 +194,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackEvent"> The call progress events that we send to the `status_callback` URL. </param>
         /// <param name="statusCallbackMethod"> HTTP Method to use with status_callback </param>
         /// <param name="sendDigits"> The digits to dial after connecting to the number </param>
-        /// <param name="ifMachine"> Deprecated. Action to take if a machine has answered the call </param>
         /// <param name="timeout"> Number of seconds to wait for an answer </param>
         /// <param name="record"> Whether or not to record the call </param>
         /// <param name="recordingChannels"> The number of channels in the final recording </param>
@@ -231,7 +228,6 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   List<string> statusCallbackEvent = null, 
                                                                                   Twilio.Http.HttpMethod statusCallbackMethod = null, 
                                                                                   string sendDigits = null, 
-                                                                                  string ifMachine = null, 
                                                                                   int? timeout = null, 
                                                                                   bool? record = null, 
                                                                                   string recordingChannels = null, 
@@ -249,7 +245,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   int? machineDetectionSilenceTimeout = null, 
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, IfMachine = ifMachine, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout};
             return await CreateAsync(options, client);
         }
         #endif

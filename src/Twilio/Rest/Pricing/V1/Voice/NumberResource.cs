@@ -64,7 +64,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathNumber"> The number </param>
+        /// <param name="pathNumber"> The phone number to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Number </returns> 
         public static NumberResource Fetch(Types.PhoneNumber pathNumber, ITwilioRestClient client = null)
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathNumber"> The number </param>
+        /// <param name="pathNumber"> The phone number to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Number </returns> 
         public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(Types.PhoneNumber pathNumber, 
@@ -107,13 +107,13 @@ namespace Twilio.Rest.Pricing.V1.Voice
         }
 
         /// <summary>
-        /// The number
+        /// The phone number
         /// </summary>
         [JsonProperty("number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber Number { get; private set; }
         /// <summary>
-        /// Name of the country
+        /// The name of the country
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; private set; }
@@ -123,22 +123,22 @@ namespace Twilio.Rest.Pricing.V1.Voice
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
         /// <summary>
-        /// See OutboundCallPrice record
+        /// The OutboundCallPrice record
         /// </summary>
         [JsonProperty("outbound_call_price")]
         public OutboundCallPrice OutboundCallPrice { get; private set; }
         /// <summary>
-        /// See InboundCallPrice record (returned as null if the Phone Number provided is not a Twilio number owned by this account)
+        /// The InboundCallPrice record
         /// </summary>
         [JsonProperty("inbound_call_price")]
         public InboundCallPrice InboundCallPrice { get; private set; }
         /// <summary>
-        /// The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy).
+        /// The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy)
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

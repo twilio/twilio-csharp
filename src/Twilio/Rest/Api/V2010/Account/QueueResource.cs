@@ -287,7 +287,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of queues belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
+        /// <param name="pathAccountSid"> The unique id of the Account responsible for creating this Call </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Retrieve a list of queues belonging to the account used to make the request
         /// </summary>
-        /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
+        /// <param name="pathAccountSid"> The unique id of the Account responsible for creating this Call </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -518,6 +518,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
+        /// <summary>
+        /// Queue Instance Subresources
+        /// </summary>
+        [JsonProperty("subresource_uris")]
+        public Dictionary<string, string> SubresourceUris { get; private set; }
 
         private QueueResource()
         {

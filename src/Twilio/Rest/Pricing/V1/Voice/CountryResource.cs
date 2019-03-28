@@ -199,7 +199,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathIsoCountry"> The iso_country </param>
+        /// <param name="pathIsoCountry"> The ISO country code </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Country </returns> 
         public static CountryResource Fetch(string pathIsoCountry, ITwilioRestClient client = null)
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathIsoCountry"> The iso_country </param>
+        /// <param name="pathIsoCountry"> The ISO country code </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Country </returns> 
         public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(string pathIsoCountry, 
@@ -242,7 +242,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         }
 
         /// <summary>
-        /// Name of the country
+        /// The name of the country
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; private set; }
@@ -252,22 +252,22 @@ namespace Twilio.Rest.Pricing.V1.Voice
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
         /// <summary>
-        /// The outbound_prefix_prices
+        /// The list of OutboundPrefixPrice records
         /// </summary>
         [JsonProperty("outbound_prefix_prices")]
         public List<OutboundPrefixPrice> OutboundPrefixPrices { get; private set; }
         /// <summary>
-        /// The inbound_call_prices
+        /// The list of InboundCallPrice records
         /// </summary>
         [JsonProperty("inbound_call_prices")]
         public List<InboundCallPrice> InboundCallPrices { get; private set; }
         /// <summary>
-        /// The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy).
+        /// The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy)
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

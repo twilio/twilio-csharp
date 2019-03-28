@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Voice.V1.VoicePermission 
+namespace Twilio.Rest.Voice.V1.DialingPermissions 
 {
 
     /// <summary>

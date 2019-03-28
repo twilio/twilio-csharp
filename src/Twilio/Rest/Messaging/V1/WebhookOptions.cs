@@ -62,6 +62,10 @@ namespace Twilio.Rest.Messaging.V1
         /// The number of retries in case of post-event webhook request failures.
         /// </summary>
         public int? PostWebhookRetryCount { get; set; }
+        /// <summary>
+        /// The routing target of the webhook.
+        /// </summary>
+        public WebhookResource.TargetEnum Target { get; set; }
 
         /// <summary>
         /// Construct a new UpdateWebhookOptions
@@ -105,6 +109,11 @@ namespace Twilio.Rest.Messaging.V1
             if (PostWebhookRetryCount != null)
             {
                 p.Add(new KeyValuePair<string, string>("PostWebhookRetryCount", PostWebhookRetryCount.ToString()));
+            }
+
+            if (Target != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Target", Target.ToString()));
             }
 
             return p;

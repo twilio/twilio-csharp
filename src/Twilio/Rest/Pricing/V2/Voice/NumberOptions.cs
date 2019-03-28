@@ -12,23 +12,23 @@ namespace Twilio.Rest.Pricing.V2.Voice
 {
 
     /// <summary>
-    /// Fetch a pricing for a specific destination and, optionally, origination phone number.
+    /// Fetch pricing information for a specific destination and, optionally, origination phone number.
     /// </summary>
     public class FetchNumberOptions : IOptions<NumberResource> 
     {
         /// <summary>
-        /// Fetches voice prices for number
+        /// The destination number for which to fetch pricing information
         /// </summary>
         public Types.PhoneNumber PathDestinationNumber { get; }
         /// <summary>
-        /// The origination_number
+        /// The origination number for which to fetch pricing information
         /// </summary>
         public Types.PhoneNumber OriginationNumber { get; set; }
 
         /// <summary>
         /// Construct a new FetchNumberOptions
         /// </summary>
-        /// <param name="pathDestinationNumber"> Fetches voice prices for number </param>
+        /// <param name="pathDestinationNumber"> The destination number for which to fetch pricing information </param>
         public FetchNumberOptions(Types.PhoneNumber pathDestinationNumber)
         {
             PathDestinationNumber = pathDestinationNumber;

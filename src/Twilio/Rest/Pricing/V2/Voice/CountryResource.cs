@@ -199,7 +199,7 @@ namespace Twilio.Rest.Pricing.V2.Voice
         /// <summary>
         /// Fetch a specific Country.
         /// </summary>
-        /// <param name="pathIsoCountry"> Fetches voice prices for country </param>
+        /// <param name="pathIsoCountry"> The ISO country code of the pricing information to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Country </returns> 
         public static CountryResource Fetch(string pathIsoCountry, ITwilioRestClient client = null)
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Pricing.V2.Voice
         /// <summary>
         /// Fetch a specific Country.
         /// </summary>
-        /// <param name="pathIsoCountry"> Fetches voice prices for country </param>
+        /// <param name="pathIsoCountry"> The ISO country code of the pricing information to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Country </returns> 
         public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(string pathIsoCountry, 
@@ -242,7 +242,7 @@ namespace Twilio.Rest.Pricing.V2.Voice
         }
 
         /// <summary>
-        /// Name of the country
+        /// The name of the country
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; private set; }
@@ -252,22 +252,22 @@ namespace Twilio.Rest.Pricing.V2.Voice
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
         /// <summary>
-        /// List of OutboundPrefixPriceWithOrigin records
+        /// The list of OutboundPrefixPriceWithOrigin records
         /// </summary>
         [JsonProperty("outbound_prefix_prices")]
         public List<OutboundPrefixPriceWithOrigin> OutboundPrefixPrices { get; private set; }
         /// <summary>
-        /// List of InboundCallPrice records
+        /// The list of InboundCallPrice records
         /// </summary>
         [JsonProperty("inbound_call_prices")]
         public List<InboundCallPrice> InboundCallPrices { get; private set; }
         /// <summary>
-        /// The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy).
+        /// The currency in which prices are measured, in ISO 4127 format (e.g. usd, eur, jpy)
         /// </summary>
         [JsonProperty("price_unit")]
         public string PriceUnit { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
