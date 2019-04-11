@@ -67,11 +67,11 @@ namespace Twilio.Http
             this.LastRequest = request;
             this.LastResponse = null;
             
-            var response = await _httpClient.SendAsync(httpRequest).ConfigureAwait(false);
-            var reader = new StreamReader(await response.Content.ReadAsStreamAsync().ConfigureAwait(false));
-            this.LastResponse = new Response(response.StatusCode, await reader.ReadToEndAsync().ConfigureAwait(false));
-            
-            return this.LastResponse;
+            var httpResponse = await _httpClient.SendAsync(httpRequest).ConfigureAwait(false);
+            var reader = new StreamReader(await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false));
+            var response = new Response(httpResponse.StatusCode, await reader.ReadToEndAsync().ConfigureAwait(false));
+            this.LastResponse = response;
+            return response;
         }
 
         private HttpRequestMessage BuildHttpRequest(Request request)
