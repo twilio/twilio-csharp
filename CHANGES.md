@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2019-04-12] Version 5.28.2
+----------------------------
+**Serverless**
+- Serverless scaffolding
+
+
 [2019-04-12] Version 5.28.1
 ----------------------------
 **Library**
