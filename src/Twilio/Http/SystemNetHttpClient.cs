@@ -66,9 +66,13 @@ namespace Twilio.Http
 
             this.LastRequest = request;
             this.LastResponse = null;
-            
+
             var httpResponse = await _httpClient.SendAsync(httpRequest).ConfigureAwait(false);
             var reader = new StreamReader(await httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false));
+
+            // Create and return a new Response. Keep a reference to the last
+            // response for debugging, but don't return it as it may be shared
+            // among threads.
             var response = new Response(httpResponse.StatusCode, await reader.ReadToEndAsync().ConfigureAwait(false));
             this.LastResponse = response;
             return response;
@@ -77,7 +81,7 @@ namespace Twilio.Http
         private HttpRequestMessage BuildHttpRequest(Request request)
         {
             var httpRequest = new HttpRequestMessage(
-                new System.Net.Http.HttpMethod(request.Method.ToString()), 
+                new System.Net.Http.HttpMethod(request.Method.ToString()),
                 request.ConstructUrl()
             );
 
