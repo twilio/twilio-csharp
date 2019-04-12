@@ -66,10 +66,10 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Add a Phone Number to a Service's Proxy Number Pool.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="sid"> Phone Number Sid of Twilio Number to assign to your Proxy Service </param>
-        /// <param name="phoneNumber"> Twilio Number to assign to your Proxy Service </param>
-        /// <param name="isReserved"> Reserve for manual assignment to participants only. </param>
+        /// <param name="pathServiceSid"> The SID of the resource's parent Service </param>
+        /// <param name="sid"> The SID of a Twilio IncomingPhoneNumber resource </param>
+        /// <param name="phoneNumber"> The phone number in E.164 format </param>
+        /// <param name="isReserved"> Whether the new phone number should be reserved </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
         public static PhoneNumberResource Create(string pathServiceSid, 
@@ -86,10 +86,10 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Add a Phone Number to a Service's Proxy Number Pool.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="sid"> Phone Number Sid of Twilio Number to assign to your Proxy Service </param>
-        /// <param name="phoneNumber"> Twilio Number to assign to your Proxy Service </param>
-        /// <param name="isReserved"> Reserve for manual assignment to participants only. </param>
+        /// <param name="pathServiceSid"> The SID of the resource's parent Service </param>
+        /// <param name="sid"> The SID of a Twilio IncomingPhoneNumber resource </param>
+        /// <param name="phoneNumber"> The phone number in E.164 format </param>
+        /// <param name="isReserved"> Whether the new phone number should be reserved </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(string pathServiceSid, 
@@ -146,8 +146,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Delete a specific Phone Number from a Service.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -160,8 +160,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Delete a specific Phone Number from a Service.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
@@ -220,7 +220,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -355,8 +355,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Fetch a specific Phone Number.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
         public static PhoneNumberResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -369,8 +369,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Fetch a specific Phone Number.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(string pathServiceSid, 
@@ -425,9 +425,9 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Update a specific Proxy Number.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
-        /// <param name="isReserved"> Reserve for manual assignment to participants only. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="isReserved"> Whether the new phone number should be reserved </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
         public static PhoneNumberResource Update(string pathServiceSid, 
@@ -443,9 +443,9 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Update a specific Proxy Number.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
-        /// <param name="isReserved"> Reserve for manual assignment to participants only. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="isReserved"> Whether the new phone number should be reserved </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<PhoneNumberResource> UpdateAsync(string pathServiceSid, 
@@ -477,58 +477,58 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Phone Number.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the PhoneNumber resource's parent Service resource
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The date this Phone Number was added to the service
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Phone Number was updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The phone number.
+        /// The phone number in E.164 format
         /// </summary>
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
         /// <summary>
-        /// A human-readable description of this resource.
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// ISO Country Code,
+        /// The ISO Country Code
         /// </summary>
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
         /// <summary>
-        /// A list of capabilities.
+        /// The capabilities of the phone number
         /// </summary>
         [JsonProperty("capabilities")]
         public PhoneNumberCapabilities Capabilities { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The absolute URL of the PhoneNumber resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Reserve for manual assignment to participants only.
+        /// Reserve the phone number for manual assignment to participants only
         /// </summary>
         [JsonProperty("is_reserved")]
         public bool? IsReserved { get; private set; }

@@ -14,24 +14,24 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Add a Short Code to the Proxy Number Pool for this Service.
+    /// Add a Short Code to the Proxy Number Pool for the Service.
     /// </summary>
     public class CreateShortCodeOptions : IOptions<ShortCodeResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the parent Service resource
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Short Code.
+        /// The SID of a Twilio ShortCode resource
         /// </summary>
         public string Sid { get; }
 
         /// <summary>
         /// Construct a new CreateShortCodeOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="sid"> A string that uniquely identifies this Short Code. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
+        /// <param name="sid"> The SID of a Twilio ShortCode resource </param>
         public CreateShortCodeOptions(string pathServiceSid, string sid)
         {
             PathServiceSid = pathServiceSid;
@@ -61,19 +61,19 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class DeleteShortCodeOptions : IOptions<ShortCodeResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the parent Service to delete the ShortCode resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Short Code.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteShortCodeOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service to delete the ShortCode resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteShortCodeOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -93,19 +93,19 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Retrieve a list of all Short Codes in the Proxy Number Pool for this Service.
+    /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service.
     /// </summary>
     public class ReadShortCodeOptions : ReadOptions<ShortCodeResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the parent Service to read the resource from
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadShortCodeOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
         public ReadShortCodeOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -134,19 +134,19 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class FetchShortCodeOptions : IOptions<ShortCodeResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the parent Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Short Code.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchShortCodeOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchShortCodeOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -171,23 +171,23 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class UpdateShortCodeOptions : IOptions<ShortCodeResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to update the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Short Code.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Reserve for manual assignment to participants only.
+        /// Whether the short code should be reserved for manual assignment to participants only
         /// </summary>
         public bool? IsReserved { get; set; }
 
         /// <summary>
         /// Construct a new UpdateShortCodeOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateShortCodeOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

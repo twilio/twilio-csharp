@@ -65,9 +65,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Fetch a specific Participant.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Participant. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to fetch </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
         public static ParticipantResource Fetch(string pathServiceSid, 
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Fetch a specific Participant.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Participant. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to fetch </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string pathServiceSid, 
@@ -145,8 +145,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Retrieve a list of all Participants in a Session.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to read </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session of the resource to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -165,8 +165,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Retrieve a list of all Participants in a Session.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to read </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session of the resource to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -284,12 +284,12 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Add a new Participant to the Session
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="identifier"> The phone number of this Participant. </param>
-        /// <param name="friendlyName"> A human-readable description of this resource. </param>
-        /// <param name="proxyIdentifier"> The proxy phone number to use for this Participant. </param>
-        /// <param name="proxyIdentifierSid"> The proxy_identifier_sid </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session resource </param>
+        /// <param name="identifier"> The phone number of the Participant </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the participant </param>
+        /// <param name="proxyIdentifier"> The proxy phone number to use for the Participant </param>
+        /// <param name="proxyIdentifierSid"> The Proxy Identifier Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
         public static ParticipantResource Create(string pathServiceSid, 
@@ -308,12 +308,12 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Add a new Participant to the Session
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="identifier"> The phone number of this Participant. </param>
-        /// <param name="friendlyName"> A human-readable description of this resource. </param>
-        /// <param name="proxyIdentifier"> The proxy phone number to use for this Participant. </param>
-        /// <param name="proxyIdentifierSid"> The proxy_identifier_sid </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session resource </param>
+        /// <param name="identifier"> The phone number of the Participant </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the participant </param>
+        /// <param name="proxyIdentifier"> The proxy phone number to use for the Participant </param>
+        /// <param name="proxyIdentifierSid"> The Proxy Identifier Sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathServiceSid, 
@@ -378,9 +378,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// be re-added. Participants are only permanently deleted when the
         /// [Session](https://www.twilio.com/docs/proxy/api/session) is deleted.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Participant. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to delete </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session of the resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
         public static bool Delete(string pathServiceSid, 
@@ -398,9 +398,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// be re-added. Participants are only permanently deleted when the
         /// [Session](https://www.twilio.com/docs/proxy/api/session) is deleted.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Participant. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to delete </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session of the resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
@@ -432,67 +432,67 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Participant.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Session Sid.
+        /// The SID of the resource's parent Session
         /// </summary>
         [JsonProperty("session_sid")]
         public string SessionSid { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the resource's parent Service
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// A human-readable description of this resource.
+        /// The string that you assigned to describe the participant
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The phone number of this Participant.
+        /// The phone number of the Participant
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; private set; }
         /// <summary>
-        /// Proxy Identifier.
+        /// The phone number or short code of the participant's partner
         /// </summary>
         [JsonProperty("proxy_identifier")]
         public string ProxyIdentifier { get; private set; }
         /// <summary>
-        /// Proxy Identifier Sid.
+        /// The SID of the Proxy Identifier assigned to the Participant
         /// </summary>
         [JsonProperty("proxy_identifier_sid")]
         public string ProxyIdentifierSid { get; private set; }
         /// <summary>
-        /// The date this Participant was removed
+        /// The ISO 8601 date the Participant was removed
         /// </summary>
         [JsonProperty("date_deleted")]
         public DateTime? DateDeleted { get; private set; }
         /// <summary>
-        /// The date this Participant was created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Participant was last updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The absolute URL of the Participant resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Nested resource URLs.
+        /// The URLs to resources related the participant
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

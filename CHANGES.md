@@ -1,6 +1,22 @@
 twilio-csharp Changelog
 =======================
 
+[2019-04-12] Version 5.28.1
+----------------------------
+**Library**
+- PR #476: Add a comment and test to verify thread safety of async HTTP requests. Thanks to @childish-sambino!
+- PR #474: SystemNetHttpClient.MakeRequestAsync is thread safe. Thanks to @ysemerikov!
+
+**Flex**
+- Adding PluginService to Flex Configuration
+
+**Numbers**
+- Add API for Proof of Addresses
+
+**Proxy**
+- Clarify documentation for Service and Session fetch
+
+
 [2019-03-28] Version 5.28.0
 ----------------------------
 **Library**

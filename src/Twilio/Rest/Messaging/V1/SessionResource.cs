@@ -205,8 +205,6 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="createdBy"> Identity of the session's creator. </param>
-        /// <param name="twilioAddress"> Twilio address the participant is contacting to. </param>
-        /// <param name="userAddress"> Address the participant is contacting from. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns> 
         public static SessionResource Create(string messagingServiceSid, 
@@ -215,11 +213,9 @@ namespace Twilio.Rest.Messaging.V1
                                              DateTime? dateCreated = null, 
                                              DateTime? dateUpdated = null, 
                                              string createdBy = null, 
-                                             string twilioAddress = null, 
-                                             string userAddress = null, 
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateSessionOptions(messagingServiceSid){FriendlyName = friendlyName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy, TwilioAddress = twilioAddress, UserAddress = userAddress};
+            var options = new CreateSessionOptions(messagingServiceSid){FriendlyName = friendlyName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
             return Create(options, client);
         }
 
@@ -233,8 +229,6 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="createdBy"> Identity of the session's creator. </param>
-        /// <param name="twilioAddress"> Twilio address the participant is contacting to. </param>
-        /// <param name="userAddress"> Address the participant is contacting from. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns> 
         public static async System.Threading.Tasks.Task<SessionResource> CreateAsync(string messagingServiceSid, 
@@ -243,11 +237,9 @@ namespace Twilio.Rest.Messaging.V1
                                                                                      DateTime? dateCreated = null, 
                                                                                      DateTime? dateUpdated = null, 
                                                                                      string createdBy = null, 
-                                                                                     string twilioAddress = null, 
-                                                                                     string userAddress = null, 
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateSessionOptions(messagingServiceSid){FriendlyName = friendlyName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy, TwilioAddress = twilioAddress, UserAddress = userAddress};
+            var options = new CreateSessionOptions(messagingServiceSid){FriendlyName = friendlyName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
             return await CreateAsync(options, client);
         }
         #endif

@@ -35,7 +35,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// Add a Short Code to the Proxy Number Pool for this Service.
+        /// Add a Short Code to the Proxy Number Pool for the Service.
         /// </summary>
         /// <param name="options"> Create ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Add a Short Code to the Proxy Number Pool for this Service.
+        /// Add a Short Code to the Proxy Number Pool for the Service.
         /// </summary>
         /// <param name="options"> Create ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,10 +64,10 @@ namespace Twilio.Rest.Proxy.V1.Service
         #endif
 
         /// <summary>
-        /// Add a Short Code to the Proxy Number Pool for this Service.
+        /// Add a Short Code to the Proxy Number Pool for the Service.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="sid"> A string that uniquely identifies this Short Code. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
+        /// <param name="sid"> The SID of a Twilio ShortCode resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns> 
         public static ShortCodeResource Create(string pathServiceSid, string sid, ITwilioRestClient client = null)
@@ -78,10 +78,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Add a Short Code to the Proxy Number Pool for this Service.
+        /// Add a Short Code to the Proxy Number Pool for the Service.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="sid"> A string that uniquely identifies this Short Code. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
+        /// <param name="sid"> The SID of a Twilio ShortCode resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
         public static async System.Threading.Tasks.Task<ShortCodeResource> CreateAsync(string pathServiceSid, 
@@ -136,8 +136,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Delete a specific Short Code from a Service.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service to delete the ShortCode resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns> 
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -150,8 +150,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Delete a specific Short Code from a Service.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service to delete the ShortCode resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// Retrieve a list of all Short Codes in the Proxy Number Pool for this Service.
+        /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service.
         /// </summary>
         /// <param name="options"> Read ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Short Codes in the Proxy Number Pool for this Service.
+        /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service.
         /// </summary>
         /// <param name="options"> Read ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -208,9 +208,9 @@ namespace Twilio.Rest.Proxy.V1.Service
         #endif
 
         /// <summary>
-        /// Retrieve a list of all Short Codes in the Proxy Number Pool for this Service.
+        /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -226,9 +226,9 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Short Codes in the Proxy Number Pool for this Service.
+        /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -345,8 +345,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Fetch a specific Short Code.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns> 
         public static ShortCodeResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -359,8 +359,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Fetch a specific Short Code.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
         public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(string pathServiceSid, 
@@ -415,9 +415,10 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Update a specific Short Code.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
-        /// <param name="isReserved"> Reserve for manual assignment to participants only. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="isReserved"> Whether the short code should be reserved for manual assignment to participants only
+        ///                  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns> 
         public static ShortCodeResource Update(string pathServiceSid, 
@@ -433,9 +434,10 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Update a specific Short Code.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Short Code. </param>
-        /// <param name="isReserved"> Reserve for manual assignment to participants only. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="isReserved"> Whether the short code should be reserved for manual assignment to participants only
+        ///                  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns> 
         public static async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(string pathServiceSid, 
@@ -467,52 +469,52 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Short Code.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the resource's parent Service
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The date this Short Code was added to the service
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Short Code was updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Shortcode.
+        /// The short code's number
         /// </summary>
         [JsonProperty("short_code")]
         public string ShortCode { get; private set; }
         /// <summary>
-        /// ISO Country Code,
+        /// The ISO Country Code
         /// </summary>
         [JsonProperty("iso_country")]
         public string IsoCountry { get; private set; }
         /// <summary>
-        /// A list of capabilities.
+        /// The capabilities of the short code
         /// </summary>
         [JsonProperty("capabilities")]
         public PhoneNumberCapabilities Capabilities { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The absolute URL of the ShortCode resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Reserve for manual assignment to participants only.
+        /// Whether the short code should be reserved for manual assignment to participants only
         /// </summary>
         [JsonProperty("is_reserved")]
         public bool? IsReserved { get; private set; }

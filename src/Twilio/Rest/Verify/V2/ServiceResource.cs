@@ -65,14 +65,14 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// Create a new Verification Service.
         /// </summary>
-        /// <param name="friendlyName"> Friendly name of the service </param>
-        /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
-        /// <param name="lookupEnabled"> Indicates whether or not to perform a lookup with each verification started </param>
-        /// <param name="skipSmsToLandlines"> Indicates whether or not to ignore SMS verifications for landlines </param>
-        /// <param name="dtmfInputRequired"> Indicates whether or not to require a random number input to deliver the verify
-        ///                         code via phone calls </param>
-        /// <param name="ttsName"> Alternative to be used as Service friendly name in phone calls </param>
-        /// <param name="psd2Enabled"> Indicates whether PSD2 parameters are enabled or not </param>
+        /// <param name="friendlyName"> A string to describe the verification service </param>
+        /// <param name="codeLength"> The length of the verification code to generate </param>
+        /// <param name="lookupEnabled"> Whether to perform a lookup with each verification </param>
+        /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines </param>
+        /// <param name="dtmfInputRequired"> Whether to ask the user to press a number before delivering the verify code in a
+        ///                         phone call </param>
+        /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
+        /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Create(string friendlyName, 
@@ -92,14 +92,14 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// Create a new Verification Service.
         /// </summary>
-        /// <param name="friendlyName"> Friendly name of the service </param>
-        /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
-        /// <param name="lookupEnabled"> Indicates whether or not to perform a lookup with each verification started </param>
-        /// <param name="skipSmsToLandlines"> Indicates whether or not to ignore SMS verifications for landlines </param>
-        /// <param name="dtmfInputRequired"> Indicates whether or not to require a random number input to deliver the verify
-        ///                         code via phone calls </param>
-        /// <param name="ttsName"> Alternative to be used as Service friendly name in phone calls </param>
-        /// <param name="psd2Enabled"> Indicates whether PSD2 parameters are enabled or not </param>
+        /// <param name="friendlyName"> A string to describe the verification service </param>
+        /// <param name="codeLength"> The length of the verification code to generate </param>
+        /// <param name="lookupEnabled"> Whether to perform a lookup with each verification </param>
+        /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines </param>
+        /// <param name="dtmfInputRequired"> Whether to ask the user to press a number before delivering the verify code in a
+        ///                         phone call </param>
+        /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
+        /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName, 
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// Fetch specific Verification Service Instance.
         /// </summary>
-        /// <param name="pathSid"> Verification Service Instance SID. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// Fetch specific Verification Service Instance.
         /// </summary>
-        /// <param name="pathSid"> Verification Service Instance SID. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid, 
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// Delete a specific Verification Service Instance.
         /// </summary>
-        /// <param name="pathSid"> Verification Service Instance SID. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// Delete a specific Verification Service Instance.
         /// </summary>
-        /// <param name="pathSid"> Verification Service Instance SID. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -427,15 +427,15 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// Update a specific Phone Verification Service.
         /// </summary>
-        /// <param name="pathSid"> Service Sid. </param>
-        /// <param name="friendlyName"> Friendly name of the service </param>
-        /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
-        /// <param name="lookupEnabled"> Indicates whether or not to perform a lookup with each verification started </param>
-        /// <param name="skipSmsToLandlines"> Indicates whether or not to ignore SMS verifications for landlines </param>
-        /// <param name="dtmfInputRequired"> Indicates whether or not to require a random number input to deliver the verify
-        ///                         code via phone calls </param>
-        /// <param name="ttsName"> Alternative to be used as Service friendly name in phone calls </param>
-        /// <param name="psd2Enabled"> Indicates whether PSD2 parameters are enabled or not </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="friendlyName"> A string to describe the verification service </param>
+        /// <param name="codeLength"> The length of the verification code to generate </param>
+        /// <param name="lookupEnabled"> Whether to perform a lookup with each verification </param>
+        /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines </param>
+        /// <param name="dtmfInputRequired"> Whether to ask the user to press a number before delivering the verify code in a
+        ///                         phone call </param>
+        /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
+        /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Update(string pathSid, 
@@ -456,15 +456,15 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// Update a specific Phone Verification Service.
         /// </summary>
-        /// <param name="pathSid"> Service Sid. </param>
-        /// <param name="friendlyName"> Friendly name of the service </param>
-        /// <param name="codeLength"> Length of verification code. Valid values are 4-10 </param>
-        /// <param name="lookupEnabled"> Indicates whether or not to perform a lookup with each verification started </param>
-        /// <param name="skipSmsToLandlines"> Indicates whether or not to ignore SMS verifications for landlines </param>
-        /// <param name="dtmfInputRequired"> Indicates whether or not to require a random number input to deliver the verify
-        ///                         code via phone calls </param>
-        /// <param name="ttsName"> Alternative to be used as Service friendly name in phone calls </param>
-        /// <param name="psd2Enabled"> Indicates whether PSD2 parameters are enabled or not </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="friendlyName"> A string to describe the verification service </param>
+        /// <param name="codeLength"> The length of the verification code to generate </param>
+        /// <param name="lookupEnabled"> Whether to perform a lookup with each verification </param>
+        /// <param name="skipSmsToLandlines"> Whether to skip sending SMS verifications to landlines </param>
+        /// <param name="dtmfInputRequired"> Whether to ask the user to press a number before delivering the verify code in a
+        ///                         phone call </param>
+        /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
+        /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, 
@@ -501,67 +501,67 @@ namespace Twilio.Rest.Verify.V2
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Service.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Friendly name of the service
+        /// The string that you assigned to describe the verification service
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// Length of verification code. Valid values are 4-10
+        /// The length of the verification code
         /// </summary>
         [JsonProperty("code_length")]
         public int? CodeLength { get; private set; }
         /// <summary>
-        /// Indicates whether or not to perform a lookup with each verification started
+        /// Whether to perform a lookup with each verification
         /// </summary>
         [JsonProperty("lookup_enabled")]
         public bool? LookupEnabled { get; private set; }
         /// <summary>
-        /// Indicates whether PSD2 parameters are enabled or not
+        /// Whether to pass PSD2 transaction parameters when starting a verification
         /// </summary>
         [JsonProperty("psd2_enabled")]
         public bool? Psd2Enabled { get; private set; }
         /// <summary>
-        /// Indicates whether or not to ignore SMS verifications for landlines
+        /// Whether to skip sending SMS verifications to landlines
         /// </summary>
         [JsonProperty("skip_sms_to_landlines")]
         public bool? SkipSmsToLandlines { get; private set; }
         /// <summary>
-        /// Indicates whether or not to require a random number input to deliver the verify code via phone calls
+        /// Whether to ask the user to press a number before delivering the verify code in a phone call
         /// </summary>
         [JsonProperty("dtmf_input_required")]
         public bool? DtmfInputRequired { get; private set; }
         /// <summary>
-        /// Alternative to be used as Service friendly name in phone calls
+        /// The name of an alternative text-to-speech service to use in phone calls
         /// </summary>
         [JsonProperty("tts_name")]
         public string TtsName { get; private set; }
         /// <summary>
-        /// The date this Service was created
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Service was updated
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

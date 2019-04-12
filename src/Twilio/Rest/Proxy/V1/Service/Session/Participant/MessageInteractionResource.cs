@@ -82,8 +82,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
 
         /// <summary>
         /// Create a new message Interaction to send directly from your system to one
-        /// [Participant](https://www.twilio.com/docs/proxy/api/participants).  The `inbound` properties for this Interaction
-        /// will always be empty.
+        /// [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will
+        /// always be empty.
         /// </summary>
         /// <param name="options"> Create MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -99,8 +99,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         #if !NET35
         /// <summary>
         /// Create a new message Interaction to send directly from your system to one
-        /// [Participant](https://www.twilio.com/docs/proxy/api/participants).  The `inbound` properties for this Interaction
-        /// will always be empty.
+        /// [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will
+        /// always be empty.
         /// </summary>
         /// <param name="options"> Create MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -116,14 +116,14 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
 
         /// <summary>
         /// Create a new message Interaction to send directly from your system to one
-        /// [Participant](https://www.twilio.com/docs/proxy/api/participants).  The `inbound` properties for this Interaction
-        /// will always be empty.
+        /// [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will
+        /// always be empty.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid </param>
-        /// <param name="pathSessionSid"> Session Sid </param>
-        /// <param name="pathParticipantSid"> Participant Sid </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session resource </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource </param>
         /// <param name="body"> Message body </param>
-        /// <param name="mediaUrl"> Not supported in beta </param>
+        /// <param name="mediaUrl"> Reserved </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of MessageInteraction </returns> 
         public static MessageInteractionResource Create(string pathServiceSid, 
@@ -140,14 +140,14 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         #if !NET35
         /// <summary>
         /// Create a new message Interaction to send directly from your system to one
-        /// [Participant](https://www.twilio.com/docs/proxy/api/participants).  The `inbound` properties for this Interaction
-        /// will always be empty.
+        /// [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will
+        /// always be empty.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid </param>
-        /// <param name="pathSessionSid"> Session Sid </param>
-        /// <param name="pathParticipantSid"> Participant Sid </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session resource </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource </param>
         /// <param name="body"> Message body </param>
-        /// <param name="mediaUrl"> Not supported in beta </param>
+        /// <param name="mediaUrl"> Reserved </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessageInteraction </returns> 
         public static async System.Threading.Tasks.Task<MessageInteractionResource> CreateAsync(string pathServiceSid, 
@@ -206,10 +206,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSessionSid"> The session_sid </param>
-        /// <param name="pathParticipantSid"> The participant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of MessageInteraction </returns> 
         public static MessageInteractionResource Fetch(string pathServiceSid, 
@@ -226,10 +226,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSessionSid"> The session_sid </param>
-        /// <param name="pathParticipantSid"> The participant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of MessageInteraction </returns> 
         public static async System.Threading.Tasks.Task<MessageInteractionResource> FetchAsync(string pathServiceSid, 
@@ -291,9 +291,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSessionSid"> The session_sid </param>
-        /// <param name="pathParticipantSid"> The participant_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resource from </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -313,9 +313,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSessionSid"> The session_sid </param>
-        /// <param name="pathParticipantSid"> The participant_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resource from </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -412,105 +412,105 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Message Interaction.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Session Sid.
+        /// The SID of the resource's parent Session
         /// </summary>
         [JsonProperty("session_sid")]
         public string SessionSid { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the resource's parent Service
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Message body
+        /// A JSON string that includes the message body sent to the participant
         /// </summary>
         [JsonProperty("data")]
         public string Data { get; private set; }
         /// <summary>
-        /// The Type of this Message Interaction
+        /// The Type of Message Interaction
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public MessageInteractionResource.TypeEnum Type { get; private set; }
         /// <summary>
-        /// Participant Sid.
+        /// The SID of the Participant resource
         /// </summary>
         [JsonProperty("participant_sid")]
         public string ParticipantSid { get; private set; }
         /// <summary>
-        /// Always empty for Message Interactions.
+        /// Always empty for Message Interactions
         /// </summary>
         [JsonProperty("inbound_participant_sid")]
         public string InboundParticipantSid { get; private set; }
         /// <summary>
-        /// Always empty for Message Interactions.
+        /// Always empty for Message Interactions
         /// </summary>
         [JsonProperty("inbound_resource_sid")]
         public string InboundResourceSid { get; private set; }
         /// <summary>
-        /// Always empty for Message Interactions.
+        /// Always empty for Message Interactions
         /// </summary>
         [JsonProperty("inbound_resource_status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public MessageInteractionResource.ResourceStatusEnum InboundResourceStatus { get; private set; }
         /// <summary>
-        /// Always empty for Message Interactions.
+        /// Always empty for Message Interactions
         /// </summary>
         [JsonProperty("inbound_resource_type")]
         public string InboundResourceType { get; private set; }
         /// <summary>
-        /// Always empty for Message Interactions.
+        /// Always empty for Message Interactions
         /// </summary>
         [JsonProperty("inbound_resource_url")]
         public Uri InboundResourceUrl { get; private set; }
         /// <summary>
-        /// Outbound Participant Sid.
+        /// The SID of the outbound Participant resource
         /// </summary>
         [JsonProperty("outbound_participant_sid")]
         public string OutboundParticipantSid { get; private set; }
         /// <summary>
-        /// Outbound message resource Sid.
+        /// The SID of the outbound Message resource
         /// </summary>
         [JsonProperty("outbound_resource_sid")]
         public string OutboundResourceSid { get; private set; }
         /// <summary>
-        /// The Outbound Resource Status of this Message Interaction
+        /// The outbound resource status
         /// </summary>
         [JsonProperty("outbound_resource_status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public MessageInteractionResource.ResourceStatusEnum OutboundResourceStatus { get; private set; }
         /// <summary>
-        /// Message
+        /// The outbound resource type
         /// </summary>
         [JsonProperty("outbound_resource_type")]
         public string OutboundResourceType { get; private set; }
         /// <summary>
-        /// The URL of the Twilio message resource.
+        /// The URL of the Twilio message resource
         /// </summary>
         [JsonProperty("outbound_resource_url")]
         public Uri OutboundResourceUrl { get; private set; }
         /// <summary>
-        /// The date this Message Interaction was created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Message Interaction was last updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The absolute URL of the MessageInteraction resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -20,19 +20,19 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class FetchSessionOptions : IOptions<SessionResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Session.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchSessionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchSessionOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -52,19 +52,19 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     /// 
-    /// Retrieve a list of all Sessions for this Service.
+    /// Retrieve a list of all Sessions for the Service.
     /// </summary>
     public class ReadSessionOptions : ReadOptions<SessionResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadSessionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
         public ReadSessionOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -93,23 +93,23 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class CreateSessionOptions : IOptions<SessionResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the parent Service resource
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A unique, developer assigned name of this Session.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The date this Session should expire
+        /// The ISO 8601 date when the Session should expire
         /// </summary>
         public DateTime? DateExpiry { get; set; }
         /// <summary>
-        /// TTL for a Session, in seconds.
+        /// When the session will expire
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// The Mode of this Session
+        /// The Mode of the Session
         /// </summary>
         public SessionResource.ModeEnum Mode { get; set; }
         /// <summary>
@@ -117,14 +117,14 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public SessionResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// The participants
+        /// The Participant objects to include in the new session
         /// </summary>
         public List<object> Participants { get; set; }
 
         /// <summary>
         /// Construct a new CreateSessionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
         public CreateSessionOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -179,19 +179,19 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class DeleteSessionOptions : IOptions<SessionResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to delete the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Session.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteSessionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteSessionOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -216,39 +216,39 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class UpdateSessionOptions : IOptions<SessionResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to update the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Session.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The date this Session should expire
+        /// The ISO 8601 date when the Session should expire
         /// </summary>
         public DateTime? DateExpiry { get; set; }
         /// <summary>
-        /// TTL for a Session, in seconds.
+        /// When the session will expire
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// The mode
+        /// The Mode of the Session
         /// </summary>
         public SessionResource.ModeEnum Mode { get; set; }
         /// <summary>
-        /// The Status of this Session
+        /// The new status of the resource
         /// </summary>
         public SessionResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// The participants
+        /// The Participant objects to include in the session
         /// </summary>
         public List<object> Participants { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSessionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateSessionOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

@@ -19,24 +19,24 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
     public class FetchInteractionOptions : IOptions<InteractionResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the parent Service of the resource to fetch
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Session Sid.
+        /// he SID of the parent Session of the resource to fetch
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Interaction.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchInteractionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Interaction. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to fetch </param>
+        /// <param name="pathSessionSid"> he SID of the parent Session of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchInteractionOptions(string pathServiceSid, string pathSessionSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -62,19 +62,19 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
     public class ReadInteractionOptions : ReadOptions<InteractionResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the parent Service to read the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Session Sid.
+        /// The SID of the parent Session to read the resource from
         /// </summary>
         public string PathSessionSid { get; }
 
         /// <summary>
         /// Construct a new ReadInteractionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session to read the resource from </param>
         public ReadInteractionOptions(string pathServiceSid, string pathSessionSid)
         {
             PathServiceSid = pathServiceSid;
@@ -104,24 +104,24 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
     public class DeleteInteractionOptions : IOptions<InteractionResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the parent Service of the resource to delete
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Session Sid.
+        /// he SID of the parent Session of the resource to delete
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Interaction.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteInteractionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Interaction. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to delete </param>
+        /// <param name="pathSessionSid"> he SID of the parent Session of the resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteInteractionOptions(string pathServiceSid, string pathSessionSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

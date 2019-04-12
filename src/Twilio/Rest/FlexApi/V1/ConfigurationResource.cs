@@ -390,6 +390,16 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("public_attributes")]
         public object PublicAttributes { get; private set; }
         /// <summary>
+        /// Is plugin service Enabled
+        /// </summary>
+        [JsonProperty("plugin_service_enabled")]
+        public bool? PluginServiceEnabled { get; private set; }
+        /// <summary>
+        /// Plugin service Attributes
+        /// </summary>
+        [JsonProperty("plugin_service_attributes")]
+        public object PluginServiceAttributes { get; private set; }
+        /// <summary>
         /// The URL for this resource
         /// </summary>
         [JsonProperty("url")]

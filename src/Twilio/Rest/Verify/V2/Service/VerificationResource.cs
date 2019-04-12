@@ -91,15 +91,15 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary>
         /// Create a new Verification for a To number using a Service
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="to"> To phonenumber </param>
-        /// <param name="channel"> sms or call </param>
-        /// <param name="customMessage"> A custom message for this verification </param>
-        /// <param name="sendDigits"> Digits to send when a phone call is started </param>
-        /// <param name="locale"> Locale used in the sms or call. </param>
+        /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
+        /// <param name="to"> The phone number to verify </param>
+        /// <param name="channel"> The verification method to use </param>
+        /// <param name="customMessage"> The text of a custom message to use for the verification </param>
+        /// <param name="sendDigits"> The digits to send after a phone call is answered </param>
+        /// <param name="locale"> The local to use for the verification SMS or call </param>
         /// <param name="customCode"> A pre-generated code </param>
-        /// <param name="amount"> Amount of the associated PSD2 compliant transaction. </param>
-        /// <param name="payee"> Payee of the associated PSD2 compliant transaction. </param>
+        /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
+        /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns> 
         public static VerificationResource Create(string pathServiceSid, 
@@ -121,15 +121,15 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary>
         /// Create a new Verification for a To number using a Service
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="to"> To phonenumber </param>
-        /// <param name="channel"> sms or call </param>
-        /// <param name="customMessage"> A custom message for this verification </param>
-        /// <param name="sendDigits"> Digits to send when a phone call is started </param>
-        /// <param name="locale"> Locale used in the sms or call. </param>
+        /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
+        /// <param name="to"> The phone number to verify </param>
+        /// <param name="channel"> The verification method to use </param>
+        /// <param name="customMessage"> The text of a custom message to use for the verification </param>
+        /// <param name="sendDigits"> The digits to send after a phone call is answered </param>
+        /// <param name="locale"> The local to use for the verification SMS or call </param>
         /// <param name="customCode"> A pre-generated code </param>
-        /// <param name="amount"> Amount of the associated PSD2 compliant transaction. </param>
-        /// <param name="payee"> Payee of the associated PSD2 compliant transaction. </param>
+        /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
+        /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns> 
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid, 
@@ -191,9 +191,9 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary>
         /// Update a Verification status
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Verification. </param>
-        /// <param name="status"> New status to set for the Verification. </param>
+        /// <param name="pathServiceSid"> The SID of the verification Service to update the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="status"> The new status of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns> 
         public static VerificationResource Update(string pathServiceSid, 
@@ -209,9 +209,9 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary>
         /// Update a Verification status
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Verification. </param>
-        /// <param name="status"> New status to set for the Verification. </param>
+        /// <param name="pathServiceSid"> The SID of the verification Service to update the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="status"> The new status of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns> 
         public static async System.Threading.Tasks.Task<VerificationResource> UpdateAsync(string pathServiceSid, 
@@ -267,8 +267,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary>
         /// Fetch a specific Verification
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Verification. </param>
+        /// <param name="pathServiceSid"> The SID of the verification Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns> 
         public static VerificationResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -281,8 +281,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary>
         /// Fetch a specific Verification
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Verification. </param>
+        /// <param name="pathServiceSid"> The SID of the verification Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns> 
         public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(string pathServiceSid, 
@@ -313,69 +313,69 @@ namespace Twilio.Rest.Verify.V2.Service
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Verification.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// To phonenumber
+        /// The phone number being verified
         /// </summary>
         [JsonProperty("to")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber To { get; private set; }
         /// <summary>
-        /// sms or call
+        /// The verification method to use
         /// </summary>
         [JsonProperty("channel")]
         [JsonConverter(typeof(StringEnumConverter))]
         public VerificationResource.ChannelEnum Channel { get; private set; }
         /// <summary>
-        /// pending, approved, denied or expired
+        /// The status of the verification resource
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }
         /// <summary>
-        /// successful verification
+        /// Whether the verification was successful
         /// </summary>
         [JsonProperty("valid")]
         public bool? Valid { get; private set; }
         /// <summary>
-        /// Info about the phone number
+        /// Information about the phone number being verified
         /// </summary>
         [JsonProperty("lookup")]
         public object Lookup { get; private set; }
         /// <summary>
-        /// Amount of the associated PSD2 compliant transaction.
+        /// The amount of the associated PSD2 compliant transaction.
         /// </summary>
         [JsonProperty("amount")]
         public string Amount { get; private set; }
         /// <summary>
-        /// Payee of the associated PSD2 compliant transaction.
+        /// The payee of the associated PSD2 compliant transaction
         /// </summary>
         [JsonProperty("payee")]
         public string Payee { get; private set; }
         /// <summary>
-        /// The date this Verification was created
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Verification was updated
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The absolute URL of the Verification resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -107,14 +107,6 @@ namespace Twilio.Rest.Messaging.V1
         /// Identity of the session's creator.
         /// </summary>
         public string CreatedBy { get; set; }
-        /// <summary>
-        /// Twilio address the participant is contacting to.
-        /// </summary>
-        public string TwilioAddress { get; set; }
-        /// <summary>
-        /// Address the participant is contacting from.
-        /// </summary>
-        public string UserAddress { get; set; }
 
         /// <summary>
         /// Construct a new CreateSessionOptions
@@ -159,16 +151,6 @@ namespace Twilio.Rest.Messaging.V1
             if (CreatedBy != null)
             {
                 p.Add(new KeyValuePair<string, string>("CreatedBy", CreatedBy));
-            }
-
-            if (TwilioAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TwilioAddress", TwilioAddress));
-            }
-
-            if (UserAddress != null)
-            {
-                p.Add(new KeyValuePair<string, string>("UserAddress", UserAddress));
             }
 
             return p;

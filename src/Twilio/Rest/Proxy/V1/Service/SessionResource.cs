@@ -96,8 +96,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Fetch a specific Session.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns> 
         public static SessionResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -110,8 +110,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Fetch a specific Session.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns> 
         public static async System.Threading.Tasks.Task<SessionResource> FetchAsync(string pathServiceSid, 
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// Retrieve a list of all Sessions for this Service.
+        /// Retrieve a list of all Sessions for the Service.
         /// </summary>
         /// <param name="options"> Read Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Sessions for this Service.
+        /// Retrieve a list of all Sessions for the Service.
         /// </summary>
         /// <param name="options"> Read Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -168,9 +168,9 @@ namespace Twilio.Rest.Proxy.V1.Service
         #endif
 
         /// <summary>
-        /// Retrieve a list of all Sessions for this Service.
+        /// Retrieve a list of all Sessions for the Service.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -186,9 +186,9 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Sessions for this Service.
+        /// Retrieve a list of all Sessions for the Service.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -305,13 +305,13 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Create a new Session
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="uniqueName"> A unique, developer assigned name of this Session. </param>
-        /// <param name="dateExpiry"> The date this Session should expire </param>
-        /// <param name="ttl"> TTL for a Session, in seconds. </param>
-        /// <param name="mode"> The Mode of this Session </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="dateExpiry"> The ISO 8601 date when the Session should expire </param>
+        /// <param name="ttl"> When the session will expire </param>
+        /// <param name="mode"> The Mode of the Session </param>
         /// <param name="status"> Session status </param>
-        /// <param name="participants"> The participants </param>
+        /// <param name="participants"> The Participant objects to include in the new session </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns> 
         public static SessionResource Create(string pathServiceSid, 
@@ -331,13 +331,13 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Create a new Session
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="uniqueName"> A unique, developer assigned name of this Session. </param>
-        /// <param name="dateExpiry"> The date this Session should expire </param>
-        /// <param name="ttl"> TTL for a Session, in seconds. </param>
-        /// <param name="mode"> The Mode of this Session </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="dateExpiry"> The ISO 8601 date when the Session should expire </param>
+        /// <param name="ttl"> When the session will expire </param>
+        /// <param name="mode"> The Mode of the Session </param>
         /// <param name="status"> Session status </param>
-        /// <param name="participants"> The participants </param>
+        /// <param name="participants"> The Participant objects to include in the new session </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns> 
         public static async System.Threading.Tasks.Task<SessionResource> CreateAsync(string pathServiceSid, 
@@ -397,8 +397,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Delete a specific Session.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns> 
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -411,8 +411,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Delete a specific Session.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
@@ -467,13 +467,13 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Update a specific Session.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
-        /// <param name="dateExpiry"> The date this Session should expire </param>
-        /// <param name="ttl"> TTL for a Session, in seconds. </param>
-        /// <param name="mode"> The mode </param>
-        /// <param name="status"> The Status of this Session </param>
-        /// <param name="participants"> The participants </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="dateExpiry"> The ISO 8601 date when the Session should expire </param>
+        /// <param name="ttl"> When the session will expire </param>
+        /// <param name="mode"> The Mode of the Session </param>
+        /// <param name="status"> The new status of the resource </param>
+        /// <param name="participants"> The Participant objects to include in the session </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns> 
         public static SessionResource Update(string pathServiceSid, 
@@ -493,13 +493,13 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <summary>
         /// Update a specific Session.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Session. </param>
-        /// <param name="dateExpiry"> The date this Session should expire </param>
-        /// <param name="ttl"> TTL for a Session, in seconds. </param>
-        /// <param name="mode"> The mode </param>
-        /// <param name="status"> The Status of this Session </param>
-        /// <param name="participants"> The participants </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="dateExpiry"> The ISO 8601 date when the Session should expire </param>
+        /// <param name="ttl"> When the session will expire </param>
+        /// <param name="mode"> The Mode of the Session </param>
+        /// <param name="status"> The new status of the resource </param>
+        /// <param name="participants"> The Participant objects to include in the session </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns> 
         public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(string pathServiceSid, 
@@ -535,84 +535,84 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Session.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the resource's parent Service
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date this Session was started
+        /// The ISO 8601 date when the Session started
         /// </summary>
         [JsonProperty("date_started")]
         public DateTime? DateStarted { get; private set; }
         /// <summary>
-        /// The date this Session was ended
+        /// The ISO 8601 date when the Session ended
         /// </summary>
         [JsonProperty("date_ended")]
         public DateTime? DateEnded { get; private set; }
         /// <summary>
-        /// The date this Session last had an interaction
+        /// The ISO 8601 date when the Session last had an interaction
         /// </summary>
         [JsonProperty("date_last_interaction")]
         public DateTime? DateLastInteraction { get; private set; }
         /// <summary>
-        /// The date this Session should expire
+        /// The ISO 8601 date when the Session should expire
         /// </summary>
         [JsonProperty("date_expiry")]
         public DateTime? DateExpiry { get; private set; }
         /// <summary>
-        /// A unique, developer assigned identifier for this Session.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The Status of this Session
+        /// The status of the Session
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public SessionResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// Reason Session ended.
+        /// The reason the Session ended
         /// </summary>
         [JsonProperty("closed_reason")]
         public string ClosedReason { get; private set; }
         /// <summary>
-        /// TTL for a Session, in seconds.
+        /// When the session will expire
         /// </summary>
         [JsonProperty("ttl")]
         public int? Ttl { get; private set; }
         /// <summary>
-        /// The Mode of this Session
+        /// The Mode of the Session
         /// </summary>
         [JsonProperty("mode")]
         [JsonConverter(typeof(StringEnumConverter))]
         public SessionResource.ModeEnum Mode { get; private set; }
         /// <summary>
-        /// The date this Session was created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Session was last updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The absolute URL of the Session resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Nested resource URLs.
+        /// The URLs of resources related to the Session
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

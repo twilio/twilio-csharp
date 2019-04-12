@@ -112,9 +112,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Interaction. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to fetch </param>
+        /// <param name="pathSessionSid"> he SID of the parent Session of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Interaction </returns> 
         public static InteractionResource Fetch(string pathServiceSid, 
@@ -130,9 +130,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Interaction. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to fetch </param>
+        /// <param name="pathSessionSid"> he SID of the parent Session of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Interaction </returns> 
         public static async System.Threading.Tasks.Task<InteractionResource> FetchAsync(string pathServiceSid, 
@@ -192,8 +192,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Retrieve a list of all Interactions for a Session.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session to read the resource from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -212,8 +212,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Retrieve a list of all Interactions for a Session.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
+        /// <param name="pathSessionSid"> The SID of the parent Session to read the resource from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -331,9 +331,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Delete a specific Interaction.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Interaction. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to delete </param>
+        /// <param name="pathSessionSid"> he SID of the parent Session of the resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Interaction </returns> 
         public static bool Delete(string pathServiceSid, 
@@ -349,9 +349,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <summary>
         /// Delete a specific Interaction.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSessionSid"> Session Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Interaction. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service of the resource to delete </param>
+        /// <param name="pathSessionSid"> he SID of the parent Session of the resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Interaction </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
@@ -383,100 +383,100 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Interaction.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Session Sid.
+        /// The SID of the resource's parent Session
         /// </summary>
         [JsonProperty("session_sid")]
         public string SessionSid { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the resource's parent Service
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Further details about an interaction.
+        /// A JSON string that includes the message body of message interactions
         /// </summary>
         [JsonProperty("data")]
         public string Data { get; private set; }
         /// <summary>
-        /// The Type of this Interaction
+        /// The Type of the Interaction
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public InteractionResource.TypeEnum Type { get; private set; }
         /// <summary>
-        /// Inbound Participant Sid.
+        /// The SID of the inbound Participant resource
         /// </summary>
         [JsonProperty("inbound_participant_sid")]
         public string InboundParticipantSid { get; private set; }
         /// <summary>
-        /// Inbound Resource Sid.
+        /// The SID of the inbound resource
         /// </summary>
         [JsonProperty("inbound_resource_sid")]
         public string InboundResourceSid { get; private set; }
         /// <summary>
-        /// The Inbound Resource Status of this Interaction
+        /// The inbound resource status of the Interaction
         /// </summary>
         [JsonProperty("inbound_resource_status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public InteractionResource.ResourceStatusEnum InboundResourceStatus { get; private set; }
         /// <summary>
-        /// The type of the Inbound Resource, Call or Message.
+        /// The inbound resource type
         /// </summary>
         [JsonProperty("inbound_resource_type")]
         public string InboundResourceType { get; private set; }
         /// <summary>
-        /// The URL of the Twilio inbound resource.
+        /// The URL of the Twilio inbound resource
         /// </summary>
         [JsonProperty("inbound_resource_url")]
         public Uri InboundResourceUrl { get; private set; }
         /// <summary>
-        /// Outbound Participant Sid.
+        /// The SID of the outbound Participant
         /// </summary>
         [JsonProperty("outbound_participant_sid")]
         public string OutboundParticipantSid { get; private set; }
         /// <summary>
-        /// Outbound Resource Sid.
+        /// The SID of the outbound resource
         /// </summary>
         [JsonProperty("outbound_resource_sid")]
         public string OutboundResourceSid { get; private set; }
         /// <summary>
-        /// The Outbound Resource Status of this Interaction
+        /// The outbound resource status of the Interaction
         /// </summary>
         [JsonProperty("outbound_resource_status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public InteractionResource.ResourceStatusEnum OutboundResourceStatus { get; private set; }
         /// <summary>
-        /// The type of the Outbound Resource, Call or Message.
+        /// The outbound resource type
         /// </summary>
         [JsonProperty("outbound_resource_type")]
         public string OutboundResourceType { get; private set; }
         /// <summary>
-        /// The URL of the Twilio outbound resource.
+        /// The URL of the Twilio outbound resource
         /// </summary>
         [JsonProperty("outbound_resource_url")]
         public Uri OutboundResourceUrl { get; private set; }
         /// <summary>
-        /// The date this Interaction was created
+        /// The ISO 8601 date and time in GMT when the Interaction was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Interaction was last updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The absolute URL of the Interaction resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

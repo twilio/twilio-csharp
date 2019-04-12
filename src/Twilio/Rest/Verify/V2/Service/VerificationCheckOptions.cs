@@ -19,7 +19,7 @@ namespace Twilio.Rest.Verify.V2.Service
     public class CreateVerificationCheckOptions : IOptions<VerificationCheckResource> 
     {
         /// <summary>
-        /// The SID of the Verify Service to be used to check a verification.
+        /// The SID of the verification Service to create the resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -27,26 +27,26 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string Code { get; }
         /// <summary>
-        /// To phone number
+        /// The phone number to verify
         /// </summary>
         public string To { get; set; }
         /// <summary>
-        /// A SID that uniquely identifies this Verification Check
+        /// A SID that uniquely identifies the Verification Check
         /// </summary>
         public string VerificationSid { get; set; }
         /// <summary>
-        /// Amount of the associated PSD2 compliant transaction.
+        /// The amount of the associated PSD2 compliant transaction.
         /// </summary>
         public string Amount { get; set; }
         /// <summary>
-        /// Payee of the associated PSD2 compliant transaction.
+        /// The payee of the associated PSD2 compliant transaction
         /// </summary>
         public string Payee { get; set; }
 
         /// <summary>
         /// Construct a new CreateVerificationCheckOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Verify Service to be used to check a verification. </param>
+        /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
         /// <param name="code"> The verification string </param>
         public CreateVerificationCheckOptions(string pathServiceSid, string code)
         {

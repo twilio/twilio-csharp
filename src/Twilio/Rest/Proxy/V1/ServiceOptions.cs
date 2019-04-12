@@ -19,14 +19,14 @@ namespace Twilio.Rest.Proxy.V1
     public class FetchServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// A string that uniquely identifies this Service.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -72,42 +72,42 @@ namespace Twilio.Rest.Proxy.V1
     public class CreateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// The human-readable string that uniquely identifies this Service.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         public string UniqueName { get; }
         /// <summary>
-        /// Default TTL for Sessions in Service, in seconds.
+        /// Default TTL for a Session, in seconds
         /// </summary>
         public int? DefaultTtl { get; set; }
         /// <summary>
-        /// URL Twilio will send callbacks to
+        /// The URL we should call when the interaction status changes
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// Whether proxy number selected must be in the same area code as the participant identifier.
+        /// Where a proxy number must be located relative to the participant identifier
         /// </summary>
         public ServiceResource.GeoMatchLevelEnum GeoMatchLevel { get; set; }
         /// <summary>
-        /// What behavior to use when choosing a proxy number.
+        /// The preference for Proxy Number selection for the Service instance
         /// </summary>
         public ServiceResource.NumberSelectionBehaviorEnum NumberSelectionBehavior { get; set; }
         /// <summary>
-        /// A URL for Twilio call before each Interaction.
+        /// The URL we call on each interaction
         /// </summary>
         public Uri InterceptCallbackUrl { get; set; }
         /// <summary>
-        /// A URL for Twilio call when a new Interaction has no Session.
+        /// The URL we call when an inbound call or SMS action occurs on a closed or non-existent Session
         /// </summary>
         public Uri OutOfSessionCallbackUrl { get; set; }
         /// <summary>
-        /// The Chat Service Instance sid managed by Proxy Service
+        /// The SID of the Chat Service Instance
         /// </summary>
         public string ChatInstanceSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
         /// </summary>
-        /// <param name="uniqueName"> The human-readable string that uniquely identifies this Service. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         public CreateServiceOptions(string uniqueName)
         {
             UniqueName = uniqueName;
@@ -171,14 +171,14 @@ namespace Twilio.Rest.Proxy.V1
     public class DeleteServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// A string that uniquely identifies this Service.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -202,46 +202,46 @@ namespace Twilio.Rest.Proxy.V1
     public class UpdateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// A string that uniquely identifies this Service.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human-readable description of this resource.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// Default TTL for Sessions in Service, in seconds.
+        /// Default TTL for a Session, in seconds
         /// </summary>
         public int? DefaultTtl { get; set; }
         /// <summary>
-        /// URL Twilio will send callbacks to
+        /// The URL we should call when the interaction status changes
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// Whether proxy number selected must be in the same area code as the participant identifier.
+        /// Where a proxy number must be located relative to the participant identifier
         /// </summary>
         public ServiceResource.GeoMatchLevelEnum GeoMatchLevel { get; set; }
         /// <summary>
-        /// What behavior to use when choosing a proxy number.
+        /// The preference for Proxy Number selection for the Service instance
         /// </summary>
         public ServiceResource.NumberSelectionBehaviorEnum NumberSelectionBehavior { get; set; }
         /// <summary>
-        /// A URL for Twilio call before each Interaction.
+        /// The URL we call on each interaction
         /// </summary>
         public Uri InterceptCallbackUrl { get; set; }
         /// <summary>
-        /// A URL for Twilio call when a new Interaction has no Session.
+        /// The URL we call when an inbound call or SMS action occurs on a closed or non-existent Session
         /// </summary>
         public Uri OutOfSessionCallbackUrl { get; set; }
         /// <summary>
-        /// The Chat Service Instance sid managed by Proxy Service
+        /// The SID of the Chat Service Instance
         /// </summary>
         public string ChatInstanceSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;

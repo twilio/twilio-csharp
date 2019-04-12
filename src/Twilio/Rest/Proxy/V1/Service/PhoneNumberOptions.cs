@@ -19,26 +19,26 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the resource's parent Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Phone Number Sid of Twilio Number to assign to your Proxy Service
+        /// The SID of a Twilio IncomingPhoneNumber resource
         /// </summary>
         public string Sid { get; set; }
         /// <summary>
-        /// Twilio Number to assign to your Proxy Service
+        /// The phone number in E.164 format
         /// </summary>
         public Types.PhoneNumber PhoneNumber { get; set; }
         /// <summary>
-        /// Reserve for manual assignment to participants only.
+        /// Whether the new phone number should be reserved
         /// </summary>
         public bool? IsReserved { get; set; }
 
         /// <summary>
         /// Construct a new CreatePhoneNumberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the resource's parent Service </param>
         public CreatePhoneNumberOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -77,19 +77,19 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the parent Service resource of the PhoneNumber resource to delete
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Phone Number.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeletePhoneNumberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeletePhoneNumberOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -114,14 +114,14 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the parent Service resource of the PhoneNumber resource to read
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadPhoneNumberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to read </param>
         public ReadPhoneNumberOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -150,19 +150,19 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the parent Service resource of the PhoneNumber resource to fetch
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Phone Number.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchPhoneNumberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchPhoneNumberOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -187,23 +187,23 @@ namespace Twilio.Rest.Proxy.V1.Service
     public class UpdatePhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the parent Service resource of the PhoneNumber resource to update
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A string that uniquely identifies this Phone Number.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Reserve for manual assignment to participants only.
+        /// Whether the new phone number should be reserved
         /// </summary>
         public bool? IsReserved { get; set; }
 
         /// <summary>
         /// Construct a new UpdatePhoneNumberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Phone Number. </param>
+        /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdatePhoneNumberOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

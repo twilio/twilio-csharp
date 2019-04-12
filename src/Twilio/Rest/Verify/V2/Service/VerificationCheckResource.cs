@@ -80,12 +80,12 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary>
         /// challenge a specific Verification Check.
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Verify Service to be used to check a verification. </param>
+        /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
         /// <param name="code"> The verification string </param>
-        /// <param name="to"> To phone number </param>
-        /// <param name="verificationSid"> A SID that uniquely identifies this Verification Check </param>
-        /// <param name="amount"> Amount of the associated PSD2 compliant transaction. </param>
-        /// <param name="payee"> Payee of the associated PSD2 compliant transaction. </param>
+        /// <param name="to"> The phone number to verify </param>
+        /// <param name="verificationSid"> A SID that uniquely identifies the Verification Check </param>
+        /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
+        /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of VerificationCheck </returns> 
         public static VerificationCheckResource Create(string pathServiceSid, 
@@ -104,12 +104,12 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary>
         /// challenge a specific Verification Check.
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Verify Service to be used to check a verification. </param>
+        /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
         /// <param name="code"> The verification string </param>
-        /// <param name="to"> To phone number </param>
-        /// <param name="verificationSid"> A SID that uniquely identifies this Verification Check </param>
-        /// <param name="amount"> Amount of the associated PSD2 compliant transaction. </param>
-        /// <param name="payee"> Payee of the associated PSD2 compliant transaction. </param>
+        /// <param name="to"> The phone number to verify </param>
+        /// <param name="verificationSid"> A SID that uniquely identifies the Verification Check </param>
+        /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
+        /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of VerificationCheck </returns> 
         public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(string pathServiceSid, 
@@ -144,58 +144,58 @@ namespace Twilio.Rest.Verify.V2.Service
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Verification Check.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// To phone number
+        /// The phone number being verified
         /// </summary>
         [JsonProperty("to")]
         public string To { get; private set; }
         /// <summary>
-        /// sms or call
+        /// The verification method to use
         /// </summary>
         [JsonProperty("channel")]
         [JsonConverter(typeof(StringEnumConverter))]
         public VerificationCheckResource.ChannelEnum Channel { get; private set; }
         /// <summary>
-        /// pending, approved, denied or expired
+        /// The status of the verification resource
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }
         /// <summary>
-        /// successful verification
+        /// Whether the verification was successful
         /// </summary>
         [JsonProperty("valid")]
         public bool? Valid { get; private set; }
         /// <summary>
-        /// Amount of the associated PSD2 compliant transaction.
+        /// The amount of the associated PSD2 compliant transaction.
         /// </summary>
         [JsonProperty("amount")]
         public string Amount { get; private set; }
         /// <summary>
-        /// Payee of the associated PSD2 compliant transaction.
+        /// The payee of the associated PSD2 compliant transaction
         /// </summary>
         [JsonProperty("payee")]
         public string Payee { get; private set; }
         /// <summary>
-        /// The date this Verification Check was created
+        /// The ISO 8601 date and time in GMT when the Verification Check resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Verification Check was updated
+        /// The ISO 8601 date and time in GMT when the Verification Check resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

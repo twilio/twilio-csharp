@@ -19,38 +19,38 @@ namespace Twilio.Rest.Verify.V2
     public class CreateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// Friendly name of the service
+        /// A string to describe the verification service
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// Length of verification code. Valid values are 4-10
+        /// The length of the verification code to generate
         /// </summary>
         public int? CodeLength { get; set; }
         /// <summary>
-        /// Indicates whether or not to perform a lookup with each verification started
+        /// Whether to perform a lookup with each verification
         /// </summary>
         public bool? LookupEnabled { get; set; }
         /// <summary>
-        /// Indicates whether or not to ignore SMS verifications for landlines
+        /// Whether to skip sending SMS verifications to landlines
         /// </summary>
         public bool? SkipSmsToLandlines { get; set; }
         /// <summary>
-        /// Indicates whether or not to require a random number input to deliver the verify code via phone calls
+        /// Whether to ask the user to press a number before delivering the verify code in a phone call
         /// </summary>
         public bool? DtmfInputRequired { get; set; }
         /// <summary>
-        /// Alternative to be used as Service friendly name in phone calls
+        /// The name of an alternative text-to-speech service to use in phone calls
         /// </summary>
         public string TtsName { get; set; }
         /// <summary>
-        /// Indicates whether PSD2 parameters are enabled or not
+        /// Whether to pass PSD2 transaction parameters when starting a verification
         /// </summary>
         public bool? Psd2Enabled { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
         /// </summary>
-        /// <param name="friendlyName"> Friendly name of the service </param>
+        /// <param name="friendlyName"> A string to describe the verification service </param>
         public CreateServiceOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
@@ -109,14 +109,14 @@ namespace Twilio.Rest.Verify.V2
     public class FetchServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// Verification Service Instance SID.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        /// <param name="pathSid"> Verification Service Instance SID. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -140,14 +140,14 @@ namespace Twilio.Rest.Verify.V2
     public class DeleteServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// Verification Service Instance SID.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
-        /// <param name="pathSid"> Verification Service Instance SID. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -193,42 +193,42 @@ namespace Twilio.Rest.Verify.V2
     public class UpdateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Friendly name of the service
+        /// A string to describe the verification service
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Length of verification code. Valid values are 4-10
+        /// The length of the verification code to generate
         /// </summary>
         public int? CodeLength { get; set; }
         /// <summary>
-        /// Indicates whether or not to perform a lookup with each verification started
+        /// Whether to perform a lookup with each verification
         /// </summary>
         public bool? LookupEnabled { get; set; }
         /// <summary>
-        /// Indicates whether or not to ignore SMS verifications for landlines
+        /// Whether to skip sending SMS verifications to landlines
         /// </summary>
         public bool? SkipSmsToLandlines { get; set; }
         /// <summary>
-        /// Indicates whether or not to require a random number input to deliver the verify code via phone calls
+        /// Whether to ask the user to press a number before delivering the verify code in a phone call
         /// </summary>
         public bool? DtmfInputRequired { get; set; }
         /// <summary>
-        /// Alternative to be used as Service friendly name in phone calls
+        /// The name of an alternative text-to-speech service to use in phone calls
         /// </summary>
         public string TtsName { get; set; }
         /// <summary>
-        /// Indicates whether PSD2 parameters are enabled or not
+        /// Whether to pass PSD2 transaction parameters when starting a verification
         /// </summary>
         public bool? Psd2Enabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        /// <param name="pathSid"> Service Sid. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;
