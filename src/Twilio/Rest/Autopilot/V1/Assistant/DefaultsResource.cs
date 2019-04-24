@@ -66,7 +66,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Defaults </returns> 
         public static DefaultsResource Fetch(string pathAssistantSid, ITwilioRestClient client = null)
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Defaults </returns> 
         public static async System.Threading.Tasks.Task<DefaultsResource> FetchAsync(string pathAssistantSid, 
@@ -133,8 +133,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="defaults"> The defaults </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+        /// <param name="defaults"> A JSON string that describes the default task links. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Defaults </returns> 
         public static DefaultsResource Update(string pathAssistantSid, 
@@ -149,8 +149,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="defaults"> The defaults </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+        /// <param name="defaults"> A JSON string that describes the default task links. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Defaults </returns> 
         public static async System.Threading.Tasks.Task<DefaultsResource> UpdateAsync(string pathAssistantSid, 
@@ -181,22 +181,22 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The assistant_sid
+        /// The SID of the Assistant that is the parent of the resource
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Defaults resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The data
+        /// The JSON string that describes the default task links
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }

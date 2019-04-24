@@ -79,8 +79,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the PhoneNumber resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
         public static PhoneNumberResource Fetch(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
@@ -93,8 +93,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the PhoneNumber resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(string pathTrunkSid, 
@@ -149,8 +149,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the PhoneNumber resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
         public static bool Delete(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
@@ -163,8 +163,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the PhoneNumber resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathTrunkSid, 
@@ -219,8 +219,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="phoneNumberSid"> The SID of the Incoming Phone Number that you want to associate with this trunk.
+        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the phone number with </param>
+        /// <param name="phoneNumberSid"> The SID of the Incoming Phone Number that you want to associate with the trunk
         ///                      </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneNumber </returns> 
@@ -234,8 +234,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="phoneNumberSid"> The SID of the Incoming Phone Number that you want to associate with this trunk.
+        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the phone number with </param>
+        /// <param name="phoneNumberSid"> The SID of the Incoming Phone Number that you want to associate with the trunk
         ///                      </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
@@ -295,7 +295,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the PhoneNumber resources </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the PhoneNumber resources </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -406,139 +406,139 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The address_requirements
+        /// Whether the phone number requires an Address registered with Twilio
         /// </summary>
         [JsonProperty("address_requirements")]
         [JsonConverter(typeof(StringEnumConverter))]
         public PhoneNumberResource.AddressRequirementEnum AddressRequirements { get; private set; }
         /// <summary>
-        /// The api_version
+        /// The API version used to start a new TwiML session
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// The beta
+        /// Whether the phone number is new to the Twilio platform
         /// </summary>
         [JsonProperty("beta")]
         public bool? Beta { get; private set; }
         /// <summary>
-        /// The capabilities
+        /// Indicate if a phone can receive calls or messages
         /// </summary>
         [JsonProperty("capabilities")]
         public Dictionary<string, string> Capabilities { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// The phone_number
+        /// The phone number in E.164 format
         /// </summary>
         [JsonProperty("phone_number")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber PhoneNumber { get; private set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The sms_application_sid
+        /// The SID of the application that handles SMS messages sent to the phone number
         /// </summary>
         [JsonProperty("sms_application_sid")]
         public string SmsApplicationSid { get; private set; }
         /// <summary>
-        /// The sms_fallback_method
+        /// The HTTP method used with sms_fallback_url
         /// </summary>
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
         /// <summary>
-        /// The sms_fallback_url
+        /// The URL that we call when an error occurs while retrieving or executing the TwiML
         /// </summary>
         [JsonProperty("sms_fallback_url")]
         public Uri SmsFallbackUrl { get; private set; }
         /// <summary>
-        /// The sms_method
+        /// The HTTP method to use with sms_url
         /// </summary>
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsMethod { get; private set; }
         /// <summary>
-        /// The sms_url
+        /// The URL we call when the phone number receives an incoming SMS message
         /// </summary>
         [JsonProperty("sms_url")]
         public Uri SmsUrl { get; private set; }
         /// <summary>
-        /// The status_callback
+        /// The URL to send status information to your application
         /// </summary>
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
         /// <summary>
-        /// The status_callback_method
+        /// The HTTP method we use to call status_callback
         /// </summary>
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
         /// <summary>
-        /// The trunk_sid
+        /// The SID of the Trunk that handles calls to the phone number
         /// </summary>
         [JsonProperty("trunk_sid")]
         public string TrunkSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The voice_application_sid
+        /// The SID of the application that handles calls to the phone number
         /// </summary>
         [JsonProperty("voice_application_sid")]
         public string VoiceApplicationSid { get; private set; }
         /// <summary>
-        /// The voice_caller_id_lookup
+        /// Whether to lookup the caller's name
         /// </summary>
         [JsonProperty("voice_caller_id_lookup")]
         public bool? VoiceCallerIdLookup { get; private set; }
         /// <summary>
-        /// The voice_fallback_method
+        /// The HTTP method that we use to call voice_fallback_url
         /// </summary>
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
         /// <summary>
-        /// The voice_fallback_url
+        /// The URL we call when an error occurs in TwiML
         /// </summary>
         [JsonProperty("voice_fallback_url")]
         public Uri VoiceFallbackUrl { get; private set; }
         /// <summary>
-        /// The voice_method
+        /// The HTTP method used with the voice_url
         /// </summary>
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
         /// <summary>
-        /// The voice_url
+        /// The URL we call when the phone number receives a call
         /// </summary>
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }

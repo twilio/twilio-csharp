@@ -102,12 +102,12 @@ namespace Twilio.Tests.Rest.Serverless.V1.Service
                 "/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Assets",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendly_name"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                AssetResource.Create("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", client: twilioRestClient);
+                AssetResource.Create("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendly_name", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -125,7 +125,7 @@ namespace Twilio.Tests.Rest.Serverless.V1.Service
                                          "{\"sid\": \"ZH00000000000000000000000000000000\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ZS00000000000000000000000000000000\",\"friendly_name\": \"asset-friendly\",\"date_created\": \"2018-11-10T20:00:00Z\",\"date_updated\": \"2018-11-10T20:00:00Z\",\"url\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Assets/ZH00000000000000000000000000000000\",\"links\": {\"asset_versions\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Assets/ZH00000000000000000000000000000000/Versions\"}}"
                                      ));
 
-            var response = AssetResource.Create("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", client: twilioRestClient);
+            var response = AssetResource.Create("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendly_name", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -139,12 +139,12 @@ namespace Twilio.Tests.Rest.Serverless.V1.Service
                 "/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Assets/ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendly_name"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                AssetResource.Update("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", client: twilioRestClient);
+                AssetResource.Update("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendly_name", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -162,7 +162,7 @@ namespace Twilio.Tests.Rest.Serverless.V1.Service
                                          "{\"sid\": \"ZH00000000000000000000000000000000\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ZS00000000000000000000000000000000\",\"friendly_name\": \"asset-friendly-update\",\"date_created\": \"2018-11-10T20:00:00Z\",\"date_updated\": \"2018-11-10T20:00:00Z\",\"url\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Assets/ZH00000000000000000000000000000000\",\"links\": {\"asset_versions\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Assets/ZH00000000000000000000000000000000/Versions\"}}"
                                      ));
 
-            var response = AssetResource.Update("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", client: twilioRestClient);
+            var response = AssetResource.Update("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendly_name", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

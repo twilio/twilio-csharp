@@ -153,12 +153,12 @@ namespace Twilio.Tests.Rest.Video.V1
                 "/v1/CompositionHooks",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendly_name"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                CompositionHookResource.Create("friendlyName", client: twilioRestClient);
+                CompositionHookResource.Create("friendly_name", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -176,7 +176,7 @@ namespace Twilio.Tests.Rest.Video.V1
                                          "{\"friendly_name\": \"My composition hook\",\"enabled\": false,\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": null,\"sid\": \"HKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"audio_sources\": [\"user*\",\"moderator\"],\"audio_sources_excluded\": [\"admin\"],\"video_layout\": {\"custom\": {\"video_sources\": [\"user*\"],\"video_sources_excluded\": [\"moderator\"],\"reuse\": \"show_oldest\",\"x_pos\": 100,\"y_pos\": 600,\"z_pos\": 10,\"width\": 800,\"height\": 0,\"max_columns\": 0,\"max_rows\": 0,\"cells_excluded\": [2,3]}},\"trim\": true,\"format\": \"mp4\",\"resolution\": \"1280x720\",\"status_callback\": \"http://www.example.com\",\"status_callback_method\": \"POST\",\"url\": \"https://video.twilio.com/v1/CompositionHooks/HKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = CompositionHookResource.Create("friendlyName", client: twilioRestClient);
+            var response = CompositionHookResource.Create("friendly_name", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -190,12 +190,12 @@ namespace Twilio.Tests.Rest.Video.V1
                 "/v1/CompositionHooks/HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendly_name"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                CompositionHookResource.Update("HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", client: twilioRestClient);
+                CompositionHookResource.Update("HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendly_name", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -213,7 +213,7 @@ namespace Twilio.Tests.Rest.Video.V1
                                          "{\"friendly_name\": \"My composition hook\",\"enabled\": true,\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"sid\": \"HKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"audio_sources\": [\"user*\",\"moderator\"],\"audio_sources_excluded\": [\"admin\"],\"video_layout\": {\"custom\": {\"video_sources\": [\"user*\"],\"video_sources_excluded\": [\"moderator\"],\"reuse\": \"show_oldest\",\"x_pos\": 100,\"y_pos\": 600,\"z_pos\": 10,\"width\": 800,\"height\": 0,\"max_columns\": 0,\"max_rows\": 0,\"cells_excluded\": [2,3]}},\"trim\": true,\"format\": \"mp4\",\"resolution\": \"1280x720\",\"status_callback\": \"http://www.example.com\",\"status_callback_method\": \"POST\",\"url\": \"https://video.twilio.com/v1/CompositionHooks/HKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = CompositionHookResource.Update("HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", client: twilioRestClient);
+            var response = CompositionHookResource.Update("HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendly_name", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -228,7 +228,7 @@ namespace Twilio.Tests.Rest.Video.V1
                                          "{\"friendly_name\": \"My composition hook\",\"enabled\": true,\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"sid\": \"HKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"audio_sources\": [\"user*\",\"moderator\"],\"audio_sources_excluded\": [\"admin\"],\"video_layout\": {},\"trim\": true,\"format\": \"mp4\",\"resolution\": \"1280x720\",\"status_callback\": null,\"status_callback_method\": \"POST\",\"url\": \"https://video.twilio.com/v1/CompositionHooks/HKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = CompositionHookResource.Update("HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", client: twilioRestClient);
+            var response = CompositionHookResource.Update("HKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendly_name", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

@@ -102,12 +102,12 @@ namespace Twilio.Tests.Rest.Serverless.V1.Service
                 "/v1/Services/ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Environments",
                 ""
             );
-            request.AddPostParam("UniqueName", Serialize("uniqueName"));
+            request.AddPostParam("UniqueName", Serialize("unique_name"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                EnvironmentResource.Create("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "uniqueName", client: twilioRestClient);
+                EnvironmentResource.Create("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "unique_name", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -125,7 +125,7 @@ namespace Twilio.Tests.Rest.Serverless.V1.Service
                                          "{\"sid\": \"ZE00000000000000000000000000000000\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ZS00000000000000000000000000000000\",\"build_sid\": null,\"unique_name\": \"staging\",\"domain_suffix\": \"stage\",\"domain_name\": \"foobar-1234-stage.twil.io\",\"date_created\": \"2018-11-10T20:00:00Z\",\"date_updated\": \"2018-11-10T20:00:00Z\",\"url\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Environments/ZE00000000000000000000000000000000\",\"links\": {\"variables\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Environments/ZE00000000000000000000000000000000/Variables\",\"deployments\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Environments/ZE00000000000000000000000000000000/Deployments\"}}"
                                      ));
 
-            var response = EnvironmentResource.Create("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "uniqueName", client: twilioRestClient);
+            var response = EnvironmentResource.Create("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "unique_name", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

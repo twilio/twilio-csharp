@@ -102,13 +102,13 @@ namespace Twilio.Tests.Rest.Serverless.V1
                 "/v1/Services",
                 ""
             );
-            request.AddPostParam("UniqueName", Serialize("uniqueName"));
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("UniqueName", Serialize("unique_name"));
+            request.AddPostParam("FriendlyName", Serialize("friendly_name"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ServiceResource.Create("uniqueName", "friendlyName", client: twilioRestClient);
+                ServiceResource.Create("unique_name", "friendly_name", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -126,7 +126,7 @@ namespace Twilio.Tests.Rest.Serverless.V1
                                          "{\"sid\": \"ZS00000000000000000000000000000000\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"service-friendly\",\"unique_name\": \"service-unique\",\"include_credentials\": true,\"date_created\": \"2018-11-10T20:00:00Z\",\"date_updated\": \"2018-11-10T20:00:00Z\",\"url\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000\",\"links\": {\"environments\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Environments\",\"functions\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Functions\",\"assets\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Assets\",\"builds\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Builds\"}}"
                                      ));
 
-            var response = ServiceResource.Create("uniqueName", "friendlyName", client: twilioRestClient);
+            var response = ServiceResource.Create("unique_name", "friendly_name", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

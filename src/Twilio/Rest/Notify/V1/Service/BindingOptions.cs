@@ -20,19 +20,19 @@ namespace Twilio.Rest.Notify.V1.Service
     public class FetchBindingOptions : IOptions<BindingResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchBindingOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchBindingOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -57,19 +57,19 @@ namespace Twilio.Rest.Notify.V1.Service
     public class DeleteBindingOptions : IOptions<BindingResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to delete the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteBindingOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteBindingOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -94,45 +94,45 @@ namespace Twilio.Rest.Notify.V1.Service
     public class CreateBindingOptions : IOptions<BindingResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to create the resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The Identity to which this Binding belongs to.
+        /// The `identity` value that identifies the new resource's User
         /// </summary>
         public string Identity { get; }
         /// <summary>
-        /// The type of the Binding.
+        /// The type of the Binding
         /// </summary>
         public BindingResource.BindingTypeEnum BindingType { get; }
         /// <summary>
-        /// The address specific to the channel.
+        /// The channel-specific address
         /// </summary>
         public string Address { get; }
         /// <summary>
-        /// The list of tags associated with this Binding.
+        /// A tag that can be used to select the Bindings to notify
         /// </summary>
         public List<string> Tag { get; set; }
         /// <summary>
-        /// The version of the protocol used to send the notification.
+        /// The protocol version to use to send the notification
         /// </summary>
         public string NotificationProtocolVersion { get; set; }
         /// <summary>
-        /// The unique identifier of the Credential resource to be used to send notifications to this Binding.
+        /// The SID of the Credential resource to be used to send notifications to this Binding
         /// </summary>
         public string CredentialSid { get; set; }
         /// <summary>
-        /// DEPRECATED*
+        /// Deprecated
         /// </summary>
         public string Endpoint { get; set; }
 
         /// <summary>
         /// Construct a new CreateBindingOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> The Identity to which this Binding belongs to. </param>
-        /// <param name="bindingType"> The type of the Binding. </param>
-        /// <param name="address"> The address specific to the channel. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
+        /// <param name="bindingType"> The type of the Binding </param>
+        /// <param name="address"> The channel-specific address </param>
         public CreateBindingOptions(string pathServiceSid, 
                                     string identity, 
                                     BindingResource.BindingTypeEnum bindingType, 
@@ -198,30 +198,30 @@ namespace Twilio.Rest.Notify.V1.Service
     public class ReadBindingOptions : ReadOptions<BindingResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to read the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Only list Bindings created on or after the given date.
+        /// Only include usage that has occurred on or after this date
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// Only list Bindings created on or before the given date.
+        /// Only include usage that occurred on or before this date
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// Only list Bindings that have any of the specified Identities.
+        /// The `identity` value of the resources to read
         /// </summary>
         public List<string> Identity { get; set; }
         /// <summary>
-        /// Only list Bindings that have all of the specified Tags.
+        /// Only list Bindings that have all of the specified Tags
         /// </summary>
         public List<string> Tag { get; set; }
 
         /// <summary>
         /// Construct a new ReadBindingOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resource from </param>
         public ReadBindingOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;

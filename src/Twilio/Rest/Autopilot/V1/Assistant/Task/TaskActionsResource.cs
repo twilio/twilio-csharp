@@ -35,7 +35,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         }
 
         /// <summary>
-        /// Returns JSON actions for this Task.
+        /// Returns JSON actions for the Task.
         /// </summary>
         /// <param name="options"> Fetch TaskActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 
         #if !NET35
         /// <summary>
-        /// Returns JSON actions for this Task.
+        /// Returns JSON actions for the Task.
         /// </summary>
         /// <param name="options"> Fetch TaskActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,10 +64,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         #endif
 
         /// <summary>
-        /// Returns JSON actions for this Task.
+        /// Returns JSON actions for the Task.
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task for which the task actions
+        ///                        to fetch were defined </param>
+        /// <param name="pathTaskSid"> The SID of the Task for which the task actions to fetch were defined </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskActions </returns> 
         public static TaskActionsResource Fetch(string pathAssistantSid, string pathTaskSid, ITwilioRestClient client = null)
@@ -78,10 +79,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 
         #if !NET35
         /// <summary>
-        /// Returns JSON actions for this Task.
+        /// Returns JSON actions for the Task.
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task for which the task actions
+        ///                        to fetch were defined </param>
+        /// <param name="pathTaskSid"> The SID of the Task for which the task actions to fetch were defined </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskActions </returns> 
         public static async System.Threading.Tasks.Task<TaskActionsResource> FetchAsync(string pathAssistantSid, 
@@ -136,10 +138,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// Updates the actions of an Task identified by {TaskSid} or {TaskUniqueName}.
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task. </param>
-        /// <param name="actions"> The JSON [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the
-        ///               Assistant how to perform this task. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task for which the task actions
+        ///                        to update were defined </param>
+        /// <param name="pathTaskSid"> The SID of the Task for which the task actions to update were defined </param>
+        /// <param name="actions"> The JSON string that specifies the actions that instruct the Assistant on how to perform the
+        ///               task </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskActions </returns> 
         public static TaskActionsResource Update(string pathAssistantSid, 
@@ -155,10 +158,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// Updates the actions of an Task identified by {TaskSid} or {TaskUniqueName}.
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task. </param>
-        /// <param name="actions"> The JSON [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the
-        ///               Assistant how to perform this task. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task for which the task actions
+        ///                        to update were defined </param>
+        /// <param name="pathTaskSid"> The SID of the Task for which the task actions to update were defined </param>
+        /// <param name="actions"> The JSON string that specifies the actions that instruct the Assistant on how to perform the
+        ///               task </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskActions </returns> 
         public static async System.Threading.Tasks.Task<TaskActionsResource> UpdateAsync(string pathAssistantSid, 
@@ -190,27 +194,27 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         }
 
         /// <summary>
-        /// The unique ID of the Account that created this Field.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique ID of the parent Assistant.
+        /// The SID of the Assistant that is the parent of the Task associated with the resource
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// The unique ID of the Task.
+        /// The SID of the Task associated with the resource
         /// </summary>
         [JsonProperty("task_sid")]
         public string TaskSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the TaskActions resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The JSON [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant how to perform this task.
+        /// The JSON string that specifies the actions that instruct the Assistant on how to perform the task
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }

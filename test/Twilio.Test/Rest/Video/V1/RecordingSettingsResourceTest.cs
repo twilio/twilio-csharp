@@ -66,12 +66,12 @@ namespace Twilio.Tests.Rest.Video.V1
                 "/v1/RecordingSettings/Default",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendly_name"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                RecordingSettingsResource.Create("friendlyName", client: twilioRestClient);
+                RecordingSettingsResource.Create("friendly_name", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -89,7 +89,7 @@ namespace Twilio.Tests.Rest.Video.V1
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"aws_credentials_sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"encryption_key_sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"aws_s3_url\": \"https://my-super-duper-bucket.s3.amazonaws.com/my/path/\",\"aws_storage_enabled\": true,\"encryption_enabled\": true,\"url\": \"https://video.twilio.com/v1/RecordingSettings/Default\"}"
                                      ));
 
-            var response = RecordingSettingsResource.Create("friendlyName", client: twilioRestClient);
+            var response = RecordingSettingsResource.Create("friendly_name", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

@@ -35,7 +35,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
         /// <summary>
-        /// Returns Style sheet JSON object for this Assistant
+        /// Returns Style sheet JSON object for the Assistant
         /// </summary>
         /// <param name="options"> Fetch StyleSheet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         #if !NET35
         /// <summary>
-        /// Returns Style sheet JSON object for this Assistant
+        /// Returns Style sheet JSON object for the Assistant
         /// </summary>
         /// <param name="options"> Fetch StyleSheet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,9 +64,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         #endif
 
         /// <summary>
-        /// Returns Style sheet JSON object for this Assistant
+        /// Returns Style sheet JSON object for the Assistant
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant with the StyleSheet resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of StyleSheet </returns> 
         public static StyleSheetResource Fetch(string pathAssistantSid, ITwilioRestClient client = null)
@@ -77,9 +77,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         #if !NET35
         /// <summary>
-        /// Returns Style sheet JSON object for this Assistant
+        /// Returns Style sheet JSON object for the Assistant
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant with the StyleSheet resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of StyleSheet </returns> 
         public static async System.Threading.Tasks.Task<StyleSheetResource> FetchAsync(string pathAssistantSid, 
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
         /// <summary>
-        /// Updates the style sheet for an assistant identified by {AssistantSid} or {AssistantUniqueName}.
+        /// Updates the style sheet for an Assistant identified by `assistant_sid`.
         /// </summary>
         /// <param name="options"> Update StyleSheet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         #if !NET35
         /// <summary>
-        /// Updates the style sheet for an assistant identified by {AssistantSid} or {AssistantUniqueName}.
+        /// Updates the style sheet for an Assistant identified by `assistant_sid`.
         /// </summary>
         /// <param name="options"> Update StyleSheet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -131,10 +131,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         #endif
 
         /// <summary>
-        /// Updates the style sheet for an assistant identified by {AssistantSid} or {AssistantUniqueName}.
+        /// Updates the style sheet for an Assistant identified by `assistant_sid`.
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
-        /// <param name="styleSheet"> The JSON Style sheet string </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant with the StyleSheet resource to update </param>
+        /// <param name="styleSheet"> The JSON string that describes the style sheet object </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of StyleSheet </returns> 
         public static StyleSheetResource Update(string pathAssistantSid, 
@@ -147,10 +147,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
 
         #if !NET35
         /// <summary>
-        /// Updates the style sheet for an assistant identified by {AssistantSid} or {AssistantUniqueName}.
+        /// Updates the style sheet for an Assistant identified by `assistant_sid`.
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
-        /// <param name="styleSheet"> The JSON Style sheet string </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant with the StyleSheet resource to update </param>
+        /// <param name="styleSheet"> The JSON string that describes the style sheet object </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of StyleSheet </returns> 
         public static async System.Threading.Tasks.Task<StyleSheetResource> UpdateAsync(string pathAssistantSid, 
@@ -181,22 +181,22 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
         /// <summary>
-        /// The unique ID of the Account that created this Assistant
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique ID of the Assistant
+        /// The SID of the Assistant that is the parent of the resource
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the StyleSheet resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The JSON style sheet object
+        /// The JSON string that describes the style sheet object
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }

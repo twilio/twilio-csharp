@@ -66,9 +66,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
-        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the FieldType associated with the
+        ///                        resource to fetch </param>
+        /// <param name="pathFieldTypeSid"> The SID of the Field Type associated with  the Field Value to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldValue </returns> 
         public static FieldValueResource Fetch(string pathAssistantSid, 
@@ -84,9 +85,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
-        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the FieldType associated with the
+        ///                        resource to fetch </param>
+        /// <param name="pathFieldTypeSid"> The SID of the Field Type associated with  the Field Value to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldValue </returns> 
         public static async System.Threading.Tasks.Task<FieldValueResource> FetchAsync(string pathAssistantSid, 
@@ -146,10 +148,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
-        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
-        /// <param name="language"> An ISO language-country string that specifies the language used for this field value. For
-        ///                example: en-US </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the FieldType associated with the
+        ///                        resources to read </param>
+        /// <param name="pathFieldTypeSid"> The SID of the Field Type associated with the Field Value to read </param>
+        /// <param name="language"> The ISO language-country tag that identifies the language of the value </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -169,10 +171,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
-        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
-        /// <param name="language"> An ISO language-country string that specifies the language used for this field value. For
-        ///                example: en-US </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the FieldType associated with the
+        ///                        resources to read </param>
+        /// <param name="pathFieldTypeSid"> The SID of the Field Type associated with the Field Value to read </param>
+        /// <param name="language"> The ISO language-country tag that identifies the language of the value </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -291,13 +293,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
-        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
-        /// <param name="language"> An ISO language-country string that specifies the language used for this field value. For
-        ///                example: en-US </param>
-        /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid.
-        ///             Unique up to 64 characters long. </param>
-        /// <param name="synonymOf"> A string value that indicates which word this field value is a synonym of. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the FieldType associated with the
+        ///                        new resource </param>
+        /// <param name="pathFieldTypeSid"> The SID of the Field Type associated with the Field Value </param>
+        /// <param name="language"> The ISO language-country tag that identifies the language of the value </param>
+        /// <param name="value"> The Field Value data </param>
+        /// <param name="synonymOf"> The string value that indicates which word the field value is a synonym of </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldValue </returns> 
         public static FieldValueResource Create(string pathAssistantSid, 
@@ -315,13 +316,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
-        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
-        /// <param name="language"> An ISO language-country string that specifies the language used for this field value. For
-        ///                example: en-US </param>
-        /// <param name="value"> A user-provided string that uniquely identifies this resource as an alternative to the sid.
-        ///             Unique up to 64 characters long. </param>
-        /// <param name="synonymOf"> A string value that indicates which word this field value is a synonym of. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the FieldType associated with the
+        ///                        new resource </param>
+        /// <param name="pathFieldTypeSid"> The SID of the Field Type associated with the Field Value </param>
+        /// <param name="language"> The ISO language-country tag that identifies the language of the value </param>
+        /// <param name="value"> The Field Value data </param>
+        /// <param name="synonymOf"> The string value that indicates which word the field value is a synonym of </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldValue </returns> 
         public static async System.Threading.Tasks.Task<FieldValueResource> CreateAsync(string pathAssistantSid, 
@@ -379,9 +379,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
-        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the FieldType associated with the
+        ///                        resources to delete </param>
+        /// <param name="pathFieldTypeSid"> The SID of the Field Type associated with the Field Value to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FieldValue </returns> 
         public static bool Delete(string pathAssistantSid, 
@@ -397,9 +398,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
-        /// <param name="pathFieldTypeSid"> The unique ID of the Field Type associated with this Field Value </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the FieldType associated with the
+        ///                        resources to delete </param>
+        /// <param name="pathFieldTypeSid"> The SID of the Field Type associated with the Field Value to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FieldValue </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
@@ -431,52 +433,52 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         }
 
         /// <summary>
-        /// The unique ID of the Account that created this Field Value.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date that this resource was created
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The unique ID of the Field Type associated with this Field Value.
+        /// The SID of the Field Type associated with the Field Value
         /// </summary>
         [JsonProperty("field_type_sid")]
         public string FieldTypeSid { get; private set; }
         /// <summary>
-        /// An ISO language-country string of the value (currently supported: `en-US`, `nl-NL`)
+        /// The ISO language-country tag that identifies the language of the value
         /// </summary>
         [JsonProperty("language")]
         public string Language { get; private set; }
         /// <summary>
-        /// The unique ID of the Assistant.
+        /// The SID of the Assistant that is the parent of the FieldType associated with the resource
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The Field Value itself.
+        /// The Field Value data
         /// </summary>
         [JsonProperty("value")]
         public string Value { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the FieldValue resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// A string value that indicates which word this field value is a synonym of.
+        /// The word for which the field value is a synonym of
         /// </summary>
         [JsonProperty("synonym_of")]
         public string SynonymOf { get; private set; }

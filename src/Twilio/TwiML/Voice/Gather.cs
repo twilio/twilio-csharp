@@ -223,6 +223,10 @@ namespace Twilio.TwiML.Voice
         /// Allow debug for gather
         /// </summary>
         public bool? Debug { get; set; }
+        /// <summary>
+        /// Force webhook to the action URL event if there is no input
+        /// </summary>
+        public bool? ActionOnEmptyResult { get; set; }
 
         /// <summary>
         /// Create a new Gather
@@ -243,6 +247,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="hints"> Speech recognition hints </param>
         /// <param name="bargeIn"> Stop playing media upon speech </param>
         /// <param name="debug"> Allow debug for gather </param>
+        /// <param name="actionOnEmptyResult"> Force webhook to the action URL event if there is no input </param>
         public Gather(List<Gather.InputEnum> input = null, 
                       Uri action = null, 
                       Twilio.Http.HttpMethod method = null, 
@@ -257,7 +262,8 @@ namespace Twilio.TwiML.Voice
                       Gather.LanguageEnum language = null, 
                       string hints = null, 
                       bool? bargeIn = null, 
-                      bool? debug = null) : base("Gather")
+                      bool? debug = null, 
+                      bool? actionOnEmptyResult = null) : base("Gather")
         {
             this.Input = input;
             this.Action = action;
@@ -274,6 +280,7 @@ namespace Twilio.TwiML.Voice
             this.Hints = hints;
             this.BargeIn = bargeIn;
             this.Debug = debug;
+            this.ActionOnEmptyResult = actionOnEmptyResult;
         }
 
         /// <summary>
@@ -341,6 +348,10 @@ namespace Twilio.TwiML.Voice
             if (this.Debug != null)
             {
                 attributes.Add(new XAttribute("debug", this.Debug.Value.ToString().ToLower()));
+            }
+            if (this.ActionOnEmptyResult != null)
+            {
+                attributes.Add(new XAttribute("actionOnEmptyResult", this.ActionOnEmptyResult.Value.ToString().ToLower()));
             }
             return attributes;
         }

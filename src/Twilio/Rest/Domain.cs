@@ -24,24 +24,24 @@ namespace Twilio.Rest
         public static readonly Domain Chat = new Domain("chat");
         public static readonly Domain Fax = new Domain("fax");
         public static readonly Domain FlexApi = new Domain("flex");
+        public static readonly Domain Insights = new Domain("insights");
         public static readonly Domain IpMessaging = new Domain("chat");
         public static readonly Domain Lookups = new Domain("lookups");
+        public static readonly Domain Messaging = new Domain("messaging");
         public static readonly Domain Monitor = new Domain("monitor");
         public static readonly Domain Notify = new Domain("notify");
         public static readonly Domain Preview = new Domain("preview");
         public static readonly Domain Pricing = new Domain("pricing");
         public static readonly Domain Proxy = new Domain("proxy");
         public static readonly Domain Serverless = new Domain("serverless");
+        public static readonly Domain Studio = new Domain("studio");
+        public static readonly Domain Sync = new Domain("sync");
         public static readonly Domain Taskrouter = new Domain("taskrouter");
         public static readonly Domain Trunking = new Domain("trunking");
-        public static readonly Domain Video = new Domain("video");
-        public static readonly Domain Messaging = new Domain("messaging");
-        public static readonly Domain Wireless = new Domain("wireless");
-        public static readonly Domain Sync = new Domain("sync");
-        public static readonly Domain Studio = new Domain("studio");
         public static readonly Domain Verify = new Domain("verify");
+        public static readonly Domain Video = new Domain("video");
         public static readonly Domain Voice = new Domain("voice");
-        public static readonly Domain Insights = new Domain("insights");
+        public static readonly Domain Wireless = new Domain("wireless");
     }
 
 }

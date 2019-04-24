@@ -66,8 +66,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Dialogue </returns> 
         public static DialogueResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
@@ -80,8 +80,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Dialogue </returns> 
         public static async System.Threading.Tasks.Task<DialogueResource> FetchAsync(string pathAssistantSid, 
@@ -112,27 +112,27 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
         /// <summary>
-        /// The unique ID of the Account that created this Field.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique ID of the parent Assistant.
+        /// The SID of the Assistant that is the parent of the resource
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// The unique ID of the Dialogue
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The dialogue session object as json
+        /// The JSON string that describes the dialogue session object
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Dialogue resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

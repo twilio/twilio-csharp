@@ -66,8 +66,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
         public static QueryResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
@@ -80,8 +80,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
         public static async System.Threading.Tasks.Task<QueryResource> FetchAsync(string pathAssistantSid, 
@@ -140,14 +140,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="language"> An [ISO language-country
-        ///                string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the
-        ///                language used for this query. For example: `en-US`. </param>
-        /// <param name="modelBuild"> The Sid or unique name of the [Model
-        ///                  Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried. </param>
-        /// <param name="status"> A string that described the query status. The values can be: `pending_review`, `reviewed`,
-        ///              `discarded` </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
+        /// <param name="language"> The ISO language-country string that specifies the language used by the Query resources to
+        ///                read </param>
+        /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
+        /// <param name="status"> The status of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -168,14 +165,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="language"> An [ISO language-country
-        ///                string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the
-        ///                language used for this query. For example: `en-US`. </param>
-        /// <param name="modelBuild"> The Sid or unique name of the [Model
-        ///                  Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried. </param>
-        /// <param name="status"> A string that described the query status. The values can be: `pending_review`, `reviewed`,
-        ///              `discarded` </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
+        /// <param name="language"> The ISO language-country string that specifies the language used by the Query resources to
+        ///                read </param>
+        /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
+        /// <param name="status"> The status of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -295,16 +289,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="language"> An [ISO language-country
-        ///                string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the
-        ///                language used for this query. For example: `en-US`. </param>
-        /// <param name="query"> A user-provided string that uniquely identifies this resource as an alternative to the sid. It
-        ///             can be up to 2048 characters long. </param>
-        /// <param name="tasks"> Constraints the query to a set of tasks. Useful when you need to constrain the paths the user
-        ///             can take. Tasks should be comma separated task-unique-name-1, task-unique-name-2 </param>
-        /// <param name="modelBuild"> The Sid or unique name of the [Model
-        ///                  Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
+        /// <param name="language"> The ISO language-country string that specifies the language used for the new query </param>
+        /// <param name="query"> The end-user's natural language input </param>
+        /// <param name="tasks"> The list of tasks to limit the new query to </param>
+        /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
         public static QueryResource Create(string pathAssistantSid, 
@@ -322,16 +311,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="language"> An [ISO language-country
-        ///                string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the
-        ///                language used for this query. For example: `en-US`. </param>
-        /// <param name="query"> A user-provided string that uniquely identifies this resource as an alternative to the sid. It
-        ///             can be up to 2048 characters long. </param>
-        /// <param name="tasks"> Constraints the query to a set of tasks. Useful when you need to constrain the paths the user
-        ///             can take. Tasks should be comma separated task-unique-name-1, task-unique-name-2 </param>
-        /// <param name="modelBuild"> The Sid or unique name of the [Model
-        ///                  Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
+        /// <param name="language"> The ISO language-country string that specifies the language used for the new query </param>
+        /// <param name="query"> The end-user's natural language input </param>
+        /// <param name="tasks"> The list of tasks to limit the new query to </param>
+        /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
         public static async System.Threading.Tasks.Task<QueryResource> CreateAsync(string pathAssistantSid, 
@@ -389,11 +373,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
-        /// <param name="sampleSid"> An optional reference to the Sample created from this query. </param>
-        /// <param name="status"> A string that described the query status. The values can be: `pending_review`, `reviewed`,
-        ///              `discarded` </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to update </param>
+        /// <param name="sampleSid"> The SID of an optional reference to the Sample created from the query </param>
+        /// <param name="status"> The new status of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
         public static QueryResource Update(string pathAssistantSid, 
@@ -410,11 +393,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
-        /// <param name="sampleSid"> An optional reference to the Sample created from this query. </param>
-        /// <param name="status"> A string that described the query status. The values can be: `pending_review`, `reviewed`,
-        ///              `discarded` </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to update </param>
+        /// <param name="sampleSid"> The SID of an optional reference to the Sample created from the query </param>
+        /// <param name="status"> The new status of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
         public static async System.Threading.Tasks.Task<QueryResource> UpdateAsync(string pathAssistantSid, 
@@ -471,8 +453,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Query </returns> 
         public static bool Delete(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
@@ -485,8 +467,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Query </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
@@ -517,67 +499,67 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
         /// <summary>
-        /// The unique ID of the Account that created this Query.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date that this resource was created
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The natural language analysis results which include the [Task](https://www.twilio.com/docs/autopilot/api/task) recognized, the confidence score, and a list of identified [Fields](https://www.twilio.com/docs/autopilot/api/task-field).
+        /// The natural language analysis results that include the Task recognized, the confidence score, and a list of identified Fields
         /// </summary>
         [JsonProperty("results")]
         public object Results { get; private set; }
         /// <summary>
-        /// An [ISO language-country string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the language used for this query. For example: `en-US`
+        /// The ISO language-country string that specifies the language used by the Query
         /// </summary>
         [JsonProperty("language")]
         public string Language { get; private set; }
         /// <summary>
-        /// The unique ID of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) queried.
+        /// The SID of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) queried
         /// </summary>
         [JsonProperty("model_build_sid")]
         public string ModelBuildSid { get; private set; }
         /// <summary>
-        /// The end-user's natural language input.
+        /// The end-user's natural language input
         /// </summary>
         [JsonProperty("query")]
         public string Query { get; private set; }
         /// <summary>
-        /// An optional reference to the Sample created from this query.
+        /// The SID of an optional reference to the Sample created from the query
         /// </summary>
         [JsonProperty("sample_sid")]
         public string SampleSid { get; private set; }
         /// <summary>
-        /// The unique ID of the parent Assistant.
+        /// The SID of the Assistant that is the parent of the resource
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// A 34-character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A string that describes the query status. The values can be: `pending_review`, `reviewed`, `discarded`
+        /// The status of the Query
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Query resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The communication channel where this end-user input came from
+        /// The communication channel from where the end-user input came
         /// </summary>
         [JsonProperty("source_channel")]
         public string SourceChannel { get; private set; }

@@ -30,12 +30,12 @@ namespace Twilio.Tests.Rest.Voice.V1.DialingPermissions
                 "/v1/DialingPermissions/BulkCountryUpdates",
                 ""
             );
-            request.AddPostParam("UpdateRequest", Serialize("updateRequest"));
+            request.AddPostParam("UpdateRequest", Serialize("update_request"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                BulkCountryUpdateResource.Create("updateRequest", client: twilioRestClient);
+                BulkCountryUpdateResource.Create("update_request", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -53,7 +53,7 @@ namespace Twilio.Tests.Rest.Voice.V1.DialingPermissions
                                          "{\"update_count\": 1,\"update_request\": \"accepted\"}"
                                      ));
 
-            var response = BulkCountryUpdateResource.Create("updateRequest", client: twilioRestClient);
+            var response = BulkCountryUpdateResource.Create("update_request", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

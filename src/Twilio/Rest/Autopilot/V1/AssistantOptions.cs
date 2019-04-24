@@ -20,14 +20,14 @@ namespace Twilio.Rest.Autopilot.V1
     public class FetchAssistantOptions : IOptions<AssistantResource> 
     {
         /// <summary>
-        /// A 34-character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAssistantOptions
         /// </summary>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchAssistantOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -75,31 +75,31 @@ namespace Twilio.Rest.Autopilot.V1
     public class CreateAssistantOptions : IOptions<AssistantResource> 
     {
         /// <summary>
-        /// A text description for the Assistant. It is non-unique and can be up to 255 characters long.
+        /// A string to describe the new resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// A boolean that specifies whether queries should be logged for 30 days past training. If `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted thereafter. Defaults to `true` if no value is provided.
+        /// Whether queries should be logged and kept after training
         /// </summary>
         public bool? LogQueries { get; set; }
         /// <summary>
-        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
+        /// An application-defined string that uniquely identifies the new resource
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The callback_url
+        /// Reserved
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// A space-separated list of callback events that will trigger callbacks
+        /// Reserved
         /// </summary>
         public string CallbackEvents { get; set; }
         /// <summary>
-        /// A JSON object that defines the assistant [style sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet)
+        /// A JSON string that defines the Assistant's style sheet
         /// </summary>
         public object StyleSheet { get; set; }
         /// <summary>
-        /// A JSON object that defines the assistant's [default tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios
+        /// A JSON object that defines the Assistant's default tasks for various scenarios
         /// </summary>
         public object Defaults { get; set; }
 
@@ -157,42 +157,42 @@ namespace Twilio.Rest.Autopilot.V1
     public class UpdateAssistantOptions : IOptions<AssistantResource> 
     {
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A text description for the Assistant. It is non-unique and can be up to 255 characters long.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// A boolean that specifies whether queries should be logged for 30 days past training. If `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted thereafter. Defaults to `true` if no value is provided.
+        /// Whether queries should be logged and kept after training
         /// </summary>
         public bool? LogQueries { get; set; }
         /// <summary>
-        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The callback_url
+        /// Reserved
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// A space-separated list of callback events that will trigger callbacks
+        /// Reserved
         /// </summary>
         public string CallbackEvents { get; set; }
         /// <summary>
-        /// A JSON object that defines the assistant [style sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet)
+        /// A JSON string that defines the Assistant's style sheet
         /// </summary>
         public object StyleSheet { get; set; }
         /// <summary>
-        /// A JSON object that defines the assistant's [default tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios
+        /// A JSON object that defines the Assistant's [default tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios
         /// </summary>
         public object Defaults { get; set; }
 
         /// <summary>
         /// Construct a new UpdateAssistantOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateAssistantOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -252,14 +252,14 @@ namespace Twilio.Rest.Autopilot.V1
     public class DeleteAssistantOptions : IOptions<AssistantResource> 
     {
         /// <summary>
-        /// A 34-character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteAssistantOptions
         /// </summary>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteAssistantOptions(string pathSid)
         {
             PathSid = pathSid;

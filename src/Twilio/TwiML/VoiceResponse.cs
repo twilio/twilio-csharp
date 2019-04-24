@@ -197,6 +197,7 @@ namespace Twilio.TwiML
         /// <param name="hints"> Speech recognition hints </param>
         /// <param name="bargeIn"> Stop playing media upon speech </param>
         /// <param name="debug"> Allow debug for gather </param>
+        /// <param name="actionOnEmptyResult"> Force webhook to the action URL event if there is no input </param>
         public VoiceResponse Gather(List<Gather.InputEnum> input = null, 
                                     Uri action = null, 
                                     Twilio.Http.HttpMethod method = null, 
@@ -211,7 +212,8 @@ namespace Twilio.TwiML
                                     Gather.LanguageEnum language = null, 
                                     string hints = null, 
                                     bool? bargeIn = null, 
-                                    bool? debug = null)
+                                    bool? debug = null, 
+                                    bool? actionOnEmptyResult = null)
         {
             var newChild = new Gather(
                 input,
@@ -228,7 +230,8 @@ namespace Twilio.TwiML
                 language,
                 hints,
                 bargeIn,
-                debug
+                debug,
+                actionOnEmptyResult
             );
             this.Append(newChild);
             return this;

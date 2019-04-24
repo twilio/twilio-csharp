@@ -15,19 +15,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// Returns Style sheet JSON object for this Assistant
+    /// Returns Style sheet JSON object for the Assistant
     /// </summary>
     public class FetchStyleSheetOptions : IOptions<StyleSheetResource> 
     {
         /// <summary>
-        /// The unique ID of the Assistant
+        /// The SID of the Assistant with the StyleSheet resource to fetch
         /// </summary>
         public string PathAssistantSid { get; }
 
         /// <summary>
         /// Construct a new FetchStyleSheetOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant with the StyleSheet resource to fetch </param>
         public FetchStyleSheetOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -47,23 +47,23 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// Updates the style sheet for an assistant identified by {AssistantSid} or {AssistantUniqueName}.
+    /// Updates the style sheet for an Assistant identified by `assistant_sid`.
     /// </summary>
     public class UpdateStyleSheetOptions : IOptions<StyleSheetResource> 
     {
         /// <summary>
-        /// The unique ID of the Assistant
+        /// The SID of the Assistant with the StyleSheet resource to update
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The JSON Style sheet string
+        /// The JSON string that describes the style sheet object
         /// </summary>
         public object StyleSheet { get; set; }
 
         /// <summary>
         /// Construct a new UpdateStyleSheetOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant with the StyleSheet resource to update </param>
         public UpdateStyleSheetOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;

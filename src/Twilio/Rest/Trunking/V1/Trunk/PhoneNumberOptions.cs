@@ -17,19 +17,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>
-        /// The trunk_sid
+        /// The SID of the Trunk from which to fetch the PhoneNumber resource
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchPhoneNumberOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the PhoneNumber resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchPhoneNumberOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -52,19 +52,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>
-        /// The trunk_sid
+        /// The SID of the Trunk from which to delete the PhoneNumber resource
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeletePhoneNumberOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the PhoneNumber resource </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeletePhoneNumberOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -87,19 +87,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource> 
     {
         /// <summary>
-        /// The trunk_sid
+        /// The SID of the Trunk to associate the phone number with
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The SID of the Incoming Phone Number that you want to associate with this trunk.
+        /// The SID of the Incoming Phone Number that you want to associate with the trunk
         /// </summary>
         public string PhoneNumberSid { get; }
 
         /// <summary>
         /// Construct a new CreatePhoneNumberOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="phoneNumberSid"> The SID of the Incoming Phone Number that you want to associate with this trunk.
+        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the phone number with </param>
+        /// <param name="phoneNumberSid"> The SID of the Incoming Phone Number that you want to associate with the trunk
         ///                      </param>
         public CreatePhoneNumberOptions(string pathTrunkSid, string phoneNumberSid)
         {
@@ -128,14 +128,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource> 
     {
         /// <summary>
-        /// The trunk_sid
+        /// The SID of the Trunk from which to read the PhoneNumber resources
         /// </summary>
         public string PathTrunkSid { get; }
 
         /// <summary>
         /// Construct a new ReadPhoneNumberOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the PhoneNumber resources </param>
         public ReadPhoneNumberOptions(string pathTrunkSid)
         {
             PathTrunkSid = pathTrunkSid;

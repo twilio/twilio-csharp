@@ -532,6 +532,11 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         [JsonProperty("is_reserved")]
         public bool? IsReserved { get; private set; }
+        /// <summary>
+        /// The number of open session assigned to the number.
+        /// </summary>
+        [JsonProperty("in_use")]
+        public int? InUse { get; private set; }
 
         private PhoneNumberResource()
         {

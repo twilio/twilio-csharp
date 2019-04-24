@@ -66,9 +66,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task associated with the
+        ///                        resource to fetch </param>
+        /// <param name="pathTaskSid"> The SID of the Task associated with the Sample resource to create </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sample </returns> 
         public static SampleResource Fetch(string pathAssistantSid, 
@@ -84,9 +85,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task associated with the
+        ///                        resource to fetch </param>
+        /// <param name="pathTaskSid"> The SID of the Task associated with the Sample resource to create </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sample </returns> 
         public static async System.Threading.Tasks.Task<SampleResource> FetchAsync(string pathAssistantSid, 
@@ -146,11 +148,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="language"> An [ISO language-country
-        ///                string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the
-        ///                language used for this sample. For example: `en-US`. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task associated with the
+        ///                        resources to read </param>
+        /// <param name="pathTaskSid"> The SID of the Task associated with the Sample resources to read </param>
+        /// <param name="language"> The ISO language-country string that specifies the language used for the sample </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -170,11 +171,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="language"> An [ISO language-country
-        ///                string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the
-        ///                language used for this sample. For example: `en-US`. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task associated with the
+        ///                        resources to read </param>
+        /// <param name="pathTaskSid"> The SID of the Task associated with the Sample resources to read </param>
+        /// <param name="language"> The ISO language-country string that specifies the language used for the sample </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -293,15 +293,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="language"> An [ISO language-country
-        ///                string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the
-        ///                language used for this sample. For example: `en-US`. </param>
-        /// <param name="taggedText"> The text example of how end-users may express this task. The sample may contain [Field
-        ///                  tag blocks](https://www.twilio.com/docs/autopilot/api/task-sample#field-tagging). </param>
-        /// <param name="sourceChannel"> The communication channel from which the sample was captured. It can be: voice, sms,
-        ///                     chat, alexa, google-assistant, or slack. If not included, the value will be `null` </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task associated with the new
+        ///                        resource </param>
+        /// <param name="pathTaskSid"> The SID of the Task associated with the Sample resource to create </param>
+        /// <param name="language"> The ISO language-country string that specifies the language used for the new sample </param>
+        /// <param name="taggedText"> The text example of how end users might express the task </param>
+        /// <param name="sourceChannel"> The communication channel from which the new sample was captured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sample </returns> 
         public static SampleResource Create(string pathAssistantSid, 
@@ -319,15 +316,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="language"> An [ISO language-country
-        ///                string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the
-        ///                language used for this sample. For example: `en-US`. </param>
-        /// <param name="taggedText"> The text example of how end-users may express this task. The sample may contain [Field
-        ///                  tag blocks](https://www.twilio.com/docs/autopilot/api/task-sample#field-tagging). </param>
-        /// <param name="sourceChannel"> The communication channel from which the sample was captured. It can be: voice, sms,
-        ///                     chat, alexa, google-assistant, or slack. If not included, the value will be `null` </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task associated with the new
+        ///                        resource </param>
+        /// <param name="pathTaskSid"> The SID of the Task associated with the Sample resource to create </param>
+        /// <param name="language"> The ISO language-country string that specifies the language used for the new sample </param>
+        /// <param name="taggedText"> The text example of how end users might express the task </param>
+        /// <param name="sourceChannel"> The communication channel from which the new sample was captured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sample </returns> 
         public static async System.Threading.Tasks.Task<SampleResource> CreateAsync(string pathAssistantSid, 
@@ -385,16 +379,13 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
-        /// <param name="language"> An [ISO language-country
-        ///                string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the
-        ///                language used for this sample. For example: `en-US`. </param>
-        /// <param name="taggedText"> The text example of how end-users may express this task. The sample may contain [Field
-        ///                  tag blocks](https://www.twilio.com/docs/autopilot/api/task-sample#field-tagging). </param>
-        /// <param name="sourceChannel"> The communication channel from which the sample was captured. It can be: voice, sms,
-        ///                     chat, alexa, google-assistant, or slack. If not included, the value will be `null` </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task associated with the
+        ///                        resource to update </param>
+        /// <param name="pathTaskSid"> The SID of the Task associated with the Sample resource to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="language"> The ISO language-country string that specifies the language used for the sample </param>
+        /// <param name="taggedText"> The text example of how end users might express the task </param>
+        /// <param name="sourceChannel"> The communication channel from which the sample was captured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sample </returns> 
         public static SampleResource Update(string pathAssistantSid, 
@@ -413,16 +404,13 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
-        /// <param name="language"> An [ISO language-country
-        ///                string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the
-        ///                language used for this sample. For example: `en-US`. </param>
-        /// <param name="taggedText"> The text example of how end-users may express this task. The sample may contain [Field
-        ///                  tag blocks](https://www.twilio.com/docs/autopilot/api/task-sample#field-tagging). </param>
-        /// <param name="sourceChannel"> The communication channel from which the sample was captured. It can be: voice, sms,
-        ///                     chat, alexa, google-assistant, or slack. If not included, the value will be `null` </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task associated with the
+        ///                        resource to update </param>
+        /// <param name="pathTaskSid"> The SID of the Task associated with the Sample resource to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="language"> The ISO language-country string that specifies the language used for the sample </param>
+        /// <param name="taggedText"> The text example of how end users might express the task </param>
+        /// <param name="sourceChannel"> The communication channel from which the sample was captured </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sample </returns> 
         public static async System.Threading.Tasks.Task<SampleResource> UpdateAsync(string pathAssistantSid, 
@@ -481,9 +469,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task associated with the
+        ///                        resources to delete </param>
+        /// <param name="pathTaskSid"> The SID of the Task associated with the Sample resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sample </returns> 
         public static bool Delete(string pathAssistantSid, 
@@ -499,9 +488,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task associated with the
+        ///                        resources to delete </param>
+        /// <param name="pathTaskSid"> The SID of the Task associated with the Sample resource to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sample </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
@@ -533,52 +523,52 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         }
 
         /// <summary>
-        /// The unique ID of the Account that created this Sample.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date that this resource was created
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The unique ID of the Task associated with this Sample.
+        /// The SID of the Task associated with the resource
         /// </summary>
         [JsonProperty("task_sid")]
         public string TaskSid { get; private set; }
         /// <summary>
-        /// An [ISO language-country string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the language used for this sample. For example: `en-US`.
+        /// An ISO language-country string that specifies the language used for the sample
         /// </summary>
         [JsonProperty("language")]
         public string Language { get; private set; }
         /// <summary>
-        /// The unique ID of the Assistant.
+        /// The SID of the Assistant that is the parent of the Task associated with the resource
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// A 34-character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The text example of how end-users may express this task. The sample may contain [Field tag blocks](https://www.twilio.com/docs/autopilot/api/task-sample#field-tagging).
+        /// The text example of how end users might express the task
         /// </summary>
         [JsonProperty("tagged_text")]
         public string TaggedText { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Sample resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The communication channel from which the sample was captured. It can be: voice, sms, chat, alexa, google-assistant, or slack. If not included, the value will be `null`
+        /// The communication channel from which the sample was captured
         /// </summary>
         [JsonProperty("source_channel")]
         public string SourceChannel { get; private set; }

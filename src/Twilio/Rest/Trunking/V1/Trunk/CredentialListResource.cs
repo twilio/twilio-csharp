@@ -63,8 +63,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the credential list </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialList </returns> 
         public static CredentialListResource Fetch(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
@@ -77,8 +77,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the credential list </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
         public static async System.Threading.Tasks.Task<CredentialListResource> FetchAsync(string pathTrunkSid, 
@@ -133,8 +133,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the credential list </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialList </returns> 
         public static bool Delete(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
@@ -147,8 +147,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the credential list </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathTrunkSid, 
@@ -203,9 +203,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="credentialListSid"> The SID of the Credential List that you want to associate with this trunk. Once
-        ///                         associated, Twilio will start authenticating access to the trunk against this list. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the credential list with </param>
+        /// <param name="credentialListSid"> The SID of the Credential List that you want to associate with the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CredentialList </returns> 
         public static CredentialListResource Create(string pathTrunkSid, 
@@ -220,9 +219,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="credentialListSid"> The SID of the Credential List that you want to associate with this trunk. Once
-        ///                         associated, Twilio will start authenticating access to the trunk against this list. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the credential list with </param>
+        /// <param name="credentialListSid"> The SID of the Credential List that you want to associate with the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CredentialList </returns> 
         public static async System.Threading.Tasks.Task<CredentialListResource> CreateAsync(string pathTrunkSid, 
@@ -282,7 +280,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the credential lists </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -300,7 +298,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the credential lists </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -393,37 +391,37 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The trunk_sid
+        /// The SID of the Trunk the credential list in associated with
         /// </summary>
         [JsonProperty("trunk_sid")]
         public string TrunkSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

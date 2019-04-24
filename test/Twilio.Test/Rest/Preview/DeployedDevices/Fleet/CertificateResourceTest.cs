@@ -102,12 +102,12 @@ namespace Twilio.Tests.Rest.Preview.DeployedDevices.Fleet
                 "/DeployedDevices/Fleets/FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Certificates",
                 ""
             );
-            request.AddPostParam("CertificateData", Serialize("certificateData"));
+            request.AddPostParam("CertificateData", Serialize("certificate_data"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                CertificateResource.Create("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "certificateData", client: twilioRestClient);
+                CertificateResource.Create("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "certificate_data", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -125,7 +125,7 @@ namespace Twilio.Tests.Rest.Preview.DeployedDevices.Fleet
                                          "{\"sid\": \"CYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"fleet_sid\": \"FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"device_sid\": \"THaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"thumbprint\": \"1234567890\",\"date_created\": \"2016-07-30T20:00:00Z\",\"date_updated\": null,\"url\": \"https://preview.twilio.com/DeployedDevices/Fleets/FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Certificates/CYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = CertificateResource.Create("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "certificateData", client: twilioRestClient);
+            var response = CertificateResource.Create("FLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "certificate_data", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

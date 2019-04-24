@@ -64,8 +64,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Fetch the details of an associated SIP Domain
         /// </summary>
-        /// <param name="pathTrunkSid"> The unique sid of the trunk. </param>
-        /// <param name="pathSid"> The unique sid of the domain. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk with the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TerminatingSipDomain </returns> 
         public static TerminatingSipDomainResource Fetch(string pathTrunkSid, 
@@ -80,8 +80,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Fetch the details of an associated SIP Domain
         /// </summary>
-        /// <param name="pathTrunkSid"> The unique sid of the trunk. </param>
-        /// <param name="pathSid"> The unique sid of the domain. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk with the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns> 
         public static async System.Threading.Tasks.Task<TerminatingSipDomainResource> FetchAsync(string pathTrunkSid, 
@@ -136,8 +136,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Disassociate a SIP Domain from the Trunk
         /// </summary>
-        /// <param name="pathTrunkSid"> The unique sid of the trunk. </param>
-        /// <param name="pathSid"> The unique sid of the domain. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk with the resources to disassociate </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to disassociate </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TerminatingSipDomain </returns> 
         public static bool Delete(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
@@ -150,8 +150,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Disassociate a SIP Domain from the Trunk
         /// </summary>
-        /// <param name="pathTrunkSid"> The unique sid of the trunk. </param>
-        /// <param name="pathSid"> The unique sid of the domain. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk with the resources to disassociate </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to disassociate </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathTrunkSid, 
@@ -207,8 +207,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Associate a SIP Domain with the Trunk
         /// </summary>
-        /// <param name="pathTrunkSid"> The unique sid of the trunk. </param>
-        /// <param name="sipDomainSid"> The SID of the SIP Domain to associate. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk to which we should route calls </param>
+        /// <param name="sipDomainSid"> The SID of the SIP Domain to associate with the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TerminatingSipDomain </returns> 
         public static TerminatingSipDomainResource Create(string pathTrunkSid, 
@@ -223,8 +223,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// Associate a SIP Domain with the Trunk
         /// </summary>
-        /// <param name="pathTrunkSid"> The unique sid of the trunk. </param>
-        /// <param name="sipDomainSid"> The SID of the SIP Domain to associate. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk to which we should route calls </param>
+        /// <param name="sipDomainSid"> The SID of the SIP Domain to associate with the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns> 
         public static async System.Threading.Tasks.Task<TerminatingSipDomainResource> CreateAsync(string pathTrunkSid, 
@@ -284,7 +284,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// List SIP Domains associated with the Trunk
         /// </summary>
-        /// <param name="pathTrunkSid"> The unique sid of the trunk. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk with the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -302,7 +302,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// List SIP Domains associated with the Trunk
         /// </summary>
-        /// <param name="pathTrunkSid"> The unique sid of the trunk. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk with the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -397,12 +397,12 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         }
 
         /// <summary>
-        /// The unique id of the account responsible for this domain
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The Twilio API version used to process the call
+        /// The API version used to process the call
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
@@ -412,80 +412,80 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         [JsonProperty("auth_type")]
         public string AuthType { get; private set; }
         /// <summary>
-        /// The date this resource was created
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this resource was last updated
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The unique address on Twilio to route SIP traffic
+        /// The unique address you reserve on Twilio to which you route your SIP traffic
         /// </summary>
         [JsonProperty("domain_name")]
         public string DomainName { get; private set; }
         /// <summary>
-        /// A user-specified, human-readable name for the domain.
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies the SIP Domain
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// HTTP method used with voice_fallback_url
+        /// The HTTP method used with voice_fallback_url
         /// </summary>
         [JsonProperty("voice_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; private set; }
         /// <summary>
-        /// URL Twilio will request if an error occurs in executing TwiML
+        /// The URL that we call when an error occurs in executing TwiML
         /// </summary>
         [JsonProperty("voice_fallback_url")]
         public Uri VoiceFallbackUrl { get; private set; }
         /// <summary>
-        /// HTTP method to use with voice_url
+        /// The HTTP method used with voice_url
         /// </summary>
         [JsonProperty("voice_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceMethod { get; private set; }
         /// <summary>
-        /// The HTTP method Twilio will use to make requests to the StatusCallback URL.
+        /// The HTTP method that we use to call the voice_status_callback_url
         /// </summary>
         [JsonProperty("voice_status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod VoiceStatusCallbackMethod { get; private set; }
         /// <summary>
-        /// URL that Twilio will request with status updates
+        /// The URL that we call to pass status parameters to your application
         /// </summary>
         [JsonProperty("voice_status_callback_url")]
         public Uri VoiceStatusCallbackUrl { get; private set; }
         /// <summary>
-        /// URL Twilio will request when receiving a call
+        /// The URL we call when the domain receives a call
         /// </summary>
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
         /// <summary>
-        /// If SIP registration is allowed
+        /// Whether SIP Endpoints can register with the domain to receive calls
         /// </summary>
         [JsonProperty("sip_registration")]
         public bool? SipRegistration { get; private set; }
         /// <summary>
-        /// Unique string to identify an associated trunk
+        /// The SID of the Trunk to which we should route calls
         /// </summary>
         [JsonProperty("trunk_sid")]
         public string TrunkSid { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

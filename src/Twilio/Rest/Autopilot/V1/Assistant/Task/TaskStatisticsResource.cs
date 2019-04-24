@@ -66,8 +66,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+        /// <param name="pathTaskSid"> The SID of the Task that is associated with the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskStatistics </returns> 
         public static TaskStatisticsResource Fetch(string pathAssistantSid, 
@@ -82,8 +82,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task associated with this Field. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+        /// <param name="pathTaskSid"> The SID of the Task that is associated with the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskStatistics </returns> 
         public static async System.Threading.Tasks.Task<TaskStatisticsResource> FetchAsync(string pathAssistantSid, 
@@ -114,32 +114,32 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         }
 
         /// <summary>
-        /// The unique ID of the Account that created this resource.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique ID of the Assistant.
+        /// The SID of the Assistant that is the parent of the Task associated with the resource
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// The unique ID of the Task associated with this Field.
+        /// The SID of the Task for which the statistics were collected
         /// </summary>
         [JsonProperty("task_sid")]
         public string TaskSid { get; private set; }
         /// <summary>
-        /// The total number of Samples associated with this Task.
+        /// The total number of Samples associated with the Task
         /// </summary>
         [JsonProperty("samples_count")]
         public int? SamplesCount { get; private set; }
         /// <summary>
-        /// The total number of Fields associated with this Task.
+        /// The total number of Fields associated with the Task
         /// </summary>
         [JsonProperty("fields_count")]
         public int? FieldsCount { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the TaskStatistics resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

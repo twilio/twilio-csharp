@@ -20,14 +20,14 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class FetchDefaultsOptions : IOptions<DefaultsResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The SID of the Assistant that is the parent of the resource to fetch
         /// </summary>
         public string PathAssistantSid { get; }
 
         /// <summary>
         /// Construct a new FetchDefaultsOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
         public FetchDefaultsOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -52,18 +52,18 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class UpdateDefaultsOptions : IOptions<DefaultsResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The SID of the Assistant that is the parent of the resource to update
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The defaults
+        /// A JSON string that describes the default task links.
         /// </summary>
         public object Defaults { get; set; }
 
         /// <summary>
         /// Construct a new UpdateDefaultsOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
         public UpdateDefaultsOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;

@@ -20,19 +20,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class FetchDialogueOptions : IOptions<DialogueResource> 
     {
         /// <summary>
-        /// The assistant_sid
+        /// The SID of the Assistant that is the parent of the resource to fetch
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchDialogueOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The assistant_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchDialogueOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

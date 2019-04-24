@@ -102,12 +102,12 @@ namespace Twilio.Tests.Rest.Messaging.V1
                 "/v1/Sessions",
                 ""
             );
-            request.AddPostParam("MessagingServiceSid", Serialize("messagingServiceSid"));
+            request.AddPostParam("MessagingServiceSid", Serialize("messaging_service_sid"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                SessionResource.Create("messagingServiceSid", client: twilioRestClient);
+                SessionResource.Create("messaging_service_sid", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -125,7 +125,7 @@ namespace Twilio.Tests.Rest.Messaging.V1
                                          "{\"sid\": \"CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"messaging_service_sid\": \"MG80af39294fe338b3848294685d097e04\",\"friendly_name\": \"friendly_name\",\"attributes\": \"{ \\\"foo\\\": \\\"bar\\\" }\",\"date_created\": \"2015-12-16T22:18:37Z\",\"date_updated\": \"2015-12-16T22:18:38Z\",\"created_by\": \"creator\",\"url\": \"https://messaging.twilio.com/v1/Sessions/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"participants\": \"https://messaging.twilio.com/v1/Sessions/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants\",\"messages\": \"https://messaging.twilio.com/v1/Sessions/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages\",\"webhooks\": \"https://messaging.twilio.com/v1/Sessions/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Webhooks\"}}"
                                      ));
 
-            var response = SessionResource.Create("messagingServiceSid", client: twilioRestClient);
+            var response = SessionResource.Create("messaging_service_sid", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

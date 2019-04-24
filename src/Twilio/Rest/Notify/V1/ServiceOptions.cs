@@ -19,51 +19,51 @@ namespace Twilio.Rest.Notify.V1
     public class CreateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// Human-readable name for this service instance
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The SID of the Credential to be used for APN Bindings.
+        /// The SID of the Credential to use for APN Bindings
         /// </summary>
         public string ApnCredentialSid { get; set; }
         /// <summary>
-        /// The SID of the Credential to be used for GCM Bindings.
+        /// The SID of the Credential to use for GCM Bindings
         /// </summary>
         public string GcmCredentialSid { get; set; }
         /// <summary>
-        /// The SID of the Messaging Service to be used for SMS Bindings.
+        /// The SID of the Messaging Service to use for SMS Bindings
         /// </summary>
         public string MessagingServiceSid { get; set; }
         /// <summary>
-        /// The Page ID to be used to send for Facebook Messenger Bindings.
+        /// Deprecated
         /// </summary>
         public string FacebookMessengerPageId { get; set; }
         /// <summary>
-        /// The version of the protocol to be used for sending APNS notifications.
+        /// The protocol version to use for sending APNS notifications
         /// </summary>
         public string DefaultApnNotificationProtocolVersion { get; set; }
         /// <summary>
-        /// The version of the protocol to be used for sending GCM notifications.
+        /// The protocol version to use for sending GCM notifications
         /// </summary>
         public string DefaultGcmNotificationProtocolVersion { get; set; }
         /// <summary>
-        /// The SID of the Credential to be used for FCM Bindings.
+        /// The SID of the Credential to use for FCM Bindings
         /// </summary>
         public string FcmCredentialSid { get; set; }
         /// <summary>
-        /// The version of the protocol to be used for sending FCM notifications.
+        /// The protocol version to use for sending FCM notifications
         /// </summary>
         public string DefaultFcmNotificationProtocolVersion { get; set; }
         /// <summary>
-        /// The log_enabled
+        /// Whether to log notifications
         /// </summary>
         public bool? LogEnabled { get; set; }
         /// <summary>
-        /// The alexa_skill_id
+        /// Deprecated
         /// </summary>
         public string AlexaSkillId { get; set; }
         /// <summary>
-        /// The default_alexa_notification_protocol_version
+        /// Deprecated
         /// </summary>
         public string DefaultAlexaNotificationProtocolVersion { get; set; }
 
@@ -145,14 +145,14 @@ namespace Twilio.Rest.Notify.V1
     public class DeleteServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -176,14 +176,14 @@ namespace Twilio.Rest.Notify.V1
     public class FetchServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -207,7 +207,7 @@ namespace Twilio.Rest.Notify.V1
     public class ReadServiceOptions : ReadOptions<ServiceResource> 
     {
         /// <summary>
-        /// Filter services by FriendlyName
+        /// The string that identifies the Service resources to read
         /// </summary>
         public string FriendlyName { get; set; }
 
@@ -239,62 +239,62 @@ namespace Twilio.Rest.Notify.V1
     public class UpdateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Human-readable name for this service instance
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The SID of the default Credential to be used for APN Bindings
+        /// The SID of the Credential to use for APN Bindings
         /// </summary>
         public string ApnCredentialSid { get; set; }
         /// <summary>
-        /// The SID of the default Credential to be used for GCM Bindings
+        /// The SID of the Credential to use for GCM Bindings
         /// </summary>
         public string GcmCredentialSid { get; set; }
         /// <summary>
-        /// The SID of the Messaging Service to be used for SMS Bindings.
+        /// The SID of the Messaging Service to use for SMS Bindings
         /// </summary>
         public string MessagingServiceSid { get; set; }
         /// <summary>
-        /// The Page ID to be used to send for Facebook Messenger Bindings.
+        /// Deprecated
         /// </summary>
         public string FacebookMessengerPageId { get; set; }
         /// <summary>
-        /// The version of the protocol to be used for sending APNS notifications.
+        /// The protocol version to use for sending APNS notifications
         /// </summary>
         public string DefaultApnNotificationProtocolVersion { get; set; }
         /// <summary>
-        /// The version of the protocol to be used for sending GCM notifications.
+        /// The protocol version to use for sending GCM notifications
         /// </summary>
         public string DefaultGcmNotificationProtocolVersion { get; set; }
         /// <summary>
-        /// The SID of the default Credential to be used for FCM Bindings
+        /// The SID of the Credential to use for FCM Bindings
         /// </summary>
         public string FcmCredentialSid { get; set; }
         /// <summary>
-        /// The version of the protocol to be used for sending FCM notifications.
+        /// The protocol version to use for sending FCM notifications
         /// </summary>
         public string DefaultFcmNotificationProtocolVersion { get; set; }
         /// <summary>
-        /// The log_enabled
+        /// Whether to log notifications
         /// </summary>
         public bool? LogEnabled { get; set; }
         /// <summary>
-        /// The alexa_skill_id
+        /// Deprecated
         /// </summary>
         public string AlexaSkillId { get; set; }
         /// <summary>
-        /// The default_alexa_notification_protocol_version
+        /// Deprecated
         /// </summary>
         public string DefaultAlexaNotificationProtocolVersion { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;

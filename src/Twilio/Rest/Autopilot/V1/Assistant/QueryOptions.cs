@@ -20,19 +20,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class FetchQueryOptions : IOptions<QueryResource> 
     {
         /// <summary>
-        /// The unique ID of the Assistant.
+        /// The SID of the Assistant that is the parent of the resource to fetch
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// A 34-character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchQueryOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchQueryOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -58,26 +58,26 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class ReadQueryOptions : ReadOptions<QueryResource> 
     {
         /// <summary>
-        /// The unique ID of the parent Assistant.
+        /// The SID of the Assistant that is the parent of the resources to read
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// An [ISO language-country string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the language used for this query. For example: `en-US`.
+        /// The ISO language-country string that specifies the language used by the Query resources to read
         /// </summary>
         public string Language { get; set; }
         /// <summary>
-        /// The Sid or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
+        /// The SID or unique name of the Model Build to be queried
         /// </summary>
         public string ModelBuild { get; set; }
         /// <summary>
-        /// A string that described the query status. The values can be: `pending_review`, `reviewed`, `discarded`
+        /// The status of the resources to read
         /// </summary>
         public string Status { get; set; }
 
         /// <summary>
         /// Construct a new ReadQueryOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
         public ReadQueryOptions(string pathAssistantSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -122,35 +122,32 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class CreateQueryOptions : IOptions<QueryResource> 
     {
         /// <summary>
-        /// The unique ID of the parent Assistant.
+        /// The SID of the Assistant that is the parent of the new resource
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// An [ISO language-country string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the language used for this query. For example: `en-US`.
+        /// The ISO language-country string that specifies the language used for the new query
         /// </summary>
         public string Language { get; }
         /// <summary>
-        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. It can be up to 2048 characters long.
+        /// The end-user's natural language input
         /// </summary>
         public string Query { get; }
         /// <summary>
-        /// Constraints the query to a set of tasks. Useful when you need to constrain the paths the user can take. Tasks should be comma separated task-unique-name-1, task-unique-name-2
+        /// The list of tasks to limit the new query to
         /// </summary>
         public string Tasks { get; set; }
         /// <summary>
-        /// The Sid or unique name of the [Model Build](https://www.twilio.com/docs/autopilot/api/model-build) to be queried.
+        /// The SID or unique name of the Model Build to be queried
         /// </summary>
         public string ModelBuild { get; set; }
 
         /// <summary>
         /// Construct a new CreateQueryOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="language"> An [ISO language-country
-        ///                string](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html) that specifies the
-        ///                language used for this query. For example: `en-US`. </param>
-        /// <param name="query"> A user-provided string that uniquely identifies this resource as an alternative to the sid. It
-        ///             can be up to 2048 characters long. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
+        /// <param name="language"> The ISO language-country string that specifies the language used for the new query </param>
+        /// <param name="query"> The end-user's natural language input </param>
         public CreateQueryOptions(string pathAssistantSid, string language, string query)
         {
             PathAssistantSid = pathAssistantSid;
@@ -197,27 +194,27 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class UpdateQueryOptions : IOptions<QueryResource> 
     {
         /// <summary>
-        /// The unique ID of the parent Assistant.
+        /// The SID of the Assistant that is the parent of the resource to update
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// A 34-character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// An optional reference to the Sample created from this query.
+        /// The SID of an optional reference to the Sample created from the query
         /// </summary>
         public string SampleSid { get; set; }
         /// <summary>
-        /// A string that described the query status. The values can be: `pending_review`, `reviewed`, `discarded`
+        /// The new status of the resource
         /// </summary>
         public string Status { get; set; }
 
         /// <summary>
         /// Construct a new UpdateQueryOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to update </param>
         public UpdateQueryOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -253,19 +250,19 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     public class DeleteQueryOptions : IOptions<QueryResource> 
     {
         /// <summary>
-        /// The unique ID of the Assistant.
+        /// The SID of the Assistant that is the parent of the resources to delete
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// A 34-character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteQueryOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteQueryOptions(string pathAssistantSid, string pathSid)
         {
             PathAssistantSid = pathAssistantSid;

@@ -17,14 +17,14 @@ namespace Twilio.Rest.Trunking.V1
     public class FetchTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies the SIP Trunk in Twilio.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchTrunkOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies the SIP Trunk in Twilio. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchTrunkOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -46,14 +46,14 @@ namespace Twilio.Rest.Trunking.V1
     public class DeleteTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies the SIP Trunk in Twilio.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteTrunkOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies the SIP Trunk in Twilio. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteTrunkOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -75,31 +75,31 @@ namespace Twilio.Rest.Trunking.V1
     public class CreateTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
-        /// A human-readable name for the Trunk.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The unique address you reserve on Twilio to which you route your SIP traffic.
+        /// The unique address you reserve on Twilio to which you route your SIP traffic
         /// </summary>
         public string DomainName { get; set; }
         /// <summary>
-        /// The HTTP URL that Twilio will request if an error occurs while sending SIP traffic towards your configured Origination URL.
+        /// The HTTP URL that we should call if an error occurs while sending SIP traffic towards your configured Origination URL
         /// </summary>
         public Uri DisasterRecoveryUrl { get; set; }
         /// <summary>
-        /// The HTTP method Twilio will use when requesting the DisasterRecoveryUrl.
+        /// The HTTP method we should use to call the disaster_recovery_url
         /// </summary>
         public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; set; }
         /// <summary>
-        /// The recording settings for this trunk.
+        /// The recording settings for the trunk
         /// </summary>
         public TrunkResource.RecordingSettingEnum Recording { get; set; }
         /// <summary>
-        /// The Secure Trunking  settings for this trunk.
+        /// Whether Secure Trunking is enabled for the trunk
         /// </summary>
         public bool? Secure { get; set; }
         /// <summary>
-        /// The Caller ID Name (CNAM) lookup setting for this trunk.
+        /// Whether Caller ID Name (CNAM) lookup should be enabled for the trunk
         /// </summary>
         public bool? CnamLookupEnabled { get; set; }
 
@@ -174,42 +174,42 @@ namespace Twilio.Rest.Trunking.V1
     public class UpdateTrunkOptions : IOptions<TrunkResource> 
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies the SIP Trunk in Twilio.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human-readable name for the Trunk.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The unique address you reserve on Twilio to which you route your SIP traffic.
+        /// The unique address you reserve on Twilio to which you route your SIP traffic
         /// </summary>
         public string DomainName { get; set; }
         /// <summary>
-        /// The HTTP URL that Twilio will request if an error occurs while sending SIP traffic towards your configured Origination URL.
+        /// The HTTP URL that we should call if an error occurs while sending SIP traffic towards your configured Origination URL
         /// </summary>
         public Uri DisasterRecoveryUrl { get; set; }
         /// <summary>
-        /// The HTTP method Twilio will use when requesting the DisasterRecoveryUrl.
+        /// The HTTP method we should use to call the disaster_recovery_url
         /// </summary>
         public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; set; }
         /// <summary>
-        /// The recording settings for this trunk.
+        /// The recording settings for the trunk
         /// </summary>
         public TrunkResource.RecordingSettingEnum Recording { get; set; }
         /// <summary>
-        /// The Secure Trunking  settings for this trunk.
+        /// Whether Secure Trunking is enabled for the trunk
         /// </summary>
         public bool? Secure { get; set; }
         /// <summary>
-        /// The Caller ID Name (CNAM) lookup setting for this trunk.
+        /// Whether Caller ID Name (CNAM) lookup should be enabled for the trunk
         /// </summary>
         public bool? CnamLookupEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateTrunkOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies the SIP Trunk in Twilio. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateTrunkOptions(string pathSid)
         {
             PathSid = pathSid;

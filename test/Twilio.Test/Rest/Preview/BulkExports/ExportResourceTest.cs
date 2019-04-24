@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Preview.BulkExports
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Preview,
-                "/BulkExports/Exports/pathResourceType",
+                "/BulkExports/Exports/resource_type",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ExportResource.Fetch("pathResourceType", client: twilioRestClient);
+                ExportResource.Fetch("resource_type", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Preview.BulkExports
                                          "{\"resource_type\": \"Calls\",\"url\": \"https://preview.twilio.com/BulkExports/Exports/Calls\",\"links\": {\"days\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days\"}}"
                                      ));
 
-            var response = ExportResource.Fetch("pathResourceType", client: twilioRestClient);
+            var response = ExportResource.Fetch("resource_type", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

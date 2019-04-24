@@ -117,14 +117,14 @@ namespace Twilio.Tests.Rest.FlexApi.V1
                 "/v1/FlexFlows",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
+            request.AddPostParam("FriendlyName", Serialize("friendly_name"));
             request.AddPostParam("ChatServiceSid", Serialize("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
             request.AddPostParam("ChannelType", Serialize(FlexFlowResource.ChannelTypeEnum.Web));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                FlexFlowResource.Create("friendlyName", "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", FlexFlowResource.ChannelTypeEnum.Web, client: twilioRestClient);
+                FlexFlowResource.Create("friendly_name", "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", FlexFlowResource.ChannelTypeEnum.Web, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -142,7 +142,7 @@ namespace Twilio.Tests.Rest.FlexApi.V1
                                          "{\"sid\": \"FOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2016-08-01T22:10:40Z\",\"date_updated\": \"2016-08-01T22:10:40Z\",\"friendly_name\": \"friendly_name\",\"chat_service_sid\": \"SIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"channel_type\": \"sms\",\"contact_identity\": \"12345\",\"enabled\": true,\"integration_type\": \"studio\",\"integration\": {\"flow_sid\": \"FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"long_lived\": true,\"url\": \"https://flex-api.twilio.com/v1/FlexFlows/FOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = FlexFlowResource.Create("friendlyName", "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", FlexFlowResource.ChannelTypeEnum.Web, client: twilioRestClient);
+            var response = FlexFlowResource.Create("friendly_name", "ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", FlexFlowResource.ChannelTypeEnum.Web, client: twilioRestClient);
             Assert.NotNull(response);
         }
 

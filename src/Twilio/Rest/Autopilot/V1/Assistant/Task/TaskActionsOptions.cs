@@ -15,24 +15,25 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// Returns JSON actions for this Task.
+    /// Returns JSON actions for the Task.
     /// </summary>
     public class FetchTaskActionsOptions : IOptions<TaskActionsResource> 
     {
         /// <summary>
-        /// The unique ID of the parent Assistant.
+        /// The SID of the Assistant that is the parent of the Task for which the task actions to fetch were defined
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The unique ID of the Task.
+        /// The SID of the Task for which the task actions to fetch were defined
         /// </summary>
         public string PathTaskSid { get; }
 
         /// <summary>
         /// Construct a new FetchTaskActionsOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task for which the task actions
+        ///                        to fetch were defined </param>
+        /// <param name="pathTaskSid"> The SID of the Task for which the task actions to fetch were defined </param>
         public FetchTaskActionsOptions(string pathAssistantSid, string pathTaskSid)
         {
             PathAssistantSid = pathAssistantSid;
@@ -58,23 +59,24 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
     public class UpdateTaskActionsOptions : IOptions<TaskActionsResource> 
     {
         /// <summary>
-        /// The unique ID of the parent Assistant.
+        /// The SID of the Assistant that is the parent of the Task for which the task actions to update were defined
         /// </summary>
         public string PathAssistantSid { get; }
         /// <summary>
-        /// The unique ID of the Task.
+        /// The SID of the Task for which the task actions to update were defined
         /// </summary>
         public string PathTaskSid { get; }
         /// <summary>
-        /// The JSON [actions](https://www.twilio.com/docs/autopilot/actions) that instruct the Assistant how to perform this task.
+        /// The JSON string that specifies the actions that instruct the Assistant on how to perform the task
         /// </summary>
         public object Actions { get; set; }
 
         /// <summary>
         /// Construct a new UpdateTaskActionsOptions
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathTaskSid"> The unique ID of the Task. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the Task for which the task actions
+        ///                        to update were defined </param>
+        /// <param name="pathTaskSid"> The SID of the Task for which the task actions to update were defined </param>
         public UpdateTaskActionsOptions(string pathAssistantSid, string pathTaskSid)
         {
             PathAssistantSid = pathAssistantSid;

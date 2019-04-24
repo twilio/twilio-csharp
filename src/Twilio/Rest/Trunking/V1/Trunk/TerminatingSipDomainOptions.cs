@@ -17,19 +17,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class FetchTerminatingSipDomainOptions : IOptions<TerminatingSipDomainResource> 
     {
         /// <summary>
-        /// The unique sid of the trunk.
+        /// The SID of the Trunk with the resource to fetch
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The unique sid of the domain.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchTerminatingSipDomainOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The unique sid of the trunk. </param>
-        /// <param name="pathSid"> The unique sid of the domain. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk with the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchTerminatingSipDomainOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -52,19 +52,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class DeleteTerminatingSipDomainOptions : IOptions<TerminatingSipDomainResource> 
     {
         /// <summary>
-        /// The unique sid of the trunk.
+        /// The SID of the Trunk with the resources to disassociate
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The unique sid of the domain.
+        /// The unique string that identifies the resource to disassociate
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteTerminatingSipDomainOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The unique sid of the trunk. </param>
-        /// <param name="pathSid"> The unique sid of the domain. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk with the resources to disassociate </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to disassociate </param>
         public DeleteTerminatingSipDomainOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -87,19 +87,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class CreateTerminatingSipDomainOptions : IOptions<TerminatingSipDomainResource> 
     {
         /// <summary>
-        /// The unique sid of the trunk.
+        /// The SID of the Trunk to which we should route calls
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The SID of the SIP Domain to associate.
+        /// The SID of the SIP Domain to associate with the trunk
         /// </summary>
         public string SipDomainSid { get; }
 
         /// <summary>
         /// Construct a new CreateTerminatingSipDomainOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The unique sid of the trunk. </param>
-        /// <param name="sipDomainSid"> The SID of the SIP Domain to associate. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk to which we should route calls </param>
+        /// <param name="sipDomainSid"> The SID of the SIP Domain to associate with the trunk </param>
         public CreateTerminatingSipDomainOptions(string pathTrunkSid, string sipDomainSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -127,14 +127,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class ReadTerminatingSipDomainOptions : ReadOptions<TerminatingSipDomainResource> 
     {
         /// <summary>
-        /// The unique sid of the trunk.
+        /// The SID of the Trunk with the resources to read
         /// </summary>
         public string PathTrunkSid { get; }
 
         /// <summary>
         /// Construct a new ReadTerminatingSipDomainOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The unique sid of the trunk. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk with the resources to read </param>
         public ReadTerminatingSipDomainOptions(string pathTrunkSid)
         {
             PathTrunkSid = pathTrunkSid;

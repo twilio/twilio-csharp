@@ -83,8 +83,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModelBuild </returns> 
         public static ModelBuildResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
@@ -97,8 +97,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
         public static async System.Threading.Tasks.Task<ModelBuildResource> FetchAsync(string pathAssistantSid, 
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -292,10 +292,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
-        ///                  sid. Unique up to 64 characters long. For example: v0.1 </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
+        /// <param name="statusCallback"> The URL we should call using a POST method to send status information to your
+        ///                      application </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModelBuild </returns> 
         public static ModelBuildResource Create(string pathAssistantSid, 
@@ -311,10 +311,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
-        ///                  sid. Unique up to 64 characters long. For example: v0.1 </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
+        /// <param name="statusCallback"> The URL we should call using a POST method to send status information to your
+        ///                      application </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
         public static async System.Threading.Tasks.Task<ModelBuildResource> CreateAsync(string pathAssistantSid, 
@@ -370,10 +370,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
-        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
-        ///                  sid. Unique up to 64 characters long. For example: v0.1 </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to update </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModelBuild </returns> 
         public static ModelBuildResource Update(string pathAssistantSid, 
@@ -389,10 +388,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
-        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
-        ///                  sid. Unique up to 64 characters long. For example: v0.1 </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to update </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
         public static async System.Threading.Tasks.Task<ModelBuildResource> UpdateAsync(string pathAssistantSid, 
@@ -448,8 +446,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ModelBuild </returns> 
         public static bool Delete(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
@@ -462,8 +460,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
@@ -494,53 +492,53 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
         /// <summary>
-        /// The unique ID of the Account that created this Model Build.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date that this resource was created
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The unique ID of the parent Assistant.
+        /// The SID of the Assistant that is the parent of the resource
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// A 34-character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A string that described the model build status. The values can be: `enqueued`, `building`, `completed`, `failed`
+        /// The status of the model build process
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ModelBuildResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the ModelBuild resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The time in seconds it took to build the model.
+        /// The time in seconds it took to build the model
         /// </summary>
         [JsonProperty("build_duration")]
         public int? BuildDuration { get; private set; }
         /// <summary>
-        /// The error_code
+        /// More information about why the model build failed, if `status` is `failed`
         /// </summary>
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }

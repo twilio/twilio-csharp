@@ -117,12 +117,12 @@ namespace Twilio.Tests.Rest.Preview.Understand.Assistant
                 "/understand/Assistants/UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/FieldTypes",
                 ""
             );
-            request.AddPostParam("UniqueName", Serialize("uniqueName"));
+            request.AddPostParam("UniqueName", Serialize("unique_name"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                FieldTypeResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "uniqueName", client: twilioRestClient);
+                FieldTypeResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "unique_name", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -140,7 +140,7 @@ namespace Twilio.Tests.Rest.Preview.Understand.Assistant
                                          "{\"unique_name\": \"unique_name\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"assistant_sid\": \"UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"url\": \"https://preview.twilio.com/understand/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/FieldTypes/UBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"links\": {\"field_values\": \"https://preview.twilio.com/understand/Assistants/UAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/FieldTypes/UBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/FieldValues\"},\"sid\": \"UBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = FieldTypeResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "uniqueName", client: twilioRestClient);
+            var response = FieldTypeResource.Create("UAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "unique_name", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

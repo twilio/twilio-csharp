@@ -82,14 +82,14 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.IpAccessControlList
                 "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SIP/IpAccessControlLists/ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAddresses.json",
                 ""
             );
-            request.AddPostParam("FriendlyName", Serialize("friendlyName"));
-            request.AddPostParam("IpAddress", Serialize("ipAddress"));
+            request.AddPostParam("FriendlyName", Serialize("friendly_name"));
+            request.AddPostParam("IpAddress", Serialize("ip_address"));
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                IpAddressResource.Create("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", "ipAddress", client: twilioRestClient);
+                IpAddressResource.Create("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendly_name", "ip_address", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -107,7 +107,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.IpAccessControlList
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Mon, 20 Jul 2015 17:27:10 +0000\",\"date_updated\": \"Mon, 20 Jul 2015 17:27:10 +0000\",\"friendly_name\": \"friendly_name\",\"ip_access_control_list_sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"ip_address\": \"192.168.1.1\",\"cidr_prefix_length\": 32,\"sid\": \"IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SIP/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses/IPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
                                      ));
 
-            var response = IpAddressResource.Create("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendlyName", "ipAddress", client: twilioRestClient);
+            var response = IpAddressResource.Create("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "friendly_name", "ip_address", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

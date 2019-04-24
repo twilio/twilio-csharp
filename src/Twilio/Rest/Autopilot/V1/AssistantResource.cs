@@ -66,7 +66,7 @@ namespace Twilio.Rest.Autopilot.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Autopilot.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(string pathSid, 
@@ -268,19 +268,13 @@ namespace Twilio.Rest.Autopilot.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can be up to 255 characters
-        ///                    long. </param>
-        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days past training. If
-        ///                  `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted
-        ///                  thereafter. Defaults to `true` if no value is provided. </param>
-        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
-        ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="callbackEvents"> A space-separated list of callback events that will trigger callbacks </param>
-        /// <param name="styleSheet"> A JSON object that defines the assistant [style
-        ///                  sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet) </param>
-        /// <param name="defaults"> A JSON object that defines the assistant's [default
-        ///                tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios </param>
+        /// <param name="friendlyName"> A string to describe the new resource </param>
+        /// <param name="logQueries"> Whether queries should be logged and kept after training </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource </param>
+        /// <param name="callbackUrl"> Reserved </param>
+        /// <param name="callbackEvents"> Reserved </param>
+        /// <param name="styleSheet"> A JSON string that defines the Assistant's style sheet </param>
+        /// <param name="defaults"> A JSON object that defines the Assistant's default tasks for various scenarios </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static AssistantResource Create(string friendlyName = null, 
@@ -300,19 +294,13 @@ namespace Twilio.Rest.Autopilot.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can be up to 255 characters
-        ///                    long. </param>
-        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days past training. If
-        ///                  `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted
-        ///                  thereafter. Defaults to `true` if no value is provided. </param>
-        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
-        ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="callbackEvents"> A space-separated list of callback events that will trigger callbacks </param>
-        /// <param name="styleSheet"> A JSON object that defines the assistant [style
-        ///                  sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet) </param>
-        /// <param name="defaults"> A JSON object that defines the assistant's [default
-        ///                tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios </param>
+        /// <param name="friendlyName"> A string to describe the new resource </param>
+        /// <param name="logQueries"> Whether queries should be logged and kept after training </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource </param>
+        /// <param name="callbackUrl"> Reserved </param>
+        /// <param name="callbackEvents"> Reserved </param>
+        /// <param name="styleSheet"> A JSON string that defines the Assistant's style sheet </param>
+        /// <param name="defaults"> A JSON object that defines the Assistant's default tasks for various scenarios </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(string friendlyName = null, 
@@ -372,19 +360,14 @@ namespace Twilio.Rest.Autopilot.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can be up to 255 characters
-        ///                    long. </param>
-        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days past training. If
-        ///                  `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted
-        ///                  thereafter. Defaults to `true` if no value is provided. </param>
-        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
-        ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="callbackEvents"> A space-separated list of callback events that will trigger callbacks </param>
-        /// <param name="styleSheet"> A JSON object that defines the assistant [style
-        ///                  sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet) </param>
-        /// <param name="defaults"> A JSON object that defines the assistant's [default
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="logQueries"> Whether queries should be logged and kept after training </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="callbackUrl"> Reserved </param>
+        /// <param name="callbackEvents"> Reserved </param>
+        /// <param name="styleSheet"> A JSON string that defines the Assistant's style sheet </param>
+        /// <param name="defaults"> A JSON object that defines the Assistant's [default
         ///                tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
@@ -406,19 +389,14 @@ namespace Twilio.Rest.Autopilot.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> A text description for the Assistant. It is non-unique and can be up to 255 characters
-        ///                    long. </param>
-        /// <param name="logQueries"> A boolean that specifies whether queries should be logged for 30 days past training. If
-        ///                  `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted
-        ///                  thereafter. Defaults to `true` if no value is provided. </param>
-        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
-        ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="callbackUrl"> The callback_url </param>
-        /// <param name="callbackEvents"> A space-separated list of callback events that will trigger callbacks </param>
-        /// <param name="styleSheet"> A JSON object that defines the assistant [style
-        ///                  sheet](https://www.twilio.com/docs/autopilot/api/assistant/stylesheet) </param>
-        /// <param name="defaults"> A JSON object that defines the assistant's [default
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="logQueries"> Whether queries should be logged and kept after training </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="callbackUrl"> Reserved </param>
+        /// <param name="callbackEvents"> Reserved </param>
+        /// <param name="styleSheet"> A JSON string that defines the Assistant's style sheet </param>
+        /// <param name="defaults"> A JSON object that defines the Assistant's [default
         ///                tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
@@ -480,7 +458,7 @@ namespace Twilio.Rest.Autopilot.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns> 
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -493,7 +471,7 @@ namespace Twilio.Rest.Autopilot.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -522,62 +500,62 @@ namespace Twilio.Rest.Autopilot.V1
         }
 
         /// <summary>
-        /// The unique ID of the Account that created this Assistant.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date that this resource was created
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// A text description for the Assistant. It is non-unique and can be up to 255 characters long.
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The latest_model_build_sid
+        /// Reserved
         /// </summary>
         [JsonProperty("latest_model_build_sid")]
         public string LatestModelBuildSid { get; private set; }
         /// <summary>
-        /// The links
+        /// A list of the URLs of the Assistant's related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// A boolean that specifies whether queries should be logged for 30 days past training. If `false`, no queries will be stored. If `true`, queries will be stored for 30 days and deleted thereafter.
+        /// Whether queries should be logged and kept after training
         /// </summary>
         [JsonProperty("log_queries")]
         public bool? LogQueries { get; private set; }
         /// <summary>
-        /// A 34-character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Assistant resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The callback_url
+        /// Reserved
         /// </summary>
         [JsonProperty("callback_url")]
         public Uri CallbackUrl { get; private set; }
         /// <summary>
-        /// The callback_events
+        /// Reserved
         /// </summary>
         [JsonProperty("callback_events")]
         public string CallbackEvents { get; private set; }

@@ -66,8 +66,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns> 
         public static TaskResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
@@ -80,8 +80,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns> 
         public static async System.Threading.Tasks.Task<TaskResource> FetchAsync(string pathAssistantSid, 
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -275,14 +275,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
-        ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="friendlyName"> A user-provided string that identifies this resource. It is non-unique and can be up to
-        ///                    255 characters long. </param>
-        /// <param name="actions"> A user-provided JSON object encoded as a string to specify the actions for this task. It is
-        ///               optional and non-unique. </param>
-        /// <param name="actionsUrl"> User-provided HTTP endpoint where the assistant can fetch actions. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="friendlyName">  descriptive string that you create to describe the new resource </param>
+        /// <param name="actions"> The JSON string that specifies the actions that instruct the Assistant on how to perform the
+        ///               task </param>
+        /// <param name="actionsUrl"> The URL from which the Assistant can fetch actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns> 
         public static TaskResource Create(string pathAssistantSid, 
@@ -300,14 +298,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
-        ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="friendlyName"> A user-provided string that identifies this resource. It is non-unique and can be up to
-        ///                    255 characters long. </param>
-        /// <param name="actions"> A user-provided JSON object encoded as a string to specify the actions for this task. It is
-        ///               optional and non-unique. </param>
-        /// <param name="actionsUrl"> User-provided HTTP endpoint where the assistant can fetch actions. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the new resource </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="friendlyName">  descriptive string that you create to describe the new resource </param>
+        /// <param name="actions"> The JSON string that specifies the actions that instruct the Assistant on how to perform the
+        ///               task </param>
+        /// <param name="actionsUrl"> The URL from which the Assistant can fetch actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns> 
         public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(string pathAssistantSid, 
@@ -365,15 +361,13 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
-        /// <param name="friendlyName"> A user-provided string that identifies this resource. It is non-unique and can be up to
-        ///                    255 characters long. </param>
-        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
-        ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="actions"> A user-provided JSON object encoded as a string to specify the actions for this task. It is
-        ///               optional and non-unique. </param>
-        /// <param name="actionsUrl"> User-provided HTTP endpoint where the assistant can fetch actions. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="actions"> The JSON string that specifies the actions that instruct the Assistant on how to perform the
+        ///               task </param>
+        /// <param name="actionsUrl"> The URL from which the Assistant can fetch actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns> 
         public static TaskResource Update(string pathAssistantSid, 
@@ -392,15 +386,13 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
-        /// <param name="friendlyName"> A user-provided string that identifies this resource. It is non-unique and can be up to
-        ///                    255 characters long. </param>
-        /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
-        ///                  sid. Unique up to 64 characters long. </param>
-        /// <param name="actions"> A user-provided JSON object encoded as a string to specify the actions for this task. It is
-        ///               optional and non-unique. </param>
-        /// <param name="actionsUrl"> User-provided HTTP endpoint where the assistant can fetch actions. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="actions"> The JSON string that specifies the actions that instruct the Assistant on how to perform the
+        ///               task </param>
+        /// <param name="actionsUrl"> The URL from which the Assistant can fetch actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns> 
         public static async System.Threading.Tasks.Task<TaskResource> UpdateAsync(string pathAssistantSid, 
@@ -459,8 +451,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns> 
         public static bool Delete(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
@@ -473,8 +465,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies this resource. </param>
+        /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
+        /// <param name="pathSid"> The unique string that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns> 
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
@@ -505,52 +497,52 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         }
 
         /// <summary>
-        /// The unique ID of the Account that created this Task.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date that this resource was created
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// A user-provided string that identifies this resource. It is non-unique and can be up to 255 characters long.
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The links
+        /// A list of the URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// The unique ID of the Assistant.
+        /// The SID of the Assistant that is the parent of the resource
         /// </summary>
         [JsonProperty("assistant_sid")]
         public string AssistantSid { get; private set; }
         /// <summary>
-        /// A 34-character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A user-provided string that uniquely identifies this resource as an alternative to the sid. Unique up to 64 characters long.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// A user-provided HTTP endpoint where the assistant can fetch actions.
+        /// The URL from which the Assistant can fetch actions
         /// </summary>
         [JsonProperty("actions_url")]
         public Uri ActionsUrl { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Task resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

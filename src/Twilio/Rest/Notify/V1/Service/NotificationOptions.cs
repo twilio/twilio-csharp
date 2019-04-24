@@ -20,82 +20,82 @@ namespace Twilio.Rest.Notify.V1.Service
     public class CreateNotificationOptions : IOptions<NotificationResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to create the resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Delivery will be attempted only to Bindings with an Identity in this list.
+        /// The `identity` value that identifies the new resource's User
         /// </summary>
         public List<string> Identity { get; set; }
         /// <summary>
-        /// Delivery will be attempted only to Bindings that have all of the Tags in this list.
+        /// A tag that selects the Bindings to notify
         /// </summary>
         public List<string> Tag { get; set; }
         /// <summary>
-        /// Indicates the notification body text.
+        /// The notification body text
         /// </summary>
         public string Body { get; set; }
         /// <summary>
-        /// Two priorities defined: low and high.
+        /// The priority of the notification
         /// </summary>
         public NotificationResource.PriorityEnum Priority { get; set; }
         /// <summary>
-        /// This parameter specifies how long the notification is valid.
+        /// How long, in seconds, the notification is valid
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// Indicates the notification title.
+        /// The notification title
         /// </summary>
         public string Title { get; set; }
         /// <summary>
-        /// Indicates a sound to be played.
+        /// The name of the sound to be played for the notification
         /// </summary>
         public string Sound { get; set; }
         /// <summary>
-        /// Specifies the actions to be displayed for the notification.
+        /// The actions to display for the notification
         /// </summary>
         public string Action { get; set; }
         /// <summary>
-        /// This parameter specifies the custom key-value pairs of the notification's payload.
+        /// The custom key-value pairs of the notification's payload
         /// </summary>
         public object Data { get; set; }
         /// <summary>
-        /// APNS specific payload that overrides corresponding attributes in a generic payload for Bindings with the apn BindingType.
+        /// The APNS-specific payload that overrides corresponding attributes in a generic payload for APNS Bindings
         /// </summary>
         public object Apn { get; set; }
         /// <summary>
-        /// GCM specific payload that overrides corresponding attributes in generic payload for Bindings with gcm BindingType.
+        /// The GCM-specific payload that overrides corresponding attributes in generic payload for GCM Bindings
         /// </summary>
         public object Gcm { get; set; }
         /// <summary>
-        /// SMS specific payload that overrides corresponding attributes in generic payload for Bindings with sms BindingType.
+        /// The SMS-specific payload that overrides corresponding attributes in generic payload for SMS Bindings
         /// </summary>
         public object Sms { get; set; }
         /// <summary>
-        /// Messenger specific payload that overrides corresponding attributes in generic payload for Bindings with facebook-messenger BindingType.
+        /// Deprecated
         /// </summary>
         public object FacebookMessenger { get; set; }
         /// <summary>
-        /// FCM specific payload that overrides corresponding attributes in generic payload for Bindings with fcm BindingType.
+        /// The FCM-specific payload that overrides corresponding attributes in generic payload for FCM Bindings
         /// </summary>
         public object Fcm { get; set; }
         /// <summary>
-        /// The segment
+        /// A Segment to notify
         /// </summary>
         public List<string> Segment { get; set; }
         /// <summary>
-        /// The alexa
+        /// Deprecated
         /// </summary>
         public object Alexa { get; set; }
         /// <summary>
-        /// The destination address in a JSON object.
+        /// The destination address specified as a JSON string
         /// </summary>
         public List<string> ToBinding { get; set; }
 
         /// <summary>
         /// Construct a new CreateNotificationOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
         public CreateNotificationOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;

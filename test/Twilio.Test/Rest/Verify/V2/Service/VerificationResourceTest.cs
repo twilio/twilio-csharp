@@ -65,7 +65,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Verify,
-                "/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications/pathSid",
+                "/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications/sid",
                 ""
             );
             request.AddPostParam("Status", Serialize(VerificationResource.StatusEnum.Canceled));
@@ -73,7 +73,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
 
             try
             {
-                VerificationResource.Update("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathSid", VerificationResource.StatusEnum.Canceled, client: twilioRestClient);
+                VerificationResource.Update("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "sid", VerificationResource.StatusEnum.Canceled, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -91,7 +91,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                                          "{\"sid\": \"VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"to\": \"+14159373912\",\"channel\": \"sms\",\"status\": \"canceled\",\"valid\": null,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"lookup\": {\"carrier\": {\"error_code\": null,\"name\": \"Carrier Name\",\"mobile_country_code\": \"310\",\"mobile_network_code\": \"150\",\"type\": \"mobile\"}},\"amount\": \"$29.99\",\"payee\": \"Acme\",\"url\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Verifications/VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = VerificationResource.Update("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathSid", VerificationResource.StatusEnum.Canceled, client: twilioRestClient);
+            var response = VerificationResource.Update("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "sid", VerificationResource.StatusEnum.Canceled, client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -102,14 +102,14 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Verify,
-                "/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications/pathSid",
+                "/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Verifications/sid",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                VerificationResource.Fetch("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathSid", client: twilioRestClient);
+                VerificationResource.Fetch("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "sid", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -127,7 +127,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                                          "{\"sid\": \"VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"to\": \"+14159373912\",\"channel\": \"sms\",\"status\": \"pending\",\"valid\": null,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"lookup\": {\"carrier\": {\"error_code\": null,\"name\": \"Carrier Name\",\"mobile_country_code\": \"310\",\"mobile_network_code\": \"150\",\"type\": \"mobile\"}},\"amount\": \"$29.99\",\"payee\": \"Acme\",\"url\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Verifications/VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = VerificationResource.Fetch("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "pathSid", client: twilioRestClient);
+            var response = VerificationResource.Fetch("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "sid", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

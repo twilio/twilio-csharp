@@ -17,19 +17,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class FetchCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
-        /// The trunk_sid
+        /// The SID of the Trunk from which to fetch the credential list
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCredentialListOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the credential list </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchCredentialListOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -52,19 +52,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class DeleteCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
-        /// The trunk_sid
+        /// The SID of the Trunk from which to delete the credential list
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteCredentialListOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the credential list </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteCredentialListOptions(string pathTrunkSid, string pathSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -87,20 +87,19 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class CreateCredentialListOptions : IOptions<CredentialListResource> 
     {
         /// <summary>
-        /// The trunk_sid
+        /// The SID of the Trunk to associate the credential list with
         /// </summary>
         public string PathTrunkSid { get; }
         /// <summary>
-        /// The SID of the Credential List that you want to associate with this trunk. Once associated, Twilio will start authenticating access to the trunk against this list.
+        /// The SID of the Credential List that you want to associate with the trunk
         /// </summary>
         public string CredentialListSid { get; }
 
         /// <summary>
         /// Construct a new CreateCredentialListOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
-        /// <param name="credentialListSid"> The SID of the Credential List that you want to associate with this trunk. Once
-        ///                         associated, Twilio will start authenticating access to the trunk against this list. </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk to associate the credential list with </param>
+        /// <param name="credentialListSid"> The SID of the Credential List that you want to associate with the trunk </param>
         public CreateCredentialListOptions(string pathTrunkSid, string credentialListSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -128,14 +127,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class ReadCredentialListOptions : ReadOptions<CredentialListResource> 
     {
         /// <summary>
-        /// The trunk_sid
+        /// The SID of the Trunk from which to read the credential lists
         /// </summary>
         public string PathTrunkSid { get; }
 
         /// <summary>
         /// Construct a new ReadCredentialListOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk from which to read the credential lists </param>
         public ReadCredentialListOptions(string pathTrunkSid)
         {
             PathTrunkSid = pathTrunkSid;

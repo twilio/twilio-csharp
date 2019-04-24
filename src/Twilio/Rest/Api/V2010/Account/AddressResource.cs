@@ -607,6 +607,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("validated")]
         public bool? Validated { get; private set; }
+        /// <summary>
+        /// Whether the address has been verified to comply with regulation
+        /// </summary>
+        [JsonProperty("verified")]
+        public bool? Verified { get; private set; }
 
         private AddressResource()
         {
