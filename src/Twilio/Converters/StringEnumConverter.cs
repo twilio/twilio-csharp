@@ -41,8 +41,13 @@ namespace Twilio.Converters
         {
             if (reader.Value == null)
             {
+                // Value is null for 'Null' tokens and 'StartArray' tokens. If it's the former, stop now!
+                if (reader.TokenType == JsonToken.Null)
+                {
+                    return null;
+                }
 #if !NET35
-                if (objectType.GenericTypeArguments.Length == 0) 
+                if (objectType.GenericTypeArguments.Length == 0)
 #else
                 if (objectType.GetGenericArguments().Length == 0)
 #endif
