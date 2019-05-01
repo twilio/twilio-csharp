@@ -15,19 +15,19 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// ReadEnvironmentOptions
+    /// Retrieve a list of all Environments.
     /// </summary>
     public class ReadEnvironmentOptions : ReadOptions<EnvironmentResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadEnvironmentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
         public ReadEnvironmentOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -52,24 +52,24 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchEnvironmentOptions
+    /// Retrieve a specific Environment.
     /// </summary>
     public class FetchEnvironmentOptions : IOptions<EnvironmentResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// Environment Sid.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchEnvironmentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Environment Sid. </param>
         public FetchEnvironmentOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -90,28 +90,28 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// CreateEnvironmentOptions
+    /// Create a new Environment.
     /// </summary>
     public class CreateEnvironmentOptions : IOptions<EnvironmentResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique_name
+        /// A unique, addressable name of this Environment.
         /// </summary>
         public string UniqueName { get; }
         /// <summary>
-        /// The domain_suffix
+        /// A URL-friendly name that represents this Environment.
         /// </summary>
         public string DomainSuffix { get; set; }
 
         /// <summary>
         /// Construct a new CreateEnvironmentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="uniqueName"> A unique, addressable name of this Environment. </param>
         public CreateEnvironmentOptions(string pathServiceSid, string uniqueName)
         {
             PathServiceSid = pathServiceSid;

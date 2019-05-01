@@ -15,24 +15,24 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// ReadDeploymentOptions
+    /// Retrieve a list of all Deployments.
     /// </summary>
     public class ReadDeploymentOptions : ReadOptions<DeploymentResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The environment_sid
+        /// Environment Sid.
         /// </summary>
         public string PathEnvironmentSid { get; }
 
         /// <summary>
         /// Construct a new ReadDeploymentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
         public ReadDeploymentOptions(string pathServiceSid, string pathEnvironmentSid)
         {
             PathServiceSid = pathServiceSid;
@@ -58,29 +58,29 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchDeploymentOptions
+    /// Retrieve a specific Deployment.
     /// </summary>
     public class FetchDeploymentOptions : IOptions<DeploymentResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The environment_sid
+        /// Environment Sid.
         /// </summary>
         public string PathEnvironmentSid { get; }
         /// <summary>
-        /// The sid
+        /// Deployment Sid.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchDeploymentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="pathSid"> Deployment Sid. </param>
         public FetchDeploymentOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -102,29 +102,29 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// CreateDeploymentOptions
+    /// Create a new Deployment.
     /// </summary>
     public class CreateDeploymentOptions : IOptions<DeploymentResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The environment_sid
+        /// Environment Sid.
         /// </summary>
         public string PathEnvironmentSid { get; }
         /// <summary>
-        /// The build_sid
+        /// Build Sid.
         /// </summary>
         public string BuildSid { get; }
 
         /// <summary>
         /// Construct a new CreateDeploymentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="buildSid"> The build_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="buildSid"> Build Sid. </param>
         public CreateDeploymentOptions(string pathServiceSid, string pathEnvironmentSid, string buildSid)
         {
             PathServiceSid = pathServiceSid;

@@ -15,24 +15,24 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// ReadFunctionVersionOptions
+    /// Retrieve a list of all Function Versions.
     /// </summary>
     public class ReadFunctionVersionOptions : ReadOptions<FunctionVersionResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The function_sid
+        /// Function Sid.
         /// </summary>
         public string PathFunctionSid { get; }
 
         /// <summary>
         /// Construct a new ReadFunctionVersionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathFunctionSid"> The function_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathFunctionSid"> Function Sid. </param>
         public ReadFunctionVersionOptions(string pathServiceSid, string pathFunctionSid)
         {
             PathServiceSid = pathServiceSid;
@@ -58,29 +58,29 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchFunctionVersionOptions
+    /// Retrieve a specific Function Version.
     /// </summary>
     public class FetchFunctionVersionOptions : IOptions<FunctionVersionResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The function_sid
+        /// Function Sid.
         /// </summary>
         public string PathFunctionSid { get; }
         /// <summary>
-        /// The sid
+        /// Function Version Sid.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFunctionVersionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathFunctionSid"> The function_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathFunctionSid"> Function Sid. </param>
+        /// <param name="pathSid"> Function Version Sid. </param>
         public FetchFunctionVersionOptions(string pathServiceSid, string pathFunctionSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -102,34 +102,34 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// CreateFunctionVersionOptions
+    /// Create a new Function Version.
     /// </summary>
     public class CreateFunctionVersionOptions : IOptions<FunctionVersionResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The function_sid
+        /// Function Sid.
         /// </summary>
         public string PathFunctionSid { get; }
         /// <summary>
-        /// The path
+        /// The URL-friendly string by which this Function Version can be referenced.
         /// </summary>
         public string Path { get; }
         /// <summary>
-        /// The visibility
+        /// The access control which determines how the Function Version can be accessed.
         /// </summary>
         public FunctionVersionResource.VisibilityEnum Visibility { get; }
 
         /// <summary>
         /// Construct a new CreateFunctionVersionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathFunctionSid"> The function_sid </param>
-        /// <param name="path"> The path </param>
-        /// <param name="visibility"> The visibility </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathFunctionSid"> Function Sid. </param>
+        /// <param name="path"> The URL-friendly string by which this Function Version can be referenced. </param>
+        /// <param name="visibility"> The access control which determines how the Function Version can be accessed. </param>
         public CreateFunctionVersionOptions(string pathServiceSid, 
                                             string pathFunctionSid, 
                                             string path, 

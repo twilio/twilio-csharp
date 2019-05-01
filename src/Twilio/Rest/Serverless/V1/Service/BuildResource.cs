@@ -33,11 +33,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 return new StatusEnum(value);
             }
 
-            public static readonly StatusEnum Queued = new StatusEnum("queued");
             public static readonly StatusEnum Building = new StatusEnum("building");
-            public static readonly StatusEnum Deploying = new StatusEnum("deploying");
-            public static readonly StatusEnum Deployed = new StatusEnum("deployed");
-            public static readonly StatusEnum Verified = new StatusEnum("verified");
+            public static readonly StatusEnum Completed = new StatusEnum("completed");
             public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
 
@@ -53,7 +50,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Builds.
         /// </summary>
         /// <param name="options"> Read Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -69,7 +66,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Builds.
         /// </summary>
         /// <param name="options"> Read Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -86,9 +83,9 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Builds.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -104,9 +101,9 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Builds.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -192,7 +189,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Build.
         /// </summary>
         /// <param name="options"> Fetch Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -206,7 +203,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Build.
         /// </summary>
         /// <param name="options"> Fetch Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -221,10 +218,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Build.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Build Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Build </returns> 
         public static BuildResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -235,10 +232,10 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Build.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Build Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Build </returns> 
         public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(string pathServiceSid, 
@@ -262,7 +259,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// create
+        /// Create a new Build. At least one Function Version or Asset Version is required.
         /// </summary>
         /// <param name="options"> Create Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -276,7 +273,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Build. At least one Function Version or Asset Version is required.
         /// </summary>
         /// <param name="options"> Create Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -291,12 +288,12 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new Build. At least one Function Version or Asset Version is required.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="assetVersions"> The asset_versions </param>
-        /// <param name="functionVersions"> The function_versions </param>
-        /// <param name="dependencies"> The dependencies </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="assetVersions"> List of Asset Version Sids. </param>
+        /// <param name="functionVersions"> List of Function Version Sids. </param>
+        /// <param name="dependencies"> List of Dependencies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Build </returns> 
         public static BuildResource Create(string pathServiceSid, 
@@ -311,12 +308,12 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Build. At least one Function Version or Asset Version is required.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="assetVersions"> The asset_versions </param>
-        /// <param name="functionVersions"> The function_versions </param>
-        /// <param name="dependencies"> The dependencies </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="assetVersions"> List of Asset Version Sids. </param>
+        /// <param name="functionVersions"> List of Function Version Sids. </param>
+        /// <param name="dependencies"> List of Dependencies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Build </returns> 
         public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(string pathServiceSid, 
@@ -349,53 +346,53 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// The sid
+        /// Build Sid.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account Sid.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The status
+        /// The current state of the Build.
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public BuildResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The asset_versions
+        /// List of Asset Version Sids.
         /// </summary>
         [JsonProperty("asset_versions")]
         public List<object> AssetVersions { get; private set; }
         /// <summary>
-        /// The function_versions
+        /// List of Function Version Sids.
         /// </summary>
         [JsonProperty("function_versions")]
         public List<object> FunctionVersions { get; private set; }
         /// <summary>
-        /// The dependencies
+        /// List of Dependencies.
         /// </summary>
         [JsonProperty("dependencies")]
         public List<object> Dependencies { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this Build was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this Build was updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this Build.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

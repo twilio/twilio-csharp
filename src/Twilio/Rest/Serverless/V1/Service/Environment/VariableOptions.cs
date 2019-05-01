@@ -15,24 +15,24 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// ReadVariableOptions
+    /// Retrieve a list of all Variables.
     /// </summary>
     public class ReadVariableOptions : ReadOptions<VariableResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The environment_sid
+        /// Environment Sid.
         /// </summary>
         public string PathEnvironmentSid { get; }
 
         /// <summary>
         /// Construct a new ReadVariableOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
         public ReadVariableOptions(string pathServiceSid, string pathEnvironmentSid)
         {
             PathServiceSid = pathServiceSid;
@@ -58,29 +58,29 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchVariableOptions
+    /// Retrieve a specific Variable.
     /// </summary>
     public class FetchVariableOptions : IOptions<VariableResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The environment_sid
+        /// Environment Sid.
         /// </summary>
         public string PathEnvironmentSid { get; }
         /// <summary>
-        /// The sid
+        /// Variable Sid.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchVariableOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="pathSid"> Variable Sid. </param>
         public FetchVariableOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -102,34 +102,34 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// CreateVariableOptions
+    /// Create a new Variable.
     /// </summary>
     public class CreateVariableOptions : IOptions<VariableResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The environment_sid
+        /// Environment Sid.
         /// </summary>
         public string PathEnvironmentSid { get; }
         /// <summary>
-        /// The key
+        /// A string by which this Variable can be referenced.
         /// </summary>
         public string Key { get; }
         /// <summary>
-        /// The value
+        /// A string that contains the actual value of this Variable.
         /// </summary>
         public string Value { get; }
 
         /// <summary>
         /// Construct a new CreateVariableOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="key"> The key </param>
-        /// <param name="value"> The value </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="key"> A string by which this Variable can be referenced. </param>
+        /// <param name="value"> A string that contains the actual value of this Variable. </param>
         public CreateVariableOptions(string pathServiceSid, string pathEnvironmentSid, string key, string value)
         {
             PathServiceSid = pathServiceSid;
@@ -162,37 +162,37 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// UpdateVariableOptions
+    /// Update a specific Variable.
     /// </summary>
     public class UpdateVariableOptions : IOptions<VariableResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The environment_sid
+        /// Environment Sid.
         /// </summary>
         public string PathEnvironmentSid { get; }
         /// <summary>
-        /// The sid
+        /// Variable Sid.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The key
+        /// A string by which this Variable can be referenced.
         /// </summary>
         public string Key { get; set; }
         /// <summary>
-        /// The value
+        /// A string that contains the actual value of this Variable.
         /// </summary>
         public string Value { get; set; }
 
         /// <summary>
         /// Construct a new UpdateVariableOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="pathSid"> Variable Sid. </param>
         public UpdateVariableOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

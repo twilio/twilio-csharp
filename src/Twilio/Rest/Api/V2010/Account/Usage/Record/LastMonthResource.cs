@@ -184,6 +184,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum ShortcodesRandom = new CategoryEnum("shortcodes-random");
             public static readonly CategoryEnum ShortcodesUk = new CategoryEnum("shortcodes-uk");
             public static readonly CategoryEnum ShortcodesVanity = new CategoryEnum("shortcodes-vanity");
+            public static readonly CategoryEnum SmallGroupRooms = new CategoryEnum("small-group-rooms");
+            public static readonly CategoryEnum SmallGroupRoomsDataTrack = new CategoryEnum("small-group-rooms-data-track");
+            public static readonly CategoryEnum SmallGroupRoomsParticipantMinutes = new CategoryEnum("small-group-rooms-participant-minutes");
             public static readonly CategoryEnum Sms = new CategoryEnum("sms");
             public static readonly CategoryEnum SmsInbound = new CategoryEnum("sms-inbound");
             public static readonly CategoryEnum SmsInboundLongcode = new CategoryEnum("sms-inbound-longcode");
@@ -215,6 +218,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
             public static readonly CategoryEnum Turnmegabytes = new CategoryEnum("turnmegabytes");
             public static readonly CategoryEnum TurnmegabytesAustralia = new CategoryEnum("turnmegabytes-australia");
             public static readonly CategoryEnum TurnmegabytesBrasil = new CategoryEnum("turnmegabytes-brasil");
+            public static readonly CategoryEnum TurnmegabytesGermany = new CategoryEnum("turnmegabytes-germany");
             public static readonly CategoryEnum TurnmegabytesIndia = new CategoryEnum("turnmegabytes-india");
             public static readonly CategoryEnum TurnmegabytesIreland = new CategoryEnum("turnmegabytes-ireland");
             public static readonly CategoryEnum TurnmegabytesJapan = new CategoryEnum("turnmegabytes-japan");

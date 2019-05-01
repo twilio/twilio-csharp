@@ -50,7 +50,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Function Versions.
         /// </summary>
         /// <param name="options"> Read FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Function Versions.
         /// </summary>
         /// <param name="options"> Read FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -84,10 +84,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Function Versions.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathFunctionSid"> The function_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathFunctionSid"> Function Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -104,10 +104,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Function Versions.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathFunctionSid"> The function_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathFunctionSid"> Function Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         }
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Function Version.
         /// </summary>
         /// <param name="options"> Fetch FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Function Version.
         /// </summary>
         /// <param name="options"> Fetch FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -224,11 +224,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         #endif
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Function Version.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathFunctionSid"> The function_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathFunctionSid"> Function Sid. </param>
+        /// <param name="pathSid"> Function Version Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FunctionVersion </returns> 
         public static FunctionVersionResource Fetch(string pathServiceSid, 
@@ -242,11 +242,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Function Version.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathFunctionSid"> The function_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathFunctionSid"> Function Sid. </param>
+        /// <param name="pathSid"> Function Version Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FunctionVersion </returns> 
         public static async System.Threading.Tasks.Task<FunctionVersionResource> FetchAsync(string pathServiceSid, 
@@ -271,7 +271,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         }
 
         /// <summary>
-        /// create
+        /// Create a new Function Version.
         /// </summary>
         /// <param name="options"> Create FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -285,7 +285,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Function Version.
         /// </summary>
         /// <param name="options"> Create FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -300,12 +300,12 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new Function Version.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathFunctionSid"> The function_sid </param>
-        /// <param name="path"> The path </param>
-        /// <param name="visibility"> The visibility </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathFunctionSid"> Function Sid. </param>
+        /// <param name="path"> The URL-friendly string by which this Function Version can be referenced. </param>
+        /// <param name="visibility"> The access control which determines how the Function Version can be accessed. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FunctionVersion </returns> 
         public static FunctionVersionResource Create(string pathServiceSid, 
@@ -320,12 +320,12 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Function Version.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathFunctionSid"> The function_sid </param>
-        /// <param name="path"> The path </param>
-        /// <param name="visibility"> The visibility </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathFunctionSid"> Function Sid. </param>
+        /// <param name="path"> The URL-friendly string by which this Function Version can be referenced. </param>
+        /// <param name="visibility"> The access control which determines how the Function Version can be accessed. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FunctionVersion </returns> 
         public static async System.Threading.Tasks.Task<FunctionVersionResource> CreateAsync(string pathServiceSid, 
@@ -358,48 +358,48 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         }
 
         /// <summary>
-        /// The sid
+        /// Function Version Sid.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account Sid.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The function_sid
+        /// Function Sid.
         /// </summary>
         [JsonProperty("function_sid")]
         public string FunctionSid { get; private set; }
         /// <summary>
-        /// The path
+        /// The URL-friendly string by which this Function Version can be referenced.
         /// </summary>
         [JsonProperty("path")]
         public string Path { get; private set; }
         /// <summary>
-        /// The pre_signed_upload_url
+        /// The object which provides the details required for uploading this Function Version.
         /// </summary>
         [JsonProperty("pre_signed_upload_url")]
         public object PreSignedUploadUrl { get; private set; }
         /// <summary>
-        /// The visibility
+        /// The access control which determines how the Function Version can be accessed.
         /// </summary>
         [JsonProperty("visibility")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FunctionVersionResource.VisibilityEnum Visibility { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this Function Version was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this Function Version.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

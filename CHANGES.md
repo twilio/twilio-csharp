@@ -1,6 +1,15 @@
 twilio-csharp Changelog
 =======================
 
+[2019-05-01] Version 5.28.4
+----------------------------
+**Serverless**
+- Documentation
+
+**Wireless**
+- Added `imeisv` to Data Session resource.
+
+
 [2019-04-24] Version 5.28.3
 ----------------------------
 **Api**

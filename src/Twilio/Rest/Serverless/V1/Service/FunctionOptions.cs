@@ -15,19 +15,19 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// ReadFunctionOptions
+    /// Retrieve a list of all Functions.
     /// </summary>
     public class ReadFunctionOptions : ReadOptions<FunctionResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadFunctionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
         public ReadFunctionOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -52,24 +52,24 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchFunctionOptions
+    /// Retrieve a specific Function.
     /// </summary>
     public class FetchFunctionOptions : IOptions<FunctionResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// Function Sid.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFunctionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Function Sid. </param>
         public FetchFunctionOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -90,24 +90,24 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// CreateFunctionOptions
+    /// Create a new Function.
     /// </summary>
     public class CreateFunctionOptions : IOptions<FunctionResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable description of this Function.
         /// </summary>
         public string FriendlyName { get; }
 
         /// <summary>
         /// Construct a new CreateFunctionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="friendlyName"> A human-readable description of this Function. </param>
         public CreateFunctionOptions(string pathServiceSid, string friendlyName)
         {
             PathServiceSid = pathServiceSid;
@@ -133,29 +133,29 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// UpdateFunctionOptions
+    /// Update a specific Function.
     /// </summary>
     public class UpdateFunctionOptions : IOptions<FunctionResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// Function Sid.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable description of this Function.
         /// </summary>
         public string FriendlyName { get; }
 
         /// <summary>
         /// Construct a new UpdateFunctionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Function Sid. </param>
+        /// <param name="friendlyName"> A human-readable description of this Function. </param>
         public UpdateFunctionOptions(string pathServiceSid, string pathSid, string friendlyName)
         {
             PathServiceSid = pathServiceSid;

@@ -260,6 +260,11 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// </summary>
         [JsonProperty("end")]
         public DateTime? End { get; private set; }
+        /// <summary>
+        /// The unique id of the device using the SIM to connect.
+        /// </summary>
+        [JsonProperty("imeisv")]
+        public string Imeisv { get; private set; }
 
         private DataSessionResource()
         {

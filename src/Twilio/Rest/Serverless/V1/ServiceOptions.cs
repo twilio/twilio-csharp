@@ -15,7 +15,7 @@ namespace Twilio.Rest.Serverless.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// ReadServiceOptions
+    /// Retrieve a list of all Services.
     /// </summary>
     public class ReadServiceOptions : ReadOptions<ServiceResource> 
     {
@@ -38,19 +38,19 @@ namespace Twilio.Rest.Serverless.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchServiceOptions
+    /// Retrieve a specific Service.
     /// </summary>
     public class FetchServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// The sid
+        /// Service Sid.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Service Sid. </param>
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -70,28 +70,28 @@ namespace Twilio.Rest.Serverless.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// CreateServiceOptions
+    /// Create a new Service.
     /// </summary>
     public class CreateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// The unique_name
+        /// A unique, addressable name of this Service.
         /// </summary>
         public string UniqueName { get; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable description of this Service.
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// The include_credentials
+        /// Whether to inject Account credentials into a Function invocation context.
         /// </summary>
         public bool? IncludeCredentials { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
         /// </summary>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="uniqueName"> A unique, addressable name of this Service. </param>
+        /// <param name="friendlyName"> A human-readable description of this Service. </param>
         public CreateServiceOptions(string uniqueName, string friendlyName)
         {
             UniqueName = uniqueName;
@@ -127,27 +127,27 @@ namespace Twilio.Rest.Serverless.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// UpdateServiceOptions
+    /// Update a specific Service.
     /// </summary>
     public class UpdateServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// The sid
+        /// Service Sid.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The include_credentials
+        /// Whether to inject Account credentials into a Function invocation context.
         /// </summary>
         public bool? IncludeCredentials { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable description of this Service.
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Service Sid. </param>
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;

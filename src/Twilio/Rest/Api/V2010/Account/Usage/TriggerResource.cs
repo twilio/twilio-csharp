@@ -184,6 +184,9 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum ShortcodesRandom = new UsageCategoryEnum("shortcodes-random");
             public static readonly UsageCategoryEnum ShortcodesUk = new UsageCategoryEnum("shortcodes-uk");
             public static readonly UsageCategoryEnum ShortcodesVanity = new UsageCategoryEnum("shortcodes-vanity");
+            public static readonly UsageCategoryEnum SmallGroupRooms = new UsageCategoryEnum("small-group-rooms");
+            public static readonly UsageCategoryEnum SmallGroupRoomsDataTrack = new UsageCategoryEnum("small-group-rooms-data-track");
+            public static readonly UsageCategoryEnum SmallGroupRoomsParticipantMinutes = new UsageCategoryEnum("small-group-rooms-participant-minutes");
             public static readonly UsageCategoryEnum Sms = new UsageCategoryEnum("sms");
             public static readonly UsageCategoryEnum SmsInbound = new UsageCategoryEnum("sms-inbound");
             public static readonly UsageCategoryEnum SmsInboundLongcode = new UsageCategoryEnum("sms-inbound-longcode");
@@ -215,6 +218,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum Turnmegabytes = new UsageCategoryEnum("turnmegabytes");
             public static readonly UsageCategoryEnum TurnmegabytesAustralia = new UsageCategoryEnum("turnmegabytes-australia");
             public static readonly UsageCategoryEnum TurnmegabytesBrasil = new UsageCategoryEnum("turnmegabytes-brasil");
+            public static readonly UsageCategoryEnum TurnmegabytesGermany = new UsageCategoryEnum("turnmegabytes-germany");
             public static readonly UsageCategoryEnum TurnmegabytesIndia = new UsageCategoryEnum("turnmegabytes-india");
             public static readonly UsageCategoryEnum TurnmegabytesIreland = new UsageCategoryEnum("turnmegabytes-ireland");
             public static readonly UsageCategoryEnum TurnmegabytesJapan = new UsageCategoryEnum("turnmegabytes-japan");

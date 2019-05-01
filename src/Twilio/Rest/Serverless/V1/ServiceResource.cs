@@ -35,7 +35,7 @@ namespace Twilio.Rest.Serverless.V1
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Services.
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Serverless.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Services.
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Serverless.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Services.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Serverless.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Services.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Serverless.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Service.
         /// </summary>
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Serverless.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Service.
         /// </summary>
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -199,9 +199,9 @@ namespace Twilio.Rest.Serverless.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Service.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Service Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -212,9 +212,9 @@ namespace Twilio.Rest.Serverless.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Service.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Service Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid, 
@@ -237,7 +237,7 @@ namespace Twilio.Rest.Serverless.V1
         }
 
         /// <summary>
-        /// create
+        /// Create a new Service.
         /// </summary>
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -251,7 +251,7 @@ namespace Twilio.Rest.Serverless.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Service.
         /// </summary>
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -266,11 +266,11 @@ namespace Twilio.Rest.Serverless.V1
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new Service.
         /// </summary>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="includeCredentials"> The include_credentials </param>
+        /// <param name="uniqueName"> A unique, addressable name of this Service. </param>
+        /// <param name="friendlyName"> A human-readable description of this Service. </param>
+        /// <param name="includeCredentials"> Whether to inject Account credentials into a Function invocation context. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Create(string uniqueName, 
@@ -284,11 +284,11 @@ namespace Twilio.Rest.Serverless.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Service.
         /// </summary>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="includeCredentials"> The include_credentials </param>
+        /// <param name="uniqueName"> A unique, addressable name of this Service. </param>
+        /// <param name="friendlyName"> A human-readable description of this Service. </param>
+        /// <param name="includeCredentials"> Whether to inject Account credentials into a Function invocation context. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string uniqueName, 
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Serverless.V1
         }
 
         /// <summary>
-        /// update
+        /// Update a specific Service.
         /// </summary>
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -327,7 +327,7 @@ namespace Twilio.Rest.Serverless.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update a specific Service.
         /// </summary>
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -342,11 +342,11 @@ namespace Twilio.Rest.Serverless.V1
         #endif
 
         /// <summary>
-        /// update
+        /// Update a specific Service.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="includeCredentials"> The include_credentials </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pathSid"> Service Sid. </param>
+        /// <param name="includeCredentials"> Whether to inject Account credentials into a Function invocation context. </param>
+        /// <param name="friendlyName"> A human-readable description of this Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Update(string pathSid, 
@@ -360,11 +360,11 @@ namespace Twilio.Rest.Serverless.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update a specific Service.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="includeCredentials"> The include_credentials </param>
-        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="pathSid"> Service Sid. </param>
+        /// <param name="includeCredentials"> Whether to inject Account credentials into a Function invocation context. </param>
+        /// <param name="friendlyName"> A human-readable description of this Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, 
@@ -396,47 +396,47 @@ namespace Twilio.Rest.Serverless.V1
         }
 
         /// <summary>
-        /// The sid
+        /// Service Sid.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account Sid.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The friendly_name
+        /// A human-readable description of this Service.
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The unique_name
+        /// A unique, URL-friendly name of this Service.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The include_credentials
+        /// Whether to inject Account credentials into a Function invocation context.
         /// </summary>
         [JsonProperty("include_credentials")]
         public bool? IncludeCredentials { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this Service was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this Service was updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this Service.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// Nested resource URLs.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

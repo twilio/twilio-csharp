@@ -16,19 +16,19 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// ReadBuildOptions
+    /// Retrieve a list of all Builds.
     /// </summary>
     public class ReadBuildOptions : ReadOptions<BuildResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadBuildOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
         public ReadBuildOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -53,24 +53,24 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchBuildOptions
+    /// Retrieve a specific Build.
     /// </summary>
     public class FetchBuildOptions : IOptions<BuildResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// Build Sid.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchBuildOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Build Sid. </param>
         public FetchBuildOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -91,31 +91,31 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// CreateBuildOptions
+    /// Create a new Build. At least one Function Version or Asset Version is required.
     /// </summary>
     public class CreateBuildOptions : IOptions<BuildResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The asset_versions
+        /// List of Asset Version Sids.
         /// </summary>
         public List<string> AssetVersions { get; set; }
         /// <summary>
-        /// The function_versions
+        /// List of Function Version Sids.
         /// </summary>
         public List<string> FunctionVersions { get; set; }
         /// <summary>
-        /// The dependencies
+        /// List of Dependencies.
         /// </summary>
         public string Dependencies { get; set; }
 
         /// <summary>
         /// Construct a new CreateBuildOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
         public CreateBuildOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;

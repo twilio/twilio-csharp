@@ -35,7 +35,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Environments.
         /// </summary>
         /// <param name="options"> Read Environment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Environments.
         /// </summary>
         /// <param name="options"> Read Environment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -68,9 +68,9 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Environments.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -86,9 +86,9 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Environments.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Environment.
         /// </summary>
         /// <param name="options"> Fetch Environment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Environment.
         /// </summary>
         /// <param name="options"> Fetch Environment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -203,10 +203,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Environment.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Environment Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Environment </returns> 
         public static EnvironmentResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -217,10 +217,10 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Environment.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Environment Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Environment </returns> 
         public static async System.Threading.Tasks.Task<EnvironmentResource> FetchAsync(string pathServiceSid, 
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// create
+        /// Create a new Environment.
         /// </summary>
         /// <param name="options"> Create Environment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Environment.
         /// </summary>
         /// <param name="options"> Create Environment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -273,11 +273,11 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new Environment.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="domainSuffix"> The domain_suffix </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="uniqueName"> A unique, addressable name of this Environment. </param>
+        /// <param name="domainSuffix"> A URL-friendly name that represents this Environment. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Environment </returns> 
         public static EnvironmentResource Create(string pathServiceSid, 
@@ -291,11 +291,11 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Environment.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="domainSuffix"> The domain_suffix </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="uniqueName"> A unique, addressable name of this Environment. </param>
+        /// <param name="domainSuffix"> A URL-friendly name that represents this Environment. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Environment </returns> 
         public static async System.Threading.Tasks.Task<EnvironmentResource> CreateAsync(string pathServiceSid, 
@@ -327,57 +327,57 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// The sid
+        /// Environment Sid.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account Sid.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The build_sid
+        /// Build Sid.
         /// </summary>
         [JsonProperty("build_sid")]
         public string BuildSid { get; private set; }
         /// <summary>
-        /// The unique_name
+        /// A unique, addressable name of this Environment.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The domain_suffix
+        /// A URL-friendly name that represents this Environment.
         /// </summary>
         [JsonProperty("domain_suffix")]
         public string DomainSuffix { get; private set; }
         /// <summary>
-        /// The domain_name
+        /// The base domain name for all Functions and Assets deployed in this Environment.
         /// </summary>
         [JsonProperty("domain_name")]
         public string DomainName { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this Environment was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this Environment was updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this Environment.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// Nested resource URLs.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

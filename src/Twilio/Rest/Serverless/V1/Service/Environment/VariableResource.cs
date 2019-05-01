@@ -35,7 +35,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Variables.
         /// </summary>
         /// <param name="options"> Read Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Variables.
         /// </summary>
         /// <param name="options"> Read Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -68,10 +68,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Variables.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -88,10 +88,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Variables.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Variable.
         /// </summary>
         /// <param name="options"> Fetch Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -192,7 +192,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Variable.
         /// </summary>
         /// <param name="options"> Fetch Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -207,11 +207,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         #endif
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Variable.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="pathSid"> Variable Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Variable </returns> 
         public static VariableResource Fetch(string pathServiceSid, 
@@ -225,11 +225,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Variable.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="pathSid"> Variable Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Variable </returns> 
         public static async System.Threading.Tasks.Task<VariableResource> FetchAsync(string pathServiceSid, 
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
         /// <summary>
-        /// create
+        /// Create a new Variable.
         /// </summary>
         /// <param name="options"> Create Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Variable.
         /// </summary>
         /// <param name="options"> Create Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -283,12 +283,12 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new Variable.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="key"> The key </param>
-        /// <param name="value"> The value </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="key"> A string by which this Variable can be referenced. </param>
+        /// <param name="value"> A string that contains the actual value of this Variable. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Variable </returns> 
         public static VariableResource Create(string pathServiceSid, 
@@ -303,12 +303,12 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Variable.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="key"> The key </param>
-        /// <param name="value"> The value </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="key"> A string by which this Variable can be referenced. </param>
+        /// <param name="value"> A string that contains the actual value of this Variable. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Variable </returns> 
         public static async System.Threading.Tasks.Task<VariableResource> CreateAsync(string pathServiceSid, 
@@ -334,7 +334,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
         /// <summary>
-        /// update
+        /// Update a specific Variable.
         /// </summary>
         /// <param name="options"> Update Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -348,7 +348,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update a specific Variable.
         /// </summary>
         /// <param name="options"> Update Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -363,13 +363,13 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         #endif
 
         /// <summary>
-        /// update
+        /// Update a specific Variable.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="key"> The key </param>
-        /// <param name="value"> The value </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="pathSid"> Variable Sid. </param>
+        /// <param name="key"> A string by which this Variable can be referenced. </param>
+        /// <param name="value"> A string that contains the actual value of this Variable. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Variable </returns> 
         public static VariableResource Update(string pathServiceSid, 
@@ -385,13 +385,13 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update a specific Variable.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="key"> The key </param>
-        /// <param name="value"> The value </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="pathSid"> Variable Sid. </param>
+        /// <param name="key"> A string by which this Variable can be referenced. </param>
+        /// <param name="value"> A string that contains the actual value of this Variable. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Variable </returns> 
         public static async System.Threading.Tasks.Task<VariableResource> UpdateAsync(string pathServiceSid, 
@@ -425,47 +425,47 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
         /// <summary>
-        /// The sid
+        /// Variable Sid.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account Sid.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The environment_sid
+        /// Environment Sid.
         /// </summary>
         [JsonProperty("environment_sid")]
         public string EnvironmentSid { get; private set; }
         /// <summary>
-        /// The key
+        /// A string by which this Variable can be referenced.
         /// </summary>
         [JsonProperty("key")]
         public string Key { get; private set; }
         /// <summary>
-        /// The value
+        /// A string that contains the actual value of this Variable.
         /// </summary>
         [JsonProperty("value")]
         public string Value { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this Variable was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this Variable was updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this Variable.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -35,7 +35,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Deployments.
         /// </summary>
         /// <param name="options"> Read Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Deployments.
         /// </summary>
         /// <param name="options"> Read Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -68,10 +68,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Deployments.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -88,10 +88,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Deployments.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Deployment.
         /// </summary>
         /// <param name="options"> Fetch Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -192,7 +192,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Deployment.
         /// </summary>
         /// <param name="options"> Fetch Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -207,11 +207,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         #endif
 
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Deployment.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="pathSid"> Deployment Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Deployment </returns> 
         public static DeploymentResource Fetch(string pathServiceSid, 
@@ -225,11 +225,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve a specific Deployment.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="pathSid"> Deployment Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Deployment </returns> 
         public static async System.Threading.Tasks.Task<DeploymentResource> FetchAsync(string pathServiceSid, 
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
         /// <summary>
-        /// create
+        /// Create a new Deployment.
         /// </summary>
         /// <param name="options"> Create Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Deployment.
         /// </summary>
         /// <param name="options"> Create Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -283,11 +283,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new Deployment.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="buildSid"> The build_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="buildSid"> Build Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Deployment </returns> 
         public static DeploymentResource Create(string pathServiceSid, 
@@ -301,11 +301,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Deployment.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathEnvironmentSid"> The environment_sid </param>
-        /// <param name="buildSid"> The build_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="buildSid"> Build Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Deployment </returns> 
         public static async System.Threading.Tasks.Task<DeploymentResource> CreateAsync(string pathServiceSid, 
@@ -337,42 +337,42 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
         /// <summary>
-        /// The sid
+        /// Deployment Sid.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account Sid.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The environment_sid
+        /// Environment Sid.
         /// </summary>
         [JsonProperty("environment_sid")]
         public string EnvironmentSid { get; private set; }
         /// <summary>
-        /// The build_sid
+        /// Build Sid.
         /// </summary>
         [JsonProperty("build_sid")]
         public string BuildSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date that this Deployment was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this Deployment was updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this Deployment.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
