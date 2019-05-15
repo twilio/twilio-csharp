@@ -1,6 +1,36 @@
 twilio-csharp Changelog
 =======================
 
+[2019-05-15] Version 5.29.0
+----------------------------
+**Library**
+- [PR #478](https://github.com/twilio/twilio-csharp/pull/478): Handle 'null' string enum lists during JSON deserialization. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Make `method` optional for queue members update
+
+**Chat**
+- Removed `webhook.*.format` update parameters in Service resource from public library visibility in v1 **(breaking change)**
+
+**Insights**
+- Added client metrics as sdk_edge to summary.
+- Added optional query param processing_state.
+
+**Numbers**
+- Add addtional metadata fields on a Document
+- Add status callback fields and parameters
+
+**Taskrouter**
+- Added `channel_optimized_routing` attribute to task-channel endpoint
+
+**Video**
+- [Rooms] Add Video Subscription API
+
+**Wireless**
+- Added `imei` to Data Session resource.
+- Remove `imeisv` from Data Session resource. **(breaking change)**
+
+
 [2019-05-01] Version 5.28.4
 ----------------------------
 **Serverless**

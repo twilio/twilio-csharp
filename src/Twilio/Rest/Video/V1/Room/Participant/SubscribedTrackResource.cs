@@ -35,32 +35,99 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             public static readonly KindEnum Data = new KindEnum("data");
         }
 
-        public sealed class StatusEnum : StringEnum 
-        {
-            private StatusEnum(string value) : base(value) {}
-            public StatusEnum() {}
-            public static implicit operator StatusEnum(string value)
-            {
-                return new StatusEnum(value);
-            }
-
-            public static readonly StatusEnum Subscribe = new StatusEnum("subscribe");
-            public static readonly StatusEnum Unsubscribe = new StatusEnum("unsubscribe");
-        }
-
-        private static Request BuildReadRequest(ReadSubscribedTrackOptions options, ITwilioRestClient client)
+        private static Request BuildFetchRequest(FetchSubscribedTrackOptions options, ITwilioRestClient client)
         {
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Video,
-                "/v1/Rooms/" + options.PathRoomSid + "/Participants/" + options.PathSubscriberSid + "/SubscribedTracks",
+                "/v1/Rooms/" + options.PathRoomSid + "/Participants/" + options.PathParticipantSid + "/SubscribedTracks/" + options.PathSid + "",
                 client.Region,
                 queryParams: options.GetParams()
             );
         }
 
         /// <summary>
-        /// read
+        /// Returns a single Track resource represented by `TrackSid`.  Note: This is one resource with the Video API that
+        /// requires a Sid, as Track Name on the subscriber side is not guaranteed to be unique.
+        /// </summary>
+        /// <param name="options"> Fetch SubscribedTrack parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SubscribedTrack </returns> 
+        public static SubscribedTrackResource Fetch(FetchSubscribedTrackOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Returns a single Track resource represented by `TrackSid`.  Note: This is one resource with the Video API that
+        /// requires a Sid, as Track Name on the subscriber side is not guaranteed to be unique.
+        /// </summary>
+        /// <param name="options"> Fetch SubscribedTrack parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SubscribedTrack </returns> 
+        public static async System.Threading.Tasks.Task<SubscribedTrackResource> FetchAsync(FetchSubscribedTrackOptions options, 
+                                                                                            ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// Returns a single Track resource represented by `TrackSid`.  Note: This is one resource with the Video API that
+        /// requires a Sid, as Track Name on the subscriber side is not guaranteed to be unique.
+        /// </summary>
+        /// <param name="pathRoomSid"> Unique Room identifier where this Track is subscribed. </param>
+        /// <param name="pathParticipantSid"> Unique Participant identifier that subscribes to this Track. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SubscribedTrack </returns> 
+        public static SubscribedTrackResource Fetch(string pathRoomSid, 
+                                                    string pathParticipantSid, 
+                                                    string pathSid, 
+                                                    ITwilioRestClient client = null)
+        {
+            var options = new FetchSubscribedTrackOptions(pathRoomSid, pathParticipantSid, pathSid);
+            return Fetch(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Returns a single Track resource represented by `TrackSid`.  Note: This is one resource with the Video API that
+        /// requires a Sid, as Track Name on the subscriber side is not guaranteed to be unique.
+        /// </summary>
+        /// <param name="pathRoomSid"> Unique Room identifier where this Track is subscribed. </param>
+        /// <param name="pathParticipantSid"> Unique Participant identifier that subscribes to this Track. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SubscribedTrack </returns> 
+        public static async System.Threading.Tasks.Task<SubscribedTrackResource> FetchAsync(string pathRoomSid, 
+                                                                                            string pathParticipantSid, 
+                                                                                            string pathSid, 
+                                                                                            ITwilioRestClient client = null)
+        {
+            var options = new FetchSubscribedTrackOptions(pathRoomSid, pathParticipantSid, pathSid);
+            return await FetchAsync(options, client);
+        }
+        #endif
+
+        private static Request BuildReadRequest(ReadSubscribedTrackOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Video,
+                "/v1/Rooms/" + options.PathRoomSid + "/Participants/" + options.PathParticipantSid + "/SubscribedTracks",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Returns a list of tracks that are subscribed for the participant.
         /// </summary>
         /// <param name="options"> Read SubscribedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -77,7 +144,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Returns a list of tracks that are subscribed for the participant.
         /// </summary>
         /// <param name="options"> Read SubscribedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -94,61 +161,41 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         #endif
 
         /// <summary>
-        /// read
+        /// Returns a list of tracks that are subscribed for the participant.
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSubscriberSid"> The subscriber_sid </param>
-        /// <param name="dateCreatedAfter"> The date_created_after </param>
-        /// <param name="dateCreatedBefore"> The date_created_before </param>
-        /// <param name="track"> The track </param>
-        /// <param name="publisher"> The publisher </param>
-        /// <param name="kind"> The kind </param>
+        /// <param name="pathRoomSid"> Unique Room identifier where the Tracks are subscribed. </param>
+        /// <param name="pathParticipantSid"> Unique Participant identifier that subscribes to this Track. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedTrack </returns> 
         public static ResourceSet<SubscribedTrackResource> Read(string pathRoomSid, 
-                                                                string pathSubscriberSid, 
-                                                                DateTime? dateCreatedAfter = null, 
-                                                                DateTime? dateCreatedBefore = null, 
-                                                                string track = null, 
-                                                                string publisher = null, 
-                                                                SubscribedTrackResource.KindEnum kind = null, 
+                                                                string pathParticipantSid, 
                                                                 int? pageSize = null, 
                                                                 long? limit = null, 
                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadSubscribedTrackOptions(pathRoomSid, pathSubscriberSid){DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, Track = track, Publisher = publisher, Kind = kind, PageSize = pageSize, Limit = limit};
+            var options = new ReadSubscribedTrackOptions(pathRoomSid, pathParticipantSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Returns a list of tracks that are subscribed for the participant.
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSubscriberSid"> The subscriber_sid </param>
-        /// <param name="dateCreatedAfter"> The date_created_after </param>
-        /// <param name="dateCreatedBefore"> The date_created_before </param>
-        /// <param name="track"> The track </param>
-        /// <param name="publisher"> The publisher </param>
-        /// <param name="kind"> The kind </param>
+        /// <param name="pathRoomSid"> Unique Room identifier where the Tracks are subscribed. </param>
+        /// <param name="pathParticipantSid"> Unique Participant identifier that subscribes to this Track. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedTrack </returns> 
         public static async System.Threading.Tasks.Task<ResourceSet<SubscribedTrackResource>> ReadAsync(string pathRoomSid, 
-                                                                                                        string pathSubscriberSid, 
-                                                                                                        DateTime? dateCreatedAfter = null, 
-                                                                                                        DateTime? dateCreatedBefore = null, 
-                                                                                                        string track = null, 
-                                                                                                        string publisher = null, 
-                                                                                                        SubscribedTrackResource.KindEnum kind = null, 
+                                                                                                        string pathParticipantSid, 
                                                                                                         int? pageSize = null, 
                                                                                                         long? limit = null, 
                                                                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadSubscribedTrackOptions(pathRoomSid, pathSubscriberSid){DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, Track = track, Publisher = publisher, Kind = kind, PageSize = pageSize, Limit = limit};
+            var options = new ReadSubscribedTrackOptions(pathRoomSid, pathParticipantSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -213,94 +260,6 @@ namespace Twilio.Rest.Video.V1.Room.Participant
             return Page<SubscribedTrackResource>.FromJson("subscribed_tracks", response.Content);
         }
 
-        private static Request BuildUpdateRequest(UpdateSubscribedTrackOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Video,
-                "/v1/Rooms/" + options.PathRoomSid + "/Participants/" + options.PathSubscriberSid + "/SubscribedTracks",
-                client.Region,
-                postParams: options.GetParams()
-            );
-        }
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update SubscribedTrack parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SubscribedTrack </returns> 
-        public static SubscribedTrackResource Update(UpdateSubscribedTrackOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="options"> Update SubscribedTrack parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SubscribedTrack </returns> 
-        public static async System.Threading.Tasks.Task<SubscribedTrackResource> UpdateAsync(UpdateSubscribedTrackOptions options, 
-                                                                                             ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSubscriberSid"> The subscriber_sid </param>
-        /// <param name="track"> The track </param>
-        /// <param name="publisher"> The publisher </param>
-        /// <param name="kind"> The kind </param>
-        /// <param name="status"> The status </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SubscribedTrack </returns> 
-        public static SubscribedTrackResource Update(string pathRoomSid, 
-                                                     string pathSubscriberSid, 
-                                                     string track = null, 
-                                                     string publisher = null, 
-                                                     SubscribedTrackResource.KindEnum kind = null, 
-                                                     SubscribedTrackResource.StatusEnum status = null, 
-                                                     ITwilioRestClient client = null)
-        {
-            var options = new UpdateSubscribedTrackOptions(pathRoomSid, pathSubscriberSid){Track = track, Publisher = publisher, Kind = kind, Status = status};
-            return Update(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// update
-        /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSubscriberSid"> The subscriber_sid </param>
-        /// <param name="track"> The track </param>
-        /// <param name="publisher"> The publisher </param>
-        /// <param name="kind"> The kind </param>
-        /// <param name="status"> The status </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SubscribedTrack </returns> 
-        public static async System.Threading.Tasks.Task<SubscribedTrackResource> UpdateAsync(string pathRoomSid, 
-                                                                                             string pathSubscriberSid, 
-                                                                                             string track = null, 
-                                                                                             string publisher = null, 
-                                                                                             SubscribedTrackResource.KindEnum kind = null, 
-                                                                                             SubscribedTrackResource.StatusEnum status = null, 
-                                                                                             ITwilioRestClient client = null)
-        {
-            var options = new UpdateSubscribedTrackOptions(pathRoomSid, pathSubscriberSid){Track = track, Publisher = publisher, Kind = kind, Status = status};
-            return await UpdateAsync(options, client);
-        }
-        #endif
-
         /// <summary>
         /// Converts a JSON string into a SubscribedTrackResource object
         /// </summary>
@@ -320,51 +279,56 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         }
 
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The room_sid
+        /// Unique Participant identifier that subscribes to this Track.
         /// </summary>
-        [JsonProperty("room_sid")]
-        public string RoomSid { get; private set; }
+        [JsonProperty("participant_sid")]
+        public string ParticipantSid { get; private set; }
         /// <summary>
-        /// The name
-        /// </summary>
-        [JsonProperty("name")]
-        public string Name { get; private set; }
-        /// <summary>
-        /// The publisher_sid
+        /// Unique Participant identifier that publishes this Track.
         /// </summary>
         [JsonProperty("publisher_sid")]
         public string PublisherSid { get; private set; }
         /// <summary>
-        /// The subscriber_sid
+        /// Unique Room identifier where this Track is published.
         /// </summary>
-        [JsonProperty("subscriber_sid")]
-        public string SubscriberSid { get; private set; }
+        [JsonProperty("room_sid")]
+        public string RoomSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// Track name. Limited to 128 characters.
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; private set; }
+        /// <summary>
+        /// The date that this resource was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date that this resource was last updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The enabled
+        /// Specifies whether the Track is enabled or not.
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
         /// <summary>
-        /// The kind
+        /// Specifies whether Track represents `audio`, `video` or `data`
         /// </summary>
         [JsonProperty("kind")]
         [JsonConverter(typeof(StringEnumConverter))]
         public SubscribedTrackResource.KindEnum Kind { get; private set; }
+        /// <summary>
+        /// The absolute URL for this resource.
+        /// </summary>
+        [JsonProperty("url")]
+        public Uri Url { get; private set; }
 
         private SubscribedTrackResource()
         {

@@ -83,13 +83,12 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Queue
                 ""
             );
             request.AddPostParam("Url", Serialize(new Uri("https://example.com")));
-            request.AddPostParam("Method", Serialize(Twilio.Http.HttpMethod.Get));
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                MemberResource.Update("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Uri("https://example.com"), Twilio.Http.HttpMethod.Get, client: twilioRestClient);
+                MemberResource.Update("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Uri("https://example.com"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -107,7 +106,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Queue
                                          "{\"queue_sid\": \"QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_enqueued\": \"Thu, 06 Dec 2018 18:42:47 +0000\",\"position\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\",\"wait_time\": 143}"
                                      ));
 
-            var response = MemberResource.Update("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Uri("https://example.com"), Twilio.Http.HttpMethod.Get, client: twilioRestClient);
+            var response = MemberResource.Update("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Uri("https://example.com"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -122,7 +121,7 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Queue
                                          "{\"queue_sid\": \"QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_enqueued\": \"Tue, 07 Aug 2012 22:57:41 +0000\",\"position\": 1,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Queues/QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Members/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\",\"wait_time\": 143}"
                                      ));
 
-            var response = MemberResource.Update("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Uri("https://example.com"), Twilio.Http.HttpMethod.Get, client: twilioRestClient);
+            var response = MemberResource.Update("QUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Uri("https://example.com"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 

@@ -17,19 +17,19 @@ namespace Twilio.Rest.Video.V1.Room
     public class FetchParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
-        /// The room_sid
+        /// A system-generated 34-character string that uniquely identifies a Room.
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// The sid
+        /// A system-generated 34-character string that uniquely identifies this Participant.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchParticipantOptions
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies a Room. </param>
+        /// <param name="pathSid"> A system-generated 34-character string that uniquely identifies this Participant. </param>
         public FetchParticipantOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Video.V1.Room
     public class ReadParticipantOptions : ReadOptions<ParticipantResource> 
     {
         /// <summary>
-        /// The room_sid
+        /// A system-generated 34-character string that uniquely identifies this Room.
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// Construct a new ReadParticipantOptions
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies this Room. </param>
         public ReadParticipantOptions(string pathRoomSid)
         {
             PathRoomSid = pathRoomSid;
@@ -122,23 +122,23 @@ namespace Twilio.Rest.Video.V1.Room
     public class UpdateParticipantOptions : IOptions<ParticipantResource> 
     {
         /// <summary>
-        /// The room_sid
+        /// A system-generated 34-character string that uniquely identifies a Room.
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// The sid
+        /// A system-generated 34-character string that uniquely identifies this Participant.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Set to disconnected to remove participant.
+        /// Set to `disconnected` to remove participant.
         /// </summary>
         public ParticipantResource.StatusEnum Status { get; set; }
 
         /// <summary>
         /// Construct a new UpdateParticipantOptions
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies a Room. </param>
+        /// <param name="pathSid"> A system-generated 34-character string that uniquely identifies this Participant. </param>
         public UpdateParticipantOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;

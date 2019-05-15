@@ -82,6 +82,18 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly AddressRetentionEnum Discard = new AddressRetentionEnum("discard");
         }
 
+        public sealed class TrafficTypeEnum : StringEnum 
+        {
+            private TrafficTypeEnum(string value) : base(value) {}
+            public TrafficTypeEnum() {}
+            public static implicit operator TrafficTypeEnum(string value)
+            {
+                return new TrafficTypeEnum(value);
+            }
+
+            public static readonly TrafficTypeEnum Free = new TrafficTypeEnum("free");
+        }
+
         private static Request BuildCreateRequest(CreateMessageOptions options, ITwilioRestClient client)
         {
             return new Request(

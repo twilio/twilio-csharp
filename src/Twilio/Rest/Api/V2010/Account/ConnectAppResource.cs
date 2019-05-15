@@ -347,6 +347,76 @@ namespace Twilio.Rest.Api.V2010.Account
             return Page<ConnectAppResource>.FromJson("connect_apps", response.Content);
         }
 
+        private static Request BuildDeleteRequest(DeleteConnectAppOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Api,
+                "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/ConnectApps/" + options.PathSid + ".json",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Delete an instance of a connect-app
+        /// </summary>
+        /// <param name="options"> Delete ConnectApp parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ConnectApp </returns> 
+        public static bool Delete(DeleteConnectAppOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete an instance of a connect-app
+        /// </summary>
+        /// <param name="options"> Delete ConnectApp parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of ConnectApp </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteConnectAppOptions options, 
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Delete an instance of a connect-app
+        /// </summary>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of ConnectApp </returns> 
+        public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
+        {
+            var options = new DeleteConnectAppOptions(pathSid){PathAccountSid = pathAccountSid};
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete an instance of a connect-app
+        /// </summary>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of ConnectApp </returns> 
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
+                                                                          string pathAccountSid = null, 
+                                                                          ITwilioRestClient client = null)
+        {
+            var options = new DeleteConnectAppOptions(pathSid){PathAccountSid = pathAccountSid};
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a ConnectAppResource object
         /// </summary>

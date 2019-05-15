@@ -17,19 +17,19 @@ namespace Twilio.Rest.Chat.V1.Service
     public class FetchUserOptions : IOptions<UserResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -52,19 +52,19 @@ namespace Twilio.Rest.Chat.V1.Service
     public class DeleteUserOptions : IOptions<UserResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to delete the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -87,32 +87,31 @@ namespace Twilio.Rest.Chat.V1.Service
     public class CreateUserOptions : IOptions<UserResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to create the new resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A unique string that identifies the user within this service - often a username or email address.
+        /// The `identity` value that identifies the new resource's User
         /// </summary>
         public string Identity { get; }
         /// <summary>
-        /// The unique id of the Role assigned to this user.
+        /// The SID of the Role assigned to this user
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
-        /// An optional string used to contain any metadata or other information for the User.
+        /// A valid JSON string that contains application-specific data
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// An optional human readable string representing the user.
+        /// A string to describe the new resource
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new CreateUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="identity"> A unique string that identifies the user within this service - often a username or email
-        ///                address. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the new resource under </param>
+        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
         public CreateUserOptions(string pathServiceSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -155,14 +154,14 @@ namespace Twilio.Rest.Chat.V1.Service
     public class ReadUserOptions : ReadOptions<UserResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to read the resources from
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         public ReadUserOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -189,31 +188,31 @@ namespace Twilio.Rest.Chat.V1.Service
     public class UpdateUserOptions : IOptions<UserResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to update the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The unique id of the [Role][role] assigned to this user.
+        /// The SID id of the Role assigned to this user
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
-        /// An optional string used to contain any metadata or other information for the User.
+        /// A valid JSON string that contains application-specific data
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// An optional human readable string representing the user.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new UpdateUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

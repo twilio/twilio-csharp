@@ -12,129 +12,35 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 {
 
     /// <summary>
-    /// ReadSubscribedTrackOptions
+    /// Returns a single Track resource represented by `TrackSid`.  Note: This is one resource with the Video API that
+    /// requires a Sid, as Track Name on the subscriber side is not guaranteed to be unique.
     /// </summary>
-    public class ReadSubscribedTrackOptions : ReadOptions<SubscribedTrackResource> 
+    public class FetchSubscribedTrackOptions : IOptions<SubscribedTrackResource> 
     {
         /// <summary>
-        /// The room_sid
+        /// Unique Room identifier where this Track is subscribed.
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// The subscriber_sid
+        /// Unique Participant identifier that subscribes to this Track.
         /// </summary>
-        public string PathSubscriberSid { get; }
+        public string PathParticipantSid { get; }
         /// <summary>
-        /// The date_created_after
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
-        public DateTime? DateCreatedAfter { get; set; }
-        /// <summary>
-        /// The date_created_before
-        /// </summary>
-        public DateTime? DateCreatedBefore { get; set; }
-        /// <summary>
-        /// The track
-        /// </summary>
-        public string Track { get; set; }
-        /// <summary>
-        /// The publisher
-        /// </summary>
-        public string Publisher { get; set; }
-        /// <summary>
-        /// The kind
-        /// </summary>
-        public SubscribedTrackResource.KindEnum Kind { get; set; }
+        public string PathSid { get; }
 
         /// <summary>
-        /// Construct a new ReadSubscribedTrackOptions
+        /// Construct a new FetchSubscribedTrackOptions
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSubscriberSid"> The subscriber_sid </param>
-        public ReadSubscribedTrackOptions(string pathRoomSid, string pathSubscriberSid)
+        /// <param name="pathRoomSid"> Unique Room identifier where this Track is subscribed. </param>
+        /// <param name="pathParticipantSid"> Unique Participant identifier that subscribes to this Track. </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        public FetchSubscribedTrackOptions(string pathRoomSid, string pathParticipantSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
-            PathSubscriberSid = pathSubscriberSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (DateCreatedAfter != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedAfter", Serializers.DateTimeIso8601(DateCreatedAfter)));
-            }
-
-            if (DateCreatedBefore != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DateCreatedBefore", Serializers.DateTimeIso8601(DateCreatedBefore)));
-            }
-
-            if (Track != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Track", Track.ToString()));
-            }
-
-            if (Publisher != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Publisher", Publisher.ToString()));
-            }
-
-            if (Kind != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Kind", Kind.ToString()));
-            }
-
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
-            return p;
-        }
-    }
-
-    /// <summary>
-    /// UpdateSubscribedTrackOptions
-    /// </summary>
-    public class UpdateSubscribedTrackOptions : IOptions<SubscribedTrackResource> 
-    {
-        /// <summary>
-        /// The room_sid
-        /// </summary>
-        public string PathRoomSid { get; }
-        /// <summary>
-        /// The subscriber_sid
-        /// </summary>
-        public string PathSubscriberSid { get; }
-        /// <summary>
-        /// The track
-        /// </summary>
-        public string Track { get; set; }
-        /// <summary>
-        /// The publisher
-        /// </summary>
-        public string Publisher { get; set; }
-        /// <summary>
-        /// The kind
-        /// </summary>
-        public SubscribedTrackResource.KindEnum Kind { get; set; }
-        /// <summary>
-        /// The status
-        /// </summary>
-        public SubscribedTrackResource.StatusEnum Status { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateSubscribedTrackOptions
-        /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSubscriberSid"> The subscriber_sid </param>
-        public UpdateSubscribedTrackOptions(string pathRoomSid, string pathSubscriberSid)
-        {
-            PathRoomSid = pathRoomSid;
-            PathSubscriberSid = pathSubscriberSid;
+            PathParticipantSid = pathParticipantSid;
+            PathSid = pathSid;
         }
 
         /// <summary>
@@ -143,24 +49,44 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Track != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Track", Track.ToString()));
-            }
+            return p;
+        }
+    }
 
-            if (Publisher != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Publisher", Publisher.ToString()));
-            }
+    /// <summary>
+    /// Returns a list of tracks that are subscribed for the participant.
+    /// </summary>
+    public class ReadSubscribedTrackOptions : ReadOptions<SubscribedTrackResource> 
+    {
+        /// <summary>
+        /// Unique Room identifier where the Tracks are subscribed.
+        /// </summary>
+        public string PathRoomSid { get; }
+        /// <summary>
+        /// Unique Participant identifier that subscribes to this Track.
+        /// </summary>
+        public string PathParticipantSid { get; }
 
-            if (Kind != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Kind", Kind.ToString()));
-            }
+        /// <summary>
+        /// Construct a new ReadSubscribedTrackOptions
+        /// </summary>
+        /// <param name="pathRoomSid"> Unique Room identifier where the Tracks are subscribed. </param>
+        /// <param name="pathParticipantSid"> Unique Participant identifier that subscribes to this Track. </param>
+        public ReadSubscribedTrackOptions(string pathRoomSid, string pathParticipantSid)
+        {
+            PathRoomSid = pathRoomSid;
+            PathParticipantSid = pathParticipantSid;
+        }
 
-            if (Status != null)
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public override List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (PageSize != null)
             {
-                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
 
             return p;

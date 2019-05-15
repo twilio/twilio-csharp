@@ -263,8 +263,8 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <summary>
         /// The unique id of the device using the SIM to connect.
         /// </summary>
-        [JsonProperty("imeisv")]
-        public string Imeisv { get; private set; }
+        [JsonProperty("imei")]
+        public string Imei { get; private set; }
 
         private DataSessionResource()
         {

@@ -47,7 +47,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         }
 
         /// <summary>
-        /// read
+        /// List all Channels for a given User.
         /// </summary>
         /// <param name="options"> Read UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,7 +63,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
 
         #if !NET35
         /// <summary>
-        /// read
+        /// List all Channels for a given User.
         /// </summary>
         /// <param name="options"> Read UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -80,10 +80,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         #endif
 
         /// <summary>
-        /// read
+        /// List all Channels for a given User.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -100,10 +100,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
 
         #if !NET35
         /// <summary>
-        /// read
+        /// List all Channels for a given User.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -197,43 +197,43 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The channel_sid
+        /// The SID of the Channel the resource belongs to
         /// </summary>
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
         /// <summary>
-        /// The member_sid
+        /// The SID of the User as a Member in the Channel
         /// </summary>
         [JsonProperty("member_sid")]
         public string MemberSid { get; private set; }
         /// <summary>
-        /// The status
+        /// The status of the User on the Channel
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public UserChannelResource.ChannelStatusEnum Status { get; private set; }
         /// <summary>
-        /// The last_consumed_message_index
+        /// The index of the last Message in the Channel the Member has read
         /// </summary>
         [JsonProperty("last_consumed_message_index")]
         public int? LastConsumedMessageIndex { get; private set; }
         /// <summary>
-        /// The unread_messages_count
+        /// The number of unread Messages in the Channel for the User
         /// </summary>
         [JsonProperty("unread_messages_count")]
         public int? UnreadMessagesCount { get; private set; }
         /// <summary>
-        /// The links
+        /// Absolute URLs to access the Members, Messages , Invites and, if it exists, the last Message for the Channel
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

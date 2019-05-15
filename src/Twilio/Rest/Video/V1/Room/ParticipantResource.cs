@@ -77,8 +77,8 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies a Room. </param>
+        /// <param name="pathSid"> A system-generated 34-character string that uniquely identifies this Participant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
         public static ParticipantResource Fetch(string pathRoomSid, string pathSid, ITwilioRestClient client = null)
@@ -91,8 +91,8 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies a Room. </param>
+        /// <param name="pathSid"> A system-generated 34-character string that uniquely identifies this Participant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string pathRoomSid, 
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies this Room. </param>
         /// <param name="status"> Only show Participants with the given Status. </param>
         /// <param name="identity"> Only show Participants that connected to the Room using the provided Identity. </param>
         /// <param name="dateCreatedAfter"> Only show Participants that started after this date, given as an UTC ISO 8601
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies this Room. </param>
         /// <param name="status"> Only show Participants with the given Status. </param>
         /// <param name="identity"> Only show Participants that connected to the Room using the provided Identity. </param>
         /// <param name="dateCreatedAfter"> Only show Participants that started after this date, given as an UTC ISO 8601
@@ -306,9 +306,9 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="status"> Set to disconnected to remove participant. </param>
+        /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies a Room. </param>
+        /// <param name="pathSid"> A system-generated 34-character string that uniquely identifies this Participant. </param>
+        /// <param name="status"> Set to `disconnected` to remove participant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns> 
         public static ParticipantResource Update(string pathRoomSid, 
@@ -324,9 +324,9 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="status"> Set to disconnected to remove participant. </param>
+        /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies a Room. </param>
+        /// <param name="pathSid"> A system-generated 34-character string that uniquely identifies this Participant. </param>
+        /// <param name="status"> Set to `disconnected` to remove participant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns> 
         public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathRoomSid, 

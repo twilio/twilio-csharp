@@ -43,14 +43,14 @@ namespace Twilio.Rest.Serverless.V1
     public class FetchServiceOptions : IOptions<ServiceResource> 
     {
         /// <summary>
-        /// Service Sid.
+        /// Serverless Service Sid or unique name.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        /// <param name="pathSid"> Service Sid. </param>
+        /// <param name="pathSid"> Serverless Service Sid or unique name. </param>
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;

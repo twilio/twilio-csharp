@@ -8,34 +8,25 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Insights.V1 
+namespace Twilio.Rest.Preview.TrustedComms 
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     /// 
-    /// FetchCallSummaryOptions
+    /// Retrieve a current call given the originating and terminating number.
     /// </summary>
-    public class FetchCallSummaryOptions : IOptions<CallSummaryResource> 
+    public class FetchCurrentCallOptions : IOptions<CurrentCallResource> 
     {
         /// <summary>
-        /// The call_sid
+        /// The originating Phone Number
         /// </summary>
-        public string PathCallSid { get; }
+        public string From { get; set; }
         /// <summary>
-        /// The processing_state
+        /// The terminating Phone Number
         /// </summary>
-        public CallSummaryResource.ProcessingStateEnum ProcessingState { get; set; }
-
-        /// <summary>
-        /// Construct a new FetchCallSummaryOptions
-        /// </summary>
-        /// <param name="pathCallSid"> The call_sid </param>
-        public FetchCallSummaryOptions(string pathCallSid)
-        {
-            PathCallSid = pathCallSid;
-        }
+        public string To { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -43,9 +34,14 @@ namespace Twilio.Rest.Insights.V1
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (ProcessingState != null)
+            if (From != null)
             {
-                p.Add(new KeyValuePair<string, string>("ProcessingState", ProcessingState.ToString()));
+                p.Add(new KeyValuePair<string, string>("From", From));
+            }
+
+            if (To != null)
+            {
+                p.Add(new KeyValuePair<string, string>("To", To));
             }
 
             return p;

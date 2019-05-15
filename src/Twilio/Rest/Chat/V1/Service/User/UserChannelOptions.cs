@@ -12,24 +12,24 @@ namespace Twilio.Rest.Chat.V1.Service.User
 {
 
     /// <summary>
-    /// ReadUserChannelOptions
+    /// List all Channels for a given User.
     /// </summary>
     public class ReadUserChannelOptions : ReadOptions<UserChannelResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to read the resources from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The user_sid
+        /// The SID of the User to fetch the User Channel resources from
         /// </summary>
         public string PathUserSid { get; }
 
         /// <summary>
         /// Construct a new ReadUserChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
         public ReadUserChannelOptions(string pathServiceSid, string pathUserSid)
         {
             PathServiceSid = pathServiceSid;

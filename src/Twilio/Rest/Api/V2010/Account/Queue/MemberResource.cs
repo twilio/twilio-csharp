@@ -142,18 +142,18 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
         /// <param name="pathCallSid"> The Call SID of the resource(s) to update </param>
         /// <param name="url"> The absolute URL of the Queue resource </param>
-        /// <param name="method"> How to pass the update request data </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
+        /// <param name="method"> How to pass the update request data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns> 
         public static MemberResource Update(string pathQueueSid, 
                                             string pathCallSid, 
                                             Uri url, 
-                                            Twilio.Http.HttpMethod method, 
                                             string pathAccountSid = null, 
+                                            Twilio.Http.HttpMethod method = null, 
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateMemberOptions(pathQueueSid, pathCallSid, url, method){PathAccountSid = pathAccountSid};
+            var options = new UpdateMemberOptions(pathQueueSid, pathCallSid, url){PathAccountSid = pathAccountSid, Method = method};
             return Update(options, client);
         }
 
@@ -164,18 +164,18 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="pathQueueSid"> The SID of the Queue in which to find the members </param>
         /// <param name="pathCallSid"> The Call SID of the resource(s) to update </param>
         /// <param name="url"> The absolute URL of the Queue resource </param>
-        /// <param name="method"> How to pass the update request data </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
+        /// <param name="method"> How to pass the update request data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns> 
         public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string pathQueueSid, 
                                                                                     string pathCallSid, 
                                                                                     Uri url, 
-                                                                                    Twilio.Http.HttpMethod method, 
                                                                                     string pathAccountSid = null, 
+                                                                                    Twilio.Http.HttpMethod method = null, 
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new UpdateMemberOptions(pathQueueSid, pathCallSid, url, method){PathAccountSid = pathAccountSid};
+            var options = new UpdateMemberOptions(pathQueueSid, pathCallSid, url){PathAccountSid = pathAccountSid, Method = method};
             return await UpdateAsync(options, client);
         }
         #endif

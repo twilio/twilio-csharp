@@ -145,11 +145,14 @@ namespace Twilio.Rest.Insights.V1
         /// fetch
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="processingState"> The processing_state </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CallSummary </returns> 
-        public static CallSummaryResource Fetch(string pathCallSid, ITwilioRestClient client = null)
+        public static CallSummaryResource Fetch(string pathCallSid, 
+                                                CallSummaryResource.ProcessingStateEnum processingState = null, 
+                                                ITwilioRestClient client = null)
         {
-            var options = new FetchCallSummaryOptions(pathCallSid);
+            var options = new FetchCallSummaryOptions(pathCallSid){ProcessingState = processingState};
             return Fetch(options, client);
         }
 
@@ -158,12 +161,14 @@ namespace Twilio.Rest.Insights.V1
         /// fetch
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
+        /// <param name="processingState"> The processing_state </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CallSummary </returns> 
         public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(string pathCallSid, 
+                                                                                        CallSummaryResource.ProcessingStateEnum processingState = null, 
                                                                                         ITwilioRestClient client = null)
         {
-            var options = new FetchCallSummaryOptions(pathCallSid);
+            var options = new FetchCallSummaryOptions(pathCallSid){ProcessingState = processingState};
             return await FetchAsync(options, client);
         }
         #endif
@@ -266,6 +271,11 @@ namespace Twilio.Rest.Insights.V1
         /// </summary>
         [JsonProperty("client_edge")]
         public object ClientEdge { get; private set; }
+        /// <summary>
+        /// The sdk_edge
+        /// </summary>
+        [JsonProperty("sdk_edge")]
+        public object SdkEdge { get; private set; }
         /// <summary>
         /// The sip_edge
         /// </summary>

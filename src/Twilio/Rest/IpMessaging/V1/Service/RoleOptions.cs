@@ -18,19 +18,19 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     public class FetchRoleOptions : IOptions<RoleResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchRoleOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchRoleOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -53,19 +53,19 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     public class DeleteRoleOptions : IOptions<RoleResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to delete the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteRoleOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteRoleOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -88,29 +88,29 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     public class CreateRoleOptions : IOptions<RoleResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to create the resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The human-readable name of this role.
+        /// A string to describe the new resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// What kind of role this is.
+        /// The type of role
         /// </summary>
         public RoleResource.RoleTypeEnum Type { get; }
         /// <summary>
-        /// A permission this role should have.
+        /// A permission the role should have
         /// </summary>
         public List<string> Permission { get; }
 
         /// <summary>
         /// Construct a new CreateRoleOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="friendlyName"> The human-readable name of this role. </param>
-        /// <param name="type"> What kind of role this is. </param>
-        /// <param name="permission"> A permission this role should have. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="friendlyName"> A string to describe the new resource </param>
+        /// <param name="type"> The type of role </param>
+        /// <param name="permission"> A permission the role should have </param>
         public CreateRoleOptions(string pathServiceSid, 
                                  string friendlyName, 
                                  RoleResource.RoleTypeEnum type, 
@@ -153,14 +153,14 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     public class ReadRoleOptions : ReadOptions<RoleResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to read the resources from
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadRoleOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         public ReadRoleOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -187,24 +187,24 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     public class UpdateRoleOptions : IOptions<RoleResource> 
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to update the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A permission this role should have.
+        /// A permission the role should have
         /// </summary>
         public List<string> Permission { get; }
 
         /// <summary>
         /// Construct a new UpdateRoleOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="permission"> A permission this role should have. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="permission"> A permission the role should have </param>
         public UpdateRoleOptions(string pathServiceSid, string pathSid, List<string> permission)
         {
             PathServiceSid = pathServiceSid;

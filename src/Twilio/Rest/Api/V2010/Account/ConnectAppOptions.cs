@@ -176,4 +176,37 @@ namespace Twilio.Rest.Api.V2010.Account
         }
     }
 
+    /// <summary>
+    /// Delete an instance of a connect-app
+    /// </summary>
+    public class DeleteConnectAppOptions : IOptions<ConnectAppResource> 
+    {
+        /// <summary>
+        /// The SID of the Account that created the resource to fetch
+        /// </summary>
+        public string PathAccountSid { get; set; }
+        /// <summary>
+        /// The unique string that identifies the resource
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteConnectAppOptions
+        /// </summary>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        public DeleteConnectAppOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }

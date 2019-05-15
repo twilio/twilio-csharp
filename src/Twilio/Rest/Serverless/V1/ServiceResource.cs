@@ -201,7 +201,7 @@ namespace Twilio.Rest.Serverless.V1
         /// <summary>
         /// Retrieve a specific Service.
         /// </summary>
-        /// <param name="pathSid"> Service Sid. </param>
+        /// <param name="pathSid"> Serverless Service Sid or unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns> 
         public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -214,7 +214,7 @@ namespace Twilio.Rest.Serverless.V1
         /// <summary>
         /// Retrieve a specific Service.
         /// </summary>
-        /// <param name="pathSid"> Service Sid. </param>
+        /// <param name="pathSid"> Serverless Service Sid or unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns> 
         public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid, 

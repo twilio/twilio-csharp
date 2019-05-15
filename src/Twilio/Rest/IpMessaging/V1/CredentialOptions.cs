@@ -37,38 +37,38 @@ namespace Twilio.Rest.IpMessaging.V1
     public class CreateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
-        /// Credential type, one of "gcm" or "apn"
+        /// The type of push-notification service the credential is for
         /// </summary>
         public CredentialResource.PushServiceEnum Type { get; }
         /// <summary>
-        /// Friendly name for stored credential
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// [APN only] URL encoded representation of the certificate, e.
+        /// [APN only] The URL encoded representation of the certificate
         /// </summary>
         public string Certificate { get; set; }
         /// <summary>
-        /// [APN only] URL encoded representation of the private key, e.
+        /// [APN only] The URL encoded representation of the private key
         /// </summary>
         public string PrivateKey { get; set; }
         /// <summary>
-        /// [APN only] use this credential for sending to production or sandbox APNs
+        /// [APN only] Whether to send the credential to sandbox APNs
         /// </summary>
         public bool? Sandbox { get; set; }
         /// <summary>
-        /// [GCM only] This is the "API key" for project from Google Developer console for your GCM Service application credential
+        /// [GCM only] The API key for the project that was obtained from the Google Developer console for your GCM Service application credential
         /// </summary>
         public string ApiKey { get; set; }
         /// <summary>
-        /// The secret
+        /// [FCM only] The Server key of your project from Firebase console
         /// </summary>
         public string Secret { get; set; }
 
         /// <summary>
         /// Construct a new CreateCredentialOptions
         /// </summary>
-        /// <param name="type"> Credential type, one of "gcm" or "apn" </param>
+        /// <param name="type"> The type of push-notification service the credential is for </param>
         public CreateCredentialOptions(CredentialResource.PushServiceEnum type)
         {
             Type = type;
@@ -125,14 +125,14 @@ namespace Twilio.Rest.IpMessaging.V1
     public class FetchCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCredentialOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchCredentialOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -154,38 +154,38 @@ namespace Twilio.Rest.IpMessaging.V1
     public class UpdateCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Friendly name for stored credential
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// [APN only] URL encoded representation of the certificate, e.
+        /// [APN only] The URL encoded representation of the certificate
         /// </summary>
         public string Certificate { get; set; }
         /// <summary>
-        /// [APN only] URL encoded representation of the private key, e.
+        /// [APN only] The URL encoded representation of the private key
         /// </summary>
         public string PrivateKey { get; set; }
         /// <summary>
-        /// [APN only] use this credential for sending to production or sandbox APNs
+        /// [APN only] Whether to send the credential to sandbox APNs
         /// </summary>
         public bool? Sandbox { get; set; }
         /// <summary>
-        /// [GCM only] This is the "API key" for project from Google Developer console for your GCM Service application credential
+        /// [GCM only] The API key for the project that was obtained from the Google Developer console for your GCM Service application credential
         /// </summary>
         public string ApiKey { get; set; }
         /// <summary>
-        /// The secret
+        /// [FCM only] The Server key of your project from Firebase console
         /// </summary>
         public string Secret { get; set; }
 
         /// <summary>
         /// Construct a new UpdateCredentialOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public UpdateCredentialOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -237,14 +237,14 @@ namespace Twilio.Rest.IpMessaging.V1
     public class DeleteCredentialOptions : IOptions<CredentialResource> 
     {
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteCredentialOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public DeleteCredentialOptions(string pathSid)
         {
             PathSid = pathSid;

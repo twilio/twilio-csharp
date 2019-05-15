@@ -17,19 +17,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class FetchTaskChannelOptions : IOptions<TaskChannelResource> 
     {
         /// <summary>
-        /// The workspace_sid
+        /// The unique ID of the Workspace that this TaskChannel belongs to.
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique ID for this TaskChannel.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchTaskChannelOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
+        /// <param name="pathSid"> The unique ID for this TaskChannel. </param>
         public FetchTaskChannelOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -52,14 +52,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class ReadTaskChannelOptions : ReadOptions<TaskChannelResource> 
     {
         /// <summary>
-        /// The workspace_sid
+        /// The unique ID of the Workspace that this TaskChannel belongs to.
         /// </summary>
         public string PathWorkspaceSid { get; }
 
         /// <summary>
         /// Construct a new ReadTaskChannelOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
         public ReadTaskChannelOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -86,23 +86,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class UpdateTaskChannelOptions : IOptions<TaskChannelResource> 
     {
         /// <summary>
-        /// The workspace_sid
+        /// The unique ID of the Workspace that this TaskChannel belongs to.
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique ID for this TaskChannel.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
         /// Toggle the FriendlyName for the TaskChannel
         /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// If true then prioritize longest idle workers
+        /// </summary>
+        public bool? ChannelOptimizedRouting { get; set; }
 
         /// <summary>
         /// Construct a new UpdateTaskChannelOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
+        /// <param name="pathSid"> The unique ID for this TaskChannel. </param>
         public UpdateTaskChannelOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -120,6 +124,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
 
+            if (ChannelOptimizedRouting != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ChannelOptimizedRouting", ChannelOptimizedRouting.Value.ToString().ToLower()));
+            }
+
             return p;
         }
     }
@@ -130,19 +139,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class DeleteTaskChannelOptions : IOptions<TaskChannelResource> 
     {
         /// <summary>
-        /// The workspace_sid
+        /// The unique ID of the Workspace that this TaskChannel belongs to.
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique ID for this TaskChannel.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteTaskChannelOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
+        /// <param name="pathSid"> The unique ID for this TaskChannel. </param>
         public DeleteTaskChannelOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -165,7 +174,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class CreateTaskChannelOptions : IOptions<TaskChannelResource> 
     {
         /// <summary>
-        /// The workspace_sid
+        /// The unique ID of the Workspace that this TaskChannel belongs to.
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
@@ -176,11 +185,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// String representing unique name for the TaskChannel
         /// </summary>
         public string UniqueName { get; }
+        /// <summary>
+        /// If true then prioritize longest idle workers
+        /// </summary>
+        public bool? ChannelOptimizedRouting { get; set; }
 
         /// <summary>
         /// Construct a new CreateTaskChannelOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
         /// <param name="friendlyName"> String representing user-friendly name for the TaskChannel </param>
         /// <param name="uniqueName"> String representing unique name for the TaskChannel </param>
         public CreateTaskChannelOptions(string pathWorkspaceSid, string friendlyName, string uniqueName)
@@ -204,6 +217,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+            }
+
+            if (ChannelOptimizedRouting != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ChannelOptimizedRouting", ChannelOptimizedRouting.Value.ToString().ToLower()));
             }
 
             return p;
