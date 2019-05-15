@@ -8,6 +8,9 @@ dotnet: 2.1.9
 services:
   - docker
 
+before_install:
+  - sudo apt-get update
+
 install:
   - dotnet restore
   - dotnet build --framework netstandard1.4 src/Twilio/Twilio.csproj
