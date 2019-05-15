@@ -3,7 +3,7 @@ solution: Twilio.sln
 dist: trusty
 sudo: required
 mono: none
-dotnet: 2.1.4
+dotnet: 2.1.9
 
 services:
   - docker
