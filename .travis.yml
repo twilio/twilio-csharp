@@ -1,15 +1,12 @@
 language: csharp
 solution: Twilio.sln
-dist: trusty
+dist: xenial
 sudo: required
 mono: none
-dotnet: 2.1.9
+dotnet: 2.1
 
 services:
   - docker
-
-before_install:
-  - sudo apt-get update
 
 install:
   - dotnet restore
